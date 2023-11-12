@@ -2,6 +2,9 @@ import {LitElement, html, css} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {Task} from '@lit/task';
 import {getGlobalDataManager} from "./query/data";
+import {FetchAggregatedQuery} from "./query/FetchAggregatedQuery";
+import {MapQuery} from "./query/MapQuery";
+import {GroupByQuery} from "./query/GroupByQuery";
 
 @customElement('sequences-over-time')
 export class SequencesOverTime extends LitElement {
@@ -22,7 +25,37 @@ export class SequencesOverTime extends LitElement {
   }
 
   private fetchingTask = new Task(this, {
-    task: async ([country], {signal}) => getGlobalDataManager().getSequencesPerYear(country, signal),
+    task: async ([country], {signal}) => {
+      const fetchQuery = new FetchAggregatedQuery({country}, ['date']);
+      const mapQuery = new MapQuery(
+        fetchQuery,
+        (d) => {
+          if (d.date === null) {
+            return d;
+          }
+          const year = new Date(d.date).getFullYear();
+          return {
+            year,
+            count: d.count
+          }
+        }
+      );
+      const groupByQuery = new GroupByQuery(
+        mapQuery,
+        'year',
+        (values) => {
+          let count = 0;
+          for (let v of values) {
+            count += v.count;
+          }
+          return {
+            year: values[0].year,
+            count
+          }
+        }
+      );
+      return getGlobalDataManager().evaluateQuery(groupByQuery, signal)
+    },
     args: () => [this.country]
   })
 
