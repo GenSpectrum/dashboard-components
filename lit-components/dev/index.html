@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;my-element> Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/lit/polyfill-support.js"></script>
+    <script type="module" src="../my-element.js"></script>
+    <script type="module" src="../sequences-over-time.js"></script>
+    <style>
+      p {
+        border: solid 1px blue;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <my-element name="human">
+      <p>This is child content 2</p>
+    </my-element>
+    <sequences-over-time country="Switzerland"></sequences-over-time>
+    <button id="changeCountryButton">Change Country</button>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('changeCountryButton').addEventListener('click', function() {
+          var sequencesElement = document.querySelector('sequences-over-time');
+          var currentValue = sequencesElement.getAttribute('country')
+          sequencesElement.setAttribute('country', currentValue === 'Switzerland' ? 'Germany' : 'Switzerland');
+        });
+      });
+    </script>
+  </body>
+</html>
