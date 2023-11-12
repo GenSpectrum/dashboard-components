@@ -1,7 +1,7 @@
 import {LitElement, html, css} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {Task} from '@lit/task';
-import {getGlobalDataManager} from "./data";
+import {getGlobalDataManager} from "./query/data";
 
 @customElement('sequences-over-time')
 export class SequencesOverTime extends LitElement {

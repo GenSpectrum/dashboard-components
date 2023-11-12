@@ -1,6 +1,6 @@
 import {LitElement, html, css} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {DataManager, getGlobalDataManager} from "./data";
+import {DataManager, getGlobalDataManager} from "./query/data";
 
 /**
  * An example element.
