@@ -8,7 +8,7 @@ export class DataManager {
     return ++this.count;
   }
 
-  async evaluateQuery(query: Query, signal?: AbortSignal): Promise<Dataset> {
+  async evaluateQuery<T>(query: Query<T>, signal?: AbortSignal): Promise<Dataset<T>> {
     return query.evaluate(signal);
   }
 }

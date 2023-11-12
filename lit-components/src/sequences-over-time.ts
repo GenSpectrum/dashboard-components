@@ -26,14 +26,14 @@ export class SequencesOverTime extends LitElement {
 
   private fetchingTask = new Task(this, {
     task: async ([country], {signal}) => {
-      const fetchQuery = new FetchAggregatedQuery({country}, ['date']);
+      const fetchQuery = new FetchAggregatedQuery<{date: string | null}>({country}, ['date']);
       const mapQuery = new MapQuery(
         fetchQuery,
         (d) => {
-          if (d.date === null) {
-            return d;
+          let year: number | null = null;
+          if (d.date !== null) {
+            year = new Date(d.date).getFullYear();
           }
-          const year = new Date(d.date).getFullYear();
           return {
             year,
             count: d.count

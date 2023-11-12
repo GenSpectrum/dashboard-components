@@ -1,13 +1,16 @@
 import {Query} from "./Query";
 import {Dataset} from "./Dataset";
 
-export class GroupByQuery implements Query {
-  constructor(private child: Query, private field: string, private aggregate: (values: any[]) => any) {
-  }
+export class GroupByQuery<T, S, K extends keyof T> implements Query<S> {
+  constructor(
+    private child: Query<T>,
+    private field: K,
+    private aggregate: (values: T[]) => S
+  ) {}
 
-  async evaluate(signal?: AbortSignal): Promise<Dataset> {
+  async evaluate(signal?: AbortSignal): Promise<Dataset<S>> {
     const childEvaluated = await this.child.evaluate(signal);
-    const grouped = new Map<any, any[]>();
+    const grouped = new Map<T[K], T[]>();
     for (let row of childEvaluated.content) {
       const key = row[this.field];
       if (!grouped.has(key)) {
@@ -15,7 +18,7 @@ export class GroupByQuery implements Query {
       }
       grouped.get(key)!.push(row);
     }
-    const result = [];
+    const result = new Array<S>();
     for (let [, values] of grouped) {
       result.push(this.aggregate(values));
     }
@@ -23,10 +26,6 @@ export class GroupByQuery implements Query {
     return {
       content: result
     };
-  }
-
-  getChildren(): Query[] {
-    return [];
   }
 
 }

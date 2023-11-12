@@ -1,9 +1,7 @@
 import {Dataset} from "./Dataset";
 
-export interface Query {
+export interface Query<T> {
 
-  getChildren(): Query[];
-
-  evaluate(signal?: AbortSignal): Promise<Dataset>;
+  evaluate(signal?: AbortSignal): Promise<Dataset<T>>;
 
 }
