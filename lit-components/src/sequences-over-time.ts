@@ -5,6 +5,9 @@ import {getGlobalDataManager} from "./query/data";
 import {FetchAggregatedQuery} from "./query/FetchAggregatedQuery";
 import {MapQuery} from "./query/MapQuery";
 import {GroupByQuery} from "./query/GroupByQuery";
+import "./tabs";
+import "./sequences-over-time-chart";
+import "./sequences-over-time-table";
 
 @customElement('sequences-over-time')
 export class SequencesOverTime extends LitElement {
@@ -73,7 +76,17 @@ export class SequencesOverTime extends LitElement {
       `,
       complete: (data) => html`
         <h1>Sequences over time</h1>
-        <sequences-over-time-chart .data=${data.content}></sequences-over-time-chart>
+        
+        <gs-tabs>
+          <gs-tab title="Chart" active="true">
+            <sequences-over-time-chart .data=${data.content}></sequences-over-time-chart>
+          </gs-tab>
+          <gs-tab title="Table">
+            <sequences-over-time-table .data=${data.content}></sequences-over-time-table>
+          </gs-tab>
+        </gs-tabs>
+        
+        
       `,
       error: (e) => html`<p>Error: ${e}</p>`
     });
