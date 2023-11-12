@@ -73,7 +73,7 @@ export class SequencesOverTime extends LitElement {
       `,
       complete: (data) => html`
         <h1>Sequences over time</h1>
-        ${JSON.stringify(data)}
+        <sequences-over-time-chart .data=${data.content}></sequences-over-time-chart>
       `,
       error: (e) => html`<p>Error: ${e}</p>`
     });
