@@ -7,6 +7,7 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/lit/polyfill-support.js"></script>
     <script type="module" src="../my-element.js"></script>
+    <script type="module" src="../country-filter.js"></script>
     <script type="module" src="../sequences-over-time.js"></script>
     <style>
       p {
@@ -16,17 +17,13 @@
     </style>
   </head>
   <body>
-    <my-element name="human">
-      <p>This is child content 2</p>
-    </my-element>
+    <country-filter country="Switzerland"></country-filter>
     <sequences-over-time country="Switzerland"></sequences-over-time>
-    <button id="changeCountryButton">Change Country</button>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('changeCountryButton').addEventListener('click', function() {
-          var sequencesElement = document.querySelector('sequences-over-time');
-          var currentValue = sequencesElement.getAttribute('country')
-          sequencesElement.setAttribute('country', currentValue === 'Switzerland' ? 'Germany' : 'Switzerland');
+        document.querySelector('country-filter').addEventListener('country-changed', event => {
+          const sequencesElement = document.querySelector('sequences-over-time');
+          sequencesElement.setAttribute('country', event.detail);
         });
       });
     </script>
