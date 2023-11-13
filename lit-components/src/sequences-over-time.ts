@@ -4,10 +4,10 @@ import {Task} from '@lit/task';
 import {getGlobalDataManager} from "./query/data";
 import {FetchAggregatedQuery} from "./query/FetchAggregatedQuery";
 import {MapQuery} from "./query/MapQuery";
-import {GroupByQuery} from "./query/GroupByQuery";
 import "./tabs";
 import "./sequences-over-time-chart";
 import "./sequences-over-time-table";
+import {GroupByAndSumQuery} from "./query/GroupByAndSumQuery";
 
 @customElement('sequences-over-time')
 export class SequencesOverTime extends LitElement {
@@ -43,20 +43,7 @@ export class SequencesOverTime extends LitElement {
           }
         }
       );
-      const groupByQuery = new GroupByQuery(
-        mapQuery,
-        'year',
-        (values) => {
-          let count = 0;
-          for (let v of values) {
-            count += v.count;
-          }
-          return {
-            year: values[0].year,
-            count
-          }
-        }
-      );
+      const groupByQuery = new GroupByAndSumQuery(mapQuery,'year','count');
       return getGlobalDataManager().evaluateQuery(groupByQuery, signal)
     },
     args: () => [this.country]
