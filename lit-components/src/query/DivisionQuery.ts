@@ -16,9 +16,9 @@ export class DivisionQuery<
         private resultField: R,
     ) {}
 
-    async evaluate(signal?: AbortSignal): Promise<Dataset<{ K: S[K]; R: number }>> {
-        const numeratorEvaluated = await this.numerator.evaluate(signal);
-        const denominatorEvaluated = await this.denominator.evaluate(signal);
+    async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<{ K: S[K]; R: number }>> {
+        const numeratorEvaluated = await this.numerator.evaluate(lapis, signal);
+        const denominatorEvaluated = await this.denominator.evaluate(lapis, signal);
 
         const numeratorMap = new Map<S[K], S[V]>();
         numeratorEvaluated.content.forEach((row) => {

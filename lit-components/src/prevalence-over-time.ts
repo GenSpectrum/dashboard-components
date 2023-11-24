@@ -16,6 +16,8 @@ import { FillMissingQuery } from './query/FillMissingQuery';
 import { generateAllInRange } from './temporal-utils';
 import { SlidingQuery } from './query/SlidingQuery';
 import { Query } from './query/Query';
+import { lapisContext } from './lapis-context';
+import { consume } from '@lit/context';
 
 @customElement('prevalence-over-time')
 export class PrevalenceOverTime extends LitElement {
@@ -27,6 +29,9 @@ export class PrevalenceOverTime extends LitElement {
             max-width: 800px;
         }
     `;
+
+    @consume({ context: lapisContext })
+    lapis: string = '';
 
     @property({ type: Object })
     numerator: LapisFilter = {};
@@ -41,7 +46,7 @@ export class PrevalenceOverTime extends LitElement {
     smoothingWindow: number = 0;
 
     private fetchingTask = new Task(this, {
-        task: async ([numerator, denominator, granularity, smoothingWindow], { signal }) => {
+        task: async ([lapis, numerator, denominator, granularity, smoothingWindow], { signal }) => {
             const fetchNumerator = new FetchAggregatedQuery<{
                 date: string | null;
             }>(numerator, ['date']);
@@ -68,9 +73,9 @@ export class PrevalenceOverTime extends LitElement {
                 smoothDenominator = new SlidingQuery(sortDenominator, smoothingWindow, averageSmoothing);
             }
             const divide = new DivisionQuery(smoothNumerator, smoothDenominator, 'dateRange', 'count', 'prevalence');
-            return getGlobalDataManager().evaluateQuery(divide, signal);
+            return getGlobalDataManager(lapis).evaluateQuery(divide, signal);
         },
-        args: () => [this.numerator, this.denominator, this.granularity, this.smoothingWindow] as const,
+        args: () => [this.lapis, this.numerator, this.denominator, this.granularity, this.smoothingWindow] as const,
     });
 
     override render() {

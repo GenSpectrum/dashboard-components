@@ -10,8 +10,8 @@ export class FillMissingQuery<S, K extends keyof S> implements Query<S> {
         private defaultValueFn: (key: S[K]) => S,
     ) {}
 
-    async evaluate(signal?: AbortSignal): Promise<Dataset<S>> {
-        const childEvaluated = await this.child.evaluate(signal);
+    async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<S>> {
+        const childEvaluated = await this.child.evaluate(lapis, signal);
         const existingKeys = new Set(childEvaluated.content.map((row) => row[this.keyField]));
         const [min, max] = this.getMinMaxFn(existingKeys);
         const requiredKeys = this.getAllRequiredKeysFn(min, max);

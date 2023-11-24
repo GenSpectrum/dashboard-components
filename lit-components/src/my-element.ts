@@ -33,7 +33,7 @@ export class MyElement extends LitElement {
     count = 0;
 
     override render() {
-        const dataManager: DataManager = getGlobalDataManager();
+        const dataManager: DataManager = getGlobalDataManager('test');
 
         return html`
             <h1>${this.sayHello(this.name)}!</h1>
