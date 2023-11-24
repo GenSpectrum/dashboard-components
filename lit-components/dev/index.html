@@ -32,12 +32,12 @@
             document.addEventListener('DOMContentLoaded', function () {
                 document.querySelector('country-filter').addEventListener('country-changed', (event) => {
                     const sequencesElements = document.querySelectorAll('prevalence-over-time');
-                    sequencesElements.forEach(el => {
-                        ['numerator', 'denominator'].forEach(attr => {
+                    sequencesElements.forEach((el) => {
+                        ['numerator', 'denominator'].forEach((attr) => {
                             const old = JSON.parse(el.getAttribute(attr));
                             el.setAttribute(attr, JSON.stringify({ ...old, country: event.detail }));
                         });
-                    })
+                    });
                 });
             });
         </script>
