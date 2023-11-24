@@ -3,3 +3,6 @@
 /test/
 /build/
 custom-elements.json
+
+# Editors
+.idea/

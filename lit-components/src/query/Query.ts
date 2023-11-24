@@ -1,7 +1,5 @@
-import {Dataset} from "./Dataset";
+import { Dataset } from './Dataset';
 
 export interface Query<T> {
-
-  evaluate(signal?: AbortSignal): Promise<Dataset<T>>;
-
+    evaluate(signal?: AbortSignal): Promise<Dataset<T>>;
 }

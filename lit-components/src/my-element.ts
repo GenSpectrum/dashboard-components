@@ -1,6 +1,6 @@
-import {LitElement, html, css} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
-import {DataManager, getGlobalDataManager} from "./query/data";
+import { LitElement, html, css } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { DataManager, getGlobalDataManager } from './query/data';
 
 /**
  * An example element.
@@ -11,56 +11,54 @@ import {DataManager, getGlobalDataManager} from "./query/data";
  */
 @customElement('my-element')
 export class MyElement extends LitElement {
-  static override styles = css`
-    :host {
-      display: block;
-      border: solid 3px gray;
-      padding: 16px;
-      max-width: 800px;
-    }
-  `;
-
-  /**
-   * The name to say "Hello" to.
-   */
-  @property()
-  name = 'World';
-
-  /**
-   * The number of times the button has been clicked.
-   */
-  @property({type: Number})
-  count = 0;
-
-  override render() {
-    const dataManager: DataManager = getGlobalDataManager();
-
-    return html`
-      <h1>${this.sayHello(this.name)}!</h1>
-      <button @click=${this._onClick} part="button">
-        Click Count: ${this.count}
-      </button>
-      Global count: ${dataManager.getAndInc()}
-      <slot></slot>
+    static override styles = css`
+        :host {
+            display: block;
+            border: solid 3px gray;
+            padding: 16px;
+            max-width: 800px;
+        }
     `;
-  }
 
-  private _onClick() {
-    this.count++;
-    this.dispatchEvent(new CustomEvent('count-changed'));
-  }
+    /**
+     * The name to say "Hello" to.
+     */
+    @property()
+    name = 'World';
 
-  /**
-   * Formats a greeting
-   * @param name The name to say "Hello" to
-   */
-  sayHello(name: string): string {
-    return `Hello, ${name}`;
-  }
+    /**
+     * The number of times the button has been clicked.
+     */
+    @property({ type: Number })
+    count = 0;
+
+    override render() {
+        const dataManager: DataManager = getGlobalDataManager();
+
+        return html`
+            <h1>${this.sayHello(this.name)}!</h1>
+            <button @click=${this._onClick} part="button">Click Count: ${this.count}</button>
+            Global count: ${dataManager.getAndInc()}
+            <slot></slot>
+        `;
+    }
+
+    private _onClick() {
+        this.count++;
+        this.dispatchEvent(new CustomEvent('count-changed'));
+    }
+
+    /**
+     * Formats a greeting
+     * @param name The name to say "Hello" to
+     */
+    sayHello(name: string): string {
+        return `Hello, ${name}`;
+    }
 }
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'my-element': MyElement;
-  }
+    interface HTMLElementTagNameMap {
+        'my-element': MyElement;
+    }
 }

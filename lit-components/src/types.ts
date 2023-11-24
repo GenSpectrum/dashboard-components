@@ -1,5 +1,5 @@
 export type LapisFilter = {
-  [key: string]: any
-}
+    [key: string]: any;
+};
 
 export type TimeGranularity = 'day' | 'month' | 'year';

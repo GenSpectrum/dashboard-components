@@ -1,3 +1,3 @@
 export type Dataset<T> = {
-  content: T[]
+    content: T[];
 };

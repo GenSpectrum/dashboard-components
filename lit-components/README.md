@@ -12,9 +12,9 @@ This is a pre-release of Lit 3.0, the next major version of Lit.
 
 Lit 3.0 has very few breaking changes from Lit 2.0:
 
-- Drops support for IE11
-- Published as ES2021
-- Removes a couple of deprecated Lit 1.x APIs
+-   Drops support for IE11
+-   Published as ES2021
+-   Removes a couple of deprecated Lit 1.x APIs
 
 Lit 3.0 should require no changes to upgrade from Lit 2.0 for the vast majority of users. Once the full release is published, most apps and libraries will be able to extend their npm version ranges to include both 2.x and 3.x, like `"^2.7.0 || ^3.0.0"`.
 
@@ -85,13 +85,13 @@ There is a development HTML file located at `/dev/index.html` that you can view 
 
 If you use VS Code, we highly recommend the [lit-plugin extension](https://marketplace.visualstudio.com/items?itemName=runem.lit-plugin), which enables some extremely useful features for lit-html templates:
 
-- Syntax highlighting
-- Type-checking
-- Code completion
-- Hover-over docs
-- Jump to definition
-- Linting
-- Quick Fixes
+-   Syntax highlighting
+-   Type-checking
+-   Code completion
+-   Hover-over docs
+-   Jump to definition
+-   Linting
+-   Quick Fixes
 
 The project is setup to recommend lit-plugin to VS Code users if they don't already have it installed.
 

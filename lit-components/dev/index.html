@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>&lt;my-element> Demo</title>
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/lit/polyfill-support.js"></script>
-    <script type="module" src="../build/country-filter.js"></script>
-    <script type="module" src="../build/prevalence-over-time.js"></script>
-  </head>
-  <body>
-    <country-filter country="Switzerland"></country-filter>
-    <prevalence-over-time
-      numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7"}'
-      denominator='{"country":"Switzerland"}'
-      granularity="month"
-    ></prevalence-over-time>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        document.querySelector('country-filter').addEventListener('country-changed', event => {
-          const sequencesElement = document.querySelector('prevalence-over-time');
-          sequencesElement.setAttribute('numerator', JSON.stringify({country: event.detail}));
-        });
-      });
-    </script>
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <title>&lt;my-element> Demo</title>
+        <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+        <script src="../node_modules/lit/polyfill-support.js"></script>
+        <script type="module" src="../build/country-filter.js"></script>
+        <script type="module" src="../build/prevalence-over-time.js"></script>
+    </head>
+    <body>
+        <country-filter country="Switzerland"></country-filter>
+        <prevalence-over-time
+            numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7"}'
+            denominator='{"country":"Switzerland"}'
+            granularity="month"
+        ></prevalence-over-time>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelector('country-filter').addEventListener('country-changed', (event) => {
+                    const sequencesElement = document.querySelector('prevalence-over-time');
+                    sequencesElement.setAttribute('numerator', JSON.stringify({ country: event.detail }));
+                });
+            });
+        </script>
+    </body>
 </html>
