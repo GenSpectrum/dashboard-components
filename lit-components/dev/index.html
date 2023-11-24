@@ -7,12 +7,12 @@
         <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
         <script src="../node_modules/lit/polyfill-support.js"></script>
         <script type="module" src="../build/genspectrum-app.js"></script>
-        <script type="module" src="../build/country-filter.js"></script>
+        <script type="module" src="../build/location-filter.js"></script>
         <script type="module" src="../build/prevalence-over-time.js"></script>
     </head>
     <body>
         <genspectrum-app lapis="https://lapis.cov-spectrum.org/open/v1/sample">
-            <country-filter country="Switzerland"></country-filter>
+            <location-filter value="Switzerland"></location-filter>
             <prevalence-over-time
                 numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}'
                 denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
@@ -30,12 +30,12 @@
         </genspectrum-app>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                document.querySelector('country-filter').addEventListener('country-changed', (event) => {
+                document.querySelector('location-filter').addEventListener('location-changed', (event) => {
                     const sequencesElements = document.querySelectorAll('prevalence-over-time');
                     sequencesElements.forEach((el) => {
                         ['numerator', 'denominator'].forEach((attr) => {
                             const old = JSON.parse(el.getAttribute(attr));
-                            el.setAttribute(attr, JSON.stringify({ ...old, country: event.detail }));
+                            el.setAttribute(attr, JSON.stringify({ ...old, ...event.detail }));
                         });
                     });
                 });
