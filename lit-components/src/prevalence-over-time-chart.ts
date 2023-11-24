@@ -5,20 +5,24 @@ import { Chart, registerables } from 'chart.js';
 @customElement('prevalence-over-time-chart')
 export class PrevalenceOverTimeChart extends LitElement {
     @property()
-    data: { dateRange: number | null; count: number }[] = [];
+    data: { dateRange: number | null; prevalence: number }[] = [];
+
+    @property()
+    type: 'line' | 'bar' = 'bar';
 
     override firstUpdated() {
         const ctx = this.renderRoot.querySelector('canvas')!.getContext('2d')!;
         Chart.register(...registerables);
         new Chart(ctx, {
-            type: 'bar',
+            type: this.type,
             data: {
                 labels: this.data.map((d) => d.dateRange ?? 'Unknown'),
                 datasets: [
                     {
                         label: 'Prevalence',
-                        data: this.data.map((d) => d.count),
+                        data: this.data.map((d) => d.prevalence),
                         borderWidth: 1,
+                        pointRadius: 0,
                     },
                 ],
             },
@@ -31,6 +35,10 @@ export class PrevalenceOverTimeChart extends LitElement {
                 plugins: {
                     legend: {
                         display: false,
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
                     },
                 },
             },

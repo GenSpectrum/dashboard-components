@@ -12,15 +12,25 @@
     <body>
         <country-filter country="Switzerland"></country-filter>
         <prevalence-over-time
-            numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7"}'
-            denominator='{"country":"Switzerland"}'
-            granularity="month"
+            numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}'
+            denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
+            granularity="day"
+            smoothingWindow="7"
         ></prevalence-over-time>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 document.querySelector('country-filter').addEventListener('country-changed', (event) => {
                     const sequencesElement = document.querySelector('prevalence-over-time');
-                    sequencesElement.setAttribute('numerator', JSON.stringify({ country: event.detail }));
+                    const oldNumerator = JSON.parse(sequencesElement.getAttribute('numerator'));
+                    const oldDenominator = JSON.parse(sequencesElement.getAttribute('denominator'));
+                    sequencesElement.setAttribute(
+                        'numerator',
+                        JSON.stringify({ ...oldNumerator, country: event.detail }),
+                    );
+                    sequencesElement.setAttribute(
+                        'denominator',
+                        JSON.stringify({ ...oldDenominator, country: event.detail }),
+                    );
                 });
             });
         </script>
