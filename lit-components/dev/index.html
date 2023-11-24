@@ -7,16 +7,20 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/lit/polyfill-support.js"></script>
     <script type="module" src="../build/country-filter.js"></script>
-    <script type="module" src="../build/sequences-over-time.js"></script>
+    <script type="module" src="../build/prevalence-over-time.js"></script>
   </head>
   <body>
     <country-filter country="Switzerland"></country-filter>
-    <sequences-over-time country="Switzerland"></sequences-over-time>
+    <prevalence-over-time
+      numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7"}'
+      denominator='{"country":"Switzerland"}'
+      granularity="month"
+    ></prevalence-over-time>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('country-filter').addEventListener('country-changed', event => {
-          const sequencesElement = document.querySelector('sequences-over-time');
-          sequencesElement.setAttribute('country', event.detail);
+          const sequencesElement = document.querySelector('prevalence-over-time');
+          sequencesElement.setAttribute('numerator', JSON.stringify({country: event.detail}));
         });
       });
     </script>

@@ -2,11 +2,11 @@ import {customElement, property} from "lit/decorators.js";
 import {html, LitElement} from "lit";
 import { Chart, registerables } from "chart.js";
 
-@customElement('sequences-over-time-chart')
-export class SequencesOverTimeChart extends LitElement {
+@customElement('prevalence-over-time-chart')
+export class PrevalenceOverTimeChart extends LitElement {
 
   @property()
-  data: { year: number | null, count: number }[] = [];
+  data: { dateRange: number | null, count: number }[] = [];
 
   override firstUpdated() {
     const ctx = this.renderRoot.querySelector('canvas')!.getContext('2d')!;
@@ -14,9 +14,9 @@ export class SequencesOverTimeChart extends LitElement {
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: this.data.map(d => d.year ?? 'Unknown'),
+        labels: this.data.map(d => d.dateRange ?? 'Unknown'),
         datasets: [{
-          label: 'Number sequences',
+          label: 'Prevalence',
           data: this.data.map(d => d.count),
           borderWidth: 1,
         }]
@@ -48,6 +48,6 @@ export class SequencesOverTimeChart extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sequences-over-time-chart': SequencesOverTimeChart;
+    'prevalence-over-time-chart': PrevalenceOverTimeChart;
   }
 }
