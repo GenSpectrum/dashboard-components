@@ -19,6 +19,8 @@ import { Query } from './query/Query';
 import { lapisContext } from './lapis-context';
 import { consume } from '@lit/context';
 
+type View = 'bar' | 'line' | 'table';
+
 @customElement('prevalence-over-time')
 export class PrevalenceOverTime extends LitElement {
     static override styles = css`
@@ -45,6 +47,9 @@ export class PrevalenceOverTime extends LitElement {
     @property({ type: Number })
     smoothingWindow: number = 0;
 
+    @property({ type: Object })
+    views: View[] = ['bar', 'line', 'table'];
+
     private fetchingTask = new Task(this, {
         task: async ([lapis, numerator, denominator, granularity, smoothingWindow], { signal }) => {
             const fetchNumerator = new FetchAggregatedQuery<{
@@ -57,6 +62,13 @@ export class PrevalenceOverTime extends LitElement {
             const mapDenominator = new MapQuery(fetchDenominator, (d) => mapDateToGranularityRange(d, granularity));
             const groupByNumerator = new GroupByAndSumQuery(mapNumerator, 'dateRange', 'count');
             const groupByDenominator = new GroupByAndSumQuery(mapDenominator, 'dateRange', 'count');
+            const fillNumerator = new FillMissingQuery(
+                groupByNumerator,
+                'dateRange',
+                getMinMaxString,
+                (min, max) => generateAllInRange(min, max, granularity),
+                (key) => ({ dateRange: key, count: 0 }),
+            );
             const fillDenominator = new FillMissingQuery(
                 groupByDenominator,
                 'dateRange',
@@ -64,7 +76,7 @@ export class PrevalenceOverTime extends LitElement {
                 (min, max) => generateAllInRange(min, max, granularity),
                 (key) => ({ dateRange: key, count: 0 }),
             );
-            const sortNumerator = new SortQuery(groupByNumerator, dateRangeCompare);
+            const sortNumerator = new SortQuery(fillNumerator, dateRangeCompare);
             const sortDenominator = new SortQuery(fillDenominator, dateRangeCompare);
             let smoothNumerator: Query<{ dateRange: string | null; count: number }> = sortNumerator;
             let smoothDenominator: Query<{ dateRange: string | null; count: number }> = sortDenominator;
@@ -88,18 +100,34 @@ export class PrevalenceOverTime extends LitElement {
                 <h1>Prevalence over time</h1>
 
                 <gs-tabs>
-                    <gs-tab title="Bar chart" active="true">
-                        <prevalence-over-time-chart .data=${data.content} type="bar"></prevalence-over-time-chart>
-                    </gs-tab>
-                    <gs-tab title="Line chart">
-                        <prevalence-over-time-chart .data=${data.content} type="line"></prevalence-over-time-chart>
-                    </gs-tab>
-                    <gs-tab title="Table">
-                        <prevalence-over-time-table
-                            .data=${data.content}
-                            .granularity=${this.granularity}
-                        ></prevalence-over-time-table>
-                    </gs-tab>
+                    ${this.views.map(
+                        (view, index) => html`
+                            ${view === 'bar'
+                                ? html`<gs-tab title="Bar chart" .active="${index === 0}">
+                                      <prevalence-over-time-chart
+                                          .data=${data.content}
+                                          type="bar"
+                                      ></prevalence-over-time-chart>
+                                  </gs-tab>`
+                                : ''}
+                            ${view === 'line'
+                                ? html`<gs-tab title="Line chart" .active="${index === 0}">
+                                      <prevalence-over-time-chart
+                                          .data=${data.content}
+                                          type="line"
+                                      ></prevalence-over-time-chart>
+                                  </gs-tab>`
+                                : ''}
+                            ${view === 'table'
+                                ? html`<gs-tab title="Table" .active="${index === 0}">
+                                      <prevalence-over-time-table
+                                          .data=${data.content}
+                                          .granularity=${this.granularity}
+                                      ></prevalence-over-time-table>
+                                  </gs-tab>`
+                                : ''}
+                        `,
+                    )}
                 </gs-tabs>
             `,
             error: (e) => html`<p>Error: ${e}</p>`,
