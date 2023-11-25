@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 
 import { html } from 'lit';
-import './genspectrum-app';
+import './app';
 import './prevalence-over-time';
 import { PrevalenceOverTimeProps } from './prevalence-over-time';
 
 const meta: Meta<PrevalenceOverTimeProps> = {
-    component: 'prevalence-over-time',
+    component: 'gs-prevalence-over-time',
     argTypes: {
         numerator: { control: 'object' },
         denominator: { control: 'object' },
@@ -26,15 +26,15 @@ export default meta;
 
 const Template: StoryObj<PrevalenceOverTimeProps> = {
     render: (args) => html`
-        <genspectrum-app lapis="https://lapis.cov-spectrum.org/open/v1/sample">
-            <prevalence-over-time
+        <gs-app lapis="https://lapis.cov-spectrum.org/open/v1/sample">
+            <gs-prevalence-over-time
                 .numerator=${args.numerator}
                 .denominator=${args.denominator}
                 .granularity=${args.granularity}
                 .smoothingWindow=${args.smoothingWindow}
                 .views=${args.views}
-            ></prevalence-over-time>
-        </genspectrum-app>
+            ></gs-prevalence-over-time>
+        </gs-app>
     `,
 };
 

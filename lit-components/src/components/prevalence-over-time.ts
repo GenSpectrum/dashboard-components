@@ -1,22 +1,22 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
-import { getGlobalDataManager } from './query/data';
-import { FetchAggregatedQuery } from './query/FetchAggregatedQuery';
-import { MapQuery } from './query/MapQuery';
+import { getGlobalDataManager } from '../query/data';
+import { FetchAggregatedQuery } from '../query/FetchAggregatedQuery';
+import { MapQuery } from '../query/MapQuery';
 import './tabs';
 import './prevalence-over-time-chart';
 import './prevalence-over-time-table';
-import { GroupByAndSumQuery } from './query/GroupByAndSumQuery';
-import { type LapisFilter, TemporalGranularity } from './types';
-import { SortQuery } from './query/SortQuery';
-import { DivisionQuery } from './query/DivisionQuery';
-import { getMinMaxString } from './utils';
-import { FillMissingQuery } from './query/FillMissingQuery';
-import { generateAllInRange } from './temporal-utils';
-import { SlidingQuery } from './query/SlidingQuery';
-import { Query } from './query/Query';
-import { lapisContext } from './lapis-context';
+import { GroupByAndSumQuery } from '../query/GroupByAndSumQuery';
+import { type LapisFilter, TemporalGranularity } from '../types';
+import { SortQuery } from '../query/SortQuery';
+import { DivisionQuery } from '../query/DivisionQuery';
+import { getMinMaxString } from '../utils';
+import { FillMissingQuery } from '../query/FillMissingQuery';
+import { generateAllInRange } from '../temporal-utils';
+import { SlidingQuery } from '../query/SlidingQuery';
+import { Query } from '../query/Query';
+import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
 
 type View = 'bar' | 'line' | 'table';
@@ -29,7 +29,7 @@ export type PrevalenceOverTimeProps = {
     views: View[];
 };
 
-@customElement('prevalence-over-time')
+@customElement('gs-prevalence-over-time')
 export class PrevalenceOverTime extends LitElement {
     static override styles = css`
         :host {
@@ -113,26 +113,26 @@ export class PrevalenceOverTime extends LitElement {
                         (view, index) => html`
                             ${view === 'bar'
                                 ? html`<gs-tab title="Bar chart" .active="${index === 0}">
-                                      <prevalence-over-time-chart
+                                      <gs-prevalence-over-time-chart
                                           .data=${data.content}
                                           type="bar"
-                                      ></prevalence-over-time-chart>
+                                      ></gs-prevalence-over-time-chart>
                                   </gs-tab>`
                                 : ''}
                             ${view === 'line'
                                 ? html`<gs-tab title="Line chart" .active="${index === 0}">
-                                      <prevalence-over-time-chart
+                                      <gs-prevalence-over-time-chart
                                           .data=${data.content}
                                           type="line"
-                                      ></prevalence-over-time-chart>
+                                      ></gs-prevalence-over-time-chart>
                                   </gs-tab>`
                                 : ''}
                             ${view === 'table'
                                 ? html`<gs-tab title="Table" .active="${index === 0}">
-                                      <prevalence-over-time-table
+                                      <gs-prevalence-over-time-table
                                           .data=${data.content}
                                           .granularity=${this.granularity}
-                                      ></prevalence-over-time-table>
+                                      ></gs-prevalence-over-time-table>
                                   </gs-tab>`
                                 : ''}
                         `,
@@ -146,7 +146,7 @@ export class PrevalenceOverTime extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'prevalence-over-time': PrevalenceOverTime;
+        'gs-prevalence-over-time': PrevalenceOverTime;
     }
 }
 

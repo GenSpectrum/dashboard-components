@@ -2,7 +2,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
 import { Chart, registerables } from 'chart.js';
 
-@customElement('prevalence-over-time-chart')
+@customElement('gs-prevalence-over-time-chart')
 export class PrevalenceOverTimeChart extends LitElement {
     @property()
     data: { dateRange: number | null; prevalence: number }[] = [];
@@ -56,6 +56,6 @@ export class PrevalenceOverTimeChart extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'prevalence-over-time-chart': PrevalenceOverTimeChart;
+        'gs-prevalence-over-time-chart': PrevalenceOverTimeChart;
     }
 }

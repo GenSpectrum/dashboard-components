@@ -2,8 +2,8 @@ import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
 import { consume } from '@lit/context';
-import { lapisContext } from './lapis-context';
-import { FetchAggregatedQuery } from './query/FetchAggregatedQuery';
+import { lapisContext } from '../lapis-context';
+import { FetchAggregatedQuery } from '../query/FetchAggregatedQuery';
 
 type Locations = {
     regions: string[];
@@ -13,7 +13,7 @@ type Locations = {
 /**
  * @fires location-changed - Indicates when the location changes
  */
-@customElement('location-filter')
+@customElement('gs-location-filter')
 export class LocationFilter extends LitElement {
     @property()
     value = '';
@@ -82,6 +82,6 @@ export class LocationFilter extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'location-filter': LocationFilter;
+        'gs-location-filter': LocationFilter;
     }
 }

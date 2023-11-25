@@ -1,10 +1,10 @@
 import { html, LitElement } from 'lit';
 import { provide } from '@lit/context';
-import { lapisContext } from './lapis-context';
+import { lapisContext } from '../lapis-context';
 import { property, customElement } from 'lit/decorators.js';
 
-@customElement('genspectrum-app')
-class GenspectrumApp extends LitElement {
+@customElement('gs-app')
+class App extends LitElement {
     @provide({ context: lapisContext })
     @property()
     lapis: string = '';
@@ -16,6 +16,6 @@ class GenspectrumApp extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'genspectrum-app': GenspectrumApp;
+        'gs-app': App;
     }
 }

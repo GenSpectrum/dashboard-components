@@ -1,8 +1,8 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
-import { TemporalGranularity } from './types';
+import { TemporalGranularity } from '../types';
 
-@customElement('prevalence-over-time-table')
+@customElement('gs-prevalence-over-time-table')
 export class PrevalenceOverTimeTable extends LitElement {
     @property()
     data: { dateRange: number | null; prevalence: number }[] = [];
@@ -36,6 +36,6 @@ export class PrevalenceOverTimeTable extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'prevalence-over-time-table': PrevalenceOverTimeTable;
+        'gs-prevalence-over-time-table': PrevalenceOverTimeTable;
     }
 }

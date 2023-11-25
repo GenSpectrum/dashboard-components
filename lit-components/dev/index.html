@@ -6,32 +6,32 @@
         <title>&lt;my-element> Demo</title>
         <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
         <script src="../node_modules/lit/polyfill-support.js"></script>
-        <script type="module" src="../build/genspectrum-app.js"></script>
-        <script type="module" src="../build/location-filter.js"></script>
-        <script type="module" src="../build/prevalence-over-time.js"></script>
+        <script type="module" src="../build/components/app.js"></script>
+        <script type="module" src="../build/components/location-filter.js"></script>
+        <script type="module" src="../build/components/prevalence-over-time.js"></script>
     </head>
     <body>
-        <genspectrum-app lapis="https://lapis.cov-spectrum.org/open/v1/sample">
-            <location-filter value="Switzerland"></location-filter>
-            <prevalence-over-time
+        <gs-app lapis="https://lapis.cov-spectrum.org/open/v1/sample">
+            <gs-location-filter value="Switzerland"></gs-location-filter>
+            <gs-prevalence-over-time
                 numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}'
                 denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
                 granularity="day"
                 smoothingWindow="7"
                 views='["line", "table"]'
-            ></prevalence-over-time>
-            <prevalence-over-time
+            ></gs-prevalence-over-time>
+            <gs-prevalence-over-time
                 numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}'
                 denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
                 granularity="month"
                 smoothingWindow="0"
                 views='["bar", "table"]'
-            ></prevalence-over-time>
-        </genspectrum-app>
+            ></gs-prevalence-over-time>
+        </gs-app>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                document.querySelector('location-filter').addEventListener('location-changed', (event) => {
-                    const sequencesElements = document.querySelectorAll('prevalence-over-time');
+                document.querySelector('gs-location-filter').addEventListener('location-changed', (event) => {
+                    const sequencesElements = document.querySelectorAll('gs-prevalence-over-time');
                     sequencesElements.forEach((el) => {
                         ['numerator', 'denominator'].forEach((attr) => {
                             const old = JSON.parse(el.getAttribute(attr));
