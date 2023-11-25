@@ -1,7 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
-import { getGlobalDataManager } from '../query/data';
 import { FetchAggregatedQuery } from '../query/FetchAggregatedQuery';
 import { MapQuery } from '../query/MapQuery';
 import './tabs';
@@ -93,7 +92,7 @@ export class PrevalenceOverTime extends LitElement {
                 smoothDenominator = new SlidingQuery(sortDenominator, smoothingWindow, averageSmoothing);
             }
             const divide = new DivisionQuery(smoothNumerator, smoothDenominator, 'dateRange', 'count', 'prevalence');
-            return getGlobalDataManager(lapis).evaluateQuery(divide, signal);
+            return divide.evaluate(lapis, signal);
         },
         args: () =>
             [this.lapis, this.numerator, this.denominator, this.granularity, this.smoothingWindow, this.views] as const,
