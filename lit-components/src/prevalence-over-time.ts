@@ -21,6 +21,14 @@ import { consume } from '@lit/context';
 
 type View = 'bar' | 'line' | 'table';
 
+export type PrevalenceOverTimeProps = {
+    numerator: LapisFilter;
+    denominator: LapisFilter;
+    granularity: 'day' | 'week' | 'month';
+    smoothingWindow: number;
+    views: View[];
+};
+
 @customElement('prevalence-over-time')
 export class PrevalenceOverTime extends LitElement {
     static override styles = css`
@@ -87,7 +95,8 @@ export class PrevalenceOverTime extends LitElement {
             const divide = new DivisionQuery(smoothNumerator, smoothDenominator, 'dateRange', 'count', 'prevalence');
             return getGlobalDataManager(lapis).evaluateQuery(divide, signal);
         },
-        args: () => [this.lapis, this.numerator, this.denominator, this.granularity, this.smoothingWindow] as const,
+        args: () =>
+            [this.lapis, this.numerator, this.denominator, this.granularity, this.smoothingWindow, this.views] as const,
     });
 
     override render() {
