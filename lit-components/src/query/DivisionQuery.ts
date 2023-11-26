@@ -3,7 +3,7 @@ import { Dataset } from './Dataset';
 import { NumberFields } from '../type-utils';
 
 export class DivisionQuery<S, K extends keyof S, V extends NumberFields<S>, R extends string>
-    implements Query<{ K: S[K]; R: number }>
+    implements Query<{ [P in K]: S[K] } & { [P in R]: number }>
 {
     constructor(
         private numerator: Query<S>,
@@ -13,7 +13,7 @@ export class DivisionQuery<S, K extends keyof S, V extends NumberFields<S>, R ex
         private resultField: R,
     ) {}
 
-    async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<{ K: S[K]; R: number }>> {
+    async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<{ [P in K]: S[K] } & { [P in R]: number }>> {
         const numeratorEvaluated = await this.numerator.evaluate(lapis, signal);
         const denominatorEvaluated = await this.denominator.evaluate(lapis, signal);
 
@@ -27,7 +27,7 @@ export class DivisionQuery<S, K extends keyof S, V extends NumberFields<S>, R ex
             return {
                 [this.keyField]: row[this.keyField],
                 [this.resultField]: (numeratorValue as number) / (row[this.valueField] as number),
-            } as { K: S[K]; R: number };
+            } as { [P in K]: S[K] } & { [P in R]: number };
         });
 
         return { content };
