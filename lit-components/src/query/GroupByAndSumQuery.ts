@@ -1,16 +1,16 @@
 import { GroupByQuery } from './GroupByQuery';
 import { Query } from './Query';
+import { NumberFields } from '../type-utils';
 
 type Result<T, K extends keyof T, C extends keyof T> = {
     [P in K | C]: P extends K ? T[K] : number;
 };
 
-export class GroupByAndSumQuery<
+export class GroupByAndSumQuery<T, K extends keyof T, C extends NumberFields<T>> extends GroupByQuery<
     T,
-    K extends keyof T,
-    // TODO: Can this be simplified?
-    C extends keyof T & { [P in keyof T]: T[P] extends number ? P : never }[keyof T],
-> extends GroupByQuery<T, Result<T, K, C>, K> {
+    Result<T, K, C>,
+    K
+> {
     constructor(child: Query<T>, groupByField: K, sumField: C) {
         super(child, groupByField, (values: T[]) => {
             let n = 0;

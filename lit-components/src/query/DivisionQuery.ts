@@ -1,12 +1,9 @@
 import { Query } from './Query';
 import { Dataset } from './Dataset';
+import { NumberFields } from '../type-utils';
 
-export class DivisionQuery<
-    S,
-    K extends keyof S,
-    V extends keyof S & { [P in keyof S]: S[P] extends number ? P : never }[keyof S],
-    R extends string,
-> implements Query<{ K: S[K]; R: number }>
+export class DivisionQuery<S, K extends keyof S, V extends NumberFields<S>, R extends string>
+    implements Query<{ K: S[K]; R: number }>
 {
     constructor(
         private numerator: Query<S>,
