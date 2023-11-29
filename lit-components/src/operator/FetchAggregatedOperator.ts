@@ -1,8 +1,8 @@
-import { Query } from './Query';
+import { Operator } from './Operator';
 import { Dataset } from './Dataset';
 import { LapisFilter } from '../types';
 
-export class FetchAggregatedQuery<Fields> implements Query<Fields & { count: number }> {
+export class FetchAggregatedOperator<Fields> implements Operator<Fields & { count: number }> {
     constructor(private filter: LapisFilter, private fields: string[]) {}
 
     async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<Fields & { count: number }>> {

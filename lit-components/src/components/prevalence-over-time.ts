@@ -1,20 +1,20 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
-import { FetchAggregatedQuery } from '../query/FetchAggregatedQuery';
-import { MapQuery } from '../query/MapQuery';
+import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
+import { MapOperator } from '../operator/MapOperator';
 import './tabs';
 import './prevalence-over-time-chart';
 import './prevalence-over-time-table';
-import { GroupByAndSumQuery } from '../query/GroupByAndSumQuery';
+import { GroupByAndSumOperator } from '../operator/GroupByAndSumOperator';
 import { type LapisFilter, TemporalGranularity } from '../types';
-import { SortQuery } from '../query/SortQuery';
-import { DivisionQuery } from '../query/DivisionQuery';
+import { SortOperator } from '../operator/SortOperator';
+import { DivisionOperator } from '../operator/DivisionOperator';
 import { getMinMaxString } from '../utils';
-import { FillMissingQuery } from '../query/FillMissingQuery';
+import { FillMissingOperator } from '../operator/FillMissingOperator';
 import { generateAllInRange } from '../temporal-utils';
-import { SlidingQuery } from '../query/SlidingQuery';
-import { Query } from '../query/Query';
+import { SlidingOperator } from '../operator/SlidingOperator';
+import { Operator } from '../operator/Operator';
 import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
 
@@ -59,39 +59,39 @@ export class PrevalenceOverTime extends LitElement {
 
     private fetchingTask = new Task(this, {
         task: async ([lapis, numerator, denominator, granularity, smoothingWindow], { signal }) => {
-            const fetchNumerator = new FetchAggregatedQuery<{
+            const fetchNumerator = new FetchAggregatedOperator<{
                 date: string | null;
             }>(numerator, ['date']);
-            const fetchDenominator = new FetchAggregatedQuery<{
+            const fetchDenominator = new FetchAggregatedOperator<{
                 date: string | null;
             }>(denominator, ['date']);
-            const mapNumerator = new MapQuery(fetchNumerator, (d) => mapDateToGranularityRange(d, granularity));
-            const mapDenominator = new MapQuery(fetchDenominator, (d) => mapDateToGranularityRange(d, granularity));
-            const groupByNumerator = new GroupByAndSumQuery(mapNumerator, 'dateRange', 'count');
-            const groupByDenominator = new GroupByAndSumQuery(mapDenominator, 'dateRange', 'count');
-            const fillNumerator = new FillMissingQuery(
+            const mapNumerator = new MapOperator(fetchNumerator, (d) => mapDateToGranularityRange(d, granularity));
+            const mapDenominator = new MapOperator(fetchDenominator, (d) => mapDateToGranularityRange(d, granularity));
+            const groupByNumerator = new GroupByAndSumOperator(mapNumerator, 'dateRange', 'count');
+            const groupByDenominator = new GroupByAndSumOperator(mapDenominator, 'dateRange', 'count');
+            const fillNumerator = new FillMissingOperator(
                 groupByNumerator,
                 'dateRange',
                 getMinMaxString,
                 (min, max) => generateAllInRange(min, max, granularity),
                 (key) => ({ dateRange: key, count: 0 }),
             );
-            const fillDenominator = new FillMissingQuery(
+            const fillDenominator = new FillMissingOperator(
                 groupByDenominator,
                 'dateRange',
                 getMinMaxString,
                 (min, max) => generateAllInRange(min, max, granularity),
                 (key) => ({ dateRange: key, count: 0 }),
             );
-            const sortNumerator = new SortQuery(fillNumerator, dateRangeCompare);
-            const sortDenominator = new SortQuery(fillDenominator, dateRangeCompare);
-            let smoothNumerator: Query<{ dateRange: string | null; count: number }> = sortNumerator;
-            let smoothDenominator: Query<{ dateRange: string | null; count: number }> = sortDenominator;
+            const sortNumerator = new SortOperator(fillNumerator, dateRangeCompare);
+            const sortDenominator = new SortOperator(fillDenominator, dateRangeCompare);
+            let smoothNumerator: Operator<{ dateRange: string | null; count: number }> = sortNumerator;
+            let smoothDenominator: Operator<{ dateRange: string | null; count: number }> = sortDenominator;
             if (smoothingWindow >= 1) {
-                smoothNumerator = new SlidingQuery(sortNumerator, smoothingWindow, averageSmoothing);
-                smoothDenominator = new SlidingQuery(sortDenominator, smoothingWindow, averageSmoothing);
+                smoothNumerator = new SlidingOperator(sortNumerator, smoothingWindow, averageSmoothing);
+                smoothDenominator = new SlidingOperator(sortDenominator, smoothingWindow, averageSmoothing);
             }
-            const divide = new DivisionQuery(smoothNumerator, smoothDenominator, 'dateRange', 'count', 'prevalence');
+            const divide = new DivisionOperator(smoothNumerator, smoothDenominator, 'dateRange', 'count', 'prevalence');
             return divide.evaluate(lapis, signal);
         },
         args: () =>

@@ -1,8 +1,8 @@
-import { Query } from './Query';
+import { Operator } from './Operator';
 import { Dataset } from './Dataset';
 
-export class MapQuery<S, T> implements Query<T> {
-    constructor(private child: Query<S>, private func: (value: S) => T) {}
+export class MapOperator<S, T> implements Operator<T> {
+    constructor(private child: Operator<S>, private func: (value: S) => T) {}
 
     async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<T>> {
         const childEvaluated = await this.child.evaluate(lapis, signal);

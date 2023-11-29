@@ -1,8 +1,8 @@
-import { Query } from './Query';
+import { Operator } from './Operator';
 import { Dataset } from './Dataset';
 
-export class GroupByQuery<T, S, K extends keyof T> implements Query<S> {
-    constructor(private child: Query<T>, private field: K, private aggregate: (values: T[]) => S) {}
+export class GroupByOperator<T, S, K extends keyof T> implements Operator<S> {
+    constructor(private child: Operator<T>, private field: K, private aggregate: (values: T[]) => S) {}
 
     async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<S>> {
         const childEvaluated = await this.child.evaluate(lapis, signal);

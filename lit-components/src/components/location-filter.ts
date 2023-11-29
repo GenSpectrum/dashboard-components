@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
 import { consume } from '@lit/context';
 import { lapisContext } from '../lapis-context';
-import { FetchAggregatedQuery } from '../query/FetchAggregatedQuery';
+import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 
 type Locations = {
     regions: string[];
@@ -23,10 +23,10 @@ export class LocationFilter extends LitElement {
 
     private fetchingTask = new Task(this, {
         task: async ([lapis], { signal }) => {
-            const regionQuery = new FetchAggregatedQuery<{
+            const regionQuery = new FetchAggregatedOperator<{
                 region: string | null;
             }>({}, ['region']);
-            const countryQuery = new FetchAggregatedQuery<{
+            const countryQuery = new FetchAggregatedOperator<{
                 country: string | null;
             }>({}, ['country']);
             const regions = await regionQuery.evaluate(lapis, signal);

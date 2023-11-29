@@ -6,7 +6,7 @@ import './relative-growth-advantage-chart';
 import { type LapisFilter } from '../types';
 import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
-import { FetchAggregatedQuery } from '../query/FetchAggregatedQuery';
+import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { getMinMaxString } from '../utils';
 import { getDaysInBetween } from '../temporal-utils';
 
@@ -47,10 +47,10 @@ export class RelativeGrowthAdvantage extends LitElement {
 
     private fetchingTask = new Task(this, {
         task: async ([lapis, numerator, denominator, generationTime], { signal }) => {
-            const fetchNumerator = new FetchAggregatedQuery<{
+            const fetchNumerator = new FetchAggregatedOperator<{
                 date: string | null;
             }>(numerator, ['date']);
-            const fetchDenominator = new FetchAggregatedQuery<{
+            const fetchDenominator = new FetchAggregatedOperator<{
                 date: string | null;
             }>(denominator, ['date']);
             const [numeratorData, denominatorData] = await Promise.all([

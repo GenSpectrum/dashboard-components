@@ -1,17 +1,17 @@
-import { MockQuery } from './MockQuery';
-import { SlidingQuery } from './SlidingQuery';
+import { MockOperator } from './MockOperator';
+import { SlidingOperator } from './SlidingOperator';
 import { expectEqualAfterSorting } from '../test-utils';
 
-describe('SlidingQuery', () => {
+describe('SlidingOperator', () => {
     it('should slide the values', async () => {
-        const child = new MockQuery([
+        const child = new MockOperator([
             { id: 1, value: 1 },
             { id: 2, value: 2 },
             { id: 3, value: 3 },
             { id: 4, value: 4 },
             { id: 5, value: 5 },
         ]);
-        const query = new SlidingQuery(child, 3, (values) => {
+        const query = new SlidingOperator(child, 3, (values) => {
             let sum = 0;
             for (const { value } of values) {
                 sum += value;

@@ -1,13 +1,13 @@
-import { Query } from './Query';
+import { Operator } from './Operator';
 import { Dataset } from './Dataset';
 import { NumberFields } from '../type-utils';
 
-export class DivisionQuery<S, K extends keyof S, V extends NumberFields<S>, R extends string>
-    implements Query<{ [P in K]: S[K] } & { [P in R]: number }>
+export class DivisionOperator<S, K extends keyof S, V extends NumberFields<S>, R extends string>
+    implements Operator<{ [P in K]: S[K] } & { [P in R]: number }>
 {
     constructor(
-        private numerator: Query<S>,
-        private denominator: Query<S>,
+        private numerator: Operator<S>,
+        private denominator: Operator<S>,
         private keyField: K,
         private valueField: V,
         private resultField: R,

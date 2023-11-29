@@ -1,9 +1,9 @@
-import { Query } from './Query';
+import { Operator } from './Operator';
 import { Dataset } from './Dataset';
 
-export class FillMissingQuery<S, K extends keyof S> implements Query<S> {
+export class FillMissingOperator<S, K extends keyof S> implements Operator<S> {
     constructor(
-        private child: Query<S>,
+        private child: Operator<S>,
         private keyField: K,
         private getMinMaxFn: (values: Iterable<S[K]>) => [S[K], S[K]],
         private getAllRequiredKeysFn: (min: S[K], max: S[K]) => S[K][],

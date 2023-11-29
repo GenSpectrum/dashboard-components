@@ -1,11 +1,11 @@
-import { MockQuery } from './MockQuery';
-import { FillMissingQuery } from './FillMissingQuery';
+import { MockOperator } from './MockOperator';
+import { FillMissingOperator } from './FillMissingOperator';
 import { expectEqualAfterSorting } from '../test-utils';
 
-describe('FillMissingQuery', () => {
+describe('FillMissingOperator', () => {
     it('should fill in missing values', async () => {
-        const child = new MockQuery([{ id: 1 }, { id: 3 }]);
-        const query = new FillMissingQuery(
+        const child = new MockOperator([{ id: 1 }, { id: 3 }]);
+        const query = new FillMissingOperator(
             child,
             'id',
             (ids) => [Math.min(...ids), Math.max(...ids)],

@@ -1,8 +1,8 @@
-import { Query } from './Query';
+import { Operator } from './Operator';
 import { Dataset } from './Dataset';
 
-export class SlidingQuery<T, S> implements Query<S> {
-    constructor(private child: Query<T>, private windowSize: number, private aggregate: (values: T[]) => S) {
+export class SlidingOperator<T, S> implements Operator<S> {
+    constructor(private child: Operator<T>, private windowSize: number, private aggregate: (values: T[]) => S) {
         if (windowSize < 1) {
             throw new Error('Window size must be at least 1');
         }

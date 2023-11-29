@@ -1,16 +1,16 @@
-import { MockQuery } from './MockQuery';
-import { GroupByQuery } from './GroupByQuery';
+import { MockOperator } from './MockOperator';
+import { GroupByOperator } from './GroupByOperator';
 import { expectEqualAfterSorting } from '../test-utils';
 
-describe('GroupByQuery', () => {
-    it('should group the content of the child query', async () => {
-        const child = new MockQuery([
+describe('GroupByOperator', () => {
+    it('should group the content of the child operator', async () => {
+        const child = new MockOperator([
             { lineage: 'A', n: 1 },
             { lineage: 'A', n: 2 },
             { lineage: 'B', n: 3 },
         ]);
 
-        const queryCount = new GroupByQuery(child, 'lineage', (values) => ({
+        const queryCount = new GroupByOperator(child, 'lineage', (values) => ({
             lineage: values[0].lineage,
             n: values.length,
         }));
@@ -24,7 +24,7 @@ describe('GroupByQuery', () => {
             (a, b) => a.lineage.localeCompare(b.lineage),
         );
 
-        const querySum = new GroupByQuery(child, 'lineage', (values) => ({
+        const querySum = new GroupByOperator(child, 'lineage', (values) => ({
             lineage: values[0].lineage,
             n: values.reduce((a, b) => a + b.n, 0),
         }));

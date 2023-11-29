@@ -1,20 +1,20 @@
-import { MockQuery } from './MockQuery';
-import { DivisionQuery } from './DivisionQuery';
+import { MockOperator } from './MockOperator';
+import { DivisionOperator } from './DivisionOperator';
 import { expectEqualAfterSorting } from '../test-utils';
 
-describe('DivisionQuery', () => {
+describe('DivisionOperator', () => {
     it('should divide the values', async () => {
-        const numerator = new MockQuery([
+        const numerator = new MockOperator([
             { id: 1, value: 2 },
             { id: 2, value: 4 },
             { id: 3, value: 6 },
         ]);
-        const denominator = new MockQuery([
+        const denominator = new MockOperator([
             { id: 1, value: 1 },
             { id: 2, value: 2 },
             { id: 3, value: 2 },
         ]);
-        const query = new DivisionQuery(numerator, denominator, 'id', 'value', 'result');
+        const query = new DivisionOperator(numerator, denominator, 'id', 'value', 'result');
         const result = await query.evaluate('lapis');
         await expectEqualAfterSorting(result.content, [
             { id: 1, result: 2 },
