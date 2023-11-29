@@ -47,3 +47,9 @@ export function generateAllInRange(
             return generateAllYearsInRange(start, end);
     }
 }
+
+export function getDaysInBetween(start: string, end: string): number {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    return (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);
+}
