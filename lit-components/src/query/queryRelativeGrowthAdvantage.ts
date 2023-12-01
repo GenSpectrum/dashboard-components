@@ -1,7 +1,7 @@
 import { LapisFilter } from '../types';
 import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { getMinMaxString } from '../utils';
-import { getDaysInBetween } from '../temporal-utils';
+import { addDays, getDaysInBetween } from '../temporal-utils';
 
 export async function queryRelativeGrowthAdvantage(
     numerator: LapisFilter,
@@ -25,6 +25,12 @@ export async function queryRelativeGrowthAdvantage(
     numeratorData.content.forEach((d) => {
         if (d.date) {
             numeratorCounts.set(d.date, d.count);
+        }
+    });
+    const denominatorCounts = new Map<string, number>();
+    denominatorData.content.forEach((d) => {
+        if (d.date) {
+            denominatorCounts.set(d.date, d.count);
         }
     });
     const requestData = {
@@ -60,6 +66,54 @@ export async function queryRelativeGrowthAdvantage(
         body: JSON.stringify(requestPayload),
         signal,
     });
+    const responseData = (await response.json()) as {
+        estimatedAbsoluteNumbers: {
+            t: number[];
+            variantCases: number[];
+            wildtypeCases: number[];
+        };
+        estimatedProportions: {
+            t: number[];
+            proportion: number[];
+            ciLower: number[];
+            ciUpper: number[];
+        };
+        params: {
+            a: {
+                value: number;
+                ciLower: number;
+                ciUpper: number;
+            };
+            fc: {
+                value: number;
+                ciLower: number;
+                ciUpper: number;
+            };
+            fd: {
+                value: number;
+                ciLower: number;
+                ciUpper: number;
+            };
+            t0: {
+                value: number;
+                ciLower: number;
+                ciUpper: number;
+            };
+        };
+    };
+    const transformed = {
+        ...responseData,
+        estimatedProportions: {
+            ...responseData.estimatedProportions,
+            t: responseData.estimatedProportions.t.map((t) => addDays(minDate, t)),
+        },
+    };
+    const observedProportions = transformed.estimatedProportions.t.map(
+        (t) => (numeratorCounts.get(t) ?? 0) / (denominatorCounts.get(t) ?? 0),
+    );
 
-    return response.json();
+    return {
+        ...transformed,
+        observedProportions,
+    };
 }

@@ -6,42 +6,52 @@ import { Chart, registerables } from 'chart.js';
 export class RelativeGrowthAdvantageChart extends LitElement {
     @property()
     data: {
-        t: number[];
-        proportion: [];
-        ciLower: [];
-        ciUpper: [];
+        t: string[];
+        proportion: number[];
+        ciLower: number[];
+        ciUpper: number[];
+        observed: number[];
     } = {
         t: [],
         proportion: [],
         ciLower: [],
         ciUpper: [],
+        observed: [],
     };
 
     override firstUpdated() {
         const ctx = this.renderRoot.querySelector('canvas')!.getContext('2d')!;
         Chart.register(...registerables);
         new Chart(ctx, {
-            type: 'line',
             data: {
                 labels: this.data.t,
                 datasets: [
                     {
+                        type: 'line',
                         label: 'Prevalence',
                         data: this.data.proportion,
                         borderWidth: 1,
                         pointRadius: 0,
                     },
                     {
+                        type: 'line',
                         label: 'CI Lower',
                         data: this.data.ciLower,
                         borderWidth: 1,
                         pointRadius: 0,
                     },
                     {
+                        type: 'line',
                         label: 'CI Upper',
                         data: this.data.ciUpper,
                         borderWidth: 1,
                         pointRadius: 0,
+                    },
+                    {
+                        type: 'scatter',
+                        label: 'Observed',
+                        data: this.data.observed,
+                        pointRadius: 1,
                     },
                 ],
             },

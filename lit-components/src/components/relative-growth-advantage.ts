@@ -65,7 +65,7 @@ export class RelativeGrowthAdvantage extends LitElement {
                             ${view === 'line'
                                 ? html`<gs-tab title="Line chart" .active="${index === 0}">
                                       <gs-relative-growth-advantage-chart
-                                          .data=${data.estimatedProportions}
+                                          .data=${{ ...data.estimatedProportions, observed: data.observedProportions }}
                                           type="bar"
                                       ></gs-relative-growth-advantage-chart>
                                       <div>

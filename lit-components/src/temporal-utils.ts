@@ -53,3 +53,10 @@ export function getDaysInBetween(start: string, end: string): number {
     const endDate = new Date(end);
     return (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);
 }
+
+export function addDays(start: string, days: number): string {
+    const startDate = new Date(start);
+    const endDate = new Date(startDate);
+    endDate.setDate(startDate.getDate() + days);
+    return endDate.toISOString().split('T')[0];
+}
