@@ -5,7 +5,10 @@ import { Chart, registerables } from 'chart.js';
 @customElement('gs-prevalence-over-time-chart')
 export class PrevalenceOverTimeChart extends LitElement {
     @property()
-    data: { dateRange: number | null; prevalence: number }[] = [];
+    data: {
+        displayName: string;
+        content: { dateRange: number | null; prevalence: number }[];
+    }[] = [];
 
     @property()
     type: 'line' | 'bar' = 'bar';
@@ -16,15 +19,13 @@ export class PrevalenceOverTimeChart extends LitElement {
         new Chart(ctx, {
             type: this.type,
             data: {
-                labels: this.data.map((d) => d.dateRange ?? 'Unknown'),
-                datasets: [
-                    {
-                        label: 'Prevalence',
-                        data: this.data.map((d) => d.prevalence),
-                        borderWidth: 1,
-                        pointRadius: 0,
-                    },
-                ],
+                labels: this.data[0].content.map((d) => d.dateRange ?? 'Unknown'),
+                datasets: this.data.map((d) => ({
+                    label: d.displayName,
+                    data: d.content.map((d2) => d2.prevalence),
+                    borderWidth: 1,
+                    pointRadius: 0,
+                })),
             },
             options: {
                 scales: {

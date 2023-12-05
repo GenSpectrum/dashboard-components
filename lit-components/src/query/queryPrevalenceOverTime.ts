@@ -1,4 +1,4 @@
-import { LapisFilter, TemporalGranularity } from '../types';
+import { LapisFilter, NamedLapisFilter, TemporalGranularity } from '../types';
 import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { MapOperator } from '../operator/MapOperator';
 import { GroupByAndSumOperator } from '../operator/GroupByAndSumOperator';
@@ -11,47 +11,52 @@ import { SlidingOperator } from '../operator/SlidingOperator';
 import { DivisionOperator } from '../operator/DivisionOperator';
 
 export function queryPrevalenceOverTime(
-    numerator: LapisFilter,
-    denominator: LapisFilter,
+    numerator: NamedLapisFilter | NamedLapisFilter[],
+    denominator: NamedLapisFilter,
     granularity: TemporalGranularity,
     smoothingWindow: number,
     lapis: string,
     signal?: AbortSignal,
 ) {
-    const fetchNumerator = new FetchAggregatedOperator<{
-        date: string | null;
-    }>(numerator, ['date']);
-    const fetchDenominator = new FetchAggregatedOperator<{
-        date: string | null;
-    }>(denominator, ['date']);
-    const mapNumerator = new MapOperator(fetchNumerator, (d) => mapDateToGranularityRange(d, granularity));
-    const mapDenominator = new MapOperator(fetchDenominator, (d) => mapDateToGranularityRange(d, granularity));
-    const groupByNumerator = new GroupByAndSumOperator(mapNumerator, 'dateRange', 'count');
-    const groupByDenominator = new GroupByAndSumOperator(mapDenominator, 'dateRange', 'count');
-    const fillNumerator = new FillMissingOperator(
-        groupByNumerator,
-        'dateRange',
-        getMinMaxString,
-        (min, max) => generateAllInRange(min, max, granularity),
-        (key) => ({ dateRange: key, count: 0 }),
-    );
-    const fillDenominator = new FillMissingOperator(
-        groupByDenominator,
-        'dateRange',
-        getMinMaxString,
-        (min, max) => generateAllInRange(min, max, granularity),
-        (key) => ({ dateRange: key, count: 0 }),
-    );
-    const sortNumerator = new SortOperator(fillNumerator, dateRangeCompare);
-    const sortDenominator = new SortOperator(fillDenominator, dateRangeCompare);
-    let smoothNumerator: Operator<{ dateRange: string | null; count: number }> = sortNumerator;
-    let smoothDenominator: Operator<{ dateRange: string | null; count: number }> = sortDenominator;
-    if (smoothingWindow >= 1) {
-        smoothNumerator = new SlidingOperator(sortNumerator, smoothingWindow, averageSmoothing);
-        smoothDenominator = new SlidingOperator(sortDenominator, smoothingWindow, averageSmoothing);
+    const numerators = [];
+    if (Array.isArray(numerator)) {
+        numerators.push(...numerator);
+    } else {
+        numerators.push(numerator);
     }
-    const divide = new DivisionOperator(smoothNumerator, smoothDenominator, 'dateRange', 'count', 'prevalence');
-    return divide.evaluate(lapis, signal);
+
+    const denominatorData = fetchAndPrepare(denominator, granularity, smoothingWindow);
+    const subQueries = numerators.map(async (n) => {
+        const numeratorData = fetchAndPrepare(n, granularity, smoothingWindow);
+        const divide = new DivisionOperator(numeratorData, denominatorData, 'dateRange', 'count', 'prevalence');
+        const d = await divide.evaluate(lapis, signal);
+        return {
+            displayName: n.displayName,
+            content: d.content,
+        };
+    });
+    return Promise.all(subQueries);
+}
+
+function fetchAndPrepare(filter: LapisFilter, granularity: TemporalGranularity, smoothingWindow: number) {
+    const fetchData = new FetchAggregatedOperator<{
+        date: string | null;
+    }>(filter, ['date']);
+    const mapData = new MapOperator(fetchData, (d) => mapDateToGranularityRange(d, granularity));
+    const groupByData = new GroupByAndSumOperator(mapData, 'dateRange', 'count');
+    const fillData = new FillMissingOperator(
+        groupByData,
+        'dateRange',
+        getMinMaxString,
+        (min, max) => generateAllInRange(min, max, granularity),
+        (key) => ({ dateRange: key, count: 0 }),
+    );
+    const sortData = new SortOperator(fillData, dateRangeCompare);
+    let smoothData: Operator<{ dateRange: string | null; count: number }> = sortData;
+    if (smoothingWindow >= 1) {
+        smoothData = new SlidingOperator(sortData, smoothingWindow, averageSmoothing);
+    }
+    return smoothData;
 }
 
 function mapDateToGranularityRange(d: { date: string | null; count: number }, granularity: TemporalGranularity) {

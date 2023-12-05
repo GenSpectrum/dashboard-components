@@ -5,7 +5,10 @@ import { TemporalGranularity } from '../types';
 @customElement('gs-prevalence-over-time-table')
 export class PrevalenceOverTimeTable extends LitElement {
     @property()
-    data: { dateRange: number | null; prevalence: number }[] = [];
+    data: {
+        displayName: string;
+        content: { dateRange: number | null; prevalence: number }[];
+    }[] = [];
 
     @property({ type: String })
     granularity: TemporalGranularity = 'day';
@@ -16,15 +19,15 @@ export class PrevalenceOverTimeTable extends LitElement {
                 <thead>
                     <tr>
                         <th>${this.granularity}</th>
-                        <th>Prevalence</th>
+                        ${this.data.map((d) => html`<th>${d.displayName}</th>`)}
                     </tr>
                 </thead>
                 <tbody>
-                    ${this.data.map(
-                        (d) => html`
+                    ${this.data[0].content.map(
+                        (d, i) => html`
                             <tr>
                                 <td>${d.dateRange ?? 'Unknown'}</td>
-                                <td>${d.prevalence.toFixed(4)}</td>
+                                ${this.data.map((d2) => html`<td>${d2.content[i].prevalence.toFixed(4)}</td>`)}
                             </tr>
                         `,
                     )}

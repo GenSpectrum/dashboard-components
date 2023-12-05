@@ -41,7 +41,10 @@ const Template: StoryObj<PrevalenceOverTimeProps> = {
 export const Monthly = {
     ...Template,
     args: {
-        numerator: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
+        numerator: [
+            { displayName: 'B.1.1.7', country: 'Switzerland', pangoLineage: 'B.1.1.7*', dateTo: '2022-01-01' },
+            { displayName: 'B.1.617.2', country: 'Switzerland', pangoLineage: 'B.1.617.2*', dateTo: '2022-01-01' },
+        ],
         denominator: { country: 'Switzerland', dateTo: '2022-01-01' },
         granularity: 'month',
         smoothingWindow: 0,
@@ -52,7 +55,7 @@ export const Monthly = {
 export const Daily = {
     ...Template,
     args: {
-        numerator: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
+        numerator: { displayName: 'B.1.1.7', country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
         denominator: { country: 'Switzerland', dateTo: '2022-01-01' },
         granularity: 'day',
         smoothingWindow: 7,

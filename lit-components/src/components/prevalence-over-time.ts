@@ -4,7 +4,7 @@ import { Task } from '@lit/task';
 import './tabs';
 import './prevalence-over-time-chart';
 import './prevalence-over-time-table';
-import { type LapisFilter, TemporalGranularity } from '../types';
+import { type NamedLapisFilter, TemporalGranularity } from '../types';
 import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
 import { queryPrevalenceOverTime } from '../query/queryPrevalenceOverTime';
@@ -12,8 +12,8 @@ import { queryPrevalenceOverTime } from '../query/queryPrevalenceOverTime';
 type View = 'bar' | 'line' | 'table';
 
 export type PrevalenceOverTimeProps = {
-    numerator: LapisFilter;
-    denominator: LapisFilter;
+    numerator: NamedLapisFilter | NamedLapisFilter[];
+    denominator: NamedLapisFilter;
     granularity: TemporalGranularity;
     smoothingWindow: number;
     views: View[];
@@ -34,10 +34,10 @@ export class PrevalenceOverTime extends LitElement {
     lapis: string = '';
 
     @property({ type: Object })
-    numerator: LapisFilter = {};
+    numerator: NamedLapisFilter | NamedLapisFilter[] = { displayName: '' };
 
     @property({ type: Object })
-    denominator: LapisFilter = {};
+    denominator: NamedLapisFilter = { displayName: '' };
 
     @property({ type: String })
     granularity: TemporalGranularity = 'day';
@@ -71,7 +71,7 @@ export class PrevalenceOverTime extends LitElement {
                             ${view === 'bar'
                                 ? html`<gs-tab title="Bar chart" .active="${index === 0}">
                                       <gs-prevalence-over-time-chart
-                                          .data=${data.content}
+                                          .data=${data}
                                           type="bar"
                                       ></gs-prevalence-over-time-chart>
                                   </gs-tab>`
@@ -79,7 +79,7 @@ export class PrevalenceOverTime extends LitElement {
                             ${view === 'line'
                                 ? html`<gs-tab title="Line chart" .active="${index === 0}">
                                       <gs-prevalence-over-time-chart
-                                          .data=${data.content}
+                                          .data=${data}
                                           type="line"
                                       ></gs-prevalence-over-time-chart>
                                   </gs-tab>`
@@ -87,7 +87,7 @@ export class PrevalenceOverTime extends LitElement {
                             ${view === 'table'
                                 ? html`<gs-tab title="Table" .active="${index === 0}">
                                       <gs-prevalence-over-time-table
-                                          .data=${data.content}
+                                          .data=${data}
                                           .granularity=${this.granularity}
                                       ></gs-prevalence-over-time-table>
                                   </gs-tab>`
