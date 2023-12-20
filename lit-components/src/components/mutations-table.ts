@@ -1,12 +1,12 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
 import { Dataset } from '../operator/Dataset';
-import { MutationSet, Segmented } from '../mutations';
+import { MutationSet } from '../mutations';
 
 @customElement('gs-mutations-table')
 export class MutationsTable extends LitElement {
     @property()
-    data: Dataset<Segmented<MutationSet>> | null = null;
+    data: Dataset<MutationSet> | null = null;
 
     override render() {
         if (this.data === null) {

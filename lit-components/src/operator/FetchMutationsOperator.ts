@@ -1,57 +1,45 @@
 import { Operator } from './Operator';
 import { Dataset } from './Dataset';
 import { LapisFilter, SequenceType } from '../types';
-import { MutationSet, parseMutation, Segmented } from '../mutations';
+import { Deletion, Insertion, MutationCache, MutationSet, Substitution } from '../mutations';
 
-export class FetchMutationsOperator implements Operator<Segmented<MutationSet>> {
+export class FetchMutationsOperator implements Operator<MutationSet> {
     constructor(private filter: LapisFilter, private sequenceType: SequenceType, private minProportion?: number) {}
 
-    async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<Segmented<MutationSet>>> {
+    async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<MutationSet>> {
         const [lapisMutations, lapisInsertions] = await Promise.all([
             this.fetchMutations(lapis, signal),
             this.fetchInsertions(lapis, signal),
         ]);
 
-        const result: Map<string, MutationSet> = new Map();
+        const result: MutationSet = {
+            substitutions: [],
+            deletions: [],
+            insertions: [],
+        };
 
         for (const { mutation, count, proportion } of lapisMutations) {
-            const parsed = parseMutation(mutation);
-            if (!result.has(parsed.value.segment ?? '')) {
-                result.set(parsed.value.segment ?? '', {
-                    substitutions: [],
-                    deletions: [],
-                    insertions: [],
-                });
-            }
-            const mutationSet = result.get(parsed.value.segment ?? '')!;
-            if (parsed.type === 'substitution') {
-                mutationSet.substitutions.push({ substitution: parsed.value, count, proportion });
-            } else if (parsed.type === 'deletion') {
-                mutationSet.deletions.push({ deletion: parsed.value, count, proportion });
+            const parsed = MutationCache.getInstance().getMutation(mutation);
+            if (parsed instanceof Substitution) {
+                result.substitutions.push({ substitution: parsed, count, proportion });
+            } else if (parsed instanceof Deletion) {
+                result.deletions.push({ deletion: parsed, count, proportion });
             } else {
                 throw new Error('Unexpected mutation type');
             }
         }
 
         for (const { insertion, count } of lapisInsertions) {
-            const parsed = parseMutation(insertion);
-            if (!result.has(parsed.value.segment ?? '')) {
-                result.set(parsed.value.segment ?? '', {
-                    substitutions: [],
-                    deletions: [],
-                    insertions: [],
-                });
-            }
-            const mutationSet = result.get(parsed.value.segment ?? '')!;
-            if (parsed.type === 'insertion') {
-                mutationSet.insertions.push({ insertion: parsed.value, count });
+            const parsed = MutationCache.getInstance().getMutation(insertion);
+            if (parsed instanceof Insertion) {
+                result.insertions.push({ insertion: parsed, count });
             } else {
                 throw new Error('Unexpected mutation type');
             }
         }
 
         return {
-            content: [...result.entries()].map(([segment, mutationSet]) => ({ segment, ...mutationSet })),
+            content: [result],
         };
     }
 

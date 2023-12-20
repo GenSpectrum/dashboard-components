@@ -1,45 +1,21 @@
 import { expect } from '@open-wc/testing';
-import { parseMutation } from './mutations';
+import { Deletion, Insertion, MutationCache, Substitution } from './mutations';
 
-describe('parseMutation', () => {
+describe('MutationCache.getMutation', () => {
+    const cache = MutationCache.getInstance();
+
     it('should parse substitution', () => {
-        expect(parseMutation('A1T')).deep.equal({
-            segment: undefined,
-            ref: 'A',
-            alt: 'T',
-            position: 1,
-        });
-        expect(parseMutation('seg1:A1T')).deep.equal({
-            segment: 'seg1',
-            ref: 'A',
-            alt: 'T',
-            position: 1,
-        });
+        expect(cache.getMutation('A1T')).deep.equal(new Substitution(undefined, 'A', 'T', 1));
+        expect(cache.getMutation('seg1:A1T')).deep.equal(new Substitution('seg1', 'A', 'T', 1));
     });
 
     it('should parse deletion', () => {
-        expect(parseMutation('A1-')).deep.equal({
-            segment: undefined,
-            ref: 'A',
-            position: 1,
-        });
-        expect(parseMutation('seg1:A1-')).deep.equal({
-            segment: 'seg1',
-            ref: 'A',
-            position: 1,
-        });
+        expect(cache.getMutation('A1-')).deep.equal(new Deletion(undefined, 'A', 1));
+        expect(cache.getMutation('seg1:A1-')).deep.equal(new Deletion('seg1', 'A', 1));
     });
 
     it('should parse insertion', () => {
-        expect(parseMutation('ins_1:A')).deep.equal({
-            segment: undefined,
-            ref: 'A',
-            position: 1,
-        });
-        expect(parseMutation('ins_seg1:1:A')).deep.equal({
-            segment: 'seg1',
-            ref: 'A',
-            position: 1,
-        });
+        expect(cache.getMutation('ins_1:A')).deep.equal(new Insertion(undefined, 1, 'A'));
+        expect(cache.getMutation('ins_seg1:A')).deep.equal(new Insertion('seg1', 1, 'A'));
     });
 });
