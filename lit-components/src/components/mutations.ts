@@ -1,7 +1,7 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
-import './tabs';
+import './component-container';
 import './mutations-table';
 import { type LapisFilter, SequenceType } from '../types';
 import { lapisContext } from '../lapis-context';
@@ -19,11 +19,9 @@ export type MutationsProps = {
 @customElement('gs-mutations')
 export class Mutations extends LitElement {
     static override styles = css`
-        :host {
-            display: block;
-            border: solid 3px gray;
-            padding: 16px;
-            max-width: 800px;
+        .content {
+            max-height: 300px;
+            overflow-y: auto;
         }
     `;
 
@@ -55,17 +53,22 @@ export class Mutations extends LitElement {
             complete: (data) => html`
                 <h1>Prevalence over time</h1>
 
-                <gs-tabs>
+                <gs-component-container>
                     ${this.views.map(
                         (view, index) => html`
                             ${view === 'table'
-                                ? html`<gs-tab title="Table" .active="${index === 0}">
-                                      <gs-mutations-table .data=${data}></gs-mutations-table>
-                                  </gs-tab>`
+                                ? html`<gs-component-tab slot="content" title="Table" .active="${index === 0}">
+                                          <div class="content">
+                                              <gs-mutations-table .data=${data}></gs-mutations-table>
+                                          </div>
+                                      </gs-component-tab>
+                                      <gs-component-toolbar slot="toolbar" .active="${index === 0}">
+                                      </gs-component-toolbar>
+                                      <gs-component-info slot="info"> TODO </gs-component-info> `
                                 : ''}
                         `,
                     )}
-                </gs-tabs>
+                </gs-component-container>
             `,
             error: (e) => html`<p>Error: ${e}</p>`,
         });
