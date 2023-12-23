@@ -1,12 +1,12 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
 import { Dataset } from '../operator/Dataset';
-import { MutationSet } from '../mutations';
+import { MutationEntry } from '../operator/FetchMutationsOperator';
 
 @customElement('gs-mutations-table')
 export class MutationsTable extends LitElement {
     @property()
-    data: Dataset<MutationSet> | null = null;
+    data: Dataset<MutationEntry> | null = null;
 
     override render() {
         if (this.data === null) {
@@ -25,41 +25,31 @@ export class MutationsTable extends LitElement {
                 </thead>
                 <tbody>
                     ${this.data.content.map((d) => {
-                        const htmlParts = [];
-                        htmlParts.push(
-                            ...d.substitutions.map(
-                                (s) =>
-                                    html`<tr>
-                                        <td>${s.substitution}</td>
-                                        <td>Substitution</td>
-                                        <td>${s.count}</td>
-                                        <td>${s.proportion}</td>
-                                    </tr>`,
-                            ),
-                        );
-                        htmlParts.push(
-                            ...d.deletions.map(
-                                (s) =>
-                                    html`<tr>
-                                        <td>${s.deletion}</td>
-                                        <td>Deletion</td>
-                                        <td>${s.count}</td>
-                                        <td>${s.proportion}</td>
-                                    </tr>`,
-                            ),
-                        );
-                        htmlParts.push(
-                            ...d.insertions.map(
-                                (s) =>
-                                    html`<tr>
-                                        <td>${s.insertion}</td>
-                                        <td>Insertion</td>
-                                        <td>${s.count}</td>
-                                        <td></td>
-                                    </tr>`,
-                            ),
-                        );
-                        return htmlParts;
+                        if (d.type === 'substitution') {
+                            return html`<tr>
+                                <td>${d.mutation}</td>
+                                <td>Substitution</td>
+                                <td>${d.count}</td>
+                                <td>${d.proportion}</td>
+                            </tr>`;
+                        }
+                        if (d.type === 'deletion') {
+                            return html`<tr>
+                                <td>${d.mutation}</td>
+                                <td>Deletion</td>
+                                <td>${d.count}</td>
+                                <td>${d.proportion}</td>
+                            </tr>`;
+                        }
+                        if (d.type === 'insertion') {
+                            return html`<tr>
+                                <td>${d.mutation}</td>
+                                <td>Insertion</td>
+                                <td>${d.count}</td>
+                                <td></td>
+                            </tr>`;
+                        }
+                        throw new Error('Invalid mutation entry');
                     })}
                 </tbody>
             </table>

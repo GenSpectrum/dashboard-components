@@ -125,9 +125,3 @@ export class Insertion implements Mutation {
         throw Error(`Invalid insertion: ${mutationStr}`);
     }
 }
-
-export type MutationSet = {
-    substitutions: { substitution: Substitution; count: number; proportion: number }[];
-    deletions: { deletion: Deletion; count: number; proportion: number }[];
-    insertions: { insertion: Insertion; count: number }[];
-};
