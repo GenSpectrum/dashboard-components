@@ -1,3 +1,5 @@
+import { SequenceType } from './types';
+
 export class MutationCache {
     private substitutionCache = new Map<string, Substitution>();
     private deletionCache = new Map<string, Deletion>();
@@ -125,3 +127,8 @@ export class Insertion implements Mutation {
         throw Error(`Invalid insertion: ${mutationStr}`);
     }
 }
+
+export const segmentName: { [P in SequenceType]: string } = {
+    'nucleotide': 'Segment',
+    'amino acid': 'Gene',
+};

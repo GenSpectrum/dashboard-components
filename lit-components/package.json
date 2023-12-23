@@ -30,6 +30,7 @@
         "lit"
     ],
     "dependencies": {
+        "@floating-ui/dom": "^1.5.3",
         "@lit/context": "^1.1.0",
         "@lit/task": "^1.0.0",
         "chart.js": "^4.4.0",

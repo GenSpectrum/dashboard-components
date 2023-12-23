@@ -7,6 +7,8 @@ import { type LapisFilter, SequenceType } from '../types';
 import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
 import { queryMutations } from '../query/queryMutations';
+import { tooltip } from './tooltip';
+import { segmentName } from '../mutations';
 
 type View = 'table';
 
@@ -22,6 +24,10 @@ export class Mutations extends LitElement {
         .content {
             max-height: 300px;
             overflow-y: auto;
+        }
+        .segments {
+            display: flex;
+            flex-direction: column;
         }
     `;
 
@@ -39,7 +45,9 @@ export class Mutations extends LitElement {
 
     private fetchingTask = new Task(this, {
         task: async ([lapis, variant, sequenceType], { signal }) => {
-            return queryMutations(variant, sequenceType, lapis, signal);
+            const dataset = await queryMutations(variant, sequenceType, lapis, signal);
+            const segments = [...new Set(dataset.content.map((d) => d.mutation.segment))];
+            return [dataset, segments] as const;
         },
         args: () => [this.lapis, this.variant, this.sequenceType, this.views] as const,
     });
@@ -47,29 +55,50 @@ export class Mutations extends LitElement {
     override render() {
         return this.fetchingTask.render({
             pending: () => html`
-                <h1>Prevalence over time</h1>
+                <h1>Mutations</h1>
                 Loading...
             `,
-            complete: (data) => html`
-                <h1>Prevalence over time</h1>
+            complete: ([data, segments]) => {
+                const segmentSelectionTooltip = html`
+                    <div class="segments">
+                        ${segments.map(
+                            (segment) => html`
+                                <label>
+                                    <input type="checkbox" checked />
+                                    ${segment}
+                                </label>
+                            `,
+                        )}
+                    </div>
+                `;
 
-                <gs-component-container>
-                    ${this.views.map(
-                        (view, index) => html`
-                            ${view === 'table'
-                                ? html`<gs-component-tab slot="content" title="Table" .active="${index === 0}">
-                                          <div class="content">
-                                              <gs-mutations-table .data=${data}></gs-mutations-table>
-                                          </div>
-                                      </gs-component-tab>
-                                      <gs-component-toolbar slot="toolbar" .active="${index === 0}">
-                                      </gs-component-toolbar>
-                                      <gs-component-info slot="info"> TODO </gs-component-info> `
-                                : ''}
-                        `,
-                    )}
-                </gs-component-container>
-            `,
+                return html`
+                    <h1>Prevalence over time</h1>
+                    <gs-component-container>
+                        ${this.views.map(
+                            (view, index) => html`
+                                ${view === 'table'
+                                    ? html`<gs-component-tab slot="content" title="Table" .active="${index === 0}">
+                                              <div class="content">
+                                                  <gs-mutations-table .data=${data}></gs-mutations-table>
+                                              </div>
+                                          </gs-component-tab>
+                                          <gs-component-toolbar slot="toolbar" .active="${index === 0}">
+                                              ${segments.length > 1
+                                                  ? html` <gs-component-toolbar-button
+                                                        ${tooltip(segmentSelectionTooltip)}
+                                                    >
+                                                        ${segmentName[this.sequenceType]}: all
+                                                    </gs-component-toolbar-button>`
+                                                  : ''}
+                                          </gs-component-toolbar>
+                                          <gs-component-info slot="info"> TODO </gs-component-info> `
+                                    : ''}
+                            `,
+                        )}
+                    </gs-component-container>
+                `;
+            },
             error: (e) => html`<p>Error: ${e}</p>`,
         });
     }
