@@ -35,6 +35,7 @@ export class SimpleTooltip extends LitElement {
             border: 1px solid darkgray;
             padding: 4px;
             border-radius: 4px;
+            background: white;
             display: inline-block;
 
             /* Animate in */

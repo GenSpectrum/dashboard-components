@@ -5,13 +5,14 @@ import './container/component-container';
 import './container/component-tab';
 import './container/component-toolbar';
 import './container/component-toolbar-button';
+import './container/component-toolbar-button-checkboxes';
 import './container/component-info';
 import './mutations-table';
 import { type LapisFilter, SequenceType } from '../types';
 import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
 import { queryMutations } from '../query/queryMutations';
-import { tooltip } from './tooltip';
+import { renderAllNoneOrCommaSeparated } from './container/component-toolbar-button-checkboxes';
 import { segmentName } from '../mutations';
 
 type View = 'table';
@@ -29,10 +30,6 @@ export class Mutations extends LitElement {
             max-height: 300px;
             overflow-y: auto;
         }
-        .segments {
-            display: flex;
-            flex-direction: column;
-        }
     `;
 
     @consume({ context: lapisContext })
@@ -46,6 +43,10 @@ export class Mutations extends LitElement {
 
     @property({ type: Object })
     views: View[] = ['table'];
+
+    // TODO undefined means all segments, because I don't know how to properly initialize it with all segments.
+    @property({ type: Array })
+    selectedSegments: string[] | undefined = undefined;
 
     private fetchingTask = new Task(this, {
         task: async ([lapis, variant, sequenceType], { signal }) => {
@@ -63,19 +64,12 @@ export class Mutations extends LitElement {
                 Loading...
             `,
             complete: ([data, segments]) => {
-                const segmentSelectionTooltip = html`
-                    <div class="segments">
-                        ${segments.map(
-                            (segment) => html`
-                                <label>
-                                    <input type="checkbox" checked />
-                                    ${segment}
-                                </label>
-                            `,
-                        )}
-                    </div>
-                `;
-
+                let filteredData = data;
+                if (segments.length > 1 && this.selectedSegments !== undefined) {
+                    filteredData = {
+                        content: data.content.filter((d) => this.selectedSegments!.includes(d.mutation.segment!)),
+                    };
+                }
                 return html`
                     <h1>Prevalence over time</h1>
                     <gs-component-container>
@@ -84,16 +78,37 @@ export class Mutations extends LitElement {
                                 ${view === 'table'
                                     ? html`<gs-component-tab slot="content" title="Table" .active="${index === 0}">
                                               <div class="content">
-                                                  <gs-mutations-table .data=${data}></gs-mutations-table>
+                                                  <gs-mutations-table .data=${filteredData}></gs-mutations-table>
                                               </div>
                                           </gs-component-tab>
                                           <gs-component-toolbar slot="toolbar" .active="${index === 0}">
                                               ${segments.length > 1
-                                                  ? html` <gs-component-toolbar-button
-                                                        ${tooltip(segmentSelectionTooltip)}
-                                                    >
-                                                        ${segmentName[this.sequenceType]}: all
-                                                    </gs-component-toolbar-button>`
+                                                  ? html` <gs-component-toolbar-button-checkboxes
+                                                        .options=${segments}
+                                                        .renderButtonLabel=${renderAllNoneOrCommaSeparated(
+                                                            segments.length,
+                                                            segmentName[this.sequenceType] + ': ',
+                                                        )}
+                                                        .selected=${this.selectedSegments ?? segments}
+                                                        @change=${(
+                                                            e: CustomEvent<{ option: string; checked: boolean }>,
+                                                        ) => {
+                                                            const { option, checked } = e.detail;
+                                                            if (this.selectedSegments === undefined) {
+                                                                this.selectedSegments = segments.map((s) => s ?? '');
+                                                            }
+                                                            if (checked) {
+                                                                this.selectedSegments = [
+                                                                    ...this.selectedSegments,
+                                                                    option,
+                                                                ];
+                                                            } else {
+                                                                this.selectedSegments = this.selectedSegments.filter(
+                                                                    (s) => s !== option,
+                                                                );
+                                                            }
+                                                        }}
+                                                    ></gs-component-toolbar-button-checkboxes>`
                                                   : ''}
                                           </gs-component-toolbar>
                                           <gs-component-info slot="info"> TODO </gs-component-info> `
