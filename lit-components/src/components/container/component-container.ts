@@ -1,90 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
-
-@customElement('gs-component-tab')
-export class ComponentTab extends LitElement {
-    static override styles = css`
-        :host {
-            display: none;
-        }
-        :host([active]) {
-            display: block;
-        }
-    `;
-
-    @property({ type: Boolean, reflect: true })
-    active = false;
-
-    override render() {
-        return html`<slot></slot>`;
-    }
-}
-
-@customElement('gs-component-toolbar')
-export class ComponentToolbar extends LitElement {
-    static override styles = css`
-        :host {
-            display: none;
-        }
-        :host([active]) {
-            padding: 2px 2px 2px 0;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            gap: 4px;
-        }
-    `;
-
-    @property({ type: Boolean, reflect: true })
-    active = false;
-
-    override render() {
-        return html`
-            <slot></slot>
-            <gs-component-toolbar-button
-                @click="${() =>
-                    this.dispatchEvent(
-                        new CustomEvent('toolbarclick', { detail: 'info', bubbles: true, composed: true }),
-                    )}"
-                >&#9432;</gs-component-toolbar-button
-            >
-        `;
-    }
-}
-
-@customElement('gs-component-info')
-export class ComponentInfo extends LitElement {
-    static override styles = css`
-        :host {
-            display: none;
-        }
-        :host([active]) {
-            display: block;
-            padding: 5px;
-        }
-    `;
-
-    @property({ type: Boolean, reflect: true })
-    active = false;
-
-    override render() {
-        return html`<slot></slot>`;
-    }
-}
-
-@customElement('gs-component-toolbar-button')
-export class ComponentToolbarButton extends LitElement {
-    static override styles = css`
-        button {
-            font-size: x-small;
-            height: 20px;
-        }
-    `;
-
-    override render() {
-        return html`<button><slot></slot></button>`;
-    }
-}
+import { ComponentTab } from './component-tab';
+import { ComponentToolbar } from './component-toolbar';
 
 @customElement('gs-component-container')
 export class ComponentContainer extends LitElement {
@@ -162,7 +79,6 @@ export class ComponentContainer extends LitElement {
     infoOpen = false;
 
     override render() {
-        console.log(this.infoOpen);
         const tabs = Array.from(this.children).filter((c) => c.tagName === 'GS-COMPONENT-TAB') as ComponentTab[];
         return html`
             <div class="content">

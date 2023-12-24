@@ -1,7 +1,11 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
-import './component-container';
+import './container/component-container';
+import './container/component-tab';
+import './container/component-toolbar';
+import './container/component-toolbar-button';
+import './container/component-info';
 import './mutations-table';
 import { type LapisFilter, SequenceType } from '../types';
 import { lapisContext } from '../lapis-context';
