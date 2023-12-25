@@ -3,7 +3,7 @@ import { FetchMutationsOperator } from '../operator/FetchMutationsOperator';
 import { SortOperator } from '../operator/SortOperator';
 
 export function queryMutations(variant: LapisFilter, sequenceType: SequenceType, lapis: string, signal?: AbortSignal) {
-    const fetchData = new FetchMutationsOperator(variant, sequenceType);
+    const fetchData = new FetchMutationsOperator(variant, sequenceType, 0);
     const sortData = new SortOperator(fetchData, (a, b) => {
         if (a.type === 'insertion' && b.type !== 'insertion') {
             return 1;

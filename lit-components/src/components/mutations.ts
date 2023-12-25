@@ -8,6 +8,7 @@ import './container/component-toolbar-button';
 import './container/component-toolbar-button-checkboxes';
 import './container/component-info';
 import './mutations-table';
+import './mutations-grid';
 import { type LapisFilter, SequenceType } from '../types';
 import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
@@ -15,7 +16,7 @@ import { queryMutations } from '../query/queryMutations';
 import { renderAllNoneOrCommaSeparated } from './container/component-toolbar-button-checkboxes';
 import { segmentName } from '../mutations';
 
-type View = 'table';
+type View = 'table' | 'grid';
 
 export type MutationsProps = {
     variant: LapisFilter;
@@ -42,7 +43,7 @@ export class Mutations extends LitElement {
     sequenceType: SequenceType = 'nucleotide';
 
     @property({ type: Object })
-    views: View[] = ['table'];
+    views: View[] = ['table', 'grid'];
 
     // TODO undefined means all segments, because I don't know how to properly initialize it with all segments.
     @property({ type: Array })
@@ -70,6 +71,31 @@ export class Mutations extends LitElement {
                         content: data.content.filter((d) => this.selectedSegments!.includes(d.mutation.segment!)),
                     };
                 }
+                const toolbar = (index: number) => html`
+                    <gs-component-toolbar slot="toolbar" .active="${index === 0}">
+                        ${segments.length > 1
+                            ? html` <gs-component-toolbar-button-checkboxes
+                                  .options=${segments}
+                                  .renderButtonLabel=${renderAllNoneOrCommaSeparated(
+                                      segments.length,
+                                      segmentName[this.sequenceType] + ': ',
+                                  )}
+                                  .selected=${this.selectedSegments ?? segments}
+                                  @change=${(e: CustomEvent<{ option: string; checked: boolean }>) => {
+                                      const { option, checked } = e.detail;
+                                      if (this.selectedSegments === undefined) {
+                                          this.selectedSegments = segments.map((s) => s ?? '');
+                                      }
+                                      if (checked) {
+                                          this.selectedSegments = [...this.selectedSegments, option];
+                                      } else {
+                                          this.selectedSegments = this.selectedSegments.filter((s) => s !== option);
+                                      }
+                                  }}
+                              ></gs-component-toolbar-button-checkboxes>`
+                            : ''}
+                    </gs-component-toolbar>
+                `;
                 return html`
                     <h1>Prevalence over time</h1>
                     <gs-component-container>
@@ -81,36 +107,19 @@ export class Mutations extends LitElement {
                                                   <gs-mutations-table .data=${filteredData}></gs-mutations-table>
                                               </div>
                                           </gs-component-tab>
-                                          <gs-component-toolbar slot="toolbar" .active="${index === 0}">
-                                              ${segments.length > 1
-                                                  ? html` <gs-component-toolbar-button-checkboxes
-                                                        .options=${segments}
-                                                        .renderButtonLabel=${renderAllNoneOrCommaSeparated(
-                                                            segments.length,
-                                                            segmentName[this.sequenceType] + ': ',
-                                                        )}
-                                                        .selected=${this.selectedSegments ?? segments}
-                                                        @change=${(
-                                                            e: CustomEvent<{ option: string; checked: boolean }>,
-                                                        ) => {
-                                                            const { option, checked } = e.detail;
-                                                            if (this.selectedSegments === undefined) {
-                                                                this.selectedSegments = segments.map((s) => s ?? '');
-                                                            }
-                                                            if (checked) {
-                                                                this.selectedSegments = [
-                                                                    ...this.selectedSegments,
-                                                                    option,
-                                                                ];
-                                                            } else {
-                                                                this.selectedSegments = this.selectedSegments.filter(
-                                                                    (s) => s !== option,
-                                                                );
-                                                            }
-                                                        }}
-                                                    ></gs-component-toolbar-button-checkboxes>`
-                                                  : ''}
-                                          </gs-component-toolbar>
+                                          ${toolbar(index)}
+                                          <gs-component-info slot="info"> TODO </gs-component-info> `
+                                    : ''}
+                                ${view === 'grid'
+                                    ? html`<gs-component-tab slot="content" title="Grid" .active="${index === 0}">
+                                              <div class="content">
+                                                  <gs-mutations-grid
+                                                      .data=${filteredData}
+                                                      .sequenceType=${this.sequenceType}
+                                                  ></gs-mutations-grid>
+                                              </div>
+                                          </gs-component-tab>
+                                          ${toolbar(index)}
                                           <gs-component-info slot="info"> TODO </gs-component-info> `
                                     : ''}
                             `,

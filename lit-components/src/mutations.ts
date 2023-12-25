@@ -132,3 +132,30 @@ export const segmentName: { [P in SequenceType]: string } = {
     'nucleotide': 'Segment',
     'amino acid': 'Gene',
 };
+
+export const bases: { [P in SequenceType]: string[] } = {
+    'nucleotide': ['A', 'C', 'G', 'T', '-'],
+    'amino acid': [
+        'I',
+        'L',
+        'V',
+        'F',
+        'M',
+        'C',
+        'A',
+        'G',
+        'P',
+        'T',
+        'S',
+        'Y',
+        'W',
+        'Q',
+        'N',
+        'H',
+        'E',
+        'D',
+        'K',
+        'R',
+        '-',
+    ],
+};

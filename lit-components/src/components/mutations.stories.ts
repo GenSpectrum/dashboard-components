@@ -14,7 +14,7 @@ const meta: Meta<MutationsProps> = {
             control: { type: 'radio' },
         },
         views: {
-            options: ['table'],
+            options: ['table', 'grid'],
             control: { type: 'check' },
         },
     },
@@ -39,6 +39,6 @@ export const Default = {
     args: {
         variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
         sequenceType: 'nucleotide',
-        views: ['table'],
+        views: ['grid', 'table'],
     },
 };
