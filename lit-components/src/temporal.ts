@@ -1,7 +1,12 @@
 import * as dayjs from 'dayjs';
+import * as isoWeek from 'dayjs/plugin/isoWeek';
+import * as advancedFormat from 'dayjs/plugin/advancedFormat';
+dayjs.extend(isoWeek);
+dayjs.extend(advancedFormat);
 
 export class TemporalCache {
     private yearMonthDayCache = new Map<string, YearMonthDay>();
+    private yearWeekCache = new Map<string, YearWeek>();
     private yearMonthCache = new Map<string, YearMonth>();
     private yearCache = new Map<string, Year>();
 
@@ -19,6 +24,13 @@ export class TemporalCache {
             this.yearMonthCache.set(s, YearMonth.parse(s, this));
         }
         return this.yearMonthCache.get(s)!;
+    }
+
+    getYearWeek(s: string): YearWeek {
+        if (!this.yearWeekCache.has(s)) {
+            this.yearWeekCache.set(s, YearWeek.parse(s, this));
+        }
+        return this.yearWeekCache.get(s)!;
     }
 
     getYear(s: string): Year {
@@ -62,6 +74,10 @@ export class YearMonthDay {
         return this.cache.getYearMonth(`${this.yearNumber}-${this.monthNumber}`);
     }
 
+    get week(): YearWeek {
+        return this.cache.getYearWeek(this.dayjs.format('YYYY-WW'));
+    }
+
     addDays(days: number): YearMonthDay {
         const date = this.dayjs.add(days, 'day');
         const s = date.format('YYYY-MM-DD');
@@ -75,6 +91,48 @@ export class YearMonthDay {
     static parse(s: string, cache: TemporalCache): YearMonthDay {
         const [year, month, day] = s.split('-').map((s) => parseInt(s));
         return new YearMonthDay(year, month, day, cache);
+    }
+}
+
+export class YearWeek {
+    constructor(readonly isoYearNumber: number, readonly isoWeekNumber: number, readonly cache: TemporalCache) {}
+
+    get text(): string {
+        return this.firstDay.dayjs.format('YYYY-WW');
+    }
+
+    toString(): string {
+        return this.text;
+    }
+
+    get firstDay(): YearMonthDay {
+        // "The first week of the year, hence, always contains 4 January." https://en.wikipedia.org/wiki/ISO_week_date
+        const firstDay = dayjs()
+            .year(this.isoYearNumber)
+            .month(1)
+            .date(4)
+            .isoWeek(this.isoWeekNumber)
+            .startOf('isoWeek');
+        return this.cache.getYearMonthDay(firstDay.format('YYYY-MM-DD'));
+    }
+
+    get year(): Year {
+        return this.cache.getYear(`${this.isoYearNumber}`);
+    }
+
+    addWeeks(weeks: number): YearWeek {
+        const date = this.firstDay.dayjs.add(weeks, 'week');
+        const s = date.format('YYYY-WW');
+        return this.cache.getYearWeek(s);
+    }
+
+    diff(other: YearWeek): number {
+        return this.firstDay.dayjs.diff(other.firstDay.dayjs, 'week');
+    }
+
+    static parse(s: string, cache: TemporalCache): YearWeek {
+        const [year, week] = s.split('-').map((s) => parseInt(s));
+        return new YearWeek(year, week, cache);
     }
 }
 
@@ -148,7 +206,7 @@ export class Year {
     }
 }
 
-export type Temporal = YearMonthDay | YearMonth | Year;
+export type Temporal = YearMonthDay | YearWeek | YearMonth | Year;
 
 export function generateAllDaysInRange(start: YearMonthDay, end: YearMonthDay): YearMonthDay[] {
     const days = [];
@@ -157,6 +215,15 @@ export function generateAllDaysInRange(start: YearMonthDay, end: YearMonthDay): 
         days.push(start.addDays(i));
     }
     return days;
+}
+
+export function generateAllWeeksInRange(start: YearWeek, end: YearWeek): YearWeek[] {
+    const weeks = [];
+    const weeksInBetween = start.diff(end);
+    for (let i = 0; i <= weeksInBetween; i++) {
+        weeks.push(start.addWeeks(i));
+    }
+    return weeks;
 }
 
 export function generateAllMonthsInRange(start: YearMonth, end: YearMonth): YearMonth[] {
@@ -184,6 +251,9 @@ export function generateAllInRange(start: Temporal | null, end: Temporal | null)
     if (start instanceof YearMonthDay && end instanceof YearMonthDay) {
         return generateAllDaysInRange(start, end);
     }
+    if (start instanceof YearWeek && end instanceof YearWeek) {
+        return generateAllWeeksInRange(start, end);
+    }
     if (start instanceof YearMonth && end instanceof YearMonth) {
         return generateAllMonthsInRange(start, end);
     }
@@ -201,6 +271,9 @@ export function compareTemporal(a: Temporal | null, b: Temporal | null): number 
         return -1;
     }
     if (a instanceof YearMonthDay && b instanceof YearMonthDay) {
+        return a.text.localeCompare(b.text);
+    }
+    if (a instanceof YearWeek && b instanceof YearWeek) {
         return a.text.localeCompare(b.text);
     }
     if (a instanceof YearMonth && b instanceof YearMonth) {

@@ -11,7 +11,7 @@ const meta: Meta<PrevalenceOverTimeProps> = {
         numerator: { control: 'object' },
         denominator: { control: 'object' },
         granularity: {
-            options: ['day', 'month', 'year'],
+            options: ['day', 'week', 'month', 'year'],
             control: { type: 'radio' },
         },
         smoothingWindow: { control: 'number' },

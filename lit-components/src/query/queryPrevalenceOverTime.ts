@@ -66,6 +66,9 @@ function mapDateToGranularityRange(d: { date: string | null; count: number }, gr
             case 'day':
                 dateRange = date;
                 break;
+            case 'week':
+                dateRange = date.week;
+                break;
             case 'month':
                 dateRange = date.month;
                 break;
