@@ -97,7 +97,7 @@ export class Mutations extends LitElement {
                     </gs-component-toolbar>
                 `;
                 return html`
-                    <h1>Prevalence over time</h1>
+                    <h1>Mutations</h1>
                     <gs-component-container>
                         ${this.views.map(
                             (view, index) => html`

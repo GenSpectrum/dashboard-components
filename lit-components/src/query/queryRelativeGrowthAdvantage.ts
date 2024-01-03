@@ -1,7 +1,7 @@
 import { LapisFilter } from '../types';
 import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
-import { getMinMaxString } from '../utils';
-import { addDays, getDaysInBetween } from '../temporal-utils';
+import { MapOperator } from '../operator/MapOperator';
+import { getMinMaxTemporal, TemporalCache, YearMonthDay } from '../temporal';
 
 export async function queryRelativeGrowthAdvantage(
     numerator: LapisFilter,
@@ -16,23 +16,24 @@ export async function queryRelativeGrowthAdvantage(
     const fetchDenominator = new FetchAggregatedOperator<{
         date: string | null;
     }>(denominator, ['date']);
+    const mapNumerator = new MapOperator(fetchNumerator, toYearMonthDay);
+    const mapDenominator = new MapOperator(fetchDenominator, toYearMonthDay);
     const [numeratorData, denominatorData] = await Promise.all([
-        fetchNumerator.evaluate(lapis, signal),
-        fetchDenominator.evaluate(lapis, signal),
+        mapNumerator.evaluate(lapis, signal),
+        mapDenominator.evaluate(lapis, signal),
     ]);
-    const [minDate, maxDate] = getMinMaxString(denominatorData.content.map((d) => d.date));
-    const numeratorCounts = new Map<string, number>();
+    const minMaxDate = getMinMaxTemporal(denominatorData.content.map((d) => d.date));
+    if (!minMaxDate) {
+        return null;
+    }
+    const [minDate, maxDate] = minMaxDate as [YearMonthDay, YearMonthDay];
+    const numeratorCounts = new Map<YearMonthDay, number>();
     numeratorData.content.forEach((d) => {
         if (d.date) {
             numeratorCounts.set(d.date, d.count);
         }
     });
-    const denominatorCounts = new Map<string, number>();
-    denominatorData.content.forEach((d) => {
-        if (d.date) {
-            denominatorCounts.set(d.date, d.count);
-        }
-    });
+    const denominatorCounts = new Map<YearMonthDay, number>();
     const requestData = {
         t: [] as number[],
         n: [] as number[],
@@ -40,7 +41,8 @@ export async function queryRelativeGrowthAdvantage(
     };
     denominatorData.content.forEach((d) => {
         if (d.date) {
-            const t = getDaysInBetween(minDate, d.date);
+            denominatorCounts.set(d.date, d.count);
+            const t = minDate.diff(d.date);
             requestData.t.push(t);
             requestData.n.push(d.count);
             requestData.k.push(numeratorCounts.get(d.date) ?? 0);
@@ -54,7 +56,7 @@ export async function queryRelativeGrowthAdvantage(
             initialCasesWildtype: 1,
             reproductionNumberWildtype: 1,
             tStart: 0,
-            tEnd: getDaysInBetween(minDate, maxDate),
+            tEnd: minDate.diff(maxDate),
         },
         data: requestData,
     };
@@ -105,7 +107,7 @@ export async function queryRelativeGrowthAdvantage(
         ...responseData,
         estimatedProportions: {
             ...responseData.estimatedProportions,
-            t: responseData.estimatedProportions.t.map((t) => addDays(minDate, t)),
+            t: responseData.estimatedProportions.t.map((t) => minDate.addDays(t)),
         },
     };
     const observedProportions = transformed.estimatedProportions.t.map(
@@ -115,5 +117,13 @@ export async function queryRelativeGrowthAdvantage(
     return {
         ...transformed,
         observedProportions,
+    };
+}
+
+function toYearMonthDay(d: { date: string | null; count: number }) {
+    const temporalCache = TemporalCache.getInstance();
+    return {
+        date: d.date ? temporalCache.getYearMonthDay(d.date) : null,
+        count: d.count,
     };
 }

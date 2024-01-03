@@ -3,12 +3,11 @@ import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { MapOperator } from '../operator/MapOperator';
 import { GroupByAndSumOperator } from '../operator/GroupByAndSumOperator';
 import { FillMissingOperator } from '../operator/FillMissingOperator';
-import { getMinMaxString } from '../utils';
-import { generateAllInRange } from '../temporal-utils';
 import { SortOperator } from '../operator/SortOperator';
 import { Operator } from '../operator/Operator';
 import { SlidingOperator } from '../operator/SlidingOperator';
 import { DivisionOperator } from '../operator/DivisionOperator';
+import { compareTemporal, generateAllInRange, getMinMaxTemporal, Temporal, TemporalCache } from '../temporal';
 
 export function queryPrevalenceOverTime(
     numerator: NamedLapisFilter | NamedLapisFilter[],
@@ -47,12 +46,12 @@ function fetchAndPrepare(filter: LapisFilter, granularity: TemporalGranularity, 
     const fillData = new FillMissingOperator(
         groupByData,
         'dateRange',
-        getMinMaxString,
-        (min, max) => generateAllInRange(min, max, granularity),
+        getMinMaxTemporal,
+        generateAllInRange,
         (key) => ({ dateRange: key, count: 0 }),
     );
     const sortData = new SortOperator(fillData, dateRangeCompare);
-    let smoothData: Operator<{ dateRange: string | null; count: number }> = sortData;
+    let smoothData: Operator<{ dateRange: Temporal | null; count: number }> = sortData;
     if (smoothingWindow >= 1) {
         smoothData = new SlidingOperator(sortData, smoothingWindow, averageSmoothing);
     }
@@ -60,19 +59,18 @@ function fetchAndPrepare(filter: LapisFilter, granularity: TemporalGranularity, 
 }
 
 function mapDateToGranularityRange(d: { date: string | null; count: number }, granularity: TemporalGranularity) {
-    let dateRange: string | null = null;
+    let dateRange: Temporal | null = null;
     if (d.date !== null) {
+        const date = TemporalCache.getInstance().getYearMonthDay(d.date);
         switch (granularity) {
             case 'day':
-                dateRange = d.date;
+                dateRange = date;
                 break;
             case 'month':
-                dateRange = `${new Date(d.date).getFullYear()}-${(new Date(d.date).getMonth() + 1)
-                    .toString()
-                    .padStart(2, '0')}`;
+                dateRange = date.month;
                 break;
             case 'year':
-                dateRange = new Date(d.date).getFullYear().toString();
+                dateRange = date.year;
                 break;
         }
     }
@@ -82,17 +80,17 @@ function mapDateToGranularityRange(d: { date: string | null; count: number }, gr
     };
 }
 
-function dateRangeCompare(a: { dateRange: string | null }, b: { dateRange: string | null }) {
+function dateRangeCompare(a: { dateRange: Temporal | null }, b: { dateRange: Temporal | null }) {
     if (a.dateRange === null) {
         return 1;
     }
     if (b.dateRange === null) {
         return -1;
     }
-    return a.dateRange.localeCompare(b.dateRange);
+    return compareTemporal(a.dateRange, b.dateRange);
 }
 
-function averageSmoothing(slidingWindow: { dateRange: string | null; count: number }[]) {
+function averageSmoothing(slidingWindow: { dateRange: Temporal | null; count: number }[]) {
     const average = slidingWindow.reduce((acc, curr) => acc + curr.count, 0) / slidingWindow.length;
     const centerIndex = Math.floor(slidingWindow.length / 2);
     return { dateRange: slidingWindow[centerIndex].dateRange, count: average };
