@@ -11,7 +11,7 @@ type Locations = {
 };
 
 /**
- * @fires location-changed - Indicates when the location changes
+ * @fires gs-location-changed - Indicates when the location changes
  */
 @customElement('gs-location-filter')
 export class LocationFilter extends LitElement {
@@ -70,11 +70,17 @@ export class LocationFilter extends LitElement {
     submit(data: Locations) {
         if (data.regions.includes(this.value)) {
             this.dispatchEvent(
-                new CustomEvent('location-changed', { detail: { region: this.value, country: undefined } }),
+                new CustomEvent('gs-location-changed', {
+                    detail: { region: this.value, country: undefined },
+                    bubbles: true,
+                }),
             );
         } else if (data.countries.includes(this.value)) {
             this.dispatchEvent(
-                new CustomEvent('location-changed', { detail: { region: undefined, country: this.value } }),
+                new CustomEvent('gs-location-changed', {
+                    detail: { region: undefined, country: this.value },
+                    bubbles: true,
+                }),
             );
         }
     }

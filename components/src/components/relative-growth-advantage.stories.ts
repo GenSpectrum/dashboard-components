@@ -6,6 +6,7 @@ import './relative-growth-advantage';
 import { RelativeGrowthAdvantageProps } from './relative-growth-advantage';
 
 const meta: Meta<RelativeGrowthAdvantageProps> = {
+    title: 'Visualization/Relative growth advantage',
     component: 'gs-relative-growth-advantage',
     argTypes: {
         numerator: { control: 'object' },

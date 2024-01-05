@@ -6,6 +6,7 @@ import './mutations';
 import { MutationsProps } from './mutations';
 
 const meta: Meta<MutationsProps> = {
+    title: 'Visualization/Mutations',
     component: 'gs-mutations',
     argTypes: {
         variant: { control: 'object' },

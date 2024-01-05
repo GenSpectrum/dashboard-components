@@ -6,6 +6,7 @@ import './prevalence-over-time';
 import { PrevalenceOverTimeProps } from './prevalence-over-time';
 
 const meta: Meta<PrevalenceOverTimeProps> = {
+    title: 'Visualization/Prevalence over time',
     component: 'gs-prevalence-over-time',
     argTypes: {
         numerator: { control: 'object' },
