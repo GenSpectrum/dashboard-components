@@ -16,6 +16,6 @@ describe('MutationCache.getMutation', () => {
 
     it('should parse insertion', () => {
         expect(cache.getMutation('ins_1:A')).deep.equal(new Insertion(undefined, 1, 'A'));
-        expect(cache.getMutation('ins_seg1:A')).deep.equal(new Insertion('seg1', 1, 'A'));
+        expect(cache.getMutation('ins_seg1:1:A')).deep.equal(new Insertion('seg1', 1, 'A'));
     });
 });
