@@ -56,6 +56,7 @@ export class RelativeGrowthAdvantageChart extends LitElement {
                 ],
             },
             options: {
+                animation: false,
                 scales: {
                     y: {
                         beginAtZero: true,
