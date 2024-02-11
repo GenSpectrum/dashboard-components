@@ -37,8 +37,8 @@ const Template: StoryObj<RelativeGrowthAdvantageProps> = {
 export const Default = {
     ...Template,
     args: {
-        numerator: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
-        denominator: { country: 'Switzerland', dateTo: '2022-01-01' },
+        numerator: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
+        denominator: { country: 'Switzerland', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
         generationTime: 7,
         views: ['line'],
     },

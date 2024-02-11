@@ -65,7 +65,11 @@ export class RelativeGrowthAdvantage extends LitElement {
                         >${this.views.map(
                             (view, index) => html`
                                 ${view === 'line'
-                                    ? html`<gs-component-tab slot="content" title="Line chart" .active="${index === 0}">
+                                    ? html`<gs-component-tab
+                                              slot="content"
+                                              title="Logistic regression"
+                                              .active="${index === 0}"
+                                          >
                                               <gs-relative-growth-advantage-chart
                                                   .data=${{
                                                       ...data.estimatedProportions,
