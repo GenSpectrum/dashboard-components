@@ -84,7 +84,7 @@ export class YearMonthDay {
         return this.cache.getYearMonthDay(s);
     }
 
-    diff(other: YearMonthDay): number {
+    minus(other: YearMonthDay): number {
         return this.dayjs.diff(other.dayjs, 'day');
     }
 
@@ -126,7 +126,7 @@ export class YearWeek {
         return this.cache.getYearWeek(s);
     }
 
-    diff(other: YearWeek): number {
+    minus(other: YearWeek): number {
         return this.firstDay.dayjs.diff(other.firstDay.dayjs, 'week');
     }
 
@@ -161,7 +161,7 @@ export class YearMonth {
         return this.cache.getYearMonth(s);
     }
 
-    diff(other: YearMonth): number {
+    minus(other: YearMonth): number {
         return this.firstDay.dayjs.diff(other.firstDay.dayjs, 'month');
     }
 
@@ -196,7 +196,7 @@ export class Year {
         return this.cache.getYear(s);
     }
 
-    diff(other: Year): number {
+    minus(other: Year): number {
         return this.firstDay.dayjs.diff(other.firstDay.dayjs, 'year');
     }
 
@@ -210,7 +210,7 @@ export type Temporal = YearMonthDay | YearWeek | YearMonth | Year;
 
 export function generateAllDaysInRange(start: YearMonthDay, end: YearMonthDay): YearMonthDay[] {
     const days = [];
-    const daysInBetween = Math.abs(start.diff(end));
+    const daysInBetween = end.minus(start);
     for (let i = 0; i <= daysInBetween; i++) {
         days.push(start.addDays(i));
     }
@@ -219,7 +219,7 @@ export function generateAllDaysInRange(start: YearMonthDay, end: YearMonthDay): 
 
 export function generateAllWeeksInRange(start: YearWeek, end: YearWeek): YearWeek[] {
     const weeks = [];
-    const weeksInBetween = Math.abs(start.diff(end));
+    const weeksInBetween = end.minus(start);
     for (let i = 0; i <= weeksInBetween; i++) {
         weeks.push(start.addWeeks(i));
     }
@@ -228,7 +228,7 @@ export function generateAllWeeksInRange(start: YearWeek, end: YearWeek): YearWee
 
 export function generateAllMonthsInRange(start: YearMonth, end: YearMonth): YearMonth[] {
     const months = [];
-    const monthsInBetween = Math.abs(start.diff(end));
+    const monthsInBetween = end.minus(start);
     for (let i = 0; i <= monthsInBetween; i++) {
         months.push(start.addMonths(i));
     }
@@ -237,7 +237,7 @@ export function generateAllMonthsInRange(start: YearMonth, end: YearMonth): Year
 
 export function generateAllYearsInRange(start: Year, end: Year): Year[] {
     const years = [];
-    const yearsInBetween = Math.abs(start.diff(end));
+    const yearsInBetween = end.minus(start);
     for (let i = 0; i <= yearsInBetween; i++) {
         years.push(start.addYears(i));
     }
@@ -263,6 +263,22 @@ export function generateAllInRange(start: Temporal | null, end: Temporal | null)
     throw new Error(`Invalid arguments: start and end must be of the same type: ${start}, ${end}`);
 }
 
+export function minusTemporal(a: Temporal, b: Temporal): number {
+    if (a instanceof YearMonthDay && b instanceof YearMonthDay) {
+        return a.minus(b);
+    }
+    if (a instanceof YearWeek && b instanceof YearWeek) {
+        return a.minus(b);
+    }
+    if (a instanceof YearMonth && b instanceof YearMonth) {
+        return a.minus(b);
+    }
+    if (a instanceof Year && b instanceof Year) {
+        return a.minus(b);
+    }
+    throw new Error(`Cannot compare ${a} and ${b}`);
+}
+
 export function compareTemporal(a: Temporal | null, b: Temporal | null): number {
     if (a === null) {
         return 1;
@@ -270,19 +286,14 @@ export function compareTemporal(a: Temporal | null, b: Temporal | null): number 
     if (b === null) {
         return -1;
     }
-    if (a instanceof YearMonthDay && b instanceof YearMonthDay) {
-        return a.text.localeCompare(b.text);
+    const diff = minusTemporal(a, b);
+    if (diff < 0) {
+        return -1;
     }
-    if (a instanceof YearWeek && b instanceof YearWeek) {
-        return a.text.localeCompare(b.text);
+    if (diff > 0) {
+        return 1;
     }
-    if (a instanceof YearMonth && b instanceof YearMonth) {
-        return a.text.localeCompare(b.text);
-    }
-    if (a instanceof Year && b instanceof Year) {
-        return a.text.localeCompare(b.text);
-    }
-    throw new Error(`Cannot compare ${a} and ${b}`);
+    return 0;
 }
 
 export function getMinMaxTemporal(values: Iterable<Temporal | null>): [Temporal, Temporal] | null {
@@ -303,4 +314,20 @@ export function getMinMaxTemporal(values: Iterable<Temporal | null>): [Temporal,
         return null;
     }
     return [min, max];
+}
+
+export function addUnit(temporal: Temporal, amount: number): Temporal {
+    if (temporal instanceof YearMonthDay) {
+        return temporal.addDays(amount);
+    }
+    if (temporal instanceof YearWeek) {
+        return temporal.addWeeks(amount);
+    }
+    if (temporal instanceof YearMonth) {
+        return temporal.addMonths(amount);
+    }
+    if (temporal instanceof Year) {
+        return temporal.addYears(amount);
+    }
+    throw new Error(`Invalid argument: ${temporal}`);
 }

@@ -17,7 +17,7 @@ const meta: Meta<PrevalenceOverTimeProps> = {
         },
         smoothingWindow: { control: 'number' },
         views: {
-            options: ['bar', 'line', 'table'],
+            options: ['bar', 'line', 'bubble', 'table'],
             control: { type: 'check' },
         },
     },
@@ -39,27 +39,27 @@ const Template: StoryObj<PrevalenceOverTimeProps> = {
     `,
 };
 
-export const Monthly = {
+export const TwoVariants = {
     ...Template,
     args: {
         numerator: [
-            { displayName: 'B.1.1.7', country: 'Switzerland', pangoLineage: 'B.1.1.7*', dateTo: '2022-01-01' },
-            { displayName: 'B.1.617.2', country: 'Switzerland', pangoLineage: 'B.1.617.2*', dateTo: '2022-01-01' },
+            { displayName: 'EG', country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' },
+            { displayName: 'JN.1', country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' },
         ],
-        denominator: { country: 'Switzerland', dateTo: '2022-01-01' },
+        denominator: { country: 'USA', dateFrom: '2023-01-01' },
         granularity: 'month',
         smoothingWindow: 0,
-        views: ['bar', 'line', 'table'],
+        views: ['bar', 'line', 'bubble', 'table'],
     },
 };
 
-export const Daily = {
+export const OneVariant = {
     ...Template,
     args: {
-        numerator: { displayName: 'B.1.1.7', country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
-        denominator: { country: 'Switzerland', dateTo: '2022-01-01' },
+        numerator: { displayName: 'EG', country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' },
+        denominator: { country: 'USA', dateFrom: '2023-01-01' },
         granularity: 'day',
         smoothingWindow: 7,
-        views: ['line', 'table'],
+        views: ['bar', 'line', 'bubble', 'table'],
     },
 };

@@ -42,7 +42,7 @@ export async function queryRelativeGrowthAdvantage(
     denominatorData.content.forEach((d) => {
         if (d.date) {
             denominatorCounts.set(d.date, d.count);
-            const t = minDate.diff(d.date);
+            const t = d.date.minus(minDate);
             requestData.t.push(t);
             requestData.n.push(d.count);
             requestData.k.push(numeratorCounts.get(d.date) ?? 0);
@@ -56,7 +56,7 @@ export async function queryRelativeGrowthAdvantage(
             initialCasesWildtype: 1,
             reproductionNumberWildtype: 1,
             tStart: 0,
-            tEnd: minDate.diff(maxDate),
+            tEnd: maxDate.minus(minDate),
         },
         data: requestData,
     };

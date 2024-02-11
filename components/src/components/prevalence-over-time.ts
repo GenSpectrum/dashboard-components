@@ -6,14 +6,15 @@ import './container/component-tab';
 import './container/component-toolbar';
 import './container/component-toolbar-button';
 import './container/component-info';
-import './prevalence-over-time-chart';
+import './prevalence-over-time-line-bar-chart';
+import './prevalence-over-time-bubble-chart';
 import './prevalence-over-time-table';
 import { type NamedLapisFilter, TemporalGranularity } from '../types';
 import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
 import { queryPrevalenceOverTime } from '../query/queryPrevalenceOverTime';
 
-type View = 'bar' | 'line' | 'table';
+type View = 'bar' | 'line' | 'bubble' | 'table';
 
 export type PrevalenceOverTimeProps = {
     numerator: NamedLapisFilter | NamedLapisFilter[];
@@ -41,7 +42,7 @@ export class PrevalenceOverTime extends LitElement {
     smoothingWindow: number = 0;
 
     @property({ type: Object })
-    views: View[] = ['bar', 'line', 'table'];
+    views: View[] = ['bar', 'line', 'bubble', 'table'];
 
     private fetchingTask = new Task(this, {
         task: async ([lapis, numerator, denominator, granularity, smoothingWindow], { signal }) => {
@@ -65,10 +66,10 @@ export class PrevalenceOverTime extends LitElement {
                         (view, index) => html`
                             ${view === 'bar'
                                 ? html`<gs-component-tab slot="content" title="Bar chart" .active="${index === 0}">
-                                          <gs-prevalence-over-time-chart
+                                          <gs-prevalence-over-time-line-bar-chart
                                               .data=${data}
                                               type="bar"
-                                          ></gs-prevalence-over-time-chart>
+                                          ></gs-prevalence-over-time-line-bar-chart>
                                       </gs-component-tab>
                                       <gs-component-toolbar slot="toolbar" .active="${index === 0}">
                                           <gs-component-toolbar-button>Linear</gs-component-toolbar-button>
@@ -82,10 +83,25 @@ export class PrevalenceOverTime extends LitElement {
                                 : ''}
                             ${view === 'line'
                                 ? html`<gs-component-tab slot="content" title="Line chart" .active="${index === 0}">
-                                          <gs-prevalence-over-time-chart
+                                          <gs-prevalence-over-time-line-bar-chart
                                               .data=${data}
                                               type="line"
-                                          ></gs-prevalence-over-time-chart>
+                                          ></gs-prevalence-over-time-line-bar-chart>
+                                      </gs-component-tab>
+                                      <gs-component-toolbar slot="toolbar" .active="${index === 0}">
+                                          test2
+                                      </gs-component-toolbar>
+                                      <gs-component-info slot="info">
+                                          <p>test2</p>
+                                      </gs-component-info> `
+                                : ''}
+                            ${view === 'bubble'
+                                ? html`<gs-component-tab slot="content" title="Bubble chart" .active="${index === 0}">
+                                          <gs-prevalence-over-time-bubble-chart
+                                              .data=${data}
+                                              .granularity=${this.granularity}
+                                              type="line"
+                                          ></gs-prevalence-over-time-bubble-chart>
                                       </gs-component-tab>
                                       <gs-component-toolbar slot="toolbar" .active="${index === 0}">
                                           test2

@@ -27,7 +27,15 @@ export function queryPrevalenceOverTime(
     const denominatorData = fetchAndPrepare(denominator, granularity, smoothingWindow);
     const subQueries = numerators.map(async (n) => {
         const numeratorData = fetchAndPrepare(n, granularity, smoothingWindow);
-        const divide = new DivisionOperator(numeratorData, denominatorData, 'dateRange', 'count', 'prevalence');
+        const divide = new DivisionOperator(
+            numeratorData,
+            denominatorData,
+            'dateRange',
+            'count',
+            'prevalence',
+            'count',
+            'total',
+        );
         const d = await divide.evaluate(lapis, signal);
         return {
             displayName: n.displayName,
