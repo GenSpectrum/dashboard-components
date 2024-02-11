@@ -71,11 +71,11 @@ export class YearMonthDay {
     }
 
     get month(): YearMonth {
-        return this.cache.getYearMonth(`${this.yearNumber}-${this.monthNumber}`);
+        return this.cache.getYearMonth(this.dayjs.format('YYYY-MM'));
     }
 
     get week(): YearWeek {
-        return this.cache.getYearWeek(this.dayjs.format('YYYY-WW'));
+        return this.cache.getYearWeek(this.dayjs.format('GGGG-WW'));
     }
 
     addDays(days: number): YearMonthDay {
@@ -85,7 +85,7 @@ export class YearMonthDay {
     }
 
     diff(other: YearMonthDay): number {
-        return Math.abs(this.dayjs.diff(other.dayjs, 'day'));
+        return this.dayjs.diff(other.dayjs, 'day');
     }
 
     static parse(s: string, cache: TemporalCache): YearMonthDay {
@@ -148,7 +148,7 @@ export class YearMonth {
     }
 
     get firstDay(): YearMonthDay {
-        return this.cache.getYearMonthDay(`${this.yearNumber}-${this.monthNumber}-01`);
+        return this.cache.getYearMonthDay(dayjs(`${this.yearNumber}-${this.monthNumber}-01`).format('YYYY-MM-DD'));
     }
 
     get year(): Year {
@@ -210,7 +210,7 @@ export type Temporal = YearMonthDay | YearWeek | YearMonth | Year;
 
 export function generateAllDaysInRange(start: YearMonthDay, end: YearMonthDay): YearMonthDay[] {
     const days = [];
-    const daysInBetween = start.diff(end);
+    const daysInBetween = Math.abs(start.diff(end));
     for (let i = 0; i <= daysInBetween; i++) {
         days.push(start.addDays(i));
     }
@@ -219,7 +219,7 @@ export function generateAllDaysInRange(start: YearMonthDay, end: YearMonthDay): 
 
 export function generateAllWeeksInRange(start: YearWeek, end: YearWeek): YearWeek[] {
     const weeks = [];
-    const weeksInBetween = start.diff(end);
+    const weeksInBetween = Math.abs(start.diff(end));
     for (let i = 0; i <= weeksInBetween; i++) {
         weeks.push(start.addWeeks(i));
     }
@@ -228,7 +228,7 @@ export function generateAllWeeksInRange(start: YearWeek, end: YearWeek): YearWee
 
 export function generateAllMonthsInRange(start: YearMonth, end: YearMonth): YearMonth[] {
     const months = [];
-    const monthsInBetween = start.diff(end);
+    const monthsInBetween = Math.abs(start.diff(end));
     for (let i = 0; i <= monthsInBetween; i++) {
         months.push(start.addMonths(i));
     }
@@ -237,7 +237,7 @@ export function generateAllMonthsInRange(start: YearMonth, end: YearMonth): Year
 
 export function generateAllYearsInRange(start: Year, end: Year): Year[] {
     const years = [];
-    const yearsInBetween = start.diff(end);
+    const yearsInBetween = Math.abs(start.diff(end));
     for (let i = 0; i <= yearsInBetween; i++) {
         years.push(start.addYears(i));
     }
