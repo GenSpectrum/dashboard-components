@@ -65,7 +65,7 @@ export class PrevalenceOverTime extends LitElement {
                     ${this.views.map(
                         (view, index) => html`
                             ${view === 'bar'
-                                ? html`<gs-component-tab slot="content" title="Bar chart" .active="${index === 0}">
+                                ? html`<gs-component-tab slot="content" title="Bar" .active="${index === 0}">
                                           <gs-prevalence-over-time-line-bar-chart
                                               .data=${data}
                                               type="bar"
@@ -82,7 +82,7 @@ export class PrevalenceOverTime extends LitElement {
                                       </gs-component-info> `
                                 : ''}
                             ${view === 'line'
-                                ? html`<gs-component-tab slot="content" title="Line chart" .active="${index === 0}">
+                                ? html`<gs-component-tab slot="content" title="Line" .active="${index === 0}">
                                           <gs-prevalence-over-time-line-bar-chart
                                               .data=${data}
                                               type="line"
@@ -96,7 +96,7 @@ export class PrevalenceOverTime extends LitElement {
                                       </gs-component-info> `
                                 : ''}
                             ${view === 'bubble'
-                                ? html`<gs-component-tab slot="content" title="Bubble chart" .active="${index === 0}">
+                                ? html`<gs-component-tab slot="content" title="Bubble" .active="${index === 0}">
                                           <gs-prevalence-over-time-bubble-chart
                                               .data=${data}
                                               .granularity=${this.granularity}
