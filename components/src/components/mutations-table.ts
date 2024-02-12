@@ -5,12 +5,12 @@ import { MutationEntry } from '../operator/FetchMutationsOperator';
 
 @customElement('gs-mutations-table')
 export class MutationsTable extends LitElement {
-    @property()
+    @property({ type: Object })
     data: Dataset<MutationEntry> | null = null;
 
     override render() {
         if (this.data === null) {
-            return html`<div>Error: No data</div>`;
+            return html` <div>Error: No data</div>`;
         }
 
         return html`
@@ -26,7 +26,7 @@ export class MutationsTable extends LitElement {
                 <tbody>
                     ${this.data.content.map((d) => {
                         if (d.type === 'substitution') {
-                            return html`<tr>
+                            return html` <tr>
                                 <td>${d.mutation}</td>
                                 <td>Substitution</td>
                                 <td>${d.count}</td>
@@ -34,7 +34,7 @@ export class MutationsTable extends LitElement {
                             </tr>`;
                         }
                         if (d.type === 'deletion') {
-                            return html`<tr>
+                            return html` <tr>
                                 <td>${d.mutation}</td>
                                 <td>Deletion</td>
                                 <td>${d.count}</td>
@@ -42,7 +42,7 @@ export class MutationsTable extends LitElement {
                             </tr>`;
                         }
                         if (d.type === 'insertion') {
-                            return html`<tr>
+                            return html` <tr>
                                 <td>${d.mutation}</td>
                                 <td>Insertion</td>
                                 <td>${d.count}</td>

@@ -13,6 +13,7 @@ import { type NamedLapisFilter, TemporalGranularity } from '../types';
 import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
 import { queryPrevalenceOverTime } from '../query/queryPrevalenceOverTime';
+import { Temporal } from '../temporal';
 
 type View = 'bar' | 'line' | 'bubble' | 'table';
 
@@ -41,7 +42,7 @@ export class PrevalenceOverTime extends LitElement {
     @property({ type: Number })
     smoothingWindow: number = 0;
 
-    @property({ type: Object })
+    @property({ type: Array })
     views: View[] = ['bar', 'line', 'bubble', 'table'];
 
     private fetchingTask = new Task(this, {
@@ -58,7 +59,15 @@ export class PrevalenceOverTime extends LitElement {
                 <h1>Prevalence over time</h1>
                 Loading...
             `,
-            complete: (data) => html`
+            complete: (
+                // https://github.com/runem/lit-analyzer/issues/154
+                // lit-analyzer complains that the generic types don't match, although they do.
+                // it works, if we resolve the generic type here (TS will complain if the type here is wrong).
+                data: {
+                    displayName: string;
+                    content: { count: number; prevalence: number; total: number; dateRange: Temporal | null }[];
+                }[],
+            ) => html`
                 <h1>Prevalence over time</h1>
 
                 <gs-component-container>
@@ -100,7 +109,6 @@ export class PrevalenceOverTime extends LitElement {
                                           <gs-prevalence-over-time-bubble-chart
                                               .data=${data}
                                               .granularity=${this.granularity}
-                                              type="line"
                                           ></gs-prevalence-over-time-bubble-chart>
                                       </gs-component-tab>
                                       <gs-component-toolbar slot="toolbar" .active="${index === 0}">

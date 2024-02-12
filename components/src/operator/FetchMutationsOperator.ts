@@ -2,6 +2,7 @@ import { Operator } from './Operator';
 import { Dataset } from './Dataset';
 import { LapisFilter, SequenceType } from '../types';
 import { Deletion, Insertion, MutationCache, Substitution } from '../mutations';
+import { mapLapisFilterToUrlParams } from '../utils';
 
 export class FetchMutationsOperator implements Operator<MutationEntry> {
     constructor(
@@ -46,7 +47,7 @@ export class FetchMutationsOperator implements Operator<MutationEntry> {
         signal?: AbortSignal,
     ): Promise<{ mutation: string; count: number; proportion: number }[]> {
         const endpoint = (this.sequenceType === 'nucleotide' ? 'nuc' : 'aa') + '-mutations';
-        const params = new URLSearchParams(this.filter);
+        const params = mapLapisFilterToUrlParams(this.filter);
         if (this.minProportion !== undefined) {
             params.set('minProportion', this.minProportion.toString());
         }
@@ -58,7 +59,7 @@ export class FetchMutationsOperator implements Operator<MutationEntry> {
         signal?: AbortSignal,
     ): Promise<{ insertion: string; count: number }[]> {
         const endpoint = (this.sequenceType === 'nucleotide' ? 'nuc' : 'aa') + '-insertions';
-        const params = new URLSearchParams(this.filter);
+        const params = mapLapisFilterToUrlParams(this.filter);
         return (await (await fetch(`${lapis}/${endpoint}?${params.toString()}`, { signal })).json()).data;
     }
 }

@@ -1,13 +1,14 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
 import { Chart, registerables } from 'chart.js';
+import { Temporal } from '../temporal';
 
 @customElement('gs-prevalence-over-time-line-bar-chart')
 export class PrevalenceOverTimeLineBarChart extends LitElement {
-    @property()
+    @property({ type: Array })
     data: {
         displayName: string;
-        content: { dateRange: number | null; prevalence: number }[];
+        content: { dateRange: Temporal | null; prevalence: number }[];
     }[] = [];
 
     @property()
@@ -19,10 +20,10 @@ export class PrevalenceOverTimeLineBarChart extends LitElement {
         new Chart(ctx, {
             type: this.type,
             data: {
-                labels: this.data[0].content.map((d) => d.dateRange ?? 'Unknown'),
-                datasets: this.data.map((d) => ({
-                    label: d.displayName,
-                    data: d.content.map((d2) => d2.prevalence),
+                labels: this.data[0].content.map((dateRange) => dateRange.dateRange ?? 'Unknown'),
+                datasets: this.data.map((displayName) => ({
+                    label: displayName.displayName,
+                    data: displayName.content.map((contentItem) => contentItem.prevalence),
                     borderWidth: 1,
                     pointRadius: 0,
                 })),

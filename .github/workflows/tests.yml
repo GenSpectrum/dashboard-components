@@ -1,0 +1,51 @@
+name: Tests
+
+on: [push]
+
+defaults:
+  run:
+    working-directory: ./components
+
+jobs:
+  checks:
+    name: Run Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
+
+      - name: Install npm packages
+        run: npm ci
+
+      - name: Get Installed Playwright Version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('components/package-lock.json').packages['node_modules/@playwright/test'].version)")" >> $GITHUB_ENV
+
+      - name: Cache Playwright Browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Install Playwright Browsers and System Dependencies
+        run: npx playwright install --with-deps
+
+      - name: Check format
+        run: npm run check-format
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Run test
+        run: npm run test

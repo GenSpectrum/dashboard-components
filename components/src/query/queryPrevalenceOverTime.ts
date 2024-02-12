@@ -25,8 +25,8 @@ export function queryPrevalenceOverTime(
     }
 
     const denominatorData = fetchAndPrepare(denominator, granularity, smoothingWindow);
-    const subQueries = numerators.map(async (n) => {
-        const numeratorData = fetchAndPrepare(n, granularity, smoothingWindow);
+    const subQueries = numerators.map(async (namedLapisFilter) => {
+        const numeratorData = fetchAndPrepare(namedLapisFilter, granularity, smoothingWindow);
         const divide = new DivisionOperator(
             numeratorData,
             denominatorData,
@@ -36,10 +36,10 @@ export function queryPrevalenceOverTime(
             'count',
             'total',
         );
-        const d = await divide.evaluate(lapis, signal);
+        const dataset = await divide.evaluate(lapis, signal);
         return {
-            displayName: n.displayName,
-            content: d.content,
+            displayName: namedLapisFilter.displayName,
+            content: dataset.content,
         };
     });
     return Promise.all(subQueries);

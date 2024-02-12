@@ -102,8 +102,8 @@ export class ComponentContainer extends LitElement {
                 </div>
                 <div
                     class="toolbar"
-                    @toolbarclick="${(e: any) => {
-                        if (e.detail === 'info') {
+                    @toolbarclick="${(event: CustomEvent) => {
+                        if (event.detail === 'info') {
                             this.toggleInfo();
                         }
                     }}"

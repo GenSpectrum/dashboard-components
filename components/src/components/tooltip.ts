@@ -6,10 +6,8 @@ import { customElement, property } from 'lit/decorators.js';
 import { Directive, DirectiveParameters, directive } from 'lit/directive.js';
 import { ElementPart, render } from 'lit';
 
-// Positioning library
 import { computePosition, autoPlacement, offset, shift } from '@floating-ui/dom';
 
-// Events to turn on/off the tooltip
 const enterEvents = ['click'];
 const leaveEvents = ['click'];
 
@@ -133,8 +131,9 @@ class TooltipDirective extends Directive {
     part?: ElementPart;
     tooltip?: SimpleTooltip;
 
-    // @ts-ignore
-    override render(tooltipContent: unknown = '') {}
+    override render(tooltipContent: unknown = '') {
+        this.tooltipContent = tooltipContent;
+    }
 
     override update(part: ElementPart, [tooltipContent]: DirectiveParameters<this>) {
         this.tooltipContent = tooltipContent;

@@ -1,4 +1,4 @@
-export type LapisFilter = Record<string, any>;
+export type LapisFilter = Record<string, string | number | null | boolean>;
 
 export type NamedLapisFilter = LapisFilter & { displayName: string };
 
