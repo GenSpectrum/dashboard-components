@@ -4,7 +4,7 @@ Get started for developers:
 
 ```bash
 npm run build:watch
-npn run serve
+npm run serve
 npm run storybook
 ```
 

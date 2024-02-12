@@ -4,7 +4,7 @@ import './component-toolbar-button';
 import { tooltip } from '../tooltip';
 
 @customElement('gs-component-toolbar-button-checkboxes')
-export class ComponentToolbarButton extends LitElement {
+export class ComponentToolbarButtonCheckboxes extends LitElement {
     static override styles = css`
         .options {
             display: flex;

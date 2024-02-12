@@ -10,7 +10,7 @@ class App extends LitElement {
     lapis: string = '';
 
     override render() {
-        return html`<slot></slot>`;
+        return html`<slot />`;
     }
 }
 
