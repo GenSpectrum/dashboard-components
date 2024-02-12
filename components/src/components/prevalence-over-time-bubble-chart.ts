@@ -7,7 +7,7 @@ import { getMinMaxNumber } from '../utils';
 
 @customElement('gs-prevalence-over-time-bubble-chart')
 export class PrevalenceOverTimeBubbleChart extends LitElement {
-    @property()
+    @property({ type: Array })
     data: {
         displayName: string;
         content: { dateRange: Temporal | null; prevalence: number; count: number; total: number }[];

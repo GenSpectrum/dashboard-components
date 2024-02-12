@@ -1,13 +1,14 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
 import { TemporalGranularity } from '../types';
+import { Temporal } from '../temporal';
 
 @customElement('gs-prevalence-over-time-table')
 export class PrevalenceOverTimeTable extends LitElement {
-    @property()
+    @property({ type: Array })
     data: {
         displayName: string;
-        content: { dateRange: number | null; prevalence: number }[];
+        content: { dateRange: Temporal | null; prevalence: number }[];
     }[] = [];
 
     @property({ type: String })

@@ -13,19 +13,23 @@ export class MutationsGrid extends LitElement {
             border-spacing: 0;
             border-collapse: collapse;
         }
+
         tr {
             height: 30px;
         }
+
         th {
             position: sticky;
             top: 0;
             background: white;
         }
+
         td {
             width: 60px;
             text-align: center;
             border: 1px solid gray;
         }
+
         td.position {
             width: unset;
             text-align: left;
@@ -34,26 +38,30 @@ export class MutationsGrid extends LitElement {
             left: 0;
             background: white;
         }
+
         td.reference {
             color: lightgray;
         }
+
         td.low {
             color: lightgray;
         }
     `;
 
-    @property()
+    @property({ type: Object })
     data: Dataset<MutationEntry> | null = null;
 
-    @property()
+    @property({ type: String })
     sequenceType: SequenceType = 'nucleotide';
 
     override render() {
         if (this.data === null) {
-            return html`<div>Error: No data</div>`;
+            return html` <div>Error: No data</div>`;
         }
         const bs = bases[this.sequenceType];
-        let filtered = this.data.content.filter((d): d is SubstitutionEntry | DeletionEntry => d.type !== 'insertion');
+        const filtered = this.data.content.filter(
+            (mutationEntry): mutationEntry is SubstitutionEntry | DeletionEntry => mutationEntry.type !== 'insertion',
+        );
         const grouped = new Map<string, Map<string, number>>();
         const referenceBases = new Map<string, string>();
         for (const d of filtered) {
@@ -100,23 +108,25 @@ export class MutationsGrid extends LitElement {
                 <thead>
                     <tr>
                         <th class="position">Pos</th>
-                        ${bs.map((b) => html`<th>${b}</th>`)}
+                        ${bs.map((b) => html` <th>${b}</th>`)}
                     </tr>
                 </thead>
                 <tbody>
                     ${ordered.map((d) => {
-                        return html`<tr>
-                            <td class="position">${d.position}</td>
-                            ${bs.map(
-                                (b) =>
-                                    html` <td
-                                        class=${(referenceBases.get(d.position) === b ? 'reference ' : '') +
-                                        (d.proportions.get(b)! < 0.0001 ? 'low' : '')}
-                                    >
-                                        ${formatProportion(d.proportions.get(b)!)}
-                                    </td>`,
-                            )}
-                        </tr> `;
+                        return html`
+                            <tr>
+                                <td class="position">${d.position}</td>
+                                ${bs.map(
+                                    (b) =>
+                                        html` <td
+                                            class=${(referenceBases.get(d.position) === b ? 'reference ' : '') +
+                                            (d.proportions.get(b)! < 0.0001 ? 'low' : '')}
+                                        >
+                                            ${formatProportion(d.proportions.get(b)!)}
+                                        </td>`,
+                                )}
+                            </tr>
+                        `;
                     })}
                 </tbody>
             </table>

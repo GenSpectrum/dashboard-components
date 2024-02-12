@@ -35,7 +35,7 @@ export class RelativeGrowthAdvantage extends LitElement {
     @property({ type: Number })
     generationTime: number = 7;
 
-    @property({ type: Object })
+    @property({ type: Array })
     views: View[] = ['line'];
 
     private fetchingTask = new Task(this, {
@@ -75,7 +75,6 @@ export class RelativeGrowthAdvantage extends LitElement {
                                                       ...data.estimatedProportions,
                                                       observed: data.observedProportions,
                                                   }}
-                                                  type="bar"
                                               ></gs-relative-growth-advantage-chart>
                                               <div>
                                                   Advantage: ${(data.params.fd.value * 100).toFixed(2)}%

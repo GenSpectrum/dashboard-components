@@ -15,7 +15,7 @@ export class ComponentToolbarButtonCheckboxes extends LitElement {
     @property({ type: Array })
     options: string[] = [];
 
-    @property({ type: Function })
+    @property({ attribute: false })
     renderButtonLabel: (options: string[]) => string = (options) => options.join(', ');
 
     @property({ type: Array })
@@ -24,7 +24,7 @@ export class ComponentToolbarButtonCheckboxes extends LitElement {
     override render() {
         const tooltipContent = html`
             <div class="options">
-                ${this.options.map(
+                ${this.options?.map(
                     (option) => html`
                         <label>
                             <input

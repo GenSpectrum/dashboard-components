@@ -42,7 +42,7 @@ export class Mutations extends LitElement {
     @property({ type: String })
     sequenceType: SequenceType = 'nucleotide';
 
-    @property({ type: Object })
+    @property({ type: Array })
     views: View[] = ['table', 'grid'];
 
     // TODO undefined means all segments, because I don't know how to properly initialize it with all segments.
@@ -52,7 +52,12 @@ export class Mutations extends LitElement {
     private fetchingTask = new Task(this, {
         task: async ([lapis, variant, sequenceType], { signal }) => {
             const dataset = await queryMutations(variant, sequenceType, lapis, signal);
-            const segments = [...new Set(dataset.content.map((d) => d.mutation.segment))];
+
+            const mutationSegments = dataset.content
+                .map((mutationEntry) => mutationEntry.mutation.segment)
+                .filter((segment): segment is string => segment !== undefined);
+
+            const segments = [...new Set(mutationSegments)];
             return [dataset, segments] as const;
         },
         args: () => [this.lapis, this.variant, this.sequenceType, this.views] as const,
@@ -71,6 +76,7 @@ export class Mutations extends LitElement {
                         content: data.content.filter((d) => this.selectedSegments!.includes(d.mutation.segment!)),
                     };
                 }
+
                 const toolbar = (index: number) => html`
                     <gs-component-toolbar slot="toolbar" .active="${index === 0}">
                         ${segments.length > 1
@@ -102,16 +108,19 @@ export class Mutations extends LitElement {
                         ${this.views.map(
                             (view, index) => html`
                                 ${view === 'table'
-                                    ? html`<gs-component-tab slot="content" title="Table" .active="${index === 0}">
+                                    ? html`
+                                          <gs-component-tab slot="content" title="Table" .active="${index === 0}">
                                               <div class="content">
                                                   <gs-mutations-table .data=${filteredData}></gs-mutations-table>
                                               </div>
                                           </gs-component-tab>
                                           ${toolbar(index)}
-                                          <gs-component-info slot="info"> TODO </gs-component-info> `
+                                          <gs-component-info slot="info"> TODO</gs-component-info>
+                                      `
                                     : ''}
                                 ${view === 'grid'
-                                    ? html`<gs-component-tab slot="content" title="Grid" .active="${index === 0}">
+                                    ? html`
+                                          <gs-component-tab slot="content" title="Grid" .active="${index === 0}">
                                               <div class="content">
                                                   <gs-mutations-grid
                                                       .data=${filteredData}
@@ -120,7 +129,8 @@ export class Mutations extends LitElement {
                                               </div>
                                           </gs-component-tab>
                                           ${toolbar(index)}
-                                          <gs-component-info slot="info"> TODO </gs-component-info> `
+                                          <gs-component-info slot="info"> TODO</gs-component-info>
+                                      `
                                     : ''}
                             `,
                         )}

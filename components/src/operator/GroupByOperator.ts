@@ -11,7 +11,7 @@ export class GroupByOperator<T, S, K extends keyof T> implements Operator<S> {
     async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<S>> {
         const childEvaluated = await this.child.evaluate(lapis, signal);
         const grouped = new Map<T[K], T[]>();
-        for (let row of childEvaluated.content) {
+        for (const row of childEvaluated.content) {
             const key = row[this.field];
             if (!grouped.has(key)) {
                 grouped.set(key, []);
@@ -19,7 +19,7 @@ export class GroupByOperator<T, S, K extends keyof T> implements Operator<S> {
             grouped.get(key)!.push(row);
         }
         const result = new Array<S>();
-        for (let [, values] of grouped) {
+        for (const [, values] of grouped) {
             result.push(this.aggregate(values));
         }
 
