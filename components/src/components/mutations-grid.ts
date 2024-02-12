@@ -108,12 +108,13 @@ export class MutationsGrid extends LitElement {
                         return html`<tr>
                             <td class="position">${d.position}</td>
                             ${bs.map(
-                                (b) => html` <td
-                                    class=${(referenceBases.get(d.position) === b ? 'reference ' : '') +
-                                    (d.proportions.get(b)! < 0.0001 ? 'low' : '')}
-                                >
-                                    ${formatProportion(d.proportions.get(b)!)}
-                                </td>`,
+                                (b) =>
+                                    html` <td
+                                        class=${(referenceBases.get(d.position) === b ? 'reference ' : '') +
+                                        (d.proportions.get(b)! < 0.0001 ? 'low' : '')}
+                                    >
+                                        ${formatProportion(d.proportions.get(b)!)}
+                                    </td>`,
                             )}
                         </tr> `;
                     })}

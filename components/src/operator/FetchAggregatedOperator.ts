@@ -3,7 +3,10 @@ import { Dataset } from './Dataset';
 import { LapisFilter } from '../types';
 
 export class FetchAggregatedOperator<Fields> implements Operator<Fields & { count: number }> {
-    constructor(private filter: LapisFilter, private fields: string[]) {}
+    constructor(
+        private filter: LapisFilter,
+        private fields: string[],
+    ) {}
 
     async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<Fields & { count: number }>> {
         const params = new URLSearchParams(this.filter);

@@ -92,7 +92,11 @@ export class Substitution implements Mutation {
 export class Deletion implements Mutation {
     readonly code = `${this.segment ? this.segment + ':' : ''}${this.ref}${this.position}-`;
 
-    constructor(readonly segment: string | undefined, readonly ref: string, readonly position: number) {}
+    constructor(
+        readonly segment: string | undefined,
+        readonly ref: string,
+        readonly position: number,
+    ) {}
 
     toString() {
         return this.code;
@@ -110,7 +114,11 @@ export class Deletion implements Mutation {
 export class Insertion implements Mutation {
     readonly code = `ins_${this.segment ? this.segment + ':' : ''}${this.position}:${this.value}`;
 
-    constructor(readonly segment: string | undefined, readonly position: number, readonly value: string) {}
+    constructor(
+        readonly segment: string | undefined,
+        readonly position: number,
+        readonly value: string,
+    ) {}
 
     toString() {
         return this.code;

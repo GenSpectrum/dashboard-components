@@ -4,7 +4,11 @@ import { LapisFilter, SequenceType } from '../types';
 import { Deletion, Insertion, MutationCache, Substitution } from '../mutations';
 
 export class FetchMutationsOperator implements Operator<MutationEntry> {
-    constructor(private filter: LapisFilter, private sequenceType: SequenceType, private minProportion?: number) {}
+    constructor(
+        private filter: LapisFilter,
+        private sequenceType: SequenceType,
+        private minProportion?: number,
+    ) {}
 
     async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<MutationEntry>> {
         const [lapisMutations, lapisInsertions] = await Promise.all([
