@@ -20,7 +20,7 @@ export class FillMissingOperator<S, K extends keyof S> implements Operator<S> {
         const [min, max] = minMax;
         const requiredKeys = this.getAllRequiredKeysFn(min, max);
         const content = childEvaluated.content;
-        for (let key of requiredKeys) {
+        for (const key of requiredKeys) {
             if (!existingKeys.has(key)) {
                 content.push(this.defaultValueFn(key));
             }

@@ -8,6 +8,7 @@ export class ComponentToolbar extends LitElement {
         :host {
             display: none;
         }
+
         :host([active]) {
             padding: 2px 2px 2px 0;
             display: flex;
@@ -28,8 +29,9 @@ export class ComponentToolbar extends LitElement {
                     this.dispatchEvent(
                         new CustomEvent('toolbarclick', { detail: 'info', bubbles: true, composed: true }),
                     )}"
-                >&#9432;</gs-component-toolbar-button
             >
+                &#9432;
+            </gs-component-toolbar-button>
         `;
     }
 }
