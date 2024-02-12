@@ -1,6 +1,7 @@
-import * as dayjs from 'dayjs';
-import * as isoWeek from 'dayjs/plugin/isoWeek';
-import * as advancedFormat from 'dayjs/plugin/advancedFormat';
+import dayjs from 'dayjs/esm';
+import isoWeek from 'dayjs/esm/plugin/isoWeek';
+import advancedFormat from 'dayjs/esm/plugin/advancedFormat';
+
 dayjs.extend(isoWeek);
 dayjs.extend(advancedFormat);
 
@@ -95,7 +96,11 @@ export class YearMonthDay {
 }
 
 export class YearWeek {
-    constructor(readonly isoYearNumber: number, readonly isoWeekNumber: number, readonly cache: TemporalCache) {}
+    constructor(
+        readonly isoYearNumber: number,
+        readonly isoWeekNumber: number,
+        readonly cache: TemporalCache,
+    ) {}
 
     get text(): string {
         return this.firstDay.dayjs.format('YYYY-WW');
@@ -137,7 +142,11 @@ export class YearWeek {
 }
 
 export class YearMonth {
-    constructor(readonly yearNumber: number, readonly monthNumber: number, readonly cache: TemporalCache) {}
+    constructor(
+        readonly yearNumber: number,
+        readonly monthNumber: number,
+        readonly cache: TemporalCache,
+    ) {}
 
     get text(): string {
         return this.firstDay.dayjs.format('YYYY-MM');
@@ -172,7 +181,10 @@ export class YearMonth {
 }
 
 export class Year {
-    constructor(readonly year: number, readonly cache: TemporalCache) {}
+    constructor(
+        readonly year: number,
+        readonly cache: TemporalCache,
+    ) {}
 
     get text(): string {
         return this.firstDay.dayjs.format('YYYY');
