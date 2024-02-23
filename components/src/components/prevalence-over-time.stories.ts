@@ -57,8 +57,8 @@ export const TwoVariants = {
 export const OneVariant = {
     ...Template,
     args: {
-        numerator: { displayName: 'EG', country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' },
-        denominator: { country: 'USA', dateFrom: '2023-01-01' },
+        numerator: { displayName: 'EG', country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
+        denominator: { country: 'USA', dateFrom: '2023-10-01' },
         granularity: 'day',
         smoothingWindow: 7,
         views: ['bar', 'line', 'bubble', 'table'],
