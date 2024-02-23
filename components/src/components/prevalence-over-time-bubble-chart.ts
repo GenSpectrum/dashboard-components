@@ -4,6 +4,10 @@ import { Chart, registerables } from 'chart.js';
 import { TemporalGranularity } from '../types';
 import { addUnit, minusTemporal, Temporal } from '../temporal';
 import { getMinMaxNumber } from '../utils';
+import { scaleType } from './container/component-scaling-selector';
+import { LogisticScale } from './charts/LogisticScale';
+
+Chart.register(LogisticScale);
 
 @customElement('gs-prevalence-over-time-bubble-chart')
 export class PrevalenceOverTimeBubbleChart extends LitElement {
@@ -16,26 +20,50 @@ export class PrevalenceOverTimeBubbleChart extends LitElement {
     @property({ type: String })
     granularity: TemporalGranularity = 'day';
 
+    @property()
+    yAxisScaleType: scaleType = 'linear';
+
+    getYAxisScale(scaleType: scaleType) {
+        switch (scaleType) {
+            case 'linear': {
+                return { beginAtZero: true, type: 'linear' as const };
+            }
+            case 'logarithmic': {
+                return { type: 'logarithmic' as const };
+            }
+            case 'logistic':
+                return { type: 'logistic' as const };
+            default:
+                return { beginAtZero: true, type: 'linear' as const };
+        }
+    }
+
+    private chart?: Chart;
+
     override firstUpdated() {
+        const ctx = this.renderRoot.querySelector('canvas')?.getContext('2d');
+        if (!ctx) return;
+
         const firstDate = this.data[0].content[0].dateRange!;
-        const total = this.data.map((d) => d.content.map((d2) => d2.total)).flat();
+        const total = this.data.map((graphData) => graphData.content.map((dataPoint) => dataPoint.total)).flat();
         const [minTotal, maxTotal] = getMinMaxNumber(total)!;
         const scaleBubble = (value: number) => {
             return ((value - minTotal) / (maxTotal - minTotal)) * 4.5 + 0.5;
         };
-        const ctx = this.renderRoot.querySelector('canvas')!.getContext('2d')!;
+
         Chart.register(...registerables);
-        new Chart(ctx, {
+
+        this.chart = new Chart(ctx, {
             type: 'bubble',
             data: {
-                datasets: this.data.map((d) => ({
-                    label: d.displayName,
-                    data: d.content
-                        .filter((d2) => d2.dateRange !== null)
-                        .map((d2) => ({
-                            x: minusTemporal(d2.dateRange!, firstDate),
-                            y: d2.prevalence,
-                            r: scaleBubble(d2.total),
+                datasets: this.data.map((graphData) => ({
+                    label: graphData.displayName,
+                    data: graphData.content
+                        .filter((dataPoint) => dataPoint.dateRange !== null)
+                        .map((dataPoint) => ({
+                            x: minusTemporal(dataPoint.dateRange!, firstDate),
+                            y: dataPoint.prevalence,
+                            r: scaleBubble(dataPoint.total),
                         })),
                     borderWidth: 1,
                     pointRadius: 0,
@@ -49,9 +77,9 @@ export class PrevalenceOverTimeBubbleChart extends LitElement {
                             callback: (value) => addUnit(firstDate, value as number).toString(),
                         },
                     },
-                    y: {
-                        beginAtZero: true,
-                    },
+                    // chart.js typings are not complete with custom scales
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    y: this.getYAxisScale(this.yAxisScaleType) as any,
                 },
                 plugins: {
                     legend: {
@@ -78,6 +106,20 @@ export class PrevalenceOverTimeBubbleChart extends LitElement {
                 },
             },
         });
+    }
+
+    override updated(changedProperties: Map<string | number | symbol, unknown>): void {
+        if (changedProperties.has('yAxisScaleType')) {
+            this.updateChartScale();
+        }
+    }
+
+    updateChartScale(): void {
+        if (!this.chart) return;
+        // chart.js typings are not complete with custom scales
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        this.chart.options.scales!.y = this.getYAxisScale(this.yAxisScaleType) as any;
+        this.chart.update();
     }
 
     override render() {

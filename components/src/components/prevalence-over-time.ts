@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { Task } from '@lit/task';
 import './container/component-container';
 import './container/component-tab';
@@ -9,11 +9,13 @@ import './container/component-info';
 import './prevalence-over-time-line-bar-chart';
 import './prevalence-over-time-bubble-chart';
 import './prevalence-over-time-table';
+import './container/component-scaling-selector';
 import { type NamedLapisFilter, TemporalGranularity } from '../types';
 import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
 import { queryPrevalenceOverTime } from '../query/queryPrevalenceOverTime';
 import { Temporal } from '../temporal';
+import { scaleType } from './container/component-scaling-selector';
 
 type View = 'bar' | 'line' | 'bubble' | 'table';
 
@@ -45,6 +47,13 @@ export class PrevalenceOverTime extends LitElement {
     @property({ type: Array })
     views: View[] = ['bar', 'line', 'bubble', 'table'];
 
+    @state()
+    yAxisScaleType: scaleType = 'linear';
+
+    private setYAxisScaleType = (scaleType: scaleType) => {
+        this.yAxisScaleType = scaleType;
+    };
+
     private fetchingTask = new Task(this, {
         task: async ([lapis, numerator, denominator, granularity, smoothingWindow], { signal }) => {
             return queryPrevalenceOverTime(numerator, denominator, granularity, smoothingWindow, lapis, signal);
@@ -74,52 +83,77 @@ export class PrevalenceOverTime extends LitElement {
                     ${this.views.map(
                         (view, index) => html`
                             ${view === 'bar'
-                                ? html`<gs-component-tab slot="content" title="Bar" .active="${index === 0}">
+                                ? html`
+                                      <gs-component-tab slot="content" title="Bar" .active="${index === 0}">
                                           <gs-prevalence-over-time-line-bar-chart
                                               .data=${data}
                                               type="bar"
+                                              yAxisScaleType=${this.yAxisScaleType}
                                           ></gs-prevalence-over-time-line-bar-chart>
                                       </gs-component-tab>
                                       <gs-component-toolbar slot="toolbar" .active="${index === 0}">
-                                          <gs-component-toolbar-button>Linear</gs-component-toolbar-button>
+                                          <gs-component-scaling-selector
+                                              .setYAxisScaleType=${this.setYAxisScaleType}
+                                              currentScaleType=${this.yAxisScaleType}
+                                          >
+                                          </gs-component-scaling-selector>
                                       </gs-component-toolbar>
-                                      <gs-component-info slot="info">
+                                      <gs-component-info
+                                          slot=" info
+                                        "
+                                      >
                                           <p>
                                               Here, we can provide some info about the chart, the methods, the data,
                                               etc.
                                           </p>
-                                      </gs-component-info> `
+                                      </gs-component-info>
+                                  `
                                 : ''}
                             ${view === 'line'
-                                ? html`<gs-component-tab slot="content" title="Line" .active="${index === 0}">
+                                ? html`
+                                      <gs-component-tab slot="content" title="Line" .active="${index === 0}">
                                           <gs-prevalence-over-time-line-bar-chart
                                               .data=${data}
                                               type="line"
+                                              yAxisScaleType=${this.yAxisScaleType}
                                           ></gs-prevalence-over-time-line-bar-chart>
                                       </gs-component-tab>
                                       <gs-component-toolbar slot="toolbar" .active="${index === 0}">
-                                          test2
+                                          <gs-component-scaling-selector
+                                              .setYAxisScaleType=${this.setYAxisScaleType}
+                                              currentScaleType=${this.yAxisScaleType}
+                                          >
+                                          </gs-component-scaling-selector>
                                       </gs-component-toolbar>
                                       <gs-component-info slot="info">
                                           <p>test2</p>
-                                      </gs-component-info> `
+                                      </gs-component-info>
+                                  `
                                 : ''}
                             ${view === 'bubble'
-                                ? html`<gs-component-tab slot="content" title="Bubble" .active="${index === 0}">
+                                ? html`
+                                      <gs-component-tab slot="content" title="Bubble" .active="${index === 0}">
                                           <gs-prevalence-over-time-bubble-chart
                                               .data=${data}
                                               .granularity=${this.granularity}
+                                              yAxisScaleType=${this.yAxisScaleType}
                                           ></gs-prevalence-over-time-bubble-chart>
                                       </gs-component-tab>
                                       <gs-component-toolbar slot="toolbar" .active="${index === 0}">
-                                          test2
+                                          <gs-component-scaling-selector
+                                              .setYAxisScaleType=${this.setYAxisScaleType}
+                                              currentScaleType=${this.yAxisScaleType}
+                                          >
+                                          </gs-component-scaling-selector>
                                       </gs-component-toolbar>
                                       <gs-component-info slot="info">
                                           <p>test2</p>
-                                      </gs-component-info> `
+                                      </gs-component-info>
+                                  `
                                 : ''}
                             ${view === 'table'
-                                ? html`<gs-component-tab slot="content" title="Table" .active="${index === 0}">
+                                ? html`
+                                      <gs-component-tab slot="content" title="Table" .active="${index === 0}">
                                           <gs-prevalence-over-time-table
                                               .data=${data}
                                               .granularity=${this.granularity}
@@ -130,7 +164,8 @@ export class PrevalenceOverTime extends LitElement {
                                       </gs-component-toolbar>
                                       <gs-component-info slot="info">
                                           <p>test3</p>
-                                      </gs-component-info> `
+                                      </gs-component-info>
+                                  `
                                 : ''}
                         `,
                     )}
