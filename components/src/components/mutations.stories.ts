@@ -4,6 +4,7 @@ import { html } from 'lit';
 import './app';
 import './mutations';
 import { MutationsProps } from './mutations';
+import { LAPIS_URL } from '../constants';
 
 const meta: Meta<MutationsProps> = {
     title: 'Visualization/Mutations',
@@ -25,7 +26,7 @@ export default meta;
 
 const Template: StoryObj<MutationsProps> = {
     render: (args) => html`
-        <gs-app lapis="https://lapis.cov-spectrum.org/open/v1/sample">
+        <gs-app lapis="${LAPIS_URL}">
             <gs-mutations
                 .variant=${args.variant}
                 .sequenceType=${args.sequenceType}
