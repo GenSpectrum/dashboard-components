@@ -4,6 +4,7 @@ import { html } from 'lit';
 import './app';
 import './prevalence-over-time';
 import { PrevalenceOverTimeProps } from './prevalence-over-time';
+import { LAPIS_URL } from '../constants';
 
 const meta: Meta<PrevalenceOverTimeProps> = {
     title: 'Visualization/Prevalence over time',
@@ -27,7 +28,7 @@ export default meta;
 
 const Template: StoryObj<PrevalenceOverTimeProps> = {
     render: (args) => html`
-        <gs-app lapis="https://lapis.cov-spectrum.org/open/v1/sample">
+        <gs-app lapis="${LAPIS_URL}">
             <gs-prevalence-over-time
                 .numerator=${args.numerator}
                 .denominator=${args.denominator}

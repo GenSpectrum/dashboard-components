@@ -4,6 +4,7 @@ import { html } from 'lit';
 import './app';
 import './relative-growth-advantage';
 import { RelativeGrowthAdvantageProps } from './relative-growth-advantage';
+import { LAPIS_URL } from '../constants';
 
 const meta: Meta<RelativeGrowthAdvantageProps> = {
     title: 'Visualization/Relative growth advantage',
@@ -23,7 +24,7 @@ export default meta;
 
 const Template: StoryObj<RelativeGrowthAdvantageProps> = {
     render: (args) => html`
-        <gs-app lapis="https://lapis.cov-spectrum.org/open/v1/sample">
+        <gs-app lapis="${LAPIS_URL}">
             <gs-relative-growth-advantage
                 .numerator=${args.numerator}
                 .denominator=${args.denominator}
