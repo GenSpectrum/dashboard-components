@@ -25,7 +25,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryObj = {
+export const ButtonCheckboxesStory: StoryObj = {
     render: (args) =>
         html` <gs-component-toolbar-button-checkboxes
             .options=${args.options}
@@ -33,10 +33,6 @@ const Template: StoryObj = {
             .selected=${args.selected}
         >
         </gs-component-toolbar-button-checkboxes>`,
-};
-
-export const ButtonCheckboxesStory = {
-    ...Template,
     args: {
         options: ['firstOption', 'secondOption'],
         selected: ['firstOption'],

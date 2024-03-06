@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
 import './container/component-container';
 import './container/component-tab';
@@ -15,7 +15,7 @@ import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
 import { queryPrevalenceOverTime } from '../query/queryPrevalenceOverTime';
 import { Temporal } from '../temporal';
-import { scaleType } from './container/component-scaling-selector';
+import { ScaleType } from './container/component-scaling-selector';
 
 type View = 'bar' | 'line' | 'bubble' | 'table';
 
@@ -47,11 +47,11 @@ export class PrevalenceOverTime extends LitElement {
     @property({ type: Array })
     views: View[] = ['bar', 'line', 'bubble', 'table'];
 
-    @state()
-    yAxisScaleType: scaleType = 'linear';
+    yAxisScaleType: ScaleType[] = ['linear', 'linear', 'linear', 'linear'];
 
-    private setYAxisScaleType = (scaleType: scaleType) => {
-        this.yAxisScaleType = scaleType;
+    private setYAxisScaleType = (scaleType: ScaleType, index: number) => {
+        this.yAxisScaleType[index] = scaleType;
+        this.requestUpdate();
     };
 
     private fetchingTask = new Task(this, {
@@ -61,6 +61,12 @@ export class PrevalenceOverTime extends LitElement {
         args: () =>
             [this.lapis, this.numerator, this.denominator, this.granularity, this.smoothingWindow, this.views] as const,
     });
+
+    override updated() {
+        if (this.views.length !== this.yAxisScaleType.length) {
+            this.yAxisScaleType = this.views.map(() => 'linear' as const);
+        }
+    }
 
     override render() {
         return this.fetchingTask.render({
@@ -88,13 +94,15 @@ export class PrevalenceOverTime extends LitElement {
                                           <gs-prevalence-over-time-line-bar-chart
                                               .data=${data}
                                               type="bar"
-                                              yAxisScaleType=${this.yAxisScaleType}
+                                              yAxisScaleType=${this.yAxisScaleType[index]}
                                           ></gs-prevalence-over-time-line-bar-chart>
                                       </gs-component-tab>
                                       <gs-component-toolbar slot="toolbar" .active="${index === 0}">
                                           <gs-component-scaling-selector
-                                              .setYAxisScaleType=${this.setYAxisScaleType}
-                                              currentScaleType=${this.yAxisScaleType}
+                                              .setYAxisScaleType=${(scaleType: ScaleType) => {
+                                                  this.setYAxisScaleType(scaleType, index);
+                                              }}
+                                              currentScaleType=${this.yAxisScaleType[index]}
                                           >
                                           </gs-component-scaling-selector>
                                       </gs-component-toolbar>
@@ -115,13 +123,15 @@ export class PrevalenceOverTime extends LitElement {
                                           <gs-prevalence-over-time-line-bar-chart
                                               .data=${data}
                                               type="line"
-                                              yAxisScaleType=${this.yAxisScaleType}
+                                              yAxisScaleType=${this.yAxisScaleType[index]}
                                           ></gs-prevalence-over-time-line-bar-chart>
                                       </gs-component-tab>
                                       <gs-component-toolbar slot="toolbar" .active="${index === 0}">
                                           <gs-component-scaling-selector
-                                              .setYAxisScaleType=${this.setYAxisScaleType}
-                                              currentScaleType=${this.yAxisScaleType}
+                                              .setYAxisScaleType=${(scaleType: ScaleType) => {
+                                                  this.setYAxisScaleType(scaleType, index);
+                                              }}
+                                              currentScaleType=${this.yAxisScaleType[index]}
                                           >
                                           </gs-component-scaling-selector>
                                       </gs-component-toolbar>
@@ -136,13 +146,15 @@ export class PrevalenceOverTime extends LitElement {
                                           <gs-prevalence-over-time-bubble-chart
                                               .data=${data}
                                               .granularity=${this.granularity}
-                                              yAxisScaleType=${this.yAxisScaleType}
+                                              yAxisScaleType=${this.yAxisScaleType[index]}
                                           ></gs-prevalence-over-time-bubble-chart>
                                       </gs-component-tab>
                                       <gs-component-toolbar slot="toolbar" .active="${index === 0}">
                                           <gs-component-scaling-selector
-                                              .setYAxisScaleType=${this.setYAxisScaleType}
-                                              currentScaleType=${this.yAxisScaleType}
+                                              .setYAxisScaleType=${(scaleType: ScaleType) => {
+                                                  this.setYAxisScaleType(scaleType, index);
+                                              }}
+                                              currentScaleType=${this.yAxisScaleType[index]}
                                           >
                                           </gs-component-scaling-selector>
                                       </gs-component-toolbar>
