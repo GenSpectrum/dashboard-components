@@ -4,6 +4,4 @@
 /build/
 custom-elements.json
 components.iml
-.env
-componets/storybook-static/
-/storybook-static/*
+storybook-static/

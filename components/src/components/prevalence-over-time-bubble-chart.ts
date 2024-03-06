@@ -4,10 +4,8 @@ import { Chart, registerables } from 'chart.js';
 import { TemporalGranularity } from '../types';
 import { addUnit, minusTemporal, Temporal } from '../temporal';
 import { getMinMaxNumber } from '../utils';
-import { scaleType } from './container/component-scaling-selector';
-import { LogisticScale } from './charts/LogisticScale';
-
-Chart.register(LogisticScale);
+import { getYAxisScale, ScaleType } from './container/component-scaling-selector';
+import { LogitScale } from './charts/LogitScale';
 
 @customElement('gs-prevalence-over-time-bubble-chart')
 export class PrevalenceOverTimeBubbleChart extends LitElement {
@@ -21,28 +19,15 @@ export class PrevalenceOverTimeBubbleChart extends LitElement {
     granularity: TemporalGranularity = 'day';
 
     @property()
-    yAxisScaleType: scaleType = 'linear';
-
-    getYAxisScale(scaleType: scaleType) {
-        switch (scaleType) {
-            case 'linear': {
-                return { beginAtZero: true, type: 'linear' as const };
-            }
-            case 'logarithmic': {
-                return { type: 'logarithmic' as const };
-            }
-            case 'logistic':
-                return { type: 'logistic' as const };
-            default:
-                return { beginAtZero: true, type: 'linear' as const };
-        }
-    }
+    yAxisScaleType: ScaleType = 'linear';
 
     private chart?: Chart;
 
     override firstUpdated() {
         const ctx = this.renderRoot.querySelector('canvas')?.getContext('2d');
-        if (!ctx) return;
+        if (!ctx) {
+            return;
+        }
 
         const firstDate = this.data[0].content[0].dateRange!;
         const total = this.data.map((graphData) => graphData.content.map((dataPoint) => dataPoint.total)).flat();
@@ -51,7 +36,7 @@ export class PrevalenceOverTimeBubbleChart extends LitElement {
             return ((value - minTotal) / (maxTotal - minTotal)) * 4.5 + 0.5;
         };
 
-        Chart.register(...registerables);
+        Chart.register(...registerables, LogitScale);
 
         this.chart = new Chart(ctx, {
             type: 'bubble',
@@ -79,7 +64,7 @@ export class PrevalenceOverTimeBubbleChart extends LitElement {
                     },
                     // chart.js typings are not complete with custom scales
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    y: this.getYAxisScale(this.yAxisScaleType) as any,
+                    y: getYAxisScale(this.yAxisScaleType) as any,
                 },
                 plugins: {
                     legend: {
@@ -118,7 +103,7 @@ export class PrevalenceOverTimeBubbleChart extends LitElement {
         if (!this.chart) return;
         // chart.js typings are not complete with custom scales
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        this.chart.options.scales!.y = this.getYAxisScale(this.yAxisScaleType) as any;
+        this.chart.options.scales!.y = getYAxisScale(this.yAxisScaleType) as any;
         this.chart.update();
     }
 

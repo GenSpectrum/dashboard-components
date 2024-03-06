@@ -1,8 +1,8 @@
 import { Scale } from 'chart.js';
 import { Chart } from 'chart.js/dist/types';
 
-export class LogisticScale extends Scale {
-    static id = 'logistic';
+export class LogitScale extends Scale {
+    static id = 'logit';
 
     constructor(cfg: { id: string; type: string; ctx: CanvasRenderingContext2D; chart: Chart }) {
         super(cfg);
@@ -11,15 +11,9 @@ export class LogisticScale extends Scale {
     }
 
     override buildTicks() {
-        const ticks: { value: number }[] = [];
-
         const tickValues = [this.min, 0.01, 0.1, 0.5, 0.9, 0.99, this.max];
 
-        tickValues.forEach((value) => {
-            ticks.push({ value: value });
-        });
-
-        this.ticks = ticks;
+        this.ticks = tickValues.map((value) => ({ value }));
         return this.ticks;
     }
 

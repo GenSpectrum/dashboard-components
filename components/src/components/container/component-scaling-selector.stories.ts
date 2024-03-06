@@ -9,10 +9,6 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryObj = {
+export const ScalingSelectorStory: StoryObj = {
     render: () => html`<gs-component-scaling-selector />`,
-};
-
-export const ScalingSelectorStory = {
-    ...Template,
 };
