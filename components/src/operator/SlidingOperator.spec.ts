@@ -1,6 +1,7 @@
 import { MockOperator } from './MockOperator';
 import { SlidingOperator } from './SlidingOperator';
 import { expectEqualAfterSorting } from '../test-utils';
+import { describe, it } from 'vitest';
 
 describe('SlidingOperator', () => {
     it('should slide the values', async () => {

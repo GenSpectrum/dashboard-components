@@ -1,5 +1,5 @@
 import { mapLapisFilterToUrlParams } from './utils';
-import { expect } from '@open-wc/testing';
+import { expect, describe, it } from 'vitest';
 
 describe('mapLapisFilterToUrlParams', () => {
     it('should produce correct url params', () => {

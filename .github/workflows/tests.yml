@@ -24,28 +24,11 @@ jobs:
       - name: Install npm packages
         run: npm ci
 
-      - name: Get Installed Playwright Version
-        id: playwright-version
-        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('components/package-lock.json').packages['node_modules/@playwright/test'].version)")" >> $GITHUB_ENV
-
-      - name: Cache Playwright Browsers
-        uses: actions/cache@v4
-        id: playwright-cache
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
-
-      - name: Install Playwright Browsers and System Dependencies
-        run: npx playwright install --with-deps
-
       - name: Check format
         run: npm run check-format
 
       - name: Run linter
         run: npm run lint
-
-      - name: Build
-        run: npm run build
 
       - name: Run test
         run: npm run test

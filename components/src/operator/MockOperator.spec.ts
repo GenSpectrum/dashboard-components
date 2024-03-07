@@ -1,5 +1,5 @@
 import { MockOperator } from './MockOperator';
-import { expect } from '@open-wc/testing';
+import { expect, describe, it } from 'vitest';
 
 describe('MockOperator', () => {
     it('should be a mock', async () => {

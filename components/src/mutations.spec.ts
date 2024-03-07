@@ -1,4 +1,4 @@
-import { expect } from '@open-wc/testing';
+import { expect, describe, it } from 'vitest';
 import { Deletion, Insertion, MutationCache, Substitution } from './mutations';
 
 describe('MutationCache.getMutation', () => {

@@ -1,6 +1,7 @@
 import { MockOperator } from './MockOperator';
 import { GroupByAndSumOperator } from './GroupByAndSumOperator';
 import { expectEqualAfterSorting } from '../test-utils';
+import { describe, it } from 'vitest';
 
 describe('GroupByAndSumOperator', () => {
     it('should group the content of the child operator and calculate the sum if a field', async () => {
