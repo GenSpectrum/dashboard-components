@@ -13,8 +13,7 @@ import './container/component-scaling-selector';
 import { type NamedLapisFilter, TemporalGranularity } from '../types';
 import { lapisContext } from '../lapis-context';
 import { consume } from '@lit/context';
-import { queryPrevalenceOverTime } from '../query/queryPrevalenceOverTime';
-import { Temporal } from '../temporal';
+import { PrevalenceOverTimeData, queryPrevalenceOverTime } from '../query/queryPrevalenceOverTime';
 import { ScaleType } from './container/component-scaling-selector';
 
 type View = 'bar' | 'line' | 'bubble' | 'table';
@@ -74,15 +73,7 @@ export class PrevalenceOverTime extends LitElement {
                 <h1>Prevalence over time</h1>
                 Loading...
             `,
-            complete: (
-                // https://github.com/runem/lit-analyzer/issues/154
-                // lit-analyzer complains that the generic types don't match, although they do.
-                // it works, if we resolve the generic type here (TS will complain if the type here is wrong).
-                data: {
-                    displayName: string;
-                    content: { count: number; prevalence: number; total: number; dateRange: Temporal | null }[];
-                }[],
-            ) => html`
+            complete: (data: PrevalenceOverTimeData) => html`
                 <h1>Prevalence over time</h1>
 
                 <gs-component-container>

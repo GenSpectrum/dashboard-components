@@ -1,15 +1,13 @@
 import { customElement, property } from 'lit/decorators.js';
-import { html, LitElement } from 'lit';
+import { html } from 'lit';
 import { TemporalGranularity } from '../types';
-import { Temporal } from '../temporal';
+import { PrevalenceOverTimeData } from '../query/queryPrevalenceOverTime';
+import { TailwindElement } from '../tailwind-element';
 
 @customElement('gs-prevalence-over-time-table')
-export class PrevalenceOverTimeTable extends LitElement {
+export class PrevalenceOverTimeTable extends TailwindElement() {
     @property({ type: Array })
-    data: {
-        displayName: string;
-        content: { dateRange: Temporal | null; prevalence: number }[];
-    }[] = [];
+    data: PrevalenceOverTimeData = [];
 
     @property({ type: String })
     granularity: TemporalGranularity = 'day';
@@ -20,15 +18,25 @@ export class PrevalenceOverTimeTable extends LitElement {
                 <thead>
                     <tr>
                         <th>${this.granularity}</th>
-                        ${this.data.map((d) => html`<th>${d.displayName}</th>`)}
+                        ${this.data.map(
+                            (dataset) => html`
+                                <th>${dataset.displayName} prevalence</th>
+                                <th>${dataset.displayName} count</th>
+                            `,
+                        )}
                     </tr>
                 </thead>
                 <tbody>
                     ${this.data[0].content.map(
-                        (d, i) => html`
+                        (row, rowNumber) => html`
                             <tr>
-                                <td>${d.dateRange ?? 'Unknown'}</td>
-                                ${this.data.map((d2) => html`<td>${d2.content[i].prevalence.toFixed(4)}</td>`)}
+                                <td>${row.dateRange ?? 'Unknown'}</td>
+                                ${this.data.map(
+                                    (dataset) => html`
+                                        <td>${dataset.content[rowNumber].prevalence.toFixed(4)}</td>
+                                        <td class="text-right">${dataset.content[rowNumber].count}</td>
+                                    `,
+                                )}
                             </tr>
                         `,
                     )}

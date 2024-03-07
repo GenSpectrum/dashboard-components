@@ -9,23 +9,27 @@ import { SlidingOperator } from '../operator/SlidingOperator';
 import { DivisionOperator } from '../operator/DivisionOperator';
 import { compareTemporal, generateAllInRange, getMinMaxTemporal, Temporal, TemporalCache } from '../temporal';
 
+// https://github.com/runem/lit-analyzer/issues/154
+// lit-analyzer complains that the generic types don't match in component props when using this type when inferred by
+// Typescript, although they do.
+// It works, if we resolve the generic type here manually.
+export type PrevalenceOverTimeData = {
+    displayName: string;
+    content: { count: number; prevalence: number; total: number; dateRange: Temporal | null }[];
+}[];
+
 export function queryPrevalenceOverTime(
-    numerator: NamedLapisFilter | NamedLapisFilter[],
-    denominator: NamedLapisFilter,
+    numeratorFilter: NamedLapisFilter | NamedLapisFilter[],
+    denominatorFilter: NamedLapisFilter,
     granularity: TemporalGranularity,
     smoothingWindow: number,
     lapis: string,
     signal?: AbortSignal,
-) {
-    const numerators = [];
-    if (Array.isArray(numerator)) {
-        numerators.push(...numerator);
-    } else {
-        numerators.push(numerator);
-    }
+): Promise<PrevalenceOverTimeData> {
+    const numeratorFilters = makeArray(numeratorFilter);
 
-    const denominatorData = fetchAndPrepare(denominator, granularity, smoothingWindow);
-    const subQueries = numerators.map(async (namedLapisFilter) => {
+    const denominatorData = fetchAndPrepare(denominatorFilter, granularity, smoothingWindow);
+    const subQueries = numeratorFilters.map(async (namedLapisFilter) => {
         const numeratorData = fetchAndPrepare(namedLapisFilter, granularity, smoothingWindow);
         const divide = new DivisionOperator(
             numeratorData,
@@ -43,6 +47,13 @@ export function queryPrevalenceOverTime(
         };
     });
     return Promise.all(subQueries);
+}
+
+function makeArray<T>(arrayOrSingleItem: T | T[]) {
+    if (Array.isArray(arrayOrSingleItem)) {
+        return arrayOrSingleItem;
+    }
+    return [arrayOrSingleItem];
 }
 
 function fetchAndPrepare(filter: LapisFilter, granularity: TemporalGranularity, smoothingWindow: number) {
