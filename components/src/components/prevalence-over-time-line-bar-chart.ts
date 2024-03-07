@@ -1,17 +1,14 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
-import { Temporal } from '../temporal';
 import { getYAxisScale, ScaleType } from './container/component-scaling-selector';
 import { LogitScale } from './charts/LogitScale';
+import { PrevalenceOverTimeData } from '../query/queryPrevalenceOverTime';
 
 @customElement('gs-prevalence-over-time-line-bar-chart')
 export class PrevalenceOverTimeLineBarChart extends LitElement {
     @property({ type: Array })
-    data: {
-        displayName: string;
-        content: { dateRange: Temporal | null; prevalence: number }[];
-    }[] = [];
+    data: PrevalenceOverTimeData = [];
 
     @property()
     type: 'line' | 'bar' = 'bar';

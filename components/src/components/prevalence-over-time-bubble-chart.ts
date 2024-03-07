@@ -2,18 +2,16 @@ import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
 import { Chart, registerables } from 'chart.js';
 import { TemporalGranularity } from '../types';
-import { addUnit, minusTemporal, Temporal } from '../temporal';
+import { addUnit, minusTemporal } from '../temporal';
 import { getMinMaxNumber } from '../utils';
 import { getYAxisScale, ScaleType } from './container/component-scaling-selector';
 import { LogitScale } from './charts/LogitScale';
+import { PrevalenceOverTimeData } from '../query/queryPrevalenceOverTime';
 
 @customElement('gs-prevalence-over-time-bubble-chart')
 export class PrevalenceOverTimeBubbleChart extends LitElement {
     @property({ type: Array })
-    data: {
-        displayName: string;
-        content: { dateRange: Temporal | null; prevalence: number; count: number; total: number }[];
-    }[] = [];
+    data: PrevalenceOverTimeData = [];
 
     @property({ type: String })
     granularity: TemporalGranularity = 'day';
