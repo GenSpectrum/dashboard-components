@@ -1,6 +1,7 @@
 import { MockOperator } from './MockOperator';
 import { DivisionOperator } from './DivisionOperator';
 import { expectEqualAfterSorting } from '../test-utils';
+import { describe, it } from 'vitest';
 
 describe('DivisionOperator', () => {
     it('should divide the values', async () => {
@@ -16,7 +17,7 @@ describe('DivisionOperator', () => {
         ]);
         const query = new DivisionOperator(numerator, denominator, 'id', 'value', 'result', 'numerator', 'denominator');
         const result = await query.evaluate('lapis');
-        await expectEqualAfterSorting(result.content, [
+        expectEqualAfterSorting(result.content, [
             { id: 1, result: 2, numerator: 2, denominator: 1 },
             { id: 2, result: 2, numerator: 4, denominator: 2 },
             { id: 3, result: 3, numerator: 6, denominator: 2 },

@@ -1,6 +1,6 @@
 import { MockOperator } from './MockOperator';
 import { MapOperator } from './MapOperator';
-import { expect } from '@open-wc/testing';
+import { expect, describe, it } from 'vitest';
 
 describe('MapOperator', () => {
     it('should map the content of the child operator', async () => {

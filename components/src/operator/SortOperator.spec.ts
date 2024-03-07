@@ -1,5 +1,5 @@
 import { MockOperator } from './MockOperator';
-import { expect } from '@open-wc/testing';
+import { expect, describe, it } from 'vitest';
 import { SortOperator } from './SortOperator';
 
 describe('SortOperator', () => {

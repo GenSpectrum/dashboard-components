@@ -1,5 +1,6 @@
-import { html, LitElement } from 'lit';
+import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { TailwindElement } from '../../tailwind-element';
 
 export type ScaleType = 'linear' | 'logarithmic' | 'logit';
 
@@ -19,7 +20,7 @@ export function getYAxisScale(scaleType: ScaleType) {
 }
 
 @customElement('gs-component-scaling-selector')
-export class ComponentScalingSelector extends LitElement {
+export class ComponentScalingSelector extends TailwindElement() {
     @property({ attribute: false })
     setYAxisScaleType: (scaleType: ScaleType) => void = () => {};
 
@@ -46,7 +47,7 @@ export class ComponentScalingSelector extends LitElement {
         });
 
         return html`
-            <select class="select select-bordered" @change="${this.onChange}">
+            <select class="select select-xs select-bordered" @change="${this.onChange}">
                 <option disabled selected>Pick your y axis scaling</option>
                 ${scaleOptions}
             </select>

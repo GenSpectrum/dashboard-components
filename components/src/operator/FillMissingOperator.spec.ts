@@ -1,6 +1,7 @@
 import { MockOperator } from './MockOperator';
 import { FillMissingOperator } from './FillMissingOperator';
 import { expectEqualAfterSorting } from '../test-utils';
+import { describe, it } from 'vitest';
 
 describe('FillMissingOperator', () => {
     it('should fill in missing values', async () => {

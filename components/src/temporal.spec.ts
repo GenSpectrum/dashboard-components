@@ -1,4 +1,4 @@
-import { expect } from '@open-wc/testing';
+import { expect, describe, it } from 'vitest';
 import {
     generateAllDaysInRange,
     generateAllMonthsInRange,
