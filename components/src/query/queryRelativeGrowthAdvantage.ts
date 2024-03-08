@@ -3,6 +3,8 @@ import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { MapOperator } from '../operator/MapOperator';
 import { getMinMaxTemporal, TemporalCache, YearMonthDay } from '../temporal';
 
+export type RelativeGrowthAdvantageData = Awaited<ReturnType<typeof queryRelativeGrowthAdvantage>>;
+
 export async function queryRelativeGrowthAdvantage(
     numerator: LapisFilter,
     denominator: LapisFilter,

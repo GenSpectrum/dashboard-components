@@ -14,7 +14,7 @@ export class PrevalenceOverTimeTable extends TailwindElement() {
 
     override render() {
         return html`
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
                         <th>${this.granularity}</th>
