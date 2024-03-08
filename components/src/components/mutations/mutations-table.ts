@@ -1,10 +1,11 @@
 import { customElement, property } from 'lit/decorators.js';
-import { html, LitElement } from 'lit';
+import { html } from 'lit';
 import { Dataset } from '../../operator/Dataset';
 import { MutationEntry } from '../../operator/FetchMutationsOperator';
+import { TailwindElement } from '../../tailwind-element';
 
 @customElement('gs-mutations-table')
-export class MutationsTable extends LitElement {
+export class MutationsTable extends TailwindElement() {
     @property({ type: Object })
     data: Dataset<MutationEntry> | null = null;
 
@@ -14,7 +15,7 @@ export class MutationsTable extends LitElement {
         }
 
         return html`
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Mutation</th>
@@ -24,28 +25,28 @@ export class MutationsTable extends LitElement {
                     </tr>
                 </thead>
                 <tbody>
-                    ${this.data.content.map((d) => {
-                        if (d.type === 'substitution') {
+                    ${this.data.content.map((mutationEntry) => {
+                        if (mutationEntry.type === 'substitution') {
                             return html` <tr>
-                                <td>${d.mutation}</td>
+                                <td>${mutationEntry.mutation}</td>
                                 <td>Substitution</td>
-                                <td>${d.count}</td>
-                                <td>${d.proportion}</td>
+                                <td>${mutationEntry.count}</td>
+                                <td>${mutationEntry.proportion}</td>
                             </tr>`;
                         }
-                        if (d.type === 'deletion') {
+                        if (mutationEntry.type === 'deletion') {
                             return html` <tr>
-                                <td>${d.mutation}</td>
+                                <td>${mutationEntry.mutation}</td>
                                 <td>Deletion</td>
-                                <td>${d.count}</td>
-                                <td>${d.proportion}</td>
+                                <td>${mutationEntry.count}</td>
+                                <td>${mutationEntry.proportion}</td>
                             </tr>`;
                         }
-                        if (d.type === 'insertion') {
+                        if (mutationEntry.type === 'insertion') {
                             return html` <tr>
-                                <td>${d.mutation}</td>
+                                <td>${mutationEntry.mutation}</td>
                                 <td>Insertion</td>
-                                <td>${d.count}</td>
+                                <td>${mutationEntry.count}</td>
                                 <td></td>
                             </tr>`;
                         }

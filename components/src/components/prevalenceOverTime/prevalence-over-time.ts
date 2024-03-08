@@ -1,10 +1,9 @@
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
-import '../container/component-container';
-import '../container/component-tab';
+import '../container/component-headline';
+import '../container/component-tabs';
 import '../container/component-toolbar';
-import '../container/component-toolbar-button';
 import '../container/component-info';
 import './prevalence-over-time-line-bar-chart';
 import './prevalence-over-time-bubble-chart';
@@ -17,6 +16,7 @@ import { PrevalenceOverTimeData, queryPrevalenceOverTime } from '../../query/que
 import { ScaleType } from '../container/component-scaling-selector';
 
 type View = 'bar' | 'line' | 'bubble' | 'table';
+type GraphView = 'bar' | 'line' | 'bubble';
 
 export type PrevalenceOverTimeProps = {
     numerator: NamedLapisFilter | NamedLapisFilter[];
@@ -46,10 +46,14 @@ export class PrevalenceOverTime extends LitElement {
     @property({ type: Array })
     views: View[] = ['bar', 'line', 'bubble', 'table'];
 
-    yAxisScaleType: ScaleType[] = ['linear', 'linear', 'linear', 'linear'];
+    yAxisScaleType: Record<GraphView, ScaleType> = {
+        bar: 'linear',
+        line: 'linear',
+        bubble: 'linear',
+    };
 
-    private setYAxisScaleType = (scaleType: ScaleType, index: number) => {
-        this.yAxisScaleType[index] = scaleType;
+    private setYAxisScaleType = (scaleType: ScaleType, view: GraphView) => {
+        this.yAxisScaleType[view] = scaleType;
         this.requestUpdate();
     };
 
@@ -61,119 +65,106 @@ export class PrevalenceOverTime extends LitElement {
             [this.lapis, this.numerator, this.denominator, this.granularity, this.smoothingWindow, this.views] as const,
     });
 
-    override updated() {
-        if (this.views.length !== this.yAxisScaleType.length) {
-            this.yAxisScaleType = this.views.map(() => 'linear' as const);
+    getScalingSelector(view: GraphView) {
+        return html`
+            <gs-component-scaling-selector
+                .setYAxisScaleType=${(scaleType: ScaleType) => {
+                    this.setYAxisScaleType(scaleType, view);
+                }}
+                currentScaleType=${this.yAxisScaleType[view]}
+            >
+            </gs-component-scaling-selector>
+        `;
+    }
+
+    getBarChartView(data: PrevalenceOverTimeData) {
+        const info = html` <gs-component-info content="Bar chart"></gs-component-info>`;
+
+        return html`
+            <gs-component-toolbar .topElements=${[this.getScalingSelector('bar'), info]}>
+                <gs-prevalence-over-time-line-bar-chart
+                    .data=${data}
+                    type="bar"
+                    yAxisScaleType=${this.yAxisScaleType['bar']}
+                ></gs-prevalence-over-time-line-bar-chart>
+            </gs-component-toolbar>
+        `;
+    }
+
+    getLineChartView(data: PrevalenceOverTimeData) {
+        const info = html` <gs-component-info content="Line chart"></gs-component-info>`;
+
+        return html`
+            <gs-component-toolbar .topElements=${[this.getScalingSelector('line'), info]}>
+                <gs-prevalence-over-time-line-bar-chart
+                    .data=${data}
+                    type="line"
+                    yAxisScaleType=${this.yAxisScaleType['line']}
+                ></gs-prevalence-over-time-line-bar-chart>
+            </gs-component-toolbar>
+        `;
+    }
+
+    getBubbleChartView(data: PrevalenceOverTimeData) {
+        const info = html` <gs-component-info content="Bubble chart"></gs-component-info>`;
+
+        return html`
+            <gs-component-toolbar .topElements=${[this.getScalingSelector('bubble'), info]}>
+                <gs-prevalence-over-time-bubble-chart
+                    .data=${data}
+                    yAxisScaleType=${this.yAxisScaleType['bubble']}
+                ></gs-prevalence-over-time-bubble-chart>
+            </gs-component-toolbar>
+        `;
+    }
+
+    getViewContent(view: View, data: PrevalenceOverTimeData) {
+        switch (view) {
+            case 'bar':
+                return this.getBarChartView(data);
+            case 'line':
+                return this.getLineChartView(data);
+            case 'bubble':
+                return this.getBubbleChartView(data);
+            case 'table':
+                return html` <gs-prevalence-over-time-table .data=${data}></gs-prevalence-over-time-table>`;
         }
     }
+
+    getViewTitle(view: View) {
+        switch (view) {
+            case 'bar':
+                return 'Bar';
+            case 'line':
+                return 'Line';
+            case 'bubble':
+                return 'Bubble';
+            case 'table':
+                return 'Table';
+        }
+    }
+
+    heading: string = 'Prevalence over time';
 
     override render() {
         return this.fetchingTask.render({
             pending: () => html`
-                <h1>Prevalence over time</h1>
-                <p>Loading...</p>
+                <gs-component-headline heading=${this.heading}><p>Loading...</p></gs-component-headline>
             `,
-            complete: (data: PrevalenceOverTimeData) => html`
-                <h1>Prevalence over time</h1>
+            complete: (data: PrevalenceOverTimeData) => {
+                const tabs = this.views.map((view) => {
+                    return {
+                        title: this.getViewTitle(view),
+                        content: this.getViewContent(view, data),
+                    };
+                });
 
-                <gs-component-container>
-                    ${this.views.map(
-                        (view, index) => html`
-                            ${view === 'bar'
-                                ? html`
-                                      <gs-component-tab slot="content" title="Bar" .active="${index === 0}">
-                                          <gs-prevalence-over-time-line-bar-chart
-                                              .data=${data}
-                                              type="bar"
-                                              yAxisScaleType=${this.yAxisScaleType[index]}
-                                          ></gs-prevalence-over-time-line-bar-chart>
-                                      </gs-component-tab>
-                                      <gs-component-toolbar slot="toolbar" .active="${index === 0}">
-                                          <gs-component-scaling-selector
-                                              .setYAxisScaleType=${(scaleType: ScaleType) => {
-                                                  this.setYAxisScaleType(scaleType, index);
-                                              }}
-                                              currentScaleType=${this.yAxisScaleType[index]}
-                                          >
-                                          </gs-component-scaling-selector>
-                                      </gs-component-toolbar>
-                                      <gs-component-info
-                                          slot=" info
-                                        "
-                                      >
-                                          <p>
-                                              Here, we can provide some info about the chart, the methods, the data,
-                                              etc.
-                                          </p>
-                                      </gs-component-info>
-                                  `
-                                : ''}
-                            ${view === 'line'
-                                ? html`
-                                      <gs-component-tab slot="content" title="Line" .active="${index === 0}">
-                                          <gs-prevalence-over-time-line-bar-chart
-                                              .data=${data}
-                                              type="line"
-                                              yAxisScaleType=${this.yAxisScaleType[index]}
-                                          ></gs-prevalence-over-time-line-bar-chart>
-                                      </gs-component-tab>
-                                      <gs-component-toolbar slot="toolbar" .active="${index === 0}">
-                                          <gs-component-scaling-selector
-                                              .setYAxisScaleType=${(scaleType: ScaleType) => {
-                                                  this.setYAxisScaleType(scaleType, index);
-                                              }}
-                                              currentScaleType=${this.yAxisScaleType[index]}
-                                          >
-                                          </gs-component-scaling-selector>
-                                      </gs-component-toolbar>
-                                      <gs-component-info slot="info">
-                                          <p>test2</p>
-                                      </gs-component-info>
-                                  `
-                                : ''}
-                            ${view === 'bubble'
-                                ? html`
-                                      <gs-component-tab slot="content" title="Bubble" .active="${index === 0}">
-                                          <gs-prevalence-over-time-bubble-chart
-                                              .data=${data}
-                                              .granularity=${this.granularity}
-                                              yAxisScaleType=${this.yAxisScaleType[index]}
-                                          ></gs-prevalence-over-time-bubble-chart>
-                                      </gs-component-tab>
-                                      <gs-component-toolbar slot="toolbar" .active="${index === 0}">
-                                          <gs-component-scaling-selector
-                                              .setYAxisScaleType=${(scaleType: ScaleType) => {
-                                                  this.setYAxisScaleType(scaleType, index);
-                                              }}
-                                              currentScaleType=${this.yAxisScaleType[index]}
-                                          >
-                                          </gs-component-scaling-selector>
-                                      </gs-component-toolbar>
-                                      <gs-component-info slot="info">
-                                          <p>test2</p>
-                                      </gs-component-info>
-                                  `
-                                : ''}
-                            ${view === 'table'
-                                ? html`
-                                      <gs-component-tab slot="content" title="Table" .active="${index === 0}">
-                                          <gs-prevalence-over-time-table
-                                              .data=${data}
-                                              .granularity=${this.granularity}
-                                          ></gs-prevalence-over-time-table>
-                                      </gs-component-tab>
-                                      <gs-component-toolbar slot="toolbar" .active="${index === 0}">
-                                          test3
-                                      </gs-component-toolbar>
-                                      <gs-component-info slot="info">
-                                          <p>test3</p>
-                                      </gs-component-info>
-                                  `
-                                : ''}
-                        `,
-                    )}
-                </gs-component-container>
-            `,
+                return html`
+                    <gs-component-headline heading=${this.heading}>
+                        <gs-component-tabs .tabs=${tabs}></gs-component-tabs>
+                    </gs-component-headline>
+                `;
+            },
             error: (e) => html`<p>Error: ${e}</p>`,
         });
     }
