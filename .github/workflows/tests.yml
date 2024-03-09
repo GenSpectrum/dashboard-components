@@ -7,8 +7,8 @@ defaults:
     working-directory: ./components
 
 jobs:
-  checks:
-    name: Run Checks
+  linter:
+    name: Run linter
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,5 +30,67 @@ jobs:
       - name: Run linter
         run: npm run lint
 
-      - name: Run test
+  unit_tests:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
+
+      - name: Install npm packages
+        run: npm ci
+
+      - name: Run unit test
         run: npm run test
+
+  storybook_tests:
+    name: Run storybook tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
+
+      - name: Install npm packages
+        run: npm ci
+
+      - name: Get Installed Playwright Version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').packages['node_modules/playwright'].version)")" >> $GITHUB_ENV
+
+      - name: Cache Playwright Browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Install Playwright Browsers and System Dependencies
+        run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+      - name: Install only System Dependencies
+        run: npx playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+
+      - name: build Storybook
+        run: npm run build-storybook -- --quiet
+
+      - name: Serve Storybook and run tests
+        run: |
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "npx http-server storybook-static --port 6006 --silent" \
+            "npx wait-on tcp:6006 && npm run test:storybook"
