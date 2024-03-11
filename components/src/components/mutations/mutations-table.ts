@@ -3,11 +3,58 @@ import { html } from 'lit';
 import { Dataset } from '../../operator/Dataset';
 import { MutationEntry } from '../../operator/FetchMutationsOperator';
 import { TailwindElement } from '../../tailwind-element';
+import '../container/component-table';
 
 @customElement('gs-mutations-table')
 export class MutationsTable extends TailwindElement() {
     @property({ type: Object })
     data: Dataset<MutationEntry> | null = null;
+
+    getHeaders() {
+        return [
+            {
+                name: 'Mutation',
+                sort: true,
+            },
+            {
+                name: 'Type',
+                sort: true,
+            },
+            {
+                name: 'Count',
+                sort: true,
+            },
+            {
+                name: 'Proportion',
+                sort: true,
+            },
+        ];
+    }
+
+    getTableData(data: Dataset<MutationEntry>) {
+        return data.content.map((mutationEntry) => {
+            switch (mutationEntry.type) {
+                case 'substitution':
+                    return [
+                        mutationEntry.mutation.toString(),
+                        'Substitution',
+                        mutationEntry.count,
+                        mutationEntry.proportion,
+                    ];
+                case 'deletion':
+                    return [
+                        mutationEntry.mutation.toString(),
+                        'Deletion',
+                        mutationEntry.count,
+                        mutationEntry.proportion,
+                    ];
+                case 'insertion':
+                    return [mutationEntry.mutation.toString(), 'Insertion', mutationEntry.count, ''];
+                default:
+                    throw new Error('Invalid mutation entry');
+            }
+        });
+    }
 
     override render() {
         if (this.data === null) {
@@ -15,45 +62,11 @@ export class MutationsTable extends TailwindElement() {
         }
 
         return html`
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Mutation</th>
-                        <th>Type</th>
-                        <th>Count</th>
-                        <th>Proportion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${this.data.content.map((mutationEntry) => {
-                        if (mutationEntry.type === 'substitution') {
-                            return html` <tr>
-                                <td>${mutationEntry.mutation}</td>
-                                <td>Substitution</td>
-                                <td>${mutationEntry.count}</td>
-                                <td>${mutationEntry.proportion}</td>
-                            </tr>`;
-                        }
-                        if (mutationEntry.type === 'deletion') {
-                            return html` <tr>
-                                <td>${mutationEntry.mutation}</td>
-                                <td>Deletion</td>
-                                <td>${mutationEntry.count}</td>
-                                <td>${mutationEntry.proportion}</td>
-                            </tr>`;
-                        }
-                        if (mutationEntry.type === 'insertion') {
-                            return html` <tr>
-                                <td>${mutationEntry.mutation}</td>
-                                <td>Insertion</td>
-                                <td>${mutationEntry.count}</td>
-                                <td></td>
-                            </tr>`;
-                        }
-                        throw new Error('Invalid mutation entry');
-                    })}
-                </tbody>
-            </table>
+            <gs-component-table
+                .data=${this.getTableData(this.data)}
+                .columns=${this.getHeaders()}
+                .pagination=${false}
+            ></gs-component-table>
         `;
     }
 }
