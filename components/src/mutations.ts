@@ -55,12 +55,12 @@ export interface Mutation {
 }
 
 export class Substitution implements Mutation {
-    readonly code = `${this.segment ? this.segment + ':' : ''}${this.ref}${this.position}${this.alt}`;
+    readonly code = `${this.segment ? this.segment + ':' : ''}${this.valueAtReference}${this.position}${this.substitutionValue}`;
 
     constructor(
         readonly segment: string | undefined,
-        readonly ref: string,
-        readonly alt: string,
+        readonly valueAtReference: string,
+        readonly substitutionValue: string,
         readonly position: number,
     ) {}
 
@@ -90,11 +90,11 @@ export class Substitution implements Mutation {
 }
 
 export class Deletion implements Mutation {
-    readonly code = `${this.segment ? this.segment + ':' : ''}${this.ref}${this.position}-`;
+    readonly code = `${this.segment ? this.segment + ':' : ''}${this.valueAtReference}${this.position}-`;
 
     constructor(
         readonly segment: string | undefined,
-        readonly ref: string,
+        readonly valueAtReference: string,
         readonly position: number,
     ) {}
 
@@ -104,10 +104,10 @@ export class Deletion implements Mutation {
 
     static parse(mutationStr: string): Deletion {
         const substitution = Substitution.parse(mutationStr);
-        if (substitution.alt !== '-') {
+        if (substitution.substitutionValue !== '-') {
             throw Error(`Invalid deletion: ${mutationStr}`);
         }
-        return new Deletion(substitution.segment, substitution.ref, substitution.position);
+        return new Deletion(substitution.segment, substitution.valueAtReference, substitution.position);
     }
 }
 

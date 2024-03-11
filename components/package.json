@@ -31,6 +31,7 @@
         "@lit/task": "^1.0.0",
         "chart.js": "^4.4.2",
         "dayjs": "^1.11.10",
+        "gridjs": "^6.2.0",
         "lit": "^3.1.2"
     },
     "devDependencies": {
