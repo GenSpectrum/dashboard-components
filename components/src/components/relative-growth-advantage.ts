@@ -49,7 +49,7 @@ export class RelativeGrowthAdvantage extends LitElement {
         return this.fetchingTask.render({
             pending: () => html`
                 <h1>Relative growth advantage</h1>
-                Loading...
+                <p>Loading...</p>
             `,
             complete: (data) => {
                 if (data === null) {

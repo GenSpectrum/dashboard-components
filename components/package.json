@@ -15,7 +15,8 @@
         "check-format": "prettier --check \"**/*.{ts,tsx,json,md,mdx,mjs,cjs}\"",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
-        "test:storybook": "test-storybook"
+        "test:storybook": "test-storybook",
+        "test:playwright": "playwright test"
     },
     "keywords": [
         "web-components",
@@ -32,6 +33,7 @@
         "lit": "^3.1.2"
     },
     "devDependencies": {
+        "@playwright/test": "^1.42.1",
         "@storybook/addon-essentials": "^7.6.17",
         "@storybook/addon-interactions": "^7.6.17",
         "@storybook/addon-links": "^7.6.17",
@@ -41,6 +43,7 @@
         "@storybook/testing-library": "^0.2.2",
         "@storybook/web-components": "^7.6.17",
         "@storybook/web-components-vite": "^7.6.17",
+        "@types/node": "^20.11.25",
         "@typescript-eslint/eslint-plugin": "^7.1.1",
         "@typescript-eslint/parser": "^7.1.1",
         "autoprefixer": "^10.4.18",
