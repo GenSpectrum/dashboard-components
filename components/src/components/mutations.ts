@@ -67,7 +67,7 @@ export class Mutations extends LitElement {
         return this.fetchingTask.render({
             pending: () => html`
                 <h1>Mutations</h1>
-                Loading...
+                <p>Loading...</p>
             `,
             complete: ([data, segments]) => {
                 let filteredData = data;

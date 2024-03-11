@@ -71,7 +71,7 @@ export class PrevalenceOverTime extends LitElement {
         return this.fetchingTask.render({
             pending: () => html`
                 <h1>Prevalence over time</h1>
-                Loading...
+                <p>Loading...</p>
             `,
             complete: (data: PrevalenceOverTimeData) => html`
                 <h1>Prevalence over time</h1>
@@ -176,6 +176,10 @@ export class PrevalenceOverTime extends LitElement {
             `,
             error: (e) => html`<p>Error: ${e}</p>`,
         });
+    }
+
+    override createRenderRoot() {
+        return this;
     }
 }
 

@@ -5,3 +5,8 @@
 custom-elements.json
 components.iml
 storybook-static/
+
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
