@@ -1,20 +1,20 @@
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
-import './container/component-container';
-import './container/component-tab';
-import './container/component-toolbar';
-import './container/component-toolbar-button';
-import './container/component-info';
+import '../container/component-container';
+import '../container/component-tab';
+import '../container/component-toolbar';
+import '../container/component-toolbar-button';
+import '../container/component-info';
 import './prevalence-over-time-line-bar-chart';
 import './prevalence-over-time-bubble-chart';
 import './prevalence-over-time-table';
-import './container/component-scaling-selector';
-import { type NamedLapisFilter, TemporalGranularity } from '../types';
-import { lapisContext } from '../lapis-context';
+import '../container/component-scaling-selector';
+import { type NamedLapisFilter, TemporalGranularity } from '../../types';
+import { lapisContext } from '../../lapis-context';
 import { consume } from '@lit/context';
-import { PrevalenceOverTimeData, queryPrevalenceOverTime } from '../query/queryPrevalenceOverTime';
-import { ScaleType } from './container/component-scaling-selector';
+import { PrevalenceOverTimeData, queryPrevalenceOverTime } from '../../query/queryPrevalenceOverTime';
+import { ScaleType } from '../container/component-scaling-selector';
 
 type View = 'bar' | 'line' | 'bubble' | 'table';
 

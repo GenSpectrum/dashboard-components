@@ -11,6 +11,7 @@ const meta: Meta = {
     argTypes: {
         setYAxisScaleType: { action: true },
     },
+    parameters: { fetchMock: {} },
 };
 
 export default meta;

@@ -21,6 +21,7 @@ const meta: Meta = {
             defaultValue: 'somePrefix: ',
         },
     },
+    parameters: { fetchMock: {} },
 };
 
 export default meta;

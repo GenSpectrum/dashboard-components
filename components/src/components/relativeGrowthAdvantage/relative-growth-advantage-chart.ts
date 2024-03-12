@@ -1,7 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
 import { Chart, registerables } from 'chart.js';
-import { YearMonthDay } from '../temporal';
+import { YearMonthDay } from '../../temporal';
 
 @customElement('gs-relative-growth-advantage-chart')
 export class RelativeGrowthAdvantageChart extends LitElement {
