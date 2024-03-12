@@ -13,6 +13,7 @@ const meta: Meta<{}> = {
         actions: {
             handles: ['gs-location-changed'],
         },
+        fetchMock: {},
     },
     decorators: [withActions],
 };

@@ -5,6 +5,7 @@ import './component-toolbar-button';
 const meta: Meta = {
     title: 'Component/Toolbar button',
     component: 'gs-component-toolbar-button',
+    parameters: { fetchMock: {} },
 };
 
 export default meta;

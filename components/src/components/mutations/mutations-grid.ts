@@ -1,9 +1,9 @@
 import { customElement, property } from 'lit/decorators.js';
 import { css, html, LitElement } from 'lit';
-import { Dataset } from '../operator/Dataset';
-import { DeletionEntry, MutationEntry, SubstitutionEntry } from '../operator/FetchMutationsOperator';
-import { SequenceType } from '../types';
-import { bases } from '../mutations';
+import { Dataset } from '../../operator/Dataset';
+import { DeletionEntry, MutationEntry, SubstitutionEntry } from '../../operator/FetchMutationsOperator';
+import { SequenceType } from '../../types';
+import { bases } from '../../mutations';
 
 @customElement('gs-mutations-grid')
 export class MutationsGrid extends LitElement {

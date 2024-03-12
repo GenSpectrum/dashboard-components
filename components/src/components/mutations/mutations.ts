@@ -1,20 +1,20 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
-import './container/component-container';
-import './container/component-tab';
-import './container/component-toolbar';
-import './container/component-toolbar-button';
-import './container/component-toolbar-button-checkboxes';
-import './container/component-info';
+import '../container/component-container';
+import '../container/component-tab';
+import '../container/component-toolbar';
+import '../container/component-toolbar-button';
+import '../container/component-toolbar-button-checkboxes';
+import '../container/component-info';
 import './mutations-table';
 import './mutations-grid';
-import { type LapisFilter, SequenceType } from '../types';
-import { lapisContext } from '../lapis-context';
+import { type LapisFilter, SequenceType } from '../../types';
+import { lapisContext } from '../../lapis-context';
 import { consume } from '@lit/context';
-import { queryMutations } from '../query/queryMutations';
-import { renderAllNoneOrCommaSeparated } from './container/component-toolbar-button-checkboxes';
-import { segmentName } from '../mutations';
+import { queryMutations } from '../../query/queryMutations';
+import { renderAllNoneOrCommaSeparated } from '../container/component-toolbar-button-checkboxes';
+import { segmentName } from '../../mutations';
 
 type View = 'table' | 'grid';
 

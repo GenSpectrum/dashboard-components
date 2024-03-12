@@ -1,16 +1,16 @@
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Task } from '@lit/task';
-import './container/component-container';
-import './container/component-tab';
-import './container/component-toolbar';
-import './container/component-toolbar-button';
-import './container/component-info';
+import '../container/component-container';
+import '../container/component-tab';
+import '../container/component-toolbar';
+import '../container/component-toolbar-button';
+import '../container/component-info';
 import './relative-growth-advantage-chart';
-import { type LapisFilter } from '../types';
-import { lapisContext } from '../lapis-context';
+import { type LapisFilter } from '../../types';
+import { lapisContext } from '../../lapis-context';
 import { consume } from '@lit/context';
-import { queryRelativeGrowthAdvantage } from '../query/queryRelativeGrowthAdvantage';
+import { queryRelativeGrowthAdvantage } from '../../query/queryRelativeGrowthAdvantage';
 
 type View = 'line';
 

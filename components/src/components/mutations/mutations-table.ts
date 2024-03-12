@@ -1,7 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
-import { Dataset } from '../operator/Dataset';
-import { MutationEntry } from '../operator/FetchMutationsOperator';
+import { Dataset } from '../../operator/Dataset';
+import { MutationEntry } from '../../operator/FetchMutationsOperator';
 
 @customElement('gs-mutations-table')
 export class MutationsTable extends LitElement {

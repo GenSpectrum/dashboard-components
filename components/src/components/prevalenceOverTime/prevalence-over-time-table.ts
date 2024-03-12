@@ -1,8 +1,8 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { TemporalGranularity } from '../types';
-import { PrevalenceOverTimeData } from '../query/queryPrevalenceOverTime';
-import { TailwindElement } from '../tailwind-element';
+import { TemporalGranularity } from '../../types';
+import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
+import { TailwindElement } from '../../tailwind-element';
 
 @customElement('gs-prevalence-over-time-table')
 export class PrevalenceOverTimeTable extends TailwindElement() {

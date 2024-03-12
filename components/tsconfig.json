@@ -21,6 +21,7 @@
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
         "noImplicitOverride": true,
+        "resolveJsonModule": true,
         "plugins": [
             {
                 "name": "ts-lit-plugin",
