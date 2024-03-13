@@ -33,15 +33,17 @@ export default meta;
 
 const Template: StoryObj<PrevalenceOverTimeProps> = {
     render: (args) => html`
-        <gs-app lapis="${LAPIS_URL}">
-            <gs-prevalence-over-time
-                .numerator=${args.numerator}
-                .denominator=${args.denominator}
-                .granularity=${args.granularity}
-                .smoothingWindow=${args.smoothingWindow}
-                .views=${args.views}
-            ></gs-prevalence-over-time>
-        </gs-app>
+        <div class="w-11/12 h-11/12">
+            <gs-app lapis="${LAPIS_URL}">
+                <gs-prevalence-over-time
+                    .numerator=${args.numerator}
+                    .denominator=${args.denominator}
+                    .granularity=${args.granularity}
+                    .smoothingWindow=${args.smoothingWindow}
+                    .views=${args.views}
+                ></gs-prevalence-over-time>
+            </gs-app>
+        </div>
     `,
 };
 
