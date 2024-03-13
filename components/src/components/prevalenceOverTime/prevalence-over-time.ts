@@ -14,6 +14,7 @@ import { lapisContext } from '../../lapis-context';
 import { consume } from '@lit/context';
 import { PrevalenceOverTimeData, queryPrevalenceOverTime } from '../../query/queryPrevalenceOverTime';
 import { ScaleType } from '../container/component-scaling-selector';
+import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
 
 type View = 'bar' | 'line' | 'bubble' | 'table';
 type GraphView = 'bar' | 'line' | 'bubble';
@@ -159,9 +160,15 @@ export class PrevalenceOverTime extends LitElement {
                     };
                 });
 
+                const toolbar = html` <gs-component-csv-download-button
+                    class="m-1 btn btn-sm"
+                    filename="prevalence-over-time.csv"
+                    .getData=${() => getPrevalenceOverTimeTableData(data, this.granularity)}
+                ></gs-component-csv-download-button>`;
+
                 return html`
                     <gs-component-headline heading=${this.heading}>
-                        <gs-component-tabs .tabs=${tabs}></gs-component-tabs>
+                        <gs-component-tabs .tabs=${tabs} .toolbar=${toolbar}></gs-component-tabs>
                     </gs-component-headline>
                 `;
             },

@@ -3,6 +3,7 @@ import { html } from 'lit';
 import { TemporalGranularity } from '../../types';
 import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
 import { TailwindElement } from '../../tailwind-element';
+import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
 
 @customElement('gs-prevalence-over-time-table')
 export class PrevalenceOverTimeTable extends TailwindElement() {
@@ -13,30 +14,22 @@ export class PrevalenceOverTimeTable extends TailwindElement() {
     granularity: TemporalGranularity = 'day';
 
     override render() {
+        const tableData = getPrevalenceOverTimeTableData(this.data, this.granularity);
+
+        const keys = Object.keys(tableData[0]);
+
         return html`
             <table class="table">
                 <thead>
                     <tr>
-                        <th>${this.granularity}</th>
-                        ${this.data.map(
-                            (dataset) => html`
-                                <th>${dataset.displayName} prevalence</th>
-                                <th>${dataset.displayName} count</th>
-                            `,
-                        )}
+                        ${keys.map((key) => html` <th class="text-center">${key}</th>`)}
                     </tr>
                 </thead>
                 <tbody>
-                    ${this.data[0].content.map(
-                        (row, rowNumber) => html`
+                    ${tableData.map(
+                        (row) => html`
                             <tr>
-                                <td>${row.dateRange ?? 'Unknown'}</td>
-                                ${this.data.map(
-                                    (dataset) => html`
-                                        <td>${dataset.content[rowNumber].prevalence.toFixed(4)}</td>
-                                        <td class="text-right">${dataset.content[rowNumber].count}</td>
-                                    `,
-                                )}
+                                ${keys.map((key) => html` <td class="text-center">${row[key]}</td>`)}
                             </tr>
                         `,
                     )}
