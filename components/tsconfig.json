@@ -8,7 +8,7 @@
         "sourceMap": true,
         "inlineSources": true,
         "outDir": "./build",
-        "rootDir": "./src",
+        "rootDir": "./",
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,

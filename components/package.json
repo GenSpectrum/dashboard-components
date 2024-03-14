@@ -53,6 +53,7 @@
         "eslint-plugin-storybook": "^0.8.0",
         "http-server": "^14.1.1",
         "lit-analyzer": "^2.0.3",
+        "msw": "^2.2.3",
         "postcss": "^8.4.35",
         "prettier": "^3.2.5",
         "storybook": "^8.0.0",

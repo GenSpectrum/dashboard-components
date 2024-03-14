@@ -1,0 +1,775 @@
+{
+    "errors": [],
+    "info": {
+        "apiVersion": 1,
+        "dataVersion": 1709685650,
+        "deprecationDate": null,
+        "deprecationInfo": null,
+        "acknowledgement": null
+    },
+    "data": [
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "New York",
+            "location": "Nyc",
+            "count": 102
+        },
+        {
+            "region": "Asia",
+            "country": "India",
+            "division": "Gujarat",
+            "location": "Diu",
+            "count": 2
+        },
+        {
+            "region": "Africa",
+            "country": "Morocco",
+            "division": "Morocco",
+            "location": null,
+            "count": 22
+        },
+        {
+            "region": "Europe",
+            "country": "Czech Republic",
+            "division": "Czech Republic",
+            "location": null,
+            "count": 29
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Arizona",
+            "location": "Portsmouth AZ",
+            "count": 2
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Annandale",
+            "location": null,
+            "count": 14
+        },
+        {
+            "region": "Asia",
+            "country": "Iraq",
+            "division": "Iraqi Kurdistan",
+            "location": null,
+            "count": 2
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "New Jersey",
+            "location": "Mercer County NJ",
+            "count": 12
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Wisconsin",
+            "location": "Forest County",
+            "count": 4
+        },
+        {
+            "region": "North America",
+            "country": "Mexico",
+            "division": "Baja California",
+            "location": "Tijuana",
+            "count": 398
+        },
+        {
+            "region": "Asia",
+            "country": "Singapore",
+            "division": "Singapore",
+            "location": null,
+            "count": 9
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Texas",
+            "location": "Jefferson County TX",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Missouri",
+            "location": "McDonald County",
+            "count": 1
+        },
+        {
+            "region": "Europe",
+            "country": "Poland",
+            "division": "Kujawsko-Pomorskie",
+            "location": null,
+            "count": 3
+        },
+        {
+            "region": "Europe",
+            "country": "Sweden",
+            "division": "Orebro",
+            "location": null,
+            "count": 94
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Arizona",
+            "location": "Stevens",
+            "count": 1
+        },
+        {
+            "region": "Europe",
+            "country": "Austria",
+            "division": "Upper Austria",
+            "location": "Zipf",
+            "count": 2
+        },
+        {
+            "region": "South America",
+            "country": "Peru",
+            "division": "Lambayeque",
+            "location": "Lambayeque",
+            "count": 1
+        },
+        {
+            "region": "Asia",
+            "country": "Uzbekistan",
+            "division": "Tashkent",
+            "location": "Yunusabad District, Center 5",
+            "count": 1
+        },
+        {
+            "region": "Asia",
+            "country": "Uzbekistan",
+            "division": "Tashkent",
+            "location": "Yunusabad District, Center 4",
+            "count": 2
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oklahoma",
+            "location": "0 OK",
+            "count": 3
+        },
+        {
+            "region": "Asia",
+            "country": "Uzbekistan",
+            "division": "Tashkent",
+            "location": "Yunusabad District, Center 7",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Arizona",
+            "location": "Fresno AZ",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "South Carolina",
+            "location": "Newberry County",
+            "count": 27
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "South Carolina",
+            "location": "Longs",
+            "count": 1
+        },
+        {
+            "region": "Europe",
+            "country": "Netherlands",
+            "division": "South Holland",
+            "location": "Delft NL",
+            "count": 1
+        },
+        {
+            "region": "Europe",
+            "country": "Netherlands",
+            "division": "Gelderland",
+            "location": null,
+            "count": 11
+        },
+        {
+            "region": "Asia",
+            "country": "India",
+            "division": "Gujarat",
+            "location": "Adajan",
+            "count": 2
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Louisiana",
+            "location": "West Feliciana",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oklahoma",
+            "location": "Weatherford, Tx",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Mt Solon",
+            "location": null,
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "North Carolina",
+            "location": "New Hill",
+            "count": 4
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oklahoma",
+            "location": "Claire",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Wisconsin",
+            "location": "Iron County WI",
+            "count": 3
+        },
+        {
+            "region": "Asia",
+            "country": "Philippines",
+            "division": "Manila",
+            "location": "Pasay City",
+            "count": 6
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oklahoma",
+            "location": "Oklahoma County",
+            "count": 3471
+        },
+        {
+            "region": "Asia",
+            "country": "Bangladesh",
+            "division": "Chattogram",
+            "location": "Noakhali",
+            "count": 5
+        },
+        {
+            "region": "Europe",
+            "country": "Austria",
+            "division": "Upper Austria",
+            "location": "St. Konrad",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Louisiana",
+            "location": "Concodia",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oregon",
+            "location": "Wasco County OR",
+            "count": 27
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Mississippi",
+            "location": "Jackson County MS",
+            "count": 1
+        },
+        {
+            "region": "Asia",
+            "country": "Thailand",
+            "division": "Narathiwat",
+            "location": null,
+            "count": 12
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Illinois",
+            "location": "Winnebago County IL",
+            "count": 91
+        },
+        {
+            "region": "Asia",
+            "country": "Bangladesh",
+            "division": "Rajshahi",
+            "location": "Chapainawabgonj",
+            "count": 9
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "South Carolina",
+            "location": "Long Creek",
+            "count": 1
+        },
+        {
+            "region": "Europe",
+            "country": "Austria",
+            "division": "Upper Austria",
+            "location": "Bad Goisern",
+            "count": 11
+        },
+        {
+            "region": "Asia",
+            "country": "Bhutan",
+            "division": "Dagana",
+            "location": null,
+            "count": 4
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Wisconsin",
+            "location": "Calumet County",
+            "count": 20
+        },
+        {
+            "region": "Asia",
+            "country": "India",
+            "division": "Gujarat",
+            "location": "Kheda",
+            "count": 4
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oklahoma",
+            "location": "Tulsa County",
+            "count": 332
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Wisconsin",
+            "location": "Rock County WI",
+            "count": 186
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Texas",
+            "location": "Terrell",
+            "count": 1
+        },
+        {
+            "region": "Asia",
+            "country": "Iran",
+            "division": "Iran",
+            "location": null,
+            "count": 16
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Wisconsin",
+            "location": "Milwaukee County",
+            "count": 892
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oklahoma",
+            "location": "Irving, Tx",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Wisconsin",
+            "location": null,
+            "count": 33452
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Kentucky",
+            "location": "Jefferson KY",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Wisconsin",
+            "location": "0 County",
+            "count": 8
+        },
+        {
+            "region": "Asia",
+            "country": "Pakistan",
+            "division": "Khyber Pakhtunkhwa",
+            "location": null,
+            "count": 11
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Arizona",
+            "location": "La Paz County",
+            "count": 1
+        },
+        {
+            "region": "Asia",
+            "country": "Palestine",
+            "division": "Tubas",
+            "location": null,
+            "count": 6
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "North Carolina",
+            "location": "Sampson County",
+            "count": 2
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Wisconsin",
+            "location": "Door County",
+            "count": 60
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Idaho",
+            "location": "Bannock County",
+            "count": 205
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Illinois",
+            "location": "McLean County IL",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "New York",
+            "location": "Broome County",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Louisiana",
+            "location": "Winn",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Arizona",
+            "location": "Maricopa County AZ",
+            "count": 12973
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oklahoma",
+            "location": "Creek County",
+            "count": 144
+        },
+        {
+            "region": "Asia",
+            "country": "Uzbekistan",
+            "division": "Tashkent",
+            "location": "Ortachirchik District, New Marriage Village",
+            "count": 1
+        },
+        {
+            "region": "Asia",
+            "country": "India",
+            "division": "Delhi",
+            "location": null,
+            "count": 68
+        },
+        {
+            "region": "Asia",
+            "country": "India",
+            "division": "Gujarat",
+            "location": "Veraval",
+            "count": 2
+        },
+        {
+            "region": "Europe",
+            "country": "Switzerland",
+            "division": "Appenzell Ausserrhoden",
+            "location": null,
+            "count": 369
+        },
+        {
+            "region": "Asia",
+            "country": "Uzbekistan",
+            "division": "Tashkent",
+            "location": "Zangiota District",
+            "count": 2
+        },
+        {
+            "region": "Europe",
+            "country": "Austria",
+            "division": "Upper Austria",
+            "location": "Aurach Am Hongar",
+            "count": 3
+        },
+        {
+            "region": "Asia",
+            "country": "India",
+            "division": "Gujarat",
+            "location": "Sutrapada",
+            "count": 6
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Mississippi",
+            "location": "Amite MS",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "South Dakota",
+            "location": null,
+            "count": 8620
+        },
+        {
+            "region": "Asia",
+            "country": "Thailand",
+            "division": "Chonburi",
+            "location": null,
+            "count": 11
+        },
+        {
+            "region": "Europe",
+            "country": "Germany",
+            "division": "Bavaria",
+            "location": "Augsburg",
+            "count": 42
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Pennsylvania",
+            "location": "Northumberland County PA",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Colorado",
+            "location": "Arapahoe County CO",
+            "count": 2
+        },
+        {
+            "region": "Asia",
+            "country": "Palestine",
+            "division": "Jenin",
+            "location": "Jenin",
+            "count": 4
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "California",
+            "location": "Lawton CA",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Washington",
+            "location": "Garfield County WA",
+            "count": 14
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oregon",
+            "location": "Moore OR",
+            "count": 1
+        },
+        {
+            "region": "Europe",
+            "country": "Sweden",
+            "division": "Vastra Gotaland",
+            "location": "Goteborg",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Arizona",
+            "location": "Mohave County",
+            "count": 1261
+        },
+        {
+            "region": "Europe",
+            "country": "Austria",
+            "division": "Upper Austria",
+            "location": "Poendorf",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oklahoma",
+            "location": "Ft. Gibson",
+            "count": 2
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oklahoma",
+            "location": "Sequoyah County",
+            "count": 245
+        },
+        {
+            "region": "Europe",
+            "country": "Austria",
+            "division": "Upper Austria",
+            "location": "Gosau",
+            "count": 2
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Massachusetts",
+            "location": "Eastotis",
+            "count": 1
+        },
+        {
+            "region": "Asia",
+            "country": "Kazakhstan",
+            "division": "Almaty",
+            "location": null,
+            "count": 5
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "North Carolina",
+            "location": "Scotland County NC",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Colorado",
+            "location": "Pueblo County",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Washington",
+            "location": "Chelan County",
+            "count": 575
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "South Carolina",
+            "location": "Georgetown County",
+            "count": 134
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "New Jersey",
+            "location": "Morris County NJ",
+            "count": 1
+        },
+        {
+            "region": "Africa",
+            "country": "Mali",
+            "division": "Bamako",
+            "location": null,
+            "count": 31
+        },
+        {
+            "region": "Asia",
+            "country": "Uzbekistan",
+            "division": "Tashkent",
+            "location": "Yunusabad District, Center 3",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Alabama",
+            "location": "Monroe County AL",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Georgia",
+            "location": "Forsyth GA",
+            "count": 1
+        },
+        {
+            "region": "Europe",
+            "country": "Netherlands",
+            "division": "North Brabant",
+            "location": "Helmond",
+            "count": 1
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Wisconsin",
+            "location": "Sheboygan County",
+            "count": 140
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "California",
+            "location": "Orange County CA",
+            "count": 5217
+        },
+        {
+            "region": "North America",
+            "country": "USA",
+            "division": "Oklahoma",
+            "location": "Finley OK",
+            "count": 2
+        },
+        {
+            "region": "Africa",
+            "country": "Sierra Leone",
+            "division": "Sierra Leone",
+            "location": null,
+            "count": 97
+        },
+        {
+            "region": "Asia",
+            "country": "Japan",
+            "division": "Sapporo",
+            "location": null,
+            "count": 4
+        }
+    ]
+}
