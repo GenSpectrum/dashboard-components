@@ -1,8 +1,8 @@
-import { expect } from '@storybook/jest';
+import { expect } from '@storybook/test';
 import { html } from 'lit';
 import { Meta, StoryObj } from '@storybook/web-components';
 import './component-scaling-selector';
-import { userEvent, waitFor } from '@storybook/testing-library';
+import { userEvent, waitFor } from '@storybook/test';
 import { withinShadowRoot } from '../../storybook/withinShadowRoot.story';
 
 const meta: Meta = {
