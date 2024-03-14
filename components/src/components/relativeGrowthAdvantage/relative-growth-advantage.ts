@@ -10,6 +10,7 @@ import { type LapisFilter } from '../../types';
 import { lapisContext } from '../../lapis-context';
 import { consume } from '@lit/context';
 import { queryRelativeGrowthAdvantage, RelativeGrowthAdvantageData } from '../../query/queryRelativeGrowthAdvantage';
+import { ScaleType } from '../container/component-scaling-selector';
 
 type View = 'line';
 
@@ -37,6 +38,25 @@ export class RelativeGrowthAdvantage extends LitElement {
     @property({ type: Array })
     views: View[] = ['line'];
 
+    yAxisScaleType: ScaleType = 'linear';
+
+    private setYAxisScaleType = (scaleType: ScaleType) => {
+        this.yAxisScaleType = scaleType;
+        this.requestUpdate();
+    };
+
+    private getScalingSelector() {
+        return html`
+            <gs-component-scaling-selector
+                .setYAxisScaleType=${(scaleType: ScaleType) => {
+                    this.setYAxisScaleType(scaleType);
+                }}
+                currentScaleType=${this.yAxisScaleType}
+            >
+            </gs-component-scaling-selector>
+        `;
+    }
+
     private fetchingTask = new Task(this, {
         task: async ([lapis, numerator, denominator, generationTime], { signal }) => {
             return await queryRelativeGrowthAdvantage(numerator, denominator, generationTime, lapis, signal);
@@ -46,14 +66,14 @@ export class RelativeGrowthAdvantage extends LitElement {
 
     heading: string = 'Relative growth advantage';
 
-    getViewTitle(view: View) {
+    private getViewTitle(view: View) {
         switch (view) {
             case 'line':
                 return 'Line';
         }
     }
 
-    getLineChartView(data: NonNullable<RelativeGrowthAdvantageData>) {
+    private getLineChartView(data: NonNullable<RelativeGrowthAdvantageData>) {
         const info = html` <gs-component-info content="Line chart"></gs-component-info>`;
 
         return html`
@@ -63,6 +83,7 @@ export class RelativeGrowthAdvantage extends LitElement {
                         ...data.estimatedProportions,
                         observed: data.observedProportions,
                     }}
+                    yAxisScaleType=${this.yAxisScaleType}
                 ></gs-relative-growth-advantage-chart>
                 <div>
                     Advantage: ${(data.params.fd.value * 100).toFixed(2)}%
@@ -72,7 +93,7 @@ export class RelativeGrowthAdvantage extends LitElement {
         `;
     }
 
-    getViewContent(view: View, data: NonNullable<RelativeGrowthAdvantageData>) {
+    private getViewContent(view: View, data: NonNullable<RelativeGrowthAdvantageData>) {
         switch (view) {
             case 'line':
                 return this.getLineChartView(data);
@@ -98,9 +119,11 @@ export class RelativeGrowthAdvantage extends LitElement {
                     };
                 });
 
+                const toolbar = this.getScalingSelector();
+
                 return html`
                     <gs-component-headline heading=${this.heading}>
-                        <gs-component-tabs .tabs=${tabs}></gs-component-tabs>
+                        <gs-component-tabs .tabs=${tabs} .toolbar=${toolbar}></gs-component-tabs>
                     </gs-component-headline>
                 `;
             },
