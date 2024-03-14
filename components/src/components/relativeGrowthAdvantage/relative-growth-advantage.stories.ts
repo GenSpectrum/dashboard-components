@@ -26,14 +26,16 @@ export default meta;
 
 const Template: StoryObj<RelativeGrowthAdvantageProps> = {
     render: (args) => html`
-        <gs-app lapis="${LAPIS_URL}">
-            <gs-relative-growth-advantage
-                .numerator=${args.numerator}
-                .denominator=${args.denominator}
-                .generationTime=${args.generationTime}
-                .views=${args.views}
-            ></gs-relative-growth-advantage>
-        </gs-app>
+        <div class="w-11/12 h-11/12">
+            <gs-app lapis="${LAPIS_URL}">
+                <gs-relative-growth-advantage
+                    .numerator=${args.numerator}
+                    .denominator=${args.denominator}
+                    .generationTime=${args.generationTime}
+                    .views=${args.views}
+                ></gs-relative-growth-advantage>
+            </gs-app>
+        </div>
     `,
 };
 

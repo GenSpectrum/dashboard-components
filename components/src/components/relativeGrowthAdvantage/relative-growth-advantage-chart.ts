@@ -1,7 +1,9 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
-import { Chart, registerables } from 'chart.js';
+import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { YearMonthDay } from '../../temporal';
+import { getYAxisScale, ScaleType } from '../container/component-scaling-selector';
+import { LogitScale } from '../charts/LogitScale';
 
 @customElement('gs-relative-growth-advantage-chart')
 export class RelativeGrowthAdvantageChart extends LitElement {
@@ -20,10 +22,20 @@ export class RelativeGrowthAdvantageChart extends LitElement {
         observed: [],
     };
 
+    @property()
+    yAxisScaleType: ScaleType = 'linear';
+
+    private chart?: Chart;
+
     override firstUpdated() {
-        const ctx = this.renderRoot.querySelector('canvas')!.getContext('2d')!;
-        Chart.register(...registerables);
-        new Chart(ctx, {
+        const ctx = this.renderRoot.querySelector('canvas')?.getContext('2d');
+        if (!ctx) {
+            return;
+        }
+
+        Chart.register(...registerables, LogitScale);
+        const config: ChartConfiguration = {
+            type: 'line',
             data: {
                 labels: this.data.t,
                 datasets: [
@@ -59,9 +71,9 @@ export class RelativeGrowthAdvantageChart extends LitElement {
             options: {
                 animation: false,
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                    },
+                    // chart.js typings are not complete with custom scales
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    y: getYAxisScale(this.yAxisScaleType) as any,
                 },
                 plugins: {
                     legend: {
@@ -73,7 +85,23 @@ export class RelativeGrowthAdvantageChart extends LitElement {
                     },
                 },
             },
-        });
+        };
+
+        this.chart = new Chart(ctx, config);
+    }
+
+    override updated(changedProperties: Map<string | number | symbol, unknown>): void {
+        if (changedProperties.has('yAxisScaleType')) {
+            this.updateChartScale();
+        }
+    }
+
+    updateChartScale(): void {
+        if (!this.chart) return;
+        // chart.js typings are not complete with custom scales
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        this.chart.options.scales!.y = getYAxisScale(this.yAxisScaleType) as any;
+        this.chart.update();
     }
 
     override render() {
