@@ -2,7 +2,7 @@ import { html } from 'lit';
 import { Meta, StoryObj } from '@storybook/web-components';
 import './component-checkbox-selector';
 import { withinShadowRoot } from '../../storybook/withinShadowRoot.story';
-import { expect } from '@storybook/jest';
+import { expect } from '@storybook/test';
 
 const meta: Meta = {
     title: 'Component/Checkbox Selector',
