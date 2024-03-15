@@ -8,13 +8,13 @@ import '../container/component-info';
 import './prevalence-over-time-line-bar-chart';
 import './prevalence-over-time-bubble-chart';
 import './prevalence-over-time-table';
-import '../container/component-scaling-selector';
+import '../container/component-select';
 import { type NamedLapisFilter, TemporalGranularity } from '../../types';
 import { lapisContext } from '../../lapis-context';
 import { consume } from '@lit/context';
 import { PrevalenceOverTimeData, queryPrevalenceOverTime } from '../../query/queryPrevalenceOverTime';
-import { ScaleType } from '../container/component-scaling-selector';
 import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
+import { ScaleType } from '../charts/scales';
 
 type View = 'bar' | 'line' | 'bubble' | 'table';
 type GraphView = 'bar' | 'line' | 'bubble';
@@ -68,13 +68,19 @@ export class PrevalenceOverTime extends LitElement {
 
     getScalingSelector(view: GraphView) {
         return html`
-            <gs-component-scaling-selector
-                .setYAxisScaleType=${(scaleType: ScaleType) => {
-                    this.setYAxisScaleType(scaleType, view);
+            <gs-select
+                selectStyle="select-xs select-bordered"
+                .items=${[
+                    { label: 'Linear', value: 'linear' },
+                    { label: 'Logarithmic', value: 'logarithmic' },
+                    { label: 'Logit', value: 'logit' },
+                ]}
+                .selected=${this.yAxisScaleType[view]}
+                @selectChange=${(event: CustomEvent) => {
+                    this.setYAxisScaleType(event.detail.value as ScaleType, view);
                 }}
-                currentScaleType=${this.yAxisScaleType[view]}
             >
-            </gs-component-scaling-selector>
+            </gs-select>
         `;
     }
 

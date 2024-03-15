@@ -2,8 +2,8 @@ import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { YearMonthDay } from '../../temporal';
-import { getYAxisScale, ScaleType } from '../container/component-scaling-selector';
 import { LogitScale } from '../charts/LogitScale';
+import { getYAxisScale, ScaleType } from '../charts/scales';
 
 @customElement('gs-relative-growth-advantage-chart')
 export class RelativeGrowthAdvantageChart extends LitElement {

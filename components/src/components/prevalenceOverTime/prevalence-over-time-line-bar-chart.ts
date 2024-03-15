@@ -1,9 +1,9 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
-import { getYAxisScale, ScaleType } from '../container/component-scaling-selector';
 import { LogitScale } from '../charts/LogitScale';
 import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
+import { getYAxisScale, ScaleType } from '../charts/scales';
 
 @customElement('gs-prevalence-over-time-line-bar-chart')
 export class PrevalenceOverTimeLineBarChart extends LitElement {

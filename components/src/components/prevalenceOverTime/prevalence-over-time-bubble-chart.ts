@@ -4,9 +4,9 @@ import { Chart, registerables } from 'chart.js';
 import { TemporalGranularity } from '../../types';
 import { addUnit, minusTemporal } from '../../temporal';
 import { getMinMaxNumber } from '../../utils';
-import { getYAxisScale, ScaleType } from '../container/component-scaling-selector';
 import { LogitScale } from '../charts/LogitScale';
 import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
+import { getYAxisScale, ScaleType } from '../charts/scales';
 
 @customElement('gs-prevalence-over-time-bubble-chart')
 export class PrevalenceOverTimeBubbleChart extends LitElement {
