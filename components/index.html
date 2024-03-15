@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>&lt;my-element> Demo</title>
+        <title>Components Demo</title>
         <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
         <script src="./node_modules/lit/polyfill-support.js"></script>
         <script type="module" src="./src/components/app.ts"></script>
@@ -12,7 +12,10 @@
     </head>
     <body>
         <gs-app lapis="https://lapis.cov-spectrum.org/open/v1/sample">
-            <gs-location-filter value="Switzerland"></gs-location-filter>
+            <gs-location-filter
+                value="Europe / Switzerland"
+                fields='["region", "country", "division", "location"]'
+            ></gs-location-filter>
             <gs-prevalence-over-time
                 numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}'
                 denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
@@ -30,7 +33,7 @@
         </gs-app>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                document.querySelector('gs-location-filter').addEventListener('location-changed', (event) => {
+                document.querySelector('gs-location-filter').addEventListener('gs-location-changed', (event) => {
                     const sequencesElements = document.querySelectorAll('gs-prevalence-over-time');
                     sequencesElements.forEach((el) => {
                         ['numerator', 'denominator'].forEach((attr) => {

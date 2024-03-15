@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { Task } from '@lit/task';
 import { consume } from '@lit/context';
 import { lapisContext } from '../../lapis-context';
@@ -20,6 +20,9 @@ export class LocationFilter extends TailwindElement() {
     @consume({ context: lapisContext })
     lapis: string = '';
 
+    @state()
+    private unknownLocation = false;
+
     private fetchingTask = new Task(this, {
         task: async ([lapis], { signal }) => fetchAutocompletionList(this.fields, lapis, signal),
         args: () => [this.lapis],
@@ -28,7 +31,7 @@ export class LocationFilter extends TailwindElement() {
     override render() {
         return this.fetchingTask.render({
             pending: () => html`
-                <div class="flex">
+                <form class="flex">
                     <input
                         type="text"
                         class="input input-bordered flex-grow"
@@ -37,15 +40,15 @@ export class LocationFilter extends TailwindElement() {
                         disabled
                     />
                     <button class="btn ml-1" disabled>Loading...</button>
-                </div>
+                </form>
             `,
             complete: (data) => html`
-                <div class="flex">
+                <form class="flex">
                     <input
                         type="text"
-                        class="input input-bordered flex-grow"
+                        class="input input-bordered flex-grow ${this.unknownLocation && 'border-2 border-error'}"
                         .value="${this.value}"
-                        @input="${this.onInput}"
+                        @input="${(event: Event) => this.onInput(event, data)}"
                         list="countries"
                     />
                     <datalist id="countries">
@@ -59,35 +62,59 @@ export class LocationFilter extends TailwindElement() {
                                 ></option>`,
                         )}
                     </datalist>
-                    <button class="btn btn-primary ml-1" @click="${() => this.submit(data)}">Submit</button>
-                </div>
+                    <button
+                        class="btn btn-primary ml-1"
+                        @click="${(event: PointerEvent) => {
+                            event.preventDefault();
+                            this.submit(data);
+                        }}"
+                    >
+                        Submit
+                    </button>
+                </form>
             `,
             error: (e) => html`<p>Error: ${e}</p>`,
         });
     }
 
-    onInput(event: Event) {
+    private onInput(event: Event, data: Record<string, string>[]) {
         const input = event.target as HTMLInputElement;
         this.value = input.value;
+        if (this.unknownLocation) {
+            const eventDetail = this.parseLocation(this.value);
+            if (this.hasMatchingEntry(data, eventDetail)) {
+                this.unknownLocation = false;
+            }
+        }
     }
 
-    submit(_data: unknown) {
-        // TODO #70
-        // if (data.regions.includes(this.value)) {
-        //     this.dispatchEvent(
-        //         new CustomEvent('gs-location-changed', {
-        //             detail: { region: this.value, country: undefined },
-        //             bubbles: true,
-        //         }),
-        //     );
-        // } else if (data.countries.includes(this.value)) {
-        //     this.dispatchEvent(
-        //         new CustomEvent('gs-location-changed', {
-        //             detail: { region: undefined, country: this.value },
-        //             bubbles: true,
-        //         }),
-        //     );
-        // }
+    private submit(data: Record<string, string>[]) {
+        const eventDetail = this.parseLocation(this.value);
+
+        if (this.hasMatchingEntry(data, eventDetail)) {
+            this.unknownLocation = false;
+            this.dispatchEvent(
+                new CustomEvent('gs-location-changed', {
+                    detail: eventDetail,
+                    bubbles: true,
+                }),
+            );
+        } else {
+            this.unknownLocation = true;
+        }
+    }
+
+    private parseLocation(location: string): Record<string, string> {
+        const fieldValues = location.split('/').map((part) => part.trim());
+        return fieldValues.reduce((acc, fieldValue, i) => ({ ...acc, [this.fields[i]]: fieldValue }), {});
+    }
+
+    private hasMatchingEntry(data: Record<string, string>[], eventDetail: Record<string, string>) {
+        const matchingEntries = Object.entries(eventDetail)
+            .filter(([, value]) => value !== undefined)
+            .reduce((filteredData, [key, value]) => filteredData.filter((it) => it[key] === value), data);
+
+        return matchingEntries.length > 0;
     }
 }
 
