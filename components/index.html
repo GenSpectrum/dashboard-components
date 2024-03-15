@@ -9,6 +9,7 @@
         <script type="module" src="./src/components/app.ts"></script>
         <script type="module" src="src/components/locationFilter/location-filter.ts"></script>
         <script type="module" src="src/components/prevalenceOverTime/prevalence-over-time.ts"></script>
+        <script type="module" src="src/components/dateRangeSelector/date-range-selector.ts"></script>
     </head>
     <body>
         <gs-app lapis="https://lapis.cov-spectrum.org/open/v1/sample">
@@ -16,6 +17,7 @@
                 value="Europe / Switzerland"
                 fields='["region", "country", "division", "location"]'
             ></gs-location-filter>
+            <gs-date-range-selector selectedValue="last6Months"></gs-date-range-selector>
             <gs-prevalence-over-time
                 numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}'
                 denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
