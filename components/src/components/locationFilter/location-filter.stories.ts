@@ -7,7 +7,7 @@ import '../app';
 import './location-filter';
 import data from './__mockData__/aggregated.json';
 import { withinShadowRoot } from '../../storybook/withinShadowRoot.story';
-import { expect, waitFor } from '@storybook/test';
+import { expect, fn, userEvent, waitFor } from '@storybook/test';
 
 const meta: Meta<{}> = {
     title: 'Input/Location filter',
@@ -25,7 +25,9 @@ export default meta;
 const Template: StoryObj<{ fields: string[] }> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
-            <gs-location-filter .fields=${args.fields}></gs-location-filter>
+            <div class="max-w-screen-lg">
+                <gs-location-filter .fields=${args.fields}></gs-location-filter>
+            </div>
         </gs-app>`;
     },
     args: {
@@ -103,5 +105,73 @@ export const FetchingLocationsFails: StoryObj<{ fields: string[] }> = {
         const canvas = await withinShadowRoot(canvasElement, 'gs-location-filter');
 
         await waitFor(() => expect(canvas.getByText('Error: TypeError', { exact: false })).toBeInTheDocument());
+    },
+};
+
+export const FiresEvent: StoryObj<{ fields: string[] }> = {
+    ...Template,
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: aggregatedEndpointMatcher,
+                    response: {
+                        status: 200,
+                        body: data,
+                    },
+                },
+            ],
+        },
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-location-filter');
+
+        const submitButton = () => canvas.getByRole('button', { name: 'Submit' });
+        const inputField = () => canvas.getByRole('combobox');
+
+        const listenerMock = fn();
+        await step('Setup event listener mock', async () => {
+            canvasElement.addEventListener('gs-location-changed', listenerMock);
+        });
+
+        await step('wait until data is loaded', async () => {
+            await waitFor(() => {
+                return expect(inputField()).toBeEnabled();
+            });
+        });
+
+        await step('Input invalid location', async () => {
+            await userEvent.type(inputField(), 'Not / A / Location');
+            await userEvent.click(submitButton());
+            await expect(listenerMock).not.toHaveBeenCalled();
+            await userEvent.type(inputField(), '{backspace>18/}');
+        });
+
+        await step('Select Asia', async () => {
+            await userEvent.type(inputField(), 'Asia');
+            await userEvent.click(submitButton());
+            await expect(listenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: {
+                        region: 'Asia',
+                    },
+                }),
+            );
+        });
+
+        await step('Select Asia / Bangladesh / Rajshahi / Chapainawabgonj', async () => {
+            await userEvent.type(inputField(), ' / Bangladesh / Rajshahi / Chapainawabgonj');
+            await userEvent.click(submitButton());
+            await expect(listenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: {
+                        region: 'Asia',
+                        country: 'Bangladesh',
+                        division: 'Rajshahi',
+                        location: 'Chapainawabgonj',
+                    },
+                }),
+            );
+        });
     },
 };
