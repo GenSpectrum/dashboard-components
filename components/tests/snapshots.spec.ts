@@ -12,13 +12,13 @@ visualizationStories.forEach((story) => {
             await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.005 });
         });
 
-        if (story.testDownload) {
+        if (story.testDownloadWithFilename !== undefined) {
             test(`Download of ${story.id} should match snapshot`, async ({ storybook }) => {
                 await storybook.gotoStory(story.id);
 
                 const download = await storybook.clickDownloadButton('Download');
 
-                expect(download.suggestedFilename()).toBe('prevalence-over-time.csv');
+                expect(download.suggestedFilename()).toBe(story.testDownloadWithFilename);
                 const content = await getDownloadedContent(download);
                 expect(content).toMatchSnapshot();
             });
