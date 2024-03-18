@@ -174,9 +174,15 @@ export class Mutations extends LitElement {
                     };
                 });
 
+                const toolbar = html` <gs-component-csv-download-button
+                    class="m-1 btn btn-sm"
+                    filename="mutations.csv"
+                    .getData=${() => data.content}
+                ></gs-component-csv-download-button>`;
+
                 return html`
                     <gs-component-headline heading=${this.heading}>
-                        <gs-component-tabs .tabs=${tabs}></gs-component-tabs>
+                        <gs-component-tabs .tabs=${tabs} .toolbar=${toolbar}></gs-component-tabs>
                     </gs-component-headline>
                 `;
             },
