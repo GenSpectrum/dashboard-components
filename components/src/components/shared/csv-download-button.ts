@@ -31,7 +31,7 @@ export class CsvDownloadButton extends TailwindElement() {
     private getDownloadContent() {
         const data = this.getData();
         const keys = getDataKeys(data);
-        const header = keys.join(',') + '\n';
+        const header = `${keys.join(',')}\n`;
         const rows = data.map((row) => keys.map((key) => row[key]).join(',')).join('\n');
         return header + rows;
     }

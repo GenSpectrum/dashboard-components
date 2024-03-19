@@ -4,7 +4,6 @@ import { Task } from '@lit/task';
 import '../container/component-headline';
 import '../container/component-tabs';
 import '../container/component-toolbar';
-import '../container/component-checkbox-selector';
 import '../container/component-info';
 import './mutations-table';
 import './mutations-grid';
@@ -137,10 +136,10 @@ export class Mutations extends LitElement {
             .map((segment) => segment.segment);
 
         if (segments.length === allSegmentsSelected.length) {
-            return prefix + 'all';
+            return `${prefix}all`;
         }
         if (segments.length === 0) {
-            return prefix + 'none';
+            return `${prefix}none`;
         }
         return prefix + allSegmentsSelected.join(', ');
     }

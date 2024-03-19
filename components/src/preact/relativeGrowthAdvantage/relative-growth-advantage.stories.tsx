@@ -1,46 +1,28 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-
-import { html } from 'lit';
-import '../app';
-import './relative-growth-advantage';
-import { RelativeGrowthAdvantageProps } from './relative-growth-advantage';
+import { LapisUrlContext } from '../LapisUrlContext';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import numerator from './__mockData__/numerator.json';
 import denominator from './__mockData__/denominator.json';
+import { RelativeGrowthAdvantage, RelativeGrowthAdvantageProps } from './relative-growth-advantage';
 
-const meta: Meta<RelativeGrowthAdvantageProps> = {
-    title: 'Visualization/Relative growth advantage',
-    component: 'gs-relative-growth-advantage',
-    argTypes: {
-        numerator: { control: 'object' },
-        denominator: { control: 'object' },
-        generationTime: { control: 'number' },
-        views: {
-            options: ['line'],
-            control: { type: 'check' },
-        },
+export default {
+    title: 'Example/RelativeGrowthAdvantage',
+    component: RelativeGrowthAdvantage,
+    parameters: {
+        fetchMock: {},
     },
 };
 
-export default meta;
-
-const Template: StoryObj<RelativeGrowthAdvantageProps> = {
-    render: (args) => html`
-        <div class="w-11/12 h-11/12">
-            <gs-app lapis="${LAPIS_URL}">
-                <gs-relative-growth-advantage
-                    .numerator=${args.numerator}
-                    .denominator=${args.denominator}
-                    .generationTime=${args.generationTime}
-                    .views=${args.views}
-                ></gs-relative-growth-advantage>
-            </gs-app>
-        </div>
-    `,
-};
-
-export const Default = {
-    ...Template,
+export const Primary = {
+    render: (args: RelativeGrowthAdvantageProps) => (
+        <LapisUrlContext.Provider value={LAPIS_URL}>
+            <RelativeGrowthAdvantage
+                numerator={args.numerator}
+                denominator={args.denominator}
+                generationTime={args.generationTime}
+                views={args.views}
+            />
+        </LapisUrlContext.Provider>
+    ),
     args: {
         numerator: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
         denominator: { country: 'Switzerland', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
