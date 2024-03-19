@@ -5,5 +5,5 @@
     "semi": true,
     "jsxSingleQuote": true,
     "singleQuote": true,
-    "quoteProps": "consistent"
+    "quoteProps": "as-needed"
 }

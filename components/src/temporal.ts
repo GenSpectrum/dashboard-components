@@ -90,7 +90,7 @@ export class YearMonthDay {
     }
 
     static parse(s: string, cache: TemporalCache): YearMonthDay {
-        const [year, month, day] = s.split('-').map((s) => parseInt(s));
+        const [year, month, day] = s.split('-').map((s) => parseInt(s, 10));
         return new YearMonthDay(year, month, day, cache);
     }
 }
@@ -136,7 +136,7 @@ export class YearWeek {
     }
 
     static parse(s: string, cache: TemporalCache): YearWeek {
-        const [year, week] = s.split('-').map((s) => parseInt(s));
+        const [year, week] = s.split('-').map((s) => parseInt(s, 10));
         return new YearWeek(year, week, cache);
     }
 }
@@ -175,7 +175,7 @@ export class YearMonth {
     }
 
     static parse(s: string, cache: TemporalCache): YearMonth {
-        const [year, month] = s.split('-').map((s) => parseInt(s));
+        const [year, month] = s.split('-').map((s) => parseInt(s, 10));
         return new YearMonth(year, month, cache);
     }
 }
@@ -213,7 +213,7 @@ export class Year {
     }
 
     static parse(s: string, cache: TemporalCache): Year {
-        const year = parseInt(s);
+        const year = parseInt(s, 10);
         return new Year(year, cache);
     }
 }

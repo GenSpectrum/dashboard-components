@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import '../app';
 import './prevalence-over-time';
+// eslint-disable-next-line no-duplicate-imports
 import { PrevalenceOverTimeProps } from './prevalence-over-time';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import denominator from './__mockData__/denominator.json';

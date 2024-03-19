@@ -46,7 +46,7 @@ export class FetchMutationsOperator implements Operator<MutationEntry> {
         lapis: string,
         signal?: AbortSignal,
     ): Promise<{ mutation: string; count: number; proportion: number }[]> {
-        const endpoint = (this.sequenceType === 'nucleotide' ? 'nuc' : 'aa') + '-mutations';
+        const endpoint = `${this.sequenceType === 'nucleotide' ? 'nuc' : 'aa'}-mutations`;
         const params = mapLapisFilterToUrlParams(this.filter);
         if (this.minProportion !== undefined) {
             params.set('minProportion', this.minProportion.toString());
@@ -58,7 +58,7 @@ export class FetchMutationsOperator implements Operator<MutationEntry> {
         lapis: string,
         signal?: AbortSignal,
     ): Promise<{ insertion: string; count: number }[]> {
-        const endpoint = (this.sequenceType === 'nucleotide' ? 'nuc' : 'aa') + '-insertions';
+        const endpoint = `${this.sequenceType === 'nucleotide' ? 'nuc' : 'aa'}-insertions`;
         const params = mapLapisFilterToUrlParams(this.filter);
         return (await (await fetch(`${lapis}/${endpoint}?${params.toString()}`, { signal })).json()).data;
     }

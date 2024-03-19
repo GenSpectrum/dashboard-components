@@ -1,0 +1,41 @@
+import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
+import { Meta, StoryObj } from '@storybook/preact';
+import { Select, SelectProps } from './select';
+
+const meta: Meta<SelectProps> = {
+    title: 'Component/Select',
+    component: Select,
+    argTypes: {
+        onChange: { action: true },
+    },
+    parameters: { fetchMock: {} },
+};
+
+export default meta;
+
+export const ScalingSelectorStory: StoryObj<SelectProps> = {
+    args: {
+        items: [
+            { label: 'Disabled first element', disabled: true, value: 'does not matter' },
+            { label: 'First Option', value: 'firstOption' },
+            { label: 'Second Option', value: 'secondOption' },
+        ],
+        selected: 'firstOption',
+        selectStyle: '',
+        onChange: fn(),
+    },
+    play: async ({ canvasElement, args }) => {
+        const canvas = within(canvasElement);
+        await userEvent.selectOptions(canvas.getByRole('combobox'), 'secondOption');
+        await waitFor(() =>
+            expect(args.onChange).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    type: 'change',
+                    target: expect.objectContaining({
+                        value: 'secondOption',
+                    }),
+                }),
+            ),
+        );
+    },
+};

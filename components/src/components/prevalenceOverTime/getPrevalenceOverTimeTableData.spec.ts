@@ -2,7 +2,7 @@ import { TemporalGranularity } from '../../types';
 import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
 import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
 import { TemporalCache, YearMonthDay } from '../../temporal';
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 describe('getPrevalenceOverTimeTableData', () => {
     it('should flatten the data to CSV format', () => {
@@ -48,14 +48,14 @@ describe('getPrevalenceOverTimeTableData', () => {
 
         expect(result).toEqual([
             {
-                'day': '2021-01-01',
+                day: '2021-01-01',
                 'Test 1 prevalence': '0.5000',
                 'Test 1 count': 100,
                 'Test 2 prevalence': '0.7000',
                 'Test 2 count': 300,
             },
             {
-                'day': '2021-01-02',
+                day: '2021-01-02',
                 'Test 1 prevalence': '0.6000',
                 'Test 1 count': 200,
                 'Test 2 prevalence': '0.8000',

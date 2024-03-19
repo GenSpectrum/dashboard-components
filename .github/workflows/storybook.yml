@@ -18,3 +18,5 @@ jobs:
         path: components/storybook-static
         install_command: cd components && npm ci && cd ..
         build_command: cd components && npm run build-storybook && cd ..
+      env:
+        DISABLE_PREACT_STORYBOOK: true

@@ -4,7 +4,6 @@ import { Dataset } from '../../operator/Dataset';
 import { DeletionEntry, MutationEntry, SubstitutionEntry } from '../../operator/FetchMutationsOperator';
 import { SequenceType } from '../../types';
 import { bases } from '../../mutations';
-import '../container/component-table';
 import { TailwindElement } from '../../tailwind-element';
 import { tableStyle } from '../container/component-table';
 import { Row } from 'gridjs';
@@ -81,10 +80,9 @@ export class MutationsGrid extends TailwindElement() {
         const split = (s: string) => {
             const parts = s.split(':');
             if (parts.length === 1) {
-                return [undefined, parseInt(parts[0])] as const;
-            } else {
-                return [parts[0], parseInt(parts[1])] as const;
+                return [undefined, parseInt(parts[0], 10)] as const;
             }
+            return [parts[0], parseInt(parts[1], 10)] as const;
         };
         const [aSegment, aPosition] = split(a);
         const [bSegment, bPosition] = split(b);
@@ -128,7 +126,7 @@ export class MutationsGrid extends TailwindElement() {
 
         for (const mutationEntry of mutationsWithoutInsertions) {
             const position =
-                (mutationEntry.mutation.segment ? mutationEntry.mutation.segment + ':' : '') +
+                (mutationEntry.mutation.segment ? `${mutationEntry.mutation.segment}:` : '') +
                 mutationEntry.mutation.position;
             referenceBases.set(position, mutationEntry.mutation.valueAtReference);
 
@@ -196,5 +194,5 @@ declare global {
 }
 
 const formatProportion = (proportion: number) => {
-    return (proportion * 100).toFixed(2) + '%';
+    return `${(proportion * 100).toFixed(2)}%`;
 };

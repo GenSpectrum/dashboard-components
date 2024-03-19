@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import '../app';
 import './mutations';
+// eslint-disable-next-line no-duplicate-imports
 import { MutationsProps } from './mutations';
 import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import nucleotideMutations from './__mockData__/nucleotideMutations.json';

@@ -1,7 +1,17 @@
 import type { StorybookConfig } from '@storybook/web-components-vite';
 
+const refs: any =
+    process.env.DISABLE_PREACT_STORYBOOK === 'true'
+        ? {}
+        : {
+              preact: {
+                  title: 'Preact',
+                  url: 'http://localhost:6007',
+              },
+          };
+
 const config: StorybookConfig = {
-    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|mjs|ts)'],
     addons: [
         '@storybook/addon-links',
         '@storybook/addon-essentials',
@@ -15,5 +25,6 @@ const config: StorybookConfig = {
     docs: {
         autodocs: 'tag',
     },
+    refs,
 };
 export default config;

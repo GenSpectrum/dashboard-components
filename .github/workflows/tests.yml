@@ -89,8 +89,19 @@ jobs:
       - name: build Storybook
         run: npm run build-storybook -- --quiet
 
+      - name: build Preact Storybook
+        run: npm run build-storybook-preact -- --quiet
+
       - name: Start Storybook server
-        run: npx http-server storybook-static --port 6006 --silent &
+        run:
+          npx http-server storybook-static --port 6006 --silent &
+          npx http-server storybook-static-preact --port 6007 --silent &
+
+      - name: Wait for Preact Storybook server to be ready
+        run: npx wait-on tcp:6007
+
+      - name: Run Preact Storybook tests
+        run: npm run test:storybook:preact
 
       - name: Wait for Storybook server to be ready
         run: npx wait-on tcp:6006
