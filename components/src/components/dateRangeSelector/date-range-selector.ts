@@ -58,19 +58,11 @@ export class DateRangeSelector extends TailwindElement() {
         this.dateFromPicker = flatpickr(this.datePickerContainer, {
             ...commonConfig,
             defaultDate: this.getDatesForSelectorValue('last6Months').dateFrom,
-            onChange: (selectedDates) => {
-                this.dateToPicker?.set('minDate', selectedDates[0]);
-                this.selectedValue = 'custom';
-            },
         });
 
         this.dateToPicker = flatpickr(this.endDatePickerContainer, {
             ...commonConfig,
             defaultDate: this.getDatesForSelectorValue('last6Months').dateTo,
-            onChange: (selectedDates) => {
-                this.dateFromPicker?.set('maxDate', selectedDates[0]);
-                this.selectedValue = 'custom';
-            },
         });
     }
 
@@ -81,7 +73,7 @@ export class DateRangeSelector extends TailwindElement() {
             (option) => this.customLabelToOptionValue(option.label) === selectorValue,
         );
         if (customSelectOption) {
-            return { dateFrom: customSelectOption.dateFrom, dateTo: customSelectOption.dateTo };
+            return { dateFrom: new Date(customSelectOption.dateFrom), dateTo: new Date(customSelectOption.dateTo) };
         }
 
         switch (selectorValue) {
@@ -111,7 +103,7 @@ export class DateRangeSelector extends TailwindElement() {
                 return { dateFrom: sixMonthsAgo, dateTo: today };
             }
             case 'allTimes': {
-                return { dateFrom: this.earliestDate, dateTo: today };
+                return { dateFrom: new Date(this.earliestDate), dateTo: today };
             }
         }
         const currentDateFrom = this.dateFromPicker?.selectedDates;
@@ -122,6 +114,47 @@ export class DateRangeSelector extends TailwindElement() {
             dateTo: currentDateTo ? currentDateTo[0] : today,
         };
     }
+
+    override createRenderRoot() {
+        return this;
+    }
+
+    override render() {
+        return html`
+            <div class="join">
+                <gs-select
+                    class=" join-item"
+                    .items=${this.selectableOptions()}
+                    .selected=${this.selectedValue}
+                    selectStyle="select-bordered rounded-none"
+                    @selectChange=${this.onSelectChange}
+                ></gs-select>
+                <input
+                    class="input input-bordered rounded-none join-item"
+                    type="text"
+                    placeholder="Date from"
+                    id="date-picker"
+                    @change=${() => {
+                        this.onChangeDateFrom();
+                    }}
+                />
+                <input
+                    class="input input-bordered rounded-none join-item"
+                    type="text"
+                    placeholder="Date to"
+                    id="end-date-picker"
+                    @change=${() => {
+                        this.onChangeDateTo();
+                    }}
+                />
+            </div>
+        `;
+    }
+
+    selectedDates = {
+        dateFrom: this.getDatesForSelectorValue('last6Months').dateFrom,
+        dateTo: this.getDatesForSelectorValue('last6Months').dateTo,
+    };
 
     private onSelectChange(event: CustomEvent<{ value: string }>) {
         const value = event.detail.value;
@@ -134,35 +167,63 @@ export class DateRangeSelector extends TailwindElement() {
 
         this.dateFromPicker?.setDate(dateRange.dateFrom);
         this.dateToPicker?.setDate(dateRange.dateTo);
+
+        this.selectedDates = {
+            dateFrom: dateRange.dateFrom,
+            dateTo: dateRange.dateTo,
+        };
+
+        this.submit();
     }
 
-    override createRenderRoot() {
-        return this;
+    private onChangeDateFrom() {
+        if (this.selectedDates.dateFrom.toDateString() === this.dateFromPicker?.selectedDates[0].toDateString()) {
+            return;
+        }
+
+        this.selectedDates.dateFrom = this.dateFromPicker?.selectedDates[0] || new Date();
+        this.dateToPicker?.set('minDate', this.dateFromPicker?.selectedDates[0]);
+        this.selectedValue = 'custom';
+
+        this.submit();
     }
 
-    override render() {
-        return html`
-            <div class="join">
-                <gs-select
-                    class="join-item"
-                    .items=${this.selectableOptions()}
-                    .selected=${this.selectedValue}
-                    selectStyle="select-bordered rounded-none"
-                    @selectChange=${this.onSelectChange}
-                ></gs-select>
-                <input
-                    class="input input-bordered rounded-none join-item"
-                    type="text"
-                    placeholder="Date from"
-                    id="date-picker"
-                />
-                <input
-                    class="input input-bordered rounded-none join-item"
-                    type="text"
-                    placeholder="Date to"
-                    id="end-date-picker"
-                />
-            </div>
-        `;
+    private onChangeDateTo() {
+        if (this.selectedDates.dateTo.toDateString() === this.dateToPicker?.selectedDates[0].toDateString()) {
+            return;
+        }
+
+        this.selectedDates.dateTo = this.dateToPicker?.selectedDates[0] || new Date();
+        this.dateFromPicker?.set('maxDate', this.dateToPicker?.selectedDates[0]);
+        this.selectedValue = 'custom';
+
+        this.submit();
+    }
+
+    private submit() {
+        const dateFrom = toYYYYMMDD(this.dateFromPicker?.selectedDates[0]);
+        const dateTo = toYYYYMMDD(this.dateToPicker?.selectedDates[0]);
+
+        const detail = {
+            ...(dateFrom !== undefined && { dateFrom }),
+            ...(dateTo !== undefined && { dateTo }),
+        };
+
+        this.dispatchEvent(
+            new CustomEvent('gs-date-range-changed', {
+                detail,
+                bubbles: true,
+                composed: true,
+            }),
+        );
     }
 }
+
+export const toYYYYMMDD = (date?: Date) => {
+    if (!date) {
+        return undefined;
+    }
+
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return date.toLocaleDateString('en-CA', options);
+};
