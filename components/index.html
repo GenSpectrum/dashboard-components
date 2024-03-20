@@ -44,6 +44,15 @@
                         });
                     });
                 });
+                document.querySelector('gs-date-range-selector').addEventListener('gs-date-range-changed', (event) => {
+                    const sequencesElements = document.querySelectorAll('gs-prevalence-over-time');
+                    sequencesElements.forEach((el) => {
+                        ['numerator', 'denominator'].forEach((attr) => {
+                            const old = JSON.parse(el.getAttribute(attr));
+                            el.setAttribute(attr, JSON.stringify({ ...old, ...event.detail }));
+                        });
+                    });
+                });
             });
         </script>
     </body>
