@@ -1,0 +1,147 @@
+{
+    "info": {
+        "dataVersion": 1709685650
+    },
+    "data": [
+        {
+            "insertion": "ins_21571:TTT",
+            "count": 1
+        },
+        {
+            "insertion": "ins_26654:T",
+            "count": 1
+        },
+        {
+            "insertion": "ins_28250:CTG",
+            "count": 25
+        },
+        {
+            "insertion": "ins_13915:T",
+            "count": 1
+        },
+        {
+            "insertion": "ins_27552:TT",
+            "count": 28
+        },
+        {
+            "insertion": "ins_2170:GAGCCAGGG",
+            "count": 3
+        },
+        {
+            "insertion": "ins_21305:GAGAGAGAGCAA",
+            "count": 1
+        },
+        {
+            "insertion": "ins_11305:ATTTCATTGTTT",
+            "count": 1
+        },
+        {
+            "insertion": "ins_28230:AAACTTGTCA",
+            "count": 1
+        },
+        {
+            "insertion": "ins_27687:T",
+            "count": 1
+        },
+        {
+            "insertion": "ins_27553:TGATCAG",
+            "count": 1
+        },
+        {
+            "insertion": "ins_29903:NNNNNNNNNNNNNNNNN",
+            "count": 1
+        },
+        {
+            "insertion": "ins_29727:GG",
+            "count": 1
+        },
+        {
+            "insertion": "ins_29053:A",
+            "count": 1
+        },
+        {
+            "insertion": "ins_27672:A",
+            "count": 1
+        },
+        {
+            "insertion": "ins_29735:TACAGT",
+            "count": 1
+        },
+        {
+            "insertion": "ins_1813:A",
+            "count": 1
+        },
+        {
+            "insertion": "ins_20793:A",
+            "count": 1
+        },
+        {
+            "insertion": "ins_11521:T",
+            "count": 1
+        },
+        {
+            "insertion": "ins_18219:A",
+            "count": 1
+        },
+        {
+            "insertion": "ins_29005:A",
+            "count": 1
+        },
+        {
+            "insertion": "ins_2842:AC",
+            "count": 1
+        },
+        {
+            "insertion": "ins_7021:T",
+            "count": 1
+        },
+        {
+            "insertion": "ins_14898:A",
+            "count": 1
+        },
+        {
+            "insertion": "ins_17019:T",
+            "count": 1
+        },
+        {
+            "insertion": "ins_4013:AGC",
+            "count": 1
+        },
+        {
+            "insertion": "ins_28250:CT",
+            "count": 1
+        },
+        {
+            "insertion": "ins_29593:AT",
+            "count": 2
+        },
+        {
+            "insertion": "ins_2857:A",
+            "count": 1
+        },
+        {
+            "insertion": "ins_21102:T",
+            "count": 1
+        },
+        {
+            "insertion": "ins_27231:TACATGGGGG",
+            "count": 2
+        },
+        {
+            "insertion": "ins_19983:T",
+            "count": 1
+        },
+        {
+            "insertion": "ins_29725:T",
+            "count": 1
+        },
+        {
+            "insertion": "ins_29759:CACCGA",
+            "count": 1
+        },
+        {
+            "insertion": "ins_27863:TT",
+            "count": 1
+        }
+    ]
+}

@@ -11,7 +11,7 @@ interface PrevalenceOverTimeLineBarChartProps {
 
 const PrevalenceOverTimeLineBarChart = ({ data, type, yAxisScaleType }: PrevalenceOverTimeLineBarChartProps) => {
     const config: ChartConfiguration = {
-        type: type,
+        type,
         data: {
             labels: data[0]?.content.map((dateRange) => dateRange.dateRange?.toString() ?? 'Unknown') || [],
             datasets: data.map((graphData) => ({
@@ -24,7 +24,8 @@ const PrevalenceOverTimeLineBarChart = ({ data, type, yAxisScaleType }: Prevalen
         options: {
             animation: false,
             scales: {
-                y: getYAxisScale(yAxisScaleType) as any,
+                // @ts-expect-error-next-line -- chart.js typings are not complete with custom scales
+                y: getYAxisScale(yAxisScaleType),
             },
             plugins: {
                 legend: {

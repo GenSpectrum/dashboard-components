@@ -29,7 +29,8 @@ export const ChartStory: StoryObj<GsChartProps> = {
             options: {
                 animation: false,
                 scales: {
-                    y: getYAxisScale('logarithmic') as any,
+                    // @ts-expect-error-next-line -- chart.js typings are not complete with custom scales
+                    y: getYAxisScale('logarithmic'),
                 },
             },
         },

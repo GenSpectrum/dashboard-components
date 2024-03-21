@@ -1,3 +1,4 @@
+import { MutationEntry } from '../../operator/FetchMutationsOperator';
 import { FunctionComponent } from 'preact';
 import { LapisFilter, SequenceType } from '../../types';
 import { useQuery } from '../useQuery';
@@ -8,19 +9,20 @@ import Headline from '../components/headline';
 import { LoadingDisplay } from '../components/loading-display';
 import { ErrorDisplay } from '../components/error-display';
 import { NoDataDisplay } from '../components/no-data-display';
-import { Dataset } from '../../operator/Dataset';
-import { MutationEntry } from '../../operator/FetchMutationsOperator';
-import MutationsTable from './mutations-table';
-import { MutationsGrid } from './mutations-grid';
 import Info from '../components/info';
 import Tabs from '../components/tabs';
 import { CheckboxSelector } from '../components/checkbox-selector';
-import { CsvDownloadButton } from '../components/csv-download-button';
+import { MutationComparisonTable } from './mutation-comparison-table';
 
-export type View = 'table' | 'grid';
+export type View = 'table';
 
-export interface MutationsProps {
-    variant: LapisFilter;
+export interface MutationComparisonVariant {
+    lapisFilter: LapisFilter;
+    displayName: string;
+}
+
+export interface MutationComparisonProps {
+    variants: MutationComparisonVariant[];
     sequenceType: SequenceType;
     views: View[];
 }
@@ -30,20 +32,33 @@ type DisplayedSegment = {
     checked: boolean;
 };
 
-export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequenceType, views }) => {
+export type MutationData = {
+    displayName: string;
+    data: MutationEntry[];
+};
+
+export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({ variants, sequenceType, views }) => {
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
-        const fetchedData = await queryMutations(variant, sequenceType, lapis);
+        const mutationData = await Promise.all(
+            variants.map(async (variant) => {
+                return {
+                    displayName: variant.displayName,
+                    content: (await queryMutations(variant.lapisFilter, sequenceType, lapis)).content,
+                };
+            }),
+        );
 
-        const mutationSegments = fetchedData.content
+        const mutationSegments = mutationData[0].content
             .map((mutationEntry) => mutationEntry.mutation.segment)
             .filter((segment): segment is string => segment !== undefined);
 
         const segments = [...new Set(mutationSegments)];
+        return { mutationData, segments };
+    }, [variants, sequenceType, lapis]);
 
-        return { data: fetchedData, segments };
-    }, [variant, sequenceType, lapis]);
+    const headline = 'Mutation comparison';
 
     const [displayedSegments, setDisplayedSegments] = useState<DisplayedSegment[]>([]);
     useEffect(() => {
@@ -57,7 +72,6 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
         }
     }, [data]);
 
-    const headline = 'Mutations';
     if (isLoading) {
         return (
             <Headline heading={headline}>
@@ -114,47 +128,37 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
         />
     );
 
-    const filteredData = data.data.content.filter((mutationEntry) => {
-        if (mutationEntry.mutation.segment === undefined) {
-            return true;
-        }
-        return displayedSegments.some(
-            (displayedSegment) =>
-                displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
-        );
+    const filteredData = data.mutationData.map((mutationEntry) => {
+        return {
+            displayName: mutationEntry.displayName,
+            data: mutationEntry.content.filter((mutationEntry) => {
+                if (mutationEntry.mutation.segment === undefined) {
+                    return true;
+                }
+                return displayedSegments.some(
+                    (displayedSegment) =>
+                        displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
+                );
+            }),
+        };
     });
 
-    const getTab = (view: View, data: Dataset<MutationEntry>) => {
+    const getTab = (view: View) => {
         switch (view) {
             case 'table':
-                return { title: 'Table', content: <MutationsTable data={data} /> };
-            case 'grid':
-                return { title: 'Grid', content: <MutationsGrid data={data} sequenceType={sequenceType} /> };
+                return {
+                    title: 'Table',
+                    content: <MutationComparisonTable data={{ content: filteredData }} />,
+                };
         }
     };
 
-    const tabs = views.map((view) => {
-        return getTab(view, { content: filteredData });
-    });
+    const tabs = views.map((view) => getTab(view));
 
     const toolbar = (
         <div class='flex flex-row'>
             {data.segments.length > 0 ? segmentSelector : null}
-            <CsvDownloadButton
-                className='mx-1 btn btn-xs'
-                getData={() => {
-                    return data?.data.content.map((mutationEntry) => {
-                        return {
-                            type: mutationEntry.type,
-                            mutation: mutationEntry.mutation.toString(),
-                            count: mutationEntry.count,
-                            proportion: mutationEntry.type === 'insertion' ? '' : mutationEntry.proportion,
-                        };
-                    });
-                }}
-                filename='mutations.csv'
-            />
-            <Info className='mx-1' content='Info for mutations' />
+            <Info className='mx-1' content='Info for mutation comparison' />
         </div>
     );
 

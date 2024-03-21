@@ -42,7 +42,8 @@ const PrevalenceOverTimeBubbleChart = ({ data, yAxisScaleType }: PrevalenceOverT
                         callback: (value) => addUnit(firstDate, value as number).toString(),
                     },
                 },
-                y: getYAxisScale(yAxisScaleType) as any,
+                // @ts-expect-error-next-line -- chart.js typings are not complete with custom scales
+                y: getYAxisScale(yAxisScaleType),
             },
             plugins: {
                 legend: {

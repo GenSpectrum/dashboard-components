@@ -11,7 +11,7 @@ export default meta;
 
 export const TableStory: StoryObj = {
     render: (args) => {
-        return <Table data={args.data} columns={args.columns} pagination={false}></Table>;
+        return <Table data={args.data} columns={args.columns} pagination={false} />;
     },
     args: {
         data: [
