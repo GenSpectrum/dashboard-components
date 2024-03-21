@@ -1,0 +1,167 @@
+{
+    "info": {
+        "dataVersion": 1709685650
+    },
+    "data": [
+        {
+            "mutation": "C29400T",
+            "proportion": 3.0892801977139327e-4,
+            "count": 5
+        },
+        {
+            "mutation": "G210T",
+            "proportion": 0.014548332115899683,
+            "count": 239
+        },
+        {
+            "mutation": "C241T",
+            "proportion": 0.9940932894897089,
+            "count": 16325
+        },
+        {
+            "mutation": "C3037T",
+            "proportion": 0.9993348249380177,
+            "count": 16526
+        },
+        {
+            "mutation": "C12876T",
+            "proportion": 1.8133462282398453e-4,
+            "count": 3
+        },
+        {
+            "mutation": "G4181T",
+            "proportion": 4.8443744701465424e-4,
+            "count": 8
+        },
+        {
+            "mutation": "C15495T",
+            "proportion": 6.0240963855421684e-5,
+            "count": 1
+        },
+        {
+            "mutation": "C6402T",
+            "proportion": 0.005873448380260369,
+            "count": 97
+        },
+        {
+            "mutation": "C18664T",
+            "proportion": 1.2061998673180146e-4,
+            "count": 2
+        },
+        {
+            "mutation": "C7124T",
+            "proportion": 4.30530782950981e-4,
+            "count": 7
+        },
+        {
+            "mutation": "T8654C",
+            "proportion": 1.2232415902140674e-4,
+            "count": 2
+        },
+        {
+            "mutation": "C8986T",
+            "proportion": 7.258210851025222e-4,
+            "count": 12
+        },
+        {
+            "mutation": "G9053T",
+            "proportion": 4.836174585902551e-4,
+            "count": 8
+        },
+        {
+            "mutation": "A28030G",
+            "proportion": 3.661662394727206e-4,
+            "count": 6
+        },
+        {
+            "mutation": "C10029T",
+            "proportion": 1.2097749818533752e-4,
+            "count": 2
+        },
+        {
+            "mutation": "A11201G",
+            "proportion": 1.8129079042784627e-4,
+            "count": 3
+        },
+        {
+            "mutation": "A11332G",
+            "proportion": 1.8144429660094352e-4,
+            "count": 3
+        },
+        {
+            "mutation": "C14408T",
+            "proportion": 0.9990330573517858,
+            "count": 16531
+        },
+        {
+            "mutation": "G15451A",
+            "proportion": 9.048681908668637e-4,
+            "count": 15
+        },
+        {
+            "mutation": "C16466T",
+            "proportion": 3.6175087423127937e-4,
+            "count": 6
+        },
+        {
+            "mutation": "C21618G",
+            "proportion": 3.059975520195838e-4,
+            "count": 5
+        },
+        {
+            "mutation": "T22917G",
+            "proportion": 6.888346170705743e-4,
+            "count": 11
+        },
+        {
+            "mutation": "C22995A",
+            "proportion": 3.73366521468575e-4,
+            "count": 6
+        },
+        {
+            "mutation": "A23403G",
+            "proportion": 0.9993967909277356,
+            "count": 16568
+        },
+        {
+            "mutation": "C23604G",
+            "proportion": 0.001029616619223548,
+            "count": 17
+        },
+        {
+            "mutation": "A25983T",
+            "proportion": 6.0379181258302136e-5,
+            "count": 1
+        },
+        {
+            "mutation": "A17725C",
+            "proportion": 2.409058058299205e-4,
+            "count": 4
+        },
+        {
+            "mutation": "G24410A",
+            "proportion": 6.027727546714888e-4,
+            "count": 10
+        },
+        {
+            "mutation": "C25469T",
+            "proportion": 0.001087087812537746,
+            "count": 18
+        },
+        {
+            "mutation": "C14214T",
+            "proportion": 2.414875633904854e-4,
+            "count": 4
+        },
+        {
+            "mutation": "T26767C",
+            "proportion": 0.0013264198721813579,
+            "count": 22
+        },
+        {
+            "mutation": "T1234C",
+            "proportion": 0.012345,
+            "count": 1234
+        }
+    ]
+}

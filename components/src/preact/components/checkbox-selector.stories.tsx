@@ -1,7 +1,6 @@
 import { expect, fn, waitFor, within } from '@storybook/test';
 import { Meta, StoryObj } from '@storybook/preact';
 import { CheckboxItem, CheckboxSelector, CheckboxSelectorProps } from './checkbox-selector';
-import { useState } from 'preact/hooks';
 
 const meta: Meta<CheckboxSelectorProps> = {
     title: 'Component/Checkbox Selector',
@@ -16,15 +15,15 @@ export default meta;
 
 export const CheckboxSelectorStory: StoryObj<CheckboxSelectorProps> = {
     render: (args) => {
-        const [items, setItems] = useState(args.items);
+        let wrapperStateItems = args.items;
 
         return (
             <CheckboxSelector
-                items={items}
+                items={wrapperStateItems}
                 label={args.label}
                 setItems={(items: CheckboxItem[]) => {
                     args.setItems(items);
-                    setItems(items);
+                    wrapperStateItems = items;
                 }}
             />
         );

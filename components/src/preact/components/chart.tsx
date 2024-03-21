@@ -33,7 +33,8 @@ const GsChart = ({ configuration, yAxisScaleType }: GsChartProps) => {
 
     useEffect(() => {
         if (chartRef.current) {
-            chartRef.current.options.scales!.y = getYAxisScale(yAxisScaleType) as any;
+            // @ts-expect-error-next-line -- chart.js typings are not complete with custom scales
+            chartRef.current.options.scales!.y = getYAxisScale(yAxisScaleType);
             chartRef.current.update();
         }
     }, [yAxisScaleType]);
