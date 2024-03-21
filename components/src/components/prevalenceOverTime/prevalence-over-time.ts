@@ -128,7 +128,10 @@ export class PrevalenceOverTime extends LitElement {
             case 'bubble':
                 return this.getBubbleChartView(data);
             case 'table':
-                return html` <gs-prevalence-over-time-table .data=${data}></gs-prevalence-over-time-table>`;
+                return html` <gs-prevalence-over-time-table
+                    .data=${data}
+                    .granularity=${this.granularity}
+                ></gs-prevalence-over-time-table>`;
         }
     }
 
