@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/web-components';
-import ComponentTabs from './tabs';
+import Tabs from './tabs';
 
 const meta: Meta = {
     title: 'Component/Tabs',
@@ -23,6 +23,6 @@ export const TabsStory = {
 
         const toolbar = <p>Toolbar</p>;
 
-        return <ComponentTabs tabs={[firstTab, secondTab]} toolbar={toolbar} />;
+        return <Tabs tabs={[firstTab, secondTab]} toolbar={toolbar} />;
     },
 };

@@ -1,20 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-
-import { html } from 'lit';
-import '../app';
-import './prevalence-over-time';
-// eslint-disable-next-line no-duplicate-imports
-import { PrevalenceOverTimeProps } from './prevalence-over-time';
+import { LapisUrlContext } from '../LapisUrlContext';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import denominator from './__mockData__/denominator.json';
+import { PrevalenceOverTime, PrevalenceOverTimeProps } from './prevalence-over-time';
 import numeratorEG from './__mockData__/numeratorEG.json';
 import numeratorJN1 from './__mockData__/numeratorJN1.json';
-import denominatorOneVariant from './__mockData__/denominatorOneVariant.json';
+import denominator from './__mockData__/denominator.json';
 import numeratorOneVariant from './__mockData__/numeratorOneVariant.json';
+import denominatorOneVariant from './__mockData__/denominatorOneVariant.json';
 
-const meta: Meta<PrevalenceOverTimeProps> = {
-    title: 'Visualization/Prevalence over time',
-    component: 'gs-prevalence-over-time',
+export default {
+    title: 'Visualization/PrevalenceOverTime',
+    component: PrevalenceOverTime,
+    parameters: {
+        fetchMock: {},
+    },
     argTypes: {
         numerator: { control: 'object' },
         denominator: { control: 'object' },
@@ -30,22 +28,18 @@ const meta: Meta<PrevalenceOverTimeProps> = {
     },
 };
 
-export default meta;
-
-const Template: StoryObj<PrevalenceOverTimeProps> = {
-    render: (args) => html`
-        <div class="w-11/12 h-11/12">
-            <gs-app lapis="${LAPIS_URL}">
-                <gs-prevalence-over-time
-                    .numerator=${args.numerator}
-                    .denominator=${args.denominator}
-                    .granularity=${args.granularity}
-                    .smoothingWindow=${args.smoothingWindow}
-                    .views=${args.views}
-                ></gs-prevalence-over-time>
-            </gs-app>
-        </div>
-    `,
+const Template = {
+    render: (args: PrevalenceOverTimeProps) => (
+        <LapisUrlContext.Provider value={LAPIS_URL}>
+            <PrevalenceOverTime
+                numerator={args.numerator}
+                denominator={args.denominator}
+                granularity={args.granularity}
+                smoothingWindow={args.smoothingWindow}
+                views={args.views}
+            />
+        </LapisUrlContext.Provider>
+    ),
 };
 
 export const TwoVariants = {

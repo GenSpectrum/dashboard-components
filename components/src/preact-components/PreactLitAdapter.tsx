@@ -6,14 +6,14 @@ import { lapisContext } from '../lapis-context';
 import { JSXInternal } from 'preact/src/jsx';
 import { LapisUrlContext } from '../preact/LapisUrlContext';
 import { LAPIS_URL } from '../constants';
-import style from '../tailwind.css?inline';
+import tailwindStyle from '../tailwind.css?inline';
 
 import '../tailwind.css';
 
-const tailwindElementCss = unsafeCSS(style);
+const tailwindElementCss = unsafeCSS(tailwindStyle);
 
 export abstract class PreactLitAdapter extends ReactiveElement {
-    static override styles = tailwindElementCss;
+    static override styles = [tailwindElementCss];
 
     @consume({ context: lapisContext })
     lapis: string = '';
@@ -26,3 +26,4 @@ export abstract class PreactLitAdapter extends ReactiveElement {
 
     protected abstract render(): JSXInternal.Element;
 }
+

@@ -9,10 +9,6 @@ import { SlidingOperator } from '../operator/SlidingOperator';
 import { DivisionOperator } from '../operator/DivisionOperator';
 import { compareTemporal, generateAllInRange, getMinMaxTemporal, Temporal, TemporalCache } from '../temporal';
 
-// https://github.com/runem/lit-analyzer/issues/154
-// lit-analyzer complains that the generic types don't match in component props when using this type when inferred by
-// Typescript, although they do.
-// It works, if we resolve the generic type here manually.
 export type PrevalenceOverTimeData = {
     displayName: string;
     content: { count: number; prevalence: number; total: number; dateRange: Temporal | null }[];

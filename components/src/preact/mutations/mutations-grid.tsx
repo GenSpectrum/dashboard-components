@@ -1,12 +1,10 @@
-import { customElement, property } from 'lit/decorators.js';
-import { html } from 'lit';
+import { FunctionComponent } from 'preact';
+import { Row } from 'gridjs';
 import { Dataset } from '../../operator/Dataset';
-import { DeletionEntry, MutationEntry, SubstitutionEntry } from '../../operator/FetchMutationsOperator';
 import { SequenceType } from '../../types';
 import { bases } from '../../mutations';
-import { TailwindElement } from '../../tailwind-element';
-import { tableStyle } from '../container/component-table';
-import { Row } from 'gridjs';
+import { DeletionEntry, MutationEntry, SubstitutionEntry } from '../../operator/FetchMutationsOperator';
+import { Table, tableStyle } from '../components/table';
 
 type MutationCell = {
     isReference: boolean;
@@ -17,29 +15,27 @@ type AdditionalColumnInfo = {
     isReference: boolean;
 };
 
-@customElement('gs-mutations-grid')
-export class MutationsGrid extends TailwindElement() {
-    @property({ type: Object })
-    data: Dataset<MutationEntry> | null = null;
+interface MutationsGridProps {
+    data: Dataset<MutationEntry>;
+    sequenceType: SequenceType;
+}
 
-    @property({ type: String })
-    sequenceType: SequenceType = 'nucleotide';
-
-    private getHeaders() {
+export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, sequenceType }) => {
+    const getHeaders = () => {
         return [
             {
                 name: 'Position',
                 sort: {
                     compare: (a: string, b: string) => {
-                        return this.sortPositionsWithSegments(a, b);
+                        return sortPositionsWithSegments(a, b);
                     },
                 },
             },
-            ...this.getBasesHeaders(),
+            ...getBasesHeaders(),
         ];
-    }
+    };
 
-    private getBasesHeaders() {
+    const getBasesHeaders = () => {
         // This is a workaround, since gridjs does not support sorting of object cells in conjunction with the formatter
         // here each presented table cell is represented by two cells,
         // one for the value and one for the reference information
@@ -49,22 +45,20 @@ export class MutationsGrid extends TailwindElement() {
             return row.cell(numberOfNonBasesColumns + 1 + 2 * columnIndex).data as AdditionalColumnInfo;
         };
 
-        return bases[this.sequenceType]
+        return bases[sequenceType]
             .map((base, index) => {
                 return [
                     {
                         name: base,
                         sort: true,
-                        formatter: (cell: number) => {
-                            return formatProportion(cell);
-                        },
+                        formatter: (cell: number) => formatProportion(cell),
                         attributes: (cell: number, row: Row) => {
                             // grid-js: the cell and row are null for header cells
                             if (row === null) {
                                 return {};
                             }
 
-                            return this.styleCells({
+                            return styleCells({
                                 value: cell,
                                 ...getAdditionalInfo(index, row),
                             });
@@ -74,9 +68,9 @@ export class MutationsGrid extends TailwindElement() {
                 ];
             })
             .flat();
-    }
+    };
 
-    private sortPositionsWithSegments(a: string, b: string) {
+    const sortPositionsWithSegments = (a: string, b: string) => {
         const split = (s: string) => {
             const parts = s.split(':');
             if (parts.length === 1) {
@@ -90,19 +84,10 @@ export class MutationsGrid extends TailwindElement() {
             return (aSegment ?? '').localeCompare(bSegment ?? '');
         }
         return aPosition - bPosition;
-    }
+    };
 
-    private styleCells(cell: MutationCell) {
-        if (cell.isReference) {
-            return {
-                style: {
-                    ...tableStyle.td,
-                    color: 'gray',
-                },
-            };
-        }
-
-        if (cell.value < 0.0001) {
+    const styleCells = (cell: MutationCell) => {
+        if (cell.isReference || cell.value < 0.0001) {
             return {
                 style: {
                     ...tableStyle.td,
@@ -111,14 +96,11 @@ export class MutationsGrid extends TailwindElement() {
             };
         }
         return {};
-    }
+    };
 
-    private getTableData(): (string | number | AdditionalColumnInfo)[][] {
-        if (this.data === null) {
-            return [];
-        }
-        const basesOfView = bases[this.sequenceType];
-        const mutationsWithoutInsertions = this.data.content.filter(
+    const getTableData = (data: Dataset<MutationEntry>, sequenceType: SequenceType) => {
+        const basesOfView = bases[sequenceType];
+        const mutationsWithoutInsertions = data.content.filter(
             (mutationEntry): mutationEntry is SubstitutionEntry | DeletionEntry => mutationEntry.type !== 'insertion',
         );
         const positionsToProportionAtBase = new Map<string, Map<string, number>>();
@@ -156,13 +138,13 @@ export class MutationsGrid extends TailwindElement() {
         const orderedPositionsToProportionAtBase = [...positionsToProportionAtBase.entries()]
             .map(([position, proportionsAtBase]) => ({ position, proportions: proportionsAtBase }))
             .sort((a, b) => {
-                return this.sortPositionsWithSegments(a.position, b.position);
+                return sortPositionsWithSegments(a.position, b.position);
             });
 
         return orderedPositionsToProportionAtBase.map((proportionsForBaseAtPosition) => {
             return [
                 proportionsForBaseAtPosition.position,
-                ...bases[this.sequenceType]
+                ...bases[sequenceType]
                     .map((base) => {
                         return [
                             proportionsForBaseAtPosition.proportions.get(base)!,
@@ -172,26 +154,10 @@ export class MutationsGrid extends TailwindElement() {
                     .flat(),
             ];
         });
-    }
+    };
 
-    override render() {
-        if (this.data === null) {
-            return html` <div>Error: No data</div>`;
-        }
-
-        return html` <gs-component-table
-            .data=${this.getTableData()}
-            .columns=${this.getHeaders()}
-            .pagination=${false}
-        ></gs-component-table>`;
-    }
-}
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'gs-mutations-grid': MutationsGrid;
-    }
-}
+    return <Table data={getTableData(data, sequenceType)} columns={getHeaders()} pagination={true} />;
+};
 
 const formatProportion = (proportion: number) => {
     return `${(proportion * 100).toFixed(2)}%`;

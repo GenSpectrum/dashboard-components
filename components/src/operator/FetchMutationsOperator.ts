@@ -64,6 +64,8 @@ export class FetchMutationsOperator implements Operator<MutationEntry> {
     }
 }
 
+export type MutationType = 'substitution' | 'deletion' | 'insertion';
+
 export type SubstitutionEntry = { type: 'substitution'; mutation: Substitution; count: number; proportion: number };
 
 export type DeletionEntry = { type: 'deletion'; mutation: Deletion; count: number; proportion: number };

@@ -5,7 +5,7 @@ import data from './__mockData__/aggregated.json';
 import { Meta, StoryObj } from '@storybook/preact';
 
 const meta: Meta<typeof LocationFilter> = {
-    title: 'Example/LocationFilter',
+    title: 'Input/LocationFilter',
     component: LocationFilter,
     parameters: {
         fetchMock: {
