@@ -6,10 +6,13 @@ import Headline from '../components/headline';
 import { FunctionComponent } from 'preact';
 import { LapisFilter } from '../../types';
 import RelativeGrowthAdvantageChart from './relative-growth-advantage-chart';
-import ComponentTabs from '../components/tabs';
-import { Select } from '../components/select';
+import Tabs from '../components/tabs';
 import Info from '../components/info';
 import { type ScaleType } from '../../components/charts/getYAxisScale';
+import { ScalingSelector } from '../components/scaling-selector';
+import { LoadingDisplay } from '../components/loading-display';
+import { ErrorDisplay } from '../components/error-display';
+import { NoDataDisplay } from '../components/no-data-display';
 
 export type View = 'line';
 
@@ -34,28 +37,27 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
         [lapis, numerator, denominator, generationTime, views],
     );
 
+    const headline = 'Relative growth advantage';
     if (isLoading) {
         return (
-            <Headline heading={'Relative growth advantage'}>
-                <div> Loading...</div>
+            <Headline heading={headline}>
+                <LoadingDisplay />
             </Headline>
         );
     }
 
-    if (error) {
+    if (error !== null) {
         return (
-            <Headline heading={'Relative growth advantage'}>
-                <div>
-                    Error: {error.message} {JSON.stringify(error)} {error.toString()}
-                </div>
+            <Headline heading={headline}>
+                <ErrorDisplay error={error} />
             </Headline>
         );
     }
 
-    if (!data) {
+    if (data === null) {
         return (
-            <Headline heading='Relative growth advantage'>
-                <div>No data available.</div>
+            <Headline heading={headline}>
+                <NoDataDisplay />
             </Headline>
         );
     }
@@ -105,33 +107,8 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
     );
 
     return (
-        <Headline heading='Relative growth advantage'>
-            <ComponentTabs tabs={tabs} toolbar={toolbar} />
+        <Headline heading={headline}>
+            <Tabs tabs={tabs} toolbar={toolbar} />
         </Headline>
-    );
-};
-
-export type ScalingSelectorProps = {
-    yAxisScaleType: ScaleType;
-    setYAxisScaleType: (scaleType: ScaleType) => void;
-    className?: string;
-};
-
-const ScalingSelector: FunctionComponent<ScalingSelectorProps> = ({ yAxisScaleType, setYAxisScaleType, className }) => {
-    return (
-        <Select
-            items={[
-                { label: 'Linear', value: 'linear' },
-                { label: 'Logarithmic', value: 'logarithmic' },
-                { label: 'Logit', value: 'logit' },
-            ]}
-            selected={yAxisScaleType}
-            onChange={(event: Event) => {
-                const select = event.target as HTMLSelectElement;
-                const value = select.value as ScaleType;
-                setYAxisScaleType(value);
-            }}
-            selectStyle={`${className} select-xs select-bordered`}
-        />
     );
 };

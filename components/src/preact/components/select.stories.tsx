@@ -13,7 +13,7 @@ const meta: Meta<SelectProps> = {
 
 export default meta;
 
-export const ScalingSelectorStory: StoryObj<SelectProps> = {
+export const SelectStory: StoryObj<SelectProps> = {
     args: {
         items: [
             { label: 'Disabled first element', disabled: true, value: 'does not matter' },

@@ -5,7 +5,7 @@ import denominator from './__mockData__/denominator.json';
 import { RelativeGrowthAdvantage, RelativeGrowthAdvantageProps } from './relative-growth-advantage';
 
 export default {
-    title: 'Example/RelativeGrowthAdvantage',
+    title: 'Visualization/RelativeGrowthAdvantage',
     component: RelativeGrowthAdvantage,
     parameters: {
         fetchMock: {},

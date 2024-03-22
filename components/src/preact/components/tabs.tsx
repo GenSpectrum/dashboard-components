@@ -11,7 +11,7 @@ interface ComponentTabsProps {
     toolbar?: JSXInternal.Element;
 }
 
-const ComponentTabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
+const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
     const tabNames = tabs.map((tab) => tab.title).join(', ');
 
     const tabElements = tabs.map((tab, index) => (
@@ -38,4 +38,4 @@ const ComponentTabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar })
     );
 };
 
-export default ComponentTabs;
+export default Tabs;

@@ -1,13 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-
 import { html } from 'lit';
-import '../app';
-import './mutations';
-// eslint-disable-next-line no-duplicate-imports
-import { MutationsProps } from './mutations';
+import './mutations-component';
+import '../../components/app';
 import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
-import nucleotideMutations from './__mockData__/nucleotideMutations.json';
-import nuleotideInsertions from './__mockData__/nucleotideInsertions.json';
+import nucleotideMutations from '../../preact/mutations/__mockData__/nucleotideMutations.json';
+import nucleotideInsertions from '../../preact/mutations/__mockData__/nucleotideInsertions.json';
+import { MutationsProps } from '../../preact/mutations/mutations';
 
 const meta: Meta<MutationsProps> = {
     title: 'Visualization/Mutations',
@@ -29,13 +27,15 @@ export default meta;
 
 const Template: StoryObj<MutationsProps> = {
     render: (args) => html`
-        <gs-app lapis="${LAPIS_URL}">
-            <gs-mutations
-                .variant=${args.variant}
-                .sequenceType=${args.sequenceType}
-                .views=${args.views}
-            ></gs-mutations>
-        </gs-app>
+        <div class="w-11/12 h-11/12">
+            <gs-app lapis="${LAPIS_URL}">
+                <gs-mutations-component
+                    .variant=${args.variant}
+                    .sequenceType=${args.sequenceType}
+                    .views=${args.views}
+                ></gs-mutations-component>
+            </gs-app>
+        </div>
     `,
 };
 
@@ -73,7 +73,7 @@ export const Default = {
                     },
                     response: {
                         status: 200,
-                        body: nuleotideInsertions,
+                        body: nucleotideInsertions,
                     },
                 },
             ],
