@@ -26,4 +26,3 @@ export abstract class PreactLitAdapter extends ReactiveElement {
 
     protected abstract render(): JSXInternal.Element;
 }
-
