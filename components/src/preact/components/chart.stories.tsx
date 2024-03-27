@@ -1,18 +1,22 @@
 import { Meta, StoryObj } from '@storybook/preact';
-import Chart, { GsChartProps } from './chart';
+import GsChart, { GsChartProps } from './chart';
 import { getYAxisScale } from '../shared/charts/getYAxisScale';
+import { Chart, registerables } from 'chart.js';
+import { LogitScale } from '../shared/charts/LogitScale';
 
 const meta: Meta<GsChartProps> = {
     title: 'Component/Chart',
-    component: Chart,
+    component: GsChart,
     parameters: { fetchMock: {} },
 };
 
 export default meta;
 
+Chart.register(...registerables, LogitScale);
+
 export const ChartStory: StoryObj<GsChartProps> = {
     render: (args) => {
-        return <Chart configuration={args.configuration} yAxisScaleType={args.yAxisScaleType} />;
+        return <GsChart configuration={args.configuration} />;
     },
     args: {
         configuration: {
