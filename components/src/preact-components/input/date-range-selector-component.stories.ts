@@ -52,8 +52,8 @@ export const DateRangeSelectorWithSelectedRange: StoryObj<DateRangeSelectorProps
     ...DateRangeSelectorStory,
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-selector');
-        const dateFrom = () => canvas.getByPlaceholderText('Date from');
-        const dateTo = () => canvas.getByPlaceholderText('Date to');
+        const dateFromElement = () => canvas.getByPlaceholderText('Date from');
+        const dateToElement = () => canvas.getByPlaceholderText('Date to');
 
         const listenerMock = fn();
         await step('Setup event listener mock', async () => {
@@ -62,14 +62,14 @@ export const DateRangeSelectorWithSelectedRange: StoryObj<DateRangeSelectorProps
 
         const someDateInThePast = '2021-10-01';
         await step(`Set custom date from: ${someDateInThePast}`, async () => {
-            await userEvent.type(dateFrom(), '{backspace>10/}');
-            await userEvent.type(dateFrom(), `${someDateInThePast}`);
-            await userEvent.click(dateTo());
+            await userEvent.type(dateFromElement(), '{backspace>10/}');
+            await userEvent.type(dateFromElement(), `${someDateInThePast}`);
+            await userEvent.click(dateToElement());
         });
 
         await step('Expect custom date range to be selected', async () => {
             await waitFor(() => {
-                expect(dateFrom()).toHaveValue(someDateInThePast);
+                expect(dateFromElement()).toHaveValue(someDateInThePast);
                 expect(canvas.getByRole('combobox')).toHaveValue('custom');
             });
         });
@@ -99,8 +99,8 @@ export const DateRangeSelectorWithSelectedRange: StoryObj<DateRangeSelectorProps
             threeMonthAgo.setMonth(threeMonthAgo.getMonth() - 3);
             const threeMonthAgoString = threeMonthAgo.toISOString().split('T')[0];
 
-            await expect(dateFrom()).toHaveValue(threeMonthAgoString);
-            await expect(dateTo()).toHaveValue(todayString);
+            await expect(dateFromElement()).toHaveValue(threeMonthAgoString);
+            await expect(dateToElement()).toHaveValue(todayString);
 
             await expect(listenerMock).toHaveBeenCalledTimes(2);
         });
