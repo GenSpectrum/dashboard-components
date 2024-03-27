@@ -19,7 +19,7 @@ const meta: Meta<MutationComparisonProps> = {
             control: { type: 'radio' },
         },
         views: {
-            options: ['table', 'grid'],
+            options: ['table', 'venn'],
             control: { type: 'check' },
         },
     },
@@ -44,7 +44,7 @@ const Template: StoryObj<MutationComparisonProps> = {
 const dateTo = '2022-01-01';
 const dateFrom = '2021-01-01';
 
-export const Default = {
+export const Default: StoryObj<MutationComparisonProps> = {
     ...Template,
     args: {
         variants: [
@@ -63,7 +63,7 @@ export const Default = {
             },
         ],
         sequenceType: 'nucleotide',
-        views: ['table'],
+        views: ['table', 'venn'],
     },
     parameters: {
         fetchMock: {
@@ -125,5 +125,13 @@ export const Default = {
                 },
             ],
         },
+    },
+};
+
+export const VennDiagramOnly: StoryObj<MutationComparisonProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        views: ['venn'],
     },
 };
