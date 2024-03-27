@@ -1,6 +1,5 @@
 import { LAPIS_URL } from '../../constants';
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { withActions } from '@storybook/addon-actions/decorator';
 import { html } from 'lit';
 import { DateRangeSelectorProps, toYYYYMMDD } from '../../preact/dateRangeSelector/date-range-selector';
 import './date-range-selector-component';
@@ -17,7 +16,6 @@ const meta: Meta<DateRangeSelectorProps> = {
         },
         fetchMock: {},
     },
-    decorators: [withActions],
 };
 
 export default meta;
