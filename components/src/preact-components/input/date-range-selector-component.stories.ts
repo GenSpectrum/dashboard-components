@@ -64,12 +64,12 @@ export const DateRangeSelectorWithSelectedRange: StoryObj<DateRangeSelectorProps
         await step(`Set custom date from: ${someDateInThePast}`, async () => {
             await userEvent.type(dateFromElement(), '{backspace>10/}');
             await userEvent.type(dateFromElement(), `${someDateInThePast}`);
-            await userEvent.click(dateToElement());
-        });
-
-        await step('Expect custom date range to be selected', async () => {
             await waitFor(() => {
                 expect(dateFromElement()).toHaveValue(someDateInThePast);
+            });
+
+            await userEvent.click(dateToElement());
+            await waitFor(() => {
                 expect(canvas.getByRole('combobox')).toHaveValue('custom');
             });
         });
