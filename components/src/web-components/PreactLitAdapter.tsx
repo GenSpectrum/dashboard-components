@@ -7,13 +7,16 @@ import { JSXInternal } from 'preact/src/jsx';
 import { LapisUrlContext } from '../preact/LapisUrlContext';
 import { LAPIS_URL } from '../constants';
 import tailwindStyle from '../styles/tailwind.css?inline';
+import minMaxPercentSliderCss from '../preact/components/min-max-percent-slider.css?inline';
 
 import '../styles/tailwind.css';
+import '../preact/components/min-max-percent-slider.css';
 
 const tailwindElementCss = unsafeCSS(tailwindStyle);
+const minMaxPercentSliderElementCss = unsafeCSS(minMaxPercentSliderCss);
 
 export abstract class PreactLitAdapter extends ReactiveElement {
-    static override styles = [tailwindElementCss];
+    static override styles = [tailwindElementCss, minMaxPercentSliderElementCss];
 
     @consume({ context: lapisContext })
     lapis: string = '';

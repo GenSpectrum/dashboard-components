@@ -16,6 +16,7 @@ import Info from '../components/info';
 import Tabs from '../components/tabs';
 import { CheckboxSelector } from '../components/checkbox-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
+import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
 
 export type View = 'table' | 'grid';
 
@@ -32,6 +33,9 @@ type DisplayedSegment = {
 
 export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequenceType, views }) => {
     const lapis = useContext(LapisUrlContext);
+
+    const [minProportion, setMinProportion] = useState(0.05);
+    const [maxProportion, setMaxProportion] = useState(1);
 
     const { data, error, isLoading } = useQuery(async () => {
         const fetchedData = await queryMutations(variant, sequenceType, lapis);
@@ -114,15 +118,26 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
         />
     );
 
-    const filteredData = data.data.content.filter((mutationEntry) => {
-        if (mutationEntry.mutation.segment === undefined) {
-            return true;
-        }
-        return displayedSegments.some(
-            (displayedSegment) =>
-                displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
-        );
-    });
+    const filterBySelectedSegments = (mutationEntries: MutationEntry[]) => {
+        return mutationEntries.filter((mutationEntry) => {
+            if (mutationEntry.mutation.segment === undefined) {
+                return true;
+            }
+            return displayedSegments.some(
+                (displayedSegment) =>
+                    displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
+            );
+        });
+    };
+
+    const filterByProportion = (mutationEntries: MutationEntry[]) => {
+        return mutationEntries.filter((mutationEntry) => {
+            if (mutationEntry.type === 'insertion') {
+                return true;
+            }
+            return mutationEntry.proportion >= minProportion && mutationEntry.proportion <= maxProportion;
+        });
+    };
 
     const getTab = (view: View, data: Dataset<MutationEntry>) => {
         switch (view) {
@@ -134,11 +149,18 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
     };
 
     const tabs = views.map((view) => {
-        return getTab(view, { content: filteredData });
+        return getTab(view, { content: filterBySelectedSegments(filterByProportion(data.data.content)) });
     });
 
     const toolbar = (
         <div class='flex flex-row'>
+            <ProportionSelectorDropdown
+                minProportion={minProportion}
+                maxProportion={maxProportion}
+                setMinProportion={setMinProportion}
+                setMaxProportion={setMaxProportion}
+                openDirection={'left'}
+            />
             {data.segments.length > 0 ? segmentSelector : null}
             <CsvDownloadButton
                 className='mx-1 btn btn-xs'

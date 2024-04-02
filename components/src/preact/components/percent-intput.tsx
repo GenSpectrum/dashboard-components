@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact';
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { ChangeEvent } from 'react';
 
 export type PercentInputProps = {
@@ -12,7 +12,11 @@ const percentageInRange = (percentage: number) => {
 };
 
 export const PercentInput: FunctionComponent<PercentInputProps> = ({ percentage, setPercentage }) => {
-    const [error, setError] = useState(!percentageInRange(percentage));
+    const [internalPercentage, setInternalPercentage] = useState(percentage);
+
+    useEffect(() => {
+        setInternalPercentage(percentage);
+    }, [percentage]);
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const input = event.target as HTMLInputElement;
@@ -20,22 +24,21 @@ export const PercentInput: FunctionComponent<PercentInputProps> = ({ percentage,
 
         const inRange = percentageInRange(value);
 
-        if (!inRange) {
-            setError(true);
-        } else {
-            setError(false);
+        if (inRange) {
             setPercentage(value);
         }
+        setInternalPercentage(value);
     };
 
+    const isError = !percentageInRange(internalPercentage);
     return (
-        <label className={`input input-bordered flex items-center gap-2 w-32 ${error ? 'input-error' : ''}`}>
+        <label className={`input input-bordered flex items-center gap-2 w-32 ${isError ? 'input-error' : ''}`}>
             <input
                 type='number'
                 step={0.1}
                 min={0}
                 max={100}
-                value={percentage}
+                value={internalPercentage}
                 onInput={handleInputChange}
                 lang='en'
                 className={`grow w-16`}
