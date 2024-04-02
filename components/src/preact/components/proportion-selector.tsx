@@ -1,16 +1,22 @@
 import { FunctionComponent } from 'preact';
-import { useState } from 'preact/hooks';
 import { MinMaxRangeSlider } from './min-max-range-slider';
 import { PercentInput } from './percent-intput';
 
-export interface ProportionSelectorProps {}
+export interface ProportionSelectorProps {
+    minProportion: number;
+    maxProportion: number;
+    setMinProportion: (minProportion: number) => void;
+    setMaxProportion: (maxProportion: number) => void;
+}
 
-export const ProportionSelector: FunctionComponent<ProportionSelectorProps> = () => {
-    const [minProportion, setMinProportion] = useState(0);
-    const [maxProportion, setMaxProportion] = useState(1);
-
+export const ProportionSelector: FunctionComponent<ProportionSelectorProps> = ({
+    minProportion,
+    maxProportion,
+    setMinProportion,
+    setMaxProportion,
+}) => {
     return (
-        <div class='flex flex-col w-64'>
+        <div class='flex flex-col w-64 mb-2'>
             <div class='flex items-center '>
                 <PercentInput
                     percentage={minProportion * 100}
