@@ -2,6 +2,7 @@ import { FunctionComponent } from 'preact';
 import { Dataset } from '../../operator/Dataset';
 import { Table } from '../components/table';
 import { MutationData } from './mutation-comparison';
+import { formatProportion } from '../mutations/mutations-grid';
 
 export interface MutationsTableProps {
     data: Dataset<MutationData>;
@@ -24,6 +25,7 @@ export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = (
                     return {
                         name: mutationData.displayName,
                         sort: true,
+                        formatter: (cell: number) => formatProportion(cell),
                     };
                 }),
             },

@@ -159,6 +159,6 @@ export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, seq
     return <Table data={getTableData(data, sequenceType)} columns={getHeaders()} pagination={true} />;
 };
 
-const formatProportion = (proportion: number) => {
+export const formatProportion = (proportion: number) => {
     return `${(proportion * 100).toFixed(2)}%`;
 };
