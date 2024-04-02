@@ -2,6 +2,7 @@ import { TemporalGranularity } from '../../types';
 import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
 import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
 import { Table } from '../components/table';
+import { formatProportion } from '../mutations/mutations-grid';
 
 interface PrevalenceOverTimeTableProps {
     data: PrevalenceOverTimeData;
@@ -16,6 +17,7 @@ const PrevalenceOverTimeTable = ({ data, granularity }: PrevalenceOverTimeTableP
                 {
                     name: 'prevalence',
                     sort: true,
+                    formatter: (cell: number) => formatProportion(cell),
                 },
                 {
                     name: 'count',
