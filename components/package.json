@@ -11,6 +11,7 @@
         "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
         "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
         "lint:lit-analyzer": "lit-analyzer",
+        "generate-manifest": "npx custom-elements-manifest analyze --litelement --globs src/web-components/**",
         "format": "prettier \"**/*.{cjs,html,js,json,md,ts,tsx}\" --ignore-path ./.eslintignore --write",
         "check-format": "prettier --check \"**/*.{ts,tsx,json,md,mdx,mjs,cjs}\"",
         "storybook": "storybook dev -p 6006",
@@ -22,6 +23,7 @@
         "test:playwright": "playwright test",
         "test:playwright:update-snapshots": "playwright test --update-snapshots"
     },
+    "customElements": "custom-elements.json",
     "keywords": [
         "web-components",
         "lit-element",
@@ -40,6 +42,7 @@
         "preact": "^10.20.1"
     },
     "devDependencies": {
+        "@custom-elements-manifest/analyzer": "^0.9.4",
         "@playwright/test": "^1.42.1",
         "@preact/preset-vite": "^2.8.2",
         "@storybook/addon-essentials": "^8.0.5",
