@@ -8,6 +8,8 @@ import nucleotideMutationsSomeVariant from '../../preact/mutationComparison/__mo
 import nucleotideInsertionsSomeVariant from '../../preact/mutationComparison/__mockData__/nucleotideInsertionsSomeVariant.json';
 import nucleotideMutationsOtherVariant from '../../preact/mutationComparison/__mockData__/nucleotideMutationsOtherVariant.json';
 import nucleotideInsertionsOtherVariant from '../../preact/mutationComparison/__mockData__/nucleotideInsertionsOtherVariant.json';
+import { withinShadowRoot } from '../../storybook/withinShadowRoot.story';
+import { expect, waitFor } from '@storybook/test';
 
 const meta: Meta<MutationComparisonProps> = {
     title: 'Visualization/Mutation comparison',
@@ -128,10 +130,18 @@ export const Default: StoryObj<MutationComparisonProps> = {
     },
 };
 
-export const VennDiagramOnly: StoryObj<MutationComparisonProps> = {
+export const VennDiagram = {
     ...Default,
-    args: {
-        ...Default.args,
-        views: ['venn'],
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-comparison-component');
+
+        await waitFor(() => expect(canvas.getByLabelText('Venn', { selector: 'input' })).toBeInTheDocument());
+
+        canvas.getByLabelText('Venn', { selector: 'input' }).click();
+        await waitFor(() =>
+            expect(
+                canvas.getByText('You have no elements selected. Click in the venn diagram to select.'),
+            ).toBeInTheDocument(),
+        );
     },
 };
