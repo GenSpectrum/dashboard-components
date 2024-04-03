@@ -1,8 +1,8 @@
 import { ChartConfiguration } from 'chart.js';
-import { addUnit, minusTemporal } from '../../temporal';
-import { getMinMaxNumber } from '../../utils';
+import { addUnit, minusTemporal } from '../../utils/temporal';
+import { getMinMaxNumber } from '../../utils/utils';
 import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
-import { getYAxisScale, ScaleType } from '../../components/charts/getYAxisScale';
+import { getYAxisScale, ScaleType } from '../shared/charts/getYAxisScale';
 import GsChart from '../components/chart';
 
 interface PrevalenceOverTimeBubbleChartProps {

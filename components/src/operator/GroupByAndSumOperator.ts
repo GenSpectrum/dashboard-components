@@ -1,6 +1,6 @@
 import { GroupByOperator } from './GroupByOperator';
 import { Operator } from './Operator';
-import { NumberFields } from '../type-utils';
+import { NumberFields } from '../utils/type-utils';
 
 type Result<T, K extends keyof T, C extends keyof T> = {
     [P in K | C]: P extends K ? T[K] : number;

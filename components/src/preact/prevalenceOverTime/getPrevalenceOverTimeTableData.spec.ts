@@ -1,7 +1,7 @@
 import { TemporalGranularity } from '../../types';
 import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
 import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
-import { TemporalCache, YearMonthDay } from '../../temporal';
+import { TemporalCache, YearMonthDay } from '../../utils/temporal';
 import { describe, expect, it } from 'vitest';
 
 describe('getPrevalenceOverTimeTableData', () => {

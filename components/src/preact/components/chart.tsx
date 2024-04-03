@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'preact/hooks';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
-import { getYAxisScale, ScaleType } from '../../components/charts/getYAxisScale';
-import { LogitScale } from '../../components/charts/LogitScale';
+import { getYAxisScale, ScaleType } from '../shared/charts/getYAxisScale';
+import { LogitScale } from '../shared/charts/LogitScale';
 
 export interface GsChartProps {
     configuration: ChartConfiguration;

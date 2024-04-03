@@ -1,6 +1,6 @@
 import { ChartConfiguration } from 'chart.js';
 import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
-import { getYAxisScale, ScaleType } from '../../components/charts/getYAxisScale';
+import { getYAxisScale, ScaleType } from '../shared/charts/getYAxisScale';
 import GsChart from '../components/chart';
 
 interface PrevalenceOverTimeLineBarChartProps {

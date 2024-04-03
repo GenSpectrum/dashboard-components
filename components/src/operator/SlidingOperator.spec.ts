@@ -1,6 +1,6 @@
 import { MockOperator } from './MockOperator';
 import { SlidingOperator } from './SlidingOperator';
-import { expectEqualAfterSorting } from '../test-utils';
+import { expectEqualAfterSorting } from '../utils/test-utils';
 import { describe, it } from 'vitest';
 
 describe('SlidingOperator', () => {

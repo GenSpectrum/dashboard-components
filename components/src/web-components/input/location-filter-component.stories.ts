@@ -3,10 +3,10 @@ import { withActions } from '@storybook/addon-actions/decorator';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 
 import { html } from 'lit';
-import '../../components/app';
-import '../../preact-components/input/location-filter-component';
+import '../app';
+import '../input/location-filter-component';
 import data from '../../preact/locationFilter/__mockData__/aggregated.json';
-import { withinShadowRoot } from '../../storybook/withinShadowRoot.story';
+import { withinShadowRoot } from '../withinShadowRoot.story';
 import { expect, fn, userEvent, waitFor } from '@storybook/test';
 
 const meta: Meta<{}> = {

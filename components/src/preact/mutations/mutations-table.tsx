@@ -3,7 +3,7 @@ import { Dataset } from '../../operator/Dataset';
 import { MutationEntry, MutationType } from '../../operator/FetchMutationsOperator';
 import { Table } from '../components/table';
 import { TDataObjectRow } from 'gridjs/dist/src/types';
-import { formatProportion } from './mutations-grid';
+import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsTableProps {
     data: Dataset<MutationEntry>;

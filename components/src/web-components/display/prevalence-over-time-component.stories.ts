@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 
 import { html } from 'lit';
-import '../../components/app';
+import '../app';
 import './prevalence-over-time-component';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import denominator from '../../preact/prevalenceOverTime/__mockData__/denominator.json';

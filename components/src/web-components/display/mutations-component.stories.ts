@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './mutations-component';
-import '../../components/app';
+import '../app';
 import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import nucleotideMutations from '../../preact/mutations/__mockData__/nucleotideMutations.json';
 import nucleotideInsertions from '../../preact/mutations/__mockData__/nucleotideInsertions.json';

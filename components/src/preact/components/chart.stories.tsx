@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/preact';
 import Chart, { GsChartProps } from './chart';
-import { getYAxisScale } from '../../components/charts/getYAxisScale';
+import { getYAxisScale } from '../shared/charts/getYAxisScale';
 
 const meta: Meta<GsChartProps> = {
     title: 'Component/Chart',

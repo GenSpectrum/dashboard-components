@@ -4,8 +4,8 @@ import { withActions } from '@storybook/addon-actions/decorator';
 import { html } from 'lit';
 import { DateRangeSelectorProps, toYYYYMMDD } from '../../preact/dateRangeSelector/date-range-selector';
 import './date-range-selector-component';
-import '../../components/app';
-import { withinShadowRoot } from '../../storybook/withinShadowRoot.story';
+import '../app';
+import { withinShadowRoot } from '../withinShadowRoot.story';
 import { expect, fn, userEvent, waitFor } from '@storybook/test';
 
 const meta: Meta<DateRangeSelectorProps> = {

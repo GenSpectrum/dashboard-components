@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 import { provide } from '@lit/context';
-import { lapisContext } from '../lapis-context';
+import { lapisContext } from './lapis-context';
 import { customElement, property } from 'lit/decorators.js';
 
 @customElement('gs-app')

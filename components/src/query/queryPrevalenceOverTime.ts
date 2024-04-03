@@ -7,7 +7,7 @@ import { SortOperator } from '../operator/SortOperator';
 import { Operator } from '../operator/Operator';
 import { SlidingOperator } from '../operator/SlidingOperator';
 import { DivisionOperator } from '../operator/DivisionOperator';
-import { compareTemporal, generateAllInRange, getMinMaxTemporal, Temporal, TemporalCache } from '../temporal';
+import { compareTemporal, generateAllInRange, getMinMaxTemporal, Temporal, TemporalCache } from '../utils/temporal';
 
 export type PrevalenceOverTimeData = {
     displayName: string;

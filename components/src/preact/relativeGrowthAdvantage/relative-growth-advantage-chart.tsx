@@ -1,6 +1,6 @@
 import { ChartConfiguration } from 'chart.js';
-import { YearMonthDay } from '../../temporal';
-import { getYAxisScale, ScaleType } from '../../components/charts/getYAxisScale';
+import { YearMonthDay } from '../../utils/temporal';
+import { getYAxisScale, ScaleType } from '../shared/charts/getYAxisScale';
 import GsChart from '../components/chart';
 
 interface RelativeGrowthAdvantageChartData {
