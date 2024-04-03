@@ -8,6 +8,8 @@ import nucleotideMutationsSomeVariant from '../../preact/mutationComparison/__mo
 import nucleotideInsertionsSomeVariant from '../../preact/mutationComparison/__mockData__/nucleotideInsertionsSomeVariant.json';
 import nucleotideMutationsOtherVariant from '../../preact/mutationComparison/__mockData__/nucleotideMutationsOtherVariant.json';
 import nucleotideInsertionsOtherVariant from '../../preact/mutationComparison/__mockData__/nucleotideInsertionsOtherVariant.json';
+import { expect, fireEvent, waitFor } from '@storybook/test';
+import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const meta: Meta<MutationComparisonProps> = {
     title: 'Visualization/Mutation comparison',
@@ -128,10 +130,19 @@ export const Default: StoryObj<MutationComparisonProps> = {
     },
 };
 
-export const VennDiagramOnly: StoryObj<MutationComparisonProps> = {
+export const VennDiagram: StoryObj<MutationComparisonProps> = {
     ...Default,
-    args: {
-        ...Default.args,
-        views: ['venn'],
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-comparison-component');
+
+        await waitFor(() => expect(canvas.getByLabelText('Venn', { selector: 'input' })).toBeInTheDocument());
+
+        await fireEvent.click(canvas.getByLabelText('Venn', { selector: 'input' }));
+
+        await waitFor(() =>
+            expect(
+                canvas.getByText('You have no elements selected. Click in the venn diagram to select.'),
+            ).toBeVisible(),
+        );
     },
 };

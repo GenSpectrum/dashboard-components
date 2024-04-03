@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { withActions } from '@storybook/addon-actions/decorator';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 
 import { html } from 'lit';
@@ -9,7 +8,7 @@ import data from '../../preact/locationFilter/__mockData__/aggregated.json';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 import { expect, fn, userEvent, waitFor } from '@storybook/test';
 
-const meta: Meta<{}> = {
+const meta: Meta = {
     title: 'Input/Location filter',
     component: 'gs-location-filter',
     parameters: {
@@ -17,7 +16,6 @@ const meta: Meta<{}> = {
             handles: ['gs-location-changed'],
         },
     },
-    decorators: [withActions],
 };
 
 export default meta;

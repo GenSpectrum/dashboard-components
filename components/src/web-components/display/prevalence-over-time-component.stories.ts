@@ -47,14 +47,14 @@ const Template: StoryObj<PrevalenceOverTimeProps> = {
     `,
 };
 
-export const TwoVariants = {
+export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
     ...Template,
     args: {
         numerator: [
             { displayName: 'EG', country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' },
             { displayName: 'JN.1', country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' },
         ],
-        denominator: { country: 'USA', dateFrom: '2023-01-01' },
+        denominator: { country: 'USA', dateFrom: '2023-01-01', displayName: 'All' },
         granularity: 'month',
         smoothingWindow: 0,
         views: ['bar', 'line', 'bubble', 'table'],
@@ -116,11 +116,11 @@ export const TwoVariants = {
     },
 };
 
-export const OneVariant = {
+export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
     ...Template,
     args: {
         numerator: { displayName: 'EG', country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
-        denominator: { country: 'USA', dateFrom: '2023-10-01' },
+        denominator: { country: 'USA', dateFrom: '2023-10-01', displayName: 'All' },
         granularity: 'day',
         smoothingWindow: 7,
         views: ['bar', 'line', 'bubble', 'table'],

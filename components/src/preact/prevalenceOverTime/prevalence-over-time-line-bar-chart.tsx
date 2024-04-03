@@ -2,7 +2,7 @@ import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
 import { getYAxisScale, ScaleType } from '../shared/charts/getYAxisScale';
 import GsChart from '../components/chart';
-import { LogitScale } from '../../components/charts/LogitScale';
+import { LogitScale } from '../shared/charts/LogitScale';
 
 interface PrevalenceOverTimeLineBarChartProps {
     data: PrevalenceOverTimeData;
