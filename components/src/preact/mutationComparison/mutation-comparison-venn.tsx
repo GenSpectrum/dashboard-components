@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact';
 import { ArcSlice, extractSets, VennDiagramController } from 'chartjs-chart-venn';
-import { useEffect, useRef } from 'preact/hooks';
+import { useEffect, useMemo, useRef } from 'preact/hooks';
 import { ActiveElement, Chart, ChartConfiguration, ChartEvent, registerables } from 'chart.js';
 import GsChart from '../components/chart';
 import { MutationData } from './mutation-comparison';
@@ -22,25 +22,29 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
         divRef.current.innerText = noElementSelectedMessage;
     }, [divRef]);
 
+    const sets = useMemo(
+        () =>
+            extractSets(
+                data.content
+                    .map((mutationData) => {
+                        return {
+                            ...mutationData,
+                            data: mutationData.data.filter((mutationEntry) => mutationEntry.type !== 'insertion'),
+                        };
+                    })
+                    .map((mutationData) => {
+                        return {
+                            label: mutationData.displayName,
+                            values: mutationData.data.map((mutationEntry) => mutationEntry.mutation.toString()),
+                        };
+                    }),
+            ),
+        [data],
+    );
+
     if (data.content.length > 5) {
         return <div>Too many variants to display. Maximum are five. </div>;
     }
-
-    const sets = extractSets(
-        data.content
-            .map((mutationData) => {
-                return {
-                    ...mutationData,
-                    data: mutationData.data.filter((mutationEntry) => mutationEntry.type !== 'insertion'),
-                };
-            })
-            .map((mutationData) => {
-                return {
-                    label: mutationData.displayName,
-                    values: mutationData.data.map((mutationEntry) => mutationEntry.mutation.toString()),
-                };
-            }),
-    );
 
     const config: ChartConfiguration = {
         type: 'venn',
@@ -94,9 +98,7 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
     return (
         <>
             <GsChart configuration={config} />
-            <div class='flex flex-wrap break-words m-2' ref={divRef}>
-                {''}
-            </div>
+            <div class='flex flex-wrap break-words m-2' ref={divRef} />
         </>
     );
 };

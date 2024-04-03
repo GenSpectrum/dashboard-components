@@ -39,7 +39,7 @@ const Template: StoryObj<MutationsProps> = {
     `,
 };
 
-export const Default = {
+export const Default: StoryObj<MutationsProps> = {
     ...Template,
     args: {
         variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
