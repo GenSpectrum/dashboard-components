@@ -7,7 +7,7 @@ import { MutationComparisonVenn } from './mutation-comparison-venn';
 import { filterMutationData, type MutationData, queryMutationData } from './queryMutationData';
 import { type LapisFilter, type SequenceType } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { type DisplayedSegment, SegmentSelector } from '../components/SegmentSelector';
+import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/SegmentSelector';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
@@ -68,7 +68,7 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
 
     return (
         <Headline heading={headline}>
-            <MutationComparisonTabs data={data.mutationData} segments={data.segments} views={views} />
+            <MutationComparisonTabs data={data.mutationData} sequenceType={sequenceType} views={views} />
         </Headline>
     );
 };
@@ -76,22 +76,16 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
 type MutationComparisonTabsProps = {
     data: MutationData[];
     views: View[];
-    segments: string[];
+    sequenceType: SequenceType;
 };
 
-const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = ({ data, views, segments }) => {
+const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = ({ data, views, sequenceType }) => {
     const [proportionInterval, setProportionInterval] = useState({ min: 0.5, max: 1 });
     const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
         { label: 'Substitutions', checked: true, type: 'substitution' },
         { label: 'Deletions', checked: true, type: 'deletion' },
     ]);
-    const [displayedSegments, setDisplayedSegments] = useState<DisplayedSegment[]>(
-        segments.map((segment) => ({
-            segment,
-            label: segment,
-            checked: true,
-        })),
-    );
+    const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(sequenceType);
 
     const filteredData = useMemo(
         () => filterMutationData(data, displayedSegments, displayedMutationTypes),

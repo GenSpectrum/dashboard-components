@@ -5,8 +5,10 @@ import { render } from 'preact';
 import { type JSXInternal } from 'preact/src/jsx';
 
 import { lapisContext } from './lapis-context';
-import { LAPIS_URL } from '../constants';
+import { referenceGenomeContext } from './reference-genome-context';
+import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import { LapisUrlContext } from '../preact/LapisUrlContext';
+import { ReferenceGenomeContext } from '../preact/ReferenceGenomeContext';
 import minMaxPercentSliderCss from '../preact/components/min-max-percent-slider.css?inline';
 import tailwindStyle from '../styles/tailwind.css?inline';
 
@@ -22,8 +24,20 @@ export abstract class PreactLitAdapter extends ReactiveElement {
     @consume({ context: lapisContext })
     lapis: string = '';
 
+    @consume({ context: referenceGenomeContext, subscribe: true })
+    referenceGenome: ReferenceGenome = {
+        nucleotideSequences: [],
+        genes: [],
+    };
+
     override update(changedProperties: PropertyValues) {
-        const vdom = <LapisUrlContext.Provider value={LAPIS_URL}>{this.render()}</LapisUrlContext.Provider>;
+        const vdom = (
+            <LapisUrlContext.Provider value={this.lapis}>
+                <ReferenceGenomeContext.Provider value={this.referenceGenome}>
+                    {this.render()}
+                </ReferenceGenomeContext.Provider>
+            </LapisUrlContext.Provider>
+        );
         super.update(changedProperties);
         render(vdom, this.renderRoot);
     }

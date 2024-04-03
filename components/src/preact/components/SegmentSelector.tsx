@@ -1,6 +1,10 @@
 import { type FunctionComponent } from 'preact';
+import { useContext, useState } from 'preact/hooks';
 
 import { type CheckboxItem, CheckboxSelector } from './checkbox-selector';
+import { getSegmentNames } from '../../lapisApi/ReferenceGenome';
+import { type SequenceType } from '../../types';
+import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 
 export type DisplayedSegment = CheckboxItem & {
     segment: string;
@@ -31,7 +35,7 @@ export const SegmentSelector: FunctionComponent<SegmentSelectorProps> = ({
     setDisplayedSegments,
     prefix,
 }) => {
-    if (displayedSegments.length === 0) {
+    if (displayedSegments.length <= 1) {
         return null;
     }
 
@@ -44,3 +48,15 @@ export const SegmentSelector: FunctionComponent<SegmentSelectorProps> = ({
         />
     );
 };
+
+export function useDisplayedSegments(sequenceType: SequenceType) {
+    const referenceGenome = useContext(ReferenceGenomeContext);
+
+    const displayedSegments = getSegmentNames(referenceGenome, sequenceType).map((segment) => ({
+        segment,
+        label: segment,
+        checked: true,
+    }));
+
+    return useState<DisplayedSegment[]>(displayedSegments);
+}
