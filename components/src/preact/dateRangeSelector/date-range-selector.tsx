@@ -4,6 +4,7 @@ import 'flatpickr/dist/flatpickr.min.css';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { Select } from '../components/select';
 import type { ScaleType } from '../shared/charts/getYAxisScale';
+import { toYYYYMMDD } from './dateConversion';
 
 export type CustomSelectOption = { label: string; dateFrom: string; dateTo: string };
 
@@ -223,13 +224,4 @@ const getDatesForSelectorValue = (
         default:
             return { dateFrom: today, dateTo: today };
     }
-};
-
-export const toYYYYMMDD = (date?: Date) => {
-    if (!date) {
-        return undefined;
-    }
-
-    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    return date.toLocaleDateString('en-CA', options);
 };

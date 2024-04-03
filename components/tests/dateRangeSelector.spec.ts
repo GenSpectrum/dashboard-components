@@ -1,0 +1,54 @@
+import { expect, Page, test } from '@playwright/test';
+import { toYYYYMMDD } from '../src/preact/dateRangeSelector/dateConversion';
+
+interface DateRangeDetail {
+    dateFrom: string;
+    dateTo: string;
+}
+
+const getEventPromiseInsideTestBrowser = async (page: Page) => {
+    return page.evaluate(() => {
+        return new Promise<DateRangeDetail>((executor) => {
+            document.addEventListener('gs-date-range-changed', (event) => {
+                const customEvent = event as CustomEvent<DateRangeDetail>;
+                return executor(customEvent.detail);
+            });
+        });
+    });
+};
+
+test('date selector should switch to custom and back', async ({ page }) => {
+    await page.goto(
+        'http://localhost:6006/iframe.html?args=&id=input-daterangeselector--date-range-selector-story&viewMode=story',
+    );
+
+    const dateFrom = page.getByPlaceholder('Date from');
+    const selectBox = page.locator('#root-inner').getByRole('combobox');
+    const dateTo = page.getByPlaceholder('Date to');
+
+    const firstEventPromise = getEventPromiseInsideTestBrowser(page);
+    const someDateInThePast = '2021-10-01';
+    await dateFrom.fill(someDateInThePast);
+    await dateFrom.press('Enter');
+
+    expect(await selectBox.inputValue()).toBe('custom');
+    expect(await dateFrom.inputValue()).toBe(someDateInThePast);
+
+    const today = new Date();
+    const firstEvent = await firstEventPromise;
+    expect(firstEvent.dateFrom).toBe(someDateInThePast);
+    expect(firstEvent.dateTo).toBe(toYYYYMMDD(today));
+
+    const secondEventPromise = getEventPromiseInsideTestBrowser(page);
+    await selectBox.selectOption('last3Months');
+
+    const threeMonthAgo = new Date();
+    threeMonthAgo.setMonth(threeMonthAgo.getMonth() - 3);
+
+    expect(await dateFrom.inputValue()).toBe(toYYYYMMDD(threeMonthAgo));
+    expect(await dateTo.inputValue()).toBe(toYYYYMMDD(today));
+    expect(await selectBox.inputValue()).toBe('last3Months');
+    const secondEvent = await secondEventPromise;
+    expect(secondEvent.dateFrom).toBe(toYYYYMMDD(threeMonthAgo));
+    expect(secondEvent.dateTo).toBe(toYYYYMMDD(today));
+});
