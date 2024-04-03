@@ -1,8 +1,8 @@
 import { Operator } from './Operator';
 import { Dataset } from './Dataset';
 import { LapisFilter, SequenceType } from '../types';
-import { Deletion, Insertion, MutationCache, Substitution } from '../mutations';
-import { mapLapisFilterToUrlParams } from '../utils';
+import { Deletion, Insertion, MutationCache, Substitution } from '../utils/mutations';
+import { mapLapisFilterToUrlParams } from '../utils/utils';
 
 export class FetchMutationsOperator implements Operator<MutationEntry> {
     constructor(

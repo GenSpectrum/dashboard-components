@@ -1,6 +1,6 @@
 import { Operator } from './Operator';
 import { Dataset } from './Dataset';
-import { MappedNumber, NumberFields } from '../type-utils';
+import { MappedNumber, NumberFields } from '../utils/type-utils';
 
 export type DivisionOperatorResult<
     KeyField extends keyof ValueObject,

@@ -5,7 +5,7 @@ import PrevalenceOverTimeBubbleChart from './prevalence-over-time-bubble-chart';
 import PrevalenceOverTimeTable from './prevalence-over-time-table';
 import { NamedLapisFilter, TemporalGranularity } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { ScaleType } from '../../components/charts/getYAxisScale';
+import { ScaleType } from '../shared/charts/getYAxisScale';
 import Headline from '../components/headline';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';

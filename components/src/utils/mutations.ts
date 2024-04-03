@@ -1,4 +1,4 @@
-import { SequenceType } from './types';
+import { SequenceType } from '../types';
 
 export class MutationCache {
     private substitutionCache = new Map<string, Substitution>();

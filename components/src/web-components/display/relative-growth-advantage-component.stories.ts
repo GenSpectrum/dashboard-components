@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './relative-growth-advantage-component';
-import '../../components/app';
+import '../app';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import numerator from '../../preact/relativeGrowthAdvantage/__mockData__/numerator.json';
 import denominator from '../../preact/relativeGrowthAdvantage/__mockData__/denominator.json';

@@ -3,7 +3,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { Select } from '../components/select';
-import type { ScaleType } from '../../components/charts/getYAxisScale';
+import type { ScaleType } from '../shared/charts/getYAxisScale';
 
 export type CustomSelectOption = { label: string; dateFrom: string; dateTo: string };
 

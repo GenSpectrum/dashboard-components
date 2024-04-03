@@ -1,6 +1,6 @@
 import { MockOperator } from './MockOperator';
 import { DivisionOperator } from './DivisionOperator';
-import { expectEqualAfterSorting } from '../test-utils';
+import { expectEqualAfterSorting } from '../utils/test-utils';
 import { describe, it } from 'vitest';
 
 describe('DivisionOperator', () => {

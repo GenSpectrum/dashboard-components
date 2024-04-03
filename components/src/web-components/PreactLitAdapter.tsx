@@ -2,13 +2,13 @@ import { PropertyValues, ReactiveElement } from '@lit/reactive-element';
 import { render } from 'preact';
 import { unsafeCSS } from 'lit';
 import { consume } from '@lit/context';
-import { lapisContext } from '../lapis-context';
+import { lapisContext } from './lapis-context';
 import { JSXInternal } from 'preact/src/jsx';
 import { LapisUrlContext } from '../preact/LapisUrlContext';
 import { LAPIS_URL } from '../constants';
-import tailwindStyle from '../tailwind.css?inline';
+import tailwindStyle from '../styles/tailwind.css?inline';
 
-import '../tailwind.css';
+import '../styles/tailwind.css';
 
 const tailwindElementCss = unsafeCSS(tailwindStyle);
 

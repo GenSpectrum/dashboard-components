@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact';
 import { Select } from './select';
-import type { ScaleType } from '../../components/charts/getYAxisScale';
+import type { ScaleType } from '../shared/charts/getYAxisScale';
 
 export type ScalingSelectorProps = {
     yAxisScaleType: ScaleType;

@@ -8,7 +8,7 @@ import { LapisFilter } from '../../types';
 import RelativeGrowthAdvantageChart from './relative-growth-advantage-chart';
 import Tabs from '../components/tabs';
 import Info from '../components/info';
-import { type ScaleType } from '../../components/charts/getYAxisScale';
+import { type ScaleType } from '../shared/charts/getYAxisScale';
 import { ScalingSelector } from '../components/scaling-selector';
 import { LoadingDisplay } from '../components/loading-display';
 import { ErrorDisplay } from '../components/error-display';

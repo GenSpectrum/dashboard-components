@@ -1,6 +1,6 @@
 import { MockOperator } from './MockOperator';
 import { GroupByOperator } from './GroupByOperator';
-import { expectEqualAfterSorting } from '../test-utils';
+import { expectEqualAfterSorting } from '../utils/test-utils';
 import { describe, it } from 'vitest';
 
 describe('GroupByOperator', () => {

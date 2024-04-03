@@ -2,7 +2,7 @@ import { TemporalGranularity } from '../../types';
 import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
 import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
 import { Table } from '../components/table';
-import { formatProportion } from '../mutations/mutations-grid';
+import { formatProportion } from '../shared/table/formatProportion';
 
 interface PrevalenceOverTimeTableProps {
     data: PrevalenceOverTimeData;

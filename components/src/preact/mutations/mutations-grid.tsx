@@ -2,9 +2,10 @@ import { FunctionComponent } from 'preact';
 import { Row } from 'gridjs';
 import { Dataset } from '../../operator/Dataset';
 import { SequenceType } from '../../types';
-import { bases } from '../../mutations';
+import { bases } from '../../utils/mutations';
 import { DeletionEntry, MutationEntry, SubstitutionEntry } from '../../operator/FetchMutationsOperator';
 import { Table, tableStyle } from '../components/table';
+import { formatProportion } from '../shared/table/formatProportion';
 
 type MutationCell = {
     isReference: boolean;
@@ -157,8 +158,4 @@ export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, seq
     };
 
     return <Table data={getTableData(data, sequenceType)} columns={getHeaders()} pagination={true} />;
-};
-
-export const formatProportion = (proportion: number) => {
-    return `${(proportion * 100).toFixed(2)}%`;
 };

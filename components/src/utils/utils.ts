@@ -1,4 +1,4 @@
-import { LapisFilter } from './types';
+import { LapisFilter } from '../types';
 
 export function getMinMaxNumber(values: Iterable<number>): [number, number] | null {
     let min = null;
