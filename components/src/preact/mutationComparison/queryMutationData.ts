@@ -22,13 +22,7 @@ export async function queryMutationData(
             };
         }),
     );
-
-    const mutationSegments = mutationData[0].data
-        .map((mutationEntry) => mutationEntry.mutation.segment)
-        .filter((segment): segment is string => segment !== undefined);
-
-    const segments = [...new Set(mutationSegments)];
-    return { mutationData, segments };
+    return { mutationData };
 }
 
 export function filterMutationData(

@@ -5,7 +5,9 @@ import nucleotideInsertions from './__mockData__/nucleotideInsertions.json';
 import nucleotideMutations from './__mockData__/nucleotideMutations.json';
 import { Mutations, type MutationsProps } from './mutations';
 import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
+import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 
 const meta: Meta<MutationsProps> = {
     title: 'Visualization/Mutations',
@@ -28,7 +30,9 @@ export default meta;
 const Template = {
     render: (args: MutationsProps) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
-            <Mutations variant={args.variant} sequenceType={args.sequenceType} views={args.views} />
+            <ReferenceGenomeContext.Provider value={referenceGenome}>
+                <Mutations variant={args.variant} sequenceType={args.sequenceType} views={args.views} />
+            </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
     ),
 };

@@ -1,3 +1,4 @@
+import { referenceGenomeResponse } from './ReferenceGenome';
 import {
     aggregatedResponse,
     insertionsResponse,
@@ -62,6 +63,19 @@ export async function fetchSubstitutionsOrDeletions(
     return mutationsResponse.parse(await response.json());
 }
 
+export async function fetchReferenceGenome(lapisUrl: string, signal?: AbortSignal) {
+    const response = await fetch(referenceGenomeEndpoint(lapisUrl), {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        signal,
+    });
+
+    await handleErrors(response);
+    return referenceGenomeResponse.parse(await response.json());
+}
+
 const handleErrors = async (response: Response) => {
     if (!response.ok) {
         if (response.status % 500 === 0) {
@@ -82,3 +96,4 @@ export const substitutionsOrDeletionsEndpoint = (lapisUrl: string, sequenceType:
         ? `${lapisUrl}/sample/aminoAcidMutations`
         : `${lapisUrl}/sample/nucleotideMutations`;
 };
+export const referenceGenomeEndpoint = (lapisUrl: string) => `${lapisUrl}/sample/referenceGenome`;

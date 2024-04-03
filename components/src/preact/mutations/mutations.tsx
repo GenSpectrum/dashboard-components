@@ -14,7 +14,7 @@ import {
     type SubstitutionOrDeletionEntry,
 } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { type DisplayedSegment, SegmentSelector } from '../components/SegmentSelector';
+import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/SegmentSelector';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
@@ -37,7 +37,6 @@ export interface MutationsProps {
 
 export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequenceType, views }) => {
     const lapis = useContext(LapisUrlContext);
-
     const { data, error, isLoading } = useQuery(async () => {
         return queryMutationsData(variant, sequenceType, lapis);
     }, [variant, sequenceType, lapis]);
@@ -69,33 +68,21 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
 
     return (
         <Headline heading={headline}>
-            <MutationsTabs
-                mutationsData={data.mutationsData}
-                sequenceType={sequenceType}
-                segments={data.segments}
-                views={views}
-            />
+            <MutationsTabs mutationsData={data} sequenceType={sequenceType} views={views} />
         </Headline>
     );
 };
 
 type MutationTabsProps = {
     mutationsData: { insertions: InsertionEntry[]; substitutionsOrDeletions: SubstitutionOrDeletionEntry[] };
-    segments: string[];
     sequenceType: SequenceType;
     views: View[];
 };
 
-const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, segments, sequenceType, views }) => {
+const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, sequenceType, views }) => {
     const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 1 });
 
-    const [displayedSegments, setDisplayedSegments] = useState<DisplayedSegment[]>(
-        segments.map((segment) => ({
-            segment,
-            label: segment,
-            checked: true,
-        })),
-    );
+    const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(sequenceType);
     const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
         { label: 'Substitutions', checked: true, type: 'substitution' },
         { label: 'Deletions', checked: true, type: 'deletion' },

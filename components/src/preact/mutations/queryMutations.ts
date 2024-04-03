@@ -17,15 +17,9 @@ export async function queryMutationsData(
     const substitutionsOrDeletions = (await querySubstitutionsOrDeletions(variant, sequenceType, lapis)).content;
     const insertions = (await queryInsertions(variant, sequenceType, lapis)).content;
 
-    const mutationSegments = substitutionsOrDeletions
-        .map((mutationEntry) => mutationEntry.mutation.segment)
-        .filter((segment): segment is string => segment !== undefined);
-
-    const segments = [...new Set(mutationSegments)];
-
     return {
-        mutationsData: { substitutionsOrDeletions, insertions },
-        segments,
+        substitutionsOrDeletions,
+        insertions,
     };
 }
 
