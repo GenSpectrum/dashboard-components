@@ -64,9 +64,12 @@ const PrevalenceOverTimeBubbleChart = ({ data, yAxisScaleType }: PrevalenceOverT
                         label: (context) => {
                             const dataset = data[context.datasetIndex!];
                             const dataPoint = dataset.content[context.dataIndex!];
-                            return `${dataset.displayName}: ${(dataPoint.prevalence * 100).toFixed(2)}%, ${dataPoint.count}/${
-                                dataPoint.total
-                            } samples`;
+
+                            const percentage = (dataPoint.prevalence * 100).toFixed(2);
+                            const count = dataPoint.count.toFixed(0);
+                            const total = dataPoint.total.toFixed(0);
+
+                            return `${dataset.displayName}: ${percentage}%, ${count}/${total} samples`;
                         },
                     },
                 },
