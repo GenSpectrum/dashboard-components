@@ -10,6 +10,8 @@ import numeratorJN1 from '../../preact/prevalenceOverTime/__mockData__/numerator
 import denominatorOneVariant from '../../preact/prevalenceOverTime/__mockData__/denominatorOneVariant.json';
 import numeratorOneVariant from '../../preact/prevalenceOverTime/__mockData__/numeratorOneVariant.json';
 import { PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
+import { withinShadowRoot } from '../withinShadowRoot.story';
+import { expect, fireEvent, waitFor } from '@storybook/test';
 
 const meta: Meta<PrevalenceOverTimeProps> = {
     title: 'Visualization/Prevalence over time',
@@ -162,5 +164,38 @@ export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
                 },
             ],
         },
+    },
+};
+
+export const OneVariantOnLineTab: StoryObj<PrevalenceOverTimeProps> = {
+    ...OneVariant,
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
+
+        await waitFor(() => expect(canvas.getByLabelText('Line', { selector: 'input' })).toBeInTheDocument());
+
+        await fireEvent.click(canvas.getByLabelText('Line', { selector: 'input' }));
+    },
+};
+
+export const OneVariantOnBubbleTab: StoryObj<PrevalenceOverTimeProps> = {
+    ...OneVariant,
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
+
+        await waitFor(() => expect(canvas.getByLabelText('Bubble', { selector: 'input' })).toBeInTheDocument());
+
+        await fireEvent.click(canvas.getByLabelText('Bubble', { selector: 'input' }));
+    },
+};
+
+export const OneVariantOnTableTab: StoryObj<PrevalenceOverTimeProps> = {
+    ...OneVariant,
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
+
+        await waitFor(() => expect(canvas.getByLabelText('Table', { selector: 'input' })).toBeInTheDocument());
+
+        await fireEvent.click(canvas.getByLabelText('Table', { selector: 'input' }));
     },
 };
