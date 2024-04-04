@@ -2,17 +2,17 @@ import { GroupByOperator } from './GroupByOperator';
 import { Operator } from './Operator';
 import { NumberFields } from '../utils/type-utils';
 
-type Result<T, K extends keyof T, C extends keyof T> = {
-    [P in K | C]: P extends K ? T[K] : number;
+type Result<Data, KeyToGroupBy extends keyof Data, KeyToSumBy extends keyof Data> = {
+    [P in KeyToGroupBy | KeyToSumBy]: P extends KeyToGroupBy ? Data[KeyToGroupBy] : number;
 };
 
-export class GroupByAndSumOperator<T, K extends keyof T, C extends NumberFields<T>> extends GroupByOperator<
-    T,
-    Result<T, K, C>,
-    K
-> {
-    constructor(child: Operator<T>, groupByField: K, sumField: C) {
-        super(child, groupByField, (values: T[]) => {
+export class GroupByAndSumOperator<
+    Data,
+    KeyToGroupBy extends keyof Data,
+    KeySoSumBy extends NumberFields<Data>,
+> extends GroupByOperator<Data, Result<Data, KeyToGroupBy, KeySoSumBy>, KeyToGroupBy> {
+    constructor(child: Operator<Data>, groupByField: KeyToGroupBy, sumField: KeySoSumBy) {
+        super(child, groupByField, (values: Data[]) => {
             let n = 0;
             for (const value of values) {
                 n += value[sumField] as number;
@@ -20,7 +20,7 @@ export class GroupByAndSumOperator<T, K extends keyof T, C extends NumberFields<
             return {
                 [groupByField]: values[0][groupByField],
                 [sumField]: n,
-            } as Result<T, K, C>;
+            } as Result<Data, KeyToGroupBy, KeySoSumBy>;
         });
     }
 }

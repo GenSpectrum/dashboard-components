@@ -4,7 +4,6 @@ import { MapOperator } from '../operator/MapOperator';
 import { GroupByAndSumOperator } from '../operator/GroupByAndSumOperator';
 import { FillMissingOperator } from '../operator/FillMissingOperator';
 import { SortOperator } from '../operator/SortOperator';
-import { Operator } from '../operator/Operator';
 import { SlidingOperator } from '../operator/SlidingOperator';
 import { DivisionOperator } from '../operator/DivisionOperator';
 import { compareTemporal, generateAllInRange, getMinMaxTemporal, Temporal, TemporalCache } from '../utils/temporal';
@@ -66,11 +65,8 @@ function fetchAndPrepare(filter: LapisFilter, granularity: TemporalGranularity, 
         (key) => ({ dateRange: key, count: 0 }),
     );
     const sortData = new SortOperator(fillData, dateRangeCompare);
-    let smoothData: Operator<{ dateRange: Temporal | null; count: number }> = sortData;
-    if (smoothingWindow >= 1) {
-        smoothData = new SlidingOperator(sortData, smoothingWindow, averageSmoothing);
-    }
-    return smoothData;
+
+    return smoothingWindow >= 1 ? new SlidingOperator(sortData, smoothingWindow, averageSmoothing) : sortData;
 }
 
 function mapDateToGranularityRange(d: { date: string | null; count: number }, granularity: TemporalGranularity) {
