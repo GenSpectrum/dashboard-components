@@ -1,16 +1,18 @@
 import { Operator } from './Operator';
 import { Dataset } from './Dataset';
 
-export class GroupByOperator<T, S, K extends keyof T> implements Operator<S> {
+export class GroupByOperator<Data, AggregationResult, KeyToGroupBy extends keyof Data>
+    implements Operator<AggregationResult>
+{
     constructor(
-        private child: Operator<T>,
-        private field: K,
-        private aggregate: (values: T[]) => S,
+        private child: Operator<Data>,
+        private field: KeyToGroupBy,
+        private aggregate: (values: Data[]) => AggregationResult,
     ) {}
 
-    async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<S>> {
+    async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<AggregationResult>> {
         const childEvaluated = await this.child.evaluate(lapis, signal);
-        const grouped = new Map<T[K], T[]>();
+        const grouped = new Map<Data[KeyToGroupBy], Data[]>();
         for (const row of childEvaluated.content) {
             const key = row[this.field];
             if (!grouped.has(key)) {
@@ -18,7 +20,7 @@ export class GroupByOperator<T, S, K extends keyof T> implements Operator<S> {
             }
             grouped.get(key)!.push(row);
         }
-        const result = new Array<S>();
+        const result = new Array<AggregationResult>();
         for (const [, values] of grouped) {
             result.push(this.aggregate(values));
         }
