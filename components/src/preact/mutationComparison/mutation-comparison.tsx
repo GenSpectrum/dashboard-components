@@ -14,6 +14,8 @@ import Tabs from '../components/tabs';
 import { CheckboxSelector } from '../components/checkbox-selector';
 import { MutationComparisonTable } from './mutation-comparison-table';
 import { MutationComparisonVenn } from './mutation-comparison-venn';
+import { CsvDownloadButton } from '../components/csv-download-button';
+import { getMutationComparisonTableData } from './getMutationComparisonTableData';
 
 export type View = 'table' | 'venn';
 
@@ -164,6 +166,11 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
     const toolbar = (
         <div class='flex flex-row'>
             {data.segments.length > 0 ? segmentSelector : null}
+            <CsvDownloadButton
+                className='mx-1 btn btn-xs'
+                getData={() => getMutationComparisonTableData({ content: filteredData })}
+                filename='mutation_comparison.csv'
+            />
             <Info className='mx-1' content='Info for mutation comparison' />
         </div>
     );
