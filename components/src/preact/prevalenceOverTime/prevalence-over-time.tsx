@@ -93,9 +93,11 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
 
     const tabs = views.map((view) => getTab(view));
 
-    const toolbar = (
+    const toolbar = (activeTab: string) => (
         <div class='flex'>
-            <ScalingSelector yAxisScaleType={yAxisScaleType} setYAxisScaleType={setYAxisScaleType} />
+            {activeTab !== 'Table' && (
+                <ScalingSelector yAxisScaleType={yAxisScaleType} setYAxisScaleType={setYAxisScaleType} />
+            )}
             <CsvDownloadButton
                 className='mx-1 btn btn-xs'
                 getData={() => getPrevalenceOverTimeTableData(data, granularity)}
