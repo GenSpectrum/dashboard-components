@@ -1,21 +1,22 @@
-import { MutationEntry } from '../../operator/FetchMutationsOperator';
-import { FunctionComponent } from 'preact';
-import { LapisFilter, SequenceType } from '../../types';
-import { useQuery } from '../useQuery';
-import { queryMutations } from '../../query/queryMutations';
+import { type FunctionComponent } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
-import { LapisUrlContext } from '../LapisUrlContext';
-import Headline from '../components/headline';
-import { LoadingDisplay } from '../components/loading-display';
-import { ErrorDisplay } from '../components/error-display';
-import { NoDataDisplay } from '../components/no-data-display';
-import Info from '../components/info';
-import Tabs from '../components/tabs';
-import { CheckboxSelector } from '../components/checkbox-selector';
+
+import { getMutationComparisonTableData } from './getMutationComparisonTableData';
 import { MutationComparisonTable } from './mutation-comparison-table';
 import { MutationComparisonVenn } from './mutation-comparison-venn';
+import { type MutationEntry } from '../../operator/FetchMutationsOperator';
+import { queryMutations } from '../../query/queryMutations';
+import { type LapisFilter, type SequenceType } from '../../types';
+import { LapisUrlContext } from '../LapisUrlContext';
+import { CheckboxSelector } from '../components/checkbox-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
-import { getMutationComparisonTableData } from './getMutationComparisonTableData';
+import { ErrorDisplay } from '../components/error-display';
+import Headline from '../components/headline';
+import Info from '../components/info';
+import { LoadingDisplay } from '../components/loading-display';
+import { NoDataDisplay } from '../components/no-data-display';
+import Tabs from '../components/tabs';
+import { useQuery } from '../useQuery';
 
 export type View = 'table' | 'venn';
 

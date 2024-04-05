@@ -1,18 +1,22 @@
+import { type FunctionComponent } from 'preact';
 import { useContext, useState } from 'preact/hooks';
-import { LapisUrlContext } from '../LapisUrlContext';
-import { queryRelativeGrowthAdvantage, RelativeGrowthAdvantageData } from '../../query/queryRelativeGrowthAdvantage';
-import { useQuery } from '../useQuery';
-import Headline from '../components/headline';
-import { FunctionComponent } from 'preact';
-import { LapisFilter } from '../../types';
+
 import RelativeGrowthAdvantageChart from './relative-growth-advantage-chart';
-import Tabs from '../components/tabs';
-import Info from '../components/info';
-import { type ScaleType } from '../shared/charts/getYAxisScale';
-import { ScalingSelector } from '../components/scaling-selector';
-import { LoadingDisplay } from '../components/loading-display';
+import {
+    queryRelativeGrowthAdvantage,
+    type RelativeGrowthAdvantageData,
+} from '../../query/queryRelativeGrowthAdvantage';
+import { type LapisFilter } from '../../types';
+import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorDisplay } from '../components/error-display';
+import Headline from '../components/headline';
+import Info from '../components/info';
+import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
+import { ScalingSelector } from '../components/scaling-selector';
+import Tabs from '../components/tabs';
+import { type ScaleType } from '../shared/charts/getYAxisScale';
+import { useQuery } from '../useQuery';
 
 export type View = 'line';
 

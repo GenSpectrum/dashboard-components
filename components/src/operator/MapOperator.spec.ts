@@ -1,6 +1,7 @@
-import { MockOperator } from './MockOperator';
-import { MapOperator } from './MapOperator';
 import { expect, describe, it } from 'vitest';
+
+import { MapOperator } from './MapOperator';
+import { MockOperator } from './MockOperator';
 
 describe('MapOperator', () => {
     it('should map the content of the child operator', async () => {

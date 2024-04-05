@@ -1,8 +1,9 @@
-import { FunctionComponent } from 'preact';
-import { Dataset } from '../../operator/Dataset';
-import { MutationEntry, MutationType } from '../../operator/FetchMutationsOperator';
+import { type TDataObjectRow } from 'gridjs/dist/src/types';
+import { type FunctionComponent } from 'preact';
+
+import { type Dataset } from '../../operator/Dataset';
+import { type MutationEntry, type MutationType } from '../../operator/FetchMutationsOperator';
 import { Table } from '../components/table';
-import { TDataObjectRow } from 'gridjs/dist/src/types';
 import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsTableProps {

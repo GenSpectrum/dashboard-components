@@ -1,6 +1,6 @@
-import { LapisFilter, SequenceType } from '../types';
 import { FetchMutationsOperator } from '../operator/FetchMutationsOperator';
 import { SortOperator } from '../operator/SortOperator';
+import { type LapisFilter, type SequenceType } from '../types';
 
 export function queryMutations(variant: LapisFilter, sequenceType: SequenceType, lapis: string, signal?: AbortSignal) {
     const fetchData = new FetchMutationsOperator(variant, sequenceType, 0);

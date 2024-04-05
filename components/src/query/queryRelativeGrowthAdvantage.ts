@@ -1,7 +1,7 @@
-import { LapisFilter } from '../types';
 import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { MapOperator } from '../operator/MapOperator';
-import { getMinMaxTemporal, TemporalCache, YearMonthDay } from '../utils/temporal';
+import { type LapisFilter } from '../types';
+import { getMinMaxTemporal, TemporalCache, type YearMonthDay } from '../utils/temporal';
 
 export type RelativeGrowthAdvantageData = Awaited<ReturnType<typeof queryRelativeGrowthAdvantage>>;
 

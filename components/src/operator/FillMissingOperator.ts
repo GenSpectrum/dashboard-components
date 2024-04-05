@@ -1,5 +1,5 @@
-import { Operator } from './Operator';
-import { Dataset } from './Dataset';
+import { type Dataset } from './Dataset';
+import { type Operator } from './Operator';
 
 export class FillMissingOperator<Data, KeyToFill extends keyof Data> implements Operator<Data> {
     constructor(

@@ -1,7 +1,8 @@
-import { html, LitElement } from 'lit';
 import { provide } from '@lit/context';
-import { lapisContext } from './lapis-context';
+import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+
+import { lapisContext } from './lapis-context';
 
 @customElement('gs-app')
 class App extends LitElement {

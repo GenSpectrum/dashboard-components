@@ -1,5 +1,6 @@
-import { FunctionComponent } from 'preact';
-import { ProportionSelector, ProportionSelectorProps } from './proportion-selector';
+import { type FunctionComponent } from 'preact';
+
+import { ProportionSelector, type ProportionSelectorProps } from './proportion-selector';
 
 export interface ProportionSelectorDropdownProps extends ProportionSelectorProps {
     openDirection?: 'left' | 'right';

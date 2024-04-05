@@ -1,6 +1,6 @@
-import { Operator } from './Operator';
-import { Dataset } from './Dataset';
-import { LapisFilter, SequenceType } from '../types';
+import { type Dataset } from './Dataset';
+import { type Operator } from './Operator';
+import { type LapisFilter, type SequenceType } from '../types';
 import { Deletion, Insertion, MutationCache, Substitution } from '../utils/mutations';
 import { mapLapisFilterToUrlParams } from '../utils/utils';
 

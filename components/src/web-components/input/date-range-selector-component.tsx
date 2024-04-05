@@ -1,6 +1,7 @@
-import { PreactLitAdapter } from '../PreactLitAdapter';
 import { customElement, property } from 'lit/decorators.js';
-import { CustomSelectOption, DateRangeSelector } from '../../preact/dateRangeSelector/date-range-selector';
+
+import { type CustomSelectOption, DateRangeSelector } from '../../preact/dateRangeSelector/date-range-selector';
+import { PreactLitAdapter } from '../PreactLitAdapter';
 
 @customElement('gs-date-range-selector')
 export class DateRangeSelectorComponent extends PreactLitAdapter {

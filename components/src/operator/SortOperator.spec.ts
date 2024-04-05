@@ -1,5 +1,6 @@
-import { MockOperator } from './MockOperator';
 import { expect, describe, it } from 'vitest';
+
+import { MockOperator } from './MockOperator';
 import { SortOperator } from './SortOperator';
 
 describe('SortOperator', () => {

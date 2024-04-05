@@ -1,6 +1,6 @@
-import { FunctionComponent } from 'preact';
+import { type FunctionComponent } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { ChangeEvent } from 'react';
+import { type ChangeEvent } from 'react';
 
 export type PercentInputProps = {
     percentage: number;

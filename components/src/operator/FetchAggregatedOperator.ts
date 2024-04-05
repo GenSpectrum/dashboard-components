@@ -1,6 +1,6 @@
-import { Operator } from './Operator';
-import { Dataset } from './Dataset';
-import { LapisFilter } from '../types';
+import { type Dataset } from './Dataset';
+import { type Operator } from './Operator';
+import { type LapisFilter } from '../types';
 import { mapLapisFilterToUrlParams } from '../utils/utils';
 
 export class FetchAggregatedOperator<Fields> implements Operator<Fields & { count: number }> {

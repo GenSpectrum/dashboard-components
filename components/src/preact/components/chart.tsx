@@ -1,5 +1,5 @@
+import { Chart, type ChartConfiguration } from 'chart.js';
 import { useEffect, useRef } from 'preact/hooks';
-import { Chart, ChartConfiguration } from 'chart.js';
 
 export interface GsChartProps {
     configuration: ChartConfiguration;

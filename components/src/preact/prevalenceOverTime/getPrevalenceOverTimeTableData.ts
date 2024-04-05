@@ -1,5 +1,5 @@
-import { TemporalGranularity } from '../../types';
-import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
+import { type PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
+import { type TemporalGranularity } from '../../types';
 
 export function getPrevalenceOverTimeTableData(data: PrevalenceOverTimeData, granularity: TemporalGranularity) {
     return data[0].content.map((row, rowNumber) => {

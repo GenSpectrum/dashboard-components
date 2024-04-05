@@ -1,5 +1,6 @@
+import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, waitFor, within } from '@storybook/test';
-import { Meta, StoryObj } from '@storybook/preact';
+
 import { NoDataDisplay } from './no-data-display';
 
 const meta: Meta = {

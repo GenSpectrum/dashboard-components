@@ -1,11 +1,12 @@
-import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
-import { Meta, StoryObj } from '@storybook/preact';
-import { MutationComparison, MutationComparisonProps } from './mutation-comparison';
-import { LapisUrlContext } from '../LapisUrlContext';
-import nucleotideMutationsSomeVariant from './__mockData__/nucleotideMutationsSomeVariant.json';
+import { type Meta, type StoryObj } from '@storybook/preact';
+
+import nucleotideInsertionsOtherVariant from './__mockData__/nucleotideInsertionsOtherVariant.json';
 import nucleotideInsertionsSomeVariant from './__mockData__/nucleotideInsertionsSomeVariant.json';
 import nucleotideMutationsOtherVariant from './__mockData__/nucleotideMutationsOtherVariant.json';
-import nucleotideInsertionsOtherVariant from './__mockData__/nucleotideInsertionsOtherVariant.json';
+import nucleotideMutationsSomeVariant from './__mockData__/nucleotideMutationsSomeVariant.json';
+import { MutationComparison, type MutationComparisonProps } from './mutation-comparison';
+import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
+import { LapisUrlContext } from '../LapisUrlContext';
 
 const meta: Meta<MutationComparisonProps> = {
     title: 'Visualization/Mutation comparison',

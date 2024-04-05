@@ -1,6 +1,6 @@
-import { TemporalGranularity } from '../../types';
 import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
-import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
+import { type PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
+import { type TemporalGranularity } from '../../types';
 import { Table } from '../components/table';
 import { formatProportion } from '../shared/table/formatProportion';
 

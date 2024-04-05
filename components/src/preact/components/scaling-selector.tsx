@@ -1,4 +1,5 @@
-import { FunctionComponent } from 'preact';
+import { type FunctionComponent } from 'preact';
+
 import { Select } from './select';
 import type { ScaleType } from '../shared/charts/getYAxisScale';
 

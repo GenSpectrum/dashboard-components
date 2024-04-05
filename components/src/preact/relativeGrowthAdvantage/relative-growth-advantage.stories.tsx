@@ -1,8 +1,8 @@
-import { LapisUrlContext } from '../LapisUrlContext';
-import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import numerator from './__mockData__/numerator.json';
 import denominator from './__mockData__/denominator.json';
-import { RelativeGrowthAdvantage, RelativeGrowthAdvantageProps } from './relative-growth-advantage';
+import numerator from './__mockData__/numerator.json';
+import { RelativeGrowthAdvantage, type RelativeGrowthAdvantageProps } from './relative-growth-advantage';
+import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
+import { LapisUrlContext } from '../LapisUrlContext';
 
 export default {
     title: 'Visualization/RelativeGrowthAdvantage',

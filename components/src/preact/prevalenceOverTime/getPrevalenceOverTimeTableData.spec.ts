@@ -1,8 +1,9 @@
-import { TemporalGranularity } from '../../types';
-import { PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
-import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
-import { TemporalCache, YearMonthDay } from '../../utils/temporal';
 import { describe, expect, it } from 'vitest';
+
+import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
+import { type PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
+import { type TemporalGranularity } from '../../types';
+import { TemporalCache, YearMonthDay } from '../../utils/temporal';
 
 describe('getPrevalenceOverTimeTableData', () => {
     it('should flatten the data to CSV format', () => {

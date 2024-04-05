@@ -1,8 +1,9 @@
-import { Meta, StoryObj } from '@storybook/preact';
-import { ProportionSelector, ProportionSelectorProps } from './proportion-selector';
-import { FunctionComponent } from 'preact';
-import { useState } from 'preact/hooks';
+import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, fireEvent, fn, userEvent, waitFor, within } from '@storybook/test';
+import { type FunctionComponent } from 'preact';
+import { useState } from 'preact/hooks';
+
+import { ProportionSelector, type ProportionSelectorProps } from './proportion-selector';
 
 const meta: Meta<ProportionSelectorProps> = {
     title: 'Component/Proportion selector',

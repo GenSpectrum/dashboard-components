@@ -1,6 +1,7 @@
-import { Meta, StoryObj } from '@storybook/preact';
-import Headline, { HeadlineProps } from './headline';
+import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, within } from '@storybook/test';
+
+import Headline, { type HeadlineProps } from './headline';
 
 const meta: Meta<typeof Headline> = {
     title: 'Component/Headline',

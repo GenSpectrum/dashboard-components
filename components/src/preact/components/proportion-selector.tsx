@@ -1,4 +1,5 @@
-import { FunctionComponent } from 'preact';
+import { type FunctionComponent } from 'preact';
+
 import { MinMaxRangeSlider } from './min-max-range-slider';
 import { PercentInput } from './percent-intput';
 

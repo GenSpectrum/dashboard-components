@@ -1,6 +1,7 @@
-import { Meta } from '@storybook/web-components';
-import { CsvDownloadButton, CsvDownloadButtonProps } from './csv-download-button';
-import { StoryObj } from '@storybook/preact';
+import { type StoryObj } from '@storybook/preact';
+import { type Meta } from '@storybook/web-components';
+
+import { CsvDownloadButton, type CsvDownloadButtonProps } from './csv-download-button';
 
 const meta: Meta<CsvDownloadButtonProps> = {
     title: 'Component/CSV Download Button',

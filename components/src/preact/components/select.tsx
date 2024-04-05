@@ -1,5 +1,5 @@
-import { FunctionComponent } from 'preact';
-import { JSXInternal } from 'preact/src/jsx';
+import { type FunctionComponent } from 'preact';
+import { type JSXInternal } from 'preact/src/jsx';
 
 export interface SelectProps {
     items: { label: string; value: string; disabled?: boolean }[];

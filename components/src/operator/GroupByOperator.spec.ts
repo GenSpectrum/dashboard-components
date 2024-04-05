@@ -1,7 +1,8 @@
-import { MockOperator } from './MockOperator';
-import { GroupByOperator } from './GroupByOperator';
-import { expectEqualAfterSorting } from '../utils/test-utils';
 import { describe, it } from 'vitest';
+
+import { GroupByOperator } from './GroupByOperator';
+import { MockOperator } from './MockOperator';
+import { expectEqualAfterSorting } from '../utils/test-utils';
 
 describe('GroupByOperator', () => {
     it('should group the content of the child operator', async () => {

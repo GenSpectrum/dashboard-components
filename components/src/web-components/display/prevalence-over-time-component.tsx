@@ -1,6 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
-import { NamedLapisFilter, TemporalGranularity } from '../../types';
-import PrevalenceOverTime, { View } from '../../preact/prevalenceOverTime/prevalence-over-time';
+
+import PrevalenceOverTime, { type View } from '../../preact/prevalenceOverTime/prevalence-over-time';
+import { type NamedLapisFilter, type TemporalGranularity } from '../../types';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
 @customElement('gs-prevalence-over-time')

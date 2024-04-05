@@ -1,22 +1,23 @@
-import { FunctionComponent } from 'preact';
-import { LapisFilter, SequenceType } from '../../types';
-import { useQuery } from '../useQuery';
-import { queryMutations } from '../../query/queryMutations';
+import { type FunctionComponent } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
-import { LapisUrlContext } from '../LapisUrlContext';
-import Headline from '../components/headline';
-import { LoadingDisplay } from '../components/loading-display';
-import { ErrorDisplay } from '../components/error-display';
-import { NoDataDisplay } from '../components/no-data-display';
-import { Dataset } from '../../operator/Dataset';
-import { MutationEntry } from '../../operator/FetchMutationsOperator';
-import MutationsTable from './mutations-table';
+
 import { MutationsGrid } from './mutations-grid';
-import Info from '../components/info';
-import Tabs from '../components/tabs';
+import MutationsTable from './mutations-table';
+import { type Dataset } from '../../operator/Dataset';
+import { type MutationEntry } from '../../operator/FetchMutationsOperator';
+import { queryMutations } from '../../query/queryMutations';
+import { type LapisFilter, type SequenceType } from '../../types';
+import { LapisUrlContext } from '../LapisUrlContext';
 import { CheckboxSelector } from '../components/checkbox-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
+import { ErrorDisplay } from '../components/error-display';
+import Headline from '../components/headline';
+import Info from '../components/info';
+import { LoadingDisplay } from '../components/loading-display';
+import { NoDataDisplay } from '../components/no-data-display';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
+import Tabs from '../components/tabs';
+import { useQuery } from '../useQuery';
 
 export type View = 'table' | 'grid';
 

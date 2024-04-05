@@ -1,6 +1,7 @@
+import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
-import { Meta, StoryObj } from '@storybook/preact';
-import { Select, SelectProps } from './select';
+
+import { Select, type SelectProps } from './select';
 
 const meta: Meta<SelectProps> = {
     title: 'Component/Select',

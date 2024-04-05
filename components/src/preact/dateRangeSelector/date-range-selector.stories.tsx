@@ -1,7 +1,8 @@
-import { LapisUrlContext } from '../LapisUrlContext';
+import { type Meta, type StoryObj } from '@storybook/preact';
+
+import { DateRangeSelector, type DateRangeSelectorProps } from './date-range-selector';
 import { LAPIS_URL } from '../../constants';
-import { Meta, StoryObj } from '@storybook/preact';
-import { DateRangeSelector, DateRangeSelectorProps } from './date-range-selector';
+import { LapisUrlContext } from '../LapisUrlContext';
 
 const meta: Meta<DateRangeSelectorProps> = {
     title: 'Input/DateRangeSelector',

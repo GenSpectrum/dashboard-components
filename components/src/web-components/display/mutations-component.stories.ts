@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
+
 import './mutations-component';
 import '../app';
 import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
-import nucleotideMutations from '../../preact/mutations/__mockData__/nucleotideMutations.json';
 import nucleotideInsertions from '../../preact/mutations/__mockData__/nucleotideInsertions.json';
-import { MutationsProps } from '../../preact/mutations/mutations';
+import nucleotideMutations from '../../preact/mutations/__mockData__/nucleotideMutations.json';
+import { type MutationsProps } from '../../preact/mutations/mutations';
 
 const meta: Meta<MutationsProps> = {
     title: 'Visualization/Mutations',

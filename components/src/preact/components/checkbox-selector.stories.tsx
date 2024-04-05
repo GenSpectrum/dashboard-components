@@ -1,6 +1,7 @@
+import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, fn, waitFor, within } from '@storybook/test';
-import { Meta, StoryObj } from '@storybook/preact';
-import { CheckboxItem, CheckboxSelector, CheckboxSelectorProps } from './checkbox-selector';
+
+import { type CheckboxItem, CheckboxSelector, type CheckboxSelectorProps } from './checkbox-selector';
 
 const meta: Meta<CheckboxSelectorProps> = {
     title: 'Component/Checkbox Selector',

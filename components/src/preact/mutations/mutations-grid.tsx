@@ -1,9 +1,10 @@
-import { FunctionComponent } from 'preact';
-import { Row } from 'gridjs';
-import { Dataset } from '../../operator/Dataset';
-import { SequenceType } from '../../types';
+import { type Row } from 'gridjs';
+import { type FunctionComponent } from 'preact';
+
+import { type Dataset } from '../../operator/Dataset';
+import { type DeletionEntry, type MutationEntry, type SubstitutionEntry } from '../../operator/FetchMutationsOperator';
+import { type SequenceType } from '../../types';
 import { bases } from '../../utils/mutations';
-import { DeletionEntry, MutationEntry, SubstitutionEntry } from '../../operator/FetchMutationsOperator';
 import { Table, tableStyle } from '../components/table';
 import { formatProportion } from '../shared/table/formatProportion';
 

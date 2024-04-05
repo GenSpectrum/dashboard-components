@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
+
 import './relative-growth-advantage-component';
 import '../app';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import numerator from '../../preact/relativeGrowthAdvantage/__mockData__/numerator.json';
 import denominator from '../../preact/relativeGrowthAdvantage/__mockData__/denominator.json';
-import { RelativeGrowthAdvantageProps } from '../../preact/relativeGrowthAdvantage/relative-growth-advantage';
+import numerator from '../../preact/relativeGrowthAdvantage/__mockData__/numerator.json';
+import { type RelativeGrowthAdvantageProps } from '../../preact/relativeGrowthAdvantage/relative-growth-advantage';
 
 const meta: Meta<RelativeGrowthAdvantageProps> = {
     title: 'Visualization/Relative growth advantage',

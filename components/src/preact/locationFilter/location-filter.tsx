@@ -1,7 +1,8 @@
 import { useContext, useRef, useState } from 'preact/hooks';
+
+import { fetchAutocompletionList } from './fetchAutocompletionList';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { useQuery } from '../useQuery';
-import { fetchAutocompletionList } from './fetchAutocompletionList';
 
 export type LocationFilterProps = {
     value?: string;

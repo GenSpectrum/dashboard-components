@@ -1,12 +1,12 @@
+import { expect, fn, userEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-
 import { html } from 'lit';
+
+import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../app';
 import '../input/location-filter-component';
 import data from '../../preact/locationFilter/__mockData__/aggregated.json';
 import { withinShadowRoot } from '../withinShadowRoot.story';
-import { expect, fn, userEvent, waitFor } from '@storybook/test';
 
 const meta: Meta = {
     title: 'Input/Location filter',

@@ -1,22 +1,23 @@
+import { type FunctionComponent } from 'preact';
 import { useContext, useState } from 'preact/hooks';
-import { queryPrevalenceOverTime } from '../../query/queryPrevalenceOverTime';
-import PrevalenceOverTimeLineBarChart from './prevalence-over-time-line-bar-chart';
+
+import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
 import PrevalenceOverTimeBubbleChart from './prevalence-over-time-bubble-chart';
+import PrevalenceOverTimeLineBarChart from './prevalence-over-time-line-bar-chart';
 import PrevalenceOverTimeTable from './prevalence-over-time-table';
-import { NamedLapisFilter, TemporalGranularity } from '../../types';
+import { queryPrevalenceOverTime } from '../../query/queryPrevalenceOverTime';
+import { type NamedLapisFilter, type TemporalGranularity } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { ScaleType } from '../shared/charts/getYAxisScale';
-import Headline from '../components/headline';
-import Tabs from '../components/tabs';
-import { useQuery } from '../useQuery';
-import Info from '../components/info';
-import { ScalingSelector } from '../components/scaling-selector';
-import { FunctionComponent } from 'preact';
+import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorDisplay } from '../components/error-display';
+import Headline from '../components/headline';
+import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
-import { CsvDownloadButton } from '../components/csv-download-button';
-import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
+import { ScalingSelector } from '../components/scaling-selector';
+import Tabs from '../components/tabs';
+import { type ScaleType } from '../shared/charts/getYAxisScale';
+import { useQuery } from '../useQuery';
 
 export type View = 'bar' | 'line' | 'bubble' | 'table';
 

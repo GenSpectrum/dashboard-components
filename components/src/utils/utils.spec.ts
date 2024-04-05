@@ -1,5 +1,6 @@
-import { mapLapisFilterToUrlParams } from './utils';
 import { expect, describe, it } from 'vitest';
+
+import { mapLapisFilterToUrlParams } from './utils';
 
 describe('mapLapisFilterToUrlParams', () => {
     it('should produce correct url params', () => {

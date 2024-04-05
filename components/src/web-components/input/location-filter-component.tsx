@@ -1,6 +1,7 @@
+import { customElement, property } from 'lit/decorators.js';
+
 import { LocationFilter } from '../../preact/locationFilter/location-filter';
 import { PreactLitAdapter } from '../PreactLitAdapter';
-import { customElement, property } from 'lit/decorators.js';
 
 @customElement('gs-location-filter')
 export class LocationFilterComponent extends PreactLitAdapter {

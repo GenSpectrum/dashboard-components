@@ -1,4 +1,5 @@
-import { Meta, StoryObj } from '@storybook/preact';
+import { type Meta, type StoryObj } from '@storybook/preact';
+
 import { Table } from './table';
 
 const meta: Meta = {
