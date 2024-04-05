@@ -10,9 +10,6 @@ export function getMutationComparisonTableData(data: Dataset<MutationData>) {
 
     for (const mutationData of data.content) {
         for (const mutationEntry of mutationData.data) {
-            if (mutationEntry.type === 'insertion') {
-                continue;
-            }
             const mutation = mutationEntry.mutation.toString();
             const proportions = mutationsToProportions.get(mutation) || {};
             proportions[mutationData.displayName] = mutationEntry.proportion;

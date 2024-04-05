@@ -1,11 +1,11 @@
 import { type DisplayedMutationType, type MutationComparisonVariant } from './mutation-comparison';
-import { type MutationEntry } from '../../operator/FetchMutationsOperator';
-import { queryMutations } from '../../query/queryMutations';
+import { querySubstitutionsOrDeletions } from '../../query/querySubstitutionsOrDeletions';
+import { type SubstitutionOrDeletionEntry } from '../../types';
 import { type DisplayedSegment } from '../components/SegmentSelector';
 
 export type MutationData = {
     displayName: string;
-    data: MutationEntry[];
+    data: SubstitutionOrDeletionEntry[];
 };
 
 export async function queryMutationData(
@@ -17,7 +17,7 @@ export async function queryMutationData(
         variants.map(async (variant) => {
             return {
                 displayName: variant.displayName,
-                data: (await queryMutations(variant.lapisFilter, sequenceType, lapis)).content,
+                data: (await querySubstitutionsOrDeletions(variant.lapisFilter, sequenceType, lapis)).content,
             };
         }),
     );
@@ -35,7 +35,7 @@ export function filterMutationData(
     displayedSegments: DisplayedSegment[],
     displayedMutationTypes: DisplayedMutationType[],
 ) {
-    const byDisplayedSegments = (mutationEntry: MutationEntry) => {
+    const byDisplayedSegments = (mutationEntry: SubstitutionOrDeletionEntry) => {
         if (mutationEntry.mutation.segment === undefined) {
             return true;
         }
@@ -44,7 +44,7 @@ export function filterMutationData(
                 displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
         );
     };
-    const byDisplayedMutationTypes = (mutationEntry: MutationEntry) => {
+    const byDisplayedMutationTypes = (mutationEntry: SubstitutionOrDeletionEntry) => {
         return displayedMutationTypes.some(
             (displayedMutationType) =>
                 displayedMutationType.checked && displayedMutationType.type === mutationEntry.type,

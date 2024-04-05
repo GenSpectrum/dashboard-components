@@ -5,8 +5,7 @@ import { getMutationComparisonTableData } from './getMutationComparisonTableData
 import { MutationComparisonTable } from './mutation-comparison-table';
 import { MutationComparisonVenn } from './mutation-comparison-venn';
 import { filterMutationData, type MutationData, queryMutationData } from './queryMutationData';
-import { type SubstitutionOrDeletion } from '../../operator/FetchMutationsOperator';
-import { type LapisFilter, type SequenceType } from '../../types';
+import { type LapisFilter, type SequenceType, type SubstitutionOrDeletion } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { type DisplayedSegment, SegmentSelector } from '../components/SegmentSelector';
 import { type CheckboxItem, CheckboxSelector } from '../components/checkbox-selector';

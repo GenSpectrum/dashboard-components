@@ -1,11 +1,10 @@
 import { type Row } from 'gridjs';
 import { type FunctionComponent } from 'preact';
 
-import { type Dataset } from '../../operator/Dataset';
-import { type DeletionEntry, type MutationEntry, type SubstitutionEntry } from '../../operator/FetchMutationsOperator';
-import { type SequenceType } from '../../types';
+import { type SequenceType, type SubstitutionOrDeletionEntry } from '../../types';
 import { bases } from '../../utils/mutations';
 import { Table, tableStyle } from '../components/table';
+import { sortMutationPositions } from '../shared/sort/sortMutationPositions';
 import { formatProportion } from '../shared/table/formatProportion';
 
 type MutationCell = {
@@ -18,7 +17,7 @@ type AdditionalColumnInfo = {
 };
 
 interface MutationsGridProps {
-    data: Dataset<MutationEntry>;
+    data: SubstitutionOrDeletionEntry[];
     sequenceType: SequenceType;
 }
 
@@ -29,7 +28,7 @@ export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, seq
                 name: 'Position',
                 sort: {
                     compare: (a: string, b: string) => {
-                        return sortPositionsWithSegments(a, b);
+                        return sortMutationPositions(a, b);
                     },
                 },
             },
@@ -72,22 +71,6 @@ export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, seq
             .flat();
     };
 
-    const sortPositionsWithSegments = (a: string, b: string) => {
-        const split = (s: string) => {
-            const parts = s.split(':');
-            if (parts.length === 1) {
-                return [undefined, parseInt(parts[0], 10)] as const;
-            }
-            return [parts[0], parseInt(parts[1], 10)] as const;
-        };
-        const [aSegment, aPosition] = split(a);
-        const [bSegment, bPosition] = split(b);
-        if (aSegment !== bSegment) {
-            return (aSegment ?? '').localeCompare(bSegment ?? '');
-        }
-        return aPosition - bPosition;
-    };
-
     const styleCells = (cell: MutationCell) => {
         if (cell.isReference || cell.value < 0.0001) {
             return {
@@ -100,15 +83,12 @@ export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, seq
         return {};
     };
 
-    const getTableData = (data: Dataset<MutationEntry>, sequenceType: SequenceType) => {
+    const getTableData = (data: SubstitutionOrDeletionEntry[], sequenceType: SequenceType) => {
         const basesOfView = bases[sequenceType];
-        const mutationsWithoutInsertions = data.content.filter(
-            (mutationEntry): mutationEntry is SubstitutionEntry | DeletionEntry => mutationEntry.type !== 'insertion',
-        );
         const positionsToProportionAtBase = new Map<string, Map<string, number>>();
         const referenceBases = new Map<string, string>();
 
-        for (const mutationEntry of mutationsWithoutInsertions) {
+        for (const mutationEntry of data) {
             const position =
                 (mutationEntry.mutation.segment ? `${mutationEntry.mutation.segment}:` : '') +
                 mutationEntry.mutation.position;
@@ -140,7 +120,7 @@ export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, seq
         const orderedPositionsToProportionAtBase = [...positionsToProportionAtBase.entries()]
             .map(([position, proportionsAtBase]) => ({ position, proportions: proportionsAtBase }))
             .sort((a, b) => {
-                return sortPositionsWithSegments(a.position, b.position);
+                return sortMutationPositions(a.position, b.position);
             });
 
         return orderedPositionsToProportionAtBase.map((proportionsForBaseAtPosition) => {
