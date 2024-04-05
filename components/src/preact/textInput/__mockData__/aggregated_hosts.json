@@ -1,0 +1,24 @@
+{
+    "errors": [],
+    "info": {
+        "apiVersion": 1,
+        "dataVersion": 1709685650,
+        "deprecationDate": null,
+        "deprecationInfo": null,
+        "acknowledgement": null
+    },
+    "data": [
+        {
+            "host": "Homo",
+            "count": 123
+        },
+        {
+            "host": "Homo sapiens",
+            "count": 234
+        },
+        {
+            "host": "Ape",
+            "count": 345
+        }
+    ]
+}

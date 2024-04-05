@@ -3,7 +3,7 @@ import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 
 import { html } from 'lit';
 import '../app';
-import '../input/location-filter-component';
+import './location-filter-component';
 import data from '../../preact/locationFilter/__mockData__/aggregated.json';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 import { expect, fn, userEvent, waitFor } from '@storybook/test';
