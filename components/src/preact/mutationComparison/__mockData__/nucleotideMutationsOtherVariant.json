@@ -160,7 +160,7 @@
         },
         {
             "mutation": "G199-",
-            "proportion": 0.01,
+            "proportion": 0.1,
             "count": 10
         }
     ]

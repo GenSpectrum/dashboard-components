@@ -38,8 +38,7 @@ export interface MutationsProps {
 export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequenceType, views }) => {
     const lapis = useContext(LapisUrlContext);
 
-    const [minProportion, setMinProportion] = useState(0.05);
-    const [maxProportion, setMaxProportion] = useState(1);
+    const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 1 });
 
     const { data, error, isLoading } = useQuery(async () => {
         const substitutionsOrDeletions = await querySubstitutionsOrDeletions(variant, sequenceType, lapis);
@@ -95,7 +94,7 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
         );
     }
 
-    function bySelectedSegments<Mutation extends MutationEntry>(mutationEntry: Mutation) {
+    const bySelectedSegments = (mutationEntry: MutationEntry) => {
         if (mutationEntry.mutation.segment === undefined) {
             return true;
         }
@@ -103,10 +102,10 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
             (displayedSegment) =>
                 displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
         );
-    }
+    };
 
     const byProportion = (mutationEntry: SubstitutionOrDeletionEntry) => {
-        return mutationEntry.proportion >= minProportion && mutationEntry.proportion <= maxProportion;
+        return mutationEntry.proportion >= proportionInterval.min && mutationEntry.proportion <= proportionInterval.max;
     };
 
     const getTab = (
@@ -151,10 +150,9 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
             {(activeTab === 'Table' || activeTab === 'Grid') && (
                 <>
                     <ProportionSelectorDropdown
-                        minProportion={minProportion}
-                        maxProportion={maxProportion}
-                        setMinProportion={setMinProportion}
-                        setMaxProportion={setMaxProportion}
+                        proportionInterval={proportionInterval}
+                        setMinProportion={(min) => setProportionInterval((prev) => ({ ...prev, min }))}
+                        setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
                         openDirection={'left'}
                     />
                     <CsvDownloadButton

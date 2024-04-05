@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, waitFor, within } from '@storybook/test';
+import { expect, userEvent, waitFor, within } from '@storybook/test';
 
 import nucleotideInsertionsOtherVariant from './__mockData__/nucleotideInsertionsOtherVariant.json';
 import nucleotideInsertionsSomeVariant from './__mockData__/nucleotideInsertionsSomeVariant.json';
@@ -11,8 +11,8 @@ import { LapisUrlContext } from '../LapisUrlContext';
 
 const dateToSomeVariant = '2022-01-01';
 
-const dateToOtherVariant = '2022-01-02';
 const dateFromOtherVariant = '2021-01-01';
+const dateToOtherVariant = '2022-01-02';
 
 const meta: Meta<MutationComparisonProps> = {
     title: 'Visualization/Mutation comparison',
@@ -134,7 +134,7 @@ export const FilterForOnlyDeletions: StoryObj<MutationComparisonProps> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        const someSubstitution = () => canvas.queryByText('G210T');
+        const someSubstitution = () => canvas.queryByText('C241T');
         const someDeletion = () => canvas.queryByText('G199-');
 
         await waitFor(() => expect(someSubstitution()).toBeVisible());
@@ -145,5 +145,33 @@ export const FilterForOnlyDeletions: StoryObj<MutationComparisonProps> = {
 
         await waitFor(() => expect(someSubstitution()).not.toBeInTheDocument());
         await waitFor(() => expect(someDeletion()).toBeVisible());
+    },
+};
+
+export const FilterByProportion: StoryObj<MutationComparisonProps> = {
+    ...TwoVariants,
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        const rareSubstitution = () => canvas.queryByText('T1234C');
+        const frequentSubstitution = () => canvas.queryByText('C241T');
+        const minInput = () => canvas.getAllByLabelText('%')[0];
+        const maxInput = () => canvas.getAllByLabelText('%')[1];
+
+        await waitFor(() => expect(rareSubstitution()).not.toBeInTheDocument());
+        await waitFor(() => expect(frequentSubstitution()).toBeVisible());
+
+        await userEvent.click(canvas.getByRole('button', { name: /Proportion/ }));
+        await userEvent.clear(minInput());
+        await userEvent.type(minInput(), '1');
+
+        await waitFor(() => expect(rareSubstitution()).toBeInTheDocument());
+        await waitFor(() => expect(frequentSubstitution()).toBeVisible());
+
+        await userEvent.clear(maxInput());
+        await userEvent.type(maxInput(), '50');
+
+        await waitFor(() => expect(rareSubstitution()).toBeInTheDocument());
+        await waitFor(() => expect(frequentSubstitution()).not.toBeInTheDocument());
     },
 };

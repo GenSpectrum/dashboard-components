@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useEffect, useState } from 'preact/hooks';
+import { type Dispatch, type StateUpdater, useContext, useMemo, useState } from 'preact/hooks';
 
 import { getMutationComparisonTableData } from './getMutationComparisonTableData';
 import { MutationComparisonTable } from './mutation-comparison-table';
@@ -15,6 +15,8 @@ import Headline from '../components/headline';
 import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
+import { type ProportionInterval } from '../components/proportion-selector';
+import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
 
@@ -44,23 +46,6 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
 
     const headline = 'Mutation comparison';
 
-    const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
-        { label: 'Substitutions', checked: true, type: 'substitution' },
-        { label: 'Deletions', checked: true, type: 'deletion' },
-    ]);
-    const [displayedSegments, setDisplayedSegments] = useState<DisplayedSegment[]>([]);
-    useEffect(() => {
-        if (data !== null) {
-            setDisplayedSegments(
-                data.segments.map((segment) => ({
-                    segment,
-                    label: segment,
-                    checked: true,
-                })),
-            );
-        }
-    }, [data]);
-
     if (isLoading) {
         return (
             <Headline heading={headline}>
@@ -87,48 +72,57 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
 
     return (
         <Headline heading={headline}>
-            <MutationComparisonTabs
-                displayedSegments={displayedSegments}
-                setDisplayedSegments={setDisplayedSegments}
-                displayedMutationTypes={displayedMutationTypes}
-                setDisplayedMutationTypes={setDisplayedMutationTypes}
-                data={data.mutationData}
-                views={views}
-            />
+            <MutationComparisonTabs data={data.mutationData} segments={data.segments} views={views} />
         </Headline>
     );
 };
 
 type MutationComparisonTabsProps = {
-    displayedSegments: DisplayedSegment[];
-    setDisplayedSegments: (segments: DisplayedSegment[]) => void;
-    displayedMutationTypes: DisplayedMutationType[];
-    setDisplayedMutationTypes: (types: DisplayedMutationType[]) => void;
     data: MutationData[];
     views: View[];
+    segments: string[];
 };
 
-const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = ({
-    displayedSegments,
-    setDisplayedSegments,
-    displayedMutationTypes,
-    setDisplayedMutationTypes,
-    data,
-    views,
-}) => {
-    const filteredData = filterMutationData(data, displayedSegments, displayedMutationTypes);
+const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = ({ data, views, segments }) => {
+    const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 1 });
+    const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
+        { label: 'Substitutions', checked: true, type: 'substitution' },
+        { label: 'Deletions', checked: true, type: 'deletion' },
+    ]);
+    const [displayedSegments, setDisplayedSegments] = useState<DisplayedSegment[]>(
+        segments.map((segment) => ({
+            segment,
+            label: segment,
+            checked: true,
+        })),
+    );
+
+    const filteredData = useMemo(
+        () => filterMutationData(data, displayedSegments, displayedMutationTypes),
+        [data, displayedSegments, displayedMutationTypes],
+    );
 
     const getTab = (view: View) => {
         switch (view) {
             case 'table':
                 return {
                     title: 'Table',
-                    content: <MutationComparisonTable data={{ content: filteredData }} />,
+                    content: (
+                        <MutationComparisonTable
+                            data={{ content: filteredData }}
+                            proportionInterval={proportionInterval}
+                        />
+                    ),
                 };
             case 'venn':
                 return {
                     title: 'Venn',
-                    content: <MutationComparisonVenn data={{ content: filteredData }} />,
+                    content: (
+                        <MutationComparisonVenn
+                            data={{ content: filteredData }}
+                            proportionInterval={proportionInterval}
+                        />
+                    ),
                 };
         }
     };
@@ -145,6 +139,8 @@ const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = (
                     displayedMutationTypes={displayedMutationTypes}
                     setDisplayedMutationTypes={setDisplayedMutationTypes}
                     filteredData={filteredData}
+                    proportionInterval={proportionInterval}
+                    setProportionInterval={setProportionInterval}
                 />
             }
         />
@@ -157,6 +153,8 @@ type ToolbarProps = {
     displayedMutationTypes: DisplayedMutationType[];
     setDisplayedMutationTypes: (types: DisplayedMutationType[]) => void;
     filteredData: MutationData[];
+    proportionInterval: ProportionInterval;
+    setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -165,12 +163,19 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     displayedMutationTypes,
     setDisplayedMutationTypes,
     filteredData,
+    proportionInterval,
+    setProportionInterval,
 }) => {
     const checkedLabels = displayedMutationTypes.filter((type) => type.checked).map((type) => type.label);
     const mutationTypesSelectorLabel = `Types: ${checkedLabels.length > 0 ? checkedLabels.join(', ') : 'None'}`;
 
     return (
         <div class='flex flex-row'>
+            <ProportionSelectorDropdown
+                proportionInterval={proportionInterval}
+                setMinProportion={(min) => setProportionInterval((prev) => ({ ...prev, min }))}
+                setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
+            />
             <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
             <CheckboxSelector
                 className='mx-1'
@@ -180,7 +185,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
             />
             <CsvDownloadButton
                 className='mx-1 btn btn-xs'
-                getData={() => getMutationComparisonTableData({ content: filteredData })}
+                getData={() => getMutationComparisonTableData({ content: filteredData }, proportionInterval)}
                 filename='mutation_comparison.csv'
             />
             <Info className='mx-1' content='Info for mutation comparison' />

@@ -7,13 +7,12 @@ export interface ProportionSelectorDropdownProps extends ProportionSelectorProps
 }
 
 export const ProportionSelectorDropdown: FunctionComponent<ProportionSelectorDropdownProps> = ({
-    minProportion,
-    maxProportion,
+    proportionInterval,
     setMinProportion,
     setMaxProportion,
     openDirection = 'right',
 }) => {
-    const label = `${(minProportion * 100).toFixed(1)}% - ${(maxProportion * 100).toFixed(1)}%`;
+    const label = `${(proportionInterval.min * 100).toFixed(1)}% - ${(proportionInterval.max * 100).toFixed(1)}%`;
 
     return (
         <div class={`dropdown ${openDirection === 'left' ? 'dropdown-end' : ''}`}>
@@ -23,8 +22,7 @@ export const ProportionSelectorDropdown: FunctionComponent<ProportionSelectorDro
             <ul tabIndex={0} class='p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-72'>
                 <div class='mb-2 ml-2'>
                     <ProportionSelector
-                        minProportion={minProportion}
-                        maxProportion={maxProportion}
+                        proportionInterval={proportionInterval}
                         setMinProportion={setMinProportion}
                         setMaxProportion={setMaxProportion}
                     />

@@ -3,14 +3,16 @@ import { type FunctionComponent } from 'preact';
 import { getMutationComparisonTableData } from './getMutationComparisonTableData';
 import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
+import { type ProportionInterval } from '../components/proportion-selector';
 import { Table } from '../components/table';
 import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsTableProps {
     data: Dataset<MutationData>;
+    proportionInterval: ProportionInterval;
 }
 
-export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = ({ data }) => {
+export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = ({ data, proportionInterval }) => {
     const getHeaders = () => {
         return [
             {
@@ -30,9 +32,7 @@ export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = (
         ];
     };
 
-    const getData = (data: Dataset<MutationData>) => {
-        return getMutationComparisonTableData(data).map((row) => Object.values(row));
-    };
+    const tableData = getMutationComparisonTableData(data, proportionInterval).map((row) => Object.values(row));
 
-    return <Table data={getData(data)} columns={getHeaders()} pagination={true} />;
+    return <Table data={tableData} columns={getHeaders()} pagination={true} />;
 };

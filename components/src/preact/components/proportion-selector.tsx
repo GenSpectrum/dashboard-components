@@ -3,19 +3,20 @@ import { type FunctionComponent } from 'preact';
 import { MinMaxRangeSlider } from './min-max-range-slider';
 import { PercentInput } from './percent-intput';
 
+export type ProportionInterval = { min: number; max: number };
+
 export interface ProportionSelectorProps {
-    minProportion: number;
-    maxProportion: number;
+    proportionInterval: ProportionInterval;
     setMinProportion: (minProportion: number) => void;
     setMaxProportion: (maxProportion: number) => void;
 }
 
 export const ProportionSelector: FunctionComponent<ProportionSelectorProps> = ({
-    minProportion,
-    maxProportion,
+    proportionInterval,
     setMinProportion,
     setMaxProportion,
 }) => {
+    const { min: minProportion, max: maxProportion } = proportionInterval;
     return (
         <div class='flex flex-col w-64 mb-2'>
             <div class='flex items-center '>
