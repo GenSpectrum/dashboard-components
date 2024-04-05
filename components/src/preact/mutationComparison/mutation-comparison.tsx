@@ -4,11 +4,11 @@ import { useContext, useEffect, useState } from 'preact/hooks';
 import { getMutationComparisonTableData } from './getMutationComparisonTableData';
 import { MutationComparisonTable } from './mutation-comparison-table';
 import { MutationComparisonVenn } from './mutation-comparison-venn';
-import { type MutationEntry } from '../../operator/FetchMutationsOperator';
+import { type MutationEntry, type SubstitutionOrDeletion } from '../../operator/FetchMutationsOperator';
 import { queryMutations } from '../../query/queryMutations';
 import { type LapisFilter, type SequenceType } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { CheckboxSelector } from '../components/checkbox-selector';
+import { type CheckboxItem, CheckboxSelector } from '../components/checkbox-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
@@ -31,14 +31,17 @@ export interface MutationComparisonProps {
     views: View[];
 }
 
-type DisplayedSegment = {
+type DisplayedSegment = CheckboxItem & {
     segment: string;
-    checked: boolean;
 };
 
 export type MutationData = {
     displayName: string;
     data: MutationEntry[];
+};
+
+type DisplayedMutationType = CheckboxItem & {
+    type: SubstitutionOrDeletion;
 };
 
 export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({ variants, sequenceType, views }) => {
@@ -64,12 +67,17 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
 
     const headline = 'Mutation comparison';
 
+    const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
+        { label: 'Substitutions', checked: true, type: 'substitution' },
+        { label: 'Deletions', checked: true, type: 'deletion' },
+    ]);
     const [displayedSegments, setDisplayedSegments] = useState<DisplayedSegment[]>([]);
     useEffect(() => {
         if (data !== null) {
             setDisplayedSegments(
                 data.segments.map((segment) => ({
                     segment,
+                    label: segment,
                     checked: true,
                 })),
             );
@@ -101,49 +109,47 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
     }
 
     const getSegmentSelectorLabel = (segments: string[], prefix: string) => {
-        const allSegmentsSelected = displayedSegments
+        const allSelectedSelected = displayedSegments
             .filter((segment) => segment.checked)
             .map((segment) => segment.segment);
 
-        if (segments.length === allSegmentsSelected.length) {
+        if (segments.length === allSelectedSelected.length) {
             return `${prefix}all`;
         }
         if (segments.length === 0) {
             return `${prefix}none`;
         }
-        return prefix + allSegmentsSelected.join(', ');
+        return prefix + allSelectedSelected.join(', ');
     };
 
     const segmentSelector = (
         <CheckboxSelector
-            items={displayedSegments.map((segment) => ({
-                label: segment.segment,
-                checked: segment.checked,
-            }))}
+            className='mx-1'
+            items={displayedSegments}
             label={getSegmentSelectorLabel(data.segments, 'Segments: ')}
-            setItems={(items) =>
-                setDisplayedSegments(
-                    items.map((item, index) => ({
-                        segment: displayedSegments[index].segment,
-                        checked: item.checked,
-                    })),
-                )
-            }
+            setItems={(items) => setDisplayedSegments(items)}
         />
     );
 
+    const byDisplayedSegments = (mutationEntry: MutationEntry) => {
+        if (mutationEntry.mutation.segment === undefined) {
+            return true;
+        }
+        return displayedSegments.some(
+            (displayedSegment) =>
+                displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
+        );
+    };
+    const byDisplayedMutationTypes = (mutationEntry: MutationEntry) => {
+        return displayedMutationTypes.some(
+            (displayedMutationType) =>
+                displayedMutationType.checked && displayedMutationType.type === mutationEntry.type,
+        );
+    };
     const filteredData = data.mutationData.map((mutationEntry) => {
         return {
             displayName: mutationEntry.displayName,
-            data: mutationEntry.content.filter((mutationEntry) => {
-                if (mutationEntry.mutation.segment === undefined) {
-                    return true;
-                }
-                return displayedSegments.some(
-                    (displayedSegment) =>
-                        displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
-                );
-            }),
+            data: mutationEntry.content.filter(byDisplayedSegments).filter(byDisplayedMutationTypes),
         };
     });
 
@@ -164,9 +170,18 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
 
     const tabs = views.map((view) => getTab(view));
 
+    const checkedLabels = displayedMutationTypes.filter((type) => type.checked).map((type) => type.label);
+    const mutationTypesSelectorLabel = `Types: ${checkedLabels.length > 0 ? checkedLabels.join(', ') : 'None'}`;
+
     const toolbar = (
         <div class='flex flex-row'>
             {data.segments.length > 0 ? segmentSelector : null}
+            <CheckboxSelector
+                className='mx-1'
+                items={displayedMutationTypes}
+                label={mutationTypesSelectorLabel}
+                setItems={(items) => setDisplayedMutationTypes(items)}
+            />
             <CsvDownloadButton
                 className='mx-1 btn btn-xs'
                 getData={() => getMutationComparisonTableData({ content: filteredData })}

@@ -8,7 +8,7 @@ import { type MutationEntry } from '../../operator/FetchMutationsOperator';
 import { queryMutations } from '../../query/queryMutations';
 import { type LapisFilter, type SequenceType } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { CheckboxSelector } from '../components/checkbox-selector';
+import { type CheckboxItem, CheckboxSelector } from '../components/checkbox-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
@@ -27,9 +27,8 @@ export interface MutationsProps {
     views: View[];
 }
 
-type DisplayedSegment = {
+type DisplayedSegment = CheckboxItem & {
     segment: string;
-    checked: boolean;
 };
 
 export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequenceType, views }) => {
@@ -56,6 +55,7 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
             setDisplayedSegments(
                 data.segments.map((segment) => ({
                     segment,
+                    label: segment,
                     checked: true,
                 })),
             );
@@ -103,41 +103,27 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
 
     const segmentSelector = (
         <CheckboxSelector
-            items={displayedSegments.map((segment) => ({
-                label: segment.segment,
-                checked: segment.checked,
-            }))}
+            items={displayedSegments}
             label={getSegmentSelectorLabel(data.segments, 'Segments: ')}
-            setItems={(items) =>
-                setDisplayedSegments(
-                    items.map((item, index) => ({
-                        segment: displayedSegments[index].segment,
-                        checked: item.checked,
-                    })),
-                )
-            }
+            setItems={(items) => setDisplayedSegments(items)}
         />
     );
 
-    const filterBySelectedSegments = (mutationEntries: MutationEntry[]) => {
-        return mutationEntries.filter((mutationEntry) => {
-            if (mutationEntry.mutation.segment === undefined) {
-                return true;
-            }
-            return displayedSegments.some(
-                (displayedSegment) =>
-                    displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
-            );
-        });
+    const bySelectedSegments = (mutationEntry: MutationEntry) => {
+        if (mutationEntry.mutation.segment === undefined) {
+            return true;
+        }
+        return displayedSegments.some(
+            (displayedSegment) =>
+                displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
+        );
     };
 
-    const filterByProportion = (mutationEntries: MutationEntry[]) => {
-        return mutationEntries.filter((mutationEntry) => {
-            if (mutationEntry.type === 'insertion') {
-                return true;
-            }
-            return mutationEntry.proportion >= minProportion && mutationEntry.proportion <= maxProportion;
-        });
+    const byProportion = (mutationEntry: MutationEntry) => {
+        if (mutationEntry.type === 'insertion') {
+            return true;
+        }
+        return mutationEntry.proportion >= minProportion && mutationEntry.proportion <= maxProportion;
     };
 
     const getTab = (view: View, data: Dataset<MutationEntry>) => {
@@ -150,7 +136,7 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
     };
 
     const tabs = views.map((view) => {
-        return getTab(view, { content: filterBySelectedSegments(filterByProportion(data.data.content)) });
+        return getTab(view, { content: data.data.content.filter(byProportion).filter(bySelectedSegments) });
     });
 
     const toolbar = (
