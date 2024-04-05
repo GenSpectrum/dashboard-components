@@ -49,12 +49,12 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
             variants.map(async (variant) => {
                 return {
                     displayName: variant.displayName,
-                    content: (await queryMutations(variant.lapisFilter, sequenceType, lapis)).content,
+                    data: (await queryMutations(variant.lapisFilter, sequenceType, lapis)).content,
                 };
             }),
         );
 
-        const mutationSegments = mutationData[0].content
+        const mutationSegments = mutationData[0].data
             .map((mutationEntry) => mutationEntry.mutation.segment)
             .filter((segment): segment is string => segment !== undefined);
 
@@ -105,6 +105,37 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
         );
     }
 
+    return (
+        <Headline heading={headline}>
+            <MutationComparisonTabs
+                displayedSegments={displayedSegments}
+                setDisplayedSegments={setDisplayedSegments}
+                displayedMutationTypes={displayedMutationTypes}
+                setDisplayedMutationTypes={setDisplayedMutationTypes}
+                data={data.mutationData}
+                views={views}
+            />
+        </Headline>
+    );
+};
+
+type MutationComparisonTabsProps = {
+    displayedSegments: DisplayedSegment[];
+    setDisplayedSegments: (segments: DisplayedSegment[]) => void;
+    displayedMutationTypes: DisplayedMutationType[];
+    setDisplayedMutationTypes: (types: DisplayedMutationType[]) => void;
+    data: MutationData[];
+    views: View[];
+};
+
+const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = ({
+    displayedSegments,
+    setDisplayedSegments,
+    displayedMutationTypes,
+    setDisplayedMutationTypes,
+    data,
+    views,
+}) => {
     const byDisplayedSegments = (mutationEntry: MutationEntry) => {
         if (mutationEntry.mutation.segment === undefined) {
             return true;
@@ -120,10 +151,10 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
                 displayedMutationType.checked && displayedMutationType.type === mutationEntry.type,
         );
     };
-    const filteredData = data.mutationData.map((mutationEntry) => {
+    const filteredData = data.map((mutationEntry) => {
         return {
             displayName: mutationEntry.displayName,
-            data: mutationEntry.content.filter(byDisplayedSegments).filter(byDisplayedMutationTypes),
+            data: mutationEntry.data.filter(byDisplayedSegments).filter(byDisplayedMutationTypes),
         };
     });
 
@@ -144,10 +175,41 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
 
     const tabs = views.map((view) => getTab(view));
 
+    return (
+        <Tabs
+            tabs={tabs}
+            toolbar={
+                <Toolbar
+                    displayedSegments={displayedSegments}
+                    setDisplayedSegments={setDisplayedSegments}
+                    displayedMutationTypes={displayedMutationTypes}
+                    setDisplayedMutationTypes={setDisplayedMutationTypes}
+                    filteredData={filteredData}
+                />
+            }
+        />
+    );
+};
+
+type ToolbarProps = {
+    displayedSegments: DisplayedSegment[];
+    setDisplayedSegments: (segments: DisplayedSegment[]) => void;
+    displayedMutationTypes: DisplayedMutationType[];
+    setDisplayedMutationTypes: (types: DisplayedMutationType[]) => void;
+    filteredData: MutationData[];
+};
+
+const Toolbar: FunctionComponent<ToolbarProps> = ({
+    displayedSegments,
+    setDisplayedSegments,
+    displayedMutationTypes,
+    setDisplayedMutationTypes,
+    filteredData,
+}) => {
     const checkedLabels = displayedMutationTypes.filter((type) => type.checked).map((type) => type.label);
     const mutationTypesSelectorLabel = `Types: ${checkedLabels.length > 0 ? checkedLabels.join(', ') : 'None'}`;
 
-    const toolbar = (
+    return (
         <div class='flex flex-row'>
             <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
             <CheckboxSelector
@@ -163,11 +225,5 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
             />
             <Info className='mx-1' content='Info for mutation comparison' />
         </div>
-    );
-
-    return (
-        <Headline heading={headline}>
-            <Tabs tabs={tabs} toolbar={toolbar} />
-        </Headline>
     );
 };
