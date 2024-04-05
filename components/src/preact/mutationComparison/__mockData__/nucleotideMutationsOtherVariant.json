@@ -157,6 +157,11 @@
             "mutation": "T26767C",
             "proportion": 0.0013351945135643625,
             "count": 22
+        },
+        {
+            "mutation": "G199-",
+            "proportion": 0.01,
+            "count": 10
         }
     ]
 }

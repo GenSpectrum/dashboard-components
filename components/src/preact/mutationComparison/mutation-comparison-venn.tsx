@@ -3,7 +3,7 @@ import { ArcSlice, extractSets, VennDiagramController } from 'chartjs-chart-venn
 import { type FunctionComponent } from 'preact';
 import { useEffect, useMemo, useRef } from 'preact/hooks';
 
-import { type MutationData } from './mutation-comparison';
+import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
 import GsChart from '../components/chart';
 

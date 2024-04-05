@@ -1,7 +1,7 @@
 import { type FunctionComponent } from 'preact';
 
 import { getMutationComparisonTableData } from './getMutationComparisonTableData';
-import { type MutationData } from './mutation-comparison';
+import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
 import { Table } from '../components/table';
 import { formatProportion } from '../shared/table/formatProportion';
