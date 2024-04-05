@@ -1,19 +1,23 @@
-import { type FunctionComponent } from 'preact';
-
 export type CheckboxItem = {
     label: string;
     checked: boolean;
 };
 
-export interface CheckboxSelectorProps {
-    items: CheckboxItem[];
+export interface CheckboxSelectorProps<Item extends CheckboxItem = CheckboxItem> {
+    className?: string;
+    items: Item[];
     label: string;
-    setItems: (items: CheckboxItem[]) => void;
+    setItems: (items: Item[]) => void;
 }
 
-export const CheckboxSelector: FunctionComponent<CheckboxSelectorProps> = ({ items, label, setItems }) => {
+export const CheckboxSelector = <Item extends CheckboxItem>({
+    className,
+    items,
+    label,
+    setItems,
+}: CheckboxSelectorProps<Item>) => {
     return (
-        <div class='dropdown'>
+        <div class={`dropdown ${className}`}>
             <div tabIndex={0} role='button' class='btn btn-xs text-nowrap'>
                 {label}
             </div>
