@@ -8,7 +8,7 @@ import { type MutationEntry } from '../../operator/FetchMutationsOperator';
 import { queryMutations } from '../../query/queryMutations';
 import { type LapisFilter, type SequenceType } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { type CheckboxItem, CheckboxSelector } from '../components/checkbox-selector';
+import { type DisplayedSegment, SegmentSelector } from '../components/SegmentSelector';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
@@ -26,10 +26,6 @@ export interface MutationsProps {
     sequenceType: SequenceType;
     views: View[];
 }
-
-type DisplayedSegment = CheckboxItem & {
-    segment: string;
-};
 
 export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequenceType, views }) => {
     const lapis = useContext(LapisUrlContext);
@@ -87,28 +83,6 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
         );
     }
 
-    const getSegmentSelectorLabel = (segments: string[], prefix: string) => {
-        const allSegmentsSelected = displayedSegments
-            .filter((segment) => segment.checked)
-            .map((segment) => segment.segment);
-
-        if (segments.length === allSegmentsSelected.length) {
-            return `${prefix}all`;
-        }
-        if (segments.length === 0) {
-            return `${prefix}none`;
-        }
-        return prefix + allSegmentsSelected.join(', ');
-    };
-
-    const segmentSelector = (
-        <CheckboxSelector
-            items={displayedSegments}
-            label={getSegmentSelectorLabel(data.segments, 'Segments: ')}
-            setItems={(items) => setDisplayedSegments(items)}
-        />
-    );
-
     const bySelectedSegments = (mutationEntry: MutationEntry) => {
         if (mutationEntry.mutation.segment === undefined) {
             return true;
@@ -148,7 +122,7 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
                 setMaxProportion={setMaxProportion}
                 openDirection={'left'}
             />
-            {data.segments.length > 0 ? segmentSelector : null}
+            <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
             <CsvDownloadButton
                 className='mx-1 btn btn-xs'
                 getData={() => {

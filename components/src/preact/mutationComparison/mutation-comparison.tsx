@@ -8,6 +8,7 @@ import { type MutationEntry, type SubstitutionOrDeletion } from '../../operator/
 import { queryMutations } from '../../query/queryMutations';
 import { type LapisFilter, type SequenceType } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { type DisplayedSegment, SegmentSelector } from '../components/SegmentSelector';
 import { type CheckboxItem, CheckboxSelector } from '../components/checkbox-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorDisplay } from '../components/error-display';
@@ -30,10 +31,6 @@ export interface MutationComparisonProps {
     sequenceType: SequenceType;
     views: View[];
 }
-
-type DisplayedSegment = CheckboxItem & {
-    segment: string;
-};
 
 export type MutationData = {
     displayName: string;
@@ -108,29 +105,6 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
         );
     }
 
-    const getSegmentSelectorLabel = (segments: string[], prefix: string) => {
-        const allSelectedSelected = displayedSegments
-            .filter((segment) => segment.checked)
-            .map((segment) => segment.segment);
-
-        if (segments.length === allSelectedSelected.length) {
-            return `${prefix}all`;
-        }
-        if (segments.length === 0) {
-            return `${prefix}none`;
-        }
-        return prefix + allSelectedSelected.join(', ');
-    };
-
-    const segmentSelector = (
-        <CheckboxSelector
-            className='mx-1'
-            items={displayedSegments}
-            label={getSegmentSelectorLabel(data.segments, 'Segments: ')}
-            setItems={(items) => setDisplayedSegments(items)}
-        />
-    );
-
     const byDisplayedSegments = (mutationEntry: MutationEntry) => {
         if (mutationEntry.mutation.segment === undefined) {
             return true;
@@ -175,7 +149,7 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
 
     const toolbar = (
         <div class='flex flex-row'>
-            {data.segments.length > 0 ? segmentSelector : null}
+            <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
             <CheckboxSelector
                 className='mx-1'
                 items={displayedMutationTypes}
