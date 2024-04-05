@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { getMutationComparisonTableData } from './getMutationComparisonTableData';
-import { type MutationData } from './mutation-comparison';
+import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
 import { Substitution } from '../../utils/mutations';
 

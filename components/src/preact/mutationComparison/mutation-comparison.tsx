@@ -4,8 +4,8 @@ import { useContext, useEffect, useState } from 'preact/hooks';
 import { getMutationComparisonTableData } from './getMutationComparisonTableData';
 import { MutationComparisonTable } from './mutation-comparison-table';
 import { MutationComparisonVenn } from './mutation-comparison-venn';
-import { type MutationEntry, type SubstitutionOrDeletion } from '../../operator/FetchMutationsOperator';
-import { queryMutations } from '../../query/queryMutations';
+import { filterMutationData, type MutationData, queryMutationData } from './queryMutationData';
+import { type SubstitutionOrDeletion } from '../../operator/FetchMutationsOperator';
 import { type LapisFilter, type SequenceType } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { type DisplayedSegment, SegmentSelector } from '../components/SegmentSelector';
@@ -32,12 +32,7 @@ export interface MutationComparisonProps {
     views: View[];
 }
 
-export type MutationData = {
-    displayName: string;
-    data: MutationEntry[];
-};
-
-type DisplayedMutationType = CheckboxItem & {
+export type DisplayedMutationType = CheckboxItem & {
     type: SubstitutionOrDeletion;
 };
 
@@ -45,21 +40,7 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
-        const mutationData = await Promise.all(
-            variants.map(async (variant) => {
-                return {
-                    displayName: variant.displayName,
-                    data: (await queryMutations(variant.lapisFilter, sequenceType, lapis)).content,
-                };
-            }),
-        );
-
-        const mutationSegments = mutationData[0].data
-            .map((mutationEntry) => mutationEntry.mutation.segment)
-            .filter((segment): segment is string => segment !== undefined);
-
-        const segments = [...new Set(mutationSegments)];
-        return { mutationData, segments };
+        return queryMutationData(variants, sequenceType, lapis);
     }, [variants, sequenceType, lapis]);
 
     const headline = 'Mutation comparison';
@@ -136,27 +117,7 @@ const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = (
     data,
     views,
 }) => {
-    const byDisplayedSegments = (mutationEntry: MutationEntry) => {
-        if (mutationEntry.mutation.segment === undefined) {
-            return true;
-        }
-        return displayedSegments.some(
-            (displayedSegment) =>
-                displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
-        );
-    };
-    const byDisplayedMutationTypes = (mutationEntry: MutationEntry) => {
-        return displayedMutationTypes.some(
-            (displayedMutationType) =>
-                displayedMutationType.checked && displayedMutationType.type === mutationEntry.type,
-        );
-    };
-    const filteredData = data.map((mutationEntry) => {
-        return {
-            displayName: mutationEntry.displayName,
-            data: mutationEntry.data.filter(byDisplayedSegments).filter(byDisplayedMutationTypes),
-        };
-    });
+    const filteredData = filterMutationData(data, displayedSegments, displayedMutationTypes);
 
     const getTab = (view: View) => {
         switch (view) {

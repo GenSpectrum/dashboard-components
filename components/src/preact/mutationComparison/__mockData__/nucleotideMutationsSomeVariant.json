@@ -162,6 +162,11 @@
             "mutation": "T1234C",
             "proportion": 0.012345,
             "count": 1234
+        },
+        {
+            "mutation": "G199-",
+            "proportion": 6.128577557148986e-5,
+            "count": 1
         }
     ]
 }

@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
+import { expect, waitFor, within } from '@storybook/test';
 
 import nucleotideInsertionsOtherVariant from './__mockData__/nucleotideInsertionsOtherVariant.json';
 import nucleotideInsertionsSomeVariant from './__mockData__/nucleotideInsertionsSomeVariant.json';
@@ -7,6 +8,11 @@ import nucleotideMutationsSomeVariant from './__mockData__/nucleotideMutationsSo
 import { MutationComparison, type MutationComparisonProps } from './mutation-comparison';
 import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
+
+const dateToSomeVariant = '2022-01-01';
+
+const dateToOtherVariant = '2022-01-02';
+const dateFromOtherVariant = '2021-01-01';
 
 const meta: Meta<MutationComparisonProps> = {
     title: 'Visualization/Mutation comparison',
@@ -21,47 +27,6 @@ const meta: Meta<MutationComparisonProps> = {
             options: ['table', 'venn'],
             control: { type: 'check' },
         },
-    },
-    parameters: {
-        fetchMock: {},
-    },
-};
-
-export default meta;
-
-const Template: StoryObj<MutationComparisonProps> = {
-    render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
-            <MutationComparison variants={args.variants} sequenceType={args.sequenceType} views={args.views} />
-        </LapisUrlContext.Provider>
-    ),
-};
-
-const dateToSomeVariant = '2022-01-01';
-
-const dateToOtherVariant = '2022-01-02';
-const dateFromOtherVariant = '2021-01-01';
-
-export const TwoVariants = {
-    ...Template,
-    args: {
-        variants: [
-            {
-                displayName: 'Some variant',
-                lapisFilter: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: dateToSomeVariant },
-            },
-            {
-                displayName: 'Other variant',
-                lapisFilter: {
-                    country: 'Switzerland',
-                    pangoLineage: 'B.1.1.7',
-                    dateFrom: dateFromOtherVariant,
-                    dateTo: dateToOtherVariant,
-                },
-            },
-        ],
-        sequenceType: 'nucleotide',
-        views: ['table', 'venn'],
     },
     parameters: {
         fetchMock: {
@@ -128,5 +93,57 @@ export const TwoVariants = {
                 },
             ],
         },
+    },
+};
+
+export default meta;
+
+const Template: StoryObj<MutationComparisonProps> = {
+    render: (args) => (
+        <LapisUrlContext.Provider value={LAPIS_URL}>
+            <MutationComparison variants={args.variants} sequenceType={args.sequenceType} views={args.views} />
+        </LapisUrlContext.Provider>
+    ),
+};
+
+export const TwoVariants: StoryObj<MutationComparisonProps> = {
+    ...Template,
+    args: {
+        variants: [
+            {
+                displayName: 'Some variant',
+                lapisFilter: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: dateToSomeVariant },
+            },
+            {
+                displayName: 'Other variant',
+                lapisFilter: {
+                    country: 'Switzerland',
+                    pangoLineage: 'B.1.1.7',
+                    dateFrom: dateFromOtherVariant,
+                    dateTo: dateToOtherVariant,
+                },
+            },
+        ],
+        sequenceType: 'nucleotide',
+        views: ['table', 'venn'],
+    },
+};
+
+export const FilterForOnlyDeletions: StoryObj<MutationComparisonProps> = {
+    ...TwoVariants,
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        const someSubstitution = () => canvas.queryByText('G210T');
+        const someDeletion = () => canvas.queryByText('G199-');
+
+        await waitFor(() => expect(someSubstitution()).toBeVisible());
+        await waitFor(() => expect(someDeletion()).toBeVisible());
+
+        canvas.getByRole('button', { name: /Types:/ }).click();
+        canvas.getByLabelText('Substitutions').click();
+
+        await waitFor(() => expect(someSubstitution()).not.toBeInTheDocument());
+        await waitFor(() => expect(someDeletion()).toBeVisible());
     },
 };

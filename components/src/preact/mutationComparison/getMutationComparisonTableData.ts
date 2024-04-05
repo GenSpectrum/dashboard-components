@@ -1,4 +1,4 @@
-import { type MutationData } from './mutation-comparison';
+import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
 
 type Proportions = {
