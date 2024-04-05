@@ -1,7 +1,8 @@
-import { Meta } from '@storybook/web-components';
-import Tabs from './tabs';
+import { type StoryObj } from '@storybook/preact';
 import { expect, fireEvent, waitFor, within } from '@storybook/test';
-import { StoryObj } from '@storybook/preact';
+import { type Meta } from '@storybook/web-components';
+
+import Tabs from './tabs';
 
 const meta: Meta = {
     title: 'Component/Tabs',

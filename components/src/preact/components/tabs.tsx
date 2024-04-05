@@ -1,6 +1,6 @@
-import { Fragment, FunctionComponent } from 'preact';
-import { JSXInternal } from 'preact/src/jsx';
+import { Fragment, type FunctionComponent } from 'preact';
 import { useState } from 'preact/hooks';
+import { type JSXInternal } from 'preact/src/jsx';
 
 type Tab = {
     title: string;

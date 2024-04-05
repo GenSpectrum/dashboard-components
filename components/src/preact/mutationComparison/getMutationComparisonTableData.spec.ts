@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
+
 import { getMutationComparisonTableData } from './getMutationComparisonTableData';
+import { type MutationData } from './mutation-comparison';
+import { type Dataset } from '../../operator/Dataset';
 import { Substitution } from '../../utils/mutations';
-import { MutationData } from './mutation-comparison';
-import { Dataset } from '../../operator/Dataset';
 
 describe('getPrevalenceOverTimeTableData', () => {
     it('should flatten the data to CSV format', () => {

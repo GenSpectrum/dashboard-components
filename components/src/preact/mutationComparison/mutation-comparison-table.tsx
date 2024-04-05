@@ -1,9 +1,10 @@
-import { FunctionComponent } from 'preact';
-import { Dataset } from '../../operator/Dataset';
-import { Table } from '../components/table';
-import { MutationData } from './mutation-comparison';
-import { formatProportion } from '../shared/table/formatProportion';
+import { type FunctionComponent } from 'preact';
+
 import { getMutationComparisonTableData } from './getMutationComparisonTableData';
+import { type MutationData } from './mutation-comparison';
+import { type Dataset } from '../../operator/Dataset';
+import { Table } from '../components/table';
+import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsTableProps {
     data: Dataset<MutationData>;

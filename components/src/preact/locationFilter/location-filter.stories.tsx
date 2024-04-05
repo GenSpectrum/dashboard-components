@@ -1,8 +1,9 @@
-import { LocationFilter, LocationFilterProps } from './location-filter';
-import { LapisUrlContext } from '../LapisUrlContext';
-import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
+import { type Meta, type StoryObj } from '@storybook/preact';
+
 import data from './__mockData__/aggregated.json';
-import { Meta, StoryObj } from '@storybook/preact';
+import { LocationFilter, type LocationFilterProps } from './location-filter';
+import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
+import { LapisUrlContext } from '../LapisUrlContext';
 
 const meta: Meta<typeof LocationFilter> = {
     title: 'Input/LocationFilter',

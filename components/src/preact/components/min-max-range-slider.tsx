@@ -1,6 +1,6 @@
-import { FunctionComponent } from 'preact';
+import { type FunctionComponent } from 'preact';
 import { useState } from 'preact/hooks';
-import { ChangeEvent } from 'react';
+import { type ChangeEvent } from 'react';
 import './min-max-percent-slider.css';
 
 export interface MinMaxPercentSliderProps {

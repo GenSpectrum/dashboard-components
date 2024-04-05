@@ -1,12 +1,13 @@
-import { LAPIS_URL } from '../../constants';
+import { expect, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import { DateRangeSelectorProps } from '../../preact/dateRangeSelector/date-range-selector';
+
+import { LAPIS_URL } from '../../constants';
+import { type DateRangeSelectorProps } from '../../preact/dateRangeSelector/date-range-selector';
 import './date-range-selector-component';
 import '../app';
-import { withinShadowRoot } from '../withinShadowRoot.story';
-import { expect, waitFor } from '@storybook/test';
 import { toYYYYMMDD } from '../../preact/dateRangeSelector/dateConversion';
+import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const meta: Meta<DateRangeSelectorProps> = {
     title: 'Input/DateRangeSelector',

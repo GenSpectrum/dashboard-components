@@ -1,7 +1,8 @@
+import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
-import { Meta, StoryObj } from '@storybook/preact';
-import { SelectProps } from './select';
-import { ScalingSelector, ScalingSelectorProps } from './scaling-selector';
+
+import { ScalingSelector, type ScalingSelectorProps } from './scaling-selector';
+import { type SelectProps } from './select';
 
 const meta: Meta<SelectProps> = {
     title: 'Component/Scaling selector',

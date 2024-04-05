@@ -1,6 +1,7 @@
-import { PreactLitAdapter } from './PreactLitAdapter';
-import { unsafeCSS } from 'lit';
 import gridJsStyle from 'gridjs/dist/theme/mermaid.css?inline';
+import { unsafeCSS } from 'lit';
+
+import { PreactLitAdapter } from './PreactLitAdapter';
 
 import 'gridjs/dist/theme/mermaid.css';
 

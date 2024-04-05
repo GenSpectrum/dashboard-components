@@ -1,12 +1,18 @@
-import { LapisFilter, NamedLapisFilter, TemporalGranularity } from '../types';
-import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
-import { MapOperator } from '../operator/MapOperator';
-import { GroupByAndSumOperator } from '../operator/GroupByAndSumOperator';
-import { FillMissingOperator } from '../operator/FillMissingOperator';
-import { SortOperator } from '../operator/SortOperator';
-import { SlidingOperator } from '../operator/SlidingOperator';
 import { DivisionOperator } from '../operator/DivisionOperator';
-import { compareTemporal, generateAllInRange, getMinMaxTemporal, Temporal, TemporalCache } from '../utils/temporal';
+import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
+import { FillMissingOperator } from '../operator/FillMissingOperator';
+import { GroupByAndSumOperator } from '../operator/GroupByAndSumOperator';
+import { MapOperator } from '../operator/MapOperator';
+import { SlidingOperator } from '../operator/SlidingOperator';
+import { SortOperator } from '../operator/SortOperator';
+import { type LapisFilter, type NamedLapisFilter, type TemporalGranularity } from '../types';
+import {
+    compareTemporal,
+    generateAllInRange,
+    getMinMaxTemporal,
+    type Temporal,
+    TemporalCache,
+} from '../utils/temporal';
 
 export type PrevalenceOverTimeData = {
     displayName: string;

@@ -1,10 +1,11 @@
-import { FunctionComponent } from 'preact';
 import flatpickr from 'flatpickr';
+import { type FunctionComponent } from 'preact';
 import 'flatpickr/dist/flatpickr.min.css';
 import { useEffect, useRef, useState } from 'preact/hooks';
+
+import { toYYYYMMDD } from './dateConversion';
 import { Select } from '../components/select';
 import type { ScaleType } from '../shared/charts/getYAxisScale';
-import { toYYYYMMDD } from './dateConversion';
 
 export type CustomSelectOption = { label: string; dateFrom: string; dateTo: string };
 

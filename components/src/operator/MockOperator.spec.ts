@@ -1,5 +1,6 @@
-import { MockOperator } from './MockOperator';
 import { expect, describe, it } from 'vitest';
+
+import { MockOperator } from './MockOperator';
 
 describe('MockOperator', () => {
     it('should be a mock', async () => {

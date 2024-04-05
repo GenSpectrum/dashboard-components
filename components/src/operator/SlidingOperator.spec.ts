@@ -1,7 +1,8 @@
+import { describe, it } from 'vitest';
+
 import { MockOperator } from './MockOperator';
 import { SlidingOperator } from './SlidingOperator';
 import { expectEqualAfterSorting } from '../utils/test-utils';
-import { describe, it } from 'vitest';
 
 const mockOperator = new MockOperator([
     { id: 1, value: 1 },

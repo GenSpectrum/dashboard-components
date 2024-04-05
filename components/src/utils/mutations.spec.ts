@@ -1,4 +1,5 @@
 import { expect, describe, it } from 'vitest';
+
 import { Deletion, Insertion, MutationCache, Substitution } from './mutations';
 
 describe('MutationCache.getMutation', () => {

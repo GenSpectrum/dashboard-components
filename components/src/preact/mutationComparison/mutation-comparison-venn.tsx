@@ -1,10 +1,11 @@
-import { FunctionComponent } from 'preact';
+import { type ActiveElement, Chart, type ChartConfiguration, type ChartEvent, registerables } from 'chart.js';
 import { ArcSlice, extractSets, VennDiagramController } from 'chartjs-chart-venn';
+import { type FunctionComponent } from 'preact';
 import { useEffect, useMemo, useRef } from 'preact/hooks';
-import { ActiveElement, Chart, ChartConfiguration, ChartEvent, registerables } from 'chart.js';
+
+import { type MutationData } from './mutation-comparison';
+import { type Dataset } from '../../operator/Dataset';
 import GsChart from '../components/chart';
-import { MutationData } from './mutation-comparison';
-import { Dataset } from '../../operator/Dataset';
 
 Chart.register(...registerables, VennDiagramController, ArcSlice);
 

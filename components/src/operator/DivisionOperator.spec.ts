@@ -1,7 +1,8 @@
-import { MockOperator } from './MockOperator';
-import { DivisionOperator } from './DivisionOperator';
-import { expectEqualAfterSorting } from '../utils/test-utils';
 import { describe, it } from 'vitest';
+
+import { DivisionOperator } from './DivisionOperator';
+import { MockOperator } from './MockOperator';
+import { expectEqualAfterSorting } from '../utils/test-utils';
 
 describe('DivisionOperator', () => {
     it('should divide the values', async () => {

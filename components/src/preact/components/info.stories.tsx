@@ -1,5 +1,6 @@
-import { Meta, StoryObj } from '@storybook/preact';
-import Info, { InfoProps } from './info';
+import { type Meta, type StoryObj } from '@storybook/preact';
+
+import Info, { type InfoProps } from './info';
 
 const meta: Meta<InfoProps> = {
     title: 'Component/Info',

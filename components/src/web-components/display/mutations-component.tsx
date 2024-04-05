@@ -1,6 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
-import { LapisFilter, SequenceType } from '../../types';
-import { Mutations, View } from '../../preact/mutations/mutations';
+
+import { Mutations, type View } from '../../preact/mutations/mutations';
+import { type LapisFilter, type SequenceType } from '../../types';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
 @customElement('gs-mutations-component')

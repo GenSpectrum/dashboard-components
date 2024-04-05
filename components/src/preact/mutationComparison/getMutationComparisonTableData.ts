@@ -1,5 +1,5 @@
-import { Dataset } from '../../operator/Dataset';
-import { MutationData } from './mutation-comparison';
+import { type MutationData } from './mutation-comparison';
+import { type Dataset } from '../../operator/Dataset';
 
 type Proportions = {
     [displayName: string]: number;

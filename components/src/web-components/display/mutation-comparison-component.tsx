@@ -1,11 +1,12 @@
 import { customElement, property } from 'lit/decorators.js';
-import { SequenceType } from '../../types';
-import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
+
 import {
     MutationComparison,
-    MutationComparisonVariant,
-    View,
+    type MutationComparisonVariant,
+    type View,
 } from '../../preact/mutationComparison/mutation-comparison';
+import { type SequenceType } from '../../types';
+import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
 @customElement('gs-mutation-comparison-component')
 export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyles {

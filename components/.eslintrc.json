@@ -12,7 +12,7 @@
         "ecmaVersion": 2020,
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint"],
+    "plugins": ["@typescript-eslint", "eslint-plugin-import"],
     "env": {
         "browser": true
     },
@@ -30,7 +30,27 @@
                 "argsIgnorePattern": "^_"
             }
         ],
-        "no-useless-constructor": "off"
+        "@typescript-eslint/consistent-type-imports": [
+            "error",
+            {
+                "fixStyle": "inline-type-imports"
+            }
+        ],
+        "no-useless-constructor": "off",
+        "import/no-cycle": "error",
+        "import/no-deprecated": "error",
+        "import/no-extraneous-dependencies": "off",
+        "import/no-internal-modules": "off",
+        "import/order": [
+            "error",
+            {
+                "groups": ["builtin", "external", "internal"],
+                "newlines-between": "always",
+                "alphabetize": {
+                    "order": "asc"
+                }
+            }
+        ]
     },
     "overrides": [
         {

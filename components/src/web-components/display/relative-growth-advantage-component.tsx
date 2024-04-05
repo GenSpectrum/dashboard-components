@@ -1,7 +1,8 @@
-import { PreactLitAdapter } from '../PreactLitAdapter';
 import { customElement, property } from 'lit/decorators.js';
-import { RelativeGrowthAdvantage, View } from '../../preact/relativeGrowthAdvantage/relative-growth-advantage';
+
+import { RelativeGrowthAdvantage, type View } from '../../preact/relativeGrowthAdvantage/relative-growth-advantage';
 import type { LapisFilter } from '../../types';
+import { PreactLitAdapter } from '../PreactLitAdapter';
 
 @customElement('gs-relative-growth-advantage')
 export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {

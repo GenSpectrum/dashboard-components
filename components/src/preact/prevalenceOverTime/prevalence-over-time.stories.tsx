@@ -1,11 +1,11 @@
-import { LapisUrlContext } from '../LapisUrlContext';
-import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import { PrevalenceOverTime, PrevalenceOverTimeProps } from './prevalence-over-time';
+import denominator from './__mockData__/denominator.json';
+import denominatorOneVariant from './__mockData__/denominatorOneVariant.json';
 import numeratorEG from './__mockData__/numeratorEG.json';
 import numeratorJN1 from './__mockData__/numeratorJN1.json';
-import denominator from './__mockData__/denominator.json';
 import numeratorOneVariant from './__mockData__/numeratorOneVariant.json';
-import denominatorOneVariant from './__mockData__/denominatorOneVariant.json';
+import { PrevalenceOverTime, type PrevalenceOverTimeProps } from './prevalence-over-time';
+import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
+import { LapisUrlContext } from '../LapisUrlContext';
 
 export default {
     title: 'Visualization/PrevalenceOverTime',

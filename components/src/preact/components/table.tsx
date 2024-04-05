@@ -1,8 +1,8 @@
-import { OneDArray, TColumn, TData } from 'gridjs/dist/src/types';
-import { PaginationConfig } from 'gridjs/dist/src/view/plugin/pagination';
-import { ComponentChild } from 'preact';
-import { useEffect, useRef } from 'preact/hooks';
 import { Grid } from 'gridjs';
+import { type OneDArray, type TColumn, type TData } from 'gridjs/dist/src/types';
+import { type PaginationConfig } from 'gridjs/dist/src/view/plugin/pagination';
+import { type ComponentChild } from 'preact';
+import { useEffect, useRef } from 'preact/hooks';
 import 'gridjs/dist/theme/mermaid.css';
 
 export const tableStyle = {

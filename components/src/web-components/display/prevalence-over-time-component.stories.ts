@@ -1,17 +1,17 @@
+import { expect, fireEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
-
 import { html } from 'lit';
+
 import '../app';
 import './prevalence-over-time-component';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import denominator from '../../preact/prevalenceOverTime/__mockData__/denominator.json';
+import denominatorOneVariant from '../../preact/prevalenceOverTime/__mockData__/denominatorOneVariant.json';
 import numeratorEG from '../../preact/prevalenceOverTime/__mockData__/numeratorEG.json';
 import numeratorJN1 from '../../preact/prevalenceOverTime/__mockData__/numeratorJN1.json';
-import denominatorOneVariant from '../../preact/prevalenceOverTime/__mockData__/denominatorOneVariant.json';
 import numeratorOneVariant from '../../preact/prevalenceOverTime/__mockData__/numeratorOneVariant.json';
-import { PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
+import { type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
 import { withinShadowRoot } from '../withinShadowRoot.story';
-import { expect, fireEvent, waitFor } from '@storybook/test';
 
 const meta: Meta<PrevalenceOverTimeProps> = {
     title: 'Visualization/Prevalence over time',

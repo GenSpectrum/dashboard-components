@@ -1,5 +1,5 @@
 import { Scale } from 'chart.js';
-import { Chart } from 'chart.js/dist/types';
+import { type Chart } from 'chart.js/dist/types';
 
 export class LogitScale extends Scale {
     static id = 'logit';

@@ -1,9 +1,10 @@
-import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
-import nucleotideMutations from './__mockData__/nucleotideMutations.json';
+import { type Meta } from '@storybook/preact';
+
 import nucleotideInsertions from './__mockData__/nucleotideInsertions.json';
-import { Mutations, MutationsProps } from './mutations';
+import nucleotideMutations from './__mockData__/nucleotideMutations.json';
+import { Mutations, type MutationsProps } from './mutations';
+import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { Meta } from '@storybook/preact';
 
 const meta: Meta<MutationsProps> = {
     title: 'Visualization/Mutations',

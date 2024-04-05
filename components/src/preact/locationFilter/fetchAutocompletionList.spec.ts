@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
-import { DUMMY_LAPIS_URL, lapisRequestMocks } from '../../../vitest.setup';
+
 import { fetchAutocompletionList } from './fetchAutocompletionList';
+import { DUMMY_LAPIS_URL, lapisRequestMocks } from '../../../vitest.setup';
 
 describe('fetchAutocompletionList', () => {
     test('should fetch autocompletion list', async () => {
