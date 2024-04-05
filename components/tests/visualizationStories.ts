@@ -10,6 +10,10 @@ export const visualizationStories = [
     { id: 'visualization-prevalence-over-time--one-variant-on-table-tab', title: 'Prevalence over time' },
     { id: 'visualization-relative-growth-advantage--default', title: 'Relative growth advantage' },
     { id: 'visualization-mutations--default', title: 'Mutations', testDownloadWithFilename: 'mutations.csv' },
-    { id: 'visualization-mutation-comparison--default', title: 'Mutation comparison' },
+    {
+        id: 'visualization-mutation-comparison--default',
+        title: 'Mutation comparison',
+        testDownloadWithFilename: 'mutation_comparison.csv',
+    },
     { id: 'visualization-mutation-comparison--venn-diagram', title: 'Mutation comparison' },
 ];
