@@ -18,19 +18,17 @@ const WrapperWithState: FunctionComponent<{
     setMinProportion: (value: number) => void;
     setMaxProportion: (value: number) => void;
 }> = ({ setMinProportion, setMaxProportion }) => {
-    const [wrapperMinProportion, setWrapperMinProportion] = useState(0.05);
-    const [wrapperMaxProportion, setWrapperMaxProportion] = useState(1);
+    const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 1 });
 
     return (
         <ProportionSelectorDropdown
-            minProportion={wrapperMinProportion}
-            maxProportion={wrapperMaxProportion}
+            proportionInterval={proportionInterval}
             setMinProportion={(value: number) => {
-                setWrapperMinProportion(value);
+                setProportionInterval({ ...proportionInterval, min: value });
                 setMinProportion(value);
             }}
             setMaxProportion={(value: number) => {
-                setWrapperMaxProportion(value);
+                setProportionInterval({ ...proportionInterval, max: value });
                 setMaxProportion(value);
             }}
         />

@@ -1,11 +1,12 @@
 import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
+import { type ProportionInterval } from '../components/proportion-selector';
 
 type Proportions = {
     [displayName: string]: number;
 };
 
-export function getMutationComparisonTableData(data: Dataset<MutationData>) {
+export function getMutationComparisonTableData(data: Dataset<MutationData>, proportionInterval: ProportionInterval) {
     const mutationsToProportions = new Map<string, Proportions>();
 
     for (const mutationData of data.content) {
@@ -17,16 +18,23 @@ export function getMutationComparisonTableData(data: Dataset<MutationData>) {
         }
     }
 
-    return [...mutationsToProportions.entries()].map(([mutation, proportions]) => {
-        return {
-            mutation,
-            ...data.content
-                .map((mutationData) => {
-                    return {
-                        [`${mutationData.displayName} prevalence`]: proportions[mutationData.displayName] || 0,
-                    };
-                })
-                .reduce((acc, val) => ({ ...acc, ...val }), {}),
-        };
-    });
+    return [...mutationsToProportions.entries()]
+        .map(([mutation, proportions]) => {
+            return {
+                mutation,
+                ...data.content
+                    .map((mutationData) => {
+                        return {
+                            [`${mutationData.displayName} prevalence`]: proportions[mutationData.displayName] || 0,
+                        };
+                    })
+                    .reduce((acc, val) => ({ ...acc, ...val }), {}),
+            } as { mutation: string } & Proportions;
+        })
+        .filter((row) =>
+            Object.values(row).some(
+                (value) =>
+                    typeof value === 'number' && value >= proportionInterval.min && value <= proportionInterval.max,
+            ),
+        );
 }
