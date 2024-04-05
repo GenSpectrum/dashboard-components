@@ -1,13 +1,13 @@
-import { type TDataObjectRow } from 'gridjs/dist/src/types';
 import { type FunctionComponent } from 'preact';
 
-import { type Dataset } from '../../operator/Dataset';
-import { type MutationEntry, type MutationType } from '../../operator/FetchMutationsOperator';
+import { getMutationsTableData } from './getMutationsTableData';
+import { type SubstitutionOrDeletionEntry } from '../../types';
 import { Table } from '../components/table';
+import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
 import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsTableProps {
-    data: Dataset<MutationEntry>;
+    data: SubstitutionOrDeletionEntry[];
 }
 
 const MutationsTable: FunctionComponent<MutationsTableProps> = ({ data }) => {
@@ -15,7 +15,11 @@ const MutationsTable: FunctionComponent<MutationsTableProps> = ({ data }) => {
         return [
             {
                 name: 'Mutation',
-                sort: true,
+                sort: {
+                    compare: (a: string, b: string) => {
+                        return sortSubstitutionsAndDeletions(a, b);
+                    },
+                },
             },
             {
                 name: 'Type',
@@ -33,38 +37,9 @@ const MutationsTable: FunctionComponent<MutationsTableProps> = ({ data }) => {
         ];
     };
 
-    const getTableData = (data: Dataset<MutationEntry>): TDataObjectRow[] => {
-        return data.content.map((mutationEntry): TDataObjectRow => {
-            return {
-                mutation: mutationEntry.mutation.toString(),
-                type: getMutationTypeName(mutationEntry.type),
-                count: mutationEntry.count,
-                proportion: getProportion(mutationEntry),
-            };
-        });
-    };
+    const tableData = getMutationsTableData(data).map((row) => Object.values(row));
 
-    const getMutationTypeName = (mutationType: MutationType) => {
-        switch (mutationType) {
-            case 'substitution':
-                return 'Substitution';
-            case 'deletion':
-                return 'Deletion';
-            case 'insertion':
-                return 'Insertion';
-            default:
-                throw new Error('Invalid mutation type');
-        }
-    };
-
-    const getProportion = (mutationEntry: MutationEntry) => {
-        if (mutationEntry.type === 'insertion') {
-            return '';
-        }
-        return mutationEntry.proportion;
-    };
-
-    return <Table data={getTableData(data)} columns={getHeaders()} pagination={true} />;
+    return <Table data={tableData} columns={getHeaders()} pagination={true} />;
 };
 
 export default MutationsTable;

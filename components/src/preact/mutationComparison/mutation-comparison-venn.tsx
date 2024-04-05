@@ -30,7 +30,7 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
                     .map((mutationData) => {
                         return {
                             ...mutationData,
-                            data: mutationData.data.filter((mutationEntry) => mutationEntry.type !== 'insertion'),
+                            data: mutationData.data,
                         };
                     })
                     .map((mutationData) => {

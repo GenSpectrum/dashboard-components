@@ -1,3 +1,4 @@
+import { expect, fireEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
@@ -7,6 +8,7 @@ import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOIN
 import nucleotideInsertions from '../../preact/mutations/__mockData__/nucleotideInsertions.json';
 import nucleotideMutations from '../../preact/mutations/__mockData__/nucleotideMutations.json';
 import { type MutationsProps } from '../../preact/mutations/mutations';
+import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const meta: Meta<MutationsProps> = {
     title: 'Visualization/Mutations',
@@ -18,7 +20,7 @@ const meta: Meta<MutationsProps> = {
             control: { type: 'radio' },
         },
         views: {
-            options: ['table', 'grid'],
+            options: ['table', 'grid', 'insertions'],
             control: { type: 'check' },
         },
     },
@@ -45,7 +47,7 @@ export const Default: StoryObj<MutationsProps> = {
     args: {
         variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
         sequenceType: 'nucleotide',
-        views: ['grid', 'table'],
+        views: ['grid', 'table', 'insertions'],
     },
     parameters: {
         fetchMock: {
@@ -79,5 +81,27 @@ export const Default: StoryObj<MutationsProps> = {
                 },
             ],
         },
+    },
+};
+
+export const OnTableTab: StoryObj<MutationsProps> = {
+    ...Default,
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-mutations-component');
+
+        await waitFor(() => expect(canvas.getByLabelText('Table', { selector: 'input' })).toBeInTheDocument());
+
+        await fireEvent.click(canvas.getByLabelText('Table', { selector: 'input' }));
+    },
+};
+
+export const OnInsertionsTab: StoryObj<MutationsProps> = {
+    ...Default,
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-mutations-component');
+
+        await waitFor(() => expect(canvas.getByLabelText('Insertions', { selector: 'input' })).toBeInTheDocument());
+
+        await fireEvent.click(canvas.getByLabelText('Insertions', { selector: 'input' }));
     },
 };

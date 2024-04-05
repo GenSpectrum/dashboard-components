@@ -7,7 +7,7 @@ export class MutationCache {
 
     private constructor() {}
 
-    getMutation(mutationStr: string): Mutation {
+    getMutation(mutationStr: string) {
         if (mutationStr.startsWith('ins_')) {
             return this.getInsertion(mutationStr);
         }
@@ -17,7 +17,7 @@ export class MutationCache {
         return this.getSubstitution(mutationStr);
     }
 
-    getSubstitution(mutationStr: string): Substitution {
+    getSubstitution(mutationStr: string) {
         const key = mutationStr.toUpperCase();
         if (!this.substitutionCache.has(key)) {
             this.substitutionCache.set(key, Substitution.parse(mutationStr));
@@ -25,12 +25,16 @@ export class MutationCache {
         return this.substitutionCache.get(key)!;
     }
 
-    getDeletion(mutationStr: string): Deletion {
+    getDeletion(mutationStr: string) {
         const key = mutationStr.toUpperCase();
         if (!this.deletionCache.has(key)) {
             this.deletionCache.set(key, Deletion.parse(mutationStr));
         }
         return this.deletionCache.get(key)!;
+    }
+
+    getSubstitutionOrDeletion(mutationStr: string) {
+        return mutationStr.endsWith('-') ? this.getDeletion(mutationStr) : this.getSubstitution(mutationStr);
     }
 
     getInsertion(mutationStr: string): Insertion {

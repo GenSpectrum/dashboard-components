@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { filterMutationData } from './queryMutationData';
-import { type MutationEntry, type SubstitutionOrDeletion } from '../../operator/FetchMutationsOperator';
+import { type SubstitutionOrDeletion, type SubstitutionOrDeletionEntry } from '../../types';
 import { Deletion, Substitution } from '../../utils/mutations';
 
 const segment = 'testSegment';
@@ -14,7 +14,7 @@ describe('filterMutationData', () => {
     }: {
         segment: string | undefined;
         type: SubstitutionOrDeletion;
-    }): MutationEntry {
+    }): SubstitutionOrDeletionEntry {
         switch (type) {
             case 'substitution':
                 return {
