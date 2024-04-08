@@ -4,9 +4,7 @@ import { html } from 'lit';
 
 import './mutation-comparison-component';
 import '../app';
-import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
-import nucleotideInsertionsOtherVariant from '../../preact/mutationComparison/__mockData__/nucleotideInsertionsOtherVariant.json';
-import nucleotideInsertionsSomeVariant from '../../preact/mutationComparison/__mockData__/nucleotideInsertionsSomeVariant.json';
+import { LAPIS_URL, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import nucleotideMutationsOtherVariant from '../../preact/mutationComparison/__mockData__/nucleotideMutationsOtherVariant.json';
 import nucleotideMutationsSomeVariant from '../../preact/mutationComparison/__mockData__/nucleotideMutationsSomeVariant.json';
 import { type MutationComparisonProps } from '../../preact/mutationComparison/mutation-comparison';
@@ -75,7 +73,7 @@ export const Default: StoryObj<MutationComparisonProps> = {
                     matcher: {
                         name: 'nucleotideMutationsSomeVariant',
                         url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
-                        query: {
+                        body: {
                             country: 'Switzerland',
                             pangoLineage: 'B.1.1.7',
                             dateTo,
@@ -89,20 +87,9 @@ export const Default: StoryObj<MutationComparisonProps> = {
                 },
                 {
                     matcher: {
-                        name: 'nucleotideInsertionsSomeVariant',
-                        url: NUCLEOTIDE_INSERTIONS_ENDPOINT,
-                        query: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo },
-                    },
-                    response: {
-                        status: 200,
-                        body: nucleotideInsertionsSomeVariant,
-                    },
-                },
-                {
-                    matcher: {
                         name: 'nucleotideMutationsOtherVariant',
                         url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
-                        query: {
+                        body: {
                             country: 'Switzerland',
                             pangoLineage: 'B.1.1.7',
                             dateFrom,
@@ -113,17 +100,6 @@ export const Default: StoryObj<MutationComparisonProps> = {
                     response: {
                         status: 200,
                         body: nucleotideMutationsOtherVariant,
-                    },
-                },
-                {
-                    matcher: {
-                        name: 'nucleotideInsertionsOtherVariant',
-                        url: NUCLEOTIDE_INSERTIONS_ENDPOINT,
-                        query: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateFrom, dateTo },
-                    },
-                    response: {
-                        status: 200,
-                        body: nucleotideInsertionsOtherVariant,
                     },
                 },
             ],

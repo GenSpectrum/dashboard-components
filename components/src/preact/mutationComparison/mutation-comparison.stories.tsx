@@ -35,7 +35,7 @@ const meta: Meta<MutationComparisonProps> = {
                     matcher: {
                         name: 'nucleotideMutationsSomeVariant',
                         url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
-                        query: {
+                        body: {
                             country: 'Switzerland',
                             pangoLineage: 'B.1.1.7',
                             dateTo: dateToSomeVariant,
@@ -51,7 +51,7 @@ const meta: Meta<MutationComparisonProps> = {
                     matcher: {
                         name: 'nucleotideInsertionsSomeVariant',
                         url: NUCLEOTIDE_INSERTIONS_ENDPOINT,
-                        query: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: dateToSomeVariant },
+                        body: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: dateToSomeVariant },
                     },
                     response: {
                         status: 200,
@@ -62,7 +62,7 @@ const meta: Meta<MutationComparisonProps> = {
                     matcher: {
                         name: 'nucleotideMutationsOtherVariant',
                         url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
-                        query: {
+                        body: {
                             country: 'Switzerland',
                             pangoLineage: 'B.1.1.7',
                             dateFrom: dateFromOtherVariant,
@@ -79,7 +79,7 @@ const meta: Meta<MutationComparisonProps> = {
                     matcher: {
                         name: 'nucleotideInsertionsOtherVariant',
                         url: NUCLEOTIDE_INSERTIONS_ENDPOINT,
-                        query: {
+                        body: {
                             country: 'Switzerland',
                             pangoLineage: 'B.1.1.7',
                             dateFrom: dateFromOtherVariant,

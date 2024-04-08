@@ -41,7 +41,8 @@
         "flatpickr": "^4.6.13",
         "gridjs": "^6.2.0",
         "lit": "^3.1.2",
-        "preact": "^10.20.1"
+        "preact": "^10.20.1",
+        "zod": "^3.22.4"
     },
     "devDependencies": {
         "@custom-elements-manifest/analyzer": "^0.9.4",

@@ -68,12 +68,11 @@ export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
                     matcher: {
                         name: 'numeratorEG',
                         url: AGGREGATED_ENDPOINT,
-                        query: {
-                            displayName: 'EG',
+                        body: {
                             country: 'USA',
                             pangoLineage: 'EG*',
                             dateFrom: '2023-01-01',
-                            fields: 'date',
+                            fields: ['date'],
                         },
                     },
                     response: {
@@ -85,12 +84,11 @@ export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
                     matcher: {
                         name: 'numeratorJN1',
                         url: AGGREGATED_ENDPOINT,
-                        query: {
-                            displayName: 'JN.1',
+                        body: {
                             country: 'USA',
                             pangoLineage: 'JN.1*',
                             dateFrom: '2023-01-01',
-                            fields: 'date',
+                            fields: ['date'],
                         },
                     },
                     response: {
@@ -102,10 +100,10 @@ export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
                     matcher: {
                         name: 'denominator',
                         url: AGGREGATED_ENDPOINT,
-                        query: {
+                        body: {
                             country: 'USA',
                             dateFrom: '2023-01-01',
-                            fields: 'date',
+                            fields: ['date'],
                         },
                     },
                     response: {
@@ -134,12 +132,11 @@ export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
                     matcher: {
                         name: 'numeratorOneVariant',
                         url: AGGREGATED_ENDPOINT,
-                        query: {
-                            displayName: 'EG',
+                        body: {
                             country: 'USA',
                             pangoLineage: 'BA.2.86*',
                             dateFrom: '2023-10-01',
-                            fields: 'date',
+                            fields: ['date'],
                         },
                     },
                     response: {
@@ -151,10 +148,10 @@ export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
                     matcher: {
                         name: 'denominatorOneVariant',
                         url: AGGREGATED_ENDPOINT,
-                        query: {
+                        body: {
                             country: 'USA',
                             dateFrom: '2023-10-01',
-                            fields: 'date',
+                            fields: ['date'],
                         },
                     },
                     response: {

@@ -29,9 +29,10 @@ export function queryPrevalenceOverTime(
 ): Promise<PrevalenceOverTimeData> {
     const numeratorFilters = makeArray(numeratorFilter);
 
-    const denominatorData = fetchAndPrepare(denominatorFilter, granularity, smoothingWindow);
+    const denominatorData = fetchAndPrepare(getFilter(denominatorFilter), granularity, smoothingWindow);
     const subQueries = numeratorFilters.map(async (namedLapisFilter) => {
-        const numeratorData = fetchAndPrepare(namedLapisFilter, granularity, smoothingWindow);
+        const { displayName, ...filter } = namedLapisFilter;
+        const numeratorData = fetchAndPrepare(filter, granularity, smoothingWindow);
         const divide = new DivisionOperator(
             numeratorData,
             denominatorData,
@@ -43,11 +44,17 @@ export function queryPrevalenceOverTime(
         );
         const dataset = await divide.evaluate(lapis, signal);
         return {
-            displayName: namedLapisFilter.displayName,
+            displayName,
             content: dataset.content,
         };
     });
     return Promise.all(subQueries);
+}
+
+function getFilter(filter: NamedLapisFilter) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { displayName, ...filterWithoutDisplayName } = filter;
+    return filterWithoutDisplayName;
 }
 
 function makeArray<T>(arrayOrSingleItem: T | T[]) {
