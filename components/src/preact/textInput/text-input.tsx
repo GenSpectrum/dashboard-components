@@ -1,11 +1,12 @@
-import { FunctionComponent } from 'preact';
+import { type FunctionComponent } from 'preact';
 import { useContext, useRef } from 'preact/hooks';
-import { LapisUrlContext } from '../LapisUrlContext';
-import { useQuery } from '../useQuery';
+
 import { fetchAutocompleteList } from './fetchAutocompleteList';
-import { LoadingDisplay } from '../components/loading-display';
+import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorDisplay } from '../components/error-display';
+import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
+import { useQuery } from '../useQuery';
 
 export interface TextInputProps {
     lapisField: string;

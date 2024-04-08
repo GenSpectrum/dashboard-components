@@ -1,8 +1,9 @@
-import { Meta, StoryObj } from '@storybook/preact';
-import { TextInput, TextInputProps } from './text-input';
+import { type Meta, type StoryObj } from '@storybook/preact';
+
+import data from './__mockData__/aggregated_hosts.json';
+import { TextInput, type TextInputProps } from './text-input';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
-import data from './__mockData__/aggregated_hosts.json';
 
 const meta: Meta<TextInputProps> = {
     title: 'Input/TextInput',

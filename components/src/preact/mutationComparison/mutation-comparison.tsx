@@ -5,15 +5,15 @@ import { getMutationComparisonTableData } from './getMutationComparisonTableData
 import { MutationComparisonTable } from './mutation-comparison-table';
 import { MutationComparisonVenn } from './mutation-comparison-venn';
 import { filterMutationData, type MutationData, queryMutationData } from './queryMutationData';
-import { type LapisFilter, type SequenceType, type SubstitutionOrDeletion } from '../../types';
+import { type LapisFilter, type SequenceType } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { type DisplayedSegment, SegmentSelector } from '../components/SegmentSelector';
-import { type CheckboxItem, CheckboxSelector } from '../components/checkbox-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
 import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
+import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
 import { NoDataDisplay } from '../components/no-data-display';
 import { type ProportionInterval } from '../components/proportion-selector';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
@@ -32,10 +32,6 @@ export interface MutationComparisonProps {
     sequenceType: SequenceType;
     views: View[];
 }
-
-export type DisplayedMutationType = CheckboxItem & {
-    type: SubstitutionOrDeletion;
-};
 
 export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({ variants, sequenceType, views }) => {
     const lapis = useContext(LapisUrlContext);
@@ -166,9 +162,6 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     proportionInterval,
     setProportionInterval,
 }) => {
-    const checkedLabels = displayedMutationTypes.filter((type) => type.checked).map((type) => type.label);
-    const mutationTypesSelectorLabel = `Types: ${checkedLabels.length > 0 ? checkedLabels.join(', ') : 'None'}`;
-
     return (
         <div class='flex flex-row'>
             <ProportionSelectorDropdown
@@ -177,11 +170,9 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
             />
             <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
-            <CheckboxSelector
-                className='mx-1'
-                items={displayedMutationTypes}
-                label={mutationTypesSelectorLabel}
-                setItems={(items) => setDisplayedMutationTypes(items)}
+            <MutationTypeSelector
+                displayedMutationTypes={displayedMutationTypes}
+                setDisplayedMutationTypes={setDisplayedMutationTypes}
             />
             <CsvDownloadButton
                 className='mx-1 btn btn-xs'
