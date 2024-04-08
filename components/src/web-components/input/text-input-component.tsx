@@ -1,6 +1,7 @@
-import { PreactLitAdapter } from '../PreactLitAdapter';
 import { customElement, property } from 'lit/decorators.js';
+
 import { TextInput } from '../../preact/textInput/text-input';
+import { PreactLitAdapter } from '../PreactLitAdapter';
 
 @customElement('gs-text-input')
 export class TextInputComponent extends PreactLitAdapter {

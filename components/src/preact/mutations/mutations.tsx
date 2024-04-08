@@ -1,17 +1,15 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useEffect, useState } from 'preact/hooks';
+import { type Dispatch, type StateUpdater, useContext, useState } from 'preact/hooks';
 
 import { getInsertionsTableData } from './getInsertionsTableData';
 import { getMutationsTableData } from './getMutationsTableData';
 import { MutationsGrid } from './mutations-grid';
 import { InsertionsTable } from './mutations-insertions-table';
 import MutationsTable from './mutations-table';
-import { queryInsertions } from '../../query/queryInsertions';
-import { querySubstitutionsOrDeletions } from '../../query/querySubstitutionsOrDeletions';
+import { filterMutationsData, queryMutationsData } from './queryMutations';
 import {
     type InsertionEntry,
     type LapisFilter,
-    type MutationEntry,
     type SequenceType,
     type SubstitutionOrDeletionEntry,
 } from '../../types';
@@ -22,7 +20,9 @@ import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
 import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
+import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
 import { NoDataDisplay } from '../components/no-data-display';
+import type { ProportionInterval } from '../components/proportion-selector';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
@@ -38,36 +38,9 @@ export interface MutationsProps {
 export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequenceType, views }) => {
     const lapis = useContext(LapisUrlContext);
 
-    const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 1 });
-
     const { data, error, isLoading } = useQuery(async () => {
-        const substitutionsOrDeletions = await querySubstitutionsOrDeletions(variant, sequenceType, lapis);
-        const insertions = await queryInsertions(variant, sequenceType, lapis);
-
-        const mutationSegments = substitutionsOrDeletions.content
-            .map((mutationEntry) => mutationEntry.mutation.segment)
-            .filter((segment): segment is string => segment !== undefined);
-
-        const segments = [...new Set(mutationSegments)];
-
-        return {
-            data: { substitutionsOrDeletions: substitutionsOrDeletions.content, insertions: insertions.content },
-            segments,
-        };
+        return queryMutationsData(variant, sequenceType, lapis);
     }, [variant, sequenceType, lapis]);
-
-    const [displayedSegments, setDisplayedSegments] = useState<DisplayedSegment[]>([]);
-    useEffect(() => {
-        if (data !== null) {
-            setDisplayedSegments(
-                data.segments.map((segment) => ({
-                    segment,
-                    label: segment,
-                    checked: true,
-                })),
-            );
-        }
-    }, [data]);
 
     const headline = 'Mutations';
     if (isLoading) {
@@ -94,59 +67,116 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
         );
     }
 
-    const bySelectedSegments = (mutationEntry: MutationEntry) => {
-        if (mutationEntry.mutation.segment === undefined) {
-            return true;
-        }
-        return displayedSegments.some(
-            (displayedSegment) =>
-                displayedSegment.segment === mutationEntry.mutation.segment && displayedSegment.checked,
-        );
-    };
+    return (
+        <Headline heading={headline}>
+            <MutationsTabs
+                mutationsData={data.mutationsData}
+                sequenceType={sequenceType}
+                segments={data.segments}
+                views={views}
+            />
+        </Headline>
+    );
+};
 
-    const byProportion = (mutationEntry: SubstitutionOrDeletionEntry) => {
-        return mutationEntry.proportion >= proportionInterval.min && mutationEntry.proportion <= proportionInterval.max;
-    };
+type MutationTabsProps = {
+    mutationsData: { insertions: InsertionEntry[]; substitutionsOrDeletions: SubstitutionOrDeletionEntry[] };
+    segments: string[];
+    sequenceType: SequenceType;
+    views: View[];
+};
 
-    const getTab = (
-        view: View,
-        data: { substitutionsOrDeletions: SubstitutionOrDeletionEntry[]; insertions: InsertionEntry[] },
-    ) => {
+const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, segments, sequenceType, views }) => {
+    const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 1 });
+
+    const [displayedSegments, setDisplayedSegments] = useState<DisplayedSegment[]>(
+        segments.map((segment) => ({
+            segment,
+            label: segment,
+            checked: true,
+        })),
+    );
+    const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
+        { label: 'Substitutions', checked: true, type: 'substitution' },
+        { label: 'Deletions', checked: true, type: 'deletion' },
+    ]);
+
+    const filteredData = filterMutationsData(
+        mutationsData,
+        displayedSegments,
+        proportionInterval.min,
+        proportionInterval.max,
+        displayedMutationTypes,
+    );
+
+    const getTab = (view: View) => {
         switch (view) {
             case 'table':
                 return {
                     title: 'Table',
-                    content: (
-                        <MutationsTable
-                            data={data.substitutionsOrDeletions.filter(byProportion).filter(bySelectedSegments)}
-                        />
-                    ),
+                    content: <MutationsTable data={filteredData.tableData} />,
                 };
             case 'grid':
                 return {
                     title: 'Grid',
-                    content: (
-                        <MutationsGrid
-                            data={data.substitutionsOrDeletions.filter(byProportion).filter(bySelectedSegments)}
-                            sequenceType={sequenceType}
-                        />
-                    ),
+                    content: <MutationsGrid data={filteredData.gridData} sequenceType={sequenceType} />,
                 };
             case 'insertions':
                 return {
                     title: 'Insertions',
-                    content: <InsertionsTable data={data.insertions.filter(bySelectedSegments)} />,
+                    content: <InsertionsTable data={filteredData.insertions} />,
                 };
         }
     };
 
-    const tabs = views.map((view) => {
-        return getTab(view, data.data);
-    });
+    const tabs = views.map((view) => getTab(view));
 
     const toolbar = (activeTab: string) => (
+        <Toolbar
+            activeTab={activeTab}
+            displayedSegments={displayedSegments}
+            setDisplayedSegments={setDisplayedSegments}
+            displayedMutationTypes={displayedMutationTypes}
+            setDisplayedMutationTypes={setDisplayedMutationTypes}
+            filteredData={filteredData}
+            proportionInterval={proportionInterval}
+            setProportionInterval={setProportionInterval}
+        />
+    );
+
+    return <Tabs tabs={tabs} toolbar={toolbar} />;
+};
+
+type ToolbarProps = {
+    activeTab: string;
+    displayedSegments: DisplayedSegment[];
+    setDisplayedSegments: (segments: DisplayedSegment[]) => void;
+    displayedMutationTypes: DisplayedMutationType[];
+    setDisplayedMutationTypes: (types: DisplayedMutationType[]) => void;
+    filteredData: { tableData: SubstitutionOrDeletionEntry[]; insertions: InsertionEntry[] };
+    proportionInterval: ProportionInterval;
+    setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
+};
+
+const Toolbar: FunctionComponent<ToolbarProps> = ({
+    activeTab,
+    displayedSegments,
+    setDisplayedSegments,
+    displayedMutationTypes,
+    setDisplayedMutationTypes,
+    filteredData,
+    proportionInterval,
+    setProportionInterval,
+}) => {
+    return (
         <div class='flex flex-row'>
             <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
+            {activeTab === 'Table' && (
+                <MutationTypeSelector
+                    setDisplayedMutationTypes={setDisplayedMutationTypes}
+                    displayedMutationTypes={displayedMutationTypes}
+                />
+            )}
             {(activeTab === 'Table' || activeTab === 'Grid') && (
                 <>
                     <ProportionSelectorDropdown
@@ -157,7 +187,7 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
                     />
                     <CsvDownloadButton
                         className='mx-1 btn btn-xs'
-                        getData={() => getMutationsTableData(data.data.substitutionsOrDeletions)}
+                        getData={() => getMutationsTableData(filteredData.tableData)}
                         filename='substitutionsAndDeletions.csv'
                     />
                 </>
@@ -165,17 +195,11 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
             {activeTab === 'Insertions' && (
                 <CsvDownloadButton
                     className='mx-1 btn btn-xs'
-                    getData={() => getInsertionsTableData(data.data.insertions)}
+                    getData={() => getInsertionsTableData(filteredData.insertions)}
                     filename='insertions.csv'
                 />
             )}
             <Info className='mx-1' content='Info for mutations' />
         </div>
-    );
-
-    return (
-        <Headline heading={headline}>
-            <Tabs tabs={tabs} toolbar={toolbar} />
-        </Headline>
     );
 };

@@ -1,7 +1,8 @@
-import { type DisplayedMutationType, type MutationComparisonVariant } from './mutation-comparison';
+import { type MutationComparisonVariant } from './mutation-comparison';
 import { querySubstitutionsOrDeletions } from '../../query/querySubstitutionsOrDeletions';
 import { type SubstitutionOrDeletionEntry } from '../../types';
 import { type DisplayedSegment } from '../components/SegmentSelector';
+import { type DisplayedMutationType } from '../components/mutation-type-selector';
 
 export type MutationData = {
     displayName: string;
