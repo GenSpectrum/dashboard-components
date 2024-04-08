@@ -15,8 +15,8 @@ const meta: Meta<typeof LocationFilter> = {
                     matcher: {
                         name: 'numeratorEG',
                         url: AGGREGATED_ENDPOINT,
-                        query: {
-                            fields: 'region,country,division,location',
+                        body: {
+                            fields: ['region', 'country', 'division', 'location'],
                         },
                     },
                     response: {

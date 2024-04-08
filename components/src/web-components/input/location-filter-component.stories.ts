@@ -36,8 +36,8 @@ const Template: StoryObj<{ fields: string[] }> = {
 const aggregatedEndpointMatcher = {
     name: 'numeratorEG',
     url: AGGREGATED_ENDPOINT,
-    query: {
-        fields: 'region,country,division,location',
+    body: {
+        fields: ['region', 'country', 'division', 'location'],
     },
 };
 
@@ -102,7 +102,11 @@ export const FetchingLocationsFails: StoryObj<{ fields: string[] }> = {
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-location-filter');
 
-        await waitFor(() => expect(canvas.getByText('Error: TypeError', { exact: false })).toBeInTheDocument());
+        await waitFor(() =>
+            expect(
+                canvas.getByText('Internal Server Error: {"error":"no data"} ', { exact: false }),
+            ).toBeInTheDocument(),
+        );
     },
 };
 

@@ -36,12 +36,12 @@ export const Primary = {
                     matcher: {
                         name: 'numerator',
                         url: AGGREGATED_ENDPOINT,
-                        query: {
+                        body: {
                             country: 'Switzerland',
                             pangoLineage: 'B.1.1.7',
                             dateFrom: '2020-12-01',
                             dateTo: '2021-03-01',
-                            fields: 'date',
+                            fields: ['date'],
                         },
                     },
                     response: {
@@ -53,11 +53,11 @@ export const Primary = {
                     matcher: {
                         name: 'denominator',
                         url: AGGREGATED_ENDPOINT,
-                        query: {
+                        body: {
                             country: 'Switzerland',
                             dateFrom: '2020-12-01',
                             dateTo: '2021-03-01',
-                            fields: 'date',
+                            fields: ['date'],
                         },
                     },
                     response: {

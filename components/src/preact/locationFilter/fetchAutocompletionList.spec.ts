@@ -7,17 +7,18 @@ describe('fetchAutocompletionList', () => {
     test('should fetch autocompletion list', async () => {
         const fields = ['region', 'country', 'division'];
 
-        const urlSearchParams = new URLSearchParams();
-        urlSearchParams.append('fields', fields.join(','));
-        lapisRequestMocks.aggregated(urlSearchParams, {
-            data: [
-                { count: 0, region: 'region1', country: 'country1_1', division: 'division1_1_1' },
-                { count: 0, region: 'region1', country: 'country1_1', division: 'division1_1_2' },
-                { count: 0, region: 'region1', country: 'country1_1', division: null },
-                { count: 0, region: 'region1', country: 'country1_2', division: 'division1_2_1' },
-                { count: 0, region: 'region2', country: 'country2_1', division: null },
-            ],
-        });
+        lapisRequestMocks.aggregated(
+            { fields },
+            {
+                data: [
+                    { count: 0, region: 'region1', country: 'country1_1', division: 'division1_1_1' },
+                    { count: 0, region: 'region1', country: 'country1_1', division: 'division1_1_2' },
+                    { count: 0, region: 'region1', country: 'country1_1', division: null },
+                    { count: 0, region: 'region1', country: 'country1_2', division: 'division1_2_1' },
+                    { count: 0, region: 'region2', country: 'country2_1', division: null },
+                ],
+            },
+        );
 
         const result = await fetchAutocompletionList(fields, DUMMY_LAPIS_URL);
 

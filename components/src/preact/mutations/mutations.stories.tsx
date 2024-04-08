@@ -46,7 +46,7 @@ export const Default = {
                     matcher: {
                         name: 'nucleotideMutations',
                         url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
-                        query: {
+                        body: {
                             country: 'Switzerland',
                             pangoLineage: 'B.1.1.7',
                             dateTo: '2022-01-01',
@@ -62,7 +62,7 @@ export const Default = {
                     matcher: {
                         name: 'nucleotideInsertions',
                         url: NUCLEOTIDE_INSERTIONS_ENDPOINT,
-                        query: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
+                        body: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
                     },
                     response: {
                         status: 200,

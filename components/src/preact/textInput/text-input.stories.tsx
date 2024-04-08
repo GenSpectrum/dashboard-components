@@ -15,8 +15,8 @@ const meta: Meta<TextInputProps> = {
                     matcher: {
                         name: 'hosts',
                         url: AGGREGATED_ENDPOINT,
-                        query: {
-                            fields: 'host',
+                        body: {
+                            fields: ['host'],
                         },
                     },
                     response: {

@@ -1,8 +1,8 @@
 import { type Dataset } from './Dataset';
 import { type Operator } from './Operator';
+import { fetchSubstitutionsOrDeletions } from '../lapisApi/lapisApi';
 import { type LapisFilter, type SequenceType, type SubstitutionOrDeletionEntry } from '../types';
 import { MutationCache, Substitution } from '../utils/mutations';
-import { mapLapisFilterToUrlParams } from '../utils/utils';
 
 export class FetchSubstitutionsOrDeletionsOperator implements Operator<SubstitutionOrDeletionEntry> {
     constructor(
@@ -12,7 +12,7 @@ export class FetchSubstitutionsOrDeletionsOperator implements Operator<Substitut
     ) {}
 
     async evaluate(lapis: string, signal?: AbortSignal): Promise<Dataset<SubstitutionOrDeletionEntry>> {
-        const [mutations] = await Promise.all([this.fetchMutations(lapis, signal)]);
+        const mutations = await this.fetchMutations(lapis, signal);
 
         const instance = MutationCache.getInstance();
         const content: SubstitutionOrDeletionEntry[] = mutations.map(({ mutation, count, proportion }) => {
@@ -25,15 +25,14 @@ export class FetchSubstitutionsOrDeletionsOperator implements Operator<Substitut
         return { content };
     }
 
-    private async fetchMutations(
-        lapis: string,
-        signal?: AbortSignal,
-    ): Promise<{ mutation: string; count: number; proportion: number }[]> {
-        const endpoint = `${this.sequenceType === 'nucleotide' ? 'nuc' : 'aa'}-mutations`;
-        const params = mapLapisFilterToUrlParams(this.filter);
-        if (this.minProportion !== undefined) {
-            params.set('minProportion', this.minProportion.toString());
-        }
-        return (await (await fetch(`${lapis}/${endpoint}?${params.toString()}`, { signal })).json()).data;
+    private async fetchMutations(lapis: string, signal?: AbortSignal) {
+        const filter = {
+            ...this.filter,
+            minProportion: this.minProportion,
+        };
+
+        return fetchSubstitutionsOrDeletions(lapis, filter, this.sequenceType, signal).then(
+            (response) => response.data,
+        );
     }
 }
