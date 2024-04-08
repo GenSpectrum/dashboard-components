@@ -55,7 +55,8 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
         }
 
         const values = sets.datasets[0].data[selectedDatasetIndex].values;
-        divRef.current!.innerText = `Mutations: ${values.join(', ')}` || '';
+        const label = sets.datasets[0].data[selectedDatasetIndex].label;
+        divRef.current!.innerText = `${label}: ${values.join(', ')}` || '';
     }, [divRef, selectedDatasetIndex, sets]);
 
     const config: ChartConfiguration = useMemo(
