@@ -5,6 +5,7 @@ import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
 import { type ProportionInterval } from '../components/proportion-selector';
 import { Table } from '../components/table';
+import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
 import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsTableProps {
@@ -17,7 +18,11 @@ export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = (
         return [
             {
                 name: 'Mutation',
-                sort: true,
+                sort: {
+                    compare: (a: string, b: string) => {
+                        return sortSubstitutionsAndDeletions(a, b);
+                    },
+                },
             },
             {
                 name: 'Prevalence',
