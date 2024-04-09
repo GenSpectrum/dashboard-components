@@ -4,3 +4,4 @@
 !.vscode/extensions.json
 
 *storybook.log
+**/node_modules

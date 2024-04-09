@@ -36,6 +36,5 @@
             "react-dom": ["./node_modules/preact/compat/"]
         }
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx"],
-    "exclude": []
+    "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
