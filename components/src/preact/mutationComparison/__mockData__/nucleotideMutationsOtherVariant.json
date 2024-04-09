@@ -6,162 +6,290 @@
         {
             "mutation": "C29400T",
             "proportion": 3.1102264244837026e-4,
-            "count": 5
+            "count": 5,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 29400
         },
         {
             "mutation": "G210T",
             "proportion": 0.01464640274543449,
-            "count": 239
+            "count": 239,
+            "sequenceName": null,
+            "mutationFrom": "G",
+            "mutationTo": "T",
+            "position": 210
         },
         {
             "mutation": "C241T",
             "proportion": 0.9940534575772437,
-            "count": 16215
+            "count": 16215,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 241
         },
         {
             "mutation": "C3037T",
             "proportion": 0.9993303707311134,
-            "count": 16416
+            "count": 16416,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 3037
         },
         {
             "mutation": "C12876T",
             "proportion": 1.8254837531945966e-4,
-            "count": 3
+            "count": 3,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 12876
         },
         {
             "mutation": "G4181T",
             "proportion": 4.876264781177618e-4,
-            "count": 8
+            "count": 8,
+            "sequenceName": null,
+            "mutationFrom": "G",
+            "mutationTo": "T",
+            "position": 4181
         },
         {
             "mutation": "C15495T",
             "proportion": 6.0642813826561554e-5,
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 15495
         },
         {
             "mutation": "C6402T",
             "proportion": 0.005851161089778753,
-            "count": 96
+            "count": 96,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 6402
         },
         {
             "mutation": "C18664T",
             "proportion": 1.2142553579017667e-4,
-            "count": 2
+            "count": 2,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 18664
         },
         {
             "mutation": "C7124T",
             "proportion": 4.334096959940561e-4,
-            "count": 7
+            "count": 7,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 7124
         },
         {
             "mutation": "T8654C",
             "proportion": 1.231527093596059e-4,
-            "count": 2
+            "count": 2,
+            "sequenceName": null,
+            "mutationFrom": "T",
+            "mutationTo": "C",
+            "position": 8654
         },
         {
             "mutation": "C8986T",
             "proportion": 7.306380905991232e-4,
-            "count": 12
+            "count": 12,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 8986
         },
         {
             "mutation": "G9053T",
             "proportion": 4.868252905738453e-4,
-            "count": 8
+            "count": 8,
+            "sequenceName": null,
+            "mutationFrom": "G",
+            "mutationTo": "T",
+            "position": 9053
         },
         {
             "mutation": "A28030G",
             "proportion": 3.6861829575474597e-4,
-            "count": 6
+            "count": 6,
+            "sequenceName": null,
+            "mutationFrom": "A",
+            "mutationTo": "G",
+            "position": 28030
         },
         {
             "mutation": "C10029T",
             "proportion": 1.2178784557301182e-4,
-            "count": 2
+            "count": 2,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 10029
         },
         {
             "mutation": "A11201G",
             "proportion": 1.8250395425234214e-4,
-            "count": 3
+            "count": 3,
+            "sequenceName": null,
+            "mutationFrom": "A",
+            "mutationTo": "G",
+            "position": 11201
         },
         {
             "mutation": "A11332G",
             "proportion": 1.826595226497808e-4,
-            "count": 3
+            "count": 3,
+            "sequenceName": null,
+            "mutationFrom": "A",
+            "mutationTo": "G",
+            "position": 11332
         },
         {
             "mutation": "C14408T",
             "proportion": 0.9990265863600414,
-            "count": 16421
+            "count": 16421,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 14408
         },
         {
             "mutation": "G15451A",
             "proportion": 9.109127345600292e-4,
-            "count": 15
+            "count": 15,
+            "sequenceName": null,
+            "mutationFrom": "G",
+            "mutationTo": "A",
+            "position": 15451
         },
         {
             "mutation": "C16466T",
             "proportion": 3.641660597232338e-4,
-            "count": 6
+            "count": 6,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 16466
         },
         {
             "mutation": "C21618G",
             "proportion": 3.0807147258163895e-4,
-            "count": 5
+            "count": 5,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "G",
+            "position": 21618
         },
         {
             "mutation": "T22917G",
             "proportion": 6.934375590997919e-4,
-            "count": 11
+            "count": 11,
+            "sequenceName": null,
+            "mutationFrom": "T",
+            "mutationTo": "G",
+            "position": 22917
         },
         {
             "mutation": "C22995A",
             "proportion": 3.7591629597143037e-4,
-            "count": 6
+            "count": 6,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "A",
+            "position": 22995
         },
         {
             "mutation": "A23403G",
             "proportion": 0.9993927617196988,
-            "count": 16458
+            "count": 16458,
+            "sequenceName": null,
+            "mutationFrom": "A",
+            "mutationTo": "G",
+            "position": 23403
         },
         {
             "mutation": "C23604G",
             "proportion": 0.0010364589684184855,
-            "count": 17
+            "count": 17,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "G",
+            "position": 23604
         },
         {
             "mutation": "A25983T",
             "proportion": 6.0782883539995136e-5,
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "mutationFrom": "A",
+            "mutationTo": "T",
+            "position": 25983
         },
         {
             "mutation": "A17725C",
             "proportion": 2.4251242876197404e-4,
-            "count": 4
+            "count": 4,
+            "sequenceName": null,
+            "mutationFrom": "A",
+            "mutationTo": "C",
+            "position": 17725
         },
         {
             "mutation": "G24410A",
             "proportion": 6.067961165048543e-4,
-            "count": 10
+            "count": 10,
+            "sequenceName": null,
+            "mutationFrom": "G",
+            "mutationTo": "A",
+            "position": 24410
         },
         {
             "mutation": "C25469T",
             "proportion": 0.0010943579766536965,
-            "count": 18
+            "count": 18,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 25469
         },
         {
             "mutation": "C14214T",
             "proportion": 2.4310198128114745e-4,
-            "count": 4
+            "count": 4,
+            "sequenceName": null,
+            "mutationFrom": "C",
+            "mutationTo": "T",
+            "position": 14214
         },
         {
             "mutation": "T26767C",
             "proportion": 0.0013351945135643625,
-            "count": 22
+            "count": 22,
+            "sequenceName": null,
+            "mutationFrom": "T",
+            "mutationTo": "C",
+            "position": 26767
         },
         {
             "mutation": "G199-",
             "proportion": 0.1,
-            "count": 10
+            "count": 10,
+            "sequenceName": null,
+            "mutationFrom": "G",
+            "mutationTo": "-",
+            "position": 19
         }
     ]
 }

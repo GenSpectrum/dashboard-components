@@ -24,12 +24,19 @@ const mutationProportionCount = z.object({
     mutation: z.string(),
     proportion: z.number(),
     count: z.number(),
+    sequenceName: z.union([z.string(), z.null()]),
+    mutationFrom: z.string(),
+    mutationTo: z.string(),
+    position: z.number(),
 });
 export const mutationsResponse = makeLapisResponse(z.array(mutationProportionCount));
 
 const insertionCount = z.object({
     insertion: z.string(),
     count: z.number(),
+    insertedSymbols: z.string(),
+    position: z.number(),
+    sequenceName: z.union([z.string(), z.null()]),
 });
 export const insertionsResponse = makeLapisResponse(z.array(insertionCount));
 
