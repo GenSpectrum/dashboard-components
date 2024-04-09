@@ -5,143 +5,248 @@
     "data": [
         {
             "insertion": "ins_21571:TTT",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 21571,
+            "insertedSymbols": "TTT"
         },
         {
             "insertion": "ins_26654:T",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 26654,
+            "insertedSymbols": "T"
         },
         {
             "insertion": "ins_28250:CTG",
-            "count": 25
+            "count": 25,
+            "sequenceName": null,
+            "position": 28250,
+            "insertedSymbols": "CTG"
         },
         {
             "insertion": "ins_13915:T",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 13915,
+            "insertedSymbols": "T"
         },
         {
             "insertion": "ins_27552:TT",
-            "count": 28
+            "count": 28,
+            "sequenceName": null,
+            "position": 27552,
+            "insertedSymbols": "TT"
         },
         {
             "insertion": "ins_2170:GAGCCAGGG",
-            "count": 3
+            "count": 3,
+            "sequenceName": null,
+            "position": 2170,
+            "insertedSymbols": "GAGCCAGGG"
         },
         {
             "insertion": "ins_21305:GAGAGAGAGCAA",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 21305,
+            "insertedSymbols": "GAGAGAGAGCAA"
         },
         {
             "insertion": "ins_11305:ATTTCATTGTTT",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 11305,
+            "insertedSymbols": "ATTTCATTGTTT"
         },
         {
             "insertion": "ins_28230:AAACTTGTCA",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 28230,
+            "insertedSymbols": "AAACTTGTCA"
         },
         {
             "insertion": "ins_27687:T",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 27687,
+            "insertedSymbols": "T"
         },
         {
             "insertion": "ins_27553:TGATCAG",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 27553,
+            "insertedSymbols": "TGATCAG"
         },
         {
             "insertion": "ins_29903:NNNNNNNNNNNNNNNNN",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 29903,
+            "insertedSymbols": "NNNNNNNNNNNNNNNNN"
         },
         {
             "insertion": "ins_29727:GG",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 29727,
+            "insertedSymbols": "GG"
         },
         {
             "insertion": "ins_29053:A",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 29053,
+            "insertedSymbols": "A"
         },
         {
             "insertion": "ins_27672:A",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 27672,
+            "insertedSymbols": "A"
         },
         {
             "insertion": "ins_29735:TACAGT",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 29735,
+            "insertedSymbols": "TACAGT"
         },
         {
             "insertion": "ins_1813:A",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 1813,
+            "insertedSymbols": "A"
         },
         {
             "insertion": "ins_20793:A",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 20793,
+            "insertedSymbols": "A"
         },
         {
             "insertion": "ins_11521:T",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 11521,
+            "insertedSymbols": "T"
         },
         {
             "insertion": "ins_18219:A",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 18219,
+            "insertedSymbols": "A"
         },
         {
             "insertion": "ins_29005:A",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 29005,
+            "insertedSymbols": "A"
         },
         {
             "insertion": "ins_2842:AC",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 2842,
+            "insertedSymbols": "AC"
         },
         {
             "insertion": "ins_7021:T",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 7021,
+            "insertedSymbols": "T"
         },
         {
             "insertion": "ins_14898:A",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 14898,
+            "insertedSymbols": "A"
         },
         {
             "insertion": "ins_17019:T",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 17019,
+            "insertedSymbols": "T"
         },
         {
             "insertion": "ins_4013:AGC",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 4013,
+            "insertedSymbols": "AGC"
         },
         {
             "insertion": "ins_28250:CT",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 28250,
+            "insertedSymbols": "CT"
         },
         {
             "insertion": "ins_29593:AT",
-            "count": 2
+            "count": 2,
+            "sequenceName": null,
+            "position": 29593,
+            "insertedSymbols": "AT"
         },
         {
             "insertion": "ins_2857:A",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 2857,
+            "insertedSymbols": "A"
         },
         {
             "insertion": "ins_21102:T",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 21102,
+            "insertedSymbols": "T"
         },
         {
             "insertion": "ins_27231:TACATGGGGG",
-            "count": 2
+            "count": 2,
+            "sequenceName": null,
+            "position": 27231,
+            "insertedSymbols": "TACATGGGGG"
         },
         {
             "insertion": "ins_19983:T",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 19983,
+            "insertedSymbols": "T"
         },
         {
             "insertion": "ins_29725:T",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 29725,
+            "insertedSymbols": "T"
         },
         {
             "insertion": "ins_29759:CACCGA",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 29759,
+            "insertedSymbols": "CACCGA"
         },
         {
             "insertion": "ins_27863:TT",
-            "count": 1
+            "count": 1,
+            "sequenceName": null,
+            "position": 27863,
+            "insertedSymbols": "TT"
         }
     ]
 }

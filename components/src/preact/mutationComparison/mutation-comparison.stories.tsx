@@ -1,12 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, userEvent, waitFor, within } from '@storybook/test';
 
-import nucleotideInsertionsOtherVariant from './__mockData__/nucleotideInsertionsOtherVariant.json';
-import nucleotideInsertionsSomeVariant from './__mockData__/nucleotideInsertionsSomeVariant.json';
 import nucleotideMutationsOtherVariant from './__mockData__/nucleotideMutationsOtherVariant.json';
 import nucleotideMutationsSomeVariant from './__mockData__/nucleotideMutationsSomeVariant.json';
 import { MutationComparison, type MutationComparisonProps } from './mutation-comparison';
-import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
+import { LAPIS_URL, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 
 const dateToSomeVariant = '2022-01-01';
@@ -49,17 +47,6 @@ const meta: Meta<MutationComparisonProps> = {
                 },
                 {
                     matcher: {
-                        name: 'nucleotideInsertionsSomeVariant',
-                        url: NUCLEOTIDE_INSERTIONS_ENDPOINT,
-                        body: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: dateToSomeVariant },
-                    },
-                    response: {
-                        status: 200,
-                        body: nucleotideInsertionsSomeVariant,
-                    },
-                },
-                {
-                    matcher: {
                         name: 'nucleotideMutationsOtherVariant',
                         url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
                         body: {
@@ -73,22 +60,6 @@ const meta: Meta<MutationComparisonProps> = {
                     response: {
                         status: 200,
                         body: nucleotideMutationsOtherVariant,
-                    },
-                },
-                {
-                    matcher: {
-                        name: 'nucleotideInsertionsOtherVariant',
-                        url: NUCLEOTIDE_INSERTIONS_ENDPOINT,
-                        body: {
-                            country: 'Switzerland',
-                            pangoLineage: 'B.1.1.7',
-                            dateFrom: dateFromOtherVariant,
-                            dateTo: dateToOtherVariant,
-                        },
-                    },
-                    response: {
-                        status: 200,
-                        body: nucleotideInsertionsOtherVariant,
                     },
                 },
             ],
