@@ -1,4 +1,3 @@
-/node_modules/
 /lib/
 /dist/
 /test/
@@ -13,3 +12,4 @@ storybook-static/
 /playwright/.cache/
 
 *storybook.log
+genspectrum-dashboard-components*.tgz

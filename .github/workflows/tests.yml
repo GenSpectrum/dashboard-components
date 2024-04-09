@@ -8,7 +8,7 @@ defaults:
 
 jobs:
   linter:
-    name: Run linter
+    name: Run checks and build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,6 +32,9 @@ jobs:
 
       - name: Run linter
         run: npm run lint
+
+      - name: Build
+        run: npm run build
 
   unit_tests:
     name: Run unit tests

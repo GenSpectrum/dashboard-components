@@ -1,12 +1,26 @@
 {
-    "name": "genspectrum-components",
+    "name": "@genspectrum/dashboard-components",
     "private": true,
-    "version": "0.1.0",
-    "description": "GenSpectrum web components",
+    "version": "0.0.1",
+    "description": "GenSpectrum web components for building dashboards",
     "type": "module",
+    "main": "dist/genspectrum-components.js",
+    "module": "dist/genspectrum-components.js",
+    "types": "dist/genspectrum-components.d.ts",
+    "exports": {
+        ".": "./dist/dashboard-components.js",
+        "./custom-elements.json": "./custom-elements.json",
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist",
+        "src",
+        "custom-elements.json",
+        "package.json"
+    ],
     "scripts": {
-        "build": "vite build",
-        "serve": "vite dev",
+        "build": "vite --config vite.release.config.ts build && npm run generate-manifest",
+        "build-and-pack": "npm run build && npm pack | xargs -I {} cp {} genspectrum-dashboard-components.tgz",
         "test": "vitest",
         "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
         "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
@@ -78,6 +92,7 @@
         "tailwindcss": "^3.4.3",
         "typescript": "~5.4.4",
         "vite": "^5.2.8",
+        "vite-plugin-dts": "^3.8.1",
         "vitest": "^1.3.1"
     }
 }

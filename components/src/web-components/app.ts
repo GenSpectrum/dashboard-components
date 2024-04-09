@@ -5,7 +5,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { lapisContext } from './lapis-context';
 
 @customElement('gs-app')
-class App extends LitElement {
+export class App extends LitElement {
     @provide({ context: lapisContext })
     @property()
     lapis: string = '';

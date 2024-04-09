@@ -59,14 +59,16 @@ export interface Mutation {
 }
 
 export class Substitution implements Mutation {
-    readonly code = `${this.segment ? `${this.segment}:` : ''}${this.valueAtReference}${this.position}${this.substitutionValue}`;
+    readonly code;
 
     constructor(
         readonly segment: string | undefined,
         readonly valueAtReference: string,
         readonly substitutionValue: string,
         readonly position: number,
-    ) {}
+    ) {
+        this.code = `${this.segment ? `${this.segment}:` : ''}${this.valueAtReference}${this.position}${this.substitutionValue}`;
+    }
 
     toString() {
         return this.code;
@@ -94,13 +96,15 @@ export class Substitution implements Mutation {
 }
 
 export class Deletion implements Mutation {
-    readonly code = `${this.segment ? `${this.segment}:` : ''}${this.valueAtReference}${this.position}-`;
+    readonly code;
 
     constructor(
         readonly segment: string | undefined,
         readonly valueAtReference: string,
         readonly position: number,
-    ) {}
+    ) {
+        this.code = `${this.segment ? `${this.segment}:` : ''}${this.valueAtReference}${this.position}-`;
+    }
 
     toString() {
         return this.code;
@@ -116,13 +120,15 @@ export class Deletion implements Mutation {
 }
 
 export class Insertion implements Mutation {
-    readonly code = `ins_${this.segment ? `${this.segment}:` : ''}${this.position}:${this.value}`;
+    readonly code;
 
     constructor(
         readonly segment: string | undefined,
         readonly position: number,
         readonly value: string,
-    ) {}
+    ) {
+        this.code = `ins_${this.segment ? `${this.segment}:` : ''}${this.position}:${this.value}`;
+    }
 
     toString() {
         return this.code;

@@ -49,15 +49,18 @@ export class TemporalCache {
 }
 
 export class YearMonthDay {
-    readonly date = new Date(this.yearNumber, this.monthNumber - 1, this.dayNumber);
-    readonly dayjs = dayjs(this.date);
+    readonly date;
+    readonly dayjs;
 
     constructor(
         readonly yearNumber: number,
         readonly monthNumber: number,
         readonly dayNumber: number,
         readonly cache: TemporalCache,
-    ) {}
+    ) {
+        this.date = new Date(this.yearNumber, this.monthNumber - 1, this.dayNumber);
+        this.dayjs = dayjs(this.date);
+    }
 
     get text(): string {
         return this.dayjs.format('YYYY-MM-DD');

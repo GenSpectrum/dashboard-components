@@ -1,0 +1,77 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Components Demo</title>
+        <script
+            type="module"
+            src="node_modules/@genspectrum/dashboard-components/dist/dashboard-components.js"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="node_modules/@genspectrum/dashboard-components/dist/style.css"
+        />
+    </head>
+    <body>
+        <gs-app lapis="https://lapis.cov-spectrum.org/open/v1/sample">
+            <gs-location-filter
+                value="Europe / Switzerland"
+                fields='["region", "country", "division", "location"]'
+            ></gs-location-filter>
+            <gs-date-range-selector
+                selectedValue="last6Months"
+            ></gs-date-range-selector>
+            <gs-prevalence-over-time
+                numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}'
+                denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
+                granularity="day"
+                smoothingWindow="7"
+                views='["line", "table"]'
+            ></gs-prevalence-over-time>
+            <gs-prevalence-over-time
+                numerator='{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}'
+                denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
+                granularity="month"
+                smoothingWindow="0"
+                views='["bar", "table"]'
+            ></gs-prevalence-over-time>
+        </gs-app>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                document
+                    .querySelector("gs-location-filter")
+                    .addEventListener("gs-location-changed", (event) => {
+                        const sequencesElements = document.querySelectorAll(
+                            "gs-prevalence-over-time",
+                        );
+                        sequencesElements.forEach((el) => {
+                            ["numerator", "denominator"].forEach((attr) => {
+                                const old = JSON.parse(el.getAttribute(attr));
+                                el.setAttribute(
+                                    attr,
+                                    JSON.stringify({ ...old, ...event.detail }),
+                                );
+                            });
+                        });
+                    });
+                document
+                    .querySelector("gs-date-range-selector")
+                    .addEventListener("gs-date-range-changed", (event) => {
+                        const sequencesElements = document.querySelectorAll(
+                            "gs-prevalence-over-time",
+                        );
+                        sequencesElements.forEach((el) => {
+                            ["numerator", "denominator"].forEach((attr) => {
+                                const old = JSON.parse(el.getAttribute(attr));
+                                el.setAttribute(
+                                    attr,
+                                    JSON.stringify({ ...old, ...event.detail }),
+                                );
+                            });
+                        });
+                    });
+            });
+        </script>
+    </body>
+</html>
