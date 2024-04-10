@@ -11,7 +11,11 @@ export class App extends LitElement {
     lapis: string = '';
 
     override render() {
-        return html`${this.childNodes}`;
+        const children = [];
+        for (const childNode of this.childNodes) {
+            children.push(html`${childNode}`);
+        }
+        return html`${children}`;
     }
 
     override createRenderRoot() {

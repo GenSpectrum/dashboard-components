@@ -10,7 +10,8 @@
     "exports": {
         ".": "./dist/dashboard-components.js",
         "./custom-elements.json": "./custom-elements.json",
-        "./package.json": "./package.json"
+        "./package.json": "./package.json",
+        "./style.css": "./dist/style.css"
     },
     "files": [
         "dist",
