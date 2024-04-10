@@ -11,7 +11,5 @@ npm run import-components
 Start a test server to see the components in action:
 
 ```bash
-npm run start
+npm run dev
 ```
-
-Then, open http://localhost:5173/ in your browser.
