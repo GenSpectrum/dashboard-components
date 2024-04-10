@@ -3,6 +3,7 @@ import { type FunctionComponent } from 'preact';
 
 import { type SequenceType, type SubstitutionOrDeletionEntry } from '../../types';
 import { bases } from '../../utils/mutations';
+import { type ProportionInterval } from '../components/proportion-selector';
 import { Table, tableStyle } from '../components/table';
 import { sortMutationPositions } from '../shared/sort/sortMutationPositions';
 import { formatProportion } from '../shared/table/formatProportion';
@@ -19,9 +20,12 @@ type AdditionalColumnInfo = {
 interface MutationsGridProps {
     data: SubstitutionOrDeletionEntry[];
     sequenceType: SequenceType;
+    proportionInterval: ProportionInterval;
 }
 
-export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, sequenceType }) => {
+export type GridTableRow = (string | number | { isReference: boolean })[];
+
+export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, sequenceType, proportionInterval }) => {
     const getHeaders = () => {
         return [
             {
@@ -138,5 +142,24 @@ export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, seq
         });
     };
 
-    return <Table data={getTableData(data, sequenceType)} columns={getHeaders()} pagination={true} />;
+    const byProportion = (row: GridTableRow) => {
+        const numbersAndIsReference = row.filter(
+            (cell): cell is number | { isReference: boolean } => typeof cell !== 'string',
+        );
+
+        return numbersAndIsReference.some((cell, index) => {
+            if (!(typeof cell === 'number')) {
+                return false;
+            }
+
+            const associatedIsReference = numbersAndIsReference[index + 1] as { isReference: boolean };
+            return (
+                !associatedIsReference.isReference && cell >= proportionInterval.min && cell <= proportionInterval.max
+            );
+        });
+    };
+
+    const tableData = getTableData(data, sequenceType).filter(byProportion);
+
+    return <Table data={tableData} columns={getHeaders()} pagination={true} />;
 };

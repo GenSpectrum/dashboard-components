@@ -101,25 +101,25 @@ const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, se
         { label: 'Deletions', checked: true, type: 'deletion' },
     ]);
 
-    const filteredData = filterMutationsData(
-        mutationsData,
-        displayedSegments,
-        proportionInterval.min,
-        proportionInterval.max,
-        displayedMutationTypes,
-    );
+    const filteredData = filterMutationsData(mutationsData, displayedSegments, displayedMutationTypes);
 
     const getTab = (view: View) => {
         switch (view) {
             case 'table':
                 return {
                     title: 'Table',
-                    content: <MutationsTable data={filteredData.tableData} />,
+                    content: <MutationsTable data={filteredData.tableData} proportionInterval={proportionInterval} />,
                 };
             case 'grid':
                 return {
                     title: 'Grid',
-                    content: <MutationsGrid data={filteredData.gridData} sequenceType={sequenceType} />,
+                    content: (
+                        <MutationsGrid
+                            data={filteredData.gridData}
+                            sequenceType={sequenceType}
+                            proportionInterval={proportionInterval}
+                        />
+                    ),
                 };
             case 'insertions':
                 return {
@@ -187,7 +187,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                     />
                     <CsvDownloadButton
                         className='mx-1 btn btn-xs'
-                        getData={() => getMutationsTableData(filteredData.tableData)}
+                        getData={() => getMutationsTableData(filteredData.tableData, proportionInterval)}
                         filename='substitutionsAndDeletions.csv'
                     />
                 </>

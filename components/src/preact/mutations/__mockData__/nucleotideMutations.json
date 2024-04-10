@@ -559,7 +559,7 @@
             "sequenceName": null,
             "mutationFrom": "A",
             "mutationTo": "-",
-            "position": 2827
+            "position": 28271
         },
         {
             "mutation": "C2790T",
@@ -869,7 +869,7 @@
         },
         {
             "mutation": "T29867G",
-            "proportion": 3.505082369435682e-4,
+            "proportion": 0.03505082369435682,
             "count": 1,
             "sequenceName": null,
             "mutationFrom": "T",
