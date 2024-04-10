@@ -2,15 +2,17 @@ import { type FunctionComponent } from 'preact';
 
 import { getMutationsTableData } from './getMutationsTableData';
 import { type SubstitutionOrDeletionEntry } from '../../types';
+import type { ProportionInterval } from '../components/proportion-selector';
 import { Table } from '../components/table';
 import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
 import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsTableProps {
     data: SubstitutionOrDeletionEntry[];
+    proportionInterval: ProportionInterval;
 }
 
-const MutationsTable: FunctionComponent<MutationsTableProps> = ({ data }) => {
+const MutationsTable: FunctionComponent<MutationsTableProps> = ({ data, proportionInterval }) => {
     const getHeaders = () => {
         return [
             {
@@ -37,7 +39,7 @@ const MutationsTable: FunctionComponent<MutationsTableProps> = ({ data }) => {
         ];
     };
 
-    const tableData = getMutationsTableData(data).map((row) => Object.values(row));
+    const tableData = getMutationsTableData(data, proportionInterval).map((row) => Object.values(row));
 
     return <Table data={tableData} columns={getHeaders()} pagination={true} />;
 };

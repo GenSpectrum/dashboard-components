@@ -32,8 +32,6 @@ export async function queryMutationsData(
 export function filterMutationsData(
     data: { insertions: InsertionEntry[]; substitutionsOrDeletions: SubstitutionOrDeletionEntry[] },
     displayedSegments: DisplayedSegment[],
-    minProportion: number,
-    maxProportion: number,
     displayedMutationTypes: DisplayedMutationType[],
 ) {
     function bySelectedSegments(mutationEntry: MutationEntry) {
@@ -46,10 +44,6 @@ export function filterMutationsData(
         );
     }
 
-    const byProportion = (mutationEntry: SubstitutionOrDeletionEntry) => {
-        return mutationEntry.proportion >= minProportion && mutationEntry.proportion <= maxProportion;
-    };
-
     const byDisplayedMutationTypes = (mutationEntry: SubstitutionOrDeletionEntry) => {
         return displayedMutationTypes.some(
             (displayedMutationType) =>
@@ -57,9 +51,7 @@ export function filterMutationsData(
         );
     };
 
-    const filteredSubstitutionsOrDeletions = data.substitutionsOrDeletions
-        .filter(byProportion)
-        .filter(bySelectedSegments);
+    const filteredSubstitutionsOrDeletions = data.substitutionsOrDeletions.filter(bySelectedSegments);
 
     return {
         insertions: data.insertions.filter(bySelectedSegments),

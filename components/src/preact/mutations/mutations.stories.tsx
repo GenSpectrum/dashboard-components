@@ -1,4 +1,5 @@
-import { type Meta } from '@storybook/preact';
+import { type Meta, type StoryObj } from '@storybook/preact';
+import { expect, waitFor, within } from '@storybook/test';
 
 import nucleotideInsertions from './__mockData__/nucleotideInsertions.json';
 import nucleotideMutations from './__mockData__/nucleotideMutations.json';
@@ -32,7 +33,7 @@ const Template = {
     ),
 };
 
-export const Default = {
+export const Default: StoryObj<MutationsProps> = {
     ...Template,
     args: {
         variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
@@ -71,5 +72,20 @@ export const Default = {
                 },
             ],
         },
+    },
+};
+
+export const GridTab: StoryObj<MutationsProps> = {
+    ...Default,
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+
+        const mutationAboveThreshold = () => canvas.getAllByText('51.03%');
+        const mutationBelowThreshold = () => canvas.getAllByText('3.51%');
+
+        await step('All proportions are displayed, when one is above threshold', async () => {
+            await waitFor(() => expect(mutationAboveThreshold()[0]).toBeVisible());
+            await waitFor(() => expect(mutationBelowThreshold()[0]).toBeVisible());
+        });
     },
 };
