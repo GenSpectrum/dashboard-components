@@ -284,7 +284,7 @@
         },
         {
             "mutation": "G199-",
-            "proportion": 0.1,
+            "proportion": 0.55,
             "count": 10,
             "sequenceName": null,
             "mutationFrom": "G",

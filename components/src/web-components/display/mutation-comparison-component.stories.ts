@@ -105,21 +105,34 @@ export const Default: StoryObj<MutationComparisonProps> = {
             ],
         },
     },
+    play: async ({ canvasElement, step }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-comparison-component');
+
+        await step('Min and max proportions should be 50% and 100%', async () => {
+            const minInput = () => canvas.getAllByLabelText('%')[0];
+            const maxInput = () => canvas.getAllByLabelText('%')[1];
+
+            await waitFor(() => expect(minInput()).toHaveValue(50));
+            await waitFor(() => expect(maxInput()).toHaveValue(100));
+        });
+    },
 };
 
 export const VennDiagram: StoryObj<MutationComparisonProps> = {
     ...Default,
-    play: async ({ canvasElement }) => {
+    play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-comparison-component');
 
-        await waitFor(() => expect(canvas.getByLabelText('Venn', { selector: 'input' })).toBeInTheDocument());
+        await step('Switch to Venn diagram view', async () => {
+            await waitFor(() => expect(canvas.getByLabelText('Venn', { selector: 'input' })).toBeInTheDocument());
 
-        await fireEvent.click(canvas.getByLabelText('Venn', { selector: 'input' }));
+            await fireEvent.click(canvas.getByLabelText('Venn', { selector: 'input' }));
 
-        await waitFor(() =>
-            expect(
-                canvas.getByText('You have no elements selected. Click in the venn diagram to select.'),
-            ).toBeVisible(),
-        );
+            await waitFor(() =>
+                expect(
+                    canvas.getByText('You have no elements selected. Click in the venn diagram to select.'),
+                ).toBeVisible(),
+            );
+        });
     },
 };

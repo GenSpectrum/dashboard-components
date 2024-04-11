@@ -80,7 +80,7 @@ type MutationComparisonTabsProps = {
 };
 
 const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = ({ data, views, segments }) => {
-    const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 1 });
+    const [proportionInterval, setProportionInterval] = useState({ min: 0.5, max: 1 });
     const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
         { label: 'Substitutions', checked: true, type: 'substitution' },
         { label: 'Deletions', checked: true, type: 'deletion' },
