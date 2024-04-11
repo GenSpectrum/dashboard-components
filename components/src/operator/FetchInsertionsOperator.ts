@@ -2,7 +2,7 @@ import { type Dataset } from './Dataset';
 import { type Operator } from './Operator';
 import { fetchInsertions } from '../lapisApi/lapisApi';
 import { type InsertionEntry, type LapisFilter, type SequenceType } from '../types';
-import { MutationCache } from '../utils/mutations';
+import { Insertion } from '../utils/mutations';
 
 export class FetchInsertionsOperator implements Operator<InsertionEntry> {
     constructor(
@@ -10,20 +10,12 @@ export class FetchInsertionsOperator implements Operator<InsertionEntry> {
         private sequenceType: SequenceType,
     ) {}
 
-    private async fetchInsertions(
-        lapis: string,
-        signal?: AbortSignal,
-    ): Promise<{ insertion: string; count: number }[]> {
-        return (await fetchInsertions(lapis, { ...this.filter }, this.sequenceType, signal)).data;
-    }
-
     async evaluate(lapisUrl: string, signal?: AbortSignal): Promise<Dataset<InsertionEntry>> {
-        const insertions = await this.fetchInsertions(lapisUrl, signal);
+        const insertions = (await fetchInsertions(lapisUrl, this.filter, this.sequenceType, signal)).data;
 
-        const mutationCache = MutationCache.getInstance();
-        const content: InsertionEntry[] = insertions.map(({ insertion, count }) => ({
+        const content: InsertionEntry[] = insertions.map(({ count, insertedSymbols, sequenceName, position }) => ({
             type: 'insertion',
-            mutation: mutationCache.getInsertion(insertion),
+            mutation: new Insertion(sequenceName ?? undefined, position, insertedSymbols),
             count,
         }));
 

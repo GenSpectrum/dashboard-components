@@ -1,57 +1,5 @@
 import { type SequenceType } from '../types';
 
-export class MutationCache {
-    private substitutionCache = new Map<string, Substitution>();
-    private deletionCache = new Map<string, Deletion>();
-    private insertionCache = new Map<string, Insertion>();
-
-    private constructor() {}
-
-    getMutation(mutationStr: string) {
-        if (mutationStr.startsWith('ins_')) {
-            return this.getInsertion(mutationStr);
-        }
-        if (mutationStr.endsWith('-')) {
-            return this.getDeletion(mutationStr);
-        }
-        return this.getSubstitution(mutationStr);
-    }
-
-    getSubstitution(mutationStr: string) {
-        const key = mutationStr.toUpperCase();
-        if (!this.substitutionCache.has(key)) {
-            this.substitutionCache.set(key, Substitution.parse(mutationStr));
-        }
-        return this.substitutionCache.get(key)!;
-    }
-
-    getDeletion(mutationStr: string) {
-        const key = mutationStr.toUpperCase();
-        if (!this.deletionCache.has(key)) {
-            this.deletionCache.set(key, Deletion.parse(mutationStr));
-        }
-        return this.deletionCache.get(key)!;
-    }
-
-    getSubstitutionOrDeletion(mutationStr: string) {
-        return mutationStr.endsWith('-') ? this.getDeletion(mutationStr) : this.getSubstitution(mutationStr);
-    }
-
-    getInsertion(mutationStr: string): Insertion {
-        const key = mutationStr.toUpperCase();
-        if (!this.insertionCache.has(key)) {
-            this.insertionCache.set(key, Insertion.parse(mutationStr));
-        }
-        return this.insertionCache.get(key)!;
-    }
-
-    private static instance = new MutationCache();
-
-    static getInstance(): MutationCache {
-        return this.instance;
-    }
-}
-
 export interface Mutation {
     readonly segment: string | undefined;
     readonly position: number;
@@ -125,9 +73,9 @@ export class Insertion implements Mutation {
     constructor(
         readonly segment: string | undefined,
         readonly position: number,
-        readonly value: string,
+        readonly insertedSymbols: string,
     ) {
-        this.code = `ins_${this.segment ? `${this.segment}:` : ''}${this.position}:${this.value}`;
+        this.code = `ins_${this.segment ? `${this.segment}:` : ''}${this.position}:${this.insertedSymbols}`;
     }
 
     toString() {

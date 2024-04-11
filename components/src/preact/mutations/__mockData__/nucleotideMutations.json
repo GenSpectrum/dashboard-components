@@ -397,7 +397,7 @@
             "sequenceName": null,
             "mutationFrom": "A",
             "mutationTo": "-",
-            "position": 2202
+            "position": 22029
         },
         {
             "mutation": "G22030-",
@@ -406,7 +406,7 @@
             "sequenceName": null,
             "mutationFrom": "G",
             "mutationTo": "-",
-            "position": 2203
+            "position": 22030
         },
         {
             "mutation": "G160A",
@@ -424,7 +424,7 @@
             "sequenceName": null,
             "mutationFrom": "T",
             "mutationTo": "-",
-            "position": 2203
+            "position": 22031
         },
         {
             "mutation": "T22032-",
@@ -433,7 +433,7 @@
             "sequenceName": null,
             "mutationFrom": "T",
             "mutationTo": "-",
-            "position": 2203
+            "position": 22032
         },
         {
             "mutation": "T20372C",
@@ -451,7 +451,7 @@
             "sequenceName": null,
             "mutationFrom": "C",
             "mutationTo": "-",
-            "position": 2203
+            "position": 22033
         },
         {
             "mutation": "G11048T",
@@ -469,7 +469,7 @@
             "sequenceName": null,
             "mutationFrom": "A",
             "mutationTo": "-",
-            "position": 2203
+            "position": 22034
         },
         {
             "mutation": "T17033C",
@@ -487,7 +487,7 @@
             "sequenceName": null,
             "mutationFrom": "G",
             "mutationTo": "-",
-            "position": 2824
+            "position": 28248
         },
         {
             "mutation": "G21839T",
@@ -505,7 +505,7 @@
             "sequenceName": null,
             "mutationFrom": "A",
             "mutationTo": "-",
-            "position": 2824
+            "position": 28249
         },
         {
             "mutation": "T28250-",
@@ -514,7 +514,7 @@
             "sequenceName": null,
             "mutationFrom": "T",
             "mutationTo": "-",
-            "position": 2825
+            "position": 28250
         },
         {
             "mutation": "C27864A",
@@ -532,7 +532,7 @@
             "sequenceName": null,
             "mutationFrom": "T",
             "mutationTo": "-",
-            "position": 2825
+            "position": 28251
         },
         {
             "mutation": "T28252-",
@@ -541,7 +541,7 @@
             "sequenceName": null,
             "mutationFrom": "T",
             "mutationTo": "-",
-            "position": 2825
+            "position": 28252
         },
         {
             "mutation": "C28253-",
@@ -550,7 +550,7 @@
             "sequenceName": null,
             "mutationFrom": "C",
             "mutationTo": "-",
-            "position": 2825
+            "position": 28253
         },
         {
             "mutation": "A28271-",
