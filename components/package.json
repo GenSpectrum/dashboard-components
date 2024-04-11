@@ -8,8 +8,12 @@
     "module": "dist/genspectrum-components.js",
     "types": "dist/genspectrum-components.d.ts",
     "exports": {
-        ".": "./dist/dashboard-components.js",
-        "./custom-elements.json": "./custom-elements.json",
+        ".": {
+            "import": "./dist/dashboard-components.js",
+            "require": "./dist/dashboard-components.js",
+            "types": "./dist/genspectrum-components.d.ts"
+        },
+        "./custom-elements.json": "./custom-,elements.json",
         "./package.json": "./package.json",
         "./style.css": "./dist/style.css"
     },

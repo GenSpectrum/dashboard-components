@@ -1,3 +1,4 @@
+import { withActions } from '@storybook/addon-actions/decorator';
 import { type Meta, type StoryObj } from '@storybook/preact';
 
 import data from './__mockData__/aggregated_hosts.json';
@@ -9,6 +10,9 @@ const meta: Meta<TextInputProps> = {
     title: 'Input/TextInput',
     component: TextInput,
     parameters: {
+        actions: {
+            handles: ['gs-text-input-changed'],
+        },
         fetchMock: {
             mocks: [
                 {
@@ -27,6 +31,7 @@ const meta: Meta<TextInputProps> = {
             ],
         },
     },
+    decorators: [withActions],
 };
 
 export default meta;

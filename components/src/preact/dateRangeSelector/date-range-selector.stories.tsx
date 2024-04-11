@@ -1,3 +1,4 @@
+import { withActions } from '@storybook/addon-actions/decorator';
 import { type Meta, type StoryObj } from '@storybook/preact';
 
 import { DateRangeSelector, type DateRangeSelectorProps } from './date-range-selector';
@@ -8,12 +9,16 @@ const meta: Meta<DateRangeSelectorProps> = {
     title: 'Input/DateRangeSelector',
     component: DateRangeSelector,
     parameters: {
+        actions: {
+            handles: ['gs-date-range-changed'],
+        },
         fetchMock: {},
     },
     args: {
         customSelectOptions: [{ label: 'CustomDateRange', dateFrom: '2021-01-01', dateTo: '2021-12-31' }],
         earliestDate: '1970-01-01',
     },
+    decorators: [withActions],
 };
 
 export default meta;

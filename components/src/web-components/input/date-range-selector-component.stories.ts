@@ -1,3 +1,4 @@
+import { withActions } from '@storybook/addon-actions/decorator';
 import { expect, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
@@ -18,6 +19,7 @@ const meta: Meta<DateRangeSelectorProps> = {
         },
         fetchMock: {},
     },
+    decorators: [withActions],
 };
 
 export default meta;
