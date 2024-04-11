@@ -13,8 +13,11 @@ function App() {
     })
 
     useEffect(() => {
-        const handleLocationChange = (event: Event) => setLocation((event as CustomEvent).detail);
-        const handleDateRangeChange = (event: Event) => setDateRange((event as CustomEvent).detail);
+        const handleLocationChange = (event: CustomEvent) => setLocation(event.detail);
+        const handleDateRangeChange = (event: CustomEvent<{
+            dateFrom: string;
+            dateTo: string
+        }>) => setDateRange(event.detail);
 
         const locationFilter = document.querySelector('gs-location-filter');
         if (locationFilter) {

@@ -1,3 +1,4 @@
+import { withActions } from '@storybook/addon-actions/decorator';
 import { expect, fn, userEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
@@ -16,6 +17,8 @@ const meta: Meta = {
             handles: ['gs-location-changed'],
         },
     },
+    decorators: [withActions],
+    tags: ['autodocs'],
 };
 
 export default meta;

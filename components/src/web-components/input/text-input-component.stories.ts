@@ -1,3 +1,4 @@
+import { withActions } from '@storybook/addon-actions/decorator';
 import { expect, fn, userEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
@@ -33,6 +34,7 @@ const meta: Meta = {
             ],
         },
     },
+    decorators: [withActions],
 };
 
 export default meta;

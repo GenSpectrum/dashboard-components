@@ -1,3 +1,4 @@
+import { withActions } from '@storybook/addon-actions/decorator';
 import { type Meta, type StoryObj } from '@storybook/preact';
 
 import data from './__mockData__/aggregated.json';
@@ -27,12 +28,13 @@ const meta: Meta<typeof LocationFilter> = {
             ],
         },
         actions: {
-            handles: ['gs-location-changed .div', 'mouseover'],
+            handles: ['gs-location-changed'],
         },
     },
     args: {
         fields: ['region', 'country', 'division', 'location'],
     },
+    decorators: [withActions],
 };
 
 export default meta;
