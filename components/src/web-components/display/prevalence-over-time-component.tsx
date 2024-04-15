@@ -1,6 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 
 import PrevalenceOverTime, { type View } from '../../preact/prevalenceOverTime/prevalence-over-time';
+import { type ConfidenceIntervalMethod } from '../../preact/shared/charts/confideceInterval';
 import { type NamedLapisFilter, type TemporalGranularity } from '../../types';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
@@ -21,6 +22,9 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     @property({ type: Array })
     views: View[] = ['bar', 'line', 'bubble', 'table'];
 
+    @property({ type: Array })
+    confidenceIntervalMethods: ConfidenceIntervalMethod[] = ['wilson'];
+
     override render() {
         return (
             <PrevalenceOverTime
@@ -29,6 +33,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
                 granularity={this.granularity}
                 smoothingWindow={this.smoothingWindow}
                 views={this.views}
+                confidenceIntervalMethods={this.confidenceIntervalMethods}
             />
         );
     }
