@@ -14,13 +14,16 @@ export const ScalingSelector: FunctionComponent<ScalingSelectorProps> = ({
     setYAxisScaleType,
     className,
 }) => {
+    const items = [
+        { label: 'y axis scaling type', value: 'none', disabled: true },
+        { label: 'Linear', value: 'linear' },
+        { label: 'Logarithmic', value: 'logarithmic' },
+        { label: 'Logit', value: 'logit' },
+    ];
+
     return (
         <Select
-            items={[
-                { label: 'Linear', value: 'linear' },
-                { label: 'Logarithmic', value: 'logarithmic' },
-                { label: 'Logit', value: 'logit' },
-            ]}
+            items={items}
             selected={yAxisScaleType}
             onChange={(event: Event) => {
                 const select = event.target as HTMLSelectElement;

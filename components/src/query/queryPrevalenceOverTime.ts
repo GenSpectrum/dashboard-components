@@ -14,10 +14,12 @@ import {
     TemporalCache,
 } from '../utils/temporal';
 
-export type PrevalenceOverTimeData = {
+export type PrevalenceOverTimeData = PrevalenceOverTimeVariantData[];
+
+export type PrevalenceOverTimeVariantData = {
     displayName: string;
     content: { count: number; prevalence: number; total: number; dateRange: Temporal | null }[];
-}[];
+};
 
 export function queryPrevalenceOverTime(
     numeratorFilter: NamedLapisFilter | NamedLapisFilter[],

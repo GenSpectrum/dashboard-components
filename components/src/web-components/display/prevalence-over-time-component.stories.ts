@@ -28,6 +28,10 @@ const meta: Meta<PrevalenceOverTimeProps> = {
             options: ['bar', 'line', 'bubble', 'table'],
             control: { type: 'check' },
         },
+        confidenceIntervalMethods: {
+            options: ['wilson'],
+            control: { type: 'check' },
+        },
     },
 };
 
@@ -43,6 +47,7 @@ const Template: StoryObj<PrevalenceOverTimeProps> = {
                     .granularity=${args.granularity}
                     .smoothingWindow=${args.smoothingWindow}
                     .views=${args.views}
+                    .confidenceIntervalMethods=${args.confidenceIntervalMethods}
                 ></gs-prevalence-over-time>
             </gs-app>
         </div>
@@ -60,6 +65,7 @@ export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
         granularity: 'month',
         smoothingWindow: 0,
         views: ['bar', 'line', 'bubble', 'table'],
+        confidenceIntervalMethods: ['wilson'],
     },
     parameters: {
         fetchMock: {
@@ -124,6 +130,7 @@ export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
         granularity: 'day',
         smoothingWindow: 7,
         views: ['bar', 'line', 'bubble', 'table'],
+        confidenceIntervalMethods: ['wilson'],
     },
     parameters: {
         fetchMock: {
