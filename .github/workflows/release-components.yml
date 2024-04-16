@@ -1,0 +1,45 @@
+name: Release Components
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        id: release
+        with:
+          path: components
+          config-file: components/release-please-config.json
+          manifest-file: components/.release-please-manifest.json
+          include-component-in-tag: true
+          target-branch: main
+
+      - uses: actions/checkout@v4
+        if: ${{ steps.release.outputs.release_created }}
+
+      - uses: actions/cache@v4
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
+
+      - name: Build
+        if: ${{ steps.release.outputs.release_created }}
+        run:
+          npm ci
+          npm run build
+        working-directory: components
+
+      - name: Publish
+        if: ${{ steps.release.outputs.release_created }}
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        working-directory: components
