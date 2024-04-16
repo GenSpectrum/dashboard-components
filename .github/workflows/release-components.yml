@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - 130-release-please
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        with:
+          # this is a built-in strategy in release-please, see "Action Inputs"
+          # for more options
+          release-type: node
+          path: components
+          config-file: components/release-please-config.json
+          manifest-file: components/.release-please-manifest.json
+          include-component-in-tag: true
+          target-branch: 130-release-please
