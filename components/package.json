@@ -61,6 +61,7 @@
         "gridjs": "^6.2.0",
         "lit": "^3.1.2",
         "preact": "^10.20.1",
+        "release-please": "^16.10.1",
         "zod": "^3.22.4"
     },
     "devDependencies": {
