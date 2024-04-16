@@ -93,6 +93,7 @@
         "msw": "^2.2.13",
         "postcss": "^8.4.38",
         "prettier": "^3.2.5",
+        "release-please": "^16.10.1",
         "storybook": "^8.0.8",
         "storybook-addon-fetch-mock": "^2.0.0",
         "tailwindcss": "^3.4.3",
