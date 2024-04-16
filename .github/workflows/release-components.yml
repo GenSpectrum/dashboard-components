@@ -13,9 +13,6 @@ jobs:
     steps:
       - uses: google-github-actions/release-please-action@v4
         with:
-          # this is a built-in strategy in release-please, see "Action Inputs"
-          # for more options
-          release-type: node
           path: components
           config-file: components/release-please-config.json
           manifest-file: components/.release-please-manifest.json
