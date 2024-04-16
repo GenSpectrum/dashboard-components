@@ -1,15 +1,16 @@
+name: Release Components
+
 on:
   push:
     branches:
       - 130-release-please
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: google-github-actions/release-please-action@v4
         with:
