@@ -19,4 +19,14 @@ describe('Insertion', () => {
         expect(Insertion.parse('ins_1:A')).deep.equal(new Insertion(undefined, 1, 'A'));
         expect(Insertion.parse('ins_seg1:1:A')).deep.equal(new Insertion('seg1', 1, 'A'));
     });
+
+    it('should be parsed with case insensitive ins prefix', () => {
+        expect(Insertion.parse('INS_1:A')).deep.equal(new Insertion(undefined, 1, 'A'));
+        expect(Insertion.parse('iNs_1:A')).deep.equal(new Insertion(undefined, 1, 'A'));
+    });
+
+    it('should be parsed with the other parts not case insensitive', () => {
+        expect(Insertion.parse('ins_geNe1:1:A')).deep.equal(new Insertion('geNe1', 1, 'A'));
+        expect(Insertion.parse('ins_1:aA')).deep.equal(new Insertion(undefined, 1, 'aA'));
+    });
 });

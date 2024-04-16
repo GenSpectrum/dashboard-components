@@ -1,8 +1,8 @@
-const pattern = /^ins_(?:([A-Za-z0-9]+):)?(\d+):([A-Za-z]+|\*)/;
+import { insertionRegexp } from '../../../utils/mutations';
 
 export const sortInsertions = (a: string, b: string) => {
-    const aMatch = a.match(pattern);
-    const bMatch = b.match(pattern);
+    const aMatch = a.match(insertionRegexp);
+    const bMatch = b.match(insertionRegexp);
 
     if (aMatch && bMatch) {
         if (aMatch[1] !== bMatch[1]) {
