@@ -1,9 +1,8 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useRef, useState } from 'preact/hooks';
 
-import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
-import { type SequenceType } from '../../types';
-import { Deletion, Insertion, type Mutation, Substitution } from '../../utils/mutations';
+import { parseMutation } from './parseMutation';
+import { type Deletion, type Insertion, type Mutation, type Substitution } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { singleGraphColorRGBA } from '../shared/charts/colors';
 import { AddIcon } from '../shared/icons/AddIcon';
@@ -32,7 +31,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
     const handleSubmit = (event: Event) => {
         event.preventDefault();
 
-        const parsedMutation = parseInsertedMutation(inputValue, referenceGenome);
+        const parsedMutation = parseMutation(inputValue, referenceGenome);
 
         if (parsedMutation !== null) {
             const keys = Object.keys(parsedMutation) as (keyof typeof parsedMutation)[];
@@ -110,67 +109,6 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
             </form>
         </div>
     );
-};
-
-export const parseInsertedMutation = (value: string, referenceGenome: ReferenceGenome) => {
-    const possibleInsertion = Insertion.parse(value);
-    if (possibleInsertion !== null) {
-        const sequenceType = getSequenceType(possibleInsertion.segment, referenceGenome);
-        switch (sequenceType) {
-            case 'nucleotide':
-                return { nucleotideInsertions: possibleInsertion };
-            case 'amino acid':
-                return { aminoAcidInsertions: possibleInsertion };
-            case undefined:
-                return null;
-        }
-    }
-
-    const possibleDeletion = Deletion.parse(value);
-    if (possibleDeletion !== null) {
-        const sequenceType = getSequenceType(possibleDeletion.segment, referenceGenome);
-        switch (sequenceType) {
-            case 'nucleotide':
-                return { nucleotideMutations: possibleDeletion };
-            case 'amino acid':
-                return { aminoAcidMutations: possibleDeletion };
-            case undefined:
-                return null;
-        }
-    }
-
-    const possibleSubstitution = Substitution.parse(value);
-    if (possibleSubstitution !== null) {
-        const sequenceType = getSequenceType(possibleSubstitution.segment, referenceGenome);
-        switch (sequenceType) {
-            case 'nucleotide':
-                return { nucleotideMutations: possibleSubstitution };
-            case 'amino acid':
-                return { aminoAcidMutations: possibleSubstitution };
-            case undefined:
-                return null;
-        }
-    }
-
-    return null;
-};
-
-export const getSequenceType = (
-    possibleSegment: string | undefined,
-    referenceGenome: ReferenceGenome,
-): SequenceType | undefined => {
-    if (possibleSegment === undefined) {
-        return referenceGenome.nucleotideSequences.length === 1 ? 'nucleotide' : undefined;
-    }
-
-    if (referenceGenome.nucleotideSequences.some((sequence) => sequence.name === possibleSegment)) {
-        return 'nucleotide';
-    }
-
-    if (referenceGenome.genes.some((gene) => gene.name === possibleSegment)) {
-        return 'amino acid';
-    }
-    return undefined;
 };
 
 const SelectedMutationDisplay: FunctionComponent<{
