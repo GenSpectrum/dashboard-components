@@ -66,53 +66,71 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
         );
     }
 
-    const getViewTitle = (view: View) => {
+    return (
+        <Headline heading={headline}>
+            <RelativeGrowthAdvantageTabs
+                data={data}
+                yAxisScaleType={yAxisScaleType}
+                setYAxisScaleType={setYAxisScaleType}
+                views={views}
+            />
+        </Headline>
+    );
+};
+
+type RelativeGrowthAdvantageTabsProps = {
+    data: NonNullable<RelativeGrowthAdvantageData>;
+    yAxisScaleType: ScaleType;
+    setYAxisScaleType: (scaleType: ScaleType) => void;
+    views: View[];
+};
+
+const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabsProps> = ({
+    data,
+    yAxisScaleType,
+    setYAxisScaleType,
+    views,
+}) => {
+    const getTab = (view: View) => {
         switch (view) {
             case 'line':
-                return 'Line';
+                return {
+                    title: 'Line',
+                    content: (
+                        <RelativeGrowthAdvantageChart
+                            data={{
+                                ...data.estimatedProportions,
+                                observed: data.observedProportions,
+                                params: data.params,
+                            }}
+                            yAxisScaleType={yAxisScaleType}
+                        />
+                    ),
+                };
         }
     };
 
-    const getLineChartView = (data: NonNullable<RelativeGrowthAdvantageData>) => {
-        return (
-            <>
-                <RelativeGrowthAdvantageChart
-                    data={{
-                        ...data.estimatedProportions,
-                        observed: data.observedProportions,
-                    }}
-                    yAxisScaleType={yAxisScaleType}
-                />
-                <div>
-                    Advantage: {(data.params.fd.value * 100).toFixed(2)}% ({(data.params.fd.ciLower * 100).toFixed(2)}%
-                    - {(data.params.fd.ciUpper * 100).toFixed(2)}%)
-                </div>
-            </>
-        );
-    };
+    const tabs = views.map((view) => getTab(view));
+    const toolbar = () => (
+        <RelativeGrowthAdvantageToolbar yAxisScaleType={yAxisScaleType} setYAxisScaleType={setYAxisScaleType} />
+    );
 
-    const getViewContent = (view: View, data: NonNullable<RelativeGrowthAdvantageData>) => {
-        switch (view) {
-            case 'line':
-                return getLineChartView(data);
-        }
-    };
+    return <Tabs tabs={tabs} toolbar={toolbar} />;
+};
 
-    const tabs = views.map((view) => ({
-        title: getViewTitle(view),
-        content: getViewContent(view, data),
-    }));
+type RelativeGrowthAdvantageToolbarProps = {
+    yAxisScaleType: ScaleType;
+    setYAxisScaleType: (scaleType: ScaleType) => void;
+};
 
-    const toolbar = (
+const RelativeGrowthAdvantageToolbar: FunctionComponent<RelativeGrowthAdvantageToolbarProps> = ({
+    yAxisScaleType,
+    setYAxisScaleType,
+}) => {
+    return (
         <div class='flex'>
             <ScalingSelector yAxisScaleType={yAxisScaleType} setYAxisScaleType={setYAxisScaleType} />
             <Info className='ml-1' content='Line chart' />
         </div>
-    );
-
-    return (
-        <Headline heading={headline}>
-            <Tabs tabs={tabs} toolbar={toolbar} />
-        </Headline>
     );
 };
