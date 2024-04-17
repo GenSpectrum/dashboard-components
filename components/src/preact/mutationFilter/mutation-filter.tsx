@@ -1,7 +1,7 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useRef, useState } from 'preact/hooks';
 
-import { parseMutation } from './parseMutation';
+import { parseAndValidateMutation } from './parseAndValidateMutation';
 import { type Deletion, type Insertion, type Mutation, type Substitution } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
@@ -31,7 +31,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
     const handleSubmit = (event: Event) => {
         event.preventDefault();
 
-        const parsedMutation = parseMutation(inputValue, referenceGenome);
+        const parsedMutation = parseAndValidateMutation(inputValue, referenceGenome);
 
         if (parsedMutation === null) {
             return;

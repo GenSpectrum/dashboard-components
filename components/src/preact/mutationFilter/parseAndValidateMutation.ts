@@ -7,7 +7,7 @@ type FilterUnion = {
     [MutationType in keyof SelectedFilters]: { type: MutationType; value: SelectedFilters[MutationType][number] };
 }[keyof SelectedFilters];
 
-export const parseMutation = (value: string, referenceGenome: ReferenceGenome): FilterUnion | null => {
+export const parseAndValidateMutation = (value: string, referenceGenome: ReferenceGenome): FilterUnion | null => {
     const possibleInsertion = Insertion.parse(value);
     if (possibleInsertion !== null) {
         const sequenceType = sequenceTypeFromSegment(possibleInsertion.segment, referenceGenome);
