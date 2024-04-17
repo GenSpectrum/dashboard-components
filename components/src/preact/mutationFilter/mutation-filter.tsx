@@ -10,7 +10,7 @@ import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
 export type MutationFilterProps = {};
 
-type SelectedFilters = {
+export type SelectedFilters = {
     nucleotideMutations: (Substitution | Deletion)[];
     aminoAcidMutations: (Substitution | Deletion)[];
     nucleotideInsertions: Insertion[];
@@ -33,25 +33,18 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
 
         const parsedMutation = parseMutation(inputValue, referenceGenome);
 
-        if (parsedMutation !== null) {
-            const keys = Object.keys(parsedMutation) as (keyof typeof parsedMutation)[];
-
-            const newValues = keys
-                .filter((key) => parsedMutation[key] !== undefined)
-                .map((key) => ({
-                    [key]: [...selectedFilters[key], parsedMutation[key]],
-                }))
-                .reduce((acc, curr) => ({ ...acc, ...curr }), {});
-
-            const newSelectedValues = {
-                ...selectedFilters,
-                ...newValues,
-            };
-
-            setSelectedFilters(newSelectedValues);
-            fireChangeEvent(newSelectedValues);
-            setInputValue('');
+        if (parsedMutation === null) {
+            return;
         }
+
+        const newSelectedValues = {
+            ...selectedFilters,
+            [parsedMutation.type]: [...selectedFilters[parsedMutation.type], parsedMutation.value],
+        };
+
+        setSelectedFilters(newSelectedValues);
+        fireChangeEvent(newSelectedValues);
+        setInputValue('');
     };
 
     const fireChangeEvent = (selectedFilters: SelectedFilters) => {

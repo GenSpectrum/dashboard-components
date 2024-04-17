@@ -1,16 +1,21 @@
+import { type SelectedFilters } from './mutation-filter';
 import { sequenceTypeFromSegment } from './sequenceTypeFromSegment';
 import type { ReferenceGenome } from '../../lapisApi/ReferenceGenome';
 import { Deletion, Insertion, Substitution } from '../../utils/mutations';
 
-export const parseMutation = (value: string, referenceGenome: ReferenceGenome) => {
+type FilterUnion = {
+    [MutationType in keyof SelectedFilters]: { type: MutationType; value: SelectedFilters[MutationType][number] };
+}[keyof SelectedFilters];
+
+export const parseMutation = (value: string, referenceGenome: ReferenceGenome): FilterUnion | null => {
     const possibleInsertion = Insertion.parse(value);
     if (possibleInsertion !== null) {
         const sequenceType = sequenceTypeFromSegment(possibleInsertion.segment, referenceGenome);
         switch (sequenceType) {
             case 'nucleotide':
-                return { nucleotideInsertions: possibleInsertion };
+                return { type: 'nucleotideInsertions', value: possibleInsertion };
             case 'amino acid':
-                return { aminoAcidInsertions: possibleInsertion };
+                return { type: 'aminoAcidInsertions', value: possibleInsertion };
             case undefined:
                 return null;
         }
@@ -21,9 +26,9 @@ export const parseMutation = (value: string, referenceGenome: ReferenceGenome) =
         const sequenceType = sequenceTypeFromSegment(possibleDeletion.segment, referenceGenome);
         switch (sequenceType) {
             case 'nucleotide':
-                return { nucleotideMutations: possibleDeletion };
+                return { type: 'nucleotideMutations', value: possibleDeletion };
             case 'amino acid':
-                return { aminoAcidMutations: possibleDeletion };
+                return { type: 'aminoAcidMutations', value: possibleDeletion };
             case undefined:
                 return null;
         }
@@ -34,9 +39,9 @@ export const parseMutation = (value: string, referenceGenome: ReferenceGenome) =
         const sequenceType = sequenceTypeFromSegment(possibleSubstitution.segment, referenceGenome);
         switch (sequenceType) {
             case 'nucleotide':
-                return { nucleotideMutations: possibleSubstitution };
+                return { type: 'nucleotideMutations', value: possibleSubstitution };
             case 'amino acid':
-                return { aminoAcidMutations: possibleSubstitution };
+                return { type: 'aminoAcidMutations', value: possibleSubstitution };
             case undefined:
                 return null;
         }
