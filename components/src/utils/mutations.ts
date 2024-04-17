@@ -10,7 +10,8 @@ export interface Mutation {
     toString(): string;
 }
 
-export const substitutionRegex = /(?:([A-Za-z0-9]+):)?([A-Za-z])(\d+)([A-Za-z]|\*)/;
+export const substitutionRegex =
+    /((?<segment>[A-Za-z0-9]+):)?(?<valueAtReference>[A-Za-z])(?<position>\d+)(?<substitutionValue>[A-Za-z]|\*)/;
 
 export class Substitution implements Mutation {
     readonly code;
@@ -42,15 +43,19 @@ export class Substitution implements Mutation {
 
     static parse(mutationStr: string): Substitution | null {
         const match = mutationStr.match(substitutionRegex);
-        if (match === null) {
+        if (match === null || match.groups === undefined) {
             return null;
         }
-        const [, segment, valueAtReference, position, substitutionValue] = match;
-        return new Substitution(segment, valueAtReference, substitutionValue, parseInt(position, 10));
+        return new Substitution(
+            match.groups.segment,
+            match.groups.valueAtReference,
+            match.groups.substitutionValue,
+            parseInt(match.groups.position, 10),
+        );
     }
 }
 
-export const deletionRegex = /(?:([A-Za-z0-9]+):)?([A-Za-z])(\d+)(-)/;
+export const deletionRegex = /((?<segment>[A-Za-z0-9]+):)?(?<valueAtReference>[A-Za-z])(?<position>\d+)(-)/;
 
 export class Deletion implements Mutation {
     readonly code;
@@ -80,16 +85,15 @@ export class Deletion implements Mutation {
 
     static parse(mutationStr: string): Deletion | null {
         const match = mutationStr.match(deletionRegex);
-        if (match === null) {
+        if (match === null || match.groups === undefined) {
             return null;
         }
 
-        const [, segment, valueAtReference, position] = match;
-        return new Deletion(segment, valueAtReference, parseInt(position, 10));
+        return new Deletion(match.groups.segment, match.groups.valueAtReference, parseInt(match.groups.position, 10));
     }
 }
 
-export const insertionRegexp = /^ins_(?:([A-Za-z0-9]+):)?(\d+):([A-Za-z]+|\*)/i;
+export const insertionRegexp = /^ins_((?<segment>[A-Za-z0-9]+):)?(<position>\d+):(<insertedSymbol>[A-Za-z]+|\*)/i;
 
 export class Insertion implements Mutation {
     readonly code;
@@ -119,13 +123,11 @@ export class Insertion implements Mutation {
 
     static parse(mutationStr: string): Insertion | null {
         const match = mutationStr.match(insertionRegexp);
-        if (match === null) {
+        if (match === null || match.groups === undefined) {
             return null;
         }
 
-        const [, segment, position, insertedSymbols] = match;
-
-        return new Insertion(segment, parseInt(position, 10), insertedSymbols);
+        return new Insertion(match.groups.segment, parseInt(match.groups.position, 10), match.groups.insertedSymbols);
     }
 }
 
