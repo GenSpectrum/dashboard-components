@@ -4,6 +4,19 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    commit-message:
+      prefix: "chore(github-actions)"
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      minorAndPatch:
+        update-types:
+          - "minor"
+          - "patch"
+    commit-message:
+      prefix: "chore(root)"
   - package-ecosystem: npm
     directory: components/
     schedule:
@@ -13,3 +26,5 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    commit-message:
+      prefix: "chore(components)"
