@@ -4,7 +4,7 @@ import { useContext, useRef, useState } from 'preact/hooks';
 import { parseMutation } from './parseMutation';
 import { type Deletion, type Insertion, type Mutation, type Substitution } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
-import { singleGraphColorRGBA } from '../shared/charts/colors';
+import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { AddIcon } from '../shared/icons/AddIcon';
 import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
@@ -109,9 +109,9 @@ const SelectedMutationDisplay: FunctionComponent<{
     setSelectedFilters: (selectedFilters: SelectedFilters) => void;
     fireChangeEvent: (selectedFilters: SelectedFilters) => void;
 }> = ({ selectedFilters, setSelectedFilters, fireChangeEvent }) => {
-    const onSelectedRemoved = <MutationType extends Mutation>(
-        mutation: MutationType,
-        key: 'aminoAcidInsertions' | 'aminoAcidMutations' | 'nucleotideInsertions' | 'nucleotideMutations',
+    const onSelectedRemoved = <MutationType extends keyof SelectedFilters>(
+        mutation: SelectedFilters[MutationType][number],
+        key: MutationType,
     ) => {
         const newSelectedValues = {
             ...selectedFilters,
@@ -169,8 +169,8 @@ const SelectedAminoAcidInsertion: FunctionComponent<{
     insertion: Insertion;
     onDelete: (insertion: Insertion) => void;
 }> = ({ insertion, onDelete }) => {
-    const backgroundColor = singleGraphColorRGBA(3, 0.3);
-    const textColor = singleGraphColorRGBA(3, 1);
+    const backgroundColor = singleGraphColorRGBByName('teal', 0.3);
+    const textColor = singleGraphColorRGBByName('teal', 1);
     return (
         <SelectedFilter
             mutation={insertion}
@@ -185,8 +185,8 @@ const SelectedAminoAcidMutation: FunctionComponent<{
     mutation: Substitution | Deletion;
     onDelete: (mutation: Substitution | Deletion) => void;
 }> = ({ mutation, onDelete }) => {
-    const backgroundColor = singleGraphColorRGBA(6, 0.3);
-    const textColor = singleGraphColorRGBA(6, 1);
+    const backgroundColor = singleGraphColorRGBByName('rose', 0.3);
+    const textColor = singleGraphColorRGBByName('rose', 1);
     return (
         <SelectedFilter
             mutation={mutation}
@@ -201,8 +201,8 @@ const SelectedNucleotideMutation: FunctionComponent<{
     mutation: Substitution | Deletion;
     onDelete: (insertion: Substitution | Deletion) => void;
 }> = ({ mutation, onDelete }) => {
-    const backgroundColor = singleGraphColorRGBA(0, 0.3);
-    const textColor = singleGraphColorRGBA(0, 1);
+    const backgroundColor = singleGraphColorRGBByName('indigo', 0.3);
+    const textColor = singleGraphColorRGBByName('indigo', 1);
     return (
         <SelectedFilter
             mutation={mutation}
@@ -217,8 +217,8 @@ const SelectedNucleotideInsertion: FunctionComponent<{
     insertion: Insertion;
     onDelete: (insertion: Insertion) => void;
 }> = ({ insertion, onDelete }) => {
-    const backgroundColor = singleGraphColorRGBA(1, 0.3);
-    const textColor = singleGraphColorRGBA(1, 1);
+    const backgroundColor = singleGraphColorRGBByName('green', 0.3);
+    const textColor = singleGraphColorRGBByName('green', 1);
 
     return (
         <SelectedFilter

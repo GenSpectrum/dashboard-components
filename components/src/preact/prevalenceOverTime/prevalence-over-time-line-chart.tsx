@@ -4,10 +4,10 @@ import { type TooltipItem } from 'chart.js/dist/types';
 import { type PrevalenceOverTimeData, type PrevalenceOverTimeVariantData } from '../../query/queryPrevalenceOverTime';
 import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';
-import { singleGraphColorRGBA } from '../shared/charts/colors';
+import { singleGraphColorRGBAById } from '../shared/charts/colors';
 import {
-    type ConfidenceIntervalMethod,
     confidenceIntervalDataLabel,
+    type ConfidenceIntervalMethod,
     wilson95PercentConfidenceInterval,
 } from '../shared/charts/confideceInterval';
 import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
@@ -76,7 +76,7 @@ const getDatasetCIUpper = (prevalenceOverTimeVariant: PrevalenceOverTimeVariantD
     borderWidth: 0,
     pointRadius: 0,
     fill: '+1',
-    backgroundColor: singleGraphColorRGBA(dataIndex, 0.3),
+    backgroundColor: singleGraphColorRGBAById(dataIndex, 0.3),
 });
 
 const getDatasetCILower = (prevalenceOverTimeVariant: PrevalenceOverTimeVariantData, dataIndex: number) => ({
@@ -87,7 +87,7 @@ const getDatasetCILower = (prevalenceOverTimeVariant: PrevalenceOverTimeVariantD
     borderWidth: 0,
     pointRadius: 0,
     fill: '-1',
-    backgroundColor: singleGraphColorRGBA(dataIndex, 0.3),
+    backgroundColor: singleGraphColorRGBAById(dataIndex, 0.3),
 });
 
 const getDatasetLine = (prevalenceOverTimeVariant: PrevalenceOverTimeVariantData, dataIndex: number) => ({
@@ -95,8 +95,8 @@ const getDatasetLine = (prevalenceOverTimeVariant: PrevalenceOverTimeVariantData
     data: prevalenceOverTimeVariant.content.map((dataPoint) => dataPoint.prevalence),
     borderWidth: 1,
     pointRadius: 0,
-    borderColor: singleGraphColorRGBA(dataIndex),
-    backgroundColor: singleGraphColorRGBA(dataIndex),
+    borderColor: singleGraphColorRGBAById(dataIndex),
+    backgroundColor: singleGraphColorRGBAById(dataIndex),
 });
 
 const tooltip = (confidenceIntervalMethod?: ConfidenceIntervalMethod) => {
