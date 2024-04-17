@@ -1,5 +1,4 @@
-import { Scale } from 'chart.js';
-import { type Chart } from 'chart.js/dist/types';
+import { type Chart, type CoreScaleOptions, Scale } from 'chart.js';
 
 export class LogitScale extends Scale {
     static id = 'logit';
@@ -37,5 +36,13 @@ export class LogitScale extends Scale {
         const decimal = (logitValue - logitMin) / (logitMax - logitMin);
 
         return this.getPixelForDecimal(decimal);
+    }
+}
+
+declare module 'chart.js' {
+    export interface CartesianScaleTypeRegistry {
+        logit: {
+            options: CoreScaleOptions;
+        };
     }
 }

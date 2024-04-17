@@ -39,7 +39,6 @@ const RelativeGrowthAdvantageChart = ({ data, yAxisScaleType }: RelativeGrowthAd
         options: {
             animation: false,
             scales: {
-                // @ts-expect-error-next-line -- chart.js typings are not complete with custom scales
                 y: getYAxisScale(yAxisScaleType),
             },
             plugins: {
