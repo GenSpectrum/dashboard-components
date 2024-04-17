@@ -38,10 +38,7 @@ export const FiresFilterChangedEvent: StoryObj<{ lapisField: string; placeholder
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
 
         const inputField = () => canvas.getByPlaceholderText('Enter a mutation');
-        const submitButton = () => {
-            const allButtons = canvas.getAllByRole('button');
-            return allButtons[allButtons.length - 1];
-        };
+        const submitButton = () => canvas.getByRole('button', { name: '+' });
         const listenerMock = fn();
         await step('Setup event listener mock', async () => {
             canvasElement.addEventListener('gs-mutation-filter-changed', listenerMock);

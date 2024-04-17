@@ -5,7 +5,6 @@ import { parseAndValidateMutation } from './parseAndValidateMutation';
 import { type Deletion, type Insertion, type Mutation, type Substitution } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
-import { AddIcon } from '../shared/icons/AddIcon';
 import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
 export type MutationFilterProps = {};
@@ -95,9 +94,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
                         placeholder={'Enter a mutation'}
                         onBlur={handleOnBlur}
                     />
-                    <button>
-                        <AddIcon />
-                    </button>
+                    <button className='btn btn-sm'>+</button>
                 </label>
             </form>
         </div>
