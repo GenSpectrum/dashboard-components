@@ -5,7 +5,11 @@ import { type PrevalenceOverTimeData, type PrevalenceOverTimeVariantData } from 
 import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';
 import { singleGraphColorRGBA } from '../shared/charts/colors';
-import { type ConfidenceIntervalMethod, wilson95PercentConfidenceInterval } from '../shared/charts/confideceInterval';
+import {
+    type ConfidenceIntervalMethod,
+    confidenceIntervalDataLabel,
+    wilson95PercentConfidenceInterval,
+} from '../shared/charts/confideceInterval';
 import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
 
 interface PrevalenceOverTimeLineChartProps {
@@ -124,7 +128,7 @@ const tooltip = (confidenceIntervalMethod?: ConfidenceIntervalMethod) => {
                                 return '';
                             }
 
-                            return `${context.dataset.label}: ${value?.toFixed(3)} (${ciLower.toFixed(3)} - ${ciUpper.toFixed(3)})`;
+                            return confidenceIntervalDataLabel(value, ciLower, ciUpper, context.dataset.label);
                         }
                         return context.dataset.label;
                     },
