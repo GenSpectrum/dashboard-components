@@ -104,7 +104,7 @@ function App() {
                 fontSize: '1.5rem',
                 fontWeight: 'bold',
             }}>
-                Plots
+                Analyzing {nextcladePangoLineage.nextcladePangoLineage}
             </h2>
             <div style={{
                 display: 'flex',
