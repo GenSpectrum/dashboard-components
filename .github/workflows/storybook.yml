@@ -16,7 +16,7 @@ jobs:
       uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
       with:
         path: components/storybook-static
-        install_command: cd components && npm ci && cd ..
-        build_command: cd components && npm run build-storybook && cd ..
+        install_command: cd components && npm ci&& cd ..
+        build_command: cd components && npm run generate-manifest && npm run build-storybook && cd ..
       env:
         DISABLE_PREACT_STORYBOOK: true

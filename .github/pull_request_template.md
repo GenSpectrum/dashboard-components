@@ -16,4 +16,5 @@ This helps others quickly grasping what you did even if they are not familiar wi
 
 ### PR Checklist
 <!-- Check completed items of strikethrough irrelevant items (using ~~text~~) -->
+- [ ] All necessary documentation has been adapted.
 - [ ] The implemented feature is covered by an appropriate test.

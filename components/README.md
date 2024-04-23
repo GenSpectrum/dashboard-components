@@ -59,9 +59,10 @@ npm run generate-manifest:watch
 
 We use Storybook to develop our components.
 
-To start Storybook, run:
+To start Storybook, run (`npm run generate-manifest` makes sure to generate the `custom-elements.json` first):
 
 ```bash
+npm run generate-manifest
 npm run storybook-preact
 npm run storybook
 ```

@@ -2,11 +2,13 @@ import { withActions } from '@storybook/addon-actions/decorator';
 import { expect, fn, userEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../app';
 import './location-filter-component';
 import data from '../../preact/locationFilter/__mockData__/aggregated.json';
+import { type LocationFilterProps } from '../../preact/locationFilter/location-filter';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const meta: Meta = {
@@ -18,21 +20,21 @@ const meta: Meta = {
         },
     },
     decorators: [withActions],
-    tags: ['autodocs'],
 };
 
 export default meta;
 
-const Template: StoryObj<{ fields: string[] }> = {
+const Template: StoryObj<LocationFilterProps> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
-                <gs-location-filter .fields=${args.fields}></gs-location-filter>
+                <gs-location-filter .fields=${args.fields} value=${ifDefined(args.value)}></gs-location-filter>
             </div>
         </gs-app>`;
     },
     args: {
         fields: ['region', 'country', 'division', 'location'],
+        value: '',
     },
 };
 
@@ -44,7 +46,7 @@ const aggregatedEndpointMatcher = {
     },
 };
 
-export const LocationFilter: StoryObj<{ fields: string[] }> = {
+export const LocationFilter: StoryObj<LocationFilterProps> = {
     ...Template,
     parameters: {
         fetchMock: {
@@ -67,7 +69,7 @@ export const LocationFilter: StoryObj<{ fields: string[] }> = {
     },
 };
 
-export const DelayToShowLoadingState: StoryObj<{ fields: string[] }> = {
+export const DelayToShowLoadingState: StoryObj<LocationFilterProps> = {
     ...Template,
     parameters: {
         fetchMock: {
@@ -87,7 +89,7 @@ export const DelayToShowLoadingState: StoryObj<{ fields: string[] }> = {
     },
 };
 
-export const FetchingLocationsFails: StoryObj<{ fields: string[] }> = {
+export const FetchingLocationsFails: StoryObj<LocationFilterProps> = {
     ...Template,
     parameters: {
         fetchMock: {
@@ -113,7 +115,7 @@ export const FetchingLocationsFails: StoryObj<{ fields: string[] }> = {
     },
 };
 
-export const FiresEvent: StoryObj<{ fields: string[] }> = {
+export const FiresEvent: StoryObj<LocationFilterProps> = {
     ...Template,
     parameters: {
         fetchMock: {

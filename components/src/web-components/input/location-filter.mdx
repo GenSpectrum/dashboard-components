@@ -1,0 +1,25 @@
+import { ArgTypes, Description, Meta, Story, Title, Source } from '@storybook/blocks';
+
+import * as LocationFilterStories from './location-filter-component.stories.ts';
+
+<Meta of={LocationFilterStories} name='Docs' />
+
+<Title of={LocationFilterStories} />
+
+<Description of={LocationFilterStories} />
+
+## Specification
+
+<ArgTypes of={LocationFilterStories} />
+
+## Example
+
+<Source
+    code={`<gs-location-filter fields="['continent', 'country']" value='Europe / Switzerland'></gs-location-filter>`}
+/>
+
+### Live Example
+
+[See here](?path=/story/input-location-filter--location-filter)
+
+<Story of={LocationFilterStories.LocationFilter} />
