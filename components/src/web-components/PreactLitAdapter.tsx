@@ -21,9 +21,24 @@ const minMaxPercentSliderElementCss = unsafeCSS(minMaxPercentSliderCss);
 export abstract class PreactLitAdapter extends ReactiveElement {
     static override styles = [tailwindElementCss, minMaxPercentSliderElementCss];
 
+    /**
+     * @internal
+     * The URL of the Lapis instance.
+     *
+     * This component must be a child of a `gs-app` component.
+     * This value will automatically be injected by the parent `gs-app` component.
+     */
     @consume({ context: lapisContext })
     lapis: string = '';
 
+    /**
+     * @internal
+     * The reference genomes of the underlying organism.
+     * These will be fetched from the Lapis instance.
+     *
+     * This component must be a child of a `gs-app` component.
+     * This value will automatically be injected by the parent `gs-app` component.
+     */
     @consume({ context: referenceGenomeContext, subscribe: true })
     referenceGenome: ReferenceGenome = {
         nucleotideSequences: [],
@@ -31,6 +46,7 @@ export abstract class PreactLitAdapter extends ReactiveElement {
     };
 
     override update(changedProperties: PropertyValues) {
+        console.log('this.lapis', this.lapis);
         const vdom = (
             <LapisUrlContext.Provider value={this.lapis}>
                 <ReferenceGenomeContext.Provider value={this.referenceGenome}>
