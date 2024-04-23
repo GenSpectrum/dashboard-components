@@ -3,11 +3,14 @@ import { sequenceTypeFromSegment } from './sequenceTypeFromSegment';
 import type { ReferenceGenome } from '../../lapisApi/ReferenceGenome';
 import { Deletion, Insertion, Substitution } from '../../utils/mutations';
 
-type FilterUnion = {
+type ParsedMutationFilter = {
     [MutationType in keyof SelectedFilters]: { type: MutationType; value: SelectedFilters[MutationType][number] };
 }[keyof SelectedFilters];
 
-export const parseAndValidateMutation = (value: string, referenceGenome: ReferenceGenome): FilterUnion | null => {
+export const parseAndValidateMutation = (
+    value: string,
+    referenceGenome: ReferenceGenome,
+): ParsedMutationFilter | null => {
     const possibleInsertion = Insertion.parse(value);
     if (possibleInsertion !== null) {
         const sequenceType = sequenceTypeFromSegment(possibleInsertion.segment, referenceGenome);
