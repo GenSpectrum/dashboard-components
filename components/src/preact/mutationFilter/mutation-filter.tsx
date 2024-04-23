@@ -16,6 +16,10 @@ export type SelectedFilters = {
     aminoAcidInsertions: Insertion[];
 };
 
+export type SelectedMutationFilterStrings = {
+    [Key in keyof SelectedFilters]: string[];
+};
+
 export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
     const referenceGenome = useContext(ReferenceGenomeContext);
     const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({
@@ -47,15 +51,10 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
     };
 
     const fireChangeEvent = (selectedFilters: SelectedFilters) => {
-        const detail = {
-            aminoAcidMutations: selectedFilters.aminoAcidMutations.map((mutation) => mutation.toString()),
-            nucleotideMutations: selectedFilters.nucleotideMutations.map((mutation) => mutation.toString()),
-            aminoAcidInsertions: selectedFilters.aminoAcidInsertions.map((insertion) => insertion.toString()),
-            nucleotideInsertions: selectedFilters.nucleotideInsertions.map((insertion) => insertion.toString()),
-        };
+        const detail = mapToMutationFilterStrings(selectedFilters);
 
         formRef.current?.dispatchEvent(
-            new CustomEvent('gs-mutation-filter-changed', {
+            new CustomEvent<SelectedMutationFilterStrings>('gs-mutation-filter-changed', {
                 detail,
                 bubbles: true,
                 composed: true,
@@ -64,8 +63,11 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
     };
 
     const handleOnBlur = () => {
+        const detail = mapToMutationFilterStrings(selectedFilters);
+
         formRef.current?.dispatchEvent(
-            new CustomEvent('gs-mutation-filter-on-blur', {
+            new CustomEvent<SelectedMutationFilterStrings>('gs-mutation-filter-on-blur', {
+                detail,
                 bubbles: true,
                 composed: true,
             }),
@@ -252,3 +254,12 @@ const SelectedFilter = <MutationType extends Mutation>({
         </div>
     );
 };
+
+function mapToMutationFilterStrings(selectedFilters: SelectedFilters) {
+    return {
+        aminoAcidMutations: selectedFilters.aminoAcidMutations.map((mutation) => mutation.toString()),
+        nucleotideMutations: selectedFilters.nucleotideMutations.map((mutation) => mutation.toString()),
+        aminoAcidInsertions: selectedFilters.aminoAcidInsertions.map((insertion) => insertion.toString()),
+        nucleotideInsertions: selectedFilters.nucleotideInsertions.map((insertion) => insertion.toString()),
+    };
+}

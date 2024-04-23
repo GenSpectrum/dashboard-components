@@ -11,18 +11,21 @@ export interface Mutation {
 }
 
 export const substitutionRegex =
-    /^((?<segment>[A-Za-z0-9]+):)?(?<valueAtReference>[A-Za-z])(?<position>\d+)(?<substitutionValue>[A-Za-z]|\*)$/;
+    /^((?<segment>[A-Za-z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Za-z])?(?<position>\d+)(?<substitutionValue>[A-Za-z.])?$/;
 
 export class Substitution implements Mutation {
     readonly code;
 
     constructor(
         readonly segment: string | undefined,
-        readonly valueAtReference: string,
-        readonly substitutionValue: string,
+        readonly valueAtReference: string | undefined,
+        readonly substitutionValue: string | undefined,
         readonly position: number,
     ) {
-        this.code = `${this.segment ? `${this.segment}:` : ''}${this.valueAtReference}${this.position}${this.substitutionValue}`;
+        const segmentString = this.segment ? `${this.segment}:` : '';
+        const valueAtReferenceString = this.valueAtReference ? `${this.valueAtReference}` : '';
+        const substitutionValueString = this.substitutionValue ? `${this.substitutionValue}` : '';
+        this.code = `${segmentString}${valueAtReferenceString}${this.position}${substitutionValueString}`;
     }
 
     equals(other: Mutation): boolean {
@@ -55,17 +58,19 @@ export class Substitution implements Mutation {
     }
 }
 
-export const deletionRegex = /^((?<segment>[A-Za-z0-9]+):)?(?<valueAtReference>[A-Za-z])(?<position>\d+)(-)$/;
+export const deletionRegex = /^((?<segment>[A-Za-z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Za-z])?(?<position>\d+)(-)$/;
 
 export class Deletion implements Mutation {
     readonly code;
 
     constructor(
         readonly segment: string | undefined,
-        readonly valueAtReference: string,
+        readonly valueAtReference: string | undefined,
         readonly position: number,
     ) {
-        this.code = `${this.segment ? `${this.segment}:` : ''}${this.valueAtReference}${this.position}-`;
+        const segmentString = this.segment ? `${this.segment}:` : '';
+        const valueAtReferenceString = this.valueAtReference ? `${this.valueAtReference}` : '';
+        this.code = `${segmentString}${valueAtReferenceString}${this.position}-`;
     }
 
     equals(other: Mutation): boolean {
@@ -93,7 +98,8 @@ export class Deletion implements Mutation {
     }
 }
 
-export const insertionRegexp = /^ins_((?<segment>[A-Za-z0-9]+):)?(<position>\d+):(<insertedSymbol>[A-Za-z]+|\*)$/i;
+export const insertionRegexp =
+    /^ins_((?<segment>[A-Za-z0-9_-]+)(?=:):)?(?<position>\d+):(?<insertedSymbols>(([A-Za-z?]|(\.\*))+))$/i;
 
 export class Insertion implements Mutation {
     readonly code;

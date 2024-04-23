@@ -1,12 +1,12 @@
 import { customElement } from 'lit/decorators.js';
 
 import { type TextInputComponent } from './text-input-component';
-import { MutationFilter, type SelectedFilters } from '../../preact/mutationFilter/mutation-filter';
+import { MutationFilter, type SelectedMutationFilterStrings } from '../../preact/mutationFilter/mutation-filter';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
- * @fires {CustomEvent<SelectedFilters>} gs-mutation-filter-changed - When the mutation filter values have changed
- * @fires {CustomEvent} gs-mutation-filter-on-blur - When the mutation filter has lost focus
+ * @fires {CustomEvent<SelectedMutationFilterStrings>} gs-mutation-filter-changed - When the mutation filter values have changed
+ * @fires {CustomEvent<SelectedMutationFilterStrings>} gs-mutation-filter-on-blur - When the mutation filter has lost focus
  */
 @customElement('gs-mutation-filter')
 export class MutationFilterComponent extends PreactLitAdapter {
@@ -21,7 +21,7 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-mutation-filter-changed': CustomEvent<SelectedFilters>;
-        'gs-mutation-filter-on-blur': CustomEvent;
+        'gs-mutation-filter-changed': CustomEvent<SelectedMutationFilterStrings>;
+        'gs-mutation-filter-on-blur': CustomEvent<SelectedMutationFilterStrings>;
     }
 }

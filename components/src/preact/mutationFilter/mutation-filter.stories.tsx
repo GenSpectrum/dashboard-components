@@ -36,9 +36,6 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
     ...Default,
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
-
-        const inputField = () => canvas.getByPlaceholderText('Enter a mutation');
-        const submitButton = () => canvas.getByRole('button', { name: '+' });
         const listenerMock = fn();
         await step('Setup event listener mock', async () => {
             canvasElement.addEventListener('gs-mutation-filter-changed', listenerMock);
@@ -46,22 +43,19 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
 
         await step('wait until data is loaded', async () => {
             await waitFor(() => {
-                return expect(inputField()).toBeEnabled();
+                return expect(inputField(canvas)).toBeEnabled();
             });
         });
 
         await step('Enters an invalid mutation', async () => {
-            await userEvent.type(inputField(), 'notAMutation');
-            await waitFor(() => submitButton().click());
+            await submitMutation(canvas, 'notAMutation');
             await expect(listenerMock).not.toHaveBeenCalled();
 
-            await userEvent.type(inputField(), '{backspace>12/}');
+            await userEvent.type(inputField(canvas), '{backspace>12/}');
         });
 
         await step('Enter a valid mutation', async () => {
-            await userEvent.type(inputField(), 'A123T');
-
-            await waitFor(() => fireEvent.click(submitButton()));
+            await submitMutation(canvas, 'A123T');
 
             await waitFor(() =>
                 expect(listenerMock).toHaveBeenCalledWith(
@@ -78,9 +72,7 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
         });
 
         await step('Enter a second valid nucleotide mutation', async () => {
-            await userEvent.type(inputField(), 'A234-');
-
-            await waitFor(() => fireEvent.click(submitButton()));
+            await submitMutation(canvas, 'A234-');
 
             await expect(listenerMock).toHaveBeenCalledWith(
                 expect.objectContaining({
@@ -95,9 +87,7 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
         });
 
         await step('Enter another valid mutation', async () => {
-            await userEvent.type(inputField(), 'ins_123:AA');
-
-            await waitFor(() => fireEvent.click(submitButton()));
+            await submitMutation(canvas, 'ins_123:AA');
 
             await expect(listenerMock).toHaveBeenCalledWith(
                 expect.objectContaining({
@@ -134,7 +124,6 @@ export const FiresFilterOnBlurEvent: StoryObj<MutationFilterProps> = {
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
 
-        const inputField = () => canvas.getByPlaceholderText('Enter a mutation');
         const listenerMock = fn();
         await step('Setup event listener mock', async () => {
             canvasElement.addEventListener('gs-mutation-filter-on-blur', listenerMock);
@@ -142,15 +131,34 @@ export const FiresFilterOnBlurEvent: StoryObj<MutationFilterProps> = {
 
         await step('wait until data is loaded', async () => {
             await waitFor(() => {
-                return expect(inputField()).toBeEnabled();
+                return expect(inputField(canvas)).toBeEnabled();
             });
         });
 
         await step('Move outside of input', async () => {
-            await userEvent.type(inputField(), 'A123T');
+            await submitMutation(canvas, 'A234T');
+            await submitMutation(canvas, 'S:A123G');
+            await submitMutation(canvas, 'ins_123:AAA');
+            await submitMutation(canvas, 'ins_S:123:AAA');
             await userEvent.tab();
 
-            await expect(listenerMock).toHaveBeenCalled();
+            await expect(listenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: {
+                        nucleotideMutations: ['A234T'],
+                        aminoAcidMutations: ['S:A123G'],
+                        nucleotideInsertions: ['ins_123:AAA'],
+                        aminoAcidInsertions: ['ins_S:123:AAA'],
+                    },
+                }),
+            );
         });
     },
 };
+
+const submitMutation = async (canvas: ReturnType<typeof within>, mutation: string) => {
+    await userEvent.type(inputField(canvas), mutation);
+    await waitFor(() => submitButton(canvas).click());
+};
+const inputField = (canvas: ReturnType<typeof within>) => canvas.getByPlaceholderText('Enter a mutation');
+const submitButton = (canvas: ReturnType<typeof within>) => canvas.getByRole('button', { name: '+' });

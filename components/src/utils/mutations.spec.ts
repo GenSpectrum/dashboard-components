@@ -7,13 +7,45 @@ describe('Substitution', () => {
         expect(Substitution.parse('A1T')).deep.equal(new Substitution(undefined, 'A', 'T', 1));
         expect(Substitution.parse('seg1:A1T')).deep.equal(new Substitution('seg1', 'A', 'T', 1));
     });
+
+    it('should render to string correctly', () => {
+        const substitutions = [
+            {
+                substitution: new Substitution(undefined, 'A', 'T', 1),
+                expected: 'A1T',
+            },
+            { substitution: new Substitution('segment', 'A', 'T', 1), expected: 'segment:A1T' },
+            { substitution: new Substitution(undefined, undefined, undefined, 1), expected: '1' },
+        ];
+
+        for (const { substitution, expected } of substitutions) {
+            expect(substitution.toString()).to.equal(expected);
+        }
+    });
 });
+
 describe('Deletion', () => {
     it('should be parsed from string', () => {
         expect(Deletion.parse('A1-')).deep.equal(new Deletion(undefined, 'A', 1));
         expect(Deletion.parse('seg1:A1-')).deep.equal(new Deletion('seg1', 'A', 1));
     });
+
+    it('should render to string correctly', () => {
+        const substitutions = [
+            {
+                deletion: new Deletion(undefined, 'A', 1),
+                expected: 'A1-',
+            },
+            { deletion: new Deletion('segment', 'A', 1), expected: 'segment:A1-' },
+            { deletion: new Deletion(undefined, undefined, 1), expected: '1-' },
+        ];
+
+        for (const { deletion, expected } of substitutions) {
+            expect(deletion.toString()).to.equal(expected);
+        }
+    });
 });
+
 describe('Insertion', () => {
     it('should be parsed from string', () => {
         expect(Insertion.parse('ins_1:A')).deep.equal(new Insertion(undefined, 1, 'A'));

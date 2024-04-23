@@ -1,17 +1,21 @@
-import { insertionRegexp } from '../../../utils/mutations';
+import { Insertion } from '../../../utils/mutations';
 
 export const sortInsertions = (a: string, b: string) => {
-    const aMatch = a.match(insertionRegexp);
-    const bMatch = b.match(insertionRegexp);
+    const insertionA = Insertion.parse(a);
+    const insertionB = Insertion.parse(b);
 
-    if (aMatch && bMatch) {
-        if (aMatch[1] !== bMatch[1]) {
-            return aMatch[1].localeCompare(bMatch[1]);
+    if (insertionA && insertionB) {
+        const segmentA = insertionA.segment;
+        const segmentB = insertionB.segment;
+        if (segmentA !== undefined && segmentB !== undefined && segmentA !== segmentB) {
+            return segmentA.localeCompare(segmentB);
         }
-        if (aMatch[2] !== bMatch[2]) {
-            return parseInt(aMatch[2], 10) - parseInt(bMatch[2], 10);
+        const positionA = insertionA.position;
+        const positionB = insertionB.position;
+        if (positionA !== positionB) {
+            return positionA - positionB;
         }
-        return aMatch[3].localeCompare(bMatch[3]);
+        return insertionA.insertedSymbols.localeCompare(insertionB.insertedSymbols);
     }
     throw new Error(`Invalid insertion: ${a} or ${b}`);
 };

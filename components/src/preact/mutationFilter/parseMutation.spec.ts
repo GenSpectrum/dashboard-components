@@ -23,54 +23,125 @@ describe('parseMutation', () => {
         ],
     };
 
-    it('should parse nucleotide insertions', () => {
-        const result = parseAndValidateMutation('ins_10:ACGT', singleSegmentedReferenceGenome);
-        expect(result?.value).deep.equals(new Insertion(undefined, 10, 'ACGT'));
-    });
+    const testCases = {
+        insertions: [
+            {
+                name: 'should parse nucleotide insertions',
+                input: 'ins_10:ACGT',
+                expected: new Insertion(undefined, 10, 'ACGT'),
+            },
+            {
+                name: 'should parse amino acid insertions',
+                input: 'ins_gene1:10:ACGT',
+                expected: new Insertion('gene1', 10, 'ACGT'),
+            },
+            {
+                name: 'should parse amino acid insertion with LAPIS-style wildcard',
+                input: 'ins_gene1:10:?AC?GT',
+                expected: new Insertion('gene1', 10, '?AC?GT'),
+            },
+            {
+                name: 'should parse amino acid insertion with SILO-style wildcard',
+                input: 'ins_gene1:10:.*AC.*GT',
+                expected: new Insertion('gene1', 10, '.*AC.*GT'),
+            },
+            {
+                name: 'should return null for insertion with segment not in reference genome',
+                input: 'INS_notInReferenceGenome:10:ACGT',
+                expected: null,
+            },
+            { name: 'should return null for insertion with missing position', input: 'ins_gene1:ACGT', expected: null },
+        ],
+        deletions: [
+            {
+                name: 'should parse nucleotide deletion in single segmented reference genome, when no segment is given',
+                input: 'A123-',
+                expected: new Deletion(undefined, 'A', 123),
+            },
+            {
+                name: 'should parse nucleotide deletion without valueAtReference when no segment is given',
+                input: '123-',
+                expected: new Deletion(undefined, undefined, 123),
+            },
+            {
+                name: 'should parse nucleotide deletion',
+                input: 'nuc1:A123-',
+                expected: new Deletion('nuc1', 'A', 123),
+            },
+            {
+                name: 'should parse nucleotide deletion without valueAtReference',
+                input: 'nuc1:123-',
+                expected: new Deletion('nuc1', undefined, 123),
+            },
+            {
+                name: 'should parse amino acid deletion',
+                input: 'gene1:A123-',
+                expected: new Deletion('gene1', 'A', 123),
+            },
+            {
+                name: 'should parse amino acid deletion without valueAtReference',
+                input: 'gene1:123-',
+                expected: new Deletion('gene1', undefined, 123),
+            },
+            {
+                name: 'should return null for deletion with segment not in reference genome',
+                input: 'notInReferenceGenome:A123-',
+                expected: null,
+            },
+        ],
+        substitutions: [
+            {
+                name: 'should parse nucleotide substitution in single segmented reference genome, when no segment is given',
+                input: 'A123T',
+                expected: new Substitution(undefined, 'A', 'T', 123),
+            },
+            {
+                name: 'should parse substitution without valueAtReference',
+                input: '123T',
+                expected: new Substitution(undefined, undefined, 'T', 123),
+            },
+            {
+                name: 'should parse substitution with neither valueAtReference not substitutionValue',
+                input: '123',
+                expected: new Substitution(undefined, undefined, undefined, 123),
+            },
+            {
+                name: 'should parse a "no mutation" substitution',
+                input: '123.',
+                expected: new Substitution(undefined, undefined, '.', 123),
+            },
+            {
+                name: 'should parse nucleotide substitution',
+                input: 'nuc1:A123T',
+                expected: new Substitution('nuc1', 'A', 'T', 123),
+            },
+            {
+                name: 'should parse amino acid substitution',
+                input: 'gene1:A123T',
+                expected: new Substitution('gene1', 'A', 'T', 123),
+            },
+            {
+                name: 'should return null for substitution with segment not in reference genome',
+                input: 'notInReferenceGenome:A123T',
+                expected: null,
+            },
+        ],
+    };
 
-    it('should parse amino acid insertions', () => {
-        const result = parseAndValidateMutation('ins_gene1:10:ACGT', singleSegmentedReferenceGenome);
-        expect(result?.value).deep.equals(new Insertion('gene1', 10, 'ACGT'));
-    });
+    Object.entries(testCases).forEach(([type, cases]) => {
+        describe(type, () => {
+            cases.forEach(({ name, input, expected }) => {
+                it(name, () => {
+                    const result = parseAndValidateMutation(input, singleSegmentedReferenceGenome);
 
-    it('should return null for insertion with segment not in reference genome', () => {
-        const result = parseAndValidateMutation('INS_notInReferenceGenome:10:ACGT', singleSegmentedReferenceGenome);
-        expect(result).toBe(null);
-    });
-
-    it('should parse nucleotide deletion in single segmented reference genome, when no segment is given', () => {
-        const result = parseAndValidateMutation('A123-', singleSegmentedReferenceGenome);
-        expect(result?.value).deep.equals(new Deletion(undefined, 'A', 123));
-    });
-    it('should parse nucleotide deletion', () => {
-        const result = parseAndValidateMutation('nuc1:A123-', singleSegmentedReferenceGenome);
-        expect(result?.value).deep.equals(new Deletion('nuc1', 'A', 123));
-    });
-    it('should parse amino acid deletion', () => {
-        const result = parseAndValidateMutation('gene1:A123-', singleSegmentedReferenceGenome);
-        expect(result?.value).deep.equals(new Deletion('gene1', 'A', 123));
-    });
-    it('should return null for deletion with segment not in reference genome', () => {
-        const result = parseAndValidateMutation('notInReferenceGenome:A123-', singleSegmentedReferenceGenome);
-        expect(result).toBe(null);
-    });
-
-    it('should parse nucleotide substitution in single segmented reference genome, when no segment is given', () => {
-        const result = parseAndValidateMutation('A123T', singleSegmentedReferenceGenome);
-        expect(result?.value).deep.equals(new Substitution(undefined, 'A', 'T', 123));
-    });
-
-    it('should parse nucleotide substitution', () => {
-        const result = parseAndValidateMutation('nuc1:A123T', singleSegmentedReferenceGenome);
-        expect(result?.value).deep.equals(new Substitution('nuc1', 'A', 'T', 123));
-    });
-    it('should parse amino acid substitution', () => {
-        const result = parseAndValidateMutation('gene1:A123T', singleSegmentedReferenceGenome);
-        expect(result?.value).deep.equals(new Substitution('gene1', 'A', 'T', 123));
-    });
-    it('should return null for substitution with segment not in reference genome', () => {
-        const result = parseAndValidateMutation('notInReferenceGenome:A123T', singleSegmentedReferenceGenome);
-        expect(result).toBe(null);
+                    if (expected === null) {
+                        expect(result).toBe(null);
+                    } else {
+                        expect(result?.value).deep.equals(expected);
+                    }
+                });
+            });
+        });
     });
 
     it('should return null for invalid mutation', () => {
