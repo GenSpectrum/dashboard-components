@@ -4,7 +4,7 @@ import { BarWithErrorBar, BarWithErrorBarsController } from 'chartjs-chart-error
 import { type PrevalenceOverTimeData, type PrevalenceOverTimeVariantData } from '../../query/queryPrevalenceOverTime';
 import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';
-import { singleGraphColorRGBA } from '../shared/charts/colors';
+import { singleGraphColorRGBAById } from '../shared/charts/colors';
 import { type ConfidenceIntervalMethod, wilson95PercentConfidenceInterval } from '../shared/charts/confideceInterval';
 import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
 
@@ -53,8 +53,8 @@ const datasets = (
         borderWidth: 1,
         pointRadius: 0,
         label: prevalenceOverTimeVariant.displayName,
-        backgroundColor: singleGraphColorRGBA(index, 0.3),
-        borderColor: singleGraphColorRGBA(index),
+        backgroundColor: singleGraphColorRGBAById(index, 0.3),
+        borderColor: singleGraphColorRGBAById(index),
     };
 
     switch (confidenceIntervalMethod) {

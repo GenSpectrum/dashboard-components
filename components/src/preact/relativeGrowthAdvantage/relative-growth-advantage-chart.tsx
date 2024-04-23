@@ -3,7 +3,7 @@ import { Chart, type ChartConfiguration, registerables, type TooltipItem } from 
 import { type YearMonthDay } from '../../utils/temporal';
 import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';
-import { singleGraphColorRGBA } from '../shared/charts/colors';
+import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { confidenceIntervalDataLabel } from '../shared/charts/confideceInterval';
 import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
 
@@ -69,8 +69,8 @@ const datasets = (data: RelativeGrowthAdvantageChartData) => {
             data: data.proportion,
             borderWidth: 1,
             pointRadius: 0,
-            borderColor: singleGraphColorRGBA(0),
-            backgroundColor: singleGraphColorRGBA(0),
+            borderColor: singleGraphColorRGBByName('indigo'),
+            backgroundColor: singleGraphColorRGBByName('indigo'),
         },
         {
             type: 'line' as const,
@@ -79,7 +79,7 @@ const datasets = (data: RelativeGrowthAdvantageChartData) => {
             borderWidth: 1,
             pointRadius: 0,
             fill: '+1',
-            backgroundColor: singleGraphColorRGBA(0, 0.3),
+            backgroundColor: singleGraphColorRGBByName('indigo', 0.3),
         },
         {
             type: 'line' as const,
@@ -88,13 +88,13 @@ const datasets = (data: RelativeGrowthAdvantageChartData) => {
             borderWidth: 1,
             pointRadius: 0,
             fill: '-1',
-            backgroundColor: singleGraphColorRGBA(0, 0.3),
+            backgroundColor: singleGraphColorRGBByName('indigo', 0.3),
         },
         {
             type: 'scatter' as const,
             label: 'Observed',
             data: data.observed,
-            pointBackgroundColor: singleGraphColorRGBA(1),
+            pointBackgroundColor: singleGraphColorRGBByName('green'),
             pointRadius: 2,
         },
     ];

@@ -5,7 +5,7 @@ import { addUnit, minusTemporal } from '../../utils/temporal';
 import { getMinMaxNumber } from '../../utils/utils';
 import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';
-import { singleGraphColorRGBA } from '../shared/charts/colors';
+import { singleGraphColorRGBAById } from '../shared/charts/colors';
 import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
 
 interface PrevalenceOverTimeBubbleChartProps {
@@ -37,8 +37,8 @@ const PrevalenceOverTimeBubbleChart = ({ data, yAxisScaleType }: PrevalenceOverT
                     })),
                 borderWidth: 1,
                 pointRadius: 0,
-                backgroundColor: singleGraphColorRGBA(index, 0.3),
-                borderColor: singleGraphColorRGBA(index),
+                backgroundColor: singleGraphColorRGBAById(index, 0.3),
+                borderColor: singleGraphColorRGBAById(index),
             })),
         },
         options: {

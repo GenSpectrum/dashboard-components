@@ -14,8 +14,8 @@ export const getMutationsGridData = (
 
 const accumulateByPosition = (data: SubstitutionOrDeletionEntry[], sequenceType: SequenceType) => {
     const basesOfView = bases[sequenceType];
-    const positionsToProportionAtBase = new Map<string, Map<string, number>>();
-    const referenceBases = new Map<string, string>();
+    const positionsToProportionAtBase = new Map<string, Map<string | undefined, number>>();
+    const referenceBases = new Map<string, string | undefined>();
 
     for (const mutationEntry of data) {
         const position =
