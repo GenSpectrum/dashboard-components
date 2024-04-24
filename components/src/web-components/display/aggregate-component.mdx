@@ -1,0 +1,25 @@
+import { ArgTypes, Description, Meta, Story, Title, Source } from '@storybook/blocks';
+
+import * as AggregateComponentStories from './aggregate-component.stories.ts';
+
+<Meta of={AggregateComponentStories} name='Docs' />
+
+<Title of={AggregateComponentStories} />
+
+<Description of={AggregateComponentStories} />
+
+## Specification
+
+<ArgTypes of={AggregateComponentStories} />
+
+## Example
+
+<Source
+    code={`<gs-aggregate-component fields="['division', 'host']" filter='{"country": "USA"}'></gs-aggregate-component>`}
+/>
+
+### Live Example
+
+[See here](?path=/story/visualization-aggregate--template)
+
+<Story of={AggregateComponentStories.Table} />

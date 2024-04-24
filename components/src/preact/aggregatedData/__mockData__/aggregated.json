@@ -1,0 +1,585 @@
+{
+    "data": [
+        {
+            "count": 3,
+            "division": "Mclean",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Woodbridge",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 9,
+            "division": "Fairfax",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 7,
+            "division": "Waynesboro",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 2,
+            "division": "Crozet",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Fishersville",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 6,
+            "division": "Alexandria",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 2,
+            "division": "Burke",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Chantilly",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 2,
+            "division": "Florida",
+            "host": "Gorilla"
+        },
+        {
+            "count": 1,
+            "division": "Temple Hills",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "North America",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 3,
+            "division": "Texas",
+            "host": "Felis catus"
+        },
+        {
+            "count": 1,
+            "division": "Chesapeake",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "USA",
+            "host": "Chlorocebus sabaeus"
+        },
+        {
+            "count": 45,
+            "division": "South Dakota",
+            "host": null
+        },
+        {
+            "count": 2,
+            "division": "Afton",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 61,
+            "division": "Idaho",
+            "host": null
+        },
+        {
+            "count": 1,
+            "division": "New York",
+            "host": "Panthera tigris jacksoni"
+        },
+        {
+            "count": 103,
+            "division": "USA",
+            "host": "Mink"
+        },
+        {
+            "count": 15,
+            "division": "USA",
+            "host": "Panthera leo"
+        },
+        {
+            "count": 14,
+            "division": "Louisiana",
+            "host": null
+        },
+        {
+            "count": 1,
+            "division": "Paeonian Springs",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 2,
+            "division": "USA",
+            "host": "Crocuta crocuta"
+        },
+        {
+            "count": 34963,
+            "division": "West Virginia",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 11,
+            "division": "Falls Church",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 15258,
+            "division": "Alaska",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Great Falls",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 3,
+            "division": "Arlington",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 30502,
+            "division": "Arkansas",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 20748,
+            "division": "Rhode Island",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 5,
+            "division": "USA",
+            "host": "Panthera tigris"
+        },
+        {
+            "count": 8179,
+            "division": "Delaware",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 88083,
+            "division": "Michigan",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 6,
+            "division": "Springfield",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 25760,
+            "division": "Oregon",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Chilhowie",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 28786,
+            "division": "Oklahoma",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Fairfax Station",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 5,
+            "division": "Vienna",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Mt Solon",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 45100,
+            "division": "Wisconsin",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Severn",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 45510,
+            "division": "Maryland",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 21888,
+            "division": "Utah",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 24993,
+            "division": "Iowa",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 11587,
+            "division": "Washington DC",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Texas",
+            "host": "Canis lupus familiaris"
+        },
+        {
+            "count": 3,
+            "division": "Florida",
+            "host": null
+        },
+        {
+            "count": 2,
+            "division": "Virginia Beach",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 49605,
+            "division": "Ohio",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 115921,
+            "division": "Washington",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 2095,
+            "division": "North Dakota",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Ohio",
+            "host": null
+        },
+        {
+            "count": 34825,
+            "division": "Indiana",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 14,
+            "division": "Annandale",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Florida",
+            "host": "environment"
+        },
+        {
+            "count": 164,
+            "division": "New York",
+            "host": "Odocoileus virginianus"
+        },
+        {
+            "count": 1,
+            "division": "Beltsville",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 2,
+            "division": "Wisconsin",
+            "host": "Tadarida brasiliensis"
+        },
+        {
+            "count": 11110,
+            "division": "Kansas",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 3,
+            "division": "Florida",
+            "host": "Felis catus"
+        },
+        {
+            "count": 2554,
+            "division": "Wyoming",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 629330,
+            "division": "USA",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 91359,
+            "division": "New York",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 94,
+            "division": "USA",
+            "host": "Odocoileus virginianus"
+        },
+        {
+            "count": 813,
+            "division": "Guam",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 5,
+            "division": "American Samoa",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 3,
+            "division": "Virginia",
+            "host": "Panthera tigris"
+        },
+        {
+            "count": 148,
+            "division": "USA",
+            "host": null
+        },
+        {
+            "count": 2,
+            "division": "USA",
+            "host": "Canis lupus familiaris"
+        },
+        {
+            "count": 7,
+            "division": "Pennsylvania",
+            "host": "Odocoileus virginianus"
+        },
+        {
+            "count": 34513,
+            "division": "South Carolina",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 42887,
+            "division": "Tennessee",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 81680,
+            "division": "Pennsylvania",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 174794,
+            "division": "Massachusetts",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 25595,
+            "division": "Vermont",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 72995,
+            "division": "Illinois",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Harrisonburg",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 194563,
+            "division": "Florida",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Stafford",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 19,
+            "division": "USA",
+            "host": "Mustela putorius furo"
+        },
+        {
+            "count": 44032,
+            "division": "New Mexico",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 8377,
+            "division": "South Dakota",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1763,
+            "division": "Virgin Islands",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Virginia",
+            "host": "Felis catus"
+        },
+        {
+            "count": 78943,
+            "division": "Virginia",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 18835,
+            "division": "Louisiana",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 6152,
+            "division": "Hawaii",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 11851,
+            "division": "Mississippi",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 141274,
+            "division": "Texas",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 29034,
+            "division": "Connecticut",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 29016,
+            "division": "Nevada",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 90776,
+            "division": "North Carolina",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 8909,
+            "division": "Maine",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 130742,
+            "division": "Minnesota",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 25723,
+            "division": "Missouri",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 92606,
+            "division": "New Jersey",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 2,
+            "division": "Minnesota",
+            "host": "Odocoileus virginianus"
+        },
+        {
+            "count": 79863,
+            "division": "Colorado",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 7549,
+            "division": "Puerto Rico",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 1,
+            "division": "Grottoes",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 15919,
+            "division": "Idaho",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 2,
+            "division": "Indiana",
+            "host": "Felis catus"
+        },
+        {
+            "count": 2,
+            "division": "USA",
+            "host": "environment"
+        },
+        {
+            "count": 23475,
+            "division": "Nebraska",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 8868,
+            "division": "Montana",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 15,
+            "division": "USA",
+            "host": "Mustela lutreola"
+        },
+        {
+            "count": 18418,
+            "division": "Kentucky",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 17399,
+            "division": "Alabama",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 71522,
+            "division": "Arizona",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 3459,
+            "division": "Northern Mariana Islands",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 13625,
+            "division": "New Hampshire",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 67576,
+            "division": "Georgia",
+            "host": "Homo sapiens"
+        },
+        {
+            "count": 365045,
+            "division": "California",
+            "host": "Homo sapiens"
+        }
+    ],
+    "info": {
+        "dataVersion": "1712315293",
+        "requestId": "4603a85e-ae5e-495d-aee5-778a3af862c1",
+        "requestInfo": "sars_cov-2_nextstrain_open on s1.int.genspectrum.org at 2024-04-24T15:31:40.596677441",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report."
+    }
+}

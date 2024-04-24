@@ -29,4 +29,5 @@ export const visualizationStories = [
         testDownloadWithFilename: 'mutation_comparison.csv',
     },
     { id: 'visualization-mutation-comparison--venn-diagram', title: 'Mutation comparison' },
+    { id: 'visualization-aggregate--table', title: 'Aggregate', testDownloadWithFilename: 'aggregate.csv' },
 ];

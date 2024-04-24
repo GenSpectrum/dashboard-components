@@ -97,7 +97,7 @@ export const FetchingLocationsFails: StoryObj<LocationFilterProps> = {
                 {
                     matcher: aggregatedEndpointMatcher,
                     response: {
-                        status: 500,
+                        status: 400,
                         body: { error: 'no data' },
                     },
                 },
@@ -108,9 +108,7 @@ export const FetchingLocationsFails: StoryObj<LocationFilterProps> = {
         const canvas = await withinShadowRoot(canvasElement, 'gs-location-filter');
 
         await waitFor(() =>
-            expect(
-                canvas.getByText('Internal Server Error: {"error":"no data"} ', { exact: false }),
-            ).toBeInTheDocument(),
+            expect(canvas.getByText('Bad Request: {"error":"no data"} ', { exact: false })).toBeInTheDocument(),
         );
     },
 };

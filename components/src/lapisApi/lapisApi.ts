@@ -78,7 +78,7 @@ export async function fetchReferenceGenome(lapisUrl: string, signal?: AbortSigna
 
 const handleErrors = async (response: Response) => {
     if (!response.ok) {
-        if (response.status % 500 === 0) {
+        if (response.status >= 400 && response.status < 500) {
             throw new Error(`${response.statusText}: ${JSON.stringify(await response.json())}`);
         }
         throw new Error(`${response.statusText}: ${response.status}`);
