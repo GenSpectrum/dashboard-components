@@ -4,6 +4,7 @@
     "version": "0.0.1",
     "description": "GenSpectrum web components for building dashboards",
     "type": "module",
+    "license": "AGPL-3.0-only",
     "main": "dist/genspectrum-components.js",
     "module": "dist/genspectrum-components.js",
     "types": "dist/genspectrum-components.d.ts",
