@@ -1,6 +1,5 @@
 {
     "name": "@genspectrum/dashboard-components",
-    "private": true,
     "version": "0.1.1",
     "description": "GenSpectrum web components for building dashboards",
     "type": "module",
