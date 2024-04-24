@@ -7,6 +7,9 @@
     "main": "dist/genspectrum-components.js",
     "module": "dist/genspectrum-components.js",
     "types": "dist/genspectrum-components.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
     "exports": {
         ".": {
             "import": "./dist/dashboard-components.js",
