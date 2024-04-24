@@ -22,23 +22,23 @@ jobs:
           target-branch: main
 
       - uses: actions/checkout@v4
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.components--release_created }}
 
       - uses: actions/cache@v4
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.components--release_created }}
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
 
       - name: Build
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.components--release_created }}
         run:
           npm ci
           npm run build
         working-directory: components
 
       - name: Publish
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.components--release_created }}
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
