@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.2](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.1...dashboard-components-v0.1.2) (2024-04-24)
+
+
+### Bug Fixes
+
+* **components:** configure public access for scoped packages ([e053282](https://github.com/GenSpectrum/dashboards/commit/e05328215cae1cf5f07f69672a8a71c0e913de78))
+* **components:** make package public ([5fbf6b9](https://github.com/GenSpectrum/dashboards/commit/5fbf6b9d553639414fad913005def368c2f5a8c3))
+
 ## [0.1.1](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.0...dashboard-components-v0.1.1) (2024-04-24)
 
 
