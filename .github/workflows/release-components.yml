@@ -32,7 +32,7 @@ jobs:
 
       - name: Build
         if: ${{ steps.release.outputs.components--release_created }}
-        run:
+        run: |
           npm ci
           npm run build
         working-directory: components
