@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.0...dashboard-components-v0.1.1) (2024-04-24)
+
+
+### Features
+
+* **components:** indicate error on wrong mutation filter input [#156](https://github.com/GenSpectrum/dashboards/issues/156) ([b5e39c7](https://github.com/GenSpectrum/dashboards/commit/b5e39c73136d01071ea7db87f027d730ec9fa286))
+
 ## [0.1.0](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.0.1...dashboard-components-v0.1.0) (2024-04-24)
 
 
