@@ -29,6 +29,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
         aminoAcidInsertions: [],
     });
     const [inputValue, setInputValue] = useState('');
+    const [isError, setIsError] = useState(false);
     const formRef = useRef<HTMLFormElement>(null);
 
     const handleSubmit = (event: Event) => {
@@ -37,6 +38,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
         const parsedMutation = parseAndValidateMutation(inputValue, referenceGenome);
 
         if (parsedMutation === null) {
+            setIsError(true);
             return;
         }
 
@@ -76,6 +78,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
 
     const handleInputChange = (event: Event) => {
         setInputValue((event.target as HTMLInputElement).value);
+        setIsError(false);
     };
 
     return (
@@ -87,7 +90,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
             />
 
             <form className='mt-2 w-full' onSubmit={handleSubmit} ref={formRef}>
-                <label className='input input-bordered flex items-center gap-2'>
+                <label className={`input flex items-center gap-2 ${isError ? 'input-error' : 'input-bordered'}`}>
                     <input
                         className='grow min-w-0'
                         type='text'
