@@ -1,17 +1,50 @@
-export const substitutionAndDeletionRegex = /(?:([A-Za-z0-9]+):)?([A-Za-z])(\d+)([A-Za-z]|-|\*)/;
+import { Deletion, type Substitution } from '../../../utils/mutations';
 
-export const sortSubstitutionsAndDeletions = (a: string, b: string) => {
-    const aMatch = a.match(substitutionAndDeletionRegex);
-    const bMatch = b.match(substitutionAndDeletionRegex);
-
-    if (aMatch && bMatch) {
-        if (aMatch[1] !== bMatch[1]) {
-            return aMatch[1].localeCompare(bMatch[1]);
-        }
-        if (aMatch[3] !== bMatch[3]) {
-            return parseInt(aMatch[3], 10) - parseInt(bMatch[3], 10);
-        }
-        return aMatch[4].localeCompare(bMatch[4]);
+export const sortSubstitutionsAndDeletions = (a: Substitution | Deletion, b: Substitution | Deletion) => {
+    if (a.segment !== b.segment) {
+        compareSegments(a.segment, b.segment);
     }
-    throw new Error(`Invalid substitution or deletion: ${a} or ${b}`);
+
+    if (a.position !== b.position) {
+        return comparePositions(a.position, b.position);
+    }
+
+    const aIsDeletion = a instanceof Deletion;
+    const bIsDeletion = b instanceof Deletion;
+
+    if (aIsDeletion !== bIsDeletion) {
+        return aIsDeletion ? 1 : -1;
+    }
+
+    if (!aIsDeletion && !bIsDeletion) {
+        if (a.substitutionValue !== b.substitutionValue) {
+            return compareSubstitutionValues(a.substitutionValue, b.substitutionValue);
+        }
+    }
+
+    return 0;
+};
+
+export const compareSegments = (a: string | undefined, b: string | undefined) => {
+    if (a === undefined) {
+        return -1;
+    }
+    if (b === undefined) {
+        return 1;
+    }
+    return a.localeCompare(b);
+};
+
+export const comparePositions = (a: number, b: number) => {
+    return a - b;
+};
+
+const compareSubstitutionValues = (a: string | undefined, b: string | undefined) => {
+    if (a === undefined) {
+        return -1;
+    }
+    if (b === undefined) {
+        return 1;
+    }
+    return a.localeCompare(b);
 };

@@ -8,7 +8,7 @@ export function getMutationsTableData(data: SubstitutionOrDeletionEntry[], propo
 
     return data.filter(byProportion).map((mutationEntry) => {
         return {
-            mutation: mutationEntry.mutation.toString(),
+            mutation: mutationEntry.mutation,
             type: mutationEntry.type,
             count: mutationEntry.count,
             proportion: mutationEntry.proportion,

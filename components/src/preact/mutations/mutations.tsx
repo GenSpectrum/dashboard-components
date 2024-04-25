@@ -182,7 +182,14 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
             {activeTab === 'Insertions' && (
                 <CsvDownloadButton
                     className='mx-1 btn btn-xs'
-                    getData={() => getInsertionsTableData(filteredData.insertions)}
+                    getData={() =>
+                        getInsertionsTableData(filteredData.insertions).map((row) => {
+                            return {
+                                insertion: row.insertion.toString(),
+                                count: row.count,
+                            };
+                        })
+                    }
                     filename='insertions.csv'
                 />
             )}

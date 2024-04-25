@@ -1,21 +1,14 @@
-import { Insertion } from '../../../utils/mutations';
+import { comparePositions, compareSegments } from './sortSubstitutionsAndDeletions';
+import { type Insertion } from '../../../utils/mutations';
 
-export const sortInsertions = (a: string, b: string) => {
-    const insertionA = Insertion.parse(a);
-    const insertionB = Insertion.parse(b);
-
-    if (insertionA && insertionB) {
-        const segmentA = insertionA.segment;
-        const segmentB = insertionB.segment;
-        if (segmentA !== undefined && segmentB !== undefined && segmentA !== segmentB) {
-            return segmentA.localeCompare(segmentB);
-        }
-        const positionA = insertionA.position;
-        const positionB = insertionB.position;
-        if (positionA !== positionB) {
-            return positionA - positionB;
-        }
-        return insertionA.insertedSymbols.localeCompare(insertionB.insertedSymbols);
+export const sortInsertions = (a: Insertion, b: Insertion) => {
+    if (a.segment !== b.segment) {
+        return compareSegments(a.segment, b.segment);
     }
-    throw new Error(`Invalid insertion: ${a} or ${b}`);
+
+    if (a.position !== b.position) {
+        return comparePositions(a.position, b.position);
+    }
+
+    return a.insertedSymbols.localeCompare(b.insertedSymbols);
 };
