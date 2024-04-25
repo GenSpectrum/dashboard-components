@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.2...dashboard-components-v0.1.3) (2024-04-25)
+
+
+### Features
+
+* **components:** new aggregate table component ([ab73048](https://github.com/GenSpectrum/dashboards/commit/ab73048404110964826867368fcd8e5c4dc6c047)), closes [#158](https://github.com/GenSpectrum/dashboards/issues/158)
+
 ## [0.1.2](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.1...dashboard-components-v0.1.2) (2024-04-24)
 
 
