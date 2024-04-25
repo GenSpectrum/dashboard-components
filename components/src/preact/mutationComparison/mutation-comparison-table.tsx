@@ -3,6 +3,7 @@ import { type FunctionComponent } from 'preact';
 import { getMutationComparisonTableData } from './getMutationComparisonTableData';
 import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
+import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type ProportionInterval } from '../components/proportion-selector';
 import { Table } from '../components/table';
 import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
@@ -14,30 +15,27 @@ export interface MutationsTableProps {
 }
 
 export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = ({ data, proportionInterval }) => {
-    const getHeaders = () => {
-        return [
-            {
-                name: 'Mutation',
-                sort: {
-                    compare: (a: string, b: string) => {
-                        return sortSubstitutionsAndDeletions(a, b);
-                    },
-                },
+    const headers = [
+        {
+            name: 'Mutation',
+            sort: {
+                compare: sortSubstitutionsAndDeletions,
             },
-            {
-                name: 'Prevalence',
-                columns: data.content.map((mutationData) => {
-                    return {
-                        name: mutationData.displayName,
-                        sort: true,
-                        formatter: (cell: number) => formatProportion(cell),
-                    };
-                }),
-            },
-        ];
-    };
+            formatter: (cell: Substitution | Deletion) => cell.toString(),
+        },
+        {
+            name: 'Prevalence',
+            columns: data.content.map((mutationData) => {
+                return {
+                    name: mutationData.displayName,
+                    sort: true,
+                    formatter: (cell: number) => formatProportion(cell),
+                };
+            }),
+        },
+    ];
 
     const tableData = getMutationComparisonTableData(data, proportionInterval).map((row) => Object.values(row));
 
-    return <Table data={tableData} columns={getHeaders()} pagination={true} />;
+    return <Table data={tableData} columns={headers} pagination={true} />;
 };

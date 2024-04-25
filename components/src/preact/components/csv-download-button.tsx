@@ -1,9 +1,15 @@
 import { type FunctionComponent } from 'preact';
 
+type ToStringable = {
+    toString: () => string;
+};
+
+type DataValue = string | number | boolean | null | ToStringable;
+
 export interface CsvDownloadButtonProps {
     label?: string;
     filename?: string;
-    getData: () => Record<string, string | number | boolean | null>[];
+    getData: () => Record<string, DataValue>[];
     className?: string;
 }
 
@@ -32,7 +38,7 @@ export const CsvDownloadButton: FunctionComponent<CsvDownloadButtonProps> = ({
         return header + rows;
     };
 
-    const getDataKeys = (data: Record<string, string | number | boolean | null>[]) => {
+    const getDataKeys = (data: Record<string, DataValue>[]) => {
         const keysSet = data
             .map((row) => Object.keys(row))
             .reduce((accumulatedKeys, keys) => {

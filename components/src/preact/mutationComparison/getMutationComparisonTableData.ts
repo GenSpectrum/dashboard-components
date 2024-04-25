@@ -1,35 +1,53 @@
 import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
+import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type ProportionInterval } from '../components/proportion-selector';
 
 type Proportions = {
     [displayName: string]: number;
 };
 
+type MutationComparisonRow = {
+    mutation: Substitution | Deletion;
+    proportions: Proportions;
+};
+
 export function getMutationComparisonTableData(data: Dataset<MutationData>, proportionInterval: ProportionInterval) {
-    const mutationsToProportions = new Map<string, Proportions>();
+    const mutationsToProportions = new Map<string, MutationComparisonRow>();
 
     for (const mutationData of data.content) {
         for (const mutationEntry of mutationData.data) {
-            const mutation = mutationEntry.mutation.toString();
-            const proportions = mutationsToProportions.get(mutation) || {};
-            proportions[mutationData.displayName] = mutationEntry.proportion;
-            mutationsToProportions.set(mutation, proportions);
+            const mutationKey = mutationEntry.mutation.toString();
+            const existingRow = mutationsToProportions.get(mutationKey);
+
+            if (!existingRow) {
+                mutationsToProportions.set(
+                    mutationKey,
+                    initializeMutationRow(mutationEntry.mutation, mutationData.displayName, mutationEntry.proportion),
+                );
+            } else {
+                existingRow.proportions = updateProportions(
+                    existingRow.proportions,
+                    mutationData.displayName,
+                    mutationEntry.proportion,
+                );
+                mutationsToProportions.set(mutationKey, existingRow);
+            }
         }
     }
 
-    return [...mutationsToProportions.entries()]
-        .map(([mutation, proportions]) => {
+    return [...mutationsToProportions.values()]
+        .map((row) => {
             return {
-                mutation,
+                mutation: row.mutation,
                 ...data.content
                     .map((mutationData) => {
                         return {
-                            [`${mutationData.displayName} prevalence`]: proportions[mutationData.displayName] || 0,
+                            [`${mutationData.displayName} prevalence`]: row.proportions[mutationData.displayName] || 0,
                         };
                     })
                     .reduce((acc, val) => ({ ...acc, ...val }), {}),
-            } as { mutation: string } & Proportions;
+            } as { mutation: Substitution | Deletion } & Proportions;
         })
         .filter((row) =>
             Object.values(row).some(
@@ -37,4 +55,21 @@ export function getMutationComparisonTableData(data: Dataset<MutationData>, prop
                     typeof value === 'number' && value >= proportionInterval.min && value <= proportionInterval.max,
             ),
         );
+}
+
+function initializeMutationRow(
+    mutation: Substitution | Deletion,
+    displayName: string,
+    proportion: number,
+): MutationComparisonRow {
+    return {
+        mutation,
+        proportions: {
+            [displayName]: proportion,
+        },
+    };
+}
+
+function updateProportions(proportions: Proportions, displayName: string, proportion: number): Proportions {
+    return { ...proportions, [displayName]: proportion };
 }

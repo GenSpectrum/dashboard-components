@@ -51,12 +51,12 @@ describe('getPrevalenceOverTimeTableData', () => {
 
         expect(result).toEqual([
             {
-                mutation: 'A123T',
+                mutation: new Substitution(undefined, 'A', 'T', 123),
                 'Test 1 prevalence': 0.123,
                 'Test 2 prevalence': 0.345,
             },
             {
-                mutation: 'G234A',
+                mutation: new Substitution(undefined, 'G', 'A', 234),
                 'Test 1 prevalence': 0.567,
                 'Test 2 prevalence': 0.789,
             },
@@ -106,17 +106,17 @@ describe('getPrevalenceOverTimeTableData', () => {
 
         expect(result).toEqual([
             {
-                mutation: 'A200T',
+                mutation: new Substitution(undefined, 'A', 'T', 200),
                 'Test 1 prevalence': inRange,
                 'Test 2 prevalence': belowRange,
             },
             {
-                mutation: 'A300T',
+                mutation: new Substitution(undefined, 'A', 'T', 300),
                 'Test 1 prevalence': inRange,
                 'Test 2 prevalence': inRange,
             },
             {
-                mutation: 'A400T',
+                mutation: new Substitution(undefined, 'A', 'T', 400),
                 'Test 1 prevalence': inRange,
                 'Test 2 prevalence': aboveRange,
             },

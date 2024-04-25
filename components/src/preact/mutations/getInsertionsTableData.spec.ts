@@ -5,16 +5,18 @@ import { Insertion } from '../../utils/mutations';
 
 describe('getInsertionsTableData', () => {
     test('should return the correct data', () => {
+        const insertion1 = new Insertion('segment1', 123, 'T');
+        const insertion2 = new Insertion('segment2', 234, 'AAA');
         const data = [
             {
                 type: 'insertion' as const,
-                mutation: new Insertion('segment1', 123, 'T'),
+                mutation: insertion1,
                 count: 1,
                 proportion: 0.1,
             },
             {
                 type: 'insertion' as const,
-                mutation: new Insertion('segment2', 234, 'AAA'),
+                mutation: insertion2,
                 count: 2,
                 proportion: 0.2,
             },
@@ -24,11 +26,11 @@ describe('getInsertionsTableData', () => {
 
         expect(result).toEqual([
             {
-                insertion: 'ins_segment1:123:T',
+                insertion: insertion1,
                 count: 1,
             },
             {
-                insertion: 'ins_segment2:234:AAA',
+                insertion: insertion2,
                 count: 2,
             },
         ]);
