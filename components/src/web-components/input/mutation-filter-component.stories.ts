@@ -37,7 +37,7 @@ export const FiresFilterChangedEvent: StoryObj<{ lapisField: string; placeholder
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
 
-        const inputField = () => canvas.getByPlaceholderText('Enter a mutation');
+        const inputField = () => canvas.getByPlaceholderText('Enter a mutation', { exact: false });
         const submitButton = () => canvas.getByRole('button', { name: '+' });
         const listenerMock = fn();
         await step('Setup event listener mock', async () => {
@@ -75,7 +75,7 @@ export const FiresFilterOnBlurEvent: StoryObj<{ lapisField: string; placeholderT
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
 
-        const inputField = () => canvas.getByPlaceholderText('Enter a mutation');
+        const inputField = () => canvas.getByPlaceholderText('Enter a mutation', { exact: false });
         const listenerMock = fn();
         await step('Setup event listener mock', async () => {
             canvasElement.addEventListener('gs-mutation-filter-on-blur', listenerMock);

@@ -160,5 +160,6 @@ const submitMutation = async (canvas: ReturnType<typeof within>, mutation: strin
     await userEvent.type(inputField(canvas), mutation);
     await waitFor(() => submitButton(canvas).click());
 };
-const inputField = (canvas: ReturnType<typeof within>) => canvas.getByPlaceholderText('Enter a mutation');
+const inputField = (canvas: ReturnType<typeof within>) =>
+    canvas.getByPlaceholderText('Enter a mutation', { exact: false });
 const submitButton = (canvas: ReturnType<typeof within>) => canvas.getByRole('button', { name: '+' });

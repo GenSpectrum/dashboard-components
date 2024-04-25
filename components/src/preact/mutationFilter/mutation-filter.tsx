@@ -4,6 +4,7 @@ import { useContext, useRef, useState } from 'preact/hooks';
 import { parseAndValidateMutation } from './parseAndValidateMutation';
 import { type Deletion, type Insertion, type Mutation, type Substitution } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
+import Info from '../components/info';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
@@ -83,11 +84,14 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
 
     return (
         <div class={`rounded-lg border border-gray-300 bg-white p-2`}>
-            <SelectedMutationDisplay
-                selectedFilters={selectedFilters}
-                setSelectedFilters={setSelectedFilters}
-                fireChangeEvent={fireChangeEvent}
-            />
+            <div class='flex justify-between'>
+                <SelectedMutationDisplay
+                    selectedFilters={selectedFilters}
+                    setSelectedFilters={setSelectedFilters}
+                    fireChangeEvent={fireChangeEvent}
+                />
+                <Info className='mx-1' content='Info for mutation filter' />
+            </div>
 
             <form className='mt-2 w-full' onSubmit={handleSubmit} ref={formRef}>
                 <label className={`input flex items-center gap-2 ${isError ? 'input-error' : 'input-bordered'}`}>
@@ -96,7 +100,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
                         type='text'
                         value={inputValue}
                         onInput={handleInputChange}
-                        placeholder={'Enter a mutation'}
+                        placeholder={'Enter a mutation (e.g. A123T, ins_123:AT, S:M123E, ins_S:123:ME)'}
                         onBlur={handleOnBlur}
                     />
                     <button className='btn btn-sm'>+</button>
