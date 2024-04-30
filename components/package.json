@@ -35,7 +35,7 @@
         "lint:lit-analyzer": "lit-analyzer",
         "generate-manifest": "npx custom-elements-manifest analyze --litelement --globs src/web-components/**",
         "generate-manifest:watch": "npm run generate-manifest -- --watch",
-        "format": "prettier \"**/*.{cjs,html,js,json,md,ts,tsx}\" --ignore-path ./.eslintignore --write",
+        "format": "prettier \"**/*.{cjs,html,js,json,md,ts,tsx}\" --write",
         "check-format": "prettier --check \"**/*.{ts,tsx,json,md,mdx,mjs,cjs}\"",
         "check-types": "tsc --noEmit",
         "check-dependencies": "depcheck",
