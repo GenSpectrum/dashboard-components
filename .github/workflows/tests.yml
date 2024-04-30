@@ -30,6 +30,9 @@ jobs:
       - name: Check types
         run: npm run check-types
 
+      - name: Check types
+        run: npm run check-dependencies
+
       - name: Run linter
         run: npm run lint
 

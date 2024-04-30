@@ -1,0 +1,18 @@
+{
+    "ignores": [
+        "http-server",
+        "release-please",
+        "storybook-addon-fetch-mock",
+        "@storybook/addon-essentials",
+        "@storybook/addon-interactions",
+        "@storybook/addon-links",
+        "eslint-plugin-jest",
+        "*@babel/eslint-parser*",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/parser",
+        "eslint-config-preact",
+        "eslint-plugin-import",
+        "eslint-plugin-storybook"
+    ],
+    "ignore-patterns": [".eslintrc.json"]
+}
