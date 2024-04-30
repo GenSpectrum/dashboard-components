@@ -1,6 +1,6 @@
-import { type FunctionComponent } from 'preact';
+import { type FunctionComponent, type JSX } from 'preact';
 import { useState } from 'preact/hooks';
-import { type ChangeEvent } from 'react';
+
 import './min-max-percent-slider.css';
 
 export interface MinMaxPercentSliderProps {
@@ -27,7 +27,7 @@ export const MinMaxRangeSlider: FunctionComponent<MinMaxPercentSliderProps> = ({
 
     const [zIndexTo, setZIndexTo] = useState(0);
 
-    const onMinChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const onMinChange = (event: JSX.TargetedInputEvent<HTMLInputElement>) => {
         const input = event.target as HTMLInputElement;
         const minValue = Number(input.value);
 
@@ -39,7 +39,7 @@ export const MinMaxRangeSlider: FunctionComponent<MinMaxPercentSliderProps> = ({
         }
     };
 
-    const onMaxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const onMaxChange = (event: JSX.TargetedInputEvent<HTMLInputElement>) => {
         const input = event.target as HTMLInputElement;
         const maxValue = Number(input.value);
 

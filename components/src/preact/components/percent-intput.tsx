@@ -1,6 +1,5 @@
-import { type FunctionComponent } from 'preact';
+import { type FunctionComponent, type JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { type ChangeEvent } from 'react';
 
 export type PercentInputProps = {
     percentage: number;
@@ -18,7 +17,7 @@ export const PercentInput: FunctionComponent<PercentInputProps> = ({ percentage,
         setInternalPercentage(percentage);
     }, [percentage]);
 
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event: JSX.TargetedInputEvent<HTMLInputElement>) => {
         const input = event.target as HTMLInputElement;
         const value = Number(input.value);
 
