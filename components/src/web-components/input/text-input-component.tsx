@@ -9,13 +9,22 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
 @customElement('gs-text-input')
 export class TextInputComponent extends PreactLitAdapter {
     @property()
+    initialValue: string | undefined = '';
+
+    @property()
     lapisField = '';
 
     @property()
-    placeholderText = '';
+    placeholderText: string | undefined = '';
 
     override render() {
-        return <TextInput lapisField={this.lapisField} placeholderText={this.placeholderText} />;
+        return (
+            <TextInput
+                lapisField={this.lapisField}
+                placeholderText={this.placeholderText}
+                initialValue={this.initialValue}
+            />
+        );
     }
 }
 

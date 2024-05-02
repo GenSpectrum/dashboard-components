@@ -1,5 +1,6 @@
 import { withActions } from '@storybook/addon-actions/decorator';
 import { type Meta, type StoryObj } from '@storybook/preact';
+import { expect, waitFor, within } from '@storybook/test';
 
 import data from './__mockData__/aggregated_hosts.json';
 import { TextInput, type TextInputProps } from './text-input';
@@ -39,11 +40,31 @@ export default meta;
 export const Default: StoryObj<TextInputProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
-            <TextInput lapisField={args.lapisField} placeholderText={args.placeholderText} />
+            <TextInput
+                lapisField={args.lapisField}
+                placeholderText={args.placeholderText}
+                initialValue={args.initialValue}
+            />
         </LapisUrlContext.Provider>
     ),
     args: {
         lapisField: 'host',
         placeholderText: 'Enter a host name',
+    },
+};
+
+export const WithInitialValue: StoryObj<TextInputProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        initialValue: 'Homo sapiens',
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(() => {
+            const input = canvas.getByPlaceholderText('Enter a host name', { exact: false });
+            expect(input).toHaveValue('Homo sapiens');
+        });
     },
 };

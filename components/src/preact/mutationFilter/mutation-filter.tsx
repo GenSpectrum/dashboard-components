@@ -2,13 +2,16 @@ import { type FunctionComponent } from 'preact';
 import { useContext, useRef, useState } from 'preact/hooks';
 
 import { parseAndValidateMutation } from './parseAndValidateMutation';
+import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
 import { type Deletion, type Insertion, type Mutation, type Substitution } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import Info from '../components/info';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
-export type MutationFilterProps = {};
+export type MutationFilterProps = {
+    initialValue?: SelectedMutationFilterStrings | string[] | undefined;
+};
 
 export type SelectedFilters = {
     nucleotideMutations: (Substitution | Deletion)[];
@@ -21,14 +24,11 @@ export type SelectedMutationFilterStrings = {
     [Key in keyof SelectedFilters]: string[];
 };
 
-export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
+export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initialValue }) => {
     const referenceGenome = useContext(ReferenceGenomeContext);
-    const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({
-        nucleotideMutations: [],
-        aminoAcidMutations: [],
-        nucleotideInsertions: [],
-        aminoAcidInsertions: [],
-    });
+    const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>(
+        getInitialState(initialValue, referenceGenome),
+    );
     const [inputValue, setInputValue] = useState('');
     const [isError, setIsError] = useState(false);
     const formRef = useRef<HTMLFormElement>(null);
@@ -100,7 +100,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
                         type='text'
                         value={inputValue}
                         onInput={handleInputChange}
-                        placeholder={'Enter a mutation (e.g. A123T, ins_123:AT, S:M123E, ins_S:123:ME)'}
+                        placeholder={getPlaceholder(referenceGenome)}
                         onBlur={handleOnBlur}
                     />
                     <button className='btn btn-sm'>+</button>
@@ -109,6 +109,50 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = () => {
         </div>
     );
 };
+
+function getInitialState(
+    initialValue: SelectedMutationFilterStrings | string[] | undefined,
+    referenceGenome: ReferenceGenome,
+) {
+    if (initialValue === undefined) {
+        return {
+            nucleotideMutations: [],
+            aminoAcidMutations: [],
+            nucleotideInsertions: [],
+            aminoAcidInsertions: [],
+        };
+    }
+
+    const values = Array.isArray(initialValue) ? initialValue : Object.values(initialValue).flatMap((it) => it);
+
+    return values.reduce(
+        (selectedFilters, value) => {
+            const parsedMutation = parseAndValidateMutation(value, referenceGenome);
+            if (parsedMutation === null) {
+                return selectedFilters;
+            }
+
+            return {
+                ...selectedFilters,
+                [parsedMutation.type]: [...selectedFilters[parsedMutation.type], parsedMutation.value],
+            };
+        },
+        {
+            nucleotideMutations: [],
+            aminoAcidMutations: [],
+            nucleotideInsertions: [],
+            aminoAcidInsertions: [],
+        } as SelectedFilters,
+    );
+}
+
+function getPlaceholder(referenceGenome: ReferenceGenome) {
+    const segmentPrefix =
+        referenceGenome.nucleotideSequences.length > 1 ? `${referenceGenome.nucleotideSequences[0].name}:` : '';
+    const firstGene = referenceGenome.genes[0].name;
+
+    return `Enter a mutation (e.g. ${segmentPrefix}A123T, ins_${segmentPrefix}123:AT, ${firstGene}:M123E, ins_${firstGene}:123:ME)`;
+}
 
 const SelectedMutationDisplay: FunctionComponent<{
     selectedFilters: SelectedFilters;

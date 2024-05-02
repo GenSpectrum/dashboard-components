@@ -1,5 +1,4 @@
 import flatpickr from 'flatpickr';
-import { type FunctionComponent } from 'preact';
 import 'flatpickr/dist/flatpickr.min.css';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
@@ -7,24 +6,53 @@ import { toYYYYMMDD } from './dateConversion';
 import { Select } from '../components/select';
 import type { ScaleType } from '../shared/charts/getYAxisScale';
 
-export type CustomSelectOption = { label: string; dateFrom: string; dateTo: string };
+export type CustomSelectOption<CustomLabel extends string> = { label: CustomLabel; dateFrom: string; dateTo: string };
 
-export interface DateRangeSelectorProps {
-    customSelectOptions: CustomSelectOption[];
+export interface DateRangeSelectorProps<CustomLabel extends string> {
+    customSelectOptions: CustomSelectOption<CustomLabel>[];
     earliestDate?: string;
+    initialValue?: PresetOptionValues | CustomLabel;
 }
 
-export const DateRangeSelector: FunctionComponent<DateRangeSelectorProps> = ({
+export const PRESET_VALUE_CUSTOM = 'custom';
+export const PRESET_VALUE_ALL_TIMES = 'allTimes';
+export const PRESET_VALUE_LAST_2_WEEKS = 'last2Weeks';
+export const PRESET_VALUE_LAST_MONTH = 'lastMonth';
+export const PRESET_VALUE_LAST_2_MONTHS = 'last2Months';
+export const PRESET_VALUE_LAST_3_MONTHS = 'last3Months';
+export const PRESET_VALUE_LAST_6_MONTHS = 'last6Months';
+
+export const presets = {
+    [PRESET_VALUE_CUSTOM]: { label: 'Custom' },
+    [PRESET_VALUE_ALL_TIMES]: { label: 'All times' },
+    [PRESET_VALUE_LAST_2_WEEKS]: { label: 'Last 2 weeks' },
+    [PRESET_VALUE_LAST_MONTH]: { label: 'Last month' },
+    [PRESET_VALUE_LAST_2_MONTHS]: { label: 'Last 2 months' },
+    [PRESET_VALUE_LAST_3_MONTHS]: { label: 'Last 3 months' },
+    [PRESET_VALUE_LAST_6_MONTHS]: { label: 'Last 6 months' },
+};
+
+export type PresetOptionValues = keyof typeof presets;
+
+export const DateRangeSelector = <CustomLabel extends string>({
     customSelectOptions,
     earliestDate = '1900-01-01',
-}) => {
+    initialValue,
+}: DateRangeSelectorProps<CustomLabel>) => {
     const datePickerRef = useRef<HTMLInputElement>(null);
     const endDatePickerRef = useRef<HTMLInputElement>(null);
     const divRef = useRef<HTMLDivElement>(null);
     const [dateFromPicker, setDateFromPicker] = useState<flatpickr.Instance | null>(null);
     const [dateToPicker, setDateToPicker] = useState<flatpickr.Instance | null>(null);
 
-    const [selectedDateRange, setSelectedDateRange] = useState('last6Months');
+    const selectableOptions = getSelectableOptions(customSelectOptions);
+
+    const [selectedDateRange, setSelectedDateRange] = useState<CustomLabel | PresetOptionValues>(
+        initialValue !== undefined && selectableOptions.some((option) => option.value === initialValue)
+            ? initialValue
+            : PRESET_VALUE_LAST_6_MONTHS,
+    );
+
     const [selectedDates, setSelectedDates] = useState<{ dateFrom: Date; dateTo: Date }>({
         dateFrom: getDatesForSelectorValue('last6Months', customSelectOptions, earliestDate).dateFrom,
         dateTo: getDatesForSelectorValue('last6Months', customSelectOptions, earliestDate).dateTo,
@@ -61,27 +89,7 @@ export const DateRangeSelector: FunctionComponent<DateRangeSelectorProps> = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [datePickerRef, endDatePickerRef]);
 
-    const selectableOptions = () => {
-        const presetOptions = [
-            { label: 'Custom', value: 'custom' },
-            { label: 'All times', value: 'allTimes' },
-            { label: 'Last 2 weeks', value: 'last2Weeks' },
-            { label: 'Last month', value: 'lastMonth' },
-            { label: 'Last 2 weeks', value: 'last2Weeks' },
-            { label: 'Last month', value: 'lastMonth' },
-            { label: 'Last 2 months', value: 'last2Months' },
-            { label: 'Last 3 months', value: 'last3Months' },
-            { label: 'Last 6 months', value: 'last6Months' },
-        ];
-
-        const customOptions = customSelectOptions.map((customSelectOption) => {
-            return { label: customSelectOption.label, value: customLabelToOptionValue(customSelectOption.label) };
-        });
-
-        return [...presetOptions, ...customOptions];
-    };
-
-    const onSelectChange = (value: string) => {
+    const onSelectChange = (value: CustomLabel | PresetOptionValues) => {
         setSelectedDateRange(value);
 
         const dateRange = getDatesForSelectorValue(value, customSelectOptions, earliestDate);
@@ -145,14 +153,14 @@ export const DateRangeSelector: FunctionComponent<DateRangeSelectorProps> = ({
     return (
         <div class='join' ref={divRef}>
             <Select
-                items={selectableOptions()}
+                items={selectableOptions}
                 selected={selectedDateRange}
                 selectStyle='select-bordered rounded-none join-item'
                 onChange={(event: Event) => {
                     event.preventDefault();
                     const select = event.target as HTMLSelectElement;
                     const value = select.value as ScaleType;
-                    onSelectChange(value);
+                    onSelectChange(value as CustomLabel | PresetOptionValues);
                 }}
             />
             <input
@@ -175,51 +183,57 @@ export const DateRangeSelector: FunctionComponent<DateRangeSelectorProps> = ({
     );
 };
 
-const customLabelToOptionValue = (customLabel: string) => {
-    return `${customLabel}customLabel`;
+const getSelectableOptions = <Label extends string>(customSelectOptions: CustomSelectOption<Label>[]) => {
+    const presetOptions = Object.entries(presets).map(([key, value]) => {
+        return { label: value.label, value: key };
+    });
+
+    const customOptions = customSelectOptions.map((customSelectOption) => {
+        return { label: customSelectOption.label, value: customSelectOption.label };
+    });
+
+    return [...presetOptions, ...customOptions];
 };
 
-const getDatesForSelectorValue = (
+const getDatesForSelectorValue = <Label extends string>(
     selectorValue: string,
-    customSelectOptions: CustomSelectOption[],
+    customSelectOptions: CustomSelectOption<Label>[],
     earliestDate: string,
 ) => {
     const today = new Date();
 
-    const customSelectOption = customSelectOptions.find(
-        (option) => customLabelToOptionValue(option.label) === selectorValue,
-    );
+    const customSelectOption = customSelectOptions.find((option) => option.label === selectorValue);
     if (customSelectOption) {
         return { dateFrom: new Date(customSelectOption.dateFrom), dateTo: new Date(customSelectOption.dateTo) };
     }
 
     switch (selectorValue) {
-        case 'last2Weeks': {
+        case PRESET_VALUE_LAST_2_WEEKS: {
             const twoWeeksAgo = new Date(today);
             twoWeeksAgo.setDate(today.getDate() - 14);
             return { dateFrom: twoWeeksAgo, dateTo: today };
         }
-        case 'lastMonth': {
+        case PRESET_VALUE_LAST_MONTH: {
             const lastMonth = new Date(today);
             lastMonth.setMonth(today.getMonth() - 1);
             return { dateFrom: lastMonth, dateTo: today };
         }
-        case 'last2Months': {
+        case PRESET_VALUE_LAST_2_MONTHS: {
             const twoMonthsAgo = new Date(today);
             twoMonthsAgo.setMonth(today.getMonth() - 2);
             return { dateFrom: twoMonthsAgo, dateTo: today };
         }
-        case 'last3Months': {
+        case PRESET_VALUE_LAST_3_MONTHS: {
             const threeMonthsAgo = new Date(today);
             threeMonthsAgo.setMonth(today.getMonth() - 3);
             return { dateFrom: threeMonthsAgo, dateTo: today };
         }
-        case 'last6Months': {
+        case PRESET_VALUE_LAST_6_MONTHS: {
             const sixMonthsAgo = new Date(today);
             sixMonthsAgo.setMonth(today.getMonth() - 6);
             return { dateFrom: sixMonthsAgo, dateTo: today };
         }
-        case 'allTimes': {
+        case PRESET_VALUE_ALL_TIMES: {
             return { dateFrom: new Date(earliestDate), dateTo: today };
         }
         default:

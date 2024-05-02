@@ -28,13 +28,16 @@ const Template: StoryObj<LocationFilterProps> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
-                <gs-location-filter .fields=${args.fields} value=${ifDefined(args.value)}></gs-location-filter>
+                <gs-location-filter
+                    .fields=${args.fields}
+                    initialValue=${ifDefined(args.initialValue)}
+                ></gs-location-filter>
             </div>
         </gs-app>`;
     },
     args: {
         fields: ['region', 'country', 'division', 'location'],
-        value: '',
+        initialValue: '',
     },
 };
 

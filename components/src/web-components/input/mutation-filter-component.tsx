@@ -1,6 +1,7 @@
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 import { type TextInputComponent } from './text-input-component';
+import { ReferenceGenomesAwaiter } from '../../preact/components/ReferenceGenomesAwaiter';
 import { MutationFilter, type SelectedMutationFilterStrings } from '../../preact/mutationFilter/mutation-filter';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -10,8 +11,15 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  */
 @customElement('gs-mutation-filter')
 export class MutationFilterComponent extends PreactLitAdapter {
+    @property()
+    initialValue: SelectedMutationFilterStrings | string[] | undefined = undefined;
+
     override render() {
-        return <MutationFilter />;
+        return (
+            <ReferenceGenomesAwaiter>
+                <MutationFilter initialValue={this.initialValue} />
+            </ReferenceGenomesAwaiter>
+        );
     }
 }
 

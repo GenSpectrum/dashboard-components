@@ -41,7 +41,7 @@ export class LocationFilterComponent extends PreactLitAdapter {
      * Must be of the form `valueForField1 / valueForField2 / ... / valueForFieldN`.
      */
     @property()
-    value = '';
+    initialValue = '';
 
     /**
      * The fields to display in the location filter, in hierarchical order.
@@ -53,7 +53,7 @@ export class LocationFilterComponent extends PreactLitAdapter {
     fields: string[] = [];
 
     override render() {
-        return <LocationFilter value={this.value} fields={this.fields} />;
+        return <LocationFilter initialValue={this.initialValue} fields={this.fields} />;
     }
 }
 

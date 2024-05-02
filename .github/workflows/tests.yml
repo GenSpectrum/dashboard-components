@@ -30,7 +30,7 @@ jobs:
       - name: Check types
         run: npm run check-types
 
-      - name: Check types
+      - name: Check dependencies
         run: npm run check-dependencies
 
       - name: Run linter
