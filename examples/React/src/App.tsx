@@ -55,10 +55,10 @@ function App() {
     return (
         <gs-app lapis='https://s1.int.genspectrum.org/open'>
             <gs-location-filter
-                value='Europe / Switzerland'
+                initialValue='Europe / Switzerland'
                 fields='["region", "country", "division", "location"]'
             ></gs-location-filter>
-            <gs-date-range-selector selectedValue='last6Months'></gs-date-range-selector>
+            <gs-date-range-selector initialValue='last6Months'></gs-date-range-selector>
             <gs-prevalence-over-time
                 numerator={JSON.stringify(numerator)}
                 denominator={JSON.stringify(denominator)}

@@ -11,9 +11,10 @@ import { useQuery } from '../useQuery';
 export interface TextInputProps {
     lapisField: string;
     placeholderText?: string;
+    initialValue?: string;
 }
 
-export const TextInput: FunctionComponent<TextInputProps> = ({ lapisField, placeholderText }) => {
+export const TextInput: FunctionComponent<TextInputProps> = ({ lapisField, placeholderText, initialValue }) => {
     const lapis = useContext(LapisUrlContext);
 
     const inputRef = useRef<HTMLInputElement>(null);
@@ -62,6 +63,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({ lapisField, place
                 onInput={onInput}
                 ref={inputRef}
                 list={lapisField}
+                value={initialValue}
             />
             <datalist id={lapisField}>
                 {data.map((item) => (

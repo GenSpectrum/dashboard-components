@@ -5,11 +5,11 @@ import { LapisUrlContext } from '../LapisUrlContext';
 import { useQuery } from '../useQuery';
 
 export type LocationFilterProps = {
-    value?: string;
+    initialValue?: string;
     fields: string[];
 };
 
-export const LocationFilter = ({ value: initialValue, fields }: LocationFilterProps) => {
+export const LocationFilter = ({ initialValue, fields }: LocationFilterProps) => {
     const lapis = useContext(LapisUrlContext);
 
     const [value, setValue] = useState(initialValue ?? '');

@@ -5,6 +5,7 @@ import { html } from 'lit';
 
 import { LAPIS_URL } from '../../constants';
 import '../app';
+import { type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 import './mutation-filter-component';
 
@@ -22,18 +23,28 @@ const meta: Meta = {
 
 export default meta;
 
-export const Default: StoryObj<{ lapisField: string; placeholderText: string }> = {
-    render: () => {
+const Template: StoryObj<MutationFilterProps> = {
+    render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
-                <gs-mutation-filter></gs-mutation-filter>
+                <gs-mutation-filter .initialValue=${args.initialValue}></gs-mutation-filter>
             </div>
         </gs-app>`;
     },
+    args: {
+        initialValue: [],
+    },
 };
 
-export const FiresFilterChangedEvent: StoryObj<{ lapisField: string; placeholderText: string }> = {
-    ...Default,
+export const Default: StoryObj<MutationFilterProps> = {
+    ...Template,
+    args: {
+        initialValue: ['A123T'],
+    },
+};
+
+export const FiresFilterChangedEvent: StoryObj<MutationFilterProps> = {
+    ...Template,
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
 
@@ -70,8 +81,8 @@ export const FiresFilterChangedEvent: StoryObj<{ lapisField: string; placeholder
     },
 };
 
-export const FiresFilterOnBlurEvent: StoryObj<{ lapisField: string; placeholderText: string }> = {
-    ...Default,
+export const FiresFilterOnBlurEvent: StoryObj<MutationFilterProps> = {
+    ...Template,
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
 

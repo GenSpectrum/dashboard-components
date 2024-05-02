@@ -7,6 +7,7 @@ import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../app';
 import './text-input-component';
 import data from '../../preact/textInput/__mockData__/aggregated_hosts.json';
+import type { TextInputProps } from '../../preact/textInput/text-input';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const meta: Meta = {
@@ -40,21 +41,26 @@ const meta: Meta = {
 
 export default meta;
 
-export const Default: StoryObj<{ lapisField: string; placeholderText: string }> = {
+export const Default: StoryObj<TextInputProps> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
-                <gs-text-input .lapisField=${args.lapisField} .placeholderText=${args.placeholderText}></gs-text-input>
+                <gs-text-input
+                    .lapisField=${args.lapisField}
+                    .placeholderText=${args.placeholderText}
+                    .initialValue=${args.initialValue}
+                ></gs-text-input>
             </div>
         </gs-app>`;
     },
     args: {
         lapisField: 'host',
         placeholderText: 'Enter host name',
+        initialValue: 'Homo sapiens',
     },
 };
 
-export const FiresEvent: StoryObj<{ lapisField: string; placeholderText: string }> = {
+export const FiresEvent: StoryObj<TextInputProps> = {
     ...Default,
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-text-input');
@@ -88,5 +94,9 @@ export const FiresEvent: StoryObj<{ lapisField: string; placeholderText: string 
                 }),
             );
         });
+    },
+    args: {
+        ...Default.args,
+        initialValue: '',
     },
 };
