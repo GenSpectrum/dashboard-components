@@ -3,6 +3,7 @@ import { type OneDArray, type TColumn, type TData } from 'gridjs/dist/src/types'
 import { type PaginationConfig } from 'gridjs/dist/src/view/plugin/pagination';
 import { type ComponentChild } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
+
 import 'gridjs/dist/theme/mermaid.css';
 
 export const tableStyle = {

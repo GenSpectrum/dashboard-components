@@ -28,6 +28,7 @@ const PrevalenceOverTimeBarChart = ({
             datasets: data.map((graphData, index) => datasets(graphData, index, confidenceIntervalMethod)),
         },
         options: {
+            maintainAspectRatio: false,
             animation: false,
             scales: {
                 y: getYAxisScale(yAxisScaleType),

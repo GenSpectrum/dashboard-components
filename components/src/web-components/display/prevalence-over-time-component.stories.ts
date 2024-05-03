@@ -32,6 +32,7 @@ const meta: Meta<PrevalenceOverTimeProps> = {
             options: ['wilson'],
             control: { type: 'check' },
         },
+        size: [{ control: 'object' }],
     },
 };
 
@@ -39,18 +40,17 @@ export default meta;
 
 const Template: StoryObj<PrevalenceOverTimeProps> = {
     render: (args) => html`
-        <div class="w-11/12 h-11/12">
-            <gs-app lapis="${LAPIS_URL}">
-                <gs-prevalence-over-time
-                    .numerator=${args.numerator}
-                    .denominator=${args.denominator}
-                    .granularity=${args.granularity}
-                    .smoothingWindow=${args.smoothingWindow}
-                    .views=${args.views}
-                    .confidenceIntervalMethods=${args.confidenceIntervalMethods}
-                ></gs-prevalence-over-time>
-            </gs-app>
-        </div>
+        <gs-app lapis="${LAPIS_URL}">
+            <gs-prevalence-over-time
+                .numerator=${args.numerator}
+                .denominator=${args.denominator}
+                .granularity=${args.granularity}
+                .smoothingWindow=${args.smoothingWindow}
+                .views=${args.views}
+                .confidenceIntervalMethods=${args.confidenceIntervalMethods}
+                .size=${args.size}
+            ></gs-prevalence-over-time>
+        </gs-app>
     `,
 };
 
@@ -66,6 +66,7 @@ export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
         smoothingWindow: 0,
         views: ['bar', 'line', 'bubble', 'table'],
         confidenceIntervalMethods: ['wilson'],
+        size: { width: '100%', height: '700px' },
     },
     parameters: {
         fetchMock: {
@@ -131,6 +132,7 @@ export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
         smoothingWindow: 7,
         views: ['bar', 'line', 'bubble', 'table'],
         confidenceIntervalMethods: ['wilson'],
+        size: { width: '100%', height: '700px' },
     },
     parameters: {
         fetchMock: {
@@ -176,9 +178,9 @@ export const OneVariantOnLineTab: StoryObj<PrevalenceOverTimeProps> = {
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
 
-        await waitFor(() => expect(canvas.getByLabelText('Line', { selector: 'input' })).toBeInTheDocument());
+        await waitFor(() => expect(canvas.getByRole('button', { name: 'Line' })).toBeInTheDocument());
 
-        await fireEvent.click(canvas.getByLabelText('Line', { selector: 'input' }));
+        await fireEvent.click(canvas.getByRole('button', { name: 'Line' }));
     },
 };
 
@@ -187,9 +189,9 @@ export const OneVariantOnBubbleTab: StoryObj<PrevalenceOverTimeProps> = {
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
 
-        await waitFor(() => expect(canvas.getByLabelText('Bubble', { selector: 'input' })).toBeInTheDocument());
+        await waitFor(() => expect(canvas.getByRole('button', { name: 'Bubble' })).toBeInTheDocument());
 
-        await fireEvent.click(canvas.getByLabelText('Bubble', { selector: 'input' }));
+        await fireEvent.click(canvas.getByRole('button', { name: 'Bubble' }));
     },
 };
 
@@ -198,8 +200,8 @@ export const OneVariantOnTableTab: StoryObj<PrevalenceOverTimeProps> = {
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
 
-        await waitFor(() => expect(canvas.getByLabelText('Table', { selector: 'input' })).toBeInTheDocument());
+        await waitFor(() => expect(canvas.getByRole('button', { name: 'Table' })).toBeInTheDocument());
 
-        await fireEvent.click(canvas.getByLabelText('Table', { selector: 'input' }));
+        await fireEvent.click(canvas.getByRole('button', { name: 'Table' }));
     },
 };

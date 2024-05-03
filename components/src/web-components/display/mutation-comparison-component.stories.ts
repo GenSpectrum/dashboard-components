@@ -31,6 +31,7 @@ const meta: Meta<MutationComparisonProps> = {
             options: ['table', 'venn'],
             control: { type: 'check' },
         },
+        size: { control: 'object' },
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -47,15 +48,14 @@ export default meta;
 
 const Template: StoryObj<MutationComparisonProps> = {
     render: (args) => html`
-        <div class="w-11/12 h-11/12">
-            <gs-app lapis="${LAPIS_URL}">
-                <gs-mutation-comparison-component
-                    .variants=${args.variants}
-                    .sequenceType=${args.sequenceType}
-                    .views=${args.views}
-                ></gs-mutation-comparison-component>
-            </gs-app>
-        </div>
+        <gs-app lapis="${LAPIS_URL}">
+            <gs-mutation-comparison-component
+                .variants=${args.variants}
+                .sequenceType=${args.sequenceType}
+                .views=${args.views}
+                .size=${args.size}
+            ></gs-mutation-comparison-component>
+        </gs-app>
     `,
 };
 
@@ -82,6 +82,7 @@ export const Default: StoryObj<MutationComparisonProps> = {
         ],
         sequenceType: 'nucleotide',
         views: ['table', 'venn'],
+        size: { width: '100%', height: '700px' },
     },
     parameters: {
         fetchMock: {
@@ -141,9 +142,9 @@ export const VennDiagram: StoryObj<MutationComparisonProps> = {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-comparison-component');
 
         await step('Switch to Venn diagram view', async () => {
-            await waitFor(() => expect(canvas.getByLabelText('Venn', { selector: 'input' })).toBeInTheDocument());
+            await waitFor(() => expect(canvas.getByRole('button', { name: 'Venn' })).toBeInTheDocument());
 
-            await fireEvent.click(canvas.getByLabelText('Venn', { selector: 'input' }));
+            await fireEvent.click(canvas.getByRole('button', { name: 'Venn' }));
 
             await waitFor(() =>
                 expect(

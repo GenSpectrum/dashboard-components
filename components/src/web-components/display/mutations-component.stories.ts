@@ -23,6 +23,7 @@ const meta: Meta<MutationsProps> = {
             options: ['table', 'grid', 'insertions'],
             control: { type: 'check' },
         },
+        size: { control: 'object' },
     },
 };
 
@@ -30,15 +31,14 @@ export default meta;
 
 const Template: StoryObj<MutationsProps> = {
     render: (args) => html`
-        <div class="w-11/12 h-11/12">
-            <gs-app lapis="${LAPIS_URL}">
-                <gs-mutations-component
-                    .variant=${args.variant}
-                    .sequenceType=${args.sequenceType}
-                    .views=${args.views}
-                ></gs-mutations-component>
-            </gs-app>
-        </div>
+        <gs-app lapis="${LAPIS_URL}">
+            <gs-mutations-component
+                .variant=${args.variant}
+                .sequenceType=${args.sequenceType}
+                .views=${args.views}
+                .size=${args.size}
+            ></gs-mutations-component>
+        </gs-app>
     `,
 };
 
@@ -48,6 +48,7 @@ export const Default: StoryObj<MutationsProps> = {
         variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
         sequenceType: 'nucleotide',
         views: ['grid', 'table', 'insertions'],
+        size: { width: '100%', height: '700px' },
     },
     parameters: {
         fetchMock: {
@@ -89,9 +90,9 @@ export const OnTableTab: StoryObj<MutationsProps> = {
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutations-component');
 
-        await waitFor(() => expect(canvas.getByLabelText('Table', { selector: 'input' })).toBeInTheDocument());
+        await waitFor(() => expect(canvas.getByRole('button', { name: 'Table' })).toBeInTheDocument());
 
-        await fireEvent.click(canvas.getByLabelText('Table', { selector: 'input' }));
+        await fireEvent.click(canvas.getByRole('button', { name: 'Table' }));
     },
 };
 
@@ -100,8 +101,8 @@ export const OnInsertionsTab: StoryObj<MutationsProps> = {
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutations-component');
 
-        await waitFor(() => expect(canvas.getByLabelText('Insertions', { selector: 'input' })).toBeInTheDocument());
+        await waitFor(() => expect(canvas.getByRole('button', { name: 'Insertions' })).toBeInTheDocument());
 
-        await fireEvent.click(canvas.getByLabelText('Insertions', { selector: 'input' }));
+        await fireEvent.click(canvas.getByRole('button', { name: 'Insertions' }));
     },
 };

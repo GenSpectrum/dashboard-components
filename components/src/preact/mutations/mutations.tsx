@@ -24,6 +24,7 @@ import { type DisplayedMutationType, MutationTypeSelector } from '../components/
 import { NoDataDisplay } from '../components/no-data-display';
 import type { ProportionInterval } from '../components/proportion-selector';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
+import { ResizeContainer, type Size } from '../components/resize-container';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
 
@@ -33,9 +34,10 @@ export interface MutationsProps {
     variant: LapisFilter;
     sequenceType: SequenceType;
     views: View[];
+    size?: Size;
 }
 
-export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequenceType, views }) => {
+export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequenceType, views, size }) => {
     const lapis = useContext(LapisUrlContext);
     const { data, error, isLoading } = useQuery(async () => {
         return queryMutationsData(variant, sequenceType, lapis);
@@ -67,9 +69,11 @@ export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequence
     }
 
     return (
-        <Headline heading={headline}>
-            <MutationsTabs mutationsData={data} sequenceType={sequenceType} views={views} />
-        </Headline>
+        <ResizeContainer size={size} defaultSize={{ height: '700px', width: '100%' }}>
+            <Headline heading={headline}>
+                <MutationsTabs mutationsData={data} sequenceType={sequenceType} views={views} />
+            </Headline>
+        </ResizeContainer>
     );
 };
 

@@ -1,5 +1,5 @@
 import { Fragment, type FunctionComponent } from 'preact';
-import { useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import { type JSXInternal } from 'preact/src/jsx';
 
 type Tab = {
@@ -14,34 +14,57 @@ interface ComponentTabsProps {
 
 const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
     const [activeTab, setActiveTab] = useState(tabs[0].title);
+    const [heightOfTabs, setHeightOfTabs] = useState('3rem');
+    const tabRef = useRef<HTMLDivElement>(null);
 
-    const tabNames = tabs.map((tab) => tab.title).join(', ');
+    useEffect(() => {
+        if (tabRef.current) {
+            const heightOfTabs = tabRef.current.getBoundingClientRect().height;
+            setHeightOfTabs(`${heightOfTabs}px`);
+        }
+    }, []);
 
-    const tabElements = tabs.map((tab) => {
-        return (
-            <Fragment key={tab.title}>
-                <input
-                    type='radio'
-                    name={tabNames}
-                    role='tab'
-                    className='tab'
-                    aria-label={tab.title}
-                    checked={activeTab === tab.title}
-                    onChange={() => setActiveTab(tab.title)}
-                />
-                <div role='tabpanel' className='tab-content bg-base-100 border-base-300 rounded-box p-1'>
-                    {tab.content}
-                </div>
-            </Fragment>
-        );
-    });
+    const tabElements = (
+        <div className='flex flex-row'>
+            {tabs.map((tab) => {
+                return (
+                    <Fragment key={tab.title}>
+                        <button
+                            className={`px-4 py-2 text-sm font-medium leading-5 transition-colors duration-150 ${
+                                activeTab === tab.title
+                                    ? 'border-b-2 border-gray-400'
+                                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-700'
+                            }`}
+                            onClick={() => {
+                                setActiveTab(tab.title);
+                            }}
+                        >
+                            {tab.title}
+                        </button>
+                    </Fragment>
+                );
+            })}
+        </div>
+    );
 
     const toolbarElement = typeof toolbar === 'function' ? toolbar(activeTab) : toolbar;
 
     return (
-        <div role='tablist' className='tabs tabs-lifted'>
-            {tabElements}
-            {toolbar && <div className='m-1 col-[9999]'>{toolbarElement}</div>}
+        <div className='h-full w-full'>
+            <div ref={tabRef} className='flex flex-row justify-between'>
+                {tabElements}
+                {toolbar && <div className='py-2'>{toolbarElement}</div>}
+            </div>
+            <div
+                className={`p-2 border-2 border-gray-100 rounded-b-md rounded-tr-md ${activeTab === tabs[0].title ? '' : 'rounded-tl-md'}`}
+                style={{ height: `calc(100% - ${heightOfTabs})` }}
+            >
+                {tabs.map((tab) => (
+                    <div className='h-full overflow-auto' key={tab.title} hidden={activeTab !== tab.title}>
+                        {tab.content}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

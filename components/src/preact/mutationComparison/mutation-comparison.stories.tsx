@@ -27,6 +27,7 @@ const meta: Meta<MutationComparisonProps> = {
             options: ['table', 'venn'],
             control: { type: 'check' },
         },
+        size: [{ control: 'object' }],
     },
     parameters: {
         fetchMock: {
@@ -75,7 +76,12 @@ const Template: StoryObj<MutationComparisonProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationComparison variants={args.variants} sequenceType={args.sequenceType} views={args.views} />
+                <MutationComparison
+                    variants={args.variants}
+                    sequenceType={args.sequenceType}
+                    views={args.views}
+                    size={args.size}
+                />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
     ),
@@ -101,6 +107,7 @@ export const TwoVariants: StoryObj<MutationComparisonProps> = {
         ],
         sequenceType: 'nucleotide',
         views: ['table', 'venn'],
+        size: { width: '100%', height: '700px' },
     },
 };
 

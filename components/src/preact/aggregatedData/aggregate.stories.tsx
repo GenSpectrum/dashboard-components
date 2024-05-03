@@ -10,6 +10,7 @@ const meta: Meta<AggregateProps> = {
     component: Aggregate,
     argTypes: {
         fields: [{ control: 'object' }],
+        size: [{ control: 'object' }],
     },
     parameters: {
         fetchMock: {
@@ -37,11 +38,9 @@ export default meta;
 
 export const Default: StoryObj<AggregateProps> = {
     render: (args) => (
-        <div class='max-w-screen-lg'>
-            <LapisUrlContext.Provider value={LAPIS_URL}>
-                <Aggregate {...args} />
-            </LapisUrlContext.Provider>
-        </div>
+        <LapisUrlContext.Provider value={LAPIS_URL}>
+            <Aggregate {...args} />
+        </LapisUrlContext.Provider>
     ),
     args: {
         fields: ['division', 'host'],
@@ -49,5 +48,6 @@ export const Default: StoryObj<AggregateProps> = {
         filter: {
             country: 'USA',
         },
+        size: { width: '100%', height: '70vh' },
     },
 };

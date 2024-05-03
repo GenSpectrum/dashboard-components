@@ -59,20 +59,35 @@ function App() {
                 fields='["region", "country", "division", "location"]'
             ></gs-location-filter>
             <gs-date-range-selector initialValue='last6Months'></gs-date-range-selector>
-            <gs-prevalence-over-time
-                numerator={JSON.stringify(numerator)}
-                denominator={JSON.stringify(denominator)}
-                granularity='day'
-                smoothingWindow='7'
-                views='["line", "table"]'
-            ></gs-prevalence-over-time>
-            <gs-prevalence-over-time
-                numerator={JSON.stringify(numerator)}
-                denominator={JSON.stringify(denominator)}
-                granularity='month'
-                smoothingWindow='0'
-                views='["bar", "table"]'
-            ></gs-prevalence-over-time>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <gs-prevalence-over-time
+                    numerator={JSON.stringify(numerator)}
+                    denominator={JSON.stringify(denominator)}
+                    granularity='day'
+                    smoothingWindow='7'
+                    views='["line", "table"]'
+                    size={JSON.stringify({ height: '300px', width: '800px' })}
+                ></gs-prevalence-over-time>
+                <div style={{ height: '300px', width: '1000px' }}>
+                    <gs-prevalence-over-time
+                        numerator={JSON.stringify(numerator)}
+                        denominator={JSON.stringify(denominator)}
+                        granularity='day'
+                        smoothingWindow='7'
+                        views='["line", "table"]'
+                        size={JSON.stringify({ height: '100%', width: '80%' })}
+                    ></gs-prevalence-over-time>
+                </div>
+            </div>
+            <div>
+                <gs-prevalence-over-time
+                    numerator={JSON.stringify(numerator)}
+                    denominator={JSON.stringify(denominator)}
+                    granularity='day'
+                    smoothingWindow='7'
+                    views='["line", "table"]'
+                ></gs-prevalence-over-time>
+            </div>
         </gs-app>
     );
 }
