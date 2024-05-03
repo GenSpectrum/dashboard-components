@@ -11,6 +11,7 @@ import Headline from '../components/headline';
 import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
+import { ResizeContainer, type Size } from '../components/resize-container';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
 
@@ -20,9 +21,10 @@ export interface AggregateProps {
     filter: LapisFilter;
     fields: string[];
     views: View[];
+    size?: Size;
 }
 
-export const Aggregate: FunctionComponent<AggregateProps> = ({ fields, views, filter }) => {
+export const Aggregate: FunctionComponent<AggregateProps> = ({ fields, views, filter, size }) => {
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
@@ -56,9 +58,11 @@ export const Aggregate: FunctionComponent<AggregateProps> = ({ fields, views, fi
     }
 
     return (
-        <Headline heading={headline}>
-            <AggregatedDataTabs data={data} views={views} fields={fields} />
-        </Headline>
+        <ResizeContainer size={size} defaultSize={{ height: '700px', width: '100%' }}>
+            <Headline heading={headline}>
+                <AggregatedDataTabs data={data} views={views} fields={fields} />
+            </Headline>
+        </ResizeContainer>
     );
 };
 

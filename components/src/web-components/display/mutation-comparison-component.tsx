@@ -61,8 +61,26 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
     @property({ type: Array })
     views: ('table' | 'venn')[] = ['table'];
 
+    /**
+     * The size of the component.
+     *
+     * If not set, the component will take the full width of its container with height 700px.
+     *
+     * The width and height should be a string with a unit in css style, e.g. '100%', '500px' or '50vh'.
+     * If the unit is %, the size will be relative to the container of the component.
+     */
+    @property({ type: Object })
+    size: { width?: string; height?: string } | undefined = undefined;
+
     override render() {
-        return <MutationComparison variants={this.variants} sequenceType={this.sequenceType} views={this.views} />;
+        return (
+            <MutationComparison
+                variants={this.variants}
+                sequenceType={this.sequenceType}
+                views={this.views}
+                size={this.size}
+            />
+        );
     }
 }
 

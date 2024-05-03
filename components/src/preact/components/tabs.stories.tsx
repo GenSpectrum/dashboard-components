@@ -51,10 +51,10 @@ export const TabsWithToolbarOnlyShowingOnSecondTab: StoryObj = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await waitFor(() => expect(canvas.getByLabelText('FirstTab', { selector: 'input' })).toBeVisible());
+        await waitFor(() => expect(canvas.getByRole('button', { name: 'SecondTab' })).toBeVisible());
         await expect(canvas.queryByText('Toolbar')).not.toBeInTheDocument();
 
-        await fireEvent.click(canvas.getByLabelText('SecondTab', { selector: 'input' }));
+        await fireEvent.click(canvas.getByRole('button', { name: 'SecondTab' }));
         await waitFor(() => expect(canvas.getByText('Toolbar')).toBeVisible());
     },
 };

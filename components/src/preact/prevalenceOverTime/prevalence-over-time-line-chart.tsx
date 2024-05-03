@@ -36,6 +36,7 @@ const PrevalenceOverTimeLineChart = ({
         },
         options: {
             animation: false,
+            maintainAspectRatio: false,
             scales: {
                 y: getYAxisScale(yAxisScaleType),
             },

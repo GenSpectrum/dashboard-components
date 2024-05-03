@@ -43,6 +43,7 @@ const PrevalenceOverTimeBubbleChart = ({ data, yAxisScaleType }: PrevalenceOverT
         },
         options: {
             animation: false,
+            maintainAspectRatio: false,
             scales: {
                 x: {
                     ticks: {

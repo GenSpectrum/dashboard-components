@@ -19,6 +19,7 @@ const meta: Meta<RelativeGrowthAdvantageProps> = {
             options: ['line'],
             control: { type: 'check' },
         },
+        size: [{ control: 'object' }],
     },
 };
 
@@ -26,16 +27,15 @@ export default meta;
 
 const Template: StoryObj<RelativeGrowthAdvantageProps> = {
     render: (args) => html`
-        <div class="w-11/12 h-11/12">
-            <gs-app lapis="${LAPIS_URL}">
-                <gs-relative-growth-advantage
-                    .numerator=${args.numerator}
-                    .denominator=${args.denominator}
-                    .generationTime=${args.generationTime}
-                    .views=${args.views}
-                ></gs-relative-growth-advantage>
-            </gs-app>
-        </div>
+        <gs-app lapis="${LAPIS_URL}">
+            <gs-relative-growth-advantage
+                .numerator=${args.numerator}
+                .denominator=${args.denominator}
+                .generationTime=${args.generationTime}
+                .views=${args.views}
+                .size=${args.size}
+            ></gs-relative-growth-advantage>
+        </gs-app>
     `,
 };
 
@@ -46,6 +46,7 @@ export const Default: StoryObj<RelativeGrowthAdvantageProps> = {
         denominator: { country: 'Switzerland', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
         generationTime: 7,
         views: ['line'],
+        size: { width: '100%', height: '700px' },
     },
     parameters: {
         fetchMock: {

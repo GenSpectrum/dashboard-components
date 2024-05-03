@@ -13,6 +13,7 @@ import Headline from '../components/headline';
 import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
+import { ResizeContainer, type Size } from '../components/resize-container';
 import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
 import { type ScaleType } from '../shared/charts/getYAxisScale';
@@ -25,6 +26,7 @@ export interface RelativeGrowthAdvantageProps {
     denominator: LapisFilter;
     generationTime: number;
     views: View[];
+    size?: Size;
 }
 
 export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = ({
@@ -32,6 +34,7 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
     denominator,
     generationTime,
     views,
+    size,
 }) => {
     const lapis = useContext(LapisUrlContext);
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
@@ -67,14 +70,16 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
     }
 
     return (
-        <Headline heading={headline}>
-            <RelativeGrowthAdvantageTabs
-                data={data}
-                yAxisScaleType={yAxisScaleType}
-                setYAxisScaleType={setYAxisScaleType}
-                views={views}
-            />
-        </Headline>
+        <ResizeContainer size={size} defaultSize={{ height: '700px', width: '100%' }}>
+            <Headline heading={headline}>
+                <RelativeGrowthAdvantageTabs
+                    data={data}
+                    yAxisScaleType={yAxisScaleType}
+                    setYAxisScaleType={setYAxisScaleType}
+                    views={views}
+                />
+            </Headline>
+        </ResizeContainer>
     );
 };
 

@@ -64,6 +64,7 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
             type: 'venn',
             data: sets,
             options: {
+                maintainAspectRatio: false,
                 scales: {
                     x: {
                         ticks: {
@@ -114,9 +115,11 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
     }
 
     return (
-        <>
-            <GsChart configuration={config} />
+        <div className='h-full flex flex-col'>
+            <div className='flex-1'>
+                <GsChart configuration={config} />
+            </div>
             <div class='flex flex-wrap break-words m-2' ref={divRef} />
-        </>
+        </div>
     );
 };

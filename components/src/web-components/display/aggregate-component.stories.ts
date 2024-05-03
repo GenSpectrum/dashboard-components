@@ -18,6 +18,7 @@ const meta: Meta<AggregateProps> = {
             options: ['table'],
             control: { type: 'check' },
         },
+        size: [{ control: 'object' }],
     },
     parameters: withComponentDocs({
         fetchMock: {
@@ -52,15 +53,14 @@ export default meta;
 
 export const Table: StoryObj<AggregateProps> = {
     render: (args) => html`
-        <div class="w-11/12 h-11/12">
-            <gs-app lapis="${LAPIS_URL}">
-                <gs-aggregate-component
-                    .fields=${args.fields}
-                    .filter=${args.filter}
-                    .views=${args.views}
-                ></gs-aggregate-component>
-            </gs-app>
-        </div>
+        <gs-app lapis="${LAPIS_URL}">
+            <gs-aggregate-component
+                .fields=${args.fields}
+                .filter=${args.filter}
+                .views=${args.views}
+                .size=${args.size}
+            ></gs-aggregate-component>
+        </gs-app>
     `,
     args: {
         fields: ['division', 'host'],
@@ -68,5 +68,6 @@ export const Table: StoryObj<AggregateProps> = {
         filter: {
             country: 'USA',
         },
+        size: { width: '100%', height: '700px' },
     },
 };

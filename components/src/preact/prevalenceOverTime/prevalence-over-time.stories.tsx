@@ -29,6 +29,7 @@ export default {
             options: ['wilson'],
             control: { type: 'check' },
         },
+        size: [{ control: 'object' }],
     },
 };
 
@@ -42,6 +43,7 @@ const Template = {
                 smoothingWindow={args.smoothingWindow}
                 views={args.views}
                 confidenceIntervalMethods={args.confidenceIntervalMethods}
+                size={args.size}
             />
         </LapisUrlContext.Provider>
     ),
@@ -59,6 +61,7 @@ export const TwoVariants = {
         smoothingWindow: 0,
         views: ['bar', 'line', 'bubble', 'table'],
         confidenceIntervalMethods: ['wilson'],
+        size: { width: '100%', height: '700px' },
     },
     parameters: {
         fetchMock: {
@@ -124,6 +127,7 @@ export const OneVariant = {
         smoothingWindow: 7,
         views: ['bar', 'line', 'bubble', 'table'],
         confidenceIntervalMethods: ['wilson'],
+        size: { width: '100%', height: '700px' },
     },
     parameters: {
         fetchMock: {

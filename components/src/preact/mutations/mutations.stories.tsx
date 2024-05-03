@@ -22,6 +22,7 @@ const meta: Meta<MutationsProps> = {
             options: ['table', 'grid', 'insertions'],
             control: { type: 'check' },
         },
+        size: [{ control: 'object' }],
     },
 };
 
@@ -31,7 +32,12 @@ const Template = {
     render: (args: MutationsProps) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <Mutations variant={args.variant} sequenceType={args.sequenceType} views={args.views} />
+                <Mutations
+                    variant={args.variant}
+                    sequenceType={args.sequenceType}
+                    views={args.views}
+                    size={args.size}
+                />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
     ),
@@ -43,6 +49,7 @@ export const Default: StoryObj<MutationsProps> = {
         variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
         sequenceType: 'nucleotide',
         views: ['grid', 'table', 'insertions'],
+        size: { width: '100%', height: '700px' },
     },
     parameters: {
         fetchMock: {

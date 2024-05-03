@@ -37,6 +37,7 @@ const RelativeGrowthAdvantageChart = ({ data, yAxisScaleType }: RelativeGrowthAd
             datasets: datasets(data),
         },
         options: {
+            maintainAspectRatio: false,
             animation: false,
             scales: {
                 y: getYAxisScale(yAxisScaleType),
@@ -51,13 +52,15 @@ const RelativeGrowthAdvantageChart = ({ data, yAxisScaleType }: RelativeGrowthAd
     };
 
     return (
-        <>
-            <GsChart configuration={config} />
-            <div>
+        <div className='flex flex-col h-full'>
+            <div className='flex-1'>
+                <GsChart configuration={config} />
+            </div>
+            <p>
                 Advantage: {(data.params.fd.value * 100).toFixed(2)}% ({(data.params.fd.ciLower * 100).toFixed(2)}% -{' '}
                 {(data.params.fd.ciUpper * 100).toFixed(2)}%)
-            </div>
-        </>
+            </p>
+        </div>
     );
 };
 

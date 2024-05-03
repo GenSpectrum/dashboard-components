@@ -10,6 +10,16 @@ export default {
     parameters: {
         fetchMock: {},
     },
+    argTypes: {
+        numerator: { control: 'object' },
+        denominator: { control: 'object' },
+        generationTime: { control: 'number' },
+        views: {
+            options: ['line'],
+            control: { type: 'check' },
+        },
+        size: [{ control: 'object' }],
+    },
 };
 
 export const Primary = {
@@ -20,6 +30,7 @@ export const Primary = {
                 denominator={args.denominator}
                 generationTime={args.generationTime}
                 views={args.views}
+                size={args.size}
             />
         </LapisUrlContext.Provider>
     ),
@@ -28,6 +39,7 @@ export const Primary = {
         denominator: { country: 'Switzerland', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
         generationTime: 7,
         views: ['line'],
+        size: { width: '100%', height: '700px' },
     },
     parameters: {
         fetchMock: {

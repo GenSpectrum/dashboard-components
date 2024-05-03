@@ -16,6 +16,7 @@ import Headline from '../components/headline';
 import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
+import { ResizeContainer, type Size } from '../components/resize-container';
 import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
 import { type ConfidenceIntervalMethod } from '../shared/charts/confideceInterval';
@@ -31,6 +32,7 @@ export interface PrevalenceOverTimeProps {
     smoothingWindow: number;
     views: View[];
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
+    size?: Size;
 }
 
 export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
@@ -40,6 +42,7 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
     smoothingWindow,
     views,
     confidenceIntervalMethods,
+    size,
 }) => {
     const lapis = useContext(LapisUrlContext);
 
@@ -75,14 +78,16 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
     }
 
     return (
-        <Headline heading={headline}>
-            <PrevalenceOverTimeTabs
-                views={views}
-                data={data}
-                granularity={granularity}
-                confidenceIntervalMethods={confidenceIntervalMethods}
-            />
-        </Headline>
+        <ResizeContainer size={size} defaultSize={{ height: '600px', width: '100%' }}>
+            <Headline heading={headline}>
+                <PrevalenceOverTimeTabs
+                    views={views}
+                    data={data}
+                    granularity={granularity}
+                    confidenceIntervalMethods={confidenceIntervalMethods}
+                />
+            </Headline>
+        </ResizeContainer>
     );
 };
 
@@ -134,7 +139,10 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
                     content: <PrevalenceOverTimeBubbleChart data={data} yAxisScaleType={yAxisScaleType} />,
                 };
             case 'table':
-                return { title: 'Table', content: <PrevalenceOverTimeTable data={data} granularity={granularity} /> };
+                return {
+                    title: 'Table',
+                    content: <PrevalenceOverTimeTable data={data} granularity={granularity} />,
+                };
         }
     };
 
