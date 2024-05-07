@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../app';
 import './location-filter-component';
@@ -14,12 +15,19 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 const meta: Meta = {
     title: 'Input/Location filter',
     component: 'gs-location-filter',
-    parameters: {
+    parameters: withComponentDocs({
         actions: {
             handles: ['gs-location-changed'],
         },
-    },
+        componentDocs: {
+            tag: 'gs-location-filter',
+            opensShadowDom: true,
+            expectsChildren: false,
+            codeExample: `<gs-location-filter fields="['continent', 'country']" value='Europe / Switzerland'></gs-location-filter>`,
+        },
+    }),
     decorators: [withActions],
+    tags: ['autodocs'],
 };
 
 export default meta;

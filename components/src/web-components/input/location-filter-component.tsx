@@ -4,10 +4,6 @@ import { LocationFilter } from '../../preact/locationFilter/location-filter';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
- * ## Tag
- *
- * `gs-location-filter`
- *
  * ## Context
  *
  * This component provides an input field to specify filters for locations.

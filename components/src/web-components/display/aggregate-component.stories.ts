@@ -1,9 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
+import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import aggregatedData from '../../preact/aggregatedData/__mockData__/aggregated.json';
 import type { AggregateProps } from '../../preact/aggregatedData/aggregate';
+
 import './aggregate-component';
 import '../app';
 
@@ -17,7 +19,7 @@ const meta: Meta<AggregateProps> = {
             control: { type: 'check' },
         },
     },
-    parameters: {
+    parameters: withComponentDocs({
         fetchMock: {
             mocks: [
                 {
@@ -36,7 +38,14 @@ const meta: Meta<AggregateProps> = {
                 },
             ],
         },
-    },
+        componentDocs: {
+            tag: 'gs-aggregate-component',
+            opensShadowDom: true,
+            expectsChildren: false,
+            codeExample: `<gs-aggregate-component fields='["division", "host"]' filter='{"country": "USA"}' views='["table"]'></gs-aggregate-component>`,
+        },
+    }),
+    tags: ['autodocs'],
 };
 
 export default meta;

@@ -9,17 +9,30 @@ import './app';
 
 import { lapisContext } from './lapis-context';
 import { referenceGenomeContext } from './reference-genome-context';
+import { withComponentDocs } from '../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL, REFERENCE_GENOME_ENDPOINT } from '../constants';
 import type { ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import referenceGenome from '../lapisApi/__mockData__/referenceGenome.json';
 
+const codeExample = String.raw`
+<gs-app lapis="https://url.to.lapis">
+    <p>Your application code goes here.</p> 
+</gs-app>`;
+
 const meta: Meta = {
     title: 'Wrapper/App',
     component: 'gs-app',
-    parameters: {
+    parameters: withComponentDocs({
         fetchMock: {},
-    },
+        componentDocs: {
+            tag: 'gs-app',
+            opensShadowDom: false,
+            expectsChildren: true,
+            codeExample,
+        },
+    }),
     decorators: [withActions],
+    tags: ['autodocs'],
 };
 
 export default meta;
@@ -85,7 +98,6 @@ export const FailsToFetchReferenceGenome: StoryObj<{ lapis: string }> = {
 };
 
 @customElement('gs-app-display')
-// @ts-expect-error This class is used in the story above, but TS complains that it is not used
 // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars -- it is used in the story above
 class AppDisplay extends LitElement {
     @consume({ context: lapisContext })

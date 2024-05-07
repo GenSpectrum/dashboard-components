@@ -9,10 +9,6 @@ import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import { fetchReferenceGenome } from '../lapisApi/lapisApi';
 
 /**
- * ## Tag
- *
- * `gs-app`
- *
  * ## Context
  *
  * This component provides the main application context.
