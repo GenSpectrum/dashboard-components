@@ -4,11 +4,19 @@ import { html } from 'lit';
 
 import './mutation-comparison-component';
 import '../app';
+import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import nucleotideMutationsOtherVariant from '../../preact/mutationComparison/__mockData__/nucleotideMutationsOtherVariant.json';
 import nucleotideMutationsSomeVariant from '../../preact/mutationComparison/__mockData__/nucleotideMutationsSomeVariant.json';
 import { type MutationComparisonProps } from '../../preact/mutationComparison/mutation-comparison';
 import { withinShadowRoot } from '../withinShadowRoot.story';
+
+const codeExample = String.raw`
+<gs-mutation-comparison-component
+    variants='[{ "displayName": "variant1", "lapisFilter": { "country": "Switzerland" }}, { "displayName": "variant2", "lapisFilter": { "country": "Germany" }}]'
+    sequenceType="nucleotide"
+    views='["table", "venn"]'
+></gs-mutation-comparison-component>`;
 
 const meta: Meta<MutationComparisonProps> = {
     title: 'Visualization/Mutation comparison',
@@ -24,6 +32,15 @@ const meta: Meta<MutationComparisonProps> = {
             control: { type: 'check' },
         },
     },
+    parameters: withComponentDocs({
+        componentDocs: {
+            tag: 'gs-mutation-comparison-component',
+            opensShadowDom: true,
+            expectsChildren: false,
+            codeExample,
+        },
+    }),
+    tags: ['autodocs'],
 };
 
 export default meta;

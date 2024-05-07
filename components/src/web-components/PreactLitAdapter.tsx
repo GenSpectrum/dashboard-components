@@ -46,7 +46,6 @@ export abstract class PreactLitAdapter extends ReactiveElement {
     };
 
     override update(changedProperties: PropertyValues) {
-        console.log('this.lapis', this.lapis);
         const vdom = (
             <LapisUrlContext.Provider value={this.lapis}>
                 <ReferenceGenomeContext.Provider value={this.referenceGenome}>

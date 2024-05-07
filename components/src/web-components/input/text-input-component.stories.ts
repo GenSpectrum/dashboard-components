@@ -35,7 +35,6 @@ const meta: Meta = {
         },
     },
     decorators: [withActions],
-    tags: ['autodocs'],
 };
 
 export default meta;
