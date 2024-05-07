@@ -10,7 +10,7 @@ import { type LapisFilter } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
-import Info from '../components/info';
+import Info, { InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer, type Size } from '../components/resize-container';
@@ -77,6 +77,7 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
                     yAxisScaleType={yAxisScaleType}
                     setYAxisScaleType={setYAxisScaleType}
                     views={views}
+                    generationTime={generationTime}
                 />
             </Headline>
         </ResizeContainer>
@@ -88,6 +89,7 @@ type RelativeGrowthAdvantageTabsProps = {
     yAxisScaleType: ScaleType;
     setYAxisScaleType: (scaleType: ScaleType) => void;
     views: View[];
+    generationTime: number;
 };
 
 const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabsProps> = ({
@@ -95,6 +97,7 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
     yAxisScaleType,
     setYAxisScaleType,
     views,
+    generationTime,
 }) => {
     const getTab = (view: View) => {
         switch (view) {
@@ -117,7 +120,11 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
 
     const tabs = views.map((view) => getTab(view));
     const toolbar = () => (
-        <RelativeGrowthAdvantageToolbar yAxisScaleType={yAxisScaleType} setYAxisScaleType={setYAxisScaleType} />
+        <RelativeGrowthAdvantageToolbar
+            generationTime={generationTime}
+            yAxisScaleType={yAxisScaleType}
+            setYAxisScaleType={setYAxisScaleType}
+        />
     );
 
     return <Tabs tabs={tabs} toolbar={toolbar} />;
@@ -126,16 +133,53 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
 type RelativeGrowthAdvantageToolbarProps = {
     yAxisScaleType: ScaleType;
     setYAxisScaleType: (scaleType: ScaleType) => void;
+    generationTime: number;
 };
 
 const RelativeGrowthAdvantageToolbar: FunctionComponent<RelativeGrowthAdvantageToolbarProps> = ({
     yAxisScaleType,
     setYAxisScaleType,
+    generationTime,
 }) => {
     return (
         <div class='flex'>
             <ScalingSelector yAxisScaleType={yAxisScaleType} setYAxisScaleType={setYAxisScaleType} />
-            <Info className='ml-1' content='Line chart' />
+            <RelativeGrowthAdvantageInfo generationTime={generationTime} />
         </div>
+    );
+};
+
+const RelativeGrowthAdvantageInfo: FunctionComponent<{ generationTime: number }> = ({ generationTime }) => {
+    return (
+        <Info size={{ width: '600px', height: '30vh' }}>
+            <InfoHeadline1>Relative growth advantage</InfoHeadline1>
+            <InfoParagraph>
+                If variants spread pre-dominantly by local transmission across demographic groups, this estimate
+                reflects the relative viral intrinsic growth advantage of the focal variant in the selected country and
+                time frame. We report the relative growth advantage per {generationTime} days (in percentage; 0% means
+                equal growth). Importantly, the relative growth advantage estimate reflects the advantage compared to
+                the co-circulating variants. Thus, as new variants spread, the advantage of the focal variant may
+                decrease. Different mechanisms can alter the intrinsic growth rate, including an intrinsic transmission
+                advantage, immune evasion, and a prolonged infectious period. When absolute numbers of a variant are
+                low, the growth advantage may merely reflect the current importance of introductions from abroad or the
+                variant spreading in a particular demographic group. In this case, the estimate does not provide
+                information on any intrinsic fitness advantages.
+            </InfoParagraph>
+            <InfoParagraph>
+                Example: Assume that 10 infections from the focal variant and 100 infections from the co-circulating
+                variants occur today and that the focal variant has a relative growth advantage of 50%. Then, if the
+                number of new infections from the co-circulating variants remains at 100 in {generationTime} days from
+                today, we expect the number of new infections from the focal variant to be 15.
+            </InfoParagraph>
+
+            <InfoHeadline2>Reference</InfoHeadline2>
+            <InfoParagraph>
+                Chen, Chaoran, et al. "Quantification of the spread of SARS-CoV-2 variant B.1.1.7 in Switzerland."
+                Epidemics (2021); doi:{' '}
+                <InfoLink href='https://www.sciencedirect.com/science/article/pii/S1755436521000335?via=ihub'>
+                    10.1016/j.epidem.2021.100480
+                </InfoLink>
+            </InfoParagraph>
+        </Info>
     );
 };

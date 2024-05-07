@@ -90,7 +90,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initial
                     setSelectedFilters={setSelectedFilters}
                     fireChangeEvent={fireChangeEvent}
                 />
-                <Info className='mx-1' content='Info for mutation filter' />
+                <Info>Info for mutation filter</Info>
             </div>
 
             <form className='mt-2 w-full' onSubmit={handleSubmit} ref={formRef}>

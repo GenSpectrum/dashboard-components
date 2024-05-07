@@ -13,7 +13,7 @@ import { ConfidenceIntervalSelector } from '../components/confidence-interval-se
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
-import Info from '../components/info';
+import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer, type Size } from '../components/resize-container';
@@ -202,8 +202,18 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 getData={() => getPrevalenceOverTimeTableData(data, granularity)}
                 filename='prevalence-over-time.csv'
             />
-            <Info className='ml-1' content='Info for prevalence over time' />
+
+            <PrevalenceOverTimeInfo />
         </div>
+    );
+};
+
+const PrevalenceOverTimeInfo: FunctionComponent = () => {
+    return (
+        <Info size={{ width: '600px', height: '30vh' }}>
+            <InfoHeadline1>Prevalence over time</InfoHeadline1>
+            <InfoParagraph>Prevalence over time info.</InfoParagraph>
+        </Info>
     );
 };
 
