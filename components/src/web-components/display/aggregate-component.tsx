@@ -5,10 +5,6 @@ import { type LapisFilter } from '../../types';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
 /**
- * ## Tag
- *
- * `gs-aggregate-component`
- *
  * ## Context
  *
  * This component displays aggregated data, which can provide an overview of the underlying data.
