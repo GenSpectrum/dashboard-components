@@ -197,7 +197,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                     filename='insertions.csv'
                 />
             )}
-            <Info className='mx-1' content='Info for mutations' />
+            <Info>Info for mutations</Info>
         </div>
     );
 };

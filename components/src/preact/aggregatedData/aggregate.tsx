@@ -96,7 +96,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({ data }) => {
     return (
         <div class='flex flex-row'>
             <CsvDownloadButton className='mx-1 btn btn-xs' getData={() => data} filename='aggregate.csv' />
-            <Info className='mx-1' content='Info for aggregate' />
+            <Info>Info for aggregate</Info>
         </div>
     );
 };

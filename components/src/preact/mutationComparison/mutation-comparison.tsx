@@ -182,7 +182,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 getData={() => getMutationComparisonTableData({ content: filteredData }, proportionInterval)}
                 filename='mutation_comparison.csv'
             />
-            <Info className='mx-1' content='Info for mutation comparison' />
+            <Info>Info for mutation comparison</Info>
         </div>
     );
 };
