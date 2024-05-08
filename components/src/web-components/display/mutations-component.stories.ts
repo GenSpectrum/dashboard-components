@@ -4,15 +4,23 @@ import { html } from 'lit';
 
 import './mutations-component';
 import '../app';
+import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import nucleotideInsertions from '../../preact/mutations/__mockData__/nucleotideInsertions.json';
 import nucleotideMutations from '../../preact/mutations/__mockData__/nucleotideMutations.json';
 import { type MutationsProps } from '../../preact/mutations/mutations';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
+const codeExample = String.raw`
+<gs-mutations
+    variant='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateTo": "2022-01-01" }'
+    sequenceType="nucleotide"
+    views='["grid", "table", "insertions"]'
+></gs-mutations>`;
+
 const meta: Meta<MutationsProps> = {
     title: 'Visualization/Mutations',
-    component: 'gs-mutations',
+    component: 'gs-mutations-component',
     argTypes: {
         variant: { control: 'object' },
         sequenceType: {
@@ -25,6 +33,21 @@ const meta: Meta<MutationsProps> = {
         },
         size: { control: 'object' },
     },
+    args: {
+        variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
+        sequenceType: 'nucleotide',
+        views: ['grid', 'table', 'insertions'],
+        size: { width: '100%', height: '700px' },
+    },
+    parameters: withComponentDocs({
+        componentDocs: {
+            tag: 'gs-mutations-component',
+            opensShadowDom: true,
+            expectsChildren: false,
+            codeExample,
+        },
+    }),
+    tags: ['autodocs'],
 };
 
 export default meta;
@@ -44,12 +67,6 @@ const Template: StoryObj<MutationsProps> = {
 
 export const Default: StoryObj<MutationsProps> = {
     ...Template,
-    args: {
-        variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
-        sequenceType: 'nucleotide',
-        views: ['grid', 'table', 'insertions'],
-        size: { width: '100%', height: '700px' },
-    },
     parameters: {
         fetchMock: {
             mocks: [
