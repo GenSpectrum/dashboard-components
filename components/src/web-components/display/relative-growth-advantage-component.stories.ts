@@ -3,10 +3,19 @@ import { html } from 'lit';
 
 import './relative-growth-advantage-component';
 import '../app';
+import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import denominator from '../../preact/relativeGrowthAdvantage/__mockData__/denominator.json';
 import numerator from '../../preact/relativeGrowthAdvantage/__mockData__/numerator.json';
 import { type RelativeGrowthAdvantageProps } from '../../preact/relativeGrowthAdvantage/relative-growth-advantage';
+
+const codeExample = String.raw`
+<gs-relative-growth-advantage
+    numerator='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateFrom": "2020-12-01" }'
+    denominator='{ "country": "Switzerland", "dateFrom": "2020-12-01" }'
+    generationTime="7"
+    views='["line"]'
+></gs-relative-growth-advantage>`;
 
 const meta: Meta<RelativeGrowthAdvantageProps> = {
     title: 'Visualization/Relative growth advantage',
@@ -21,6 +30,15 @@ const meta: Meta<RelativeGrowthAdvantageProps> = {
         },
         size: [{ control: 'object' }],
     },
+    parameters: withComponentDocs({
+        componentDocs: {
+            tag: 'gs-relative-growth-advantage',
+            opensShadowDom: true,
+            expectsChildren: false,
+            codeExample,
+        },
+    }),
+    tags: ['autodocs'],
 };
 
 export default meta;
