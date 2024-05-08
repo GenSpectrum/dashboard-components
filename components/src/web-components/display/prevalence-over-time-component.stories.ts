@@ -4,6 +4,7 @@ import { html } from 'lit';
 
 import '../app';
 import './prevalence-over-time-component';
+import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import denominator from '../../preact/prevalenceOverTime/__mockData__/denominator.json';
 import denominatorOneVariant from '../../preact/prevalenceOverTime/__mockData__/denominatorOneVariant.json';
@@ -12,6 +13,16 @@ import numeratorJN1 from '../../preact/prevalenceOverTime/__mockData__/numerator
 import numeratorOneVariant from '../../preact/prevalenceOverTime/__mockData__/numeratorOneVariant.json';
 import { type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
 import { withinShadowRoot } from '../withinShadowRoot.story';
+
+const codeExample = String.raw`
+<gs-prevalence-over-time
+    numerator='[{ "displayName": "EG", "country": "USA", "pangoLineage": "EG*" }, { "displayName": "JN.1", "country": "USA", "pangoLineage": "JN.1*" }]'
+    denominator='{ "country": "USA", "displayName": "All" }'
+    granularity="month"
+    smoothingWindow="0"
+    views='["bar", "line", "bubble", "table"]'
+    confidenceIntervalMethods='["wilson"]'
+></gs-prevalence-over-time>`;
 
 const meta: Meta<PrevalenceOverTimeProps> = {
     title: 'Visualization/Prevalence over time',
@@ -34,6 +45,15 @@ const meta: Meta<PrevalenceOverTimeProps> = {
         },
         size: [{ control: 'object' }],
     },
+    parameters: withComponentDocs({
+        componentDocs: {
+            tag: 'gs-prevalence-over-time',
+            opensShadowDom: true,
+            expectsChildren: false,
+            codeExample,
+        },
+    }),
+    tags: ['autodocs'],
 };
 
 export default meta;
