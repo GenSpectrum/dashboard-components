@@ -39,8 +39,8 @@ export const DateRangeSelector = <CustomLabel extends string>({
     earliestDate = '1900-01-01',
     initialValue,
 }: DateRangeSelectorProps<CustomLabel>) => {
-    const datePickerRef = useRef<HTMLInputElement>(null);
-    const endDatePickerRef = useRef<HTMLInputElement>(null);
+    const fromDatePickerRef = useRef<HTMLInputElement>(null);
+    const toDatePickerRef = useRef<HTMLInputElement>(null);
     const divRef = useRef<HTMLDivElement>(null);
     const [dateFromPicker, setDateFromPicker] = useState<flatpickr.Instance | null>(null);
     const [dateToPicker, setDateToPicker] = useState<flatpickr.Instance | null>(null);
@@ -64,18 +64,18 @@ export const DateRangeSelector = <CustomLabel extends string>({
             dateFormat: 'Y-m-d',
         };
 
-        if (datePickerRef.current) {
+        if (fromDatePickerRef.current) {
             setDateFromPicker(
-                flatpickr(datePickerRef.current, {
+                flatpickr(fromDatePickerRef.current, {
                     ...commonConfig,
                     defaultDate: selectedDates.dateFrom,
                 }),
             );
         }
 
-        if (endDatePickerRef.current) {
+        if (toDatePickerRef.current) {
             setDateToPicker(
-                flatpickr(endDatePickerRef.current, {
+                flatpickr(toDatePickerRef.current, {
                     ...commonConfig,
                     defaultDate: selectedDates.dateTo,
                 }),
@@ -87,7 +87,7 @@ export const DateRangeSelector = <CustomLabel extends string>({
             dateToPicker?.destroy();
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [datePickerRef, endDatePickerRef]);
+    }, [fromDatePickerRef, toDatePickerRef]);
 
     const onSelectChange = (value: CustomLabel | PresetOptionValues) => {
         setSelectedDateRange(value);
@@ -167,7 +167,7 @@ export const DateRangeSelector = <CustomLabel extends string>({
                 class='input input-bordered rounded-none join-item'
                 type='text'
                 placeholder='Date from'
-                ref={datePickerRef}
+                ref={fromDatePickerRef}
                 onChange={onChangeDateFrom}
                 onBlur={onChangeDateFrom}
             />
@@ -175,9 +175,9 @@ export const DateRangeSelector = <CustomLabel extends string>({
                 class='input input-bordered rounded-none join-item'
                 type='text'
                 placeholder='Date to'
-                ref={endDatePickerRef}
+                ref={toDatePickerRef}
                 onChange={onChangeDateTo}
-                onBlur={onChangeDateFrom}
+                onBlur={onChangeDateTo}
             />
         </div>
     );
