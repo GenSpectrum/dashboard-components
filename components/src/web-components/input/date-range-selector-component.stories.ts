@@ -3,6 +3,7 @@ import { expect, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
+import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL } from '../../constants';
 import {
     type DateRangeSelectorProps,
@@ -19,15 +20,28 @@ import '../app';
 import { toYYYYMMDD } from '../../preact/dateRangeSelector/dateConversion';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
+const codeExample = String.raw`
+<gs-date-range-selector
+    customSelectOptions='[{ "label": "Year 2021", "dateFrom": "2021-01-01", "dateTo": "2021-12-31" }]'
+    earliestDate="1970-01-01"
+    initialValue="${PRESET_VALUE_LAST_6_MONTHS}"
+></gs-date-range-selector>`;
+
 const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
     title: 'Input/DateRangeSelector',
     component: 'gs-date-range-selector',
-    parameters: {
+    parameters: withComponentDocs({
         actions: {
             handles: ['gs-date-range-changed'],
         },
         fetchMock: {},
-    },
+        componentDocs: {
+            tag: 'gs-date-range-selector',
+            opensShadowDom: true,
+            expectsChildren: false,
+            codeExample,
+        },
+    }),
     argTypes: {
         initialValue: {
             control: {
@@ -51,6 +65,7 @@ const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
         initialValue: PRESET_VALUE_LAST_6_MONTHS,
     },
     decorators: [withActions],
+    tags: ['autodocs'],
 };
 
 export default meta;
