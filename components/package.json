@@ -70,7 +70,7 @@
         "zod": "^3.23.0"
     },
     "devDependencies": {
-        "@custom-elements-manifest/analyzer": "^0.9.4",
+        "@custom-elements-manifest/analyzer": "^0.10.2",
         "@playwright/test": "^1.43.1",
         "@storybook/addon-actions": "^8.0.9",
         "@storybook/addon-essentials": "^8.0.9",
@@ -80,7 +80,7 @@
         "@storybook/preact": "^8.0.9",
         "@storybook/preact-vite": "^8.0.9",
         "@storybook/test": "^8.0.0",
-        "@storybook/test-runner": "^0.17.0",
+        "@storybook/test-runner": "^0.18.0",
         "@storybook/types": "^8.0.9",
         "@storybook/web-components": "^8.0.9",
         "@storybook/web-components-vite": "^8.0.9",
