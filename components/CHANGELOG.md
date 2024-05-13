@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.4](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.3...dashboard-components-v0.1.4) (2024-05-13)
+
+
+### Features
+
+* **components:** all input components should have a `initialValue` attribute ([2c76e88](https://github.com/GenSpectrum/dashboards/commit/2c76e88b061d8d67d502b176f42e0a5ad0e1d3c5))
+* **components:** disable dark mode in daisyui ([4439c78](https://github.com/GenSpectrum/dashboards/commit/4439c783221865dbbcb5c259ee9e33ead903ad39))
+* **components:** set size of display components or resize to fit container [#191](https://github.com/GenSpectrum/dashboards/issues/191) ([5019cfe](https://github.com/GenSpectrum/dashboards/commit/5019cfe7d8bddfee8e738ae6854cd641cca96072))
+
+
+### Bug Fixes
+
+* **components:** show an info element on mutation filter [#157](https://github.com/GenSpectrum/dashboards/issues/157) ([04d08b9](https://github.com/GenSpectrum/dashboards/commit/04d08b9a87226279bb0d376ad6b63db71e9f3f78))
+
 ## [0.1.3](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.2...dashboard-components-v0.1.3) (2024-04-25)
 
 
