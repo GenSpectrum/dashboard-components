@@ -46,8 +46,22 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
     @property({ type: Object })
     size: { width?: string; height?: string } | undefined = undefined;
 
+    /**
+     * The headline of the component. Set to an empty string to hide the headline.
+     */
+    @property({ type: String })
+    headline: string | undefined = 'Aggregate';
+
     override render() {
-        return <Aggregate fields={this.fields} views={this.views} filter={this.filter} size={this.size} />;
+        return (
+            <Aggregate
+                fields={this.fields}
+                views={this.views}
+                filter={this.filter}
+                size={this.size}
+                headline={this.headline}
+            />
+        );
     }
 }
 

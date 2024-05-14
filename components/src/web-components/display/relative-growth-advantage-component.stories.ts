@@ -29,6 +29,7 @@ const meta: Meta<RelativeGrowthAdvantageProps> = {
             control: { type: 'check' },
         },
         size: [{ control: 'object' }],
+        headline: { control: 'text' },
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -52,6 +53,7 @@ const Template: StoryObj<RelativeGrowthAdvantageProps> = {
                 .generationTime=${args.generationTime}
                 .views=${args.views}
                 .size=${args.size}
+                .headline=${args.headline}
             ></gs-relative-growth-advantage>
         </gs-app>
     `,
@@ -65,6 +67,7 @@ export const Default: StoryObj<RelativeGrowthAdvantageProps> = {
         generationTime: 7,
         views: ['line'],
         size: { width: '100%', height: '700px' },
+        headline: 'Relative growth advantage',
     },
     parameters: {
         fetchMock: {

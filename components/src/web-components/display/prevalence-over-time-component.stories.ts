@@ -44,6 +44,7 @@ const meta: Meta<PrevalenceOverTimeProps> = {
             control: { type: 'check' },
         },
         size: [{ control: 'object' }],
+        headline: { control: 'text' },
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -69,6 +70,7 @@ const Template: StoryObj<PrevalenceOverTimeProps> = {
                 .views=${args.views}
                 .confidenceIntervalMethods=${args.confidenceIntervalMethods}
                 .size=${args.size}
+                .headline=${args.headline}
             ></gs-prevalence-over-time>
         </gs-app>
     `,
@@ -87,6 +89,7 @@ export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
         views: ['bar', 'line', 'bubble', 'table'],
         confidenceIntervalMethods: ['wilson'],
         size: { width: '100%', height: '700px' },
+        headline: 'Prevalence over time',
     },
     parameters: {
         fetchMock: {
@@ -153,6 +156,7 @@ export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
         views: ['bar', 'line', 'bubble', 'table'],
         confidenceIntervalMethods: ['wilson'],
         size: { width: '100%', height: '700px' },
+        headline: 'Prevalence over time',
     },
     parameters: {
         fetchMock: {

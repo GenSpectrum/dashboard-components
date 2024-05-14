@@ -23,6 +23,7 @@ const meta: Meta<MutationsProps> = {
             control: { type: 'check' },
         },
         size: [{ control: 'object' }],
+        headline: { control: 'text' },
     },
 };
 
@@ -37,6 +38,7 @@ const Template = {
                     sequenceType={args.sequenceType}
                     views={args.views}
                     size={args.size}
+                    headline={args.headline}
                 />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
@@ -50,6 +52,7 @@ export const Default: StoryObj<MutationsProps> = {
         sequenceType: 'nucleotide',
         views: ['grid', 'table', 'insertions'],
         size: { width: '100%', height: '700px' },
+        headline: 'Mutations',
     },
     parameters: {
         fetchMock: {

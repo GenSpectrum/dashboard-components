@@ -22,16 +22,21 @@ export interface AggregateProps {
     fields: string[];
     views: View[];
     size?: Size;
+    headline?: string;
 }
 
-export const Aggregate: FunctionComponent<AggregateProps> = ({ fields, views, filter, size }) => {
+export const Aggregate: FunctionComponent<AggregateProps> = ({
+    fields,
+    views,
+    filter,
+    size,
+    headline = 'Aggregate',
+}) => {
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
         return queryAggregateData(filter, fields, lapis);
     }, [filter, fields, lapis]);
-
-    const headline = 'Aggregate';
 
     if (isLoading) {
         return (

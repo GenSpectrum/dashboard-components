@@ -35,15 +35,21 @@ export interface MutationsProps {
     sequenceType: SequenceType;
     views: View[];
     size?: Size;
+    headline?: string;
 }
 
-export const Mutations: FunctionComponent<MutationsProps> = ({ variant, sequenceType, views, size }) => {
+export const Mutations: FunctionComponent<MutationsProps> = ({
+    variant,
+    sequenceType,
+    views,
+    size,
+    headline = 'Mutations',
+}) => {
     const lapis = useContext(LapisUrlContext);
     const { data, error, isLoading } = useQuery(async () => {
         return queryMutationsData(variant, sequenceType, lapis);
     }, [variant, sequenceType, lapis]);
 
-    const headline = 'Mutations';
     if (isLoading) {
         return (
             <Headline heading={headline}>
