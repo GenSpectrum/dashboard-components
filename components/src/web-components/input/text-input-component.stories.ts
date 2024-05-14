@@ -3,6 +3,7 @@ import { expect, fn, userEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
+import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../app';
 import './text-input-component';
@@ -10,10 +11,13 @@ import data from '../../preact/textInput/__mockData__/aggregated_hosts.json';
 import type { TextInputProps } from '../../preact/textInput/text-input';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
-const meta: Meta = {
+const codeExample = String.raw`
+<gs-text-input lapisField="host" placeholderText="Enter host name" initialValue="Homo sapiens"></gs-text-input>`;
+
+const meta: Meta<TextInputProps> = {
     title: 'Input/Text input',
     component: 'gs-text-input',
-    parameters: {
+    parameters: withComponentDocs({
         actions: {
             handles: ['gs-text-input-changed'],
         },
@@ -34,8 +38,15 @@ const meta: Meta = {
                 },
             ],
         },
-    },
+        componentDocs: {
+            tag: 'gs-text-input',
+            opensShadowDom: true,
+            expectsChildren: false,
+            codeExample,
+        },
+    }),
     decorators: [withActions],
+    tags: ['autodocs'],
 };
 
 export default meta;

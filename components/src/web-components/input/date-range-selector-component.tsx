@@ -9,6 +9,7 @@ import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
+ * ## Context
  * This component is a group of input fields designed to specify a date range. It consists of 3 fields:
  *
  * - a select field to choose a predefined date range,
