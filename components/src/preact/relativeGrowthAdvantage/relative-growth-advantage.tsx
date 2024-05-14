@@ -8,6 +8,7 @@ import {
 } from '../../query/queryRelativeGrowthAdvantage';
 import { type LapisFilter } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
 import Info, { InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
@@ -21,22 +22,49 @@ import { useQuery } from '../useQuery';
 
 export type View = 'line';
 
-export interface RelativeGrowthAdvantageProps {
-    numerator: LapisFilter;
-    denominator: LapisFilter;
-    generationTime: number;
-    views: View[];
+export interface RelativeGrowthAdvantageProps extends RelativeGrowthAdvantagePropsInner {
     size?: Size;
     headline?: string;
 }
 
+export interface RelativeGrowthAdvantagePropsInner {
+    numerator: LapisFilter;
+    denominator: LapisFilter;
+    generationTime: number;
+    views: View[];
+}
+
 export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = ({
+    views,
+    size,
+    numerator,
+    denominator,
+    generationTime,
+    headline = 'Relative growth advantage',
+}) => {
+    const defaultSize = { height: '600px', width: '100%' };
+
+    return (
+        <ErrorBoundary size={size} defaultSize={defaultSize} headline={headline}>
+            <ResizeContainer size={size} defaultSize={defaultSize}>
+                <Headline heading={headline}>
+                    <RelativeGrowthAdvantageInner
+                        views={views}
+                        numerator={numerator}
+                        denominator={denominator}
+                        generationTime={generationTime}
+                    />
+                </Headline>
+            </ResizeContainer>
+        </ErrorBoundary>
+    );
+};
+
+export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvantageProps> = ({
     numerator,
     denominator,
     generationTime,
     views,
-    size,
-    headline = 'Relative growth advantage',
 }) => {
     const lapis = useContext(LapisUrlContext);
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
@@ -47,41 +75,25 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
     );
 
     if (isLoading) {
-        return (
-            <Headline heading={headline}>
-                <LoadingDisplay />
-            </Headline>
-        );
+        return <LoadingDisplay />;
     }
 
     if (error !== null) {
-        return (
-            <Headline heading={headline}>
-                <ErrorDisplay error={error} />
-            </Headline>
-        );
+        return <ErrorDisplay error={error} />;
     }
 
     if (data === null) {
-        return (
-            <Headline heading={headline}>
-                <NoDataDisplay />
-            </Headline>
-        );
+        return <NoDataDisplay />;
     }
 
     return (
-        <ResizeContainer size={size} defaultSize={{ height: '700px', width: '100%' }}>
-            <Headline heading={headline}>
-                <RelativeGrowthAdvantageTabs
-                    data={data}
-                    yAxisScaleType={yAxisScaleType}
-                    setYAxisScaleType={setYAxisScaleType}
-                    views={views}
-                    generationTime={generationTime}
-                />
-            </Headline>
-        </ResizeContainer>
+        <RelativeGrowthAdvantageTabs
+            data={data}
+            yAxisScaleType={yAxisScaleType}
+            setYAxisScaleType={setYAxisScaleType}
+            views={views}
+            generationTime={generationTime}
+        />
     );
 };
 

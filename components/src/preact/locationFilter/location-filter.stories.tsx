@@ -6,7 +6,7 @@ import { LocationFilter, type LocationFilterProps } from './location-filter';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 
-const meta: Meta<typeof LocationFilter> = {
+const meta: Meta<LocationFilterProps> = {
     title: 'Input/LocationFilter',
     component: LocationFilter,
     parameters: {
@@ -32,7 +32,26 @@ const meta: Meta<typeof LocationFilter> = {
         },
     },
     args: {
+        width: '100%',
         fields: ['region', 'country', 'division', 'location'],
+        initialValue: 'United States',
+    },
+    argTypes: {
+        fields: {
+            control: {
+                type: 'object',
+            },
+        },
+        initialValue: {
+            control: {
+                type: 'text',
+            },
+        },
+        width: {
+            control: {
+                type: 'text',
+            },
+        },
     },
     decorators: [withActions],
 };
@@ -41,10 +60,8 @@ export default meta;
 
 export const Primary: StoryObj<LocationFilterProps> = {
     render: (args) => (
-        <div class='max-w-screen-lg'>
-            <LapisUrlContext.Provider value={LAPIS_URL}>
-                <LocationFilter fields={args.fields} />
-            </LapisUrlContext.Provider>
-        </div>
+        <LapisUrlContext.Provider value={LAPIS_URL}>
+            <LocationFilter fields={args.fields} initialValue={args.initialValue} width={args.width} />
+        </LapisUrlContext.Provider>
     ),
 };

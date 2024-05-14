@@ -12,7 +12,12 @@ import type { TextInputProps } from '../../preact/textInput/text-input';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
-<gs-text-input lapisField="host" placeholderText="Enter host name" initialValue="Homo sapiens"></gs-text-input>`;
+<gs-text-input 
+    lapisField="host"
+    placeholderText="Enter host name"
+    initialValue="Homo sapiens"
+    width="50%">
+</gs-text-input>`;
 
 const meta: Meta<TextInputProps> = {
     title: 'Input/Text input',
@@ -44,6 +49,28 @@ const meta: Meta<TextInputProps> = {
             codeExample,
         },
     }),
+    argTypes: {
+        lapisField: {
+            control: {
+                type: 'text',
+            },
+        },
+        placeholderText: {
+            control: {
+                type: 'text',
+            },
+        },
+        initialValue: {
+            control: {
+                type: 'text',
+            },
+        },
+        width: {
+            control: {
+                type: 'text',
+            },
+        },
+    },
     decorators: [withActions],
     tags: ['autodocs'],
 };
@@ -58,6 +85,7 @@ export const Default: StoryObj<TextInputProps> = {
                     .lapisField=${args.lapisField}
                     .placeholderText=${args.placeholderText}
                     .initialValue=${args.initialValue}
+                    .width=${args.width}
                 ></gs-text-input>
             </div>
         </gs-app>`;
@@ -66,6 +94,7 @@ export const Default: StoryObj<TextInputProps> = {
         lapisField: 'host',
         placeholderText: 'Enter host name',
         initialValue: 'Homo sapiens',
+        width: '100%',
     },
 };
 

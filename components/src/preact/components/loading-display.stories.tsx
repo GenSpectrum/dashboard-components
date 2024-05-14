@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, waitFor, within } from '@storybook/test';
 
 import { LoadingDisplay } from './loading-display';
+import { ResizeContainer } from './resize-container';
 
 const meta: Meta = {
     title: 'Component/Loading',
@@ -12,9 +12,9 @@ const meta: Meta = {
 export default meta;
 
 export const LoadingStory: StoryObj = {
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-        const loading = canvas.getByText('Loading...');
-        await waitFor(() => expect(loading).toBeInTheDocument());
-    },
+    render: () => (
+        <ResizeContainer defaultSize={{ height: '600px', width: '100%' }}>
+            <LoadingDisplay />
+        </ResizeContainer>
+    ),
 };

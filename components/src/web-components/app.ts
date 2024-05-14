@@ -55,8 +55,10 @@ export class App extends LitElement {
     override render() {
         return this.updateReferenceGenome.render({
             complete: () => html` <slot></slot>`,
-            error: () => html`<p>Error</p>`, // TODO(#143): Add more advanced error handling
-            pending: () => html` <p>Loading reference genomes...</p> `,
+            error: () =>
+                html` <div class="m-2 w-full alert alert-error">
+                    Error: Cannot fetch reference genome. Is LAPIS available?
+                </div>`,
         });
     }
 

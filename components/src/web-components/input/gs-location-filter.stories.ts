@@ -12,6 +12,13 @@ import data from '../../preact/locationFilter/__mockData__/aggregated.json';
 import { type LocationFilterProps } from '../../preact/locationFilter/location-filter';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
+const codeExample = String.raw`
+<gs-location-filter
+    fields="['region', 'country']"
+    value='Europe / Switzerland'
+    width="100%"
+></gs-location-filter>`;
+
 const meta: Meta = {
     title: 'Input/Location filter',
     component: 'gs-location-filter',
@@ -22,9 +29,26 @@ const meta: Meta = {
         componentDocs: {
             opensShadowDom: true,
             expectsChildren: false,
-            codeExample: `<gs-location-filter fields="['continent', 'country']" value='Europe / Switzerland'></gs-location-filter>`,
+            codeExample,
         },
     }),
+    argTypes: {
+        fields: {
+            control: {
+                type: 'object',
+            },
+        },
+        initialValue: {
+            control: {
+                type: 'text',
+            },
+        },
+        width: {
+            control: {
+                type: 'text',
+            },
+        },
+    },
     decorators: [withActions],
     tags: ['autodocs'],
 };
@@ -38,6 +62,7 @@ const Template: StoryObj<LocationFilterProps> = {
                 <gs-location-filter
                     .fields=${args.fields}
                     initialValue=${ifDefined(args.initialValue)}
+                    .width=${args.width}
                 ></gs-location-filter>
             </div>
         </gs-app>`;
@@ -45,6 +70,7 @@ const Template: StoryObj<LocationFilterProps> = {
     args: {
         fields: ['region', 'country', 'division', 'location'],
         initialValue: '',
+        width: '100%',
     },
 };
 
@@ -118,7 +144,7 @@ export const FetchingLocationsFails: StoryObj<LocationFilterProps> = {
         const canvas = await withinShadowRoot(canvasElement, 'gs-location-filter');
 
         await waitFor(() =>
-            expect(canvas.getByText('Bad Request: {"error":"no data"} ', { exact: false })).toBeInTheDocument(),
+            expect(canvas.getByText('Oops! Something went wrong.', { exact: false })).toBeInTheDocument(),
         );
     },
 };

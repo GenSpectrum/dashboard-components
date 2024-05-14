@@ -18,19 +18,34 @@ const meta: Meta<MutationFilterProps> = {
         },
         fetchMock: {},
     },
+    argTypes: {
+        size: {
+            control: {
+                type: 'object',
+            },
+        },
+        initialValue: {
+            control: {
+                type: 'object',
+            },
+        },
+    },
     decorators: [withActions],
 };
 
 export default meta;
 
 export const Default: StoryObj<MutationFilterProps> = {
-    render: () => (
+    render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationFilter />
+                <MutationFilter size={args.size} initialValue={args.initialValue} />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
     ),
+    args: {
+        size: { width: '100%' },
+    },
 };
 
 export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
