@@ -48,8 +48,19 @@ export class LocationFilterComponent extends PreactLitAdapter {
     @property({ type: Array })
     fields: string[] = [];
 
+    /**
+     * The width of the component.
+     *
+     * If not set, the component will take the full width of its container.
+     *
+     * The width should be a string with a unit in css style, e.g. '100%', '500px' or '50vw'.
+     * If the unit is %, the size will be relative to the container of the component.
+     */
+    @property({ type: Object })
+    width: string | undefined = undefined;
+
     override render() {
-        return <LocationFilter initialValue={this.initialValue} fields={this.fields} />;
+        return <LocationFilter initialValue={this.initialValue} fields={this.fields} width={this.width} />;
     }
 }
 

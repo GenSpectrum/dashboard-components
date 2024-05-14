@@ -5,13 +5,19 @@ import { parseAndValidateMutation } from './parseAndValidateMutation';
 import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
 import { type Deletion, type Insertion, type Mutation, type Substitution } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
+import { ErrorBoundary } from '../components/error-boundary';
 import Info from '../components/info';
+import { ResizeContainer, type Size } from '../components/resize-container';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
-export type MutationFilterProps = {
+export interface MutationFilterInnerProps {
     initialValue?: SelectedMutationFilterStrings | string[] | undefined;
-};
+}
+
+export interface MutationFilterProps extends MutationFilterInnerProps {
+    size?: Size;
+}
 
 export type SelectedFilters = {
     nucleotideMutations: (Substitution | Deletion)[];
@@ -24,7 +30,19 @@ export type SelectedMutationFilterStrings = {
     [Key in keyof SelectedFilters]: string[];
 };
 
-export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initialValue }) => {
+export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initialValue, size }) => {
+    const defaultSize = { width: '100%', height: '6.5rem' };
+
+    return (
+        <ErrorBoundary size={size} defaultSize={defaultSize}>
+            <ResizeContainer size={size} defaultSize={defaultSize}>
+                <MutationFilterInner initialValue={initialValue} />
+            </ResizeContainer>
+        </ErrorBoundary>
+    );
+};
+
+export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = ({ initialValue }) => {
     const referenceGenome = useContext(ReferenceGenomeContext);
     const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>(
         getInitialState(initialValue, referenceGenome),
@@ -83,7 +101,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initial
     };
 
     return (
-        <div class={`rounded-lg border border-gray-300 bg-white p-2`}>
+        <div class={`h-full w-full rounded-lg border border-gray-300 bg-white p-2 overflow-scroll`}>
             <div class='flex justify-between'>
                 <SelectedMutationDisplay
                     selectedFilters={selectedFilters}
@@ -295,11 +313,11 @@ const SelectedFilter = <MutationType extends Mutation>({
 }: SelectedFilterProps<MutationType>) => {
     return (
         <div
-            class='flex items-center flex-nowrap gap-1 rounded me-1 px-2.5 py-0.5 font-medium text-xs mb-1'
+            class='flex items-center flex-nowrap gap-1 rounded me-1 px-2.5 py-0.5 font-medium text-xs mb-1 min-w-max'
             style={{ backgroundColor, color: textColor }}
         >
-            <div>{mutation.toString()}</div>
-            <button onClick={() => onDelete(mutation)}>
+            <div className='whitespace-nowrap min-w-max'>{mutation.toString()}</div>
+            <button type='button' onClick={() => onDelete(mutation)}>
                 <DeleteIcon />
             </button>
         </div>

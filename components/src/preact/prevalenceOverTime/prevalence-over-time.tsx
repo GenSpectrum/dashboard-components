@@ -11,6 +11,7 @@ import { type NamedLapisFilter, type TemporalGranularity } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ConfidenceIntervalSelector } from '../components/confidence-interval-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
+import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
 import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
@@ -25,15 +26,18 @@ import { useQuery } from '../useQuery';
 
 export type View = 'bar' | 'line' | 'bubble' | 'table';
 
-export interface PrevalenceOverTimeProps {
+export interface PrevalenceOverTimeProps extends PrevalenceOverTimeInnerProps {
+    size?: Size;
+    headline?: string;
+}
+
+export interface PrevalenceOverTimeInnerProps {
     numerator: NamedLapisFilter | NamedLapisFilter[];
     denominator: NamedLapisFilter;
     granularity: TemporalGranularity;
     smoothingWindow: number;
     views: View[];
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
-    size?: Size;
-    headline?: string;
 }
 
 export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
@@ -46,6 +50,34 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
     size,
     headline = 'Prevalence over time',
 }) => {
+    const defaultSize = { height: '600px', width: '100%' };
+
+    return (
+        <ErrorBoundary size={size} defaultSize={defaultSize} headline={headline}>
+            <ResizeContainer size={size} defaultSize={defaultSize}>
+                <Headline heading={headline}>
+                    <PrevalenceOverTimeInner
+                        numerator={numerator}
+                        denominator={denominator}
+                        granularity={granularity}
+                        smoothingWindow={smoothingWindow}
+                        views={views}
+                        confidenceIntervalMethods={confidenceIntervalMethods}
+                    />
+                </Headline>
+            </ResizeContainer>
+        </ErrorBoundary>
+    );
+};
+
+export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerProps> = ({
+    numerator,
+    denominator,
+    granularity,
+    smoothingWindow,
+    views,
+    confidenceIntervalMethods,
+}) => {
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(
@@ -54,40 +86,24 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
     );
 
     if (isLoading) {
-        return (
-            <Headline heading={headline}>
-                <LoadingDisplay />
-            </Headline>
-        );
+        return <LoadingDisplay />;
     }
 
     if (error !== null) {
-        return (
-            <Headline heading={headline}>
-                <ErrorDisplay error={error} />
-            </Headline>
-        );
+        return <ErrorDisplay error={error} />;
     }
 
     if (data === null) {
-        return (
-            <Headline heading={headline}>
-                <NoDataDisplay />
-            </Headline>
-        );
+        return <NoDataDisplay />;
     }
 
     return (
-        <ResizeContainer size={size} defaultSize={{ height: '600px', width: '100%' }}>
-            <Headline heading={headline}>
-                <PrevalenceOverTimeTabs
-                    views={views}
-                    data={data}
-                    granularity={granularity}
-                    confidenceIntervalMethods={confidenceIntervalMethods}
-                />
-            </Headline>
-        </ResizeContainer>
+        <PrevalenceOverTimeTabs
+            views={views}
+            data={data}
+            granularity={granularity}
+            confidenceIntervalMethods={confidenceIntervalMethods}
+        />
     );
 };
 

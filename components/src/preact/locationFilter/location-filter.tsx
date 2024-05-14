@@ -1,15 +1,37 @@
+import { type FunctionComponent } from 'preact';
 import { useContext, useRef, useState } from 'preact/hooks';
 
 import { fetchAutocompletionList } from './fetchAutocompletionList';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { ErrorBoundary } from '../components/error-boundary';
+import { ErrorDisplay } from '../components/error-display';
+import { LoadingDisplay } from '../components/loading-display';
+import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
-export type LocationFilterProps = {
+export interface LocationFilterInnerProps {
     initialValue?: string;
     fields: string[];
+}
+
+export interface LocationFilterProps extends LocationFilterInnerProps {
+    width?: string;
+}
+
+export const LocationFilter: FunctionComponent<LocationFilterProps> = ({ width, initialValue, fields }) => {
+    const defaultSize = { width: '100%', height: '3rem' };
+    const size = width === undefined ? undefined : { width, height: defaultSize.height };
+
+    return (
+        <ErrorBoundary defaultSize={defaultSize} size={size}>
+            <ResizeContainer size={size} defaultSize={defaultSize}>
+                <LocationFilterInner initialValue={initialValue} fields={fields} />
+            </ResizeContainer>
+        </ErrorBoundary>
+    );
 };
 
-export const LocationFilter = ({ initialValue, fields }: LocationFilterProps) => {
+export const LocationFilterInner = ({ initialValue, fields }: LocationFilterInnerProps) => {
     const lapis = useContext(LapisUrlContext);
 
     const [value, setValue] = useState(initialValue ?? '');
@@ -19,22 +41,11 @@ export const LocationFilter = ({ initialValue, fields }: LocationFilterProps) =>
 
     const { data, error, isLoading } = useQuery(() => fetchAutocompletionList(fields, lapis), [fields, lapis]);
 
-    if (isLoading)
-        return (
-            <form class='flex'>
-                <input type='text' class='input input-bordered grow' value={value} disabled />
-                <button class='btn ml-1' disabled type='submit'>
-                    Loading...
-                </button>
-            </form>
-        );
-
+    if (isLoading) {
+        return <LoadingDisplay />;
+    }
     if (error) {
-        return (
-            <p>
-                Error: {error.name} {error.message} {error.stack}
-            </p>
-        );
+        return <ErrorDisplay error={error} />;
     }
 
     const onInput = (event: InputEvent) => {
@@ -70,7 +81,7 @@ export const LocationFilter = ({ initialValue, fields }: LocationFilterProps) =>
     };
 
     return (
-        <form class='flex' onSubmit={submit} ref={formRef}>
+        <form class='flex w-full' onSubmit={submit} ref={formRef}>
             <input
                 type='text'
                 class={`input input-bordered grow ${unknownLocation ? 'border-2 border-error' : ''}`}

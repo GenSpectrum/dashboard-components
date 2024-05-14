@@ -76,10 +76,21 @@ export class MutationFilterComponent extends PreactLitAdapter {
         | string[]
         | undefined = undefined;
 
+    /**
+     * The size of the component.
+     *
+     * If not set, the component will take the full width of its container with height 700px.
+     *
+     * The width and height should be a string with a unit in css style, e.g. '100%', '500px' or '50vh'.
+     * If the unit is %, the size will be relative to the container of the component.
+     */
+    @property({ type: Object })
+    size: { width?: string; height?: string } | undefined = undefined;
+
     override render() {
         return (
             <ReferenceGenomesAwaiter>
-                <MutationFilter initialValue={this.initialValue} />
+                <MutationFilter initialValue={this.initialValue} size={this.size} />
             </ReferenceGenomesAwaiter>
         );
     }

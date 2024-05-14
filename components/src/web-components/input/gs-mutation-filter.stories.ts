@@ -10,7 +10,11 @@ import { type MutationFilterProps } from '../../preact/mutationFilter/mutation-f
 import { withinShadowRoot } from '../withinShadowRoot.story';
 import './gs-mutation-filter';
 
-const codeExample = String.raw`<gs-mutation-filter initialValue='["A123T"]'></gs-mutation-filter>`;
+const codeExample = String.raw`
+<gs-mutation-filter 
+    initialValue='["A123T"]'
+    size='{ "width": "100%", "height": "6.5rem" }'
+></gs-mutation-filter>`;
 
 const meta: Meta<MutationFilterProps> = {
     title: 'Input/Mutation filter',
@@ -26,6 +30,18 @@ const meta: Meta<MutationFilterProps> = {
             codeExample,
         },
     }),
+    argTypes: {
+        initialValue: {
+            control: {
+                type: 'object',
+            },
+        },
+        size: {
+            control: {
+                type: 'object',
+            },
+        },
+    },
     decorators: [withActions],
     tags: ['autodocs'],
 };
@@ -36,12 +52,13 @@ const Template: StoryObj<MutationFilterProps> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
-                <gs-mutation-filter .initialValue=${args.initialValue}></gs-mutation-filter>
+                <gs-mutation-filter .initialValue=${args.initialValue} .size=${args.size}></gs-mutation-filter>
             </div>
         </gs-app>`;
     },
     args: {
         initialValue: [],
+        size: { width: '100%', height: '3rem' },
     },
 };
 

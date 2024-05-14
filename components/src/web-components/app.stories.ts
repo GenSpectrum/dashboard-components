@@ -91,7 +91,7 @@ export const FailsToFetchReferenceGenome: StoryObj<{ lapis: string }> = {
         const canvas = within(canvasElement);
 
         await waitFor(() => {
-            expect(canvas.getByText('Error')).toBeVisible();
+            expect(canvas.getByText('Error', { exact: false })).toBeVisible();
         });
     },
 };

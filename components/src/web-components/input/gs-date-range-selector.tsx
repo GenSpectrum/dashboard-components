@@ -64,12 +64,24 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
         | string
         | undefined = 'last6Months';
 
+    /**
+     * The width of the component.
+     *
+     * If not set, the component will take the full width of its container.
+     *
+     * The width should be a string with a unit in css style, e.g. '100%', '500px' or '50vw'.
+     * If the unit is %, the size will be relative to the container of the component.
+     */
+    @property({ type: Object })
+    width: string | undefined = undefined;
+
     override render() {
         return (
             <DateRangeSelector
                 customSelectOptions={this.customSelectOptions}
                 earliestDate={this.earliestDate}
                 initialValue={this.initialValue}
+                width={this.width}
             />
         );
     }

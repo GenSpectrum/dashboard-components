@@ -1,14 +1,15 @@
 import { expect } from '@playwright/test';
+
 import { test } from './componentsFixture';
-import { visualizationStories } from './visualizationStories';
 import { getDownloadedContent } from './getDownloadedContent';
+import { visualizationStories } from './visualizationStories';
 
 visualizationStories.forEach((story) => {
     test.describe(story.title, () => {
         test(`Story ${story.id} should match screenshot`, async ({ page, storybook }) => {
             await storybook.gotoStory(story.id);
             await expect(page.getByRole('heading', { name: story.title })).toBeVisible();
-            await page.getByText('Loading...', { exact: false }).waitFor({ state: 'hidden' });
+            await page.getByLabel('Loading', { exact: false }).waitFor({ state: 'hidden' });
             await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.005 });
         });
 

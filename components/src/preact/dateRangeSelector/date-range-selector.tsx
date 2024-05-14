@@ -3,12 +3,18 @@ import 'flatpickr/dist/flatpickr.min.css';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
 import { toYYYYMMDD } from './dateConversion';
+import { ErrorBoundary } from '../components/error-boundary';
+import { ResizeContainer } from '../components/resize-container';
 import { Select } from '../components/select';
 import type { ScaleType } from '../shared/charts/getYAxisScale';
 
 export type CustomSelectOption<CustomLabel extends string> = { label: CustomLabel; dateFrom: string; dateTo: string };
 
-export interface DateRangeSelectorProps<CustomLabel extends string> {
+export interface DateRangeSelectorProps<CustomLabel extends string> extends DateRangeSelectorPropsInner<CustomLabel> {
+    width?: string;
+}
+
+export interface DateRangeSelectorPropsInner<CustomLabel extends string> {
     customSelectOptions: CustomSelectOption<CustomLabel>[];
     earliestDate?: string;
     initialValue?: PresetOptionValues | CustomLabel;
@@ -35,6 +41,28 @@ export const presets = {
 export type PresetOptionValues = keyof typeof presets;
 
 export const DateRangeSelector = <CustomLabel extends string>({
+    customSelectOptions,
+    earliestDate = '1900-01-01',
+    initialValue,
+    width,
+}: DateRangeSelectorProps<CustomLabel>) => {
+    const defaultSize = { width: '100%', height: '3rem' };
+    const size = width === undefined ? undefined : { width, height: defaultSize.height };
+
+    return (
+        <ErrorBoundary defaultSize={defaultSize} size={size}>
+            <ResizeContainer defaultSize={defaultSize} size={size}>
+                <DateRangeSelectorInner
+                    customSelectOptions={customSelectOptions}
+                    earliestDate={earliestDate}
+                    initialValue={initialValue}
+                />
+            </ResizeContainer>
+        </ErrorBoundary>
+    );
+};
+
+export const DateRangeSelectorInner = <CustomLabel extends string>({
     customSelectOptions,
     earliestDate = '1900-01-01',
     initialValue,
@@ -151,11 +179,11 @@ export const DateRangeSelector = <CustomLabel extends string>({
     };
 
     return (
-        <div class='join' ref={divRef}>
+        <div class='join w-full' ref={divRef}>
             <Select
                 items={selectableOptions}
                 selected={selectedDateRange}
-                selectStyle='select-bordered rounded-none join-item'
+                selectStyle='select-bordered rounded-none join-item grow'
                 onChange={(event: Event) => {
                     event.preventDefault();
                     const select = event.target as HTMLSelectElement;
@@ -164,7 +192,7 @@ export const DateRangeSelector = <CustomLabel extends string>({
                 }}
             />
             <input
-                class='input input-bordered rounded-none join-item'
+                class='input input-bordered rounded-none join-item grow'
                 type='text'
                 placeholder='Date from'
                 ref={fromDatePickerRef}
@@ -172,7 +200,7 @@ export const DateRangeSelector = <CustomLabel extends string>({
                 onBlur={onChangeDateFrom}
             />
             <input
-                class='input input-bordered rounded-none join-item'
+                class='input input-bordered rounded-none join-item grow'
                 type='text'
                 placeholder='Date to'
                 ref={toDatePickerRef}

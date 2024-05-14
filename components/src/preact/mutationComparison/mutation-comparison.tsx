@@ -9,6 +9,7 @@ import { type LapisFilter, type SequenceType } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/SegmentSelector';
 import { CsvDownloadButton } from '../components/csv-download-button';
+import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
 import Info from '../components/info';
@@ -28,12 +29,15 @@ export interface MutationComparisonVariant {
     displayName: string;
 }
 
-export interface MutationComparisonProps {
+export interface MutationComparisonProps extends MutationComparisonInnerProps {
+    size?: Size;
+    headline?: string;
+}
+
+export interface MutationComparisonInnerProps {
     variants: MutationComparisonVariant[];
     sequenceType: SequenceType;
     views: View[];
-    size?: Size;
-    headline?: string;
 }
 
 export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
@@ -43,6 +47,24 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
     size,
     headline = 'Mutation comparison',
 }) => {
+    const defaultSize = { height: '600px', width: '100%' };
+
+    return (
+        <ErrorBoundary size={size} defaultSize={defaultSize} headline={headline}>
+            <ResizeContainer size={size} defaultSize={defaultSize}>
+                <Headline heading={headline}>
+                    <MutationComparisonInner variants={variants} sequenceType={sequenceType} views={views} />
+                </Headline>
+            </ResizeContainer>
+        </ErrorBoundary>
+    );
+};
+
+export const MutationComparisonInner: FunctionComponent<MutationComparisonInnerProps> = ({
+    variants,
+    sequenceType,
+    views,
+}) => {
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
@@ -50,36 +72,18 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
     }, [variants, sequenceType, lapis]);
 
     if (isLoading) {
-        return (
-            <Headline heading={headline}>
-                <LoadingDisplay />
-            </Headline>
-        );
+        return <LoadingDisplay />;
     }
 
     if (error !== null) {
-        return (
-            <Headline heading={headline}>
-                <ErrorDisplay error={error} />
-            </Headline>
-        );
+        return <ErrorDisplay error={error} />;
     }
 
     if (data === null) {
-        return (
-            <Headline heading={headline}>
-                <NoDataDisplay />
-            </Headline>
-        );
+        return <NoDataDisplay />;
     }
 
-    return (
-        <ResizeContainer size={size} defaultSize={{ height: '700px', width: '100%' }}>
-            <Headline heading={headline}>
-                <MutationComparisonTabs data={data.mutationData} sequenceType={sequenceType} views={views} />
-            </Headline>
-        </ResizeContainer>
-    );
+    return <MutationComparisonTabs data={data.mutationData} sequenceType={sequenceType} views={views} />;
 };
 
 type MutationComparisonTabsProps = {

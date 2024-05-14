@@ -3,18 +3,41 @@ import { useContext, useRef } from 'preact/hooks';
 
 import { fetchAutocompleteList } from './fetchAutocompleteList';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
+import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
-export interface TextInputProps {
+export interface TextInputInnerProps {
     lapisField: string;
     placeholderText?: string;
     initialValue?: string;
 }
 
-export const TextInput: FunctionComponent<TextInputProps> = ({ lapisField, placeholderText, initialValue }) => {
+export interface TextInputProps extends TextInputInnerProps {
+    width?: string;
+}
+
+export const TextInput: FunctionComponent<TextInputProps> = ({ width, lapisField, placeholderText, initialValue }) => {
+    const defaultSize = { width: '100%', height: '3rem' };
+    const size = width === undefined ? undefined : { width, height: defaultSize.height };
+
+    return (
+        <ErrorBoundary defaultSize={defaultSize} size={size}>
+            <ResizeContainer size={size} defaultSize={defaultSize}>
+                <TextInputInner lapisField={lapisField} placeholderText={placeholderText} initialValue={initialValue} />
+            </ResizeContainer>
+        </ErrorBoundary>
+    );
+};
+
+export const TextInputInner: FunctionComponent<TextInputInnerProps> = ({
+    lapisField,
+    placeholderText,
+    initialValue,
+}) => {
     const lapis = useContext(LapisUrlContext);
 
     const inputRef = useRef<HTMLInputElement>(null);
@@ -58,7 +81,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({ lapisField, place
         <>
             <input
                 type='text'
-                class='input input-bordered'
+                class='input input-bordered w-full'
                 placeholder={placeholderText !== undefined ? placeholderText : lapisField}
                 onInput={onInput}
                 ref={inputRef}
