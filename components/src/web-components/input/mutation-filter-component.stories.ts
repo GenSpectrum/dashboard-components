@@ -3,22 +3,32 @@ import { expect, fn, userEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
+import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL } from '../../constants';
 import '../app';
 import { type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 import './mutation-filter-component';
 
-const meta: Meta = {
+const codeExample = String.raw`<gs-mutation-filter initialValue='["A123T"]'></gs-mutation-filter>`;
+
+const meta: Meta<MutationFilterProps> = {
     title: 'Input/Mutation filter',
     component: 'gs-mutation-filter',
-    parameters: {
+    parameters: withComponentDocs({
         actions: {
             handles: ['gs-mutation-filter-changed', 'gs-mutation-filter-on-blur'],
         },
         fetchMock: {},
-    },
+        componentDocs: {
+            tag: 'gs-mutation-filter',
+            opensShadowDom: true,
+            expectsChildren: false,
+            codeExample,
+        },
+    }),
     decorators: [withActions],
+    tags: ['autodocs'],
 };
 
 export default meta;
