@@ -19,6 +19,7 @@ export default {
             control: { type: 'check' },
         },
         size: [{ control: 'object' }],
+        headline: { control: 'text' },
     },
 };
 
@@ -31,6 +32,7 @@ export const Primary = {
                 generationTime={args.generationTime}
                 views={args.views}
                 size={args.size}
+                headline={args.headline}
             />
         </LapisUrlContext.Provider>
     ),
@@ -40,6 +42,7 @@ export const Primary = {
         generationTime: 7,
         views: ['line'],
         size: { width: '100%', height: '700px' },
+        headline: 'Relative growth advantage',
     },
     parameters: {
         fetchMock: {

@@ -95,6 +95,12 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     confidenceIntervalMethods: ('wilson' | 'none')[] = ['wilson'];
 
     /**
+     * The headline of the component. Set to an empty string to hide the headline.
+     */
+    @property({ type: String })
+    headline: string | undefined = 'Prevalence over time';
+
+    /**
      * The size of the component.
      *
      * If not set, the component will take the full width of its container with height 700px.
@@ -115,6 +121,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
                 views={this.views}
                 confidenceIntervalMethods={this.confidenceIntervalMethods}
                 size={this.size}
+                headline={this.headline}
             />
         );
     }

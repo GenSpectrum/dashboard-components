@@ -32,12 +32,14 @@ const meta: Meta<MutationsProps> = {
             control: { type: 'check' },
         },
         size: { control: 'object' },
+        headline: { control: 'text' },
     },
     args: {
         variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
         sequenceType: 'nucleotide',
         views: ['grid', 'table', 'insertions'],
         size: { width: '100%', height: '700px' },
+        headline: 'Mutations',
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -60,6 +62,7 @@ const Template: StoryObj<MutationsProps> = {
                 .sequenceType=${args.sequenceType}
                 .views=${args.views}
                 .size=${args.size}
+                .headline=${args.headline}
             ></gs-mutations-component>
         </gs-app>
     `,

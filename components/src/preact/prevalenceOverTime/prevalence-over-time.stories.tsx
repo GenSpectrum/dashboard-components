@@ -30,6 +30,7 @@ export default {
             control: { type: 'check' },
         },
         size: [{ control: 'object' }],
+        headline: { control: 'text' },
     },
 };
 
@@ -44,6 +45,7 @@ const Template = {
                 views={args.views}
                 confidenceIntervalMethods={args.confidenceIntervalMethods}
                 size={args.size}
+                headline={args.headline}
             />
         </LapisUrlContext.Provider>
     ),
@@ -62,6 +64,7 @@ export const TwoVariants = {
         views: ['bar', 'line', 'bubble', 'table'],
         confidenceIntervalMethods: ['wilson'],
         size: { width: '100%', height: '700px' },
+        headline: 'Prevalence over time',
     },
     parameters: {
         fetchMock: {
@@ -128,6 +131,7 @@ export const OneVariant = {
         views: ['bar', 'line', 'bubble', 'table'],
         confidenceIntervalMethods: ['wilson'],
         size: { width: '100%', height: '700px' },
+        headline: 'Prevalence over time',
     },
     parameters: {
         fetchMock: {

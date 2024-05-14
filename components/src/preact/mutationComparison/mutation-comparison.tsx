@@ -33,6 +33,7 @@ export interface MutationComparisonProps {
     sequenceType: SequenceType;
     views: View[];
     size?: Size;
+    headline?: string;
 }
 
 export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
@@ -40,14 +41,13 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
     sequenceType,
     views,
     size,
+    headline = 'Mutation comparison',
 }) => {
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
         return queryMutationData(variants, sequenceType, lapis);
     }, [variants, sequenceType, lapis]);
-
-    const headline = 'Mutation comparison';
 
     if (isLoading) {
         return (

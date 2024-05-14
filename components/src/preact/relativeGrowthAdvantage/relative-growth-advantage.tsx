@@ -27,6 +27,7 @@ export interface RelativeGrowthAdvantageProps {
     generationTime: number;
     views: View[];
     size?: Size;
+    headline?: string;
 }
 
 export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = ({
@@ -35,6 +36,7 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
     generationTime,
     views,
     size,
+    headline = 'Relative growth advantage',
 }) => {
     const lapis = useContext(LapisUrlContext);
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
@@ -44,7 +46,6 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
         [lapis, numerator, denominator, generationTime, views],
     );
 
-    const headline = 'Relative growth advantage';
     if (isLoading) {
         return (
             <Headline heading={headline}>

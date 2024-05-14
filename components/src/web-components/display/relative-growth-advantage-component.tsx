@@ -57,6 +57,12 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
     views: 'line'[] = ['line'];
 
     /**
+     * The headline of the component. Set to an empty string to hide the headline.
+     */
+    @property({ type: String })
+    headline: string | undefined = 'Relative growth advantage';
+
+    /**
      * The size of the component.
      *
      * If not set, the component will take the full width of its container with height 700px.
@@ -75,6 +81,7 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
                 generationTime={this.generationTime}
                 views={this.views}
                 size={this.size}
+                headline={this.headline}
             />
         );
     }

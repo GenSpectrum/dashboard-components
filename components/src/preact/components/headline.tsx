@@ -2,10 +2,18 @@ import { type FunctionComponent } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
 export interface HeadlineProps {
-    heading: string;
+    heading?: string;
 }
 
 const Headline: FunctionComponent<HeadlineProps> = ({ heading, children }) => {
+    if (!heading) {
+        return <>{children}</>;
+    }
+
+    return <ResizingHeadline heading={heading}>{children}</ResizingHeadline>;
+};
+
+const ResizingHeadline: FunctionComponent<HeadlineProps> = ({ heading, children }) => {
     const ref = useRef<HTMLHeadingElement>(null);
 
     const [h1Height, setH1Height] = useState('2rem');

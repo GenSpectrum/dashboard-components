@@ -19,6 +19,7 @@ const meta: Meta<AggregateProps> = {
             control: { type: 'check' },
         },
         size: [{ control: 'object' }],
+        headline: { control: 'text' },
     },
     parameters: withComponentDocs({
         fetchMock: {
@@ -59,6 +60,7 @@ export const Table: StoryObj<AggregateProps> = {
                 .filter=${args.filter}
                 .views=${args.views}
                 .size=${args.size}
+                .headline=${args.headline}
             ></gs-aggregate-component>
         </gs-app>
     `,
@@ -69,5 +71,6 @@ export const Table: StoryObj<AggregateProps> = {
             country: 'USA',
         },
         size: { width: '100%', height: '700px' },
+        headline: 'Aggregate',
     },
 };

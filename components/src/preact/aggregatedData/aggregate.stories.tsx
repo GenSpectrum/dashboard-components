@@ -11,6 +11,7 @@ const meta: Meta<AggregateProps> = {
     argTypes: {
         fields: [{ control: 'object' }],
         size: [{ control: 'object' }],
+        headline: { control: 'text' },
     },
     parameters: {
         fetchMock: {
@@ -49,5 +50,6 @@ export const Default: StoryObj<AggregateProps> = {
             country: 'USA',
         },
         size: { width: '100%', height: '70vh' },
+        headline: 'Aggregate',
     },
 };

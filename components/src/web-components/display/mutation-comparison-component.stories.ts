@@ -32,6 +32,7 @@ const meta: Meta<MutationComparisonProps> = {
             control: { type: 'check' },
         },
         size: { control: 'object' },
+        headline: { control: 'text' },
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -54,6 +55,7 @@ const Template: StoryObj<MutationComparisonProps> = {
                 .sequenceType=${args.sequenceType}
                 .views=${args.views}
                 .size=${args.size}
+                .headline=${args.headline}
             ></gs-mutation-comparison-component>
         </gs-app>
     `,
@@ -83,6 +85,7 @@ export const Default: StoryObj<MutationComparisonProps> = {
         sequenceType: 'nucleotide',
         views: ['table', 'venn'],
         size: { width: '100%', height: '700px' },
+        headline: 'Mutation comparison',
     },
     parameters: {
         fetchMock: {
