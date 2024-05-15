@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.5](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.4...dashboard-components-v0.1.5) (2024-05-15)
+
+
+### Features
+
+* **components:** info button opens a scrollable info panel ([7a632ae](https://github.com/GenSpectrum/dashboards/commit/7a632aefcc12ddf8a885da71cbc6a9c947545ebe))
+* **components:** optional configurable headline of components ([e136b37](https://github.com/GenSpectrum/dashboards/commit/e136b37ded4abd67ea19d3ad5a5b35258d7e8fc1))
+
 ## [0.1.4](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.3...dashboard-components-v0.1.4) (2024-05-13)
 
 
