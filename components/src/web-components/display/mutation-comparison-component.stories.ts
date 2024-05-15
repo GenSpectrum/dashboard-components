@@ -12,15 +12,15 @@ import { type MutationComparisonProps } from '../../preact/mutationComparison/mu
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
-<gs-mutation-comparison-component
+<gs-mutation-comparison
     variants='[{ "displayName": "variant1", "lapisFilter": { "country": "Switzerland" }}, { "displayName": "variant2", "lapisFilter": { "country": "Germany" }}]'
     sequenceType="nucleotide"
     views='["table", "venn"]'
-></gs-mutation-comparison-component>`;
+></gs-mutation-comparison>`;
 
 const meta: Meta<MutationComparisonProps> = {
     title: 'Visualization/Mutation comparison',
-    component: 'gs-mutation-comparison-component',
+    component: 'gs-mutation-comparison',
     argTypes: {
         variants: { control: 'object' },
         sequenceType: {
@@ -49,13 +49,13 @@ export default meta;
 const Template: StoryObj<MutationComparisonProps> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
-            <gs-mutation-comparison-component
+            <gs-mutation-comparison
                 .variants=${args.variants}
                 .sequenceType=${args.sequenceType}
                 .views=${args.views}
                 .size=${args.size}
                 .headline=${args.headline}
-            ></gs-mutation-comparison-component>
+            ></gs-mutation-comparison>
         </gs-app>
     `,
 };
@@ -126,7 +126,7 @@ export const Default: StoryObj<MutationComparisonProps> = {
         },
     },
     play: async ({ canvasElement, step }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-comparison-component');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-comparison');
 
         await step('Min and max proportions should be 50% and 100%', async () => {
             const minInput = () => canvas.getAllByLabelText('%')[0];
@@ -141,7 +141,7 @@ export const Default: StoryObj<MutationComparisonProps> = {
 export const VennDiagram: StoryObj<MutationComparisonProps> = {
     ...Default,
     play: async ({ canvasElement, step }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-comparison-component');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-comparison');
 
         await step('Switch to Venn diagram view', async () => {
             await waitFor(() => expect(canvas.getByRole('button', { name: 'Venn' })).toBeInTheDocument());

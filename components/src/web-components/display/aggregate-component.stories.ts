@@ -11,7 +11,7 @@ import '../app';
 
 const meta: Meta<AggregateProps> = {
     title: 'Visualization/Aggregate',
-    component: 'gs-aggregate-component',
+    component: 'gs-aggregate',
     argTypes: {
         fields: [{ control: 'object' }],
         views: {
@@ -43,7 +43,7 @@ const meta: Meta<AggregateProps> = {
         componentDocs: {
             opensShadowDom: true,
             expectsChildren: false,
-            codeExample: `<gs-aggregate-component fields='["division", "host"]' filter='{"country": "USA"}' views='["table"]'></gs-aggregate-component>`,
+            codeExample: `<gs-aggregate fields='["division", "host"]' filter='{"country": "USA"}' views='["table"]'></gs-aggregate>`,
         },
     }),
     tags: ['autodocs'],
@@ -54,13 +54,13 @@ export default meta;
 export const Table: StoryObj<AggregateProps> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
-            <gs-aggregate-component
+            <gs-aggregate
                 .fields=${args.fields}
                 .filter=${args.filter}
                 .views=${args.views}
                 .size=${args.size}
                 .headline=${args.headline}
-            ></gs-aggregate-component>
+            ></gs-aggregate>
         </gs-app>
     `,
     args: {

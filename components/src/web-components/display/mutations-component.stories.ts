@@ -20,7 +20,7 @@ const codeExample = String.raw`
 
 const meta: Meta<MutationsProps> = {
     title: 'Visualization/Mutations',
-    component: 'gs-mutations-component',
+    component: 'gs-mutations',
     argTypes: {
         variant: { control: 'object' },
         sequenceType: {
@@ -56,13 +56,13 @@ export default meta;
 const Template: StoryObj<MutationsProps> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
-            <gs-mutations-component
+            <gs-mutations
                 .variant=${args.variant}
                 .sequenceType=${args.sequenceType}
                 .views=${args.views}
                 .size=${args.size}
                 .headline=${args.headline}
-            ></gs-mutations-component>
+            ></gs-mutations>
         </gs-app>
     `,
 };
@@ -107,7 +107,7 @@ export const Default: StoryObj<MutationsProps> = {
 export const OnTableTab: StoryObj<MutationsProps> = {
     ...Default,
     play: async ({ canvasElement }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-mutations-component');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-mutations');
 
         await waitFor(() => expect(canvas.getByRole('button', { name: 'Table' })).toBeInTheDocument());
 
@@ -118,7 +118,7 @@ export const OnTableTab: StoryObj<MutationsProps> = {
 export const OnInsertionsTab: StoryObj<MutationsProps> = {
     ...Default,
     play: async ({ canvasElement }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-mutations-component');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-mutations');
 
         await waitFor(() => expect(canvas.getByRole('button', { name: 'Insertions' })).toBeInTheDocument());
 

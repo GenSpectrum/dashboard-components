@@ -30,7 +30,7 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  * The insertions view shows the count of all insertions for the given variant.
  *
  */
-@customElement('gs-mutations-component')
+@customElement('gs-mutations')
 export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
     /**
      * The `variant` will be sent as is to LAPIS to filter the mutation data.

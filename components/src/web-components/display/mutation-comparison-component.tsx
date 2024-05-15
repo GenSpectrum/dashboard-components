@@ -32,7 +32,7 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  * Thus, changing the proportion interval may change a mutations from being "common" between variant
  * to being "for one variant only".
  */
-@customElement('gs-mutation-comparison-component')
+@customElement('gs-mutation-comparison')
 export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyles {
     /**
      * An array of variants to compare.
