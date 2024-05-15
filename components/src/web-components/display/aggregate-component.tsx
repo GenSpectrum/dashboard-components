@@ -11,7 +11,7 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  *
  * It expects a list of fields to aggregate by and a filter to apply to the data.
  */
-@customElement('gs-aggregate-component')
+@customElement('gs-aggregate')
 export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
     /**
      * The fields to aggregate by.
