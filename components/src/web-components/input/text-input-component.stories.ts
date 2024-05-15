@@ -39,7 +39,6 @@ const meta: Meta<TextInputProps> = {
             ],
         },
         componentDocs: {
-            tag: 'gs-text-input',
             opensShadowDom: true,
             expectsChildren: false,
             codeExample,

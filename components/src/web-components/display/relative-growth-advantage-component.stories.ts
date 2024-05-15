@@ -33,7 +33,6 @@ const meta: Meta<RelativeGrowthAdvantageProps> = {
     },
     parameters: withComponentDocs({
         componentDocs: {
-            tag: 'gs-relative-growth-advantage',
             opensShadowDom: true,
             expectsChildren: false,
             codeExample,

@@ -43,7 +43,6 @@ const meta: Meta<MutationsProps> = {
     },
     parameters: withComponentDocs({
         componentDocs: {
-            tag: 'gs-mutations-component',
             opensShadowDom: true,
             expectsChildren: false,
             codeExample,

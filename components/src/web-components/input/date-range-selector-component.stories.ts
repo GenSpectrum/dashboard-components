@@ -36,7 +36,6 @@ const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
         },
         fetchMock: {},
         componentDocs: {
-            tag: 'gs-date-range-selector',
             opensShadowDom: true,
             expectsChildren: false,
             codeExample,

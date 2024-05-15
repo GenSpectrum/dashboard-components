@@ -36,7 +36,6 @@ const meta: Meta<MutationComparisonProps> = {
     },
     parameters: withComponentDocs({
         componentDocs: {
-            tag: 'gs-mutation-comparison-component',
             opensShadowDom: true,
             expectsChildren: false,
             codeExample,

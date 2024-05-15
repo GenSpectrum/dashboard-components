@@ -48,7 +48,6 @@ const meta: Meta<PrevalenceOverTimeProps> = {
     },
     parameters: withComponentDocs({
         componentDocs: {
-            tag: 'gs-prevalence-over-time',
             opensShadowDom: true,
             expectsChildren: false,
             codeExample,
