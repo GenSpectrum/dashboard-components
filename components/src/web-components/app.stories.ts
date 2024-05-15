@@ -25,7 +25,6 @@ const meta: Meta = {
     parameters: withComponentDocs({
         fetchMock: {},
         componentDocs: {
-            tag: 'gs-app',
             opensShadowDom: false,
             expectsChildren: true,
             codeExample,

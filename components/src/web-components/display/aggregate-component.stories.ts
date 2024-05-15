@@ -41,7 +41,6 @@ const meta: Meta<AggregateProps> = {
             ],
         },
         componentDocs: {
-            tag: 'gs-aggregate-component',
             opensShadowDom: true,
             expectsChildren: false,
             codeExample: `<gs-aggregate-component fields='["division", "host"]' filter='{"country": "USA"}' views='["table"]'></gs-aggregate-component>`,

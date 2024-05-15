@@ -4,8 +4,6 @@ import z from 'zod';
 import { type Parameters } from '@storybook/web-components';
 
 const componentDocsSchema = z.object({
-    /** The custom tag name of the component. */
-    tag: z.string(),
     /** Whether the component expects children that it should render. */
     expectsChildren: z.boolean(),
     /** Whether the component opens a shadow DOM. */
@@ -43,7 +41,10 @@ export const ComponentDocsBlock: FunctionComponent = () => {
         'div',
         null,
         createElement('h2', null, 'Properties'),
-        createElement(PropertiesTable, { componentDocs }),
+        createElement(PropertiesTable, {
+            componentDocs,
+            customElementTag: resolvedOf.preparedMeta.component as string,
+        }),
         createElement('h2', null, 'Code Example'),
         createElement(Source, { code: componentDocs.codeExample }),
     );
@@ -70,7 +71,10 @@ const ParsingError: FunctionComponent<{ error: string }> = ({ error }) => {
     );
 };
 
-const PropertiesTable: FunctionComponent<{ componentDocs: ComponentDocs }> = ({ componentDocs }) => {
+const PropertiesTable: FunctionComponent<{
+    componentDocs: ComponentDocs;
+    customElementTag: string;
+}> = ({ componentDocs, customElementTag }) => {
     return createElement(
         'table',
         null,
@@ -81,7 +85,7 @@ const PropertiesTable: FunctionComponent<{ componentDocs: ComponentDocs }> = ({ 
                 'tr',
                 null,
                 createElement('td', null, 'custom element tag'),
-                createElement('td', null, createElement('code', null, componentDocs.tag)),
+                createElement('td', null, createElement('code', null, customElementTag)),
             ),
             createElement(
                 'tr',

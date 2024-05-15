@@ -21,7 +21,6 @@ const meta: Meta<MutationFilterProps> = {
         },
         fetchMock: {},
         componentDocs: {
-            tag: 'gs-mutation-filter',
             opensShadowDom: true,
             expectsChildren: false,
             codeExample,

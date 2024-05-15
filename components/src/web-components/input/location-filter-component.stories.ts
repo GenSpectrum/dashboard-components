@@ -20,7 +20,6 @@ const meta: Meta = {
             handles: ['gs-location-changed'],
         },
         componentDocs: {
-            tag: 'gs-location-filter',
             opensShadowDom: true,
             expectsChildren: false,
             codeExample: `<gs-location-filter fields="['continent', 'country']" value='Europe / Switzerland'></gs-location-filter>`,
