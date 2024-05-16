@@ -1,9 +1,10 @@
-import { expect, Page, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
+
 import { toYYYYMMDD } from '../src/preact/dateRangeSelector/dateConversion';
 
 interface DateRangeDetail {
-    dateFrom: string;
-    dateTo: string;
+    aDateColumnFrom: string;
+    aDateColumnTo: string;
 }
 
 const getEventPromiseInsideTestBrowser = async (page: Page) => {
@@ -36,8 +37,8 @@ test('date selector should switch to custom and back', async ({ page }) => {
 
     const today = new Date();
     const firstEvent = await firstEventPromise;
-    expect(firstEvent.dateFrom).toBe(someDateInThePast);
-    expect(firstEvent.dateTo).toBe(toYYYYMMDD(today));
+    expect(firstEvent.aDateColumnFrom).toBe(someDateInThePast);
+    expect(firstEvent.aDateColumnTo).toBe(toYYYYMMDD(today));
 
     const secondEventPromise = getEventPromiseInsideTestBrowser(page);
     await selectBox.selectOption('last3Months');
@@ -49,6 +50,6 @@ test('date selector should switch to custom and back', async ({ page }) => {
     expect(await dateTo.inputValue()).toBe(toYYYYMMDD(today));
     expect(await selectBox.inputValue()).toBe('last3Months');
     const secondEvent = await secondEventPromise;
-    expect(secondEvent.dateFrom).toBe(toYYYYMMDD(threeMonthAgo));
-    expect(secondEvent.dateTo).toBe(toYYYYMMDD(today));
+    expect(secondEvent.aDateColumnFrom).toBe(toYYYYMMDD(threeMonthAgo));
+    expect(secondEvent.aDateColumnTo).toBe(toYYYYMMDD(today));
 });

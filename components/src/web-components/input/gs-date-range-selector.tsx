@@ -10,7 +10,8 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
  * ## Context
- * This component is a group of input fields designed to specify a date range. It consists of 3 fields:
+ * This component is a group of input fields designed to specify date range filters
+ * for a given date column of this Lapis instance. It consists of 3 fields:
  *
  * - a select field to choose a predefined date range,
  * - an input field with an attached date picker for the start date,
@@ -20,12 +21,20 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * Setting a value in either of the date pickers will set the select field to "custom",
  * which represents an arbitrary date range.
  *
- * @fires {CustomEvent<{ dateFrom: string; dateTo: string; }>} gs-date-range-changed
+ * @fires {CustomEvent<{ `${dateColumn}From`: string; `${dateColumn}To`: string; }>} gs-date-range-changed
  * Fired when:
  * - The select field is changed,
  * - A date is selected in either of the date pickers,
  * - A date was typed into either of the date input fields, and the input field loses focus ("on blur").
  * Contains the dates in the format `YYYY-MM-DD`.
+ *
+ * Example for dateColumn = `yourDate`:
+ * ```
+ * {
+ *  yourDataFrom: "2021-01-01",
+ *  yourDataTo: "2021-12-31"
+ * }
+ *  ```
  */
 @customElement('gs-date-range-selector')
 export class DateRangeSelectorComponent extends PreactLitAdapter {
@@ -75,12 +84,19 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
     @property({ type: Object })
     width: string | undefined = undefined;
 
+    /**
+     * The name of the column in LAPIS that contains the date information.
+     */
+    @property({ type: String })
+    dateColumn: string = 'date';
+
     override render() {
         return (
             <DateRangeSelector
                 customSelectOptions={this.customSelectOptions}
                 earliestDate={this.earliestDate}
                 initialValue={this.initialValue}
+                dateColumn={this.dateColumn}
                 width={this.width}
             />
         );
@@ -93,10 +109,7 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-date-range-changed': CustomEvent<{
-            dateFrom: string;
-            dateTo: string;
-        }>;
+        'gs-date-range-changed': CustomEvent<Record<string, string>>;
     }
 }
 
