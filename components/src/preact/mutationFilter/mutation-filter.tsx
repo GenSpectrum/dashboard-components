@@ -7,7 +7,7 @@ import { type Deletion, type Insertion, type Mutation, type Substitution } from 
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import Info from '../components/info';
-import { ResizeContainer, type Size } from '../components/resize-container';
+import { ResizeContainer } from '../components/resize-container';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
@@ -16,7 +16,8 @@ export interface MutationFilterInnerProps {
 }
 
 export interface MutationFilterProps extends MutationFilterInnerProps {
-    size?: Size;
+    width: string;
+    height: string;
 }
 
 export type SelectedFilters = {
@@ -30,12 +31,12 @@ export type SelectedMutationFilterStrings = {
     [Key in keyof SelectedFilters]: string[];
 };
 
-export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initialValue, size }) => {
-    const defaultSize = { width: '100%', height: '6.5rem' };
+export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initialValue, width, height }) => {
+    const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} defaultSize={defaultSize}>
-            <ResizeContainer size={size} defaultSize={defaultSize}>
+        <ErrorBoundary size={size}>
+            <ResizeContainer size={size}>
                 <MutationFilterInner initialValue={initialValue} />
             </ResizeContainer>
         </ErrorBoundary>

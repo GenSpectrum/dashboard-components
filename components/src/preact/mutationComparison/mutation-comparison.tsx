@@ -18,7 +18,7 @@ import { type DisplayedMutationType, MutationTypeSelector } from '../components/
 import { NoDataDisplay } from '../components/no-data-display';
 import { type ProportionInterval } from '../components/proportion-selector';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
-import { ResizeContainer, type Size } from '../components/resize-container';
+import { ResizeContainer } from '../components/resize-container';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
 
@@ -30,7 +30,8 @@ export interface MutationComparisonVariant {
 }
 
 export interface MutationComparisonProps extends MutationComparisonInnerProps {
-    size?: Size;
+    width: string;
+    height: string;
     headline?: string;
 }
 
@@ -44,14 +45,15 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
     variants,
     sequenceType,
     views,
-    size,
+    width,
+    height,
     headline = 'Mutation comparison',
 }) => {
-    const defaultSize = { height: '600px', width: '100%' };
+    const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} defaultSize={defaultSize} headline={headline}>
-            <ResizeContainer size={size} defaultSize={defaultSize}>
+        <ErrorBoundary size={size} headline={headline}>
+            <ResizeContainer size={size}>
                 <Headline heading={headline}>
                     <MutationComparisonInner variants={variants} sequenceType={sequenceType} views={views} />
                 </Headline>

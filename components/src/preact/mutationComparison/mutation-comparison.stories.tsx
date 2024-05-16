@@ -27,7 +27,8 @@ const meta: Meta<MutationComparisonProps> = {
             options: ['table', 'venn'],
             control: { type: 'check' },
         },
-        size: [{ control: 'object' }],
+        width: { control: 'text' },
+        height: { control: 'text' },
         headline: { control: 'text' },
     },
     parameters: {
@@ -81,7 +82,8 @@ const Template: StoryObj<MutationComparisonProps> = {
                     variants={args.variants}
                     sequenceType={args.sequenceType}
                     views={args.views}
-                    size={args.size}
+                    width={args.width}
+                    height={args.height}
                     headline={args.headline}
                 />
             </ReferenceGenomeContext.Provider>
@@ -109,7 +111,8 @@ export const TwoVariants: StoryObj<MutationComparisonProps> = {
         ],
         sequenceType: 'nucleotide',
         views: ['table', 'venn'],
-        size: { width: '100%', height: '700px' },
+        width: '100%',
+        height: '700px',
         headline: 'Mutation comparison',
     },
 };

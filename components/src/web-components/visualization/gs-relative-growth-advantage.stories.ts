@@ -15,6 +15,8 @@ const codeExample = String.raw`
     denominator='{ "country": "Switzerland", "dateFrom": "2020-12-01" }'
     generationTime="7"
     views='["line"]'
+    width='100%'
+    height='700px'
     headline="Relative growth advantage"
 ></gs-relative-growth-advantage>`;
 
@@ -29,7 +31,8 @@ const meta: Meta<RelativeGrowthAdvantageProps> = {
             options: ['line'],
             control: { type: 'check' },
         },
-        size: [{ control: 'object' }],
+        width: { control: 'text' },
+        height: { control: 'text' },
         headline: { control: 'text' },
     },
     parameters: withComponentDocs({
@@ -52,7 +55,8 @@ const Template: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
                 .denominator=${args.denominator}
                 .generationTime=${args.generationTime}
                 .views=${args.views}
-                .size=${args.size}
+                .width=${args.width}
+                .height=${args.height}
                 .headline=${args.headline}
             ></gs-relative-growth-advantage>
         </gs-app>
@@ -66,7 +70,8 @@ export const Default: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
         denominator: { country: 'Switzerland', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
         generationTime: 7,
         views: ['line'],
-        size: { width: '100%', height: '700px' },
+        width: '100%',
+        height: '700px',
         headline: 'Relative growth advantage',
     },
     parameters: {

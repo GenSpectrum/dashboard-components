@@ -17,16 +17,15 @@ export interface TextInputInnerProps {
 }
 
 export interface TextInputProps extends TextInputInnerProps {
-    width?: string;
+    width: string;
 }
 
 export const TextInput: FunctionComponent<TextInputProps> = ({ width, lapisField, placeholderText, initialValue }) => {
-    const defaultSize = { width: '100%', height: '3rem' };
-    const size = width === undefined ? undefined : { width, height: defaultSize.height };
+    const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary defaultSize={defaultSize} size={size}>
-            <ResizeContainer size={size} defaultSize={defaultSize}>
+        <ErrorBoundary size={size}>
+            <ResizeContainer size={size}>
                 <TextInputInner lapisField={lapisField} placeholderText={placeholderText} initialValue={initialValue} />
             </ResizeContainer>
         </ErrorBoundary>

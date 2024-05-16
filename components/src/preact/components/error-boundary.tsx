@@ -5,12 +5,7 @@ import { ErrorDisplay } from './error-display';
 import { ResizeContainer, type Size } from './resize-container';
 import Headline from '../components/headline';
 
-export const ErrorBoundary: FunctionComponent<{ size?: Size; defaultSize: Size; headline?: string }> = ({
-    size,
-    defaultSize,
-    headline,
-    children,
-}) => {
+export const ErrorBoundary: FunctionComponent<{ size: Size; headline?: string }> = ({ size, headline, children }) => {
     const [internalError] = useErrorBoundary();
 
     if (internalError) {
@@ -19,7 +14,7 @@ export const ErrorBoundary: FunctionComponent<{ size?: Size; defaultSize: Size; 
 
     if (internalError) {
         return (
-            <ResizeContainer defaultSize={defaultSize} size={size}>
+            <ResizeContainer size={size}>
                 <Headline heading={headline}>
                     <ErrorDisplay error={internalError} />
                 </Headline>

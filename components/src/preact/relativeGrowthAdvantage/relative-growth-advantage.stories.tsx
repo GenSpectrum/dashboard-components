@@ -18,7 +18,8 @@ export default {
             options: ['line'],
             control: { type: 'check' },
         },
-        size: [{ control: 'object' }],
+        width: { control: 'text' },
+        height: { control: 'text' },
         headline: { control: 'text' },
     },
 };
@@ -31,7 +32,8 @@ export const Primary = {
                 denominator={args.denominator}
                 generationTime={args.generationTime}
                 views={args.views}
-                size={args.size}
+                width={args.width}
+                height={args.height}
                 headline={args.headline}
             />
         </LapisUrlContext.Provider>
@@ -41,7 +43,8 @@ export const Primary = {
         denominator: { country: 'Switzerland', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
         generationTime: 7,
         views: ['line'],
-        size: { width: '100%', height: '700px' },
+        width: '100%',
+        height: '700px',
         headline: 'Relative growth advantage',
     },
     parameters: {

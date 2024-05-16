@@ -17,7 +17,7 @@ import Headline from '../components/headline';
 import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
-import { ResizeContainer, type Size } from '../components/resize-container';
+import { ResizeContainer } from '../components/resize-container';
 import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
 import { type ConfidenceIntervalMethod } from '../shared/charts/confideceInterval';
@@ -27,7 +27,8 @@ import { useQuery } from '../useQuery';
 export type View = 'bar' | 'line' | 'bubble' | 'table';
 
 export interface PrevalenceOverTimeProps extends PrevalenceOverTimeInnerProps {
-    size?: Size;
+    width: string;
+    height: string;
     headline?: string;
 }
 
@@ -47,14 +48,15 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
     smoothingWindow,
     views,
     confidenceIntervalMethods,
-    size,
+    width,
+    height,
     headline = 'Prevalence over time',
 }) => {
-    const defaultSize = { height: '600px', width: '100%' };
+    const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} defaultSize={defaultSize} headline={headline}>
-            <ResizeContainer size={size} defaultSize={defaultSize}>
+        <ErrorBoundary size={size} headline={headline}>
+            <ResizeContainer size={size}>
                 <Headline heading={headline}>
                     <PrevalenceOverTimeInner
                         numerator={numerator}

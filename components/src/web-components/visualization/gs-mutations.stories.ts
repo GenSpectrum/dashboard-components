@@ -17,6 +17,8 @@ const codeExample = String.raw`
     sequenceType="nucleotide"
     views='["grid", "table", "insertions"]'
     headline="Mutations"
+    width='100%'
+    height='700px'
 ></gs-mutations>`;
 
 const meta: Meta<Required<MutationsProps>> = {
@@ -32,14 +34,16 @@ const meta: Meta<Required<MutationsProps>> = {
             options: ['table', 'grid', 'insertions'],
             control: { type: 'check' },
         },
-        size: { control: 'object' },
+        width: { control: 'text' },
+        height: { control: 'text' },
         headline: { control: 'text' },
     },
     args: {
         variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
         sequenceType: 'nucleotide',
         views: ['grid', 'table', 'insertions'],
-        size: { width: '100%', height: '700px' },
+        width: '100%',
+        height: '700px',
         headline: 'Mutations',
     },
     parameters: withComponentDocs({
@@ -61,7 +65,8 @@ const Template: StoryObj<Required<MutationsProps>> = {
                 .variant=${args.variant}
                 .sequenceType=${args.sequenceType}
                 .views=${args.views}
-                .size=${args.size}
+                .width=${args.width}
+                .height=${args.height}
                 .headline=${args.headline}
             ></gs-mutations>
         </gs-app>
