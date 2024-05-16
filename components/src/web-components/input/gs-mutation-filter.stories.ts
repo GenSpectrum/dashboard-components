@@ -8,7 +8,7 @@ import { LAPIS_URL } from '../../constants';
 import '../app';
 import { type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
 import { withinShadowRoot } from '../withinShadowRoot.story';
-import './mutation-filter-component';
+import './gs-mutation-filter';
 
 const codeExample = String.raw`<gs-mutation-filter initialValue='["A123T"]'></gs-mutation-filter>`;
 

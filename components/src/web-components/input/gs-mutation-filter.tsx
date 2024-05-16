@@ -1,6 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import { type TextInputComponent } from './text-input-component';
 import { ReferenceGenomesAwaiter } from '../../preact/components/ReferenceGenomesAwaiter';
 import {
     MutationFilter,
@@ -88,7 +87,7 @@ export class MutationFilterComponent extends PreactLitAdapter {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-mutation-filter': TextInputComponent;
+        'gs-mutation-filter': MutationFilterComponent;
     }
 
     interface HTMLElementEventMap {

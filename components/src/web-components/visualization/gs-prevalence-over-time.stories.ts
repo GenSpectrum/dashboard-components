@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
 import '../app';
-import './prevalence-over-time-component';
+import './gs-prevalence-over-time';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import denominator from '../../preact/prevalenceOverTime/__mockData__/denominator.json';

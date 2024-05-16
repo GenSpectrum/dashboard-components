@@ -7,7 +7,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../app';
-import './location-filter-component';
+import './gs-location-filter';
 import data from '../../preact/locationFilter/__mockData__/aggregated.json';
 import { type LocationFilterProps } from '../../preact/locationFilter/location-filter';
 import { withinShadowRoot } from '../withinShadowRoot.story';
