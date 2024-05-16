@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.5...dashboard-components-v0.2.0) (2024-05-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** rename components: gs-aggregate-component to gs-aggregate, gs-mutation-comparison-component to gs-mutation-comparison, gs-mutations-component to gs-mutations
+
+### Features
+
+* **components:** add error boundary to components ([0921b81](https://github.com/GenSpectrum/dashboards/commit/0921b8104ec8de7d4edbf1b002fb4057957fd16a))
+* **components:** unify custom element names ([047c84e](https://github.com/GenSpectrum/dashboards/commit/047c84e598d95d6bde06ff6217bb536ce3de0cda))
+
 ## [0.1.5](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.4...dashboard-components-v0.1.5) (2024-05-15)
 
 
