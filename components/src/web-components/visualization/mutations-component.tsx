@@ -37,7 +37,7 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
      * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
-    variant: Record<string, string | number | null | boolean> = { displayName: '' };
+    variant: Record<string, string | number | null | boolean> = {};
 
     /**
      * The type of the sequence for which the mutations should be shown.

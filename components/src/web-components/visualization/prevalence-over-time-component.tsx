@@ -43,6 +43,8 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  */
 @customElement('gs-prevalence-over-time')
 export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
+    // prettier-ignore
+    // The multiline union type must not start with `|` because it looks weird in the Storybook docs
     /**
      * Either a single variant or an array of variants to compare.
      * This must be a valid LAPIS filter object with an additional `displayName` property
@@ -51,7 +53,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
      */
     @property({ type: Object })
     numerator:
-        | (Record<string, string | number | null | boolean> & { displayName: string })
+        (Record<string, string | number | null | boolean> & { displayName: string })
         | (Record<string, string | number | null | boolean> & {
               displayName: string;
           })[] = { displayName: '' };
