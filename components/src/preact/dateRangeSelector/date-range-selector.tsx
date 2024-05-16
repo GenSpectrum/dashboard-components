@@ -18,6 +18,7 @@ export interface DateRangeSelectorPropsInner<CustomLabel extends string> {
     customSelectOptions: CustomSelectOption<CustomLabel>[];
     earliestDate?: string;
     initialValue?: PresetOptionValues | CustomLabel;
+    dateColumn: string;
 }
 
 export const PRESET_VALUE_CUSTOM = 'custom';
@@ -45,6 +46,7 @@ export const DateRangeSelector = <CustomLabel extends string>({
     earliestDate = '1900-01-01',
     initialValue,
     width,
+    dateColumn,
 }: DateRangeSelectorProps<CustomLabel>) => {
     const defaultSize = { width: '100%', height: '3rem' };
     const size = width === undefined ? undefined : { width, height: defaultSize.height };
@@ -56,6 +58,7 @@ export const DateRangeSelector = <CustomLabel extends string>({
                     customSelectOptions={customSelectOptions}
                     earliestDate={earliestDate}
                     initialValue={initialValue}
+                    dateColumn={dateColumn}
                 />
             </ResizeContainer>
         </ErrorBoundary>
@@ -66,6 +69,7 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
     customSelectOptions,
     earliestDate = '1900-01-01',
     initialValue,
+    dateColumn,
 }: DateRangeSelectorProps<CustomLabel>) => {
     const fromDatePickerRef = useRef<HTMLInputElement>(null);
     const toDatePickerRef = useRef<HTMLInputElement>(null);
@@ -165,8 +169,8 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
         const dateTo = toYYYYMMDD(dateToPicker?.selectedDates[0]);
 
         const detail = {
-            ...(dateFrom !== undefined && { dateFrom }),
-            ...(dateTo !== undefined && { dateTo }),
+            ...(dateFrom !== undefined && { [`${dateColumn}From`]: dateFrom }),
+            ...(dateTo !== undefined && { [`${dateColumn}To`]: dateTo }),
         };
 
         divRef.current?.dispatchEvent(

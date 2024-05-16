@@ -58,6 +58,7 @@ const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
                 'CustomDateRange',
             ],
         },
+        dateColumn: { control: { type: 'text' } },
         customSelectOptions: {
             control: {
                 type: 'object',
@@ -78,6 +79,7 @@ const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
         customSelectOptions: [{ label: 'CustomDateRange', dateFrom: '2021-01-01', dateTo: '2021-12-31' }],
         earliestDate: '1970-01-01',
         initialValue: PRESET_VALUE_LAST_6_MONTHS,
+        dateColumn: 'aDateColumn',
         width: '100%',
     },
     decorators: [withActions],
@@ -95,6 +97,7 @@ export const DateRangeSelectorStory: StoryObj<DateRangeSelectorProps<'CustomDate
                     .earliestDate=${args.earliestDate}
                     .initialValue=${args.initialValue}
                     .width=${args.width}
+                    .dateColumn=${args.dateColumn}
                 ></gs-date-range-selector>
             </div>
         </gs-app>`,
@@ -108,5 +111,9 @@ export const DateRangeSelectorStory: StoryObj<DateRangeSelectorProps<'CustomDate
                 expect(dateTo()).toHaveValue(toYYYYMMDD(new Date()));
             });
         });
+
+        // Due to the limitations of storybook testing which does not fire an event,
+        // when selecting a value from the dropdown we can't test the fired event here.
+        // An e2e test (using playwright) for that can be found in tests/dateRangeSelector.spec.ts
     },
 };

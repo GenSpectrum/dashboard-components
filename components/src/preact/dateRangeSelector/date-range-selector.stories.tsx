@@ -60,6 +60,7 @@ const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
         customSelectOptions: [{ label: 'CustomDateRange', dateFrom: '2021-01-01', dateTo: '2021-12-31' }],
         earliestDate: '1970-01-01',
         initialValue: PRESET_VALUE_LAST_3_MONTHS,
+        dateColumn: 'aDateColumn',
         width: '100%',
     },
     decorators: [withActions],
@@ -75,6 +76,7 @@ export const Primary: StoryObj<DateRangeSelectorProps<'CustomDateRange'>> = {
                 earliestDate={args.earliestDate}
                 initialValue={args.initialValue}
                 width={args.width}
+                dateColumn={args.dateColumn}
             />
         </LapisUrlContext.Provider>
     ),
