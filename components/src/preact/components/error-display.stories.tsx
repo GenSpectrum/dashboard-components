@@ -14,7 +14,7 @@ export default meta;
 
 export const ErrorStory: StoryObj = {
     render: () => (
-        <ResizeContainer defaultSize={{ height: '600px', width: '100%' }}>
+        <ResizeContainer size={{ height: '600px', width: '100%' }}>
             <ErrorDisplay error={new Error('some message')} />
         </ResizeContainer>
     ),
@@ -29,7 +29,7 @@ export const ErrorStory: StoryObj = {
 
 export const UserFacingErrorStory: StoryObj = {
     render: () => (
-        <ResizeContainer defaultSize={{ height: '600px', width: '100%' }}>
+        <ResizeContainer size={{ height: '600px', width: '100%' }}>
             <ErrorDisplay error={new UserFacingError('some message')} />
         </ResizeContainer>
     ),

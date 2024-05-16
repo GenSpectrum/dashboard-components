@@ -65,15 +65,20 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
     headline: string = 'Relative growth advantage';
 
     /**
-     * The size of the component.
+     * The width of the component.
      *
-     * If not set, the component will take the full width of its container with height 700px.
-     *
-     * The width and height should be a string with a unit in css style, e.g. '100%', '500px' or '50vh'.
-     * If the unit is %, the size will be relative to the container of the component.
+     * Visit https://genspectrum.github.io/dashboards/?path=/docs/components-size-of-components--docs for more information.
      */
-    @property({ type: Object })
-    size: { width?: string; height?: string } | undefined = undefined;
+    @property({ type: String })
+    width: string = '100%';
+
+    /**
+     * The height of the component.
+     *
+     * Visit https://genspectrum.github.io/dashboards/?path=/docs/components-size-of-components--docs for more information.
+     */
+    @property({ type: String })
+    height: string = '700px';
 
     override render() {
         return (
@@ -82,7 +87,8 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
                 denominator={this.denominator}
                 generationTime={this.generationTime}
                 views={this.views}
-                size={this.size}
+                width={this.width}
+                height={this.height}
                 headline={this.headline}
             />
         );

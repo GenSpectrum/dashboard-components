@@ -19,11 +19,8 @@ const meta: Meta<MutationFilterProps> = {
         fetchMock: {},
     },
     argTypes: {
-        size: {
-            control: {
-                type: 'object',
-            },
-        },
+        width: { control: 'text' },
+        height: { control: 'text' },
         initialValue: {
             control: {
                 type: 'object',
@@ -39,12 +36,13 @@ export const Default: StoryObj<MutationFilterProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationFilter size={args.size} initialValue={args.initialValue} />
+                <MutationFilter width={args.width} height={args.height} initialValue={args.initialValue} />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
     ),
     args: {
-        size: { width: '100%' },
+        width: '100%',
+        height: '700px',
     },
 };
 
@@ -155,7 +153,7 @@ export const WithInitialValue: StoryObj<MutationFilterProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationFilter initialValue={args.initialValue} />
+                <MutationFilter initialValue={args.initialValue} width={args.width} height={args.height} />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
     ),
@@ -166,6 +164,8 @@ export const WithInitialValue: StoryObj<MutationFilterProps> = {
             nucleotideInsertions: ['ins_123:AAA'],
             aminoAcidInsertions: ['ins_S:123:AAA'],
         },
+        width: '100%',
+        height: '700px',
     },
     play: async ({ canvasElement, step }) => {
         const { canvas, onBlurListenerMock } = await prepare(canvasElement, step);

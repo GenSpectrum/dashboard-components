@@ -76,13 +76,10 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
     /**
      * The width of the component.
      *
-     * If not set, the component will take the full width of its container.
-     *
-     * The width should be a string with a unit in css style, e.g. '100%', '500px' or '50vw'.
-     * If the unit is %, the size will be relative to the container of the component.
+     * Visit https://genspectrum.github.io/dashboards/?path=/docs/components-size-of-components--docs for more information.
      */
-    @property({ type: Object })
-    width: string | undefined = undefined;
+    @property({ type: String })
+    width: string = '100%';
 
     /**
      * The name of the column in LAPIS that contains the date information.

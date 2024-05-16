@@ -10,7 +10,8 @@ const meta: Meta<AggregateProps> = {
     component: Aggregate,
     argTypes: {
         fields: [{ control: 'object' }],
-        size: [{ control: 'object' }],
+        width: { control: 'text' },
+        height: { control: 'text' },
         headline: { control: 'text' },
     },
     parameters: {
@@ -49,7 +50,8 @@ export const Default: StoryObj<AggregateProps> = {
         filter: {
             country: 'USA',
         },
-        size: { width: '100%', height: '70vh' },
+        width: '100%',
+        height: '700px',
         headline: 'Aggregate',
     },
 };

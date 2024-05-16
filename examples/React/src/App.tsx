@@ -66,7 +66,8 @@ function App() {
                     granularity='day'
                     smoothingWindow='7'
                     views='["line", "table"]'
-                    size={JSON.stringify({ height: '300px', width: '800px' })}
+                    width='800px'
+                    height='300px'
                 ></gs-prevalence-over-time>
                 <div style={{ height: '300px', width: '1000px' }}>
                     <gs-prevalence-over-time
@@ -75,7 +76,8 @@ function App() {
                         granularity='day'
                         smoothingWindow='7'
                         views='["line", "table"]'
-                        size={JSON.stringify({ height: '100%', width: '80%' })}
+                        width='80%'
+                        height='100%'
                     ></gs-prevalence-over-time>
                 </div>
             </div>

@@ -14,7 +14,7 @@ import Headline from '../components/headline';
 import Info, { InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
-import { ResizeContainer, type Size } from '../components/resize-container';
+import { ResizeContainer } from '../components/resize-container';
 import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
 import { type ScaleType } from '../shared/charts/getYAxisScale';
@@ -23,7 +23,8 @@ import { useQuery } from '../useQuery';
 export type View = 'line';
 
 export interface RelativeGrowthAdvantageProps extends RelativeGrowthAdvantagePropsInner {
-    size?: Size;
+    width: string;
+    height: string;
     headline?: string;
 }
 
@@ -36,17 +37,18 @@ export interface RelativeGrowthAdvantagePropsInner {
 
 export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = ({
     views,
-    size,
+    width,
+    height,
     numerator,
     denominator,
     generationTime,
     headline = 'Relative growth advantage',
 }) => {
-    const defaultSize = { height: '600px', width: '100%' };
+    const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} defaultSize={defaultSize} headline={headline}>
-            <ResizeContainer size={size} defaultSize={defaultSize}>
+        <ErrorBoundary size={size} headline={headline}>
+            <ResizeContainer size={size}>
                 <Headline heading={headline}>
                     <RelativeGrowthAdvantageInner
                         views={views}
@@ -60,7 +62,7 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
     );
 };
 
-export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvantageProps> = ({
+export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvantagePropsInner> = ({
     numerator,
     denominator,
     generationTime,

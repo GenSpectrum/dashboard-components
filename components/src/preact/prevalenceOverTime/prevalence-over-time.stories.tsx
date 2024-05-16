@@ -29,7 +29,8 @@ export default {
             options: ['wilson'],
             control: { type: 'check' },
         },
-        size: [{ control: 'object' }],
+        width: { control: 'text' },
+        height: { control: 'text' },
         headline: { control: 'text' },
     },
 };
@@ -44,7 +45,8 @@ const Template = {
                 smoothingWindow={args.smoothingWindow}
                 views={args.views}
                 confidenceIntervalMethods={args.confidenceIntervalMethods}
-                size={args.size}
+                width={args.width}
+                height={args.height}
                 headline={args.headline}
             />
         </LapisUrlContext.Provider>
@@ -63,7 +65,8 @@ export const TwoVariants = {
         smoothingWindow: 0,
         views: ['bar', 'line', 'bubble', 'table'],
         confidenceIntervalMethods: ['wilson'],
-        size: { width: '100%', height: '700px' },
+        width: '100%',
+        height: '700px',
         headline: 'Prevalence over time',
     },
     parameters: {
@@ -130,7 +133,8 @@ export const OneVariant = {
         smoothingWindow: 7,
         views: ['bar', 'line', 'bubble', 'table'],
         confidenceIntervalMethods: ['wilson'],
-        size: { width: '100%', height: '700px' },
+        width: '100%',
+        height: '700px',
         headline: 'Prevalence over time',
     },
     parameters: {

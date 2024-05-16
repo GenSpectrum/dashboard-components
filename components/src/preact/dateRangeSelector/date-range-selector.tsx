@@ -11,7 +11,7 @@ import type { ScaleType } from '../shared/charts/getYAxisScale';
 export type CustomSelectOption<CustomLabel extends string> = { label: CustomLabel; dateFrom: string; dateTo: string };
 
 export interface DateRangeSelectorProps<CustomLabel extends string> extends DateRangeSelectorPropsInner<CustomLabel> {
-    width?: string;
+    width: string;
 }
 
 export interface DateRangeSelectorPropsInner<CustomLabel extends string> {
@@ -48,12 +48,11 @@ export const DateRangeSelector = <CustomLabel extends string>({
     width,
     dateColumn,
 }: DateRangeSelectorProps<CustomLabel>) => {
-    const defaultSize = { width: '100%', height: '3rem' };
-    const size = width === undefined ? undefined : { width, height: defaultSize.height };
+    const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary defaultSize={defaultSize} size={size}>
-            <ResizeContainer defaultSize={defaultSize} size={size}>
+        <ErrorBoundary size={size}>
+            <ResizeContainer size={size}>
                 <DateRangeSelectorInner
                     customSelectOptions={customSelectOptions}
                     earliestDate={earliestDate}
@@ -70,7 +69,7 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
     earliestDate = '1900-01-01',
     initialValue,
     dateColumn,
-}: DateRangeSelectorProps<CustomLabel>) => {
+}: DateRangeSelectorPropsInner<CustomLabel>) => {
     const fromDatePickerRef = useRef<HTMLInputElement>(null);
     const toDatePickerRef = useRef<HTMLInputElement>(null);
     const divRef = useRef<HTMLDivElement>(null);

@@ -12,22 +12,20 @@ const meta: Meta = {
         defaultSize: { control: 'object' },
         headline: { control: 'text' },
     },
+    args: {
+        size: { height: '600px', width: '100%' },
+        headline: 'Some headline',
+    },
 };
 
 export default meta;
 
 export const ErrorBoundaryWithoutErrorStory: StoryObj = {
     render: (args) => (
-        <ErrorBoundary size={args.size} defaultSize={args.defaultSize} headline={args.headline}>
+        <ErrorBoundary size={args.size} headline={args.headline}>
             <div>Some content</div>
         </ErrorBoundary>
     ),
-    args: {
-        size: { height: '600px', width: '100%' },
-        defaultSize: { height: '600px', width: '100%' },
-        headline: 'Some headline',
-    },
-
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         const content = canvas.getByText('Some content', { exact: false });
@@ -38,16 +36,10 @@ export const ErrorBoundaryWithoutErrorStory: StoryObj = {
 
 export const ErrorBoundaryWithErrorStory: StoryObj = {
     render: (args) => (
-        <ErrorBoundary size={args.size} defaultSize={args.defaultSize} headline={args.headline}>
+        <ErrorBoundary size={args.size} headline={args.headline}>
             <ContentThatThrowsError />
         </ErrorBoundary>
     ),
-    args: {
-        size: { height: '600px', width: '100%' },
-        defaultSize: { height: '600px', width: '100%' },
-        headline: 'Some headline',
-    },
-
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         const content = canvas.queryByText('Some content.', { exact: false });

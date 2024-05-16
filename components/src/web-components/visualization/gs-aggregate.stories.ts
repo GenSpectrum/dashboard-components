@@ -9,6 +9,16 @@ import type { AggregateProps } from '../../preact/aggregatedData/aggregate';
 import './gs-aggregate';
 import '../app';
 
+const codeExample = `
+<gs-aggregate 
+    fields='["division", "host"]'
+    filter='{"country": "USA"}'
+    views='["table"]'
+    headline="Aggregate"
+    width='100%'
+    height='700px'
+></gs-aggregate>`;
+
 const meta: Meta<Required<AggregateProps>> = {
     title: 'Visualization/Aggregate',
     component: 'gs-aggregate',
@@ -18,7 +28,8 @@ const meta: Meta<Required<AggregateProps>> = {
             options: ['table'],
             control: { type: 'check' },
         },
-        size: [{ control: 'object' }],
+        width: { control: 'text' },
+        height: { control: 'text' },
         headline: { control: 'text' },
     },
     parameters: withComponentDocs({
@@ -43,7 +54,7 @@ const meta: Meta<Required<AggregateProps>> = {
         componentDocs: {
             opensShadowDom: true,
             expectsChildren: false,
-            codeExample: `<gs-aggregate fields='["division", "host"]' filter='{"country": "USA"}' views='["table"]'></gs-aggregate>`,
+            codeExample,
         },
     }),
     tags: ['autodocs'],
@@ -58,7 +69,8 @@ export const Table: StoryObj<Required<AggregateProps>> = {
                 .fields=${args.fields}
                 .filter=${args.filter}
                 .views=${args.views}
-                .size=${args.size}
+                .width=${args.width}
+                .height=${args.height}
                 .headline=${args.headline}
             ></gs-aggregate>
         </gs-app>
@@ -69,7 +81,8 @@ export const Table: StoryObj<Required<AggregateProps>> = {
         filter: {
             country: 'USA',
         },
-        size: { width: '100%', height: '700px' },
+        width: '100%',
+        height: '700px',
         headline: 'Aggregate',
     },
 };

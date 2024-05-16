@@ -15,16 +15,15 @@ export interface LocationFilterInnerProps {
 }
 
 export interface LocationFilterProps extends LocationFilterInnerProps {
-    width?: string;
+    width: string;
 }
 
 export const LocationFilter: FunctionComponent<LocationFilterProps> = ({ width, initialValue, fields }) => {
-    const defaultSize = { width: '100%', height: '3rem' };
-    const size = width === undefined ? undefined : { width, height: defaultSize.height };
+    const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary defaultSize={defaultSize} size={size}>
-            <ResizeContainer size={size} defaultSize={defaultSize}>
+        <ErrorBoundary size={size}>
+            <ResizeContainer size={size}>
                 <LocationFilterInner initialValue={initialValue} fields={fields} />
             </ResizeContainer>
         </ErrorBoundary>

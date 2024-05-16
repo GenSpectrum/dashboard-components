@@ -12,14 +12,15 @@ import Headline from '../components/headline';
 import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
-import { ResizeContainer, type Size } from '../components/resize-container';
+import { ResizeContainer } from '../components/resize-container';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
 
 export type View = 'table';
 
 export type AggregateProps = {
-    size?: Size;
+    width: string;
+    height: string;
     headline?: string;
 } & AggregateInnerProps;
 
@@ -31,16 +32,17 @@ export interface AggregateInnerProps {
 
 export const Aggregate: FunctionComponent<AggregateProps> = ({
     views,
-    size,
+    width,
+    height,
     headline = 'Mutations',
     filter,
     fields,
 }) => {
-    const defaultSize = { height: '600px', width: '100%' };
+    const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} defaultSize={defaultSize} headline={headline}>
-            <ResizeContainer size={size} defaultSize={defaultSize}>
+        <ErrorBoundary size={size} headline={headline}>
+            <ResizeContainer size={size}>
                 <Headline heading={headline}>
                     <AggregateInner fields={fields} filter={filter} views={views} />
                 </Headline>

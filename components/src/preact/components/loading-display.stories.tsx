@@ -13,7 +13,7 @@ export default meta;
 
 export const LoadingStory: StoryObj = {
     render: () => (
-        <ResizeContainer defaultSize={{ height: '600px', width: '100%' }}>
+        <ResizeContainer size={{ height: '600px', width: '100%' }}>
             <LoadingDisplay />
         </ResizeContainer>
     ),

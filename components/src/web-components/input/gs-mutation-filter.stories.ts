@@ -13,7 +13,8 @@ import './gs-mutation-filter';
 const codeExample = String.raw`
 <gs-mutation-filter 
     initialValue='["A123T"]'
-    size='{ "width": "100%", "height": "6.5rem" }'
+    width='100%'
+    height='6.5rem'
 ></gs-mutation-filter>`;
 
 const meta: Meta<MutationFilterProps> = {
@@ -36,11 +37,8 @@ const meta: Meta<MutationFilterProps> = {
                 type: 'object',
             },
         },
-        size: {
-            control: {
-                type: 'object',
-            },
-        },
+        width: { control: 'text' },
+        height: { control: 'text' },
     },
     decorators: [withActions],
     tags: ['autodocs'],
@@ -52,13 +50,18 @@ const Template: StoryObj<MutationFilterProps> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
-                <gs-mutation-filter .initialValue=${args.initialValue} .size=${args.size}></gs-mutation-filter>
+                <gs-mutation-filter
+                    .initialValue=${args.initialValue}
+                    .width=${args.width}
+                    .height=${args.height}
+                ></gs-mutation-filter>
             </div>
         </gs-app>`;
     },
     args: {
         initialValue: [],
-        size: { width: '100%', height: '3rem' },
+        width: '100%',
+        height: '3rem',
     },
 };
 

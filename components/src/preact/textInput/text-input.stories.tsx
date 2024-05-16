@@ -33,6 +33,29 @@ const meta: Meta<TextInputProps> = {
         },
     },
     decorators: [withActions],
+    argTypes: {
+        lapisField: {
+            control: {
+                type: 'select',
+            },
+            options: ['host'],
+        },
+        placeholderText: {
+            control: {
+                type: 'text',
+            },
+        },
+        initialValue: {
+            control: {
+                type: 'text',
+            },
+        },
+        width: {
+            control: {
+                type: 'text',
+            },
+        },
+    },
 };
 
 export default meta;
@@ -44,12 +67,15 @@ export const Default: StoryObj<TextInputProps> = {
                 lapisField={args.lapisField}
                 placeholderText={args.placeholderText}
                 initialValue={args.initialValue}
+                width={args.width}
             />
         </LapisUrlContext.Provider>
     ),
     args: {
         lapisField: 'host',
         placeholderText: 'Enter a host name',
+        initialValue: '',
+        width: '100%',
     },
 };
 
