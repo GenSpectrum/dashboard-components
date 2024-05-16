@@ -1,0 +1,13 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='Components/Size of components' />
+
+# Size of components
+
+All visualization and input components can be provided with a width prop (or height, when applicable) to control the size of the component.
+If not provided, the default width or height is used. In most cases, the default is a width of '100%' of its parent container and a predefined height.
+
+Both width and height can be set using the css units (e.g. 'px', 'em', 'rem', '%', 'vh', 'vw', etc.).
+By using '%', the size of the component can be controlled by the parent component.
+
+Caution: When using '%' as a unit, the parent component should have a defined width or height.
