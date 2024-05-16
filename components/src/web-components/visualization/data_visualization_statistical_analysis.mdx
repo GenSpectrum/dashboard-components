@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='Visualization/Data Visualization and Statistical Analysis' />
+
+# Data Visualization and Statistical Analysis
+
+## Scales
+
+On most plots, users can select the y-axis scaling through a dropdown.
+They can choose between linear, logarithmic and logistic scaling.
+By default, it is set to a linear scale.
+
+In general, for each scale the displayed height of a value is calculated by applying the corresponding scale function.
+
+-   Linear: `value`
+-   Logarithmic: `ln(value)`
+-   Logistic: `ln(value / (1 - value))`
+
+## Confidence Intervals
+
+On bar and line plots, users can choose to display confidence intervals.
+For line plots, this is done by shading the area between the upper and lower bounds.
+For bar plots, this is done by adding error bars to the top of each bar.
+
+Currently, only one method is available for calculating the confidence intervals:
+the [wilson score interval](https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval) with a confidence level of 95%.
