@@ -2,7 +2,12 @@ import { customElement, property } from 'lit/decorators.js';
 
 import { type TextInputComponent } from './text-input-component';
 import { ReferenceGenomesAwaiter } from '../../preact/components/ReferenceGenomesAwaiter';
-import { MutationFilter, type SelectedMutationFilterStrings } from '../../preact/mutationFilter/mutation-filter';
+import {
+    MutationFilter,
+    type MutationFilterProps,
+    type SelectedMutationFilterStrings,
+} from '../../preact/mutationFilter/mutation-filter';
+import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
@@ -53,6 +58,8 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  */
 @customElement('gs-mutation-filter')
 export class MutationFilterComponent extends PreactLitAdapter {
+    // prettier-ignore
+    // The multiline union type must not start with `|` because it looks weird in the Storybook docs
     /**
      * The initial value to use for this mutation filter.
      * Must be either
@@ -60,7 +67,15 @@ export class MutationFilterComponent extends PreactLitAdapter {
      * - an object with the keys `nucleotideMutations`, `aminoAcidMutations`, `nucleotideInsertions` and `aminoAcidInsertions` and corresponding string arrays.
      */
     @property()
-    initialValue: SelectedMutationFilterStrings | string[] | undefined = undefined;
+    initialValue:
+        {
+              nucleotideMutations: string[];
+              aminoAcidMutations: string[];
+              nucleotideInsertions: string[];
+              aminoAcidInsertions: string[];
+          }
+        | string[]
+        | undefined = undefined;
 
     override render() {
         return (
@@ -81,3 +96,9 @@ declare global {
         'gs-mutation-filter-on-blur': CustomEvent<SelectedMutationFilterStrings>;
     }
 }
+
+/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+type InitialValueMatches = Expect<
+    Equals<typeof MutationFilterComponent.prototype.initialValue, MutationFilterProps['initialValue']>
+>;
+/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
