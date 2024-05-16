@@ -6,7 +6,7 @@ import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import aggregatedData from '../../preact/aggregatedData/__mockData__/aggregated.json';
 import type { AggregateProps } from '../../preact/aggregatedData/aggregate';
 
-import './aggregate-component';
+import './gs-aggregate';
 import '../app';
 
 const meta: Meta<AggregateProps> = {

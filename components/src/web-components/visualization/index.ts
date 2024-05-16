@@ -1,5 +1,5 @@
-export { MutationComparisonComponent } from './mutation-comparison-component';
-export { MutationsComponent } from './mutations-component';
-export { PrevalenceOverTimeComponent } from './prevalence-over-time-component';
-export { RelativeGrowthAdvantageComponent } from './relative-growth-advantage-component';
-export { AggregateComponent } from './aggregate-component';
+export { MutationComparisonComponent } from './gs-mutation-comparison';
+export { MutationsComponent } from './gs-mutations';
+export { PrevalenceOverTimeComponent } from './gs-prevalence-over-time';
+export { RelativeGrowthAdvantageComponent } from './gs-relative-growth-advantage';
+export { AggregateComponent } from './gs-aggregate';

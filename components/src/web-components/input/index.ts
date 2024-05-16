@@ -1,4 +1,4 @@
-export { DateRangeSelectorComponent } from './date-range-selector-component';
-export { LocationFilterComponent } from './location-filter-component';
-export { TextInputComponent } from './text-input-component';
-export { MutationFilterComponent } from './mutation-filter-component';
+export { DateRangeSelectorComponent } from './gs-date-range-selector';
+export { LocationFilterComponent } from './gs-location-filter';
+export { TextInputComponent } from './gs-text-input';
+export { MutationFilterComponent } from './gs-mutation-filter';

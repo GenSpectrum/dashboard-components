@@ -15,7 +15,7 @@ import {
     PRESET_VALUE_LAST_6_MONTHS,
     PRESET_VALUE_LAST_MONTH,
 } from '../../preact/dateRangeSelector/date-range-selector';
-import './date-range-selector-component';
+import './gs-date-range-selector';
 import '../app';
 import { toYYYYMMDD } from '../../preact/dateRangeSelector/dateConversion';
 import { withinShadowRoot } from '../withinShadowRoot.story';

@@ -6,7 +6,7 @@ import { html } from 'lit';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../app';
-import './text-input-component';
+import './gs-text-input';
 import data from '../../preact/textInput/__mockData__/aggregated_hosts.json';
 import type { TextInputProps } from '../../preact/textInput/text-input';
 import { withinShadowRoot } from '../withinShadowRoot.story';
