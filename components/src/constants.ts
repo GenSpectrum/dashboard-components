@@ -1,4 +1,4 @@
-export const LAPIS_URL = 'https://s1.int.genspectrum.org/open';
+export const LAPIS_URL = 'https://lapis.cov-spectrum.org/open/v2/';
 
 export const AGGREGATED_ENDPOINT = `${LAPIS_URL}/sample/aggregated`;
 export const NUCLEOTIDE_MUTATIONS_ENDPOINT = `${LAPIS_URL}/sample/nucleotideMutations`;
