@@ -170,7 +170,7 @@ const RelativeGrowthAdvantageToolbar: FunctionComponent<RelativeGrowthAdvantageT
 
 const RelativeGrowthAdvantageInfo: FunctionComponent<{ generationTime: number }> = ({ generationTime }) => {
     return (
-        <Info size={{ width: '600px', height: '30vh' }}>
+        <Info height={'max(300px, 30vh)'}>
             <InfoHeadline1>Relative growth advantage</InfoHeadline1>
             <InfoParagraph>
                 If variants spread pre-dominantly by local transmission across demographic groups, this estimate
