@@ -28,13 +28,14 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * - A date was typed into either of the date input fields, and the input field loses focus ("on blur").
  * Contains the dates in the format `YYYY-MM-DD`.
  *
- * Example for dateColumn = `yourDate`:
+ * Example: For `dateColumn = yourDate`, an event with `detail` containing
  * ```
  * {
  *  yourDataFrom: "2021-01-01",
  *  yourDataTo: "2021-12-31"
  * }
  *  ```
+ *  will be fired.
  */
 @customElement('gs-date-range-selector')
 export class DateRangeSelectorComponent extends PreactLitAdapter {
@@ -51,7 +52,7 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
      * The `dateFrom` value to use in the `allTimes` preset in the format `YYYY-MM-DD`.
      */
     @property({ type: String })
-    earliestDate: string | undefined = '1900-01-01';
+    earliestDate: string = '1900-01-01';
 
     // prettier-ignore
     // The multiline union type must not start with `| 'custom'` - Storybook will list "" as the first type which is wrong
@@ -70,8 +71,7 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
         | 'last2Months'
         | 'last3Months'
         | 'last6Months'
-        | string
-        | undefined = 'last6Months';
+        | string = 'last6Months';
 
     /**
      * The width of the component.
@@ -118,6 +118,6 @@ type CustomSelectOptionsMatches = Expect<
     Equals<typeof DateRangeSelectorComponent.prototype.customSelectOptions, CustomSelectOption<string>[]>
 >;
 type InitialValueMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.initialValue, PresetOptionValues | string | undefined>
+    Equals<typeof DateRangeSelectorComponent.prototype.initialValue, PresetOptionValues | string>
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

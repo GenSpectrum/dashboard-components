@@ -18,22 +18,30 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * All previously selected mutations are displayed at the input field and added to the event.
  * Users can remove a mutation by clicking the 'x' button next to the mutation.
  *
+ * ## Input Validation
+ *
  * Validation of the input is performed according to the following rules:
  *
+ * ### Mutations
+ *
  * Mutations have to conform to the following format: `<gene/segment>:<symbol at reference><position><Substituted symbol/Deletion>`
- *     - Gene/segment: The gene or segment where the mutation occurs. Must be contained in the reference genome
- *       (Optional for elements with only one gene/segment)
- *     - Symbol at reference: The symbol at the reference position. (Optional)
- *     - Position: The position of the mutation. (Required)
- *     - Substituted symbol/Deletion: The substituted symbol or '-' for a deletion. (Required)
- *     Example: S:614G, 614G, 614- or 614G
+ * - Gene/segment: The gene or segment where the mutation occurs. Must be contained in the reference genome.
+ *   (Optional for elements with only one gene/segment)
+ * - Symbol at reference: The symbol at the reference position. (Optional)
+ * - Position: The position of the mutation. (Required)
+ * - Substituted symbol/Deletion: The substituted symbol or '-' for a deletion. (Required)
+ *
+ * Examples: `S:614G`, `614G`, `614-`, `614G`
+ *
+ * ### Insertions
  *
  * Insertions have to conform to the following format: `ins_<gene/segment>:<position>:<Inserted symbols>`
- *     - Gene/segment: The gene or segment where the insertion occurs. Must be contained in the reference genome
- *       (Optional for elements with only one gene/segment)
- *     - Position: The position of the insertion. (Required)
- *     - Inserted symbols: The symbols that are inserted. (Required)
- *     Example: ins_S:614:G, ins_614:G
+ * - Gene/segment: The gene or segment where the insertion occurs. Must be contained in the reference genome.
+ *   (Optional for elements with only one gene/segment)
+ * - Position: The position of the insertion. (Required)
+ * - Inserted symbols: The symbols that are inserted. (Required)
+ *
+ * Examples: `ins_S:614:G`, `ins_614:G`
  *
  * @fires {CustomEvent<{
  *      nucleotideMutations: string[],
@@ -61,9 +69,8 @@ export class MutationFilterComponent extends PreactLitAdapter {
     // The multiline union type must not start with `|` because it looks weird in the Storybook docs
     /**
      * The initial value to use for this mutation filter.
-     * Must be either
-     * - an array of strings of valid mutations.
-     * - an object with the keys `nucleotideMutations`, `aminoAcidMutations`, `nucleotideInsertions` and `aminoAcidInsertions` and corresponding string arrays.
+     * All values provided must be valid mutations or insertions.
+     * Invalid values will be ignored.
      */
     @property()
     initialValue:

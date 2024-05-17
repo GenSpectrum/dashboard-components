@@ -6,6 +6,8 @@ import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
 /**
+ * ## Context
+ *
  * This component displays mutations (substitutions, deletions and insertions) for a given variant.
  *
  * ## Views
@@ -66,7 +68,7 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
      * The headline of the component. Set to an empty string to hide the headline.
      */
     @property({ type: String })
-    headline: string | undefined = 'Mutations';
+    headline: string = 'Mutations';
 
     override render() {
         return (

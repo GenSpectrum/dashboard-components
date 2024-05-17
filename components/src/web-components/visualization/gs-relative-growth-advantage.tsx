@@ -6,7 +6,9 @@ import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
- * We assume a discrete time model, where new infections happen exactly every `generationTime` days.
+ * ## Context
+ *
+ * For this component, we assume a discrete time model, where new infections happen exactly every `generationTime` days.
  * This is what we call a "generation".
  *
  * This component estimates the relative growth advantage of a variant by performing a logistic regression.
@@ -60,7 +62,7 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
      * The headline of the component. Set to an empty string to hide the headline.
      */
     @property({ type: String })
-    headline: string | undefined = 'Relative growth advantage';
+    headline: string = 'Relative growth advantage';
 
     /**
      * The size of the component.

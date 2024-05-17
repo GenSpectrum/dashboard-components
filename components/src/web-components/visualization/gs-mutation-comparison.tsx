@@ -10,6 +10,8 @@ import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
 /**
+ * ## Context
+ *
  * This component allows to compare mutations between different variants.
  * A variant is defined by its LAPIS filter.
  *
@@ -76,7 +78,7 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
      * The headline of the component. Set to an empty string to hide the headline.
      */
     @property({ type: String })
-    headline: string | undefined = 'Mutation comparison';
+    headline: string = 'Mutation comparison';
 
     override render() {
         return (

@@ -7,6 +7,8 @@ import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
 /**
+ * ## Context
+ *
  * This component displays the prevalence over time of one or more variants.
  * The prevalence is calculated as the ratio of the number of cases of each variant given as `numerator`
  * to the number of cases of the variant given as `denominator`.
@@ -100,7 +102,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
      * The headline of the component. Set to an empty string to hide the headline.
      */
     @property({ type: String })
-    headline: string | undefined = 'Prevalence over time';
+    headline: string = 'Prevalence over time';
 
     /**
      * The size of the component.

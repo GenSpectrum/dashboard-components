@@ -9,7 +9,7 @@ import type { AggregateProps } from '../../preact/aggregatedData/aggregate';
 import './gs-aggregate';
 import '../app';
 
-const meta: Meta<AggregateProps> = {
+const meta: Meta<Required<AggregateProps>> = {
     title: 'Visualization/Aggregate',
     component: 'gs-aggregate',
     argTypes: {
@@ -51,7 +51,7 @@ const meta: Meta<AggregateProps> = {
 
 export default meta;
 
-export const Table: StoryObj<AggregateProps> = {
+export const Table: StoryObj<Required<AggregateProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-aggregate

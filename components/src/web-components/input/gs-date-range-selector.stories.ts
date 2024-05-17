@@ -26,9 +26,10 @@ const codeExample = String.raw`
     earliestDate="1970-01-01"
     initialValue="${PRESET_VALUE_LAST_6_MONTHS}"
     width="100%"
+    dateColumn="myDateColumn"
 ></gs-date-range-selector>`;
 
-const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
+const meta: Meta<Required<DateRangeSelectorProps<'CustomDateRange'>>> = {
     title: 'Input/DateRangeSelector',
     component: 'gs-date-range-selector',
     parameters: withComponentDocs({
@@ -88,7 +89,7 @@ const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
 
 export default meta;
 
-export const DateRangeSelectorStory: StoryObj<DateRangeSelectorProps<'CustomDateRange'>> = {
+export const DateRangeSelectorStory: StoryObj<Required<DateRangeSelectorProps<'CustomDateRange'>>> = {
     render: (args) =>
         html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">

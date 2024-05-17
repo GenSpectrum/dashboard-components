@@ -16,9 +16,10 @@ const codeExample = String.raw`
     variants='[{ "displayName": "variant1", "lapisFilter": { "country": "Switzerland" }}, { "displayName": "variant2", "lapisFilter": { "country": "Germany" }}]'
     sequenceType="nucleotide"
     views='["table", "venn"]'
+    headline="Mutation comparison"
 ></gs-mutation-comparison>`;
 
-const meta: Meta<MutationComparisonProps> = {
+const meta: Meta<Required<MutationComparisonProps>> = {
     title: 'Visualization/Mutation comparison',
     component: 'gs-mutation-comparison',
     argTypes: {
@@ -46,7 +47,7 @@ const meta: Meta<MutationComparisonProps> = {
 
 export default meta;
 
-const Template: StoryObj<MutationComparisonProps> = {
+const Template: StoryObj<Required<MutationComparisonProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-mutation-comparison
@@ -63,7 +64,7 @@ const Template: StoryObj<MutationComparisonProps> = {
 const dateTo = '2022-01-01';
 const dateFrom = '2021-01-01';
 
-export const Default: StoryObj<MutationComparisonProps> = {
+export const Default: StoryObj<Required<MutationComparisonProps>> = {
     ...Template,
     args: {
         variants: [
@@ -138,7 +139,7 @@ export const Default: StoryObj<MutationComparisonProps> = {
     },
 };
 
-export const VennDiagram: StoryObj<MutationComparisonProps> = {
+export const VennDiagram: StoryObj<Required<MutationComparisonProps>> = {
     ...Default,
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-comparison');

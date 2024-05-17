@@ -22,9 +22,10 @@ const codeExample = String.raw`
     smoothingWindow="0"
     views='["bar", "line", "bubble", "table"]'
     confidenceIntervalMethods='["wilson"]'
+    headline="Prevalence over time"
 ></gs-prevalence-over-time>`;
 
-const meta: Meta<PrevalenceOverTimeProps> = {
+const meta: Meta<Required<PrevalenceOverTimeProps>> = {
     title: 'Visualization/Prevalence over time',
     component: 'gs-prevalence-over-time',
     argTypes: {
@@ -58,7 +59,7 @@ const meta: Meta<PrevalenceOverTimeProps> = {
 
 export default meta;
 
-const Template: StoryObj<PrevalenceOverTimeProps> = {
+const Template: StoryObj<Required<PrevalenceOverTimeProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-prevalence-over-time
@@ -75,7 +76,7 @@ const Template: StoryObj<PrevalenceOverTimeProps> = {
     `,
 };
 
-export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
+export const TwoVariants: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...Template,
     args: {
         numerator: [
@@ -145,7 +146,7 @@ export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
     },
 };
 
-export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
+export const OneVariant: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...Template,
     args: {
         numerator: { displayName: 'EG', country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
@@ -196,7 +197,7 @@ export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
     },
 };
 
-export const OneVariantOnLineTab: StoryObj<PrevalenceOverTimeProps> = {
+export const OneVariantOnLineTab: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...OneVariant,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
@@ -207,7 +208,7 @@ export const OneVariantOnLineTab: StoryObj<PrevalenceOverTimeProps> = {
     },
 };
 
-export const OneVariantOnBubbleTab: StoryObj<PrevalenceOverTimeProps> = {
+export const OneVariantOnBubbleTab: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...OneVariant,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
@@ -218,7 +219,7 @@ export const OneVariantOnBubbleTab: StoryObj<PrevalenceOverTimeProps> = {
     },
 };
 
-export const OneVariantOnTableTab: StoryObj<PrevalenceOverTimeProps> = {
+export const OneVariantOnTableTab: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...OneVariant,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
