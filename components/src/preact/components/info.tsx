@@ -2,13 +2,10 @@ import { type FunctionComponent } from 'preact';
 import { useState } from 'preact/hooks';
 
 export interface InfoProps {
-    size?: {
-        height?: string;
-        width?: string;
-    };
+    height?: string;
 }
 
-const Info: FunctionComponent<InfoProps> = ({ children, size }) => {
+const Info: FunctionComponent<InfoProps> = ({ children, height }) => {
     const [showHelp, setShowHelp] = useState(false);
 
     const toggleHelp = () => {
@@ -22,8 +19,8 @@ const Info: FunctionComponent<InfoProps> = ({ children, size }) => {
             </button>
             {showHelp && (
                 <div
-                    className='absolute top-8 right-6 bg-white p-2 border border-black flex flex-col overflow-auto shadow-lg rounded z-50'
-                    style={size}
+                    className='absolute top-8 right-6 bg-white p-2 border border-black flex flex-col overflow-auto shadow-lg rounded z-50 max-w-72 sm:max-w-xl '
+                    style={{ width: 'max-content', height }}
                 >
                     <div className='flex flex-col'>{children}</div>
                     <div className='flex justify-end'>
