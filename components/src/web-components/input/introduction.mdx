@@ -1,0 +1,11 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='Input/Introduction' />
+
+# Introduction
+
+The components in this section let the user specify values for LAPIS filters.
+The filters can then be used as input to the visualization components.
+
+Every component fires `CustomEvent`s when the user interacts with it, which can be used to update the LAPIS filters.
+The `detail` of the event is designed such that it can be directly passed to the LAPIS API.

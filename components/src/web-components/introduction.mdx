@@ -1,0 +1,15 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='Introduction' />
+
+# Introduction
+
+This package provides a collection of web components to build interactive dashboards that visualize
+data of a specific instance of [LAPIS](https://github.com/GenSpectrum/LAPIS).
+
+We primarily provide two kinds of components:
+
+-   Visualization components (charts, tables, etc.).
+    Those components fetch data from the LAPIS instance and visualize it.
+-   Input components that let you specify sequence filters for the LAPIS requests.
+    Input changes will fire events that can be listened to by the visualization components. It is the responsibility of the dashbaord maintainer to listen to those events and to wire the data correctly into the visualization components.

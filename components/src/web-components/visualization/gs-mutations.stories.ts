@@ -16,9 +16,10 @@ const codeExample = String.raw`
     variant='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateTo": "2022-01-01" }'
     sequenceType="nucleotide"
     views='["grid", "table", "insertions"]'
+    headline="Mutations"
 ></gs-mutations>`;
 
-const meta: Meta<MutationsProps> = {
+const meta: Meta<Required<MutationsProps>> = {
     title: 'Visualization/Mutations',
     component: 'gs-mutations',
     argTypes: {
@@ -53,7 +54,7 @@ const meta: Meta<MutationsProps> = {
 
 export default meta;
 
-const Template: StoryObj<MutationsProps> = {
+const Template: StoryObj<Required<MutationsProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-mutations
@@ -67,7 +68,7 @@ const Template: StoryObj<MutationsProps> = {
     `,
 };
 
-export const Default: StoryObj<MutationsProps> = {
+export const Default: StoryObj<Required<MutationsProps>> = {
     ...Template,
     parameters: {
         fetchMock: {
@@ -104,7 +105,7 @@ export const Default: StoryObj<MutationsProps> = {
     },
 };
 
-export const OnTableTab: StoryObj<MutationsProps> = {
+export const OnTableTab: StoryObj<Required<MutationsProps>> = {
     ...Default,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutations');
@@ -115,7 +116,7 @@ export const OnTableTab: StoryObj<MutationsProps> = {
     },
 };
 
-export const OnInsertionsTab: StoryObj<MutationsProps> = {
+export const OnInsertionsTab: StoryObj<Required<MutationsProps>> = {
     ...Default,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutations');

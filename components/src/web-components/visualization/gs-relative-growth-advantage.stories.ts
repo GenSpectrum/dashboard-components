@@ -15,6 +15,7 @@ const codeExample = String.raw`
     denominator='{ "country": "Switzerland", "dateFrom": "2020-12-01" }'
     generationTime="7"
     views='["line"]'
+    headline="Relative growth advantage"
 ></gs-relative-growth-advantage>`;
 
 const meta: Meta<RelativeGrowthAdvantageProps> = {
@@ -43,7 +44,7 @@ const meta: Meta<RelativeGrowthAdvantageProps> = {
 
 export default meta;
 
-const Template: StoryObj<RelativeGrowthAdvantageProps> = {
+const Template: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-relative-growth-advantage
@@ -58,7 +59,7 @@ const Template: StoryObj<RelativeGrowthAdvantageProps> = {
     `,
 };
 
-export const Default: StoryObj<RelativeGrowthAdvantageProps> = {
+export const Default: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
     ...Template,
     args: {
         numerator: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateFrom: '2020-12-01', dateTo: '2021-03-01' },

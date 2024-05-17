@@ -7,7 +7,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  *
  * ## Context
  *
- * This component provides a text input field to specify filters for arbitrary fields of this Lapis instance.
+ * This component provides a text input field to specify filters for arbitrary fields of this LAPIS instance.
  *
  * @fires {CustomEvent<Record<string, string>>} gs-text-input-changed
  * Fired when the input field is changed.
@@ -25,10 +25,11 @@ export class TextInputComponent extends PreactLitAdapter {
      * The initial value to use for this text input.
      */
     @property()
-    initialValue: string | undefined = '';
+    initialValue: string = '';
 
     /**
-     * The Lapis field name to use for this text input.
+     * The LAPIS field name to use for this text input.
+     * The field must exist on this LAPIS instance.
      */
     @property()
     lapisField = '';
@@ -37,7 +38,7 @@ export class TextInputComponent extends PreactLitAdapter {
      * The placeholder text to display in the input field.
      */
     @property()
-    placeholderText: string | undefined = '';
+    placeholderText: string = '';
 
     /**
      * The width of the component.

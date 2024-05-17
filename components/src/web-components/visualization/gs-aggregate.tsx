@@ -7,30 +7,38 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
 /**
  * ## Context
  *
- * This component displays aggregated data, which can provide an overview of the underlying data.
+ * This component displays aggregated data in a table, which can provide an overview of the underlying data.
  *
- * It expects a list of fields to aggregate by and a filter to apply to the data.
+ * It expects a list of `fields` to aggregate by and a `filter` to apply to the data.
+ *
+ * ## Views
+ *
+ * ### Table View
+ *
+ * In the table view, the data is presented in a table format where each field is a column,
+ * along with the aggregated value and its proportion.
+ * The proportion represents the ratio of the aggregated value to the total count of the data
+ * (considering the applied filter).
  */
 @customElement('gs-aggregate')
 export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
     /**
      * The fields to aggregate by.
+     * Every field will be a table column.
+     * Every field must exist in the backing LAPIS instance.
      */
     @property({ type: Array })
     fields: string[] = [];
 
     /**
-     * The views are used to display the aggregated data.
-     * In the table view, the data is presented in a table format where each field is a column,
-     * along with the aggregated value and its proportion.
-     * The proportion represents the ratio of the aggregated value to the total count of the data
-     * (considering the applied filter).
+     * A list of tabs with views that this component should provide.
      */
     @property({ type: Array })
     views: View[] = ['table'];
 
     /**
      * The filter to apply to the data.
+     * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
     filter: LapisFilter = {};
@@ -50,7 +58,7 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
      * The headline of the component. Set to an empty string to hide the headline.
      */
     @property({ type: String })
-    headline: string | undefined = 'Aggregate';
+    headline: string = 'Aggregate';
 
     override render() {
         return (

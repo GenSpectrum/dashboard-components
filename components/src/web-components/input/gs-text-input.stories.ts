@@ -19,7 +19,7 @@ const codeExample = String.raw`
     width="50%">
 </gs-text-input>`;
 
-const meta: Meta<TextInputProps> = {
+const meta: Meta<Required<TextInputProps>> = {
     title: 'Input/Text input',
     component: 'gs-text-input',
     parameters: withComponentDocs({
@@ -77,7 +77,7 @@ const meta: Meta<TextInputProps> = {
 
 export default meta;
 
-export const Default: StoryObj<TextInputProps> = {
+export const Default: StoryObj<Required<TextInputProps>> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
@@ -98,7 +98,7 @@ export const Default: StoryObj<TextInputProps> = {
     },
 };
 
-export const FiresEvent: StoryObj<TextInputProps> = {
+export const FiresEvent: StoryObj<Required<TextInputProps>> = {
     ...Default,
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-text-input');
