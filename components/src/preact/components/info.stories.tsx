@@ -8,7 +8,7 @@ const meta: Meta<InfoProps> = {
     component: Info,
     parameters: { fetchMock: {} },
     args: {
-        size: { width: '400px', height: '100px' },
+        height: '100px',
     },
 };
 

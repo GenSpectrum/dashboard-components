@@ -38,7 +38,6 @@ const meta: Meta<MutationFilterProps> = {
             },
         },
         width: { control: 'text' },
-        height: { control: 'text' },
     },
     decorators: [withActions],
     tags: ['autodocs'],
@@ -50,18 +49,13 @@ const Template: StoryObj<MutationFilterProps> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
-                <gs-mutation-filter
-                    .initialValue=${args.initialValue}
-                    .width=${args.width}
-                    .height=${args.height}
-                ></gs-mutation-filter>
+                <gs-mutation-filter .initialValue=${args.initialValue} .width=${args.width}></gs-mutation-filter>
             </div>
         </gs-app>`;
     },
     args: {
         initialValue: [],
         width: '100%',
-        height: '3rem',
     },
 };
 

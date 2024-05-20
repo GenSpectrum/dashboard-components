@@ -14,7 +14,7 @@ const Info: FunctionComponent<InfoProps> = ({ children, height }) => {
 
     return (
         <div className='relative'>
-            <button className='btn btn-xs' onClick={toggleHelp}>
+            <button type='button' className='btn btn-xs' onClick={toggleHelp}>
                 ?
             </button>
             {showHelp && (

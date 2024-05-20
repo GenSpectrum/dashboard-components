@@ -7,7 +7,6 @@ import { type Deletion, type Insertion, type Mutation, type Substitution } from 
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import Info from '../components/info';
-import { ResizeContainer } from '../components/resize-container';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
@@ -17,7 +16,6 @@ export interface MutationFilterInnerProps {
 
 export interface MutationFilterProps extends MutationFilterInnerProps {
     width: string;
-    height: string;
 }
 
 export type SelectedFilters = {
@@ -31,14 +29,12 @@ export type SelectedMutationFilterStrings = {
     [Key in keyof SelectedFilters]: string[];
 };
 
-export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initialValue, width, height }) => {
-    const size = { height, width };
-
+export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initialValue, width }) => {
     return (
-        <ErrorBoundary size={size}>
-            <ResizeContainer size={size}>
+        <ErrorBoundary size={{ height: '3.375rem', width }}>
+            <div style={width}>
                 <MutationFilterInner initialValue={initialValue} />
-            </ResizeContainer>
+            </div>
         </ErrorBoundary>
     );
 };
@@ -54,6 +50,9 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
 
     const handleSubmit = (event: Event) => {
         event.preventDefault();
+        if (inputValue === '') {
+            return;
+        }
 
         const parsedMutation = parseAndValidateMutation(inputValue, referenceGenome);
 
@@ -102,30 +101,33 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
     };
 
     return (
-        <div class={`h-full w-full rounded-lg border border-gray-300 bg-white p-2 overflow-scroll`}>
-            <div class='flex justify-between'>
+        <form className='w-full  border boder-gray-300 rounded-md' onSubmit={handleSubmit} ref={formRef}>
+            <div className='absolute top-1 right-1'>
+                <Info height={`min(100vh, 300px`}>Info for mutation filter</Info>
+            </div>
+            <div className='w-full flex p-2 flex-wrap items-center'>
                 <SelectedMutationDisplay
                     selectedFilters={selectedFilters}
                     setSelectedFilters={setSelectedFilters}
                     fireChangeEvent={fireChangeEvent}
                 />
-                <Info>Info for mutation filter</Info>
-            </div>
-
-            <form className='mt-2 w-full' onSubmit={handleSubmit} ref={formRef}>
-                <label className={`input flex items-center gap-2 ${isError ? 'input-error' : 'input-bordered'}`}>
+                <div
+                    className={`block w-full flex focus:outline-none focus:ring-0 border ${isError ? 'border-red-500' : 'border-gray-300'} border-solid m-2 text-sm`}
+                >
                     <input
-                        className='grow min-w-0'
+                        className='grow'
                         type='text'
                         value={inputValue}
                         onInput={handleInputChange}
                         placeholder={getPlaceholder(referenceGenome)}
                         onBlur={handleOnBlur}
                     />
-                    <button className='btn btn-sm'>+</button>
-                </label>
-            </form>
-        </div>
+                    <button type='submit' className='btn btn-xs m-1'>
+                        +
+                    </button>
+                </div>
+            </div>
+        </form>
     );
 };
 
@@ -193,44 +195,36 @@ const SelectedMutationDisplay: FunctionComponent<{
     };
 
     return (
-        <ul class='flex flex-wrap'>
+        <>
             {selectedFilters.nucleotideMutations.map((mutation) => (
-                <li key={mutation.toString()}>
-                    <SelectedNucleotideMutation
-                        mutation={mutation}
-                        onDelete={(mutation: Substitution | Deletion) =>
-                            onSelectedRemoved(mutation, 'nucleotideMutations')
-                        }
-                    />
-                </li>
+                <SelectedNucleotideMutation
+                    key={mutation.toString()}
+                    mutation={mutation}
+                    onDelete={(mutation: Substitution | Deletion) => onSelectedRemoved(mutation, 'nucleotideMutations')}
+                />
             ))}
             {selectedFilters.aminoAcidMutations.map((mutation) => (
-                <li key={mutation.toString()}>
-                    <SelectedAminoAcidMutation
-                        mutation={mutation}
-                        onDelete={(mutation: Substitution | Deletion) =>
-                            onSelectedRemoved(mutation, 'aminoAcidMutations')
-                        }
-                    />
-                </li>
+                <SelectedAminoAcidMutation
+                    key={mutation.toString()}
+                    mutation={mutation}
+                    onDelete={(mutation: Substitution | Deletion) => onSelectedRemoved(mutation, 'aminoAcidMutations')}
+                />
             ))}
             {selectedFilters.nucleotideInsertions.map((insertion) => (
-                <li key={insertion.toString()}>
-                    <SelectedNucleotideInsertion
-                        insertion={insertion}
-                        onDelete={(insertion) => onSelectedRemoved(insertion, 'nucleotideInsertions')}
-                    />
-                </li>
+                <SelectedNucleotideInsertion
+                    key={insertion.toString()}
+                    insertion={insertion}
+                    onDelete={(insertion) => onSelectedRemoved(insertion, 'nucleotideInsertions')}
+                />
             ))}
             {selectedFilters.aminoAcidInsertions.map((insertion) => (
-                <li key={insertion.toString()}>
-                    <SelectedAminoAcidInsertion
-                        insertion={insertion}
-                        onDelete={(insertion: Insertion) => onSelectedRemoved(insertion, 'aminoAcidInsertions')}
-                    />
-                </li>
+                <SelectedAminoAcidInsertion
+                    key={insertion.toString()}
+                    insertion={insertion}
+                    onDelete={(insertion: Insertion) => onSelectedRemoved(insertion, 'aminoAcidInsertions')}
+                />
             ))}
-        </ul>
+        </>
     );
 };
 
@@ -313,15 +307,15 @@ const SelectedFilter = <MutationType extends Mutation>({
     textColor,
 }: SelectedFilterProps<MutationType>) => {
     return (
-        <div
-            class='flex items-center flex-nowrap gap-1 rounded me-1 px-2.5 py-0.5 font-medium text-xs mb-1 min-w-max'
+        <span
+            class='inline-block mx-1 px-2 py-1 font-medium text-xs rounded-full'
             style={{ backgroundColor, color: textColor }}
         >
-            <div className='whitespace-nowrap min-w-max'>{mutation.toString()}</div>
+            {mutation.toString()}
             <button type='button' onClick={() => onDelete(mutation)}>
                 <DeleteIcon />
             </button>
-        </div>
+        </span>
     );
 };
 
