@@ -28,7 +28,7 @@ export type View = 'bar' | 'line' | 'bubble' | 'table';
 
 export interface PrevalenceOverTimeProps extends PrevalenceOverTimeInnerProps {
     width: string;
-    height: string;
+
     headline?: string;
 }
 
@@ -40,6 +40,7 @@ export interface PrevalenceOverTimeInnerProps {
     views: View[];
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     lapisDateField: string;
+    height: string;
 }
 
 export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
@@ -68,6 +69,7 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
                         views={views}
                         confidenceIntervalMethods={confidenceIntervalMethods}
                         lapisDateField={lapisDateField}
+                        height={height}
                     />
                 </Headline>
             </ResizeContainer>
@@ -83,6 +85,7 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerP
     views,
     confidenceIntervalMethods,
     lapisDateField,
+    height,
 }) => {
     const lapis = useContext(LapisUrlContext);
 
@@ -109,6 +112,7 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerP
             data={data}
             granularity={granularity}
             confidenceIntervalMethods={confidenceIntervalMethods}
+            height={height}
         />
     );
 };
@@ -118,6 +122,7 @@ type PrevalenceOverTimeTabsProps = {
     data: PrevalenceOverTimeData;
     granularity: TemporalGranularity;
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
+    height: string;
 };
 
 const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = ({
@@ -125,6 +130,7 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
     data,
     granularity,
     confidenceIntervalMethods,
+    height,
 }) => {
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
     const [confidenceIntervalMethod, setConfidenceIntervalMethod] = useState<ConfidenceIntervalMethod>(
@@ -180,6 +186,7 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
             confidenceIntervalMethods={confidenceIntervalMethods}
             confidenceIntervalMethod={confidenceIntervalMethod}
             setConfidenceIntervalMethod={setConfidenceIntervalMethod}
+            height={height}
         />
     );
 
@@ -195,6 +202,7 @@ type ToolbarProps = {
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     confidenceIntervalMethod: ConfidenceIntervalMethod;
     setConfidenceIntervalMethod: (confidenceIntervalMethod: ConfidenceIntervalMethod) => void;
+    height: string;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -206,6 +214,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     setConfidenceIntervalMethod,
     data,
     granularity,
+    height,
 }) => {
     return (
         <div class='flex'>
@@ -225,14 +234,14 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 filename='prevalence-over-time.csv'
             />
 
-            <PrevalenceOverTimeInfo />
+            <PrevalenceOverTimeInfo height={height} />
         </div>
     );
 };
 
-const PrevalenceOverTimeInfo: FunctionComponent = () => {
+const PrevalenceOverTimeInfo: FunctionComponent<{ height: string }> = ({ height }) => {
     return (
-        <Info size={{ width: '600px', height: '30vh' }}>
+        <Info height={`min(100vh, 0.8*${height})`}>
             <InfoHeadline1>Prevalence over time</InfoHeadline1>
             <InfoParagraph>Prevalence over time info.</InfoParagraph>
         </Info>

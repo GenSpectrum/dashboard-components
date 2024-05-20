@@ -20,7 +20,6 @@ const meta: Meta<MutationFilterProps> = {
     },
     argTypes: {
         width: { control: 'text' },
-        height: { control: 'text' },
         initialValue: {
             control: {
                 type: 'object',
@@ -36,13 +35,12 @@ export const Default: StoryObj<MutationFilterProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationFilter width={args.width} height={args.height} initialValue={args.initialValue} />
+                <MutationFilter width={args.width} initialValue={args.initialValue} />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
     ),
     args: {
         width: '100%',
-        height: '700px',
     },
 };
 
@@ -106,7 +104,7 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
         });
 
         await step('Remove the first mutation', async () => {
-            const firstMutationDeleteButton = canvas.getAllByRole('button')[0];
+            const firstMutationDeleteButton = canvas.getAllByRole('button')[1];
             await waitFor(() => fireEvent.click(firstMutationDeleteButton));
 
             await expect(changedListenerMock).toHaveBeenCalledWith(
@@ -153,7 +151,7 @@ export const WithInitialValue: StoryObj<MutationFilterProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationFilter initialValue={args.initialValue} width={args.width} height={args.height} />
+                <MutationFilter initialValue={args.initialValue} width={args.width} />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
     ),
@@ -165,7 +163,6 @@ export const WithInitialValue: StoryObj<MutationFilterProps> = {
             aminoAcidInsertions: ['ins_S:123:AAA'],
         },
         width: '100%',
-        height: '700px',
     },
     play: async ({ canvasElement, step }) => {
         const { canvas, onBlurListenerMock } = await prepare(canvasElement, step);

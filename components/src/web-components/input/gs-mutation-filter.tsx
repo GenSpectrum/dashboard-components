@@ -91,18 +91,10 @@ export class MutationFilterComponent extends PreactLitAdapter {
     @property({ type: String })
     width: string = '100%';
 
-    /**
-     * The height of the component.
-     *
-     * Visit https://genspectrum.github.io/dashboards/?path=/docs/components-size-of-components--docs for more information.
-     */
-    @property({ type: String })
-    height: string = '6.5rem';
-
     override render() {
         return (
             <ReferenceGenomesAwaiter>
-                <MutationFilter initialValue={this.initialValue} width={this.width} height={this.height} />
+                <MutationFilter initialValue={this.initialValue} width={this.width} />
             </ReferenceGenomesAwaiter>
         );
     }
