@@ -1,8 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import PrevalenceOverTime, { type View } from '../../preact/prevalenceOverTime/prevalence-over-time';
-import { type ConfidenceIntervalMethod } from '../../preact/shared/charts/confideceInterval';
-import { type NamedLapisFilter, type TemporalGranularity } from '../../types';
+import PrevalenceOverTime, { type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
@@ -55,11 +53,16 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
      * which will be used as the label for the variant in the views,
      * or an array of such objects.
      */
-    @property({ type: Object })
+    @property({type: Object})
     numerator:
-        (Record<string, string | number | null | boolean> & { displayName: string })
-        | (Record<string, string | number | null | boolean> & { displayName: string; })[]
-        = { displayName: '' };
+        {
+            lapisFilter: Record<string, string | number | null | boolean>;
+            displayName: string;
+        }
+        | {
+            lapisFilter: Record<string, string | number | null | boolean>;
+            displayName: string;
+        }[] = { displayName: '', lapisFilter: {} };
 
     /**
      * Required.
@@ -67,7 +70,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
      * The variant that the variants in `numerator` are compared to.
      */
     @property({ type: Object })
-    denominator: Record<string, string | number | null | boolean> & { displayName: string } = { displayName: '' };
+    denominator: Record<string, string | number | null | boolean> = {};
 
     /**
      * The granularity of the time axis.
@@ -148,12 +151,21 @@ declare global {
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type NumeratorMatches = Expect<
-    Equals<typeof PrevalenceOverTimeComponent.prototype.numerator, NamedLapisFilter | NamedLapisFilter[]>
+    Equals<typeof PrevalenceOverTimeComponent.prototype.numerator, PrevalenceOverTimeProps['numerator']>
 >;
-type DenominatorMatches = Expect<Equals<typeof PrevalenceOverTimeComponent.prototype.denominator, NamedLapisFilter>>;
-type GranularityMatches = Expect<Equals<typeof PrevalenceOverTimeComponent.prototype.granularity, TemporalGranularity>>;
-type ViewsMatches = Expect<Equals<typeof PrevalenceOverTimeComponent.prototype.views, View[]>>;
+type DenominatorMatches = Expect<
+    Equals<typeof PrevalenceOverTimeComponent.prototype.denominator, PrevalenceOverTimeProps['denominator']>
+>;
+type GranularityMatches = Expect<
+    Equals<typeof PrevalenceOverTimeComponent.prototype.granularity, PrevalenceOverTimeProps['granularity']>
+>;
+type ViewsMatches = Expect<
+    Equals<typeof PrevalenceOverTimeComponent.prototype.views, PrevalenceOverTimeProps['views']>
+>;
 type ConfidenceIntervalMethodsMatches = Expect<
-    Equals<typeof PrevalenceOverTimeComponent.prototype.confidenceIntervalMethods, ConfidenceIntervalMethod[]>
+    Equals<
+        typeof PrevalenceOverTimeComponent.prototype.confidenceIntervalMethods,
+        PrevalenceOverTimeProps['confidenceIntervalMethods']
+    >
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

@@ -5,10 +5,10 @@
     "scripts": {
         "dev": "vite dev",
         "start": "vite dev",
-        "import-components": "npm --prefix ../../components/ run build-and-pack && npm install ../../components/genspectrum-dashboard-components-0.0.1.tgz"
+        "import-components": "npm --prefix ../../components/ run build-and-pack && npm install ../../components/genspectrum-dashboard-components.tgz"
     },
     "dependencies": {
-        "@genspectrum/dashboard-components": "file:../../components/genspectrum-dashboard-components-0.0.1.tgz",
+        "@genspectrum/dashboard-components": "file:../../components/genspectrum-dashboard-components.tgz",
         "vite": "^5.2.8"
     }
 }

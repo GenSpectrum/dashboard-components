@@ -1,11 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import {
-    MutationComparison,
-    type MutationComparisonVariant,
-    type View,
-} from '../../preact/mutationComparison/mutation-comparison';
-import { type SequenceType } from '../../types';
+import { MutationComparison, type MutationComparisonProps } from '../../preact/mutationComparison/mutation-comparison';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
@@ -109,8 +104,12 @@ declare global {
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type VariantsMatches = Expect<
-    Equals<typeof MutationComparisonComponent.prototype.variants, MutationComparisonVariant[]>
+    Equals<typeof MutationComparisonComponent.prototype.variants, MutationComparisonProps['variants']>
 >;
-type SequenceTypeMatches = Expect<Equals<typeof MutationComparisonComponent.prototype.sequenceType, SequenceType>>;
-type ViewsMatches = Expect<Equals<typeof MutationComparisonComponent.prototype.views, View[]>>;
+type SequenceTypeMatches = Expect<
+    Equals<typeof MutationComparisonComponent.prototype.sequenceType, MutationComparisonProps['sequenceType']>
+>;
+type ViewsMatches = Expect<
+    Equals<typeof MutationComparisonComponent.prototype.views, MutationComparisonProps['views']>
+>;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

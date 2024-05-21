@@ -16,8 +16,8 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
 <gs-prevalence-over-time
-    numerator='[{ "displayName": "EG", "country": "USA", "pangoLineage": "EG*" }, { "displayName": "JN.1", "country": "USA", "pangoLineage": "JN.1*" }]'
-    denominator='{ "country": "USA", "displayName": "All" }'
+    numerator='[{ "displayName": "EG", "lapisFilter": { "country": "USA", "pangoLineage": "EG*" }}, { "displayName": "JN.1", "lapisFilter": { "country": "USA", "pangoLineage": "JN.1*" }}]'
+    denominator='{ "country": "USA"}'
     granularity="month"
     smoothingWindow="0"
     views='["bar", "line", "bubble", "table"]'
@@ -84,10 +84,10 @@ export const TwoVariants: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...Template,
     args: {
         numerator: [
-            { displayName: 'EG', country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' },
-            { displayName: 'JN.1', country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' },
+            { displayName: 'EG', lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' } },
+            { displayName: 'JN.1', lapisFilter: { country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' } },
         ],
-        denominator: { country: 'USA', dateFrom: '2023-01-01', displayName: 'All' },
+        denominator: { country: 'USA', dateFrom: '2023-01-01' },
         granularity: 'month',
         smoothingWindow: 0,
         views: ['bar', 'line', 'bubble', 'table'],
@@ -154,8 +154,11 @@ export const TwoVariants: StoryObj<Required<PrevalenceOverTimeProps>> = {
 export const OneVariant: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...Template,
     args: {
-        numerator: { displayName: 'EG', country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
-        denominator: { country: 'USA', dateFrom: '2023-10-01', displayName: 'All' },
+        numerator: {
+            displayName: 'EG',
+            lapisFilter: { country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
+        },
+        denominator: { country: 'USA', dateFrom: '2023-10-01' },
         granularity: 'day',
         smoothingWindow: 7,
         views: ['bar', 'line', 'bubble', 'table'],
