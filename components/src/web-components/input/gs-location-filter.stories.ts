@@ -14,8 +14,8 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
 <gs-location-filter
-    fields="['region', 'country']"
-    value='Europe / Switzerland'
+    fields='["region", "country"]'
+    initialValue='Europe / Switzerland'
     width="100%"
 ></gs-location-filter>`;
 
