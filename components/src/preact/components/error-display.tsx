@@ -8,6 +8,8 @@ export class UserFacingError extends Error {
 }
 
 export const ErrorDisplay: FunctionComponent<{ error: Error }> = ({ error }) => {
+    console.error(error);
+
     return (
         <div className='h-full w-full rounded-md border-2 border-gray-100 p-2 flex items-center justify-center flex-col'>
             <div className='text-red-700 font-bold'>Error</div>

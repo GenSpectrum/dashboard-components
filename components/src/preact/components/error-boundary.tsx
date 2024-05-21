@@ -9,10 +9,6 @@ export const ErrorBoundary: FunctionComponent<{ size: Size; headline?: string }>
     const [internalError] = useErrorBoundary();
 
     if (internalError) {
-        console.error(internalError);
-    }
-
-    if (internalError) {
         return (
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
