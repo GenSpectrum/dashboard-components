@@ -26,6 +26,8 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
      * The fields to aggregate by.
      * Every field will be a table column.
      * Every field must exist in the backing LAPIS instance.
+     *
+     * If left empty, the component will only show the absolute count of the provided `filter` and proportion `100%`.
      */
     @property({ type: Array })
     fields: string[] = [];

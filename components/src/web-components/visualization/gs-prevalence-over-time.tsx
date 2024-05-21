@@ -48,6 +48,8 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     // prettier-ignore
     // The multiline union type must not start with `|` because it looks weird in the Storybook docs
     /**
+     *   Required.
+     *
      * Either a single variant or an array of variants to compare.
      * This must be a valid LAPIS filter object with an additional `displayName` property
      * which will be used as the label for the variant in the views,
@@ -56,11 +58,12 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     @property({ type: Object })
     numerator:
         (Record<string, string | number | null | boolean> & { displayName: string })
-        | (Record<string, string | number | null | boolean> & {
-        displayName: string;
-    })[] = { displayName: '' };
+        | (Record<string, string | number | null | boolean> & { displayName: string; })[]
+        = { displayName: '' };
 
     /**
+     * Required.
+     *
      * The variant that the variants in `numerator` are compared to.
      */
     @property({ type: Object })

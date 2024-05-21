@@ -34,12 +34,16 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
 @customElement('gs-relative-growth-advantage')
 export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
     /**
+     * Required.
+     *
      * The LAPIS filter for the focal variant.
      */
     @property({ type: Object })
     numerator: Record<string, string | number | null | boolean> = {};
 
     /**
+     * Required.
+     *
      * The LAPIS filter for the variant that the focal variant (`numerator`) should be compared to.
      */
     @property({ type: Object })

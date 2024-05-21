@@ -27,6 +27,8 @@ import { fetchReferenceGenome } from '../lapisApi/lapisApi';
 @customElement('gs-app')
 export class App extends LitElement {
     /**
+     * Required.
+     *
      * The URL of the LAPIS instance that all children of this component will use.
      */
     @provide({ context: lapisContext })
@@ -54,7 +56,7 @@ export class App extends LitElement {
 
     override render() {
         return this.updateReferenceGenome.render({
-            complete: () => html` <slot></slot>`,
+            complete: () => html``, // Children will be rendered in the light DOM anyway. We can't use slots without a shadow DOM.
             error: () =>
                 html` <div class="m-2 w-full alert alert-error">
                     Error: Cannot fetch reference genome. Is LAPIS available?

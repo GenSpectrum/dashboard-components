@@ -37,6 +37,8 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
 @customElement('gs-mutation-comparison')
 export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyles {
     /**
+     * Required.
+     *
      * An array of variants to compare.
      *
      * The `lapisFilter` will be sent as is to LAPIS to filter the mutation data.

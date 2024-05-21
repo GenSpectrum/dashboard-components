@@ -40,6 +40,8 @@ export class LocationFilterComponent extends PreactLitAdapter {
     initialValue = '';
 
     /**
+     * Required.
+     *
      * The fields to display in the location filter, in hierarchical order.
      * The top-level field should be the first entry in the array.
      * This component assumes that the values for each field form a strict hierarchy

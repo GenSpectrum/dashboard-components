@@ -35,6 +35,8 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
 @customElement('gs-mutations')
 export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
     /**
+     * Required.
+     *
      * The `variant` will be sent as is to LAPIS to filter the mutation data.
      * It must be a valid LAPIS filter object.
      */
