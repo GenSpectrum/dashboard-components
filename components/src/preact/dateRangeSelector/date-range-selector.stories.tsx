@@ -1,5 +1,6 @@
 import { withActions } from '@storybook/addon-actions/decorator';
 import { type Meta, type StoryObj } from '@storybook/preact';
+import { expect, waitFor, within } from '@storybook/test';
 
 import {
     DateRangeSelector,
@@ -80,4 +81,25 @@ export const Primary: StoryObj<DateRangeSelectorProps<'CustomDateRange'>> = {
             />
         </LapisUrlContext.Provider>
     ),
+};
+
+export const SetCorrectInitialValues: StoryObj<DateRangeSelectorProps<'CustomDateRange'>> = {
+    ...Primary,
+    args: {
+        ...Primary.args,
+        initialValue: 'CustomDateRange',
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        const dateFrom = () => canvas.getByPlaceholderText('Date from');
+        const dateTo = () => canvas.getByPlaceholderText('Date to');
+        const selectField = () => canvas.getByRole('combobox');
+
+        await waitFor(() => {
+            expect(selectField()).toHaveValue('CustomDateRange');
+            expect(dateFrom()).toHaveValue('2021-01-01');
+            expect(dateTo()).toHaveValue('2021-12-31');
+        });
+    },
 };

@@ -78,15 +78,17 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
 
     const selectableOptions = getSelectableOptions(customSelectOptions);
 
-    const [selectedDateRange, setSelectedDateRange] = useState<CustomLabel | PresetOptionValues>(
+    const initialSelectedDateRange =
         initialValue !== undefined && selectableOptions.some((option) => option.value === initialValue)
             ? initialValue
-            : PRESET_VALUE_LAST_6_MONTHS,
+            : PRESET_VALUE_LAST_6_MONTHS;
+    const [selectedDateRange, setSelectedDateRange] = useState<CustomLabel | PresetOptionValues>(
+        initialSelectedDateRange,
     );
 
     const [selectedDates, setSelectedDates] = useState<{ dateFrom: Date; dateTo: Date }>({
-        dateFrom: getDatesForSelectorValue('last6Months', customSelectOptions, earliestDate).dateFrom,
-        dateTo: getDatesForSelectorValue('last6Months', customSelectOptions, earliestDate).dateTo,
+        dateFrom: getDatesForSelectorValue(initialSelectedDateRange, customSelectOptions, earliestDate).dateFrom,
+        dateTo: getDatesForSelectorValue(initialSelectedDateRange, customSelectOptions, earliestDate).dateTo,
     });
 
     useEffect(() => {
