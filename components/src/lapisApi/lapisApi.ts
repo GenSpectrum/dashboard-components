@@ -3,10 +3,34 @@ import {
     aggregatedResponse,
     insertionsResponse,
     type LapisBaseRequest,
+    lapisError,
     type MutationsRequest,
     mutationsResponse,
+    problemDetail,
+    type ProblemDetail,
 } from './lapisTypes';
 import { type SequenceType } from '../types';
+
+export class UnknownLapisError extends Error {
+    constructor(
+        message: string,
+        public readonly status: number,
+    ) {
+        super(message);
+        this.name = 'UnknownLapisError';
+    }
+}
+
+export class LapisError extends Error {
+    constructor(
+        message: string,
+        public readonly status: number,
+        public readonly problemDetail: ProblemDetail,
+    ) {
+        super(message);
+        this.name = 'LapisError';
+    }
+}
 
 export async function fetchAggregated(lapisUrl: string, body: LapisBaseRequest, signal?: AbortSignal) {
     const response = await fetch(aggregatedEndpoint(lapisUrl), {
@@ -79,9 +103,29 @@ export async function fetchReferenceGenome(lapisUrl: string, signal?: AbortSigna
 const handleErrors = async (response: Response) => {
     if (!response.ok) {
         if (response.status >= 400 && response.status < 500) {
-            throw new Error(`${response.statusText}: ${JSON.stringify(await response.json())}`);
+            const json = await response.json();
+
+            const lapisErrorResult = lapisError.safeParse(json);
+            if (lapisErrorResult.success) {
+                throw new LapisError(
+                    response.statusText + lapisErrorResult.data.error.detail,
+                    response.status,
+                    lapisErrorResult.data.error,
+                );
+            }
+
+            const problemDetailResult = problemDetail.safeParse(json);
+            if (problemDetailResult.success) {
+                throw new LapisError(
+                    response.statusText + problemDetailResult.data.detail,
+                    response.status,
+                    problemDetailResult.data,
+                );
+            }
+
+            throw new UnknownLapisError(`${response.statusText}: ${JSON.stringify(json)}`, response.status);
         }
-        throw new Error(`${response.statusText}: ${response.status}`);
+        throw new UnknownLapisError(`${response.statusText}: ${response.status}`, response.status);
     }
 };
 
