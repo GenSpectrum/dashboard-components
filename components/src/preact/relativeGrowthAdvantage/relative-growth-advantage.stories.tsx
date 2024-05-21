@@ -35,6 +35,7 @@ export const Primary = {
                 width={args.width}
                 height={args.height}
                 headline={args.headline}
+                lapisDateField={args.lapisDateField}
             />
         </LapisUrlContext.Provider>
     ),
@@ -46,6 +47,7 @@ export const Primary = {
         width: '100%',
         height: '700px',
         headline: 'Relative growth advantage',
+        lapisDateField: 'date',
     },
     parameters: {
         fetchMock: {

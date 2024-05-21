@@ -18,6 +18,7 @@ const codeExample = String.raw`
     width='100%'
     height='700px'
     headline="Relative growth advantage"
+    lapisDateField="date"
 ></gs-relative-growth-advantage>`;
 
 const meta: Meta<RelativeGrowthAdvantageProps> = {
@@ -58,6 +59,7 @@ const Template: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
                 .width=${args.width}
                 .height=${args.height}
                 .headline=${args.headline}
+                .lapisDateField=${args.lapisDateField}
             ></gs-relative-growth-advantage>
         </gs-app>
     `,
@@ -73,6 +75,7 @@ export const Default: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
         width: '100%',
         height: '700px',
         headline: 'Relative growth advantage',
+        lapisDateField: 'date',
     },
     parameters: {
         fetchMock: {

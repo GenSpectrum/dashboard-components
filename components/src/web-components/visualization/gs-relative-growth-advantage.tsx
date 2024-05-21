@@ -84,6 +84,14 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
     @property({ type: String })
     height: string = '700px';
 
+    /**
+     * The LAPIS field that the data should be aggregated by.
+     * The values will be used on the x-axis of the diagram.
+     * Must be a field of type `date` in LAPIS.
+     */
+    @property({ type: String })
+    lapisDateField: string = 'date';
+
     override render() {
         return (
             <RelativeGrowthAdvantage
@@ -94,6 +102,7 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
                 width={this.width}
                 height={this.height}
                 headline={this.headline}
+                lapisDateField={this.lapisDateField}
             />
         );
     }
