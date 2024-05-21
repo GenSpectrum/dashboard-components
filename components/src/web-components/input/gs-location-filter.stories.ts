@@ -134,7 +134,9 @@ export const FetchingLocationsFails: StoryObj<LocationFilterProps> = {
                     matcher: aggregatedEndpointMatcher,
                     response: {
                         status: 400,
-                        body: { error: 'no data' },
+                        body: {
+                            error: { status: 400, detail: 'Dummy error message from mock LAPIS', type: 'about:blank' },
+                        },
                     },
                 },
             ],
