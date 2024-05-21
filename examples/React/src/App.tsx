@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import '@genspectrum/dashboard-components';
 import '@genspectrum/dashboard-components/style.css';
 
@@ -47,9 +47,11 @@ function App() {
     };
 
     const numerator = {
-        ...denominator,
         displayName: 'My variant',
-        pangoLineage: 'B.1.1.7',
+        lapisFilter: {
+            ...denominator,
+            pangoLineage: 'B.1.1.7',
+        }
     };
 
     return (
@@ -59,7 +61,7 @@ function App() {
                 fields='["region", "country", "division", "location"]'
             ></gs-location-filter>
             <gs-date-range-selector initialValue='last6Months'></gs-date-range-selector>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{display: 'flex', flexDirection: 'row'}}>
                 <gs-prevalence-over-time
                     numerator={JSON.stringify(numerator)}
                     denominator={JSON.stringify(denominator)}
@@ -69,7 +71,7 @@ function App() {
                     width='800px'
                     height='300px'
                 ></gs-prevalence-over-time>
-                <div style={{ height: '300px', width: '1000px' }}>
+                <div style={{height: '300px', width: '1000px'}}>
                     <gs-prevalence-over-time
                         numerator={JSON.stringify(numerator)}
                         denominator={JSON.stringify(denominator)}

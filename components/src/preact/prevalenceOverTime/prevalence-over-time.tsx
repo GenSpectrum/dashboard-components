@@ -7,7 +7,7 @@ import PrevalenceOverTimeBubbleChart from './prevalence-over-time-bubble-chart';
 import PrevalenceOverTimeLineChart from './prevalence-over-time-line-chart';
 import PrevalenceOverTimeTable from './prevalence-over-time-table';
 import { type PrevalenceOverTimeData, queryPrevalenceOverTime } from '../../query/queryPrevalenceOverTime';
-import { type NamedLapisFilter, type TemporalGranularity } from '../../types';
+import { type LapisFilter, type NamedLapisFilter, type TemporalGranularity } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ConfidenceIntervalSelector } from '../components/confidence-interval-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
@@ -34,7 +34,7 @@ export interface PrevalenceOverTimeProps extends PrevalenceOverTimeInnerProps {
 
 export interface PrevalenceOverTimeInnerProps {
     numerator: NamedLapisFilter | NamedLapisFilter[];
-    denominator: NamedLapisFilter;
+    denominator: LapisFilter;
     granularity: TemporalGranularity;
     smoothingWindow: number;
     views: View[];

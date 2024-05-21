@@ -57,8 +57,8 @@ export const TwoVariants = {
     ...Template,
     args: {
         numerator: [
-            { displayName: 'EG', country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' },
-            { displayName: 'JN.1', country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' },
+            { displayName: 'EG', lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' } },
+            { displayName: 'JN.1', lapisFilter: { country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' } },
         ],
         denominator: { country: 'USA', dateFrom: '2023-01-01' },
         granularity: 'month',
@@ -127,7 +127,10 @@ export const TwoVariants = {
 export const OneVariant = {
     ...Template,
     args: {
-        numerator: { displayName: 'EG', country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
+        numerator: {
+            displayName: 'EG',
+            lapisFilter: { country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
+        },
         denominator: { country: 'USA', dateFrom: '2023-10-01' },
         granularity: 'day',
         smoothingWindow: 7,

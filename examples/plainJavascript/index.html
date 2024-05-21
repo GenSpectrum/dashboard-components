@@ -16,21 +16,21 @@
     <body>
         <gs-app lapis="https://s1.int.genspectrum.org/open">
             <gs-location-filter
-                value="Europe / Switzerland"
+                initialValue="Europe / Switzerland"
                 fields='["region", "country", "division", "location"]'
             ></gs-location-filter>
             <gs-date-range-selector
-                selectedValue="last6Months"
+                initialValue="last6Months"
             ></gs-date-range-selector>
             <gs-prevalence-over-time
-                numerator='{"displayName": "My variant","country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}'
+                numerator='{"displayName": "My variant","lapisFilter":{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}}'
                 denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
                 granularity="day"
                 smoothingWindow="7"
                 views='["line", "table"]'
             ></gs-prevalence-over-time>
             <gs-prevalence-over-time
-                numerator='{"displayName": "My variant","country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}'
+                numerator='{"displayName": "My variant","lapisFilter":{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}}'
                 denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
                 granularity="month"
                 smoothingWindow="0"

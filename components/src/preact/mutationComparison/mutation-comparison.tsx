@@ -5,7 +5,7 @@ import { getMutationComparisonTableData } from './getMutationComparisonTableData
 import { MutationComparisonTable } from './mutation-comparison-table';
 import { MutationComparisonVenn } from './mutation-comparison-venn';
 import { filterMutationData, type MutationData, queryMutationData } from './queryMutationData';
-import { type LapisFilter, type SequenceType } from '../../types';
+import { type NamedLapisFilter, type SequenceType } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/SegmentSelector';
 import { CsvDownloadButton } from '../components/csv-download-button';
@@ -24,11 +24,6 @@ import { useQuery } from '../useQuery';
 
 export type View = 'table' | 'venn';
 
-export interface MutationComparisonVariant {
-    lapisFilter: LapisFilter;
-    displayName: string;
-}
-
 export interface MutationComparisonProps extends MutationComparisonInnerProps {
     width: string;
     height: string;
@@ -36,7 +31,7 @@ export interface MutationComparisonProps extends MutationComparisonInnerProps {
 }
 
 export interface MutationComparisonInnerProps {
-    variants: MutationComparisonVariant[];
+    variants: NamedLapisFilter[];
     sequenceType: SequenceType;
     views: View[];
 }

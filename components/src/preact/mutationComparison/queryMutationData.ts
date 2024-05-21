@@ -1,6 +1,5 @@
-import { type MutationComparisonVariant } from './mutation-comparison';
 import { querySubstitutionsOrDeletions } from '../../query/querySubstitutionsOrDeletions';
-import { type SubstitutionOrDeletionEntry } from '../../types';
+import { type NamedLapisFilter, type SubstitutionOrDeletionEntry } from '../../types';
 import { type DisplayedSegment } from '../components/SegmentSelector';
 import { type DisplayedMutationType } from '../components/mutation-type-selector';
 
@@ -10,7 +9,7 @@ export type MutationData = {
 };
 
 export async function queryMutationData(
-    variants: MutationComparisonVariant[],
+    variants: NamedLapisFilter[],
     sequenceType: 'nucleotide' | 'amino acid',
     lapis: string,
 ) {

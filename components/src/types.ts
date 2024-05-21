@@ -2,7 +2,10 @@ import { type Deletion, type Insertion, type Substitution } from './utils/mutati
 
 export type LapisFilter = Record<string, string | number | null | boolean>;
 
-export type NamedLapisFilter = LapisFilter & { displayName: string };
+export type NamedLapisFilter = {
+    lapisFilter: LapisFilter;
+    displayName: string;
+};
 
 export type TemporalGranularity = 'day' | 'week' | 'month' | 'year';
 
