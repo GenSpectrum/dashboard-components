@@ -28,6 +28,8 @@ export class TextInputComponent extends PreactLitAdapter {
     initialValue: string = '';
 
     /**
+     * Required.
+     *
      * The LAPIS field name to use for this text input.
      * The field must exist on this LAPIS instance.
      */
