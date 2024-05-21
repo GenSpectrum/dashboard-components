@@ -5,21 +5,24 @@ import { getMinMaxTemporal, TemporalCache, type YearMonthDay } from '../utils/te
 
 export type RelativeGrowthAdvantageData = Awaited<ReturnType<typeof queryRelativeGrowthAdvantage>>;
 
-export async function queryRelativeGrowthAdvantage(
+export async function queryRelativeGrowthAdvantage<LapisDateField extends string>(
     numerator: LapisFilter,
     denominator: LapisFilter,
     generationTime: number,
     lapis: string,
+    lapisDateField: LapisDateField,
     signal?: AbortSignal,
 ) {
     const fetchNumerator = new FetchAggregatedOperator<{
-        date: string | null;
-    }>(numerator, ['date']);
+        [key in LapisDateField]: string | null;
+    }>(numerator, [lapisDateField]);
     const fetchDenominator = new FetchAggregatedOperator<{
-        date: string | null;
-    }>(denominator, ['date']);
-    const mapNumerator = new MapOperator(fetchNumerator, toYearMonthDay);
-    const mapDenominator = new MapOperator(fetchDenominator, toYearMonthDay);
+        [key in LapisDateField]: string | null;
+    }>(denominator, [lapisDateField]);
+    const mapToFixedDateKeyNumerator = new MapOperator(fetchNumerator, renameDateField(lapisDateField));
+    const mapToFixedDateKeyDenominator = new MapOperator(fetchDenominator, renameDateField(lapisDateField));
+    const mapNumerator = new MapOperator(mapToFixedDateKeyNumerator, toYearMonthDay);
+    const mapDenominator = new MapOperator(mapToFixedDateKeyDenominator, toYearMonthDay);
     const [numeratorData, denominatorData] = await Promise.all([
         mapNumerator.evaluate(lapis, signal),
         mapDenominator.evaluate(lapis, signal),
@@ -127,5 +130,14 @@ function toYearMonthDay(d: { date: string | null; count: number }) {
     return {
         date: d.date ? temporalCache.getYearMonthDay(d.date) : null,
         count: d.count,
+    };
+}
+
+function renameDateField<From extends string>(from: From) {
+    return <T extends { [key in From]: unknown }>(d: T) => {
+        return {
+            ...d,
+            date: d[from],
+        };
     };
 }

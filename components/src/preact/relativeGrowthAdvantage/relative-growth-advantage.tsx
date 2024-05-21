@@ -33,6 +33,7 @@ export interface RelativeGrowthAdvantagePropsInner {
     denominator: LapisFilter;
     generationTime: number;
     views: View[];
+    lapisDateField: string;
 }
 
 export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = ({
@@ -43,6 +44,7 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
     denominator,
     generationTime,
     headline = 'Relative growth advantage',
+    lapisDateField,
 }) => {
     const size = { height, width };
 
@@ -55,6 +57,7 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
                         numerator={numerator}
                         denominator={denominator}
                         generationTime={generationTime}
+                        lapisDateField={lapisDateField}
                     />
                 </Headline>
             </ResizeContainer>
@@ -67,12 +70,13 @@ export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvan
     denominator,
     generationTime,
     views,
+    lapisDateField,
 }) => {
     const lapis = useContext(LapisUrlContext);
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
 
     const { data, error, isLoading } = useQuery(
-        () => queryRelativeGrowthAdvantage(numerator, denominator, generationTime, lapis),
+        () => queryRelativeGrowthAdvantage(numerator, denominator, generationTime, lapis, lapisDateField),
         [lapis, numerator, denominator, generationTime, views],
     );
 
