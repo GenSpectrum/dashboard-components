@@ -18,7 +18,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * Values for the fields `i > K` are considered `undefined`.
  *
  * @fires {CustomEvent<Record<string, string>>} gs-location-changed
- * Fired when the field is submitted with a valid location value.
+ * Fired when a value from the datalist is selected or when a valid value is typed into the field.
  * The `details` of this event contain an object with all `fields` as keys
  * and the corresponding values as values, if they are not `undefined`.
  * Example:
