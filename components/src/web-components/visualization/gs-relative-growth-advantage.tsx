@@ -85,6 +85,8 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
     height: string = '700px';
 
     /**
+     * Required.
+     *
      * The LAPIS field that the data should be aggregated by.
      * The values will be used on the x-axis of the diagram.
      * Must be a field of type `date` in LAPIS.

@@ -1,5 +1,6 @@
 import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { MapOperator } from '../operator/MapOperator';
+import { RenameFieldOperator } from '../operator/RenameFieldOperator';
 import { type LapisFilter } from '../types';
 import { getMinMaxTemporal, TemporalCache, type YearMonthDay } from '../utils/temporal';
 
@@ -19,8 +20,8 @@ export async function queryRelativeGrowthAdvantage<LapisDateField extends string
     const fetchDenominator = new FetchAggregatedOperator<{
         [key in LapisDateField]: string | null;
     }>(denominator, [lapisDateField]);
-    const mapToFixedDateKeyNumerator = new MapOperator(fetchNumerator, renameDateField(lapisDateField));
-    const mapToFixedDateKeyDenominator = new MapOperator(fetchDenominator, renameDateField(lapisDateField));
+    const mapToFixedDateKeyNumerator = new RenameFieldOperator(fetchNumerator, lapisDateField, 'date');
+    const mapToFixedDateKeyDenominator = new RenameFieldOperator(fetchDenominator, lapisDateField, 'date');
     const mapNumerator = new MapOperator(mapToFixedDateKeyNumerator, toYearMonthDay);
     const mapDenominator = new MapOperator(mapToFixedDateKeyDenominator, toYearMonthDay);
     const [numeratorData, denominatorData] = await Promise.all([
@@ -130,14 +131,5 @@ function toYearMonthDay(d: { date: string | null; count: number }) {
     return {
         date: d.date ? temporalCache.getYearMonthDay(d.date) : null,
         count: d.count,
-    };
-}
-
-function renameDateField<From extends string>(from: From) {
-    return <T extends { [key in From]: unknown }>(d: T) => {
-        return {
-            ...d,
-            date: d[from],
-        };
     };
 }

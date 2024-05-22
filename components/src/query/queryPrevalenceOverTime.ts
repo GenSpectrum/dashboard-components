@@ -3,6 +3,7 @@ import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { FillMissingOperator } from '../operator/FillMissingOperator';
 import { GroupByAndSumOperator } from '../operator/GroupByAndSumOperator';
 import { MapOperator } from '../operator/MapOperator';
+import { RenameFieldOperator } from '../operator/RenameFieldOperator';
 import { SlidingOperator } from '../operator/SlidingOperator';
 import { SortOperator } from '../operator/SortOperator';
 import { type LapisFilter, type NamedLapisFilter, type TemporalGranularity } from '../types';
@@ -27,14 +28,15 @@ export function queryPrevalenceOverTime(
     granularity: TemporalGranularity,
     smoothingWindow: number,
     lapis: string,
+    lapisDateField: string,
     signal?: AbortSignal,
 ): Promise<PrevalenceOverTimeData> {
     const numeratorFilters = makeArray(numeratorFilter);
 
-    const denominatorData = fetchAndPrepare(denominatorFilter, granularity, smoothingWindow);
+    const denominatorData = fetchAndPrepare(denominatorFilter, granularity, smoothingWindow, lapisDateField);
     const subQueries = numeratorFilters.map(async (namedLapisFilter) => {
         const { displayName, lapisFilter } = namedLapisFilter;
-        const numeratorData = fetchAndPrepare(lapisFilter, granularity, smoothingWindow);
+        const numeratorData = fetchAndPrepare(lapisFilter, granularity, smoothingWindow, lapisDateField);
         const divide = new DivisionOperator(
             numeratorData,
             denominatorData,
@@ -60,11 +62,15 @@ function makeArray<T>(arrayOrSingleItem: T | T[]) {
     return [arrayOrSingleItem];
 }
 
-function fetchAndPrepare(filter: LapisFilter, granularity: TemporalGranularity, smoothingWindow: number) {
-    const fetchData = new FetchAggregatedOperator<{
-        date: string | null;
-    }>(filter, ['date']);
-    const mapData = new MapOperator(fetchData, (d) => mapDateToGranularityRange(d, granularity));
+function fetchAndPrepare<LapisDateField extends string>(
+    filter: LapisFilter,
+    granularity: TemporalGranularity,
+    smoothingWindow: number,
+    lapisDateField: LapisDateField,
+) {
+    const fetchData = new FetchAggregatedOperator<{ [key in LapisDateField]: string | null }>(filter, [lapisDateField]);
+    const dataWithFixedDateKey = new RenameFieldOperator(fetchData, lapisDateField, 'date');
+    const mapData = new MapOperator(dataWithFixedDateKey, (d) => mapDateToGranularityRange(d, granularity));
     const groupByData = new GroupByAndSumOperator(mapData, 'dateRange', 'count');
     const fillData = new FillMissingOperator(
         groupByData,
