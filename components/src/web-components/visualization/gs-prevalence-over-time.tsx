@@ -1,6 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import PrevalenceOverTime, { type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
+import { PrevalenceOverTime, type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 

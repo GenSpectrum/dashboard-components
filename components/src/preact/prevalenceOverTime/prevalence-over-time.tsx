@@ -208,7 +208,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     granularity,
 }) => {
     return (
-        <div class='flex'>
+        <>
             {activeTab !== 'Table' && (
                 <ScalingSelector yAxisScaleType={yAxisScaleType} setYAxisScaleType={setYAxisScaleType} />
             )}
@@ -226,11 +226,11 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
             />
 
             <PrevalenceOverTimeInfo />
-        </div>
+        </>
     );
 };
 
-const PrevalenceOverTimeInfo: FunctionComponent = ({}) => {
+const PrevalenceOverTimeInfo: FunctionComponent = () => {
     return (
         <Info height={'100px'}>
             <InfoHeadline1>Prevalence over time</InfoHeadline1>
@@ -238,5 +238,3 @@ const PrevalenceOverTimeInfo: FunctionComponent = ({}) => {
         </Info>
     );
 };
-
-export default PrevalenceOverTime;

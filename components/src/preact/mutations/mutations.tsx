@@ -168,7 +168,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     setProportionInterval,
 }) => {
     return (
-        <div class='flex flex-row'>
+        <>
             <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
             {activeTab === 'Table' && (
                 <MutationTypeSelector
@@ -182,7 +182,6 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                         proportionInterval={proportionInterval}
                         setMinProportion={(min) => setProportionInterval((prev) => ({ ...prev, min }))}
                         setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
-                        openDirection={'left'}
                     />
                     <CsvDownloadButton
                         className='mx-1 btn btn-xs'
@@ -206,6 +205,6 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 />
             )}
             <Info height={'100px'}>Info for mutations</Info>
-        </div>
+        </>
     );
 };

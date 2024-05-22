@@ -21,7 +21,6 @@ export const MutationTypeSelector: FunctionComponent<MutationTypeSelectorProps> 
 
     return (
         <CheckboxSelector
-            className='mx-1'
             items={displayedMutationTypes}
             label={mutationTypesSelectorLabel}
             setItems={(items) => setDisplayedMutationTypes(items)}

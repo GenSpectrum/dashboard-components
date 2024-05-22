@@ -161,10 +161,10 @@ const RelativeGrowthAdvantageToolbar: FunctionComponent<RelativeGrowthAdvantageT
     generationTime,
 }) => {
     return (
-        <div class='flex'>
+        <>
             <ScalingSelector yAxisScaleType={yAxisScaleType} setYAxisScaleType={setYAxisScaleType} />
             <RelativeGrowthAdvantageInfo generationTime={generationTime} />
-        </div>
+        </>
     );
 };
 

@@ -17,11 +17,20 @@ const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
     const [heightOfTabs, setHeightOfTabs] = useState('3rem');
     const tabRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    const updateHeightOfTabs = () => {
         if (tabRef.current) {
             const heightOfTabs = tabRef.current.getBoundingClientRect().height;
             setHeightOfTabs(`${heightOfTabs}px`);
         }
+    };
+
+    useEffect(() => {
+        updateHeightOfTabs();
+
+        window.addEventListener('resize', updateHeightOfTabs);
+        return () => {
+            window.removeEventListener('resize', updateHeightOfTabs);
+        };
     }, []);
 
     const tabElements = (
@@ -51,9 +60,9 @@ const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
 
     return (
         <div className='h-full w-full'>
-            <div ref={tabRef} className='flex flex-row justify-between'>
+            <div ref={tabRef} className='flex flex-row justify-between flex-wrap'>
                 {tabElements}
-                {toolbar && <div className='py-2'>{toolbarElement}</div>}
+                {toolbar && <div className='py-2 flex flex-wrap gap-y-1'>{toolbarElement}</div>}
             </div>
             <div
                 className={`p-2 border-2 border-gray-100 rounded-b-md rounded-tr-md ${activeTab === tabs[0].title ? '' : 'rounded-tl-md'}`}
