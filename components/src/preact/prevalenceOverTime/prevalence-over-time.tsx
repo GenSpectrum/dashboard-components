@@ -39,6 +39,7 @@ export interface PrevalenceOverTimeInnerProps {
     smoothingWindow: number;
     views: View[];
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
+    lapisDateField: string;
 }
 
 export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
@@ -51,6 +52,7 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
     width,
     height,
     headline = 'Prevalence over time',
+    lapisDateField,
 }) => {
     const size = { height, width };
 
@@ -65,6 +67,7 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
                         smoothingWindow={smoothingWindow}
                         views={views}
                         confidenceIntervalMethods={confidenceIntervalMethods}
+                        lapisDateField={lapisDateField}
                     />
                 </Headline>
             </ResizeContainer>
@@ -79,11 +82,12 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerP
     smoothingWindow,
     views,
     confidenceIntervalMethods,
+    lapisDateField,
 }) => {
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(
-        () => queryPrevalenceOverTime(numerator, denominator, granularity, smoothingWindow, lapis),
+        () => queryPrevalenceOverTime(numerator, denominator, granularity, smoothingWindow, lapis, lapisDateField),
         [lapis, numerator, denominator, granularity, smoothingWindow],
     );
 

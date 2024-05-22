@@ -48,6 +48,7 @@ const Template = {
                 width={args.width}
                 height={args.height}
                 headline={args.headline}
+                lapisDateField={args.lapisDateField}
             />
         </LapisUrlContext.Provider>
     ),
@@ -68,6 +69,7 @@ export const TwoVariants = {
         width: '100%',
         height: '700px',
         headline: 'Prevalence over time',
+        lapisDateField: 'date',
     },
     parameters: {
         fetchMock: {
@@ -139,6 +141,7 @@ export const OneVariant = {
         width: '100%',
         height: '700px',
         headline: 'Prevalence over time',
+        lapisDateField: 'date',
     },
     parameters: {
         fetchMock: {

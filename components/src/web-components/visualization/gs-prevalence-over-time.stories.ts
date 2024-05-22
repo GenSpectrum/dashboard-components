@@ -23,8 +23,9 @@ const codeExample = String.raw`
     views='["bar", "line", "bubble", "table"]'
     confidenceIntervalMethods='["wilson"]'
     headline="Prevalence over time"
-    width='100%'
-    height='700px'
+    width="100%"
+    height="700px"
+    lapisDateField="date"
 ></gs-prevalence-over-time>`;
 
 const meta: Meta<Required<PrevalenceOverTimeProps>> = {
@@ -75,6 +76,7 @@ const Template: StoryObj<Required<PrevalenceOverTimeProps>> = {
                 .width=${args.width}
                 .height=${args.height}
                 .headline=${args.headline}
+                .lapisDateField=${args.lapisDateField}
             ></gs-prevalence-over-time>
         </gs-app>
     `,
@@ -95,6 +97,7 @@ export const TwoVariants: StoryObj<Required<PrevalenceOverTimeProps>> = {
         width: '100%',
         height: '700px',
         headline: 'Prevalence over time',
+        lapisDateField: 'date',
     },
     parameters: {
         fetchMock: {
@@ -166,6 +169,7 @@ export const OneVariant: StoryObj<Required<PrevalenceOverTimeProps>> = {
         width: '100%',
         height: '700px',
         headline: 'Prevalence over time',
+        lapisDateField: 'date',
     },
     parameters: {
         fetchMock: {
