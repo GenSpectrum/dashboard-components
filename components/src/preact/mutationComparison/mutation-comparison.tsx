@@ -167,7 +167,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     setProportionInterval,
 }) => {
     return (
-        <div class='flex flex-row'>
+        <>
             <ProportionSelectorDropdown
                 proportionInterval={proportionInterval}
                 setMinProportion={(min) => setProportionInterval((prev) => ({ ...prev, min }))}
@@ -184,6 +184,6 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 filename='mutation_comparison.csv'
             />
             <Info height={'100px'}>Info for mutation comparison</Info>
-        </div>
+        </>
     );
 };

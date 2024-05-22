@@ -41,7 +41,6 @@ export const SegmentSelector: FunctionComponent<SegmentSelectorProps> = ({
 
     return (
         <CheckboxSelector
-            className='mx-1'
             items={displayedSegments}
             label={getSegmentSelectorLabel(displayedSegments, prefix || 'Segments: ')}
             setItems={(items) => setDisplayedSegments(items)}
