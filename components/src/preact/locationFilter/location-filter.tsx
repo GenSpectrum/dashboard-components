@@ -1,5 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useRef, useState } from 'preact/hooks';
+import { type JSXInternal } from 'preact/src/jsx';
 
 import { fetchAutocompletionList } from './fetchAutocompletionList';
 import { LapisUrlContext } from '../LapisUrlContext';
@@ -36,7 +37,7 @@ export const LocationFilterInner = ({ initialValue, fields }: LocationFilterInne
     const [value, setValue] = useState(initialValue ?? '');
     const [unknownLocation, setUnknownLocation] = useState(false);
 
-    const formRef = useRef<HTMLFormElement>(null);
+    const divRef = useRef<HTMLDivElement>(null);
 
     const { data, error, isLoading } = useQuery(() => fetchAutocompletionList(fields, lapis), [fields, lapis]);
 
@@ -47,40 +48,29 @@ export const LocationFilterInner = ({ initialValue, fields }: LocationFilterInne
         return <ErrorDisplay error={error} />;
     }
 
-    const onInput = (event: InputEvent) => {
-        if (event.target instanceof HTMLInputElement) {
-            const inputValue = event.target.value;
-            setValue(inputValue);
-            if (unknownLocation) {
-                const eventDetail = parseLocation(inputValue, fields);
-                if (hasMatchingEntry(data, eventDetail)) {
-                    setUnknownLocation(false);
-                }
-            }
+    const onInput = (event: JSXInternal.TargetedInputEvent<HTMLInputElement>) => {
+        const inputValue = event.currentTarget.value;
+        setValue(inputValue);
+        if (inputValue.trim() === value.trim()) {
+            return;
         }
-    };
-
-    const submit = (event: SubmitEvent) => {
-        event.preventDefault();
-        const eventDetail = parseLocation(value, fields);
-
+        const eventDetail = parseLocation(inputValue, fields);
         if (hasMatchingEntry(data, eventDetail)) {
-            setUnknownLocation(false);
-
-            formRef.current?.dispatchEvent(
+            divRef.current?.dispatchEvent(
                 new CustomEvent('gs-location-changed', {
                     detail: eventDetail,
                     bubbles: true,
                     composed: true,
                 }),
             );
+            setUnknownLocation(false);
         } else {
             setUnknownLocation(true);
         }
     };
 
     return (
-        <form class='flex w-full' onSubmit={submit} ref={formRef}>
+        <div class='flex w-full' ref={divRef}>
             <input
                 type='text'
                 class={`input input-bordered grow ${unknownLocation ? 'border-2 border-error' : ''}`}
@@ -97,10 +87,7 @@ export const LocationFilterInner = ({ initialValue, fields }: LocationFilterInne
                     return <option key={value} value={value} />;
                 })}
             </datalist>
-            <button class='btn btn-primary ml-1' type='submit'>
-                Submit
-            </button>
-        </form>
+        </div>
     );
 };
 

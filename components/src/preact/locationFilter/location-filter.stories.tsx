@@ -34,7 +34,7 @@ const meta: Meta<LocationFilterProps> = {
     args: {
         width: '100%',
         fields: ['region', 'country', 'division', 'location'],
-        initialValue: 'United States',
+        initialValue: 'Europe',
     },
     argTypes: {
         fields: {

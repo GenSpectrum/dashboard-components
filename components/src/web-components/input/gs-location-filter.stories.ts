@@ -169,7 +169,6 @@ export const FiresEvent: StoryObj<LocationFilterProps> = {
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-location-filter');
 
-        const submitButton = () => canvas.getByRole('button', { name: 'Submit' });
         const inputField = () => canvas.getByRole('combobox');
 
         const listenerMock = fn();
@@ -185,14 +184,12 @@ export const FiresEvent: StoryObj<LocationFilterProps> = {
 
         await step('Input invalid location', async () => {
             await userEvent.type(inputField(), 'Not / A / Location');
-            await userEvent.click(submitButton());
             await expect(listenerMock).not.toHaveBeenCalled();
             await userEvent.type(inputField(), '{backspace>18/}');
         });
 
         await step('Select Asia', async () => {
             await userEvent.type(inputField(), 'Asia');
-            await userEvent.click(submitButton());
             await expect(listenerMock).toHaveBeenCalledWith(
                 expect.objectContaining({
                     detail: {
@@ -204,7 +201,6 @@ export const FiresEvent: StoryObj<LocationFilterProps> = {
 
         await step('Select Asia / Bangladesh / Rajshahi / Chapainawabgonj', async () => {
             await userEvent.type(inputField(), ' / Bangladesh / Rajshahi / Chapainawabgonj');
-            await userEvent.click(submitButton());
             await expect(listenerMock).toHaveBeenCalledWith(
                 expect.objectContaining({
                     detail: {
