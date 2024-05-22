@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.3.0](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.2.0...dashboard-components-v0.3.0) (2024-05-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** the `numerator` attribute of `gs-prevalence-over-time` is now a nested object with separate keys for the `displayName` and the `lapisFilter`
+* **components:** remove size property from components and use width and height #237
+
+### Features
+
+* **components:** configurable target column for date range selector ([57aa58e](https://github.com/GenSpectrum/dashboards/commit/57aa58e2b10be4222f97bcd1c2605a4f028e3031))
+* **components:** make NamedLapisFilter a nested type [#209](https://github.com/GenSpectrum/dashboards/issues/209) ([332ebc1](https://github.com/GenSpectrum/dashboards/commit/332ebc129fd72bd66e6619f77ff77af919650c9b))
+* **components:** move width and height outside of size property ([432a7ed](https://github.com/GenSpectrum/dashboards/commit/432a7edf883cbdae19ee67fc5aebd9558d9b98e6))
+
+
+### Bug Fixes
+
+* **components:** `gs-location-filter`: show better error [#75](https://github.com/GenSpectrum/dashboards/issues/75) ([187f9e7](https://github.com/GenSpectrum/dashboards/commit/187f9e7eae5f7ba2613d8e45398beb4c426a1a6a))
+
 ## [0.2.0](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.1.5...dashboard-components-v0.2.0) (2024-05-16)
 
 
