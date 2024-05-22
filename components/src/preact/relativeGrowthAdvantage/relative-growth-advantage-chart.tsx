@@ -7,6 +7,7 @@ import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { confidenceIntervalDataLabel } from '../shared/charts/confideceInterval';
 import { getYAxisMax, type YAxisMaxConfig } from '../shared/charts/getYAxisMax';
 import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
+import { formatProportion } from '../shared/table/formatProportion';
 
 interface RelativeGrowthAdvantageChartData {
     t: YearMonthDay[];
@@ -60,14 +61,37 @@ const RelativeGrowthAdvantageChart = ({ data, yAxisScaleType, yAxisMaxConfig }: 
     };
 
     return (
-        <div className='flex flex-col h-full'>
+        <div className='flex h-full flex-col'>
+            <RelativeGrowthAdvantageDisplay
+                relativeAdvantage={data.params.fd.value}
+                relativeAdvantageLowerBound={data.params.fd.ciLower}
+                relativeAdvantageUpperBound={data.params.fd.ciUpper}
+            />
             <div className='flex-1'>
                 <GsChart configuration={config} />
             </div>
-            <p>
-                Advantage: {(data.params.fd.value * 100).toFixed(2)}% ({(data.params.fd.ciLower * 100).toFixed(2)}% -{' '}
-                {(data.params.fd.ciUpper * 100).toFixed(2)}%)
-            </p>
+        </div>
+    );
+};
+
+const RelativeGrowthAdvantageDisplay = ({
+    relativeAdvantage,
+    relativeAdvantageLowerBound,
+    relativeAdvantageUpperBound,
+}: {
+    relativeAdvantage: number;
+    relativeAdvantageLowerBound: number;
+    relativeAdvantageUpperBound: number;
+}) => {
+    return (
+        <div class='mx-auto flex items-end flex-wrap'>
+            <span class='text-[#606060]'>Relative advantage:</span>
+            <div>
+                <span class='text-2xl ml-3'> {formatProportion(relativeAdvantage)} </span>
+                <span class='ml-2.5'>
+                    ({formatProportion(relativeAdvantageLowerBound)} - {formatProportion(relativeAdvantageUpperBound)})
+                </span>
+            </div>
         </div>
     );
 };
