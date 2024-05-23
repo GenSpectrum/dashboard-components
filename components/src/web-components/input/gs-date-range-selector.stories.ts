@@ -5,8 +5,11 @@ import { html } from 'lit';
 
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL } from '../../constants';
+import { type DateRangeSelectorProps } from '../../preact/dateRangeSelector/date-range-selector';
+import './gs-date-range-selector';
+import '../app';
+import { toYYYYMMDD } from '../../preact/dateRangeSelector/dateConversion';
 import {
-    type DateRangeSelectorProps,
     PRESET_VALUE_ALL_TIMES,
     PRESET_VALUE_CUSTOM,
     PRESET_VALUE_LAST_2_MONTHS,
@@ -14,10 +17,7 @@ import {
     PRESET_VALUE_LAST_3_MONTHS,
     PRESET_VALUE_LAST_6_MONTHS,
     PRESET_VALUE_LAST_MONTH,
-} from '../../preact/dateRangeSelector/date-range-selector';
-import './gs-date-range-selector';
-import '../app';
-import { toYYYYMMDD } from '../../preact/dateRangeSelector/dateConversion';
+} from '../../preact/dateRangeSelector/selectableOptions';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
@@ -25,6 +25,8 @@ const codeExample = String.raw`
     customSelectOptions='[{ "label": "Year 2021", "dateFrom": "2021-01-01", "dateTo": "2021-12-31" }]'
     earliestDate="1970-01-01"
     initialValue="${PRESET_VALUE_LAST_6_MONTHS}"
+    initialDateFrom="2020-01-01"
+    initialDateTo="2021-01-01"
     width="100%"
     dateColumn="myDateColumn"
 ></gs-date-range-selector>`;
@@ -82,6 +84,8 @@ const meta: Meta<Required<DateRangeSelectorProps<'CustomDateRange'>>> = {
         initialValue: PRESET_VALUE_LAST_6_MONTHS,
         dateColumn: 'aDateColumn',
         width: '100%',
+        initialDateFrom: '',
+        initialDateTo: '',
     },
     decorators: [withActions],
     tags: ['autodocs'],
@@ -97,6 +101,8 @@ export const DateRangeSelectorStory: StoryObj<Required<DateRangeSelectorProps<'C
                     .customSelectOptions=${args.customSelectOptions}
                     .earliestDate=${args.earliestDate}
                     .initialValue=${args.initialValue}
+                    .initialDateFrom=${args.initialDateFrom}
+                    .initialDateTo=${args.initialDateTo}
                     .width=${args.width}
                     .dateColumn=${args.dateColumn}
                 ></gs-date-range-selector>
