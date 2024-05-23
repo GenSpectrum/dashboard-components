@@ -1,10 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import {
-    type CustomSelectOption,
-    DateRangeSelector,
-    type PresetOptionValues,
-} from '../../preact/dateRangeSelector/date-range-selector';
+import { DateRangeSelector } from '../../preact/dateRangeSelector/date-range-selector';
+import { type CustomSelectOption, type PresetOptionValues } from '../../preact/dateRangeSelector/selectableOptions';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -61,6 +58,8 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
      * Must be a valid label from the preset labels or a `label` given in the `customSelectOptions`.
      *
      * If the value is invalid, the component will default to `'last6Months'`.
+     *
+     * It will be overwritten if `initialDateFrom` or `initialDateTo` is set.
      */
     @property()
     initialValue:
@@ -72,6 +71,22 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
         | 'last3Months'
         | 'last6Months'
         | string = 'last6Months';
+
+    /**
+     * A date string in the format `YYYY-MM-DD`.
+     * If set, the date range selector will be initialized with the given date (overwriting `initialValue` to `custom`).
+     * If `initialDateTo` is set, but this is unset, it will default to `earliestDate`.
+     */
+    @property()
+    initialDateFrom: string = '';
+
+    /**
+     * A date string in the format `YYYY-MM-DD`.
+     * If set, the date range selector will be initialized with the given date (overwriting `initialValue` to `custom`).
+     * If `initialDateFrom` is set, but this is unset, it will default to the current date.
+     */
+    @property()
+    initialDateTo: string = '';
 
     /**
      * The width of the component.
@@ -93,6 +108,8 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
                 customSelectOptions={this.customSelectOptions}
                 earliestDate={this.earliestDate}
                 initialValue={this.initialValue}
+                initialDateFrom={this.initialDateFrom}
+                initialDateTo={this.initialDateTo}
                 dateColumn={this.dateColumn}
                 width={this.width}
             />
