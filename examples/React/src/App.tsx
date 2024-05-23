@@ -92,6 +92,15 @@ function App() {
                     views='["line", "table"]'
                 ></gs-prevalence-over-time>
             </div>
+            <gs-relative-growth-advantage
+                numerator='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateFrom": "2020-12-01" }'
+                denominator='{ "country": "Switzerland", "dateFrom": "2020-12-01" }'
+                generationTime="7"
+                views='["line"]'
+                width='100%'
+                height='700px'
+                headline="Relative growth advantage"
+            ></gs-relative-growth-advantage>
         </gs-app>
     );
 }

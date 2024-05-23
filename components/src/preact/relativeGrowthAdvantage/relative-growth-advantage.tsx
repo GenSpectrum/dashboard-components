@@ -24,6 +24,7 @@ export type View = 'line';
 
 export interface RelativeGrowthAdvantageProps extends RelativeGrowthAdvantagePropsInner {
     width: string;
+    height: string;
     headline?: string;
 }
 
@@ -32,7 +33,6 @@ export interface RelativeGrowthAdvantagePropsInner {
     denominator: LapisFilter;
     generationTime: number;
     views: View[];
-    height: string;
     lapisDateField: string;
 }
 
@@ -58,7 +58,6 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
                         denominator={denominator}
                         generationTime={generationTime}
                         lapisDateField={lapisDateField}
-                        height={height}
                     />
                 </Headline>
             </ResizeContainer>
@@ -71,7 +70,6 @@ export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvan
     denominator,
     generationTime,
     views,
-    height,
     lapisDateField,
 }) => {
     const lapis = useContext(LapisUrlContext);
@@ -101,7 +99,6 @@ export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvan
             setYAxisScaleType={setYAxisScaleType}
             views={views}
             generationTime={generationTime}
-            height={height}
         />
     );
 };
@@ -112,7 +109,6 @@ type RelativeGrowthAdvantageTabsProps = {
     setYAxisScaleType: (scaleType: ScaleType) => void;
     views: View[];
     generationTime: number;
-    height: string;
 };
 
 const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabsProps> = ({
@@ -121,7 +117,6 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
     setYAxisScaleType,
     views,
     generationTime,
-    height,
 }) => {
     const getTab = (view: View) => {
         switch (view) {
@@ -148,7 +143,6 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
             generationTime={generationTime}
             yAxisScaleType={yAxisScaleType}
             setYAxisScaleType={setYAxisScaleType}
-            height={height}
         />
     );
 
@@ -159,29 +153,24 @@ type RelativeGrowthAdvantageToolbarProps = {
     yAxisScaleType: ScaleType;
     setYAxisScaleType: (scaleType: ScaleType) => void;
     generationTime: number;
-    height: string;
 };
 
 const RelativeGrowthAdvantageToolbar: FunctionComponent<RelativeGrowthAdvantageToolbarProps> = ({
     yAxisScaleType,
     setYAxisScaleType,
     generationTime,
-    height,
 }) => {
     return (
         <div class='flex'>
             <ScalingSelector yAxisScaleType={yAxisScaleType} setYAxisScaleType={setYAxisScaleType} />
-            <RelativeGrowthAdvantageInfo generationTime={generationTime} height={height} />
+            <RelativeGrowthAdvantageInfo generationTime={generationTime} />
         </div>
     );
 };
 
-const RelativeGrowthAdvantageInfo: FunctionComponent<{ generationTime: number; height: string }> = ({
-    generationTime,
-    height,
-}) => {
+const RelativeGrowthAdvantageInfo: FunctionComponent<{ generationTime: number }> = ({ generationTime }) => {
     return (
-        <Info height={`min(100vh, 0.8*${height}`}>
+        <Info>
             <InfoHeadline1>Relative growth advantage</InfoHeadline1>
             <InfoParagraph>
                 If variants spread pre-dominantly by local transmission across demographic groups, this estimate

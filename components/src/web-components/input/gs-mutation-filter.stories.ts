@@ -14,7 +14,6 @@ const codeExample = String.raw`
 <gs-mutation-filter 
     initialValue='["A123T"]'
     width='100%'
-    height='6.5rem'
 ></gs-mutation-filter>`;
 
 const meta: Meta<MutationFilterProps> = {

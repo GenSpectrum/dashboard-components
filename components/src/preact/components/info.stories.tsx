@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, fireEvent, waitFor, within } from '@storybook/test';
+import { expect, userEvent, waitFor, within } from '@storybook/test';
 
 import Info, { type InfoProps } from './info';
 
@@ -28,16 +28,16 @@ export const ShowsInfoOnClick: StoryObj<InfoProps> = {
     ...InfoStory,
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
-        const loading = canvas.getByRole('button', { name: '?' });
+        const openInfo = canvas.getByRole('button', { name: '?' });
 
-        await waitFor(() => expect(loading).toBeInTheDocument());
+        await waitFor(() => expect(openInfo).toBeInTheDocument());
 
-        await fireEvent.click(loading);
+        await userEvent.click(openInfo);
 
-        await waitFor(() => expect(canvas.getByText(tooltipText, { exact: false })).toBeInTheDocument());
+        await waitFor(() => expect(canvas.getByText(tooltipText, { exact: false })).toBeVisible());
 
-        await fireEvent.click(canvas.getByRole('button', { name: 'Close' }));
+        await userEvent.click(document.body);
 
-        await waitFor(() => expect(canvas.queryByText(tooltipText, { exact: false })).not.toBeInTheDocument());
+        await waitFor(() => expect(canvas.queryByText(tooltipText, { exact: false })).not.toBeVisible());
     },
 };
