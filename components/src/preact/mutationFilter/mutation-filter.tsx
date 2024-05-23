@@ -101,9 +101,9 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
     };
 
     return (
-        <form className='w-full  border boder-gray-300 rounded-md' onSubmit={handleSubmit} ref={formRef}>
-            <div className='absolute top-1 right-1'>
-                <Info height={`min(100vh, 300px`}>Info for mutation filter</Info>
+        <form className='w-full border boder-gray-300 rounded-md relative' onSubmit={handleSubmit} ref={formRef}>
+            <div className='absolute -top-3 -right-3'>
+                <Info height={'100px'}>Info for mutation filter</Info>
             </div>
             <div className='w-full flex p-2 flex-wrap items-center'>
                 <SelectedMutationDisplay
@@ -112,10 +112,10 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
                     fireChangeEvent={fireChangeEvent}
                 />
                 <div
-                    className={`block w-full flex focus:outline-none focus:ring-0 border ${isError ? 'border-red-500' : 'border-gray-300'} border-solid m-2 text-sm`}
+                    className={`w-full flex border ${isError ? 'border-red-500' : 'border-gray-300'} border-solid m-2 text-sm focus-within:border-gray-400 `}
                 >
                     <input
-                        className='grow'
+                        className='grow flex-1 p-1 border-none focus:outline-none focus:ring-0'
                         type='text'
                         value={inputValue}
                         onInput={handleInputChange}
