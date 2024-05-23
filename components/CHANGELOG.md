@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.3.0...dashboard-components-v0.3.1) (2024-05-23)
+
+
+### Features
+
+* **components:** gs-location-filter: remove submit button [#250](https://github.com/GenSpectrum/dashboards/issues/250) ([0042d21](https://github.com/GenSpectrum/dashboards/commit/0042d21053bba3eac2f370cb109430c277f5bf1b))
+
 ## [0.3.0](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.2.0...dashboard-components-v0.3.0) (2024-05-22)
 
 
