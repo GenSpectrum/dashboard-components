@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.2](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.3.1...dashboard-components-v0.3.2) (2024-05-27)
+
+
+### Features
+
+* **components:** make x-axis date field of `gs-prevalence-over-time` configurable [#215](https://github.com/GenSpectrum/dashboards/issues/215) ([e06cc11](https://github.com/GenSpectrum/dashboards/commit/e06cc116f7f73dc1149e1ae20bf4c8c5df10a9ac))
+* **components:** make x-axis date field of `gs-relative-growth-advantage` configurable [#215](https://github.com/GenSpectrum/dashboards/issues/215) ([947f072](https://github.com/GenSpectrum/dashboards/commit/947f072e2d99e44a1c7ffde41ace997d5eb8d332))
+
 ## [0.3.1](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.3.0...dashboard-components-v0.3.1) (2024-05-23)
 
 
