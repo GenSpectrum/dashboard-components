@@ -20,13 +20,14 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * @fires {CustomEvent<Record<string, string>>} gs-location-changed
  * Fired when a value from the datalist is selected or when a valid value is typed into the field.
  * The `details` of this event contain an object with all `fields` as keys
- * and the corresponding values as values, if they are not `undefined`.
+ * and the corresponding values as values, even if they are `undefined`.
  * Example:
  * ```
  * {
  *   continent: "Asia",
  *   country: "China",
- *   city: "Beijing"
+ *   city: "Beijing",
+ *   district: undefined,
  * }
  * ```
  */
