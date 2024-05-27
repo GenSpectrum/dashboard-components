@@ -93,7 +93,7 @@ export const LocationFilterInner = ({ initialValue, fields }: LocationFilterInne
 
 const parseLocation = (location: string, fields: string[]) => {
     const fieldValues = location.split('/').map((part) => part.trim());
-    return fieldValues.reduce((acc, fieldValue, i) => ({ ...acc, [fields[i]]: fieldValue }), {});
+    return fields.reduce((acc, field, i) => ({ ...acc, [field]: fieldValues[i] }), {});
 };
 
 const hasMatchingEntry = (data: Record<string, string>[] | null, eventDetail: Record<string, string>) => {

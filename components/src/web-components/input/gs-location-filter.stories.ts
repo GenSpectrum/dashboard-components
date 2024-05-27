@@ -190,13 +190,12 @@ export const FiresEvent: StoryObj<LocationFilterProps> = {
 
         await step('Select Asia', async () => {
             await userEvent.type(inputField(), 'Asia');
-            await expect(listenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        region: 'Asia',
-                    },
-                }),
-            );
+            await expect(listenerMock.mock.calls.at(-1)[0].detail).toStrictEqual({
+                region: 'Asia',
+                country: undefined,
+                division: undefined,
+                location: undefined,
+            });
         });
 
         await step('Select Asia / Bangladesh / Rajshahi / Chapainawabgonj', async () => {
