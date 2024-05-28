@@ -51,11 +51,11 @@ export const LocationFilterInner = ({ initialValue, fields }: LocationFilterInne
     const onInput = (event: JSXInternal.TargetedInputEvent<HTMLInputElement>) => {
         const inputValue = event.currentTarget.value;
         setValue(inputValue);
-        if (inputValue.trim() === value.trim()) {
+        if (inputValue.trim() === value.trim() && inputValue !== '') {
             return;
         }
         const eventDetail = parseLocation(inputValue, fields);
-        if (hasMatchingEntry(data, eventDetail)) {
+        if (hasAllUndefined(eventDetail) || hasMatchingEntry(data, eventDetail)) {
             divRef.current?.dispatchEvent(
                 new CustomEvent('gs-location-changed', {
                     detail: eventDetail,
@@ -92,9 +92,16 @@ export const LocationFilterInner = ({ initialValue, fields }: LocationFilterInne
 };
 
 const parseLocation = (location: string, fields: string[]) => {
+    if (location === '') {
+        return fields.reduce((acc, field) => ({ ...acc, [field]: undefined }), {});
+    }
     const fieldValues = location.split('/').map((part) => part.trim());
+
     return fields.reduce((acc, field, i) => ({ ...acc, [field]: fieldValues[i] }), {});
 };
+
+const hasAllUndefined = (obj: Record<string, string | undefined>) =>
+    Object.values(obj).every((value) => value === undefined);
 
 const hasMatchingEntry = (data: Record<string, string>[] | null, eventDetail: Record<string, string>) => {
     if (data === null) {

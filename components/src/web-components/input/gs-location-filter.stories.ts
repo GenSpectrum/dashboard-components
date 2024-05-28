@@ -185,7 +185,16 @@ export const FiresEvent: StoryObj<LocationFilterProps> = {
         await step('Input invalid location', async () => {
             await userEvent.type(inputField(), 'Not / A / Location');
             await expect(listenerMock).not.toHaveBeenCalled();
+        });
+
+        await step('Empty input', async () => {
             await userEvent.type(inputField(), '{backspace>18/}');
+            await expect(listenerMock.mock.calls.at(-1)[0].detail).toStrictEqual({
+                region: undefined,
+                country: undefined,
+                division: undefined,
+                location: undefined,
+            });
         });
 
         await step('Select Asia', async () => {
