@@ -179,11 +179,11 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
     };
 
     return (
-        <div class='join w-full' ref={divRef}>
+        <div class='flex flex-wrap' ref={divRef}>
             <Select
                 items={getSelectableOptions(customSelectOptions)}
                 selected={selectedDateRange}
-                selectStyle='select-bordered rounded-none join-item grow'
+                selectStyle='select-bordered rounded-none flex-grow w-40'
                 onChange={(event: Event) => {
                     event.preventDefault();
                     const select = event.target as HTMLSelectElement;
@@ -191,22 +191,26 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
                     onSelectChange(value as CustomLabel | PresetOptionValues);
                 }}
             />
-            <input
-                class='input input-bordered rounded-none join-item grow'
-                type='text'
-                placeholder='Date from'
-                ref={fromDatePickerRef}
-                onChange={onChangeDateFrom}
-                onBlur={onChangeDateFrom}
-            />
-            <input
-                class='input input-bordered rounded-none join-item grow'
-                type='text'
-                placeholder='Date to'
-                ref={toDatePickerRef}
-                onChange={onChangeDateTo}
-                onBlur={onChangeDateTo}
-            />
+            <div className={'flex flex-wrap flex-grow'}>
+                <input
+                    class='input input-bordered rounded-none flex-grow min-w-40'
+                    type='text'
+                    size={10}
+                    placeholder='Date from'
+                    ref={fromDatePickerRef}
+                    onChange={onChangeDateFrom}
+                    onBlur={onChangeDateFrom}
+                />
+                <input
+                    class='input input-bordered rounded-none flex-grow min-w-40'
+                    type='text'
+                    size={10}
+                    placeholder='Date to'
+                    ref={toDatePickerRef}
+                    onChange={onChangeDateTo}
+                    onBlur={onChangeDateTo}
+                />
+            </div>
         </div>
     );
 };
