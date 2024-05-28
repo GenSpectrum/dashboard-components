@@ -55,7 +55,7 @@ function App() {
     };
 
     return (
-        <gs-app lapis='https://s1.int.genspectrum.org/open'>
+        <gs-app lapis='https://lapis.cov-spectrum.org/open/v2/'>
             <gs-location-filter
                 initialValue='Europe / Switzerland'
                 fields='["region", "country", "division", "location"]'
