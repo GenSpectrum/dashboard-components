@@ -56,7 +56,7 @@ export const TextInputInner: FunctionComponent<TextInputInnerProps> = ({
     }
 
     const onInput = () => {
-        const value = inputRef.current?.value;
+        const value = inputRef.current?.value === '' ? undefined : inputRef.current?.value;
 
         if (isValidValue(value)) {
             inputRef.current?.dispatchEvent(
@@ -71,7 +71,7 @@ export const TextInputInner: FunctionComponent<TextInputInnerProps> = ({
 
     const isValidValue = (value: string | undefined) => {
         if (value === undefined) {
-            return false;
+            return true;
         }
         return data.includes(value);
     };

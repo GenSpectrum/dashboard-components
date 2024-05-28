@@ -118,7 +118,13 @@ export const FiresEvent: StoryObj<Required<TextInputProps>> = {
         await step('Enters an invalid host name', async () => {
             await userEvent.type(inputField(), 'notInList');
             await expect(listenerMock).not.toHaveBeenCalled();
+        });
+
+        await step('Empty input', async () => {
             await userEvent.type(inputField(), '{backspace>9/}');
+            await expect(listenerMock.mock.calls.at(-1)[0].detail).toStrictEqual({
+                host: undefined,
+            });
         });
 
         await step('Enter a valid host name', async () => {
