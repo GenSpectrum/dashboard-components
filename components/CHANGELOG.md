@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.4.0](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.3.2...dashboard-components-v0.4.0) (2024-05-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** Remove height attribute from mutation filter object. It now adapts to the height of the containing objects.
+
+### Features
+
+* **components:** adjust width of info for small screens ([d7f61c7](https://github.com/GenSpectrum/dashboards/commit/d7f61c7c0e95201aafb854e1f08d69ce7fd7bcff))
+* **components:** change design of mutation filter ([49e9b04](https://github.com/GenSpectrum/dashboards/commit/49e9b044249841417284d7be3c1033cadec3a51b))
+* **components:** gs-date-range-selector: add attributes `initialDateFrom`, `initialDateTo` [#245](https://github.com/GenSpectrum/dashboards/issues/245) ([c944011](https://github.com/GenSpectrum/dashboards/commit/c944011ebcb8bb45542e33b8b95454a717584833))
+* **components:** gs-location-filter: set all values in `gs-location-changed` event details [#265](https://github.com/GenSpectrum/dashboards/issues/265) ([4fce642](https://github.com/GenSpectrum/dashboards/commit/4fce64231db867974de9d7f566c73fcb172d803c))
+* **components:** mobile friendly info object [#235](https://github.com/GenSpectrum/dashboards/issues/235) ([c37423e](https://github.com/GenSpectrum/dashboards/commit/c37423ee14e8e6ec8cbe38a5e0f93b9bc7e80c64))
+
+
+### Bug Fixes
+
+* **components:** `gs-date-range-selector`: set initial `dateFrom` and `dateTo` values from `initialValue` [#245](https://github.com/GenSpectrum/dashboards/issues/245) ([1c060f7](https://github.com/GenSpectrum/dashboards/commit/1c060f7861c5863648d054bb8296d9beec513dfc))
+
 ## [0.3.2](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.3.1...dashboard-components-v0.3.2) (2024-05-27)
 
 
