@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.4.0...dashboard-components-v0.4.1) (2024-05-28)
+
+
+### Features
+
+* **components:** mobile friendly tabs [#234](https://github.com/GenSpectrum/dashboards/issues/234) ([f91454b](https://github.com/GenSpectrum/dashboards/commit/f91454bed4885c9e29efe25c60c9abd8344b18f6))
+* **components:** responsive date range selector ([be7a15e](https://github.com/GenSpectrum/dashboards/commit/be7a15e38d744bb5f0b93d89d9f38d197c856544))
+
 ## [0.4.0](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.3.2...dashboard-components-v0.4.0) (2024-05-28)
 
 
