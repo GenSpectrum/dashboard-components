@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.2](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.4.1...dashboard-components-v0.4.2) (2024-05-29)
+
+
+### Features
+
+* **components:** location filter dispatches event when empty input ([d459cc2](https://github.com/GenSpectrum/dashboards/commit/d459cc2952b2668f326311da99aec9c2ff5705ca))
+* **components:** text-input dispatches event when empty input ([7ada890](https://github.com/GenSpectrum/dashboards/commit/7ada890eaf0be7a927ae5d5bc3e3159579e3cfb4))
+
 ## [0.4.1](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.4.0...dashboard-components-v0.4.1) (2024-05-28)
 
 
