@@ -1,116 +1,116 @@
 count,division,host,proportion
-3,Mclean,Homo sapiens,8.882146352901886e-7
-1,Woodbridge,Homo sapiens,2.9607154509672954e-7
-9,Fairfax,Homo sapiens,0.000002664643905870566
-7,Waynesboro,Homo sapiens,0.000002072500815677107
-2,Crozet,Homo sapiens,5.921430901934591e-7
-1,Fishersville,Homo sapiens,2.9607154509672954e-7
-6,Alexandria,Homo sapiens,0.0000017764292705803772
-2,Burke,Homo sapiens,5.921430901934591e-7
-1,Chantilly,Homo sapiens,2.9607154509672954e-7
-2,Florida,Gorilla,5.921430901934591e-7
-1,Temple Hills,Homo sapiens,2.9607154509672954e-7
-1,North America,Homo sapiens,2.9607154509672954e-7
-3,Texas,Felis catus,8.882146352901886e-7
-1,Chesapeake,Homo sapiens,2.9607154509672954e-7
-1,USA,Chlorocebus sabaeus,2.9607154509672954e-7
-45,South Dakota,,0.000013323219529352829
-2,Afton,Homo sapiens,5.921430901934591e-7
-61,Idaho,,0.000018060364250900502
-1,New York,Panthera tigris jacksoni,2.9607154509672954e-7
-103,USA,Mink,0.00003049536914496314
-15,USA,Panthera leo,0.000004441073176450943
-14,Louisiana,,0.000004145001631354214
-1,Paeonian Springs,Homo sapiens,2.9607154509672954e-7
-2,USA,Crocuta crocuta,5.921430901934591e-7
-34963,West Virginia,Homo sapiens,0.010351549431216954
-11,Falls Church,Homo sapiens,0.000003256786996064025
-15258,Alaska,Homo sapiens,0.004517459635085899
-1,Great Falls,Homo sapiens,2.9607154509672954e-7
-3,Arlington,Homo sapiens,8.882146352901886e-7
-30502,Arkansas,Homo sapiens,0.009030774268540443
-20748,Rhode Island,Homo sapiens,0.006142892417666944
-5,USA,Panthera tigris,0.0000014803577254836477
-8179,Delaware,Homo sapiens,0.002421569167346151
-88083,Michigan,Homo sapiens,0.026078869906755228
-6,Springfield,Homo sapiens,0.0000017764292705803772
-25760,Oregon,Homo sapiens,0.007626803001691753
-1,Chilhowie,Homo sapiens,2.9607154509672954e-7
-28786,Oklahoma,Homo sapiens,0.008522715497154457
-1,Fairfax Station,Homo sapiens,2.9607154509672954e-7
-5,Vienna,Homo sapiens,0.0000014803577254836477
-1,Mt Solon,Homo sapiens,2.9607154509672954e-7
-45100,Wisconsin,Homo sapiens,0.013352826683862501
-1,Severn,Homo sapiens,2.9607154509672954e-7
-45510,Maryland,Homo sapiens,0.01347421601735216
-21888,Utah,Homo sapiens,0.006480413979077216
-24993,Iowa,Homo sapiens,0.0073997161266025615
-11587,Washington DC,Homo sapiens,0.003430580993035805
-1,Texas,Canis lupus familiaris,2.9607154509672954e-7
-3,Florida,,8.882146352901886e-7
-2,Virginia Beach,Homo sapiens,5.921430901934591e-7
-49605,Ohio,Homo sapiens,0.014686628994523268
-115921,Washington,Homo sapiens,0.03432090957915798
-2095,North Dakota,Homo sapiens,0.0006202698869776483
-1,Ohio,,2.9607154509672954e-7
-34825,Indiana,Homo sapiens,0.010310691557993606
-14,Annandale,Homo sapiens,0.000004145001631354214
-1,Florida,environment,2.9607154509672954e-7
-164,New York,Odocoileus virginianus,0.00004855573339586364
-1,Beltsville,Homo sapiens,2.9607154509672954e-7
-2,Wisconsin,Tadarida brasiliensis,5.921430901934591e-7
-11110,Kansas,Homo sapiens,0.003289354866024665
-3,Florida,Felis catus,8.882146352901886e-7
-2554,Wyoming,Homo sapiens,0.0007561667261770473
 629330,USA,Homo sapiens,0.1863267054757248
-91359,New York,Homo sapiens,0.027048800288492113
-94,USA,Odocoileus virginianus,0.000027830725239092576
-813,Guam,Homo sapiens,0.00024070616616364112
-5,American Samoa,Homo sapiens,0.0000014803577254836477
-3,Virginia,Panthera tigris,8.882146352901886e-7
-148,USA,,0.00004381858867431597
-2,USA,Canis lupus familiaris,5.921430901934591e-7
-7,Pennsylvania,Odocoileus virginianus,0.000002072500815677107
-34513,South Carolina,Homo sapiens,0.010218317235923426
-42887,Tennessee,Homo sapiens,0.012697620354563439
-81680,Pennsylvania,Homo sapiens,0.024183123803500867
-174794,Massachusetts,Homo sapiens,0.051751529653637746
-25595,Vermont,Homo sapiens,0.007577951196750792
-72995,Illinois,Homo sapiens,0.021611742434335772
-1,Harrisonburg,Homo sapiens,2.9607154509672954e-7
+365045,California,Homo sapiens,0.10807943717983563
 194563,Florida,Homo sapiens,0.05760456802865499
-1,Stafford,Homo sapiens,2.9607154509672954e-7
-19,USA,Mustela putorius furo,0.000005625359356837861
-44032,New Mexico,Homo sapiens,0.013036622273699195
-8377,South Dakota,Homo sapiens,0.0024801913332753033
-1763,Virgin Islands,Homo sapiens,0.0005219741340055341
-1,Virginia,Felis catus,2.9607154509672954e-7
-78943,Virginia,Homo sapiens,0.02337277598457112
-18835,Louisiana,Homo sapiens,0.005576507551896901
-6152,Hawaii,Homo sapiens,0.00182143214543508
-11851,Mississippi,Homo sapiens,0.0035087438809413415
+174794,Massachusetts,Homo sapiens,0.051751529653637746
 141274,Texas,Homo sapiens,0.04182721146199537
+130742,Minnesota,Homo sapiens,0.038708985949036614
+115921,Washington,Homo sapiens,0.03432090957915798
+92606,New Jersey,Homo sapiens,0.027418001505227736
+91359,New York,Homo sapiens,0.027048800288492113
+90776,North Carolina,Homo sapiens,0.026876190577700722
+88083,Michigan,Homo sapiens,0.026078869906755228
+81680,Pennsylvania,Homo sapiens,0.024183123803500867
+79863,Colorado,Homo sapiens,0.023645161806060112
+78943,Virginia,Homo sapiens,0.02337277598457112
+72995,Illinois,Homo sapiens,0.021611742434335772
+71522,Arizona,Homo sapiens,0.02117562904840829
+67576,Georgia,Homo sapiens,0.020007330731456593
+49605,Ohio,Homo sapiens,0.014686628994523268
+45510,Maryland,Homo sapiens,0.01347421601735216
+45100,Wisconsin,Homo sapiens,0.013352826683862501
+44032,New Mexico,Homo sapiens,0.013036622273699195
+42887,Tennessee,Homo sapiens,0.012697620354563439
+34963,West Virginia,Homo sapiens,0.010351549431216954
+34825,Indiana,Homo sapiens,0.010310691557993606
+34513,South Carolina,Homo sapiens,0.010218317235923426
+30502,Arkansas,Homo sapiens,0.009030774268540443
 29034,Connecticut,Homo sapiens,0.008596141240338445
 29016,Nevada,Homo sapiens,0.008590811952526704
-90776,North Carolina,Homo sapiens,0.026876190577700722
-8909,Maine,Homo sapiens,0.0026377013952667634
-130742,Minnesota,Homo sapiens,0.038708985949036614
+28786,Oklahoma,Homo sapiens,0.008522715497154457
+25760,Oregon,Homo sapiens,0.007626803001691753
 25723,Missouri,Homo sapiens,0.0076158483545231736
-92606,New Jersey,Homo sapiens,0.027418001505227736
-2,Minnesota,Odocoileus virginianus,5.921430901934591e-7
-79863,Colorado,Homo sapiens,0.023645161806060112
-7549,Puerto Rico,Homo sapiens,0.0022350440939352114
-1,Grottoes,Homo sapiens,2.9607154509672954e-7
-15919,Idaho,Homo sapiens,0.0047131629263948375
-2,Indiana,Felis catus,5.921430901934591e-7
-2,USA,environment,5.921430901934591e-7
+25595,Vermont,Homo sapiens,0.007577951196750792
+24993,Iowa,Homo sapiens,0.0073997161266025615
 23475,Nebraska,Homo sapiens,0.006950279521145726
-8868,Montana,Homo sapiens,0.0026255624619177975
-15,USA,Mustela lutreola,0.000004441073176450943
+21888,Utah,Homo sapiens,0.006480413979077216
+20748,Rhode Island,Homo sapiens,0.006142892417666944
+18835,Louisiana,Homo sapiens,0.005576507551896901
 18418,Kentucky,Homo sapiens,0.005453045717591564
 17399,Alabama,Homo sapiens,0.005151348813137997
-71522,Arizona,Homo sapiens,0.02117562904840829
-3459,Northern Mariana Islands,Homo sapiens,0.0010241114744895875
+15919,Idaho,Homo sapiens,0.0047131629263948375
+15258,Alaska,Homo sapiens,0.004517459635085899
 13625,New Hampshire,Homo sapiens,0.00403397480194294
-67576,Georgia,Homo sapiens,0.020007330731456593
-365045,California,Homo sapiens,0.10807943717983563
+11851,Mississippi,Homo sapiens,0.0035087438809413415
+11587,Washington DC,Homo sapiens,0.003430580993035805
+11110,Kansas,Homo sapiens,0.003289354866024665
+8909,Maine,Homo sapiens,0.0026377013952667634
+8868,Montana,Homo sapiens,0.0026255624619177975
+8377,South Dakota,Homo sapiens,0.0024801913332753033
+8179,Delaware,Homo sapiens,0.002421569167346151
+7549,Puerto Rico,Homo sapiens,0.0022350440939352114
+6152,Hawaii,Homo sapiens,0.00182143214543508
+3459,Northern Mariana Islands,Homo sapiens,0.0010241114744895875
+2554,Wyoming,Homo sapiens,0.0007561667261770473
+2095,North Dakota,Homo sapiens,0.0006202698869776483
+1763,Virgin Islands,Homo sapiens,0.0005219741340055341
+813,Guam,Homo sapiens,0.00024070616616364112
+164,New York,Odocoileus virginianus,0.00004855573339586364
+148,USA,,0.00004381858867431597
+103,USA,Mink,0.00003049536914496314
+94,USA,Odocoileus virginianus,0.000027830725239092576
+61,Idaho,,0.000018060364250900502
+45,South Dakota,,0.000013323219529352829
+19,USA,Mustela putorius furo,0.000005625359356837861
+15,USA,Panthera leo,0.000004441073176450943
+15,USA,Mustela lutreola,0.000004441073176450943
+14,Louisiana,,0.000004145001631354214
+14,Annandale,Homo sapiens,0.000004145001631354214
+11,Falls Church,Homo sapiens,0.000003256786996064025
+9,Fairfax,Homo sapiens,0.000002664643905870566
+7,Waynesboro,Homo sapiens,0.000002072500815677107
+7,Pennsylvania,Odocoileus virginianus,0.000002072500815677107
+6,Alexandria,Homo sapiens,0.0000017764292705803772
+6,Springfield,Homo sapiens,0.0000017764292705803772
+5,USA,Panthera tigris,0.0000014803577254836477
+5,Vienna,Homo sapiens,0.0000014803577254836477
+5,American Samoa,Homo sapiens,0.0000014803577254836477
+3,Mclean,Homo sapiens,8.882146352901886e-7
+3,Texas,Felis catus,8.882146352901886e-7
+3,Arlington,Homo sapiens,8.882146352901886e-7
+3,Florida,,8.882146352901886e-7
+3,Florida,Felis catus,8.882146352901886e-7
+3,Virginia,Panthera tigris,8.882146352901886e-7
+2,Crozet,Homo sapiens,5.921430901934591e-7
+2,Burke,Homo sapiens,5.921430901934591e-7
+2,Florida,Gorilla,5.921430901934591e-7
+2,Afton,Homo sapiens,5.921430901934591e-7
+2,USA,Crocuta crocuta,5.921430901934591e-7
+2,Virginia Beach,Homo sapiens,5.921430901934591e-7
+2,Wisconsin,Tadarida brasiliensis,5.921430901934591e-7
+2,USA,Canis lupus familiaris,5.921430901934591e-7
+2,Minnesota,Odocoileus virginianus,5.921430901934591e-7
+2,Indiana,Felis catus,5.921430901934591e-7
+2,USA,environment,5.921430901934591e-7
+1,Woodbridge,Homo sapiens,2.9607154509672954e-7
+1,Fishersville,Homo sapiens,2.9607154509672954e-7
+1,Chantilly,Homo sapiens,2.9607154509672954e-7
+1,Temple Hills,Homo sapiens,2.9607154509672954e-7
+1,North America,Homo sapiens,2.9607154509672954e-7
+1,Chesapeake,Homo sapiens,2.9607154509672954e-7
+1,USA,Chlorocebus sabaeus,2.9607154509672954e-7
+1,New York,Panthera tigris jacksoni,2.9607154509672954e-7
+1,Paeonian Springs,Homo sapiens,2.9607154509672954e-7
+1,Great Falls,Homo sapiens,2.9607154509672954e-7
+1,Chilhowie,Homo sapiens,2.9607154509672954e-7
+1,Fairfax Station,Homo sapiens,2.9607154509672954e-7
+1,Mt Solon,Homo sapiens,2.9607154509672954e-7
+1,Severn,Homo sapiens,2.9607154509672954e-7
+1,Texas,Canis lupus familiaris,2.9607154509672954e-7
+1,Ohio,,2.9607154509672954e-7
+1,Florida,environment,2.9607154509672954e-7
+1,Beltsville,Homo sapiens,2.9607154509672954e-7
+1,Harrisonburg,Homo sapiens,2.9607154509672954e-7
+1,Stafford,Homo sapiens,2.9607154509672954e-7
+1,Virginia,Felis catus,2.9607154509672954e-7
+1,Grottoes,Homo sapiens,2.9607154509672954e-7

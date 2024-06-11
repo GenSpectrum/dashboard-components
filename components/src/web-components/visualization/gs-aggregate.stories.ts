@@ -17,6 +17,8 @@ const codeExample = `
     headline="Aggregate"
     width='100%'
     height='700px'
+    initialSortField="count"
+    initialSortDirection="descending"
 ></gs-aggregate>`;
 
 const meta: Meta<Required<AggregateProps>> = {
@@ -31,6 +33,11 @@ const meta: Meta<Required<AggregateProps>> = {
         width: { control: 'text' },
         height: { control: 'text' },
         headline: { control: 'text' },
+        initialSortField: { control: 'text' },
+        initialSortDirection: {
+            options: ['ascending', 'descending'],
+            control: { type: 'radio' },
+        },
     },
     parameters: withComponentDocs({
         fetchMock: {
@@ -72,6 +79,8 @@ export const Table: StoryObj<Required<AggregateProps>> = {
                 .width=${args.width}
                 .height=${args.height}
                 .headline=${args.headline}
+                .initialSortField=${args.initialSortField}
+                .initialSortDirection=${args.initialSortDirection}
             ></gs-aggregate>
         </gs-app>
     `,
@@ -84,5 +93,7 @@ export const Table: StoryObj<Required<AggregateProps>> = {
         width: '100%',
         height: '700px',
         headline: 'Aggregate',
+        initialSortField: 'count',
+        initialSortDirection: 'descending',
     },
 };

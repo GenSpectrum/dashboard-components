@@ -17,6 +17,7 @@ import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
 
 export type View = 'table';
+export type InitialSort = { field: string; direction: 'ascending' | 'descending' };
 
 export type AggregateProps = {
     width: string;
@@ -28,6 +29,8 @@ export interface AggregateInnerProps {
     filter: LapisFilter;
     fields: string[];
     views: View[];
+    initialSortField: string;
+    initialSortDirection: 'ascending' | 'descending';
 }
 
 export const Aggregate: FunctionComponent<AggregateProps> = ({
@@ -37,6 +40,8 @@ export const Aggregate: FunctionComponent<AggregateProps> = ({
     headline = 'Mutations',
     filter,
     fields,
+    initialSortField,
+    initialSortDirection,
 }) => {
     const size = { height, width };
 
@@ -44,18 +49,30 @@ export const Aggregate: FunctionComponent<AggregateProps> = ({
         <ErrorBoundary size={size} headline={headline}>
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
-                    <AggregateInner fields={fields} filter={filter} views={views} />
+                    <AggregateInner
+                        fields={fields}
+                        filter={filter}
+                        views={views}
+                        initialSortField={initialSortField}
+                        initialSortDirection={initialSortDirection}
+                    />
                 </Headline>
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-export const AggregateInner: FunctionComponent<AggregateInnerProps> = ({ fields, views, filter }) => {
+export const AggregateInner: FunctionComponent<AggregateInnerProps> = ({
+    fields,
+    views,
+    filter,
+    initialSortField,
+    initialSortDirection,
+}) => {
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
-        return queryAggregateData(filter, fields, lapis);
+        return queryAggregateData(filter, fields, lapis, { field: initialSortField, direction: initialSortDirection });
     }, [filter, fields, lapis]);
 
     if (isLoading) {

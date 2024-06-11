@@ -67,6 +67,19 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
     @property({ type: String })
     headline: string = 'Aggregate';
 
+    /**
+     * The field by which the table is initially sorted.
+     * Must be one of the fields specified in the fields property, 'count', or 'proportion'.
+     */
+    @property({ type: String })
+    initialSortField: string = 'count';
+
+    /**
+     * The initial sort direction of the table.
+     */
+    @property({ type: String })
+    initialSortDirection: 'ascending' | 'descending' = 'descending';
+
     override render() {
         return (
             <Aggregate
@@ -76,6 +89,8 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
                 width={this.width}
                 height={this.height}
                 headline={this.headline}
+                initialSortField={this.initialSortField}
+                initialSortDirection={this.initialSortDirection}
             />
         );
     }

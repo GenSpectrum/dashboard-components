@@ -13,6 +13,8 @@ const meta: Meta<AggregateProps> = {
         width: { control: 'text' },
         height: { control: 'text' },
         headline: { control: 'text' },
+        initialSortField: { control: 'text' },
+        initialSortDirection: { control: 'radio', options: ['ascending', 'descending'] },
     },
     parameters: {
         fetchMock: {
@@ -53,5 +55,7 @@ export const Default: StoryObj<AggregateProps> = {
         width: '100%',
         height: '700px',
         headline: 'Aggregate',
+        initialSortField: 'count',
+        initialSortDirection: 'descending',
     },
 };
