@@ -11,7 +11,6 @@ import {
     type PresetOptionValues,
 } from './selectableOptions';
 import { ErrorBoundary } from '../components/error-boundary';
-import { ResizeContainer } from '../components/resize-container';
 import { Select } from '../components/select';
 import type { ScaleType } from '../shared/charts/getYAxisScale';
 
@@ -41,7 +40,7 @@ export const DateRangeSelector = <CustomLabel extends string>({
 
     return (
         <ErrorBoundary size={size}>
-            <ResizeContainer size={size}>
+            <div style={{ width }}>
                 <DateRangeSelectorInner
                     customSelectOptions={customSelectOptions}
                     earliestDate={earliestDate}
@@ -50,7 +49,7 @@ export const DateRangeSelector = <CustomLabel extends string>({
                     initialDateFrom={initialDateFrom}
                     initialDateTo={initialDateTo}
                 />
-            </ResizeContainer>
+            </div>
         </ErrorBoundary>
     );
 };
