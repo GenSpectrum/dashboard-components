@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.3](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.4.2...dashboard-components-v0.4.3) (2024-06-12)
+
+
+### Bug Fixes
+
+* **components:** remove date range selector fixed height for responsive design ([3db6a2f](https://github.com/GenSpectrum/dashboards/commit/3db6a2fc11084946d6e405ee2e437786ec2b6ee5))
+
 ## [0.4.2](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.4.1...dashboard-components-v0.4.2) (2024-05-29)
 
 
