@@ -77,6 +77,13 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
     @property({ type: String })
     headline: string = 'Mutations';
 
+    /**
+     * The maximum number of rows to display in the table view.
+     * Set to `false` to disable pagination. Set to `true` to enable pagination with a default limit (10).
+     */
+    @property({ type: Object })
+    pageSize: boolean | number = false;
+
     override render() {
         return (
             <Mutations
@@ -86,6 +93,7 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
                 width={this.width}
                 height={this.height}
                 headline={this.headline}
+                pageSize={this.pageSize}
             />
         );
     }

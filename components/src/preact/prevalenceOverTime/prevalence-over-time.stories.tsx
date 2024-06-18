@@ -32,6 +32,7 @@ export default {
         width: { control: 'text' },
         height: { control: 'text' },
         headline: { control: 'text' },
+        pageSize: { control: 'object' },
     },
 };
 
@@ -49,6 +50,7 @@ const Template = {
                 height={args.height}
                 headline={args.headline}
                 lapisDateField={args.lapisDateField}
+                pageSize={args.pageSize}
             />
         </LapisUrlContext.Provider>
     ),
@@ -70,6 +72,7 @@ export const TwoVariants = {
         height: '700px',
         headline: 'Prevalence over time',
         lapisDateField: 'date',
+        pageSize: 10,
     },
     parameters: {
         fetchMock: {
@@ -142,6 +145,7 @@ export const OneVariant = {
         height: '700px',
         headline: 'Prevalence over time',
         lapisDateField: 'date',
+        pageSize: 10,
     },
     parameters: {
         fetchMock: {

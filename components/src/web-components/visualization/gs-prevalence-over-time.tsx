@@ -53,16 +53,16 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
      * which will be used as the label for the variant in the views,
      * or an array of such objects.
      */
-    @property({type: Object})
+    @property({ type: Object })
     numerator:
         {
             lapisFilter: Record<string, string | number | null | boolean>;
             displayName: string;
         }
         | {
-            lapisFilter: Record<string, string | number | null | boolean>;
-            displayName: string;
-        }[] = { displayName: '', lapisFilter: {} };
+        lapisFilter: Record<string, string | number | null | boolean>;
+        displayName: string;
+    }[] = { displayName: '', lapisFilter: {} };
 
     /**
      * Required.
@@ -136,6 +136,13 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     @property({ type: String })
     lapisDateField: string = 'date';
 
+    /**
+     * The maximum number of rows to display in the table view.
+     * Set to `false` to disable pagination. Set to `true` to enable pagination with a default limit (10).
+     */
+    @property({ type: Object })
+    pageSize: boolean | number = false;
+
     override render() {
         return (
             <PrevalenceOverTime
@@ -149,6 +156,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
                 height={this.height}
                 headline={this.headline}
                 lapisDateField={this.lapisDateField}
+                pageSize={this.pageSize}
             />
         );
     }

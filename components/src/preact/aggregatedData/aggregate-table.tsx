@@ -7,9 +7,10 @@ import { formatProportion } from '../shared/table/formatProportion';
 type AggregateTableProps = {
     fields: string[];
     data: AggregateData;
+    pageSize: boolean | number;
 };
 
-export const AggregateTable: FunctionComponent<AggregateTableProps> = ({ data, fields }) => {
+export const AggregateTable: FunctionComponent<AggregateTableProps> = ({ data, fields, pageSize }) => {
     const headers = [
         ...fields.map((field) => {
             return {
@@ -28,5 +29,5 @@ export const AggregateTable: FunctionComponent<AggregateTableProps> = ({ data, f
         },
     ];
 
-    return <Table data={data} columns={headers} pagination={true} />;
+    return <Table data={data} columns={headers} pageSize={pageSize} />;
 };

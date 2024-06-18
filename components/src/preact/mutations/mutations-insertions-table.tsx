@@ -8,9 +8,10 @@ import { sortInsertions } from '../shared/sort/sortInsertions';
 
 export interface InsertionsTableProps {
     data: InsertionEntry[];
+    pageSize: boolean | number;
 }
 
-export const InsertionsTable: FunctionComponent<InsertionsTableProps> = ({ data }) => {
+export const InsertionsTable: FunctionComponent<InsertionsTableProps> = ({ data, pageSize }) => {
     const getHeaders = () => {
         return [
             {
@@ -31,5 +32,5 @@ export const InsertionsTable: FunctionComponent<InsertionsTableProps> = ({ data 
 
     const tableData = getInsertionsTableData(data).map((row) => Object.values(row));
 
-    return <Table data={tableData} columns={getHeaders()} pagination={true} />;
+    return <Table data={tableData} columns={getHeaders()} pageSize={pageSize} />;
 };

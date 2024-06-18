@@ -12,9 +12,14 @@ import { formatProportion } from '../shared/table/formatProportion';
 export interface MutationsTableProps {
     data: Dataset<MutationData>;
     proportionInterval: ProportionInterval;
+    pageSize: boolean | number;
 }
 
-export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = ({ data, proportionInterval }) => {
+export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = ({
+    data,
+    proportionInterval,
+    pageSize,
+}) => {
     const headers = [
         {
             name: 'Mutation',
@@ -37,5 +42,5 @@ export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = (
 
     const tableData = getMutationComparisonTableData(data, proportionInterval).map((row) => Object.values(row));
 
-    return <Table data={tableData} columns={headers} pagination={true} />;
+    return <Table data={tableData} columns={headers} pageSize={pageSize} />;
 };

@@ -82,6 +82,13 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
     @property({ type: String })
     headline: string = 'Mutation comparison';
 
+    /**
+     * The maximum number of rows to display in the table view.
+     * Set to `false` to disable pagination. Set to `true` to enable pagination with a default limit (10).
+     */
+    @property({ type: Object })
+    pageSize: boolean | number = false;
+
     override render() {
         return (
             <MutationComparison
@@ -91,6 +98,7 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
                 width={this.width}
                 height={this.height}
                 headline={this.headline}
+                pageSize={this.pageSize}
             />
         );
     }

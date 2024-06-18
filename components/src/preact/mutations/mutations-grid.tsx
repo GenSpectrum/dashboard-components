@@ -13,6 +13,7 @@ interface MutationsGridProps {
     data: SubstitutionOrDeletionEntry[];
     sequenceType: SequenceType;
     proportionInterval: ProportionInterval;
+    pageSize: boolean | number;
 }
 
 export type BaseCell = {
@@ -20,7 +21,12 @@ export type BaseCell = {
     isReference: boolean;
 };
 
-export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, sequenceType, proportionInterval }) => {
+export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({
+    data,
+    sequenceType,
+    proportionInterval,
+    pageSize,
+}) => {
     const getHeaders = () => {
         return [
             {
@@ -80,5 +86,5 @@ export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({ data, seq
 
     const tableData = getMutationsGridData(data, sequenceType, proportionInterval).map((row) => Object.values(row));
 
-    return <Table data={tableData} columns={getHeaders()} pagination={true} />;
+    return <Table data={tableData} columns={getHeaders()} pageSize={pageSize} />;
 };

@@ -19,6 +19,7 @@ const codeExample = String.raw`
     headline="Mutations"
     width='100%'
     height='700px'
+    pageSize="10"
 ></gs-mutations>`;
 
 const meta: Meta<Required<MutationsProps>> = {
@@ -37,6 +38,7 @@ const meta: Meta<Required<MutationsProps>> = {
         width: { control: 'text' },
         height: { control: 'text' },
         headline: { control: 'text' },
+        pageSize: { control: 'object' },
     },
     args: {
         variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
@@ -45,6 +47,7 @@ const meta: Meta<Required<MutationsProps>> = {
         width: '100%',
         height: '700px',
         headline: 'Mutations',
+        pageSize: 10,
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -68,6 +71,7 @@ const Template: StoryObj<Required<MutationsProps>> = {
                 .width=${args.width}
                 .height=${args.height}
                 .headline=${args.headline}
+                .pageSize=${args.pageSize}
             ></gs-mutations>
         </gs-app>
     `,

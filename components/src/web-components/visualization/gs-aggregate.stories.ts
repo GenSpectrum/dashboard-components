@@ -19,6 +19,7 @@ const codeExample = `
     height='700px'
     initialSortField="count"
     initialSortDirection="descending"
+    pageSize="10"
 ></gs-aggregate>`;
 
 const meta: Meta<Required<AggregateProps>> = {
@@ -33,6 +34,7 @@ const meta: Meta<Required<AggregateProps>> = {
         width: { control: 'text' },
         height: { control: 'text' },
         headline: { control: 'text' },
+        pageSize: { control: 'object' },
         initialSortField: { control: 'text' },
         initialSortDirection: {
             options: ['ascending', 'descending'],
@@ -81,6 +83,7 @@ export const Table: StoryObj<Required<AggregateProps>> = {
                 .headline=${args.headline}
                 .initialSortField=${args.initialSortField}
                 .initialSortDirection=${args.initialSortDirection}
+                .pageSize=${args.pageSize}
             ></gs-aggregate>
         </gs-app>
     `,
@@ -95,5 +98,6 @@ export const Table: StoryObj<Required<AggregateProps>> = {
         headline: 'Aggregate',
         initialSortField: 'count',
         initialSortDirection: 'descending',
+        pageSize: 10,
     },
 };
