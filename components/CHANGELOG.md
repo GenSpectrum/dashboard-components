@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.4](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.4.3...dashboard-components-v0.4.4) (2024-06-18)
+
+
+### Features
+
+* **components:** initial sorting of aggregate table ([8f27235](https://github.com/GenSpectrum/dashboards/commit/8f272358853c4a7bc351230672430e5e4642cf84))
+
 ## [0.4.3](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.4.2...dashboard-components-v0.4.3) (2024-06-12)
 
 
