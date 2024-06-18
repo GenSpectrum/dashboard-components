@@ -7,9 +7,10 @@ import { formatProportion } from '../shared/table/formatProportion';
 interface PrevalenceOverTimeTableProps {
     data: PrevalenceOverTimeData;
     granularity: TemporalGranularity;
+    pageSize: boolean | number;
 }
 
-const PrevalenceOverTimeTable = ({ data, granularity }: PrevalenceOverTimeTableProps) => {
+const PrevalenceOverTimeTable = ({ data, granularity, pageSize }: PrevalenceOverTimeTableProps) => {
     const getSplitColumns = (data: PrevalenceOverTimeData) => {
         return data.map((dataset) => ({
             name: dataset.displayName,
@@ -40,7 +41,7 @@ const PrevalenceOverTimeTable = ({ data, granularity }: PrevalenceOverTimeTableP
         return Object.values(dataByHeader).map((row) => Object.values(row));
     };
 
-    return <Table data={getData(data, granularity)} columns={getColumns(data)} pagination={false} />;
+    return <Table data={getData(data, granularity)} columns={getColumns(data)} pageSize={pageSize} />;
 };
 
 export default PrevalenceOverTimeTable;

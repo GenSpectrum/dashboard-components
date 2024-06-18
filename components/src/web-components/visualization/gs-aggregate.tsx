@@ -80,6 +80,13 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
     @property({ type: String })
     initialSortDirection: 'ascending' | 'descending' = 'descending';
 
+    /**
+     * The maximum number of rows to display in the table view.
+     * Set to `false` to disable pagination. Set to `true` to enable pagination with a default limit (10).
+     */
+    @property({ type: Object })
+    pageSize: boolean | number = false;
+
     override render() {
         return (
             <Aggregate
@@ -91,6 +98,7 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
                 headline={this.headline}
                 initialSortField={this.initialSortField}
                 initialSortDirection={this.initialSortDirection}
+                pageSize={this.pageSize}
             />
         );
     }

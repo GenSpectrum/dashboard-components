@@ -25,6 +25,7 @@ const meta: Meta<MutationsProps> = {
         width: { control: 'text' },
         height: { control: 'text' },
         headline: { control: 'text' },
+        pageSize: { control: 'object' },
     },
 };
 
@@ -41,6 +42,7 @@ const Template = {
                     width={args.width}
                     height={args.height}
                     headline={args.headline}
+                    pageSize={args.pageSize}
                 />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
@@ -56,6 +58,7 @@ export const Default: StoryObj<MutationsProps> = {
         width: '100%',
         height: '700px',
         headline: 'Mutations',
+        pageSize: 10,
     },
     parameters: {
         fetchMock: {

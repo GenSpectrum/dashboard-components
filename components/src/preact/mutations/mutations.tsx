@@ -35,6 +35,7 @@ export interface MutationsInnerProps {
     variant: LapisFilter;
     sequenceType: SequenceType;
     views: View[];
+    pageSize: boolean | number;
 }
 
 export interface MutationsProps extends MutationsInnerProps {
@@ -50,6 +51,7 @@ export const Mutations: FunctionComponent<MutationsProps> = ({
     width,
     height,
     headline = 'Mutations',
+    pageSize,
 }) => {
     const size = { height, width };
 
@@ -57,14 +59,14 @@ export const Mutations: FunctionComponent<MutationsProps> = ({
         <ErrorBoundary size={size} headline={headline}>
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
-                    <MutationsInner variant={variant} sequenceType={sequenceType} views={views} />
+                    <MutationsInner variant={variant} sequenceType={sequenceType} views={views} pageSize={pageSize} />
                 </Headline>
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-export const MutationsInner: FunctionComponent<MutationsInnerProps> = ({ variant, sequenceType, views }) => {
+export const MutationsInner: FunctionComponent<MutationsInnerProps> = ({ variant, sequenceType, views, pageSize }) => {
     const lapis = useContext(LapisUrlContext);
     const { data, error, isLoading } = useQuery(async () => {
         return queryMutationsData(variant, sequenceType, lapis);
@@ -82,16 +84,17 @@ export const MutationsInner: FunctionComponent<MutationsInnerProps> = ({ variant
         return <NoDataDisplay />;
     }
 
-    return <MutationsTabs mutationsData={data} sequenceType={sequenceType} views={views} />;
+    return <MutationsTabs mutationsData={data} sequenceType={sequenceType} views={views} pageSize={pageSize} />;
 };
 
 type MutationTabsProps = {
     mutationsData: { insertions: InsertionEntry[]; substitutionsOrDeletions: SubstitutionOrDeletionEntry[] };
     sequenceType: SequenceType;
     views: View[];
+    pageSize: boolean | number;
 };
 
-const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, sequenceType, views }) => {
+const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, sequenceType, views, pageSize }) => {
     const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 1 });
 
     const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(sequenceType);
@@ -107,7 +110,13 @@ const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, se
             case 'table':
                 return {
                     title: 'Table',
-                    content: <MutationsTable data={filteredData.tableData} proportionInterval={proportionInterval} />,
+                    content: (
+                        <MutationsTable
+                            data={filteredData.tableData}
+                            proportionInterval={proportionInterval}
+                            pageSize={pageSize}
+                        />
+                    ),
                 };
             case 'grid':
                 return {
@@ -117,13 +126,14 @@ const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, se
                             data={filteredData.gridData}
                             sequenceType={sequenceType}
                             proportionInterval={proportionInterval}
+                            pageSize={pageSize}
                         />
                     ),
                 };
             case 'insertions':
                 return {
                     title: 'Insertions',
-                    content: <InsertionsTable data={filteredData.insertions} />,
+                    content: <InsertionsTable data={filteredData.insertions} pageSize={pageSize} />,
                 };
         }
     };

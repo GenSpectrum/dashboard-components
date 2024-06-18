@@ -15,6 +15,7 @@ const meta: Meta<AggregateProps> = {
         headline: { control: 'text' },
         initialSortField: { control: 'text' },
         initialSortDirection: { control: 'radio', options: ['ascending', 'descending'] },
+        pageSize: { control: 'object' },
     },
     parameters: {
         fetchMock: {
@@ -57,5 +58,6 @@ export const Default: StoryObj<AggregateProps> = {
         headline: 'Aggregate',
         initialSortField: 'count',
         initialSortDirection: 'descending',
+        pageSize: 10,
     },
 };

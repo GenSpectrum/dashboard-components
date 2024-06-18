@@ -34,6 +34,7 @@ export interface MutationComparisonInnerProps {
     variants: NamedLapisFilter[];
     sequenceType: SequenceType;
     views: View[];
+    pageSize: boolean | number;
 }
 
 export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
@@ -43,6 +44,7 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
     width,
     height,
     headline = 'Mutation comparison',
+    pageSize,
 }) => {
     const size = { height, width };
 
@@ -50,7 +52,12 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
         <ErrorBoundary size={size} headline={headline}>
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
-                    <MutationComparisonInner variants={variants} sequenceType={sequenceType} views={views} />
+                    <MutationComparisonInner
+                        variants={variants}
+                        sequenceType={sequenceType}
+                        views={views}
+                        pageSize={pageSize}
+                    />
                 </Headline>
             </ResizeContainer>
         </ErrorBoundary>
@@ -61,6 +68,7 @@ export const MutationComparisonInner: FunctionComponent<MutationComparisonInnerP
     variants,
     sequenceType,
     views,
+    pageSize,
 }) => {
     const lapis = useContext(LapisUrlContext);
 
@@ -80,16 +88,29 @@ export const MutationComparisonInner: FunctionComponent<MutationComparisonInnerP
         return <NoDataDisplay />;
     }
 
-    return <MutationComparisonTabs data={data.mutationData} sequenceType={sequenceType} views={views} />;
+    return (
+        <MutationComparisonTabs
+            data={data.mutationData}
+            sequenceType={sequenceType}
+            views={views}
+            pageSize={pageSize}
+        />
+    );
 };
 
 type MutationComparisonTabsProps = {
     data: MutationData[];
     views: View[];
     sequenceType: SequenceType;
+    pageSize: boolean | number;
 };
 
-const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = ({ data, views, sequenceType }) => {
+const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = ({
+    data,
+    views,
+    sequenceType,
+    pageSize,
+}) => {
     const [proportionInterval, setProportionInterval] = useState({ min: 0.5, max: 1 });
     const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
         { label: 'Substitutions', checked: true, type: 'substitution' },
@@ -111,6 +132,7 @@ const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = (
                         <MutationComparisonTable
                             data={{ content: filteredData }}
                             proportionInterval={proportionInterval}
+                            pageSize={pageSize}
                         />
                     ),
                 };

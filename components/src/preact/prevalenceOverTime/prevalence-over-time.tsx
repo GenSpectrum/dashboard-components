@@ -40,6 +40,7 @@ export interface PrevalenceOverTimeInnerProps {
     views: View[];
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     lapisDateField: string;
+    pageSize: boolean | number;
 }
 
 export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
@@ -53,6 +54,7 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
     height,
     headline = 'Prevalence over time',
     lapisDateField,
+    pageSize,
 }) => {
     const size = { height, width };
 
@@ -68,6 +70,7 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
                         views={views}
                         confidenceIntervalMethods={confidenceIntervalMethods}
                         lapisDateField={lapisDateField}
+                        pageSize={pageSize}
                     />
                 </Headline>
             </ResizeContainer>
@@ -83,6 +86,7 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerP
     views,
     confidenceIntervalMethods,
     lapisDateField,
+    pageSize,
 }) => {
     const lapis = useContext(LapisUrlContext);
 
@@ -109,6 +113,7 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerP
             data={data}
             granularity={granularity}
             confidenceIntervalMethods={confidenceIntervalMethods}
+            pageSize={pageSize}
         />
     );
 };
@@ -118,6 +123,7 @@ type PrevalenceOverTimeTabsProps = {
     data: PrevalenceOverTimeData;
     granularity: TemporalGranularity;
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
+    pageSize: boolean | number;
 };
 
 const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = ({
@@ -125,6 +131,7 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
     data,
     granularity,
     confidenceIntervalMethods,
+    pageSize,
 }) => {
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
     const [confidenceIntervalMethod, setConfidenceIntervalMethod] = useState<ConfidenceIntervalMethod>(
@@ -163,7 +170,7 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
             case 'table':
                 return {
                     title: 'Table',
-                    content: <PrevalenceOverTimeTable data={data} granularity={granularity} />,
+                    content: <PrevalenceOverTimeTable data={data} granularity={granularity} pageSize={pageSize} />,
                 };
         }
     };

@@ -11,9 +11,10 @@ import { formatProportion } from '../shared/table/formatProportion';
 export interface MutationsTableProps {
     data: SubstitutionOrDeletionEntry[];
     proportionInterval: ProportionInterval;
+    pageSize: boolean | number;
 }
 
-const MutationsTable: FunctionComponent<MutationsTableProps> = ({ data, proportionInterval }) => {
+const MutationsTable: FunctionComponent<MutationsTableProps> = ({ data, proportionInterval, pageSize }) => {
     const getHeaders = () => {
         return [
             {
@@ -43,7 +44,7 @@ const MutationsTable: FunctionComponent<MutationsTableProps> = ({ data, proporti
 
     const tableData = getMutationsTableData(data, proportionInterval).map((row) => Object.values(row));
 
-    return <Table data={tableData} columns={getHeaders()} pagination={true} />;
+    return <Table data={tableData} columns={getHeaders()} pageSize={pageSize} />;
 };
 
 export default MutationsTable;

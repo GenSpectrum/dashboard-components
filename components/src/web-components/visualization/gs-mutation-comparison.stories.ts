@@ -19,6 +19,7 @@ const codeExample = String.raw`
     headline="Mutation comparison"
     width='100%'
     height='700px'
+    pageSize="10"
 ></gs-mutation-comparison>`;
 
 const meta: Meta<Required<MutationComparisonProps>> = {
@@ -37,6 +38,7 @@ const meta: Meta<Required<MutationComparisonProps>> = {
         width: { control: 'text' },
         height: { control: 'text' },
         headline: { control: 'text' },
+        pageSize: { control: 'object' },
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -60,6 +62,7 @@ const Template: StoryObj<Required<MutationComparisonProps>> = {
                 .width=${args.width}
                 .height=${args.height}
                 .headline=${args.headline}
+                .pageSize=${args.pageSize}
             ></gs-mutation-comparison>
         </gs-app>
     `,
@@ -91,6 +94,7 @@ export const Default: StoryObj<Required<MutationComparisonProps>> = {
         width: '100%',
         height: '700px',
         headline: 'Mutation comparison',
+        pageSize: 10,
     },
     parameters: {
         fetchMock: {

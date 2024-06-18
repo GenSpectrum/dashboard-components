@@ -30,6 +30,7 @@ const meta: Meta<MutationComparisonProps> = {
         width: { control: 'text' },
         height: { control: 'text' },
         headline: { control: 'text' },
+        pageSize: { control: 'object' },
     },
     parameters: {
         fetchMock: {
@@ -85,6 +86,7 @@ const Template: StoryObj<MutationComparisonProps> = {
                     width={args.width}
                     height={args.height}
                     headline={args.headline}
+                    pageSize={args.pageSize}
                 />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
@@ -114,6 +116,7 @@ export const TwoVariants: StoryObj<MutationComparisonProps> = {
         width: '100%',
         height: '700px',
         headline: 'Mutation comparison',
+        pageSize: 10,
     },
 };
 

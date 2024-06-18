@@ -31,6 +31,7 @@ export interface AggregateInnerProps {
     views: View[];
     initialSortField: string;
     initialSortDirection: 'ascending' | 'descending';
+    pageSize: boolean | number;
 }
 
 export const Aggregate: FunctionComponent<AggregateProps> = ({
@@ -40,6 +41,7 @@ export const Aggregate: FunctionComponent<AggregateProps> = ({
     headline = 'Mutations',
     filter,
     fields,
+    pageSize,
     initialSortField,
     initialSortDirection,
 }) => {
@@ -55,6 +57,7 @@ export const Aggregate: FunctionComponent<AggregateProps> = ({
                         views={views}
                         initialSortField={initialSortField}
                         initialSortDirection={initialSortDirection}
+                        pageSize={pageSize}
                     />
                 </Headline>
             </ResizeContainer>
@@ -68,6 +71,7 @@ export const AggregateInner: FunctionComponent<AggregateInnerProps> = ({
     filter,
     initialSortField,
     initialSortDirection,
+    pageSize,
 }) => {
     const lapis = useContext(LapisUrlContext);
 
@@ -87,22 +91,23 @@ export const AggregateInner: FunctionComponent<AggregateInnerProps> = ({
         return <NoDataDisplay />;
     }
 
-    return <AggregatedDataTabs data={data} views={views} fields={fields} />;
+    return <AggregatedDataTabs data={data} views={views} fields={fields} pageSize={pageSize} />;
 };
 
 type AggregatedDataTabsProps = {
     data: AggregateData;
     fields: string[];
     views: View[];
+    pageSize: boolean | number;
 };
 
-const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, views, fields }) => {
+const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, views, fields, pageSize }) => {
     const getTab = (view: View) => {
         switch (view) {
             case 'table':
                 return {
                     title: 'Table',
-                    content: <AggregateTable data={data} fields={fields} />,
+                    content: <AggregateTable data={data} fields={fields} pageSize={pageSize} />,
                 };
         }
     };

@@ -26,6 +26,7 @@ const codeExample = String.raw`
     width="100%"
     height="700px"
     lapisDateField="date"
+    pageSize="10"
 ></gs-prevalence-over-time>`;
 
 const meta: Meta<Required<PrevalenceOverTimeProps>> = {
@@ -50,6 +51,7 @@ const meta: Meta<Required<PrevalenceOverTimeProps>> = {
         width: { control: 'text' },
         height: { control: 'text' },
         headline: { control: 'text' },
+        pageSize: { control: 'object' },
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -77,6 +79,7 @@ const Template: StoryObj<Required<PrevalenceOverTimeProps>> = {
                 .height=${args.height}
                 .headline=${args.headline}
                 .lapisDateField=${args.lapisDateField}
+                .pageSize=${args.pageSize}
             ></gs-prevalence-over-time>
         </gs-app>
     `,
@@ -98,6 +101,7 @@ export const TwoVariants: StoryObj<Required<PrevalenceOverTimeProps>> = {
         height: '700px',
         headline: 'Prevalence over time',
         lapisDateField: 'date',
+        pageSize: 10,
     },
     parameters: {
         fetchMock: {
@@ -170,6 +174,7 @@ export const OneVariant: StoryObj<Required<PrevalenceOverTimeProps>> = {
         height: '700px',
         headline: 'Prevalence over time',
         lapisDateField: 'date',
+        pageSize: 10,
     },
     parameters: {
         fetchMock: {

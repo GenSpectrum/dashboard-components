@@ -1,6 +1,5 @@
 import { Grid } from 'gridjs';
 import { type OneDArray, type TColumn, type TData } from 'gridjs/dist/src/types';
-import { type PaginationConfig } from 'gridjs/dist/src/view/plugin/pagination';
 import { type ComponentChild } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 
@@ -26,10 +25,12 @@ export const tableStyle = {
 interface TableProps {
     data: TData;
     columns: OneDArray<TColumn | string | ComponentChild>;
-    pagination: PaginationConfig | boolean;
+    pageSize: number | boolean;
 }
 
-export const Table = ({ data, columns, pagination }: TableProps) => {
+export const Table = ({ data, columns, pageSize }: TableProps) => {
+    const pagination = typeof pageSize === 'number' ? { limit: pageSize } : pageSize;
+
     const wrapper = useRef(null);
 
     useEffect(() => {
