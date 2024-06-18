@@ -35,6 +35,7 @@ const meta: Meta<LocationFilterProps> = {
         width: '100%',
         fields: ['region', 'country', 'division', 'location'],
         initialValue: 'Europe',
+        placeholderText: 'Enter a location',
     },
     argTypes: {
         fields: {
@@ -52,6 +53,11 @@ const meta: Meta<LocationFilterProps> = {
                 type: 'text',
             },
         },
+        placeholderText: {
+            control: {
+                type: 'text',
+            },
+        },
     },
     decorators: [withActions],
 };
@@ -61,7 +67,12 @@ export default meta;
 export const Primary: StoryObj<LocationFilterProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
-            <LocationFilter fields={args.fields} initialValue={args.initialValue} width={args.width} />
+            <LocationFilter
+                fields={args.fields}
+                initialValue={args.initialValue}
+                width={args.width}
+                placeholderText={args.placeholderText}
+            />
         </LapisUrlContext.Provider>
     ),
 };

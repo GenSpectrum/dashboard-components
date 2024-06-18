@@ -12,6 +12,7 @@ import { useQuery } from '../useQuery';
 
 export interface LocationFilterInnerProps {
     initialValue?: string;
+    placeholderText?: string;
     fields: string[];
 }
 
@@ -19,19 +20,24 @@ export interface LocationFilterProps extends LocationFilterInnerProps {
     width: string;
 }
 
-export const LocationFilter: FunctionComponent<LocationFilterProps> = ({ width, initialValue, fields }) => {
+export const LocationFilter: FunctionComponent<LocationFilterProps> = ({
+    width,
+    initialValue,
+    fields,
+    placeholderText,
+}) => {
     const size = { width, height: '3rem' };
 
     return (
         <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <LocationFilterInner initialValue={initialValue} fields={fields} />
+                <LocationFilterInner initialValue={initialValue} fields={fields} placeholderText={placeholderText} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-export const LocationFilterInner = ({ initialValue, fields }: LocationFilterInnerProps) => {
+export const LocationFilterInner = ({ initialValue, fields, placeholderText }: LocationFilterInnerProps) => {
     const lapis = useContext(LapisUrlContext);
 
     const [value, setValue] = useState(initialValue ?? '');
@@ -77,6 +83,7 @@ export const LocationFilterInner = ({ initialValue, fields }: LocationFilterInne
                 value={value}
                 onInput={onInput}
                 list='countries'
+                placeholder={placeholderText}
             />
             <datalist id='countries'>
                 {data?.map((v) => {

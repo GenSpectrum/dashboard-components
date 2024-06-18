@@ -59,8 +59,21 @@ export class LocationFilterComponent extends PreactLitAdapter {
     @property({ type: String })
     width: string = '100%';
 
+    /**
+     * The placeholder text to display in the input field, if it is empty.
+     */
+    @property()
+    placeholderText: string = '';
+
     override render() {
-        return <LocationFilter initialValue={this.initialValue} fields={this.fields} width={this.width} />;
+        return (
+            <LocationFilter
+                initialValue={this.initialValue}
+                fields={this.fields}
+                width={this.width}
+                placeholderText={this.placeholderText}
+            />
+        );
     }
 }
 

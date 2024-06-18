@@ -17,6 +17,7 @@ const codeExample = String.raw`
     fields='["region", "country"]'
     initialValue='Europe / Switzerland'
     width="100%"
+    placeholderText="Enter a location"
 ></gs-location-filter>`;
 
 const meta: Meta = {
@@ -48,6 +49,11 @@ const meta: Meta = {
                 type: 'text',
             },
         },
+        placeholderText: {
+            control: {
+                type: 'text',
+            },
+        },
     },
     decorators: [withActions],
     tags: ['autodocs'],
@@ -63,6 +69,7 @@ const Template: StoryObj<LocationFilterProps> = {
                     .fields=${args.fields}
                     initialValue=${ifDefined(args.initialValue)}
                     .width=${args.width}
+                    placeholderText=${ifDefined(args.placeholderText)}
                 ></gs-location-filter>
             </div>
         </gs-app>`;
@@ -71,6 +78,7 @@ const Template: StoryObj<LocationFilterProps> = {
         fields: ['region', 'country', 'division', 'location'],
         initialValue: '',
         width: '100%',
+        placeholderText: 'Enter a location',
     },
 };
 
@@ -101,6 +109,9 @@ export const LocationFilter: StoryObj<LocationFilterProps> = {
         const canvas = await withinShadowRoot(canvasElement, 'gs-location-filter');
         await waitFor(() => {
             return expect(canvas.getByRole('combobox')).toBeEnabled();
+        });
+        await waitFor(() => {
+            return expect(canvas.getByPlaceholderText('Enter a location')).toBeInTheDocument();
         });
     },
 };
