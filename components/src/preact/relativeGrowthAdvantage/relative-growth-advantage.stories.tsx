@@ -21,6 +21,7 @@ export default {
         width: { control: 'text' },
         height: { control: 'text' },
         headline: { control: 'text' },
+        yAxisMaxConfig: { control: 'object' },
     },
 };
 
@@ -36,6 +37,7 @@ export const Primary = {
                 height={args.height}
                 headline={args.headline}
                 lapisDateField={args.lapisDateField}
+                yAxisMaxConfig={args.yAxisMaxConfig}
             />
         </LapisUrlContext.Provider>
     ),
@@ -48,6 +50,10 @@ export const Primary = {
         height: '700px',
         headline: 'Relative growth advantage',
         lapisDateField: 'date',
+        yAxisMaxConfig: {
+            linear: 1,
+            logarithmic: 1,
+        },
     },
     parameters: {
         fetchMock: {

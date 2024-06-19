@@ -5,6 +5,7 @@ import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { confidenceIntervalDataLabel } from '../shared/charts/confideceInterval';
+import { getYAxisMax, type YAxisMaxConfig } from '../shared/charts/getYAxisMax';
 import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
 
 interface RelativeGrowthAdvantageChartData {
@@ -25,11 +26,17 @@ interface RelativeGrowthAdvantageChartData {
 interface RelativeGrowthAdvantageChartProps {
     data: RelativeGrowthAdvantageChartData;
     yAxisScaleType: ScaleType;
+    yAxisMaxConfig?: YAxisMaxConfig;
 }
 
 Chart.register(...registerables, LogitScale);
 
-const RelativeGrowthAdvantageChart = ({ data, yAxisScaleType }: RelativeGrowthAdvantageChartProps) => {
+const RelativeGrowthAdvantageChart = ({ data, yAxisScaleType, yAxisMaxConfig }: RelativeGrowthAdvantageChartProps) => {
+    const maxY =
+        yAxisScaleType !== 'logit'
+            ? getYAxisMax(Math.max(...data.proportion), yAxisMaxConfig?.[yAxisScaleType])
+            : undefined;
+
     const config: ChartConfiguration = {
         type: 'line',
         data: {
@@ -39,8 +46,9 @@ const RelativeGrowthAdvantageChart = ({ data, yAxisScaleType }: RelativeGrowthAd
         options: {
             maintainAspectRatio: false,
             animation: false,
+
             scales: {
-                y: getYAxisScale(yAxisScaleType),
+                y: { ...getYAxisScale(yAxisScaleType), max: maxY },
             },
             plugins: {
                 legend: {

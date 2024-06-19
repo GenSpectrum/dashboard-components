@@ -1,27 +1,37 @@
 import { Chart, type ChartConfiguration, registerables } from 'chart.js';
 
+import { maxInData } from './prevalence-over-time';
 import { type PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
 import { addUnit, minusTemporal } from '../../utils/temporal';
 import { getMinMaxNumber } from '../../utils/utils';
 import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';
 import { singleGraphColorRGBAById } from '../shared/charts/colors';
+import { getYAxisMax, type YAxisMaxConfig } from '../shared/charts/getYAxisMax';
 import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
 
 interface PrevalenceOverTimeBubbleChartProps {
     data: PrevalenceOverTimeData;
     yAxisScaleType: ScaleType;
+    yAxisMaxConfig?: YAxisMaxConfig;
 }
 
 Chart.register(...registerables, LogitScale);
 
-const PrevalenceOverTimeBubbleChart = ({ data, yAxisScaleType }: PrevalenceOverTimeBubbleChartProps) => {
+const PrevalenceOverTimeBubbleChart = ({
+    data,
+    yAxisScaleType,
+    yAxisMaxConfig,
+}: PrevalenceOverTimeBubbleChartProps) => {
     const firstDate = data[0].content[0].dateRange!;
     const total = data.map((graphData) => graphData.content.map((dataPoint) => dataPoint.total)).flat();
     const [minTotal, maxTotal] = getMinMaxNumber(total)!;
     const scaleBubble = (value: number) => {
         return ((value - minTotal) / (maxTotal - minTotal)) * 4.5 + 0.5;
     };
+
+    const maxY =
+        yAxisScaleType !== 'logit' ? getYAxisMax(maxInData(data), yAxisMaxConfig?.[yAxisScaleType]) : undefined;
 
     const config: ChartConfiguration = {
         type: 'bubble',
@@ -50,7 +60,7 @@ const PrevalenceOverTimeBubbleChart = ({ data, yAxisScaleType }: PrevalenceOverT
                         callback: (value) => addUnit(firstDate, value as number).toString(),
                     },
                 },
-                y: getYAxisScale(yAxisScaleType),
+                y: { ...getYAxisScale(yAxisScaleType), max: maxY },
             },
             plugins: {
                 legend: {

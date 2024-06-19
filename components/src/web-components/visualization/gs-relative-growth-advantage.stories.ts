@@ -3,11 +3,12 @@ import { html } from 'lit';
 
 import './gs-relative-growth-advantage';
 import '../app';
+// eslint-disable-next-line no-duplicate-imports
+import { type RelativeGrowthAdvantageComponentProps } from './gs-relative-growth-advantage';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import denominator from '../../preact/relativeGrowthAdvantage/__mockData__/denominator.json';
 import numerator from '../../preact/relativeGrowthAdvantage/__mockData__/numerator.json';
-import { type RelativeGrowthAdvantageProps } from '../../preact/relativeGrowthAdvantage/relative-growth-advantage';
 
 const codeExample = String.raw`
 <gs-relative-growth-advantage
@@ -19,9 +20,11 @@ const codeExample = String.raw`
     height='700px'
     headline="Relative growth advantage"
     lapisDateField="date"
+    yAxisMaxLinear="1"
+    yAxisMaxLogarithmic="limitTo1"    
 ></gs-relative-growth-advantage>`;
 
-const meta: Meta<RelativeGrowthAdvantageProps> = {
+const meta: Meta<RelativeGrowthAdvantageComponentProps> = {
     title: 'Visualization/Relative growth advantage',
     component: 'gs-relative-growth-advantage',
     argTypes: {
@@ -35,6 +38,8 @@ const meta: Meta<RelativeGrowthAdvantageProps> = {
         width: { control: 'text' },
         height: { control: 'text' },
         headline: { control: 'text' },
+        yAxisMaxLinear: { control: 'object' },
+        yAxisMaxLogarithmic: { control: 'object' },
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -48,7 +53,7 @@ const meta: Meta<RelativeGrowthAdvantageProps> = {
 
 export default meta;
 
-const Template: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
+const Template: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-relative-growth-advantage
@@ -60,12 +65,14 @@ const Template: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
                 .height=${args.height}
                 .headline=${args.headline}
                 .lapisDateField=${args.lapisDateField}
+                .yAxisMaxLinear=${args.yAxisMaxLinear}
+                .yAxisMaxLogarithmic=${args.yAxisMaxLogarithmic}
             ></gs-relative-growth-advantage>
         </gs-app>
     `,
 };
 
-export const Default: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
+export const Default: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> = {
     ...Template,
     args: {
         numerator: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
@@ -76,6 +83,8 @@ export const Default: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
         height: '700px',
         headline: 'Relative growth advantage',
         lapisDateField: 'date',
+        yAxisMaxLinear: 1,
+        yAxisMaxLogarithmic: 'limitTo1',
     },
     parameters: {
         fetchMock: {
