@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.5](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.4.4...dashboard-components-v0.4.5) (2024-06-19)
+
+
+### Features
+
+* **components:** allow to set pagination limit for all tables ([887a230](https://github.com/GenSpectrum/dashboards/commit/887a23067c13a01a3fa32afc7fba2e71a5c8d8ec))
+* **components:** placeholderText for location-filter ([43cfd81](https://github.com/GenSpectrum/dashboards/commit/43cfd81b37c81564f92f59edec2ef223dc7be9ac))
+
 ## [0.4.4](https://github.com/GenSpectrum/dashboards/compare/dashboard-components-v0.4.3...dashboard-components-v0.4.4) (2024-06-18)
 
 
