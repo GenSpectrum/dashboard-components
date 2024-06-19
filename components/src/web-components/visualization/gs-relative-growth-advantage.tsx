@@ -1,6 +1,11 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import { RelativeGrowthAdvantage, type View } from '../../preact/relativeGrowthAdvantage/relative-growth-advantage';
+import {
+    RelativeGrowthAdvantage,
+    type RelativeGrowthAdvantageProps,
+    type View,
+} from '../../preact/relativeGrowthAdvantage/relative-growth-advantage';
+import { type AxisMax } from '../../preact/shared/charts/getYAxisMax';
 import type { LapisFilter } from '../../types';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
@@ -94,6 +99,26 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
     @property({ type: String })
     lapisDateField: string = 'date';
 
+    /**
+     * The maximum value for the y-axis on all graphs in linear view.
+     * If set to a number, the maximum value is set to this number.
+     * If set to `maxInData`, the maximum value is set to the maximum value in the data.
+     * If set to `limitTo1`, the maximum value is set to the lower value of 1 or the maximum value in the data.
+     * If not set, the maximum value is set to the default value (1).
+     */
+    @property({ type: String })
+    yAxisMaxLinear: 'maxInData' | 'limitTo1' | number | undefined = undefined;
+
+    /**
+     * The maximum value for the y-axis on all graphs in logarithmic view.
+     * If set to a number, the maximum value is set to this number.
+     * If set to `maxInData`, the maximum value is set to the maximum value in the data.
+     * If set to `limitTo1`, the maximum value is set to the lower value of 1 or the maximum value in the data.
+     * If not set, the maximum value is set to the default value (1).
+     */
+    @property({ type: String })
+    yAxisMaxLogarithmic: 'maxInData' | 'limitTo1' | number | undefined = undefined;
+
     override render() {
         return (
             <RelativeGrowthAdvantage
@@ -105,9 +130,18 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
                 height={this.height}
                 headline={this.headline}
                 lapisDateField={this.lapisDateField}
+                yAxisMaxConfig={{
+                    linear: this.yAxisMaxLinear,
+                    logarithmic: this.yAxisMaxLogarithmic,
+                }}
             />
         );
     }
+}
+
+export interface RelativeGrowthAdvantageComponentProps extends Omit<RelativeGrowthAdvantageProps, 'yAxisMaxConfig'> {
+    yAxisMaxLinear?: AxisMax;
+    yAxisMaxLogarithmic?: AxisMax;
 }
 
 declare global {

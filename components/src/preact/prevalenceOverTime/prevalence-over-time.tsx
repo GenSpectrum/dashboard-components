@@ -21,6 +21,7 @@ import { ResizeContainer } from '../components/resize-container';
 import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
 import { type ConfidenceIntervalMethod } from '../shared/charts/confideceInterval';
+import type { YAxisMaxConfig } from '../shared/charts/getYAxisMax';
 import { type ScaleType } from '../shared/charts/getYAxisScale';
 import { useQuery } from '../useQuery';
 
@@ -41,6 +42,7 @@ export interface PrevalenceOverTimeInnerProps {
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     lapisDateField: string;
     pageSize: boolean | number;
+    yAxisMaxConfig?: YAxisMaxConfig;
 }
 
 export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
@@ -55,6 +57,7 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
     headline = 'Prevalence over time',
     lapisDateField,
     pageSize,
+    yAxisMaxConfig,
 }) => {
     const size = { height, width };
 
@@ -71,6 +74,7 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
                         confidenceIntervalMethods={confidenceIntervalMethods}
                         lapisDateField={lapisDateField}
                         pageSize={pageSize}
+                        yAxisMaxConfig={yAxisMaxConfig}
                     />
                 </Headline>
             </ResizeContainer>
@@ -87,6 +91,7 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerP
     confidenceIntervalMethods,
     lapisDateField,
     pageSize,
+    yAxisMaxConfig,
 }) => {
     const lapis = useContext(LapisUrlContext);
 
@@ -114,6 +119,7 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerP
             granularity={granularity}
             confidenceIntervalMethods={confidenceIntervalMethods}
             pageSize={pageSize}
+            yAxisMaxConfig={yAxisMaxConfig}
         />
     );
 };
@@ -124,6 +130,7 @@ type PrevalenceOverTimeTabsProps = {
     granularity: TemporalGranularity;
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     pageSize: boolean | number;
+    yAxisMaxConfig?: YAxisMaxConfig;
 };
 
 const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = ({
@@ -132,6 +139,7 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
     granularity,
     confidenceIntervalMethods,
     pageSize,
+    yAxisMaxConfig,
 }) => {
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
     const [confidenceIntervalMethod, setConfidenceIntervalMethod] = useState<ConfidenceIntervalMethod>(
@@ -148,6 +156,7 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
                             data={data}
                             yAxisScaleType={yAxisScaleType}
                             confidenceIntervalMethod={confidenceIntervalMethod}
+                            yAxisMaxConfig={yAxisMaxConfig}
                         />
                     ),
                 };
@@ -159,13 +168,20 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
                             data={data}
                             yAxisScaleType={yAxisScaleType}
                             confidenceIntervalMethod={confidenceIntervalMethod}
+                            yAxisMaxConfig={yAxisMaxConfig}
                         />
                     ),
                 };
             case 'bubble':
                 return {
                     title: 'Bubble',
-                    content: <PrevalenceOverTimeBubbleChart data={data} yAxisScaleType={yAxisScaleType} />,
+                    content: (
+                        <PrevalenceOverTimeBubbleChart
+                            data={data}
+                            yAxisScaleType={yAxisScaleType}
+                            yAxisMaxConfig={yAxisMaxConfig}
+                        />
+                    ),
                 };
             case 'table':
                 return {
@@ -245,3 +261,6 @@ const PrevalenceOverTimeInfo: FunctionComponent = () => {
         </Info>
     );
 };
+
+export const maxInData = (data: PrevalenceOverTimeData) =>
+    Math.max(...data.flatMap((variant) => variant.content.map((dataPoint) => dataPoint.prevalence)));

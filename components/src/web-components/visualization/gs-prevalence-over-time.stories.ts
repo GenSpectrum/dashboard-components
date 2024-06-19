@@ -4,6 +4,8 @@ import { html } from 'lit';
 
 import '../app';
 import './gs-prevalence-over-time';
+// eslint-disable-next-line no-duplicate-imports
+import { type PrevalenceOverTimeComponentProps } from './gs-prevalence-over-time';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import denominator from '../../preact/prevalenceOverTime/__mockData__/denominator.json';
@@ -11,7 +13,6 @@ import denominatorOneVariant from '../../preact/prevalenceOverTime/__mockData__/
 import numeratorEG from '../../preact/prevalenceOverTime/__mockData__/numeratorEG.json';
 import numeratorJN1 from '../../preact/prevalenceOverTime/__mockData__/numeratorJN1.json';
 import numeratorOneVariant from '../../preact/prevalenceOverTime/__mockData__/numeratorOneVariant.json';
-import { type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
@@ -27,9 +28,11 @@ const codeExample = String.raw`
     height="700px"
     lapisDateField="date"
     pageSize="10"
+    yAxisMaxLinear="1"
+    yAxisMaxLogarithmic="limitTo1"    
 ></gs-prevalence-over-time>`;
 
-const meta: Meta<Required<PrevalenceOverTimeProps>> = {
+const meta: Meta<Required<PrevalenceOverTimeComponentProps>> = {
     title: 'Visualization/Prevalence over time',
     component: 'gs-prevalence-over-time',
     argTypes: {
@@ -52,6 +55,8 @@ const meta: Meta<Required<PrevalenceOverTimeProps>> = {
         height: { control: 'text' },
         headline: { control: 'text' },
         pageSize: { control: 'object' },
+        yAxisMaxLinear: { control: 'object' },
+        yAxisMaxLogarithmic: { control: 'object' },
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -65,7 +70,7 @@ const meta: Meta<Required<PrevalenceOverTimeProps>> = {
 
 export default meta;
 
-const Template: StoryObj<Required<PrevalenceOverTimeProps>> = {
+const Template: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-prevalence-over-time
@@ -80,12 +85,14 @@ const Template: StoryObj<Required<PrevalenceOverTimeProps>> = {
                 .headline=${args.headline}
                 .lapisDateField=${args.lapisDateField}
                 .pageSize=${args.pageSize}
+                .yAxisMaxLinear=${args.yAxisMaxLinear}
+                .yAxisMaxLogarithmic=${args.yAxisMaxLogarithmic}
             ></gs-prevalence-over-time>
         </gs-app>
     `,
 };
 
-export const TwoVariants: StoryObj<Required<PrevalenceOverTimeProps>> = {
+export const TwoVariants: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
     ...Template,
     args: {
         numerator: [
@@ -102,6 +109,8 @@ export const TwoVariants: StoryObj<Required<PrevalenceOverTimeProps>> = {
         headline: 'Prevalence over time',
         lapisDateField: 'date',
         pageSize: 10,
+        yAxisMaxLinear: 1,
+        yAxisMaxLogarithmic: 'limitTo1',
     },
     parameters: {
         fetchMock: {
@@ -158,7 +167,7 @@ export const TwoVariants: StoryObj<Required<PrevalenceOverTimeProps>> = {
     },
 };
 
-export const OneVariant: StoryObj<Required<PrevalenceOverTimeProps>> = {
+export const OneVariant: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
     ...Template,
     args: {
         numerator: {
@@ -175,6 +184,8 @@ export const OneVariant: StoryObj<Required<PrevalenceOverTimeProps>> = {
         headline: 'Prevalence over time',
         lapisDateField: 'date',
         pageSize: 10,
+        yAxisMaxLinear: 1,
+        yAxisMaxLogarithmic: 'limitTo1',
     },
     parameters: {
         fetchMock: {
@@ -215,7 +226,7 @@ export const OneVariant: StoryObj<Required<PrevalenceOverTimeProps>> = {
     },
 };
 
-export const OneVariantOnLineTab: StoryObj<Required<PrevalenceOverTimeProps>> = {
+export const OneVariantOnLineTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
     ...OneVariant,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
@@ -226,7 +237,7 @@ export const OneVariantOnLineTab: StoryObj<Required<PrevalenceOverTimeProps>> = 
     },
 };
 
-export const OneVariantOnBubbleTab: StoryObj<Required<PrevalenceOverTimeProps>> = {
+export const OneVariantOnBubbleTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
     ...OneVariant,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
@@ -237,7 +248,7 @@ export const OneVariantOnBubbleTab: StoryObj<Required<PrevalenceOverTimeProps>> 
     },
 };
 
-export const OneVariantOnTableTab: StoryObj<Required<PrevalenceOverTimeProps>> = {
+export const OneVariantOnTableTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
     ...OneVariant,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');

@@ -1,6 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 
 import { PrevalenceOverTime, type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
+import { type AxisMax } from '../../preact/shared/charts/getYAxisMax';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
@@ -143,6 +144,26 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     @property({ type: Object })
     pageSize: boolean | number = false;
 
+    /**
+     * The maximum value for the y-axis on all graphs in linear view.
+     * If set to a number, the maximum value is set to this number.
+     * If set to `maxInData`, the maximum value is set to the maximum value in the data.
+     * If set to `limitTo1`, the maximum value is set to the lower value of 1 or the maximum value in the data.
+     * If not set, the maximum value is set to the default value (1).
+     */
+    @property({ type: String })
+    yAxisMaxLinear: 'maxInData' | 'limitTo1' | number | undefined = undefined;
+
+    /**
+     * The maximum value for the y-axis on all graphs in logarithmic view.
+     * If set to a number, the maximum value is set to this number.
+     * If set to `maxInData`, the maximum value is set to the maximum value in the data.
+     * If set to `limitTo1`, the maximum value is set to the lower value of 1 or the maximum value in the data.
+     * If not set, the maximum value is set to the default value (1).
+     */
+    @property({ type: String })
+    yAxisMaxLogarithmic: 'maxInData' | 'limitTo1' | number | undefined = undefined;
+
     override render() {
         return (
             <PrevalenceOverTime
@@ -157,9 +178,18 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
                 headline={this.headline}
                 lapisDateField={this.lapisDateField}
                 pageSize={this.pageSize}
+                yAxisMaxConfig={{
+                    linear: this.yAxisMaxLinear,
+                    logarithmic: this.yAxisMaxLogarithmic,
+                }}
             />
         );
     }
+}
+
+export interface PrevalenceOverTimeComponentProps extends Omit<PrevalenceOverTimeProps, 'yAxisMaxConfig'> {
+    yAxisMaxLinear?: AxisMax;
+    yAxisMaxLogarithmic?: AxisMax;
 }
 
 declare global {

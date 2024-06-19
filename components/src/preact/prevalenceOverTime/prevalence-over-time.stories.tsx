@@ -33,6 +33,7 @@ export default {
         height: { control: 'text' },
         headline: { control: 'text' },
         pageSize: { control: 'object' },
+        yAxisMaxConfig: { control: 'object' },
     },
 };
 
@@ -51,6 +52,7 @@ const Template = {
                 headline={args.headline}
                 lapisDateField={args.lapisDateField}
                 pageSize={args.pageSize}
+                yAxisMaxConfig={args.yAxisMaxConfig}
             />
         </LapisUrlContext.Provider>
     ),
@@ -73,6 +75,10 @@ export const TwoVariants = {
         headline: 'Prevalence over time',
         lapisDateField: 'date',
         pageSize: 10,
+        yAxisMaxConfig: {
+            linear: 1,
+            logarithmic: 1,
+        },
     },
     parameters: {
         fetchMock: {
@@ -146,6 +152,10 @@ export const OneVariant = {
         headline: 'Prevalence over time',
         lapisDateField: 'date',
         pageSize: 10,
+        yAxisMaxConfig: {
+            linear: 1,
+            logarithmic: 1,
+        },
     },
     parameters: {
         fetchMock: {

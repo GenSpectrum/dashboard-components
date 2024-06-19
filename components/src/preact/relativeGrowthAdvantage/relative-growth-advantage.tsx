@@ -17,6 +17,7 @@ import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
+import { type YAxisMaxConfig } from '../shared/charts/getYAxisMax';
 import { type ScaleType } from '../shared/charts/getYAxisScale';
 import { useQuery } from '../useQuery';
 
@@ -34,6 +35,7 @@ export interface RelativeGrowthAdvantagePropsInner {
     generationTime: number;
     views: View[];
     lapisDateField: string;
+    yAxisMaxConfig?: YAxisMaxConfig;
 }
 
 export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = ({
@@ -45,6 +47,7 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
     generationTime,
     headline = 'Relative growth advantage',
     lapisDateField,
+    yAxisMaxConfig,
 }) => {
     const size = { height, width };
 
@@ -58,6 +61,7 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
                         denominator={denominator}
                         generationTime={generationTime}
                         lapisDateField={lapisDateField}
+                        yAxisMaxConfig={yAxisMaxConfig}
                     />
                 </Headline>
             </ResizeContainer>
@@ -71,6 +75,7 @@ export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvan
     generationTime,
     views,
     lapisDateField,
+    yAxisMaxConfig,
 }) => {
     const lapis = useContext(LapisUrlContext);
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
@@ -99,6 +104,7 @@ export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvan
             setYAxisScaleType={setYAxisScaleType}
             views={views}
             generationTime={generationTime}
+            yAxisMaxConfig={yAxisMaxConfig}
         />
     );
 };
@@ -109,6 +115,7 @@ type RelativeGrowthAdvantageTabsProps = {
     setYAxisScaleType: (scaleType: ScaleType) => void;
     views: View[];
     generationTime: number;
+    yAxisMaxConfig?: YAxisMaxConfig;
 };
 
 const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabsProps> = ({
@@ -117,6 +124,7 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
     setYAxisScaleType,
     views,
     generationTime,
+    yAxisMaxConfig,
 }) => {
     const getTab = (view: View) => {
         switch (view) {
@@ -131,6 +139,7 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
                                 params: data.params,
                             }}
                             yAxisScaleType={yAxisScaleType}
+                            yAxisMaxConfig={yAxisMaxConfig}
                         />
                     ),
                 };

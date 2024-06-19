@@ -1,6 +1,7 @@
 import { Chart, type ChartConfiguration, registerables } from 'chart.js';
 import { type TooltipItem } from 'chart.js/dist/types';
 
+import { maxInData } from './prevalence-over-time';
 import { type PrevalenceOverTimeData, type PrevalenceOverTimeVariantData } from '../../query/queryPrevalenceOverTime';
 import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';
@@ -10,12 +11,14 @@ import {
     type ConfidenceIntervalMethod,
     wilson95PercentConfidenceInterval,
 } from '../shared/charts/confideceInterval';
+import { getYAxisMax, type YAxisMaxConfig } from '../shared/charts/getYAxisMax';
 import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
 
 interface PrevalenceOverTimeLineChartProps {
     data: PrevalenceOverTimeData;
     yAxisScaleType: ScaleType;
     confidenceIntervalMethod: ConfidenceIntervalMethod;
+    yAxisMaxConfig?: YAxisMaxConfig;
 }
 
 Chart.register(...registerables, LogitScale);
@@ -24,9 +27,13 @@ const PrevalenceOverTimeLineChart = ({
     data,
     yAxisScaleType,
     confidenceIntervalMethod,
+    yAxisMaxConfig,
 }: PrevalenceOverTimeLineChartProps) => {
     const datasets = data.map((graphData, index) => getDataset(graphData, index, confidenceIntervalMethod)).flat();
     const labels = data[0]?.content.map((dateRange) => dateRange.dateRange?.toString() ?? 'Unknown') || [];
+
+    const maxY =
+        yAxisScaleType !== 'logit' ? getYAxisMax(maxInData(data), yAxisMaxConfig?.[yAxisScaleType]) : undefined;
 
     const config: ChartConfiguration = {
         type: 'line',
@@ -38,7 +45,7 @@ const PrevalenceOverTimeLineChart = ({
             animation: false,
             maintainAspectRatio: false,
             scales: {
-                y: getYAxisScale(yAxisScaleType),
+                y: { ...getYAxisScale(yAxisScaleType), max: maxY },
             },
             plugins: {
                 legend: {
