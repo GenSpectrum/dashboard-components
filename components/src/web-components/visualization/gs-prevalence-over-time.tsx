@@ -113,7 +113,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     /**
      * The width of the component.
      *
-     * Visit https://genspectrum.github.io/dashboards/?path=/docs/components-size-of-components--docs for more information.
+     * Visit https://genspectrum.github.io/dashboards-components/?path=/docs/components-size-of-components--docs for more information.
      */
     @property({ type: String })
     width: string = '100%';
@@ -121,7 +121,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     /**
      * The height of the component.
      *
-     * Visit https://genspectrum.github.io/dashboards/?path=/docs/components-size-of-components--docs for more information.
+     * Visit https://genspectrum.github.io/dashboards-components/?path=/docs/components-size-of-components--docs for more information.
      */
     @property({ type: String })
     height: string = '700px';

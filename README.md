@@ -1,4 +1,4 @@
-# GenSpectrum dashboards
+# GenSpectrum dashboards components
 
 ## Conventional Commits
 
