@@ -42,7 +42,7 @@ export interface PrevalenceOverTimeInnerProps {
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     lapisDateField: string;
     pageSize: boolean | number;
-    yAxisMaxConfig?: YAxisMaxConfig;
+    yAxisMaxConfig: YAxisMaxConfig;
 }
 
 export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
@@ -130,7 +130,7 @@ type PrevalenceOverTimeTabsProps = {
     granularity: TemporalGranularity;
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     pageSize: boolean | number;
-    yAxisMaxConfig?: YAxisMaxConfig;
+    yAxisMaxConfig: YAxisMaxConfig;
 };
 
 const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = ({

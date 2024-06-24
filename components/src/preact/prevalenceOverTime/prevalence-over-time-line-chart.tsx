@@ -18,7 +18,7 @@ interface PrevalenceOverTimeLineChartProps {
     data: PrevalenceOverTimeData;
     yAxisScaleType: ScaleType;
     confidenceIntervalMethod: ConfidenceIntervalMethod;
-    yAxisMaxConfig?: YAxisMaxConfig;
+    yAxisMaxConfig: YAxisMaxConfig;
 }
 
 Chart.register(...registerables, LogitScale);

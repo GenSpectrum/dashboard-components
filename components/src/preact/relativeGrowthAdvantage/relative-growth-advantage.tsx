@@ -35,7 +35,7 @@ export interface RelativeGrowthAdvantagePropsInner {
     generationTime: number;
     views: View[];
     lapisDateField: string;
-    yAxisMaxConfig?: YAxisMaxConfig;
+    yAxisMaxConfig: YAxisMaxConfig;
 }
 
 export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = ({
@@ -115,7 +115,7 @@ type RelativeGrowthAdvantageTabsProps = {
     setYAxisScaleType: (scaleType: ScaleType) => void;
     views: View[];
     generationTime: number;
-    yAxisMaxConfig?: YAxisMaxConfig;
+    yAxisMaxConfig: YAxisMaxConfig;
 };
 
 const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabsProps> = ({

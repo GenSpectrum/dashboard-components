@@ -13,7 +13,7 @@ import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
 interface PrevalenceOverTimeBubbleChartProps {
     data: PrevalenceOverTimeData;
     yAxisScaleType: ScaleType;
-    yAxisMaxConfig?: YAxisMaxConfig;
+    yAxisMaxConfig: YAxisMaxConfig;
 }
 
 Chart.register(...registerables, LogitScale);

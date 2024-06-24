@@ -103,21 +103,21 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
      * The maximum value for the y-axis on all graphs in linear view.
      * If set to a number, the maximum value is set to this number.
      * If set to `maxInData`, the maximum value is set to the maximum value in the data.
-     * If set to `limitTo1`, the maximum value is set to the lower value of 1 or the maximum value in the data.
+     * If set to `limitTo1`, the maximum value is set to `min(1, the maximum value in the data)`.
      * If not set, the maximum value is set to the default value (1).
      */
     @property({ type: String })
-    yAxisMaxLinear: 'maxInData' | 'limitTo1' | number | undefined = undefined;
+    yAxisMaxLinear: 'maxInData' | 'limitTo1' | number = 1;
 
     /**
      * The maximum value for the y-axis on all graphs in logarithmic view.
      * If set to a number, the maximum value is set to this number.
      * If set to `maxInData`, the maximum value is set to the maximum value in the data.
-     * If set to `limitTo1`, the maximum value is set to the lower value of 1 or the maximum value in the data.
+     * If set to `limitTo1`, the maximum value is set to `min(1, the maximum value in the data)`.
      * If not set, the maximum value is set to the default value (1).
      */
     @property({ type: String })
-    yAxisMaxLogarithmic: 'maxInData' | 'limitTo1' | number | undefined = undefined;
+    yAxisMaxLogarithmic: 'maxInData' | 'limitTo1' | number = 1;
 
     override render() {
         return (
