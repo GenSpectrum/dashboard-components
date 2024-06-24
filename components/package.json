@@ -82,7 +82,7 @@
         "@storybook/preact": "^8.0.9",
         "@storybook/preact-vite": "^8.0.9",
         "@storybook/test": "^8.0.0",
-        "@storybook/test-runner": "^0.18.0",
+        "@storybook/test-runner": "^0.19.0",
         "@storybook/types": "^8.0.9",
         "@storybook/web-components": "^8.0.9",
         "@storybook/web-components-vite": "^8.0.9",
@@ -106,7 +106,7 @@
         "storybook": "^8.0.9",
         "storybook-addon-fetch-mock": "^2.0.0",
         "tailwindcss": "^3.4.3",
-        "typescript": "~5.4.5",
+        "typescript": "~5.5.2",
         "vite": "^5.2.10",
         "vite-plugin-dts": "^3.8.3",
         "vitest": "^1.5.0"
