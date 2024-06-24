@@ -26,7 +26,7 @@ interface RelativeGrowthAdvantageChartData {
 interface RelativeGrowthAdvantageChartProps {
     data: RelativeGrowthAdvantageChartData;
     yAxisScaleType: ScaleType;
-    yAxisMaxConfig?: YAxisMaxConfig;
+    yAxisMaxConfig: YAxisMaxConfig;
 }
 
 Chart.register(...registerables, LogitScale);
