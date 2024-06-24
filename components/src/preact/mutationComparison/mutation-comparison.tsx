@@ -31,14 +31,14 @@ export interface MutationComparisonProps extends MutationComparisonInnerProps {
 }
 
 export interface MutationComparisonInnerProps {
-    variants: NamedLapisFilter[];
+    lapisFilters: NamedLapisFilter[];
     sequenceType: SequenceType;
     views: View[];
     pageSize: boolean | number;
 }
 
 export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
-    variants,
+    lapisFilters,
     sequenceType,
     views,
     width,
@@ -53,7 +53,7 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
                     <MutationComparisonInner
-                        variants={variants}
+                        lapisFilters={lapisFilters}
                         sequenceType={sequenceType}
                         views={views}
                         pageSize={pageSize}
@@ -65,7 +65,7 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
 };
 
 export const MutationComparisonInner: FunctionComponent<MutationComparisonInnerProps> = ({
-    variants,
+    lapisFilters,
     sequenceType,
     views,
     pageSize,
@@ -73,8 +73,8 @@ export const MutationComparisonInner: FunctionComponent<MutationComparisonInnerP
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
-        return queryMutationData(variants, sequenceType, lapis);
-    }, [variants, sequenceType, lapis]);
+        return queryMutationData(lapisFilters, sequenceType, lapis);
+    }, [lapisFilters, sequenceType, lapis]);
 
     if (isLoading) {
         return <LoadingDisplay />;

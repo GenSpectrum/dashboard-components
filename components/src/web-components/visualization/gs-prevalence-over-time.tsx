@@ -8,9 +8,9 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
 /**
  * ## Context
  *
- * This component displays the prevalence over time of one or more variants.
- * The prevalence is calculated as the ratio of the number of cases of each variant given as `numerator`
- * to the number of cases of the variant given as `denominator`.
+ * This component displays the prevalence over time of one or more datasets, selected by LAPIS filters.
+ * The prevalence is calculated as the ratio of the number of cases of each dataset to the number of cases of a reference dataset.
+ * The reference dataset is also selected by a LAPIS filter.
  *
  * In the chart views,
  * - the user can select whether to display a confidence interval (not available in the bubble chart).
@@ -24,19 +24,19 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  * ### Bar View
  *
  * Displays the prevalence over time as a bar chart.
- * Shows a bar for each variant in the `numerator` on every time step.
+ * Shows a bar for each dataset of the `numeratorFilter` on every time step.
  *
  * ### Line View
  *
  * Displays the prevalence over time as a line chart.
  * Each data point is connected for better visibility.
- * Shows a line for each variant in the `numerator`.
+ * Shows a line for each dataset of the `numeratorFilter`.
  *
  * ### Bubble View
  *
  * Displays the prevalence over time as a bubble chart.
- * The size of the bubbles represents the number of cases of the `denominator` variant.
- * The height of the bubbles represents the prevalence of the `numerator` variants.
+ * The size of the bubbles represents the number of cases of the reference, defined by the `denominatorFilter`.
+ * The height of the bubbles represents the prevalence of the datasets selected by the `numeratorFilters`.
  *
  * ### Table View
  *
@@ -48,14 +48,17 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     // The multiline union type must not start with `|` because it looks weird in the Storybook docs
     /**
      *   Required.
+     * Either a LAPIS filter or an array of LAPIS filters to calculate the prevalence for.
      *
-     * Either a single variant or an array of variants to compare.
-     * This must be a valid LAPIS filter object with an additional `displayName` property
-     * which will be used as the label for the variant in the views,
-     * or an array of such objects.
+     * The `lapisFilter` will be sent as is to LAPIS to select the data.
+     * It must be a valid LAPIS filter object.
+     *
+     * The `displayName` will be used as the label the prevalence in the views.
+     * It should be human-readable.
+     *
      */
     @property({ type: Object })
-    numerator:
+    numeratorFilter:
         {
             lapisFilter: Record<string, string | number | null | boolean>;
             displayName: string;
@@ -68,10 +71,11 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     /**
      * Required.
      *
-     * The variant that the variants in `numerator` are compared to.
+     * The LAPIS filter, to select the data of the reference.
+     * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
-    denominator: Record<string, string | number | null | boolean> = {};
+    denominatorFilter: Record<string, string | number | null | boolean> = {};
 
     /**
      * The granularity of the time axis.
@@ -167,8 +171,8 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     override render() {
         return (
             <PrevalenceOverTime
-                numerator={this.numerator}
-                denominator={this.denominator}
+                numeratorFilter={this.numeratorFilter}
+                denominatorFilter={this.denominatorFilter}
                 granularity={this.granularity}
                 smoothingWindow={this.smoothingWindow}
                 views={this.views}
@@ -200,10 +204,10 @@ declare global {
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type NumeratorMatches = Expect<
-    Equals<typeof PrevalenceOverTimeComponent.prototype.numerator, PrevalenceOverTimeProps['numerator']>
+    Equals<typeof PrevalenceOverTimeComponent.prototype.numeratorFilter, PrevalenceOverTimeProps['numeratorFilter']>
 >;
 type DenominatorMatches = Expect<
-    Equals<typeof PrevalenceOverTimeComponent.prototype.denominator, PrevalenceOverTimeProps['denominator']>
+    Equals<typeof PrevalenceOverTimeComponent.prototype.denominatorFilter, PrevalenceOverTimeProps['denominatorFilter']>
 >;
 type GranularityMatches = Expect<
     Equals<typeof PrevalenceOverTimeComponent.prototype.granularity, PrevalenceOverTimeProps['granularity']>

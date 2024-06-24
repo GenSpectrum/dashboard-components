@@ -23,15 +23,15 @@
                 initialValue="last6Months"
             ></gs-date-range-selector>
             <gs-prevalence-over-time
-                numerator='{"displayName": "My variant","lapisFilter":{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}}'
-                denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
+                numeratorFilter='{"displayName": "My variant","lapisFilter":{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01", "dateFrom":"2021-01-01"}}'
+                denominatorFilter='{"country":"Switzerland", "dateTo":"2022-01-01", "dateFrom":"2021-01-01"}'
                 granularity="day"
                 smoothingWindow="7"
                 views='["line", "table"]'
             ></gs-prevalence-over-time>
             <gs-prevalence-over-time
-                numerator='{"displayName": "My variant","lapisFilter":{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01"}}'
-                denominator='{"country":"Switzerland", "dateTo":"2022-01-01"}'
+                numeratorFilter='{"displayName": "My variant","lapisFilter":{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01", "dateFrom":"2021-01-01"}}'
+                denominatorFilter='{"country":"Switzerland", "dateTo":"2022-01-01", "dateFrom":"2021-01-01"}'
                 granularity="month"
                 smoothingWindow="0"
                 views='["bar", "table"]'
@@ -46,7 +46,7 @@
                             "gs-prevalence-over-time",
                         );
                         sequencesElements.forEach((el) => {
-                            ["numerator", "denominator"].forEach((attr) => {
+                            ["numeratorFilter", "denominatorFilter"].forEach((attr) => {
                                 const old = JSON.parse(el.getAttribute(attr));
                                 el.setAttribute(
                                     attr,
@@ -62,7 +62,7 @@
                             "gs-prevalence-over-time",
                         );
                         sequencesElements.forEach((el) => {
-                            ["numerator", "denominator"].forEach((attr) => {
+                            ["numeratorFilter", "denominatorFilter"].forEach((attr) => {
                                 const old = JSON.parse(el.getAttribute(attr));
                                 el.setAttribute(
                                     attr,

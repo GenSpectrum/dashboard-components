@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import '@genspectrum/dashboard-components';
 import '@genspectrum/dashboard-components/style.css';
 
@@ -51,7 +51,7 @@ function App() {
         lapisFilter: {
             ...denominator,
             pangoLineage: 'B.1.1.7',
-        }
+        },
     };
 
     return (
@@ -61,20 +61,20 @@ function App() {
                 fields='["region", "country", "division", "location"]'
             ></gs-location-filter>
             <gs-date-range-selector initialValue='last6Months'></gs-date-range-selector>
-            <div style={{display: 'flex', flexDirection: 'row'}}>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <gs-prevalence-over-time
-                    numerator={JSON.stringify(numerator)}
-                    denominator={JSON.stringify(denominator)}
+                    numeratorFilter={JSON.stringify(numerator)}
+                    denominatorFilter={JSON.stringify(denominator)}
                     granularity='day'
                     smoothingWindow='7'
                     views='["line", "table"]'
                     width='800px'
                     height='300px'
                 ></gs-prevalence-over-time>
-                <div style={{height: '300px', width: '1000px'}}>
+                <div style={{ height: '300px', width: '1000px' }}>
                     <gs-prevalence-over-time
-                        numerator={JSON.stringify(numerator)}
-                        denominator={JSON.stringify(denominator)}
+                        numeratorFilter={JSON.stringify(numerator)}
+                        denominatorFilter={JSON.stringify(denominator)}
                         granularity='day'
                         smoothingWindow='7'
                         views='["line", "table"]'
@@ -85,21 +85,21 @@ function App() {
             </div>
             <div>
                 <gs-prevalence-over-time
-                    numerator={JSON.stringify(numerator)}
-                    denominator={JSON.stringify(denominator)}
+                    numeratorFilter={JSON.stringify(numerator)}
+                    denominatorFilter={JSON.stringify(denominator)}
                     granularity='day'
                     smoothingWindow='7'
                     views='["line", "table"]'
                 ></gs-prevalence-over-time>
             </div>
             <gs-relative-growth-advantage
-                numerator='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateFrom": "2020-12-01" }'
-                denominator='{ "country": "Switzerland", "dateFrom": "2020-12-01" }'
-                generationTime="7"
+                numeratorFilter='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateFrom": "2020-12-01" }'
+                denominatorFilter='{ "country": "Switzerland", "dateFrom": "2020-12-01" }'
+                generationTime='7'
                 views='["line"]'
                 width='100%'
                 height='700px'
-                headline="Relative growth advantage"
+                headline='Relative growth advantage'
             ></gs-relative-growth-advantage>
         </gs-app>
     );

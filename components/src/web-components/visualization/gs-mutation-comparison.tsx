@@ -7,8 +7,8 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
 /**
  * ## Context
  *
- * This component allows to compare mutations between different variants.
- * A variant is defined by its LAPIS filter.
+ * This component allows to compare mutations between two different datasets.
+ * The datasets are selected by LAPIS filters.
  *
  * It only shows substitutions and deletions, it does not show insertions.
  *
@@ -16,34 +16,33 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  *
  * ### Table View
  *
- * The table view shows mutations
- * and the proportions with which the mutation occurs in the respective variant.
- * It only shows mutations that are present in at least one of the variants
- * and where the proportion is within the selected proportion interval for at least one variant.
+ * The table view shows mutations and the proportions with which the mutation occurs in the respective data subsets.
+ * It only shows mutations that are present in at least one of the data subsets
+ * and where the proportion is within the selected proportion interval for at least one data subset.
  *
  * ### Venn View
  *
- * The Venn view shows the overlap of mutations between the variants in a Venn diagram.
- * A variant is considered to have a certain mutation,
- * if the proportion of the mutation in the variant is within the selected proportion interval.
- * Thus, changing the proportion interval may change a mutations from being "common" between variant
- * to being "for one variant only".
+ * The Venn view shows the overlap of mutations between the datasets in a Venn diagram.
+ * A dataset is considered to have a certain mutation, if the proportion of the mutation in the dataset is within the
+ * selected proportion interval.
+ * Thus, changing the proportion interval may change a mutations from being "common" between the datasets
+ * to being "for one dataset only".
  */
 @customElement('gs-mutation-comparison')
 export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyles {
     /**
      * Required.
      *
-     * An array of variants to compare.
+     * An array of LAPIS filters to select the data to compare.
      *
      * The `lapisFilter` will be sent as is to LAPIS to filter the mutation data.
      * It must be a valid LAPIS filter object.
      *
-     * The `displayName` will be used as the label for the variant in the views.
+     * The `displayName` will be used as the label for the filtered dataset in the views.
      * It should be human-readable.
      */
     @property({ type: Array })
-    variants: {
+    lapisFilters: {
         lapisFilter: Record<string, string | number | null | boolean>;
         displayName: string;
     }[] = [];
@@ -92,7 +91,7 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
     override render() {
         return (
             <MutationComparison
-                variants={this.variants}
+                lapisFilters={this.lapisFilters}
                 sequenceType={this.sequenceType}
                 views={this.views}
                 width={this.width}
@@ -111,8 +110,8 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type VariantsMatches = Expect<
-    Equals<typeof MutationComparisonComponent.prototype.variants, MutationComparisonProps['variants']>
+type LapisFiltersMatches = Expect<
+    Equals<typeof MutationComparisonComponent.prototype.lapisFilters, MutationComparisonProps['lapisFilters']>
 >;
 type SequenceTypeMatches = Expect<
     Equals<typeof MutationComparisonComponent.prototype.sequenceType, MutationComparisonProps['sequenceType']>

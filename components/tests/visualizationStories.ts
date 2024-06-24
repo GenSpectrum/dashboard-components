@@ -1,13 +1,13 @@
 export const visualizationStories = [
     {
-        id: 'visualization-prevalence-over-time--two-variants',
+        id: 'visualization-prevalence-over-time--two-datasets',
         title: 'Prevalence over time',
         testDownloadWithFilename: 'prevalence-over-time.csv',
     },
-    { id: 'visualization-prevalence-over-time--one-variant', title: 'Prevalence over time' },
-    { id: 'visualization-prevalence-over-time--one-variant-on-line-tab', title: 'Prevalence over time' },
-    { id: 'visualization-prevalence-over-time--one-variant-on-bubble-tab', title: 'Prevalence over time' },
-    { id: 'visualization-prevalence-over-time--one-variant-on-table-tab', title: 'Prevalence over time' },
+    { id: 'visualization-prevalence-over-time--one-dataset', title: 'Prevalence over time' },
+    { id: 'visualization-prevalence-over-time--one-dataset-on-line-tab', title: 'Prevalence over time' },
+    { id: 'visualization-prevalence-over-time--one-dataset-on-bubble-tab', title: 'Prevalence over time' },
+    { id: 'visualization-prevalence-over-time--one-dataset-on-table-tab', title: 'Prevalence over time' },
     { id: 'visualization-relative-growth-advantage--default', title: 'Relative growth advantage' },
     {
         id: 'visualization-mutations--default',

@@ -13,7 +13,7 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
 <gs-mutations
-    variant='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateTo": "2022-01-01" }'
+    lapisFilter='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateTo": "2022-01-01" }'
     sequenceType="nucleotide"
     views='["grid", "table", "insertions"]'
     headline="Mutations"
@@ -26,7 +26,7 @@ const meta: Meta<Required<MutationsProps>> = {
     title: 'Visualization/Mutations',
     component: 'gs-mutations',
     argTypes: {
-        variant: { control: 'object' },
+        lapisFilter: { control: 'object' },
         sequenceType: {
             options: ['nucleotide', 'amino acid'],
             control: { type: 'radio' },
@@ -41,7 +41,7 @@ const meta: Meta<Required<MutationsProps>> = {
         pageSize: { control: 'object' },
     },
     args: {
-        variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
+        lapisFilter: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
         sequenceType: 'nucleotide',
         views: ['grid', 'table', 'insertions'],
         width: '100%',
@@ -65,7 +65,7 @@ const Template: StoryObj<Required<MutationsProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-mutations
-                .variant=${args.variant}
+                .lapisFilter=${args.lapisFilter}
                 .sequenceType=${args.sequenceType}
                 .views=${args.views}
                 .width=${args.width}

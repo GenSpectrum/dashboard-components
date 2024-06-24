@@ -9,15 +9,15 @@ export type MutationData = {
 };
 
 export async function queryMutationData(
-    variants: NamedLapisFilter[],
+    lapisFilters: NamedLapisFilter[],
     sequenceType: 'nucleotide' | 'amino acid',
     lapis: string,
 ) {
     const mutationData = await Promise.all(
-        variants.map(async (variant) => {
+        lapisFilters.map(async (filter) => {
             return {
-                displayName: variant.displayName,
-                data: (await querySubstitutionsOrDeletions(variant.lapisFilter, sequenceType, lapis)).content,
+                displayName: filter.displayName,
+                data: (await querySubstitutionsOrDeletions(filter.lapisFilter, sequenceType, lapis)).content,
             };
         }),
     );

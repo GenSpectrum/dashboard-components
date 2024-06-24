@@ -8,15 +8,15 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
 /**
  * ## Context
  *
- * This component displays mutations (substitutions, deletions and insertions) for a given variant.
+ * This component displays mutations (substitutions, deletions and insertions) for a dataset selected by a LAPIS filter.
  *
  * ## Views
  *
  * ### Table View
  *
- * The table view shows all substitutions and deletions for the given variant.
+ * The table view shows all substitutions and deletions for the dataset.
  * It shows the type (substitution or deletion), the total count of the mutation
- * and the proportion of the mutation in the variant.
+ * and the proportion of the mutation in the dataset.
  * The proportion is relative to the total number of sequences matching
  * the specified sequence filters with non-ambiguous reads at that position.
  *
@@ -29,7 +29,7 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  *
  * ### Insertions View
  *
- * The insertions view shows the count of all insertions for the given variant.
+ * The insertions view shows the count of all insertions for the dataset.
  *
  */
 @customElement('gs-mutations')
@@ -37,11 +37,10 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
     /**
      * Required.
      *
-     * The `variant` will be sent as is to LAPIS to filter the mutation data.
-     * It must be a valid LAPIS filter object.
+     * LAPIS filter to select the displayed data.
      */
     @property({ type: Object })
-    variant: Record<string, string | number | null | boolean> = {};
+    lapisFilter: Record<string, string | number | null | boolean> = {};
 
     /**
      * The type of the sequence for which the mutations should be shown.
@@ -87,7 +86,7 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
     override render() {
         return (
             <Mutations
-                variant={this.variant}
+                lapisFilter={this.lapisFilter}
                 sequenceType={this.sequenceType}
                 views={this.views}
                 width={this.width}
@@ -106,7 +105,7 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type VariantsMatches = Expect<Equals<typeof MutationsComponent.prototype.variant, LapisFilter>>;
+type LapisFilterMatches = Expect<Equals<typeof MutationsComponent.prototype.lapisFilter, LapisFilter>>;
 type SequenceTypeMatches = Expect<Equals<typeof MutationsComponent.prototype.sequenceType, SequenceType>>;
 type ViewsMatches = Expect<Equals<typeof MutationsComponent.prototype.views, View[]>>;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

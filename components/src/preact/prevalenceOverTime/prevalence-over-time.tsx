@@ -34,8 +34,8 @@ export interface PrevalenceOverTimeProps extends PrevalenceOverTimeInnerProps {
 }
 
 export interface PrevalenceOverTimeInnerProps {
-    numerator: NamedLapisFilter | NamedLapisFilter[];
-    denominator: LapisFilter;
+    numeratorFilter: NamedLapisFilter | NamedLapisFilter[];
+    denominatorFilter: LapisFilter;
     granularity: TemporalGranularity;
     smoothingWindow: number;
     views: View[];
@@ -46,8 +46,8 @@ export interface PrevalenceOverTimeInnerProps {
 }
 
 export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
-    numerator,
-    denominator,
+    numeratorFilter,
+    denominatorFilter,
     granularity,
     smoothingWindow,
     views,
@@ -66,8 +66,8 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
                     <PrevalenceOverTimeInner
-                        numerator={numerator}
-                        denominator={denominator}
+                        numeratorFilter={numeratorFilter}
+                        denominatorFilter={denominatorFilter}
                         granularity={granularity}
                         smoothingWindow={smoothingWindow}
                         views={views}
@@ -83,8 +83,8 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
 };
 
 export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerProps> = ({
-    numerator,
-    denominator,
+    numeratorFilter,
+    denominatorFilter,
     granularity,
     smoothingWindow,
     views,
@@ -96,8 +96,16 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerP
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(
-        () => queryPrevalenceOverTime(numerator, denominator, granularity, smoothingWindow, lapis, lapisDateField),
-        [lapis, numerator, denominator, granularity, smoothingWindow],
+        () =>
+            queryPrevalenceOverTime(
+                numeratorFilter,
+                denominatorFilter,
+                granularity,
+                smoothingWindow,
+                lapis,
+                lapisDateField,
+            ),
+        [lapis, numeratorFilter, denominatorFilter, granularity, smoothingWindow],
     );
 
     if (isLoading) {

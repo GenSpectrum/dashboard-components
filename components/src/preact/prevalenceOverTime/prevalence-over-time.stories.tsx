@@ -1,8 +1,8 @@
-import denominator from './__mockData__/denominator.json';
-import denominatorOneVariant from './__mockData__/denominatorOneVariant.json';
-import numeratorEG from './__mockData__/numeratorEG.json';
-import numeratorJN1 from './__mockData__/numeratorJN1.json';
-import numeratorOneVariant from './__mockData__/numeratorOneVariant.json';
+import denominatorFilter from './__mockData__/denominatorFilter.json';
+import denominatorOneDataset from './__mockData__/denominatorFilterOneDataset.json';
+import numeratorFilterEG from './__mockData__/numeratorFilterEG.json';
+import numeratorFilterJN1 from './__mockData__/numeratorFilterJN1.json';
+import numeratorOneDataset from './__mockData__/numeratorFilterOneDataset.json';
 import { PrevalenceOverTime, type PrevalenceOverTimeProps } from './prevalence-over-time';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
@@ -41,8 +41,8 @@ const Template = {
     render: (args: PrevalenceOverTimeProps) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <PrevalenceOverTime
-                numerator={args.numerator}
-                denominator={args.denominator}
+                numeratorFilter={args.numeratorFilter}
+                denominatorFilter={args.denominatorFilter}
                 granularity={args.granularity}
                 smoothingWindow={args.smoothingWindow}
                 views={args.views}
@@ -61,11 +61,11 @@ const Template = {
 export const TwoVariants = {
     ...Template,
     args: {
-        numerator: [
+        numeratorFilter: [
             { displayName: 'EG', lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' } },
             { displayName: 'JN.1', lapisFilter: { country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' } },
         ],
-        denominator: { country: 'USA', dateFrom: '2023-01-01' },
+        denominatorFilter: { country: 'USA', dateFrom: '2023-01-01' },
         granularity: 'month',
         smoothingWindow: 0,
         views: ['bar', 'line', 'bubble', 'table'],
@@ -96,7 +96,7 @@ export const TwoVariants = {
                     },
                     response: {
                         status: 200,
-                        body: numeratorEG,
+                        body: numeratorFilterEG,
                     },
                 },
                 {
@@ -112,7 +112,7 @@ export const TwoVariants = {
                     },
                     response: {
                         status: 200,
-                        body: numeratorJN1,
+                        body: numeratorFilterJN1,
                     },
                 },
                 {
@@ -127,7 +127,7 @@ export const TwoVariants = {
                     },
                     response: {
                         status: 200,
-                        body: denominator,
+                        body: denominatorFilter,
                     },
                 },
             ],
@@ -138,11 +138,11 @@ export const TwoVariants = {
 export const OneVariant = {
     ...Template,
     args: {
-        numerator: {
+        numeratorFilter: {
             displayName: 'EG',
             lapisFilter: { country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
         },
-        denominator: { country: 'USA', dateFrom: '2023-10-01' },
+        denominatorFilter: { country: 'USA', dateFrom: '2023-10-01' },
         granularity: 'day',
         smoothingWindow: 7,
         views: ['bar', 'line', 'bubble', 'table'],
@@ -173,7 +173,7 @@ export const OneVariant = {
                     },
                     response: {
                         status: 200,
-                        body: numeratorOneVariant,
+                        body: numeratorOneDataset,
                     },
                 },
                 {
@@ -188,7 +188,7 @@ export const OneVariant = {
                     },
                     response: {
                         status: 200,
-                        body: denominatorOneVariant,
+                        body: denominatorOneDataset,
                     },
                 },
             ],

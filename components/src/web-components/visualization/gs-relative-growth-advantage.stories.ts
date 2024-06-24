@@ -7,13 +7,13 @@ import '../app';
 import { type RelativeGrowthAdvantageComponentProps } from './gs-relative-growth-advantage';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import denominator from '../../preact/relativeGrowthAdvantage/__mockData__/denominator.json';
-import numerator from '../../preact/relativeGrowthAdvantage/__mockData__/numerator.json';
+import denominatorFilter from '../../preact/relativeGrowthAdvantage/__mockData__/denominatorFilter.json';
+import numeratorFilter from '../../preact/relativeGrowthAdvantage/__mockData__/numeratorFilter.json';
 
 const codeExample = String.raw`
 <gs-relative-growth-advantage
-    numerator='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateFrom": "2020-12-01" }'
-    denominator='{ "country": "Switzerland", "dateFrom": "2020-12-01" }'
+    numeratorFilter='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateFrom": "2020-12-01" }'
+    denominatorFilter='{ "country": "Switzerland", "dateFrom": "2020-12-01" }'
     generationTime="7"
     views='["line"]'
     width='100%'
@@ -28,8 +28,8 @@ const meta: Meta<RelativeGrowthAdvantageComponentProps> = {
     title: 'Visualization/Relative growth advantage',
     component: 'gs-relative-growth-advantage',
     argTypes: {
-        numerator: { control: 'object' },
-        denominator: { control: 'object' },
+        numeratorFilter: { control: 'object' },
+        denominatorFilter: { control: 'object' },
         generationTime: { control: 'number' },
         views: {
             options: ['line'],
@@ -57,8 +57,8 @@ const Template: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-relative-growth-advantage
-                .numerator=${args.numerator}
-                .denominator=${args.denominator}
+                .numeratorFilter=${args.numeratorFilter}
+                .denominatorFilter=${args.denominatorFilter}
                 .generationTime=${args.generationTime}
                 .views=${args.views}
                 .width=${args.width}
@@ -75,8 +75,13 @@ const Template: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> = {
 export const Default: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> = {
     ...Template,
     args: {
-        numerator: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
-        denominator: { country: 'Switzerland', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
+        numeratorFilter: {
+            country: 'Switzerland',
+            pangoLineage: 'B.1.1.7',
+            dateFrom: '2020-12-01',
+            dateTo: '2021-03-01',
+        },
+        denominatorFilter: { country: 'Switzerland', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
         generationTime: 7,
         views: ['line'],
         width: '100%',
@@ -91,7 +96,7 @@ export const Default: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> 
             mocks: [
                 {
                     matcher: {
-                        name: 'numerator',
+                        name: 'numeratorFilter',
                         url: AGGREGATED_ENDPOINT,
                         body: {
                             country: 'Switzerland',
@@ -103,12 +108,12 @@ export const Default: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> 
                     },
                     response: {
                         status: 200,
-                        body: numerator,
+                        body: numeratorFilter,
                     },
                 },
                 {
                     matcher: {
-                        name: 'denominator',
+                        name: 'denominatorFilter',
                         url: AGGREGATED_ENDPOINT,
                         body: {
                             country: 'Switzerland',
@@ -119,7 +124,7 @@ export const Default: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> 
                     },
                     response: {
                         status: 200,
-                        body: denominator,
+                        body: denominatorFilter,
                     },
                 },
             ],

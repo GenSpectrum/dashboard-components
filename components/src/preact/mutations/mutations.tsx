@@ -32,7 +32,7 @@ import { useQuery } from '../useQuery';
 export type View = 'table' | 'grid' | 'insertions';
 
 export interface MutationsInnerProps {
-    variant: LapisFilter;
+    lapisFilter: LapisFilter;
     sequenceType: SequenceType;
     views: View[];
     pageSize: boolean | number;
@@ -45,7 +45,7 @@ export interface MutationsProps extends MutationsInnerProps {
 }
 
 export const Mutations: FunctionComponent<MutationsProps> = ({
-    variant,
+    lapisFilter,
     sequenceType,
     views,
     width,
@@ -59,18 +59,28 @@ export const Mutations: FunctionComponent<MutationsProps> = ({
         <ErrorBoundary size={size} headline={headline}>
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
-                    <MutationsInner variant={variant} sequenceType={sequenceType} views={views} pageSize={pageSize} />
+                    <MutationsInner
+                        lapisFilter={lapisFilter}
+                        sequenceType={sequenceType}
+                        views={views}
+                        pageSize={pageSize}
+                    />
                 </Headline>
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-export const MutationsInner: FunctionComponent<MutationsInnerProps> = ({ variant, sequenceType, views, pageSize }) => {
+export const MutationsInner: FunctionComponent<MutationsInnerProps> = ({
+    lapisFilter,
+    sequenceType,
+    views,
+    pageSize,
+}) => {
     const lapis = useContext(LapisUrlContext);
     const { data, error, isLoading } = useQuery(async () => {
-        return queryMutationsData(variant, sequenceType, lapis);
-    }, [variant, sequenceType, lapis]);
+        return queryMutationsData(lapisFilter, sequenceType, lapis);
+    }, [lapisFilter, sequenceType, lapis]);
 
     if (isLoading) {
         return <LoadingDisplay />;

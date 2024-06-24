@@ -111,7 +111,7 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
     );
 
     if (data.content.length > 5) {
-        return <div>Too many variants to display. Maximum are five. </div>;
+        return <div>Too many datasets to display. Maximum are five. </div>;
     }
 
     return (

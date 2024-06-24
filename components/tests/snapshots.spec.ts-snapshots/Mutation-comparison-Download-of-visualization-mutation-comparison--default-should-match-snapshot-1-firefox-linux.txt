@@ -1,4 +1,4 @@
-mutation,Some variant prevalence,Other variant prevalence
+mutation,Some dataset prevalence,Other dataset prevalence
 G199-,0.00006128577557148986,0.55
 C241T,0.9940932894897089,0.9940534575772437
 C3037T,0.9993348249380177,0.9993303707311134
