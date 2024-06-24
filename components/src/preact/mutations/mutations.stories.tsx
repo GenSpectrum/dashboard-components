@@ -13,7 +13,7 @@ const meta: Meta<MutationsProps> = {
     title: 'Visualization/Mutations',
     component: Mutations,
     argTypes: {
-        variant: { control: 'object' },
+        lapisFilter: { control: 'object' },
         sequenceType: {
             options: ['nucleotide', 'amino acid'],
             control: { type: 'radio' },
@@ -36,7 +36,7 @@ const Template = {
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
                 <Mutations
-                    variant={args.variant}
+                    lapisFilter={args.lapisFilter}
                     sequenceType={args.sequenceType}
                     views={args.views}
                     width={args.width}
@@ -52,7 +52,7 @@ const Template = {
 export const Default: StoryObj<MutationsProps> = {
     ...Template,
     args: {
-        variant: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
+        lapisFilter: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
         sequenceType: 'nucleotide',
         views: ['grid', 'table', 'insertions'],
         width: '100%',

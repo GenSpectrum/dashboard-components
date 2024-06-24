@@ -20,7 +20,7 @@ const compareAscending = (a: string | null | number, b: string | null | number) 
 };
 
 export async function queryAggregateData(
-    variant: LapisFilter,
+    lapisFilter: LapisFilter,
     fields: string[],
     lapis: string,
     initialSort: InitialSort = { field: 'count', direction: 'descending' },
@@ -31,7 +31,7 @@ export async function queryAggregateData(
         throw new Error(`InitialSort field not in fields. Valid fields are: ${validSortFields.join(', ')}`);
     }
 
-    const fetchData = new FetchAggregatedOperator<Record<string, string | null | number>>(variant, fields);
+    const fetchData = new FetchAggregatedOperator<Record<string, string | null | number>>(lapisFilter, fields);
     const sortData = new SortOperator(fetchData, (a, b) => {
         return initialSort.direction === 'ascending'
             ? compareAscending(a[initialSort.field], b[initialSort.field])

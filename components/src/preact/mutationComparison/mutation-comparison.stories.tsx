@@ -1,24 +1,24 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, userEvent, waitFor, within } from '@storybook/test';
 
-import nucleotideMutationsOtherVariant from './__mockData__/nucleotideMutationsOtherVariant.json';
-import nucleotideMutationsSomeVariant from './__mockData__/nucleotideMutationsSomeVariant.json';
+import nucleotideMutationsOtherDataset from './__mockData__/nucleotideMutationsOtherDataset.json';
+import nucleotideMutationsSomeDataset from './__mockData__/nucleotideMutationsSomeDataset.json';
 import { MutationComparison, type MutationComparisonProps } from './mutation-comparison';
 import { LAPIS_URL, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 
-const dateToSomeVariant = '2022-01-01';
+const dateToSomeDataset = '2022-01-01';
 
-const dateFromOtherVariant = '2021-01-01';
-const dateToOtherVariant = '2022-01-02';
+const dateFromOtherDataset = '2021-01-01';
+const dateToOtherDataset = '2022-01-02';
 
 const meta: Meta<MutationComparisonProps> = {
     title: 'Visualization/Mutation comparison',
     component: MutationComparison,
     argTypes: {
-        variants: [{ control: 'object' }],
+        lapisFilters: [{ control: 'object' }],
         sequenceType: {
             options: ['nucleotide', 'amino acid'],
             control: { type: 'radio' },
@@ -42,13 +42,13 @@ const meta: Meta<MutationComparisonProps> = {
                         body: {
                             country: 'Switzerland',
                             pangoLineage: 'B.1.1.7',
-                            dateTo: dateToSomeVariant,
+                            dateTo: dateToSomeDataset,
                             minProportion: 0,
                         },
                     },
                     response: {
                         status: 200,
-                        body: nucleotideMutationsSomeVariant,
+                        body: nucleotideMutationsSomeDataset,
                     },
                 },
                 {
@@ -58,14 +58,14 @@ const meta: Meta<MutationComparisonProps> = {
                         body: {
                             country: 'Switzerland',
                             pangoLineage: 'B.1.1.7',
-                            dateFrom: dateFromOtherVariant,
-                            dateTo: dateToOtherVariant,
+                            dateFrom: dateFromOtherDataset,
+                            dateTo: dateToOtherDataset,
                             minProportion: 0,
                         },
                     },
                     response: {
                         status: 200,
-                        body: nucleotideMutationsOtherVariant,
+                        body: nucleotideMutationsOtherDataset,
                     },
                 },
             ],
@@ -80,7 +80,7 @@ const Template: StoryObj<MutationComparisonProps> = {
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
                 <MutationComparison
-                    variants={args.variants}
+                    lapisFilters={args.lapisFilters}
                     sequenceType={args.sequenceType}
                     views={args.views}
                     width={args.width}
@@ -96,18 +96,18 @@ const Template: StoryObj<MutationComparisonProps> = {
 export const TwoVariants: StoryObj<MutationComparisonProps> = {
     ...Template,
     args: {
-        variants: [
+        lapisFilters: [
             {
-                displayName: 'Some variant',
-                lapisFilter: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: dateToSomeVariant },
+                displayName: 'Some dataset',
+                lapisFilter: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: dateToSomeDataset },
             },
             {
-                displayName: 'Other variant',
+                displayName: 'Other dataset',
                 lapisFilter: {
                     country: 'Switzerland',
                     pangoLineage: 'B.1.1.7',
-                    dateFrom: dateFromOtherVariant,
-                    dateTo: dateToOtherVariant,
+                    dateFrom: dateFromOtherDataset,
+                    dateTo: dateToOtherDataset,
                 },
             },
         ],

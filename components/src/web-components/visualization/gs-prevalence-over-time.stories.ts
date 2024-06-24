@@ -8,17 +8,17 @@ import './gs-prevalence-over-time';
 import { type PrevalenceOverTimeComponentProps } from './gs-prevalence-over-time';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import denominator from '../../preact/prevalenceOverTime/__mockData__/denominator.json';
-import denominatorOneVariant from '../../preact/prevalenceOverTime/__mockData__/denominatorOneVariant.json';
-import numeratorEG from '../../preact/prevalenceOverTime/__mockData__/numeratorEG.json';
-import numeratorJN1 from '../../preact/prevalenceOverTime/__mockData__/numeratorJN1.json';
-import numeratorOneVariant from '../../preact/prevalenceOverTime/__mockData__/numeratorOneVariant.json';
+import denominatorFilter from '../../preact/prevalenceOverTime/__mockData__/denominatorFilter.json';
+import denominatorFilterOneDataset from '../../preact/prevalenceOverTime/__mockData__/denominatorFilterOneDataset.json';
+import numeratorFilterEG from '../../preact/prevalenceOverTime/__mockData__/numeratorFilterEG.json';
+import numeratorFilterJN1 from '../../preact/prevalenceOverTime/__mockData__/numeratorFilterJN1.json';
+import numeratorFilterOneDataset from '../../preact/prevalenceOverTime/__mockData__/numeratorFilterOneDataset.json';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
 <gs-prevalence-over-time
-    numerator='[{ "displayName": "EG", "lapisFilter": { "country": "USA", "pangoLineage": "EG*" }}, { "displayName": "JN.1", "lapisFilter": { "country": "USA", "pangoLineage": "JN.1*" }}]'
-    denominator='{ "country": "USA"}'
+    numeratorFilter='[{ "displayName": "EG", "lapisFilter": { "country": "USA", "pangoLineage": "EG*" }}, { "displayName": "JN.1", "lapisFilter": { "country": "USA", "pangoLineage": "JN.1*" }}]'
+    denominatorFilter='{ "country": "USA"}'
     granularity="month"
     smoothingWindow="0"
     views='["bar", "line", "bubble", "table"]'
@@ -36,8 +36,8 @@ const meta: Meta<Required<PrevalenceOverTimeComponentProps>> = {
     title: 'Visualization/Prevalence over time',
     component: 'gs-prevalence-over-time',
     argTypes: {
-        numerator: { control: 'object' },
-        denominator: { control: 'object' },
+        numeratorFilter: { control: 'object' },
+        denominatorFilter: { control: 'object' },
         granularity: {
             options: ['day', 'week', 'month', 'year'],
             control: { type: 'radio' },
@@ -74,8 +74,8 @@ const Template: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-prevalence-over-time
-                .numerator=${args.numerator}
-                .denominator=${args.denominator}
+                .numeratorFilter=${args.numeratorFilter}
+                .denominatorFilter=${args.denominatorFilter}
                 .granularity=${args.granularity}
                 .smoothingWindow=${args.smoothingWindow}
                 .views=${args.views}
@@ -92,14 +92,14 @@ const Template: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
     `,
 };
 
-export const TwoVariants: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
+export const TwoDatasets: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
     ...Template,
     args: {
-        numerator: [
+        numeratorFilter: [
             { displayName: 'EG', lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' } },
             { displayName: 'JN.1', lapisFilter: { country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' } },
         ],
-        denominator: { country: 'USA', dateFrom: '2023-01-01' },
+        denominatorFilter: { country: 'USA', dateFrom: '2023-01-01' },
         granularity: 'month',
         smoothingWindow: 0,
         views: ['bar', 'line', 'bubble', 'table'],
@@ -128,7 +128,7 @@ export const TwoVariants: StoryObj<Required<PrevalenceOverTimeComponentProps>> =
                     },
                     response: {
                         status: 200,
-                        body: numeratorEG,
+                        body: numeratorFilterEG,
                     },
                 },
                 {
@@ -144,7 +144,7 @@ export const TwoVariants: StoryObj<Required<PrevalenceOverTimeComponentProps>> =
                     },
                     response: {
                         status: 200,
-                        body: numeratorJN1,
+                        body: numeratorFilterJN1,
                     },
                 },
                 {
@@ -159,7 +159,7 @@ export const TwoVariants: StoryObj<Required<PrevalenceOverTimeComponentProps>> =
                     },
                     response: {
                         status: 200,
-                        body: denominator,
+                        body: denominatorFilter,
                     },
                 },
             ],
@@ -167,14 +167,14 @@ export const TwoVariants: StoryObj<Required<PrevalenceOverTimeComponentProps>> =
     },
 };
 
-export const OneVariant: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
+export const OneDataset: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
     ...Template,
     args: {
-        numerator: {
+        numeratorFilter: {
             displayName: 'EG',
             lapisFilter: { country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
         },
-        denominator: { country: 'USA', dateFrom: '2023-10-01' },
+        denominatorFilter: { country: 'USA', dateFrom: '2023-10-01' },
         granularity: 'day',
         smoothingWindow: 7,
         views: ['bar', 'line', 'bubble', 'table'],
@@ -192,7 +192,7 @@ export const OneVariant: StoryObj<Required<PrevalenceOverTimeComponentProps>> = 
             mocks: [
                 {
                     matcher: {
-                        name: 'numeratorOneVariant',
+                        name: 'numeratorOneDataset',
                         url: AGGREGATED_ENDPOINT,
                         body: {
                             country: 'USA',
@@ -203,12 +203,12 @@ export const OneVariant: StoryObj<Required<PrevalenceOverTimeComponentProps>> = 
                     },
                     response: {
                         status: 200,
-                        body: numeratorOneVariant,
+                        body: numeratorFilterOneDataset,
                     },
                 },
                 {
                     matcher: {
-                        name: 'denominatorOneVariant',
+                        name: 'denominatorOneDataset',
                         url: AGGREGATED_ENDPOINT,
                         body: {
                             country: 'USA',
@@ -218,7 +218,7 @@ export const OneVariant: StoryObj<Required<PrevalenceOverTimeComponentProps>> = 
                     },
                     response: {
                         status: 200,
-                        body: denominatorOneVariant,
+                        body: denominatorFilterOneDataset,
                     },
                 },
             ],
@@ -226,8 +226,8 @@ export const OneVariant: StoryObj<Required<PrevalenceOverTimeComponentProps>> = 
     },
 };
 
-export const OneVariantOnLineTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
-    ...OneVariant,
+export const OneDatasetOnLineTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
+    ...OneDataset,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
 
@@ -237,8 +237,8 @@ export const OneVariantOnLineTab: StoryObj<Required<PrevalenceOverTimeComponentP
     },
 };
 
-export const OneVariantOnBubbleTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
-    ...OneVariant,
+export const OneDatasetOnBubbleTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
+    ...OneDataset,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
 
@@ -248,8 +248,8 @@ export const OneVariantOnBubbleTab: StoryObj<Required<PrevalenceOverTimeComponen
     },
 };
 
-export const OneVariantOnTableTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
-    ...OneVariant,
+export const OneDatasetOnTableTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
+    ...OneDataset,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
 

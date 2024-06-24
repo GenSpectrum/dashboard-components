@@ -16,7 +16,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * For this component, we assume a discrete time model, where new infections happen exactly every `generationTime` days.
  * This is what we call a "generation".
  *
- * This component estimates the relative growth advantage of a variant by performing a logistic regression.
+ * This component estimates the relative growth advantage of a variant (defined by its LAPIS filter) by performing a logistic regression.
  * Based on the inferred logistic growth rate, we derive the relative growth advantage (per generation).
  *
  * For details on the scientific method, see:
@@ -32,7 +32,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * ### Line View
  *
  * The line view shows the relative growth advantage over time in a line chart.
- * The dots in the plot show the proportions of the focal variant (`numerator`) to the `denominator` variant
+ * The dots in the plot show the proportions of the focal variant (defined by the `numeratorFilter`) to the baseline variant (defined by the `denominatorFilter`)
  * for every day as observed in the data.
  * The line shows a logistic curve fitted to the data points, including a 95% confidence interval.
  */
@@ -41,18 +41,20 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
     /**
      * Required.
      *
-     * The LAPIS filter for the focal variant.
+     * LAPIS filter to select the data of the focal variant.
+     * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
-    numerator: Record<string, string | number | null | boolean> = {};
+    numeratorFilter: Record<string, string | number | null | boolean> = {};
 
     /**
      * Required.
      *
-     * The LAPIS filter for the variant that the focal variant (`numerator`) should be compared to.
+     * LAPIS filter to select the data of the baseline variant.
+     * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
-    denominator: Record<string, string | number | null | boolean> = {};
+    denominatorFilter: Record<string, string | number | null | boolean> = {};
 
     /**
      * The generation time represents the number of days over which the variant's relative growth advantage is measured.
@@ -122,8 +124,8 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
     override render() {
         return (
             <RelativeGrowthAdvantage
-                numerator={this.numerator}
-                denominator={this.denominator}
+                numeratorFilter={this.numeratorFilter}
+                denominatorFilter={this.denominatorFilter}
                 generationTime={this.generationTime}
                 views={this.views}
                 width={this.width}
@@ -151,7 +153,9 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type NumeratorMatches = Expect<Equals<typeof RelativeGrowthAdvantageComponent.prototype.numerator, LapisFilter>>;
-type DenominatorMatches = Expect<Equals<typeof RelativeGrowthAdvantageComponent.prototype.denominator, LapisFilter>>;
+type NumeratorMatches = Expect<Equals<typeof RelativeGrowthAdvantageComponent.prototype.numeratorFilter, LapisFilter>>;
+type DenominatorMatches = Expect<
+    Equals<typeof RelativeGrowthAdvantageComponent.prototype.denominatorFilter, LapisFilter>
+>;
 type ViewsMatches = Expect<Equals<typeof RelativeGrowthAdvantageComponent.prototype.views, View[]>>;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

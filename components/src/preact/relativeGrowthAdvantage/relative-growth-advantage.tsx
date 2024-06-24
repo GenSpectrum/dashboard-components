@@ -30,8 +30,8 @@ export interface RelativeGrowthAdvantageProps extends RelativeGrowthAdvantagePro
 }
 
 export interface RelativeGrowthAdvantagePropsInner {
-    numerator: LapisFilter;
-    denominator: LapisFilter;
+    numeratorFilter: LapisFilter;
+    denominatorFilter: LapisFilter;
     generationTime: number;
     views: View[];
     lapisDateField: string;
@@ -42,8 +42,8 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
     views,
     width,
     height,
-    numerator,
-    denominator,
+    numeratorFilter,
+    denominatorFilter,
     generationTime,
     headline = 'Relative growth advantage',
     lapisDateField,
@@ -57,8 +57,8 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
                 <Headline heading={headline}>
                     <RelativeGrowthAdvantageInner
                         views={views}
-                        numerator={numerator}
-                        denominator={denominator}
+                        numeratorFilter={numeratorFilter}
+                        denominatorFilter={denominatorFilter}
                         generationTime={generationTime}
                         lapisDateField={lapisDateField}
                         yAxisMaxConfig={yAxisMaxConfig}
@@ -70,8 +70,8 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
 };
 
 export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvantagePropsInner> = ({
-    numerator,
-    denominator,
+    numeratorFilter,
+    denominatorFilter,
     generationTime,
     views,
     lapisDateField,
@@ -81,8 +81,8 @@ export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvan
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
 
     const { data, error, isLoading } = useQuery(
-        () => queryRelativeGrowthAdvantage(numerator, denominator, generationTime, lapis, lapisDateField),
-        [lapis, numerator, denominator, generationTime, views],
+        () => queryRelativeGrowthAdvantage(numeratorFilter, denominatorFilter, generationTime, lapis, lapisDateField),
+        [lapis, numeratorFilter, denominatorFilter, generationTime, views],
     );
 
     if (isLoading) {

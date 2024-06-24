@@ -10,12 +10,12 @@ import { type DisplayedSegment } from '../components/SegmentSelector';
 import { type DisplayedMutationType } from '../components/mutation-type-selector';
 
 export async function queryMutationsData(
-    variant: LapisFilter,
+    lapisFilter: LapisFilter,
     sequenceType: 'nucleotide' | 'amino acid',
     lapis: string,
 ) {
-    const substitutionsOrDeletions = (await querySubstitutionsOrDeletions(variant, sequenceType, lapis)).content;
-    const insertions = (await queryInsertions(variant, sequenceType, lapis)).content;
+    const substitutionsOrDeletions = (await querySubstitutionsOrDeletions(lapisFilter, sequenceType, lapis)).content;
+    const insertions = (await queryInsertions(lapisFilter, sequenceType, lapis)).content;
 
     return {
         substitutionsOrDeletions,

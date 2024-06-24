@@ -6,14 +6,14 @@ import './gs-mutation-comparison';
 import '../app';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
-import nucleotideMutationsOtherVariant from '../../preact/mutationComparison/__mockData__/nucleotideMutationsOtherVariant.json';
-import nucleotideMutationsSomeVariant from '../../preact/mutationComparison/__mockData__/nucleotideMutationsSomeVariant.json';
+import nucleotideMutationsOtherDataset from '../../preact/mutationComparison/__mockData__/nucleotideMutationsOtherDataset.json';
+import nucleotideMutationsSomeDataset from '../../preact/mutationComparison/__mockData__/nucleotideMutationsSomeDataset.json';
 import { type MutationComparisonProps } from '../../preact/mutationComparison/mutation-comparison';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
 <gs-mutation-comparison
-    variants='[{ "displayName": "variant1", "lapisFilter": { "country": "Switzerland" }}, { "displayName": "variant2", "lapisFilter": { "country": "Germany" }}]'
+    lapisFilters='[{ "displayName": "Data in Switzerland", "lapisFilter": { "country": "Switzerland" }}, { "displayName": "Data in Germany", "lapisFilter": { "country": "Germany" }}]'
     sequenceType="nucleotide"
     views='["table", "venn"]'
     headline="Mutation comparison"
@@ -26,7 +26,7 @@ const meta: Meta<Required<MutationComparisonProps>> = {
     title: 'Visualization/Mutation comparison',
     component: 'gs-mutation-comparison',
     argTypes: {
-        variants: { control: 'object' },
+        lapisFilters: { control: 'object' },
         sequenceType: {
             options: ['nucleotide', 'amino acid'],
             control: { type: 'radio' },
@@ -56,7 +56,7 @@ const Template: StoryObj<Required<MutationComparisonProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-mutation-comparison
-                .variants=${args.variants}
+                .lapisFilters=${args.lapisFilters}
                 .sequenceType=${args.sequenceType}
                 .views=${args.views}
                 .width=${args.width}
@@ -74,13 +74,13 @@ const dateFrom = '2021-01-01';
 export const Default: StoryObj<Required<MutationComparisonProps>> = {
     ...Template,
     args: {
-        variants: [
+        lapisFilters: [
             {
-                displayName: 'Some variant',
+                displayName: 'Some dataset',
                 lapisFilter: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo },
             },
             {
-                displayName: 'Other variant',
+                displayName: 'Other dataset',
                 lapisFilter: {
                     country: 'Switzerland',
                     pangoLineage: 'B.1.1.7',
@@ -101,7 +101,7 @@ export const Default: StoryObj<Required<MutationComparisonProps>> = {
             mocks: [
                 {
                     matcher: {
-                        name: 'nucleotideMutationsSomeVariant',
+                        name: 'nucleotideMutationsSomeDataset',
                         url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
                         body: {
                             country: 'Switzerland',
@@ -112,12 +112,12 @@ export const Default: StoryObj<Required<MutationComparisonProps>> = {
                     },
                     response: {
                         status: 200,
-                        body: nucleotideMutationsSomeVariant,
+                        body: nucleotideMutationsSomeDataset,
                     },
                 },
                 {
                     matcher: {
-                        name: 'nucleotideMutationsOtherVariant',
+                        name: 'nucleotideMutationsOtherDataset',
                         url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
                         body: {
                             country: 'Switzerland',
@@ -129,7 +129,7 @@ export const Default: StoryObj<Required<MutationComparisonProps>> = {
                     },
                     response: {
                         status: 200,
-                        body: nucleotideMutationsOtherVariant,
+                        body: nucleotideMutationsOtherDataset,
                     },
                 },
             ],

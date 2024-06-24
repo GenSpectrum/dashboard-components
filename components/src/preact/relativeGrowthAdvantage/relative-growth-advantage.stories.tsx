@@ -1,5 +1,5 @@
-import denominator from './__mockData__/denominator.json';
-import numerator from './__mockData__/numerator.json';
+import denominator from './__mockData__/denominatorFilter.json';
+import numerator from './__mockData__/numeratorFilter.json';
 import { RelativeGrowthAdvantage, type RelativeGrowthAdvantageProps } from './relative-growth-advantage';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
@@ -29,8 +29,8 @@ export const Primary = {
     render: (args: RelativeGrowthAdvantageProps) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <RelativeGrowthAdvantage
-                numerator={args.numerator}
-                denominator={args.denominator}
+                numeratorFilter={args.numeratorFilter}
+                denominatorFilter={args.denominatorFilter}
                 generationTime={args.generationTime}
                 views={args.views}
                 width={args.width}

@@ -3,12 +3,12 @@ import { SortOperator } from '../operator/SortOperator';
 import { type LapisFilter, type SequenceType } from '../types';
 
 export function querySubstitutionsOrDeletions(
-    variant: LapisFilter,
+    lapisFilter: LapisFilter,
     sequenceType: SequenceType,
     lapis: string,
     signal?: AbortSignal,
 ) {
-    const fetchData = new FetchSubstitutionsOrDeletionsOperator(variant, sequenceType, 0);
+    const fetchData = new FetchSubstitutionsOrDeletionsOperator(lapisFilter, sequenceType, 0);
     const sortData = new SortOperator(fetchData, (a, b) => {
         if (a.mutation.segment !== b.mutation.segment) {
             return (a.mutation.segment ?? '').localeCompare(b.mutation.segment ?? '');
