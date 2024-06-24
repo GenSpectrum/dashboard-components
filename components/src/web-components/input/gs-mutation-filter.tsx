@@ -86,7 +86,7 @@ export class MutationFilterComponent extends PreactLitAdapter {
     /**
      * The width of the component.
      *
-     * Visit https://genspectrum.github.io/dashboards-components/?path=/docs/components-size-of-components--docs for more information.
+     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
      */
     @property({ type: String })
     width: string = '100%';
