@@ -5,9 +5,9 @@ data of a specific instance of [LAPIS](https://github.com/GenSpectrum/LAPIS).
 
 ### Documentation
 
-Documentation of the components is available in the deployed [Storybook](https://genspectrum.github.io/dashboards/).
+Documentation of the components is available in the deployed [Storybook](https://genspectrum.github.io/dashboard-components/).
 
-We also provide examples of how to use the components in the [examples](https://github.com/GenSpectrum/dashboards/tree/main/examples) folder.
+We also provide examples of how to use the components in the [examples](https://github.com/GenSpectrum/dashboard-components/tree/main/examples) folder.
 
 ### npm
 
