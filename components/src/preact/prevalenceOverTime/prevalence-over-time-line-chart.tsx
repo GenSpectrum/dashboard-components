@@ -29,16 +29,25 @@ const PrevalenceOverTimeLineChart = ({
     confidenceIntervalMethod,
     yAxisMaxConfig,
 }: PrevalenceOverTimeLineChartProps) => {
-    const datasets = data.map((graphData, index) => getDataset(graphData, index, confidenceIntervalMethod)).flat();
-    const labels = data[0]?.content.map((dateRange) => dateRange.dateRange?.toString() ?? 'Unknown') || [];
+    const nonNullDateRangeData = data.map((variantData) => {
+        return {
+            content: variantData.content.filter((dataPoint) => dataPoint.dateRange !== null),
+            displayName: variantData.displayName,
+        };
+    });
+
+    const datasets = nonNullDateRangeData
+        .map((graphData, index) => getDataset(graphData, index, confidenceIntervalMethod))
+        .flat();
 
     const maxY =
-        yAxisScaleType !== 'logit' ? getYAxisMax(maxInData(data), yAxisMaxConfig?.[yAxisScaleType]) : undefined;
+        yAxisScaleType !== 'logit'
+            ? getYAxisMax(maxInData(nonNullDateRangeData), yAxisMaxConfig?.[yAxisScaleType])
+            : undefined;
 
     const config: ChartConfiguration = {
         type: 'line',
         data: {
-            labels,
             datasets,
         },
         options: {
@@ -78,9 +87,12 @@ const getDataset = (
 
 const getDatasetCIUpper = (prevalenceOverTimeVariant: PrevalenceOverTimeVariantData, dataIndex: number) => ({
     label: `${prevalenceOverTimeVariant.displayName} CI upper`,
-    data: prevalenceOverTimeVariant.content.map(
-        (dataPoint) => wilson95PercentConfidenceInterval(dataPoint.count, dataPoint.total).upperLimit,
-    ),
+    data: prevalenceOverTimeVariant.content.map((dataPoint): Datapoint => {
+        return {
+            y: wilson95PercentConfidenceInterval(dataPoint.count, dataPoint.total).upperLimit,
+            x: dataPoint.dateRange?.toString(),
+        };
+    }),
     borderWidth: 0,
     pointRadius: 0,
     fill: '+1',
@@ -89,9 +101,12 @@ const getDatasetCIUpper = (prevalenceOverTimeVariant: PrevalenceOverTimeVariantD
 
 const getDatasetCILower = (prevalenceOverTimeVariant: PrevalenceOverTimeVariantData, dataIndex: number) => ({
     label: `${prevalenceOverTimeVariant.displayName} CI lower`,
-    data: prevalenceOverTimeVariant.content.map(
-        (dataPoint) => wilson95PercentConfidenceInterval(dataPoint.count, dataPoint.total).lowerLimit,
-    ),
+    data: prevalenceOverTimeVariant.content.map((dataPoint): Datapoint => {
+        return {
+            y: wilson95PercentConfidenceInterval(dataPoint.count, dataPoint.total).lowerLimit,
+            x: dataPoint.dateRange?.toString(),
+        };
+    }),
     borderWidth: 0,
     pointRadius: 0,
     fill: '-1',
@@ -100,12 +115,28 @@ const getDatasetCILower = (prevalenceOverTimeVariant: PrevalenceOverTimeVariantD
 
 const getDatasetLine = (prevalenceOverTimeVariant: PrevalenceOverTimeVariantData, dataIndex: number) => ({
     label: prevalenceOverTimeVariant.displayName,
-    data: prevalenceOverTimeVariant.content.map((dataPoint) => dataPoint.prevalence),
+    data: prevalenceOverTimeVariant.content.map((dataPoint): Datapoint => {
+        const ciLimits = wilson95PercentConfidenceInterval(dataPoint.count, dataPoint.total);
+
+        return {
+            y: dataPoint.prevalence,
+            x: dataPoint.dateRange?.toString(),
+            yCiUpper: ciLimits.upperLimit,
+            yCiLower: ciLimits.lowerLimit,
+        };
+    }),
     borderWidth: 1,
     pointRadius: 0,
     borderColor: singleGraphColorRGBAById(dataIndex),
     backgroundColor: singleGraphColorRGBAById(dataIndex),
 });
+
+interface Datapoint {
+    y: number;
+    yCiLower?: number;
+    yCiUpper?: number;
+    x?: string;
+}
 
 const tooltip = (confidenceIntervalMethod?: ConfidenceIntervalMethod) => {
     const generalConfig = {
@@ -118,26 +149,18 @@ const tooltip = (confidenceIntervalMethod?: ConfidenceIntervalMethod) => {
             return {
                 ...generalConfig,
                 filter: ({ datasetIndex }: TooltipItem<'line'>) => {
-                    return datasetIndex % 3 === 1;
+                    return isNotCiIndex(datasetIndex);
                 },
                 callbacks: {
                     label: (context: TooltipItem<'line'>) => {
-                        if (context.datasetIndex % 3 === 1) {
-                            const value = context.dataset.data[context.dataIndex];
-                            const ciLower = context.dataset.data[context.dataIndex - 1];
-                            const ciUpper = context.dataset.data[context.dataIndex + 1];
+                        const dataPoint = context.dataset.data[context.dataIndex] as unknown as Datapoint;
 
-                            if (
-                                typeof value !== 'number' ||
-                                typeof ciLower !== 'number' ||
-                                typeof ciUpper !== 'number'
-                            ) {
-                                return '';
-                            }
-
-                            return confidenceIntervalDataLabel(value, ciLower, ciUpper, context.dataset.label);
-                        }
-                        return context.dataset.label;
+                        return confidenceIntervalDataLabel(
+                            dataPoint.y,
+                            dataPoint.yCiLower,
+                            dataPoint.yCiUpper,
+                            context.dataset.label,
+                        );
                     },
                 },
             };
@@ -145,5 +168,9 @@ const tooltip = (confidenceIntervalMethod?: ConfidenceIntervalMethod) => {
             return generalConfig;
     }
 };
+
+function isNotCiIndex(datasetIndex: number) {
+    return datasetIndex % 3 === 1;
+}
 
 export default PrevalenceOverTimeLineChart;
