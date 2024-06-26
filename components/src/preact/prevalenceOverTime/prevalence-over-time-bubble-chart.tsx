@@ -23,20 +23,29 @@ const PrevalenceOverTimeBubbleChart = ({
     yAxisScaleType,
     yAxisMaxConfig,
 }: PrevalenceOverTimeBubbleChartProps) => {
-    const firstDate = data[0].content[0].dateRange!;
-    const total = data.map((graphData) => graphData.content.map((dataPoint) => dataPoint.total)).flat();
+    const nonNullDateRangeData = data.map((variantData) => {
+        return {
+            content: variantData.content.filter((dataPoint) => dataPoint.dateRange !== null),
+            displayName: variantData.displayName,
+        };
+    });
+
+    const firstDate = nonNullDateRangeData[0].content[0].dateRange!;
+    const total = nonNullDateRangeData.map((graphData) => graphData.content.map((dataPoint) => dataPoint.total)).flat();
     const [minTotal, maxTotal] = getMinMaxNumber(total)!;
     const scaleBubble = (value: number) => {
         return ((value - minTotal) / (maxTotal - minTotal)) * 4.5 + 0.5;
     };
 
     const maxY =
-        yAxisScaleType !== 'logit' ? getYAxisMax(maxInData(data), yAxisMaxConfig?.[yAxisScaleType]) : undefined;
+        yAxisScaleType !== 'logit'
+            ? getYAxisMax(maxInData(nonNullDateRangeData), yAxisMaxConfig?.[yAxisScaleType])
+            : undefined;
 
     const config: ChartConfiguration = {
         type: 'bubble',
         data: {
-            datasets: data.map((graphData, index) => ({
+            datasets: nonNullDateRangeData.map((graphData, index) => ({
                 label: graphData.displayName,
                 data: graphData.content
                     .filter((dataPoint) => dataPoint.dateRange !== null)
@@ -71,12 +80,12 @@ const PrevalenceOverTimeBubbleChart = ({
                     intersect: false,
                     callbacks: {
                         title: (context) => {
-                            const dataset = data[context[0].datasetIndex!];
+                            const dataset = nonNullDateRangeData[context[0].datasetIndex!];
                             const dataPoint = dataset.content[context[0].dataIndex!];
                             return dataPoint.dateRange?.toString();
                         },
                         label: (context) => {
-                            const dataset = data[context.datasetIndex!];
+                            const dataset = nonNullDateRangeData[context.datasetIndex!];
                             const dataPoint = dataset.content[context.dataIndex!];
 
                             const percentage = (dataPoint.prevalence * 100).toFixed(2);

@@ -20,10 +20,15 @@ export function wilson95PercentConfidenceInterval(observed: number, sample: numb
     };
 }
 
-export const confidenceIntervalDataLabel = (value: number, lowerLimit: number, upperLimit: number, prefix?: string) => {
+export const confidenceIntervalDataLabel = (
+    value: number,
+    lowerLimit?: number,
+    upperLimit?: number,
+    prefix?: string,
+) => {
     const label = prefix ? `${prefix}: ` : '';
 
-    return `${label}${value.toFixed(3)} (${lowerLimit.toFixed(3)} - ${upperLimit.toFixed(3)})`;
+    return `${label}${value.toFixed(3)} (${lowerLimit?.toFixed(3)} - ${upperLimit?.toFixed(3)})`;
 };
 
 export type ConfidenceIntervalMethod = 'wilson' | 'none';
