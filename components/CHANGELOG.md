@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.5.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.4.5...dashboard-components-v0.5.0) (2024-06-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** renaming of props to components
+    * gs-mutation-comparison: variants -> lapisFilter
+    * gs-mutations: variant -> lapisFilter
+    * gs-prevalence-over-time: numerator -> numeratorFilter, denominator -> denominatorFilter
+    * gs-relative-growth-advantage: numerator -> numeratorFilter, denominator -> denominatorFilter
+
+### Features
+
+* **components:** make y-axis max value configurable ([87b2d6c](https://github.com/GenSpectrum/dashboard-components/commit/87b2d6c84c0eb4976f916696dd536e38bd208293))
+* **components:** more prominent relative growth advantage value display ([a73bec9](https://github.com/GenSpectrum/dashboard-components/commit/a73bec9f4abf00d2dbf131416e3dcea4910bace2))
+* **components:** show unknown date only in bar chart and table in prevalence-over-time ([956d1a7](https://github.com/GenSpectrum/dashboard-components/commit/956d1a7ba0d713aceb6d7f0145614adf313ade06))
+
+
+### Code Refactoring
+
+* **components:** rename (almost) all occurrences of variant to lapisFilter, or dataset ([b991df7](https://github.com/GenSpectrum/dashboard-components/commit/b991df7c1e8ca398d0d882c2a90376df2c0311a4))
+
 ## [0.4.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.4.4...dashboard-components-v0.4.5) (2024-06-19)
 
 
