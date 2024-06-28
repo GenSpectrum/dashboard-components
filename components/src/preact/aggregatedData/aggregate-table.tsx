@@ -1,6 +1,6 @@
 import { type FunctionComponent } from 'preact';
 
-import { type AggregateData } from '../../query/queryAggregateData';
+import { type AggregateData, compareAscending } from '../../query/queryAggregateData';
 import { Table } from '../components/table';
 import { formatProportion } from '../shared/table/formatProportion';
 
@@ -15,7 +15,9 @@ export const AggregateTable: FunctionComponent<AggregateTableProps> = ({ data, f
         ...fields.map((field) => {
             return {
                 name: field,
-                sort: true,
+                sort: {
+                    compare: compareAscending,
+                },
             };
         }),
         {

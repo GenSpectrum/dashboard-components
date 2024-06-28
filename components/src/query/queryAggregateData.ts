@@ -8,7 +8,7 @@ export type AggregateData = (Record<string, string | null | number | boolean> & 
     proportion: number;
 })[];
 
-const compareAscending = (a: string | null | number, b: string | null | number) => {
+export const compareAscending = (a: string | null | number, b: string | null | number) => {
     if (typeof a === 'number' && typeof b === 'number') {
         return a - b;
     }
