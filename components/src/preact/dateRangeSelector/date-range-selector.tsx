@@ -177,14 +177,12 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
         );
     };
 
-    const minWidthOfInputWithSize7 = '7.5rem';
-
     return (
         <div class='flex flex-wrap' ref={divRef}>
             <Select
                 items={getSelectableOptions(customSelectOptions)}
                 selected={selectedDateRange}
-                selectStyle={`select-bordered rounded-none flex-grow min-w-[${minWidthOfInputWithSize7}]`}
+                selectStyle='select-bordered rounded-none flex-grow min-w-[7.5rem]'
                 onChange={(event: Event) => {
                     event.preventDefault();
                     const select = event.target as HTMLSelectElement;
@@ -194,18 +192,16 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
             />
             <div className={'flex flex-wrap flex-grow'}>
                 <input
-                    class='input input-bordered rounded-none flex-grow'
+                    class='input input-bordered rounded-none flex-grow w-[7.5rem]'
                     type='text'
-                    size={7}
                     placeholder='Date from'
                     ref={fromDatePickerRef}
                     onChange={onChangeDateFrom}
                     onBlur={onChangeDateFrom}
                 />
                 <input
-                    class='input input-bordered rounded-none flex-grow'
+                    class='input input-bordered rounded-none flex-grow w-[7.5rem]'
                     type='text'
-                    size={7}
                     placeholder='Date to'
                     ref={toDatePickerRef}
                     onChange={onChangeDateTo}
