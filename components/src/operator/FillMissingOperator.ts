@@ -5,7 +5,9 @@ export class FillMissingOperator<Data, KeyToFill extends keyof Data> implements 
     constructor(
         private child: Operator<Data>,
         private keyField: KeyToFill,
-        private getMinMaxFn: (values: Iterable<Data[KeyToFill]>) => [Data[KeyToFill], Data[KeyToFill]] | null,
+        private getMinMaxFn: (
+            values: Iterable<Data[KeyToFill]>,
+        ) => { min: Data[KeyToFill]; max: Data[KeyToFill] } | null,
         private getAllRequiredKeysFn: (min: Data[KeyToFill], max: Data[KeyToFill]) => Data[KeyToFill][],
         private defaultValueFn: (key: Data[KeyToFill]) => Data,
     ) {}
@@ -17,7 +19,7 @@ export class FillMissingOperator<Data, KeyToFill extends keyof Data> implements 
         if (minMax === null) {
             return childEvaluated;
         }
-        const [min, max] = minMax;
+        const { min, max } = minMax;
         const requiredKeys = this.getAllRequiredKeysFn(min, max);
         const content = childEvaluated.content;
         for (const key of requiredKeys) {

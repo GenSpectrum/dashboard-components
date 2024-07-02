@@ -1,3 +1,3 @@
-export const formatProportion = (proportion: number) => {
-    return `${(proportion * 100).toFixed(2)}%`;
+export const formatProportion = (proportion: number, digits: number = 2) => {
+    return `${(proportion * 100).toFixed(digits)}%`;
 };

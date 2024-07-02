@@ -2,6 +2,8 @@ import dayjs from 'dayjs/esm';
 import advancedFormat from 'dayjs/esm/plugin/advancedFormat';
 import isoWeek from 'dayjs/esm/plugin/isoWeek';
 
+import type { TemporalGranularity } from '../types';
+
 dayjs.extend(isoWeek);
 dayjs.extend(advancedFormat);
 
@@ -70,6 +72,14 @@ export class YearMonthDay {
         return this.text;
     }
 
+    get firstDay(): YearMonthDay {
+        return this;
+    }
+
+    get lastDay(): YearMonthDay {
+        return this;
+    }
+
     get year(): Year {
         return this.cache.getYear(`${this.yearNumber}`);
     }
@@ -124,6 +134,16 @@ export class YearWeek {
         return this.cache.getYearMonthDay(firstDay.format('YYYY-MM-DD'));
     }
 
+    get lastDay(): YearMonthDay {
+        const lastDay = dayjs()
+            .year(this.isoYearNumber)
+            .month(12)
+            .date(31)
+            .isoWeek(this.isoWeekNumber)
+            .endOf('isoWeek');
+        return this.cache.getYearMonthDay(lastDay.format('YYYY-MM-DD'));
+    }
+
     get year(): Year {
         return this.cache.getYear(`${this.isoYearNumber}`);
     }
@@ -161,6 +181,12 @@ export class YearMonth {
 
     get firstDay(): YearMonthDay {
         return this.cache.getYearMonthDay(dayjs(`${this.yearNumber}-${this.monthNumber}-01`).format('YYYY-MM-DD'));
+    }
+
+    get lastDay(): YearMonthDay {
+        return this.cache.getYearMonthDay(
+            dayjs(`${this.yearNumber}-${this.monthNumber}-01`).endOf('month').format('YYYY-MM-DD'),
+        );
     }
 
     get year(): Year {
@@ -201,8 +227,16 @@ export class Year {
         return this.cache.getYearMonth(`${this.year}-01`);
     }
 
+    get lastMonth(): YearMonth {
+        return this.cache.getYearMonth(`${this.year}-12`);
+    }
+
     get firstDay(): YearMonthDay {
         return this.firstMonth.firstDay;
+    }
+
+    get lastDay(): YearMonthDay {
+        return this.lastMonth.lastDay;
     }
 
     addYears(years: number): Year {
@@ -311,7 +345,7 @@ export function compareTemporal(a: Temporal | null, b: Temporal | null): number 
     return 0;
 }
 
-export function getMinMaxTemporal(values: Iterable<Temporal | null>): [Temporal, Temporal] | null {
+export function getMinMaxTemporal(values: Iterable<Temporal | null>) {
     let min = null;
     let max = null;
     for (const value of values) {
@@ -326,9 +360,9 @@ export function getMinMaxTemporal(values: Iterable<Temporal | null>): [Temporal,
         }
     }
     if (min === null || max === null) {
-        return null;
+        return { min: null, max: null };
     }
-    return [min, max];
+    return { min, max };
 }
 
 export function addUnit(temporal: Temporal, amount: number): Temporal {
@@ -345,4 +379,29 @@ export function addUnit(temporal: Temporal, amount: number): Temporal {
         return temporal.addYears(amount);
     }
     throw new Error(`Invalid argument: ${temporal}`);
+}
+
+export function parseDateStringToTemporal(date: string, granularity: TemporalGranularity) {
+    const cache = TemporalCache.getInstance();
+    const day = cache.getYearMonthDay(date);
+    switch (granularity) {
+        case 'day':
+            return day;
+        case 'week':
+            return day.week;
+        case 'month':
+            return day.month;
+        case 'year':
+            return day.year;
+    }
+}
+
+export function dateRangeCompare(a: { dateRange: Temporal | null }, b: { dateRange: Temporal | null }) {
+    if (a.dateRange === null) {
+        return 1;
+    }
+    if (b.dateRange === null) {
+        return -1;
+    }
+    return compareTemporal(a.dateRange, b.dateRange);
 }

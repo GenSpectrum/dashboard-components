@@ -30,6 +30,7 @@ const mutationProportionCount = z.object({
     position: z.number(),
 });
 export const mutationsResponse = makeLapisResponse(z.array(mutationProportionCount));
+export type MutationsResponse = z.infer<typeof mutationsResponse>;
 
 const insertionCount = z.object({
     insertion: z.string(),
