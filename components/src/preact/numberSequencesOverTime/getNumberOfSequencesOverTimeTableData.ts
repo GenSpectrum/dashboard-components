@@ -21,7 +21,7 @@ export const getNumberOfSequencesOverTimeTableData = <DateRangeKey extends strin
         return [];
     }
 
-    const allDateRanges: (Temporal | null)[] = generateAllInRange(...minMax);
+    const allDateRanges: (Temporal | null)[] = generateAllInRange(minMax.min, minMax.max);
 
     if (allDateRangesThatOccurInData.has(null)) {
         allDateRanges.unshift(null);

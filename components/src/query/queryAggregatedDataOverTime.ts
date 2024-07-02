@@ -7,11 +7,11 @@ import { SlidingOperator } from '../operator/SlidingOperator';
 import { SortOperator } from '../operator/SortOperator';
 import type { LapisFilter, TemporalGranularity } from '../types';
 import {
-    compareTemporal,
+    dateRangeCompare,
     generateAllInRange,
     getMinMaxTemporal,
+    parseDateStringToTemporal,
     type Temporal,
-    TemporalCache,
 } from '../utils/temporal';
 
 export function queryAggregatedDataOverTime<LapisDateField extends string>(
@@ -36,39 +36,14 @@ export function queryAggregatedDataOverTime<LapisDateField extends string>(
     return smoothingWindow >= 1 ? new SlidingOperator(sortData, smoothingWindow, averageSmoothing) : sortData;
 }
 
-function mapDateToGranularityRange(d: { date: string | null; count: number }, granularity: TemporalGranularity) {
-    let dateRange: Temporal | null = null;
-    if (d.date !== null) {
-        const date = TemporalCache.getInstance().getYearMonthDay(d.date);
-        switch (granularity) {
-            case 'day':
-                dateRange = date;
-                break;
-            case 'week':
-                dateRange = date.week;
-                break;
-            case 'month':
-                dateRange = date.month;
-                break;
-            case 'year':
-                dateRange = date.year;
-                break;
-        }
-    }
+export function mapDateToGranularityRange(
+    data: { date: string | null; count: number },
+    granularity: TemporalGranularity,
+) {
     return {
-        dateRange,
-        count: d.count,
+        dateRange: data.date === null ? null : parseDateStringToTemporal(data.date, granularity),
+        count: data.count,
     };
-}
-
-function dateRangeCompare(a: { dateRange: Temporal | null }, b: { dateRange: Temporal | null }) {
-    if (a.dateRange === null) {
-        return 1;
-    }
-    if (b.dateRange === null) {
-        return -1;
-    }
-    return compareTemporal(a.dateRange, b.dateRange);
 }
 
 function averageSmoothing(slidingWindow: { dateRange: Temporal | null; count: number }[]) {

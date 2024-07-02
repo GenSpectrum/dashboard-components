@@ -29,6 +29,17 @@ export function filterMutationData(
     displayedSegments: DisplayedSegment[],
     displayedMutationTypes: DisplayedMutationType[],
 ) {
+    return data.map((mutationEntry) => ({
+        displayName: mutationEntry.displayName,
+        data: filterBySegmentAndMutationType(mutationEntry.data, displayedSegments, displayedMutationTypes),
+    }));
+}
+
+export function filterBySegmentAndMutationType(
+    data: SubstitutionOrDeletionEntry[],
+    displayedSegments: DisplayedSegment[],
+    displayedMutationTypes: DisplayedMutationType[],
+) {
     const byDisplayedSegments = (mutationEntry: SubstitutionOrDeletionEntry) => {
         if (mutationEntry.mutation.segment === undefined) {
             return true;
@@ -45,8 +56,5 @@ export function filterMutationData(
         );
     };
 
-    return data.map((mutationEntry) => ({
-        displayName: mutationEntry.displayName,
-        data: mutationEntry.data.filter(byDisplayedSegments).filter(byDisplayedMutationTypes),
-    }));
+    return data.filter(byDisplayedSegments).filter(byDisplayedMutationTypes);
 }
