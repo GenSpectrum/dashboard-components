@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.5.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.0...dashboard-components-v0.5.1) (2024-07-02)
+
+
+### Features
+
+* **components:** reduce the smallest size of the date picker ([4c9b51e](https://github.com/GenSpectrum/dashboard-components/commit/4c9b51e6d24b7e3ac959dd980aa2fab1b1ff429a))
+
+
+### Bug Fixes
+
+* **components:** correct sorting with null values in gs-aggregate ([83ba9c3](https://github.com/GenSpectrum/dashboard-components/commit/83ba9c39924efc524f406f355965cb562d0a6c73))
+
 ## [0.5.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.4.5...dashboard-components-v0.5.0) (2024-06-28)
 
 
