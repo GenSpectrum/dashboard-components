@@ -33,6 +33,7 @@ export default {
         height: { control: 'text' },
         pageSize: { control: 'object' },
         yAxisMaxConfig: { control: 'object' },
+        lapisDateField: { control: 'text' },
     },
 };
 

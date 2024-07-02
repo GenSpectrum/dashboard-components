@@ -1,9 +1,10 @@
-import { type SequenceType } from '../types';
+import { type MutationType, type SequenceType } from '../types';
 
 export interface Mutation {
     readonly segment: string | undefined;
     readonly position: number;
     readonly code: string;
+    readonly type: MutationType;
 
     equals(other: Mutation): boolean;
 
@@ -15,6 +16,7 @@ export const substitutionRegex =
 
 export class Substitution implements Mutation {
     readonly code;
+    readonly type = 'substitution';
 
     constructor(
         readonly segment: string | undefined,
@@ -62,6 +64,7 @@ export const deletionRegex = /^((?<segment>[A-Za-z0-9_-]+)(?=:):)?(?<valueAtRefe
 
 export class Deletion implements Mutation {
     readonly code;
+    readonly type = 'deletion';
 
     constructor(
         readonly segment: string | undefined,
@@ -103,6 +106,7 @@ export const insertionRegexp =
 
 export class Insertion implements Mutation {
     readonly code;
+    readonly type = 'insertion';
 
     constructor(
         readonly segment: string | undefined,

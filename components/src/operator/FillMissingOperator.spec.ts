@@ -10,7 +10,9 @@ describe('FillMissingOperator', () => {
         const query = new FillMissingOperator(
             child,
             'id',
-            (ids) => [Math.min(...ids), Math.max(...ids)],
+            (ids) => {
+                return { min: Math.min(...ids), max: Math.max(...ids) };
+            },
             (min, max) => {
                 const result = [];
                 for (let i = min; i <= max; i++) {

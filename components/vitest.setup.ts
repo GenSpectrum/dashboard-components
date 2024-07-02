@@ -1,11 +1,11 @@
 import { type AssertionError } from 'node:assert';
 
-import { http } from 'msw';
+import { type DefaultBodyType, http, type StrictRequest } from 'msw';
 import { setupServer } from 'msw/node';
 import { afterAll, afterEach, beforeAll, expect } from 'vitest';
 
-import { aggregatedEndpoint } from './src/lapisApi/lapisApi';
-import type { LapisBaseRequest } from './src/lapisApi/lapisTypes';
+import { aggregatedEndpoint, substitutionsOrDeletionsEndpoint } from './src/lapisApi/lapisApi';
+import { type LapisBaseRequest, type MutationsRequest, type MutationsResponse } from './src/lapisApi/lapisTypes';
 
 export const DUMMY_LAPIS_URL = 'http://lapis.dummy';
 
@@ -52,35 +52,53 @@ export const lapisRequestMocks = {
             };
         }[],
     ) => {
+        testServer.use(http.post(aggregatedEndpoint(DUMMY_LAPIS_URL), resolver(expectedRequests)));
+    },
+    multipleMutations: (
+        expectedRequests: {
+            body: MutationsRequest;
+            response: MutationsResponse;
+        }[],
+        sequenceType: 'nucleotide' | 'amino acid',
+    ) => {
         testServer.use(
-            http.post(aggregatedEndpoint(DUMMY_LAPIS_URL), async ({ request }) => {
-                const actualBody = await request.json();
-
-                const errors = [];
-                for (const { body, response } of expectedRequests) {
-                    try {
-                        expect(actualBody, 'Request body did not match').to.deep.equal(body);
-                    } catch (error) {
-                        errors.push(error);
-                        continue;
-                    }
-                    return new Response(JSON.stringify(response), {
-                        status: 200,
-                    });
-                }
-
-                return new Response(
-                    JSON.stringify({
-                        error: errors.map((error) => getError(error as AssertionError)),
-                    }),
-                    {
-                        status: 400,
-                    },
-                );
-            }),
+            http.post(substitutionsOrDeletionsEndpoint(DUMMY_LAPIS_URL, sequenceType), resolver(expectedRequests)),
         );
     },
 };
+
+function resolver(
+    expectedRequests: {
+        body: unknown;
+        response: unknown;
+    }[],
+) {
+    return async ({ request }: { request: StrictRequest<DefaultBodyType> }) => {
+        const actualBody = await request.json();
+
+        const errors = [];
+        for (const { body, response } of expectedRequests) {
+            try {
+                expect(actualBody, 'Request body did not match').to.deep.equal(body);
+            } catch (error) {
+                errors.push(error);
+                continue;
+            }
+            return new Response(JSON.stringify(response), {
+                status: 200,
+            });
+        }
+
+        return new Response(
+            JSON.stringify({
+                error: errors.map((error) => getError(error as AssertionError)),
+            }),
+            {
+                status: 400,
+            },
+        );
+    };
+}
 
 beforeAll(() => testServer.listen({ onUnhandledRequest: 'warn' }));
 
