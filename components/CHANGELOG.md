@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.1...dashboard-components-v0.5.2) (2024-07-10)
+
+
+### Bug Fixes
+
+* **components:** prevalence over time: bar chart disappeared when selecting "None" confidence interval [#311](https://github.com/GenSpectrum/dashboard-components/issues/311) ([0f3cec2](https://github.com/GenSpectrum/dashboard-components/commit/0f3cec2d8b2dbec1389df6d0bc3b32504f01a501))
+
 ## [0.5.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.0...dashboard-components-v0.5.1) (2024-07-02)
 
 
