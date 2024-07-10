@@ -107,7 +107,7 @@ const getDataset = (
             return {
                 ...generalConfig,
                 data: prevalenceOverTimeVariant.content.map((dataPoint) => {
-                    return { y: dataPoint.prevalence, x: dataPoint.dateRange };
+                    return { y: dataPoint.prevalence, x: dataPoint.dateRange?.toString() ?? 'Unknown' };
                 }),
             };
     }
