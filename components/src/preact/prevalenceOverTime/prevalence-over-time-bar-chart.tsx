@@ -2,7 +2,11 @@ import { Chart, type ChartConfiguration, registerables, type TooltipItem } from 
 import { BarWithErrorBar, BarWithErrorBarsController } from 'chartjs-chart-error-bars';
 
 import { maxInData } from './prevalence-over-time';
-import { type PrevalenceOverTimeData, type PrevalenceOverTimeVariantData } from '../../query/queryPrevalenceOverTime';
+import {
+    type PrevalenceOverTimeData,
+    type PrevalenceOverTimeVariantData,
+    type PrevalenceOverTimeVariantDataPoint,
+} from '../../query/queryPrevalenceOverTime';
 import type { Temporal } from '../../utils/temporal';
 import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';
@@ -84,32 +88,37 @@ const getDataset = (
     index: number,
     confidenceIntervalMethod: ConfidenceIntervalMethod,
 ) => {
-    const generalConfig = {
+    return {
         borderWidth: 1,
         pointRadius: 0,
         label: prevalenceOverTimeVariant.displayName,
         backgroundColor: singleGraphColorRGBAById(index, 0.3),
         borderColor: singleGraphColorRGBAById(index),
+        data: prevalenceOverTimeVariant.content.map(mapDataPoint(confidenceIntervalMethod)),
     };
+};
 
+const mapDataPoint = (confidenceIntervalMethod: ConfidenceIntervalMethod) => {
+    return (dataPoint: PrevalenceOverTimeVariantDataPoint) => {
+        const confidenceInterval = getConfidenceInterval(dataPoint, confidenceIntervalMethod);
+        return {
+            y: dataPoint.prevalence,
+            yMin: confidenceInterval.lowerLimit,
+            yMax: confidenceInterval.upperLimit,
+            x: dataPoint.dateRange?.toString() ?? 'Unknown',
+        };
+    };
+};
+
+const getConfidenceInterval = (
+    dataPoint: PrevalenceOverTimeVariantDataPoint,
+    confidenceIntervalMethod: ConfidenceIntervalMethod,
+) => {
     switch (confidenceIntervalMethod) {
         case 'wilson':
-            return {
-                ...generalConfig,
-                data: prevalenceOverTimeVariant.content.map((dataPoint) => ({
-                    y: dataPoint.prevalence,
-                    yMin: wilson95PercentConfidenceInterval(dataPoint.count, dataPoint.total).lowerLimit,
-                    yMax: wilson95PercentConfidenceInterval(dataPoint.count, dataPoint.total).upperLimit,
-                    x: dataPoint.dateRange?.toString() ?? 'Unknown',
-                })),
-            };
+            return wilson95PercentConfidenceInterval(dataPoint.count, dataPoint.total);
         default:
-            return {
-                ...generalConfig,
-                data: prevalenceOverTimeVariant.content.map((dataPoint) => {
-                    return { y: dataPoint.prevalence, x: dataPoint.dateRange?.toString() ?? 'Unknown' };
-                }),
-            };
+            return { lowerLimit: undefined, upperLimit: undefined };
     }
 };
 

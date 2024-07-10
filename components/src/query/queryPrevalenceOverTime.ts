@@ -19,7 +19,14 @@ export type PrevalenceOverTimeData = PrevalenceOverTimeVariantData[];
 
 export type PrevalenceOverTimeVariantData = {
     displayName: string;
-    content: { count: number; prevalence: number; total: number; dateRange: Temporal | null }[];
+    content: PrevalenceOverTimeVariantDataPoint[];
+};
+
+export type PrevalenceOverTimeVariantDataPoint = {
+    count: number;
+    prevalence: number;
+    total: number;
+    dateRange: Temporal | null;
 };
 
 export function queryPrevalenceOverTime(
