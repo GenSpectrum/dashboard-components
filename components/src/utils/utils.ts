@@ -36,3 +36,10 @@ function stringifyLapisFilterValue(value: LapisFilter[string]) {
             return value;
     }
 }
+
+export function makeArray<T>(arrayOrSingleItem: T | T[]) {
+    if (Array.isArray(arrayOrSingleItem)) {
+        return arrayOrSingleItem;
+    }
+    return [arrayOrSingleItem];
+}

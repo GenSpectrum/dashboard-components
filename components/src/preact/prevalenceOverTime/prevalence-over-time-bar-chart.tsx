@@ -7,7 +7,7 @@ import {
     type PrevalenceOverTimeVariantData,
     type PrevalenceOverTimeVariantDataPoint,
 } from '../../query/queryPrevalenceOverTime';
-import type { Temporal } from '../../utils/temporal';
+import { sortNullToBeginningThenByDate } from '../../utils/sort';
 import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';
 import { singleGraphColorRGBAById } from '../shared/charts/colors';
@@ -66,22 +66,6 @@ const PrevalenceOverTimeBarChart = ({
 
     return <GsChart configuration={config} />;
 };
-
-function sortNullToBeginningThenByDate(
-    a: { count: number; prevalence: number; total: number; dateRange: Temporal | null },
-    b: {
-        count: number;
-        prevalence: number;
-        total: number;
-        dateRange: Temporal | null;
-    },
-) {
-    return a.dateRange === null
-        ? -1
-        : b.dateRange === null
-          ? 1
-          : a.dateRange.toString().localeCompare(b.dateRange.toString());
-}
 
 const getDataset = (
     prevalenceOverTimeVariant: PrevalenceOverTimeVariantData,
