@@ -70,14 +70,35 @@ export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJs
     @property({ type: String })
     height: string = '700px';
 
+    /**
+     * The granularity of the time axis.
+     */
+    @property({ type: String })
+    granularity: 'day' | 'week' | 'month' | 'year' = 'day';
+
+    /**
+     * The number of time steps to use for smoothing the data.
+     * `0` means no smoothing.
+     * Must be a non-negative integer.
+     *
+     * For a given time, the shown value is the mean of the neighbouring measured values.
+     * The `smoothingWindow` value provides the number of neighbouring values to take into account.
+     * The resulting time is computed via `Math.floor(smoothingWindow / 2)`.
+     */
+    @property({ type: Number })
+    smoothingWindow: number = 0;
+
     override render() {
         return (
             <NumberSequencesOverTime
                 lapisFilter={this.lapisFilter}
+                lapisDateField={this.lapisDateField}
                 views={this.views}
                 headline={this.headline}
                 width={this.width}
                 height={this.height}
+                granularity={this.granularity}
+                smoothingWindow={this.smoothingWindow}
             />
         );
     }
@@ -95,5 +116,14 @@ type LapisFilterMatches = Expect<
 >;
 type ViewsMatches = Expect<
     Equals<typeof NumberSequencesOverTimeComponent.prototype.views, NumberSequencesOverTimeProps['views']>
+>;
+type GranularityMatches = Expect<
+    Equals<typeof NumberSequencesOverTimeComponent.prototype.granularity, NumberSequencesOverTimeProps['granularity']>
+>;
+type SmoothingWindowMatches = Expect<
+    Equals<
+        typeof NumberSequencesOverTimeComponent.prototype.smoothingWindow,
+        NumberSequencesOverTimeProps['smoothingWindow']
+    >
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
