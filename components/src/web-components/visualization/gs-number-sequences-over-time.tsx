@@ -7,6 +7,9 @@ import {
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
+/**
+ * TODO(#330) write docs
+ */
 @customElement('gs-number-sequences-over-time')
 export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
     // prettier-ignore
