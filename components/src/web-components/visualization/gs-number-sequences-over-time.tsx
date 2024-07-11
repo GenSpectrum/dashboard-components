@@ -88,6 +88,13 @@ export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJs
     @property({ type: Number })
     smoothingWindow: number = 0;
 
+    /**
+     * The maximum number of rows to display in the table view.
+     * Set to `false` to disable pagination. Set to `true` to enable pagination with a default limit (10).
+     */
+    @property({ type: Object })
+    pageSize: boolean | number = false;
+
     override render() {
         return (
             <NumberSequencesOverTime
@@ -99,6 +106,7 @@ export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJs
                 height={this.height}
                 granularity={this.granularity}
                 smoothingWindow={this.smoothingWindow}
+                pageSize={this.pageSize}
             />
         );
     }
