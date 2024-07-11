@@ -20,13 +20,13 @@ export interface TextInputProps extends TextInputInnerProps {
     width: string;
 }
 
-export const TextInput: FunctionComponent<TextInputProps> = ({ width, lapisField, placeholderText, initialValue }) => {
+export const TextInput: FunctionComponent<TextInputProps> = ({ width, ...innerProps }) => {
     const size = { width, height: '3rem' };
 
     return (
         <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <TextInputInner lapisField={lapisField} placeholderText={placeholderText} initialValue={initialValue} />
+                <TextInputInner {...innerProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );

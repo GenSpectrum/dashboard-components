@@ -39,15 +39,10 @@ export interface RelativeGrowthAdvantagePropsInner {
 }
 
 export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = ({
-    views,
     width,
     height,
-    numeratorFilter,
-    denominatorFilter,
-    generationTime,
     headline = 'Relative growth advantage',
-    lapisDateField,
-    yAxisMaxConfig,
+    ...innerProps
 }) => {
     const size = { height, width };
 
@@ -55,14 +50,7 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
         <ErrorBoundary size={size} headline={headline}>
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
-                    <RelativeGrowthAdvantageInner
-                        views={views}
-                        numeratorFilter={numeratorFilter}
-                        denominatorFilter={denominatorFilter}
-                        generationTime={generationTime}
-                        lapisDateField={lapisDateField}
-                        yAxisMaxConfig={yAxisMaxConfig}
-                    />
+                    <RelativeGrowthAdvantageInner {...innerProps} />
                 </Headline>
             </ResizeContainer>
         </ErrorBoundary>

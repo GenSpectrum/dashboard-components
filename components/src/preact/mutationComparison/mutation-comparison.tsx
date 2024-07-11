@@ -38,13 +38,10 @@ export interface MutationComparisonInnerProps {
 }
 
 export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
-    lapisFilters,
-    sequenceType,
-    views,
     width,
     height,
     headline = 'Mutation comparison',
-    pageSize,
+    ...innerProps
 }) => {
     const size = { height, width };
 
@@ -52,12 +49,7 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
         <ErrorBoundary size={size} headline={headline}>
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
-                    <MutationComparisonInner
-                        lapisFilters={lapisFilters}
-                        sequenceType={sequenceType}
-                        views={views}
-                        pageSize={pageSize}
-                    />
+                    <MutationComparisonInner {...innerProps} />
                 </Headline>
             </ResizeContainer>
         </ErrorBoundary>

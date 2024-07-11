@@ -20,18 +20,13 @@ export interface LocationFilterProps extends LocationFilterInnerProps {
     width: string;
 }
 
-export const LocationFilter: FunctionComponent<LocationFilterProps> = ({
-    width,
-    initialValue,
-    fields,
-    placeholderText,
-}) => {
+export const LocationFilter: FunctionComponent<LocationFilterProps> = ({ width, ...innerProps }) => {
     const size = { width, height: '3rem' };
 
     return (
         <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <LocationFilterInner initialValue={initialValue} fields={fields} placeholderText={placeholderText} />
+                <LocationFilterInner {...innerProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );

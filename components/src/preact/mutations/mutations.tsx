@@ -45,13 +45,10 @@ export interface MutationsProps extends MutationsInnerProps {
 }
 
 export const Mutations: FunctionComponent<MutationsProps> = ({
-    lapisFilter,
-    sequenceType,
-    views,
     width,
     height,
     headline = 'Mutations',
-    pageSize,
+    ...innerProps
 }) => {
     const size = { height, width };
 
@@ -59,12 +56,7 @@ export const Mutations: FunctionComponent<MutationsProps> = ({
         <ErrorBoundary size={size} headline={headline}>
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
-                    <MutationsInner
-                        lapisFilter={lapisFilter}
-                        sequenceType={sequenceType}
-                        views={views}
-                        pageSize={pageSize}
-                    />
+                    <MutationsInner {...innerProps} />
                 </Headline>
             </ResizeContainer>
         </ErrorBoundary>

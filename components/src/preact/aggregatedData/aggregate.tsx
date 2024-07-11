@@ -35,15 +35,10 @@ export interface AggregateInnerProps {
 }
 
 export const Aggregate: FunctionComponent<AggregateProps> = ({
-    views,
     width,
     height,
     headline = 'Mutations',
-    filter,
-    fields,
-    pageSize,
-    initialSortField,
-    initialSortDirection,
+    ...innerProps
 }) => {
     const size = { height, width };
 
@@ -51,14 +46,7 @@ export const Aggregate: FunctionComponent<AggregateProps> = ({
         <ErrorBoundary size={size} headline={headline}>
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
-                    <AggregateInner
-                        fields={fields}
-                        filter={filter}
-                        views={views}
-                        initialSortField={initialSortField}
-                        initialSortDirection={initialSortDirection}
-                        pageSize={pageSize}
-                    />
+                    <AggregateInner {...innerProps} />
                 </Headline>
             </ResizeContainer>
         </ErrorBoundary>
