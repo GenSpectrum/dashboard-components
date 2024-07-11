@@ -44,6 +44,42 @@ export const lapisRequestMocks = {
             }),
         );
     },
+    multipleAggregated: (
+        expectedRequests: {
+            body: LapisBaseRequest;
+            response: {
+                data: (Record<string, string | number | null> & { count: number })[];
+            };
+        }[],
+    ) => {
+        testServer.use(
+            http.post(aggregatedEndpoint(DUMMY_LAPIS_URL), async ({ request }) => {
+                const actualBody = await request.json();
+
+                const errors = [];
+                for (const { body, response } of expectedRequests) {
+                    try {
+                        expect(actualBody, 'Request body did not match').to.deep.equal(body);
+                    } catch (error) {
+                        errors.push(error);
+                        continue;
+                    }
+                    return new Response(JSON.stringify(response), {
+                        status: 200,
+                    });
+                }
+
+                return new Response(
+                    JSON.stringify({
+                        error: errors.map((error) => getError(error as AssertionError)),
+                    }),
+                    {
+                        status: 400,
+                    },
+                );
+            }),
+        );
+    },
 };
 
 beforeAll(() => testServer.listen({ onUnhandledRequest: 'warn' }));
