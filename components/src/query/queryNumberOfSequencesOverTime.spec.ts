@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import { queryNumberOfSequencesOverTime } from './queryNumberOfSequencesOverTime';
 import { DUMMY_LAPIS_URL, lapisRequestMocks } from '../../vitest.setup';
-import { TemporalCache, YearMonth, YearMonthDay } from '../utils/temporal';
+import { yearMonth, yearMonthDay } from '../utils/temporalTestHelpers';
 
 const lapisDateField = 'dateField';
 const lapisFilter = { field1: 'value1', field2: 'value2' };
@@ -193,11 +193,3 @@ describe('queryNumberOfSequencesOverTime', () => {
         ]);
     });
 });
-
-function yearMonthDay(date: string) {
-    return YearMonthDay.parse(date, TemporalCache.getInstance());
-}
-
-function yearMonth(date: string) {
-    return YearMonth.parse(date, TemporalCache.getInstance());
-}

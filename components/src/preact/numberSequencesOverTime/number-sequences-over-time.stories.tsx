@@ -19,6 +19,7 @@ export default {
             options: ['bar', 'line', 'table'],
             control: { type: 'check' },
         },
+        pageSize: { control: 'object' },
     },
 };
 
@@ -34,6 +35,7 @@ const Template: StoryObj<NumberSequencesOverTimeProps> = {
                 headline={args.headline}
                 granularity={args.granularity}
                 smoothingWindow={args.smoothingWindow}
+                pageSize={args.pageSize}
             />
         </LapisUrlContext.Provider>
     ),
@@ -48,9 +50,21 @@ const Template: StoryObj<NumberSequencesOverTimeProps> = {
         headline: 'Number of sequences over time',
         smoothingWindow: 0,
         granularity: 'month',
+        pageSize: 10,
     },
 };
 
 export const Table = {
     ...Template,
+};
+
+export const TwoVariants = {
+    ...Template,
+    args: {
+        ...Template.args,
+        lapisFilter: [
+            { displayName: 'EG', lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateTo: '2023-06-30' } },
+            { displayName: 'JN.1', lapisFilter: { country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' } },
+        ],
+    },
 };
