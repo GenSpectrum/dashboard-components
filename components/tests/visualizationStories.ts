@@ -30,4 +30,6 @@ export const visualizationStories = [
     },
     { id: 'visualization-mutation-comparison--venn-diagram', title: 'Mutation comparison' },
     { id: 'visualization-aggregate--table', title: 'Aggregate', testDownloadWithFilename: 'aggregate.csv' },
+    { id: 'visualization-number-sequences-over-time--one-dataset-table', title: 'Number of sequences over time' },
+    { id: 'visualization-number-sequences-over-time--two-datasets', title: 'Number of sequences over time' },
 ];

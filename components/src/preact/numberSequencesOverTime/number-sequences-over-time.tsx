@@ -21,7 +21,7 @@ type NumberSequencesOverTimeView = 'bar' | 'line' | 'table';
 export interface NumberSequencesOverTimeProps extends NumberSequencesOverTimeInnerProps {
     width: string;
     height: string;
-    headline?: string;
+    headline: string;
 }
 
 interface NumberSequencesOverTimeInnerProps {
