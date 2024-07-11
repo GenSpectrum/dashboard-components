@@ -28,27 +28,15 @@ export interface DateRangeSelectorPropsInner<CustomLabel extends string> {
 }
 
 export const DateRangeSelector = <CustomLabel extends string>({
-    customSelectOptions,
-    earliestDate = '1900-01-01',
-    initialValue,
     width,
-    dateColumn,
-    initialDateFrom,
-    initialDateTo,
+    ...innerProps
 }: DateRangeSelectorProps<CustomLabel>) => {
     const size = { width, height: '3rem' };
 
     return (
         <ErrorBoundary size={size}>
             <div style={{ width }}>
-                <DateRangeSelectorInner
-                    customSelectOptions={customSelectOptions}
-                    earliestDate={earliestDate}
-                    initialValue={initialValue}
-                    dateColumn={dateColumn}
-                    initialDateFrom={initialDateFrom}
-                    initialDateTo={initialDateTo}
-                />
+                <DateRangeSelectorInner {...innerProps} />
             </div>
         </ErrorBoundary>
     );

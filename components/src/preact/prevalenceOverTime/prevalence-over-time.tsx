@@ -46,18 +46,10 @@ export interface PrevalenceOverTimeInnerProps {
 }
 
 export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
-    numeratorFilter,
-    denominatorFilter,
-    granularity,
-    smoothingWindow,
-    views,
-    confidenceIntervalMethods,
     width,
     height,
     headline = 'Prevalence over time',
-    lapisDateField,
-    pageSize,
-    yAxisMaxConfig,
+    ...innerProps
 }) => {
     const size = { height, width };
 
@@ -65,17 +57,7 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
         <ErrorBoundary size={size} headline={headline}>
             <ResizeContainer size={size}>
                 <Headline heading={headline}>
-                    <PrevalenceOverTimeInner
-                        numeratorFilter={numeratorFilter}
-                        denominatorFilter={denominatorFilter}
-                        granularity={granularity}
-                        smoothingWindow={smoothingWindow}
-                        views={views}
-                        confidenceIntervalMethods={confidenceIntervalMethods}
-                        lapisDateField={lapisDateField}
-                        pageSize={pageSize}
-                        yAxisMaxConfig={yAxisMaxConfig}
-                    />
+                    <PrevalenceOverTimeInner {...innerProps} />
                 </Headline>
             </ResizeContainer>
         </ErrorBoundary>
