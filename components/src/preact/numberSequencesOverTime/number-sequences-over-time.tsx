@@ -1,5 +1,6 @@
 import { useContext } from 'preact/hooks';
 
+import { NumberSequencesOverTimeBarChart } from './number-sequences-over-time-bar-chart';
 import { NumberSequencesOverTimeTable } from './number-sequences-over-time-table';
 import {
     type NumberOfSequencesDatasets,
@@ -87,7 +88,7 @@ const NumberSequencesOverTimeTabs = ({ views, data, granularity, pageSize }: Num
     const getTab = (view: NumberSequencesOverTimeView) => {
         switch (view) {
             case 'bar':
-                return { title: 'Bar', content: <div>not implemented, TODO #316</div> };
+                return { title: 'Bar', content: <NumberSequencesOverTimeBarChart data={data} /> };
             case 'line':
                 return { title: 'Line', content: <div>not implemented, TODO #317</div> };
             case 'table':
