@@ -9,6 +9,7 @@ import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import oneVariantEG from '../../preact/numberSequencesOverTime/__mockData__/oneVariantEG.json';
 import twoVariantsEG from '../../preact/numberSequencesOverTime/__mockData__/twoVariantsEG.json';
 import twoVariantsJN1 from '../../preact/numberSequencesOverTime/__mockData__/twoVariantsJN1.json';
+import twoVariantsXBB from '../../preact/numberSequencesOverTime/__mockData__/twoVariantsXBB.json';
 import type { NumberSequencesOverTimeProps } from '../../preact/numberSequencesOverTime/number-sequences-over-time';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
@@ -104,12 +105,23 @@ const Template: StoryObj<NumberSequencesOverTimeProps> = {
     },
 };
 
+export const OneDatasetBarChart: StoryObj<NumberSequencesOverTimeProps> = {
+    ...Template,
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-number-sequences-over-time');
+
+        await waitFor(() => expect(canvas.getByRole('button', { name: 'Bar' })).toBeVisible());
+
+        await fireEvent.click(canvas.getByRole('button', { name: 'Bar' }));
+    },
+};
+
 export const OneDatasetTable: StoryObj<NumberSequencesOverTimeProps> = {
     ...Template,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-number-sequences-over-time');
 
-        await waitFor(() => expect(canvas.getByRole('button', { name: 'Table' })).toBeInTheDocument());
+        await waitFor(() => expect(canvas.getByRole('button', { name: 'Table' })).toBeVisible());
 
         await fireEvent.click(canvas.getByRole('button', { name: 'Table' }));
     },
@@ -121,8 +133,8 @@ export const TwoDatasets: StoryObj<NumberSequencesOverTimeProps> = {
         ...Template.args,
         lapisFilter: [
             {
-                displayName: 'EG until 2023-06',
-                lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateTo: '2023-06-30' },
+                displayName: 'EG',
+                lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateFrom: '2022-10-01' },
             },
             { displayName: 'JN.1', lapisFilter: { country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' } },
         ],
@@ -137,13 +149,65 @@ export const TwoDatasets: StoryObj<NumberSequencesOverTimeProps> = {
                         body: {
                             country: 'USA',
                             pangoLineage: 'EG*',
-                            dateTo: '2023-06-30',
                             fields: ['date'],
                         },
                     },
                     response: {
                         status: 200,
                         body: twoVariantsEG,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregatedJN.1',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            country: 'USA',
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2023-01-01',
+                            fields: ['date'],
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: twoVariantsJN1,
+                    },
+                },
+            ],
+        },
+    },
+};
+
+export const TwoDatasetsWithNonOverlappingDates: StoryObj<NumberSequencesOverTimeProps> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        lapisFilter: [
+            {
+                displayName: 'XBB',
+                lapisFilter: { country: 'USA', pangoLineage: 'XBB*', dateFrom: '2022-01-01', dateTo: '2022-12-31' },
+            },
+            { displayName: 'JN.1', lapisFilter: { country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' } },
+        ],
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'aggregatedEG',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            country: 'USA',
+                            pangoLineage: 'XBB*',
+                            dateFrom: '2022-01-01',
+                            dateTo: '2022-12-31',
+                            fields: ['date'],
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: twoVariantsXBB,
                     },
                 },
                 {

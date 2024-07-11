@@ -1,10 +1,11 @@
 import type { NumberOfSequencesDatasets } from '../../query/queryNumberOfSequencesOverTime';
-import type { TemporalGranularity } from '../../types';
 import { generateAllInRange, getMinMaxTemporal, type Temporal } from '../../utils/temporal';
 
-export const getNumberOfSequencesOverTimeTableData = (
+type TableRow<DateRangeKey extends string> = { [K in DateRangeKey]: string } & { [key: string]: number };
+
+export const getNumberOfSequencesOverTimeTableData = <DateRangeKey extends string>(
     data: NumberOfSequencesDatasets,
-    granularity: TemporalGranularity,
+    dateRangeKey: DateRangeKey,
 ) => {
     const datasetsWithCountByDate = data.map(({ displayName, content }) => ({
         displayName,
@@ -32,7 +33,7 @@ export const getNumberOfSequencesOverTimeTableData = (
                 ...acc,
                 [dataset.displayName]: dataset.content.get(dateRange?.toString())?.count ?? 0,
             }),
-            { [granularity]: dateRange?.toString() ?? 'Unknown' } as Record<string, number | string>,
+            { [dateRangeKey]: dateRange?.toString() ?? 'Unknown' } as TableRow<DateRangeKey>,
         );
     });
 };

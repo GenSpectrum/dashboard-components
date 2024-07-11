@@ -4,6 +4,7 @@ import { sortNullToBeginningThenByDate } from '../utils/sort';
 import { makeArray } from '../utils/utils';
 
 export type NumberOfSequencesDatasets = Awaited<ReturnType<typeof queryNumberOfSequencesOverTime>>;
+export type NumberOfSequencesDataset = NumberOfSequencesDatasets[number];
 
 export async function queryNumberOfSequencesOverTime(
     lapis: string,
