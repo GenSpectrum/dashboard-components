@@ -1,5 +1,6 @@
 import { useContext } from 'preact/hooks';
 
+import { getNumberOfSequencesOverTimeTableData } from './getNumberOfSequencesOverTimeTableData';
 import { NumberSequencesOverTimeBarChart } from './number-sequences-over-time-bar-chart';
 import { NumberSequencesOverTimeLineChart } from './number-sequences-over-time-line-chart';
 import { NumberSequencesOverTimeTable } from './number-sequences-over-time-table';
@@ -9,9 +10,11 @@ import {
 } from '../../query/queryNumberOfSequencesOverTime';
 import type { NamedLapisFilter, TemporalGranularity } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import Headline from '../components/headline';
+import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
@@ -102,5 +105,34 @@ const NumberSequencesOverTimeTabs = ({ views, data, granularity, pageSize }: Num
         }
     };
 
-    return <Tabs tabs={views.map((view) => getTab(view))} />;
+    return (
+        <Tabs tabs={views.map((view) => getTab(view))} toolbar={<Toolbar data={data} granularity={granularity} />} />
+    );
 };
+
+interface ToolbarProps {
+    data: NumberOfSequencesDatasets;
+    granularity: TemporalGranularity;
+}
+
+const Toolbar = ({ data, granularity }: ToolbarProps) => {
+    return (
+        <>
+            <CsvDownloadButton
+                className='mx-1 btn btn-xs'
+                getData={() => getNumberOfSequencesOverTimeTableData(data, granularity)}
+                filename='number_of_sequences_over_time.csv'
+            />
+            <NumberSequencesOverTimeInfo />
+        </>
+    );
+};
+
+const NumberSequencesOverTimeInfo = () => (
+    <Info height='100px'>
+        <InfoHeadline1>Number of sequences over time</InfoHeadline1>
+        <InfoParagraph>
+            <a href='https://github.com/GenSpectrum/dashboard-components/issues/315'>TODO</a>
+        </InfoParagraph>
+    </Info>
+);
