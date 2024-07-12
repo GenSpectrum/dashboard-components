@@ -7,18 +7,24 @@ export type ScalingSelectorProps = {
     yAxisScaleType: ScaleType;
     setYAxisScaleType: (scaleType: ScaleType) => void;
     className?: string;
+    enabledTypes?: ScaleType[];
 };
+
+const scaleTypeItem: { label: string; value: ScaleType }[] = [
+    { label: 'Linear', value: 'linear' },
+    { label: 'Logarithmic', value: 'logarithmic' },
+    { label: 'Logit', value: 'logit' },
+];
 
 export const ScalingSelector: FunctionComponent<ScalingSelectorProps> = ({
     yAxisScaleType,
     setYAxisScaleType,
     className,
+    enabledTypes,
 }) => {
     const items = [
         { label: 'y axis scaling type', value: 'none', disabled: true },
-        { label: 'Linear', value: 'linear' },
-        { label: 'Logarithmic', value: 'logarithmic' },
-        { label: 'Logit', value: 'logit' },
+        ...scaleTypeItem.filter((item) => enabledTypes === undefined || enabledTypes.includes(item.value)),
     ];
 
     return (

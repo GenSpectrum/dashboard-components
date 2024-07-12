@@ -5,14 +5,16 @@ import { getNumberOfSequencesOverTimeTableData } from './getNumberOfSequencesOve
 import { type NumberOfSequencesDatasets } from '../../query/queryNumberOfSequencesOverTime';
 import GsChart from '../components/chart';
 import { singleGraphColorRGBAById } from '../shared/charts/colors';
+import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
 
 interface NumberSequencesOverBarChartProps {
     data: NumberOfSequencesDatasets;
+    yAxisScaleType: ScaleType;
 }
 
 Chart.register(...registerables);
 
-export const NumberSequencesOverTimeBarChart = ({ data }: NumberSequencesOverBarChartProps) => {
+export const NumberSequencesOverTimeBarChart = ({ data, yAxisScaleType }: NumberSequencesOverBarChartProps) => {
     const config: ChartConfiguration = useMemo(
         () => ({
             type: 'bar',
@@ -22,6 +24,11 @@ export const NumberSequencesOverTimeBarChart = ({ data }: NumberSequencesOverBar
             options: {
                 maintainAspectRatio: false,
                 animation: false,
+                scales: {
+                    y: {
+                        type: getYAxisScale(yAxisScaleType).type,
+                    },
+                },
                 plugins: {
                     legend: {
                         display: false,
@@ -33,7 +40,7 @@ export const NumberSequencesOverTimeBarChart = ({ data }: NumberSequencesOverBar
                 },
             },
         }),
-        [data],
+        [data, yAxisScaleType],
     );
 
     return <GsChart configuration={config} />;

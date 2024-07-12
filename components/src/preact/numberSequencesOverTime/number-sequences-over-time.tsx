@@ -1,4 +1,4 @@
-import { useContext } from 'preact/hooks';
+import { useContext, useState } from 'preact/hooks';
 
 import { getNumberOfSequencesOverTimeTableData } from './getNumberOfSequencesOverTimeTableData';
 import { NumberSequencesOverTimeBarChart } from './number-sequences-over-time-bar-chart';
@@ -18,7 +18,9 @@ import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
+import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
+import type { ScaleType } from '../shared/charts/getYAxisScale';
 import { useQuery } from '../useQuery';
 
 type NumberSequencesOverTimeView = 'bar' | 'line' | 'table';
@@ -89,12 +91,20 @@ interface NumberSequencesOverTimeTabsProps {
 }
 
 const NumberSequencesOverTimeTabs = ({ views, data, granularity, pageSize }: NumberSequencesOverTimeTabsProps) => {
+    const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
+
     const getTab = (view: NumberSequencesOverTimeView) => {
         switch (view) {
             case 'bar':
-                return { title: 'Bar', content: <NumberSequencesOverTimeBarChart data={data} /> };
+                return {
+                    title: 'Bar',
+                    content: <NumberSequencesOverTimeBarChart data={data} yAxisScaleType={yAxisScaleType} />,
+                };
             case 'line':
-                return { title: 'Line', content: <NumberSequencesOverTimeLineChart data={data} /> };
+                return {
+                    title: 'Line',
+                    content: <NumberSequencesOverTimeLineChart data={data} yAxisScaleType={yAxisScaleType} />,
+                };
             case 'table':
                 return {
                     title: 'Table',
@@ -106,18 +116,39 @@ const NumberSequencesOverTimeTabs = ({ views, data, granularity, pageSize }: Num
     };
 
     return (
-        <Tabs tabs={views.map((view) => getTab(view))} toolbar={<Toolbar data={data} granularity={granularity} />} />
+        <Tabs
+            tabs={views.map((view) => getTab(view))}
+            toolbar={(activeTab) => (
+                <Toolbar
+                    activeTab={activeTab}
+                    data={data}
+                    granularity={granularity}
+                    yAxisScaleType={yAxisScaleType}
+                    setYAxisScaleType={setYAxisScaleType}
+                />
+            )}
+        />
     );
 };
 
 interface ToolbarProps {
+    activeTab: string;
     data: NumberOfSequencesDatasets;
     granularity: TemporalGranularity;
+    yAxisScaleType: ScaleType;
+    setYAxisScaleType: (scaleType: ScaleType) => void;
 }
 
-const Toolbar = ({ data, granularity }: ToolbarProps) => {
+const Toolbar = ({ activeTab, data, granularity, yAxisScaleType, setYAxisScaleType }: ToolbarProps) => {
     return (
         <>
+            {activeTab !== 'Table' && (
+                <ScalingSelector
+                    yAxisScaleType={yAxisScaleType}
+                    setYAxisScaleType={setYAxisScaleType}
+                    enabledTypes={['linear', 'logarithmic']}
+                />
+            )}
             <CsvDownloadButton
                 className='mx-1 btn btn-xs'
                 getData={() => getNumberOfSequencesOverTimeTableData(data, granularity)}
