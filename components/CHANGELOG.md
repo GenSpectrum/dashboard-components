@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.2...dashboard-components-v0.5.3) (2024-07-12)
+
+
+### Bug Fixes
+
+* **components:** mutation filter: `initialValue` must be of `type Object` ([6837704](https://github.com/GenSpectrum/dashboard-components/commit/683770414e46a1b80133f673e71a77e01af151e4))
+
 ## [0.5.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.1...dashboard-components-v0.5.2) (2024-07-10)
 
 
