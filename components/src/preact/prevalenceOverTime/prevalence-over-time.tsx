@@ -235,7 +235,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
             <CsvDownloadButton
                 className='mx-1 btn btn-xs'
                 getData={() => getPrevalenceOverTimeTableData(data, granularity)}
-                filename='prevalence-over-time.csv'
+                filename='prevalence_over_time.csv'
             />
 
             <PrevalenceOverTimeInfo />

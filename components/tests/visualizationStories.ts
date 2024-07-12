@@ -2,7 +2,7 @@ export const visualizationStories = [
     {
         id: 'visualization-prevalence-over-time--two-datasets',
         title: 'Prevalence over time',
-        testDownloadWithFilename: 'prevalence-over-time.csv',
+        testDownloadWithFilename: 'prevalence_over_time.csv',
     },
     { id: 'visualization-prevalence-over-time--one-dataset', title: 'Prevalence over time' },
     { id: 'visualization-prevalence-over-time--one-dataset-on-line-tab', title: 'Prevalence over time' },
@@ -12,7 +12,7 @@ export const visualizationStories = [
     {
         id: 'visualization-mutations--default',
         title: 'Mutations',
-        testDownloadWithFilename: 'substitutionsAndDeletions.csv',
+        testDownloadWithFilename: 'substitutions_and_deletions.csv',
     },
     {
         id: 'visualization-mutations--on-table-tab',
