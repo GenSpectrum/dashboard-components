@@ -1,4 +1,4 @@
-import { Chart, type ChartConfiguration, registerables, type TooltipItem } from 'chart.js';
+import { Chart, type ChartConfiguration, type ChartDataset, registerables, type TooltipItem } from 'chart.js';
 import { BarWithErrorBar, BarWithErrorBarsController } from 'chartjs-chart-error-bars';
 
 import { maxInData } from './prevalence-over-time';
@@ -71,10 +71,17 @@ const getDataset = (
     prevalenceOverTimeVariant: PrevalenceOverTimeVariantData,
     index: number,
     confidenceIntervalMethod: ConfidenceIntervalMethod,
-) => {
+): ChartDataset<
+    typeof BarWithErrorBarsController.id,
+    {
+        x: string;
+        yMin: number | undefined;
+        yMax: number | undefined;
+        y: number;
+    }[]
+> => {
     return {
         borderWidth: 1,
-        pointRadius: 0,
         label: prevalenceOverTimeVariant.displayName,
         backgroundColor: singleGraphColorRGBAById(index, 0.3),
         borderColor: singleGraphColorRGBAById(index),
