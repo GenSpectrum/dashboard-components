@@ -33,7 +33,11 @@ export const visualizationStories = [
     { id: 'visualization-number-sequences-over-time--one-dataset-bar-chart', title: 'Number of sequences over time' },
     { id: 'visualization-number-sequences-over-time--one-dataset-line-chart', title: 'Number of sequences over time' },
     { id: 'visualization-number-sequences-over-time--one-dataset-table', title: 'Number of sequences over time' },
-    { id: 'visualization-number-sequences-over-time--two-datasets', title: 'Number of sequences over time' },
+    {
+        id: 'visualization-number-sequences-over-time--two-datasets',
+        title: 'Number of sequences over time',
+        testDownloadWithFilename: 'number_of_sequences_over_time.csv',
+    },
     {
         id: 'visualization-number-sequences-over-time--two-datasets-with-non-overlapping-dates',
         title: 'Number of sequences over time',
