@@ -116,6 +116,17 @@ export const OneDatasetBarChart: StoryObj<NumberSequencesOverTimeProps> = {
     },
 };
 
+export const OneDatasetLineChart: StoryObj<NumberSequencesOverTimeProps> = {
+    ...Template,
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-number-sequences-over-time');
+
+        await waitFor(() => expect(canvas.getByRole('button', { name: 'Line' })).toBeVisible());
+
+        await fireEvent.click(canvas.getByRole('button', { name: 'Line' }));
+    },
+};
+
 export const OneDatasetTable: StoryObj<NumberSequencesOverTimeProps> = {
     ...Template,
     play: async ({ canvasElement }) => {
