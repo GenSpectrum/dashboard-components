@@ -198,7 +198,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                     <CsvDownloadButton
                         className='mx-1 btn btn-xs'
                         getData={() => getMutationsTableData(filteredData.tableData, proportionInterval)}
-                        filename='substitutionsAndDeletions.csv'
+                        filename='substitutions_and_deletions.csv'
                     />
                 </>
             )}
