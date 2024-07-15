@@ -45,7 +45,7 @@ describe('getSequenceType', () => {
         ],
     };
 
-    it('should return nucleotide when the segment is undefined for singe segmented genome', () => {
+    it('should return nucleotide when the segment is undefined for single segmented genome', () => {
         expect(sequenceTypeFromSegment('nuc1', singleSegmentedReferenceGenome)).toBe('nucleotide');
         expect(sequenceTypeFromSegment(undefined, singleSegmentedReferenceGenome)).toBe('nucleotide');
     });

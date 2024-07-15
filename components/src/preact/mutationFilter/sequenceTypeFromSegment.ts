@@ -1,4 +1,4 @@
-import type { ReferenceGenome } from '../../lapisApi/ReferenceGenome';
+import { isSingleSegmented, type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
 import type { SequenceType } from '../../types';
 
 export const sequenceTypeFromSegment = (
@@ -6,7 +6,7 @@ export const sequenceTypeFromSegment = (
     referenceGenome: ReferenceGenome,
 ): SequenceType | undefined => {
     if (possibleSegment === undefined) {
-        return referenceGenome.nucleotideSequences.length === 1 ? 'nucleotide' : undefined;
+        return isSingleSegmented(referenceGenome) ? 'nucleotide' : undefined;
     }
 
     if (referenceGenome.nucleotideSequences.some((sequence) => sequence.name === possibleSegment)) {
