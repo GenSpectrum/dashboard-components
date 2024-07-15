@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.5.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.4...dashboard-components-v0.5.5) (2024-07-15)
+
+
+### Features
+
+* **components:** add new component that shows the number of sequences over time ([32f4dcd](https://github.com/GenSpectrum/dashboard-components/commit/32f4dcd1a0ca142c83b57323edb05da8d765aac9)), closes [#327](https://github.com/GenSpectrum/dashboard-components/issues/327)
+* **components:** number of sequences over time: compute data ([ccd27d6](https://github.com/GenSpectrum/dashboard-components/commit/ccd27d6984fcad2dc9407d25a27452fbcbc5695e)), closes [#327](https://github.com/GenSpectrum/dashboard-components/issues/327)
+* **components:** number of sequences over time: implement bar chart view ([dba386c](https://github.com/GenSpectrum/dashboard-components/commit/dba386ce6195716b40e1ad961e35b2b72b64a6f7)), closes [#316](https://github.com/GenSpectrum/dashboard-components/issues/316)
+* **components:** number of sequences over time: implement table view ([b52021a](https://github.com/GenSpectrum/dashboard-components/commit/b52021a7270e773721f0e23ef82368fa29f81507)), closes [#318](https://github.com/GenSpectrum/dashboard-components/issues/318)
+
 ## [0.5.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.3...dashboard-components-v0.5.4) (2024-07-15)
 
 
