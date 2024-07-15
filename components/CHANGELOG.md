@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.3...dashboard-components-v0.5.4) (2024-07-15)
+
+
+### Features
+
+* **components:** mutation filter: add explanation to info box ([361a519](https://github.com/GenSpectrum/dashboard-components/commit/361a5196bdc06cc14cf85d556f11d7b54310cb47)), closes [#182](https://github.com/GenSpectrum/dashboard-components/issues/182)
+
 ## [0.5.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.2...dashboard-components-v0.5.3) (2024-07-12)
 
 
