@@ -1,7 +1,7 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useRef } from 'preact/hooks';
 
-import { fetchAutocompleteList } from './fetchAutocompleteList';
+import { fetchLineageAutocompleteList } from './fetchLineageAutocompleteList';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
@@ -10,34 +10,41 @@ import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
-export interface TextInputInnerProps {
+export interface LineageFilterInnerProps {
     lapisField: string;
     placeholderText?: string;
     initialValue?: string;
 }
 
-export interface TextInputProps extends TextInputInnerProps {
+export interface LineageFilterProps extends LineageFilterInnerProps {
     width: string;
 }
 
-export const TextInput: FunctionComponent<TextInputProps> = ({ width, ...innerProps }) => {
+export const LineageFilter: FunctionComponent<LineageFilterProps> = ({ width, ...innerProps }) => {
     const size = { width, height: '3rem' };
 
     return (
         <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <TextInputInner {...innerProps} />
+                <LineageFilterInner {...innerProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-const TextInputInner: FunctionComponent<TextInputInnerProps> = ({ lapisField, placeholderText, initialValue }) => {
+const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
+    lapisField,
+    placeholderText,
+    initialValue,
+}) => {
     const lapis = useContext(LapisUrlContext);
 
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const { data, error, isLoading } = useQuery(() => fetchAutocompleteList(lapis, lapisField), [lapisField, lapis]);
+    const { data, error, isLoading } = useQuery(
+        () => fetchLineageAutocompleteList(lapis, lapisField),
+        [lapisField, lapis],
+    );
 
     if (isLoading) {
         return <LoadingDisplay />;
@@ -56,7 +63,7 @@ const TextInputInner: FunctionComponent<TextInputInnerProps> = ({ lapisField, pl
 
         if (isValidValue(value)) {
             inputRef.current?.dispatchEvent(
-                new CustomEvent('gs-text-input-changed', {
+                new CustomEvent('gs-lineage-filter-changed', {
                     detail: { [lapisField]: value },
                     bubbles: true,
                     composed: true,
