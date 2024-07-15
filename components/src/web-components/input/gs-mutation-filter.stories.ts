@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
-import { LAPIS_URL } from '../../constants';
+import { LAPIS_URL, REFERENCE_GENOME_ENDPOINT } from '../../constants';
 import '../app';
 import { type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
 import { withinShadowRoot } from '../withinShadowRoot.story';
@@ -125,6 +125,62 @@ export const FiresFilterOnBlurEvent: StoryObj<MutationFilterProps> = {
             await userEvent.tab();
 
             await expect(listenerMock).toHaveBeenCalled();
+        });
+    },
+};
+
+export const MultiSegmentedReferenceGenomes: StoryObj<MutationFilterProps> = {
+    ...Template,
+    args: {
+        initialValue: ['seg1:123T', 'gene2:56', 'ins_seg2:78:AAA'],
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'referenceGenome',
+                        url: REFERENCE_GENOME_ENDPOINT,
+                    },
+                    response: {
+                        status: 200,
+                        body: {
+                            nucleotideSequences: [
+                                {
+                                    name: 'seg1',
+                                    sequence: 'dummy',
+                                },
+                                {
+                                    name: 'seg2',
+                                    sequence: 'dummy',
+                                },
+                            ],
+                            genes: [
+                                {
+                                    name: 'gene1',
+                                    sequence: 'dummy',
+                                },
+                                {
+                                    name: 'gene2',
+                                    sequence: 'dummy',
+                                },
+                            ],
+                        },
+                    },
+                    options: {
+                        overwriteRoutes: false,
+                    },
+                },
+            ],
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
+
+        await waitFor(() => {
+            expect(canvas.getByText('seg1:123T')).toBeVisible();
+            expect(canvas.getByText('gene2:56')).toBeVisible();
+            return expect(canvas.getByText('ins_seg2:78:AAA')).toBeVisible();
         });
     },
 };

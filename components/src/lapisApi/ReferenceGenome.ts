@@ -28,3 +28,5 @@ export const getSegmentNames = (referenceGenome: ReferenceGenome, sequenceType: 
         }
     }
 };
+
+export const isSingleSegmented = (referenceGenome: ReferenceGenome) => referenceGenome.nucleotideSequences.length === 1;

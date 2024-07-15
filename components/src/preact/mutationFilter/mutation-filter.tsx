@@ -1,12 +1,12 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useRef, useState } from 'preact/hooks';
 
+import { MutationFilterInfo } from './mutation-filter-info';
 import { parseAndValidateMutation } from './parseAndValidateMutation';
 import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
 import { type Deletion, type Insertion, type Mutation, type Substitution } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { ErrorBoundary } from '../components/error-boundary';
-import Info from '../components/info';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
@@ -103,7 +103,7 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
     return (
         <form className='w-full border boder-gray-300 rounded-md relative' onSubmit={handleSubmit} ref={formRef}>
             <div className='absolute -top-3 -right-3'>
-                <Info height={'100px'}>Info for mutation filter</Info>
+                <MutationFilterInfo />
             </div>
             <div className='w-full flex p-2 flex-wrap items-center'>
                 <SelectedMutationDisplay
