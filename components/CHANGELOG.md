@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.6...dashboard-components-v0.5.7) (2024-07-16)
+
+
+### Features
+
+* **components:** number sequences over time: add info and download button ([6f184dc](https://github.com/GenSpectrum/dashboard-components/commit/6f184dce91814526b863e74187841d4f14d76770)), closes [#328](https://github.com/GenSpectrum/dashboard-components/issues/328)
+* **components:** number sequences over time: add logarithmic scale for charts ([2238b84](https://github.com/GenSpectrum/dashboard-components/commit/2238b8434cf5e7cd12671f47a5f1cccbde4d1543)), closes [#333](https://github.com/GenSpectrum/dashboard-components/issues/333)
+
+
+### Bug Fixes
+
+* **components:** unify casing of downloaded files to snake case ([90a594c](https://github.com/GenSpectrum/dashboard-components/commit/90a594c7b2ab64becc220c64c359f88de2cdec18))
+
 ## [0.5.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.5...dashboard-components-v0.5.6) (2024-07-16)
 
 
