@@ -8,20 +8,30 @@ import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
 /**
- * TODO(#330) write docs
+ * ## Context
+ *
+ * This component displays the number of sequences over time of one or more datasets,
+ * selected by LAPIS filters.
+ *
+ * In the chart views, the user can select the y-axis scale (linear, logistic).
+ * The x-axis shows all available time intervals available in the datasets in the selected `granularity`.
+ * Thus, the `lapisFilter` implicitly also defines the range that is shown on the x-axis.
+ * If you want to restrict the x-axis to a smaller date range,
+ * then you need to set appropriate filter values in the `lapisFilter`.
  */
 @customElement('gs-number-sequences-over-time')
 export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
     // prettier-ignore
     // The multiline union type must not start with `|` because it looks weird in the Storybook docs
     /**
-     *   Required.
-     * Either a LAPIS filter or an array of LAPIS filters to calculate the prevalence for.
+     * Required.
+     *
+     * Either a LAPIS filter or an array of LAPIS filters to fetch the number of sequences for.
      *
      * The `lapisFilter` will be sent as is to LAPIS to select the data.
      * It must be a valid LAPIS filter object.
      *
-     * The `displayName` will be used as the label the prevalence in the views.
+     * The `displayName` will be used to label the component views.
      * It should be human-readable.
      *
      */ @property({type: Object})
