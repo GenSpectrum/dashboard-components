@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.5...dashboard-components-v0.5.6) (2024-07-16)
+
+
+### Features
+
+* **components:** number of sequences over time: implement line chart view ([b5a5cb3](https://github.com/GenSpectrum/dashboard-components/commit/b5a5cb35d710899be477f8260c08e81337d7ed7b)), closes [#317](https://github.com/GenSpectrum/dashboard-components/issues/317)
+
 ## [0.5.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.4...dashboard-components-v0.5.5) (2024-07-15)
 
 
