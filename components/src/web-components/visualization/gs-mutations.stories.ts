@@ -16,7 +16,6 @@ const codeExample = String.raw`
     lapisFilter='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateTo": "2022-01-01" }'
     sequenceType="nucleotide"
     views='["grid", "table", "insertions"]'
-    headline="Mutations"
     width='100%'
     height='700px'
     pageSize="10"
@@ -37,7 +36,6 @@ const meta: Meta<Required<MutationsProps>> = {
         },
         width: { control: 'text' },
         height: { control: 'text' },
-        headline: { control: 'text' },
         pageSize: { control: 'object' },
     },
     args: {
@@ -46,7 +44,6 @@ const meta: Meta<Required<MutationsProps>> = {
         views: ['grid', 'table', 'insertions'],
         width: '100%',
         height: '700px',
-        headline: 'Mutations',
         pageSize: 10,
     },
     parameters: withComponentDocs({
@@ -70,7 +67,6 @@ const Template: StoryObj<Required<MutationsProps>> = {
                 .views=${args.views}
                 .width=${args.width}
                 .height=${args.height}
-                .headline=${args.headline}
                 .pageSize=${args.pageSize}
             ></gs-mutations>
         </gs-app>

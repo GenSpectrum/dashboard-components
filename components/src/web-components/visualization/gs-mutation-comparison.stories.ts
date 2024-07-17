@@ -16,7 +16,6 @@ const codeExample = String.raw`
     lapisFilters='[{ "displayName": "Data in Switzerland", "lapisFilter": { "country": "Switzerland" }}, { "displayName": "Data in Germany", "lapisFilter": { "country": "Germany" }}]'
     sequenceType="nucleotide"
     views='["table", "venn"]'
-    headline="Mutation comparison"
     width='100%'
     height='700px'
     pageSize="10"
@@ -37,7 +36,6 @@ const meta: Meta<Required<MutationComparisonProps>> = {
         },
         width: { control: 'text' },
         height: { control: 'text' },
-        headline: { control: 'text' },
         pageSize: { control: 'object' },
     },
     parameters: withComponentDocs({
@@ -61,7 +59,6 @@ const Template: StoryObj<Required<MutationComparisonProps>> = {
                 .views=${args.views}
                 .width=${args.width}
                 .height=${args.height}
-                .headline=${args.headline}
                 .pageSize=${args.pageSize}
             ></gs-mutation-comparison>
         </gs-app>
@@ -93,7 +90,6 @@ export const Default: StoryObj<Required<MutationComparisonProps>> = {
         views: ['table', 'venn'],
         width: '100%',
         height: '700px',
-        headline: 'Mutation comparison',
         pageSize: 10,
     },
     parameters: {

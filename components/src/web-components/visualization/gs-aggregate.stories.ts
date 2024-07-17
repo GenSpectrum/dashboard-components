@@ -14,7 +14,6 @@ const codeExample = `
     fields='["division", "host"]'
     filter='{"country": "USA"}'
     views='["table"]'
-    headline="Aggregate"
     width='100%'
     height='700px'
     initialSortField="count"
@@ -33,7 +32,6 @@ const meta: Meta<Required<AggregateProps>> = {
         },
         width: { control: 'text' },
         height: { control: 'text' },
-        headline: { control: 'text' },
         pageSize: { control: 'object' },
         initialSortField: { control: 'text' },
         initialSortDirection: {
@@ -80,7 +78,6 @@ export const Table: StoryObj<Required<AggregateProps>> = {
                 .views=${args.views}
                 .width=${args.width}
                 .height=${args.height}
-                .headline=${args.headline}
                 .initialSortField=${args.initialSortField}
                 .initialSortDirection=${args.initialSortDirection}
                 .pageSize=${args.pageSize}
@@ -95,7 +92,6 @@ export const Table: StoryObj<Required<AggregateProps>> = {
         },
         width: '100%',
         height: '700px',
-        headline: 'Aggregate',
         initialSortField: 'count',
         initialSortDirection: 'descending',
         pageSize: 10,

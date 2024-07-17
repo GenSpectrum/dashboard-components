@@ -62,12 +62,6 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
     height: string = '700px';
 
     /**
-     * The headline of the component. Set to an empty string to hide the headline.
-     */
-    @property({ type: String })
-    headline: string = 'Aggregate';
-
-    /**
      * The field by which the table is initially sorted.
      * Must be one of the fields specified in the fields property, 'count', or 'proportion'.
      */
@@ -95,7 +89,6 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
                 filter={this.filter}
                 width={this.width}
                 height={this.height}
-                headline={this.headline}
                 initialSortField={this.initialSortField}
                 initialSortDirection={this.initialSortDirection}
                 pageSize={this.pageSize}

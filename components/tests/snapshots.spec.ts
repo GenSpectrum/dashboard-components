@@ -8,8 +8,8 @@ visualizationStories.forEach((story) => {
     test.describe(story.title, () => {
         test(`Story ${story.id} should match screenshot`, async ({ page, storybook }) => {
             await storybook.gotoStory(story.id);
-            await expect(page.getByRole('heading', { name: story.title })).toBeVisible();
-            await page.getByLabel('Loading', { exact: false }).waitFor({ state: 'hidden' });
+            await page.locator('.skeleton').waitFor({ state: 'hidden' });
+            await expect(page.getByText(story.loadingIsDoneIndicator)).toBeVisible();
             await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.005 });
         });
 

@@ -8,7 +8,6 @@ import { LapisUrlContext } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
-import Headline from '../components/headline';
 import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -22,7 +21,6 @@ export type InitialSort = { field: string; direction: 'ascending' | 'descending'
 export type AggregateProps = {
     width: string;
     height: string;
-    headline?: string;
 } & AggregateInnerProps;
 
 export interface AggregateInnerProps {
@@ -34,20 +32,13 @@ export interface AggregateInnerProps {
     pageSize: boolean | number;
 }
 
-export const Aggregate: FunctionComponent<AggregateProps> = ({
-    width,
-    height,
-    headline = 'Mutations',
-    ...innerProps
-}) => {
+export const Aggregate: FunctionComponent<AggregateProps> = ({ width, height, ...innerProps }) => {
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} headline={headline}>
+        <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <Headline heading={headline}>
-                    <AggregateInner {...innerProps} />
-                </Headline>
+                <AggregateInner {...innerProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );

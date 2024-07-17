@@ -23,7 +23,6 @@ const codeExample = String.raw`
     smoothingWindow="0"
     views='["bar", "line", "bubble", "table"]'
     confidenceIntervalMethods='["wilson"]'
-    headline="Prevalence over time"
     width="100%"
     height="700px"
     lapisDateField="date"
@@ -53,7 +52,6 @@ const meta: Meta<Required<PrevalenceOverTimeComponentProps>> = {
         },
         width: { control: 'text' },
         height: { control: 'text' },
-        headline: { control: 'text' },
         pageSize: { control: 'object' },
         yAxisMaxLinear: { control: 'object' },
         yAxisMaxLogarithmic: { control: 'object' },
@@ -82,7 +80,6 @@ const Template: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
                 .confidenceIntervalMethods=${args.confidenceIntervalMethods}
                 .width=${args.width}
                 .height=${args.height}
-                .headline=${args.headline}
                 .lapisDateField=${args.lapisDateField}
                 .pageSize=${args.pageSize}
                 .yAxisMaxLinear=${args.yAxisMaxLinear}
@@ -106,7 +103,6 @@ export const TwoDatasets: StoryObj<Required<PrevalenceOverTimeComponentProps>> =
         confidenceIntervalMethods: ['wilson'],
         width: '100%',
         height: '700px',
-        headline: 'Prevalence over time',
         lapisDateField: 'date',
         pageSize: 10,
         yAxisMaxLinear: 1,
@@ -181,7 +177,6 @@ export const OneDataset: StoryObj<Required<PrevalenceOverTimeComponentProps>> = 
         confidenceIntervalMethods: ['wilson'],
         width: '100%',
         height: '700px',
-        headline: 'Prevalence over time',
         lapisDateField: 'date',
         pageSize: 10,
         yAxisMaxLinear: 1,

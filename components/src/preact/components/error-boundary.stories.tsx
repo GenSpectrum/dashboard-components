@@ -10,11 +10,9 @@ const meta: Meta = {
     argTypes: {
         size: { control: 'object' },
         defaultSize: { control: 'object' },
-        headline: { control: 'text' },
     },
     args: {
         size: { height: '600px', width: '100%' },
-        headline: 'Some headline',
     },
 };
 
@@ -22,7 +20,7 @@ export default meta;
 
 export const ErrorBoundaryWithoutErrorStory: StoryObj = {
     render: (args) => (
-        <ErrorBoundary size={args.size} headline={args.headline}>
+        <ErrorBoundary size={args.size}>
             <div>Some content</div>
         </ErrorBoundary>
     ),
@@ -30,13 +28,12 @@ export const ErrorBoundaryWithoutErrorStory: StoryObj = {
         const canvas = within(canvasElement);
         const content = canvas.getByText('Some content', { exact: false });
         await waitFor(() => expect(content).toBeInTheDocument());
-        await waitFor(() => expect(canvas.queryByText('Some headline')).not.toBeInTheDocument());
     },
 };
 
 export const ErrorBoundaryWithErrorStory: StoryObj = {
     render: (args) => (
-        <ErrorBoundary size={args.size} headline={args.headline}>
+        <ErrorBoundary size={args.size}>
             <ContentThatThrowsError />
         </ErrorBoundary>
     ),
@@ -44,7 +41,6 @@ export const ErrorBoundaryWithErrorStory: StoryObj = {
         const canvas = within(canvasElement);
         const content = canvas.queryByText('Some content.', { exact: false });
         await waitFor(() => expect(content).not.toBeInTheDocument());
-        await waitFor(() => expect(canvas.getByText('Some headline')).toBeInTheDocument());
         await waitFor(() => expect(canvas.getByText('Error')).toBeInTheDocument());
     },
 };
