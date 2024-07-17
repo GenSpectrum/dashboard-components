@@ -18,7 +18,6 @@ import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '..
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
-import Headline from '../components/headline';
 import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
@@ -41,23 +40,15 @@ export interface MutationsInnerProps {
 export interface MutationsProps extends MutationsInnerProps {
     width: string;
     height: string;
-    headline?: string;
 }
 
-export const Mutations: FunctionComponent<MutationsProps> = ({
-    width,
-    height,
-    headline = 'Mutations',
-    ...innerProps
-}) => {
+export const Mutations: FunctionComponent<MutationsProps> = ({ width, height, ...innerProps }) => {
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} headline={headline}>
+        <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <Headline heading={headline}>
-                    <MutationsInner {...innerProps} />
-                </Headline>
+                <MutationsInner {...innerProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );

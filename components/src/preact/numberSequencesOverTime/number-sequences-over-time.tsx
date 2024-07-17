@@ -13,7 +13,6 @@ import { LapisUrlContext } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
-import Headline from '../components/headline';
 import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -28,7 +27,6 @@ type NumberSequencesOverTimeView = 'bar' | 'line' | 'table';
 export interface NumberSequencesOverTimeProps extends NumberSequencesOverTimeInnerProps {
     width: string;
     height: string;
-    headline: string;
 }
 
 interface NumberSequencesOverTimeInnerProps {
@@ -40,15 +38,13 @@ interface NumberSequencesOverTimeInnerProps {
     pageSize: boolean | number;
 }
 
-export const NumberSequencesOverTime = ({ width, height, headline, ...innerProps }: NumberSequencesOverTimeProps) => {
+export const NumberSequencesOverTime = ({ width, height, ...innerProps }: NumberSequencesOverTimeProps) => {
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} headline={headline}>
+        <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <Headline heading={headline}>
-                    <NumberSequencesOverTimeInner {...innerProps} />
-                </Headline>
+                <NumberSequencesOverTimeInner {...innerProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );

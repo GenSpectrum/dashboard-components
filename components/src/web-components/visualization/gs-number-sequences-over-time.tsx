@@ -62,12 +62,6 @@ export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJs
     views: ('bar' | 'line' | 'table')[] = ['bar', 'line', 'table'];
 
     /**
-     * The headline of the component. Set to an empty string to hide the headline.
-     */
-    @property({ type: String })
-    headline: string = 'Number of sequences of time';
-
-    /**
      * The width of the component.
      *
      * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
@@ -114,7 +108,6 @@ export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJs
                 lapisFilter={this.lapisFilter}
                 lapisDateField={this.lapisDateField}
                 views={this.views}
-                headline={this.headline}
                 width={this.width}
                 height={this.height}
                 granularity={this.granularity}

@@ -20,7 +20,6 @@ export default {
         },
         width: { control: 'text' },
         height: { control: 'text' },
-        headline: { control: 'text' },
         yAxisMaxConfig: { control: 'object' },
     },
 };
@@ -35,7 +34,6 @@ export const Primary = {
                 views={args.views}
                 width={args.width}
                 height={args.height}
-                headline={args.headline}
                 lapisDateField={args.lapisDateField}
                 yAxisMaxConfig={args.yAxisMaxConfig}
             />
@@ -48,7 +46,6 @@ export const Primary = {
         views: ['line'],
         width: '100%',
         height: '700px',
-        headline: 'Relative growth advantage',
         lapisDateField: 'date',
         yAxisMaxConfig: {
             linear: 1,

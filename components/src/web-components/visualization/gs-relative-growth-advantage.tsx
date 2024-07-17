@@ -70,12 +70,6 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
     views: 'line'[] = ['line'];
 
     /**
-     * The headline of the component. Set to an empty string to hide the headline.
-     */
-    @property({ type: String })
-    headline: string = 'Relative growth advantage';
-
-    /**
      * The width of the component.
      *
      * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
@@ -130,7 +124,6 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
                 views={this.views}
                 width={this.width}
                 height={this.height}
-                headline={this.headline}
                 lapisDateField={this.lapisDateField}
                 yAxisMaxConfig={{
                     linear: this.yAxisMaxLinear,

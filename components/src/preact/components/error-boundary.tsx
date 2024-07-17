@@ -3,17 +3,14 @@ import { useErrorBoundary } from 'preact/hooks';
 
 import { ErrorDisplay } from './error-display';
 import { ResizeContainer, type Size } from './resize-container';
-import Headline from '../components/headline';
 
-export const ErrorBoundary: FunctionComponent<{ size: Size; headline?: string }> = ({ size, headline, children }) => {
+export const ErrorBoundary: FunctionComponent<{ size: Size }> = ({ size, children }) => {
     const [internalError] = useErrorBoundary();
 
     if (internalError) {
         return (
             <ResizeContainer size={size}>
-                <Headline heading={headline}>
-                    <ErrorDisplay error={internalError} />
-                </Headline>
+                <ErrorDisplay error={internalError} />
             </ResizeContainer>
         );
     }

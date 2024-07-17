@@ -35,7 +35,6 @@ const Template: StoryObj<NumberSequencesOverTimeProps> = {
                 views={args.views}
                 width={args.width}
                 height={args.height}
-                headline={args.headline}
                 granularity={args.granularity}
                 smoothingWindow={args.smoothingWindow}
                 pageSize={args.pageSize}
@@ -50,7 +49,6 @@ const Template: StoryObj<NumberSequencesOverTimeProps> = {
         lapisDateField: 'date',
         width: '100%',
         height: '700px',
-        headline: 'Number of sequences over time',
         smoothingWindow: 0,
         granularity: 'month',
         pageSize: 10,

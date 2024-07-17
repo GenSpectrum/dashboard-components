@@ -13,7 +13,6 @@ import { ConfidenceIntervalSelector } from '../components/confidence-interval-se
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
-import Headline from '../components/headline';
 import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -30,7 +29,6 @@ export type View = 'bar' | 'line' | 'bubble' | 'table';
 export interface PrevalenceOverTimeProps extends PrevalenceOverTimeInnerProps {
     width: string;
     height: string;
-    headline?: string;
 }
 
 export interface PrevalenceOverTimeInnerProps {
@@ -45,20 +43,13 @@ export interface PrevalenceOverTimeInnerProps {
     yAxisMaxConfig: YAxisMaxConfig;
 }
 
-export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({
-    width,
-    height,
-    headline = 'Prevalence over time',
-    ...innerProps
-}) => {
+export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({ width, height, ...innerProps }) => {
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} headline={headline}>
+        <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <Headline heading={headline}>
-                    <PrevalenceOverTimeInner {...innerProps} />
-                </Headline>
+                <PrevalenceOverTimeInner {...innerProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );

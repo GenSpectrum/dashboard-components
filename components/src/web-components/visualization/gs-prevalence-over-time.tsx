@@ -110,12 +110,6 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     confidenceIntervalMethods: ('wilson' | 'none')[] = ['wilson'];
 
     /**
-     * The headline of the component. Set to an empty string to hide the headline.
-     */
-    @property({ type: String })
-    headline: string = 'Prevalence over time';
-
-    /**
      * The width of the component.
      *
      * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
@@ -179,7 +173,6 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
                 confidenceIntervalMethods={this.confidenceIntervalMethods}
                 width={this.width}
                 height={this.height}
-                headline={this.headline}
                 lapisDateField={this.lapisDateField}
                 pageSize={this.pageSize}
                 yAxisMaxConfig={{

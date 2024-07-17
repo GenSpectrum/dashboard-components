@@ -31,7 +31,6 @@ export default {
         },
         width: { control: 'text' },
         height: { control: 'text' },
-        headline: { control: 'text' },
         pageSize: { control: 'object' },
         yAxisMaxConfig: { control: 'object' },
     },
@@ -49,7 +48,6 @@ const Template = {
                 confidenceIntervalMethods={args.confidenceIntervalMethods}
                 width={args.width}
                 height={args.height}
-                headline={args.headline}
                 lapisDateField={args.lapisDateField}
                 pageSize={args.pageSize}
                 yAxisMaxConfig={args.yAxisMaxConfig}
@@ -72,7 +70,6 @@ export const TwoVariants = {
         confidenceIntervalMethods: ['wilson'],
         width: '100%',
         height: '700px',
-        headline: 'Prevalence over time',
         lapisDateField: 'date',
         pageSize: 10,
         yAxisMaxConfig: {
@@ -149,7 +146,6 @@ export const OneVariant = {
         confidenceIntervalMethods: ['wilson'],
         width: '100%',
         height: '700px',
-        headline: 'Prevalence over time',
         lapisDateField: 'date',
         pageSize: 10,
         yAxisMaxConfig: {

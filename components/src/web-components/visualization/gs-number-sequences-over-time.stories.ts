@@ -18,7 +18,6 @@ const codeExample = String.raw`
     lapisFilter='[{ "displayName": "EG", "lapisFilter": { "country": "USA", "pangoLineage": "EG*" }}, { "displayName": "JN.1", "lapisFilter": { "country": "USA", "pangoLineage": "JN.1*" }}]'
     lapisDateField="date"
     views='["bar", "line", "table"]'
-    headline="Number of sequences over time"
     width="100%"
     height="700px"
     granularity="month"
@@ -61,7 +60,6 @@ const Template: StoryObj<NumberSequencesOverTimeProps> = {
                 .views=${args.views}
                 .width=${args.width}
                 .height=${args.height}
-                .headline=${args.headline}
                 .granularity=${args.granularity}
                 .smoothingWindow=${args.smoothingWindow}
                 .pageSize=${args.pageSize}
@@ -76,7 +74,6 @@ const Template: StoryObj<NumberSequencesOverTimeProps> = {
         lapisDateField: 'date',
         width: '100%',
         height: '700px',
-        headline: 'Number of sequences over time',
         smoothingWindow: 0,
         granularity: 'month',
         pageSize: 10,

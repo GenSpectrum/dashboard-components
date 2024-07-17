@@ -11,7 +11,6 @@ import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '..
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
-import Headline from '../components/headline';
 import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
@@ -27,7 +26,6 @@ export type View = 'table' | 'venn';
 export interface MutationComparisonProps extends MutationComparisonInnerProps {
     width: string;
     height: string;
-    headline?: string;
 }
 
 export interface MutationComparisonInnerProps {
@@ -37,20 +35,13 @@ export interface MutationComparisonInnerProps {
     pageSize: boolean | number;
 }
 
-export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({
-    width,
-    height,
-    headline = 'Mutation comparison',
-    ...innerProps
-}) => {
+export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({ width, height, ...innerProps }) => {
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} headline={headline}>
+        <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <Headline heading={headline}>
-                    <MutationComparisonInner {...innerProps} />
-                </Headline>
+                <MutationComparisonInner {...innerProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );

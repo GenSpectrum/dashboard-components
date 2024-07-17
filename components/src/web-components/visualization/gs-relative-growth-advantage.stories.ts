@@ -18,7 +18,6 @@ const codeExample = String.raw`
     views='["line"]'
     width='100%'
     height='700px'
-    headline="Relative growth advantage"
     lapisDateField="date"
     yAxisMaxLinear="1"
     yAxisMaxLogarithmic="limitTo1"    
@@ -37,7 +36,6 @@ const meta: Meta<RelativeGrowthAdvantageComponentProps> = {
         },
         width: { control: 'text' },
         height: { control: 'text' },
-        headline: { control: 'text' },
         yAxisMaxLinear: { control: 'object' },
         yAxisMaxLogarithmic: { control: 'object' },
     },
@@ -63,7 +61,6 @@ const Template: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> = {
                 .views=${args.views}
                 .width=${args.width}
                 .height=${args.height}
-                .headline=${args.headline}
                 .lapisDateField=${args.lapisDateField}
                 .yAxisMaxLinear=${args.yAxisMaxLinear}
                 .yAxisMaxLogarithmic=${args.yAxisMaxLogarithmic}
@@ -86,7 +83,6 @@ export const Default: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> 
         views: ['line'],
         width: '100%',
         height: '700px',
-        headline: 'Relative growth advantage',
         lapisDateField: 'date',
         yAxisMaxLinear: 1,
         yAxisMaxLogarithmic: 'limitTo1',

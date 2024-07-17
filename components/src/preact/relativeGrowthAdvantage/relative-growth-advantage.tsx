@@ -10,7 +10,6 @@ import { type LapisFilter } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
-import Headline from '../components/headline';
 import Info, { InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -26,7 +25,6 @@ export type View = 'line';
 export interface RelativeGrowthAdvantageProps extends RelativeGrowthAdvantagePropsInner {
     width: string;
     height: string;
-    headline?: string;
 }
 
 export interface RelativeGrowthAdvantagePropsInner {
@@ -41,17 +39,14 @@ export interface RelativeGrowthAdvantagePropsInner {
 export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = ({
     width,
     height,
-    headline = 'Relative growth advantage',
     ...innerProps
 }) => {
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} headline={headline}>
+        <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <Headline heading={headline}>
-                    <RelativeGrowthAdvantageInner {...innerProps} />
-                </Headline>
+                <RelativeGrowthAdvantageInner {...innerProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );

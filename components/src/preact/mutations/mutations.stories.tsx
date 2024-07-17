@@ -24,7 +24,6 @@ const meta: Meta<MutationsProps> = {
         },
         width: { control: 'text' },
         height: { control: 'text' },
-        headline: { control: 'text' },
         pageSize: { control: 'object' },
     },
 };
@@ -41,7 +40,6 @@ const Template = {
                     views={args.views}
                     width={args.width}
                     height={args.height}
-                    headline={args.headline}
                     pageSize={args.pageSize}
                 />
             </ReferenceGenomeContext.Provider>
@@ -57,7 +55,6 @@ export const Default: StoryObj<MutationsProps> = {
         views: ['grid', 'table', 'insertions'],
         width: '100%',
         height: '700px',
-        headline: 'Mutations',
         pageSize: 10,
     },
     parameters: {
