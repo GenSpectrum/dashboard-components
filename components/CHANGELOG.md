@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.0...dashboard-components-v0.6.1) (2024-07-18)
+
+
+### Features
+
+* **components:** add lineage filter component ([b398f22](https://github.com/GenSpectrum/dashboard-components/commit/b398f22272994a786368bfd2e0cc1c588c7fc93a)), closes [#324](https://github.com/GenSpectrum/dashboard-components/issues/324)
+
 ## [0.6.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.7...dashboard-components-v0.6.0) (2024-07-18)
 
 
