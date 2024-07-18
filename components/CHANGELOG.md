@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.1...dashboard-components-v0.6.2) (2024-07-18)
+
+
+### Bug Fixes
+
+* **components:** export lineage filter ([5d9f53d](https://github.com/GenSpectrum/dashboard-components/commit/5d9f53d03eacd8af841dbad4f0e03fdd0a19c75a)), closes [#324](https://github.com/GenSpectrum/dashboard-components/issues/324)
+
 ## [0.6.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.0...dashboard-components-v0.6.1) (2024-07-18)
 
 
