@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.7...dashboard-components-v0.6.0) (2024-07-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** remove the `headline` attribute from all visualization components. Instead, dashboard developers should simply create a headline themselves, outside the component, using standard HTML/CSS.
+
+### Features
+
+* **components:** remove `headline` from all visualization components ([47a6626](https://github.com/GenSpectrum/dashboard-components/commit/47a6626de12a39e617f5c8dab15d0eb077b0d025)), closes [#350](https://github.com/GenSpectrum/dashboard-components/issues/350)
+
 ## [0.5.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.5.6...dashboard-components-v0.5.7) (2024-07-16)
 
 
