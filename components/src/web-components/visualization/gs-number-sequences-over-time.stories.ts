@@ -157,6 +157,7 @@ export const TwoDatasets: StoryObj<NumberSequencesOverTimeProps> = {
                         body: {
                             country: 'USA',
                             pangoLineage: 'EG*',
+                            dateFrom: '2022-10-01',
                             fields: ['date'],
                         },
                     },
