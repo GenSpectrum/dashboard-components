@@ -28,12 +28,10 @@ export async function queryRelativeGrowthAdvantage<LapisDateField extends string
         mapNumerator.evaluate(lapis, signal),
         mapDenominator.evaluate(lapis, signal),
     ]);
-    const { min, max } = getMinMaxTemporal(denominatorData.content.map((d) => d.date));
-    if (!min && !max) {
+    const { min: minDate, max: maxDate } = getMinMaxTemporal(denominatorData.content.map((d) => d.date));
+    if (!minDate && !maxDate) {
         return null;
     }
-    const minDate = min as YearMonthDay;
-    const maxDate = max as YearMonthDay;
 
     const numeratorCounts = new Map<YearMonthDay, number>();
     numeratorData.content.forEach((d) => {
