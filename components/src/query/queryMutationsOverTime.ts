@@ -129,7 +129,7 @@ function fetchAndPrepareDates<LapisDateField extends string>(
 }
 
 function fetchAndPrepareSubstitutionsOrDeletions(filter: LapisFilter, sequenceType: SequenceType) {
-    return new FetchSubstitutionsOrDeletionsOperator(filter, sequenceType, 0);
+    return new FetchSubstitutionsOrDeletionsOperator(filter, sequenceType, 0.001);
 }
 
 export function groupByMutation(data: MutationOverTimeData[]) {

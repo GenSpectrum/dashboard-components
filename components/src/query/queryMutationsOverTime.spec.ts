@@ -21,15 +21,30 @@ describe('queryMutationsOverTime', () => {
         lapisRequestMocks.multipleMutations(
             [
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-01', dateFieldTo: '2023-01-01', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-01',
+                        dateFieldTo: '2023-01-01',
+                        minProportion: 0.001,
+                    },
                     response: { data: [getSomeTestMutation(0.1), getSomeOtherTestMutation(0.4)] },
                 },
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-02', dateFieldTo: '2023-01-02', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-02',
+                        dateFieldTo: '2023-01-02',
+                        minProportion: 0.001,
+                    },
                     response: { data: [getSomeTestMutation(0.2)] },
                 },
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-03', dateFieldTo: '2023-01-03', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-03',
+                        dateFieldTo: '2023-01-03',
+                        minProportion: 0.001,
+                    },
                     response: { data: [getSomeTestMutation(0.3)] },
                 },
             ],
@@ -70,15 +85,30 @@ describe('queryMutationsOverTime', () => {
         lapisRequestMocks.multipleMutations(
             [
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-01', dateFieldTo: '2023-01-01', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-01',
+                        dateFieldTo: '2023-01-01',
+                        minProportion: 0.001,
+                    },
                     response: { data: [getSomeTestMutation(0.1), getSomeOtherTestMutation(0.4)] },
                 },
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-02', dateFieldTo: '2023-01-02', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-02',
+                        dateFieldTo: '2023-01-02',
+                        minProportion: 0.001,
+                    },
                     response: { data: [] },
                 },
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-03', dateFieldTo: '2023-01-03', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-03',
+                        dateFieldTo: '2023-01-03',
+                        minProportion: 0.001,
+                    },
                     response: { data: [getSomeTestMutation(0.3)] },
                 },
             ],
@@ -119,15 +149,30 @@ describe('queryMutationsOverTime', () => {
         lapisRequestMocks.multipleMutations(
             [
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-01', dateFieldTo: '2023-01-01', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-01',
+                        dateFieldTo: '2023-01-01',
+                        minProportion: 0.001,
+                    },
                     response: { data: [] },
                 },
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-02', dateFieldTo: '2023-01-02', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-02',
+                        dateFieldTo: '2023-01-02',
+                        minProportion: 0.001,
+                    },
                     response: { data: [] },
                 },
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-03', dateFieldTo: '2023-01-03', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-03',
+                        dateFieldTo: '2023-01-03',
+                        minProportion: 0.001,
+                    },
                     response: { data: [] },
                 },
             ],
@@ -158,11 +203,21 @@ describe('queryMutationsOverTime', () => {
         lapisRequestMocks.multipleMutations(
             [
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-02', dateFieldTo: '2023-01-02', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-02',
+                        dateFieldTo: '2023-01-02',
+                        minProportion: 0.001,
+                    },
                     response: { data: [getSomeTestMutation(0.2)] },
                 },
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-03', dateFieldTo: '2023-01-03', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-03',
+                        dateFieldTo: '2023-01-03',
+                        minProportion: 0.001,
+                    },
                     response: { data: [getSomeTestMutation(0.3)] },
                 },
             ],
@@ -198,11 +253,21 @@ describe('queryMutationsOverTime', () => {
         lapisRequestMocks.multipleMutations(
             [
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-01', dateFieldTo: '2023-01-01', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-01',
+                        dateFieldTo: '2023-01-01',
+                        minProportion: 0.001,
+                    },
                     response: { data: [getSomeTestMutation(0.1)] },
                 },
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-02', dateFieldTo: '2023-01-02', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-02',
+                        dateFieldTo: '2023-01-02',
+                        minProportion: 0.001,
+                    },
                     response: { data: [getSomeTestMutation(0.2)] },
                 },
             ],
@@ -238,7 +303,12 @@ describe('queryMutationsOverTime', () => {
         lapisRequestMocks.multipleMutations(
             [
                 {
-                    body: { ...lapisFilter, dateFieldFrom: '2023-01-02', dateFieldTo: '2023-01-02', minProportion: 0 },
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-02',
+                        dateFieldTo: '2023-01-02',
+                        minProportion: 0.001,
+                    },
                     response: { data: [getSomeTestMutation(0.2)] },
                 },
             ],

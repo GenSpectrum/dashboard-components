@@ -114,7 +114,7 @@ export const Default: StoryObj<Required<MutationsOverTimeProps>> = {
                             pangoLineage: 'JN.1*',
                             dateFrom: '2024-01-01',
                             dateTo: '2024-01-31',
-                            minProportion: 0,
+                            minProportion: 0.001,
                         },
                     },
                     response: {
@@ -130,7 +130,7 @@ export const Default: StoryObj<Required<MutationsOverTimeProps>> = {
                             pangoLineage: 'JN.1*',
                             dateFrom: '2024-02-01',
                             dateTo: '2024-02-29',
-                            minProportion: 0,
+                            minProportion: 0.001,
                         },
                     },
                     response: {
@@ -146,7 +146,7 @@ export const Default: StoryObj<Required<MutationsOverTimeProps>> = {
                             pangoLineage: 'JN.1*',
                             dateFrom: '2024-03-01',
                             dateTo: '2024-03-31',
-                            minProportion: 0,
+                            minProportion: 0.001,
                         },
                         response: {
                             status: 200,
@@ -162,7 +162,7 @@ export const Default: StoryObj<Required<MutationsOverTimeProps>> = {
                             pangoLineage: 'JN.1*',
                             dateFrom: '2024-04-01',
                             dateTo: '2024-04-30',
-                            minProportion: 0,
+                            minProportion: 0.001,
                         },
                         response: {
                             status: 200,
@@ -178,7 +178,7 @@ export const Default: StoryObj<Required<MutationsOverTimeProps>> = {
                             pangoLineage: 'JN.1*',
                             dateFrom: '2024-05-01',
                             dateTo: '2024-05-31',
-                            minProportion: 0,
+                            minProportion: 0.001,
                         },
                         response: {
                             status: 200,
@@ -194,7 +194,7 @@ export const Default: StoryObj<Required<MutationsOverTimeProps>> = {
                             pangoLineage: 'JN.1*',
                             dateFrom: '2024-06-01',
                             dateTo: '2024-06-30',
-                            minProportion: 0,
+                            minProportion: 0.001,
                         },
                         response: {
                             status: 200,
@@ -211,7 +211,7 @@ export const Default: StoryObj<Required<MutationsOverTimeProps>> = {
                             pangoLineage: 'JN.1*',
                             dateFrom: '2024-07-01',
                             dateTo: '2024-07-31',
-                            minProportion: 0,
+                            minProportion: 0.001,
                         },
                         response: {
                             status: 200,
