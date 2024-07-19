@@ -345,9 +345,9 @@ export function compareTemporal(a: Temporal | null, b: Temporal | null): number 
     return 0;
 }
 
-export function getMinMaxTemporal(values: Iterable<Temporal | null>) {
-    let min = null;
-    let max = null;
+export function getMinMaxTemporal<T extends Temporal>(values: Iterable<T | null>) {
+    let min: T | null = null;
+    let max: T | null = null;
     for (const value of values) {
         if (value === null) {
             continue;
