@@ -72,6 +72,10 @@ export class YearMonthDay {
         return this.text;
     }
 
+    englishName(): string {
+        return this.dayjs.format('dddd, MMMM D, YYYY');
+    }
+
     get firstDay(): YearMonthDay {
         return this;
     }
@@ -121,6 +125,10 @@ export class YearWeek {
 
     toString(): string {
         return this.text;
+    }
+
+    englishName(): string {
+        return `Week ${this.isoWeekNumber}, ${this.isoYearNumber}`
     }
 
     get firstDay(): YearMonthDay {
@@ -179,6 +187,10 @@ export class YearMonth {
         return this.text;
     }
 
+    englishName(): string {
+        return `${monthName(this.monthNumber)} ${this.yearNumber}`;
+    }
+
     get firstDay(): YearMonthDay {
         return this.cache.getYearMonthDay(dayjs(`${this.yearNumber}-${this.monthNumber}-01`).format('YYYY-MM-DD'));
     }
@@ -223,6 +235,10 @@ export class Year {
         return this.text;
     }
 
+    englishName(): string {
+        return this.year.toString();
+    }
+
     get firstMonth(): YearMonth {
         return this.cache.getYearMonth(`${this.year}-01`);
     }
@@ -253,6 +269,10 @@ export class Year {
         const year = parseInt(s, 10);
         return new Year(year, cache);
     }
+}
+
+function monthName(month: number): string {
+    return dayjs().month(month - 1).format('MMMM');
 }
 
 export type Temporal = YearMonthDay | YearWeek | YearMonth | Year;

@@ -27,7 +27,7 @@ describe('queryMutationsOverTime', () => {
                         dateFieldTo: '2023-01-01',
                         minProportion: 0.001,
                     },
-                    response: { data: [getSomeTestMutation(0.1), getSomeOtherTestMutation(0.4)] },
+                    response: { data: [getSomeTestMutation(0.1, 1), getSomeOtherTestMutation(0.4, 4)] },
                 },
                 {
                     body: {
@@ -36,7 +36,7 @@ describe('queryMutationsOverTime', () => {
                         dateFieldTo: '2023-01-02',
                         minProportion: 0.001,
                     },
-                    response: { data: [getSomeTestMutation(0.2)] },
+                    response: { data: [getSomeTestMutation(0.2, 2)] },
                 },
                 {
                     body: {
@@ -45,7 +45,7 @@ describe('queryMutationsOverTime', () => {
                         dateFieldTo: '2023-01-03',
                         minProportion: 0.001,
                     },
-                    response: { data: [getSomeTestMutation(0.3)] },
+                    response: { data: [getSomeTestMutation(0.3, 3)] },
                 },
             ],
             'nucleotide',
@@ -53,9 +53,17 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray(0)).to.deep.equal([
-            [0.1, 0.2, 0.3],
-            [0.4, 0, 0],
+        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([
+            [
+                { proportion: 0.1, count: 1 },
+                { proportion: 0.2, count: 2 },
+                { proportion: 0.3, count: 3 },
+            ],
+            [
+                { proportion: 0.4, count: 4 },
+                { proportion: 0, count: 0 },
+                { proportion: 0, count: 0 },
+            ],
         ]);
 
         const sequences = result.getFirstAxisKeys();
@@ -91,7 +99,7 @@ describe('queryMutationsOverTime', () => {
                         dateFieldTo: '2023-01-01',
                         minProportion: 0.001,
                     },
-                    response: { data: [getSomeTestMutation(0.1), getSomeOtherTestMutation(0.4)] },
+                    response: { data: [getSomeTestMutation(0.1, 1), getSomeOtherTestMutation(0.4, 4)] },
                 },
                 {
                     body: {
@@ -109,7 +117,7 @@ describe('queryMutationsOverTime', () => {
                         dateFieldTo: '2023-01-03',
                         minProportion: 0.001,
                     },
-                    response: { data: [getSomeTestMutation(0.3)] },
+                    response: { data: [getSomeTestMutation(0.3, 3)] },
                 },
             ],
             'nucleotide',
@@ -117,9 +125,17 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray(0)).to.deep.equal([
-            [0.1, 0.3, 0],
-            [0.4, 0, 0],
+        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([
+            [
+                { proportion: 0.1, count: 1 },
+                { proportion: 0.3, count: 3 },
+                { proportion: 0, count: 0 },
+            ],
+            [
+                { proportion: 0.4, count: 4 },
+                { proportion: 0, count: 0 },
+                { proportion: 0, count: 0 },
+            ],
         ]);
 
         const sequences = result.getFirstAxisKeys();
@@ -181,7 +197,7 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray(0)).to.deep.equal([]);
+        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([]);
         expect(result.getFirstAxisKeys()).to.deep.equal([]);
         expect(result.getSecondAxisKeys()).to.deep.equal([]);
     });
@@ -209,7 +225,7 @@ describe('queryMutationsOverTime', () => {
                         dateFieldTo: '2023-01-02',
                         minProportion: 0.001,
                     },
-                    response: { data: [getSomeTestMutation(0.2)] },
+                    response: { data: [getSomeTestMutation(0.2, 2)] },
                 },
                 {
                     body: {
@@ -218,7 +234,7 @@ describe('queryMutationsOverTime', () => {
                         dateFieldTo: '2023-01-03',
                         minProportion: 0.001,
                     },
-                    response: { data: [getSomeTestMutation(0.3)] },
+                    response: { data: [getSomeTestMutation(0.3, 3)] },
                 },
             ],
             'nucleotide',
@@ -226,7 +242,12 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray(0)).to.deep.equal([[0.2, 0.3]]);
+        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([
+            [
+                { proportion: 0.2, count: 2 },
+                { proportion: 0.3, count: 3 },
+            ],
+        ]);
 
         const sequences = result.getFirstAxisKeys();
         expect(sequences[0].code).toBe('sequenceName:A123T');
@@ -259,7 +280,7 @@ describe('queryMutationsOverTime', () => {
                         dateFieldTo: '2023-01-01',
                         minProportion: 0.001,
                     },
-                    response: { data: [getSomeTestMutation(0.1)] },
+                    response: { data: [getSomeTestMutation(0.1, 1)] },
                 },
                 {
                     body: {
@@ -268,7 +289,7 @@ describe('queryMutationsOverTime', () => {
                         dateFieldTo: '2023-01-02',
                         minProportion: 0.001,
                     },
-                    response: { data: [getSomeTestMutation(0.2)] },
+                    response: { data: [getSomeTestMutation(0.2, 2)] },
                 },
             ],
             'nucleotide',
@@ -276,7 +297,12 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray(0)).to.deep.equal([[0.1, 0.2]]);
+        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([
+            [
+                { proportion: 0.1, count: 1 },
+                { proportion: 0.2, count: 2 },
+            ],
+        ]);
 
         const sequences = result.getFirstAxisKeys();
         expect(sequences[0].code).toBe('sequenceName:A123T');
@@ -309,7 +335,7 @@ describe('queryMutationsOverTime', () => {
                         dateFieldTo: '2023-01-02',
                         minProportion: 0.001,
                     },
-                    response: { data: [getSomeTestMutation(0.2)] },
+                    response: { data: [getSomeTestMutation(0.2, 2)] },
                 },
             ],
             'nucleotide',
@@ -317,7 +343,7 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray(0)).to.deep.equal([[0.2]]);
+        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([[{ proportion: 0.2, count: 2 }]]);
 
         const sequences = result.getFirstAxisKeys();
         expect(sequences[0].code).toBe('sequenceName:A123T');
@@ -326,11 +352,11 @@ describe('queryMutationsOverTime', () => {
         expect(dates[0].toString()).toBe('2023-01-02');
     });
 
-    function getSomeTestMutation(proportion: number) {
+    function getSomeTestMutation(proportion: number, count: number) {
         return {
             mutation: 'sequenceName:A123T',
             proportion,
-            count: 1,
+            count,
             sequenceName: 'sequenceName',
             mutationFrom: 'A',
             mutationTo: 'T',
@@ -338,11 +364,11 @@ describe('queryMutationsOverTime', () => {
         };
     }
 
-    function getSomeOtherTestMutation(proportion: number) {
+    function getSomeOtherTestMutation(proportion: number, count: number) {
         return {
             mutation: 'otherSequenceName:A123T',
             proportion,
-            count: 1,
+            count,
             sequenceName: 'otherSequenceName',
             mutationFrom: 'G',
             mutationTo: 'C',
