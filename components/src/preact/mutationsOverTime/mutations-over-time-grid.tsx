@@ -5,8 +5,9 @@ import {
     type MutationOverTimeMutationValue,
 } from '../../query/queryMutationsOverTime';
 import { type Deletion, type Substitution } from '../../utils/mutations';
-import { compareTemporal, type Temporal } from '../../utils/temporal';
+import { compareTemporal, type Temporal, YearMonthDay } from '../../utils/temporal';
 import { UserFacingError } from '../components/error-display';
+import Tooltip from '../components/tooltip';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { formatProportion } from '../shared/table/formatProportion';
 
@@ -46,7 +47,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                             <MutationCell mutation={mutation} />
                         </div>
                         {dates.map((date, j) => {
-                            const value = data.get(mutation, date) ?? 0;
+                            const value = data.get(mutation, date) ?? { proportion: 0, count: 0 };
                             return (
                                 <div
                                     style={{ gridRowStart: i + 1, gridColumnStart: j + 2 }}
@@ -67,20 +68,43 @@ const ProportionCell: FunctionComponent<{
     value: MutationOverTimeMutationValue;
     date: Temporal;
     mutation: Substitution | Deletion;
-}> = ({ value }) => {
-    // TODO(#353): Add tooltip with date, mutation and proportion
+}> = ({ value, mutation, date }) => {
+    const tooltipContent = (
+        <div>
+            <p>
+                <span className='font-bold'>{date.englishName()}</span> ({timeIntervalDisplay(date)})
+            </p>
+            <p>{mutation.code}</p>
+            <p>Proportion: {formatProportion(value.proportion)}</p>
+            <p>Count: {value.count}</p>
+        </div>
+    );
+
     return (
         <>
             <div className={'py-1'}>
-                <div
-                    style={{ backgroundColor: backgroundColor(value), color: textColor(value) }}
-                    className='text-center hover:font-bold text-xs'
-                >
-                    {formatProportion(value, 0)}
-                </div>
+                <Tooltip content={tooltipContent}>
+                    <div
+                        style={{
+                            backgroundColor: backgroundColor(value.proportion),
+                            color: textColor(value.proportion),
+                        }}
+                        className='text-center hover:font-bold text-xs'
+                    >
+                        {formatProportion(value.proportion, 0)}
+                    </div>
+                </Tooltip>
             </div>
         </>
     );
+};
+
+const timeIntervalDisplay = (date: Temporal) => {
+    if (date instanceof YearMonthDay) {
+        return date.toString();
+    }
+
+    return `${date.firstDay.toString()} - ${date.lastDay.toString()}`;
 };
 
 const backgroundColor = (proportion: number) => {

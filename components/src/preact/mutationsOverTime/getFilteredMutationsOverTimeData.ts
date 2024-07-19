@@ -54,8 +54,12 @@ export function filterProportion(
     },
 ) {
     data.getFirstAxisKeys().forEach((mutation) => {
-        const row = data.getRow(mutation, 0);
-        if (!row.some((value) => value >= proportionInterval.min && value <= proportionInterval.max)) {
+        const row = data.getRow(mutation, { count: 0, proportion: 0 });
+        if (
+            !row.some(
+                (value) => value.proportion >= proportionInterval.min && value.proportion <= proportionInterval.max,
+            )
+        ) {
             data.deleteRow(mutation);
         }
     });

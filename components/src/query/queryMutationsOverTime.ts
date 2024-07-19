@@ -27,7 +27,7 @@ export type MutationOverTimeData = {
     mutations: SubstitutionOrDeletionEntry[];
 };
 
-export type MutationOverTimeMutationValue = number;
+export type MutationOverTimeMutationValue = { proportion: number; count: number };
 export type MutationOverTimeDataGroupedByMutation = Map2d<
     Substitution | Deletion,
     Temporal,
@@ -145,14 +145,17 @@ function fetchAndPrepareSubstitutionsOrDeletions(filter: LapisFilter, sequenceTy
 }
 
 export function groupByMutation(data: MutationOverTimeData[]) {
-    const dataArray = new Map2d<Substitution | Deletion, Temporal, number>(
+    const dataArray = new Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>(
         (mutation) => mutation.code,
         (date) => date.toString(),
     );
 
     data.forEach((mutationData) => {
         mutationData.mutations.forEach((mutationEntry) => {
-            dataArray.set(mutationEntry.mutation, mutationData.date, mutationEntry.proportion);
+            dataArray.set(mutationEntry.mutation, mutationData.date, {
+                count: mutationEntry.count,
+                proportion: mutationEntry.proportion,
+            });
         });
     });
 
@@ -162,14 +165,14 @@ export function groupByMutation(data: MutationOverTimeData[]) {
 }
 
 function addZeroValuesForDatesWithNoMutationData(
-    dataArray: Map2d<Substitution | Deletion, Temporal, number>,
+    dataArray: Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>,
     data: MutationOverTimeData[],
 ) {
     if (dataArray.getFirstAxisKeys().length !== 0) {
         const someMutation = dataArray.getFirstAxisKeys()[0];
         data.forEach((mutationData) => {
             if (mutationData.mutations.length === 0) {
-                dataArray.set(someMutation, mutationData.date, 0);
+                dataArray.set(someMutation, mutationData.date, {count: 0, proportion: 0});
             }
         });
     }
