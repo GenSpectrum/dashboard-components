@@ -8,8 +8,10 @@ import {
     queryMutationsOverTimeData,
 } from '../../query/queryMutationsOverTime';
 import { type LapisFilter, type SequenceType, type TemporalGranularity } from '../../types';
+import { compareTemporal, type Temporal, YearWeek } from '../../utils/temporal';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/SegmentSelector';
+import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import Info from '../components/info';
@@ -126,6 +128,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             setDisplayedMutationTypes={setDisplayedMutationTypes}
             proportionInterval={proportionInterval}
             setProportionInterval={setProportionInterval}
+            filteredData={filteredData}
         />
     );
 
@@ -139,6 +142,7 @@ type ToolbarProps = {
     setDisplayedMutationTypes: (types: DisplayedMutationType[]) => void;
     proportionInterval: ProportionInterval;
     setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
+    filteredData: MutationOverTimeDataGroupedByMutation;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -148,6 +152,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     setDisplayedMutationTypes,
     proportionInterval,
     setProportionInterval,
+    filteredData,
 }) => {
     return (
         <>
@@ -156,15 +161,42 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 setDisplayedMutationTypes={setDisplayedMutationTypes}
                 displayedMutationTypes={displayedMutationTypes}
             />
-            <>
-                <ProportionSelectorDropdown
-                    proportionInterval={proportionInterval}
-                    setMinProportion={(min) => setProportionInterval((prev) => ({ ...prev, min }))}
-                    setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
-                />
-                {/*    TODO(#362): Add download button */}
-            </>
+            <ProportionSelectorDropdown
+                proportionInterval={proportionInterval}
+                setMinProportion={(min) => setProportionInterval((prev) => ({ ...prev, min }))}
+                setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
+            />
+            <CsvDownloadButton
+                className='mx-1 btn btn-xs'
+                getData={() => getDownloadData(filteredData)}
+                filename='mutations_over_time.csv'
+            />
             <Info height={'100px'}>Info for mutations over time</Info>
         </>
     );
 };
+
+function getDownloadData(filteredData: MutationOverTimeDataGroupedByMutation) {
+    const dates = filteredData.getSecondAxisKeys().sort((a, b) => compareTemporal(a, b));
+
+    return filteredData.getFirstAxisKeys().map((mutation) => {
+        return dates.reduce(
+            (accumulated, date) => {
+                const proportion = filteredData.get(mutation, date)?.proportion ?? 0;
+                return {
+                    ...accumulated,
+                    [display(date)]: proportion,
+                };
+            },
+            { mutation: mutation.toString() },
+        );
+    });
+}
+
+function display(date: Temporal) {
+    if (date instanceof YearWeek) {
+        return date.englishName().replaceAll(',', '');
+    }
+
+    return date.toString();
+}
