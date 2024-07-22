@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.6.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.3...dashboard-components-v0.6.4) (2024-07-22)
+
+
+### Features
+
+* **components:** tooltip for mutations over time grid [#353](https://github.com/GenSpectrum/dashboard-components/issues/353) ([6dc3517](https://github.com/GenSpectrum/dashboard-components/commit/6dc3517b14f13b807b468dceb028b3691fd68365))
+
+
+### Bug Fixes
+
+* **components:** fix last day of iso week ([6ec2d9d](https://github.com/GenSpectrum/dashboard-components/commit/6ec2d9d53196fa8b5edd8439713348082cbbd4b3))
+* **components:** mutations over time: limit the number of rows and columns that can be displayed in the grid ([520d196](https://github.com/GenSpectrum/dashboard-components/commit/520d196695f03e36a793a1548314bb7efcb26e1e)), closes [#367](https://github.com/GenSpectrum/dashboard-components/issues/367)
+
 ## [0.6.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.2...dashboard-components-v0.6.3) (2024-07-22)
 
 
