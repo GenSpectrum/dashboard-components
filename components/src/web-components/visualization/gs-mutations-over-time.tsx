@@ -17,11 +17,17 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  *
  * The grid view shows the proportion for each mutation over date ranges.
  *
- * The grid will show at max 100 rows and 200 columns for browser performance reasons.
- * More data might make the browser unresponsive.
- * If the numbers are exceeded, an error message will be shown.
- * In both cases, the `lapisFilter` should be narrowed down to reduce the number of mutations or date ranges.
- * The number of date ranges can also be reduced by selecting a larger granularity (months instead of weeks).
+ * The grid limits the number of rows columns for browser performance reasons.
+ * Too much data might make the browser unresponsive.
+ *
+ * The number of columns is limited to 200.
+ * If this number are exceeded, an error message will be shown.
+ * It is your responsibility to make sure that this does not happen.
+ * Depending on the selected date range in the `lapisFilter`, you can adapt the granularity accordingly
+ * (e.g. use months instead of days).
+ *
+ * The number of rows is limited to 100.
+ * If there are more, the component will only show 100 mutations and notify the user.
  */
 @customElement('gs-mutations-over-time')
 export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
