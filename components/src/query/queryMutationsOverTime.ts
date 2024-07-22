@@ -5,6 +5,7 @@ import { GroupByAndSumOperator } from '../operator/GroupByAndSumOperator';
 import { MapOperator } from '../operator/MapOperator';
 import { RenameFieldOperator } from '../operator/RenameFieldOperator';
 import { SortOperator } from '../operator/SortOperator';
+import { UserFacingError } from '../preact/components/error-display';
 import {
     type LapisFilter,
     type SequenceType,
@@ -33,6 +34,8 @@ export type MutationOverTimeDataGroupedByMutation = Map2d<
     MutationOverTimeMutationValue
 >;
 
+const MAX_NUMBER_OF_GRID_COLUMNS = 200;
+
 export async function queryMutationsOverTimeData(
     lapisFilter: LapisFilter,
     sequenceType: 'nucleotide' | 'amino acid',
@@ -42,6 +45,15 @@ export async function queryMutationsOverTimeData(
     signal?: AbortSignal,
 ) {
     const allDates = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
+
+    if (allDates.length > MAX_NUMBER_OF_GRID_COLUMNS) {
+        throw new UserFacingError(
+            'Too many dates',
+            `The dataset would contain ${allDates.length} date intervals. ` +
+                `Please reduce the number to below ${MAX_NUMBER_OF_GRID_COLUMNS} to display the data. ` +
+                'You can achieve this by either narrowing the date range in the provided LAPIS filter or by selecting a larger granularity.',
+        );
+    }
 
     const subQueries = allDates.map(async (date) => {
         const dateFrom = date.firstDay.toString();

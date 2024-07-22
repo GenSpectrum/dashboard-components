@@ -6,6 +6,7 @@ import {
 } from '../../query/queryMutationsOverTime';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { compareTemporal, type Temporal } from '../../utils/temporal';
+import { UserFacingError } from '../components/error-display';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { formatProportion } from '../shared/table/formatProportion';
 
@@ -13,8 +14,18 @@ export interface MutationsOverTimeGridProps {
     data: MutationOverTimeDataGroupedByMutation;
 }
 
+const MAX_NUMBER_OF_GRID_ROWS = 100;
+
 const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ data }) => {
     const mutations = data.getFirstAxisKeys();
+    if (mutations.length > MAX_NUMBER_OF_GRID_ROWS) {
+        throw new UserFacingError(
+            'Too many mutations',
+            `The dataset contains ${mutations.length} mutations. ` +
+                `Please adapt the filters to reduce the number to below ${MAX_NUMBER_OF_GRID_ROWS}.`,
+        );
+    }
+
     const dates = data.getSecondAxisKeys().sort((a, b) => compareTemporal(a, b));
 
     return (
