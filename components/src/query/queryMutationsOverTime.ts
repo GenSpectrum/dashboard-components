@@ -172,7 +172,7 @@ function addZeroValuesForDatesWithNoMutationData(
         const someMutation = dataArray.getFirstAxisKeys()[0];
         data.forEach((mutationData) => {
             if (mutationData.mutations.length === 0) {
-                dataArray.set(someMutation, mutationData.date, {count: 0, proportion: 0});
+                dataArray.set(someMutation, mutationData.date, { count: 0, proportion: 0 });
             }
         });
     }

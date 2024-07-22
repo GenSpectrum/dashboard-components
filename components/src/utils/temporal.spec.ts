@@ -60,6 +60,8 @@ describe('YearMonthDay', () => {
         // seems to be a bug in dayjs: https://github.com/iamkun/dayjs/issues/2620
         expect(underTest.week.text).equal('2019-01');
         expect(underTest.text).equal('2020-01-01');
+        expect(underTest.firstDay.text).equal('2020-01-01');
+        expect(underTest.lastDay.text).equal('2020-01-01');
     });
 });
 
@@ -71,6 +73,7 @@ describe('YearWeek', () => {
         expect(underTest.isoWeekNumber).equal(2);
         expect(underTest.firstDay.text).equal('2020-01-06');
         expect(underTest.text).equal('2020-02');
+        expect(underTest.lastDay.text).equal('2020-01-12');
     });
 });
 
@@ -82,6 +85,7 @@ describe('YearMonth', () => {
         expect(underTest.monthNumber).equal(1);
         expect(underTest.text).equal('2020-01');
         expect(underTest.firstDay.text).equal('2020-01-01');
+        expect(underTest.lastDay.text).equal('2020-01-31');
     });
 });
 
@@ -93,5 +97,6 @@ describe('Year', () => {
         expect(underTest.text).equal('2020');
         expect(underTest.firstDay.text).equal('2020-01-01');
         expect(underTest.firstMonth.text).equal('2020-01');
+        expect(underTest.lastDay.text).equal('2020-12-31');
     });
 });
