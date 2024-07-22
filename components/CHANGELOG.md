@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.4...dashboard-components-v0.6.5) (2024-07-22)
+
+
+### Bug Fixes
+
+* **components:** mutations over time: still show the toolbar when there are too many mutations ([e67d9de](https://github.com/GenSpectrum/dashboard-components/commit/e67d9dec006e73e29f4716dc0670d095ad5b18b4))
+
 ## [0.6.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.3...dashboard-components-v0.6.4) (2024-07-22)
 
 
