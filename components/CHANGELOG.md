@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.2...dashboard-components-v0.6.3) (2024-07-22)
+
+
+### Features
+
+* **components:** initial mutations over time component ([114a0a4](https://github.com/GenSpectrum/dashboard-components/commit/114a0a408d027478ff0b6f452e0d6d5e4d6e0182))
+
 ## [0.6.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.1...dashboard-components-v0.6.2) (2024-07-18)
 
 
