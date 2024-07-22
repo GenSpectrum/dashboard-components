@@ -7,6 +7,15 @@ const meta: Meta<TooltipProps> = {
     title: 'Component/Tooltip',
     component: Tooltip,
     parameters: { fetchMock: {} },
+    argTypes: {
+        content: { control: 'text' },
+        position: {
+            control: {
+                type: 'radio',
+            },
+            options: ['top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'right'],
+        },
+    },
 };
 
 export default meta;
@@ -17,12 +26,13 @@ export const TooltipStory: StoryObj<TooltipProps> = {
     render: (args) => (
         <div class='flex justify-center px-4 py-16'>
             <Tooltip {...args}>
-                <div>Hover me</div>
+                <div className='bg-red-200'>Hover me</div>
             </Tooltip>
         </div>
     ),
     args: {
         content: tooltipContent,
+        position: 'bottom',
     },
 };
 
@@ -38,7 +48,7 @@ export const RendersStringContent: StoryObj<TooltipProps> = {
     },
 };
 
-export const RendersComponentConent: StoryObj<TooltipProps> = {
+export const RendersComponentContent: StoryObj<TooltipProps> = {
     ...TooltipStory,
     args: {
         content: <div>{tooltipContent}</div>,

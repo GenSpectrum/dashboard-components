@@ -6,7 +6,7 @@ import {
 } from '../../query/queryMutationsOverTime';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { compareTemporal, type Temporal, YearMonthDay } from '../../utils/temporal';
-import Tooltip from '../components/tooltip';
+import Tooltip, { type TooltipPosition } from '../components/tooltip';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { formatProportion } from '../shared/table/formatProportion';
 
@@ -37,23 +37,34 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                     gridTemplateColumns: `8rem repeat(${dates.length}, minmax(1.5rem, 1fr))`,
                 }}
             >
-                {shownMutations.map((mutation, i) => {
+                {shownMutations.map((mutation, rowIndex) => {
                     return (
                         <Fragment key={`fragment-${mutation.toString()}`}>
                             <div
                                 key={`mutation-${mutation.toString()}`}
-                                style={{ gridRowStart: i + 1, gridColumnStart: 1 }}
+                                style={{ gridRowStart: rowIndex + 1, gridColumnStart: 1 }}
                             >
                                 <MutationCell mutation={mutation} />
                             </div>
-                            {dates.map((date, j) => {
+                            {dates.map((date, columnIndex) => {
                                 const value = data.get(mutation, date) ?? { proportion: 0, count: 0 };
+                                const tooltipPosition = getTooltipPosition(
+                                    rowIndex,
+                                    shownMutations.length,
+                                    columnIndex,
+                                    dates.length,
+                                );
                                 return (
                                     <div
-                                        style={{ gridRowStart: i + 1, gridColumnStart: j + 2 }}
+                                        style={{ gridRowStart: rowIndex + 1, gridColumnStart: columnIndex + 2 }}
                                         key={`${mutation.toString()}-${date.toString()}`}
                                     >
-                                        <ProportionCell value={value} date={date} mutation={mutation} />
+                                        <ProportionCell
+                                            value={value}
+                                            date={date}
+                                            mutation={mutation}
+                                            tooltipPosition={tooltipPosition}
+                                        />
                                     </div>
                                 );
                             })}
@@ -65,11 +76,18 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
     );
 };
 
+function getTooltipPosition(rowIndex: number, rows: number, columnIndex: number, columns: number) {
+    const tooltipX = rowIndex < rows / 2 ? 'bottom' : 'top';
+    const tooltipY = columnIndex < columns / 2 ? 'start' : 'end';
+    return `${tooltipX}-${tooltipY}` as const;
+}
+
 const ProportionCell: FunctionComponent<{
     value: MutationOverTimeMutationValue;
     date: Temporal;
     mutation: Substitution | Deletion;
-}> = ({ value, mutation, date }) => {
+    tooltipPosition: TooltipPosition;
+}> = ({ value, mutation, date, tooltipPosition }) => {
     const tooltipContent = (
         <div>
             <p>
@@ -84,7 +102,7 @@ const ProportionCell: FunctionComponent<{
     return (
         <>
             <div className={'py-1'}>
-                <Tooltip content={tooltipContent}>
+                <Tooltip content={tooltipContent} position={tooltipPosition}>
                     <div
                         style={{
                             backgroundColor: backgroundColor(value.proportion),
