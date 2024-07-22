@@ -91,8 +91,21 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Bar',
     },
     {
-        id: 'visualization-mutations-over-time--default',
+        id: 'visualization-mutations-over-time--by-month',
         title: 'Mutations over time',
         loadingIsDoneIndicator: 'Grid',
+        testDownloadWithFilename: 'mutations_over_time.csv',
+    },
+    {
+        id: 'visualization-mutations-over-time--by-week',
+        title: 'Mutations over time',
+        loadingIsDoneIndicator: 'Grid',
+        testDownloadWithFilename: 'mutations_over_time.csv',
+    },
+    {
+        id: 'visualization-mutations-over-time--amino-acid-mutations-by-day',
+        title: 'Mutations over time',
+        loadingIsDoneIndicator: 'Grid',
+        testDownloadWithFilename: 'mutations_over_time.csv',
     },
 ];

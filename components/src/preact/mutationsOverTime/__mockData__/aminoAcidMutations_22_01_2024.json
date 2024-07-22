@@ -1,0 +1,4681 @@
+{
+    "data": [
+        {
+            "mutation": "E:T9I",
+            "count": 1077,
+            "proportion": 1.0,
+            "sequenceName": "E",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 9
+        },
+        {
+            "mutation": "M:D3H",
+            "count": 1094,
+            "proportion": 1.0,
+            "sequenceName": "M",
+            "mutationFrom": "D",
+            "mutationTo": "H",
+            "position": 3
+        },
+        {
+            "mutation": "M:Q19E",
+            "count": 1088,
+            "proportion": 0.998165137614679,
+            "sequenceName": "M",
+            "mutationFrom": "Q",
+            "mutationTo": "E",
+            "position": 19
+        },
+        {
+            "mutation": "M:T30A",
+            "count": 962,
+            "proportion": 1.0,
+            "sequenceName": "M",
+            "mutationFrom": "T",
+            "mutationTo": "A",
+            "position": 30
+        },
+        {
+            "mutation": "M:F53L",
+            "count": 3,
+            "proportion": 0.0027472527472527475,
+            "sequenceName": "M",
+            "mutationFrom": "F",
+            "mutationTo": "L",
+            "position": 53
+        },
+        {
+            "mutation": "M:A63T",
+            "count": 1092,
+            "proportion": 1.0,
+            "sequenceName": "M",
+            "mutationFrom": "A",
+            "mutationTo": "T",
+            "position": 63
+        },
+        {
+            "mutation": "M:A104V",
+            "count": 1094,
+            "proportion": 1.0,
+            "sequenceName": "M",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 104
+        },
+        {
+            "mutation": "M:H125Y",
+            "count": 3,
+            "proportion": 0.0027447392497712718,
+            "sequenceName": "M",
+            "mutationFrom": "H",
+            "mutationTo": "Y",
+            "position": 125
+        },
+        {
+            "mutation": "N:P13L",
+            "count": 1081,
+            "proportion": 0.9990757855822551,
+            "sequenceName": "N",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 13
+        },
+        {
+            "mutation": "N:G30-",
+            "count": 12,
+            "proportion": 0.012207527975584944,
+            "sequenceName": "N",
+            "mutationFrom": "G",
+            "mutationTo": "-",
+            "position": 30
+        },
+        {
+            "mutation": "N:E31-",
+            "count": 978,
+            "proportion": 0.9979591836734694,
+            "sequenceName": "N",
+            "mutationFrom": "E",
+            "mutationTo": "-",
+            "position": 31
+        },
+        {
+            "mutation": "N:R32-",
+            "count": 978,
+            "proportion": 0.9979591836734694,
+            "sequenceName": "N",
+            "mutationFrom": "R",
+            "mutationTo": "-",
+            "position": 32
+        },
+        {
+            "mutation": "N:S33-",
+            "count": 967,
+            "proportion": 0.9979360165118679,
+            "sequenceName": "N",
+            "mutationFrom": "S",
+            "mutationTo": "-",
+            "position": 33
+        },
+        {
+            "mutation": "N:A35V",
+            "count": 2,
+            "proportion": 0.0018656716417910447,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 35
+        },
+        {
+            "mutation": "N:R40H",
+            "count": 4,
+            "proportion": 0.003734827264239029,
+            "sequenceName": "N",
+            "mutationFrom": "R",
+            "mutationTo": "H",
+            "position": 40
+        },
+        {
+            "mutation": "N:A50V",
+            "count": 2,
+            "proportion": 0.0018674136321195146,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 50
+        },
+        {
+            "mutation": "N:P122S",
+            "count": 2,
+            "proportion": 0.0018501387604070306,
+            "sequenceName": "N",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 122
+        },
+        {
+            "mutation": "N:T135I",
+            "count": 2,
+            "proportion": 0.0018501387604070306,
+            "sequenceName": "N",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 135
+        },
+        {
+            "mutation": "N:A152V",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 152
+        },
+        {
+            "mutation": "N:A155V",
+            "count": 3,
+            "proportion": 0.0027726432532347504,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 155
+        },
+        {
+            "mutation": "N:A173V",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 173
+        },
+        {
+            "mutation": "N:S194P",
+            "count": 6,
+            "proportion": 0.0055658627087198514,
+            "sequenceName": "N",
+            "mutationFrom": "S",
+            "mutationTo": "P",
+            "position": 194
+        },
+        {
+            "mutation": "N:R203K",
+            "count": 1077,
+            "proportion": 0.9990723562152134,
+            "sequenceName": "N",
+            "mutationFrom": "R",
+            "mutationTo": "K",
+            "position": 203
+        },
+        {
+            "mutation": "N:G204R",
+            "count": 1078,
+            "proportion": 1.0,
+            "sequenceName": "N",
+            "mutationFrom": "G",
+            "mutationTo": "R",
+            "position": 204
+        },
+        {
+            "mutation": "N:M210T",
+            "count": 4,
+            "proportion": 0.0037002775208140612,
+            "sequenceName": "N",
+            "mutationFrom": "M",
+            "mutationTo": "T",
+            "position": 210
+        },
+        {
+            "mutation": "N:G214S",
+            "count": 2,
+            "proportion": 0.0018501387604070306,
+            "sequenceName": "N",
+            "mutationFrom": "G",
+            "mutationTo": "S",
+            "position": 214
+        },
+        {
+            "mutation": "N:Q229K",
+            "count": 1077,
+            "proportion": 0.996299722479186,
+            "sequenceName": "N",
+            "mutationFrom": "Q",
+            "mutationTo": "K",
+            "position": 229
+        },
+        {
+            "mutation": "N:G236S",
+            "count": 2,
+            "proportion": 0.0018501387604070306,
+            "sequenceName": "N",
+            "mutationFrom": "G",
+            "mutationTo": "S",
+            "position": 236
+        },
+        {
+            "mutation": "N:Q240L",
+            "count": 2,
+            "proportion": 0.0018501387604070306,
+            "sequenceName": "N",
+            "mutationFrom": "Q",
+            "mutationTo": "L",
+            "position": 240
+        },
+        {
+            "mutation": "N:T334I",
+            "count": 6,
+            "proportion": 0.005545286506469501,
+            "sequenceName": "N",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 334
+        },
+        {
+            "mutation": "N:P365L",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 365
+        },
+        {
+            "mutation": "N:T366I",
+            "count": 3,
+            "proportion": 0.0027726432532347504,
+            "sequenceName": "N",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 366
+        },
+        {
+            "mutation": "N:A376-",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "-",
+            "position": 376
+        },
+        {
+            "mutation": "N:D377-",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "D",
+            "mutationTo": "-",
+            "position": 377
+        },
+        {
+            "mutation": "N:E378-",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "E",
+            "mutationTo": "-",
+            "position": 378
+        },
+        {
+            "mutation": "N:T379-",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "T",
+            "mutationTo": "-",
+            "position": 379
+        },
+        {
+            "mutation": "N:T379I",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 379
+        },
+        {
+            "mutation": "N:Q380-",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "Q",
+            "mutationTo": "-",
+            "position": 380
+        },
+        {
+            "mutation": "N:A381-",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "-",
+            "position": 381
+        },
+        {
+            "mutation": "N:L382-",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "L",
+            "mutationTo": "-",
+            "position": 382
+        },
+        {
+            "mutation": "N:P383-",
+            "count": 2,
+            "proportion": 0.0018501387604070306,
+            "sequenceName": "N",
+            "mutationFrom": "P",
+            "mutationTo": "-",
+            "position": 383
+        },
+        {
+            "mutation": "N:Q384-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "Q",
+            "mutationTo": "-",
+            "position": 384
+        },
+        {
+            "mutation": "N:R385-",
+            "count": 4,
+            "proportion": 0.0037002775208140612,
+            "sequenceName": "N",
+            "mutationFrom": "R",
+            "mutationTo": "-",
+            "position": 385
+        },
+        {
+            "mutation": "N:Q386-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "Q",
+            "mutationTo": "-",
+            "position": 386
+        },
+        {
+            "mutation": "N:K387-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "K",
+            "mutationTo": "-",
+            "position": 387
+        },
+        {
+            "mutation": "N:K388-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "K",
+            "mutationTo": "-",
+            "position": 388
+        },
+        {
+            "mutation": "N:Q389-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "Q",
+            "mutationTo": "-",
+            "position": 389
+        },
+        {
+            "mutation": "N:Q390-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "Q",
+            "mutationTo": "-",
+            "position": 390
+        },
+        {
+            "mutation": "N:T391-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "T",
+            "mutationTo": "-",
+            "position": 391
+        },
+        {
+            "mutation": "N:T391I",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "N",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 391
+        },
+        {
+            "mutation": "N:V392-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "V",
+            "mutationTo": "-",
+            "position": 392
+        },
+        {
+            "mutation": "N:T393-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "T",
+            "mutationTo": "-",
+            "position": 393
+        },
+        {
+            "mutation": "N:L394-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "L",
+            "mutationTo": "-",
+            "position": 394
+        },
+        {
+            "mutation": "N:L395-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "L",
+            "mutationTo": "-",
+            "position": 395
+        },
+        {
+            "mutation": "N:P396-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "P",
+            "mutationTo": "-",
+            "position": 396
+        },
+        {
+            "mutation": "N:A397-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "-",
+            "position": 397
+        },
+        {
+            "mutation": "N:A398-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "-",
+            "position": 398
+        },
+        {
+            "mutation": "N:D399-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "D",
+            "mutationTo": "-",
+            "position": 399
+        },
+        {
+            "mutation": "N:L400-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "L",
+            "mutationTo": "-",
+            "position": 400
+        },
+        {
+            "mutation": "N:D401-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "D",
+            "mutationTo": "-",
+            "position": 401
+        },
+        {
+            "mutation": "N:D402-",
+            "count": 4,
+            "proportion": 0.0036968576709796672,
+            "sequenceName": "N",
+            "mutationFrom": "D",
+            "mutationTo": "-",
+            "position": 402
+        },
+        {
+            "mutation": "N:F403-",
+            "count": 5,
+            "proportion": 0.0046210720887245845,
+            "sequenceName": "N",
+            "mutationFrom": "F",
+            "mutationTo": "-",
+            "position": 403
+        },
+        {
+            "mutation": "N:S404-",
+            "count": 6,
+            "proportion": 0.005545286506469501,
+            "sequenceName": "N",
+            "mutationFrom": "S",
+            "mutationTo": "-",
+            "position": 404
+        },
+        {
+            "mutation": "N:K405-",
+            "count": 6,
+            "proportion": 0.005545286506469501,
+            "sequenceName": "N",
+            "mutationFrom": "K",
+            "mutationTo": "-",
+            "position": 405
+        },
+        {
+            "mutation": "N:Q406-",
+            "count": 6,
+            "proportion": 0.00554016620498615,
+            "sequenceName": "N",
+            "mutationFrom": "Q",
+            "mutationTo": "-",
+            "position": 406
+        },
+        {
+            "mutation": "N:L407-",
+            "count": 6,
+            "proportion": 0.00554016620498615,
+            "sequenceName": "N",
+            "mutationFrom": "L",
+            "mutationTo": "-",
+            "position": 407
+        },
+        {
+            "mutation": "N:Q408-",
+            "count": 6,
+            "proportion": 0.00554016620498615,
+            "sequenceName": "N",
+            "mutationFrom": "Q",
+            "mutationTo": "-",
+            "position": 408
+        },
+        {
+            "mutation": "N:Q409-",
+            "count": 6,
+            "proportion": 0.00554016620498615,
+            "sequenceName": "N",
+            "mutationFrom": "Q",
+            "mutationTo": "-",
+            "position": 409
+        },
+        {
+            "mutation": "N:S410-",
+            "count": 6,
+            "proportion": 0.00554016620498615,
+            "sequenceName": "N",
+            "mutationFrom": "S",
+            "mutationTo": "-",
+            "position": 410
+        },
+        {
+            "mutation": "N:M411-",
+            "count": 6,
+            "proportion": 0.005535055350553505,
+            "sequenceName": "N",
+            "mutationFrom": "M",
+            "mutationTo": "-",
+            "position": 411
+        },
+        {
+            "mutation": "N:S412-",
+            "count": 6,
+            "proportion": 0.005535055350553505,
+            "sequenceName": "N",
+            "mutationFrom": "S",
+            "mutationTo": "-",
+            "position": 412
+        },
+        {
+            "mutation": "N:S413-",
+            "count": 6,
+            "proportion": 0.005535055350553505,
+            "sequenceName": "N",
+            "mutationFrom": "S",
+            "mutationTo": "-",
+            "position": 413
+        },
+        {
+            "mutation": "N:S413R",
+            "count": 1076,
+            "proportion": 0.992619926199262,
+            "sequenceName": "N",
+            "mutationFrom": "S",
+            "mutationTo": "R",
+            "position": 413
+        },
+        {
+            "mutation": "N:A414-",
+            "count": 6,
+            "proportion": 0.005591798695246971,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "-",
+            "position": 414
+        },
+        {
+            "mutation": "N:A414S",
+            "count": 3,
+            "proportion": 0.0027958993476234857,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "S",
+            "position": 414
+        },
+        {
+            "mutation": "N:D415-",
+            "count": 6,
+            "proportion": 0.005591798695246971,
+            "sequenceName": "N",
+            "mutationFrom": "D",
+            "mutationTo": "-",
+            "position": 415
+        },
+        {
+            "mutation": "N:S416-",
+            "count": 6,
+            "proportion": 0.005591798695246971,
+            "sequenceName": "N",
+            "mutationFrom": "S",
+            "mutationTo": "-",
+            "position": 416
+        },
+        {
+            "mutation": "N:T417-",
+            "count": 6,
+            "proportion": 0.005591798695246971,
+            "sequenceName": "N",
+            "mutationFrom": "T",
+            "mutationTo": "-",
+            "position": 417
+        },
+        {
+            "mutation": "N:Q418-",
+            "count": 6,
+            "proportion": 0.005597014925373134,
+            "sequenceName": "N",
+            "mutationFrom": "Q",
+            "mutationTo": "-",
+            "position": 418
+        },
+        {
+            "mutation": "N:A419-",
+            "count": 6,
+            "proportion": 0.005597014925373134,
+            "sequenceName": "N",
+            "mutationFrom": "A",
+            "mutationTo": "-",
+            "position": 419
+        },
+        {
+            "mutation": "N:*420-",
+            "count": 6,
+            "proportion": 0.005597014925373134,
+            "sequenceName": "N",
+            "mutationFrom": "*",
+            "mutationTo": "-",
+            "position": 420
+        },
+        {
+            "mutation": "ORF1a:R24C",
+            "count": 2,
+            "proportion": 0.001968503937007874,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "R",
+            "mutationTo": "C",
+            "position": 24
+        },
+        {
+            "mutation": "ORF1a:V54-",
+            "count": 1,
+            "proportion": 0.001049317943336831,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "V",
+            "mutationTo": "-",
+            "position": 54
+        },
+        {
+            "mutation": "ORF1a:V54I",
+            "count": 1,
+            "proportion": 0.001049317943336831,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "V",
+            "mutationTo": "I",
+            "position": 54
+        },
+        {
+            "mutation": "ORF1a:E57G",
+            "count": 1,
+            "proportion": 0.0010515247108307045,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "E",
+            "mutationTo": "G",
+            "position": 57
+        },
+        {
+            "mutation": "ORF1a:P62S",
+            "count": 1,
+            "proportion": 0.0010615711252653928,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 62
+        },
+        {
+            "mutation": "ORF1a:S74L",
+            "count": 1,
+            "proportion": 0.0010604453870625664,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "L",
+            "position": 74
+        },
+        {
+            "mutation": "ORF1a:S74P",
+            "count": 1,
+            "proportion": 0.0010604453870625664,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "P",
+            "position": 74
+        },
+        {
+            "mutation": "ORF1a:P80L",
+            "count": 1,
+            "proportion": 0.0010615711252653928,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 80
+        },
+        {
+            "mutation": "ORF1a:P80S",
+            "count": 1,
+            "proportion": 0.0010615711252653928,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 80
+        },
+        {
+            "mutation": "ORF1a:H81-",
+            "count": 4,
+            "proportion": 0.00425531914893617,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "H",
+            "mutationTo": "-",
+            "position": 81
+        },
+        {
+            "mutation": "ORF1a:G82-",
+            "count": 20,
+            "proportion": 0.021299254526091587,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "G",
+            "mutationTo": "-",
+            "position": 82
+        },
+        {
+            "mutation": "ORF1a:H83-",
+            "count": 18,
+            "proportion": 0.019189765458422176,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "H",
+            "mutationTo": "-",
+            "position": 83
+        },
+        {
+            "mutation": "ORF1a:V84-",
+            "count": 22,
+            "proportion": 0.023479188900747065,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "V",
+            "mutationTo": "-",
+            "position": 84
+        },
+        {
+            "mutation": "ORF1a:M85-",
+            "count": 18,
+            "proportion": 0.019271948608137045,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "M",
+            "mutationTo": "-",
+            "position": 85
+        },
+        {
+            "mutation": "ORF1a:M85L",
+            "count": 1,
+            "proportion": 0.0010706638115631692,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "M",
+            "mutationTo": "L",
+            "position": 85
+        },
+        {
+            "mutation": "ORF1a:M85V",
+            "count": 10,
+            "proportion": 0.010706638115631691,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "M",
+            "mutationTo": "V",
+            "position": 85
+        },
+        {
+            "mutation": "ORF1a:V86-",
+            "count": 6,
+            "proportion": 0.006389776357827476,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "V",
+            "mutationTo": "-",
+            "position": 86
+        },
+        {
+            "mutation": "ORF1a:E87D",
+            "count": 1,
+            "proportion": 0.0010626992561105207,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "E",
+            "mutationTo": "D",
+            "position": 87
+        },
+        {
+            "mutation": "ORF1a:L92F",
+            "count": 1,
+            "proportion": 0.0010615711252653928,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 92
+        },
+        {
+            "mutation": "ORF1a:S100R",
+            "count": 1,
+            "proportion": 0.0010604453870625664,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "R",
+            "position": 100
+        },
+        {
+            "mutation": "ORF1a:H110Y",
+            "count": 3,
+            "proportion": 0.0031847133757961785,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "H",
+            "mutationTo": "Y",
+            "position": 110
+        },
+        {
+            "mutation": "ORF1a:A117T",
+            "count": 1,
+            "proportion": 0.001059322033898305,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "T",
+            "position": 117
+        },
+        {
+            "mutation": "ORF1a:R124C",
+            "count": 2,
+            "proportion": 0.00211864406779661,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "R",
+            "mutationTo": "C",
+            "position": 124
+        },
+        {
+            "mutation": "ORF1a:G127S",
+            "count": 1,
+            "proportion": 0.0010570824524312897,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "G",
+            "mutationTo": "S",
+            "position": 127
+        },
+        {
+            "mutation": "ORF1a:S135R",
+            "count": 1037,
+            "proportion": 0.9961575408261287,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "R",
+            "position": 135
+        },
+        {
+            "mutation": "ORF1a:K141-",
+            "count": 6,
+            "proportion": 0.0057251908396946565,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "K",
+            "mutationTo": "-",
+            "position": 141
+        },
+        {
+            "mutation": "ORF1a:S142-",
+            "count": 6,
+            "proportion": 0.005719733079122974,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "-",
+            "position": 142
+        },
+        {
+            "mutation": "ORF1a:F143-",
+            "count": 6,
+            "proportion": 0.005719733079122974,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "F",
+            "mutationTo": "-",
+            "position": 143
+        },
+        {
+            "mutation": "ORF1a:T170I",
+            "count": 292,
+            "proportion": 0.2796934865900383,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 170
+        },
+        {
+            "mutation": "ORF1a:A211D",
+            "count": 1047,
+            "proportion": 0.9933586337760911,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "D",
+            "position": 211
+        },
+        {
+            "mutation": "ORF1a:V274L",
+            "count": 2,
+            "proportion": 0.0018957345971563982,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "V",
+            "mutationTo": "L",
+            "position": 274
+        },
+        {
+            "mutation": "ORF1a:M297I",
+            "count": 5,
+            "proportion": 0.004646840148698885,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "M",
+            "mutationTo": "I",
+            "position": 297
+        },
+        {
+            "mutation": "ORF1a:S302F",
+            "count": 2,
+            "proportion": 0.0018552875695732839,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 302
+        },
+        {
+            "mutation": "ORF1a:T333M",
+            "count": 2,
+            "proportion": 0.0018604651162790699,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "M",
+            "position": 333
+        },
+        {
+            "mutation": "ORF1a:H374Y",
+            "count": 3,
+            "proportion": 0.0028653295128939827,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "H",
+            "mutationTo": "Y",
+            "position": 374
+        },
+        {
+            "mutation": "ORF1a:P380S",
+            "count": 2,
+            "proportion": 0.0019102196752626551,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 380
+        },
+        {
+            "mutation": "ORF1a:K399R",
+            "count": 2,
+            "proportion": 0.0019120458891013384,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 399
+        },
+        {
+            "mutation": "ORF1a:G400S",
+            "count": 2,
+            "proportion": 0.0019102196752626551,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "G",
+            "mutationTo": "S",
+            "position": 400
+        },
+        {
+            "mutation": "ORF1a:T403I",
+            "count": 2,
+            "proportion": 0.0019120458891013384,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 403
+        },
+        {
+            "mutation": "ORF1a:G442D",
+            "count": 3,
+            "proportion": 0.002830188679245283,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "G",
+            "mutationTo": "D",
+            "position": 442
+        },
+        {
+            "mutation": "ORF1a:G445V",
+            "count": 4,
+            "proportion": 0.0036730945821854912,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "G",
+            "mutationTo": "V",
+            "position": 445
+        },
+        {
+            "mutation": "ORF1a:A486V",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 486
+        },
+        {
+            "mutation": "ORF1a:A498V",
+            "count": 3,
+            "proportion": 0.0027472527472527475,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 498
+        },
+        {
+            "mutation": "ORF1a:F499L",
+            "count": 74,
+            "proportion": 0.06782768102658111,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "F",
+            "mutationTo": "L",
+            "position": 499
+        },
+        {
+            "mutation": "ORF1a:S505F",
+            "count": 15,
+            "proportion": 0.013736263736263736,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 505
+        },
+        {
+            "mutation": "ORF1a:K515T",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "K",
+            "mutationTo": "T",
+            "position": 515
+        },
+        {
+            "mutation": "ORF1a:A516V",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 516
+        },
+        {
+            "mutation": "ORF1a:G519S",
+            "count": 4,
+            "proportion": 0.0036663611365719525,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "G",
+            "mutationTo": "S",
+            "position": 519
+        },
+        {
+            "mutation": "ORF1a:R542S",
+            "count": 2,
+            "proportion": 0.0018331805682859762,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "R",
+            "mutationTo": "S",
+            "position": 542
+        },
+        {
+            "mutation": "ORF1a:S549A",
+            "count": 6,
+            "proportion": 0.005499541704857928,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "A",
+            "position": 549
+        },
+        {
+            "mutation": "ORF1a:S549F",
+            "count": 2,
+            "proportion": 0.0018331805682859762,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 549
+        },
+        {
+            "mutation": "ORF1a:Q556K",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "Q",
+            "mutationTo": "K",
+            "position": 556
+        },
+        {
+            "mutation": "ORF1a:L580F",
+            "count": 3,
+            "proportion": 0.0027522935779816515,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 580
+        },
+        {
+            "mutation": "ORF1a:T592I",
+            "count": 2,
+            "proportion": 0.001834862385321101,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 592
+        },
+        {
+            "mutation": "ORF1a:T602A",
+            "count": 2,
+            "proportion": 0.0018365472910927456,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "A",
+            "position": 602
+        },
+        {
+            "mutation": "ORF1a:T614I",
+            "count": 2,
+            "proportion": 0.001834862385321101,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 614
+        },
+        {
+            "mutation": "ORF1a:L642F",
+            "count": 2,
+            "proportion": 0.0018281535648994515,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 642
+        },
+        {
+            "mutation": "ORF1a:W646L",
+            "count": 5,
+            "proportion": 0.004570383912248629,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "W",
+            "mutationTo": "L",
+            "position": 646
+        },
+        {
+            "mutation": "ORF1a:A656V",
+            "count": 3,
+            "proportion": 0.0027649769585253456,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 656
+        },
+        {
+            "mutation": "ORF1a:S692F",
+            "count": 2,
+            "proportion": 0.001863932898415657,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 692
+        },
+        {
+            "mutation": "ORF1a:E775G",
+            "count": 2,
+            "proportion": 0.0018399264029438822,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "E",
+            "mutationTo": "G",
+            "position": 775
+        },
+        {
+            "mutation": "ORF1a:P804S",
+            "count": 1,
+            "proportion": 0.001001001001001001,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 804
+        },
+        {
+            "mutation": "ORF1a:M806I",
+            "count": 1,
+            "proportion": 0.0010030090270812437,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "M",
+            "mutationTo": "I",
+            "position": 806
+        },
+        {
+            "mutation": "ORF1a:M807K",
+            "count": 1,
+            "proportion": 0.0010030090270812437,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "M",
+            "mutationTo": "K",
+            "position": 807
+        },
+        {
+            "mutation": "ORF1a:T821A",
+            "count": 1,
+            "proportion": 0.0010090817356205853,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "A",
+            "position": 821
+        },
+        {
+            "mutation": "ORF1a:T824I",
+            "count": 1,
+            "proportion": 0.0010131712259371835,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 824
+        },
+        {
+            "mutation": "ORF1a:I841V",
+            "count": 1,
+            "proportion": 0.0010070493454179255,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "I",
+            "mutationTo": "V",
+            "position": 841
+        },
+        {
+            "mutation": "ORF1a:T842I",
+            "count": 994,
+            "proportion": 1.0,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 842
+        },
+        {
+            "mutation": "ORF1a:T861I",
+            "count": 1,
+            "proportion": 0.0010030090270812437,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 861
+        },
+        {
+            "mutation": "ORF1a:A903V",
+            "count": 2,
+            "proportion": 0.001834862385321101,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 903
+        },
+        {
+            "mutation": "ORF1a:S944L",
+            "count": 3,
+            "proportion": 0.0027548209366391185,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "L",
+            "position": 944
+        },
+        {
+            "mutation": "ORF1a:P971L",
+            "count": 5,
+            "proportion": 0.004574565416285453,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 971
+        },
+        {
+            "mutation": "ORF1a:Q998H",
+            "count": 2,
+            "proportion": 0.0020100502512562816,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "Q",
+            "mutationTo": "H",
+            "position": 998
+        },
+        {
+            "mutation": "ORF1a:T999I",
+            "count": 2,
+            "proportion": 0.0020100502512562816,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 999
+        },
+        {
+            "mutation": "ORF1a:T1000I",
+            "count": 1,
+            "proportion": 0.0010070493454179255,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 1000
+        },
+        {
+            "mutation": "ORF1a:T1001I",
+            "count": 4,
+            "proportion": 0.004020100502512563,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 1001
+        },
+        {
+            "mutation": "ORF1a:P1010S",
+            "count": 2,
+            "proportion": 0.0020242914979757085,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 1010
+        },
+        {
+            "mutation": "ORF1a:T1017I",
+            "count": 1,
+            "proportion": 0.0010131712259371835,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 1017
+        },
+        {
+            "mutation": "ORF1a:T1022I",
+            "count": 1,
+            "proportion": 0.0010111223458038423,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 1022
+        },
+        {
+            "mutation": "ORF1a:I1023-",
+            "count": 1,
+            "proportion": 0.00101010101010101,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "I",
+            "mutationTo": "-",
+            "position": 1023
+        },
+        {
+            "mutation": "ORF1a:E1024K",
+            "count": 1,
+            "proportion": 0.0010111223458038423,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "E",
+            "mutationTo": "K",
+            "position": 1024
+        },
+        {
+            "mutation": "ORF1a:A1043V",
+            "count": 2,
+            "proportion": 0.002034587995930824,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 1043
+        },
+        {
+            "mutation": "ORF1a:A1049T",
+            "count": 1,
+            "proportion": 0.0010162601626016261,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "T",
+            "position": 1049
+        },
+        {
+            "mutation": "ORF1a:K1051N",
+            "count": 1,
+            "proportion": 0.001017293997965412,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "K",
+            "mutationTo": "N",
+            "position": 1051
+        },
+        {
+            "mutation": "ORF1a:V1056L",
+            "count": 979,
+            "proportion": 0.9989795918367347,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "V",
+            "mutationTo": "L",
+            "position": 1056
+        },
+        {
+            "mutation": "ORF1a:G1073E",
+            "count": 2,
+            "proportion": 0.002028397565922921,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "G",
+            "mutationTo": "E",
+            "position": 1073
+        },
+        {
+            "mutation": "ORF1a:R1170C",
+            "count": 2,
+            "proportion": 0.0018587360594795538,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "R",
+            "mutationTo": "C",
+            "position": 1170
+        },
+        {
+            "mutation": "ORF1a:A1204S",
+            "count": 2,
+            "proportion": 0.0018501387604070306,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "S",
+            "position": 1204
+        },
+        {
+            "mutation": "ORF1a:P1213L",
+            "count": 2,
+            "proportion": 0.0018552875695732839,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 1213
+        },
+        {
+            "mutation": "ORF1a:P1220L",
+            "count": 2,
+            "proportion": 0.0018552875695732839,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 1220
+        },
+        {
+            "mutation": "ORF1a:T1241I",
+            "count": 3,
+            "proportion": 0.0027752081406105457,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 1241
+        },
+        {
+            "mutation": "ORF1a:K1247R",
+            "count": 15,
+            "proportion": 0.013888888888888888,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 1247
+        },
+        {
+            "mutation": "ORF1a:G1307S",
+            "count": 1093,
+            "proportion": 1.0,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "G",
+            "mutationTo": "S",
+            "position": 1307
+        },
+        {
+            "mutation": "ORF1a:E1311K",
+            "count": 2,
+            "proportion": 0.0018298261665141812,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "E",
+            "mutationTo": "K",
+            "position": 1311
+        },
+        {
+            "mutation": "ORF1a:A1314T",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "T",
+            "position": 1314
+        },
+        {
+            "mutation": "ORF1a:M1448T",
+            "count": 2,
+            "proportion": 0.0018744142455482662,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "M",
+            "mutationTo": "T",
+            "position": 1448
+        },
+        {
+            "mutation": "ORF1a:S1510F",
+            "count": 3,
+            "proportion": 0.002770083102493075,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 1510
+        },
+        {
+            "mutation": "ORF1a:T1638N",
+            "count": 2,
+            "proportion": 0.0018399264029438822,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "N",
+            "position": 1638
+        },
+        {
+            "mutation": "ORF1a:T1760I",
+            "count": 3,
+            "proportion": 0.002749770852428964,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 1760
+        },
+        {
+            "mutation": "ORF1a:T1794I",
+            "count": 2,
+            "proportion": 0.0018331805682859762,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 1794
+        },
+        {
+            "mutation": "ORF1a:P1810L",
+            "count": 2,
+            "proportion": 0.0018331805682859762,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 1810
+        },
+        {
+            "mutation": "ORF1a:L1853F",
+            "count": 4,
+            "proportion": 0.0037002775208140612,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 1853
+        },
+        {
+            "mutation": "ORF1a:S1857L",
+            "count": 2,
+            "proportion": 0.0018552875695732839,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "L",
+            "position": 1857
+        },
+        {
+            "mutation": "ORF1a:T1881I",
+            "count": 4,
+            "proportion": 0.003669724770642202,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 1881
+        },
+        {
+            "mutation": "ORF1a:K1895R",
+            "count": 2,
+            "proportion": 0.0018331805682859762,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 1895
+        },
+        {
+            "mutation": "ORF1a:K1973R",
+            "count": 1079,
+            "proportion": 0.9935543278084714,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 1973
+        },
+        {
+            "mutation": "ORF1a:T2007I",
+            "count": 2,
+            "proportion": 0.0018796992481203006,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 2007
+        },
+        {
+            "mutation": "ORF1a:T2016I",
+            "count": 2,
+            "proportion": 0.0018674136321195146,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 2016
+        },
+        {
+            "mutation": "ORF1a:K2059R",
+            "count": 2,
+            "proportion": 0.0018709073900841909,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 2059
+        },
+        {
+            "mutation": "ORF1a:N2065S",
+            "count": 2,
+            "proportion": 0.0018709073900841909,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "N",
+            "mutationTo": "S",
+            "position": 2065
+        },
+        {
+            "mutation": "ORF1a:A2097V",
+            "count": 4,
+            "proportion": 0.003693444136657433,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 2097
+        },
+        {
+            "mutation": "ORF1a:T2124I",
+            "count": 2,
+            "proportion": 0.0018744142455482662,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 2124
+        },
+        {
+            "mutation": "ORF1a:A2139V",
+            "count": 3,
+            "proportion": 0.0028089887640449437,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 2139
+        },
+        {
+            "mutation": "ORF1a:T2152I",
+            "count": 2,
+            "proportion": 0.0018744142455482662,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 2152
+        },
+        {
+            "mutation": "ORF1a:T2153I",
+            "count": 2,
+            "proportion": 0.001876172607879925,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 2153
+        },
+        {
+            "mutation": "ORF1a:S2242F",
+            "count": 5,
+            "proportion": 0.004574565416285453,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 2242
+        },
+        {
+            "mutation": "ORF1a:T2283I",
+            "count": 3,
+            "proportion": 0.0027522935779816515,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 2283
+        },
+        {
+            "mutation": "ORF1a:T2300I",
+            "count": 3,
+            "proportion": 0.0027472527472527475,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 2300
+        },
+        {
+            "mutation": "ORF1a:T2495I",
+            "count": 1,
+            "proportion": 0.0010482180293501049,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 2495
+        },
+        {
+            "mutation": "ORF1a:S2500F",
+            "count": 11,
+            "proportion": 0.011458333333333333,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 2500
+        },
+        {
+            "mutation": "ORF1a:K2511M",
+            "count": 2,
+            "proportion": 0.0019550342130987292,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "K",
+            "mutationTo": "M",
+            "position": 2511
+        },
+        {
+            "mutation": "ORF1a:N2526S",
+            "count": 1092,
+            "proportion": 0.9981718464351006,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "N",
+            "mutationTo": "S",
+            "position": 2526
+        },
+        {
+            "mutation": "ORF1a:A2529V",
+            "count": 4,
+            "proportion": 0.003656307129798903,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 2529
+        },
+        {
+            "mutation": "ORF1a:S2535L",
+            "count": 3,
+            "proportion": 0.002742230347349177,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "L",
+            "position": 2535
+        },
+        {
+            "mutation": "ORF1a:A2584V",
+            "count": 2,
+            "proportion": 0.0018281535648994515,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 2584
+        },
+        {
+            "mutation": "ORF1a:A2614T",
+            "count": 2,
+            "proportion": 0.0018399264029438822,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "T",
+            "position": 2614
+        },
+        {
+            "mutation": "ORF1a:H2659Y",
+            "count": 2,
+            "proportion": 0.0018433179723502304,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "H",
+            "mutationTo": "Y",
+            "position": 2659
+        },
+        {
+            "mutation": "ORF1a:V2665F",
+            "count": 5,
+            "proportion": 0.004604051565377533,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "V",
+            "mutationTo": "F",
+            "position": 2665
+        },
+        {
+            "mutation": "ORF1a:P2685T",
+            "count": 2,
+            "proportion": 0.0018450184501845018,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "T",
+            "position": 2685
+        },
+        {
+            "mutation": "ORF1a:A2710T",
+            "count": 1090,
+            "proportion": 0.999083409715857,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "T",
+            "position": 2710
+        },
+        {
+            "mutation": "ORF1a:D2813A",
+            "count": 2,
+            "proportion": 0.0018570102135561746,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "D",
+            "mutationTo": "A",
+            "position": 2813
+        },
+        {
+            "mutation": "ORF1a:T2846I",
+            "count": 6,
+            "proportion": 0.005639097744360902,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 2846
+        },
+        {
+            "mutation": "ORF1a:V2857A",
+            "count": 2,
+            "proportion": 0.001885014137606032,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "V",
+            "mutationTo": "A",
+            "position": 2857
+        },
+        {
+            "mutation": "ORF1a:A2909V",
+            "count": 2,
+            "proportion": 0.0018552875695732839,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 2909
+        },
+        {
+            "mutation": "ORF1a:D2951N",
+            "count": 5,
+            "proportion": 0.004595588235294118,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "D",
+            "mutationTo": "N",
+            "position": 2951
+        },
+        {
+            "mutation": "ORF1a:L3027F",
+            "count": 1090,
+            "proportion": 1.0,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 3027
+        },
+        {
+            "mutation": "ORF1a:T3090I",
+            "count": 1051,
+            "proportion": 0.9990494296577946,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 3090
+        },
+        {
+            "mutation": "ORF1a:L3116F",
+            "count": 9,
+            "proportion": 0.008530805687203791,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 3116
+        },
+        {
+            "mutation": "ORF1a:A3143T",
+            "count": 3,
+            "proportion": 0.0028763183125599234,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "T",
+            "position": 3143
+        },
+        {
+            "mutation": "ORF1a:A3143V",
+            "count": 4,
+            "proportion": 0.003835091083413231,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 3143
+        },
+        {
+            "mutation": "ORF1a:T3150I",
+            "count": 3,
+            "proportion": 0.0028790786948176585,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 3150
+        },
+        {
+            "mutation": "ORF1a:T3224A",
+            "count": 2,
+            "proportion": 0.0019138755980861245,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "A",
+            "position": 3224
+        },
+        {
+            "mutation": "ORF1a:S3244L",
+            "count": 2,
+            "proportion": 0.0019305019305019305,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "L",
+            "position": 3244
+        },
+        {
+            "mutation": "ORF1a:T3255I",
+            "count": 1034,
+            "proportion": 0.9990338164251208,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 3255
+        },
+        {
+            "mutation": "ORF1a:T3287I",
+            "count": 2,
+            "proportion": 0.0019286403085824494,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 3287
+        },
+        {
+            "mutation": "ORF1a:K3353R",
+            "count": 5,
+            "proportion": 0.004748338081671415,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 3353
+        },
+        {
+            "mutation": "ORF1a:P3371S",
+            "count": 3,
+            "proportion": 0.0027472527472527475,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 3371
+        },
+        {
+            "mutation": "ORF1a:P3395H",
+            "count": 1085,
+            "proportion": 0.9926806953339433,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "H",
+            "position": 3395
+        },
+        {
+            "mutation": "ORF1a:P3395Y",
+            "count": 8,
+            "proportion": 0.007319304666056725,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "P",
+            "mutationTo": "Y",
+            "position": 3395
+        },
+        {
+            "mutation": "ORF1a:A3523V",
+            "count": 3,
+            "proportion": 0.0027598896044158236,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 3523
+        },
+        {
+            "mutation": "ORF1a:H3580Y",
+            "count": 3,
+            "proportion": 0.0027472527472527475,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "H",
+            "mutationTo": "Y",
+            "position": 3580
+        },
+        {
+            "mutation": "ORF1a:V3593F",
+            "count": 1092,
+            "proportion": 0.9990850869167429,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "V",
+            "mutationTo": "F",
+            "position": 3593
+        },
+        {
+            "mutation": "ORF1a:L3606F",
+            "count": 23,
+            "proportion": 0.02110091743119266,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 3606
+        },
+        {
+            "mutation": "ORF1a:A3620V",
+            "count": 2,
+            "proportion": 0.0018298261665141812,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 3620
+        },
+        {
+            "mutation": "ORF1a:A3648V",
+            "count": 6,
+            "proportion": 0.0054894784995425435,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 3648
+        },
+        {
+            "mutation": "ORF1a:S3675-",
+            "count": 1039,
+            "proportion": 0.9990384615384615,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "-",
+            "position": 3675
+        },
+        {
+            "mutation": "ORF1a:G3676-",
+            "count": 1027,
+            "proportion": 0.9980563654033042,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "G",
+            "mutationTo": "-",
+            "position": 3676
+        },
+        {
+            "mutation": "ORF1a:F3677-",
+            "count": 1026,
+            "proportion": 0.9980544747081712,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "F",
+            "mutationTo": "-",
+            "position": 3677
+        },
+        {
+            "mutation": "ORF1a:F3677L",
+            "count": 2,
+            "proportion": 0.0019455252918287938,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "F",
+            "mutationTo": "L",
+            "position": 3677
+        },
+        {
+            "mutation": "ORF1a:R3802H",
+            "count": 1,
+            "proportion": 0.0010090817356205853,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "R",
+            "mutationTo": "H",
+            "position": 3802
+        },
+        {
+            "mutation": "ORF1a:R3821K",
+            "count": 989,
+            "proportion": 0.998989898989899,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "R",
+            "mutationTo": "K",
+            "position": 3821
+        },
+        {
+            "mutation": "ORF1a:A3963V",
+            "count": 3,
+            "proportion": 0.0027881040892193307,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 3963
+        },
+        {
+            "mutation": "ORF1a:A4016V",
+            "count": 3,
+            "proportion": 0.002803738317757009,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 4016
+        },
+        {
+            "mutation": "ORF1a:T4065I",
+            "count": 6,
+            "proportion": 0.005591798695246971,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 4065
+        },
+        {
+            "mutation": "ORF1a:T4087I",
+            "count": 2,
+            "proportion": 0.0018604651162790699,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 4087
+        },
+        {
+            "mutation": "ORF1a:T4129I",
+            "count": 5,
+            "proportion": 0.004655493482309125,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 4129
+        },
+        {
+            "mutation": "ORF1a:T4175I",
+            "count": 1074,
+            "proportion": 0.9981412639405205,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 4175
+        },
+        {
+            "mutation": "ORF1a:T4302I",
+            "count": 2,
+            "proportion": 0.0019029495718363464,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 4302
+        },
+        {
+            "mutation": "ORF1a:K4348R",
+            "count": 7,
+            "proportion": 0.006692160611854685,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 4348
+        },
+        {
+            "mutation": "ORF1a:T4354A",
+            "count": 3,
+            "proportion": 0.0028625954198473282,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "A",
+            "position": 4354
+        },
+        {
+            "mutation": "ORF1a:T4368I",
+            "count": 2,
+            "proportion": 0.0019083969465648854,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 4368
+        },
+        {
+            "mutation": "ORF1a:E4388K",
+            "count": 3,
+            "proportion": 0.0029354207436399216,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "E",
+            "mutationTo": "K",
+            "position": 4388
+        },
+        {
+            "mutation": "ORF1a:S4398L",
+            "count": 2,
+            "proportion": 0.001863932898415657,
+            "sequenceName": "ORF1a",
+            "mutationFrom": "S",
+            "mutationTo": "L",
+            "position": 4398
+        },
+        {
+            "mutation": "ORF1b:T17I",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 17
+        },
+        {
+            "mutation": "ORF1b:K151N",
+            "count": 2,
+            "proportion": 0.0018248175182481751,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "K",
+            "mutationTo": "N",
+            "position": 151
+        },
+        {
+            "mutation": "ORF1b:A176V",
+            "count": 5,
+            "proportion": 0.0045662100456621,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 176
+        },
+        {
+            "mutation": "ORF1b:P314L",
+            "count": 1095,
+            "proportion": 1.0,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 314
+        },
+        {
+            "mutation": "ORF1b:R340S",
+            "count": 2,
+            "proportion": 0.001838235294117647,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "R",
+            "mutationTo": "S",
+            "position": 340
+        },
+        {
+            "mutation": "ORF1b:H604Y",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "H",
+            "mutationTo": "Y",
+            "position": 604
+        },
+        {
+            "mutation": "ORF1b:G662S",
+            "count": 2,
+            "proportion": 0.0018587360594795538,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "G",
+            "mutationTo": "S",
+            "position": 662
+        },
+        {
+            "mutation": "ORF1b:F685Y",
+            "count": 8,
+            "proportion": 0.007455731593662628,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "F",
+            "mutationTo": "Y",
+            "position": 685
+        },
+        {
+            "mutation": "ORF1b:T797I",
+            "count": 2,
+            "proportion": 0.001841620626151013,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 797
+        },
+        {
+            "mutation": "ORF1b:P1005S",
+            "count": 3,
+            "proportion": 0.0028011204481792717,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 1005
+        },
+        {
+            "mutation": "ORF1b:V1092F",
+            "count": 2,
+            "proportion": 0.0018298261665141812,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "V",
+            "mutationTo": "F",
+            "position": 1092
+        },
+        {
+            "mutation": "ORF1b:S1159T",
+            "count": 6,
+            "proportion": 0.005499541704857928,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "S",
+            "mutationTo": "T",
+            "position": 1159
+        },
+        {
+            "mutation": "ORF1b:Y1176H",
+            "count": 3,
+            "proportion": 0.0027472527472527475,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "Y",
+            "mutationTo": "H",
+            "position": 1176
+        },
+        {
+            "mutation": "ORF1b:V1271T",
+            "count": 3,
+            "proportion": 0.002749770852428964,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "V",
+            "mutationTo": "T",
+            "position": 1271
+        },
+        {
+            "mutation": "ORF1b:A1291V",
+            "count": 2,
+            "proportion": 0.0018331805682859762,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 1291
+        },
+        {
+            "mutation": "ORF1b:R1315C",
+            "count": 1087,
+            "proportion": 1.0,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "R",
+            "mutationTo": "C",
+            "position": 1315
+        },
+        {
+            "mutation": "ORF1b:K1383R",
+            "count": 2,
+            "proportion": 0.0018298261665141812,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 1383
+        },
+        {
+            "mutation": "ORF1b:L1504F",
+            "count": 3,
+            "proportion": 0.0027548209366391185,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 1504
+        },
+        {
+            "mutation": "ORF1b:S1512N",
+            "count": 2,
+            "proportion": 0.00186219739292365,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "S",
+            "mutationTo": "N",
+            "position": 1512
+        },
+        {
+            "mutation": "ORF1b:C1563F",
+            "count": 2,
+            "proportion": 0.0018570102135561746,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "C",
+            "mutationTo": "F",
+            "position": 1563
+        },
+        {
+            "mutation": "ORF1b:I1566V",
+            "count": 1077,
+            "proportion": 1.0,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "I",
+            "mutationTo": "V",
+            "position": 1566
+        },
+        {
+            "mutation": "ORF1b:T1637I",
+            "count": 2,
+            "proportion": 0.0018450184501845018,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 1637
+        },
+        {
+            "mutation": "ORF1b:V1639I",
+            "count": 2,
+            "proportion": 0.0018450184501845018,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "V",
+            "mutationTo": "I",
+            "position": 1639
+        },
+        {
+            "mutation": "ORF1b:A1662V",
+            "count": 2,
+            "proportion": 0.0018467220683287165,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 1662
+        },
+        {
+            "mutation": "ORF1b:L1681F",
+            "count": 7,
+            "proportion": 0.00641025641025641,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 1681
+        },
+        {
+            "mutation": "ORF1b:L1701F",
+            "count": 2,
+            "proportion": 0.0018298261665141812,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 1701
+        },
+        {
+            "mutation": "ORF1b:P1727L",
+            "count": 4,
+            "proportion": 0.003663003663003663,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 1727
+        },
+        {
+            "mutation": "ORF1b:R1736K",
+            "count": 11,
+            "proportion": 0.010091743119266056,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "R",
+            "mutationTo": "K",
+            "position": 1736
+        },
+        {
+            "mutation": "ORF1b:A1744V",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 1744
+        },
+        {
+            "mutation": "ORF1b:T1774I",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 1774
+        },
+        {
+            "mutation": "ORF1b:P1821S",
+            "count": 2,
+            "proportion": 0.0019120458891013384,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 1821
+        },
+        {
+            "mutation": "ORF1b:E1889K",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "E",
+            "mutationTo": "K",
+            "position": 1889
+        },
+        {
+            "mutation": "ORF1b:A1954V",
+            "count": 3,
+            "proportion": 0.0027522935779816515,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 1954
+        },
+        {
+            "mutation": "ORF1b:A2143T",
+            "count": 3,
+            "proportion": 0.0029615004935834156,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "A",
+            "mutationTo": "T",
+            "position": 2143
+        },
+        {
+            "mutation": "ORF1b:T2163I",
+            "count": 1016,
+            "proportion": 1.0,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 2163
+        },
+        {
+            "mutation": "ORF1b:P2169S",
+            "count": 2,
+            "proportion": 0.00196078431372549,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 2169
+        },
+        {
+            "mutation": "ORF1b:L2213F",
+            "count": 3,
+            "proportion": 0.0028708133971291866,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 2213
+        },
+        {
+            "mutation": "ORF1b:F2254L",
+            "count": 2,
+            "proportion": 0.0019047619047619048,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "F",
+            "mutationTo": "L",
+            "position": 2254
+        },
+        {
+            "mutation": "ORF1b:I2273S",
+            "count": 2,
+            "proportion": 0.001899335232668566,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "I",
+            "mutationTo": "S",
+            "position": 2273
+        },
+        {
+            "mutation": "ORF1b:I2320V",
+            "count": 2,
+            "proportion": 0.001869158878504673,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "I",
+            "mutationTo": "V",
+            "position": 2320
+        },
+        {
+            "mutation": "ORF1b:P2321L",
+            "count": 3,
+            "proportion": 0.002793296089385475,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 2321
+        },
+        {
+            "mutation": "ORF1b:F2330L",
+            "count": 6,
+            "proportion": 0.005560704355885079,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "F",
+            "mutationTo": "L",
+            "position": 2330
+        },
+        {
+            "mutation": "ORF1b:S2339F",
+            "count": 2,
+            "proportion": 0.001851851851851852,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 2339
+        },
+        {
+            "mutation": "ORF1b:F2380L",
+            "count": 2,
+            "proportion": 0.0018604651162790699,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "F",
+            "mutationTo": "L",
+            "position": 2380
+        },
+        {
+            "mutation": "ORF1b:H2388Y",
+            "count": 3,
+            "proportion": 0.0027803521779425394,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "H",
+            "mutationTo": "Y",
+            "position": 2388
+        },
+        {
+            "mutation": "ORF1b:T2488M",
+            "count": 4,
+            "proportion": 0.0039177277179236044,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "T",
+            "mutationTo": "M",
+            "position": 2488
+        },
+        {
+            "mutation": "ORF1b:K2557R",
+            "count": 5,
+            "proportion": 0.004897159647404506,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 2557
+        },
+        {
+            "mutation": "ORF1b:R2613N",
+            "count": 2,
+            "proportion": 0.0019569471624266144,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "R",
+            "mutationTo": "N",
+            "position": 2613
+        },
+        {
+            "mutation": "ORF1b:L2649I",
+            "count": 1,
+            "proportion": 0.001001001001001001,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "L",
+            "mutationTo": "I",
+            "position": 2649
+        },
+        {
+            "mutation": "ORF1b:I2687V",
+            "count": 1,
+            "proportion": 0.0010050251256281408,
+            "sequenceName": "ORF1b",
+            "mutationFrom": "I",
+            "mutationTo": "V",
+            "position": 2687
+        },
+        {
+            "mutation": "ORF3a:V13L",
+            "count": 14,
+            "proportion": 0.012773722627737226,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "V",
+            "mutationTo": "L",
+            "position": 13
+        },
+        {
+            "mutation": "ORF3a:G18D",
+            "count": 9,
+            "proportion": 0.00821917808219178,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "G",
+            "mutationTo": "D",
+            "position": 18
+        },
+        {
+            "mutation": "ORF3a:A23V",
+            "count": 2,
+            "proportion": 0.0018264840182648401,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 23
+        },
+        {
+            "mutation": "ORF3a:T24I",
+            "count": 7,
+            "proportion": 0.006392694063926941,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 24
+        },
+        {
+            "mutation": "ORF3a:S40L",
+            "count": 2,
+            "proportion": 0.0018264840182648401,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "S",
+            "mutationTo": "L",
+            "position": 40
+        },
+        {
+            "mutation": "ORF3a:L53F",
+            "count": 2,
+            "proportion": 0.0018264840182648401,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 53
+        },
+        {
+            "mutation": "ORF3a:Q57H",
+            "count": 2,
+            "proportion": 0.0018264840182648401,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "Q",
+            "mutationTo": "H",
+            "position": 57
+        },
+        {
+            "mutation": "ORF3a:A59T",
+            "count": 2,
+            "proportion": 0.0018264840182648401,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "A",
+            "mutationTo": "T",
+            "position": 59
+        },
+        {
+            "mutation": "ORF3a:L71I",
+            "count": 2,
+            "proportion": 0.0018264840182648401,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "L",
+            "mutationTo": "I",
+            "position": 71
+        },
+        {
+            "mutation": "ORF3a:S74F",
+            "count": 2,
+            "proportion": 0.0018264840182648401,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 74
+        },
+        {
+            "mutation": "ORF3a:L85F",
+            "count": 2,
+            "proportion": 0.0018264840182648401,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 85
+        },
+        {
+            "mutation": "ORF3a:T89I",
+            "count": 3,
+            "proportion": 0.0027397260273972603,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 89
+        },
+        {
+            "mutation": "ORF3a:L96F",
+            "count": 2,
+            "proportion": 0.0018264840182648401,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 96
+        },
+        {
+            "mutation": "ORF3a:G100S",
+            "count": 9,
+            "proportion": 0.008226691042047532,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "G",
+            "mutationTo": "S",
+            "position": 100
+        },
+        {
+            "mutation": "ORF3a:P104L",
+            "count": 2,
+            "proportion": 0.0018248175182481751,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 104
+        },
+        {
+            "mutation": "ORF3a:A110S",
+            "count": 2,
+            "proportion": 0.0018248175182481751,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "A",
+            "mutationTo": "S",
+            "position": 110
+        },
+        {
+            "mutation": "ORF3a:N119Y",
+            "count": 3,
+            "proportion": 0.0027649769585253456,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "N",
+            "mutationTo": "Y",
+            "position": 119
+        },
+        {
+            "mutation": "ORF3a:W131C",
+            "count": 2,
+            "proportion": 0.0018433179723502304,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "W",
+            "mutationTo": "C",
+            "position": 131
+        },
+        {
+            "mutation": "ORF3a:L140F",
+            "count": 2,
+            "proportion": 0.001838235294117647,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 140
+        },
+        {
+            "mutation": "ORF3a:C153Y",
+            "count": 2,
+            "proportion": 0.001838235294117647,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "C",
+            "mutationTo": "Y",
+            "position": 153
+        },
+        {
+            "mutation": "ORF3a:T175I",
+            "count": 3,
+            "proportion": 0.0027548209366391185,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 175
+        },
+        {
+            "mutation": "ORF3a:H182Y",
+            "count": 2,
+            "proportion": 0.0018365472910927456,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "H",
+            "mutationTo": "Y",
+            "position": 182
+        },
+        {
+            "mutation": "ORF3a:S216L",
+            "count": 2,
+            "proportion": 0.001851851851851852,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "S",
+            "mutationTo": "L",
+            "position": 216
+        },
+        {
+            "mutation": "ORF3a:T223I",
+            "count": 1078,
+            "proportion": 1.0,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 223
+        },
+        {
+            "mutation": "ORF3a:I232V",
+            "count": 2,
+            "proportion": 0.0018552875695732839,
+            "sequenceName": "ORF3a",
+            "mutationFrom": "I",
+            "mutationTo": "V",
+            "position": 232
+        },
+        {
+            "mutation": "ORF6:D61L",
+            "count": 1093,
+            "proportion": 1.0,
+            "sequenceName": "ORF6",
+            "mutationFrom": "D",
+            "mutationTo": "L",
+            "position": 61
+        },
+        {
+            "mutation": "ORF7a:I3V",
+            "count": 2,
+            "proportion": 0.0018264840182648401,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "I",
+            "mutationTo": "V",
+            "position": 3
+        },
+        {
+            "mutation": "ORF7a:L5F",
+            "count": 3,
+            "proportion": 0.0027397260273972603,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 5
+        },
+        {
+            "mutation": "ORF7a:T14I",
+            "count": 3,
+            "proportion": 0.0027472527472527475,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 14
+        },
+        {
+            "mutation": "ORF7a:T28I",
+            "count": 33,
+            "proportion": 0.03019213174748399,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 28
+        },
+        {
+            "mutation": "ORF7a:V29I",
+            "count": 2,
+            "proportion": 0.0018298261665141812,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "V",
+            "mutationTo": "I",
+            "position": 29
+        },
+        {
+            "mutation": "ORF7a:T39I",
+            "count": 3,
+            "proportion": 0.002742230347349177,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 39
+        },
+        {
+            "mutation": "ORF7a:A55S",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "A",
+            "mutationTo": "S",
+            "position": 55
+        },
+        {
+            "mutation": "ORF7a:C58-",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "C",
+            "mutationTo": "-",
+            "position": 58
+        },
+        {
+            "mutation": "ORF7a:F59-",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "F",
+            "mutationTo": "-",
+            "position": 59
+        },
+        {
+            "mutation": "ORF7a:S60-",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "S",
+            "mutationTo": "-",
+            "position": 60
+        },
+        {
+            "mutation": "ORF7a:T61-",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "T",
+            "mutationTo": "-",
+            "position": 61
+        },
+        {
+            "mutation": "ORF7a:Q62-",
+            "count": 5,
+            "proportion": 0.004578754578754579,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "Q",
+            "mutationTo": "-",
+            "position": 62
+        },
+        {
+            "mutation": "ORF7a:F63-",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "F",
+            "mutationTo": "-",
+            "position": 63
+        },
+        {
+            "mutation": "ORF7a:F63H",
+            "count": 3,
+            "proportion": 0.0027472527472527475,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "F",
+            "mutationTo": "H",
+            "position": 63
+        },
+        {
+            "mutation": "ORF7a:L96F",
+            "count": 3,
+            "proportion": 0.0027447392497712718,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 96
+        },
+        {
+            "mutation": "ORF7a:A105S",
+            "count": 3,
+            "proportion": 0.0027472527472527475,
+            "sequenceName": "ORF7a",
+            "mutationFrom": "A",
+            "mutationTo": "S",
+            "position": 105
+        },
+        {
+            "mutation": "ORF7b:F13-",
+            "count": 3,
+            "proportion": 0.002742230347349177,
+            "sequenceName": "ORF7b",
+            "mutationFrom": "F",
+            "mutationTo": "-",
+            "position": 13
+        },
+        {
+            "mutation": "ORF7b:F19L",
+            "count": 1088,
+            "proportion": 0.997250229147571,
+            "sequenceName": "ORF7b",
+            "mutationFrom": "F",
+            "mutationTo": "L",
+            "position": 19
+        },
+        {
+            "mutation": "ORF7b:A43V",
+            "count": 5,
+            "proportion": 0.004578754578754579,
+            "sequenceName": "ORF7b",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 43
+        },
+        {
+            "mutation": "ORF8:G8V",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF8",
+            "mutationFrom": "G",
+            "mutationTo": "V",
+            "position": 8
+        },
+        {
+            "mutation": "ORF8:G8*",
+            "count": 2,
+            "proportion": 0.0018315018315018315,
+            "sequenceName": "ORF8",
+            "mutationFrom": "G",
+            "mutationTo": "*",
+            "position": 8
+        },
+        {
+            "mutation": "ORF8:Q18*",
+            "count": 3,
+            "proportion": 0.002798507462686567,
+            "sequenceName": "ORF8",
+            "mutationFrom": "Q",
+            "mutationTo": "*",
+            "position": 18
+        },
+        {
+            "mutation": "ORF8:Q27*",
+            "count": 3,
+            "proportion": 0.002793296089385475,
+            "sequenceName": "ORF8",
+            "mutationFrom": "Q",
+            "mutationTo": "*",
+            "position": 27
+        },
+        {
+            "mutation": "ORF8:P36L",
+            "count": 3,
+            "proportion": 0.002806361085126286,
+            "sequenceName": "ORF8",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 36
+        },
+        {
+            "mutation": "ORF8:E64D",
+            "count": 2,
+            "proportion": 0.0018814675446848542,
+            "sequenceName": "ORF8",
+            "mutationFrom": "E",
+            "mutationTo": "D",
+            "position": 64
+        },
+        {
+            "mutation": "ORF8:A65V",
+            "count": 5,
+            "proportion": 0.004699248120300752,
+            "sequenceName": "ORF8",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 65
+        },
+        {
+            "mutation": "ORF8:G66-",
+            "count": 3,
+            "proportion": 0.0028680688336520078,
+            "sequenceName": "ORF8",
+            "mutationFrom": "G",
+            "mutationTo": "-",
+            "position": 66
+        },
+        {
+            "mutation": "ORF8:S67-",
+            "count": 3,
+            "proportion": 0.002890173410404624,
+            "sequenceName": "ORF8",
+            "mutationFrom": "S",
+            "mutationTo": "-",
+            "position": 67
+        },
+        {
+            "mutation": "ORF8:S67F",
+            "count": 3,
+            "proportion": 0.002890173410404624,
+            "sequenceName": "ORF8",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 67
+        },
+        {
+            "mutation": "ORF8:K68E",
+            "count": 2,
+            "proportion": 0.0019267822736030828,
+            "sequenceName": "ORF8",
+            "mutationFrom": "K",
+            "mutationTo": "E",
+            "position": 68
+        },
+        {
+            "mutation": "ORF8:I71V",
+            "count": 10,
+            "proportion": 0.009633911368015413,
+            "sequenceName": "ORF8",
+            "mutationFrom": "I",
+            "mutationTo": "V",
+            "position": 71
+        },
+        {
+            "mutation": "ORF8:V81I",
+            "count": 3,
+            "proportion": 0.0028957528957528956,
+            "sequenceName": "ORF8",
+            "mutationFrom": "V",
+            "mutationTo": "I",
+            "position": 81
+        },
+        {
+            "mutation": "ORF8:T87I",
+            "count": 2,
+            "proportion": 0.0019193857965451055,
+            "sequenceName": "ORF8",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 87
+        },
+        {
+            "mutation": "ORF8:S103L",
+            "count": 45,
+            "proportion": 0.04178272980501393,
+            "sequenceName": "ORF8",
+            "mutationFrom": "S",
+            "mutationTo": "L",
+            "position": 103
+        },
+        {
+            "mutation": "ORF8:I121-",
+            "count": 22,
+            "proportion": 0.020389249304911955,
+            "sequenceName": "ORF8",
+            "mutationFrom": "I",
+            "mutationTo": "-",
+            "position": 121
+        },
+        {
+            "mutation": "ORF9b:K4R",
+            "count": 2,
+            "proportion": 0.0018484288354898336,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 4
+        },
+        {
+            "mutation": "ORF9b:I5T",
+            "count": 5,
+            "proportion": 0.0046210720887245845,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "I",
+            "mutationTo": "T",
+            "position": 5
+        },
+        {
+            "mutation": "ORF9b:P10F",
+            "count": 6,
+            "proportion": 0.005545286506469501,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "P",
+            "mutationTo": "F",
+            "position": 10
+        },
+        {
+            "mutation": "ORF9b:P10S",
+            "count": 1076,
+            "proportion": 0.9944547134935305,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 10
+        },
+        {
+            "mutation": "ORF9b:E27-",
+            "count": 979,
+            "proportion": 0.9969450101832994,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "E",
+            "mutationTo": "-",
+            "position": 27
+        },
+        {
+            "mutation": "ORF9b:N28-",
+            "count": 978,
+            "proportion": 0.9979591836734694,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "N",
+            "mutationTo": "-",
+            "position": 28
+        },
+        {
+            "mutation": "ORF9b:A29-",
+            "count": 978,
+            "proportion": 0.9979591836734694,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "A",
+            "mutationTo": "-",
+            "position": 29
+        },
+        {
+            "mutation": "ORF9b:R32C",
+            "count": 2,
+            "proportion": 0.0018656716417910447,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "R",
+            "mutationTo": "C",
+            "position": 32
+        },
+        {
+            "mutation": "ORF9b:V37I",
+            "count": 4,
+            "proportion": 0.003734827264239029,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "V",
+            "mutationTo": "I",
+            "position": 37
+        },
+        {
+            "mutation": "ORF9b:G38D",
+            "count": 2,
+            "proportion": 0.0018674136321195146,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "G",
+            "mutationTo": "D",
+            "position": 38
+        },
+        {
+            "mutation": "ORF9b:K40R",
+            "count": 2,
+            "proportion": 0.0018674136321195146,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 40
+        },
+        {
+            "mutation": "ORF9b:R47C",
+            "count": 2,
+            "proportion": 0.0018674136321195146,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "R",
+            "mutationTo": "C",
+            "position": 47
+        },
+        {
+            "mutation": "ORF9b:N55S",
+            "count": 2,
+            "proportion": 0.0018656716417910447,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "N",
+            "mutationTo": "S",
+            "position": 55
+        },
+        {
+            "mutation": "ORF9b:L64P",
+            "count": 2,
+            "proportion": 0.0018674136321195146,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "L",
+            "mutationTo": "P",
+            "position": 64
+        },
+        {
+            "mutation": "ORF9b:T83I",
+            "count": 2,
+            "proportion": 0.001851851851851852,
+            "sequenceName": "ORF9b",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 83
+        },
+        {
+            "mutation": "S:L5F",
+            "count": 8,
+            "proportion": 0.007469654528478058,
+            "sequenceName": "S",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 5
+        },
+        {
+            "mutation": "S:N17L",
+            "count": 2,
+            "proportion": 0.0023894862604540022,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "L",
+            "position": 17
+        },
+        {
+            "mutation": "S:L18F",
+            "count": 4,
+            "proportion": 0.00477326968973747,
+            "sequenceName": "S",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 18
+        },
+        {
+            "mutation": "S:T19I",
+            "count": 838,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 19
+        },
+        {
+            "mutation": "S:R21T",
+            "count": 900,
+            "proportion": 0.9988901220865705,
+            "sequenceName": "S",
+            "mutationFrom": "R",
+            "mutationTo": "T",
+            "position": 21
+        },
+        {
+            "mutation": "S:T22I",
+            "count": 1,
+            "proportion": 0.0011098779134295228,
+            "sequenceName": "S",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 22
+        },
+        {
+            "mutation": "S:Q23-",
+            "count": 1,
+            "proportion": 0.0011111111111111111,
+            "sequenceName": "S",
+            "mutationFrom": "Q",
+            "mutationTo": "-",
+            "position": 23
+        },
+        {
+            "mutation": "S:L24-",
+            "count": 864,
+            "proportion": 0.9988439306358381,
+            "sequenceName": "S",
+            "mutationFrom": "L",
+            "mutationTo": "-",
+            "position": 24
+        },
+        {
+            "mutation": "S:P25-",
+            "count": 864,
+            "proportion": 0.9988439306358381,
+            "sequenceName": "S",
+            "mutationFrom": "P",
+            "mutationTo": "-",
+            "position": 25
+        },
+        {
+            "mutation": "S:P26-",
+            "count": 863,
+            "proportion": 0.9965357967667436,
+            "sequenceName": "S",
+            "mutationFrom": "P",
+            "mutationTo": "-",
+            "position": 26
+        },
+        {
+            "mutation": "S:P26H",
+            "count": 1,
+            "proportion": 0.0011547344110854503,
+            "sequenceName": "S",
+            "mutationFrom": "P",
+            "mutationTo": "H",
+            "position": 26
+        },
+        {
+            "mutation": "S:A27S",
+            "count": 977,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "A",
+            "mutationTo": "S",
+            "position": 27
+        },
+        {
+            "mutation": "S:N30-",
+            "count": 2,
+            "proportion": 0.0018399264029438822,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "-",
+            "position": 30
+        },
+        {
+            "mutation": "S:S31F",
+            "count": 2,
+            "proportion": 0.001841620626151013,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 31
+        },
+        {
+            "mutation": "S:G35S",
+            "count": 7,
+            "proportion": 0.0064516129032258064,
+            "sequenceName": "S",
+            "mutationFrom": "G",
+            "mutationTo": "S",
+            "position": 35
+        },
+        {
+            "mutation": "S:S50L",
+            "count": 1045,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "L",
+            "position": 50
+        },
+        {
+            "mutation": "S:F59S",
+            "count": 6,
+            "proportion": 0.005719733079122974,
+            "sequenceName": "S",
+            "mutationFrom": "F",
+            "mutationTo": "S",
+            "position": 59
+        },
+        {
+            "mutation": "S:S60F",
+            "count": 2,
+            "proportion": 0.0019065776930409914,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 60
+        },
+        {
+            "mutation": "S:V62F",
+            "count": 2,
+            "proportion": 0.0019065776930409914,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "F",
+            "position": 62
+        },
+        {
+            "mutation": "S:A67V",
+            "count": 2,
+            "proportion": 0.0019083969465648854,
+            "sequenceName": "S",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 67
+        },
+        {
+            "mutation": "S:I68-",
+            "count": 17,
+            "proportion": 0.018338727076591153,
+            "sequenceName": "S",
+            "mutationFrom": "I",
+            "mutationTo": "-",
+            "position": 68
+        },
+        {
+            "mutation": "S:H69-",
+            "count": 918,
+            "proportion": 0.998911860718172,
+            "sequenceName": "S",
+            "mutationFrom": "H",
+            "mutationTo": "-",
+            "position": 69
+        },
+        {
+            "mutation": "S:V70-",
+            "count": 909,
+            "proportion": 0.9945295404814004,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "-",
+            "position": 70
+        },
+        {
+            "mutation": "S:V70I",
+            "count": 4,
+            "proportion": 0.00437636761487965,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "I",
+            "position": 70
+        },
+        {
+            "mutation": "S:G75V",
+            "count": 3,
+            "proportion": 0.0028957528957528956,
+            "sequenceName": "S",
+            "mutationFrom": "G",
+            "mutationTo": "V",
+            "position": 75
+        },
+        {
+            "mutation": "S:T95I",
+            "count": 2,
+            "proportion": 0.0019305019305019305,
+            "sequenceName": "S",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 95
+        },
+        {
+            "mutation": "S:R102G",
+            "count": 3,
+            "proportion": 0.002898550724637681,
+            "sequenceName": "S",
+            "mutationFrom": "R",
+            "mutationTo": "G",
+            "position": 102
+        },
+        {
+            "mutation": "S:V127F",
+            "count": 1082,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "F",
+            "position": 127
+        },
+        {
+            "mutation": "S:G142D",
+            "count": 1079,
+            "proportion": 0.9972273567467652,
+            "sequenceName": "S",
+            "mutationFrom": "G",
+            "mutationTo": "D",
+            "position": 142
+        },
+        {
+            "mutation": "S:Y144-",
+            "count": 1016,
+            "proportion": 0.996078431372549,
+            "sequenceName": "S",
+            "mutationFrom": "Y",
+            "mutationTo": "-",
+            "position": 144
+        },
+        {
+            "mutation": "S:H146-",
+            "count": 2,
+            "proportion": 0.0018450184501845018,
+            "sequenceName": "S",
+            "mutationFrom": "H",
+            "mutationTo": "-",
+            "position": 146
+        },
+        {
+            "mutation": "S:H146Q",
+            "count": 4,
+            "proportion": 0.0036900369003690036,
+            "sequenceName": "S",
+            "mutationFrom": "H",
+            "mutationTo": "Q",
+            "position": 146
+        },
+        {
+            "mutation": "S:N148S",
+            "count": 6,
+            "proportion": 0.005535055350553505,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "S",
+            "position": 148
+        },
+        {
+            "mutation": "S:K150N",
+            "count": 2,
+            "proportion": 0.0018450184501845018,
+            "sequenceName": "S",
+            "mutationFrom": "K",
+            "mutationTo": "N",
+            "position": 150
+        },
+        {
+            "mutation": "S:M153I",
+            "count": 4,
+            "proportion": 0.0036900369003690036,
+            "sequenceName": "S",
+            "mutationFrom": "M",
+            "mutationTo": "I",
+            "position": 153
+        },
+        {
+            "mutation": "S:F157S",
+            "count": 1080,
+            "proportion": 0.9990749306197965,
+            "sequenceName": "S",
+            "mutationFrom": "F",
+            "mutationTo": "S",
+            "position": 157
+        },
+        {
+            "mutation": "S:R158G",
+            "count": 1080,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "R",
+            "mutationTo": "G",
+            "position": 158
+        },
+        {
+            "mutation": "S:G181E",
+            "count": 2,
+            "proportion": 0.0018450184501845018,
+            "sequenceName": "S",
+            "mutationFrom": "G",
+            "mutationTo": "E",
+            "position": 181
+        },
+        {
+            "mutation": "S:Q183H",
+            "count": 21,
+            "proportion": 0.019390581717451522,
+            "sequenceName": "S",
+            "mutationFrom": "Q",
+            "mutationTo": "H",
+            "position": 183
+        },
+        {
+            "mutation": "S:N185D",
+            "count": 16,
+            "proportion": 0.014814814814814815,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "D",
+            "position": 185
+        },
+        {
+            "mutation": "S:R190S",
+            "count": 2,
+            "proportion": 0.0018552875695732839,
+            "sequenceName": "S",
+            "mutationFrom": "R",
+            "mutationTo": "S",
+            "position": 190
+        },
+        {
+            "mutation": "S:N211-",
+            "count": 1052,
+            "proportion": 0.9981024667931688,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "-",
+            "position": 211
+        },
+        {
+            "mutation": "S:L212-",
+            "count": 2,
+            "proportion": 0.0018975332068311196,
+            "sequenceName": "S",
+            "mutationFrom": "L",
+            "mutationTo": "-",
+            "position": 212
+        },
+        {
+            "mutation": "S:L212I",
+            "count": 1051,
+            "proportion": 0.9971537001897534,
+            "sequenceName": "S",
+            "mutationFrom": "L",
+            "mutationTo": "I",
+            "position": 212
+        },
+        {
+            "mutation": "S:V213G",
+            "count": 1073,
+            "proportion": 0.9990689013035382,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "G",
+            "position": 213
+        },
+        {
+            "mutation": "S:L216F",
+            "count": 1074,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 216
+        },
+        {
+            "mutation": "S:A222V",
+            "count": 2,
+            "proportion": 0.00186219739292365,
+            "sequenceName": "S",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 222
+        },
+        {
+            "mutation": "S:H245N",
+            "count": 1051,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "H",
+            "mutationTo": "N",
+            "position": 245
+        },
+        {
+            "mutation": "S:T250I",
+            "count": 2,
+            "proportion": 0.0019029495718363464,
+            "sequenceName": "S",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 250
+        },
+        {
+            "mutation": "S:S254F",
+            "count": 2,
+            "proportion": 0.001893939393939394,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 254
+        },
+        {
+            "mutation": "S:G257D",
+            "count": 2,
+            "proportion": 0.001893939393939394,
+            "sequenceName": "S",
+            "mutationFrom": "G",
+            "mutationTo": "D",
+            "position": 257
+        },
+        {
+            "mutation": "S:A264D",
+            "count": 1052,
+            "proportion": 0.9924528301886792,
+            "sequenceName": "S",
+            "mutationFrom": "A",
+            "mutationTo": "D",
+            "position": 264
+        },
+        {
+            "mutation": "S:I332V",
+            "count": 1067,
+            "proportion": 0.9981290926099158,
+            "sequenceName": "S",
+            "mutationFrom": "I",
+            "mutationTo": "V",
+            "position": 332
+        },
+        {
+            "mutation": "S:G339D",
+            "count": 2,
+            "proportion": 0.0018744142455482662,
+            "sequenceName": "S",
+            "mutationFrom": "G",
+            "mutationTo": "D",
+            "position": 339
+        },
+        {
+            "mutation": "S:G339H",
+            "count": 1064,
+            "proportion": 0.9971883786316776,
+            "sequenceName": "S",
+            "mutationFrom": "G",
+            "mutationTo": "H",
+            "position": 339
+        },
+        {
+            "mutation": "S:R346I",
+            "count": 2,
+            "proportion": 0.0018709073900841909,
+            "sequenceName": "S",
+            "mutationFrom": "R",
+            "mutationTo": "I",
+            "position": 346
+        },
+        {
+            "mutation": "S:R346K",
+            "count": 2,
+            "proportion": 0.0018709073900841909,
+            "sequenceName": "S",
+            "mutationFrom": "R",
+            "mutationTo": "K",
+            "position": 346
+        },
+        {
+            "mutation": "S:R346T",
+            "count": 30,
+            "proportion": 0.02806361085126286,
+            "sequenceName": "S",
+            "mutationFrom": "R",
+            "mutationTo": "T",
+            "position": 346
+        },
+        {
+            "mutation": "S:K356T",
+            "count": 1055,
+            "proportion": 0.9981078524124882,
+            "sequenceName": "S",
+            "mutationFrom": "K",
+            "mutationTo": "T",
+            "position": 356
+        },
+        {
+            "mutation": "S:S371F",
+            "count": 1064,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 371
+        },
+        {
+            "mutation": "S:S373P",
+            "count": 1073,
+            "proportion": 0.9990689013035382,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "P",
+            "position": 373
+        },
+        {
+            "mutation": "S:S375F",
+            "count": 1074,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 375
+        },
+        {
+            "mutation": "S:T376A",
+            "count": 1074,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "T",
+            "mutationTo": "A",
+            "position": 376
+        },
+        {
+            "mutation": "S:V382L",
+            "count": 2,
+            "proportion": 0.0018604651162790699,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "L",
+            "position": 382
+        },
+        {
+            "mutation": "S:T385I",
+            "count": 5,
+            "proportion": 0.004642525533890436,
+            "sequenceName": "S",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 385
+        },
+        {
+            "mutation": "S:R403K",
+            "count": 867,
+            "proportion": 0.9908571428571429,
+            "sequenceName": "S",
+            "mutationFrom": "R",
+            "mutationTo": "K",
+            "position": 403
+        },
+        {
+            "mutation": "S:D405N",
+            "count": 1077,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "D",
+            "mutationTo": "N",
+            "position": 405
+        },
+        {
+            "mutation": "S:R408S",
+            "count": 1075,
+            "proportion": 0.9981429897864438,
+            "sequenceName": "S",
+            "mutationFrom": "R",
+            "mutationTo": "S",
+            "position": 408
+        },
+        {
+            "mutation": "S:K417N",
+            "count": 1060,
+            "proportion": 0.9925093632958801,
+            "sequenceName": "S",
+            "mutationFrom": "K",
+            "mutationTo": "N",
+            "position": 417
+        },
+        {
+            "mutation": "S:T430I",
+            "count": 2,
+            "proportion": 0.0018832391713747645,
+            "sequenceName": "S",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 430
+        },
+        {
+            "mutation": "S:N440K",
+            "count": 1065,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "K",
+            "position": 440
+        },
+        {
+            "mutation": "S:L441F",
+            "count": 2,
+            "proportion": 0.0018744142455482662,
+            "sequenceName": "S",
+            "mutationFrom": "L",
+            "mutationTo": "F",
+            "position": 441
+        },
+        {
+            "mutation": "S:V445H",
+            "count": 1064,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "H",
+            "position": 445
+        },
+        {
+            "mutation": "S:G446S",
+            "count": 1063,
+            "proportion": 0.9990601503759399,
+            "sequenceName": "S",
+            "mutationFrom": "G",
+            "mutationTo": "S",
+            "position": 446
+        },
+        {
+            "mutation": "S:N450D",
+            "count": 1063,
+            "proportion": 0.9990601503759399,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "D",
+            "position": 450
+        },
+        {
+            "mutation": "S:L452W",
+            "count": 1061,
+            "proportion": 0.9981185324553151,
+            "sequenceName": "S",
+            "mutationFrom": "L",
+            "mutationTo": "W",
+            "position": 452
+        },
+        {
+            "mutation": "S:L455S",
+            "count": 1065,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "L",
+            "mutationTo": "S",
+            "position": 455
+        },
+        {
+            "mutation": "S:F456L",
+            "count": 6,
+            "proportion": 0.005633802816901409,
+            "sequenceName": "S",
+            "mutationFrom": "F",
+            "mutationTo": "L",
+            "position": 456
+        },
+        {
+            "mutation": "S:N460K",
+            "count": 1065,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "K",
+            "position": 460
+        },
+        {
+            "mutation": "S:S477N",
+            "count": 1069,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "N",
+            "position": 477
+        },
+        {
+            "mutation": "S:T478K",
+            "count": 1068,
+            "proportion": 0.9990645463049579,
+            "sequenceName": "S",
+            "mutationFrom": "T",
+            "mutationTo": "K",
+            "position": 478
+        },
+        {
+            "mutation": "S:N481K",
+            "count": 1066,
+            "proportion": 0.99812734082397,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "K",
+            "position": 481
+        },
+        {
+            "mutation": "S:V483-",
+            "count": 936,
+            "proportion": 0.9957446808510638,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "-",
+            "position": 483
+        },
+        {
+            "mutation": "S:V483D",
+            "count": 1,
+            "proportion": 0.0010638297872340426,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "D",
+            "position": 483
+        },
+        {
+            "mutation": "S:V483I",
+            "count": 1,
+            "proportion": 0.0010638297872340426,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "I",
+            "position": 483
+        },
+        {
+            "mutation": "S:V483S",
+            "count": 1,
+            "proportion": 0.0010638297872340426,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "S",
+            "position": 483
+        },
+        {
+            "mutation": "S:E484K",
+            "count": 1063,
+            "proportion": 0.9971857410881801,
+            "sequenceName": "S",
+            "mutationFrom": "E",
+            "mutationTo": "K",
+            "position": 484
+        },
+        {
+            "mutation": "S:F486P",
+            "count": 1065,
+            "proportion": 0.9981255857544518,
+            "sequenceName": "S",
+            "mutationFrom": "F",
+            "mutationTo": "P",
+            "position": 486
+        },
+        {
+            "mutation": "S:Q498R",
+            "count": 1070,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "Q",
+            "mutationTo": "R",
+            "position": 498
+        },
+        {
+            "mutation": "S:N501Y",
+            "count": 1069,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "Y",
+            "position": 501
+        },
+        {
+            "mutation": "S:Y505H",
+            "count": 1066,
+            "proportion": 0.9971936389148737,
+            "sequenceName": "S",
+            "mutationFrom": "Y",
+            "mutationTo": "H",
+            "position": 505
+        },
+        {
+            "mutation": "S:E554K",
+            "count": 1082,
+            "proportion": 0.9981549815498155,
+            "sequenceName": "S",
+            "mutationFrom": "E",
+            "mutationTo": "K",
+            "position": 554
+        },
+        {
+            "mutation": "S:E554N",
+            "count": 2,
+            "proportion": 0.0018450184501845018,
+            "sequenceName": "S",
+            "mutationFrom": "E",
+            "mutationTo": "N",
+            "position": 554
+        },
+        {
+            "mutation": "S:A570V",
+            "count": 1083,
+            "proportion": 0.9990774907749077,
+            "sequenceName": "S",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 570
+        },
+        {
+            "mutation": "S:T572I",
+            "count": 76,
+            "proportion": 0.07017543859649122,
+            "sequenceName": "S",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 572
+        },
+        {
+            "mutation": "S:D614G",
+            "count": 1083,
+            "proportion": 0.9990774907749077,
+            "sequenceName": "S",
+            "mutationFrom": "D",
+            "mutationTo": "G",
+            "position": 614
+        },
+        {
+            "mutation": "S:P621S",
+            "count": 1084,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 621
+        },
+        {
+            "mutation": "S:G639S",
+            "count": 1,
+            "proportion": 0.001004016064257028,
+            "sequenceName": "S",
+            "mutationFrom": "G",
+            "mutationTo": "S",
+            "position": 639
+        },
+        {
+            "mutation": "S:S640F",
+            "count": 1,
+            "proportion": 0.001001001001001001,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 640
+        },
+        {
+            "mutation": "S:N641-",
+            "count": 1,
+            "proportion": 0.001,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "-",
+            "position": 641
+        },
+        {
+            "mutation": "S:N641S",
+            "count": 1,
+            "proportion": 0.001,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "S",
+            "position": 641
+        },
+        {
+            "mutation": "S:N641T",
+            "count": 1,
+            "proportion": 0.001,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "T",
+            "position": 641
+        },
+        {
+            "mutation": "S:V642F",
+            "count": 1,
+            "proportion": 0.001002004008016032,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "F",
+            "position": 642
+        },
+        {
+            "mutation": "S:V642I",
+            "count": 1,
+            "proportion": 0.001002004008016032,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "I",
+            "position": 642
+        },
+        {
+            "mutation": "S:E654V",
+            "count": 4,
+            "proportion": 0.00398406374501992,
+            "sequenceName": "S",
+            "mutationFrom": "E",
+            "mutationTo": "V",
+            "position": 654
+        },
+        {
+            "mutation": "S:H655Y",
+            "count": 1002,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "H",
+            "mutationTo": "Y",
+            "position": 655
+        },
+        {
+            "mutation": "S:T678I",
+            "count": 3,
+            "proportion": 0.0027726432532347504,
+            "sequenceName": "S",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 678
+        },
+        {
+            "mutation": "S:N679K",
+            "count": 1070,
+            "proportion": 0.9944237918215614,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "K",
+            "position": 679
+        },
+        {
+            "mutation": "S:S680F",
+            "count": 6,
+            "proportion": 0.005555555555555556,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 680
+        },
+        {
+            "mutation": "S:P681H",
+            "count": 2,
+            "proportion": 0.0018604651162790699,
+            "sequenceName": "S",
+            "mutationFrom": "P",
+            "mutationTo": "H",
+            "position": 681
+        },
+        {
+            "mutation": "S:P681R",
+            "count": 1071,
+            "proportion": 0.9962790697674418,
+            "sequenceName": "S",
+            "mutationFrom": "P",
+            "mutationTo": "R",
+            "position": 681
+        },
+        {
+            "mutation": "S:R683W",
+            "count": 2,
+            "proportion": 0.0018656716417910447,
+            "sequenceName": "S",
+            "mutationFrom": "R",
+            "mutationTo": "W",
+            "position": 683
+        },
+        {
+            "mutation": "S:A688V",
+            "count": 2,
+            "proportion": 0.0018796992481203006,
+            "sequenceName": "S",
+            "mutationFrom": "A",
+            "mutationTo": "V",
+            "position": 688
+        },
+        {
+            "mutation": "S:S704L",
+            "count": 4,
+            "proportion": 0.00375234521575985,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "L",
+            "position": 704
+        },
+        {
+            "mutation": "S:T732I",
+            "count": 3,
+            "proportion": 0.002827521206409048,
+            "sequenceName": "S",
+            "mutationFrom": "T",
+            "mutationTo": "I",
+            "position": 732
+        },
+        {
+            "mutation": "S:N764K",
+            "count": 1063,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "K",
+            "position": 764
+        },
+        {
+            "mutation": "S:D796Y",
+            "count": 1044,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "D",
+            "mutationTo": "Y",
+            "position": 796
+        },
+        {
+            "mutation": "S:L841R",
+            "count": 2,
+            "proportion": 0.0019083969465648854,
+            "sequenceName": "S",
+            "mutationFrom": "L",
+            "mutationTo": "R",
+            "position": 841
+        },
+        {
+            "mutation": "S:S939F",
+            "count": 1031,
+            "proportion": 0.9942140790742526,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 939
+        },
+        {
+            "mutation": "S:G946R",
+            "count": 2,
+            "proportion": 0.0019249278152069298,
+            "sequenceName": "S",
+            "mutationFrom": "G",
+            "mutationTo": "R",
+            "position": 946
+        },
+        {
+            "mutation": "S:Q954H",
+            "count": 1035,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "Q",
+            "mutationTo": "H",
+            "position": 954
+        },
+        {
+            "mutation": "S:N960S",
+            "count": 2,
+            "proportion": 0.0019305019305019305,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "S",
+            "position": 960
+        },
+        {
+            "mutation": "S:N969K",
+            "count": 1035,
+            "proportion": 1.0,
+            "sequenceName": "S",
+            "mutationFrom": "N",
+            "mutationTo": "K",
+            "position": 969
+        },
+        {
+            "mutation": "S:H1058Y",
+            "count": 5,
+            "proportion": 0.0046210720887245845,
+            "sequenceName": "S",
+            "mutationFrom": "H",
+            "mutationTo": "Y",
+            "position": 1058
+        },
+        {
+            "mutation": "S:A1087S",
+            "count": 7,
+            "proportion": 0.006517690875232775,
+            "sequenceName": "S",
+            "mutationFrom": "A",
+            "mutationTo": "S",
+            "position": 1087
+        },
+        {
+            "mutation": "S:H1101Y",
+            "count": 4,
+            "proportion": 0.0037629350893697085,
+            "sequenceName": "S",
+            "mutationFrom": "H",
+            "mutationTo": "Y",
+            "position": 1101
+        },
+        {
+            "mutation": "S:V1104L",
+            "count": 2,
+            "proportion": 0.0018832391713747645,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "L",
+            "position": 1104
+        },
+        {
+            "mutation": "S:P1143L",
+            "count": 1065,
+            "proportion": 0.9981255857544518,
+            "sequenceName": "S",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 1143
+        },
+        {
+            "mutation": "S:E1150D",
+            "count": 29,
+            "proportion": 0.027204502814258912,
+            "sequenceName": "S",
+            "mutationFrom": "E",
+            "mutationTo": "D",
+            "position": 1150
+        },
+        {
+            "mutation": "S:D1153V",
+            "count": 4,
+            "proportion": 0.00375234521575985,
+            "sequenceName": "S",
+            "mutationFrom": "D",
+            "mutationTo": "V",
+            "position": 1153
+        },
+        {
+            "mutation": "S:P1162S",
+            "count": 2,
+            "proportion": 0.0018796992481203006,
+            "sequenceName": "S",
+            "mutationFrom": "P",
+            "mutationTo": "S",
+            "position": 1162
+        },
+        {
+            "mutation": "S:I1198V",
+            "count": 2,
+            "proportion": 0.0019569471624266144,
+            "sequenceName": "S",
+            "mutationFrom": "I",
+            "mutationTo": "V",
+            "position": 1198
+        },
+        {
+            "mutation": "S:M1229I",
+            "count": 4,
+            "proportion": 0.0039100684261974585,
+            "sequenceName": "S",
+            "mutationFrom": "M",
+            "mutationTo": "I",
+            "position": 1229
+        },
+        {
+            "mutation": "S:L1234I",
+            "count": 2,
+            "proportion": 0.001962708537782139,
+            "sequenceName": "S",
+            "mutationFrom": "L",
+            "mutationTo": "I",
+            "position": 1234
+        },
+        {
+            "mutation": "S:S1239T",
+            "count": 2,
+            "proportion": 0.0019455252918287938,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "T",
+            "position": 1239
+        },
+        {
+            "mutation": "S:S1252F",
+            "count": 5,
+            "proportion": 0.004859086491739553,
+            "sequenceName": "S",
+            "mutationFrom": "S",
+            "mutationTo": "F",
+            "position": 1252
+        },
+        {
+            "mutation": "S:P1263L",
+            "count": 2,
+            "proportion": 0.0019474196689386564,
+            "sequenceName": "S",
+            "mutationFrom": "P",
+            "mutationTo": "L",
+            "position": 1263
+        },
+        {
+            "mutation": "S:V1264L",
+            "count": 9,
+            "proportion": 0.008763388510223954,
+            "sequenceName": "S",
+            "mutationFrom": "V",
+            "mutationTo": "L",
+            "position": 1264
+        },
+        {
+            "mutation": "S:K1266R",
+            "count": 2,
+            "proportion": 0.0019455252918287938,
+            "sequenceName": "S",
+            "mutationFrom": "K",
+            "mutationTo": "R",
+            "position": 1266
+        }
+    ],
+    "info": {
+        "dataVersion": "1721588457",
+        "requestId": "1fbdd692-944b-4bc7-9cdb-965de66e9150",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2024-07-22T16:24:30.142489944",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report."
+    }
+}

@@ -4,8 +4,22 @@ import { html } from 'lit';
 import './gs-mutations-over-time';
 import '../app';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
-import { AGGREGATED_ENDPOINT, LAPIS_URL, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
+import {
+    AGGREGATED_ENDPOINT,
+    AMINO_ACID_MUTATIONS_ENDPOINT,
+    LAPIS_URL,
+    NUCLEOTIDE_MUTATIONS_ENDPOINT,
+} from '../../constants';
+import aggregated_byDay from '../../preact/mutationsOverTime/__mockData__/aggregated_byDay.json';
+import aggregated_byWeek from '../../preact/mutationsOverTime/__mockData__/aggregated_byWeek.json';
 import aggregated_date from '../../preact/mutationsOverTime/__mockData__/aggregated_date.json';
+import aminoAcidMutations_20_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_20_01_2024.json';
+import aminoAcidMutations_21_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_21_01_2024.json';
+import aminoAcidMutations_22_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_22_01_2024.json';
+import aminoAcidMutations_23_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_23_01_2024.json';
+import aminoAcidMutations_24_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_24_01_2024.json';
+import aminoAcidMutations_25_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_25_01_2024.json';
+import aminoAcidMutations_26_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_26_01_2024.json';
 import nucleotideMutation_01 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_01.json';
 import nucleotideMutation_02 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_02.json';
 import nucleotideMutation_03 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_03.json';
@@ -13,6 +27,10 @@ import nucleotideMutation_04 from '../../preact/mutationsOverTime/__mockData__/n
 import nucleotideMutation_05 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_05.json';
 import nucleotideMutation_06 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_06.json';
 import nucleotideMutation_07 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_07.json';
+import nucleotideMutation_week3 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_week3_2024.json';
+import nucleotideMutation_week4 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_week4_2024.json';
+import nucleotideMutation_week5 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_week5_2024.json';
+import nucleotideMutation_week6 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_week6_2024.json';
 import { type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
 
 const codeExample = String.raw`
@@ -85,7 +103,7 @@ const Template: StoryObj<Required<MutationsOverTimeProps>> = {
     `,
 };
 
-export const Default: StoryObj<Required<MutationsOverTimeProps>> = {
+export const ByMonth: StoryObj<Required<MutationsOverTimeProps>> = {
     ...Template,
     parameters: {
         fetchMock: {
@@ -217,6 +235,240 @@ export const Default: StoryObj<Required<MutationsOverTimeProps>> = {
                             status: 200,
                             body: nucleotideMutation_07,
                         },
+                    },
+                },
+            ],
+        },
+    },
+};
+
+export const ByWeek: StoryObj<Required<MutationsOverTimeProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-02-11' },
+        granularity: 'week',
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'aggregated_dates',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-01-15',
+                            dateTo: '2024-02-11',
+                            fields: ['date'],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_byWeek,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'nucleotideMutation_week3',
+                        url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-15',
+                            dateTo: '2024-01-21',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: nucleotideMutation_week3,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'nucleotideMutation_week4',
+                        url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-22',
+                            dateTo: '2024-01-28',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: nucleotideMutation_week4,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'nucleotideMutation_week5',
+                        url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-29',
+                            dateTo: '2024-02-04',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: nucleotideMutation_week5,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'nucleotideMutation_week6',
+                        url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-02-05',
+                            dateTo: '2024-02-11',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: nucleotideMutation_week6,
+                    },
+                },
+            ],
+        },
+    },
+};
+
+export const AminoAcidMutationsByDay: StoryObj<Required<MutationsOverTimeProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-20', dateTo: '2024-01-26' },
+        granularity: 'day',
+        sequenceType: 'amino acid',
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'aggregated_byDay',
+                        url: AGGREGATED_ENDPOINT,
+                        body: { pangoLineage: 'JN.1*', dateFrom: '2024-01-20', dateTo: '2024-01-26', fields: ['date'] },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_byDay,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aminoAcidMutations_20_01_2024',
+                        url: AMINO_ACID_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-20',
+                            dateTo: '2024-01-20',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aminoAcidMutations_20_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aminoAcidMutations_21_01_2024',
+                        url: AMINO_ACID_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-21',
+                            dateTo: '2024-01-21',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aminoAcidMutations_21_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aminoAcidMutations_22_01_2024',
+                        url: AMINO_ACID_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-22',
+                            dateTo: '2024-01-22',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aminoAcidMutations_22_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aminoAcidMutations_23_01_2024',
+                        url: AMINO_ACID_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-23',
+                            dateTo: '2024-01-23',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aminoAcidMutations_23_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aminoAcidMutations_24_01_2024',
+                        url: AMINO_ACID_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-24',
+                            dateTo: '2024-01-24',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aminoAcidMutations_24_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aminoAcidMutations_25_01_2024',
+                        url: AMINO_ACID_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-25',
+                            dateTo: '2024-01-25',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aminoAcidMutations_25_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aminoAcidMutations_26_01_2024',
+                        url: AMINO_ACID_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-26',
+                            dateTo: '2024-01-26',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aminoAcidMutations_26_01_2024,
                     },
                 },
             ],
