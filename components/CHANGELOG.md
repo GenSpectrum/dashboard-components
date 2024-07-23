@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.6.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.5...dashboard-components-v0.6.6) (2024-07-23)
+
+
+### Features
+
+* **components:** mutations over time: add button to download the data ([ec304df](https://github.com/GenSpectrum/dashboard-components/commit/ec304df23ebabec301772793eb479e0812018c77)), closes [#362](https://github.com/GenSpectrum/dashboard-components/issues/362)
+
+
+### Bug Fixes
+
+* **components:** change week display format to `YYYY-[W]WW` (e.g. `2024-W03`) ([e24e4d8](https://github.com/GenSpectrum/dashboard-components/commit/e24e4d89a6084a480413320059c56b99c8b1c55e))
+* **components:** mutations over time: position tooltip using css (instead of floatingUi) for better performance ([f5d8db0](https://github.com/GenSpectrum/dashboard-components/commit/f5d8db09e310c530a2b128d93b264bc23073ffc7))
+
 ## [0.6.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.4...dashboard-components-v0.6.5) (2024-07-22)
 
 
