@@ -7,6 +7,11 @@ import type { TemporalGranularity } from '../types';
 dayjs.extend(isoWeek);
 dayjs.extend(advancedFormat);
 
+/**
+ * https://day.js.org/docs/en/plugin/advanced-format
+ */
+const FORMAT_ISO_WEEK_YEAR_WEEK = 'GGGG-[W]WW';
+
 export class TemporalCache {
     private yearMonthDayCache = new Map<string, YearMonthDay>();
     private yearWeekCache = new Map<string, YearWeek>();
@@ -93,7 +98,7 @@ export class YearMonthDay {
     }
 
     get week(): YearWeek {
-        return this.cache.getYearWeek(this.dayjs.format('GGGG-WW'));
+        return this.cache.getYearWeek(this.dayjs.format(FORMAT_ISO_WEEK_YEAR_WEEK));
     }
 
     addDays(days: number): YearMonthDay {
@@ -120,7 +125,7 @@ export class YearWeek {
     ) {}
 
     get text(): string {
-        return this.firstDay.dayjs.format('YYYY-WW');
+        return this.firstDay.dayjs.format(FORMAT_ISO_WEEK_YEAR_WEEK);
     }
 
     toString(): string {
@@ -160,7 +165,7 @@ export class YearWeek {
 
     addWeeks(weeks: number): YearWeek {
         const date = this.firstDay.dayjs.add(weeks, 'week');
-        const s = date.format('YYYY-WW');
+        const s = date.format(FORMAT_ISO_WEEK_YEAR_WEEK);
         return this.cache.getYearWeek(s);
     }
 
@@ -169,7 +174,7 @@ export class YearWeek {
     }
 
     static parse(s: string, cache: TemporalCache): YearWeek {
-        const [year, week] = s.split('-').map((s) => parseInt(s, 10));
+        const [year, week] = s.split('-W').map((s) => parseInt(s, 10));
         return new YearWeek(year, week, cache);
     }
 }
