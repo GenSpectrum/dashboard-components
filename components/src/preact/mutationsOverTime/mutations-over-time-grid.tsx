@@ -7,18 +7,19 @@ import {
 } from '../../query/queryMutationsOverTime';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { compareTemporal, type Temporal, YearMonthDay } from '../../utils/temporal';
+import { type ColorScale, getColorWithingScale, getTextColorForScale } from '../components/color-scale-selector';
 import Tooltip, { type TooltipPosition } from '../components/tooltip';
-import { singleGraphColorRGBByName } from '../shared/charts/colors';
 import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsOverTimeGridProps {
     data: MutationOverTimeDataGroupedByMutation;
+    colorScale: ColorScale;
 }
 
 const MAX_NUMBER_OF_GRID_ROWS = 100;
 const MUTATION_CELL_WIDTH_REM = 8;
 
-const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ data }) => {
+const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ data, colorScale }) => {
     const allMutations = data.getFirstAxisKeys();
     const shownMutations = allMutations.slice(0, MAX_NUMBER_OF_GRID_ROWS);
 
@@ -72,6 +73,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                                             mutation={mutation}
                                             tooltipPosition={tooltipPosition}
                                             showProportionText={showProportionText}
+                                            colorScale={colorScale}
                                         />
                                     </div>
                                 );
@@ -123,7 +125,8 @@ const ProportionCell: FunctionComponent<{
     mutation: Substitution | Deletion;
     tooltipPosition: TooltipPosition;
     showProportionText: boolean;
-}> = ({ value, mutation, date, tooltipPosition, showProportionText }) => {
+    colorScale: ColorScale;
+}> = ({ value, mutation, date, tooltipPosition, showProportionText, colorScale }) => {
     const tooltipContent = (
         <div>
             <p>
@@ -141,8 +144,8 @@ const ProportionCell: FunctionComponent<{
             <Tooltip content={tooltipContent} position={tooltipPosition}>
                 <div
                     style={{
-                        backgroundColor: backgroundColor(value.proportion),
-                        color: textColor(value.proportion),
+                        backgroundColor: getColorWithingScale(value.proportion, colorScale),
+                        color: getTextColorForScale(value.proportion, colorScale),
                     }}
                     className={`w-full h-full text-center hover:font-bold text-xs group`}
                 >
@@ -159,19 +162,6 @@ const timeIntervalDisplay = (date: Temporal) => {
     }
 
     return `${date.firstDay.toString()} - ${date.lastDay.toString()}`;
-};
-
-const backgroundColor = (proportion: number) => {
-    // TODO(#353): Make minAlpha and maxAlpha configurable
-    const minAlpha = 0.0;
-    const maxAlpha = 1;
-
-    const alpha = minAlpha + (maxAlpha - minAlpha) * proportion;
-    return singleGraphColorRGBByName('indigo', alpha);
-};
-
-const textColor = (proportion: number) => {
-    return proportion > 0.5 ? 'white' : 'black';
 };
 
 const MutationCell: FunctionComponent<{ mutation: Substitution | Deletion }> = ({ mutation }) => {

@@ -11,6 +11,8 @@ import { type LapisFilter, type SequenceType, type TemporalGranularity } from '.
 import { compareTemporal } from '../../utils/temporal';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/SegmentSelector';
+import { type ColorScale } from '../components/color-scale-selector';
+import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
@@ -90,6 +92,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     views,
 }) => {
     const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 0.9 });
+    const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
 
     const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(sequenceType);
     const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
@@ -113,15 +116,16 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             case 'grid':
                 return {
                     title: 'Grid',
-                    content: <MutationsOverTimeGrid data={filteredData} />,
+                    content: <MutationsOverTimeGrid data={filteredData} colorScale={colorScale} />,
                 };
         }
     };
 
     const tabs = views.map((view) => getTab(view));
 
-    const toolbar = () => (
+    const toolbar = (activeTab: string) => (
         <Toolbar
+            activeTab={activeTab}
             displayedSegments={displayedSegments}
             setDisplayedSegments={setDisplayedSegments}
             displayedMutationTypes={displayedMutationTypes}
@@ -129,6 +133,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             proportionInterval={proportionInterval}
             setProportionInterval={setProportionInterval}
             filteredData={filteredData}
+            colorScale={colorScale}
+            setColorScale={setColorScale}
         />
     );
 
@@ -136,6 +142,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
 };
 
 type ToolbarProps = {
+    activeTab: string;
     displayedSegments: DisplayedSegment[];
     setDisplayedSegments: (segments: DisplayedSegment[]) => void;
     displayedMutationTypes: DisplayedMutationType[];
@@ -143,9 +150,12 @@ type ToolbarProps = {
     proportionInterval: ProportionInterval;
     setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
     filteredData: MutationOverTimeDataGroupedByMutation;
+    colorScale: ColorScale;
+    setColorScale: Dispatch<StateUpdater<ColorScale>>;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
+    activeTab,
     displayedSegments,
     setDisplayedSegments,
     displayedMutationTypes,
@@ -153,9 +163,14 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     proportionInterval,
     setProportionInterval,
     filteredData,
+    colorScale,
+    setColorScale,
 }) => {
     return (
         <>
+            {activeTab === 'Grid' && (
+                <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
+            )}
             <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
             <MutationTypeSelector
                 setDisplayedMutationTypes={setDisplayedMutationTypes}
