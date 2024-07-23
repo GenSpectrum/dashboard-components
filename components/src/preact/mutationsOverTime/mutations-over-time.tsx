@@ -8,7 +8,7 @@ import {
     queryMutationsOverTimeData,
 } from '../../query/queryMutationsOverTime';
 import { type LapisFilter, type SequenceType, type TemporalGranularity } from '../../types';
-import { compareTemporal, type Temporal, YearWeek } from '../../utils/temporal';
+import { compareTemporal } from '../../utils/temporal';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/SegmentSelector';
 import { CsvDownloadButton } from '../components/csv-download-button';
@@ -185,18 +185,10 @@ function getDownloadData(filteredData: MutationOverTimeDataGroupedByMutation) {
                 const proportion = filteredData.get(mutation, date)?.proportion ?? 0;
                 return {
                     ...accumulated,
-                    [display(date)]: proportion,
+                    [date.toString()]: proportion,
                 };
             },
             { mutation: mutation.toString() },
         );
     });
-}
-
-function display(date: Temporal) {
-    if (date instanceof YearWeek) {
-        return date.englishName().replaceAll(',', '');
-    }
-
-    return date.toString();
 }

@@ -57,8 +57,7 @@ describe('YearMonthDay', () => {
         expect(underTest.yearNumber).equal(2020);
         expect(underTest.monthNumber).equal(1);
         expect(underTest.dayNumber).equal(1);
-        // seems to be a bug in dayjs: https://github.com/iamkun/dayjs/issues/2620
-        expect(underTest.week.text).equal('2019-01');
+        expect(underTest.week.text).equal('2020-W01');
         expect(underTest.text).equal('2020-01-01');
         expect(underTest.firstDay.text).equal('2020-01-01');
         expect(underTest.lastDay.text).equal('2020-01-01');
@@ -67,12 +66,12 @@ describe('YearMonthDay', () => {
 
 describe('YearWeek', () => {
     it('should parse from string', () => {
-        const underTest = YearWeek.parse('2020-02', cache);
+        const underTest = YearWeek.parse('2020-W02', cache);
 
         expect(underTest.isoYearNumber).equal(2020);
         expect(underTest.isoWeekNumber).equal(2);
         expect(underTest.firstDay.text).equal('2020-01-06');
-        expect(underTest.text).equal('2020-02');
+        expect(underTest.text).equal('2020-W02');
         expect(underTest.lastDay.text).equal('2020-01-12');
     });
 });
