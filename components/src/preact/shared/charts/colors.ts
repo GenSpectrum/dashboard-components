@@ -12,7 +12,7 @@ const ColorsRGB = {
     purple: [170, 68, 153],
 };
 
-type GraphColor = keyof typeof ColorsRGB;
+export type GraphColor = keyof typeof ColorsRGB;
 
 export const singleGraphColorRGBAById = (id: number, alpha = 1) => {
     const keys = Object.keys(ColorsRGB) as GraphColor[];
