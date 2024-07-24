@@ -41,8 +41,8 @@ function getPositionCss(position?: TooltipPosition) {
 
 const Tooltip: FunctionComponent<TooltipProps> = ({ children, content, position = 'bottom' }) => {
     return (
-        <div className='relative'>
-            <div className='peer'>{children}</div>
+        <div className='relative w-full h-full'>
+            <div className='peer w-full h-full'>{children}</div>
             <div
                 className={`absolute z-10 w-max bg-white p-4 border border-gray-200 rounded-md invisible peer-hover:visible ${getPositionCss(position)}`}
             >
