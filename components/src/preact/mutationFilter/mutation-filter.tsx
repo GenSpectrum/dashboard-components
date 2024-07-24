@@ -8,7 +8,6 @@ import { type Deletion, type Insertion, type Mutation, type Substitution } from 
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
-import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
 export interface MutationFilterInnerProps {
     initialValue?: SelectedMutationFilterStrings | string[] | undefined;
@@ -312,8 +311,8 @@ const SelectedFilter = <MutationType extends Mutation>({
             style={{ backgroundColor, color: textColor }}
         >
             {mutation.toString()}
-            <button type='button' onClick={() => onDelete(mutation)}>
-                <DeleteIcon />
+            <button className='ml-1' type='button' onClick={() => onDelete(mutation)}>
+                ✕
             </button>
         </span>
     );

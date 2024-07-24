@@ -171,7 +171,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 getData={() => getDownloadData(filteredData)}
                 filename='mutations_over_time.csv'
             />
-            <Info height={'100px'}>Info for mutations over time</Info>
+            <Info>Info for mutations over time</Info>
         </>
     );
 };

@@ -236,7 +236,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
 
 const PrevalenceOverTimeInfo: FunctionComponent = () => {
     return (
-        <Info height={'100px'}>
+        <Info>
             <InfoHeadline1>Prevalence over time</InfoHeadline1>
             <InfoParagraph>Prevalence over time info.</InfoParagraph>
         </Info>

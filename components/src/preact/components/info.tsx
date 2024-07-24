@@ -1,57 +1,36 @@
-import { offset, shift, size } from '@floating-ui/dom';
 import { type FunctionComponent } from 'preact';
-import { useRef, useState } from 'preact/hooks';
+import { useRef } from 'preact/hooks';
 
-import { dropdownClass } from './dropdown';
-import { useCloseOnClickOutside, useCloseOnEsc, useFloatingUi } from '../shared/floating-ui/hooks';
+export interface InfoProps {}
 
-export interface InfoProps {
-    height?: string;
-}
-
-const Info: FunctionComponent<InfoProps> = ({ children, height }) => {
-    const [showHelp, setShowHelp] = useState(false);
-    const referenceRef = useRef<HTMLButtonElement>(null);
-    const floatingRef = useRef<HTMLDivElement>(null);
-
-    useFloatingUi(referenceRef, floatingRef, [
-        offset(10),
-        shift(),
-        size({
-            apply() {
-                if (!floatingRef.current) {
-                    return;
-                }
-                floatingRef.current.style.width = '100vw';
-                floatingRef.current.style.height = height ? height : '50vh';
-            },
-        }),
-    ]);
+const Info: FunctionComponent<InfoProps> = ({ children }) => {
+    const dialogRef = useRef<HTMLDialogElement>(null);
 
     const toggleHelp = () => {
-        setShowHelp(!showHelp);
+        dialogRef.current?.showModal();
     };
-
-    useCloseOnEsc(setShowHelp);
-    useCloseOnClickOutside(floatingRef, referenceRef, setShowHelp);
 
     return (
         <div className='relative'>
-            <button type='button' className='btn btn-xs' onClick={toggleHelp} ref={referenceRef}>
+            <button type='button' className='btn btn-xs' onClick={toggleHelp}>
                 ?
             </button>
-            <div
-                ref={floatingRef}
-                className={`${dropdownClass} overflow-y-auto opacity-90 ${showHelp ? '' : 'hidden'}`}
-            >
-                <div className={'flex flex-col'}>{children}</div>
-                <button
-                    onClick={() => setShowHelp(false)}
-                    className={'float-right underline text-sm hover:text-blue-700 mr-2'}
-                >
-                    Close
-                </button>
-            </div>
+            <dialog ref={dialogRef} className={'modal modal-bottom sm:modal-middle'}>
+                <div className='modal-box'>
+                    <form method='dialog'>
+                        <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>✕</button>
+                    </form>
+                    <div className={'flex flex-col'}>{children}</div>
+                    <div className='modal-action'>
+                        <form method='dialog'>
+                            <button className={'float-right underline text-sm hover:text-blue-700 mr-2'}>Close</button>
+                        </form>
+                    </div>
+                </div>
+                <form method='dialog' className='modal-backdrop'>
+                    <button>Helper to close when clicked outside</button>
+                </form>
+            </dialog>
         </div>
     );
 };

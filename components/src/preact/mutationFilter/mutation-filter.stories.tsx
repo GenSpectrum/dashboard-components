@@ -104,7 +104,7 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
         });
 
         await step('Remove the first mutation', async () => {
-            const firstMutationDeleteButton = canvas.getAllByRole('button')[1];
+            const firstMutationDeleteButton = canvas.getAllByRole('button', { name: '✕' })[1];
             await waitFor(() => fireEvent.click(firstMutationDeleteButton));
 
             await expect(changedListenerMock).toHaveBeenCalledWith(
