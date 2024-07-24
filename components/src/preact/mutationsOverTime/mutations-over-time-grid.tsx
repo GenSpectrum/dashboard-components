@@ -1,4 +1,5 @@
-import { Fragment, type FunctionComponent } from 'preact';
+import { Fragment, type FunctionComponent, type RefObject } from 'preact';
+import { useEffect, useRef, useState } from 'preact/hooks';
 
 import {
     type MutationOverTimeDataGroupedByMutation,
@@ -15,12 +16,17 @@ export interface MutationsOverTimeGridProps {
 }
 
 const MAX_NUMBER_OF_GRID_ROWS = 100;
+const MUTATION_CELL_WIDTH_REM = 8;
 
 const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ data }) => {
     const allMutations = data.getFirstAxisKeys();
     const shownMutations = allMutations.slice(0, MAX_NUMBER_OF_GRID_ROWS);
 
     const dates = data.getSecondAxisKeys().sort((a, b) => compareTemporal(a, b));
+
+    const [showProportionText, setShowProportionText] = useState(false);
+    const gridRef = useRef<HTMLDivElement>(null);
+    useShowProportion(gridRef, dates.length, setShowProportionText);
 
     return (
         <>
@@ -31,10 +37,11 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                 </div>
             )}
             <div
+                ref={gridRef}
                 style={{
                     display: 'grid',
                     gridTemplateRows: `repeat(${shownMutations.length}, 24px)`,
-                    gridTemplateColumns: `8rem repeat(${dates.length}, minmax(1.5rem, 1fr))`,
+                    gridTemplateColumns: `${MUTATION_CELL_WIDTH_REM}rem repeat(${dates.length}, minmax(0.05rem, 1fr))`,
                 }}
             >
                 {shownMutations.map((mutation, rowIndex) => {
@@ -64,6 +71,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                                             date={date}
                                             mutation={mutation}
                                             tooltipPosition={tooltipPosition}
+                                            showProportionText={showProportionText}
                                         />
                                     </div>
                                 );
@@ -76,6 +84,33 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
     );
 };
 
+function useShowProportion(
+    gridRef: RefObject<HTMLDivElement>,
+    girdColumns: number,
+    setShowProportionText: (value: ((prevState: boolean) => boolean) | boolean) => void,
+) {
+    useEffect(() => {
+        const checkWidth = () => {
+            if (gridRef.current) {
+                const width = gridRef.current.getBoundingClientRect().width;
+                const widthPerDate = (width - remToPx(MUTATION_CELL_WIDTH_REM)) / girdColumns;
+                const maxWidthProportionText = 28;
+
+                setShowProportionText(widthPerDate > maxWidthProportionText);
+            }
+        };
+
+        checkWidth();
+        window.addEventListener('resize', checkWidth);
+
+        return () => {
+            window.removeEventListener('resize', checkWidth);
+        };
+    }, [girdColumns, gridRef, setShowProportionText]);
+}
+
+const remToPx = (rem: number) => rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+
 function getTooltipPosition(rowIndex: number, rows: number, columnIndex: number, columns: number) {
     const tooltipX = rowIndex < rows / 2 ? 'bottom' : 'top';
     const tooltipY = columnIndex < columns / 2 ? 'start' : 'end';
@@ -87,12 +122,14 @@ const ProportionCell: FunctionComponent<{
     date: Temporal;
     mutation: Substitution | Deletion;
     tooltipPosition: TooltipPosition;
-}> = ({ value, mutation, date, tooltipPosition }) => {
+    showProportionText: boolean;
+}> = ({ value, mutation, date, tooltipPosition, showProportionText }) => {
     const tooltipContent = (
         <div>
             <p>
-                <span className='font-bold'>{date.englishName()}</span> ({timeIntervalDisplay(date)})
+                <span className='font-bold'>{date.englishName()}</span>
             </p>
+            <p>({timeIntervalDisplay(date)})</p>
             <p>{mutation.code}</p>
             <p>Proportion: {formatProportion(value.proportion)}</p>
             <p>Count: {value.count}</p>
@@ -100,21 +137,19 @@ const ProportionCell: FunctionComponent<{
     );
 
     return (
-        <>
-            <div className={'py-1'}>
-                <Tooltip content={tooltipContent} position={tooltipPosition}>
-                    <div
-                        style={{
-                            backgroundColor: backgroundColor(value.proportion),
-                            color: textColor(value.proportion),
-                        }}
-                        className='text-center hover:font-bold text-xs'
-                    >
-                        {formatProportion(value.proportion, 0)}
-                    </div>
-                </Tooltip>
-            </div>
-        </>
+        <div className={'py-1 w-full h-full'}>
+            <Tooltip content={tooltipContent} position={tooltipPosition}>
+                <div
+                    style={{
+                        backgroundColor: backgroundColor(value.proportion),
+                        color: textColor(value.proportion),
+                    }}
+                    className={`w-full h-full text-center hover:font-bold text-xs group`}
+                >
+                    {showProportionText ? formatProportion(value.proportion, 0) : undefined}
+                </div>
+            </Tooltip>
+        </div>
     );
 };
 

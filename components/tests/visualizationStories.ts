@@ -108,4 +108,9 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Grid',
         testDownloadWithFilename: 'mutations_over_time.csv',
     },
+    {
+        id: 'visualization-mutations-over-time--hide-proportion-on-small-screen',
+        title: 'Mutations over time',
+        loadingIsDoneIndicator: 'Grid',
+    },
 ];

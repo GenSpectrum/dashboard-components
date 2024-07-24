@@ -475,3 +475,11 @@ export const AminoAcidMutationsByDay: StoryObj<Required<MutationsOverTimeProps>>
         },
     },
 };
+
+export const HideProportionOnSmallScreen: StoryObj<Required<MutationsOverTimeProps>> = {
+    ...ByMonth,
+    args: {
+        ...ByMonth.args,
+        width: '300px',
+    },
+};
