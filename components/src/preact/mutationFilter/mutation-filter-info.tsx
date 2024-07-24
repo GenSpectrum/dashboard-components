@@ -9,7 +9,7 @@ export const MutationFilterInfo = () => {
 
     const firstGene = referenceGenome.genes[0].name;
     return (
-        <Info height={'80vh'}>
+        <Info>
             <InfoHeadline1> Mutation Filter</InfoHeadline1>
             <InfoParagraph>This component allows you to filter for mutations at specific positions.</InfoParagraph>
 

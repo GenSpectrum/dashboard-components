@@ -7,9 +7,6 @@ const meta: Meta<InfoProps> = {
     title: 'Component/Info',
     component: Info,
     parameters: { fetchMock: {} },
-    args: {
-        height: '100px',
-    },
 };
 
 export default meta;
@@ -24,20 +21,50 @@ export const InfoStory: StoryObj<InfoProps> = {
     ),
 };
 
-export const ShowsInfoOnClick: StoryObj<InfoProps> = {
+export const OpenInfo: StoryObj<InfoProps> = {
     ...InfoStory,
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
-        const openInfo = canvas.getByRole('button', { name: '?' });
 
-        await waitFor(() => expect(openInfo).toBeInTheDocument());
-
-        await userEvent.click(openInfo);
-
-        await waitFor(() => expect(canvas.getByText(tooltipText, { exact: false })).toBeVisible());
-
-        await userEvent.click(document.body);
-
-        await waitFor(() => expect(canvas.queryByText(tooltipText, { exact: false })).not.toBeVisible());
+        await openInfo(canvas);
     },
+};
+
+export const ShowsAndClosesInfoOnClick: StoryObj<InfoProps> = {
+    ...InfoStory,
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+
+        await openInfo(canvas);
+
+        await step('Close the info dialog by clicking the close button', async () => {
+            const dialog = await waitFor(() => canvas.getByRole('dialog'));
+            const closeButton = within(dialog).getByRole('button', { name: 'Close' });
+            closeButton.click();
+            await waitFor(() => expect(canvas.queryByText(tooltipText, { exact: false })).not.toBeVisible());
+        });
+
+        await openInfo(canvas);
+        await step('Close the info dialog by clicking the x button', async () => {
+            const dialog = await waitFor(() => canvas.getByRole('dialog'));
+            const xButton = within(dialog).getByRole('button', { name: '✕' });
+            xButton.click();
+            await waitFor(() => expect(canvas.queryByText(tooltipText, { exact: false })).not.toBeVisible());
+        });
+
+        await openInfo(canvas);
+        await step('Close the info dialog by clicking outside', async () => {
+            const dialog = await waitFor(() => canvas.getByRole('dialog'));
+            const xButton = within(dialog).getByRole('button', { name: 'Helper to close when clicked outside' });
+            xButton.click();
+            await waitFor(() => expect(canvas.queryByText(tooltipText, { exact: false })).not.toBeVisible());
+        });
+    },
+};
+
+const openInfo = async (canvas: ReturnType<typeof within>) => {
+    const openInfo = canvas.getByRole('button', { name: '?' });
+    await waitFor(() => expect(openInfo).toBeInTheDocument());
+    await userEvent.click(openInfo);
+    await waitFor(() => expect(canvas.getByText(tooltipText, { exact: false })).toBeVisible());
 };

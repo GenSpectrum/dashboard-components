@@ -156,7 +156,7 @@ const Toolbar = ({ activeTab, data, granularity, yAxisScaleType, setYAxisScaleTy
 };
 
 const NumberSequencesOverTimeInfo = () => (
-    <Info height='100px'>
+    <Info>
         <InfoHeadline1>Number of sequences over time</InfoHeadline1>
         <InfoParagraph>
             <a href='https://github.com/GenSpectrum/dashboard-components/issues/315'>TODO</a>
