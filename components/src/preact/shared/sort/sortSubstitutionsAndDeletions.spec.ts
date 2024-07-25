@@ -32,7 +32,7 @@ describe('sortSubstitutionsAndDeletions with no segments', () => {
 describe('sortSubstitutionsAndDeletions with segments', () => {
     test('should sort for segment first', () => {
         const a = new Substitution('AA1', 'A', 'B', 123);
-        const b = new Substitution('BB1', 'A', 'B', 234);
+        const b = new Substitution('BB1', 'A', 'B', 123);
 
         expect(sortSubstitutionsAndDeletions(a, b)).toBeLessThan(0);
         expect(sortSubstitutionsAndDeletions(b, a)).toBeGreaterThan(0);

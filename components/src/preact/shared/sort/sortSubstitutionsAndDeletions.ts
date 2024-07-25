@@ -2,7 +2,7 @@ import { Deletion, type Substitution } from '../../../utils/mutations';
 
 export const sortSubstitutionsAndDeletions = (a: Substitution | Deletion, b: Substitution | Deletion) => {
     if (a.segment !== b.segment) {
-        compareSegments(a.segment, b.segment);
+        return compareSegments(a.segment, b.segment);
     }
 
     if (a.position !== b.position) {
