@@ -9,6 +9,7 @@ import { type Deletion, type Substitution } from '../../utils/mutations';
 import { compareTemporal, type Temporal, YearMonthDay } from '../../utils/temporal';
 import { type ColorScale, getColorWithingScale, getTextColorForScale } from '../components/color-scale-selector';
 import Tooltip, { type TooltipPosition } from '../components/tooltip';
+import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
 import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsOverTimeGridProps {
@@ -20,7 +21,7 @@ const MAX_NUMBER_OF_GRID_ROWS = 100;
 const MUTATION_CELL_WIDTH_REM = 8;
 
 const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ data, colorScale }) => {
-    const allMutations = data.getFirstAxisKeys();
+    const allMutations = data.getFirstAxisKeys().sort(sortSubstitutionsAndDeletions);
     const shownMutations = allMutations.slice(0, MAX_NUMBER_OF_GRID_ROWS);
 
     const dates = data.getSecondAxisKeys().sort((a, b) => compareTemporal(a, b));
