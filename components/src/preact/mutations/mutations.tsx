@@ -19,7 +19,7 @@ import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
-import Info from '../components/info';
+import Info, { InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -208,8 +208,38 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                     filename='insertions.csv'
                 />
             )}
-            <Info>Info for mutations</Info>
+            <MutationsInfo />
             <Fullscreen />
         </>
     );
 };
+
+const MutationsInfo = () => (
+    <Info>
+        <InfoHeadline1>Mutations</InfoHeadline1>
+        <InfoParagraph>
+            This shows mutations of a variant. There are three types of mutations:{' '}
+            <InfoLink href='https://www.genome.gov/genetics-glossary/Substitution'>substitutions</InfoLink>,{' '}
+            <InfoLink href='https://www.genome.gov/genetics-glossary/Deletion'>deletions</InfoLink> and{' '}
+            <InfoLink href='https://www.genome.gov/genetics-glossary/Insertion'>insertions</InfoLink>.
+        </InfoParagraph>
+        <InfoHeadline2>Proportion calculation</InfoHeadline2>
+        <InfoParagraph>
+            The proportion of a mutation is calculated by dividing the number of sequences with the mutation by the
+            total number of sequences with a non-ambiguous symbol at the position.
+        </InfoParagraph>
+        <InfoParagraph>
+            <b>Example:</b> Assume we look at nucleotide mutations at position 5 where the reference has a T and assume
+            there are 10 sequences in total:
+            <ul className='list-disc list-inside ml-2'>
+                <li>3 sequences have a C,</li>
+                <li>2 sequences have a T,</li>
+                <li>1 sequence has a G,</li>
+                <li>3 sequences have an N,</li>
+                <li>1 sequence has a Y (which means T or C),</li>
+            </ul>
+            then the proportion of the T5C mutation is 50%. The 4 sequences that have an N or Y are excluded from the
+            calculation.
+        </InfoParagraph>
+    </Info>
+);

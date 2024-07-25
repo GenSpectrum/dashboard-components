@@ -14,7 +14,7 @@ import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
-import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
+import Info, { InfoHeadline1, InfoHeadline2, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
@@ -99,6 +99,7 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerP
             views={views}
             data={data}
             granularity={granularity}
+            smoothingWindow={smoothingWindow}
             confidenceIntervalMethods={confidenceIntervalMethods}
             pageSize={pageSize}
             yAxisMaxConfig={yAxisMaxConfig}
@@ -110,6 +111,7 @@ type PrevalenceOverTimeTabsProps = {
     views: View[];
     data: PrevalenceOverTimeData;
     granularity: TemporalGranularity;
+    smoothingWindow: number;
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     pageSize: boolean | number;
     yAxisMaxConfig: YAxisMaxConfig;
@@ -119,6 +121,7 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
     views,
     data,
     granularity,
+    smoothingWindow,
     confidenceIntervalMethods,
     pageSize,
     yAxisMaxConfig,
@@ -182,9 +185,11 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
             setYAxisScaleType={setYAxisScaleType}
             data={data}
             granularity={granularity}
+            smoothingWindow={smoothingWindow}
             confidenceIntervalMethods={confidenceIntervalMethods}
             confidenceIntervalMethod={confidenceIntervalMethod}
             setConfidenceIntervalMethod={setConfidenceIntervalMethod}
+            views={views}
         />
     );
 
@@ -195,11 +200,13 @@ type ToolbarProps = {
     activeTab: string;
     data: PrevalenceOverTimeData;
     granularity: TemporalGranularity;
+    smoothingWindow: number;
     yAxisScaleType: ScaleType;
     setYAxisScaleType: (scaleType: ScaleType) => void;
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     confidenceIntervalMethod: ConfidenceIntervalMethod;
     setConfidenceIntervalMethod: (confidenceIntervalMethod: ConfidenceIntervalMethod) => void;
+    views: View[];
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -211,6 +218,8 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     setConfidenceIntervalMethod,
     data,
     granularity,
+    smoothingWindow,
+    views,
 }) => {
     return (
         <>
@@ -230,17 +239,45 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 filename='prevalence_over_time.csv'
             />
 
-            <PrevalenceOverTimeInfo />
+            <PrevalenceOverTimeInfo granularity={granularity} views={views} smoothingWindow={smoothingWindow} />
             <Fullscreen />
         </>
     );
 };
 
-const PrevalenceOverTimeInfo: FunctionComponent = () => {
+type PrevalenceOverTimeInfoProps = {
+    granularity: TemporalGranularity;
+    smoothingWindow: number;
+    views: View[];
+};
+
+const PrevalenceOverTimeInfo: FunctionComponent<PrevalenceOverTimeInfoProps> = ({
+    granularity,
+    smoothingWindow,
+    views,
+}) => {
     return (
         <Info>
             <InfoHeadline1>Prevalence over time</InfoHeadline1>
-            <InfoParagraph>Prevalence over time info.</InfoParagraph>
+            <InfoParagraph>
+                This presents the proportion of one or more variants per <b>{granularity}</b>
+                {smoothingWindow > 0 && `, smoothed using a ${smoothingWindow}-${granularity} sliding window`}. The
+                proportion is calculated as the number of sequences of the variant(s) divided by the number of sequences
+                that match the <code>denominatorFilter</code> (see below).
+            </InfoParagraph>
+            <InfoParagraph>
+                Sequences that have no assigned date will not be shown in the line and bubble chart. They will show up
+                in the bar and table view with date "unknown".
+            </InfoParagraph>
+            {views.includes('bubble') && (
+                <>
+                    <InfoHeadline2>Bubble chart</InfoHeadline2>
+                    <InfoParagraph>
+                        The size of the bubble scales with the total number of available sequences from the{' '}
+                        {granularity}.
+                    </InfoParagraph>
+                </>
+            )}
         </Info>
     );
 };

@@ -1,3 +1,4 @@
+import { type FunctionComponent } from 'preact';
 import { useContext, useState } from 'preact/hooks';
 
 import { getNumberOfSequencesOverTimeTableData } from './getNumberOfSequencesOverTimeTableData';
@@ -77,17 +78,32 @@ const NumberSequencesOverTimeInner = ({
         return <NoDataDisplay />;
     }
 
-    return <NumberSequencesOverTimeTabs views={views} data={data} granularity={granularity} pageSize={pageSize} />;
+    return (
+        <NumberSequencesOverTimeTabs
+            views={views}
+            data={data}
+            granularity={granularity}
+            smoothingWindow={smoothingWindow}
+            pageSize={pageSize}
+        />
+    );
 };
 
 interface NumberSequencesOverTimeTabsProps {
     views: NumberSequencesOverTimeView[];
     data: NumberOfSequencesDatasets;
     granularity: TemporalGranularity;
+    smoothingWindow: number;
     pageSize: boolean | number;
 }
 
-const NumberSequencesOverTimeTabs = ({ views, data, granularity, pageSize }: NumberSequencesOverTimeTabsProps) => {
+const NumberSequencesOverTimeTabs = ({
+    views,
+    data,
+    granularity,
+    smoothingWindow,
+    pageSize,
+}: NumberSequencesOverTimeTabsProps) => {
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
 
     const getTab = (view: NumberSequencesOverTimeView) => {
@@ -120,6 +136,7 @@ const NumberSequencesOverTimeTabs = ({ views, data, granularity, pageSize }: Num
                     activeTab={activeTab}
                     data={data}
                     granularity={granularity}
+                    smoothingWindow={smoothingWindow}
                     yAxisScaleType={yAxisScaleType}
                     setYAxisScaleType={setYAxisScaleType}
                 />
@@ -134,9 +151,17 @@ interface ToolbarProps {
     granularity: TemporalGranularity;
     yAxisScaleType: ScaleType;
     setYAxisScaleType: (scaleType: ScaleType) => void;
+    smoothingWindow: number;
 }
 
-const Toolbar = ({ activeTab, data, granularity, yAxisScaleType, setYAxisScaleType }: ToolbarProps) => {
+const Toolbar = ({
+    activeTab,
+    data,
+    granularity,
+    yAxisScaleType,
+    setYAxisScaleType,
+    smoothingWindow,
+}: ToolbarProps) => {
     return (
         <>
             {activeTab !== 'Table' && (
@@ -151,17 +176,26 @@ const Toolbar = ({ activeTab, data, granularity, yAxisScaleType, setYAxisScaleTy
                 getData={() => getNumberOfSequencesOverTimeTableData(data, granularity)}
                 filename='number_of_sequences_over_time.csv'
             />
-            <NumberSequencesOverTimeInfo />
+            <NumberSequencesOverTimeInfo granularity={granularity} smoothingWindow={smoothingWindow} />
             <Fullscreen />
         </>
     );
 };
 
-const NumberSequencesOverTimeInfo = () => (
+type NumberSequencesOverTimeInfoProps = {
+    granularity: TemporalGranularity;
+    smoothingWindow: number;
+};
+
+const NumberSequencesOverTimeInfo: FunctionComponent<NumberSequencesOverTimeInfoProps> = ({
+    granularity,
+    smoothingWindow,
+}) => (
     <Info>
         <InfoHeadline1>Number of sequences over time</InfoHeadline1>
         <InfoParagraph>
-            <a href='https://github.com/GenSpectrum/dashboard-components/issues/315'>TODO</a>
+            This presents the number of available sequences of a variant per <b>{granularity}</b>
+            {smoothingWindow > 0 && `, smoothed using a ${smoothingWindow}-${granularity} sliding window`}.
         </InfoParagraph>
     </Info>
 );

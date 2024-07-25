@@ -9,7 +9,7 @@ import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
-import Info from '../components/info';
+import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
@@ -94,18 +94,26 @@ const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, 
 
     const tabs = views.map((view) => getTab(view));
 
-    return <Tabs tabs={tabs} toolbar={<Toolbar data={data} />} />;
+    return <Tabs tabs={tabs} toolbar={<Toolbar data={data} fields={fields} />} />;
 };
 
 type ToolbarProps = {
     data: AggregateData;
+    fields: string[];
 };
 
-const Toolbar: FunctionComponent<ToolbarProps> = ({ data }) => {
+const Toolbar: FunctionComponent<ToolbarProps> = ({ data, fields }) => {
     return (
         <div class='flex flex-row'>
             <CsvDownloadButton className='mx-1 btn btn-xs' getData={() => data} filename='aggregate.csv' />
-            <Info>Info for aggregate</Info>
+            <Info>
+                <InfoHeadline1>Aggregated data</InfoHeadline1>
+                <InfoParagraph>
+                    This table shows the number and proportion of sequences stratified by the following fields:{' '}
+                    {fields.join(', ')}. The proportion is calculated with respect to the total count within the
+                    filtered dataset.
+                </InfoParagraph>
+            </Info>
             <Fullscreen />
         </div>
     );
