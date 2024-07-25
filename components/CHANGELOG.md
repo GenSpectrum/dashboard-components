@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.6.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.6...dashboard-components-v0.6.7) (2024-07-25)
+
+
+### Features
+
+* **components:** add color scale selector to mutations over time [#354](https://github.com/GenSpectrum/dashboard-components/issues/354) ([5b539a8](https://github.com/GenSpectrum/dashboard-components/commit/5b539a826d820fe6a9f91073921effe659773e3f))
+* **components:** change info box to modal [#348](https://github.com/GenSpectrum/dashboard-components/issues/348) ([c7810e8](https://github.com/GenSpectrum/dashboard-components/commit/c7810e829a3a667c650095eb5792a4b987b349fa))
+* **components:** hide proportion text on small mutations over time windows [#377](https://github.com/GenSpectrum/dashboard-components/issues/377) ([d8b1385](https://github.com/GenSpectrum/dashboard-components/commit/d8b13855c3d8ea77328d342e81a7794cdc4aca54))
+
 ## [0.6.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.5...dashboard-components-v0.6.6) (2024-07-23)
 
 
