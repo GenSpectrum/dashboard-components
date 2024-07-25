@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.8](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.7...dashboard-components-v0.6.8) (2024-07-25)
+
+
+### Features
+
+* **components:** mutations over time: sort grid rows by mutations ([8833d90](https://github.com/GenSpectrum/dashboard-components/commit/8833d900b8a67fbacf4408eda94ebe681190fcb9)), closes [#384](https://github.com/GenSpectrum/dashboard-components/issues/384)
+
+
+### Bug Fixes
+
+* **components:** fix missing `return` when sorting mutations by segments/genes ([abdd446](https://github.com/GenSpectrum/dashboard-components/commit/abdd446d88f740ae81538f0825902550f99f02c2))
+
 ## [0.6.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.6...dashboard-components-v0.6.7) (2024-07-25)
 
 
