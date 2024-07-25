@@ -9,7 +9,7 @@ visualizationStories.forEach((story) => {
         test(`Story ${story.id} should match screenshot`, async ({ page, storybook }) => {
             await storybook.gotoStory(story.id);
             await page.locator('.skeleton').waitFor({ state: 'hidden' });
-            await expect(page.getByText(story.loadingIsDoneIndicator)).toBeVisible();
+            await expect(page.getByText(story.loadingIsDoneIndicator, { exact: true })).toBeVisible();
             await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.005 });
         });
 
