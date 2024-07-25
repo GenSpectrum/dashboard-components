@@ -3,11 +3,19 @@ import { type Dispatch, type StateUpdater, useContext, useMemo, useState } from 
 
 import { getFilteredMutationOverTimeData } from './getFilteredMutationsOverTimeData';
 import MutationsOverTimeGrid from './mutations-over-time-grid';
+import { type Dataset } from '../../operator/Dataset';
 import {
     type MutationOverTimeDataGroupedByMutation,
     queryMutationsOverTimeData,
+    queryOverallMutationData,
 } from '../../query/queryMutationsOverTime';
-import { type LapisFilter, type SequenceType, type TemporalGranularity } from '../../types';
+import {
+    type DeletionEntry,
+    type LapisFilter,
+    type SequenceType,
+    type SubstitutionEntry,
+    type TemporalGranularity,
+} from '../../types';
 import { compareTemporal } from '../../utils/temporal';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/SegmentSelector';
@@ -64,7 +72,11 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeInnerPro
 }) => {
     const lapis = useContext(LapisUrlContext);
     const { data, error, isLoading } = useQuery(async () => {
-        return queryMutationsOverTimeData(lapisFilter, sequenceType, lapis, lapisDateField, granularity);
+        const [mutationOverTimeData, overallMutationData] = await Promise.all([
+            queryMutationsOverTimeData(lapisFilter, sequenceType, lapis, lapisDateField, granularity),
+            queryOverallMutationData(lapisFilter, sequenceType, lapis),
+        ]);
+        return { mutationOverTimeData, overallMutationData };
     }, [lapisFilter, sequenceType, lapis, granularity, lapisDateField]);
 
     if (isLoading) {
@@ -79,19 +91,28 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeInnerPro
         return <NoDataDisplay />;
     }
 
-    return <MutationsOverTimeTabs mutationOverTimeData={data} sequenceType={sequenceType} views={views} />;
+    return (
+        <MutationsOverTimeTabs
+            overallMutationData={data.overallMutationData}
+            mutationOverTimeData={data.mutationOverTimeData}
+            sequenceType={sequenceType}
+            views={views}
+        />
+    );
 };
 
 type MutationOverTimeTabsProps = {
     mutationOverTimeData: MutationOverTimeDataGroupedByMutation;
     sequenceType: SequenceType;
     views: View[];
+    overallMutationData: Dataset<SubstitutionEntry | DeletionEntry>;
 };
 
 const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     mutationOverTimeData,
     sequenceType,
     views,
+    overallMutationData,
 }) => {
     const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 0.9 });
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
@@ -106,11 +127,12 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         () =>
             getFilteredMutationOverTimeData(
                 mutationOverTimeData,
+                overallMutationData,
                 displayedSegments,
                 displayedMutationTypes,
                 proportionInterval,
             ),
-        [mutationOverTimeData, displayedSegments, displayedMutationTypes, proportionInterval],
+        [mutationOverTimeData, overallMutationData, displayedSegments, displayedMutationTypes, proportionInterval],
     );
 
     const getTab = (view: View) => {

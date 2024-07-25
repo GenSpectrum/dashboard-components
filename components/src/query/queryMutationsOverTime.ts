@@ -36,9 +36,18 @@ export type MutationOverTimeDataGroupedByMutation = Map2d<
 
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 
+export async function queryOverallMutationData(
+    lapisFilter: LapisFilter,
+    sequenceType: SequenceType,
+    lapis: string,
+    signal?: AbortSignal,
+) {
+    return fetchAndPrepareSubstitutionsOrDeletions(lapisFilter, sequenceType).evaluate(lapis, signal);
+}
+
 export async function queryMutationsOverTimeData(
     lapisFilter: LapisFilter,
-    sequenceType: 'nucleotide' | 'amino acid',
+    sequenceType: SequenceType,
     lapis: string,
     lapisDateField: string,
     granularity: TemporalGranularity,

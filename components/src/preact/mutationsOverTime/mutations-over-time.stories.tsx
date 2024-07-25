@@ -14,6 +14,7 @@ import nucleotideMutation_tooManyMutations from './__mockData__/nucleotideMutati
 import { MutationsOverTime, type MutationsOverTimeProps } from './mutations-over-time';
 import { AGGREGATED_ENDPOINT, LAPIS_URL, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
+import nucleotideMutations_byMonthOverall from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_byMonthOverall.json';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 
@@ -88,6 +89,22 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
                     response: {
                         status: 200,
                         body: aggregated_date,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'nucleotideMutations_overall',
+                        url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-15',
+                            dateTo: '2024-07-10',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: nucleotideMutations_byMonthOverall,
                     },
                 },
                 {
