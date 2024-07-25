@@ -1,9 +1,12 @@
+import { type Dataset } from '../../operator/Dataset';
 import { type MutationOverTimeDataGroupedByMutation } from '../../query/queryMutationsOverTime';
+import { type DeletionEntry, type SubstitutionEntry } from '../../types';
 import type { DisplayedSegment } from '../components/SegmentSelector';
 import type { DisplayedMutationType } from '../components/mutation-type-selector';
 
 export function getFilteredMutationOverTimeData(
     data: MutationOverTimeDataGroupedByMutation,
+    overallMutationData: Dataset<SubstitutionEntry | DeletionEntry>,
     displayedSegments: DisplayedSegment[],
     displayedMutationTypes: DisplayedMutationType[],
     proportionInterval: { min: number; max: number },
@@ -11,7 +14,7 @@ export function getFilteredMutationOverTimeData(
     const filteredData = data.copy();
     filterDisplayedSegments(displayedSegments, filteredData);
     filterMutationTypes(displayedMutationTypes, filteredData);
-    filterProportion(filteredData, proportionInterval);
+    filterProportion(filteredData, overallMutationData, proportionInterval);
 
     return filteredData;
 }
@@ -48,18 +51,24 @@ export function filterMutationTypes(
 
 export function filterProportion(
     data: MutationOverTimeDataGroupedByMutation,
+    overallMutationData: Dataset<SubstitutionEntry | DeletionEntry>,
     proportionInterval: {
         min: number;
         max: number;
     },
 ) {
+    const overallProportionsByMutation = overallMutationData.content.reduce(
+        (acc, { mutation, proportion }) => ({
+            ...acc,
+            [mutation.toString()]: proportion,
+        }),
+        {} as Record<string, number>,
+    );
+
     data.getFirstAxisKeys().forEach((mutation) => {
-        const row = data.getRow(mutation, { count: 0, proportion: 0 });
-        if (
-            !row.some(
-                (value) => value.proportion >= proportionInterval.min && value.proportion <= proportionInterval.max,
-            )
-        ) {
+        const overallProportion = overallProportionsByMutation[mutation.toString()] || -1;
+
+        if (overallProportion < proportionInterval.min || overallProportion > proportionInterval.max) {
             data.deleteRow(mutation);
         }
     });

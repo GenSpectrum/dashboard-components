@@ -61,38 +61,82 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     describe('filterProportion', () => {
-        it('should filter by proportion', () => {
-            const data = new Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>();
+        const belowFilter = 0.1;
+        const atFilterMin = 0.2;
+        const inFilter = 0.5;
+        const atFilterMax = 0.9;
+        const aboveFilter = 0.99;
+        const proportionInterval = { min: atFilterMin, max: atFilterMax };
 
-            const belowFilter = { count: 1, proportion: 0.1 };
-            const aboveFilter = { count: 99, proportion: 0.99 };
-            const proportionInterval = { min: 0.2, max: 0.9 };
+        const someSubstitution = new Substitution('someSegment', 'A', 'T', 123);
+        const someOtherMutation = new Substitution('someOtherSegment', 'A', 'G', 9);
 
-            const someSubstitution = new Substitution('someSegment', 'A', 'T', 123);
-            data.set(someSubstitution, yearMonthDay('2021-01-01'), belowFilter);
-            data.set(someSubstitution, yearMonthDay('2021-02-02'), aboveFilter);
+        it('should remove mutations where overall proportion is below filter', () => {
+            const data = getMutationOverTimeData();
 
-            filterProportion(data, proportionInterval);
+            filterProportion(data, getOverallMutationData(belowFilter), proportionInterval);
 
-            expect(data.getAsArray({ count: 0, proportion: 0 }).length).to.equal(0);
+            expect(data.getAsArray({ count: 0, proportion: 0 })).to.toHaveLength(0);
         });
 
-        it('should not filter if one proportion is within the interval', () => {
-            const data = new Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>();
+        it('should remove mutations where overall proportion is above filter', () => {
+            const data = getMutationOverTimeData();
 
-            const belowFilter = { count: 1, proportion: 0.1 };
-            const aboveFilter = { count: 99, proportion: 0.99 };
-            const inFilter = { count: 5, proportion: 0.5 };
-            const proportionInterval = { min: 0.2, max: 0.9 };
+            filterProportion(data, getOverallMutationData(aboveFilter), proportionInterval);
 
-            const someSubstitution = new Substitution('someSegment', 'A', 'T', 123);
-            data.set(someSubstitution, yearMonthDay('2021-01-01'), belowFilter);
-            data.set(someSubstitution, yearMonthDay('2021-02-02'), aboveFilter);
-            data.set(someSubstitution, yearMonthDay('2021-03-03'), inFilter);
-
-            filterProportion(data, proportionInterval);
-
-            expect(data.getRow(someSubstitution, { count: 0, proportion: 0 }).length).to.equal(3);
+            expect(data.getAsArray({ count: 0, proportion: 0 })).to.toHaveLength(0);
         });
+
+        it('should remove mutations where overall proportion is missing', () => {
+            const data = getMutationOverTimeData();
+
+            filterProportion(data, getOverallMutationData(aboveFilter, someOtherMutation), proportionInterval);
+
+            expect(data.getAsArray({ count: 0, proportion: 0 })).to.toHaveLength(0);
+        });
+
+        it('should not remove mutation where overall proportion is at lower border of filter', () => {
+            const data = getMutationOverTimeData();
+
+            filterProportion(data, getOverallMutationData(inFilter), proportionInterval);
+
+            expect(data.getRow(someSubstitution, { count: 0, proportion: 0 })).to.toHaveLength(2);
+        });
+
+        it('should not remove mutation where overall proportion is within filter', () => {
+            const data = getMutationOverTimeData();
+
+            filterProportion(data, getOverallMutationData(inFilter), proportionInterval);
+
+            expect(data.getRow(someSubstitution, { count: 0, proportion: 0 })).to.toHaveLength(2);
+        });
+
+        it('should not remove mutation where overall proportion is at upper border of filter', () => {
+            const data = getMutationOverTimeData();
+
+            filterProportion(data, getOverallMutationData(inFilter), proportionInterval);
+
+            expect(data.getRow(someSubstitution, { count: 0, proportion: 0 })).to.toHaveLength(2);
+        });
+
+        function getMutationOverTimeData() {
+            const data = new Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>();
+            data.set(someSubstitution, yearMonthDay('2021-01-01'), { count: 1, proportion: 0.1 });
+            data.set(someSubstitution, yearMonthDay('2021-02-02'), { count: 99, proportion: 0.99 });
+            return data;
+        }
+
+        function getOverallMutationData(proportion: number = 0.1, mutation: Substitution = someSubstitution) {
+            return {
+                content: [
+                    {
+                        type: 'substitution' as const,
+                        count: -1,
+                        mutation,
+                        proportion,
+                    },
+                ],
+            };
+        }
     });
 });

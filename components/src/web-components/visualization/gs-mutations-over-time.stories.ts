@@ -20,6 +20,7 @@ import aminoAcidMutations_23_01_2024 from '../../preact/mutationsOverTime/__mock
 import aminoAcidMutations_24_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_24_01_2024.json';
 import aminoAcidMutations_25_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_25_01_2024.json';
 import aminoAcidMutations_26_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_26_01_2024.json';
+import aminoAcidMutations_byDayOverall from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_byDayOverall.json';
 import nucleotideMutation_01 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_01.json';
 import nucleotideMutation_02 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_02.json';
 import nucleotideMutation_03 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_03.json';
@@ -27,6 +28,8 @@ import nucleotideMutation_04 from '../../preact/mutationsOverTime/__mockData__/n
 import nucleotideMutation_05 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_05.json';
 import nucleotideMutation_06 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_06.json';
 import nucleotideMutation_07 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_2024_07.json';
+import nucleotideMutations_byMonthOverall from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_byMonthOverall.json';
+import nucleotideMutations_byWeekOverall from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_byWeekOverall.json';
 import nucleotideMutation_week3 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_week3_2024.json';
 import nucleotideMutation_week4 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_week4_2024.json';
 import nucleotideMutation_week5 from '../../preact/mutationsOverTime/__mockData__/nucleotideMutations_week5_2024.json';
@@ -38,7 +41,6 @@ const codeExample = String.raw`
     lapisFilter='{ "pangoLineage": "JN.1*", "dateFrom": "2024-01-15", "dateTo": "2024-07-10" }'
     sequenceType="nucleotide"
     views='["grid"]'
-    headline="Mutations over time"
     width='100%'
     height='700px'
     granularity="month"
@@ -122,6 +124,22 @@ export const ByMonth: StoryObj<Required<MutationsOverTimeProps>> = {
                     response: {
                         status: 200,
                         body: aggregated_date,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'nucleotideMutations_overall',
+                        url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-15',
+                            dateTo: '2024-07-10',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: nucleotideMutations_byMonthOverall,
                     },
                 },
                 {
@@ -270,6 +288,22 @@ export const ByWeek: StoryObj<Required<MutationsOverTimeProps>> = {
                 },
                 {
                     matcher: {
+                        name: 'nucleotideMutation_overall',
+                        url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-15',
+                            dateTo: '2024-02-11',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: nucleotideMutations_byWeekOverall,
+                    },
+                },
+                {
+                    matcher: {
                         name: 'nucleotideMutation_week3',
                         url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
                         body: {
@@ -357,6 +391,22 @@ export const AminoAcidMutationsByDay: StoryObj<Required<MutationsOverTimeProps>>
                     response: {
                         status: 200,
                         body: aggregated_byDay,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aminoAcidMutations_overall',
+                        url: AMINO_ACID_MUTATIONS_ENDPOINT,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-20',
+                            dateTo: '2024-01-26',
+                            minProportion: 0.001,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aminoAcidMutations_byDayOverall,
                     },
                 },
                 {
