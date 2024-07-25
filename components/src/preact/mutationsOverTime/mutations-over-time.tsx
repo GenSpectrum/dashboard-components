@@ -24,6 +24,7 @@ import type { ProportionInterval } from '../components/proportion-selector';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
 import { ResizeContainer } from '../components/resize-container';
 import Tabs from '../components/tabs';
+import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
 import { useQuery } from '../useQuery';
 
 export type View = 'grid';
@@ -194,16 +195,19 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
 function getDownloadData(filteredData: MutationOverTimeDataGroupedByMutation) {
     const dates = filteredData.getSecondAxisKeys().sort((a, b) => compareTemporal(a, b));
 
-    return filteredData.getFirstAxisKeys().map((mutation) => {
-        return dates.reduce(
-            (accumulated, date) => {
-                const proportion = filteredData.get(mutation, date)?.proportion ?? 0;
-                return {
-                    ...accumulated,
-                    [date.toString()]: proportion,
-                };
-            },
-            { mutation: mutation.toString() },
-        );
-    });
+    return filteredData
+        .getFirstAxisKeys()
+        .sort(sortSubstitutionsAndDeletions)
+        .map((mutation) => {
+            return dates.reduce(
+                (accumulated, date) => {
+                    const proportion = filteredData.get(mutation, date)?.proportion ?? 0;
+                    return {
+                        ...accumulated,
+                        [date.toString()]: proportion,
+                    };
+                },
+                { mutation: mutation.toString() },
+            );
+        });
 }
