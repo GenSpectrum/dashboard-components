@@ -175,10 +175,8 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
                 height={this.height}
                 lapisDateField={this.lapisDateField}
                 pageSize={this.pageSize}
-                yAxisMaxConfig={{
-                    linear: this.yAxisMaxLinear,
-                    logarithmic: this.yAxisMaxLogarithmic,
-                }}
+                yAxisMaxLinear={this.yAxisMaxLinear}
+                yAxisMaxLogarithmic={this.yAxisMaxLogarithmic}
             />
         );
     }

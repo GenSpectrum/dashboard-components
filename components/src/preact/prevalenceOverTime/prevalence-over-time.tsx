@@ -14,25 +14,22 @@ import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
-import Info, { InfoHeadline1, InfoHeadline2, InfoParagraph } from '../components/info';
+import Info, { InfoComponentCode, InfoHeadline1, InfoHeadline2, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
 import { type ConfidenceIntervalMethod } from '../shared/charts/confideceInterval';
-import type { YAxisMaxConfig } from '../shared/charts/getYAxisMax';
+import { type AxisMax } from '../shared/charts/getYAxisMax';
 import { type ScaleType } from '../shared/charts/getYAxisScale';
 import { useQuery } from '../useQuery';
 
 export type View = 'bar' | 'line' | 'bubble' | 'table';
 
-export interface PrevalenceOverTimeProps extends PrevalenceOverTimeInnerProps {
+export interface PrevalenceOverTimeProps {
     width: string;
     height: string;
-}
-
-export interface PrevalenceOverTimeInnerProps {
     numeratorFilter: NamedLapisFilter | NamedLapisFilter[];
     denominatorFilter: LapisFilter;
     granularity: TemporalGranularity;
@@ -41,32 +38,25 @@ export interface PrevalenceOverTimeInnerProps {
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     lapisDateField: string;
     pageSize: boolean | number;
-    yAxisMaxConfig: YAxisMaxConfig;
+    yAxisMaxLinear?: AxisMax;
+    yAxisMaxLogarithmic?: AxisMax;
 }
 
-export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = ({ width, height, ...innerProps }) => {
+export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = (componentProps) => {
+    const { width, height } = componentProps;
     const size = { height, width };
 
     return (
         <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <PrevalenceOverTimeInner {...innerProps} />
+                <PrevalenceOverTimeInner {...componentProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerProps> = ({
-    numeratorFilter,
-    denominatorFilter,
-    granularity,
-    smoothingWindow,
-    views,
-    confidenceIntervalMethods,
-    lapisDateField,
-    pageSize,
-    yAxisMaxConfig,
-}) => {
+export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeProps> = (componentProps) => {
+    const { numeratorFilter, denominatorFilter, granularity, smoothingWindow, lapisDateField } = componentProps;
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(
@@ -94,42 +84,21 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeInnerP
         return <NoDataDisplay />;
     }
 
-    return (
-        <PrevalenceOverTimeTabs
-            views={views}
-            data={data}
-            granularity={granularity}
-            smoothingWindow={smoothingWindow}
-            confidenceIntervalMethods={confidenceIntervalMethods}
-            pageSize={pageSize}
-            yAxisMaxConfig={yAxisMaxConfig}
-        />
-    );
+    return <PrevalenceOverTimeTabs data={data} {...componentProps} />;
 };
 
-type PrevalenceOverTimeTabsProps = {
-    views: View[];
+type PrevalenceOverTimeTabsProps = PrevalenceOverTimeProps & {
     data: PrevalenceOverTimeData;
-    granularity: TemporalGranularity;
-    smoothingWindow: number;
-    confidenceIntervalMethods: ConfidenceIntervalMethod[];
-    pageSize: boolean | number;
-    yAxisMaxConfig: YAxisMaxConfig;
 };
 
-const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = ({
-    views,
-    data,
-    granularity,
-    smoothingWindow,
-    confidenceIntervalMethods,
-    pageSize,
-    yAxisMaxConfig,
-}) => {
+const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = ({ data, ...componentProps }) => {
+    const { views, granularity, confidenceIntervalMethods, pageSize, yAxisMaxLinear, yAxisMaxLogarithmic } =
+        componentProps;
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
     const [confidenceIntervalMethod, setConfidenceIntervalMethod] = useState<ConfidenceIntervalMethod>(
         confidenceIntervalMethods.length > 0 ? confidenceIntervalMethods[0] : 'none',
     );
+    const yAxisMaxConfig = { linear: yAxisMaxLinear, logarithmic: yAxisMaxLogarithmic };
 
     const getTab = (view: View) => {
         switch (view) {
@@ -184,43 +153,35 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
             yAxisScaleType={yAxisScaleType}
             setYAxisScaleType={setYAxisScaleType}
             data={data}
-            granularity={granularity}
-            smoothingWindow={smoothingWindow}
-            confidenceIntervalMethods={confidenceIntervalMethods}
             confidenceIntervalMethod={confidenceIntervalMethod}
             setConfidenceIntervalMethod={setConfidenceIntervalMethod}
-            views={views}
+            {...componentProps}
         />
     );
 
     return <Tabs tabs={tabs} toolbar={toolbar} />;
 };
 
-type ToolbarProps = {
+type ToolbarProps = PrevalenceOverTimeProps & {
     activeTab: string;
     data: PrevalenceOverTimeData;
-    granularity: TemporalGranularity;
-    smoothingWindow: number;
     yAxisScaleType: ScaleType;
     setYAxisScaleType: (scaleType: ScaleType) => void;
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     confidenceIntervalMethod: ConfidenceIntervalMethod;
     setConfidenceIntervalMethod: (confidenceIntervalMethod: ConfidenceIntervalMethod) => void;
-    views: View[];
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
     activeTab,
     yAxisScaleType,
     setYAxisScaleType,
-    confidenceIntervalMethods,
     confidenceIntervalMethod,
     setConfidenceIntervalMethod,
     data,
-    granularity,
-    smoothingWindow,
-    views,
+    ...componentProps
 }) => {
+    const { confidenceIntervalMethods, granularity } = componentProps;
     return (
         <>
             {activeTab !== 'Table' && (
@@ -239,23 +200,15 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 filename='prevalence_over_time.csv'
             />
 
-            <PrevalenceOverTimeInfo granularity={granularity} views={views} smoothingWindow={smoothingWindow} />
+            <PrevalenceOverTimeInfo {...componentProps} />
             <Fullscreen />
         </>
     );
 };
 
-type PrevalenceOverTimeInfoProps = {
-    granularity: TemporalGranularity;
-    smoothingWindow: number;
-    views: View[];
-};
-
-const PrevalenceOverTimeInfo: FunctionComponent<PrevalenceOverTimeInfoProps> = ({
-    granularity,
-    smoothingWindow,
-    views,
-}) => {
+const PrevalenceOverTimeInfo: FunctionComponent<PrevalenceOverTimeProps> = (componentProps) => {
+    const { granularity, smoothingWindow, views } = componentProps;
+    const lapis = useContext(LapisUrlContext);
     return (
         <Info>
             <InfoHeadline1>Prevalence over time</InfoHeadline1>
@@ -278,6 +231,7 @@ const PrevalenceOverTimeInfo: FunctionComponent<PrevalenceOverTimeInfoProps> = (
                     </InfoParagraph>
                 </>
             )}
+            <InfoComponentCode componentName='prevalence-over-time' params={componentProps} lapisUrl={lapis} />
         </Info>
     );
 };
