@@ -5,7 +5,7 @@
 
 ### Features
 
-* **components:** add NPM badge to README ([#402](https://github.com/GenSpectrum/dashboard-components/issues/402)) ([1ddc72b](https://github.com/GenSpectrum/dashboard-components/commit/1ddc72b1c3d19f836d24285d8724a61c70f302ae))
+* **components:** provide a standalone JS bundle ([#400](https://github.com/GenSpectrum/dashboard-components/issues/400)) ([1ddc72b](https://github.com/GenSpectrum/dashboard-components/commit/39c68816b9d8da3bd1b1d3617574478b0b0b6215))
 
 ## [0.6.8](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.7...dashboard-components-v0.6.8) (2024-07-25)
 
