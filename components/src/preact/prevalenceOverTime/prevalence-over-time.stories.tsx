@@ -51,7 +51,8 @@ const Template = {
                 height={args.height}
                 lapisDateField={args.lapisDateField}
                 pageSize={args.pageSize}
-                yAxisMaxConfig={args.yAxisMaxConfig}
+                yAxisMaxLinear={args.yAxisMaxLinear}
+                yAxisMaxLogarithmic={args.yAxisMaxLogarithmic}
             />
         </LapisUrlContext.Provider>
     ),
