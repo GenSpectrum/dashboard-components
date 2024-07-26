@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.9](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.8...dashboard-components-v0.6.9) (2024-07-26)
+
+
+### Features
+
+* **components:** add NPM badge to README ([#402](https://github.com/GenSpectrum/dashboard-components/issues/402)) ([1ddc72b](https://github.com/GenSpectrum/dashboard-components/commit/1ddc72b1c3d19f836d24285d8724a61c70f302ae))
+
 ## [0.6.8](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.7...dashboard-components-v0.6.8) (2024-07-25)
 
 
