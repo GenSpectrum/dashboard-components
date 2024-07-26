@@ -15,7 +15,7 @@ commit messages should follow the Conventional Commits specification.
 * Release Please determines the commits that are relevant for the release by changed files.
   If you don't mean for a `feat` or `fix` commit to show up in the components change list,
   then you must not edit files in `components/` in the same commit.
-* 
+
 ### Testing The Generated Changelog
 
 To test the generated changelog, run
