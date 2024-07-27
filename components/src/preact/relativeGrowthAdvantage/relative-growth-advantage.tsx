@@ -10,6 +10,7 @@ import { type LapisFilter } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
+import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -156,6 +157,7 @@ const RelativeGrowthAdvantageToolbar: FunctionComponent<RelativeGrowthAdvantageT
         <>
             <ScalingSelector yAxisScaleType={yAxisScaleType} setYAxisScaleType={setYAxisScaleType} />
             <RelativeGrowthAdvantageInfo generationTime={generationTime} />
+            <Fullscreen />
         </>
     );
 };

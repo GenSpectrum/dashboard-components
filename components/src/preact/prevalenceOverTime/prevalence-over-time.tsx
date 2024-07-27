@@ -13,6 +13,7 @@ import { ConfidenceIntervalSelector } from '../components/confidence-interval-se
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
+import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -230,6 +231,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
             />
 
             <PrevalenceOverTimeInfo />
+            <Fullscreen />
         </>
     );
 };
