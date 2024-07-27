@@ -18,6 +18,7 @@ import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '..
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
+import { Fullscreen } from '../components/fullscreen';
 import Info from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
@@ -208,6 +209,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 />
             )}
             <Info>Info for mutations</Info>
+            <Fullscreen />
         </>
     );
 };

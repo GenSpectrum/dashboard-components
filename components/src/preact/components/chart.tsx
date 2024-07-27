@@ -1,5 +1,5 @@
 import { Chart, type ChartConfiguration } from 'chart.js';
-import { useEffect, useRef } from 'preact/hooks';
+import { type MutableRef, useEffect, useRef } from 'preact/hooks';
 
 export interface GsChartProps {
     configuration: ChartConfiguration;
@@ -21,6 +21,8 @@ const GsChart = ({ configuration }: GsChartProps) => {
 
         chartRef.current = new Chart(ctx, configuration);
 
+        resizeChartAfterFullscreenChange(chartRef, ctx, configuration);
+
         return () => {
             chartRef.current?.destroy();
         };
@@ -30,3 +32,14 @@ const GsChart = ({ configuration }: GsChartProps) => {
 };
 
 export default GsChart;
+
+const resizeChartAfterFullscreenChange = (
+    chartRef: MutableRef<Chart | null>,
+    ctx: CanvasRenderingContext2D,
+    configuration: ChartConfiguration,
+) => {
+    document.addEventListener('fullscreenchange', () => {
+        chartRef.current?.destroy();
+        chartRef.current = new Chart(ctx, configuration);
+    });
+};

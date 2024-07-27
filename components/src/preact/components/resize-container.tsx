@@ -10,5 +10,9 @@ export interface ResizeContainerProps {
 }
 
 export const ResizeContainer: FunctionComponent<ResizeContainerProps> = ({ children, size }) => {
-    return <div style={size}>{children}</div>;
+    return (
+        <div style={size} className='bg-white'>
+            {children}
+        </div>
+    );
 };

@@ -12,7 +12,9 @@
         "@typescript-eslint/parser",
         "eslint-config-preact",
         "eslint-plugin-import",
-        "eslint-plugin-storybook"
+        "eslint-plugin-storybook",
+        "@iconify-json/mdi",
+        "@iconify-json/mdi-light"
     ],
     "ignore-patterns": [".eslintrc.json"]
 }
