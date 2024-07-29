@@ -13,12 +13,14 @@ export const ProportionSelectorDropdown: FunctionComponent<ProportionSelectorDro
     const label = `${(proportionInterval.min * 100).toFixed(1)}% - ${(proportionInterval.max * 100).toFixed(1)}%`;
 
     return (
-        <Dropdown buttonTitle={`Proportion ${label}`} placement={'bottom-start'}>
-            <ProportionSelector
-                proportionInterval={proportionInterval}
-                setMinProportion={setMinProportion}
-                setMaxProportion={setMaxProportion}
-            />
-        </Dropdown>
+        <div className='w-44'>
+            <Dropdown buttonTitle={`Proportion ${label}`} placement={'bottom-start'}>
+                <ProportionSelector
+                    proportionInterval={proportionInterval}
+                    setMinProportion={setMinProportion}
+                    setMaxProportion={setMaxProportion}
+                />
+            </Dropdown>
+        </div>
     );
 };

@@ -1,7 +1,7 @@
 import { querySubstitutionsOrDeletions } from '../../query/querySubstitutionsOrDeletions';
 import { type NamedLapisFilter, type SubstitutionOrDeletionEntry } from '../../types';
-import { type DisplayedSegment } from '../components/SegmentSelector';
 import { type DisplayedMutationType } from '../components/mutation-type-selector';
+import { type DisplayedSegment } from '../components/segment-selector';
 
 export type MutationData = {
     displayName: string;

@@ -6,8 +6,8 @@ import {
     type MutationEntry,
     type SubstitutionOrDeletionEntry,
 } from '../../types';
-import { type DisplayedSegment } from '../components/SegmentSelector';
 import { type DisplayedMutationType } from '../components/mutation-type-selector';
+import { type DisplayedSegment } from '../components/segment-selector';
 
 export async function queryMutationsData(
     lapisFilter: LapisFilter,

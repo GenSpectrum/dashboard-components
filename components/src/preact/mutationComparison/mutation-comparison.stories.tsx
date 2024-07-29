@@ -128,7 +128,7 @@ export const FilterForOnlyDeletions: StoryObj<MutationComparisonProps> = {
         await waitFor(() => expect(someSubstitution()).toBeVisible());
         await waitFor(() => expect(someDeletion()).toBeVisible());
 
-        canvas.getByRole('button', { name: /Types:/ }).click();
+        canvas.getByRole('button', { name: 'Subst., Del.' }).click();
         canvas.getByLabelText('Substitutions').click();
 
         await waitFor(() => expect(someSubstitution()).not.toBeInTheDocument());

@@ -13,39 +13,48 @@ export type DisplayedSegment = CheckboxItem & {
 export type SegmentSelectorProps = {
     displayedSegments: DisplayedSegment[];
     setDisplayedSegments: (items: DisplayedSegment[]) => void;
-    prefix?: string;
-};
-
-const getSegmentSelectorLabel = (displayedSegments: DisplayedSegment[], prefix: string) => {
-    const allSelectedSelected = displayedSegments
-        .filter((segment) => segment.checked)
-        .map((segment) => segment.segment);
-
-    if (allSelectedSelected.length === 0) {
-        return `${prefix}none`;
-    }
-    if (displayedSegments.length === allSelectedSelected.length) {
-        return `${prefix}all`;
-    }
-    return prefix + allSelectedSelected.join(', ');
 };
 
 export const SegmentSelector: FunctionComponent<SegmentSelectorProps> = ({
     displayedSegments,
     setDisplayedSegments,
-    prefix,
 }) => {
     if (displayedSegments.length <= 1) {
         return null;
     }
 
     return (
-        <CheckboxSelector
-            items={displayedSegments}
-            label={getSegmentSelectorLabel(displayedSegments, prefix || 'Segments: ')}
-            setItems={(items) => setDisplayedSegments(items)}
-        />
+        <div className='w-24'>
+            <CheckboxSelector
+                items={displayedSegments}
+                label={getSegmentSelectorLabel(displayedSegments)}
+                setItems={(items) => setDisplayedSegments(items)}
+            />
+        </div>
     );
+};
+
+const getSegmentSelectorLabel = (displayedSegments: DisplayedSegment[]) => {
+    const allSelectedSelected = displayedSegments
+        .filter((segment) => segment.checked)
+        .map((segment) => segment.segment);
+
+    if (allSelectedSelected.length === 0) {
+        return `No segments`;
+    }
+    if (displayedSegments.length === allSelectedSelected.length) {
+        return `All segments`;
+    }
+
+    const longestDisplayString = `All segments`;
+
+    const allSelectedSelectedString = allSelectedSelected.join(', ');
+
+    if (longestDisplayString.length >= allSelectedSelectedString.length) {
+        return allSelectedSelectedString;
+    }
+
+    return `${allSelectedSelected.length} ${allSelectedSelected.length === 1 ? 'segment' : 'segments'}`;
 };
 
 export function useDisplayedSegments(sequenceType: SequenceType) {
