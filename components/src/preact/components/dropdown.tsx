@@ -28,13 +28,13 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({ children, buttonTit
     };
 
     return (
-        <div>
-            <button type='button' className='btn btn-xs whitespace-nowrap' onClick={toggle} ref={referenceRef}>
+        <>
+            <button type='button' className='btn btn-xs whitespace-nowrap w-full' onClick={toggle} ref={referenceRef}>
                 {buttonTitle}
             </button>
             <div ref={floatingRef} className={`${dropdownClass} ${showContent ? '' : 'hidden'}`}>
                 {children}
             </div>
-        </div>
+        </>
     );
 };

@@ -18,7 +18,6 @@ import {
 } from '../../types';
 import { compareTemporal } from '../../utils/temporal';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/SegmentSelector';
 import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
 import { CsvDownloadButton } from '../components/csv-download-button';
@@ -32,6 +31,7 @@ import { NoDataDisplay } from '../components/no-data-display';
 import type { ProportionInterval } from '../components/proportion-selector';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
 import { ResizeContainer } from '../components/resize-container';
+import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/segment-selector';
 import Tabs from '../components/tabs';
 import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
 import { useQuery } from '../useQuery';

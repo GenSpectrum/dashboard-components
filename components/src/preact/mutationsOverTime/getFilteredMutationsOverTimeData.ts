@@ -1,8 +1,8 @@
 import { type Dataset } from '../../operator/Dataset';
 import { type MutationOverTimeDataGroupedByMutation } from '../../query/queryMutationsOverTime';
 import { type DeletionEntry, type SubstitutionEntry } from '../../types';
-import type { DisplayedSegment } from '../components/SegmentSelector';
 import type { DisplayedMutationType } from '../components/mutation-type-selector';
+import type { DisplayedSegment } from '../components/segment-selector';
 
 export function getFilteredMutationOverTimeData(
     data: MutationOverTimeDataGroupedByMutation,
