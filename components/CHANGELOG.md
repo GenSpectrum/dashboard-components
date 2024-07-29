@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.10](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.9...dashboard-components-v0.6.10) (2024-07-29)
+
+
+### Features
+
+* **components:** add button to show a component in fullscreen [#405](https://github.com/GenSpectrum/dashboard-components/issues/405) ([c5bc0cc](https://github.com/GenSpectrum/dashboard-components/commit/c5bc0cc59ca77273074a666d0e2eeb0dd589b502))
+
+
+### Bug Fixes
+
+* **components:** mutations over time: filter mutations rows by proportion according to overall proportion ([37775c0](https://github.com/GenSpectrum/dashboard-components/commit/37775c05e97a8182f4999f2198c4377fe5117818)), closes [#387](https://github.com/GenSpectrum/dashboard-components/issues/387)
+
 ## [0.6.9](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.8...dashboard-components-v0.6.9) (2024-07-26)
 
 
