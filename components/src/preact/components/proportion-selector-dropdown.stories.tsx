@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, fn, userEvent, within } from '@storybook/test';
+import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
 import { type FunctionComponent } from 'preact';
 import { useState } from 'preact/hooks';
 
@@ -59,7 +59,7 @@ export const ProportionSelectorStory: StoryObj<ProportionSelectorDropdownProps> 
             await userEvent.clear(minInput);
             await userEvent.type(minInput, '10');
 
-            await expect(button).toHaveTextContent('Proportion 10.0% - 100.0%');
+            await waitFor(() => expect(button).toHaveTextContent('Proportion 10.0% - 100.0%'));
             await expect(args.setMinProportion).toHaveBeenCalledWith(0.1);
         });
     },
