@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 
-export function useQuery<Data>(fetchDataCallback: () => Promise<Data>, dependencies: unknown[] = []) {
+export function useQuery<Data>(fetchDataCallback: () => Promise<Data>, dependencies: unknown[]) {
     const [data, setData] = useState<Data | null>(null);
     const [error, setError] = useState<Error | null>(null);
     const [isLoading, setIsLoading] = useState(true);
