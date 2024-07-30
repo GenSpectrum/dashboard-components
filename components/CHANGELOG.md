@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.11](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.10...dashboard-components-v0.6.11) (2024-07-30)
+
+
+### Features
+
+* **components:** add info texts for four components ([2ecd695](https://github.com/GenSpectrum/dashboard-components/commit/2ecd695a51bbca82a890781dd3cef666dca72294)), closes [#415](https://github.com/GenSpectrum/dashboard-components/issues/415) [#416](https://github.com/GenSpectrum/dashboard-components/issues/416) [#417](https://github.com/GenSpectrum/dashboard-components/issues/417) [#418](https://github.com/GenSpectrum/dashboard-components/issues/418)
+* **components:** prevalence over time: add code example and link to codepen to info box [#404](https://github.com/GenSpectrum/dashboard-components/issues/404) ([3b22850](https://github.com/GenSpectrum/dashboard-components/commit/3b228501d62176ac131a7a3975d94e69011bf82d))
+
 ## [0.6.10](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.9...dashboard-components-v0.6.10) (2024-07-29)
 
 
