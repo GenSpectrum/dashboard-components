@@ -1,6 +1,7 @@
 import { type Dataset } from '../../operator/Dataset';
 import { type MutationOverTimeDataGroupedByMutation } from '../../query/queryMutationsOverTime';
 import { type DeletionEntry, type SubstitutionEntry } from '../../types';
+import { Map2dView } from '../../utils/map2d';
 import type { DisplayedMutationType } from '../components/mutation-type-selector';
 import type { DisplayedSegment } from '../components/segment-selector';
 
@@ -11,7 +12,7 @@ export function getFilteredMutationOverTimeData(
     displayedMutationTypes: DisplayedMutationType[],
     proportionInterval: { min: number; max: number },
 ) {
-    const filteredData = data.copy();
+    const filteredData = new Map2dView(data);
     filterDisplayedSegments(displayedSegments, filteredData);
     filterMutationTypes(displayedMutationTypes, filteredData);
     filterProportion(filteredData, overallMutationData, proportionInterval);

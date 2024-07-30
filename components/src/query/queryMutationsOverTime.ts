@@ -12,7 +12,7 @@ import {
     type SubstitutionOrDeletionEntry,
     type TemporalGranularity,
 } from '../types';
-import { Map2d } from '../utils/Map2d';
+import { Map2dBase, type Map2d } from '../utils/map2d';
 import { type Deletion, type Substitution } from '../utils/mutations';
 import {
     dateRangeCompare,
@@ -154,7 +154,7 @@ function fetchAndPrepareSubstitutionsOrDeletions(filter: LapisFilter, sequenceTy
 }
 
 export function groupByMutation(data: MutationOverTimeData[]) {
-    const dataArray = new Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>(
+    const dataArray = new Map2dBase<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>(
         (mutation) => mutation.code,
         (date) => date.toString(),
     );
@@ -174,7 +174,7 @@ export function groupByMutation(data: MutationOverTimeData[]) {
 }
 
 function addZeroValuesForDatesWithNoMutationData(
-    dataArray: Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>,
+    dataArray: Map2dBase<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>,
     data: MutationOverTimeData[],
 ) {
     if (dataArray.getFirstAxisKeys().length !== 0) {

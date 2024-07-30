@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { filterDisplayedSegments, filterMutationTypes, filterProportion } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
-import { Map2d } from '../../utils/Map2d';
+import { Map2dBase } from '../../utils/map2d';
 import { Deletion, Substitution } from '../../utils/mutations';
 import { type Temporal } from '../../utils/temporal';
 import { yearMonthDay } from '../../utils/temporalTestHelpers';
@@ -10,7 +10,7 @@ import { yearMonthDay } from '../../utils/temporalTestHelpers';
 describe('getFilteredMutationOverTimeData', () => {
     describe('filterDisplayedSegments', () => {
         it('should filter by displayed segments', () => {
-            const data = new Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>();
+            const data = new Map2dBase<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>();
 
             data.set(new Substitution('someSegment', 'A', 'T', 123), yearMonthDay('2021-01-01'), {
                 count: 1,
@@ -36,7 +36,7 @@ describe('getFilteredMutationOverTimeData', () => {
 
     describe('filterMutationTypes', () => {
         it('should filter by mutation types', () => {
-            const data = new Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>();
+            const data = new Map2dBase<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>();
 
             data.set(new Substitution('someSegment', 'A', 'T', 123), yearMonthDay('2021-01-01'), {
                 count: 1,
@@ -120,7 +120,7 @@ describe('getFilteredMutationOverTimeData', () => {
         });
 
         function getMutationOverTimeData() {
-            const data = new Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>();
+            const data = new Map2dBase<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>();
             data.set(someSubstitution, yearMonthDay('2021-01-01'), { count: 1, proportion: 0.1 });
             data.set(someSubstitution, yearMonthDay('2021-02-02'), { count: 99, proportion: 0.99 });
             return data;
