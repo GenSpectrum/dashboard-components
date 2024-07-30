@@ -62,8 +62,9 @@ const NumberSequencesOverTimeInner = ({
 }: NumberSequencesOverTimeInnerProps) => {
     const lapis = useContext(LapisUrlContext);
 
-    const { data, error, isLoading } = useQuery(() =>
-        queryNumberOfSequencesOverTime(lapis, lapisFilter, lapisDateField, granularity, smoothingWindow),
+    const { data, error, isLoading } = useQuery(
+        () => queryNumberOfSequencesOverTime(lapis, lapisFilter, lapisDateField, granularity, smoothingWindow),
+        [lapis, lapisFilter, lapisDateField, granularity, smoothingWindow],
     );
 
     if (isLoading) {
