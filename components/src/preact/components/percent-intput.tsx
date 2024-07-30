@@ -21,6 +21,10 @@ export const PercentInput: FunctionComponent<PercentInputProps> = ({ percentage,
         const input = event.target as HTMLInputElement;
         const value = Number(input.value);
 
+        if (value === internalPercentage || input.value === '') {
+            return;
+        }
+
         const inRange = percentageInRange(value);
 
         if (inRange) {
