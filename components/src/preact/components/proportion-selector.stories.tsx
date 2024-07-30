@@ -54,27 +54,27 @@ export const ProportionSelectorStory: StoryObj<ProportionSelectorProps> = {
             const minInput = canvas.getAllByLabelText('%')[0];
             await userEvent.clear(minInput);
             await userEvent.type(minInput, '10');
-            await expect(args.setMinProportion).toHaveBeenCalledWith(0.1);
+            await waitFor(() => expect(args.setMinProportion).toHaveBeenCalledWith(0.1));
         });
 
         await step('Change max proportion to 50%', async () => {
             const maxInput = canvas.getAllByLabelText('%')[1];
             await userEvent.clear(maxInput);
             await userEvent.type(maxInput, '50');
-            await expect(args.setMaxProportion).toHaveBeenCalledWith(0.5);
+            await waitFor(() => expect(args.setMaxProportion).toHaveBeenCalledWith(0.5));
         });
 
         await step('Move min proportion silder to 20%', async () => {
             const minSlider = canvas.getAllByRole('slider')[0];
             await fireEvent.input(minSlider, { target: { value: '20' } });
-            await expect(args.setMinProportion).toHaveBeenCalledWith(0.2);
+            await waitFor(() => expect(args.setMinProportion).toHaveBeenCalledWith(0.2));
             await waitFor(() => expect(canvas.getAllByLabelText('%')[0]).toHaveValue(20));
         });
 
         await step('Move max proportion silder to 80%', async () => {
             const maxSlider = canvas.getAllByRole('slider')[1];
             await fireEvent.input(maxSlider, { target: { value: '80' } });
-            await expect(args.setMaxProportion).toHaveBeenCalledWith(0.8);
+            await waitFor(() => expect(args.setMaxProportion).toHaveBeenCalledWith(0.8));
             await waitFor(() => expect(canvas.getAllByLabelText('%')[1]).toHaveValue(80));
         });
     },

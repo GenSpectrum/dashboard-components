@@ -1,4 +1,5 @@
 import { type FunctionComponent } from 'preact';
+import { useEffect, useRef, useState } from 'preact/hooks';
 
 import { MinMaxRangeSlider } from './min-max-range-slider';
 import { PercentInput } from './percent-intput';
@@ -11,31 +12,64 @@ export interface ProportionSelectorProps {
     setMaxProportion: (maxProportion: number) => void;
 }
 
+function useUpdateExternalValueInIntervals(
+    setExternalValue: (minProportion: number) => void,
+    updateIntervalInMs: number,
+    internalValue: number,
+) {
+    const hasMounted = useRef(false);
+
+    useEffect(() => {
+        if (!hasMounted.current) {
+            hasMounted.current = true;
+            return;
+        }
+
+        const minTimeout = setTimeout(() => {
+            setExternalValue(internalValue);
+        }, updateIntervalInMs);
+
+        return () => clearTimeout(minTimeout);
+        // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this effect when the internal value changes
+    }, [internalValue]);
+}
+
 export const ProportionSelector: FunctionComponent<ProportionSelectorProps> = ({
     proportionInterval,
     setMinProportion,
     setMaxProportion,
 }) => {
+    const updateIntervalInMs = 300;
     const { min: minProportion, max: maxProportion } = proportionInterval;
+
+    const [internalMinProportion, setInternalMinProportion] = useState(minProportion);
+    const [internalMaxProportion, setInternalMaxProportion] = useState(maxProportion);
+
+    useUpdateExternalValueInIntervals(setMinProportion, updateIntervalInMs, internalMinProportion);
+    const updateMinPercentage = (minPercentage: number) => {
+        const newMinProportion = minPercentage / 100;
+        setInternalMinProportion(newMinProportion);
+    };
+
+    useUpdateExternalValueInIntervals(setMaxProportion, updateIntervalInMs, internalMaxProportion);
+    const updateMaxPercentage = (maxPercentage: number) => {
+        const newMaxProportion = maxPercentage / 100;
+        setInternalMaxProportion(newMaxProportion);
+    };
+
     return (
         <div class='flex flex-col w-64 mb-2'>
             <div class='flex items-center '>
-                <PercentInput
-                    percentage={minProportion * 100}
-                    setPercentage={(percentage) => setMinProportion(percentage / 100)}
-                />
+                <PercentInput percentage={internalMinProportion * 100} setPercentage={updateMinPercentage} />
                 <div class='m-2'>-</div>
-                <PercentInput
-                    percentage={maxProportion * 100}
-                    setPercentage={(percentage) => setMaxProportion(percentage / 100)}
-                />
+                <PercentInput percentage={internalMaxProportion * 100} setPercentage={updateMaxPercentage} />
             </div>
             <div class='my-1'>
                 <MinMaxRangeSlider
-                    min={minProportion * 100}
-                    max={maxProportion * 100}
-                    setMin={(percentage) => setMinProportion(percentage / 100)}
-                    setMax={(percentage) => setMaxProportion(percentage / 100)}
+                    min={internalMinProportion * 100}
+                    max={internalMaxProportion * 100}
+                    setMin={updateMinPercentage}
+                    setMax={updateMaxPercentage}
                 />
             </div>
         </div>

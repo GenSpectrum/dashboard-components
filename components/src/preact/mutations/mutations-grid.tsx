@@ -1,5 +1,6 @@
 import { type Row } from 'gridjs';
 import { type FunctionComponent } from 'preact';
+import { useMemo } from 'preact/hooks';
 
 import { getMutationsGridData } from './getMutationsGridData';
 import { type SequenceType, type SubstitutionOrDeletionEntry } from '../../types';
@@ -84,7 +85,10 @@ export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({
         return {};
     };
 
-    const tableData = getMutationsGridData(data, sequenceType, proportionInterval).map((row) => Object.values(row));
+    const tableData = useMemo(
+        () => getMutationsGridData(data, sequenceType, proportionInterval).map((row) => Object.values(row)),
+        [data, proportionInterval, sequenceType],
+    );
 
     return <Table data={tableData} columns={getHeaders()} pageSize={pageSize} />;
 };
