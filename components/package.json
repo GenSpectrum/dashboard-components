@@ -90,7 +90,7 @@
         "@storybook/types": "^8.0.9",
         "@storybook/web-components": "^8.0.9",
         "@storybook/web-components-vite": "^8.0.9",
-        "@types/node": "^20.12.7",
+        "@types/node": "^22.0.0",
         "@types/object-hash": "^3.0.6",
         "@typescript-eslint/eslint-plugin": "^7.14.1",
         "@typescript-eslint/parser": "^7.14.1",
