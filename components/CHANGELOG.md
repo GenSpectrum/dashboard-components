@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.6.12](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.11...dashboard-components-v0.6.12) (2024-07-31)
+
+
+### Features
+
+* **components:** add delay for proportion filter [#421](https://github.com/GenSpectrum/dashboard-components/issues/421) ([aac7100](https://github.com/GenSpectrum/dashboard-components/commit/aac710018424e2f376fa9fbfc0d32d618e31fa71))
+* **components:** add select all/none button to dropdown selector [#361](https://github.com/GenSpectrum/dashboard-components/issues/361) ([fdce127](https://github.com/GenSpectrum/dashboard-components/commit/fdce127d931e1bbce13901a5199a01804ed14f85))
+* **components:** set toolbar components to a fixed width [#389](https://github.com/GenSpectrum/dashboard-components/issues/389) ([c7b1b3b](https://github.com/GenSpectrum/dashboard-components/commit/c7b1b3b661257a5e8ce24de532d9707d03ad0507))
+
+
+### Bug Fixes
+
+* **components:** proportion selector no longer removes dot on input ([8a0b814](https://github.com/GenSpectrum/dashboard-components/commit/8a0b81468cbbe208db1315e545ababc432b823c5))
+* **components:** rerender number of sequences over time when input changes [#395](https://github.com/GenSpectrum/dashboard-components/issues/395) ([1286031](https://github.com/GenSpectrum/dashboard-components/commit/128603123dbc6d1a357fc3876b72be22a082a30f))
+
+
+### Performance Improvements
+
+* **components:** speed up mutations over time proportion filter  [#388](https://github.com/GenSpectrum/dashboard-components/issues/388) ([f23e510](https://github.com/GenSpectrum/dashboard-components/commit/f23e510b569a5a98f4d68c079d44961dedd15c09))
+
 ## [0.6.11](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.10...dashboard-components-v0.6.11) (2024-07-30)
 
 
