@@ -16,18 +16,19 @@
             "require": "./dist/dashboard-components.js",
             "types": "./dist/genspectrum-components.d.ts"
         },
-        "./custom-elements.json": "./custom-,elements.json",
+        "./custom-elements.json": "./custom-elements.json",
         "./package.json": "./package.json",
         "./style.css": "./dist/style.css"
     },
     "files": [
         "dist",
+        "standalone-bundle",
         "src",
         "custom-elements.json",
         "package.json"
     ],
     "scripts": {
-        "build": "vite --config vite.release.config.ts build && npm run generate-manifest",
+        "build": "vite --config vite.release.config.ts build && npm run generate-manifest && vite --config vite.release-standalone.config.ts build",
         "build-and-pack": "npm run build && npm pack | xargs -I {} cp {} genspectrum-dashboard-components.tgz",
         "test": "vitest",
         "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
