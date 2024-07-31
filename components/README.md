@@ -19,6 +19,35 @@ To install the package, run:
 npm i @genspectrum/dashboard-components
 ```
 
+Usage with a bundler in HTML:
+
+```html
+<body>
+    <script>
+        import '@genspectrum/dashboard-components';
+        import '@genspectrum/dashboard-components/style.css';
+    </script>
+    <gs-app lapis="https://your.lapis.url"></gs-app>
+</body>
+```
+
+We also provide a standalone version of the components that can be used without installing the dependencies:
+
+```html
+<html>
+    <head>
+        <script
+            type="module"
+            src="https://unpkg.com/@genspectrum/dashboard-components@latest/standalone-bundle/dashboard-components.js"
+        ></script>
+        <link rel="stylesheet" href="https://unpkg.com/@genspectrum/dashboard-components@latest/dist/style.css" />
+    </head>
+    <body>
+        <gs-app lapis="https://your.lapis.url"></gs-app>
+    </body>
+</html>
+```
+
 ### Core Concepts
 
 Internally, the components use [Preact](https://preactjs.com/).
