@@ -10,9 +10,27 @@ import {
     LAPIS_URL,
     NUCLEOTIDE_MUTATIONS_ENDPOINT,
 } from '../../constants';
+import aggregated_01 from '../../preact/mutationsOverTime/__mockData__/aggregated_2024_01.json';
+import aggregated_02 from '../../preact/mutationsOverTime/__mockData__/aggregated_2024_02.json';
+import aggregated_03 from '../../preact/mutationsOverTime/__mockData__/aggregated_2024_03.json';
+import aggregated_04 from '../../preact/mutationsOverTime/__mockData__/aggregated_2024_04.json';
+import aggregated_05 from '../../preact/mutationsOverTime/__mockData__/aggregated_2024_05.json';
+import aggregated_06 from '../../preact/mutationsOverTime/__mockData__/aggregated_2024_06.json';
+import aggregated_07 from '../../preact/mutationsOverTime/__mockData__/aggregated_2024_07.json';
+import aggregated_20_01_2024 from '../../preact/mutationsOverTime/__mockData__/aggregated_20_01_2024.json';
+import aggregated_21_01_2024 from '../../preact/mutationsOverTime/__mockData__/aggregated_21_01_2024.json';
+import aggregated_22_01_2024 from '../../preact/mutationsOverTime/__mockData__/aggregated_22_01_2024.json';
+import aggregated_23_01_2024 from '../../preact/mutationsOverTime/__mockData__/aggregated_23_01_2024.json';
+import aggregated_24_01_2024 from '../../preact/mutationsOverTime/__mockData__/aggregated_24_01_2024.json';
+import aggregated_25_01_2024 from '../../preact/mutationsOverTime/__mockData__/aggregated_25_01_2024.json';
+import aggregated_26_01_2024 from '../../preact/mutationsOverTime/__mockData__/aggregated_26_01_2024.json';
 import aggregated_byDay from '../../preact/mutationsOverTime/__mockData__/aggregated_byDay.json';
 import aggregated_byWeek from '../../preact/mutationsOverTime/__mockData__/aggregated_byWeek.json';
 import aggregated_date from '../../preact/mutationsOverTime/__mockData__/aggregated_date.json';
+import aggregated_week3 from '../../preact/mutationsOverTime/__mockData__/aggregated_week3_2024.json';
+import aggregated_week4 from '../../preact/mutationsOverTime/__mockData__/aggregated_week4_2024.json';
+import aggregated_week5 from '../../preact/mutationsOverTime/__mockData__/aggregated_week5_2024.json';
+import aggregated_week6 from '../../preact/mutationsOverTime/__mockData__/aggregated_week6_2024.json';
 import aminoAcidMutations_20_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_20_01_2024.json';
 import aminoAcidMutations_21_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_21_01_2024.json';
 import aminoAcidMutations_22_01_2024 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutations_22_01_2024.json';
@@ -124,6 +142,118 @@ export const ByMonth: StoryObj<Required<MutationsOverTimeProps>> = {
                     response: {
                         status: 200,
                         body: aggregated_date,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_01',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-01-01',
+                            dateTo: '2024-01-31',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_01,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_02',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-02-01',
+                            dateTo: '2024-02-29',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_02,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_03',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-03-01',
+                            dateTo: '2024-03-31',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_03,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_04',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-04-01',
+                            dateTo: '2024-04-30',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_04,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_05',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-05-01',
+                            dateTo: '2024-05-31',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_05,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_06',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-06-01',
+                            dateTo: '2024-06-30',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_06,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_07',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-07-01',
+                            dateTo: '2024-07-31',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_07,
                     },
                 },
                 {
@@ -288,6 +418,70 @@ export const ByWeek: StoryObj<Required<MutationsOverTimeProps>> = {
                 },
                 {
                     matcher: {
+                        name: 'aggregated_week3',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-01-15',
+                            dateTo: '2024-01-21',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_week3,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_week4',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-01-22',
+                            dateTo: '2024-01-28',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_week4,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_week5',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-01-29',
+                            dateTo: '2024-02-04',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_week5,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_week6',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-02-05',
+                            dateTo: '2024-02-11',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_week6,
+                    },
+                },
+                {
+                    matcher: {
                         name: 'nucleotideMutation_overall',
                         url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
                         body: {
@@ -391,6 +585,83 @@ export const AminoAcidMutationsByDay: StoryObj<Required<MutationsOverTimeProps>>
                     response: {
                         status: 200,
                         body: aggregated_byDay,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_20_01_2024',
+                        url: AGGREGATED_ENDPOINT,
+                        body: { pangoLineage: 'JN.1*', dateFrom: '2024-01-20', dateTo: '2024-01-20', fields: [] },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_20_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_21_01_2024',
+                        url: AGGREGATED_ENDPOINT,
+                        body: { pangoLineage: 'JN.1*', dateFrom: '2024-01-21', dateTo: '2024-01-21', fields: [] },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_21_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_22_01_2024',
+                        url: AGGREGATED_ENDPOINT,
+                        body: { pangoLineage: 'JN.1*', dateFrom: '2024-01-22', dateTo: '2024-01-22', fields: [] },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_22_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_23_01_2024',
+                        url: AGGREGATED_ENDPOINT,
+                        body: { pangoLineage: 'JN.1*', dateFrom: '2024-01-23', dateTo: '2024-01-23', fields: [] },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_23_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_24_01_2024',
+                        url: AGGREGATED_ENDPOINT,
+                        body: { pangoLineage: 'JN.1*', dateFrom: '2024-01-24', dateTo: '2024-01-24', fields: [] },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_24_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_25_01_2024',
+                        url: AGGREGATED_ENDPOINT,
+                        body: { pangoLineage: 'JN.1*', dateFrom: '2024-01-25', dateTo: '2024-01-25', fields: [] },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_25_01_2024,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_26_01_2024',
+                        url: AGGREGATED_ENDPOINT,
+                        body: { pangoLineage: 'JN.1*', dateFrom: '2024-01-26', dateTo: '2024-01-26', fields: [] },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_26_01_2024,
                     },
                 },
                 {
