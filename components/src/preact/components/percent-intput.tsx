@@ -4,13 +4,18 @@ import { useEffect, useState } from 'preact/hooks';
 export type PercentInputProps = {
     percentage: number;
     setPercentage: (percentage: number) => void;
+    indicateError?: boolean;
 };
 
 const percentageInRange = (percentage: number) => {
     return percentage <= 100 && percentage >= 0;
 };
 
-export const PercentInput: FunctionComponent<PercentInputProps> = ({ percentage, setPercentage }) => {
+export const PercentInput: FunctionComponent<PercentInputProps> = ({
+    percentage,
+    setPercentage,
+    indicateError = false,
+}) => {
     const [internalPercentage, setInternalPercentage] = useState(percentage);
 
     useEffect(() => {
@@ -33,7 +38,7 @@ export const PercentInput: FunctionComponent<PercentInputProps> = ({ percentage,
         setInternalPercentage(value);
     };
 
-    const isError = !percentageInRange(internalPercentage);
+    const isError = indicateError || !percentageInRange(internalPercentage);
     return (
         <label className={`input input-bordered flex items-center gap-2 w-32 ${isError ? 'input-error' : ''}`}>
             <input
