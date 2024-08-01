@@ -8,15 +8,44 @@ describe('queryMutationsOverTime', () => {
         const lapisFilter = { field1: 'value1', field2: 'value2' };
         const dateField = 'dateField';
 
-        lapisRequestMocks.aggregated(
-            { ...lapisFilter, fields: [dateField] },
+        lapisRequestMocks.multipleAggregated([
             {
-                data: [
-                    { count: 1, [dateField]: '2023-01-01' },
-                    { count: 2, [dateField]: '2023-01-03' },
-                ],
+                body: { ...lapisFilter, fields: [dateField] },
+                response: {
+                    data: [
+                        { count: 1, [dateField]: '2023-01-01' },
+                        { count: 2, [dateField]: '2023-01-03' },
+                    ],
+                },
             },
-        );
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-01',
+                    dateFieldTo: '2023-01-01',
+                    fields: [],
+                },
+                response: { data: [{ count: 11 }] },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-02',
+                    dateFieldTo: '2023-01-02',
+                    fields: [],
+                },
+                response: { data: [{ count: 12 }] },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-03',
+                    dateFieldTo: '2023-01-03',
+                    fields: [],
+                },
+                response: { data: [{ count: 13 }] },
+            },
+        ]);
 
         lapisRequestMocks.multipleMutations(
             [
@@ -53,16 +82,16 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([
+        expect(result.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([
             [
-                { proportion: 0.1, count: 1 },
-                { proportion: 0.2, count: 2 },
-                { proportion: 0.3, count: 3 },
+                { proportion: 0.1, count: 1, totalCount: 11 },
+                { proportion: 0.2, count: 2, totalCount: 12 },
+                { proportion: 0.3, count: 3, totalCount: 13 },
             ],
             [
-                { proportion: 0.4, count: 4 },
-                { proportion: 0, count: 0 },
-                { proportion: 0, count: 0 },
+                { proportion: 0.4, count: 4, totalCount: 11 },
+                { proportion: 0, count: 0, totalCount: 0 },
+                { proportion: 0, count: 0, totalCount: 0 },
             ],
         ]);
 
@@ -80,15 +109,44 @@ describe('queryMutationsOverTime', () => {
         const lapisFilter = { field1: 'value1', field2: 'value2' };
         const dateField = 'dateField';
 
-        lapisRequestMocks.aggregated(
-            { ...lapisFilter, fields: [dateField] },
+        lapisRequestMocks.multipleAggregated([
             {
-                data: [
-                    { count: 1, [dateField]: '2023-01-01' },
-                    { count: 2, [dateField]: '2023-01-03' },
-                ],
+                body: { ...lapisFilter, fields: [dateField] },
+                response: {
+                    data: [
+                        { count: 1, [dateField]: '2023-01-01' },
+                        { count: 2, [dateField]: '2023-01-03' },
+                    ],
+                },
             },
-        );
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-01',
+                    dateFieldTo: '2023-01-01',
+                    fields: [],
+                },
+                response: { data: [{ count: 11 }] },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-02',
+                    dateFieldTo: '2023-01-02',
+                    fields: [],
+                },
+                response: { data: [{ count: 12 }] },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-03',
+                    dateFieldTo: '2023-01-03',
+                    fields: [],
+                },
+                response: { data: [{ count: 13 }] },
+            },
+        ]);
 
         lapisRequestMocks.multipleMutations(
             [
@@ -125,16 +183,16 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([
+        expect(result.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([
             [
-                { proportion: 0.1, count: 1 },
-                { proportion: 0.3, count: 3 },
-                { proportion: 0, count: 0 },
+                { proportion: 0.1, count: 1, totalCount: 11 },
+                { proportion: 0.3, count: 3, totalCount: 13 },
+                { proportion: 0, count: 0, totalCount: 0 },
             ],
             [
-                { proportion: 0.4, count: 4 },
-                { proportion: 0, count: 0 },
-                { proportion: 0, count: 0 },
+                { proportion: 0.4, count: 4, totalCount: 11 },
+                { proportion: 0, count: 0, totalCount: 0 },
+                { proportion: 0, count: 0, totalCount: 0 },
             ],
         ]);
 
@@ -152,15 +210,44 @@ describe('queryMutationsOverTime', () => {
         const lapisFilter = { field1: 'value1', field2: 'value2' };
         const dateField = 'dateField';
 
-        lapisRequestMocks.aggregated(
-            { ...lapisFilter, fields: [dateField] },
+        lapisRequestMocks.multipleAggregated([
             {
-                data: [
-                    { count: 1, [dateField]: '2023-01-01' },
-                    { count: 2, [dateField]: '2023-01-03' },
-                ],
+                body: { ...lapisFilter, fields: [dateField] },
+                response: {
+                    data: [
+                        { count: 1, [dateField]: '2023-01-01' },
+                        { count: 2, [dateField]: '2023-01-03' },
+                    ],
+                },
             },
-        );
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-01',
+                    dateFieldTo: '2023-01-01',
+                    fields: [],
+                },
+                response: { data: [{ count: 11 }] },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-02',
+                    dateFieldTo: '2023-01-02',
+                    fields: [],
+                },
+                response: { data: [{ count: 12 }] },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-03',
+                    dateFieldTo: '2023-01-03',
+                    fields: [],
+                },
+                response: { data: [{ count: 13 }] },
+            },
+        ]);
 
         lapisRequestMocks.multipleMutations(
             [
@@ -197,7 +284,7 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([]);
+        expect(result.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([]);
         expect(result.getFirstAxisKeys()).to.deep.equal([]);
         expect(result.getSecondAxisKeys()).to.deep.equal([]);
     });
@@ -206,15 +293,35 @@ describe('queryMutationsOverTime', () => {
         const dateField = 'dateField';
         const lapisFilter = { field1: 'value1', field2: 'value2', [`${dateField}From`]: '2023-01-02' };
 
-        lapisRequestMocks.aggregated(
-            { ...lapisFilter, fields: [dateField] },
+        lapisRequestMocks.multipleAggregated([
             {
-                data: [
-                    { count: 1, [dateField]: '2023-01-01' },
-                    { count: 2, [dateField]: '2023-01-03' },
-                ],
+                body: { ...lapisFilter, fields: [dateField] },
+                response: {
+                    data: [
+                        { count: 1, [dateField]: '2023-01-01' },
+                        { count: 2, [dateField]: '2023-01-03' },
+                    ],
+                },
             },
-        );
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-02',
+                    dateFieldTo: '2023-01-02',
+                    fields: [],
+                },
+                response: { data: [{ count: 11 }] },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-03',
+                    dateFieldTo: '2023-01-03',
+                    fields: [],
+                },
+                response: { data: [{ count: 12 }] },
+            },
+        ]);
 
         lapisRequestMocks.multipleMutations(
             [
@@ -242,10 +349,10 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([
+        expect(result.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([
             [
-                { proportion: 0.2, count: 2 },
-                { proportion: 0.3, count: 3 },
+                { proportion: 0.2, count: 2, totalCount: 11 },
+                { proportion: 0.3, count: 3, totalCount: 12 },
             ],
         ]);
 
@@ -261,15 +368,35 @@ describe('queryMutationsOverTime', () => {
         const dateField = 'dateField';
         const lapisFilter = { field1: 'value1', field2: 'value2', [`${dateField}To`]: '2023-01-02' };
 
-        lapisRequestMocks.aggregated(
-            { ...lapisFilter, fields: [dateField] },
+        lapisRequestMocks.multipleAggregated([
             {
-                data: [
-                    { count: 1, [dateField]: '2023-01-01' },
-                    { count: 2, [dateField]: '2023-01-03' },
-                ],
+                body: { ...lapisFilter, fields: [dateField] },
+                response: {
+                    data: [
+                        { count: 1, [dateField]: '2023-01-01' },
+                        { count: 2, [dateField]: '2023-01-03' },
+                    ],
+                },
             },
-        );
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-01',
+                    dateFieldTo: '2023-01-01',
+                    fields: [],
+                },
+                response: { data: [{ count: 11 }] },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-02',
+                    dateFieldTo: '2023-01-02',
+                    fields: [],
+                },
+                response: { data: [{ count: 12 }] },
+            },
+        ]);
 
         lapisRequestMocks.multipleMutations(
             [
@@ -297,10 +424,10 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([
+        expect(result.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([
             [
-                { proportion: 0.1, count: 1 },
-                { proportion: 0.2, count: 2 },
+                { proportion: 0.1, count: 1, totalCount: 11 },
+                { proportion: 0.2, count: 2, totalCount: 12 },
             ],
         ]);
 
@@ -316,15 +443,26 @@ describe('queryMutationsOverTime', () => {
         const dateField = 'dateField';
         const lapisFilter = { field1: 'value1', field2: 'value2', [dateField]: '2023-01-02' };
 
-        lapisRequestMocks.aggregated(
-            { ...lapisFilter, fields: [dateField] },
+        lapisRequestMocks.multipleAggregated([
             {
-                data: [
-                    { count: 1, [dateField]: '2023-01-01' },
-                    { count: 2, [dateField]: '2023-01-03' },
-                ],
+                body: { ...lapisFilter, fields: [dateField] },
+                response: {
+                    data: [
+                        { count: 1, [dateField]: '2023-01-01' },
+                        { count: 2, [dateField]: '2023-01-03' },
+                    ],
+                },
             },
-        );
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-02',
+                    dateFieldTo: '2023-01-02',
+                    fields: [],
+                },
+                response: { data: [{ count: 11 }] },
+            },
+        ]);
 
         lapisRequestMocks.multipleMutations(
             [
@@ -343,7 +481,15 @@ describe('queryMutationsOverTime', () => {
 
         const result = await queryMutationsOverTimeData(lapisFilter, 'nucleotide', DUMMY_LAPIS_URL, dateField, 'day');
 
-        expect(result.getAsArray({ count: 0, proportion: 0 })).to.deep.equal([[{ proportion: 0.2, count: 2 }]]);
+        expect(result.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([
+            [
+                {
+                    proportion: 0.2,
+                    count: 2,
+                    totalCount: 11,
+                },
+            ],
+        ]);
 
         const sequences = result.getFirstAxisKeys();
         expect(sequences[0].code).toBe('sequenceName:A123T');

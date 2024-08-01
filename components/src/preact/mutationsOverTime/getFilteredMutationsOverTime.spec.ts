@@ -15,10 +15,12 @@ describe('getFilteredMutationOverTimeData', () => {
             data.set(new Substitution('someSegment', 'A', 'T', 123), yearMonthDay('2021-01-01'), {
                 count: 1,
                 proportion: 0.1,
+                totalCount: 10,
             });
             data.set(new Substitution('someOtherSegment', 'A', 'T', 123), yearMonthDay('2021-01-01'), {
                 count: 2,
                 proportion: 0.2,
+                totalCount: 10,
             });
 
             filterDisplayedSegments(
@@ -41,10 +43,12 @@ describe('getFilteredMutationOverTimeData', () => {
             data.set(new Substitution('someSegment', 'A', 'T', 123), yearMonthDay('2021-01-01'), {
                 count: 1,
                 proportion: 0.1,
+                totalCount: 10,
             });
             data.set(new Deletion('someOtherSegment', 'A', 123), yearMonthDay('2021-01-01'), {
                 count: 2,
                 proportion: 0.2,
+                totalCount: 10,
             });
 
             filterMutationTypes(
@@ -76,7 +80,13 @@ describe('getFilteredMutationOverTimeData', () => {
 
             filterProportion(data, getOverallMutationData(belowFilter), proportionInterval);
 
-            expect(data.getAsArray({ count: 0, proportion: 0 })).to.toHaveLength(0);
+            expect(
+                data.getAsArray({
+                    count: 0,
+                    proportion: 0,
+                    totalCount: 10,
+                }),
+            ).to.toHaveLength(0);
         });
 
         it('should remove mutations where overall proportion is above filter', () => {
@@ -84,7 +94,13 @@ describe('getFilteredMutationOverTimeData', () => {
 
             filterProportion(data, getOverallMutationData(aboveFilter), proportionInterval);
 
-            expect(data.getAsArray({ count: 0, proportion: 0 })).to.toHaveLength(0);
+            expect(
+                data.getAsArray({
+                    count: 0,
+                    proportion: 0,
+                    totalCount: 10,
+                }),
+            ).to.toHaveLength(0);
         });
 
         it('should remove mutations where overall proportion is missing', () => {
@@ -92,7 +108,13 @@ describe('getFilteredMutationOverTimeData', () => {
 
             filterProportion(data, getOverallMutationData(aboveFilter, someOtherMutation), proportionInterval);
 
-            expect(data.getAsArray({ count: 0, proportion: 0 })).to.toHaveLength(0);
+            expect(
+                data.getAsArray({
+                    count: 0,
+                    proportion: 0,
+                    totalCount: 10,
+                }),
+            ).to.toHaveLength(0);
         });
 
         it('should not remove mutation where overall proportion is at lower border of filter', () => {
@@ -100,7 +122,13 @@ describe('getFilteredMutationOverTimeData', () => {
 
             filterProportion(data, getOverallMutationData(inFilter), proportionInterval);
 
-            expect(data.getRow(someSubstitution, { count: 0, proportion: 0 })).to.toHaveLength(2);
+            expect(
+                data.getRow(someSubstitution, {
+                    count: 0,
+                    proportion: 0,
+                    totalCount: 10,
+                }),
+            ).to.toHaveLength(2);
         });
 
         it('should not remove mutation where overall proportion is within filter', () => {
@@ -108,7 +136,13 @@ describe('getFilteredMutationOverTimeData', () => {
 
             filterProportion(data, getOverallMutationData(inFilter), proportionInterval);
 
-            expect(data.getRow(someSubstitution, { count: 0, proportion: 0 })).to.toHaveLength(2);
+            expect(
+                data.getRow(someSubstitution, {
+                    count: 0,
+                    proportion: 0,
+                    totalCount: 10,
+                }),
+            ).to.toHaveLength(2);
         });
 
         it('should not remove mutation where overall proportion is at upper border of filter', () => {
@@ -116,13 +150,27 @@ describe('getFilteredMutationOverTimeData', () => {
 
             filterProportion(data, getOverallMutationData(inFilter), proportionInterval);
 
-            expect(data.getRow(someSubstitution, { count: 0, proportion: 0 })).to.toHaveLength(2);
+            expect(
+                data.getRow(someSubstitution, {
+                    count: 0,
+                    proportion: 0,
+                    totalCount: 10,
+                }),
+            ).to.toHaveLength(2);
         });
 
         function getMutationOverTimeData() {
             const data = new Map2dBase<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>();
-            data.set(someSubstitution, yearMonthDay('2021-01-01'), { count: 1, proportion: 0.1 });
-            data.set(someSubstitution, yearMonthDay('2021-02-02'), { count: 99, proportion: 0.99 });
+            data.set(someSubstitution, yearMonthDay('2021-01-01'), {
+                count: 1,
+                proportion: 0.1,
+                totalCount: 10,
+            });
+            data.set(someSubstitution, yearMonthDay('2021-02-02'), {
+                count: 99,
+                proportion: 0.99,
+                totalCount: 10,
+            });
             return data;
         }
 
