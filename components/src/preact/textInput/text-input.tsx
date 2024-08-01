@@ -12,8 +12,8 @@ import { useQuery } from '../useQuery';
 
 export interface TextInputInnerProps {
     lapisField: string;
-    placeholderText?: string;
-    initialValue?: string;
+    placeholderText: string;
+    initialValue: string;
 }
 
 export interface TextInputProps extends TextInputInnerProps {

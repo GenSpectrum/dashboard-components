@@ -11,8 +11,8 @@ import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
 export interface LocationFilterInnerProps {
-    initialValue?: string;
-    placeholderText?: string;
+    initialValue: string;
+    placeholderText: string;
     fields: string[];
 }
 
