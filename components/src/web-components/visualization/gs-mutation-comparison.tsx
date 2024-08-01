@@ -112,4 +112,13 @@ type SequenceTypeMatches = Expect<
 type ViewsMatches = Expect<
     Equals<typeof MutationComparisonComponent.prototype.views, MutationComparisonProps['views']>
 >;
+type WidthMatches = Expect<
+    Equals<typeof MutationComparisonComponent.prototype.width, MutationComparisonProps['width']>
+>;
+type HeightMatches = Expect<
+    Equals<typeof MutationComparisonComponent.prototype.height, MutationComparisonProps['height']>
+>;
+type PageSizeMatches = Expect<
+    Equals<typeof MutationComparisonComponent.prototype.pageSize, MutationComparisonProps['pageSize']>
+>;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

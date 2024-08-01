@@ -1,7 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 
 import { PrevalenceOverTime, type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
-import { type AxisMax } from '../../preact/shared/charts/getYAxisMax';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
@@ -57,7 +56,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
      * It should be human-readable.
      *
      */
-    @property({ type: Object })
+    @property({type: Object})
     numeratorFilter:
         {
             lapisFilter: Record<string, string | number | null | boolean>;
@@ -66,7 +65,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
         | {
         lapisFilter: Record<string, string | number | null | boolean>;
         displayName: string;
-    }[] = { displayName: '', lapisFilter: {} };
+    }[] = {displayName: '', lapisFilter: {}};
 
     /**
      * Required.
@@ -182,11 +181,6 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     }
 }
 
-export interface PrevalenceOverTimeComponentProps extends Omit<PrevalenceOverTimeProps, 'yAxisMaxConfig'> {
-    yAxisMaxLinear?: AxisMax;
-    yAxisMaxLogarithmic?: AxisMax;
-}
-
 declare global {
     interface HTMLElementTagNameMap {
         'gs-prevalence-over-time': PrevalenceOverTimeComponent;
@@ -203,6 +197,9 @@ type DenominatorMatches = Expect<
 type GranularityMatches = Expect<
     Equals<typeof PrevalenceOverTimeComponent.prototype.granularity, PrevalenceOverTimeProps['granularity']>
 >;
+type SmoothingWindowMatches = Expect<
+    Equals<typeof PrevalenceOverTimeComponent.prototype.smoothingWindow, PrevalenceOverTimeProps['smoothingWindow']>
+>;
 type ViewsMatches = Expect<
     Equals<typeof PrevalenceOverTimeComponent.prototype.views, PrevalenceOverTimeProps['views']>
 >;
@@ -210,6 +207,27 @@ type ConfidenceIntervalMethodsMatches = Expect<
     Equals<
         typeof PrevalenceOverTimeComponent.prototype.confidenceIntervalMethods,
         PrevalenceOverTimeProps['confidenceIntervalMethods']
+    >
+>;
+type WidhtMatches = Expect<
+    Equals<typeof PrevalenceOverTimeComponent.prototype.width, PrevalenceOverTimeProps['width']>
+>;
+type HeightMatches = Expect<
+    Equals<typeof PrevalenceOverTimeComponent.prototype.height, PrevalenceOverTimeProps['height']>
+>;
+type LapisDateFieldMatches = Expect<
+    Equals<typeof PrevalenceOverTimeComponent.prototype.lapisDateField, PrevalenceOverTimeProps['lapisDateField']>
+>;
+type PageSizeMatches = Expect<
+    Equals<typeof PrevalenceOverTimeComponent.prototype.pageSize, PrevalenceOverTimeProps['pageSize']>
+>;
+type YAxisMaxLinearMatches = Expect<
+    Equals<typeof PrevalenceOverTimeComponent.prototype.yAxisMaxLinear, PrevalenceOverTimeProps['yAxisMaxLinear']>
+>;
+type YAxisMaxLogarithmicMatches = Expect<
+    Equals<
+        typeof PrevalenceOverTimeComponent.prototype.yAxisMaxLogarithmic,
+        PrevalenceOverTimeProps['yAxisMaxLogarithmic']
     >
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

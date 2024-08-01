@@ -1,7 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import { DateRangeSelector } from '../../preact/dateRangeSelector/date-range-selector';
-import { type CustomSelectOption, type PresetOptionValues } from '../../preact/dateRangeSelector/selectableOptions';
+import { DateRangeSelector, type DateRangeSelectorProps } from '../../preact/dateRangeSelector/date-range-selector';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -129,9 +128,30 @@ declare global {
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type CustomSelectOptionsMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.customSelectOptions, CustomSelectOption<string>[]>
+    Equals<
+        typeof DateRangeSelectorComponent.prototype.customSelectOptions,
+        DateRangeSelectorProps<string>['customSelectOptions']
+    >
+>;
+type EarliestDateMatches = Expect<
+    Equals<typeof DateRangeSelectorComponent.prototype.earliestDate, DateRangeSelectorProps<string>['earliestDate']>
 >;
 type InitialValueMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.initialValue, PresetOptionValues | string>
+    Equals<typeof DateRangeSelectorComponent.prototype.initialValue, DateRangeSelectorProps<string>['initialValue']>
+>;
+type InitialDateFromMatches = Expect<
+    Equals<
+        typeof DateRangeSelectorComponent.prototype.initialDateFrom,
+        DateRangeSelectorProps<string>['initialDateFrom']
+    >
+>;
+type InitialDateToMatches = Expect<
+    Equals<typeof DateRangeSelectorComponent.prototype.initialDateTo, DateRangeSelectorProps<string>['initialDateTo']>
+>;
+type WidthMatches = Expect<
+    Equals<typeof DateRangeSelectorComponent.prototype.width, DateRangeSelectorProps<string>['width']>
+>;
+type DateColumnMatches = Expect<
+    Equals<typeof DateRangeSelectorComponent.prototype.dateColumn, DateRangeSelectorProps<string>['dateColumn']>
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

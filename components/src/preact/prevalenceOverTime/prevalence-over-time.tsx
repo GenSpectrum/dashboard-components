@@ -38,8 +38,8 @@ export interface PrevalenceOverTimeProps {
     confidenceIntervalMethods: ConfidenceIntervalMethod[];
     lapisDateField: string;
     pageSize: boolean | number;
-    yAxisMaxLinear?: AxisMax;
-    yAxisMaxLogarithmic?: AxisMax;
+    yAxisMaxLinear: AxisMax;
+    yAxisMaxLogarithmic: AxisMax;
 }
 
 export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = (componentProps) => {

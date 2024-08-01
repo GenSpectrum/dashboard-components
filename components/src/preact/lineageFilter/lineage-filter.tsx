@@ -12,8 +12,8 @@ import { useQuery } from '../useQuery';
 
 export interface LineageFilterInnerProps {
     lapisField: string;
-    placeholderText?: string;
-    initialValue?: string;
+    placeholderText: string;
+    initialValue: string;
 }
 
 export interface LineageFilterProps extends LineageFilterInnerProps {

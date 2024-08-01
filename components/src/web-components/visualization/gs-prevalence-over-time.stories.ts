@@ -4,8 +4,6 @@ import { html } from 'lit';
 
 import '../app';
 import './gs-prevalence-over-time';
-// eslint-disable-next-line no-duplicate-imports
-import { type PrevalenceOverTimeComponentProps } from './gs-prevalence-over-time';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import denominatorFilter from '../../preact/prevalenceOverTime/__mockData__/denominatorFilter.json';
@@ -13,6 +11,7 @@ import denominatorFilterOneDataset from '../../preact/prevalenceOverTime/__mockD
 import numeratorFilterEG from '../../preact/prevalenceOverTime/__mockData__/numeratorFilterEG.json';
 import numeratorFilterJN1 from '../../preact/prevalenceOverTime/__mockData__/numeratorFilterJN1.json';
 import numeratorFilterOneDataset from '../../preact/prevalenceOverTime/__mockData__/numeratorFilterOneDataset.json';
+import { type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
@@ -31,7 +30,7 @@ const codeExample = String.raw`
     yAxisMaxLogarithmic="limitTo1"    
 ></gs-prevalence-over-time>`;
 
-const meta: Meta<Required<PrevalenceOverTimeComponentProps>> = {
+const meta: Meta<Required<PrevalenceOverTimeProps>> = {
     title: 'Visualization/Prevalence over time',
     component: 'gs-prevalence-over-time',
     argTypes: {
@@ -68,7 +67,7 @@ const meta: Meta<Required<PrevalenceOverTimeComponentProps>> = {
 
 export default meta;
 
-const Template: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
+const Template: StoryObj<Required<PrevalenceOverTimeProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-prevalence-over-time
@@ -89,7 +88,7 @@ const Template: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
     `,
 };
 
-export const TwoDatasets: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
+export const TwoDatasets: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...Template,
     args: {
         numeratorFilter: [
@@ -163,7 +162,7 @@ export const TwoDatasets: StoryObj<Required<PrevalenceOverTimeComponentProps>> =
     },
 };
 
-export const OneDataset: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
+export const OneDataset: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...Template,
     args: {
         numeratorFilter: {
@@ -221,7 +220,7 @@ export const OneDataset: StoryObj<Required<PrevalenceOverTimeComponentProps>> = 
     },
 };
 
-export const OneDatasetOnLineTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
+export const OneDatasetOnLineTab: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...OneDataset,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
@@ -232,7 +231,7 @@ export const OneDatasetOnLineTab: StoryObj<Required<PrevalenceOverTimeComponentP
     },
 };
 
-export const OneDatasetOnBubbleTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
+export const OneDatasetOnBubbleTab: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...OneDataset,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');
@@ -243,7 +242,7 @@ export const OneDatasetOnBubbleTab: StoryObj<Required<PrevalenceOverTimeComponen
     },
 };
 
-export const OneDatasetOnTableTab: StoryObj<Required<PrevalenceOverTimeComponentProps>> = {
+export const OneDatasetOnTableTab: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...OneDataset,
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-prevalence-over-time');

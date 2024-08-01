@@ -112,7 +112,14 @@ type SequenceTypeMatches = Expect<
     Equals<typeof MutationsOverTimeComponent.prototype.sequenceType, MutationsOverTimeProps['sequenceType']>
 >;
 type ViewsMatches = Expect<Equals<typeof MutationsOverTimeComponent.prototype.views, MutationsOverTimeProps['views']>>;
+type WidthMatches = Expect<Equals<typeof MutationsOverTimeComponent.prototype.width, MutationsOverTimeProps['width']>>;
+type HeightMatches = Expect<
+    Equals<typeof MutationsOverTimeComponent.prototype.height, MutationsOverTimeProps['height']>
+>;
 type GranularityMatches = Expect<
     Equals<typeof MutationsOverTimeComponent.prototype.granularity, MutationsOverTimeProps['granularity']>
+>;
+type LapisDateFieldMatches = Expect<
+    Equals<typeof MutationsOverTimeComponent.prototype.lapisDateField, MutationsOverTimeProps['lapisDateField']>
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

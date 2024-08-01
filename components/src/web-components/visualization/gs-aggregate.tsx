@@ -1,7 +1,8 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import { Aggregate, type View } from '../../preact/aggregatedData/aggregate';
+import { Aggregate, type AggregateProps, type View } from '../../preact/aggregatedData/aggregate';
 import { type LapisFilter } from '../../types';
+import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
 /**
@@ -102,3 +103,18 @@ declare global {
         'gs-aggregate-component': AggregateComponent;
     }
 }
+
+/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+type FieldsMatches = Expect<Equals<typeof AggregateComponent.prototype.fields, AggregateProps['fields']>>;
+type ViewsMatches = Expect<Equals<typeof AggregateComponent.prototype.views, AggregateProps['views']>>;
+type FilterMatches = Expect<Equals<typeof AggregateComponent.prototype.filter, AggregateProps['filter']>>;
+type WidthMatches = Expect<Equals<typeof AggregateComponent.prototype.width, AggregateProps['width']>>;
+type HeightMatches = Expect<Equals<typeof AggregateComponent.prototype.height, AggregateProps['height']>>;
+type InitialSortFieldMatches = Expect<
+    Equals<typeof AggregateComponent.prototype.initialSortField, AggregateProps['initialSortField']>
+>;
+type InitialSortDirectionMatches = Expect<
+    Equals<typeof AggregateComponent.prototype.initialSortDirection, AggregateProps['initialSortDirection']>
+>;
+type PageSizeMatches = Expect<Equals<typeof AggregateComponent.prototype.pageSize, AggregateProps['pageSize']>>;
+/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
