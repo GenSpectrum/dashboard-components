@@ -56,7 +56,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                                 <MutationCell mutation={mutation} />
                             </div>
                             {dates.map((date, columnIndex) => {
-                                const value = data.get(mutation, date) ?? { proportion: 0, count: 0 };
+                                const value = data.get(mutation, date) ?? { proportion: 0, count: 0, totalCount: 0 };
                                 const tooltipPosition = getTooltipPosition(
                                     rowIndex,
                                     shownMutations.length,
@@ -136,7 +136,9 @@ const ProportionCell: FunctionComponent<{
             <p>({timeIntervalDisplay(date)})</p>
             <p>{mutation.code}</p>
             <p>Proportion: {formatProportion(value.proportion)}</p>
-            <p>Count: {value.count}</p>
+            <p>
+                Count: {value.count} / {value.totalCount} total
+            </p>
         </div>
     );
 

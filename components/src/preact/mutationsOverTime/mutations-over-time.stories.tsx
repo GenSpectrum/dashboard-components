@@ -1,8 +1,16 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, waitFor } from '@storybook/test';
 
+import aggregated_01 from './__mockData__/aggregated_2024_01.json';
+import aggregated_02 from './__mockData__/aggregated_2024_02.json';
+import aggregated_03 from './__mockData__/aggregated_2024_03.json';
+import aggregated_04 from './__mockData__/aggregated_2024_04.json';
+import aggregated_05 from './__mockData__/aggregated_2024_05.json';
+import aggregated_06 from './__mockData__/aggregated_2024_06.json';
+import aggregated_07 from './__mockData__/aggregated_2024_07.json';
 import aggregated_date from './__mockData__/aggregated_date.json';
 import aggregated_tooManyMutations from './__mockData__/aggregated_tooManyMutations.json';
+import aggregated_tooManyMutations_total from './__mockData__/aggregated_tooManyMutations_total.json';
 import nucleotideMutation_01 from './__mockData__/nucleotideMutations_2024_01.json';
 import nucleotideMutation_02 from './__mockData__/nucleotideMutations_2024_02.json';
 import nucleotideMutation_03 from './__mockData__/nucleotideMutations_2024_03.json';
@@ -89,6 +97,118 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
                     response: {
                         status: 200,
                         body: aggregated_date,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_01',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-01-01',
+                            dateTo: '2024-01-31',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_01,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_02',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-02-01',
+                            dateTo: '2024-02-29',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_02,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_03',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-03-01',
+                            dateTo: '2024-03-31',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_03,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_04',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-04-01',
+                            dateTo: '2024-04-30',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_04,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_05',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-05-01',
+                            dateTo: '2024-05-31',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_05,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_06',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-06-01',
+                            dateTo: '2024-06-30',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_06,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_07',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2024-07-01',
+                            dateTo: '2024-07-31',
+                            fields: [],
+                            pangoLineage: 'JN.1*',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_07,
                     },
                 },
                 {
@@ -251,6 +371,21 @@ export const ShowsMessageWhenTooManyMutations: StoryObj<MutationsOverTimeProps> 
                     response: {
                         status: 200,
                         body: aggregated_tooManyMutations,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregated_total',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            dateFrom: '2023-01-01',
+                            dateTo: '2023-12-31',
+                            fields: [],
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregated_tooManyMutations_total,
                     },
                 },
                 {
