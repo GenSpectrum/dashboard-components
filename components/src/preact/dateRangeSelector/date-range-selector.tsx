@@ -20,10 +20,10 @@ export interface DateRangeSelectorProps<CustomLabel extends string> extends Date
 
 export interface DateRangeSelectorPropsInner<CustomLabel extends string> {
     customSelectOptions: CustomSelectOption<CustomLabel>[];
-    earliestDate?: string;
-    initialValue?: PresetOptionValues | CustomLabel;
-    initialDateFrom?: string;
-    initialDateTo?: string;
+    earliestDate: string;
+    initialValue: PresetOptionValues | CustomLabel;
+    initialDateFrom: string;
+    initialDateTo: string;
     dateColumn: string;
 }
 

@@ -128,8 +128,20 @@ declare global {
 type LapisFilterMatches = Expect<
     Equals<typeof NumberSequencesOverTimeComponent.prototype.lapisFilter, NumberSequencesOverTimeProps['lapisFilter']>
 >;
+type LapisDateFieldMatches = Expect<
+    Equals<
+        typeof NumberSequencesOverTimeComponent.prototype.lapisDateField,
+        NumberSequencesOverTimeProps['lapisDateField']
+    >
+>;
 type ViewsMatches = Expect<
     Equals<typeof NumberSequencesOverTimeComponent.prototype.views, NumberSequencesOverTimeProps['views']>
+>;
+type WidhtMatches = Expect<
+    Equals<typeof NumberSequencesOverTimeComponent.prototype.width, NumberSequencesOverTimeProps['width']>
+>;
+type HeightMatches = Expect<
+    Equals<typeof NumberSequencesOverTimeComponent.prototype.height, NumberSequencesOverTimeProps['height']>
 >;
 type GranularityMatches = Expect<
     Equals<typeof NumberSequencesOverTimeComponent.prototype.granularity, NumberSequencesOverTimeProps['granularity']>
@@ -139,5 +151,8 @@ type SmoothingWindowMatches = Expect<
         typeof NumberSequencesOverTimeComponent.prototype.smoothingWindow,
         NumberSequencesOverTimeProps['smoothingWindow']
     >
+>;
+type PageSizeMatches = Expect<
+    Equals<typeof NumberSequencesOverTimeComponent.prototype.pageSize, NumberSequencesOverTimeProps['pageSize']>
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

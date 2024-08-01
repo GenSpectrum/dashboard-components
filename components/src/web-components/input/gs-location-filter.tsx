@@ -1,6 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import { LocationFilter } from '../../preact/locationFilter/location-filter';
+import { LocationFilter, type LocationFilterProps } from '../../preact/locationFilter/location-filter';
+import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
@@ -86,3 +87,14 @@ declare global {
         'gs-location-changed': CustomEvent<Record<string, string>>;
     }
 }
+
+/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+type InitialValueMatches = Expect<
+    Equals<typeof LocationFilterComponent.prototype.initialValue, LocationFilterProps['initialValue']>
+>;
+type FieldsMatches = Expect<Equals<typeof LocationFilterComponent.prototype.fields, LocationFilterProps['fields']>>;
+type PlaceholderTextMatches = Expect<
+    Equals<typeof LocationFilterComponent.prototype.placeholderText, LocationFilterProps['placeholderText']>
+>;
+type WidthMatches = Expect<Equals<typeof LocationFilterComponent.prototype.width, LocationFilterProps['width']>>;
+/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

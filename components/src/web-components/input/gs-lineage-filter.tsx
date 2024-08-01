@@ -1,6 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import { LineageFilter } from '../../preact/lineageFilter/lineage-filter';
+import { LineageFilter, type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
+import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
@@ -77,3 +78,16 @@ declare global {
         'gs-lineage-filter-changed': CustomEvent<Record<string, string>>;
     }
 }
+
+/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+type InitialValueMatches = Expect<
+    Equals<typeof LineageFilterComponent.prototype.initialValue, LineageFilterProps['initialValue']>
+>;
+type LapisFieldMatches = Expect<
+    Equals<typeof LineageFilterComponent.prototype.lapisField, LineageFilterProps['lapisField']>
+>;
+type PlaceholderTextMatches = Expect<
+    Equals<typeof LineageFilterComponent.prototype.placeholderText, LineageFilterProps['placeholderText']>
+>;
+type WidthMatches = Expect<Equals<typeof LineageFilterComponent.prototype.width, LineageFilterProps['width']>>;
+/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

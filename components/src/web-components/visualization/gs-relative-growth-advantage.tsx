@@ -3,10 +3,8 @@ import { customElement, property } from 'lit/decorators.js';
 import {
     RelativeGrowthAdvantage,
     type RelativeGrowthAdvantageProps,
-    type View,
 } from '../../preact/relativeGrowthAdvantage/relative-growth-advantage';
 import { type AxisMax } from '../../preact/shared/charts/getYAxisMax';
-import type { LapisFilter } from '../../types';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -146,9 +144,49 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type NumeratorMatches = Expect<Equals<typeof RelativeGrowthAdvantageComponent.prototype.numeratorFilter, LapisFilter>>;
-type DenominatorMatches = Expect<
-    Equals<typeof RelativeGrowthAdvantageComponent.prototype.denominatorFilter, LapisFilter>
+type NumeratorMatches = Expect<
+    Equals<
+        typeof RelativeGrowthAdvantageComponent.prototype.numeratorFilter,
+        RelativeGrowthAdvantageProps['numeratorFilter']
+    >
 >;
-type ViewsMatches = Expect<Equals<typeof RelativeGrowthAdvantageComponent.prototype.views, View[]>>;
+type DenominatorMatches = Expect<
+    Equals<
+        typeof RelativeGrowthAdvantageComponent.prototype.denominatorFilter,
+        RelativeGrowthAdvantageProps['denominatorFilter']
+    >
+>;
+type GenerationTimeMatches = Expect<
+    Equals<
+        typeof RelativeGrowthAdvantageComponent.prototype.generationTime,
+        RelativeGrowthAdvantageProps['generationTime']
+    >
+>;
+type ViewsMatches = Expect<
+    Equals<typeof RelativeGrowthAdvantageComponent.prototype.views, RelativeGrowthAdvantageProps['views']>
+>;
+type WidthMatches = Expect<
+    Equals<typeof RelativeGrowthAdvantageComponent.prototype.width, RelativeGrowthAdvantageProps['width']>
+>;
+type HeightMatches = Expect<
+    Equals<typeof RelativeGrowthAdvantageComponent.prototype.height, RelativeGrowthAdvantageProps['height']>
+>;
+type LapisDateFieldMatches = Expect<
+    Equals<
+        typeof RelativeGrowthAdvantageComponent.prototype.lapisDateField,
+        RelativeGrowthAdvantageProps['lapisDateField']
+    >
+>;
+type YAxisMaxLinearMatches = Expect<
+    Equals<
+        typeof RelativeGrowthAdvantageComponent.prototype.yAxisMaxLinear,
+        Required<RelativeGrowthAdvantageProps['yAxisMaxConfig']>['linear']
+    >
+>;
+type YAxisMaxLogarithmicMatches = Expect<
+    Equals<
+        typeof RelativeGrowthAdvantageComponent.prototype.yAxisMaxLogarithmic,
+        Required<RelativeGrowthAdvantageProps['yAxisMaxConfig']>['logarithmic']
+    >
+>;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

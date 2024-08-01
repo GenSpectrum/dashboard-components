@@ -1,6 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import { TextInput } from '../../preact/textInput/text-input';
+import { TextInput, type TextInputProps } from '../../preact/textInput/text-input';
+import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
@@ -71,3 +72,14 @@ declare global {
         'gs-text-input-changed': CustomEvent<Record<string, string>>;
     }
 }
+
+/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+type InitialValueMatches = Expect<
+    Equals<typeof TextInputComponent.prototype.initialValue, TextInputProps['initialValue']>
+>;
+type LapisFieldMatches = Expect<Equals<typeof TextInputComponent.prototype.lapisField, TextInputProps['lapisField']>>;
+type PlaceholderTextMatches = Expect<
+    Equals<typeof TextInputComponent.prototype.placeholderText, TextInputProps['placeholderText']>
+>;
+type WidthMatches = Expect<Equals<typeof TextInputComponent.prototype.width, TextInputProps['width']>>;
+/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

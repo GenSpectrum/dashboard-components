@@ -1,7 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import { Mutations, type View } from '../../preact/mutations/mutations';
-import { type LapisFilter, type SequenceType } from '../../types';
+import { Mutations, type MutationsProps } from '../../preact/mutations/mutations';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
@@ -98,7 +97,14 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type LapisFilterMatches = Expect<Equals<typeof MutationsComponent.prototype.lapisFilter, LapisFilter>>;
-type SequenceTypeMatches = Expect<Equals<typeof MutationsComponent.prototype.sequenceType, SequenceType>>;
-type ViewsMatches = Expect<Equals<typeof MutationsComponent.prototype.views, View[]>>;
+type LapisFilterMatches = Expect<
+    Equals<typeof MutationsComponent.prototype.lapisFilter, MutationsProps['lapisFilter']>
+>;
+type SequenceTypeMatches = Expect<
+    Equals<typeof MutationsComponent.prototype.sequenceType, MutationsProps['sequenceType']>
+>;
+type ViewsMatches = Expect<Equals<typeof MutationsComponent.prototype.views, MutationsProps['views']>>;
+type WidthMatches = Expect<Equals<typeof MutationsComponent.prototype.width, MutationsProps['width']>>;
+type HeightMatches = Expect<Equals<typeof MutationsComponent.prototype.height, MutationsProps['height']>>;
+type PageSizeMatches = Expect<Equals<typeof MutationsComponent.prototype.pageSize, MutationsProps['pageSize']>>;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
