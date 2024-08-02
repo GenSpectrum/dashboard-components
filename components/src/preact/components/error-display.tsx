@@ -1,5 +1,11 @@
 import { type FunctionComponent } from 'preact';
-import { useRef } from 'preact/hooks';
+import { useEffect, useRef } from 'preact/hooks';
+
+export const GS_ERROR_EVENT_TYPE = 'gs-error';
+
+export interface ErrorEvent extends Event {
+    readonly error: Error;
+}
 
 export class UserFacingError extends Error {
     constructor(
@@ -14,10 +20,24 @@ export class UserFacingError extends Error {
 export const ErrorDisplay: FunctionComponent<{ error: Error }> = ({ error }) => {
     console.error(error);
 
+    const containerRef = useRef<HTMLInputElement>(null);
     const ref = useRef<HTMLDialogElement>(null);
 
+    useEffect(() => {
+        containerRef.current?.dispatchEvent(
+            new ErrorEvent(GS_ERROR_EVENT_TYPE, {
+                error,
+                bubbles: true,
+                composed: true,
+            }),
+        );
+    });
+
     return (
-        <div className='h-full w-full rounded-md border-2 border-gray-100 p-2 flex items-center justify-center flex-col'>
+        <div
+            ref={containerRef}
+            className='h-full w-full rounded-md border-2 border-gray-100 p-2 flex items-center justify-center flex-col'
+        >
             <div className='text-red-700 font-bold'>Error</div>
             <div>
                 Oops! Something went wrong.
