@@ -1,9 +1,9 @@
-import { withActions } from '@storybook/addon-actions/decorator';
 import { expect, fn, userEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
+import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../app';
 import './gs-text-input';
@@ -24,7 +24,7 @@ const meta: Meta<Required<TextInputProps>> = {
     component: 'gs-text-input',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-text-input-changed'],
+            handles: ['gs-text-input-changed', ...previewHandles],
         },
         fetchMock: {
             mocks: [
@@ -71,7 +71,6 @@ const meta: Meta<Required<TextInputProps>> = {
             },
         },
     },
-    decorators: [withActions],
     tags: ['autodocs'],
 };
 

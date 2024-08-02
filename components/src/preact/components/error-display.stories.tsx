@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, userEvent, waitFor, within } from '@storybook/test';
+import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
 
 import { ErrorDisplay, UserFacingError } from './error-display';
 import { ResizeContainer } from './resize-container';
@@ -12,7 +12,7 @@ const meta: Meta = {
 
 export default meta;
 
-export const ErrorStory: StoryObj = {
+export const GenericErrorStory: StoryObj = {
     render: () => (
         <ResizeContainer size={{ height: '600px', width: '100%' }}>
             <ErrorDisplay error={new Error('some message')} />
@@ -45,6 +45,24 @@ export const UserFacingErrorStory: StoryObj = {
         await userEvent.click(canvas.getByText('Show details.'));
         await waitFor(() => {
             expect(detailMessage()).toBeVisible();
+        });
+    },
+};
+
+export const FiresEvent: StoryObj = {
+    render: () => (
+        <ResizeContainer size={{ height: '600px', width: '100%' }}>
+            <ErrorDisplay error={new UserFacingError('Error Title', 'some message')} />
+        </ResizeContainer>
+    ),
+
+    play: async ({ canvasElement }) => {
+        const listenerMock = fn();
+        canvasElement.addEventListener('gs-error', listenerMock);
+
+        await waitFor(() => {
+            expect(listenerMock.mock.calls.at(-1)[0].error.name).toStrictEqual('UserFacingError');
+            expect(listenerMock.mock.calls.at(-1)[0].error.message).toStrictEqual('some message');
         });
     },
 };

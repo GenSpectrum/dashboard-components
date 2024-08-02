@@ -15,6 +15,7 @@ export class UnknownLapisError extends Error {
     constructor(
         message: string,
         public readonly status: number,
+        public readonly requestedData: string,
     ) {
         super(message);
         this.name = 'UnknownLapisError';
@@ -26,6 +27,7 @@ export class LapisError extends Error {
         message: string,
         public readonly status: number,
         public readonly problemDetail: ProblemDetail,
+        public readonly requestedData: string,
     ) {
         super(message);
         this.name = 'LapisError';
@@ -42,7 +44,7 @@ export async function fetchAggregated(lapisUrl: string, body: LapisBaseRequest, 
         signal,
     });
 
-    await handleErrors(response);
+    await handleErrors(response, 'aggregated data');
 
     return aggregatedResponse.parse(await response.json());
 }
@@ -62,7 +64,7 @@ export async function fetchInsertions(
         signal,
     });
 
-    await handleErrors(response);
+    await handleErrors(response, `${sequenceType} insertions`);
 
     return insertionsResponse.parse(await response.json());
 }
@@ -82,7 +84,7 @@ export async function fetchSubstitutionsOrDeletions(
         signal,
     });
 
-    await handleErrors(response);
+    await handleErrors(response, `${sequenceType} mutations`);
 
     return mutationsResponse.parse(await response.json());
 }
@@ -96,11 +98,11 @@ export async function fetchReferenceGenome(lapisUrl: string, signal?: AbortSigna
         signal,
     });
 
-    await handleErrors(response);
+    await handleErrors(response, 'the reference genomes');
     return referenceGenomeResponse.parse(await response.json());
 }
 
-const handleErrors = async (response: Response) => {
+const handleErrors = async (response: Response, requestedData: string) => {
     if (!response.ok) {
         if (response.status >= 400 && response.status < 500) {
             const json = await response.json();
@@ -111,6 +113,7 @@ const handleErrors = async (response: Response) => {
                     response.statusText + lapisErrorResult.data.error.detail,
                     response.status,
                     lapisErrorResult.data.error,
+                    requestedData,
                 );
             }
 
@@ -120,12 +123,17 @@ const handleErrors = async (response: Response) => {
                     response.statusText + problemDetailResult.data.detail,
                     response.status,
                     problemDetailResult.data,
+                    requestedData,
                 );
             }
 
-            throw new UnknownLapisError(`${response.statusText}: ${JSON.stringify(json)}`, response.status);
+            throw new UnknownLapisError(
+                `${response.statusText}: ${JSON.stringify(json)}`,
+                response.status,
+                requestedData,
+            );
         }
-        throw new UnknownLapisError(`${response.statusText}: ${response.status}`, response.status);
+        throw new UnknownLapisError(`${response.statusText}: ${response.status}`, response.status, requestedData);
     }
 };
 

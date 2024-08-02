@@ -1,9 +1,9 @@
-import { withActions } from '@storybook/addon-actions/decorator';
 import { expect, fn, userEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
+import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL, REFERENCE_GENOME_ENDPOINT } from '../../constants';
 import '../app';
 import { type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
@@ -21,7 +21,7 @@ const meta: Meta<MutationFilterProps> = {
     component: 'gs-mutation-filter',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-mutation-filter-changed', 'gs-mutation-filter-on-blur'],
+            handles: ['gs-mutation-filter-changed', 'gs-mutation-filter-on-blur', ...previewHandles],
         },
         fetchMock: {},
         componentDocs: {
@@ -38,7 +38,6 @@ const meta: Meta<MutationFilterProps> = {
         },
         width: { control: 'text' },
     },
-    decorators: [withActions],
     tags: ['autodocs'],
 };
 

@@ -1,9 +1,9 @@
-import { withActions } from '@storybook/addon-actions/decorator';
 import { expect, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
+import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import { type DateRangeSelectorProps } from '../../preact/dateRangeSelector/date-range-selector';
 import './gs-date-range-selector';
@@ -36,7 +36,7 @@ const meta: Meta<Required<DateRangeSelectorProps<'CustomDateRange'>>> = {
     component: 'gs-date-range-selector',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-date-range-changed'],
+            handles: ['gs-date-range-changed', ...previewHandles],
         },
         fetchMock: {},
         componentDocs: {
@@ -87,7 +87,6 @@ const meta: Meta<Required<DateRangeSelectorProps<'CustomDateRange'>>> = {
         initialDateFrom: '',
         initialDateTo: '',
     },
-    decorators: [withActions],
     tags: ['autodocs'],
 };
 

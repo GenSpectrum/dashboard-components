@@ -66,7 +66,7 @@ export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvan
 
     const { data, error, isLoading } = useQuery(
         () => queryRelativeGrowthAdvantage(numeratorFilter, denominatorFilter, generationTime, lapis, lapisDateField),
-        [lapis, numeratorFilter, denominatorFilter, generationTime, views],
+        [lapis, numeratorFilter, denominatorFilter, generationTime, views, lapisDateField],
     );
 
     if (isLoading) {

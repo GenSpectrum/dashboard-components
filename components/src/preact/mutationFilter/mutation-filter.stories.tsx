@@ -1,9 +1,9 @@
-import { withActions } from '@storybook/addon-actions/decorator';
 import { type Meta, type PreactRenderer, type StoryObj } from '@storybook/preact';
 import { expect, fireEvent, fn, userEvent, waitFor, within } from '@storybook/test';
 import { type StepFunction } from '@storybook/types';
 
 import { MutationFilter, type MutationFilterProps } from './mutation-filter';
+import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import { LapisUrlContext } from '../LapisUrlContext';
@@ -14,7 +14,7 @@ const meta: Meta<MutationFilterProps> = {
     component: MutationFilter,
     parameters: {
         actions: {
-            handles: ['gs-mutation-filter-changed', 'gs-mutation-filter-on-blur'],
+            handles: ['gs-mutation-filter-changed', 'gs-mutation-filter-on-blur', ...previewHandles],
         },
         fetchMock: {},
     },
@@ -26,7 +26,6 @@ const meta: Meta<MutationFilterProps> = {
             },
         },
     },
-    decorators: [withActions],
 };
 
 export default meta;

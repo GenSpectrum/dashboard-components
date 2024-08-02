@@ -69,7 +69,7 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeProps>
                 lapis,
                 lapisDateField,
             ),
-        [lapis, numeratorFilter, denominatorFilter, granularity, smoothingWindow],
+        [lapis, numeratorFilter, denominatorFilter, granularity, smoothingWindow, lapisDateField],
     );
 
     if (isLoading) {

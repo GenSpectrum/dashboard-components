@@ -1,7 +1,7 @@
-import { withActions } from '@storybook/addon-actions/decorator';
 import { type Meta, type StoryObj } from '@storybook/preact';
 
 import { LineageFilter, type LineageFilterProps } from './lineage-filter';
+import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import aggregatedData from '../../preact/lineageFilter/__mockData__/aggregated.json';
 import { LapisUrlContext } from '../LapisUrlContext';
@@ -11,7 +11,7 @@ const meta: Meta = {
     component: LineageFilter,
     parameters: {
         actions: {
-            handles: ['gs-lineage-filter-changed'],
+            handles: ['gs-lineage-filter-changed', ...previewHandles],
         },
         fetchMock: {
             mocks: [
@@ -31,7 +31,6 @@ const meta: Meta = {
             ],
         },
     },
-    decorators: [withActions],
 };
 
 export default meta;

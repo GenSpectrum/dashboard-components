@@ -1,10 +1,10 @@
-import { withActions } from '@storybook/addon-actions/decorator';
 import { expect, fn, userEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
+import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../app';
 import './gs-location-filter';
@@ -25,7 +25,7 @@ const meta: Meta = {
     component: 'gs-location-filter',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-location-changed'],
+            handles: ['gs-location-changed', ...previewHandles],
         },
         componentDocs: {
             opensShadowDom: true,
@@ -55,7 +55,6 @@ const meta: Meta = {
             },
         },
     },
-    decorators: [withActions],
     tags: ['autodocs'],
 };
 
