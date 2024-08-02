@@ -1,5 +1,13 @@
 import { type FunctionComponent } from 'preact';
-import { useRef } from 'preact/hooks';
+import { useEffect, useRef } from 'preact/hooks';
+
+import { LapisError, UnknownLapisError } from '../../lapisApi/lapisApi';
+
+export const GS_ERROR_EVENT_TYPE = 'gs-error';
+
+export interface ErrorEvent extends Event {
+    readonly error: Error;
+}
 
 export class UserFacingError extends Error {
     constructor(
@@ -14,20 +22,33 @@ export class UserFacingError extends Error {
 export const ErrorDisplay: FunctionComponent<{ error: Error }> = ({ error }) => {
     console.error(error);
 
+    const containerRef = useRef<HTMLInputElement>(null);
     const ref = useRef<HTMLDialogElement>(null);
 
+    useEffect(() => {
+        containerRef.current?.dispatchEvent(
+            new ErrorEvent(GS_ERROR_EVENT_TYPE, {
+                error,
+                bubbles: true,
+                composed: true,
+            }),
+        );
+    });
+
+    const { headline, details } = getDisplayData(error);
+
     return (
-        <div className='h-full w-full rounded-md border-2 border-gray-100 p-2 flex items-center justify-center flex-col'>
-            <div className='text-red-700 font-bold'>Error</div>
+        <div
+            ref={containerRef}
+            className='h-full w-full rounded-md border-2 border-gray-100 p-2 flex items-center justify-center flex-col'
+        >
+            <div className='text-red-700 font-bold'>{headline}</div>
             <div>
                 Oops! Something went wrong.
-                {error instanceof UserFacingError && (
+                {details !== undefined && (
                     <>
                         {' '}
-                        <button
-                            className='text-sm text-gray-600 hover:text-gray-300'
-                            onClick={() => ref.current?.showModal()}
-                        >
+                        <button className='underline hover:text-gray-400' onClick={() => ref.current?.showModal()}>
                             Show details.
                         </button>
                         <dialog ref={ref} class='modal'>
@@ -37,8 +58,8 @@ export const ErrorDisplay: FunctionComponent<{ error: Error }> = ({ error }) => 
                                         ✕
                                     </button>
                                 </form>
-                                <h1 class='text-lg'>{error.headline}</h1>
-                                <p class='py-4'>{error.message}</p>
+                                <h1 class='text-lg'>{details.headline}</h1>
+                                <p class='py-4'>{details.message}</p>
                             </div>
                             <form method='dialog' class='modal-backdrop'>
                                 <button>close</button>
@@ -50,3 +71,37 @@ export const ErrorDisplay: FunctionComponent<{ error: Error }> = ({ error }) => 
         </div>
     );
 };
+
+function getDisplayData(error: Error) {
+    if (error instanceof UserFacingError) {
+        return {
+            headline: `Error - ${error.headline}`,
+            details: {
+                headline: error.headline,
+                message: error.message,
+            },
+        };
+    }
+
+    if (error instanceof LapisError) {
+        return {
+            headline: `Error - Failed fetching ${error.requestedData} from LAPIS`,
+            details: {
+                headline: `LAPIS request failed: ${error.requestedData} - ${error.problemDetail.status} ${error.problemDetail.title}`,
+                message: error.problemDetail.detail ?? error.message,
+            },
+        };
+    }
+
+    if (error instanceof UnknownLapisError) {
+        return {
+            headline: `Error - Failed fetching ${error.requestedData} from LAPIS`,
+            details: {
+                headline: `LAPIS request failed: An unexpected error occurred while fetching ${error.requestedData}`,
+                message: error.message,
+            },
+        };
+    }
+
+    return { headline: 'Error', details: undefined };
+}
