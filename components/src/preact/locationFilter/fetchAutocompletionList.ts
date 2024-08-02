@@ -1,6 +1,4 @@
-import { LapisError } from '../../lapisApi/lapisApi';
 import { FetchAggregatedOperator } from '../../operator/FetchAggregatedOperator';
-import { UserFacingError } from '../components/error-display';
 
 export async function fetchAutocompletionList(fields: string[], lapis: string, signal?: AbortSignal) {
     const toAncestorInHierarchyOverwriteValues = Array(fields.length - 1)
@@ -10,18 +8,7 @@ export async function fetchAutocompletionList(fields: string[], lapis: string, s
 
     const fetchAggregatedOperator = new FetchAggregatedOperator<Record<string, string | null>>({}, fields);
 
-    let data;
-    try {
-        data = (await fetchAggregatedOperator.evaluate(lapis, signal)).content;
-    } catch (error) {
-        if (error instanceof LapisError) {
-            throw new UserFacingError(
-                `Failed to fetch autocomplete list from LAPIS: ${error.problemDetail.status} ${error.problemDetail.title ?? ''}`,
-                error.problemDetail.detail ?? error.message,
-            );
-        }
-        throw error;
-    }
+    const data = (await fetchAggregatedOperator.evaluate(lapis, signal)).content;
 
     const locationValues = data
         .map((entry) => fields.reduce((acc, field) => ({ ...acc, [field]: entry[field] }), {}))

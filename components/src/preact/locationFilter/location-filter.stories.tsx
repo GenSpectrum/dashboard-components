@@ -1,8 +1,8 @@
-import { withActions } from '@storybook/addon-actions/decorator';
 import { type Meta, type StoryObj } from '@storybook/preact';
 
 import data from './__mockData__/aggregated.json';
 import { LocationFilter, type LocationFilterProps } from './location-filter';
+import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 
@@ -28,7 +28,7 @@ const meta: Meta<LocationFilterProps> = {
             ],
         },
         actions: {
-            handles: ['gs-location-changed'],
+            handles: ['gs-location-changed', ...previewHandles],
         },
     },
     args: {
@@ -59,7 +59,6 @@ const meta: Meta<LocationFilterProps> = {
             },
         },
     },
-    decorators: [withActions],
 };
 
 export default meta;

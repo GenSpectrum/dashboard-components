@@ -1,4 +1,3 @@
-import { withActions } from '@storybook/addon-actions/decorator';
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, waitFor, within } from '@storybook/test';
 import dayjs from 'dayjs/esm';
@@ -13,6 +12,7 @@ import {
     PRESET_VALUE_LAST_6_MONTHS,
     PRESET_VALUE_LAST_MONTH,
 } from './selectableOptions';
+import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 
@@ -23,7 +23,7 @@ const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
     component: DateRangeSelector,
     parameters: {
         actions: {
-            handles: ['gs-date-range-changed'],
+            handles: ['gs-date-range-changed', ...previewHandles],
         },
         fetchMock: {},
     },
@@ -68,7 +68,6 @@ const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
         initialDateFrom: '',
         initialDateTo: '',
     },
-    decorators: [withActions],
 };
 
 export default meta;

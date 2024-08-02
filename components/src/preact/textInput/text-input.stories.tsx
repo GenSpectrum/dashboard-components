@@ -1,9 +1,9 @@
-import { withActions } from '@storybook/addon-actions/decorator';
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, waitFor, within } from '@storybook/test';
 
 import data from './__mockData__/aggregated_hosts.json';
 import { TextInput, type TextInputProps } from './text-input';
+import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 
@@ -12,7 +12,7 @@ const meta: Meta<TextInputProps> = {
     component: TextInput,
     parameters: {
         actions: {
-            handles: ['gs-text-input-changed'],
+            handles: ['gs-text-input-changed', ...previewHandles],
         },
         fetchMock: {
             mocks: [
@@ -32,7 +32,6 @@ const meta: Meta<TextInputProps> = {
             ],
         },
     },
-    decorators: [withActions],
     argTypes: {
         lapisField: {
             control: {
