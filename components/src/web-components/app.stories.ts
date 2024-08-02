@@ -1,5 +1,4 @@
 import { consume } from '@lit/context';
-import { withActions } from '@storybook/addon-actions/decorator';
 import { expect, waitFor, within } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, LitElement } from 'lit';
@@ -30,7 +29,6 @@ const meta: Meta = {
             codeExample,
         },
     }),
-    decorators: [withActions],
     tags: ['autodocs'],
 };
 
