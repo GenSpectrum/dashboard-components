@@ -16,18 +16,19 @@
             "require": "./dist/dashboard-components.js",
             "types": "./dist/genspectrum-components.d.ts"
         },
-        "./custom-elements.json": "./custom-,elements.json",
+        "./custom-elements.json": "./custom-elements.json",
         "./package.json": "./package.json",
         "./style.css": "./dist/style.css"
     },
     "files": [
         "dist",
+        "standalone-bundle",
         "src",
         "custom-elements.json",
         "package.json"
     ],
     "scripts": {
-        "build": "vite --config vite.release.config.ts build && npm run generate-manifest",
+        "build": "vite --config vite.release.config.ts build && npm run generate-manifest && vite --config vite.release-standalone.config.ts build",
         "build-and-pack": "npm run build && npm pack | xargs -I {} cp {} genspectrum-dashboard-components.tgz",
         "test": "vitest",
         "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
@@ -67,9 +68,6 @@
         "dayjs": "^1.11.10",
         "flatpickr": "^4.6.13",
         "gridjs": "^6.2.0",
-        "@iconify-json/mdi": "^1.1.67",
-        "@iconify-json/mdi-light": "^1.1.10",
-        "@iconify/tailwind": "^1.1.1",
         "lit": "^3.1.3",
         "object-hash": "^3.0.0",
         "preact": "^10.20.1",
@@ -77,6 +75,9 @@
     },
     "devDependencies": {
         "@custom-elements-manifest/analyzer": "^0.10.2",
+        "@iconify-json/mdi": "^1.1.67",
+        "@iconify-json/mdi-light": "^1.1.10",
+        "@iconify/tailwind": "^1.1.2",
         "@playwright/test": "^1.43.1",
         "@storybook/addon-actions": "^8.0.9",
         "@storybook/addon-essentials": "^8.0.9",
