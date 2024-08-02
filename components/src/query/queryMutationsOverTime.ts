@@ -25,9 +25,10 @@ import {
 export type MutationOverTimeData = {
     date: Temporal;
     mutations: SubstitutionOrDeletionEntry[];
+    totalCount: number;
 };
 
-export type MutationOverTimeMutationValue = { proportion: number; count: number };
+export type MutationOverTimeMutationValue = { proportion: number; count: number; totalCount: number };
 export type MutationOverTimeDataGroupedByMutation = Map2d<
     Substitution | Deletion,
     Temporal,
@@ -75,9 +76,11 @@ export async function queryMutationsOverTimeData(
         };
 
         const data = await fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal);
+        const totalCountQuery = await getTotalNumberOfSequencesInDateRange(filter).evaluate(lapis, signal);
         return {
             date,
             mutations: data.content,
+            totalCount: totalCountQuery.content[0].count,
         };
     });
 
@@ -164,6 +167,7 @@ export function groupByMutation(data: MutationOverTimeData[]) {
             dataArray.set(mutationEntry.mutation, mutationData.date, {
                 count: mutationEntry.count,
                 proportion: mutationEntry.proportion,
+                totalCount: mutationData.totalCount,
             });
         });
     });
@@ -181,8 +185,12 @@ function addZeroValuesForDatesWithNoMutationData(
         const someMutation = dataArray.getFirstAxisKeys()[0];
         data.forEach((mutationData) => {
             if (mutationData.mutations.length === 0) {
-                dataArray.set(someMutation, mutationData.date, { count: 0, proportion: 0 });
+                dataArray.set(someMutation, mutationData.date, { count: 0, proportion: 0, totalCount: 0 });
             }
         });
     }
+}
+
+function getTotalNumberOfSequencesInDateRange(filter: LapisFilter) {
+    return new FetchAggregatedOperator<{ count: number }>(filter);
 }

@@ -5,16 +5,11 @@ import { type AggregatedItem } from '../lapisApi/lapisTypes';
 import { type LapisFilter } from '../types';
 
 export class FetchAggregatedOperator<Fields extends Record<string, unknown>>
-    implements
-        Operator<
-            Fields & {
-                count: number;
-            }
-        >
+    implements Operator<Fields & { count: number }>
 {
     constructor(
         private filter: LapisFilter,
-        private fields: string[],
+        private fields: string[] = [],
     ) {}
 
     async evaluate(lapisUrl: string, signal?: AbortSignal): Promise<Dataset<Fields & { count: number }>> {
