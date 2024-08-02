@@ -1,12 +1,17 @@
+import { withActions } from '@storybook/addon-actions/decorator';
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, waitFor, within } from '@storybook/test';
 
 import { ErrorBoundary } from './error-boundary';
+import { GS_ERROR_EVENT_TYPE, UserFacingError } from './error-display';
 
 const meta: Meta = {
     title: 'Component/Error boundary',
     component: ErrorBoundary,
-    parameters: { fetchMock: {} },
+    parameters: {
+        fetchMock: {},
+        actions: { handles: [GS_ERROR_EVENT_TYPE] },
+    },
     argTypes: {
         size: { control: 'object' },
         defaultSize: { control: 'object' },
@@ -14,6 +19,7 @@ const meta: Meta = {
     args: {
         size: { height: '600px', width: '100%' },
     },
+    decorators: [withActions],
 };
 
 export default meta;
@@ -34,7 +40,7 @@ export const ErrorBoundaryWithoutErrorStory: StoryObj = {
 export const ErrorBoundaryWithErrorStory: StoryObj = {
     render: (args) => (
         <ErrorBoundary size={args.size}>
-            <ContentThatThrowsError />
+            <ContentThatThrowsError error={() => new Error('Some error')} />
         </ErrorBoundary>
     ),
     play: async ({ canvasElement }) => {
@@ -45,6 +51,20 @@ export const ErrorBoundaryWithErrorStory: StoryObj = {
     },
 };
 
-const ContentThatThrowsError = () => {
-    throw new Error('Some error');
+export const ErrorBoundaryWithUserFacingErrorStory: StoryObj = {
+    render: (args) => (
+        <ErrorBoundary size={args.size}>
+            <ContentThatThrowsError error={() => new UserFacingError('Error Headline', 'Some error')} />
+        </ErrorBoundary>
+    ),
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const content = canvas.queryByText('Some content.', { exact: false });
+        await waitFor(() => expect(content).not.toBeInTheDocument());
+        await waitFor(() => expect(canvas.getByText('Error')).toBeInTheDocument());
+    },
+};
+
+const ContentThatThrowsError = (props: { error: () => Error }) => {
+    throw props.error();
 };
