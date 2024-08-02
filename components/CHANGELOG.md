@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.13](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.12...dashboard-components-v0.6.13) (2024-08-02)
+
+
+### Bug Fixes
+
+* **components:** reduce flashiness of loading skeletons ([3b14326](https://github.com/GenSpectrum/dashboard-components/commit/3b143268800975b6bdd8c69593ad5b97d8c556c6)), closes [#292](https://github.com/GenSpectrum/dashboard-components/issues/292)
+
 ## [0.6.12](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.11...dashboard-components-v0.6.12) (2024-07-31)
 
 
