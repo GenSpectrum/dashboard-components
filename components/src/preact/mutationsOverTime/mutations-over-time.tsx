@@ -204,6 +204,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 proportionInterval={proportionInterval}
                 setMinProportion={(min) => setProportionInterval((prev) => ({ ...prev, min }))}
                 setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
+                labelPrefix='Mean proportion'
             />
             <CsvDownloadButton
                 className='mx-1 btn btn-xs'
