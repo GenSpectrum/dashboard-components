@@ -1,9 +1,9 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, userEvent, waitFor, within } from '@storybook/test';
 
-import Info, { type InfoProps } from './info';
+import Info from './info';
 
-const meta: Meta<InfoProps> = {
+const meta: Meta = {
     title: 'Component/Info',
     component: Info,
     parameters: { fetchMock: {} },
@@ -13,7 +13,7 @@ export default meta;
 
 const tooltipText = 'This is a tooltip which shows some information.';
 
-export const InfoStory: StoryObj<InfoProps> = {
+export const InfoStory: StoryObj = {
     render: (args) => (
         <div class='flex justify-center px-4 py-16'>
             <Info {...args}>{tooltipText}</Info>
@@ -21,7 +21,7 @@ export const InfoStory: StoryObj<InfoProps> = {
     ),
 };
 
-export const OpenInfo: StoryObj<InfoProps> = {
+export const OpenInfo: StoryObj = {
     ...InfoStory,
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
@@ -30,7 +30,7 @@ export const OpenInfo: StoryObj<InfoProps> = {
     },
 };
 
-export const ShowsAndClosesInfoOnClick: StoryObj<InfoProps> = {
+export const ShowsAndClosesInfoOnClick: StoryObj = {
     ...InfoStory,
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);

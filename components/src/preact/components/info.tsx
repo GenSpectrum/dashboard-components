@@ -1,9 +1,7 @@
 import { type FunctionComponent } from 'preact';
 import { useRef } from 'preact/hooks';
 
-export interface InfoProps {}
-
-const Info: FunctionComponent<InfoProps> = ({ children }) => {
+const Info: FunctionComponent = ({ children }) => {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     const toggleHelp = () => {

@@ -9,7 +9,7 @@ export function useFloatingUi(
     middleware?: Array<Middleware | null | undefined | false>,
     placement?: Placement,
 ) {
-    const cleanupRef = useRef<Function | null>(null);
+    const cleanupRef = useRef<() => void | null>(null);
 
     useEffect(() => {
         if (!referenceRef.current || !floatingRef.current) {
