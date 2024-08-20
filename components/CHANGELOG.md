@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.6.14](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.13...dashboard-components-v0.6.14) (2024-08-20)
+
+
+### Features
+
+* **components:** mutations over time: also show total number of available sequences in tooltip ([141540e](https://github.com/GenSpectrum/dashboard-components/commit/141540effb8238c1a521eed51adfa21bef09ae04)), closes [#386](https://github.com/GenSpectrum/dashboard-components/issues/386)
+* **components:** proportion selector: indicate error when min percentage &gt; max percentage ([649a9b8](https://github.com/GenSpectrum/dashboard-components/commit/649a9b86de2adf174f47eca49aaf03677945fa2b)), closes [#115](https://github.com/GenSpectrum/dashboard-components/issues/115)
+
+
+### Bug Fixes
+
+* **components:** don't bundle dependencies, publish separate standalone bundle instead ([eed1710](https://github.com/GenSpectrum/dashboard-components/commit/eed171091367ea3eb9f2178ea820743dc3c3a3b7)), closes [#407](https://github.com/GenSpectrum/dashboard-components/issues/407)
+
 ## [0.6.13](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.12...dashboard-components-v0.6.13) (2024-08-02)
 
 
