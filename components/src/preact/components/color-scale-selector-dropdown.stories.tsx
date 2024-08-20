@@ -14,7 +14,7 @@ const meta: Meta<ColorScaleSelectorDropdownProps> = {
 
 export default meta;
 
-const WrapperWithState: FunctionComponent<{}> = () => {
+const WrapperWithState: FunctionComponent = () => {
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
 
     return <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />;
