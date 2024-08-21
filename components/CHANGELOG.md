@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.15](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.14...dashboard-components-v0.6.15) (2024-08-21)
+
+
+### Features
+
+* **components:** also display error details when LAPIS calls fail ([fbb16a4](https://github.com/GenSpectrum/dashboard-components/commit/fbb16a42de7641f456e50bc4d3d79a42efdbac5c)), closes [#366](https://github.com/GenSpectrum/dashboard-components/issues/366)
+* **components:** dispatch `gs-error` event when an error occurs ([c608a60](https://github.com/GenSpectrum/dashboard-components/commit/c608a604b76d3124136a61354ee87dbe4ecc9291)), closes [#366](https://github.com/GenSpectrum/dashboard-components/issues/366)
+
 ## [0.6.14](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.13...dashboard-components-v0.6.14) (2024-08-20)
 
 
