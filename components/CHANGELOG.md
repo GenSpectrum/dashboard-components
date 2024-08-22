@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.16](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.15...dashboard-components-v0.6.16) (2024-08-22)
+
+
+### Features
+
+* **components:** mutations over time: change label of proportion selector [#409](https://github.com/GenSpectrum/dashboard-components/issues/409) ([79b307b](https://github.com/GenSpectrum/dashboard-components/commit/79b307bbfd8cef11f2becde882f453b9dc142e75))
+
 ## [0.6.15](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.14...dashboard-components-v0.6.15) (2024-08-21)
 
 
