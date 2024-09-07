@@ -1,4 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { PrevalenceOverTime, type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
@@ -184,6 +185,15 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
 declare global {
     interface HTMLElementTagNameMap {
         'gs-prevalence-over-time': PrevalenceOverTimeComponent;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-prevalence-over-time': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }
 

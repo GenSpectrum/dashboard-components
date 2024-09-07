@@ -2,6 +2,7 @@ import { provide } from '@lit/context';
 import { Task } from '@lit/task';
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { lapisContext } from './lapis-context';
 import { referenceGenomeContext } from './reference-genome-context';
@@ -72,5 +73,14 @@ export class App extends LitElement {
 declare global {
     interface HTMLElementTagNameMap {
         'gs-app': App;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-app': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }

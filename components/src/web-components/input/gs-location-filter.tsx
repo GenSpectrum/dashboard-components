@@ -1,4 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { LocationFilter, type LocationFilterProps } from '../../preact/locationFilter/location-filter';
 import type { Equals, Expect } from '../../utils/typeAssertions';
@@ -85,6 +86,15 @@ declare global {
 
     interface HTMLElementEventMap {
         'gs-location-changed': CustomEvent<Record<string, string>>;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-location-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }
 

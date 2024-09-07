@@ -1,4 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { MutationComparison, type MutationComparisonProps } from '../../preact/mutationComparison/mutation-comparison';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
@@ -99,6 +100,15 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
 declare global {
     interface HTMLElementTagNameMap {
         'gs-mutation-comparison-component': MutationComparisonComponent;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-mutation-comparison-component': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }
 

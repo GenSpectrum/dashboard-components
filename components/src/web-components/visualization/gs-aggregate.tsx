@@ -1,4 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { Aggregate, type AggregateProps, type View } from '../../preact/aggregatedData/aggregate';
 import { type LapisFilter } from '../../types';
@@ -101,6 +102,15 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
 declare global {
     interface HTMLElementTagNameMap {
         'gs-aggregate-component': AggregateComponent;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-aggregate-component': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }
 

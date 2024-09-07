@@ -61,9 +61,9 @@ function App() {
                 fields='["region", "country", "division", "location"]'
             ></gs-location-filter>
             <gs-date-range-selector initialValue='last6Months'></gs-date-range-selector>
-            <div style={{display: 'flex', flexDirection: 'row'}}>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <div>
-                    <h1 className="text-xl bold">Prevalence over time</h1>
+                    <h1 className='text-xl bold'>Prevalence over time</h1>
                     <gs-prevalence-over-time
                         numeratorFilter={JSON.stringify(numerator)}
                         denominatorFilter={JSON.stringify(denominator)}
@@ -74,8 +74,8 @@ function App() {
                         height='300px'
                     ></gs-prevalence-over-time>
                 </div>
-                <div style={{height: '300px', width: '1000px'}}>
-                    <h1 className="text-xl bold">Prevalence over time</h1>
+                <div style={{ height: '300px', width: '1000px' }}>
+                    <h1 className='text-xl bold'>Prevalence over time</h1>
                     <gs-prevalence-over-time
                         numeratorFilter={JSON.stringify(numerator)}
                         denominatorFilter={JSON.stringify(denominator)}
@@ -87,7 +87,7 @@ function App() {
                     ></gs-prevalence-over-time>
                 </div>
             </div>
-            <h1 className="text-xl bold">Prevalence over time</h1>
+            <h1 className='text-xl bold'>Prevalence over time</h1>
             <div>
                 <gs-prevalence-over-time
                     numeratorFilter={JSON.stringify(numerator)}
@@ -97,7 +97,7 @@ function App() {
                     views='["line", "table"]'
                 ></gs-prevalence-over-time>
             </div>
-            <h1 className="text-xl bold">Relative Growth Advantage</h1>
+            <h1 className='text-xl bold'>Relative Growth Advantage</h1>
             <gs-relative-growth-advantage
                 numeratorFilter='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateFrom": "2020-12-01" }'
                 denominatorFilter='{ "country": "Switzerland", "dateFrom": "2020-12-01" }'
