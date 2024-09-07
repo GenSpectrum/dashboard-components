@@ -1,4 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { TextInput, type TextInputProps } from '../../preact/textInput/text-input';
 import type { Equals, Expect } from '../../utils/typeAssertions';
@@ -70,6 +71,15 @@ declare global {
 
     interface HTMLElementEventMap {
         'gs-text-input-changed': CustomEvent<Record<string, string>>;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-text-input-changed': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }
 

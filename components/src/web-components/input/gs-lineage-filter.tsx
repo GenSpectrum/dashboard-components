@@ -1,4 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { LineageFilter, type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
 import type { Equals, Expect } from '../../utils/typeAssertions';
@@ -76,6 +77,15 @@ declare global {
 
     interface HTMLElementEventMap {
         'gs-lineage-filter-changed': CustomEvent<Record<string, string>>;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-lineage-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }
 

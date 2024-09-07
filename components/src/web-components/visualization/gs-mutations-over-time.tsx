@@ -1,4 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { MutationsOverTime, type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
 import type { Equals, Expect } from '../../utils/typeAssertions';
@@ -101,6 +102,15 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
 declare global {
     interface HTMLElementTagNameMap {
         'gs-mutations-over-time-component': MutationsOverTimeComponent;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-mutations-over-time-component': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }
 

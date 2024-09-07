@@ -1,4 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { DateRangeSelector, type DateRangeSelectorProps } from '../../preact/dateRangeSelector/date-range-selector';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
@@ -123,6 +124,15 @@ declare global {
 
     interface HTMLElementEventMap {
         'gs-date-range-changed': CustomEvent<Record<string, string>>;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-date-range-selector': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }
 

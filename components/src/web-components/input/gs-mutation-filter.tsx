@@ -1,4 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { ReferenceGenomesAwaiter } from '../../preact/components/ReferenceGenomesAwaiter';
 import {
@@ -108,6 +109,15 @@ declare global {
     interface HTMLElementEventMap {
         'gs-mutation-filter-changed': CustomEvent<SelectedMutationFilterStrings>;
         'gs-mutation-filter-on-blur': CustomEvent<SelectedMutationFilterStrings>;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-mutation-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }
 

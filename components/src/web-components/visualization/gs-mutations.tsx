@@ -1,4 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { Mutations, type MutationsProps } from '../../preact/mutations/mutations';
 import type { Equals, Expect } from '../../utils/typeAssertions';
@@ -93,6 +94,15 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
 declare global {
     interface HTMLElementTagNameMap {
         'gs-mutations-component': MutationsComponent;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-mutations-component': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }
 

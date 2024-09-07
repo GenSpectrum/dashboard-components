@@ -1,4 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import {
     NumberSequencesOverTime,
@@ -121,6 +122,15 @@ export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJs
 declare global {
     interface HTMLElementTagNameMap {
         'gs-number-sequences-over-time': NumberSequencesOverTimeComponent;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-number-sequences-over-time': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
     }
 }
 
