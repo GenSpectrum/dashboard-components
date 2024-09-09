@@ -17,7 +17,7 @@ const Configuration = {
                 "root", // used by dependabot to update the root package.json
             ]
         ],
-        "body-max-line-length": [RuleConfigSeverity.Error, "always", 200],
+        "body-max-line-length": [RuleConfigSeverity.Disabled],
         "header-max-length": [RuleConfigSeverity.Error, "always", 200],
         "footer-max-line-length": [RuleConfigSeverity.Error, "always", 200],
     }
