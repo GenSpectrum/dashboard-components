@@ -121,7 +121,7 @@ export const FiresEvent: StoryObj<Required<TextInputProps>> = {
 
         await step('Empty input', async () => {
             await userEvent.type(inputField(), '{backspace>9/}');
-            await expect(listenerMock.mock.calls.at(-1)[0].detail).toStrictEqual({
+            await expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
                 host: undefined,
             });
         });
