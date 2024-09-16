@@ -61,8 +61,8 @@ export const FiresEvent: StoryObj = {
         canvasElement.addEventListener('gs-error', listenerMock);
 
         await waitFor(() => {
-            expect(listenerMock.mock.calls.at(-1)[0].error.name).toStrictEqual('UserFacingError');
-            expect(listenerMock.mock.calls.at(-1)[0].error.message).toStrictEqual('some message');
+            expect(listenerMock.mock.calls.at(-1)![0].error.name).toStrictEqual('UserFacingError');
+            expect(listenerMock.mock.calls.at(-1)![0].error.message).toStrictEqual('some message');
         });
     },
 };

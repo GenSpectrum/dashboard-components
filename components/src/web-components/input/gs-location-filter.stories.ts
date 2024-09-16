@@ -199,7 +199,7 @@ export const FiresEvent: StoryObj<LocationFilterProps> = {
 
         await step('Empty input', async () => {
             await userEvent.type(inputField(), '{backspace>18/}');
-            await expect(listenerMock.mock.calls.at(-1)[0].detail).toStrictEqual({
+            await expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
                 region: undefined,
                 country: undefined,
                 division: undefined,
@@ -209,7 +209,7 @@ export const FiresEvent: StoryObj<LocationFilterProps> = {
 
         await step('Select Asia', async () => {
             await userEvent.type(inputField(), 'Asia');
-            await expect(listenerMock.mock.calls.at(-1)[0].detail).toStrictEqual({
+            await expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
                 region: 'Asia',
                 country: undefined,
                 division: undefined,
