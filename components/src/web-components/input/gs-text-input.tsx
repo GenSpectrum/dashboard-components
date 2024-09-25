@@ -78,7 +78,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-text-input-changed': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-text-input': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
         }
     }
 }
