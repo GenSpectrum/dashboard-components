@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.17](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.16...dashboard-components-v0.6.17) (2024-09-25)
+
+
+### Features
+
+* **components:** add react support ([32bf97d](https://github.com/GenSpectrum/dashboard-components/commit/32bf97d0b4f92560d02378c70d11eaf96ad6a541))
+
 ## [0.6.16](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.15...dashboard-components-v0.6.16) (2024-08-22)
 
 
