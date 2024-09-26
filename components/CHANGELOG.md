@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.18](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.17...dashboard-components-v0.6.18) (2024-09-26)
+
+
+### Bug Fixes
+
+* **components:** fix react type of gs-text-input ([dae0d5d](https://github.com/GenSpectrum/dashboard-components/commit/dae0d5dc5113c0239eba904a2fac5b6d5c215aa5))
+
 ## [0.6.17](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.16...dashboard-components-v0.6.17) (2024-09-25)
 
 
