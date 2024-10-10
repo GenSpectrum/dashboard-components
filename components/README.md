@@ -1,15 +1,4 @@
-# GenSpectrum components
-
-[![NPM Version](https://img.shields.io/npm/v/%40genspectrum%2Fdashboard-components)](https://www.npmjs.com/package/@genspectrum/dashboard-components)
-
-This NPM package provides a collection of web components to build interactive dashboards that visualize
-data of a specific instance of [LAPIS](https://github.com/GenSpectrum/LAPIS).
-
-### Documentation
-
-Documentation of the components is available in the deployed [Storybook](https://genspectrum.github.io/dashboard-components/).
-
-We also provide examples of how to use the components in the [examples](https://github.com/GenSpectrum/dashboard-components/tree/main/examples) folder.
+# GenSpectrum Components
 
 ### npm
 
