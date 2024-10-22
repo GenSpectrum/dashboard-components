@@ -72,11 +72,17 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeInnerPro
 }) => {
     const lapis = useContext(LapisUrlContext);
     const { data, error, isLoading } = useQuery(async () => {
-        const [mutationOverTimeData, overallMutationData] = await Promise.all([
-            queryMutationsOverTimeData(lapisFilter, sequenceType, lapis, lapisDateField, granularity),
-            queryOverallMutationData(lapisFilter, sequenceType, lapis),
-        ]);
-        return { mutationOverTimeData, overallMutationData };
+        const { mutationOverTimeData, overallMutationData } = await queryMutationsOverTimeData(
+            lapisFilter,
+            sequenceType,
+            lapis,
+            lapisDateField,
+            granularity,
+        );
+        return {
+            mutationOverTimeData,
+            overallMutationData,
+        };
     }, [lapisFilter, sequenceType, lapis, granularity, lapisDateField]);
 
     if (isLoading) {

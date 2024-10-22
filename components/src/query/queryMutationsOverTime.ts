@@ -1,4 +1,5 @@
 import { mapDateToGranularityRange } from './queryAggregatedDataOverTime';
+import type { Dataset } from '../operator/Dataset';
 import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { FetchSubstitutionsOrDeletionsOperator } from '../operator/FetchSubstitutionsOrDeletionsOperator';
 import { GroupByAndSumOperator } from '../operator/GroupByAndSumOperator';
@@ -7,8 +8,10 @@ import { RenameFieldOperator } from '../operator/RenameFieldOperator';
 import { SortOperator } from '../operator/SortOperator';
 import { UserFacingError } from '../preact/components/error-display';
 import {
+    type DeletionEntry,
     type LapisFilter,
     type SequenceType,
+    type SubstitutionEntry,
     type SubstitutionOrDeletionEntry,
     type TemporalGranularity,
 } from '../types';
@@ -102,7 +105,18 @@ export async function queryMutationsOverTimeData(
 
     const data = await Promise.all(subQueries);
 
-    return groupByMutation(data);
+    const overallMutationsData = await queryOverallMutationData({
+        lapisFilter,
+        sequenceType,
+        lapis,
+        lapisDateField,
+        granularity,
+    });
+
+    return {
+        mutationOverTimeData: groupByMutation(data, overallMutationsData),
+        overallMutationData: overallMutationsData,
+    };
 }
 
 async function getDatesInDataset(
@@ -172,19 +186,36 @@ function fetchAndPrepareSubstitutionsOrDeletions(filter: LapisFilter, sequenceTy
     return new FetchSubstitutionsOrDeletionsOperator(filter, sequenceType, 0.001);
 }
 
-export function groupByMutation(data: MutationOverTimeData[]) {
+export function groupByMutation(
+    data: MutationOverTimeData[],
+    overallMutationData: Dataset<SubstitutionEntry | DeletionEntry>,
+) {
     const dataArray = new Map2dBase<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>(
         (mutation) => mutation.code,
         (date) => date.toString(),
     );
 
+    const allDates = data.map((mutationData) => mutationData.date);
+
+    overallMutationData.content.forEach((mutationData) => {
+        allDates.forEach((date) => {
+            dataArray.set(mutationData.mutation, date, {
+                count: 0,
+                proportion: 0,
+                totalCount: 0,
+            });
+        });
+    });
+
     data.forEach((mutationData) => {
         mutationData.mutations.forEach((mutationEntry) => {
-            dataArray.set(mutationEntry.mutation, mutationData.date, {
-                count: mutationEntry.count,
-                proportion: mutationEntry.proportion,
-                totalCount: mutationData.totalCount,
-            });
+            if (dataArray.get(mutationEntry.mutation, mutationData.date) !== undefined) {
+                dataArray.set(mutationEntry.mutation, mutationData.date, {
+                    count: mutationEntry.count,
+                    proportion: mutationEntry.proportion,
+                    totalCount: mutationData.totalCount,
+                });
+            }
         });
     });
 
