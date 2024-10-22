@@ -2,7 +2,7 @@ import { type FunctionComponent } from 'preact';
 
 import { getMutationsTableData } from './getMutationsTableData';
 import { type SubstitutionOrDeletionEntry } from '../../types';
-import { type Deletion, type Substitution } from '../../utils/mutations';
+import { type DeletionClass, type SubstitutionClass } from '../../utils/mutations';
 import type { ProportionInterval } from '../components/proportion-selector';
 import { Table } from '../components/table';
 import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
@@ -20,11 +20,11 @@ const MutationsTable: FunctionComponent<MutationsTableProps> = ({ data, proporti
             {
                 name: 'Mutation',
                 sort: {
-                    compare: (a: Substitution | Deletion, b: Substitution | Deletion) => {
+                    compare: (a: SubstitutionClass | DeletionClass, b: SubstitutionClass | DeletionClass) => {
                         return sortSubstitutionsAndDeletions(a, b);
                     },
                 },
-                formatter: (cell: Substitution | Deletion) => cell.toString(),
+                formatter: (cell: SubstitutionClass | DeletionClass) => cell.toString(),
             },
             {
                 name: 'Type',

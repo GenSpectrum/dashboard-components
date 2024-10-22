@@ -1,7 +1,7 @@
 import { queryAggregatedDataOverTime } from './queryAggregatedDataOverTime';
 import { DivisionOperator } from '../operator/DivisionOperator';
 import { type LapisFilter, type NamedLapisFilter, type TemporalGranularity } from '../types';
-import { type Temporal } from '../utils/temporal';
+import { type TemporalClass } from '../utils/temporalClass';
 import { makeArray } from '../utils/utils';
 
 export type PrevalenceOverTimeData = PrevalenceOverTimeVariantData[];
@@ -15,7 +15,7 @@ export type PrevalenceOverTimeVariantDataPoint = {
     count: number;
     prevalence: number;
     total: number;
-    dateRange: Temporal | null;
+    dateRange: TemporalClass | null;
 };
 
 export function queryPrevalenceOverTime(

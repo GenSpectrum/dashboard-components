@@ -1,4 +1,11 @@
-import { type Deletion, type Insertion, type Substitution } from './utils/mutations';
+import {
+    type Deletion,
+    type DeletionClass,
+    type Insertion,
+    type InsertionClass,
+    type Substitution,
+    type SubstitutionClass,
+} from './utils/mutations';
 
 export type LapisFilter = Record<string, string | number | null | boolean>;
 
@@ -15,12 +22,25 @@ export type SubstitutionOrDeletion = 'substitution' | 'deletion';
 
 export type MutationType = SubstitutionOrDeletion | 'insertion';
 
-export type SubstitutionEntry = { type: 'substitution'; mutation: Substitution; count: number; proportion: number };
+export type SubstitutionEntry<T extends Substitution = SubstitutionClass> = {
+    type: 'substitution';
+    mutation: T;
+    count: number;
+    proportion: number;
+};
 
-export type DeletionEntry = { type: 'deletion'; mutation: Deletion; count: number; proportion: number };
+export type DeletionEntry<T extends Deletion = DeletionClass> = {
+    type: 'deletion';
+    mutation: T;
+    count: number;
+    proportion: number;
+};
 
-export type InsertionEntry = { type: 'insertion'; mutation: Insertion; count: number };
+export type InsertionEntry<T extends Insertion = InsertionClass> = { type: 'insertion'; mutation: T; count: number };
 
-export type SubstitutionOrDeletionEntry = SubstitutionEntry | DeletionEntry;
+export type SubstitutionOrDeletionEntry<
+    S extends Substitution = SubstitutionClass,
+    D extends Deletion = DeletionClass,
+> = SubstitutionEntry<S> | DeletionEntry<D>;
 
 export type MutationEntry = SubstitutionEntry | DeletionEntry | InsertionEntry;

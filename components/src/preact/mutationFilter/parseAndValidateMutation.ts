@@ -1,7 +1,7 @@
 import { type SelectedFilters } from './mutation-filter';
 import { sequenceTypeFromSegment } from './sequenceTypeFromSegment';
 import type { ReferenceGenome } from '../../lapisApi/ReferenceGenome';
-import { Deletion, Insertion, Substitution } from '../../utils/mutations';
+import { DeletionClass, InsertionClass, SubstitutionClass } from '../../utils/mutations';
 
 type ParsedMutationFilter = {
     [MutationType in keyof SelectedFilters]: { type: MutationType; value: SelectedFilters[MutationType][number] };
@@ -11,7 +11,7 @@ export const parseAndValidateMutation = (
     value: string,
     referenceGenome: ReferenceGenome,
 ): ParsedMutationFilter | null => {
-    const possibleInsertion = Insertion.parse(value);
+    const possibleInsertion = InsertionClass.parse(value);
     if (possibleInsertion !== null) {
         const sequenceType = sequenceTypeFromSegment(possibleInsertion.segment, referenceGenome);
         switch (sequenceType) {
@@ -24,7 +24,7 @@ export const parseAndValidateMutation = (
         }
     }
 
-    const possibleDeletion = Deletion.parse(value);
+    const possibleDeletion = DeletionClass.parse(value);
     if (possibleDeletion !== null) {
         const sequenceType = sequenceTypeFromSegment(possibleDeletion.segment, referenceGenome);
         switch (sequenceType) {
@@ -37,7 +37,7 @@ export const parseAndValidateMutation = (
         }
     }
 
-    const possibleSubstitution = Substitution.parse(value);
+    const possibleSubstitution = SubstitutionClass.parse(value);
     if (possibleSubstitution !== null) {
         const sequenceType = sequenceTypeFromSegment(possibleSubstitution.segment, referenceGenome);
         switch (sequenceType) {

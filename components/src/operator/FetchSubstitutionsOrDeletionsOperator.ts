@@ -2,7 +2,7 @@ import { type Dataset } from './Dataset';
 import { type Operator } from './Operator';
 import { fetchSubstitutionsOrDeletions } from '../lapisApi/lapisApi';
 import { type LapisFilter, type SequenceType, type SubstitutionOrDeletionEntry } from '../types';
-import { Deletion, Substitution } from '../utils/mutations';
+import { DeletionClass, SubstitutionClass } from '../utils/mutations';
 
 export class FetchSubstitutionsOrDeletionsOperator implements Operator<SubstitutionOrDeletionEntry> {
     constructor(
@@ -19,14 +19,14 @@ export class FetchSubstitutionsOrDeletionsOperator implements Operator<Substitut
                 if (mutationTo === '-') {
                     return {
                         type: 'deletion',
-                        mutation: new Deletion(sequenceName ?? undefined, mutationFrom, position),
+                        mutation: new DeletionClass(sequenceName ?? undefined, mutationFrom, position),
                         count,
                         proportion,
                     };
                 }
                 return {
                     type: 'substitution',
-                    mutation: new Substitution(sequenceName ?? undefined, mutationFrom, mutationTo, position),
+                    mutation: new SubstitutionClass(sequenceName ?? undefined, mutationFrom, mutationTo, position),
                     count,
                     proportion,
                 };

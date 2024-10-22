@@ -1,22 +1,26 @@
 import { type FunctionComponent } from 'preact';
 import { type Dispatch, type StateUpdater, useContext, useMemo, useState } from 'preact/hooks';
 
+// @ts-expect-error -- uses subpath imports and vite worker import
+import MutationOverTimeWorker from '#mutationOverTime?worker&inline';
 import { getFilteredMutationOverTimeData } from './getFilteredMutationsOverTimeData';
+import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
 import MutationsOverTimeGrid from './mutations-over-time-grid';
-import { type Dataset } from '../../operator/Dataset';
 import {
-    type MutationOverTimeDataGroupedByMutation,
-    queryMutationsOverTimeData,
-    queryOverallMutationData,
+    type MutationOverTimeMutationValue,
+    type MutationOverTimeQuery,
+    serializeSubstitutionOrDeletion,
+    serializeTemporal,
 } from '../../query/queryMutationsOverTime';
 import {
-    type DeletionEntry,
     type LapisFilter,
     type SequenceType,
-    type SubstitutionEntry,
+    type SubstitutionOrDeletionEntry,
     type TemporalGranularity,
 } from '../../types';
-import { compareTemporal } from '../../utils/temporal';
+import { type Map2d, Map2dBase } from '../../utils/map2d';
+import { type Deletion, type Substitution } from '../../utils/mutations';
+import { type Temporal, toTemporalClass } from '../../utils/temporalClass';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
@@ -33,8 +37,7 @@ import { ProportionSelectorDropdown } from '../components/proportion-selector-dr
 import { ResizeContainer } from '../components/resize-container';
 import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/segment-selector';
 import Tabs from '../components/tabs';
-import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
-import { useQuery } from '../useQuery';
+import { useWebWorker } from '../webWorkers/useWebWorker';
 
 export type View = 'grid';
 
@@ -71,47 +74,53 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeInnerPro
     lapisDateField,
 }) => {
     const lapis = useContext(LapisUrlContext);
-    const { data, error, isLoading } = useQuery(async () => {
-        const { mutationOverTimeData, overallMutationData } = await queryMutationsOverTimeData(
+
+    const { data, error, isLoading } = useWebWorker<MutationOverTimeQuery, MutationOverTimeWorkerResponse>(
+        {
             lapisFilter,
             sequenceType,
-            lapis,
-            lapisDateField,
             granularity,
-        );
-        return {
-            mutationOverTimeData,
-            overallMutationData,
-        };
-    }, [lapisFilter, sequenceType, lapis, granularity, lapisDateField]);
+            lapisDateField,
+            lapis,
+        },
+        new MutationOverTimeWorker() as Worker,
+    );
 
     if (isLoading) {
         return <LoadingDisplay />;
     }
 
-    if (error !== null) {
+    if (error !== undefined) {
         return <ErrorDisplay error={error} />;
     }
 
-    if (data === null) {
+    if (data === null || data === undefined) {
         return <NoDataDisplay />;
     }
 
+    const { overallMutationData, mutationOverTimeSerialized } = data;
+    const mutationOverTimeData = new Map2dBase(
+        serializeSubstitutionOrDeletion,
+        serializeTemporal,
+        mutationOverTimeSerialized,
+    );
     return (
         <MutationsOverTimeTabs
-            overallMutationData={data.overallMutationData}
-            mutationOverTimeData={data.mutationOverTimeData}
+            overallMutationData={overallMutationData}
+            mutationOverTimeData={mutationOverTimeData}
             sequenceType={sequenceType}
             views={views}
         />
     );
 };
 
+export type MutationOverTimeData = Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>;
+
 type MutationOverTimeTabsProps = {
-    mutationOverTimeData: MutationOverTimeDataGroupedByMutation;
+    mutationOverTimeData: MutationOverTimeData;
     sequenceType: SequenceType;
     views: View[];
-    overallMutationData: Dataset<SubstitutionEntry | DeletionEntry>;
+    overallMutationData: SubstitutionOrDeletionEntry<Substitution, Deletion>[];
 };
 
 const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
@@ -129,19 +138,23 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         { label: 'Deletions', checked: true, type: 'deletion' },
     ]);
 
-    const filteredData = useMemo(
-        () =>
-            getFilteredMutationOverTimeData(
-                mutationOverTimeData,
-                overallMutationData,
-                displayedSegments,
-                displayedMutationTypes,
-                proportionInterval,
-            ),
-        [mutationOverTimeData, overallMutationData, displayedSegments, displayedMutationTypes, proportionInterval],
-    );
+    const filteredData = useMemo(() => {
+        return getFilteredMutationOverTimeData(
+            mutationOverTimeData,
+            overallMutationData,
+            displayedSegments,
+            displayedMutationTypes,
+            proportionInterval,
+        );
+    }, [mutationOverTimeData, overallMutationData, displayedSegments, displayedMutationTypes, proportionInterval]);
 
     const getTab = (view: View) => {
+        if (filteredData === undefined) {
+            return {
+                title: 'Calculating',
+                content: <LoadingDisplay />,
+            };
+        }
         switch (view) {
             case 'grid':
                 return {
@@ -179,7 +192,7 @@ type ToolbarProps = {
     setDisplayedMutationTypes: (types: DisplayedMutationType[]) => void;
     proportionInterval: ProportionInterval;
     setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
-    filteredData: MutationOverTimeDataGroupedByMutation;
+    filteredData: MutationOverTimeData;
     colorScale: ColorScale;
     setColorScale: Dispatch<StateUpdater<ColorScale>>;
 };
@@ -223,22 +236,19 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     );
 };
 
-function getDownloadData(filteredData: MutationOverTimeDataGroupedByMutation) {
-    const dates = filteredData.getSecondAxisKeys().sort((a, b) => compareTemporal(a, b));
+function getDownloadData(filteredData: MutationOverTimeData) {
+    const dates = filteredData.getSecondAxisKeys().map((date) => toTemporalClass(date));
 
-    return filteredData
-        .getFirstAxisKeys()
-        .sort(sortSubstitutionsAndDeletions)
-        .map((mutation) => {
-            return dates.reduce(
-                (accumulated, date) => {
-                    const proportion = filteredData.get(mutation, date)?.proportion ?? 0;
-                    return {
-                        ...accumulated,
-                        [date.toString()]: proportion,
-                    };
-                },
-                { mutation: mutation.toString() },
-            );
-        });
+    return filteredData.getFirstAxisKeys().map((mutation) => {
+        return dates.reduce(
+            (accumulated, date) => {
+                const proportion = filteredData.get(mutation, date)?.proportion ?? 0;
+                return {
+                    ...accumulated,
+                    [date.dateString]: proportion,
+                };
+            },
+            { mutation: mutation.code },
+        );
+    });
 }

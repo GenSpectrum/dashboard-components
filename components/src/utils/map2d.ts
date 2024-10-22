@@ -22,6 +22,12 @@ export interface Map2d<Key1, Key2, Value> {
     readonly keysSecondAxis: Map<string, Key2>;
 }
 
+export type Map2DContents<Key1, Key2, Value> = {
+    keysFirstAxis: Map<string, Key1>;
+    keysSecondAxis: Map<string, Key2>;
+    data: Map<string, Map<string, Value>>;
+};
+
 export class Map2dBase<Key1 extends object | string, Key2 extends object | string, Value>
     implements Map2d<Key1, Key2, Value>
 {
@@ -32,7 +38,14 @@ export class Map2dBase<Key1 extends object | string, Key2 extends object | strin
     constructor(
         readonly serializeFirstAxis: (key: Key1) => string = (key) => (typeof key === 'string' ? key : hash(key)),
         readonly serializeSecondAxis: (key: Key2) => string = (key) => (typeof key === 'string' ? key : hash(key)),
-    ) {}
+        initialContent?: Map2DContents<Key1, Key2, Value>,
+    ) {
+        if (initialContent) {
+            this.keysFirstAxis = new Map(initialContent.keysFirstAxis);
+            this.keysSecondAxis = new Map(initialContent.keysSecondAxis);
+            this.data = new Map(initialContent.data);
+        }
+    }
 
     get(keyFirstAxis: Key1, keySecondAxis: Key2) {
         const serializedKeyFirstAxis = this.serializeFirstAxis(keyFirstAxis);
@@ -83,6 +96,14 @@ export class Map2dBase<Key1 extends object | string, Key2 extends object | strin
                 return this.get(firstAxisKey, secondAxisKey) ?? fillEmptyWith;
             });
         });
+    }
+
+    getContents(): Map2DContents<Key1, Key2, Value> {
+        return {
+            keysFirstAxis: this.keysFirstAxis,
+            keysSecondAxis: this.keysSecondAxis,
+            data: this.data,
+        };
     }
 }
 

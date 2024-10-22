@@ -1,12 +1,14 @@
 import { type MutationType, type SequenceType } from '../types';
 
 export interface Mutation {
-    readonly segment: string | undefined;
     readonly position: number;
     readonly code: string;
     readonly type: MutationType;
+    readonly segment?: string;
+}
 
-    equals(other: Mutation): boolean;
+export interface MutationClass extends Mutation {
+    equals(other: MutationClass): boolean;
 
     toString(): string;
 }
@@ -14,7 +16,13 @@ export interface Mutation {
 export const substitutionRegex =
     /^((?<segment>[A-Za-z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Za-z])?(?<position>\d+)(?<substitutionValue>[A-Za-z.])?$/;
 
-export class Substitution implements Mutation {
+export interface Substitution extends Mutation {
+    type: 'substitution';
+    valueAtReference: string | undefined;
+    substitutionValue: string | undefined;
+}
+
+export class SubstitutionClass implements MutationClass, Substitution {
     readonly code;
     readonly type = 'substitution';
 
@@ -30,8 +38,8 @@ export class Substitution implements Mutation {
         this.code = `${segmentString}${valueAtReferenceString}${this.position}${substitutionValueString}`;
     }
 
-    equals(other: Mutation): boolean {
-        if (!(other instanceof Substitution)) {
+    equals(other: MutationClass): boolean {
+        if (!(other instanceof SubstitutionClass)) {
             return false;
         }
         return (
@@ -46,12 +54,12 @@ export class Substitution implements Mutation {
         return this.code;
     }
 
-    static parse(mutationStr: string): Substitution | null {
+    static parse(mutationStr: string): SubstitutionClass | null {
         const match = mutationStr.match(substitutionRegex);
         if (match === null || match.groups === undefined) {
             return null;
         }
-        return new Substitution(
+        return new SubstitutionClass(
             match.groups.segment,
             match.groups.valueAtReference,
             match.groups.substitutionValue,
@@ -62,7 +70,12 @@ export class Substitution implements Mutation {
 
 export const deletionRegex = /^((?<segment>[A-Za-z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Za-z])?(?<position>\d+)(-)$/;
 
-export class Deletion implements Mutation {
+export interface Deletion extends Mutation {
+    type: 'deletion';
+    valueAtReference: string | undefined;
+}
+
+export class DeletionClass implements MutationClass, Deletion {
     readonly code;
     readonly type = 'deletion';
 
@@ -76,8 +89,8 @@ export class Deletion implements Mutation {
         this.code = `${segmentString}${valueAtReferenceString}${this.position}-`;
     }
 
-    equals(other: Mutation): boolean {
-        if (!(other instanceof Deletion)) {
+    equals(other: MutationClass): boolean {
+        if (!(other instanceof DeletionClass)) {
             return false;
         }
         return (
@@ -91,20 +104,29 @@ export class Deletion implements Mutation {
         return this.code;
     }
 
-    static parse(mutationStr: string): Deletion | null {
+    static parse(mutationStr: string): DeletionClass | null {
         const match = mutationStr.match(deletionRegex);
         if (match === null || match.groups === undefined) {
             return null;
         }
 
-        return new Deletion(match.groups.segment, match.groups.valueAtReference, parseInt(match.groups.position, 10));
+        return new DeletionClass(
+            match.groups.segment,
+            match.groups.valueAtReference,
+            parseInt(match.groups.position, 10),
+        );
     }
 }
 
 export const insertionRegexp =
     /^ins_((?<segment>[A-Za-z0-9_-]+)(?=:):)?(?<position>\d+):(?<insertedSymbols>(([A-Za-z?]|(\.\*))+))$/i;
 
-export class Insertion implements Mutation {
+export interface Insertion extends Mutation {
+    type: 'insertion';
+    insertedSymbols: string;
+}
+
+export class InsertionClass implements MutationClass {
     readonly code;
     readonly type = 'insertion';
 
@@ -116,8 +138,8 @@ export class Insertion implements Mutation {
         this.code = `ins_${this.segment ? `${this.segment}:` : ''}${this.position}:${this.insertedSymbols}`;
     }
 
-    equals(other: Mutation): boolean {
-        if (!(other instanceof Insertion)) {
+    equals(other: MutationClass): boolean {
+        if (!(other instanceof InsertionClass)) {
             return false;
         }
         return (
@@ -131,13 +153,54 @@ export class Insertion implements Mutation {
         return this.code;
     }
 
-    static parse(mutationStr: string): Insertion | null {
+    static parse(mutationStr: string): InsertionClass | null {
         const match = mutationStr.match(insertionRegexp);
         if (match === null || match.groups === undefined) {
             return null;
         }
 
-        return new Insertion(match.groups.segment, parseInt(match.groups.position, 10), match.groups.insertedSymbols);
+        return new InsertionClass(
+            match.groups.segment,
+            parseInt(match.groups.position, 10),
+            match.groups.insertedSymbols,
+        );
+    }
+}
+
+export function toMutation(
+    mutationClass: SubstitutionClass | DeletionClass | InsertionClass,
+): Substitution | Deletion | Insertion {
+    if (mutationClass.type === 'insertion') {
+        return {
+            type: 'insertion' as const,
+            code: mutationClass.code,
+            segment: mutationClass.segment,
+            position: mutationClass.position,
+            insertedSymbols: mutationClass.insertedSymbols,
+        };
+    }
+    return toSubstitutionOrDeletion(mutationClass);
+}
+
+export function toSubstitutionOrDeletion(mutation: SubstitutionClass | DeletionClass): Substitution | Deletion {
+    switch (mutation.type) {
+        case 'substitution':
+            return {
+                type: 'substitution' as const,
+                code: mutation.code,
+                segment: mutation.segment,
+                position: mutation.position,
+                valueAtReference: mutation.valueAtReference,
+                substitutionValue: mutation.substitutionValue,
+            };
+        case 'deletion':
+            return {
+                type: 'deletion' as const,
+                code: mutation.code,
+                segment: mutation.segment,
+                position: mutation.position,
+                valueAtReference: mutation.valueAtReference,
+            };
     }
 }
 

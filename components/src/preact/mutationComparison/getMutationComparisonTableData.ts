@@ -1,6 +1,6 @@
 import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
-import { type Deletion, type Substitution } from '../../utils/mutations';
+import { type DeletionClass, type SubstitutionClass } from '../../utils/mutations';
 import { type ProportionInterval } from '../components/proportion-selector';
 
 type Proportions = {
@@ -8,7 +8,7 @@ type Proportions = {
 };
 
 type MutationComparisonRow = {
-    mutation: Substitution | Deletion;
+    mutation: SubstitutionClass | DeletionClass;
     proportions: Proportions;
 };
 
@@ -47,7 +47,7 @@ export function getMutationComparisonTableData(data: Dataset<MutationData>, prop
                         };
                     })
                     .reduce((acc, val) => ({ ...acc, ...val }), {}),
-            } as { mutation: Substitution | Deletion } & Proportions;
+            } as { mutation: SubstitutionClass | DeletionClass } & Proportions;
         })
         .filter((row) =>
             Object.values(row).some(
@@ -58,7 +58,7 @@ export function getMutationComparisonTableData(data: Dataset<MutationData>, prop
 }
 
 function initializeMutationRow(
-    mutation: Substitution | Deletion,
+    mutation: SubstitutionClass | DeletionClass,
     displayName: string,
     proportion: number,
 ): MutationComparisonRow {

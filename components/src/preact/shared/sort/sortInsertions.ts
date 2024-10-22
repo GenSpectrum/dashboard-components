@@ -1,7 +1,7 @@
 import { comparePositions, compareSegments } from './sortSubstitutionsAndDeletions';
-import { type Insertion } from '../../../utils/mutations';
+import { type InsertionClass } from '../../../utils/mutations';
 
-export const sortInsertions = (a: Insertion, b: Insertion) => {
+export const sortInsertions = (a: InsertionClass, b: InsertionClass) => {
     if (a.segment !== b.segment) {
         return compareSegments(a.segment, b.segment);
     }

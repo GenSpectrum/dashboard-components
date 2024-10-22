@@ -127,3 +127,7 @@ We follow this testing concept:
         -   Screenshots of charts and tables that serve as visual regression.
         -   Snapshots of the CSV data that the visualization components offer as download.
     -   testing functionality of components that cannot be tested within Storybook due to technical limitations.
+
+#### Mocking
+
+All our tests use mock data. In general, we use `storybook-addon-fetch-mock` for all outgoing requests. This strategy cannot be used for components that use web workers, like gs-mutations-over-time. Therefore, we created custom mock workers that return mocked data. The mock workers are enabled in the package.json using Node.js [subpath imports](https://nodejs.org/api/packages.html#subpath-imports), following the guide from [storybook](https://storybook.js.org/docs/writing-stories/mocking-data-and-modules/mocking-modules). This ensures that when importing the worker in the component, the mock worker is used inside Storybook instead of the real worker.

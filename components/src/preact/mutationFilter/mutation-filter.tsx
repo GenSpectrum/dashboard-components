@@ -4,7 +4,12 @@ import { useContext, useRef, useState } from 'preact/hooks';
 import { MutationFilterInfo } from './mutation-filter-info';
 import { parseAndValidateMutation } from './parseAndValidateMutation';
 import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
-import { type Deletion, type Insertion, type Mutation, type Substitution } from '../../utils/mutations';
+import {
+    type DeletionClass,
+    type InsertionClass,
+    type MutationClass,
+    type SubstitutionClass,
+} from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
@@ -18,10 +23,10 @@ export interface MutationFilterProps extends MutationFilterInnerProps {
 }
 
 export type SelectedFilters = {
-    nucleotideMutations: (Substitution | Deletion)[];
-    aminoAcidMutations: (Substitution | Deletion)[];
-    nucleotideInsertions: Insertion[];
-    aminoAcidInsertions: Insertion[];
+    nucleotideMutations: (SubstitutionClass | DeletionClass)[];
+    aminoAcidMutations: (SubstitutionClass | DeletionClass)[];
+    nucleotideInsertions: InsertionClass[];
+    aminoAcidInsertions: InsertionClass[];
 };
 
 export type SelectedMutationFilterStrings = {
@@ -199,14 +204,18 @@ const SelectedMutationDisplay: FunctionComponent<{
                 <SelectedNucleotideMutation
                     key={mutation.toString()}
                     mutation={mutation}
-                    onDelete={(mutation: Substitution | Deletion) => onSelectedRemoved(mutation, 'nucleotideMutations')}
+                    onDelete={(mutation: SubstitutionClass | DeletionClass) =>
+                        onSelectedRemoved(mutation, 'nucleotideMutations')
+                    }
                 />
             ))}
             {selectedFilters.aminoAcidMutations.map((mutation) => (
                 <SelectedAminoAcidMutation
                     key={mutation.toString()}
                     mutation={mutation}
-                    onDelete={(mutation: Substitution | Deletion) => onSelectedRemoved(mutation, 'aminoAcidMutations')}
+                    onDelete={(mutation: SubstitutionClass | DeletionClass) =>
+                        onSelectedRemoved(mutation, 'aminoAcidMutations')
+                    }
                 />
             ))}
             {selectedFilters.nucleotideInsertions.map((insertion) => (
@@ -220,7 +229,7 @@ const SelectedMutationDisplay: FunctionComponent<{
                 <SelectedAminoAcidInsertion
                     key={insertion.toString()}
                     insertion={insertion}
-                    onDelete={(insertion: Insertion) => onSelectedRemoved(insertion, 'aminoAcidInsertions')}
+                    onDelete={(insertion: InsertionClass) => onSelectedRemoved(insertion, 'aminoAcidInsertions')}
                 />
             ))}
         </>
@@ -228,8 +237,8 @@ const SelectedMutationDisplay: FunctionComponent<{
 };
 
 const SelectedAminoAcidInsertion: FunctionComponent<{
-    insertion: Insertion;
-    onDelete: (insertion: Insertion) => void;
+    insertion: InsertionClass;
+    onDelete: (insertion: InsertionClass) => void;
 }> = ({ insertion, onDelete }) => {
     const backgroundColor = singleGraphColorRGBByName('teal', 0.3);
     const textColor = singleGraphColorRGBByName('teal', 1);
@@ -244,8 +253,8 @@ const SelectedAminoAcidInsertion: FunctionComponent<{
 };
 
 const SelectedAminoAcidMutation: FunctionComponent<{
-    mutation: Substitution | Deletion;
-    onDelete: (mutation: Substitution | Deletion) => void;
+    mutation: SubstitutionClass | DeletionClass;
+    onDelete: (mutation: SubstitutionClass | DeletionClass) => void;
 }> = ({ mutation, onDelete }) => {
     const backgroundColor = singleGraphColorRGBByName('rose', 0.3);
     const textColor = singleGraphColorRGBByName('rose', 1);
@@ -260,8 +269,8 @@ const SelectedAminoAcidMutation: FunctionComponent<{
 };
 
 const SelectedNucleotideMutation: FunctionComponent<{
-    mutation: Substitution | Deletion;
-    onDelete: (insertion: Substitution | Deletion) => void;
+    mutation: SubstitutionClass | DeletionClass;
+    onDelete: (insertion: SubstitutionClass | DeletionClass) => void;
 }> = ({ mutation, onDelete }) => {
     const backgroundColor = singleGraphColorRGBByName('indigo', 0.3);
     const textColor = singleGraphColorRGBByName('indigo', 1);
@@ -276,8 +285,8 @@ const SelectedNucleotideMutation: FunctionComponent<{
 };
 
 const SelectedNucleotideInsertion: FunctionComponent<{
-    insertion: Insertion;
-    onDelete: (insertion: Insertion) => void;
+    insertion: InsertionClass;
+    onDelete: (insertion: InsertionClass) => void;
 }> = ({ insertion, onDelete }) => {
     const backgroundColor = singleGraphColorRGBByName('green', 0.3);
     const textColor = singleGraphColorRGBByName('green', 1);
@@ -292,14 +301,14 @@ const SelectedNucleotideInsertion: FunctionComponent<{
     );
 };
 
-type SelectedFilterProps<MutationType extends Mutation> = {
+type SelectedFilterProps<MutationType extends MutationClass> = {
     mutation: MutationType;
     onDelete: (mutation: MutationType) => void;
     backgroundColor: string;
     textColor: string;
 };
 
-const SelectedFilter = <MutationType extends Mutation>({
+const SelectedFilter = <MutationType extends MutationClass>({
     mutation,
     onDelete,
     backgroundColor,

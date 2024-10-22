@@ -4,7 +4,7 @@ import { getMutationComparisonTableData } from './getMutationComparisonTableData
 import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
 import { type SubstitutionEntry } from '../../types';
-import { Substitution } from '../../utils/mutations';
+import { SubstitutionClass } from '../../utils/mutations';
 
 describe('getPrevalenceOverTimeTableData', () => {
     it('should flatten the data to CSV format', () => {
@@ -15,13 +15,13 @@ describe('getPrevalenceOverTimeTableData', () => {
                     data: [
                         {
                             type: 'substitution',
-                            mutation: new Substitution(undefined, 'A', 'T', 123),
+                            mutation: new SubstitutionClass(undefined, 'A', 'T', 123),
                             count: 1,
                             proportion: 0.123,
                         },
                         {
                             type: 'substitution',
-                            mutation: new Substitution(undefined, 'G', 'A', 234),
+                            mutation: new SubstitutionClass(undefined, 'G', 'A', 234),
                             count: 2,
                             proportion: 0.567,
                         },
@@ -32,13 +32,13 @@ describe('getPrevalenceOverTimeTableData', () => {
                     data: [
                         {
                             type: 'substitution',
-                            mutation: new Substitution(undefined, 'A', 'T', 123),
+                            mutation: new SubstitutionClass(undefined, 'A', 'T', 123),
                             count: 3,
                             proportion: 0.345,
                         },
                         {
                             type: 'substitution',
-                            mutation: new Substitution(undefined, 'G', 'A', 234),
+                            mutation: new SubstitutionClass(undefined, 'G', 'A', 234),
                             count: 4,
                             proportion: 0.789,
                         },
@@ -51,12 +51,12 @@ describe('getPrevalenceOverTimeTableData', () => {
 
         expect(result).toEqual([
             {
-                mutation: new Substitution(undefined, 'A', 'T', 123),
+                mutation: new SubstitutionClass(undefined, 'A', 'T', 123),
                 'Test 1 prevalence': 0.123,
                 'Test 2 prevalence': 0.345,
             },
             {
-                mutation: new Substitution(undefined, 'G', 'A', 234),
+                mutation: new SubstitutionClass(undefined, 'G', 'A', 234),
                 'Test 1 prevalence': 0.567,
                 'Test 2 prevalence': 0.789,
             },
@@ -67,7 +67,7 @@ describe('getPrevalenceOverTimeTableData', () => {
         function makeSubstitutionWithProportionAtPosition(proportion: number, position: number): SubstitutionEntry {
             return {
                 type: 'substitution',
-                mutation: new Substitution(undefined, 'A', 'T', position),
+                mutation: new SubstitutionClass(undefined, 'A', 'T', position),
                 count: 1,
                 proportion,
             };
@@ -106,17 +106,17 @@ describe('getPrevalenceOverTimeTableData', () => {
 
         expect(result).toEqual([
             {
-                mutation: new Substitution(undefined, 'A', 'T', 200),
+                mutation: new SubstitutionClass(undefined, 'A', 'T', 200),
                 'Test 1 prevalence': inRange,
                 'Test 2 prevalence': belowRange,
             },
             {
-                mutation: new Substitution(undefined, 'A', 'T', 300),
+                mutation: new SubstitutionClass(undefined, 'A', 'T', 300),
                 'Test 1 prevalence': inRange,
                 'Test 2 prevalence': inRange,
             },
             {
-                mutation: new Substitution(undefined, 'A', 'T', 400),
+                mutation: new SubstitutionClass(undefined, 'A', 'T', 400),
                 'Test 1 prevalence': inRange,
                 'Test 2 prevalence': aboveRange,
             },

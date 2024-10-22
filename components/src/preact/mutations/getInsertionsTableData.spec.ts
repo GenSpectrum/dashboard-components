@@ -1,12 +1,12 @@
 import { describe, expect, test } from 'vitest';
 
 import { getInsertionsTableData } from './getInsertionsTableData';
-import { Insertion } from '../../utils/mutations';
+import { InsertionClass } from '../../utils/mutations';
 
 describe('getInsertionsTableData', () => {
     test('should return the correct data', () => {
-        const insertion1 = new Insertion('segment1', 123, 'T');
-        const insertion2 = new Insertion('segment2', 234, 'AAA');
+        const insertion1 = new InsertionClass('segment1', 123, 'T');
+        const insertion2 = new InsertionClass('segment2', 234, 'AAA');
         const data = [
             {
                 type: 'insertion' as const,

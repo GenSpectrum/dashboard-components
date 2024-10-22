@@ -1,5 +1,5 @@
 import type { NumberOfSequencesDatasets } from '../../query/queryNumberOfSequencesOverTime';
-import { generateAllInRange, getMinMaxTemporal, type Temporal } from '../../utils/temporal';
+import { generateAllInRange, getMinMaxTemporal, type TemporalClass } from '../../utils/temporalClass';
 
 type TableRow<DateRangeKey extends string> = { [K in DateRangeKey]: string } & { [key: string]: number };
 
@@ -14,14 +14,14 @@ export const getNumberOfSequencesOverTimeTableData = <DateRangeKey extends strin
 
     const allDateRangesThatOccurInData = datasetsWithCountByDate
         .map(({ content }) => [...content.values()].map((datum) => datum.dateRange))
-        .reduce((acc, keys) => new Set([...acc, ...keys]), new Set<Temporal | null>());
+        .reduce((acc, keys) => new Set([...acc, ...keys]), new Set<TemporalClass | null>());
 
     const minMax = getMinMaxTemporal(allDateRangesThatOccurInData);
     if (minMax === null) {
         return [];
     }
 
-    const allDateRanges: (Temporal | null)[] = generateAllInRange(minMax.min, minMax.max);
+    const allDateRanges: (TemporalClass | null)[] = generateAllInRange(minMax.min, minMax.max);
 
     if (allDateRangesThatOccurInData.has(null)) {
         allDateRanges.unshift(null);

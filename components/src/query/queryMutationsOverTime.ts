@@ -1,5 +1,4 @@
 import { mapDateToGranularityRange } from './queryAggregatedDataOverTime';
-import type { Dataset } from '../operator/Dataset';
 import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { FetchSubstitutionsOrDeletionsOperator } from '../operator/FetchSubstitutionsOrDeletionsOperator';
 import { GroupByAndSumOperator } from '../operator/GroupByAndSumOperator';
@@ -7,6 +6,7 @@ import { MapOperator } from '../operator/MapOperator';
 import { RenameFieldOperator } from '../operator/RenameFieldOperator';
 import { SortOperator } from '../operator/SortOperator';
 import { UserFacingError } from '../preact/components/error-display';
+import { sortSubstitutionsAndDeletions } from '../preact/shared/sort/sortSubstitutionsAndDeletions';
 import {
     type DeletionEntry,
     type LapisFilter,
@@ -15,26 +15,35 @@ import {
     type SubstitutionOrDeletionEntry,
     type TemporalGranularity,
 } from '../types';
-import { Map2dBase, type Map2d } from '../utils/map2d';
-import { type Deletion, type Substitution } from '../utils/mutations';
+import { type Map2d, Map2dBase } from '../utils/map2d';
 import {
+    type Deletion,
+    type DeletionClass,
+    type Substitution,
+    type SubstitutionClass,
+    toSubstitutionOrDeletion,
+} from '../utils/mutations';
+import {
+    compareTemporal,
     dateRangeCompare,
     generateAllInRange,
     getMinMaxTemporal,
     parseDateStringToTemporal,
     type Temporal,
-} from '../utils/temporal';
+    type TemporalClass,
+    toTemporal,
+} from '../utils/temporalClass';
 
 export type MutationOverTimeData = {
-    date: Temporal;
+    date: TemporalClass;
     mutations: SubstitutionOrDeletionEntry[];
     totalCount: number;
 };
 
 export type MutationOverTimeMutationValue = { proportion: number; count: number; totalCount: number };
 export type MutationOverTimeDataGroupedByMutation = Map2d<
-    Substitution | Deletion,
-    Temporal,
+    SubstitutionClass | DeletionClass,
+    TemporalClass,
     MutationOverTimeMutationValue
 >;
 
@@ -65,14 +74,23 @@ export async function queryOverallMutationData({
     return fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal);
 }
 
-export async function queryMutationsOverTimeData(
-    lapisFilter: LapisFilter,
-    sequenceType: SequenceType,
-    lapis: string,
-    lapisDateField: string,
-    granularity: TemporalGranularity,
-    signal?: AbortSignal,
-) {
+export type MutationOverTimeQuery = {
+    lapisFilter: LapisFilter;
+    sequenceType: SequenceType;
+    lapis: string;
+    lapisDateField: string;
+    granularity: TemporalGranularity;
+    signal?: AbortSignal;
+};
+
+export async function queryMutationsOverTimeData({
+    lapisFilter,
+    sequenceType,
+    lapis,
+    lapisDateField,
+    granularity,
+    signal,
+}: MutationOverTimeQuery) {
     const allDates = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
 
     if (allDates.length > MAX_NUMBER_OF_GRID_COLUMNS) {
@@ -105,13 +123,15 @@ export async function queryMutationsOverTimeData(
 
     const data = await Promise.all(subQueries);
 
-    const overallMutationsData = await queryOverallMutationData({
-        lapisFilter,
-        sequenceType,
-        lapis,
-        lapisDateField,
-        granularity,
-    });
+    const overallMutationsData = (
+        await queryOverallMutationData({
+            lapisFilter,
+            sequenceType,
+            lapis,
+            lapisDateField,
+            granularity,
+        })
+    ).content;
 
     return {
         mutationOverTimeData: groupByMutation(data, overallMutationsData),
@@ -186,20 +206,35 @@ function fetchAndPrepareSubstitutionsOrDeletions(filter: LapisFilter, sequenceTy
     return new FetchSubstitutionsOrDeletionsOperator(filter, sequenceType, 0.001);
 }
 
+export function serializeSubstitutionOrDeletion(mutation: Substitution | Deletion) {
+    return mutation.code;
+}
+
+export function serializeTemporal(date: Temporal) {
+    return date.dateString;
+}
+
 export function groupByMutation(
     data: MutationOverTimeData[],
-    overallMutationData: Dataset<SubstitutionEntry | DeletionEntry>,
+    overallMutationData: (SubstitutionEntry | DeletionEntry)[],
 ) {
     const dataArray = new Map2dBase<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>(
-        (mutation) => mutation.code,
-        (date) => date.toString(),
+        serializeSubstitutionOrDeletion,
+        serializeTemporal,
     );
 
     const allDates = data.map((mutationData) => mutationData.date);
 
-    overallMutationData.content.forEach((mutationData) => {
-        allDates.forEach((date) => {
-            dataArray.set(mutationData.mutation, date, {
+    const sortedOverallMutationData = overallMutationData
+        .sort((a, b) => sortSubstitutionsAndDeletions(a.mutation, b.mutation))
+        .map((entry) => {
+            return toSubstitutionOrDeletion(entry.mutation);
+        });
+    const sortedDates = allDates.sort((a, b) => compareTemporal(a, b)).map((date) => toTemporal(date));
+
+    sortedOverallMutationData.forEach((mutationData) => {
+        sortedDates.forEach((date) => {
+            dataArray.set(mutationData, date, {
                 count: 0,
                 proportion: 0,
                 totalCount: 0,
@@ -209,8 +244,11 @@ export function groupByMutation(
 
     data.forEach((mutationData) => {
         mutationData.mutations.forEach((mutationEntry) => {
-            if (dataArray.get(mutationEntry.mutation, mutationData.date) !== undefined) {
-                dataArray.set(mutationEntry.mutation, mutationData.date, {
+            const mutation = toSubstitutionOrDeletion(mutationEntry.mutation);
+            const date = toTemporal(mutationData.date);
+
+            if (dataArray.get(mutation, date) !== undefined) {
+                dataArray.set(mutation, date, {
                     count: mutationEntry.count,
                     proportion: mutationEntry.proportion,
                     totalCount: mutationData.totalCount,
@@ -219,23 +257,7 @@ export function groupByMutation(
         });
     });
 
-    addZeroValuesForDatesWithNoMutationData(dataArray, data);
-
     return dataArray;
-}
-
-function addZeroValuesForDatesWithNoMutationData(
-    dataArray: Map2dBase<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>,
-    data: MutationOverTimeData[],
-) {
-    if (dataArray.getFirstAxisKeys().length !== 0) {
-        const someMutation = dataArray.getFirstAxisKeys()[0];
-        data.forEach((mutationData) => {
-            if (mutationData.mutations.length === 0) {
-                dataArray.set(someMutation, mutationData.date, { count: 0, proportion: 0, totalCount: 0 });
-            }
-        });
-    }
 }
 
 function getTotalNumberOfSequencesInDateRange(filter: LapisFilter) {

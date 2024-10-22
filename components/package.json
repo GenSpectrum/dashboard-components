@@ -10,6 +10,17 @@
     "publishConfig": {
         "access": "public"
     },
+    "imports": {
+        "#mutationOverTime": {
+            "storybook": "./src/preact/mutationsOverTime/mutationOverTimeWorker.mock.ts",
+            "default": "./src/preact/mutationsOverTime/mutationOverTimeWorker.ts"
+        },
+        "#*": [
+            "./*",
+            "./*.ts",
+            "./*.tsx"
+        ]
+    },
     "exports": {
         ".": {
             "import": "./dist/dashboard-components.js",
