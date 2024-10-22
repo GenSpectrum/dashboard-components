@@ -1,20 +1,20 @@
 import { describe, expect, test } from 'vitest';
 
 import { getMutationsTableData } from './getMutationsTableData';
-import { Deletion, Substitution } from '../../utils/mutations';
+import { DeletionClass, SubstitutionClass } from '../../utils/mutations';
 
 describe('getMutationsTableData', () => {
     test('should not filter anything, when proportions are in interval', () => {
         const data = [
             {
                 type: 'substitution' as const,
-                mutation: new Substitution('segment1', 'A', 'T', 123),
+                mutation: new SubstitutionClass('segment1', 'A', 'T', 123),
                 count: 1,
                 proportion: 0.1,
             },
             {
                 type: 'deletion' as const,
-                mutation: new Deletion('segment2', 'C', 123),
+                mutation: new DeletionClass('segment2', 'C', 123),
                 count: 2,
                 proportion: 0.2,
             },
@@ -32,8 +32,8 @@ describe('getMutationsTableData', () => {
         const aboveInterval = 0.95;
         const inInterval = 0.5;
 
-        const substitutionInInterval = new Substitution('segment1', 'A', 'T', 123);
-        const deletionInInterval = new Deletion('segment2', 'C', 123);
+        const substitutionInInterval = new SubstitutionClass('segment1', 'A', 'T', 123);
+        const deletionInInterval = new DeletionClass('segment2', 'C', 123);
 
         const data = [
             {
@@ -44,7 +44,7 @@ describe('getMutationsTableData', () => {
             },
             {
                 type: 'substitution' as const,
-                mutation: new Substitution('segment1', 'A', 'T', 234),
+                mutation: new SubstitutionClass('segment1', 'A', 'T', 234),
                 count: 1,
                 proportion: belowInterval,
             },
@@ -56,7 +56,7 @@ describe('getMutationsTableData', () => {
             },
             {
                 type: 'deletion' as const,
-                mutation: new Deletion('segment2', 'C', 456),
+                mutation: new DeletionClass('segment2', 'C', 456),
                 count: 2,
                 proportion: aboveInterval,
             },

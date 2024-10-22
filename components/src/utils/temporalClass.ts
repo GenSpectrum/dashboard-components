@@ -13,37 +13,37 @@ dayjs.extend(advancedFormat);
 const FORMAT_ISO_WEEK_YEAR_WEEK = 'GGGG-[W]WW';
 
 export class TemporalCache {
-    private yearMonthDayCache = new Map<string, YearMonthDay>();
-    private yearWeekCache = new Map<string, YearWeek>();
-    private yearMonthCache = new Map<string, YearMonth>();
-    private yearCache = new Map<string, Year>();
+    private yearMonthDayCache = new Map<string, YearMonthDayClass>();
+    private yearWeekCache = new Map<string, YearWeekClass>();
+    private yearMonthCache = new Map<string, YearMonthClass>();
+    private yearCache = new Map<string, YearClass>();
 
     private constructor() {}
 
-    getYearMonthDay(s: string): YearMonthDay {
+    getYearMonthDay(s: string): YearMonthDayClass {
         if (!this.yearMonthDayCache.has(s)) {
-            this.yearMonthDayCache.set(s, YearMonthDay.parse(s, this));
+            this.yearMonthDayCache.set(s, YearMonthDayClass.parse(s, this));
         }
         return this.yearMonthDayCache.get(s)!;
     }
 
-    getYearMonth(s: string): YearMonth {
+    getYearMonth(s: string): YearMonthClass {
         if (!this.yearMonthCache.has(s)) {
-            this.yearMonthCache.set(s, YearMonth.parse(s, this));
+            this.yearMonthCache.set(s, YearMonthClass.parse(s, this));
         }
         return this.yearMonthCache.get(s)!;
     }
 
-    getYearWeek(s: string): YearWeek {
+    getYearWeek(s: string): YearWeekClass {
         if (!this.yearWeekCache.has(s)) {
-            this.yearWeekCache.set(s, YearWeek.parse(s, this));
+            this.yearWeekCache.set(s, YearWeekClass.parse(s, this));
         }
         return this.yearWeekCache.get(s)!;
     }
 
-    getYear(s: string): Year {
+    getYear(s: string): YearClass {
         if (!this.yearCache.has(s)) {
-            this.yearCache.set(s, Year.parse(s, this));
+            this.yearCache.set(s, YearClass.parse(s, this));
         }
         return this.yearCache.get(s)!;
     }
@@ -55,9 +55,19 @@ export class TemporalCache {
     }
 }
 
-export class YearMonthDay {
+interface YearMonthDay {
+    type: 'YearMonthDay';
+    yearNumber: number;
+    monthNumber: number;
+    dayNumber: number;
+    dateString: string;
+}
+
+export class YearMonthDayClass implements YearMonthDay {
+    readonly type = 'YearMonthDay';
     readonly date;
     readonly dayjs;
+    readonly dateString;
 
     constructor(
         readonly yearNumber: number,
@@ -67,6 +77,7 @@ export class YearMonthDay {
     ) {
         this.date = new Date(this.yearNumber, this.monthNumber - 1, this.dayNumber);
         this.dayjs = dayjs(this.date);
+        this.dateString = this.toString();
     }
 
     get text(): string {
@@ -81,48 +92,60 @@ export class YearMonthDay {
         return this.dayjs.format('dddd, MMMM D, YYYY');
     }
 
-    get firstDay(): YearMonthDay {
+    get firstDay(): YearMonthDayClass {
         return this;
     }
 
-    get lastDay(): YearMonthDay {
+    get lastDay(): YearMonthDayClass {
         return this;
     }
 
-    get year(): Year {
+    get year(): YearClass {
         return this.cache.getYear(`${this.yearNumber}`);
     }
 
-    get month(): YearMonth {
+    get month(): YearMonthClass {
         return this.cache.getYearMonth(this.dayjs.format('YYYY-MM'));
     }
 
-    get week(): YearWeek {
+    get week(): YearWeekClass {
         return this.cache.getYearWeek(this.dayjs.format(FORMAT_ISO_WEEK_YEAR_WEEK));
     }
 
-    addDays(days: number): YearMonthDay {
+    addDays(days: number): YearMonthDayClass {
         const date = this.dayjs.add(days, 'day');
         const s = date.format('YYYY-MM-DD');
         return this.cache.getYearMonthDay(s);
     }
 
-    minus(other: YearMonthDay): number {
+    minus(other: YearMonthDayClass): number {
         return this.dayjs.diff(other.dayjs, 'day');
     }
 
-    static parse(s: string, cache: TemporalCache): YearMonthDay {
+    static parse(s: string, cache: TemporalCache): YearMonthDayClass {
         const [year, month, day] = s.split('-').map((s) => parseInt(s, 10));
-        return new YearMonthDay(year, month, day, cache);
+        return new YearMonthDayClass(year, month, day, cache);
     }
 }
 
-export class YearWeek {
+interface YearWeek {
+    type: 'YearWeek';
+    isoYearNumber: number;
+    isoWeekNumber: number;
+    dateString: string;
+}
+
+export class YearWeekClass implements YearWeek {
+    readonly type = 'YearWeek';
+    readonly dateString;
+
     constructor(
         readonly isoYearNumber: number,
         readonly isoWeekNumber: number,
         readonly cache: TemporalCache,
-    ) {}
+    ) {
+        this.dateString = this.toString();
+    }
 
     get text(): string {
         return this.firstDay.dayjs.format(FORMAT_ISO_WEEK_YEAR_WEEK);
@@ -136,7 +159,7 @@ export class YearWeek {
         return `Week ${this.isoWeekNumber}, ${this.isoYearNumber}`;
     }
 
-    get firstDay(): YearMonthDay {
+    get firstDay(): YearMonthDayClass {
         // "The first week of the year, hence, always contains 4 January." https://en.wikipedia.org/wiki/ISO_week_date
         const firstDay = dayjs()
             .year(this.isoYearNumber)
@@ -147,7 +170,7 @@ export class YearWeek {
         return this.cache.getYearMonthDay(firstDay.format('YYYY-MM-DD'));
     }
 
-    get lastDay(): YearMonthDay {
+    get lastDay(): YearMonthDayClass {
         const firstDay = dayjs()
             .year(this.isoYearNumber)
             .startOf('year')
@@ -159,32 +182,44 @@ export class YearWeek {
         return this.cache.getYearMonthDay(lastDay.format('YYYY-MM-DD'));
     }
 
-    get year(): Year {
+    get year(): YearClass {
         return this.cache.getYear(`${this.isoYearNumber}`);
     }
 
-    addWeeks(weeks: number): YearWeek {
+    addWeeks(weeks: number): YearWeekClass {
         const date = this.firstDay.dayjs.add(weeks, 'week');
         const s = date.format(FORMAT_ISO_WEEK_YEAR_WEEK);
         return this.cache.getYearWeek(s);
     }
 
-    minus(other: YearWeek): number {
+    minus(other: YearWeekClass): number {
         return this.firstDay.dayjs.diff(other.firstDay.dayjs, 'week');
     }
 
-    static parse(s: string, cache: TemporalCache): YearWeek {
+    static parse(s: string, cache: TemporalCache): YearWeekClass {
         const [year, week] = s.split('-W').map((s) => parseInt(s, 10));
-        return new YearWeek(year, week, cache);
+        return new YearWeekClass(year, week, cache);
     }
 }
 
-export class YearMonth {
+interface YearMonth {
+    type: 'YearMonth';
+    yearNumber: number;
+    monthNumber: number;
+    dateString: string;
+}
+
+export class YearMonthClass implements YearMonth {
+    readonly type = 'YearMonth';
+    readonly dateString;
+
     constructor(
         readonly yearNumber: number,
         readonly monthNumber: number,
         readonly cache: TemporalCache,
-    ) {}
+    ) {
+        this.dateString = this.toString();
+    }
 
     get text(): string {
         return this.firstDay.dayjs.format('YYYY-MM');
@@ -198,41 +233,52 @@ export class YearMonth {
         return `${monthName(this.monthNumber)} ${this.yearNumber}`;
     }
 
-    get firstDay(): YearMonthDay {
+    get firstDay(): YearMonthDayClass {
         return this.cache.getYearMonthDay(dayjs(`${this.yearNumber}-${this.monthNumber}-01`).format('YYYY-MM-DD'));
     }
 
-    get lastDay(): YearMonthDay {
+    get lastDay(): YearMonthDayClass {
         return this.cache.getYearMonthDay(
             dayjs(`${this.yearNumber}-${this.monthNumber}-01`).endOf('month').format('YYYY-MM-DD'),
         );
     }
 
-    get year(): Year {
+    get year(): YearClass {
         return this.cache.getYear(`${this.yearNumber}`);
     }
 
-    addMonths(months: number): YearMonth {
+    addMonths(months: number): YearMonthClass {
         const date = this.firstDay.dayjs.add(months, 'month');
         const s = date.format('YYYY-MM');
         return this.cache.getYearMonth(s);
     }
 
-    minus(other: YearMonth): number {
+    minus(other: YearMonthClass): number {
         return this.firstDay.dayjs.diff(other.firstDay.dayjs, 'month');
     }
 
-    static parse(s: string, cache: TemporalCache): YearMonth {
+    static parse(s: string, cache: TemporalCache): YearMonthClass {
         const [year, month] = s.split('-').map((s) => parseInt(s, 10));
-        return new YearMonth(year, month, cache);
+        return new YearMonthClass(year, month, cache);
     }
 }
 
-export class Year {
+interface Year {
+    type: 'Year';
+    year: number;
+    dateString: string;
+}
+
+export class YearClass implements Year {
+    readonly type = 'Year';
+    readonly dateString;
+
     constructor(
         readonly year: number,
         readonly cache: TemporalCache,
-    ) {}
+    ) {
+        this.dateString = this.toString();
+    }
 
     get text(): string {
         return this.firstDay.dayjs.format('YYYY');
@@ -246,35 +292,35 @@ export class Year {
         return this.year.toString();
     }
 
-    get firstMonth(): YearMonth {
+    get firstMonth(): YearMonthClass {
         return this.cache.getYearMonth(`${this.year}-01`);
     }
 
-    get lastMonth(): YearMonth {
+    get lastMonth(): YearMonthClass {
         return this.cache.getYearMonth(`${this.year}-12`);
     }
 
-    get firstDay(): YearMonthDay {
+    get firstDay(): YearMonthDayClass {
         return this.firstMonth.firstDay;
     }
 
-    get lastDay(): YearMonthDay {
+    get lastDay(): YearMonthDayClass {
         return this.lastMonth.lastDay;
     }
 
-    addYears(years: number): Year {
+    addYears(years: number): YearClass {
         const date = this.firstDay.dayjs.add(years, 'year');
         const s = date.format('YYYY');
         return this.cache.getYear(s);
     }
 
-    minus(other: Year): number {
+    minus(other: YearClass): number {
         return this.firstDay.dayjs.diff(other.firstDay.dayjs, 'year');
     }
 
-    static parse(s: string, cache: TemporalCache): Year {
+    static parse(s: string, cache: TemporalCache): YearClass {
         const year = parseInt(s, 10);
-        return new Year(year, cache);
+        return new YearClass(year, cache);
     }
 }
 
@@ -284,9 +330,61 @@ function monthName(month: number): string {
         .format('MMMM');
 }
 
+export type TemporalClass = YearMonthDayClass | YearWeekClass | YearMonthClass | YearClass;
 export type Temporal = YearMonthDay | YearWeek | YearMonth | Year;
 
-export function generateAllDaysInRange(start: YearMonthDay, end: YearMonthDay): YearMonthDay[] {
+export function toTemporalClass(temporal: Temporal) {
+    switch (temporal.type) {
+        case 'YearMonthDay':
+            return new YearMonthDayClass(
+                temporal.yearNumber,
+                temporal.monthNumber,
+                temporal.dayNumber,
+                TemporalCache.getInstance(),
+            );
+        case 'YearWeek':
+            return new YearWeekClass(temporal.isoYearNumber, temporal.isoWeekNumber, TemporalCache.getInstance());
+        case 'YearMonth':
+            return new YearMonthClass(temporal.yearNumber, temporal.monthNumber, TemporalCache.getInstance());
+        case 'Year':
+            return new YearClass(temporal.year, TemporalCache.getInstance());
+    }
+}
+
+export function toTemporal(temporalClass: TemporalClass): Temporal {
+    switch (temporalClass.type) {
+        case 'YearMonthDay':
+            return {
+                type: 'YearMonthDay',
+                yearNumber: temporalClass.yearNumber,
+                monthNumber: temporalClass.monthNumber,
+                dayNumber: temporalClass.dayNumber,
+                dateString: temporalClass.dateString,
+            };
+        case 'YearWeek':
+            return {
+                type: 'YearWeek',
+                isoYearNumber: temporalClass.isoYearNumber,
+                isoWeekNumber: temporalClass.isoWeekNumber,
+                dateString: temporalClass.dateString,
+            };
+        case 'YearMonth':
+            return {
+                type: 'YearMonth',
+                yearNumber: temporalClass.yearNumber,
+                monthNumber: temporalClass.monthNumber,
+                dateString: temporalClass.dateString,
+            };
+        case 'Year':
+            return {
+                type: 'Year',
+                year: temporalClass.year,
+                dateString: temporalClass.dateString,
+            };
+    }
+}
+
+export function generateAllDaysInRange(start: YearMonthDayClass, end: YearMonthDayClass): YearMonthDayClass[] {
     const days = [];
     const daysInBetween = end.minus(start);
     for (let i = 0; i <= daysInBetween; i++) {
@@ -295,7 +393,7 @@ export function generateAllDaysInRange(start: YearMonthDay, end: YearMonthDay): 
     return days;
 }
 
-export function generateAllWeeksInRange(start: YearWeek, end: YearWeek): YearWeek[] {
+export function generateAllWeeksInRange(start: YearWeekClass, end: YearWeekClass): YearWeekClass[] {
     const weeks = [];
     const weeksInBetween = end.minus(start);
     for (let i = 0; i <= weeksInBetween; i++) {
@@ -304,7 +402,7 @@ export function generateAllWeeksInRange(start: YearWeek, end: YearWeek): YearWee
     return weeks;
 }
 
-export function generateAllMonthsInRange(start: YearMonth, end: YearMonth): YearMonth[] {
+export function generateAllMonthsInRange(start: YearMonthClass, end: YearMonthClass): YearMonthClass[] {
     const months = [];
     const monthsInBetween = end.minus(start);
     for (let i = 0; i <= monthsInBetween; i++) {
@@ -313,7 +411,7 @@ export function generateAllMonthsInRange(start: YearMonth, end: YearMonth): Year
     return months;
 }
 
-export function generateAllYearsInRange(start: Year, end: Year): Year[] {
+export function generateAllYearsInRange(start: YearClass, end: YearClass): YearClass[] {
     const years = [];
     const yearsInBetween = end.minus(start);
     for (let i = 0; i <= yearsInBetween; i++) {
@@ -322,42 +420,42 @@ export function generateAllYearsInRange(start: Year, end: Year): Year[] {
     return years;
 }
 
-export function generateAllInRange(start: Temporal | null, end: Temporal | null): Temporal[] {
+export function generateAllInRange(start: TemporalClass | null, end: TemporalClass | null): TemporalClass[] {
     if (start === null || end === null) {
         return [];
     }
-    if (start instanceof YearMonthDay && end instanceof YearMonthDay) {
+    if (start instanceof YearMonthDayClass && end instanceof YearMonthDayClass) {
         return generateAllDaysInRange(start, end);
     }
-    if (start instanceof YearWeek && end instanceof YearWeek) {
+    if (start instanceof YearWeekClass && end instanceof YearWeekClass) {
         return generateAllWeeksInRange(start, end);
     }
-    if (start instanceof YearMonth && end instanceof YearMonth) {
+    if (start instanceof YearMonthClass && end instanceof YearMonthClass) {
         return generateAllMonthsInRange(start, end);
     }
-    if (start instanceof Year && end instanceof Year) {
+    if (start instanceof YearClass && end instanceof YearClass) {
         return generateAllYearsInRange(start, end);
     }
     throw new Error(`Invalid arguments: start and end must be of the same type: ${start}, ${end}`);
 }
 
-export function minusTemporal(a: Temporal, b: Temporal): number {
-    if (a instanceof YearMonthDay && b instanceof YearMonthDay) {
+export function minusTemporal(a: TemporalClass, b: TemporalClass): number {
+    if (a instanceof YearMonthDayClass && b instanceof YearMonthDayClass) {
         return a.minus(b);
     }
-    if (a instanceof YearWeek && b instanceof YearWeek) {
+    if (a instanceof YearWeekClass && b instanceof YearWeekClass) {
         return a.minus(b);
     }
-    if (a instanceof YearMonth && b instanceof YearMonth) {
+    if (a instanceof YearMonthClass && b instanceof YearMonthClass) {
         return a.minus(b);
     }
-    if (a instanceof Year && b instanceof Year) {
+    if (a instanceof YearClass && b instanceof YearClass) {
         return a.minus(b);
     }
     throw new Error(`Cannot compare ${a} and ${b}`);
 }
 
-export function compareTemporal(a: Temporal | null, b: Temporal | null): number {
+export function compareTemporal(a: TemporalClass | null, b: TemporalClass | null): number {
     if (a === null) {
         return 1;
     }
@@ -374,7 +472,7 @@ export function compareTemporal(a: Temporal | null, b: Temporal | null): number 
     return 0;
 }
 
-export function getMinMaxTemporal<T extends Temporal>(values: Iterable<T | null>) {
+export function getMinMaxTemporal<T extends TemporalClass>(values: Iterable<T | null>) {
     let min: T | null = null;
     let max: T | null = null;
     for (const value of values) {
@@ -394,17 +492,17 @@ export function getMinMaxTemporal<T extends Temporal>(values: Iterable<T | null>
     return { min, max };
 }
 
-export function addUnit(temporal: Temporal, amount: number): Temporal {
-    if (temporal instanceof YearMonthDay) {
+export function addUnit(temporal: TemporalClass, amount: number): TemporalClass {
+    if (temporal instanceof YearMonthDayClass) {
         return temporal.addDays(amount);
     }
-    if (temporal instanceof YearWeek) {
+    if (temporal instanceof YearWeekClass) {
         return temporal.addWeeks(amount);
     }
-    if (temporal instanceof YearMonth) {
+    if (temporal instanceof YearMonthClass) {
         return temporal.addMonths(amount);
     }
-    if (temporal instanceof Year) {
+    if (temporal instanceof YearClass) {
         return temporal.addYears(amount);
     }
     throw new Error(`Invalid argument: ${temporal}`);
@@ -425,7 +523,7 @@ export function parseDateStringToTemporal(date: string, granularity: TemporalGra
     }
 }
 
-export function dateRangeCompare(a: { dateRange: Temporal | null }, b: { dateRange: Temporal | null }) {
+export function dateRangeCompare(a: { dateRange: TemporalClass | null }, b: { dateRange: TemporalClass | null }) {
     if (a.dateRange === null) {
         return 1;
     }

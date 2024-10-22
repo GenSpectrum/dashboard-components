@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { parseAndValidateMutation } from './parseAndValidateMutation';
-import { Deletion, Insertion, Substitution } from '../../utils/mutations';
+import { DeletionClass, InsertionClass, SubstitutionClass } from '../../utils/mutations';
 
 describe('parseMutation', () => {
     const singleSegmentedReferenceGenome = {
@@ -28,22 +28,22 @@ describe('parseMutation', () => {
             {
                 name: 'should parse nucleotide insertions',
                 input: 'ins_10:ACGT',
-                expected: { type: 'nucleotideInsertions', value: new Insertion(undefined, 10, 'ACGT') },
+                expected: { type: 'nucleotideInsertions', value: new InsertionClass(undefined, 10, 'ACGT') },
             },
             {
                 name: 'should parse amino acid insertions',
                 input: 'ins_gene1:10:ACGT',
-                expected: { type: 'aminoAcidInsertions', value: new Insertion('gene1', 10, 'ACGT') },
+                expected: { type: 'aminoAcidInsertions', value: new InsertionClass('gene1', 10, 'ACGT') },
             },
             {
                 name: 'should parse amino acid insertion with LAPIS-style wildcard',
                 input: 'ins_gene1:10:?AC?GT',
-                expected: { type: 'aminoAcidInsertions', value: new Insertion('gene1', 10, '?AC?GT') },
+                expected: { type: 'aminoAcidInsertions', value: new InsertionClass('gene1', 10, '?AC?GT') },
             },
             {
                 name: 'should parse amino acid insertion with SILO-style wildcard',
                 input: 'ins_gene1:10:.*AC.*GT',
-                expected: { type: 'aminoAcidInsertions', value: new Insertion('gene1', 10, '.*AC.*GT') },
+                expected: { type: 'aminoAcidInsertions', value: new InsertionClass('gene1', 10, '.*AC.*GT') },
             },
             {
                 name: 'should return null for insertion with segment not in reference genome',
@@ -56,32 +56,32 @@ describe('parseMutation', () => {
             {
                 name: 'should parse nucleotide deletion in single segmented reference genome, when no segment is given',
                 input: 'A123-',
-                expected: { type: 'nucleotideMutations', value: new Deletion(undefined, 'A', 123) },
+                expected: { type: 'nucleotideMutations', value: new DeletionClass(undefined, 'A', 123) },
             },
             {
                 name: 'should parse nucleotide deletion without valueAtReference when no segment is given',
                 input: '123-',
-                expected: { type: 'nucleotideMutations', value: new Deletion(undefined, undefined, 123) },
+                expected: { type: 'nucleotideMutations', value: new DeletionClass(undefined, undefined, 123) },
             },
             {
                 name: 'should parse nucleotide deletion',
                 input: 'nuc1:A123-',
-                expected: { type: 'nucleotideMutations', value: new Deletion('nuc1', 'A', 123) },
+                expected: { type: 'nucleotideMutations', value: new DeletionClass('nuc1', 'A', 123) },
             },
             {
                 name: 'should parse nucleotide deletion without valueAtReference',
                 input: 'nuc1:123-',
-                expected: { type: 'nucleotideMutations', value: new Deletion('nuc1', undefined, 123) },
+                expected: { type: 'nucleotideMutations', value: new DeletionClass('nuc1', undefined, 123) },
             },
             {
                 name: 'should parse amino acid deletion',
                 input: 'gene1:A123-',
-                expected: { type: 'aminoAcidMutations', value: new Deletion('gene1', 'A', 123) },
+                expected: { type: 'aminoAcidMutations', value: new DeletionClass('gene1', 'A', 123) },
             },
             {
                 name: 'should parse amino acid deletion without valueAtReference',
                 input: 'gene1:123-',
-                expected: { type: 'aminoAcidMutations', value: new Deletion('gene1', undefined, 123) },
+                expected: { type: 'aminoAcidMutations', value: new DeletionClass('gene1', undefined, 123) },
             },
             {
                 name: 'should return null for deletion with segment not in reference genome',
@@ -93,35 +93,35 @@ describe('parseMutation', () => {
             {
                 name: 'should parse nucleotide substitution in single segmented reference genome, when no segment is given',
                 input: 'A123T',
-                expected: { type: 'nucleotideMutations', value: new Substitution(undefined, 'A', 'T', 123) },
+                expected: { type: 'nucleotideMutations', value: new SubstitutionClass(undefined, 'A', 'T', 123) },
             },
             {
                 name: 'should parse substitution without valueAtReference',
                 input: '123T',
-                expected: { type: 'nucleotideMutations', value: new Substitution(undefined, undefined, 'T', 123) },
+                expected: { type: 'nucleotideMutations', value: new SubstitutionClass(undefined, undefined, 'T', 123) },
             },
             {
                 name: 'should parse substitution with neither valueAtReference not substitutionValue',
                 input: '123',
                 expected: {
                     type: 'nucleotideMutations',
-                    value: new Substitution(undefined, undefined, undefined, 123),
+                    value: new SubstitutionClass(undefined, undefined, undefined, 123),
                 },
             },
             {
                 name: 'should parse a "no mutation" substitution',
                 input: '123.',
-                expected: { type: 'nucleotideMutations', value: new Substitution(undefined, undefined, '.', 123) },
+                expected: { type: 'nucleotideMutations', value: new SubstitutionClass(undefined, undefined, '.', 123) },
             },
             {
                 name: 'should parse nucleotide substitution',
                 input: 'nuc1:A123T',
-                expected: { type: 'nucleotideMutations', value: new Substitution('nuc1', 'A', 'T', 123) },
+                expected: { type: 'nucleotideMutations', value: new SubstitutionClass('nuc1', 'A', 'T', 123) },
             },
             {
                 name: 'should parse amino acid substitution',
                 input: 'gene1:A123T',
-                expected: { type: 'aminoAcidMutations', value: new Substitution('gene1', 'A', 'T', 123) },
+                expected: { type: 'aminoAcidMutations', value: new SubstitutionClass('gene1', 'A', 'T', 123) },
             },
             {
                 name: 'should return null for substitution with segment not in reference genome',

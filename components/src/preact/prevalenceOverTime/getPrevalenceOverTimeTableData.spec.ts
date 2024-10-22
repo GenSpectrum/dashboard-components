@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
 import { type PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
 import { type TemporalGranularity } from '../../types';
-import { TemporalCache, YearMonthDay } from '../../utils/temporal';
+import { TemporalCache, YearMonthDayClass } from '../../utils/temporalClass';
 
 describe('getPrevalenceOverTimeTableData', () => {
     it('should flatten the data to CSV format', () => {
@@ -12,13 +12,13 @@ describe('getPrevalenceOverTimeTableData', () => {
                 displayName: 'Test 1',
                 content: [
                     {
-                        dateRange: new YearMonthDay(2021, 1, 1, TemporalCache.getInstance()),
+                        dateRange: new YearMonthDayClass(2021, 1, 1, TemporalCache.getInstance()),
                         prevalence: 0.5,
                         count: 100,
                         total: -5,
                     },
                     {
-                        dateRange: new YearMonthDay(2021, 1, 2, TemporalCache.getInstance()),
+                        dateRange: new YearMonthDayClass(2021, 1, 2, TemporalCache.getInstance()),
                         prevalence: 0.6,
                         count: 200,
                         total: -5,
@@ -29,13 +29,13 @@ describe('getPrevalenceOverTimeTableData', () => {
                 displayName: 'Test 2',
                 content: [
                     {
-                        dateRange: new YearMonthDay(2021, 1, 1, TemporalCache.getInstance()),
+                        dateRange: new YearMonthDayClass(2021, 1, 1, TemporalCache.getInstance()),
                         prevalence: 0.7,
                         count: 300,
                         total: -5,
                     },
                     {
-                        dateRange: new YearMonthDay(2021, 1, 2, TemporalCache.getInstance()),
+                        dateRange: new YearMonthDayClass(2021, 1, 2, TemporalCache.getInstance()),
                         prevalence: 0.8,
                         count: 400,
                         total: -5,

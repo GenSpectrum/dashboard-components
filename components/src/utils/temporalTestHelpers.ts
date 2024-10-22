@@ -1,9 +1,9 @@
-import { TemporalCache, YearMonth, YearMonthDay } from './temporal';
+import { TemporalCache, YearMonthClass, YearMonthDayClass } from './temporalClass';
 
 export function yearMonthDay(date: string) {
-    return YearMonthDay.parse(date, TemporalCache.getInstance());
+    return YearMonthDayClass.parse(date, TemporalCache.getInstance());
 }
 
 export function yearMonth(date: string) {
-    return YearMonth.parse(date, TemporalCache.getInstance());
+    return YearMonthClass.parse(date, TemporalCache.getInstance());
 }

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { Map2dBase, Map2dView } from './map2d';
 
-describe('Map2dContainer', () => {
+describe('Map2dBase', () => {
     it('should add a value and return it', () => {
         const map2d = new Map2dBase<string, string, number>();
         map2d.set('a', 'b', 2);
@@ -85,6 +85,34 @@ describe('Map2dContainer', () => {
         map2d.set('a', 'b', 2);
 
         expect(map2d.getRow('c', 0)).toEqual([]);
+    });
+
+    it('should return content as object', () => {
+        const map2d = new Map2dBase<string, string, number>();
+        map2d.set('a', 'b', 2);
+        map2d.set('c', 'd', 4);
+
+        const content = map2d.getContents();
+        expect(Array.from(content.keysFirstAxis.values())).to.deep.equal(['a', 'c']);
+        expect(Array.from(content.keysSecondAxis.values())).to.deep.equal(['b', 'd']);
+        expect(content.data.get('a')?.get('b')).toBe(2);
+    });
+
+    it('should use initial data', () => {
+        const map2d = new Map2dBase<string, string, number>();
+        map2d.set('a', 'b', 2);
+        map2d.set('c', 'd', 4);
+
+        const content = map2d.getContents();
+
+        const mapWithInitialData = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+            content,
+        );
+
+        expect(mapWithInitialData.get('a', 'b')).toBe(2);
+        expect(mapWithInitialData.get('c', 'd')).toBe(4);
     });
 });
 

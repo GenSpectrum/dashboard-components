@@ -1,6 +1,9 @@
-import type { Temporal } from './temporal';
+import type { TemporalClass } from './temporalClass';
 
-export function sortNullToBeginningThenByDate(a: { dateRange: Temporal | null }, b: { dateRange: Temporal | null }) {
+export function sortNullToBeginningThenByDate(
+    a: { dateRange: TemporalClass | null },
+    b: { dateRange: TemporalClass | null },
+) {
     return a.dateRange === null
         ? -1
         : b.dateRange === null

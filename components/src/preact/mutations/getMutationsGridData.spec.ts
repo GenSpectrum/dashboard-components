@@ -1,32 +1,32 @@
 import { describe, expect, test } from 'vitest';
 
 import { type BasesData, getMutationsGridData, type MutationsGridDataRow } from './getMutationsGridData';
-import { Deletion, Substitution } from '../../utils/mutations';
+import { DeletionClass, SubstitutionClass } from '../../utils/mutations';
 
 describe('getMutationsGridData', () => {
     test('should return the correct data', () => {
         const data = [
             {
                 type: 'substitution' as const,
-                mutation: new Substitution(undefined, 'T', 'C', 123),
+                mutation: new SubstitutionClass(undefined, 'T', 'C', 123),
                 count: 1,
                 proportion: 0.9,
             },
             {
                 type: 'substitution' as const,
-                mutation: new Substitution(undefined, 'T', 'C', 234),
+                mutation: new SubstitutionClass(undefined, 'T', 'C', 234),
                 count: 1,
                 proportion: 0.8,
             },
             {
                 type: 'substitution' as const,
-                mutation: new Substitution(undefined, 'T', 'G', 234),
+                mutation: new SubstitutionClass(undefined, 'T', 'G', 234),
                 count: 1,
                 proportion: 0.05,
             },
             {
                 type: 'deletion' as const,
-                mutation: new Deletion(undefined, 'T', 234),
+                mutation: new DeletionClass(undefined, 'T', 234),
                 count: 2,
                 proportion: 0.1,
             },
@@ -70,25 +70,25 @@ describe('getMutationsGridData', () => {
         const data = [
             {
                 type: 'substitution' as const,
-                mutation: new Substitution(undefined, 'T', 'C', 123),
+                mutation: new SubstitutionClass(undefined, 'T', 'C', 123),
                 count: 1,
                 proportion: aboveInterval,
             },
             {
                 type: 'substitution' as const,
-                mutation: new Substitution(undefined, 'T', 'C', 234),
+                mutation: new SubstitutionClass(undefined, 'T', 'C', 234),
                 count: 1,
                 proportion: inInterval,
             },
             {
                 type: 'substitution' as const,
-                mutation: new Substitution(undefined, 'T', 'G', 234),
+                mutation: new SubstitutionClass(undefined, 'T', 'G', 234),
                 count: 1,
                 proportion: belowInterval,
             },
             {
                 type: 'deletion' as const,
-                mutation: new Deletion(undefined, 'T', 234),
+                mutation: new DeletionClass(undefined, 'T', 234),
                 count: 2,
                 proportion: belowInterval,
             },

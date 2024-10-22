@@ -2,7 +2,7 @@ import { type FunctionComponent } from 'preact';
 
 import { getInsertionsTableData } from './getInsertionsTableData';
 import { type InsertionEntry } from '../../types';
-import { type Insertion } from '../../utils/mutations';
+import { type InsertionClass } from '../../utils/mutations';
 import { Table } from '../components/table';
 import { sortInsertions } from '../shared/sort/sortInsertions';
 
@@ -17,11 +17,11 @@ export const InsertionsTable: FunctionComponent<InsertionsTableProps> = ({ data,
             {
                 name: 'Insertion',
                 sort: {
-                    compare: (a: Insertion, b: Insertion) => {
+                    compare: (a: InsertionClass, b: InsertionClass) => {
                         return sortInsertions(a, b);
                     },
                 },
-                formatter: (cell: Insertion) => cell.toString(),
+                formatter: (cell: InsertionClass) => cell.toString(),
             },
             {
                 name: 'Count',

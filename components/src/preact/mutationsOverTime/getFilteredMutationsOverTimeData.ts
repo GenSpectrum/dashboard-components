@@ -1,20 +1,20 @@
-import { type Dataset } from '../../operator/Dataset';
-import { type MutationOverTimeDataGroupedByMutation } from '../../query/queryMutationsOverTime';
-import { type DeletionEntry, type SubstitutionEntry } from '../../types';
+import { type MutationOverTimeData } from './mutations-over-time';
+import { type SubstitutionOrDeletionEntry } from '../../types';
 import { Map2dView } from '../../utils/map2d';
+import type { Deletion, Substitution } from '../../utils/mutations';
 import type { DisplayedMutationType } from '../components/mutation-type-selector';
 import type { DisplayedSegment } from '../components/segment-selector';
 
 export function getFilteredMutationOverTimeData(
-    data: MutationOverTimeDataGroupedByMutation,
-    overallMutationData: Dataset<SubstitutionEntry | DeletionEntry>,
+    data: MutationOverTimeData,
+    overallMutationData: SubstitutionOrDeletionEntry<Substitution, Deletion>[],
     displayedSegments: DisplayedSegment[],
     displayedMutationTypes: DisplayedMutationType[],
     proportionInterval: { min: number; max: number },
 ) {
     const filteredData = new Map2dView(data);
 
-    const mutationsToFilterOut = overallMutationData.content.filter((entry) => {
+    const mutationsToFilterOut = overallMutationData.filter((entry) => {
         if (entry.proportion < proportionInterval.min || entry.proportion > proportionInterval.max) {
             return true;
         }

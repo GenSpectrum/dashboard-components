@@ -1,19 +1,16 @@
 import { Fragment, type FunctionComponent, type RefObject } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
-import {
-    type MutationOverTimeDataGroupedByMutation,
-    type MutationOverTimeMutationValue,
-} from '../../query/queryMutationsOverTime';
+import { type MutationOverTimeData } from './mutations-over-time';
+import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
 import { type Deletion, type Substitution } from '../../utils/mutations';
-import { compareTemporal, type Temporal, YearMonthDay } from '../../utils/temporal';
+import { toTemporalClass, type Temporal, type TemporalClass, YearMonthDayClass } from '../../utils/temporalClass';
 import { type ColorScale, getColorWithingScale, getTextColorForScale } from '../components/color-scale-selector';
 import Tooltip, { type TooltipPosition } from '../components/tooltip';
-import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
 import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsOverTimeGridProps {
-    data: MutationOverTimeDataGroupedByMutation;
+    data: MutationOverTimeData;
     colorScale: ColorScale;
 }
 
@@ -21,10 +18,10 @@ const MAX_NUMBER_OF_GRID_ROWS = 100;
 const MUTATION_CELL_WIDTH_REM = 8;
 
 const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ data, colorScale }) => {
-    const allMutations = data.getFirstAxisKeys().sort(sortSubstitutionsAndDeletions);
+    const allMutations = data.getFirstAxisKeys();
     const shownMutations = allMutations.slice(0, MAX_NUMBER_OF_GRID_ROWS);
 
-    const dates = data.getSecondAxisKeys().sort((a, b) => compareTemporal(a, b));
+    const dates = data.getSecondAxisKeys();
 
     const [showProportionText, setShowProportionText] = useState(false);
     const gridRef = useRef<HTMLDivElement>(null);
@@ -128,12 +125,14 @@ const ProportionCell: FunctionComponent<{
     showProportionText: boolean;
     colorScale: ColorScale;
 }> = ({ value, mutation, date, tooltipPosition, showProportionText, colorScale }) => {
+    const dateClass = toTemporalClass(date);
+
     const tooltipContent = (
         <div>
             <p>
-                <span className='font-bold'>{date.englishName()}</span>
+                <span className='font-bold'>{dateClass.englishName()}</span>
             </p>
-            <p>({timeIntervalDisplay(date)})</p>
+            <p>({timeIntervalDisplay(dateClass)})</p>
             <p>{mutation.code}</p>
             <p>Proportion: {formatProportion(value.proportion)}</p>
             <p>
@@ -159,8 +158,8 @@ const ProportionCell: FunctionComponent<{
     );
 };
 
-const timeIntervalDisplay = (date: Temporal) => {
-    if (date instanceof YearMonthDay) {
+const timeIntervalDisplay = (date: TemporalClass) => {
+    if (date instanceof YearMonthDayClass) {
         return date.toString();
     }
 
@@ -168,7 +167,7 @@ const timeIntervalDisplay = (date: Temporal) => {
 };
 
 const MutationCell: FunctionComponent<{ mutation: Substitution | Deletion }> = ({ mutation }) => {
-    return <div className='text-center'>{mutation.toString()}</div>;
+    return <div className='text-center'>{mutation.code}</div>;
 };
 
 export default MutationsOverTimeGrid;

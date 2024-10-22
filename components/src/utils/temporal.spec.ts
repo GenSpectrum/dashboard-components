@@ -5,23 +5,26 @@ import {
     generateAllMonthsInRange,
     generateAllYearsInRange,
     TemporalCache,
-    Year,
-    YearMonth,
-    YearMonthDay,
-    YearWeek,
-} from './temporal';
+    YearClass,
+    YearMonthClass,
+    YearMonthDayClass,
+    YearWeekClass,
+} from './temporalClass';
 
 const cache = TemporalCache.getInstance();
 
 describe('generateAllDaysInRange', () => {
     it('should return all days in range', () => {
         expect(
-            generateAllDaysInRange(YearMonthDay.parse('2020-01-01', cache), YearMonthDay.parse('2020-01-04', cache)),
+            generateAllDaysInRange(
+                YearMonthDayClass.parse('2020-01-01', cache),
+                YearMonthDayClass.parse('2020-01-04', cache),
+            ),
         ).deep.equal([
-            YearMonthDay.parse('2020-01-01', cache),
-            YearMonthDay.parse('2020-01-02', cache),
-            YearMonthDay.parse('2020-01-03', cache),
-            YearMonthDay.parse('2020-01-04', cache),
+            YearMonthDayClass.parse('2020-01-01', cache),
+            YearMonthDayClass.parse('2020-01-02', cache),
+            YearMonthDayClass.parse('2020-01-03', cache),
+            YearMonthDayClass.parse('2020-01-04', cache),
         ]);
     });
 });
@@ -29,30 +32,30 @@ describe('generateAllDaysInRange', () => {
 describe('generateAllMonthsInRange', () => {
     it('should return all months in range', () => {
         expect(
-            generateAllMonthsInRange(YearMonth.parse('2020-01', cache), YearMonth.parse('2020-04', cache)),
+            generateAllMonthsInRange(YearMonthClass.parse('2020-01', cache), YearMonthClass.parse('2020-04', cache)),
         ).deep.equal([
-            YearMonth.parse('2020-01', cache),
-            YearMonth.parse('2020-02', cache),
-            YearMonth.parse('2020-03', cache),
-            YearMonth.parse('2020-04', cache),
+            YearMonthClass.parse('2020-01', cache),
+            YearMonthClass.parse('2020-02', cache),
+            YearMonthClass.parse('2020-03', cache),
+            YearMonthClass.parse('2020-04', cache),
         ]);
     });
 });
 
 describe('generateAllYearsInRange', () => {
     it('should return all years in range', () => {
-        expect(generateAllYearsInRange(Year.parse('2020-01', cache), Year.parse('2023', cache))).deep.equal([
-            Year.parse('2020', cache),
-            Year.parse('2021', cache),
-            Year.parse('2022', cache),
-            Year.parse('2023', cache),
+        expect(generateAllYearsInRange(YearClass.parse('2020-01', cache), YearClass.parse('2023', cache))).deep.equal([
+            YearClass.parse('2020', cache),
+            YearClass.parse('2021', cache),
+            YearClass.parse('2022', cache),
+            YearClass.parse('2023', cache),
         ]);
     });
 });
 
 describe('YearMonthDay', () => {
     it('should parse from string', () => {
-        const underTest = YearMonthDay.parse('2020-01-01', cache);
+        const underTest = YearMonthDayClass.parse('2020-01-01', cache);
 
         expect(underTest.yearNumber).equal(2020);
         expect(underTest.monthNumber).equal(1);
@@ -66,7 +69,7 @@ describe('YearMonthDay', () => {
 
 describe('YearWeek', () => {
     it('should parse from string', () => {
-        const underTest = YearWeek.parse('2020-W02', cache);
+        const underTest = YearWeekClass.parse('2020-W02', cache);
 
         expect(underTest.isoYearNumber).equal(2020);
         expect(underTest.isoWeekNumber).equal(2);
@@ -78,7 +81,7 @@ describe('YearWeek', () => {
 
 describe('YearMonth', () => {
     it('should parse from string', () => {
-        const underTest = YearMonth.parse('2020-01', cache);
+        const underTest = YearMonthClass.parse('2020-01', cache);
 
         expect(underTest.yearNumber).equal(2020);
         expect(underTest.monthNumber).equal(1);
@@ -90,7 +93,7 @@ describe('YearMonth', () => {
 
 describe('Year', () => {
     it('should parse from string', () => {
-        const underTest = Year.parse('2020', cache);
+        const underTest = YearClass.parse('2020', cache);
 
         expect(underTest.year).equal(2020);
         expect(underTest.text).equal('2020');

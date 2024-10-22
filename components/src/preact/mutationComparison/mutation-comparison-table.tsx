@@ -3,7 +3,7 @@ import { type FunctionComponent } from 'preact';
 import { getMutationComparisonTableData } from './getMutationComparisonTableData';
 import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
-import { type Deletion, type Substitution } from '../../utils/mutations';
+import { type DeletionClass, type SubstitutionClass } from '../../utils/mutations';
 import { type ProportionInterval } from '../components/proportion-selector';
 import { Table } from '../components/table';
 import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
@@ -26,7 +26,7 @@ export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = (
             sort: {
                 compare: sortSubstitutionsAndDeletions,
             },
-            formatter: (cell: Substitution | Deletion) => cell.toString(),
+            formatter: (cell: SubstitutionClass | DeletionClass) => cell.toString(),
         },
         {
             name: 'Prevalence',

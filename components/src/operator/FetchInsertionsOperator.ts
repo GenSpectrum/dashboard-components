@@ -2,7 +2,7 @@ import { type Dataset } from './Dataset';
 import { type Operator } from './Operator';
 import { fetchInsertions } from '../lapisApi/lapisApi';
 import { type InsertionEntry, type LapisFilter, type SequenceType } from '../types';
-import { Insertion } from '../utils/mutations';
+import { InsertionClass } from '../utils/mutations';
 
 export class FetchInsertionsOperator implements Operator<InsertionEntry> {
     constructor(
@@ -15,7 +15,7 @@ export class FetchInsertionsOperator implements Operator<InsertionEntry> {
 
         const content: InsertionEntry[] = insertions.map(({ count, insertedSymbols, sequenceName, position }) => ({
             type: 'insertion',
-            mutation: new Insertion(sequenceName ?? undefined, position, insertedSymbols),
+            mutation: new InsertionClass(sequenceName ?? undefined, position, insertedSymbols),
             count,
         }));
 

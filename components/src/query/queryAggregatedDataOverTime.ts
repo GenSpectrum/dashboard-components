@@ -11,8 +11,8 @@ import {
     generateAllInRange,
     getMinMaxTemporal,
     parseDateStringToTemporal,
-    type Temporal,
-} from '../utils/temporal';
+    type TemporalClass,
+} from '../utils/temporalClass';
 
 export function queryAggregatedDataOverTime<LapisDateField extends string>(
     filter: LapisFilter,
@@ -46,7 +46,7 @@ export function mapDateToGranularityRange(
     };
 }
 
-function averageSmoothing(slidingWindow: { dateRange: Temporal | null; count: number }[]) {
+function averageSmoothing(slidingWindow: { dateRange: TemporalClass | null; count: number }[]) {
     const average = slidingWindow.reduce((acc, curr) => acc + curr.count, 0) / slidingWindow.length;
     const centerIndex = Math.floor(slidingWindow.length / 2);
     return { dateRange: slidingWindow[centerIndex].dateRange, count: average };

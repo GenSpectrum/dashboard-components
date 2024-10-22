@@ -1,6 +1,6 @@
 import { Chart, type ChartConfiguration, registerables, type TooltipItem } from 'chart.js';
 
-import { type YearMonthDay } from '../../utils/temporal';
+import { type YearMonthDayClass } from '../../utils/temporalClass';
 import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
@@ -10,7 +10,7 @@ import { getYAxisScale, type ScaleType } from '../shared/charts/getYAxisScale';
 import { formatProportion } from '../shared/table/formatProportion';
 
 interface RelativeGrowthAdvantageChartData {
-    t: YearMonthDay[];
+    t: YearMonthDayClass[];
     proportion: number[];
     ciLower: number[];
     ciUpper: number[];

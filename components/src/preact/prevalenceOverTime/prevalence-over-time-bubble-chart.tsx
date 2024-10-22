@@ -2,7 +2,7 @@ import { Chart, type ChartConfiguration, registerables } from 'chart.js';
 
 import { maxInData } from './prevalence-over-time';
 import { type PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime';
-import { addUnit, minusTemporal } from '../../utils/temporal';
+import { addUnit, minusTemporal } from '../../utils/temporalClass';
 import { getMinMaxNumber } from '../../utils/utils';
 import GsChart from '../components/chart';
 import { LogitScale } from '../shared/charts/LogitScale';

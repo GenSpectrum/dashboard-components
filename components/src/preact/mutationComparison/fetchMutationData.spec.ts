@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { filterMutationData } from './queryMutationData';
 import { type SubstitutionOrDeletion, type SubstitutionOrDeletionEntry } from '../../types';
-import { Deletion, Substitution } from '../../utils/mutations';
+import { DeletionClass, SubstitutionClass } from '../../utils/mutations';
 
 const segment = 'testSegment';
 const displayedSegment = { segment, label: 'label', checked: true };
@@ -19,14 +19,14 @@ describe('filterMutationData', () => {
             case 'substitution':
                 return {
                     type: 'substitution',
-                    mutation: new Substitution(segment, 'A', 'B', 0),
+                    mutation: new SubstitutionClass(segment, 'A', 'B', 0),
                     count: 0,
                     proportion: 0,
                 };
             case 'deletion':
                 return {
                     type: 'deletion',
-                    mutation: new Deletion(segment, 'A', 0),
+                    mutation: new DeletionClass(segment, 'A', 0),
                     count: 0,
                     proportion: 0,
                 };

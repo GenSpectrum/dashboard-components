@@ -2,7 +2,7 @@ import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { MapOperator } from '../operator/MapOperator';
 import { RenameFieldOperator } from '../operator/RenameFieldOperator';
 import { type LapisFilter } from '../types';
-import { getMinMaxTemporal, TemporalCache, type YearMonthDay } from '../utils/temporal';
+import { getMinMaxTemporal, TemporalCache, type YearMonthDayClass } from '../utils/temporalClass';
 
 export type RelativeGrowthAdvantageData = Awaited<ReturnType<typeof queryRelativeGrowthAdvantage>>;
 
@@ -33,13 +33,13 @@ export async function queryRelativeGrowthAdvantage<LapisDateField extends string
         return null;
     }
 
-    const numeratorCounts = new Map<YearMonthDay, number>();
+    const numeratorCounts = new Map<YearMonthDayClass, number>();
     numeratorData.content.forEach((d) => {
         if (d.date) {
             numeratorCounts.set(d.date, d.count);
         }
     });
-    const denominatorCounts = new Map<YearMonthDay, number>();
+    const denominatorCounts = new Map<YearMonthDayClass, number>();
     const requestData = {
         t: [] as number[],
         n: [] as number[],
