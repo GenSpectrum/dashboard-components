@@ -37,13 +37,29 @@ export type MutationOverTimeDataGroupedByMutation = Map2d<
 
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 
-export async function queryOverallMutationData(
-    lapisFilter: LapisFilter,
-    sequenceType: SequenceType,
-    lapis: string,
-    signal?: AbortSignal,
-) {
-    return fetchAndPrepareSubstitutionsOrDeletions(lapisFilter, sequenceType).evaluate(lapis, signal);
+export async function queryOverallMutationData({
+    lapisFilter,
+    sequenceType,
+    lapis,
+    granularity,
+    lapisDateField,
+    signal,
+}: {
+    lapisFilter: LapisFilter;
+    sequenceType: SequenceType;
+    lapis: string;
+    granularity: TemporalGranularity;
+    lapisDateField: string;
+    signal?: AbortSignal;
+}) {
+    const allDates = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
+    const filter = {
+        ...lapisFilter,
+        [`${lapisDateField}From`]: allDates[0].firstDay.toString(),
+        [`${lapisDateField}To`]: allDates[allDates.length - 1].lastDay.toString(),
+    };
+
+    return fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal);
 }
 
 export async function queryMutationsOverTimeData(
