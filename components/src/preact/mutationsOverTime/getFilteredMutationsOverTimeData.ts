@@ -13,64 +13,22 @@ export function getFilteredMutationOverTimeData(
     proportionInterval: { min: number; max: number },
 ) {
     const filteredData = new Map2dView(data);
-    filterDisplayedSegments(displayedSegments, filteredData);
-    filterMutationTypes(displayedMutationTypes, filteredData);
-    filterProportion(filteredData, overallMutationData, proportionInterval);
+
+    const mutationsToFilterOut = overallMutationData.content.filter((entry) => {
+        if (entry.proportion < proportionInterval.min || entry.proportion > proportionInterval.max) {
+            return true;
+        }
+        if (displayedSegments.some((segment) => segment.segment === entry.mutation.segment && !segment.checked)) {
+            return true;
+        }
+        return displayedMutationTypes.some(
+            (mutationType) => mutationType.type === entry.mutation.type && !mutationType.checked,
+        );
+    });
+
+    mutationsToFilterOut.forEach((entry) => {
+        filteredData.deleteRow(entry.mutation);
+    });
 
     return filteredData;
-}
-
-export function filterDisplayedSegments(
-    displayedSegments: DisplayedSegment[],
-    data: MutationOverTimeDataGroupedByMutation,
-) {
-    displayedSegments.forEach((segment) => {
-        if (!segment.checked) {
-            data.getFirstAxisKeys().forEach((mutation) => {
-                if (mutation.segment === segment.segment) {
-                    data.deleteRow(mutation);
-                }
-            });
-        }
-    });
-}
-
-export function filterMutationTypes(
-    displayedMutationTypes: DisplayedMutationType[],
-    data: MutationOverTimeDataGroupedByMutation,
-) {
-    displayedMutationTypes.forEach((mutationType) => {
-        if (!mutationType.checked) {
-            data.getFirstAxisKeys().forEach((mutation) => {
-                if (mutationType.type === mutation.type) {
-                    data.deleteRow(mutation);
-                }
-            });
-        }
-    });
-}
-
-export function filterProportion(
-    data: MutationOverTimeDataGroupedByMutation,
-    overallMutationData: Dataset<SubstitutionEntry | DeletionEntry>,
-    proportionInterval: {
-        min: number;
-        max: number;
-    },
-) {
-    const overallProportionsByMutation = overallMutationData.content.reduce(
-        (acc, { mutation, proportion }) => ({
-            ...acc,
-            [mutation.toString()]: proportion,
-        }),
-        {} as Record<string, number>,
-    );
-
-    data.getFirstAxisKeys().forEach((mutation) => {
-        const overallProportion = overallProportionsByMutation[mutation.toString()] || -1;
-
-        if (overallProportion < proportionInterval.min || overallProportion > proportionInterval.max) {
-            data.deleteRow(mutation);
-        }
-    });
 }
