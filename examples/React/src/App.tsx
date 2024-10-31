@@ -50,7 +50,7 @@ function App() {
         displayName: 'My variant',
         lapisFilter: {
             ...denominator,
-            pangoLineage: 'B.1.1.7',
+            pangoLineage: 'B.1.1.7*',
         },
     };
 
@@ -99,13 +99,22 @@ function App() {
             </div>
             <h1 className='text-xl bold'>Relative Growth Advantage</h1>
             <gs-relative-growth-advantage
-                numeratorFilter='{ "country": "Switzerland", "pangoLineage": "B.1.1.7", "dateFrom": "2020-12-01" }'
-                denominatorFilter='{ "country": "Switzerland", "dateFrom": "2020-12-01" }'
+                numeratorFilter={JSON.stringify(numerator.lapisFilter)}
+                denominatorFilter={JSON.stringify(denominator)}
                 generationTime='7'
                 views='["line"]'
                 width='100%'
                 height='700px'
             ></gs-relative-growth-advantage>
+            <gs-mutations-over-time
+                lapisFilter={JSON.stringify(numerator.lapisFilter)}
+                sequenceType='nucleotide'
+                views='["grid"]'
+                width='100%'
+                height='700px'
+                granularity='week'
+                lapisDateField='date'
+            ></gs-mutations-over-time>
         </gs-app>
     );
 }
