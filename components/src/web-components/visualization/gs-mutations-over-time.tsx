@@ -101,7 +101,7 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-mutations-over-time-component': MutationsOverTimeComponent;
+        'gs-mutations-over-time': MutationsOverTimeComponent;
     }
 }
 
@@ -109,7 +109,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-mutations-over-time-component': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-mutations-over-time': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
         }
     }
 }
