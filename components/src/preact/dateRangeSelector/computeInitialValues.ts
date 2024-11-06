@@ -1,36 +1,30 @@
-import {
-    type CustomSelectOption,
-    getDatesForSelectorValue,
-    getSelectableOptions,
-    PRESET_VALUE_CUSTOM,
-    PRESET_VALUE_LAST_6_MONTHS,
-    type PresetOptionValues,
-} from './selectableOptions';
+import { type DateRangeOption } from './dateRangeOption';
+import { getDatesForSelectorValue, getSelectableOptions } from './selectableOptions';
 import { UserFacingError } from '../components/error-display';
 
-export function computeInitialValues<CustomLabel extends string>(
-    initialValue: PresetOptionValues | CustomLabel | undefined,
+export function computeInitialValues(
+    initialValue: string | undefined,
     initialDateFrom: string | undefined,
     initialDateTo: string | undefined,
     earliestDate: string,
-    customSelectOptions: CustomSelectOption<CustomLabel>[],
+    dateRangeOptions: DateRangeOption[],
 ): {
-    initialSelectedDateRange: CustomLabel | PresetOptionValues;
+    initialSelectedDateRange: string | undefined;
     initialSelectedDateFrom: Date;
     initialSelectedDateTo: Date;
 } {
     if (isUndefinedOrEmpty(initialDateFrom) && isUndefinedOrEmpty(initialDateTo)) {
-        const selectableOptions = getSelectableOptions(customSelectOptions);
-        const initialSelectedDateRange =
-            initialValue !== undefined && selectableOptions.some((option) => option.value === initialValue)
-                ? initialValue
-                : PRESET_VALUE_LAST_6_MONTHS;
+        const selectableOptions = getSelectableOptions(dateRangeOptions);
+        const initialSelectedDateRange = selectableOptions.find((option) => option.value === initialValue)?.value;
 
-        const { dateFrom, dateTo } = getDatesForSelectorValue(
-            initialSelectedDateRange,
-            customSelectOptions,
-            earliestDate,
-        );
+        if (initialValue !== undefined && initialSelectedDateRange === undefined) {
+            throw new UserFacingError(
+                'Invalid initialValue',
+                `Invalid initialValue "${initialValue}", It must be one of ${selectableOptions.map((option) => `'${option.value}'`).join(', ')}`,
+            );
+        }
+
+        const { dateFrom, dateTo } = getDatesForSelectorValue(initialSelectedDateRange, dateRangeOptions, earliestDate);
 
         return {
             initialSelectedDateRange,
@@ -62,7 +56,7 @@ export function computeInitialValues<CustomLabel extends string>(
     }
 
     return {
-        initialSelectedDateRange: PRESET_VALUE_CUSTOM,
+        initialSelectedDateRange: undefined,
         initialSelectedDateFrom,
         initialSelectedDateTo,
     };

@@ -32,7 +32,7 @@ test('date selector should switch to custom and back', async ({ page }) => {
     await dateFrom.fill(someDateInThePast);
     await dateFrom.press('Enter');
 
-    expect(await selectBox.inputValue()).toBe('custom');
+    expect(await selectBox.inputValue()).toBe('Custom');
     expect(await dateFrom.inputValue()).toBe(someDateInThePast);
 
     const today = new Date();
@@ -41,14 +41,14 @@ test('date selector should switch to custom and back', async ({ page }) => {
     expect(firstEvent.aDateColumnTo).toBe(toYYYYMMDD(today));
 
     const secondEventPromise = getEventPromiseInsideTestBrowser(page);
-    await selectBox.selectOption('last3Months');
+    await selectBox.selectOption('Last 3 months');
 
     const threeMonthAgo = new Date();
     threeMonthAgo.setMonth(threeMonthAgo.getMonth() - 3);
 
     expect(await dateFrom.inputValue()).toBe(toYYYYMMDD(threeMonthAgo));
     expect(await dateTo.inputValue()).toBe(toYYYYMMDD(today));
-    expect(await selectBox.inputValue()).toBe('last3Months');
+    expect(await selectBox.inputValue()).toBe('Last 3 months');
     const secondEvent = await secondEventPromise;
     expect(secondEvent.aDateColumnFrom).toBe(toYYYYMMDD(threeMonthAgo));
     expect(secondEvent.aDateColumnTo).toBe(toYYYYMMDD(today));

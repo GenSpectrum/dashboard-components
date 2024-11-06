@@ -4,33 +4,28 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 
 import { computeInitialValues } from './computeInitialValues';
 import { toYYYYMMDD } from './dateConversion';
-import {
-    type CustomSelectOption,
-    getDatesForSelectorValue,
-    getSelectableOptions,
-    type PresetOptionValues,
-} from './selectableOptions';
+import { type DateRangeOption } from './dateRangeOption';
+import { getDatesForSelectorValue, getSelectableOptions } from './selectableOptions';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Select } from '../components/select';
 import type { ScaleType } from '../shared/charts/getYAxisScale';
 
-export interface DateRangeSelectorProps<CustomLabel extends string> extends DateRangeSelectorPropsInner<CustomLabel> {
+const customOption = 'Custom';
+
+export interface DateRangeSelectorProps extends DateRangeSelectorPropsInner {
     width: string;
 }
 
-export interface DateRangeSelectorPropsInner<CustomLabel extends string> {
-    customSelectOptions: CustomSelectOption<CustomLabel>[];
+export interface DateRangeSelectorPropsInner {
+    dateRangeOptions: DateRangeOption[];
     earliestDate: string;
-    initialValue: PresetOptionValues | CustomLabel;
+    initialValue: string | undefined;
     initialDateFrom: string;
     initialDateTo: string;
     dateColumn: string;
 }
 
-export const DateRangeSelector = <CustomLabel extends string>({
-    width,
-    ...innerProps
-}: DateRangeSelectorProps<CustomLabel>) => {
+export const DateRangeSelector = ({ width, ...innerProps }: DateRangeSelectorProps) => {
     const size = { width, height: '3rem' };
 
     return (
@@ -42,20 +37,20 @@ export const DateRangeSelector = <CustomLabel extends string>({
     );
 };
 
-export const DateRangeSelectorInner = <CustomLabel extends string>({
-    customSelectOptions,
+export const DateRangeSelectorInner = ({
+    dateRangeOptions,
     earliestDate = '1900-01-01',
     initialValue,
     dateColumn,
     initialDateFrom,
     initialDateTo,
-}: DateRangeSelectorPropsInner<CustomLabel>) => {
+}: DateRangeSelectorPropsInner) => {
     const initialValues = computeInitialValues(
         initialValue,
         initialDateFrom,
         initialDateTo,
         earliestDate,
-        customSelectOptions,
+        dateRangeOptions,
     );
 
     const fromDatePickerRef = useRef<HTMLInputElement>(null);
@@ -64,7 +59,7 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
     const [dateFromPicker, setDateFromPicker] = useState<flatpickr.Instance | null>(null);
     const [dateToPicker, setDateToPicker] = useState<flatpickr.Instance | null>(null);
 
-    const [selectedDateRange, setSelectedDateRange] = useState<CustomLabel | PresetOptionValues>(
+    const [selectedDateRange, setSelectedDateRange] = useState<string | undefined>(
         initialValues.initialSelectedDateRange,
     );
 
@@ -104,10 +99,10 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fromDatePickerRef, toDatePickerRef]);
 
-    const onSelectChange = (value: CustomLabel | PresetOptionValues) => {
+    const onSelectChange = (value: string) => {
         setSelectedDateRange(value);
 
-        const dateRange = getDatesForSelectorValue(value, customSelectOptions, earliestDate);
+        const dateRange = getDatesForSelectorValue(value, dateRangeOptions, earliestDate);
 
         dateToPicker?.set('minDate', dateRange.dateFrom);
         dateFromPicker?.set('maxDate', dateRange.dateTo);
@@ -130,7 +125,7 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
 
         selectedDates.dateFrom = dateFromPicker?.selectedDates[0] || new Date();
         dateToPicker?.set('minDate', dateFromPicker?.selectedDates[0]);
-        setSelectedDateRange('custom');
+        setSelectedDateRange(customOption);
 
         submit();
     };
@@ -142,7 +137,7 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
 
         selectedDates.dateTo = dateToPicker?.selectedDates[0] || new Date();
         dateFromPicker?.set('maxDate', dateToPicker?.selectedDates[0]);
-        setSelectedDateRange('custom');
+        setSelectedDateRange(customOption);
 
         submit();
     };
@@ -168,14 +163,17 @@ export const DateRangeSelectorInner = <CustomLabel extends string>({
     return (
         <div class='flex flex-wrap' ref={divRef}>
             <Select
-                items={getSelectableOptions(customSelectOptions)}
-                selected={selectedDateRange}
+                items={[
+                    ...getSelectableOptions(dateRangeOptions),
+                    { label: customOption, value: customOption, disabled: true },
+                ]}
+                selected={selectedDateRange ?? customOption}
                 selectStyle='select-bordered rounded-none flex-grow min-w-[7.5rem]'
                 onChange={(event: Event) => {
                     event.preventDefault();
                     const select = event.target as HTMLSelectElement;
                     const value = select.value as ScaleType;
-                    onSelectChange(value as CustomLabel | PresetOptionValues);
+                    onSelectChange(value);
                 }}
             />
             <div className={'flex flex-wrap flex-grow'}>
