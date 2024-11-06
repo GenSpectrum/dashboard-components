@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.19](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.18...dashboard-components-v0.6.19) (2024-11-06)
+
+
+### Bug Fixes
+
+* **components:** correctly export tag of mutations over time ([896d30b](https://github.com/GenSpectrum/dashboard-components/commit/896d30ba04fd503667bf4fa238592a794d049bc3))
+* **components:** mutation over time initial query with missing dates [#483](https://github.com/GenSpectrum/dashboard-components/pull/483) ([42dcc4e](https://github.com/GenSpectrum/dashboard-components/commit/42dcc4e8a1844bcc5143a6e209d3c63392b2a6e5))
+
+
+### Performance Improvements
+
+* **components:** improve performance of mutations over time filters [#483](https://github.com/GenSpectrum/dashboard-components/pull/483) ([ea78935](https://github.com/GenSpectrum/dashboard-components/commit/ea7893507c2d76a0593e1bd6d938236db03d3b08))
+* **components:** use web worker for mutations over time calculation [#483](https://github.com/GenSpectrum/dashboard-components/pull/483) ([c48f4b0](https://github.com/GenSpectrum/dashboard-components/commit/c48f4b0a877448f87706700648d474746ed515a3))
+
 ## [0.6.18](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.17...dashboard-components-v0.6.18) (2024-09-26)
 
 
