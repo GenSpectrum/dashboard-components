@@ -37,13 +37,14 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
 @customElement('gs-date-range-selector')
 export class DateRangeSelectorComponent extends PreactLitAdapter {
     /**
-     * An array of custom options that the select field should provide,
-     * in addition to the predefined options.
+     * An array of date range options that the select field should provide.
      * The `label` will be shown to the user, and it will be available as `initialValue`.
      * The dates must be in the format `YYYY-MM-DD`.
+     *
+     * If dateFrom or dateTo is not set, the component will default to the `earliestDate` or the current date.
      */
     @property({ type: Array })
-    customSelectOptions: { label: string; dateFrom: string; dateTo: string }[] = [];
+    dateRangeOptions: { label: string; dateFrom?: string; dateTo?: string }[] = [];
 
     /**
      * The `dateFrom` value to use in the `allTimes` preset in the format `YYYY-MM-DD`.
@@ -51,26 +52,18 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
     @property({ type: String })
     earliestDate: string = '1900-01-01';
 
-    // prettier-ignore
-    // The multiline union type must not start with `| 'custom'` - Storybook will list "" as the first type which is wrong
     /**
      * The initial value to use for this date range selector.
-     * Must be a valid label from the preset labels or a `label` given in the `customSelectOptions`.
+     * Must be a valid label from the `dateRangeOptions`.
      *
-     * If the value is invalid, the component will default to `'last6Months'`.
+     * If the value is not set, the component will default to the range `earliestDate` until today.
      *
      * It will be overwritten if `initialDateFrom` or `initialDateTo` is set.
+     *
+     * We provide some options in `dateRangeOptionPresets` for convenience.
      */
     @property()
-    initialValue:
-        'custom'
-        | 'allTimes'
-        | 'last2Weeks'
-        | 'lastMonth'
-        | 'last2Months'
-        | 'last3Months'
-        | 'last6Months'
-        | string = 'last6Months';
+    initialValue: string | undefined = undefined;
 
     /**
      * A date string in the format `YYYY-MM-DD`.
@@ -105,7 +98,7 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
     override render() {
         return (
             <DateRangeSelector
-                customSelectOptions={this.customSelectOptions}
+                dateRangeOptions={this.dateRangeOptions}
                 earliestDate={this.earliestDate}
                 initialValue={this.initialValue}
                 initialDateFrom={this.initialDateFrom}
@@ -138,30 +131,22 @@ declare global {
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type CustomSelectOptionsMatches = Expect<
-    Equals<
-        typeof DateRangeSelectorComponent.prototype.customSelectOptions,
-        DateRangeSelectorProps<string>['customSelectOptions']
-    >
+    Equals<typeof DateRangeSelectorComponent.prototype.dateRangeOptions, DateRangeSelectorProps['dateRangeOptions']>
 >;
 type EarliestDateMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.earliestDate, DateRangeSelectorProps<string>['earliestDate']>
+    Equals<typeof DateRangeSelectorComponent.prototype.earliestDate, DateRangeSelectorProps['earliestDate']>
 >;
 type InitialValueMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.initialValue, DateRangeSelectorProps<string>['initialValue']>
+    Equals<typeof DateRangeSelectorComponent.prototype.initialValue, DateRangeSelectorProps['initialValue']>
 >;
 type InitialDateFromMatches = Expect<
-    Equals<
-        typeof DateRangeSelectorComponent.prototype.initialDateFrom,
-        DateRangeSelectorProps<string>['initialDateFrom']
-    >
+    Equals<typeof DateRangeSelectorComponent.prototype.initialDateFrom, DateRangeSelectorProps['initialDateFrom']>
 >;
 type InitialDateToMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.initialDateTo, DateRangeSelectorProps<string>['initialDateTo']>
+    Equals<typeof DateRangeSelectorComponent.prototype.initialDateTo, DateRangeSelectorProps['initialDateTo']>
 >;
-type WidthMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.width, DateRangeSelectorProps<string>['width']>
->;
+type WidthMatches = Expect<Equals<typeof DateRangeSelectorComponent.prototype.width, DateRangeSelectorProps['width']>>;
 type DateColumnMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.dateColumn, DateRangeSelectorProps<string>['dateColumn']>
+    Equals<typeof DateRangeSelectorComponent.prototype.dateColumn, DateRangeSelectorProps['dateColumn']>
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

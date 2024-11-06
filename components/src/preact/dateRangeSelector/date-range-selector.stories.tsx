@@ -1,24 +1,16 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, waitFor, within } from '@storybook/test';
+import { expect, userEvent, waitFor, within } from '@storybook/test';
 import dayjs from 'dayjs/esm';
 
 import { DateRangeSelector, type DateRangeSelectorProps } from './date-range-selector';
-import {
-    PRESET_VALUE_ALL_TIMES,
-    PRESET_VALUE_CUSTOM,
-    PRESET_VALUE_LAST_2_MONTHS,
-    PRESET_VALUE_LAST_2_WEEKS,
-    PRESET_VALUE_LAST_3_MONTHS,
-    PRESET_VALUE_LAST_6_MONTHS,
-    PRESET_VALUE_LAST_MONTH,
-} from './selectableOptions';
 import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { dateRangeOptionPresets } from './dateRangeOption';
 
 const earliestDate = '1970-01-01';
 
-const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
+const meta: Meta<DateRangeSelectorProps> = {
     title: 'Input/DateRangeSelector',
     component: DateRangeSelector,
     parameters: {
@@ -32,18 +24,9 @@ const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
             control: {
                 type: 'select',
             },
-            options: [
-                PRESET_VALUE_CUSTOM,
-                PRESET_VALUE_ALL_TIMES,
-                PRESET_VALUE_LAST_2_WEEKS,
-                PRESET_VALUE_LAST_MONTH,
-                PRESET_VALUE_LAST_2_MONTHS,
-                PRESET_VALUE_LAST_3_MONTHS,
-                PRESET_VALUE_LAST_6_MONTHS,
-                'CustomDateRange',
-            ],
+            options: [dateRangeOptionPresets.lastMonth.label, dateRangeOptionPresets.allTimes.label, 'CustomDateRange'],
         },
-        customSelectOptions: {
+        dateRangeOptions: {
             control: {
                 type: 'object',
             },
@@ -60,9 +43,17 @@ const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
         },
     },
     args: {
-        customSelectOptions: [{ label: 'CustomDateRange', dateFrom: '2021-01-01', dateTo: '2021-12-31' }],
+        dateRangeOptions: [
+            dateRangeOptionPresets.lastMonth,
+            dateRangeOptionPresets.allTimes,
+            {
+                label: 'CustomDateRange',
+                dateFrom: '2021-01-01',
+                dateTo: '2021-12-31',
+            },
+        ],
         earliestDate,
-        initialValue: PRESET_VALUE_LAST_3_MONTHS,
+        initialValue: dateRangeOptionPresets.lastMonth.label,
         dateColumn: 'aDateColumn',
         width: '100%',
         initialDateFrom: '',
@@ -72,11 +63,11 @@ const meta: Meta<DateRangeSelectorProps<'CustomDateRange'>> = {
 
 export default meta;
 
-export const Primary: StoryObj<DateRangeSelectorProps<'CustomDateRange'>> = {
+export const Primary: StoryObj<DateRangeSelectorProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <DateRangeSelector
-                customSelectOptions={args.customSelectOptions}
+                dateRangeOptions={args.dateRangeOptions}
                 earliestDate={args.earliestDate}
                 initialValue={args.initialValue}
                 initialDateFrom={args.initialDateFrom}
@@ -88,7 +79,7 @@ export const Primary: StoryObj<DateRangeSelectorProps<'CustomDateRange'>> = {
     ),
 };
 
-export const SetCorrectInitialValues: StoryObj<DateRangeSelectorProps<'CustomDateRange'>> = {
+export const SetCorrectInitialValues: StoryObj<DateRangeSelectorProps> = {
     ...Primary,
     args: {
         ...Primary.args,
@@ -111,7 +102,7 @@ export const SetCorrectInitialValues: StoryObj<DateRangeSelectorProps<'CustomDat
 
 const initialDateFrom = '2000-01-01';
 
-export const SetCorrectInitialDateFrom: StoryObj<DateRangeSelectorProps<'CustomDateRange'>> = {
+export const SetCorrectInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
     ...Primary,
     args: {
         ...Primary.args,
@@ -125,7 +116,7 @@ export const SetCorrectInitialDateFrom: StoryObj<DateRangeSelectorProps<'CustomD
         const selectField = () => canvas.getByRole('combobox');
 
         await waitFor(() => {
-            expect(selectField()).toHaveValue(PRESET_VALUE_CUSTOM);
+            expect(selectField()).toHaveValue('Custom');
             expect(dateFrom()).toHaveValue(initialDateFrom);
             expect(dateTo()).toHaveValue(dayjs().format('YYYY-MM-DD'));
         });
@@ -134,7 +125,7 @@ export const SetCorrectInitialDateFrom: StoryObj<DateRangeSelectorProps<'CustomD
 
 const initialDateTo = '2000-01-01';
 
-export const SetCorrectInitialDateTo: StoryObj<DateRangeSelectorProps<'CustomDateRange'>> = {
+export const SetCorrectInitialDateTo: StoryObj<DateRangeSelectorProps> = {
     ...Primary,
     args: {
         ...Primary.args,
@@ -148,14 +139,37 @@ export const SetCorrectInitialDateTo: StoryObj<DateRangeSelectorProps<'CustomDat
         const selectField = () => canvas.getByRole('combobox');
 
         await waitFor(() => {
-            expect(selectField()).toHaveValue(PRESET_VALUE_CUSTOM);
+            expect(selectField()).toHaveValue('Custom');
             expect(dateFrom()).toHaveValue(earliestDate);
             expect(dateTo()).toHaveValue(initialDateTo);
         });
     },
 };
 
-export const HandlesInvalidInitialDateFrom: StoryObj<DateRangeSelectorProps<'CustomDateRange'>> = {
+export const ChangingDateSetsOptionToCustom: StoryObj<DateRangeSelectorProps> = {
+    ...Primary,
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        const dateFrom = () => canvas.getByPlaceholderText('Date from');
+        const dateTo = () => canvas.getByPlaceholderText('Date to');
+        const selectField = () => canvas.getByRole('combobox');
+
+        await waitFor(() => {
+            expect(selectField()).toHaveValue('Last month');
+        });
+
+        await userEvent.type(dateFrom(), '{backspace>12}');
+        await userEvent.type(dateFrom(), '2000-01-01');
+        await userEvent.click(dateTo());
+
+        await waitFor(() => {
+            expect(selectField()).toHaveValue('Custom');
+        });
+    },
+};
+
+export const HandlesInvalidInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
     ...Primary,
     args: {
         ...Primary.args,

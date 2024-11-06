@@ -20,7 +20,8 @@
                 fields='["region", "country", "division", "location"]'
             ></gs-location-filter>
             <gs-date-range-selector
-                initialValue="last6Months"
+                dateRangeOptions='[{"label":"2020","dateFrom":"2020-01-01","dateTo":"2020-12-31"},{"label":"2021","dateFrom":"2021-01-01","dateTo":"2021-12-31"},{"label":"2022","dateFrom":"2022-01-01","dateTo":"2022-12-31"}]'
+                initialValue="2021"
             ></gs-date-range-selector>
             <gs-prevalence-over-time
                 numeratorFilter='{"displayName": "My variant","lapisFilter":{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01", "dateFrom":"2021-01-01"}}'

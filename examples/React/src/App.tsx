@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
+import {DateRangeOption, dateRangeOptionPresets} from '@genspectrum/dashboard-components';
 import '@genspectrum/dashboard-components';
 import '@genspectrum/dashboard-components/style.css';
 
@@ -54,14 +55,26 @@ function App() {
         },
     };
 
+    const dataRangeOptions = [
+        dateRangeOptionPresets.allTimes,
+        dateRangeOptionPresets.last6Months,
+        dateRangeOptionPresets.lastMonth,
+        { label: '2020', dateFrom: '2020-01-01', dateTo: '2020-12-31' },
+        { label: '2021', dateFrom: '2021-01-01', dateTo: '2021-12-31' },
+        { label: '2022', dateFrom: '2022-01-01', dateTo: '2022-12-31' },
+    ] satisfies DateRangeOption[];
+
     return (
         <gs-app lapis='https://lapis.cov-spectrum.org/open/v2/'>
             <gs-location-filter
                 initialValue='Europe / Switzerland'
                 fields='["region", "country", "division", "location"]'
             ></gs-location-filter>
-            <gs-date-range-selector initialValue='last6Months'></gs-date-range-selector>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <gs-date-range-selector
+                dateRangeOptions={JSON.stringify(dataRangeOptions)}
+                initialValue={dateRangeOptionPresets.last6Months.label}
+            ></gs-date-range-selector>
+            <div style={{display: 'flex', flexDirection: 'row'}}>
                 <div>
                     <h1 className='text-xl bold'>Prevalence over time</h1>
                     <gs-prevalence-over-time
@@ -74,7 +87,7 @@ function App() {
                         height='300px'
                     ></gs-prevalence-over-time>
                 </div>
-                <div style={{ height: '300px', width: '1000px' }}>
+                <div style={{height: '300px', width: '1000px'}}>
                     <h1 className='text-xl bold'>Prevalence over time</h1>
                     <gs-prevalence-over-time
                         numeratorFilter={JSON.stringify(numerator)}
