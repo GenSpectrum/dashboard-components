@@ -23,7 +23,7 @@ import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
-import Info from '../components/info';
+import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -36,7 +36,9 @@ import { useWebWorker } from '../webWorkers/useWebWorker';
 
 export type View = 'grid';
 
-export interface MutationsOverTimeInnerProps {
+export interface MutationsOverTimeProps {
+    width: string;
+    height: string;
     lapisFilter: LapisFilter;
     sequenceType: SequenceType;
     views: View[];
@@ -44,31 +46,22 @@ export interface MutationsOverTimeInnerProps {
     lapisDateField: string;
 }
 
-export interface MutationsOverTimeProps extends MutationsOverTimeInnerProps {
-    width: string;
-    height: string;
-}
-
-export const MutationsOverTime: FunctionComponent<MutationsOverTimeProps> = ({ width, height, ...innerProps }) => {
+export const MutationsOverTime: FunctionComponent<MutationsOverTimeProps> = (componentProps) => {
+    const { width, height } = componentProps;
     const size = { height, width };
 
     return (
         <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <MutationsOverTimeInner {...innerProps} />
+                <MutationsOverTimeInner {...componentProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeInnerProps> = ({
-    lapisFilter,
-    sequenceType,
-    views,
-    granularity,
-    lapisDateField,
-}) => {
+export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> = (componentProps) => {
     const lapis = useContext(LapisUrlContext);
+    const { lapisFilter, sequenceType, granularity, lapisDateField } = componentProps;
 
     const { data, error, isLoading } = useWebWorker<MutationOverTimeQuery, MutationOverTimeWorkerResponse>(
         {
@@ -99,29 +92,26 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeInnerPro
         <MutationsOverTimeTabs
             overallMutationData={overallMutationData}
             mutationOverTimeData={mutationOverTimeData}
-            sequenceType={sequenceType}
-            views={views}
+            originalComponentProps={componentProps}
         />
     );
 };
 
 type MutationOverTimeTabsProps = {
     mutationOverTimeData: BaseMutationOverTimeDataMap;
-    sequenceType: SequenceType;
-    views: View[];
+    originalComponentProps: MutationsOverTimeProps;
     overallMutationData: SubstitutionOrDeletionEntry<Substitution, Deletion>[];
 };
 
 const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     mutationOverTimeData,
-    sequenceType,
-    views,
+    originalComponentProps,
     overallMutationData,
 }) => {
     const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 0.9 });
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
 
-    const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(sequenceType);
+    const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(originalComponentProps.sequenceType);
     const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
         { label: 'Substitutions', checked: true, type: 'substitution' },
         { label: 'Deletions', checked: true, type: 'deletion' },
@@ -153,7 +143,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         }
     };
 
-    const tabs = views.map((view) => getTab(view));
+    const tabs = originalComponentProps.views.map((view) => getTab(view));
 
     const toolbar = (activeTab: string) => (
         <Toolbar
@@ -167,6 +157,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             filteredData={filteredData}
             colorScale={colorScale}
             setColorScale={setColorScale}
+            originalComponentProps={originalComponentProps}
         />
     );
 
@@ -184,6 +175,7 @@ type ToolbarProps = {
     filteredData: MutationOverTimeDataMap;
     colorScale: ColorScale;
     setColorScale: Dispatch<StateUpdater<ColorScale>>;
+    originalComponentProps: MutationsOverTimeProps;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -197,6 +189,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     filteredData,
     colorScale,
     setColorScale,
+    originalComponentProps,
 }) => {
     return (
         <>
@@ -219,9 +212,24 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 getData={() => getDownloadData(filteredData)}
                 filename='mutations_over_time.csv'
             />
-            <Info>Info for mutations over time</Info>
+            <MutationsOverTimeInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
         </>
+    );
+};
+
+type MutationsOverTimeInfoProps = {
+    originalComponentProps: MutationsOverTimeProps;
+};
+
+const MutationsOverTimeInfo: FunctionComponent<MutationsOverTimeInfoProps> = ({ originalComponentProps }) => {
+    const lapis = useContext(LapisUrlContext);
+    return (
+        <Info>
+            <InfoHeadline1>Info for mutations over time</InfoHeadline1>
+            <InfoParagraph>TODO: https://github.com/GenSpectrum/dashboard-components/issues/441</InfoParagraph>
+            <InfoComponentCode componentName='mutations-over-time' params={originalComponentProps} lapisUrl={lapis} />
+        </Info>
     );
 };
 
