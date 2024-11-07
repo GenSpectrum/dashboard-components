@@ -80,7 +80,6 @@
         "flatpickr": "^4.6.13",
         "gridjs": "^6.2.0",
         "lit": "^3.1.3",
-        "object-hash": "^3.0.0",
         "preact": "^10.20.1",
         "zod": "^3.23.0"
     },
@@ -103,7 +102,6 @@
         "@storybook/web-components": "^8.0.9",
         "@storybook/web-components-vite": "^8.0.9",
         "@types/node": "^22.0.0",
-        "@types/object-hash": "^3.0.6",
         "@typescript-eslint/eslint-plugin": "^8.2.0",
         "@typescript-eslint/parser": "^8.2.0",
         "autoprefixer": "^10.4.19",

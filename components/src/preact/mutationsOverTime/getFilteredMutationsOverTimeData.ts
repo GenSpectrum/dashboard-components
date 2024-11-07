@@ -1,4 +1,4 @@
-import { type MutationOverTimeData } from './mutations-over-time';
+import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { type SubstitutionOrDeletionEntry } from '../../types';
 import { Map2dView } from '../../utils/map2d';
 import type { Deletion, Substitution } from '../../utils/mutations';
@@ -6,7 +6,7 @@ import type { DisplayedMutationType } from '../components/mutation-type-selector
 import type { DisplayedSegment } from '../components/segment-selector';
 
 export function getFilteredMutationOverTimeData(
-    data: MutationOverTimeData,
+    data: MutationOverTimeDataMap,
     overallMutationData: SubstitutionOrDeletionEntry<Substitution, Deletion>[],
     displayedSegments: DisplayedSegment[],
     displayedMutationTypes: DisplayedMutationType[],

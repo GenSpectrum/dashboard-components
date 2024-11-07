@@ -6,6 +6,7 @@ import { MapOperator } from '../operator/MapOperator';
 import { RenameFieldOperator } from '../operator/RenameFieldOperator';
 import { SortOperator } from '../operator/SortOperator';
 import { UserFacingError } from '../preact/components/error-display';
+import { BaseMutationOverTimeDataMap } from '../preact/mutationsOverTime/MutationOverTimeData';
 import { sortSubstitutionsAndDeletions } from '../preact/shared/sort/sortSubstitutionsAndDeletions';
 import {
     type DeletionEntry,
@@ -15,7 +16,7 @@ import {
     type SubstitutionOrDeletionEntry,
     type TemporalGranularity,
 } from '../types';
-import { type Map2d, Map2dBase } from '../utils/map2d';
+import { type Map2d } from '../utils/map2d';
 import {
     type Deletion,
     type DeletionClass,
@@ -218,10 +219,7 @@ export function groupByMutation(
     data: MutationOverTimeData[],
     overallMutationData: (SubstitutionEntry | DeletionEntry)[],
 ) {
-    const dataArray = new Map2dBase<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>(
-        serializeSubstitutionOrDeletion,
-        serializeTemporal,
-    );
+    const dataArray = new BaseMutationOverTimeDataMap();
 
     const allDates = data.map((mutationData) => mutationData.date);
 

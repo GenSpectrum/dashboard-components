@@ -3,24 +3,19 @@ import { type Dispatch, type StateUpdater, useContext, useMemo, useState } from 
 
 // @ts-expect-error -- uses subpath imports and vite worker import
 import MutationOverTimeWorker from '#mutationOverTime?worker&inline';
+import { BaseMutationOverTimeDataMap, type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { getFilteredMutationOverTimeData } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
 import MutationsOverTimeGrid from './mutations-over-time-grid';
-import {
-    type MutationOverTimeMutationValue,
-    type MutationOverTimeQuery,
-    serializeSubstitutionOrDeletion,
-    serializeTemporal,
-} from '../../query/queryMutationsOverTime';
+import { type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
 import {
     type LapisFilter,
     type SequenceType,
     type SubstitutionOrDeletionEntry,
     type TemporalGranularity,
 } from '../../types';
-import { type Map2d, Map2dBase } from '../../utils/map2d';
 import { type Deletion, type Substitution } from '../../utils/mutations';
-import { type Temporal, toTemporalClass } from '../../utils/temporalClass';
+import { toTemporalClass } from '../../utils/temporalClass';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
@@ -99,11 +94,7 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeInnerPro
     }
 
     const { overallMutationData, mutationOverTimeSerialized } = data;
-    const mutationOverTimeData = new Map2dBase(
-        serializeSubstitutionOrDeletion,
-        serializeTemporal,
-        mutationOverTimeSerialized,
-    );
+    const mutationOverTimeData = new BaseMutationOverTimeDataMap(mutationOverTimeSerialized);
     return (
         <MutationsOverTimeTabs
             overallMutationData={overallMutationData}
@@ -114,10 +105,8 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeInnerPro
     );
 };
 
-export type MutationOverTimeData = Map2d<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>;
-
 type MutationOverTimeTabsProps = {
-    mutationOverTimeData: MutationOverTimeData;
+    mutationOverTimeData: BaseMutationOverTimeDataMap;
     sequenceType: SequenceType;
     views: View[];
     overallMutationData: SubstitutionOrDeletionEntry<Substitution, Deletion>[];
@@ -192,7 +181,7 @@ type ToolbarProps = {
     setDisplayedMutationTypes: (types: DisplayedMutationType[]) => void;
     proportionInterval: ProportionInterval;
     setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
-    filteredData: MutationOverTimeData;
+    filteredData: MutationOverTimeDataMap;
     colorScale: ColorScale;
     setColorScale: Dispatch<StateUpdater<ColorScale>>;
 };
@@ -236,7 +225,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     );
 };
 
-function getDownloadData(filteredData: MutationOverTimeData) {
+function getDownloadData(filteredData: MutationOverTimeDataMap) {
     const dates = filteredData.getSecondAxisKeys().map((date) => toTemporalClass(date));
 
     return filteredData.getFirstAxisKeys().map((mutation) => {

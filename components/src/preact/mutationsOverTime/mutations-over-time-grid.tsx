@@ -1,16 +1,16 @@
 import { Fragment, type FunctionComponent, type RefObject } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
-import { type MutationOverTimeData } from './mutations-over-time';
+import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
 import { type Deletion, type Substitution } from '../../utils/mutations';
-import { toTemporalClass, type Temporal, type TemporalClass, YearMonthDayClass } from '../../utils/temporalClass';
+import { type Temporal, type TemporalClass, toTemporalClass, YearMonthDayClass } from '../../utils/temporalClass';
 import { type ColorScale, getColorWithingScale, getTextColorForScale } from '../components/color-scale-selector';
 import Tooltip, { type TooltipPosition } from '../components/tooltip';
 import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsOverTimeGridProps {
-    data: MutationOverTimeData;
+    data: MutationOverTimeDataMap;
     colorScale: ColorScale;
 }
 

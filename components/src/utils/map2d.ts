@@ -1,5 +1,3 @@
-import hash from 'object-hash';
-
 export interface Map2d<Key1, Key2, Value> {
     get(keyFirstAxis: Key1, keySecondAxis: Key2): Value | undefined;
 
@@ -16,6 +14,7 @@ export interface Map2d<Key1, Key2, Value> {
     getAsArray(fillEmptyWith: Value): Value[][];
 
     serializeFirstAxis(key: Key1): string;
+
     serializeSecondAxis(key: Key2): string;
 
     readonly keysFirstAxis: Map<string, Key1>;
@@ -36,8 +35,8 @@ export class Map2dBase<Key1 extends object | string, Key2 extends object | strin
     readonly keysSecondAxis = new Map<string, Key2>();
 
     constructor(
-        readonly serializeFirstAxis: (key: Key1) => string = (key) => (typeof key === 'string' ? key : hash(key)),
-        readonly serializeSecondAxis: (key: Key2) => string = (key) => (typeof key === 'string' ? key : hash(key)),
+        readonly serializeFirstAxis: (key: Key1) => string,
+        readonly serializeSecondAxis: (key: Key2) => string,
         initialContent?: Map2DContents<Key1, Key2, Value>,
     ) {
         if (initialContent) {
