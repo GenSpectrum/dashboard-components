@@ -11,7 +11,7 @@ import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
-import Info, { InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
+import Info, { InfoComponentCode, InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
@@ -23,12 +23,9 @@ import { useQuery } from '../useQuery';
 
 export type View = 'line';
 
-export interface RelativeGrowthAdvantageProps extends RelativeGrowthAdvantagePropsInner {
+export interface RelativeGrowthAdvantageProps {
     width: string;
     height: string;
-}
-
-export interface RelativeGrowthAdvantagePropsInner {
     numeratorFilter: LapisFilter;
     denominatorFilter: LapisFilter;
     generationTime: number;
@@ -37,36 +34,28 @@ export interface RelativeGrowthAdvantagePropsInner {
     yAxisMaxConfig: YAxisMaxConfig;
 }
 
-export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = ({
-    width,
-    height,
-    ...innerProps
-}) => {
+export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = (componentProps) => {
+    const { width, height } = componentProps;
     const size = { height, width };
 
     return (
         <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <RelativeGrowthAdvantageInner {...innerProps} />
+                <RelativeGrowthAdvantageInner {...componentProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvantagePropsInner> = ({
-    numeratorFilter,
-    denominatorFilter,
-    generationTime,
-    views,
-    lapisDateField,
-    yAxisMaxConfig,
-}) => {
+export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvantageProps> = (componentProps) => {
     const lapis = useContext(LapisUrlContext);
+    const { numeratorFilter, denominatorFilter, generationTime, lapisDateField } = componentProps;
+
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
 
     const { data, error, isLoading } = useQuery(
         () => queryRelativeGrowthAdvantage(numeratorFilter, denominatorFilter, generationTime, lapis, lapisDateField),
-        [lapis, numeratorFilter, denominatorFilter, generationTime, views, lapisDateField],
+        [lapis, numeratorFilter, denominatorFilter, generationTime, lapisDateField],
     );
 
     if (isLoading) {
@@ -86,9 +75,7 @@ export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvan
             data={data}
             yAxisScaleType={yAxisScaleType}
             setYAxisScaleType={setYAxisScaleType}
-            views={views}
-            generationTime={generationTime}
-            yAxisMaxConfig={yAxisMaxConfig}
+            originalComponentProps={componentProps}
         />
     );
 };
@@ -97,18 +84,14 @@ type RelativeGrowthAdvantageTabsProps = {
     data: NonNullable<RelativeGrowthAdvantageData>;
     yAxisScaleType: ScaleType;
     setYAxisScaleType: (scaleType: ScaleType) => void;
-    views: View[];
-    generationTime: number;
-    yAxisMaxConfig: YAxisMaxConfig;
+    originalComponentProps: RelativeGrowthAdvantageProps;
 };
 
 const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabsProps> = ({
     data,
     yAxisScaleType,
     setYAxisScaleType,
-    views,
-    generationTime,
-    yAxisMaxConfig,
+    originalComponentProps,
 }) => {
     const getTab = (view: View) => {
         switch (view) {
@@ -123,17 +106,17 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
                                 params: data.params,
                             }}
                             yAxisScaleType={yAxisScaleType}
-                            yAxisMaxConfig={yAxisMaxConfig}
+                            yAxisMaxConfig={originalComponentProps.yAxisMaxConfig}
                         />
                     ),
                 };
         }
     };
 
-    const tabs = views.map((view) => getTab(view));
+    const tabs = originalComponentProps.views.map((view) => getTab(view));
     const toolbar = () => (
         <RelativeGrowthAdvantageToolbar
-            generationTime={generationTime}
+            originalComponentProps={originalComponentProps}
             yAxisScaleType={yAxisScaleType}
             setYAxisScaleType={setYAxisScaleType}
         />
@@ -145,24 +128,29 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
 type RelativeGrowthAdvantageToolbarProps = {
     yAxisScaleType: ScaleType;
     setYAxisScaleType: (scaleType: ScaleType) => void;
-    generationTime: number;
+    originalComponentProps: RelativeGrowthAdvantageProps;
 };
 
 const RelativeGrowthAdvantageToolbar: FunctionComponent<RelativeGrowthAdvantageToolbarProps> = ({
     yAxisScaleType,
     setYAxisScaleType,
-    generationTime,
+    originalComponentProps,
 }) => {
     return (
         <>
             <ScalingSelector yAxisScaleType={yAxisScaleType} setYAxisScaleType={setYAxisScaleType} />
-            <RelativeGrowthAdvantageInfo generationTime={generationTime} />
+            <RelativeGrowthAdvantageInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
         </>
     );
 };
 
-const RelativeGrowthAdvantageInfo: FunctionComponent<{ generationTime: number }> = ({ generationTime }) => {
+const RelativeGrowthAdvantageInfo: FunctionComponent<{ originalComponentProps: RelativeGrowthAdvantageProps }> = ({
+    originalComponentProps,
+}) => {
+    const lapis = useContext(LapisUrlContext);
+    const generationTime = originalComponentProps.generationTime;
+
     return (
         <Info>
             <InfoHeadline1>Relative growth advantage</InfoHeadline1>
@@ -193,6 +181,11 @@ const RelativeGrowthAdvantageInfo: FunctionComponent<{ generationTime: number }>
                     10.1016/j.epidem.2021.100480
                 </InfoLink>
             </InfoParagraph>
+            <InfoComponentCode
+                componentName='relative-growth-advantage'
+                params={originalComponentProps}
+                lapisUrl={lapis}
+            />
         </Info>
     );
 };
