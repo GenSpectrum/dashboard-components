@@ -18,7 +18,7 @@ import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
-import Info, { InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
+import Info, { InfoComponentCode, InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -31,37 +31,32 @@ import { useQuery } from '../useQuery';
 
 export type View = 'table' | 'grid' | 'insertions';
 
-export interface MutationsInnerProps {
+export interface MutationsProps {
+    width: string;
+    height: string;
     lapisFilter: LapisFilter;
     sequenceType: SequenceType;
     views: View[];
     pageSize: boolean | number;
 }
 
-export interface MutationsProps extends MutationsInnerProps {
-    width: string;
-    height: string;
-}
-
-export const Mutations: FunctionComponent<MutationsProps> = ({ width, height, ...innerProps }) => {
+export const Mutations: FunctionComponent<MutationsProps> = (componentProps) => {
+    const { width, height } = componentProps;
     const size = { height, width };
 
     return (
         <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <MutationsInner {...innerProps} />
+                <MutationsInner {...componentProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-export const MutationsInner: FunctionComponent<MutationsInnerProps> = ({
-    lapisFilter,
-    sequenceType,
-    views,
-    pageSize,
-}) => {
+export const MutationsInner: FunctionComponent<MutationsProps> = (componentProps) => {
     const lapis = useContext(LapisUrlContext);
+    const { lapisFilter, sequenceType } = componentProps;
+
     const { data, error, isLoading } = useQuery(async () => {
         return queryMutationsData(lapisFilter, sequenceType, lapis);
     }, [lapisFilter, sequenceType, lapis]);
@@ -78,20 +73,18 @@ export const MutationsInner: FunctionComponent<MutationsInnerProps> = ({
         return <NoDataDisplay />;
     }
 
-    return <MutationsTabs mutationsData={data} sequenceType={sequenceType} views={views} pageSize={pageSize} />;
+    return <MutationsTabs mutationsData={data} originalComponentProps={componentProps} />;
 };
 
 type MutationTabsProps = {
     mutationsData: { insertions: InsertionEntry[]; substitutionsOrDeletions: SubstitutionOrDeletionEntry[] };
-    sequenceType: SequenceType;
-    views: View[];
-    pageSize: boolean | number;
+    originalComponentProps: MutationsProps;
 };
 
-const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, sequenceType, views, pageSize }) => {
+const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, originalComponentProps }) => {
     const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 1 });
 
-    const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(sequenceType);
+    const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(originalComponentProps.sequenceType);
     const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
         { label: 'Substitutions', checked: true, type: 'substitution' },
         { label: 'Deletions', checked: true, type: 'deletion' },
@@ -108,7 +101,7 @@ const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, se
                         <MutationsTable
                             data={filteredData.tableData}
                             proportionInterval={proportionInterval}
-                            pageSize={pageSize}
+                            pageSize={originalComponentProps.pageSize}
                         />
                     ),
                 };
@@ -118,21 +111,23 @@ const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, se
                     content: (
                         <MutationsGrid
                             data={filteredData.gridData}
-                            sequenceType={sequenceType}
+                            sequenceType={originalComponentProps.sequenceType}
                             proportionInterval={proportionInterval}
-                            pageSize={pageSize}
+                            pageSize={originalComponentProps.pageSize}
                         />
                     ),
                 };
             case 'insertions':
                 return {
                     title: 'Insertions',
-                    content: <InsertionsTable data={filteredData.insertions} pageSize={pageSize} />,
+                    content: (
+                        <InsertionsTable data={filteredData.insertions} pageSize={originalComponentProps.pageSize} />
+                    ),
                 };
         }
     };
 
-    const tabs = views.map((view) => getTab(view));
+    const tabs = originalComponentProps.views.map((view) => getTab(view));
 
     const toolbar = (activeTab: string) => (
         <Toolbar
@@ -144,6 +139,7 @@ const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, se
             filteredData={filteredData}
             proportionInterval={proportionInterval}
             setProportionInterval={setProportionInterval}
+            originalComponentProps={originalComponentProps}
         />
     );
 
@@ -159,6 +155,7 @@ type ToolbarProps = {
     filteredData: { tableData: SubstitutionOrDeletionEntry[]; insertions: InsertionEntry[] };
     proportionInterval: ProportionInterval;
     setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
+    originalComponentProps: MutationsProps;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -170,6 +167,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     filteredData,
     proportionInterval,
     setProportionInterval,
+    originalComponentProps,
 }) => {
     return (
         <>
@@ -208,38 +206,47 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                     filename='insertions.csv'
                 />
             )}
-            <MutationsInfo />
+            <MutationsInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
         </>
     );
 };
 
-const MutationsInfo = () => (
-    <Info>
-        <InfoHeadline1>Mutations</InfoHeadline1>
-        <InfoParagraph>
-            This shows mutations of a variant. There are three types of mutations:{' '}
-            <InfoLink href='https://www.genome.gov/genetics-glossary/Substitution'>substitutions</InfoLink>,{' '}
-            <InfoLink href='https://www.genome.gov/genetics-glossary/Deletion'>deletions</InfoLink> and{' '}
-            <InfoLink href='https://www.genome.gov/genetics-glossary/Insertion'>insertions</InfoLink>.
-        </InfoParagraph>
-        <InfoHeadline2>Proportion calculation</InfoHeadline2>
-        <InfoParagraph>
-            The proportion of a mutation is calculated by dividing the number of sequences with the mutation by the
-            total number of sequences with a non-ambiguous symbol at the position.
-        </InfoParagraph>
-        <InfoParagraph>
-            <b>Example:</b> Assume we look at nucleotide mutations at position 5 where the reference has a T and assume
-            there are 10 sequences in total:
-            <ul className='list-disc list-inside ml-2'>
-                <li>3 sequences have a C,</li>
-                <li>2 sequences have a T,</li>
-                <li>1 sequence has a G,</li>
-                <li>3 sequences have an N,</li>
-                <li>1 sequence has a Y (which means T or C),</li>
-            </ul>
-            then the proportion of the T5C mutation is 50%. The 4 sequences that have an N or Y are excluded from the
-            calculation.
-        </InfoParagraph>
-    </Info>
-);
+type MutationsInfoProps = {
+    originalComponentProps: MutationsProps;
+};
+
+const MutationsInfo: FunctionComponent<MutationsInfoProps> = ({ originalComponentProps }) => {
+    const lapis = useContext(LapisUrlContext);
+
+    return (
+        <Info>
+            <InfoHeadline1>Mutations</InfoHeadline1>
+            <InfoParagraph>
+                This shows mutations of a variant. There are three types of mutations:{' '}
+                <InfoLink href='https://www.genome.gov/genetics-glossary/Substitution'>substitutions</InfoLink>,{' '}
+                <InfoLink href='https://www.genome.gov/genetics-glossary/Deletion'>deletions</InfoLink> and{' '}
+                <InfoLink href='https://www.genome.gov/genetics-glossary/Insertion'>insertions</InfoLink>.
+            </InfoParagraph>
+            <InfoHeadline2>Proportion calculation</InfoHeadline2>
+            <InfoParagraph>
+                The proportion of a mutation is calculated by dividing the number of sequences with the mutation by the
+                total number of sequences with a non-ambiguous symbol at the position.
+            </InfoParagraph>
+            <InfoParagraph>
+                <b>Example:</b> Assume we look at nucleotide mutations at position 5 where the reference has a T and
+                assume there are 10 sequences in total:
+                <ul className='list-disc list-inside ml-2'>
+                    <li>3 sequences have a C,</li>
+                    <li>2 sequences have a T,</li>
+                    <li>1 sequence has a G,</li>
+                    <li>3 sequences have an N,</li>
+                    <li>1 sequence has a Y (which means T or C),</li>
+                </ul>
+                then the proportion of the T5C mutation is 50%. The 4 sequences that have an N or Y are excluded from
+                the calculation.
+            </InfoParagraph>
+            <InfoComponentCode componentName='mutations' params={originalComponentProps} lapisUrl={lapis} />
+        </Info>
+    );
+};
