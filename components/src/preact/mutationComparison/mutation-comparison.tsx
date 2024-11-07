@@ -11,7 +11,7 @@ import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
-import Info from '../components/info';
+import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -24,36 +24,30 @@ import { useQuery } from '../useQuery';
 
 export type View = 'table' | 'venn';
 
-export interface MutationComparisonProps extends MutationComparisonInnerProps {
+export interface MutationComparisonProps {
     width: string;
     height: string;
-}
-
-export interface MutationComparisonInnerProps {
     lapisFilters: NamedLapisFilter[];
     sequenceType: SequenceType;
     views: View[];
     pageSize: boolean | number;
 }
 
-export const MutationComparison: FunctionComponent<MutationComparisonProps> = ({ width, height, ...innerProps }) => {
+export const MutationComparison: FunctionComponent<MutationComparisonProps> = (componentProps) => {
+    const { width, height } = componentProps;
     const size = { height, width };
 
     return (
         <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <MutationComparisonInner {...innerProps} />
+                <MutationComparisonInner {...componentProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-export const MutationComparisonInner: FunctionComponent<MutationComparisonInnerProps> = ({
-    lapisFilters,
-    sequenceType,
-    views,
-    pageSize,
-}) => {
+export const MutationComparisonInner: FunctionComponent<MutationComparisonProps> = (componentProps) => {
+    const { lapisFilters, sequenceType } = componentProps;
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
@@ -72,35 +66,21 @@ export const MutationComparisonInner: FunctionComponent<MutationComparisonInnerP
         return <NoDataDisplay />;
     }
 
-    return (
-        <MutationComparisonTabs
-            data={data.mutationData}
-            sequenceType={sequenceType}
-            views={views}
-            pageSize={pageSize}
-        />
-    );
+    return <MutationComparisonTabs data={data.mutationData} originalComponentProps={componentProps} />;
 };
 
 type MutationComparisonTabsProps = {
     data: MutationData[];
-    views: View[];
-    sequenceType: SequenceType;
-    pageSize: boolean | number;
+    originalComponentProps: MutationComparisonProps;
 };
 
-const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = ({
-    data,
-    views,
-    sequenceType,
-    pageSize,
-}) => {
+const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = ({ data, originalComponentProps }) => {
     const [proportionInterval, setProportionInterval] = useState({ min: 0.5, max: 1 });
     const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
         { label: 'Substitutions', checked: true, type: 'substitution' },
         { label: 'Deletions', checked: true, type: 'deletion' },
     ]);
-    const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(sequenceType);
+    const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(originalComponentProps.sequenceType);
 
     const filteredData = useMemo(
         () => filterMutationData(data, displayedSegments, displayedMutationTypes),
@@ -116,7 +96,7 @@ const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = (
                         <MutationComparisonTable
                             data={{ content: filteredData }}
                             proportionInterval={proportionInterval}
-                            pageSize={pageSize}
+                            pageSize={originalComponentProps.pageSize}
                         />
                     ),
                 };
@@ -133,7 +113,7 @@ const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = (
         }
     };
 
-    const tabs = views.map((view) => getTab(view));
+    const tabs = originalComponentProps.views.map((view) => getTab(view));
 
     return (
         <Tabs
@@ -147,6 +127,7 @@ const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = (
                     filteredData={filteredData}
                     proportionInterval={proportionInterval}
                     setProportionInterval={setProportionInterval}
+                    originalComponentProps={originalComponentProps}
                 />
             }
         />
@@ -161,6 +142,7 @@ type ToolbarProps = {
     filteredData: MutationData[];
     proportionInterval: ProportionInterval;
     setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
+    originalComponentProps: MutationComparisonProps;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -171,6 +153,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     filteredData,
     proportionInterval,
     setProportionInterval,
+    originalComponentProps,
 }) => {
     return (
         <>
@@ -189,8 +172,23 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 getData={() => getMutationComparisonTableData({ content: filteredData }, proportionInterval)}
                 filename='mutation_comparison.csv'
             />
-            <Info>Info for mutation comparison</Info>
+            <MutationComparisonInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
         </>
+    );
+};
+
+type MutationComparisonInfoProps = {
+    originalComponentProps: MutationComparisonProps;
+};
+
+const MutationComparisonInfo: FunctionComponent<MutationComparisonInfoProps> = ({ originalComponentProps }) => {
+    const lapis = useContext(LapisUrlContext);
+    return (
+        <Info>
+            <InfoHeadline1>Info for mutation comparison</InfoHeadline1>
+            <InfoParagraph>TODO: https://github.com/GenSpectrum/dashboard-components/issues/465</InfoParagraph>
+            <InfoComponentCode componentName='mutation-comparison' params={originalComponentProps} lapisUrl={lapis} />
+        </Info>
     );
 };
