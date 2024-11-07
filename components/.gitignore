@@ -1,5 +1,6 @@
 /lib/
 /dist/
+/standalone-bundle/
 /test/
 /build/
 custom-elements.json
