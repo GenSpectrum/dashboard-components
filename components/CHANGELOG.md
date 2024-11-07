@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.7.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.19...dashboard-components-v0.7.0) (2024-11-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** remove `customSelectOptions` from gs-date-range-selector. Use `dateRangeOptions` instead.
+
+### Features
+
+* **components:** gs-date-range-selector: replace `customSelectOptions` by `dateRangeOptions` ([a3ef17e](https://github.com/GenSpectrum/dashboard-components/commit/a3ef17e6c23297eb3a057dcbb167f33f83707bd9)), closes [#473](https://github.com/GenSpectrum/dashboard-components/issues/473)
+
 ## [0.6.19](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.18...dashboard-components-v0.6.19) (2024-11-06)
 
 
