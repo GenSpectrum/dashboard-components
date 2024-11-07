@@ -15,7 +15,7 @@ import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
-import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
+import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
@@ -26,12 +26,9 @@ import { useQuery } from '../useQuery';
 
 type NumberSequencesOverTimeView = 'bar' | 'line' | 'table';
 
-export interface NumberSequencesOverTimeProps extends NumberSequencesOverTimeInnerProps {
+export interface NumberSequencesOverTimeProps {
     width: string;
     height: string;
-}
-
-interface NumberSequencesOverTimeInnerProps {
     lapisFilter: NamedLapisFilter | NamedLapisFilter[];
     lapisDateField: string;
     views: NumberSequencesOverTimeView[];
@@ -40,26 +37,21 @@ interface NumberSequencesOverTimeInnerProps {
     pageSize: boolean | number;
 }
 
-export const NumberSequencesOverTime = ({ width, height, ...innerProps }: NumberSequencesOverTimeProps) => {
+export const NumberSequencesOverTime = (componentProps: NumberSequencesOverTimeProps) => {
+    const { width, height } = componentProps;
     const size = { height, width };
 
     return (
         <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <NumberSequencesOverTimeInner {...innerProps} />
+                <NumberSequencesOverTimeInner {...componentProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-const NumberSequencesOverTimeInner = ({
-    lapisFilter,
-    granularity,
-    smoothingWindow,
-    lapisDateField,
-    views,
-    pageSize,
-}: NumberSequencesOverTimeInnerProps) => {
+const NumberSequencesOverTimeInner = (componentProps: NumberSequencesOverTimeProps) => {
+    const { lapisFilter, lapisDateField, granularity, smoothingWindow } = componentProps;
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(
@@ -79,32 +71,15 @@ const NumberSequencesOverTimeInner = ({
         return <NoDataDisplay />;
     }
 
-    return (
-        <NumberSequencesOverTimeTabs
-            views={views}
-            data={data}
-            granularity={granularity}
-            smoothingWindow={smoothingWindow}
-            pageSize={pageSize}
-        />
-    );
+    return <NumberSequencesOverTimeTabs data={data} originalComponentProps={componentProps} />;
 };
 
 interface NumberSequencesOverTimeTabsProps {
-    views: NumberSequencesOverTimeView[];
     data: NumberOfSequencesDatasets;
-    granularity: TemporalGranularity;
-    smoothingWindow: number;
-    pageSize: boolean | number;
+    originalComponentProps: NumberSequencesOverTimeProps;
 }
 
-const NumberSequencesOverTimeTabs = ({
-    views,
-    data,
-    granularity,
-    smoothingWindow,
-    pageSize,
-}: NumberSequencesOverTimeTabsProps) => {
+const NumberSequencesOverTimeTabs = ({ data, originalComponentProps }: NumberSequencesOverTimeTabsProps) => {
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
 
     const getTab = (view: NumberSequencesOverTimeView) => {
@@ -122,7 +97,13 @@ const NumberSequencesOverTimeTabs = ({
             case 'table':
                 return {
                     title: 'Table',
-                    content: <NumberSequencesOverTimeTable data={data} granularity={granularity} pageSize={pageSize} />,
+                    content: (
+                        <NumberSequencesOverTimeTable
+                            data={data}
+                            granularity={originalComponentProps.granularity}
+                            pageSize={originalComponentProps.pageSize}
+                        />
+                    ),
                 };
             default:
                 throw new Error(`Unknown view: ${view}`);
@@ -131,15 +112,14 @@ const NumberSequencesOverTimeTabs = ({
 
     return (
         <Tabs
-            tabs={views.map((view) => getTab(view))}
+            tabs={originalComponentProps.views.map((view) => getTab(view))}
             toolbar={(activeTab) => (
                 <Toolbar
                     activeTab={activeTab}
                     data={data}
-                    granularity={granularity}
-                    smoothingWindow={smoothingWindow}
                     yAxisScaleType={yAxisScaleType}
                     setYAxisScaleType={setYAxisScaleType}
+                    originalComponentProps={originalComponentProps}
                 />
             )}
         />
@@ -149,20 +129,12 @@ const NumberSequencesOverTimeTabs = ({
 interface ToolbarProps {
     activeTab: string;
     data: NumberOfSequencesDatasets;
-    granularity: TemporalGranularity;
     yAxisScaleType: ScaleType;
     setYAxisScaleType: (scaleType: ScaleType) => void;
-    smoothingWindow: number;
+    originalComponentProps: NumberSequencesOverTimeProps;
 }
 
-const Toolbar = ({
-    activeTab,
-    data,
-    granularity,
-    yAxisScaleType,
-    setYAxisScaleType,
-    smoothingWindow,
-}: ToolbarProps) => {
+const Toolbar = ({ activeTab, data, yAxisScaleType, setYAxisScaleType, originalComponentProps }: ToolbarProps) => {
     return (
         <>
             {activeTab !== 'Table' && (
@@ -174,29 +146,39 @@ const Toolbar = ({
             )}
             <CsvDownloadButton
                 className='mx-1 btn btn-xs'
-                getData={() => getNumberOfSequencesOverTimeTableData(data, granularity)}
+                getData={() => getNumberOfSequencesOverTimeTableData(data, originalComponentProps.granularity)}
                 filename='number_of_sequences_over_time.csv'
             />
-            <NumberSequencesOverTimeInfo granularity={granularity} smoothingWindow={smoothingWindow} />
+            <NumberSequencesOverTimeInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
         </>
     );
 };
 
 type NumberSequencesOverTimeInfoProps = {
-    granularity: TemporalGranularity;
-    smoothingWindow: number;
+    originalComponentProps: NumberSequencesOverTimeProps;
 };
 
 const NumberSequencesOverTimeInfo: FunctionComponent<NumberSequencesOverTimeInfoProps> = ({
-    granularity,
-    smoothingWindow,
-}) => (
-    <Info>
-        <InfoHeadline1>Number of sequences over time</InfoHeadline1>
-        <InfoParagraph>
-            This presents the number of available sequences of a variant per <b>{granularity}</b>
-            {smoothingWindow > 0 && `, smoothed using a ${smoothingWindow}-${granularity} sliding window`}.
-        </InfoParagraph>
-    </Info>
-);
+    originalComponentProps,
+}) => {
+    const lapis = useContext(LapisUrlContext);
+
+    return (
+        <Info>
+            <InfoHeadline1>Number of sequences over time</InfoHeadline1>
+            <InfoParagraph>
+                This presents the number of available sequences of a variant per{' '}
+                <b>{originalComponentProps.granularity}</b>
+                {originalComponentProps.smoothingWindow > 0 &&
+                    `, smoothed using a ${originalComponentProps.smoothingWindow}-${originalComponentProps.granularity} sliding window`}
+                .
+            </InfoParagraph>
+            <InfoComponentCode
+                componentName='number-sequences-over-time'
+                params={originalComponentProps}
+                lapisUrl={lapis}
+            />
+        </Info>
+    );
+};
