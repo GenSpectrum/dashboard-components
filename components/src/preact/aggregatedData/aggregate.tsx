@@ -9,7 +9,7 @@ import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
-import Info, { InfoHeadline1, InfoParagraph } from '../components/info';
+import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
@@ -22,37 +22,29 @@ export type InitialSort = { field: string; direction: 'ascending' | 'descending'
 export type AggregateProps = {
     width: string;
     height: string;
-} & AggregateInnerProps;
-
-export interface AggregateInnerProps {
     filter: LapisFilter;
     fields: string[];
     views: View[];
     initialSortField: string;
     initialSortDirection: 'ascending' | 'descending';
     pageSize: boolean | number;
-}
+};
 
-export const Aggregate: FunctionComponent<AggregateProps> = ({ width, height, ...innerProps }) => {
+export const Aggregate: FunctionComponent<AggregateProps> = (componentProps) => {
+    const { width, height } = componentProps;
     const size = { height, width };
 
     return (
         <ErrorBoundary size={size}>
             <ResizeContainer size={size}>
-                <AggregateInner {...innerProps} />
+                <AggregateInner {...componentProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-export const AggregateInner: FunctionComponent<AggregateInnerProps> = ({
-    fields,
-    views,
-    filter,
-    initialSortField,
-    initialSortDirection,
-    pageSize,
-}) => {
+export const AggregateInner: FunctionComponent<AggregateProps> = (componentProps) => {
+    const { fields, filter, initialSortField, initialSortDirection } = componentProps;
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
@@ -71,50 +63,66 @@ export const AggregateInner: FunctionComponent<AggregateInnerProps> = ({
         return <NoDataDisplay />;
     }
 
-    return <AggregatedDataTabs data={data} views={views} fields={fields} pageSize={pageSize} />;
+    return <AggregatedDataTabs data={data} originalComponentProps={componentProps} />;
 };
 
 type AggregatedDataTabsProps = {
     data: AggregateData;
-    fields: string[];
-    views: View[];
-    pageSize: boolean | number;
+    originalComponentProps: AggregateProps;
 };
 
-const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, views, fields, pageSize }) => {
+const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, originalComponentProps }) => {
     const getTab = (view: View) => {
         switch (view) {
             case 'table':
                 return {
                     title: 'Table',
-                    content: <AggregateTable data={data} fields={fields} pageSize={pageSize} />,
+                    content: (
+                        <AggregateTable
+                            data={data}
+                            fields={originalComponentProps.fields}
+                            pageSize={originalComponentProps.pageSize}
+                        />
+                    ),
                 };
         }
     };
 
-    const tabs = views.map((view) => getTab(view));
+    const tabs = originalComponentProps.views.map((view) => getTab(view));
 
-    return <Tabs tabs={tabs} toolbar={<Toolbar data={data} fields={fields} />} />;
+    return <Tabs tabs={tabs} toolbar={<Toolbar data={data} originalComponentProps={originalComponentProps} />} />;
 };
 
 type ToolbarProps = {
     data: AggregateData;
-    fields: string[];
+    originalComponentProps: AggregateProps;
 };
 
-const Toolbar: FunctionComponent<ToolbarProps> = ({ data, fields }) => {
+const Toolbar: FunctionComponent<ToolbarProps> = ({ data, originalComponentProps }) => {
     return (
         <div class='flex flex-row'>
             <CsvDownloadButton className='mx-1 btn btn-xs' getData={() => data} filename='aggregate.csv' />
-            <Info>
-                <InfoHeadline1>Aggregated data</InfoHeadline1>
-                <InfoParagraph>
-                    This table shows the number and proportion of sequences stratified by the following fields:{' '}
-                    {fields.join(', ')}. The proportion is calculated with respect to the total count within the
-                    filtered dataset.
-                </InfoParagraph>
-            </Info>
+            <AggregateInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
         </div>
+    );
+};
+
+type AggregateInfoProps = {
+    originalComponentProps: AggregateProps;
+};
+
+const AggregateInfo: FunctionComponent<AggregateInfoProps> = ({ originalComponentProps }) => {
+    const lapis = useContext(LapisUrlContext);
+    return (
+        <Info>
+            <InfoHeadline1>Aggregated data</InfoHeadline1>
+            <InfoParagraph>
+                This table shows the number and proportion of sequences stratified by the following fields:{' '}
+                {originalComponentProps.fields.join(', ')}. The proportion is calculated with respect to the total count
+                within the filtered dataset.
+            </InfoParagraph>
+            <InfoComponentCode componentName='aggregate' params={originalComponentProps} lapisUrl={lapis} />
+        </Info>
     );
 };
