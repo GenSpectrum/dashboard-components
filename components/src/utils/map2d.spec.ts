@@ -4,20 +4,29 @@ import { Map2dBase, Map2dView } from './map2d';
 
 describe('Map2dBase', () => {
     it('should add a value and return it', () => {
-        const map2d = new Map2dBase<string, string, number>();
+        const map2d = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+        );
         map2d.set('a', 'b', 2);
         expect(map2d.get('a', 'b')).toBe(2);
     });
 
     it('should update a value', () => {
-        const map2d = new Map2dBase<string, string, number>();
+        const map2d = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+        );
         map2d.set('a', 'b', 2);
         map2d.set('a', 'b', 3);
         expect(map2d.get('a', 'b')).toBe(3);
     });
 
     it('should return the data as an array', () => {
-        const map2d = new Map2dBase<string, string, number>();
+        const map2d = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+        );
         map2d.set('a', 'b', 1);
         map2d.set('a', 'd', 2);
         map2d.set('c', 'b', 3);
@@ -30,7 +39,10 @@ describe('Map2dBase', () => {
     });
 
     it('should fill empty values with the given value', () => {
-        const map2d = new Map2dBase<string, string, number>();
+        const map2d = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+        );
         map2d.set('a', 'b', 2);
         map2d.set('c', 'd', 4);
         expect(map2d.getAsArray(0)).toEqual([
@@ -40,7 +52,10 @@ describe('Map2dBase', () => {
     });
 
     it('should return the keys from the first axis', () => {
-        const map2d = new Map2dBase<string, string, number>();
+        const map2d = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+        );
         map2d.set('a', 'b', 2);
         map2d.set('c', 'd', 4);
 
@@ -48,7 +63,10 @@ describe('Map2dBase', () => {
     });
 
     it('should return the keys from the second axis', () => {
-        const map2d = new Map2dBase<string, string, number>();
+        const map2d = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+        );
         map2d.set('a', 'b', 2);
         map2d.set('c', 'd', 4);
 
@@ -56,7 +74,10 @@ describe('Map2dBase', () => {
     });
 
     it('should work with objects as keys', () => {
-        const map2d = new Map2dBase<{ a: string }, { b: string }, number>();
+        const map2d = new Map2dBase<{ a: string }, { b: string }, number>(
+            ({ a }) => a,
+            ({ b }) => b,
+        );
         map2d.set({ a: 'a' }, { b: 'b' }, 2);
         map2d.set({ a: 'second' }, { b: 'second' }, 3);
 
@@ -65,14 +86,20 @@ describe('Map2dBase', () => {
     });
 
     it('should update a value with objects as keys', () => {
-        const map2d = new Map2dBase<{ a: string }, { b: string }, number>();
+        const map2d = new Map2dBase<{ a: string }, { b: string }, number>(
+            ({ a }) => a,
+            ({ b }) => b,
+        );
         map2d.set({ a: 'a' }, { b: 'b' }, 2);
         map2d.set({ a: 'a' }, { b: 'b' }, 3);
         expect(map2d.get({ a: 'a' }, { b: 'b' })).toBe(3);
     });
 
     it('should return a row by key', () => {
-        const map2d = new Map2dBase<string, string, number>();
+        const map2d = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+        );
         map2d.set('a', 'b', 2);
         map2d.set('c', 'd', 4);
 
@@ -81,14 +108,20 @@ describe('Map2dBase', () => {
     });
 
     it('should return an empty array when the row does not exist', () => {
-        const map2d = new Map2dBase<string, string, number>();
+        const map2d = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+        );
         map2d.set('a', 'b', 2);
 
         expect(map2d.getRow('c', 0)).toEqual([]);
     });
 
     it('should return content as object', () => {
-        const map2d = new Map2dBase<string, string, number>();
+        const map2d = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+        );
         map2d.set('a', 'b', 2);
         map2d.set('c', 'd', 4);
 
@@ -99,7 +132,10 @@ describe('Map2dBase', () => {
     });
 
     it('should use initial data', () => {
-        const map2d = new Map2dBase<string, string, number>();
+        const map2d = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+        );
         map2d.set('a', 'b', 2);
         map2d.set('c', 'd', 4);
 
@@ -174,7 +210,10 @@ describe('Map2dView', () => {
     });
 
     function createBaseContainer() {
-        const container = new Map2dBase<string, string, number>();
+        const container = new Map2dBase<string, string, number>(
+            (value) => value,
+            (value) => value,
+        );
         container.set('a', 'b', 1);
         container.set('c', 'b', 3);
         container.set('c', 'd', 4);

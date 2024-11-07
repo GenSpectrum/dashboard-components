@@ -1,9 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
+import { BaseMutationOverTimeDataMap } from './MutationOverTimeData';
 import { getFilteredMutationOverTimeData } from './getFilteredMutationsOverTimeData';
-import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
 import { type DeletionEntry, type SubstitutionEntry } from '../../types';
-import { Map2dBase } from '../../utils/map2d';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type TemporalClass } from '../../utils/temporalClass';
 import { yearMonthDay } from '../../utils/temporalTestHelpers';
@@ -194,7 +193,7 @@ describe('getFilteredMutationOverTimeData', () => {
         mutationEntries: (SubstitutionEntry<Substitution> | DeletionEntry<Deletion>)[],
         temporals: TemporalClass[] = [someTemporal, anotherTemporal],
     ) {
-        const data = new Map2dBase<Substitution | Deletion, TemporalClass, MutationOverTimeMutationValue>();
+        const data = new BaseMutationOverTimeDataMap();
 
         temporals.forEach((temporal) => {
             mutationEntries.forEach((entry) => {
