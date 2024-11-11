@@ -45,7 +45,6 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initial
     );
 };
 
-
 const backgroundColor: { [key in SearchType]: string } = {
     'aa-mutation': singleGraphColorRGBByName('teal', 0.4),
     'nuc-mutation': singleGraphColorRGBByName('green', 0.4),
@@ -53,17 +52,17 @@ const backgroundColor: { [key in SearchType]: string } = {
     'nuc-insertion': singleGraphColorRGBByName('indigo', 0.4),
     'nuc-deletion': singleGraphColorRGBByName('olive', 0.4),
     'aa-deletion': singleGraphColorRGBByName('sand', 0.4),
-  };
+};
 
 const colorStyles: Partial<StylesConfig<any, true, any>> = {
     control: (styles: CSSObjectWithLabel) => ({ ...styles, backgroundColor: 'white' }),
     multiValue: (styles: CSSObjectWithLabel, { data }: { data: SearchOption }) => {
-      return {
-        ...styles,
-        backgroundColor: backgroundColor[data.type],
-      };
+        return {
+            ...styles,
+            backgroundColor: backgroundColor[data.type],
+        };
     },
-  };
+};
 
 export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = ({ initialValue }) => {
     const referenceGenome = useContext(ReferenceGenomeContext);
@@ -200,7 +199,6 @@ function getPlaceholder(referenceGenome: ReferenceGenome) {
 
     return `Enter a mutation (e.g. ${segmentPrefix}A123T, ins_${segmentPrefix}123:AT, ${firstGene}:M123E, ins_${firstGene}:123:ME)`;
 }
-
 
 function mapToMutationFilterStrings(selectedFilters: SelectedFilters) {
     return {

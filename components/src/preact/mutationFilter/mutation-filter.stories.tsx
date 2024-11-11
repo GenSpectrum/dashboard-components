@@ -216,5 +216,4 @@ const testNoOptionsExist = async (canvas: ReturnType<typeof within>, mutation: s
     expect(options).toHaveLength(0);
 };
 
-const inputField = (canvas: ReturnType<typeof within>) =>
-    canvas.getByRole('combobox');
+const inputField = (canvas: ReturnType<typeof within>) => canvas.getByRole('combobox');
