@@ -4,13 +4,14 @@ import { type GroupBase, type CSSObjectWithLabel, type StylesConfig } from 'reac
 import AysncSelect from 'react-select/async';
 
 import { MutationFilterInfo } from './mutation-filter-info';
-import { type SearchOption, type SearchType, parseAndValidateMutation, createLoadOptions } from './parseAndValidateMutation';
-import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
 import {
-    type DeletionClass,
-    type InsertionClass,
-    type SubstitutionClass,
-} from '../../utils/mutations';
+    type SearchOption,
+    type SearchType,
+    parseAndValidateMutation,
+    createLoadOptions,
+} from './parseAndValidateMutation';
+import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
+import { type DeletionClass, type InsertionClass, type SubstitutionClass } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
