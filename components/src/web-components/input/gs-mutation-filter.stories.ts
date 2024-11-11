@@ -70,7 +70,6 @@ export const FiresFilterChangedEvent: StoryObj<MutationFilterProps> = {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
 
         const inputField = () => canvas.getByPlaceholderText('Enter a mutation', { exact: false });
-        const submitButton = () => canvas.getByRole('button', { name: '+' });
         const listenerMock = fn();
         await step('Setup event listener mock', async () => {
             canvasElement.addEventListener('gs-mutation-filter-changed', listenerMock);
@@ -84,7 +83,8 @@ export const FiresFilterChangedEvent: StoryObj<MutationFilterProps> = {
 
         await step('Enter a valid mutation', async () => {
             await userEvent.type(inputField(), 'A123T');
-            await waitFor(() => submitButton().click());
+            const firstOption = await canvas.findByRole('option', { name: /.*\S.*/ });
+            await userEvent.click(firstOption);
 
             await waitFor(() =>
                 expect(listenerMock).toHaveBeenCalledWith(

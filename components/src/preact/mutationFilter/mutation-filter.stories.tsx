@@ -49,7 +49,7 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
         const { canvas, changedListenerMock } = await prepare(canvasElement, step);
 
         await step('Enters an invalid mutation', async () => {
-            await submitMutation(canvas, 'notAMutation');
+            await testNoOptionsExist(canvas, 'notAMutation');
             await expect(changedListenerMock).not.toHaveBeenCalled();
 
             await userEvent.type(inputField(canvas), '{backspace>12/}');
@@ -205,10 +205,16 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
 
 const submitMutation = async (canvas: ReturnType<typeof within>, mutation: string) => {
     await userEvent.type(inputField(canvas), mutation);
-    await waitFor(() => submitButton(canvas).click());
+    const firstOption = await canvas.findByRole('option', { name: /.*\S.*/ });
+    await userEvent.click(firstOption);
+};
+
+const testNoOptionsExist = async (canvas: ReturnType<typeof within>, mutation: string) => {
+    await userEvent.type(inputField(canvas), mutation);
+    const options = canvas.queryAllByRole('option');
+
+    expect(options).toHaveLength(0);
 };
 
 const inputField = (canvas: ReturnType<typeof within>) =>
-    canvas.getByPlaceholderText('Enter a mutation', { exact: false });
-
-const submitButton = (canvas: ReturnType<typeof within>) => canvas.getByRole('button', { name: '+' });
+    canvas.getByRole('combobox');
