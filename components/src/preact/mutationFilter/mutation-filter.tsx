@@ -1,6 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useState } from 'preact/hooks';
-import { type GroupBase, type CSSObjectWithLabel, type StylesConfig } from 'react-select';
+import { type GroupBase, type CSSObjectWithLabel, type StylesConfig, type InputActionMeta } from 'react-select';
 import AysncSelect from 'react-select/async';
 
 import { MutationFilterInfo } from './mutation-filter-info';
@@ -124,9 +124,14 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
         return Promise.resolve(loadOptions(inputValue));
     };
 
-    const handleInputChange = (newValue: string) => {
-        setInputValue(newValue);
-        setMenuIsOpen(true);
+    const handleInputChange = (newValue: string, change: InputActionMeta) => {
+        if (change.action === 'input-change') {
+            setInputValue(newValue);
+            setMenuIsOpen(true);
+        }
+        if (change.action === 'menu-close' || change.action === 'input-blur') {
+            setMenuIsOpen(false);
+        }
     };
 
     return (
