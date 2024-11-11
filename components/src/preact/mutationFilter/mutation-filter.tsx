@@ -1,8 +1,10 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useRef, useState } from 'preact/hooks';
+import AysncSelect from 'react-select/async';
+import { CSSObjectWithLabel, StylesConfig } from 'react-select';
 
 import { MutationFilterInfo } from './mutation-filter-info';
-import { parseAndValidateMutation } from './parseAndValidateMutation';
+import { SearchOption, SearchType, parseAndValidateMutation, createLoadOptions } from './parseAndValidateMutation';
 import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
 import {
     type DeletionClass,
@@ -43,6 +45,26 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initial
     );
 };
 
+
+const backgroundColor: { [key in SearchType]: string } = {
+    'aa-mutation': singleGraphColorRGBByName('teal', 0.4),
+    'nuc-mutation': singleGraphColorRGBByName('green', 0.4),
+    'aa-insertion': singleGraphColorRGBByName('purple', 0.4),
+    'nuc-insertion': singleGraphColorRGBByName('indigo', 0.4),
+    'nuc-deletion': singleGraphColorRGBByName('olive', 0.4),
+    'aa-deletion': singleGraphColorRGBByName('sand', 0.4),
+  };
+
+const colorStyles: Partial<StylesConfig<any, true, any>> = {
+    control: (styles: CSSObjectWithLabel) => ({ ...styles, backgroundColor: 'white' }),
+    multiValue: (styles: CSSObjectWithLabel, { data }: { data: SearchOption }) => {
+      return {
+        ...styles,
+        backgroundColor: backgroundColor[data.type],
+      };
+    },
+  };
+
 export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = ({ initialValue }) => {
     const referenceGenome = useContext(ReferenceGenomeContext);
     const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>(
@@ -50,30 +72,8 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
     );
     const [inputValue, setInputValue] = useState('');
     const [isError, setIsError] = useState(false);
+    const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
     const formRef = useRef<HTMLFormElement>(null);
-
-    const handleSubmit = (event: Event) => {
-        event.preventDefault();
-        if (inputValue === '') {
-            return;
-        }
-
-        const parsedMutation = parseAndValidateMutation(inputValue, referenceGenome);
-
-        if (parsedMutation === null) {
-            setIsError(true);
-            return;
-        }
-
-        const newSelectedValues = {
-            ...selectedFilters,
-            [parsedMutation.type]: [...selectedFilters[parsedMutation.type], parsedMutation.value],
-        };
-
-        setSelectedFilters(newSelectedValues);
-        fireChangeEvent(newSelectedValues);
-        setInputValue('');
-    };
 
     const fireChangeEvent = (selectedFilters: SelectedFilters) => {
         const detail = mapToMutationFilterStrings(selectedFilters);
@@ -99,39 +99,60 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
         );
     };
 
-    const handleInputChange = (event: Event) => {
-        setInputValue((event.target as HTMLInputElement).value);
-        setIsError(false);
+    console.log(selectedFilters);
+
+    const promiseOptions = (inputValue: string) => {
+        const loadOptions = createLoadOptions(referenceGenome);
+        return Promise.resolve(loadOptions(inputValue));
+    };
+
+    const handleInputChange = (newValue: string) => {
+        setInputValue(newValue);
+        setMenuIsOpen(true);
+    };
+
+    const openMenu = () => {
+        setMenuIsOpen(!menuIsOpen);
     };
 
     return (
-        <form className='w-full border boder-gray-300 rounded-md relative' onSubmit={handleSubmit} ref={formRef}>
+        <div className='w-full border boder-gray-300 rounded-md relative'>
             <div className='absolute -top-3 -right-3'>
                 <MutationFilterInfo />
             </div>
-            <div className='w-full flex p-2 flex-wrap items-center'>
-                <SelectedMutationDisplay
-                    selectedFilters={selectedFilters}
-                    setSelectedFilters={setSelectedFilters}
-                    fireChangeEvent={fireChangeEvent}
-                />
-                <div
-                    className={`w-full flex border ${isError ? 'border-red-500' : 'border-gray-300'} border-solid m-2 text-sm focus-within:border-gray-400 `}
-                >
-                    <input
-                        className='grow flex-1 p-1 border-none focus:outline-none focus:ring-0'
-                        type='text'
-                        value={inputValue}
-                        onInput={handleInputChange}
-                        placeholder={getPlaceholder(referenceGenome)}
-                        onBlur={handleOnBlur}
-                    />
-                    <button type='submit' className='btn btn-xs m-1'>
-                        +
-                    </button>
-                </div>
-            </div>
-        </form>
+
+            <AysncSelect
+                className='w-full p-2'
+                placeholder={getPlaceholder(referenceGenome)}
+                isMulti
+                loadOptions={promiseOptions}
+                onInputChange={handleInputChange}
+                inputValue={inputValue}
+                onChange={(_, change) => {
+                    if (change.action === 'select-option') {
+                        const parsedMutation = parseAndValidateMutation(inputValue, referenceGenome);
+
+                        if (parsedMutation === null) {
+                            setIsError(true);
+                            return;
+                        }
+
+                        const newSelectedValues = {
+                            ...selectedFilters,
+                            [parsedMutation.type]: [...selectedFilters[parsedMutation.type], parsedMutation.value],
+                        };
+                        setSelectedFilters(newSelectedValues);
+                        fireChangeEvent(newSelectedValues);
+                        setInputValue('');
+                        setMenuIsOpen(false);
+                    } else if (change.action === 'remove-value' || change.action === 'pop-value') {
+                        //TODO: write custom function for filtering out value from selectedFilters
+                    }
+                }}
+                menuIsOpen={menuIsOpen}
+                styles={colorStyles}
+            />
+        </div>
     );
 };
 
