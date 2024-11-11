@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.7.0...dashboard-components-v0.7.1) (2024-11-11)
+
+
+### Features
+
+* **components:** gs-aggregate: add code example to info box ([e2ec1ac](https://github.com/GenSpectrum/dashboard-components/commit/e2ec1ac07e24467f70b3f1ff8a96a2bf1836e103)), closes [#479](https://github.com/GenSpectrum/dashboard-components/issues/479)
+* **components:** gs-mutation-comparison: add code example to info box ([fb0cc0d](https://github.com/GenSpectrum/dashboard-components/commit/fb0cc0d7395be02957d5784ee07c5285432d78a0)), closes [#479](https://github.com/GenSpectrum/dashboard-components/issues/479)
+* **components:** gs-mutations-over-time: add code example to info box ([3cbadea](https://github.com/GenSpectrum/dashboard-components/commit/3cbadea5ca525e27abc830f8c2588eb4e7c7ad75)), closes [#479](https://github.com/GenSpectrum/dashboard-components/issues/479)
+* **components:** gs-mutations: add code example to info box ([eac884a](https://github.com/GenSpectrum/dashboard-components/commit/eac884a9ac71b85095904c12f9e3fc98cd55411c)), closes [#479](https://github.com/GenSpectrum/dashboard-components/issues/479)
+* **components:** gs-number-sequences-over-time: add code example to info box ([303059c](https://github.com/GenSpectrum/dashboard-components/commit/303059c973989d23b84b8a79df277ac323ffb77e)), closes [#479](https://github.com/GenSpectrum/dashboard-components/issues/479)
+* **components:** gs-relative-growth-advantage: add code example to info box ([0f54537](https://github.com/GenSpectrum/dashboard-components/commit/0f545370d39ac2bbec38b547269d6108cdce5949)), closes [#479](https://github.com/GenSpectrum/dashboard-components/issues/479)
+
 ## [0.7.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.6.19...dashboard-components-v0.7.0) (2024-11-07)
 
 
