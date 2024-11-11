@@ -77,11 +77,11 @@ export const createLoadOptions = (referenceGenome: ReferenceGenome) => {
             let option: SearchOption;
             switch (sequenceType) {
                 case 'nucleotide':
-                    option = { label: value, value: value, type: 'nuc-insertion' };
+                    option = { label: value, value, type: 'nuc-insertion' };
                     suggestions.push(option);
                     break;
                 case 'amino acid':
-                    option = { label: value, value: value, type: 'aa-insertion' };
+                    option = { label: value, value, type: 'aa-insertion' };
                     suggestions.push(option);
                     break;
             }
@@ -93,11 +93,11 @@ export const createLoadOptions = (referenceGenome: ReferenceGenome) => {
             let option: SearchOption;
             switch (sequenceType) {
                 case 'nucleotide':
-                    option = { label: value, value: value, type: 'nuc-deletion' };
+                    option = { label: value, value, type: 'nuc-deletion' };
                     suggestions.push(option);
                     break;
                 case 'amino acid':
-                    option = { label: value, value: value, type: 'aa-deletion' };
+                    option = { label: value, value, type: 'aa-deletion' };
                     suggestions.push(option);
                     break;
             }
@@ -110,11 +110,11 @@ export const createLoadOptions = (referenceGenome: ReferenceGenome) => {
             let option: SearchOption;
             switch (sequenceType) {
                 case 'nucleotide':
-                    option = { label: value, value: value, type: 'nuc-mutation' };
+                    option = { label: value, value, type: 'nuc-mutation' };
                     suggestions.push(option);
                     break;
                 case 'amino acid':
-                    option = { label: value, value: value, type: 'aa-mutation' };
+                    option = { label: value, value, type: 'aa-mutation' };
                     suggestions.push(option);
                     break;
             }

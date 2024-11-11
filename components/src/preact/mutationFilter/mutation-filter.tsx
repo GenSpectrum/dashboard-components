@@ -1,15 +1,14 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useRef, useState } from 'preact/hooks';
+import { type GroupBase, type CSSObjectWithLabel, type StylesConfig } from 'react-select';
 import AysncSelect from 'react-select/async';
-import { CSSObjectWithLabel, StylesConfig } from 'react-select';
 
 import { MutationFilterInfo } from './mutation-filter-info';
-import { SearchOption, SearchType, parseAndValidateMutation, createLoadOptions } from './parseAndValidateMutation';
+import { type SearchOption, type SearchType, parseAndValidateMutation, createLoadOptions } from './parseAndValidateMutation';
 import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
 import {
     type DeletionClass,
     type InsertionClass,
-    type MutationClass,
     type SubstitutionClass,
 } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
@@ -54,7 +53,7 @@ const backgroundColor: { [key in SearchType]: string } = {
     'aa-deletion': singleGraphColorRGBByName('sand', 0.4),
 };
 
-const colorStyles: Partial<StylesConfig<any, true, any>> = {
+const colorStyles: Partial<StylesConfig<SearchOption, true, GroupBase<SearchOption>>> = {
     control: (styles: CSSObjectWithLabel) => ({ ...styles, backgroundColor: 'white' }),
     multiValue: (styles: CSSObjectWithLabel, { data }: { data: SearchOption }) => {
         return {
@@ -70,7 +69,6 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
         getInitialState(initialValue, referenceGenome),
     );
     const [inputValue, setInputValue] = useState('');
-    const [isError, setIsError] = useState(false);
     const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
     const formRef = useRef<HTMLFormElement>(null);
 
@@ -110,10 +108,6 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
         setMenuIsOpen(true);
     };
 
-    const openMenu = () => {
-        setMenuIsOpen(!menuIsOpen);
-    };
-
     return (
         <div className='w-full border boder-gray-300 rounded-md relative'>
             <div className='absolute -top-3 -right-3'>
@@ -132,7 +126,6 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
                         const parsedMutation = parseAndValidateMutation(inputValue, referenceGenome);
 
                         if (parsedMutation === null) {
-                            setIsError(true);
                             return;
                         }
 
