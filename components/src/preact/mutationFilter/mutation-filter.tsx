@@ -54,6 +54,15 @@ const backgroundColor: { [key in SearchType]: string } = {
     'aa-deletion': singleGraphColorRGBByName('sand', 0.4),
 };
 
+const selectedFiltersMap: { [key in SearchType]: keyof SelectedFilters } = {
+    'nuc-mutation': 'nucleotideMutations',
+    'nuc-deletion': 'nucleotideMutations',
+    'aa-mutation': 'aminoAcidMutations',
+    'aa-deletion': 'aminoAcidMutations',
+    'nuc-insertion': 'nucleotideInsertions',
+    'aa-insertion': 'aminoAcidInsertions',
+};
+
 const colorStyles: Partial<StylesConfig<SearchOption, true, GroupBase<SearchOption>>> = {
     control: (styles: CSSObjectWithLabel) => ({ ...styles, backgroundColor: 'white' }),
     multiValue: (styles: CSSObjectWithLabel, { data }: { data: SearchOption }) => {
@@ -74,8 +83,6 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
 
     const fireChangeEvent = (selectedFilters: SelectedFilters) => {
         const detail = mapToMutationFilterStrings(selectedFilters);
-        console.log('fired');
-        console.log(detail);
 
         document.dispatchEvent(
             new CustomEvent<SelectedMutationFilterStrings>('gs-mutation-filter-changed', {
@@ -84,6 +91,17 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
                 composed: true,
             }),
         );
+    };
+
+    const onSelectedRemoved = (mutation: string, key: SearchType, selectedFilters: SelectedFilters) => {
+        const newSelectedValues = {
+            ...selectedFilters,
+            [selectedFiltersMap[key]]: selectedFilters[selectedFiltersMap[key]].filter((i) => mutation != i.toString()),
+        };
+
+        setSelectedFilters(newSelectedValues);
+
+        fireChangeEvent(newSelectedValues);
     };
 
     const handleOnBlur = () => {
@@ -141,7 +159,7 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
                         setInputValue('');
                         setMenuIsOpen(false);
                     } else if (change.action === 'remove-value' || change.action === 'pop-value') {
-                        //TODO: write custom function for filtering out value from selectedFilters
+                        onSelectedRemoved(change.removedValue.value, change.removedValue.type, selectedFilters);
                         setMenuIsOpen(false);
                     } else {
                         setMenuIsOpen(false);
