@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useRef, useState } from 'preact/hooks';
+import { useContext, useState } from 'preact/hooks';
 import { type GroupBase, type CSSObjectWithLabel, type StylesConfig } from 'react-select';
 import AysncSelect from 'react-select/async';
 
@@ -71,12 +71,13 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
     );
     const [inputValue, setInputValue] = useState('');
     const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
-    const formRef = useRef<HTMLFormElement>(null);
 
     const fireChangeEvent = (selectedFilters: SelectedFilters) => {
         const detail = mapToMutationFilterStrings(selectedFilters);
+        console.log('fired');
+        console.log(detail);
 
-        formRef.current?.dispatchEvent(
+        document.dispatchEvent(
             new CustomEvent<SelectedMutationFilterStrings>('gs-mutation-filter-changed', {
                 detail,
                 bubbles: true,
@@ -87,8 +88,9 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
 
     const handleOnBlur = () => {
         const detail = mapToMutationFilterStrings(selectedFilters);
+        setMenuIsOpen(false);
 
-        formRef.current?.dispatchEvent(
+        document.dispatchEvent(
             new CustomEvent<SelectedMutationFilterStrings>('gs-mutation-filter-on-blur', {
                 detail,
                 bubbles: true,
@@ -140,6 +142,9 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
                         setMenuIsOpen(false);
                     } else if (change.action === 'remove-value' || change.action === 'pop-value') {
                         //TODO: write custom function for filtering out value from selectedFilters
+                        setMenuIsOpen(false);
+                    } else {
+                        setMenuIsOpen(false);
                     }
                 }}
                 menuIsOpen={menuIsOpen}
