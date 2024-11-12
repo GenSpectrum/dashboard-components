@@ -1,4 +1,4 @@
-import { type Meta, type PreactRenderer, type StoryObj } from '@storybook/preact';
+import { type PreactRenderer, type Meta, type StoryObj } from '@storybook/preact';
 import { expect, fireEvent, fn, userEvent, waitFor, within } from '@storybook/test';
 import { type StepFunction } from '@storybook/types';
 
@@ -49,7 +49,7 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
         const { canvas, changedListenerMock } = await prepare(canvasElement, step);
 
         await step('Enters an invalid mutation', async () => {
-            await submitMutation(canvas, 'notAMutation');
+            await testNoOptionsExist(canvas, 'notAMutation');
             await expect(changedListenerMock).not.toHaveBeenCalled();
 
             await userEvent.type(inputField(canvas), '{backspace>12/}');
@@ -103,7 +103,7 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
         });
 
         await step('Remove the first mutation', async () => {
-            const firstMutationDeleteButton = canvas.getAllByRole('button', { name: '✕' })[1];
+            const firstMutationDeleteButton = canvas.getByText('A123T', { exact: false });
             await waitFor(() => fireEvent.click(firstMutationDeleteButton));
 
             await expect(changedListenerMock).toHaveBeenCalledWith(
@@ -130,7 +130,8 @@ export const FiresFilterOnBlurEvent: StoryObj<MutationFilterProps> = {
             await submitMutation(canvas, 'S:A123G');
             await submitMutation(canvas, 'ins_123:AAA');
             await submitMutation(canvas, 'ins_S:123:AAA');
-            await userEvent.tab();
+            await userEvent.tab(); // Move focus back to filter input
+            await userEvent.tab(); // Move focus out of filter component
 
             await expect(onBlurListenerMock).toHaveBeenCalledWith(
                 expect.objectContaining({
@@ -168,7 +169,8 @@ export const WithInitialValue: StoryObj<MutationFilterProps> = {
 
         await step('Move outside of input', async () => {
             await submitMutation(canvas, 'G500T');
-            await userEvent.tab();
+            await userEvent.tab(); // Move focus back to filter input
+            await userEvent.tab(); // Move focus out of filter component
 
             await expect(onBlurListenerMock).toHaveBeenCalledWith(
                 expect.objectContaining({
@@ -205,10 +207,16 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
 
 const submitMutation = async (canvas: ReturnType<typeof within>, mutation: string) => {
     await userEvent.type(inputField(canvas), mutation);
-    await waitFor(() => submitButton(canvas).click());
+    const firstOption = await canvas.findByRole('option', { name: mutation });
+    await userEvent.click(firstOption);
+};
+
+const testNoOptionsExist = async (canvas: ReturnType<typeof within>, mutation: string) => {
+    await userEvent.type(inputField(canvas), mutation);
+    const options = canvas.queryAllByRole('option');
+
+    expect(options).toHaveLength(0);
 };
 
 const inputField = (canvas: ReturnType<typeof within>) =>
     canvas.getByPlaceholderText('Enter a mutation', { exact: false });
-
-const submitButton = (canvas: ReturnType<typeof within>) => canvas.getByRole('button', { name: '+' });
