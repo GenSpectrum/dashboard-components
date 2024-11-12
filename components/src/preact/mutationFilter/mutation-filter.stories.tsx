@@ -1,4 +1,4 @@
-import { type Meta, type StoryObj } from '@storybook/preact';
+import { type PreactRenderer, type Meta, type StoryObj } from '@storybook/preact';
 import { expect, fireEvent, fn, userEvent, waitFor, within } from '@storybook/test';
 import { type StepFunction } from '@storybook/types';
 
@@ -184,14 +184,14 @@ export const WithInitialValue: StoryObj<MutationFilterProps> = {
     },
 };
 
-async function prepare(canvasElement: HTMLElement, step: StepFunction) {
+async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRenderer, unknown>) {
     const canvas = within(canvasElement);
 
     const onBlurListenerMock = fn();
     const changedListenerMock = fn();
     await step('Setup event listener mock', async () => {
-        document.addEventListener('gs-mutation-filter-on-blur', onBlurListenerMock);
-        document.addEventListener('gs-mutation-filter-changed', changedListenerMock);
+        canvasElement.addEventListener('gs-mutation-filter-on-blur', onBlurListenerMock);
+        canvasElement.addEventListener('gs-mutation-filter-changed', changedListenerMock);
     });
 
     await step('wait until data is loaded', async () => {

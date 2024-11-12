@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useState } from 'preact/hooks';
+import { useContext, useState, useRef } from 'preact/hooks';
 import { type GroupBase, type CSSObjectWithLabel, type StylesConfig, type InputActionMeta } from 'react-select';
 import AysncSelect from 'react-select/async';
 
@@ -81,10 +81,12 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
     const [inputValue, setInputValue] = useState('');
     const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
 
+    const formRef = useRef<HTMLDivElement>(null);
+
     const fireChangeEvent = (selectedFilters: SelectedFilters) => {
         const detail = mapToMutationFilterStrings(selectedFilters);
 
-        document.dispatchEvent(
+        formRef.current?.dispatchEvent(
             new CustomEvent<SelectedMutationFilterStrings>('gs-mutation-filter-changed', {
                 detail,
                 bubbles: true,
@@ -108,7 +110,7 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
         const detail = mapToMutationFilterStrings(selectedFilters);
         setMenuIsOpen(false);
 
-        document.dispatchEvent(
+        formRef.current?.dispatchEvent(
             new CustomEvent<SelectedMutationFilterStrings>('gs-mutation-filter-on-blur', {
                 detail,
                 bubbles: true,
@@ -135,7 +137,7 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
     };
 
     return (
-        <div className='w-full border boder-gray-300 rounded-md relative'>
+        <div className='w-full border boder-gray-300 rounded-md relative' ref={formRef}>
             <div className='absolute -top-3 -right-3'>
                 <MutationFilterInfo />
             </div>
