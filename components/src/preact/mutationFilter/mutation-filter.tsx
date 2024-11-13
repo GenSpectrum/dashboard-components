@@ -1,7 +1,7 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useState, useRef } from 'preact/hooks';
 
-import AsyncSelect from './asyncselect';
+import AsyncSelect from './async-select';
 import { MutationFilterInfo } from './mutation-filter-info';
 import {
     type SearchOption,

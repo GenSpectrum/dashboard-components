@@ -88,7 +88,7 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
         });
 
         await step('Enter another valid mutation', async () => {
-            await submitMutation(canvas, 'ins_123:AA');
+            await submitMutation(canvas, 'ins_123:AA', 'enter');
 
             await expect(changedListenerMock).toHaveBeenCalledWith(
                 expect.objectContaining({
@@ -127,7 +127,7 @@ export const FiresFilterOnBlurEvent: StoryObj<MutationFilterProps> = {
 
         await step('Move outside of input', async () => {
             await submitMutation(canvas, 'A234T');
-            await submitMutation(canvas, 'S:A123G');
+            await submitMutation(canvas, 'S:A123G', 'enter');
             await submitMutation(canvas, 'ins_123:AAA');
             await submitMutation(canvas, 'ins_S:123:AAA');
             await userEvent.tab(); // Move focus back to filter input
@@ -205,10 +205,21 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
     return { canvas, onBlurListenerMock, changedListenerMock };
 }
 
-const submitMutation = async (canvas: ReturnType<typeof within>, mutation: string) => {
+export type SubmissionMethod = 'click' | 'enter';
+
+const submitMutation = async (
+    canvas: ReturnType<typeof within>,
+    mutation: string,
+    submissionMethod: SubmissionMethod = 'click',
+) => {
     await userEvent.type(inputField(canvas), mutation);
     const firstOption = await canvas.findByRole('option', { name: mutation });
-    await userEvent.click(firstOption);
+    if (submissionMethod === 'click') {
+        await userEvent.click(firstOption);
+    }
+    if (submissionMethod === 'enter') {
+        await userEvent.keyboard('{enter}');
+    }
 };
 
 const testNoOptionsExist = async (canvas: ReturnType<typeof within>, mutation: string) => {

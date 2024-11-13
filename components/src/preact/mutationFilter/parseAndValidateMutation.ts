@@ -1,4 +1,4 @@
-import { type Option } from './asyncselect';
+import { type Option } from './async-select';
 import { type SelectedFilters } from './mutation-filter';
 import { sequenceTypeFromSegment } from './sequenceTypeFromSegment';
 import type { ReferenceGenome } from '../../lapisApi/ReferenceGenome';
