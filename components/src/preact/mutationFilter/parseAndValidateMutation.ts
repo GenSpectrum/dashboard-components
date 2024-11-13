@@ -1,3 +1,4 @@
+import { type Option } from './asyncselect';
 import { type SelectedFilters } from './mutation-filter';
 import { sequenceTypeFromSegment } from './sequenceTypeFromSegment';
 import type { ReferenceGenome } from '../../lapisApi/ReferenceGenome';
@@ -61,60 +62,53 @@ export type SearchType =
     | 'nuc-mutation'
     | 'aa-mutation';
 
-export type SearchOption = {
-    label: string;
-    value: string;
-    type: SearchType;
-};
+export type SearchOption = Option<SearchType>;
 
 export const createLoadOptions = (referenceGenome: ReferenceGenome) => {
     return (value: string): SearchOption[] => {
-        const suggestions: SearchOption[] = [];
         const possibleInsertion = InsertionClass.parse(value);
         if (possibleInsertion !== null) {
             const sequenceType = sequenceTypeFromSegment(possibleInsertion.segment, referenceGenome);
-            let option: SearchOption;
             switch (sequenceType) {
                 case 'nucleotide':
-                    option = {
-                        label: possibleInsertion.toString(),
-                        value: possibleInsertion.toString(),
-                        type: 'nuc-insertion',
-                    };
-                    suggestions.push(option);
-                    break;
+                    return [
+                        {
+                            label: possibleInsertion.toString(),
+                            value: possibleInsertion.toString(),
+                            type: 'nuc-insertion',
+                        },
+                    ];
                 case 'amino acid':
-                    option = {
-                        label: possibleInsertion.toString(),
-                        value: possibleInsertion.toString(),
-                        type: 'aa-insertion',
-                    };
-                    suggestions.push(option);
-                    break;
+                    return [
+                        {
+                            label: possibleInsertion.toString(),
+                            value: possibleInsertion.toString(),
+                            type: 'aa-insertion',
+                        },
+                    ];
             }
         }
 
         const possibleDeletion = DeletionClass.parse(value);
         if (possibleDeletion !== null) {
             const sequenceType = sequenceTypeFromSegment(possibleDeletion.segment, referenceGenome);
-            let option: SearchOption;
             switch (sequenceType) {
                 case 'nucleotide':
-                    option = {
-                        label: possibleDeletion.toString(),
-                        value: possibleDeletion.toString(),
-                        type: 'nuc-deletion',
-                    };
-                    suggestions.push(option);
-                    break;
+                    return [
+                        {
+                            label: possibleDeletion.toString(),
+                            value: possibleDeletion.toString(),
+                            type: 'nuc-deletion',
+                        },
+                    ];
                 case 'amino acid':
-                    option = {
-                        label: possibleDeletion.toString(),
-                        value: possibleDeletion.toString(),
-                        type: 'aa-deletion',
-                    };
-                    suggestions.push(option);
-                    break;
+                    return [
+                        {
+                            label: possibleDeletion.toString(),
+                            value: possibleDeletion.toString(),
+                            type: 'aa-deletion',
+                        },
+                    ];
             }
         }
 
@@ -122,27 +116,25 @@ export const createLoadOptions = (referenceGenome: ReferenceGenome) => {
 
         if (possibleSubstitution !== null) {
             const sequenceType = sequenceTypeFromSegment(possibleSubstitution.segment, referenceGenome);
-            let option: SearchOption;
             switch (sequenceType) {
                 case 'nucleotide':
-                    option = {
-                        label: possibleSubstitution.toString(),
-                        value: possibleSubstitution.toString(),
-                        type: 'nuc-mutation',
-                    };
-                    suggestions.push(option);
-                    break;
+                    return [
+                        {
+                            label: possibleSubstitution.toString(),
+                            value: possibleSubstitution.toString(),
+                            type: 'nuc-mutation',
+                        },
+                    ];
                 case 'amino acid':
-                    option = {
-                        label: possibleSubstitution.toString(),
-                        value: possibleSubstitution.toString(),
-                        type: 'aa-mutation',
-                    };
-                    suggestions.push(option);
-                    break;
+                    return [
+                        {
+                            label: possibleSubstitution.toString(),
+                            value: possibleSubstitution.toString(),
+                            type: 'aa-mutation',
+                        },
+                    ];
             }
         }
-
-        return suggestions.slice(0, 20);
+        return [];
     };
 };

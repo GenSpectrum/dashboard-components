@@ -2,19 +2,20 @@ import { h } from 'preact';
 import { type CSSProperties } from 'preact/compat';
 import { useState, useEffect, useRef } from 'preact/hooks';
 
-import { type SearchOption } from './parseAndValidateMutation';
+export type Option<T extends string> = {
+    label: string;
+    value: string;
+    type: T;
+};
 
-type AsyncSelectProps = {
+type AsyncSelectProps<T extends string> = {
     className?: string;
     placeholder?: string;
     isMulti?: boolean;
-    loadOptions: (inputValue: string) => Promise<SearchOption[]>;
+    loadOptions: (inputValue: string) => Promise<Option<T>[]>;
     onInputChange: (value: string) => void;
     inputValue: string;
-    onChange: (
-        actionMeta: { action: string; removedValue?: SearchOption },
-        value?: SearchOption | SearchOption[],
-    ) => void;
+    onChange: (actionMeta: { action: string; removedValue?: Option<T> }, value?: Option<T> | Option<T>[]) => void;
     menuIsOpen?: boolean;
     styles?: {
         input?: CSSProperties;
@@ -23,12 +24,12 @@ type AsyncSelectProps = {
         selectedList?: CSSProperties;
         selectedItem?: CSSProperties;
         loading?: CSSProperties;
-        multiValue?: (data: SearchOption) => CSSProperties;
+        multiValue?: (data: Option<T>) => CSSProperties;
     };
     onBlur?: () => void;
 };
 
-const AsyncSelect = ({
+const AsyncSelect = <T extends string>({
     className,
     placeholder,
     isMulti = false,
@@ -39,42 +40,42 @@ const AsyncSelect = ({
     menuIsOpen = false,
     styles = {},
     onBlur,
-}: AsyncSelectProps) => {
-    const [options, setSearchOptions] = useState<SearchOption[]>([]);
+}: AsyncSelectProps<T>) => {
+    const [options, setOptions] = useState<Option<T>[]>([]);
     const [loading, setLoading] = useState(false);
     const [menuVisible, setMenuVisible] = useState(menuIsOpen);
-    const [selectedValues, setSelectedValues] = useState<SearchOption[]>([]);
+    const [selectedValues, setSelectedValues] = useState<Option<T>[]>([]);
 
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     // Load options asynchronously based on input value
     useEffect(() => {
-        const loadAsyncSearchOptions = async () => {
+        const loadAsyncOptions = async () => {
             setLoading(true);
             const result = await loadOptions(inputValue);
-            setSearchOptions(result);
+            setOptions(result);
             setLoading(false);
         };
 
-        if (inputValue) loadAsyncSearchOptions();
+        if (inputValue) loadAsyncOptions();
     }, [inputValue, loadOptions]);
 
-    const handleSearchOptionClick = (option: SearchOption) => {
+    const handleOptionClick = (option: Option<T>) => {
         if (isMulti) {
             const newSelectedValues = [...selectedValues, option];
             setSelectedValues(newSelectedValues);
             onChange({ action: 'select-option' });
-            setSearchOptions([]);
+            setOptions([]);
             setMenuVisible(false);
         } else {
             setSelectedValues([option]);
             onChange({ action: 'select-option' });
-            setSearchOptions([]);
+            setOptions([]);
             setMenuVisible(false);
         }
     };
 
-    const handleRemoveValue = (option: SearchOption) => {
+    const handleRemoveValue = (option: Option<T>) => {
         const newSelectedValues = selectedValues.filter((val) => val.value !== option.value);
         setSelectedValues(newSelectedValues);
         onChange({ action: 'remove-value', removedValue: option });
@@ -110,7 +111,7 @@ const AsyncSelect = ({
                                 key={option.value}
                                 role='option'
                                 style={styles.option}
-                                onClick={() => handleSearchOptionClick(option)}
+                                onClick={() => handleOptionClick(option)}
                             >
                                 {option.label}
                             </li>
