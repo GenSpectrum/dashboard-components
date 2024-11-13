@@ -25,6 +25,7 @@ export class UserFacingError extends Error {
 }
 
 export const ErrorDisplay: FunctionComponent<{ error: Error }> = ({ error }) => {
+    // eslint-disable-next-line no-console -- Currently we use the following statement for our error handling
     console.error(error);
 
     const containerRef = useRef<HTMLInputElement>(null);
