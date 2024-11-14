@@ -5,6 +5,7 @@ import { type PrevalenceOverTimeData } from '../../query/queryPrevalenceOverTime
 import { addUnit, minusTemporal } from '../../utils/temporalClass';
 import { getMinMaxNumber } from '../../utils/utils';
 import GsChart from '../components/chart';
+import { NoDataDisplay } from '../components/no-data-display';
 import { LogitScale } from '../shared/charts/LogitScale';
 import { singleGraphColorRGBAById } from '../shared/charts/colors';
 import { getYAxisMax, type YAxisMaxConfig } from '../shared/charts/getYAxisMax';
@@ -23,12 +24,18 @@ const PrevalenceOverTimeBubbleChart = ({
     yAxisScaleType,
     yAxisMaxConfig,
 }: PrevalenceOverTimeBubbleChartProps) => {
-    const nonNullDateRangeData = data.map((variantData) => {
-        return {
-            content: variantData.content.filter((dataPoint) => dataPoint.dateRange !== null),
-            displayName: variantData.displayName,
-        };
-    });
+    const nonNullDateRangeData = data
+        .filter((prevalenceOverTimeData) => prevalenceOverTimeData.content.length > 0)
+        .map((variantData) => {
+            return {
+                content: variantData.content.filter((dataPoint) => dataPoint.dateRange !== null),
+                displayName: variantData.displayName,
+            };
+        });
+
+    if (nonNullDateRangeData.length === 0) {
+        return <NoDataDisplay />;
+    }
 
     const firstDate = nonNullDateRangeData[0].content[0].dateRange!;
     const total = nonNullDateRangeData.map((graphData) => graphData.content.map((dataPoint) => dataPoint.total)).flat();

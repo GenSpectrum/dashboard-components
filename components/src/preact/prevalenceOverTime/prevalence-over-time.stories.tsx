@@ -1,11 +1,15 @@
+import type { StoryObj } from '@storybook/preact';
+import { expect, waitFor } from '@storybook/test';
+
+import { LapisUrlContext } from '../LapisUrlContext';
 import denominatorFilter from './__mockData__/denominatorFilter.json';
 import denominatorOneDataset from './__mockData__/denominatorFilterOneDataset.json';
 import numeratorFilterEG from './__mockData__/numeratorFilterEG.json';
 import numeratorFilterJN1 from './__mockData__/numeratorFilterJN1.json';
+import numeratorFilterNoData from './__mockData__/numeratorFilterNoData.json';
 import numeratorOneDataset from './__mockData__/numeratorFilterOneDataset.json';
 import { PrevalenceOverTime, type PrevalenceOverTimeProps } from './prevalence-over-time';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import { LapisUrlContext } from '../LapisUrlContext';
 
 export default {
     title: 'Visualization/PrevalenceOverTime',
@@ -58,7 +62,7 @@ const Template = {
     ),
 };
 
-export const TwoVariants = {
+export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
     ...Template,
     args: {
         numeratorFilter: [
@@ -74,10 +78,8 @@ export const TwoVariants = {
         height: '700px',
         lapisDateField: 'date',
         pageSize: 10,
-        yAxisMaxConfig: {
-            linear: 1,
-            logarithmic: 1,
-        },
+        yAxisMaxLinear: 1,
+        yAxisMaxLogarithmic: 1,
     },
     parameters: {
         fetchMock: {
@@ -134,7 +136,7 @@ export const TwoVariants = {
     },
 };
 
-export const OneVariant = {
+export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
     ...Template,
     args: {
         numeratorFilter: {
@@ -150,10 +152,8 @@ export const OneVariant = {
         height: '700px',
         lapisDateField: 'date',
         pageSize: 10,
-        yAxisMaxConfig: {
-            linear: 1,
-            logarithmic: 1,
-        },
+        yAxisMaxLinear: 1,
+        yAxisMaxLogarithmic: 1,
     },
     parameters: {
         fetchMock: {
@@ -191,5 +191,68 @@ export const OneVariant = {
                 },
             ],
         },
+    },
+};
+
+export const ShowsNoDataBanner: StoryObj<PrevalenceOverTimeProps> = {
+    ...Template,
+    args: {
+        numeratorFilter: {
+            displayName: 'EG',
+            lapisFilter: { country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
+        },
+        denominatorFilter: { country: 'USA', dateFrom: '2023-10-01' },
+        granularity: 'day',
+        smoothingWindow: 7,
+        views: ['bar', 'line', 'bubble', 'table'],
+        confidenceIntervalMethods: ['wilson'],
+        width: '100%',
+        height: '700px',
+        lapisDateField: 'date',
+        pageSize: 10,
+        yAxisMaxLinear: 1,
+        yAxisMaxLogarithmic: 1,
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'numeratorOneVariant',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            country: 'USA',
+                            pangoLineage: 'BA.2.86*',
+                            dateFrom: '2023-10-01',
+                            fields: ['date'],
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: numeratorFilterNoData,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'denominatorOneVariant',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            country: 'USA',
+                            dateFrom: '2023-10-01',
+                            fields: ['date'],
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: numeratorFilterNoData,
+                    },
+                },
+            ],
+        },
+    },
+    play: async ({ canvas }) => {
+        await waitFor(() => expect(canvas.getByText('No data available.', { exact: false })).toBeVisible(), {
+            timeout: 10000,
+        });
     },
 };

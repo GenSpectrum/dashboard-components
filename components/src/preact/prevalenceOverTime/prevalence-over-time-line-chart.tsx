@@ -4,6 +4,7 @@ import { type TooltipItem } from 'chart.js/dist/types';
 import { maxInData } from './prevalence-over-time';
 import { type PrevalenceOverTimeData, type PrevalenceOverTimeVariantData } from '../../query/queryPrevalenceOverTime';
 import GsChart from '../components/chart';
+import { NoDataDisplay } from '../components/no-data-display';
 import { LogitScale } from '../shared/charts/LogitScale';
 import { singleGraphColorRGBAById } from '../shared/charts/colors';
 import {
@@ -29,12 +30,18 @@ const PrevalenceOverTimeLineChart = ({
     confidenceIntervalMethod,
     yAxisMaxConfig,
 }: PrevalenceOverTimeLineChartProps) => {
-    const nonNullDateRangeData = data.map((variantData) => {
-        return {
-            content: variantData.content.filter((dataPoint) => dataPoint.dateRange !== null),
-            displayName: variantData.displayName,
-        };
-    });
+    const nonNullDateRangeData = data
+        .filter((prevalenceOverTimeData) => prevalenceOverTimeData.content.length > 0)
+        .map((variantData) => {
+            return {
+                content: variantData.content.filter((dataPoint) => dataPoint.dateRange !== null),
+                displayName: variantData.displayName,
+            };
+        });
+
+    if (nonNullDateRangeData.length === 0) {
+        return <NoDataDisplay />;
+    }
 
     const datasets = nonNullDateRangeData
         .map((graphData, index) => getDataset(graphData, index, confidenceIntervalMethod))
