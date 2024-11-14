@@ -85,3 +85,73 @@ export const ShowsMessageWhenTooManyMutations: StoryObj<MutationsOverTimeProps> 
         });
     },
 };
+
+export const ShowsNoDataWhenNoMutationsAreInFilter: StoryObj<MutationsOverTimeProps> = {
+    ...Template,
+    args: {
+        lapisFilter: { dateFrom: '1800-01-01', dateTo: '1800-01-02' },
+        sequenceType: 'nucleotide',
+        views: ['grid'],
+        width: '100%',
+        height: '700px',
+        granularity: 'year',
+        lapisDateField: 'date',
+    },
+    play: async ({ canvas }) => {
+        await waitFor(() => expect(canvas.getByText('No data available.', { exact: false })).toBeVisible(), {
+            timeout: 10000,
+        });
+    },
+};
+
+export const ShowsNoDataMessageWhenThereAreNoDatesInFilter: StoryObj<MutationsOverTimeProps> = {
+    ...Template,
+    args: {
+        lapisFilter: { dateFrom: '2345-01-01', dateTo: '2020-01-02' },
+        sequenceType: 'nucleotide',
+        views: ['grid'],
+        width: '100%',
+        height: '700px',
+        granularity: 'year',
+        lapisDateField: 'date',
+    },
+    play: async ({ canvas }) => {
+        await waitFor(() => expect(canvas.getByText('No data available.', { exact: false })).toBeVisible(), {
+            timeout: 10000,
+        });
+    },
+};
+
+export const ShowsNoDataMessageForStrictFilters: StoryObj<MutationsOverTimeProps> = {
+    ...Template,
+    args: {
+        lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
+        sequenceType: 'nucleotide',
+        views: ['grid'],
+        width: '100%',
+        height: '700px',
+        granularity: 'month',
+        lapisDateField: 'date',
+    },
+    play: async ({ canvas }) => {
+        await waitFor(() => expect(canvas.getByText('Grid')).toBeVisible(), { timeout: 10000 });
+
+        const button = canvas.getByRole('button', { name: 'Mean proportion 5.0% - 90.0%' });
+        await userEvent.click(button);
+
+        const minInput = canvas.getAllByLabelText('%')[0];
+        await userEvent.clear(minInput);
+        await userEvent.type(minInput, '40');
+
+        const maxInput = canvas.getAllByLabelText('%')[1];
+        await userEvent.clear(maxInput);
+        await userEvent.type(maxInput, '41');
+
+        await waitFor(
+            () => expect(canvas.getByText('No data available for your filters.', { exact: false })).toBeVisible(),
+            {
+                timeout: 10000,
+            },
+        );
+    },
+};

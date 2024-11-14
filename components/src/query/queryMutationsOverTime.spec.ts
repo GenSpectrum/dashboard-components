@@ -719,6 +719,36 @@ describe('queryMutationsOverTime', () => {
         expect(dates[1].dateString).toBe('2023-02');
     });
 
+    it('should return empty data when there are no dates in filter', async () => {
+        const lapisFilter = { field1: 'value1', field2: 'value2' };
+        const dateField = 'dateField';
+
+        lapisRequestMocks.multipleAggregated([
+            {
+                body: { ...lapisFilter, fields: [dateField] },
+                response: {
+                    data: [],
+                },
+            },
+        ]);
+
+        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+            lapisFilter,
+            sequenceType: 'nucleotide',
+            lapis: DUMMY_LAPIS_URL,
+            lapisDateField: dateField,
+            granularity: 'month',
+        });
+
+        expect(mutationOverTimeData.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([]);
+
+        const sequences = mutationOverTimeData.getFirstAxisKeys();
+        expect(sequences.length).toBe(0);
+
+        const dates = mutationOverTimeData.getSecondAxisKeys();
+        expect(dates.length).toBe(0);
+    });
+
     function getSomeTestMutation(proportion: number, count: number) {
         return {
             mutation: 'sequenceName:A123T',

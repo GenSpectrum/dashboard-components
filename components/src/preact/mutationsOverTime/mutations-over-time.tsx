@@ -87,7 +87,7 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
         throw error;
     }
 
-    if (data === null || data === undefined) {
+    if (data === null || data === undefined || data.overallMutationData.length === 0) {
         return <NoDataDisplay />;
     }
 
