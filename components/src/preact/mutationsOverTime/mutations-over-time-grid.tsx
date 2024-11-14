@@ -35,6 +35,9 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                     reduce the number of mutations.
                 </div>
             )}
+            {allMutations.length === 0 && (
+                <div className={'flex justify-center'}>No data available for your filters.</div>
+            )}
             <div
                 ref={gridRef}
                 style={{
