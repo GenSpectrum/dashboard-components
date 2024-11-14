@@ -9,6 +9,7 @@ import {
 } from '../../query/queryPrevalenceOverTime';
 import { sortNullToBeginningThenByDate } from '../../utils/sort';
 import GsChart from '../components/chart';
+import { NoDataDisplay } from '../components/no-data-display';
 import { LogitScale } from '../shared/charts/LogitScale';
 import { singleGraphColorRGBAById } from '../shared/charts/colors';
 import { type ConfidenceIntervalMethod, wilson95PercentConfidenceInterval } from '../shared/charts/confideceInterval';
@@ -30,12 +31,18 @@ const PrevalenceOverTimeBarChart = ({
     confidenceIntervalMethod,
     yAxisMaxConfig,
 }: PrevalenceOverTimeBarChartProps) => {
-    const nullFirstData = data.map((variantData) => {
-        return {
-            content: variantData.content.sort(sortNullToBeginningThenByDate),
-            displayName: variantData.displayName,
-        };
-    });
+    const nullFirstData = data
+        .filter((prevalenceOverTimeData) => prevalenceOverTimeData.content.length > 0)
+        .map((variantData) => {
+            return {
+                content: variantData.content.sort(sortNullToBeginningThenByDate),
+                displayName: variantData.displayName,
+            };
+        });
+
+    if (nullFirstData.length === 0) {
+        return <NoDataDisplay />;
+    }
 
     const datasets = nullFirstData.map((graphData, index) => getDataset(graphData, index, confidenceIntervalMethod));
 

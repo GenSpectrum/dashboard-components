@@ -14,6 +14,9 @@ export class SlidingOperator<Data, AggregationResult> implements Operator<Aggreg
     async evaluate(lapis: string, signal?: AbortSignal) {
         const childEvaluated = await this.child.evaluate(lapis, signal);
         const content = new Array<AggregationResult>();
+        if (childEvaluated.content.length === 0) {
+            return { content };
+        }
         const numberOfWindows = Math.max(childEvaluated.content.length - this.windowSize, 0) + 1;
         for (let i = 0; i < numberOfWindows; i++) {
             content.push(this.aggregate(childEvaluated.content.slice(i, i + this.windowSize)));

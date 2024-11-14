@@ -80,7 +80,7 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeProps>
         return <ErrorDisplay error={error} />;
     }
 
-    if (data === null) {
+    if (data === null || data.every((variant) => variant.content.length === 0)) {
         return <NoDataDisplay />;
     }
 
