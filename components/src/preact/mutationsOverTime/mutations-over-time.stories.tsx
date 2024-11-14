@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, waitFor } from '@storybook/test';
+import { expect, userEvent, waitFor } from '@storybook/test';
 
 import { MutationsOverTime, type MutationsOverTimeProps } from './mutations-over-time';
 import { LAPIS_URL } from '../../constants';
