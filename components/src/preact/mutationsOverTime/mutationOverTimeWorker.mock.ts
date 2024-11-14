@@ -5,6 +5,7 @@ import { workerFunction } from '../webWorkers/workerFunction';
 import { byWeek } from './__mockData__/byWeek';
 import { defaultMockData } from './__mockData__/defaultMockData';
 import { getMutationOverTimeMock } from './__mockData__/mockConversion';
+import { noDataWhenNoMutationsAreInFilter } from './__mockData__/noDataWhenNoMutationsAreInFilter';
 import { showsMessageWhenTooManyMutations } from './__mockData__/showsMessageWhenTooManyMutations';
 
 const mockQueries: { query: MutationOverTimeQuery; response: MutationOverTimeWorkerResponse }[] = [
@@ -12,6 +13,7 @@ const mockQueries: { query: MutationOverTimeQuery; response: MutationOverTimeWor
     getMutationOverTimeMock(showsMessageWhenTooManyMutations),
     getMutationOverTimeMock(byWeek),
     getMutationOverTimeMock(aminoAcidMutationsByDay),
+    getMutationOverTimeMock(noDataWhenNoMutationsAreInFilter),
 ];
 
 self.onmessage = async function (event: MessageEvent<MutationOverTimeQuery>) {

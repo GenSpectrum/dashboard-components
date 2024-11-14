@@ -66,6 +66,13 @@ export async function queryOverallMutationData({
     signal?: AbortSignal;
 }) {
     const allDates = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
+
+    if (allDates.length === 0) {
+        return {
+            content: [],
+        };
+    }
+
     const filter = {
         ...lapisFilter,
         [`${lapisDateField}From`]: allDates[0].firstDay.toString(),
