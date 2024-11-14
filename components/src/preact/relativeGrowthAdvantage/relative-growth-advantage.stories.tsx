@@ -1,3 +1,5 @@
+import { type StoryObj } from '@storybook/preact';
+
 import denominator from './__mockData__/denominatorFilter.json';
 import numerator from './__mockData__/numeratorFilter.json';
 import { RelativeGrowthAdvantage, type RelativeGrowthAdvantageProps } from './relative-growth-advantage';
@@ -11,8 +13,8 @@ export default {
         fetchMock: {},
     },
     argTypes: {
-        numerator: { control: 'object' },
-        denominator: { control: 'object' },
+        numeratorFilter: { control: 'object' },
+        denominatorFilter: { control: 'object' },
         generationTime: { control: 'number' },
         views: {
             options: ['line'],
@@ -24,7 +26,7 @@ export default {
     },
 };
 
-export const Primary = {
+export const Primary: StoryObj<RelativeGrowthAdvantageProps> = {
     render: (args: RelativeGrowthAdvantageProps) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <RelativeGrowthAdvantage
@@ -40,8 +42,13 @@ export const Primary = {
         </LapisUrlContext.Provider>
     ),
     args: {
-        numerator: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
-        denominator: { country: 'Switzerland', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
+        numeratorFilter: {
+            country: 'Switzerland',
+            pangoLineage: 'B.1.1.7',
+            dateFrom: '2020-12-01',
+            dateTo: '2021-03-01',
+        },
+        denominatorFilter: { country: 'Switzerland', dateFrom: '2020-12-01', dateTo: '2021-03-01' },
         generationTime: 7,
         views: ['line'],
         width: '100%',
