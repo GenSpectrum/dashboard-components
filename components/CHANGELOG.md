@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.7.1...dashboard-components-v0.7.2) (2024-11-15)
+
+
+### Bug Fixes
+
+* **components:** show no data message for prevalence over time ([6cef453](https://github.com/GenSpectrum/dashboard-components/commit/6cef4537b86cff1fc0258c7b31fcd4fa155bf5d3)), closes [#502](https://github.com/GenSpectrum/dashboard-components/issues/502)
+
 ## [0.7.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.7.0...dashboard-components-v0.7.1) (2024-11-11)
 
 
