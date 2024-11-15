@@ -14,7 +14,7 @@ const meta: Meta<MutationFilterProps> = {
     component: MutationFilter,
     parameters: {
         actions: {
-            handles: ['gs-mutation-filter-changed', 'gs-mutation-filter-on-blur', ...previewHandles],
+            handles: ['gs-mutation-filter-changed', ...previewHandles],
         },
         fetchMock: {},
     },
@@ -120,32 +120,6 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
     },
 };
 
-export const FiresFilterOnBlurEvent: StoryObj<MutationFilterProps> = {
-    ...Default,
-    play: async ({ canvasElement, step }) => {
-        const { canvas, onBlurListenerMock } = await prepare(canvasElement, step);
-
-        await step('Move outside of input', async () => {
-            await submitMutation(canvas, 'A234T');
-            await submitMutation(canvas, 'S:A123G');
-            await submitMutation(canvas, 'ins_123:AAA');
-            await submitMutation(canvas, 'ins_S:123:AAA');
-            await userEvent.tab();
-
-            await expect(onBlurListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        nucleotideMutations: ['A234T'],
-                        aminoAcidMutations: ['S:A123G'],
-                        nucleotideInsertions: ['ins_123:AAA'],
-                        aminoAcidInsertions: ['ins_S:123:AAA'],
-                    },
-                }),
-            );
-        });
-    },
-};
-
 export const WithInitialValue: StoryObj<MutationFilterProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
@@ -164,13 +138,12 @@ export const WithInitialValue: StoryObj<MutationFilterProps> = {
         width: '100%',
     },
     play: async ({ canvasElement, step }) => {
-        const { canvas, onBlurListenerMock } = await prepare(canvasElement, step);
+        const { canvas, changedListenerMock } = await prepare(canvasElement, step);
 
-        await step('Move outside of input', async () => {
+        await step('Enter additional input', async () => {
             await submitMutation(canvas, 'G500T');
-            await userEvent.tab();
 
-            await expect(onBlurListenerMock).toHaveBeenCalledWith(
+            await expect(changedListenerMock).toHaveBeenCalledWith(
                 expect.objectContaining({
                     detail: {
                         nucleotideMutations: ['A234T', 'G500T'],
@@ -187,10 +160,8 @@ export const WithInitialValue: StoryObj<MutationFilterProps> = {
 async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRenderer, unknown>) {
     const canvas = within(canvasElement);
 
-    const onBlurListenerMock = fn();
     const changedListenerMock = fn();
     await step('Setup event listener mock', async () => {
-        canvasElement.addEventListener('gs-mutation-filter-on-blur', onBlurListenerMock);
         canvasElement.addEventListener('gs-mutation-filter-changed', changedListenerMock);
     });
 
@@ -200,7 +171,7 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
         });
     });
 
-    return { canvas, onBlurListenerMock, changedListenerMock };
+    return { canvas, changedListenerMock };
 }
 
 const submitMutation = async (canvas: ReturnType<typeof within>, mutation: string) => {

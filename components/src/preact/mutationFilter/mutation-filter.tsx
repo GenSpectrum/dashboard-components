@@ -87,18 +87,6 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
         );
     };
 
-    const handleOnBlur = () => {
-        const detail = mapToMutationFilterStrings(selectedFilters);
-
-        formRef.current?.dispatchEvent(
-            new CustomEvent<SelectedMutationFilterStrings>('gs-mutation-filter-on-blur', {
-                detail,
-                bubbles: true,
-                composed: true,
-            }),
-        );
-    };
-
     const handleInputChange = (event: Event) => {
         setInputValue((event.target as HTMLInputElement).value);
         setIsError(false);
@@ -124,7 +112,6 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
                         value={inputValue}
                         onInput={handleInputChange}
                         placeholder={getPlaceholder(referenceGenome)}
-                        onBlur={handleOnBlur}
                     />
                     <button type='submit' className='btn btn-xs m-1'>
                         +
