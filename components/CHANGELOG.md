@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.8.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.7.2...dashboard-components-v0.8.0) (2024-11-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** removed unused and inaccurate 'gs-mutation-filter-on-blur' handle from MutationFilter (also did not fire after removing mutation queries), use 'gs-mutation-filter-changed' instead
+
+### Features
+
+* **components:** remove 'gs-mutation-filter-on-blur' handle from MutationFilter ([#511](https://github.com/GenSpectrum/dashboard-components/issues/511)) ([8f2982e](https://github.com/GenSpectrum/dashboard-components/commit/8f2982e562b1e0108a97837fe707d2ffcd90d31b))
+
+
+### Bug Fixes
+
+* **components:** mutation over time worker runs on message change ([553c2e9](https://github.com/GenSpectrum/dashboard-components/commit/553c2e98ad935d520ea7495284e9fbb4228882aa)), closes [#509](https://github.com/GenSpectrum/dashboard-components/issues/509)
+
 ## [0.7.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.7.1...dashboard-components-v0.7.2) (2024-11-15)
 
 
