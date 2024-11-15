@@ -63,15 +63,21 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
     const lapis = useContext(LapisUrlContext);
     const { lapisFilter, sequenceType, granularity, lapisDateField } = componentProps;
 
-    const { data, error, isLoading } = useWebWorker<MutationOverTimeQuery, MutationOverTimeWorkerResponse>(
-        {
+    const messageToWorker = useMemo(() => {
+        return {
             lapisFilter,
             sequenceType,
             granularity,
             lapisDateField,
             lapis,
-        },
-        new MutationOverTimeWorker() as Worker,
+        };
+    }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType]);
+
+    const worker = useMemo(() => new MutationOverTimeWorker(), []);
+
+    const { data, error, isLoading } = useWebWorker<MutationOverTimeQuery, MutationOverTimeWorkerResponse>(
+        messageToWorker,
+        worker,
     );
 
     if (isLoading) {
