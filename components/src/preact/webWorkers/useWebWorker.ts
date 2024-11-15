@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 
 export function useWebWorker<Request, Response>(messageToWorker: Request, worker: Worker) {
     const [data, setData] = useState<Response | undefined>(undefined);
@@ -37,15 +37,11 @@ export function useWebWorker<Request, Response>(messageToWorker: Request, worker
             setError(new Error(`Worker received a message that it cannot deserialize: ${event.data}`));
             setIsLoading(false);
         };
+    }, [worker]);
 
-        return () => {
-            worker.terminate();
-        };
-    }, []);
-
-    useMemo(() => {
+    useEffect(() => {
         worker.postMessage(messageToWorker);
-    }, [messageToWorker]);
+    }, [messageToWorker, worker]);
 
     return { data, error, isLoading };
 }
