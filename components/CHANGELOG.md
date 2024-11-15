@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.0...dashboard-components-v0.8.1) (2024-11-15)
+
+
+### Features
+
+* **components:** add reload button when a components fails ([5b79d1a](https://github.com/GenSpectrum/dashboard-components/commit/5b79d1adc2af7bf453b2641d1f78a475c2250cd9)), closes [#497](https://github.com/GenSpectrum/dashboard-components/issues/497)
+* **components:** properly handle errors when connection to LAPIS fails ([a9322b9](https://github.com/GenSpectrum/dashboard-components/commit/a9322b9b28443ee8ad685279915e77d9165a46e2))
+
 ## [0.8.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.7.2...dashboard-components-v0.8.0) (2024-11-15)
 
 
