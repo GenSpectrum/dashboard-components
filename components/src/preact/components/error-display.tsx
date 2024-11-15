@@ -24,7 +24,13 @@ export class UserFacingError extends Error {
     }
 }
 
-export const ErrorDisplay: FunctionComponent<{ error: Error }> = ({ error }) => {
+export type ErrorDisplayProps = {
+    error: Error;
+    resetError: () => void;
+    layout?: 'horizontal' | 'vertical';
+};
+
+export const ErrorDisplay: FunctionComponent<ErrorDisplayProps> = ({ error, resetError, layout }) => {
     // eslint-disable-next-line no-console -- Currently we use the following statement for our error handling
     console.error(error);
 
@@ -40,34 +46,40 @@ export const ErrorDisplay: FunctionComponent<{ error: Error }> = ({ error }) => 
     return (
         <div
             ref={containerRef}
-            className='h-full w-full rounded-md border-2 border-gray-100 p-2 flex items-center justify-center flex-col'
+            className={`h-full w-full rounded-md border-2 border-gray-100 p-2 flex items-center justify-center ${layout === 'horizontal' ? 'flex-row' : 'flex-col'}`}
         >
-            <div className='text-red-700 font-bold'>{headline}</div>
             <div>
-                Oops! Something went wrong.
-                {details !== undefined && (
-                    <>
-                        {' '}
-                        <button className='underline hover:text-gray-400' onClick={() => ref.current?.showModal()}>
-                            Show details.
-                        </button>
-                        <dialog ref={ref} class='modal'>
-                            <div class='modal-box'>
-                                <form method='dialog'>
-                                    <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
-                                        ✕
-                                    </button>
+                <div className='text-red-700 font-bold'>{headline}</div>
+                <div>
+                    Oops! Something went wrong.
+                    {details !== undefined && (
+                        <>
+                            {' '}
+                            <button className='underline hover:text-gray-400' onClick={() => ref.current?.showModal()}>
+                                Show details.
+                            </button>
+                            <dialog ref={ref} class='modal'>
+                                <div class='modal-box'>
+                                    <form method='dialog'>
+                                        <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
+                                            ✕
+                                        </button>
+                                    </form>
+                                    <h1 class='text-lg'>{details.headline}</h1>
+                                    <p class='py-4'>{details.message}</p>
+                                </div>
+                                <form method='dialog' class='modal-backdrop'>
+                                    <button>close</button>
                                 </form>
-                                <h1 class='text-lg'>{details.headline}</h1>
-                                <p class='py-4'>{details.message}</p>
-                            </div>
-                            <form method='dialog' class='modal-backdrop'>
-                                <button>close</button>
-                            </form>
-                        </dialog>
-                    </>
-                )}
+                            </dialog>
+                        </>
+                    )}
+                </div>
             </div>
+            <button onClick={resetError} className='btn btn-sm flex items-center m-4'>
+                <span className='iconify mdi--reload text-lg' />
+                Try again
+            </button>
         </div>
     );
 };

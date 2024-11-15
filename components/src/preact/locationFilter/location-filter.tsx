@@ -5,7 +5,6 @@ import { type JSXInternal } from 'preact/src/jsx';
 import { fetchAutocompletionList } from './fetchAutocompletionList';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
-import { ErrorDisplay } from '../components/error-display';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
@@ -24,7 +23,7 @@ export const LocationFilter: FunctionComponent<LocationFilterProps> = ({ width, 
     const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} layout='horizontal'>
             <ResizeContainer size={size}>
                 <LocationFilterInner {...innerProps} />
             </ResizeContainer>
@@ -46,7 +45,7 @@ export const LocationFilterInner = ({ initialValue, fields, placeholderText }: L
         return <LoadingDisplay />;
     }
     if (error) {
-        return <ErrorDisplay error={error} />;
+        throw error;
     }
 
     const onInput = (event: JSXInternal.TargetedInputEvent<HTMLInputElement>) => {

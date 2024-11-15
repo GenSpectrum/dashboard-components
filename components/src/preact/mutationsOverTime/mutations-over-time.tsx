@@ -21,7 +21,6 @@ import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
-import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
@@ -85,7 +84,7 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
     }
 
     if (error !== undefined) {
-        return <ErrorDisplay error={error} />;
+        throw error;
     }
 
     if (data === null || data === undefined) {

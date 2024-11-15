@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
+import { expect, waitFor, within } from '@storybook/test';
 
 import aggregatedData from './__mockData__/aggregated.json';
 import { Aggregate, type AggregateProps } from './aggregate';
@@ -57,5 +58,39 @@ export const Default: StoryObj<AggregateProps> = {
         initialSortField: 'count',
         initialSortDirection: 'descending',
         pageSize: 10,
+    },
+};
+
+export const FailsLoadingData: StoryObj<AggregateProps> = {
+    ...Default,
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                    },
+                    response: {
+                        status: 400,
+                        body: {
+                            error: {
+                                title: 'Bad Request',
+                                detail: 'Test error',
+                                status: 400,
+                            },
+                        },
+                    },
+                },
+            ],
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(async () => {
+            await expect(canvas.getByText('Error - Failed fetching aggregated data from LAPIS')).toBeInTheDocument();
+            await expect(canvas.getByRole('button', { name: 'Try again' })).toBeInTheDocument();
+        });
     },
 };

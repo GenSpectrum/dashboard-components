@@ -29,7 +29,7 @@ export const DateRangeSelector = ({ width, ...innerProps }: DateRangeSelectorPro
     const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} layout='horizontal'>
             <div style={{ width }}>
                 <DateRangeSelectorInner {...innerProps} />
             </div>

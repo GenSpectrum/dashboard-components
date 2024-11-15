@@ -16,7 +16,6 @@ import {
 import { LapisUrlContext } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
-import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
@@ -66,7 +65,7 @@ export const MutationsInner: FunctionComponent<MutationsProps> = (componentProps
     }
 
     if (error !== null) {
-        return <ErrorDisplay error={error} />;
+        throw error;
     }
 
     if (data === null) {

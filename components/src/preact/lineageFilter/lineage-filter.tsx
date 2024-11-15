@@ -4,7 +4,6 @@ import { useContext, useRef } from 'preact/hooks';
 import { fetchLineageAutocompleteList } from './fetchLineageAutocompleteList';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
-import { ErrorDisplay } from '../components/error-display';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
@@ -24,7 +23,7 @@ export const LineageFilter: FunctionComponent<LineageFilterProps> = ({ width, ..
     const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} layout='horizontal'>
             <ResizeContainer size={size}>
                 <LineageFilterInner {...innerProps} />
             </ResizeContainer>
@@ -51,7 +50,7 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
     }
 
     if (error !== null) {
-        return <ErrorDisplay error={error} />;
+        throw error;
     }
 
     if (data === null) {

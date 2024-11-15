@@ -1,16 +1,21 @@
 import type { FunctionComponent } from 'preact';
 import { useErrorBoundary } from 'preact/hooks';
 
-import { ErrorDisplay } from './error-display';
+import { ErrorDisplay, type ErrorDisplayProps } from './error-display';
 import { ResizeContainer, type Size } from './resize-container';
 
-export const ErrorBoundary: FunctionComponent<{ size: Size }> = ({ size, children }) => {
-    const [internalError] = useErrorBoundary();
+type ErrorBoundaryProps = {
+    size: Size;
+    layout?: ErrorDisplayProps['layout'];
+};
+
+export const ErrorBoundary: FunctionComponent<ErrorBoundaryProps> = ({ size, layout, children }) => {
+    const [internalError, resetError] = useErrorBoundary();
 
     if (internalError) {
         return (
             <ResizeContainer size={size}>
-                <ErrorDisplay error={internalError} />
+                <ErrorDisplay error={internalError} resetError={resetError} layout={layout} />
             </ResizeContainer>
         );
     }
