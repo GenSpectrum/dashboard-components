@@ -35,6 +35,9 @@ last3Months.setMonth(today.getMonth() - 3);
 const last6Months = new Date(today);
 last6Months.setMonth(today.getMonth() - 6);
 
+const lastYear = new Date(today);
+lastYear.setFullYear(today.getFullYear() - 1);
+
 /**
  * Presets for the `gs-date-range-selector` component that can be used as `dateRangeOptions`.
  */
@@ -58,6 +61,10 @@ export const dateRangeOptionPresets = {
     last6Months: {
         label: 'Last 6 months',
         dateFrom: toYYYYMMDD(last6Months),
+    },
+    lastYear: {
+        label: 'Last year',
+        dateFrom: toYYYYMMDD(lastYear),
     },
     allTimes: {
         label: 'All times',
