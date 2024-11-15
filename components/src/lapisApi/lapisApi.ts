@@ -35,16 +35,18 @@ export class LapisError extends Error {
 }
 
 export async function fetchAggregated(lapisUrl: string, body: LapisBaseRequest, signal?: AbortSignal) {
-    const response = await fetch(aggregatedEndpoint(lapisUrl), {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
+    const response = await callLapis(
+        aggregatedEndpoint(lapisUrl),
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+            signal,
         },
-        body: JSON.stringify(body),
-        signal,
-    });
-
-    await handleErrors(response, 'aggregated data');
+        'aggregated data',
+    );
 
     return aggregatedResponse.parse(await response.json());
 }
@@ -55,16 +57,18 @@ export async function fetchInsertions(
     sequenceType: SequenceType,
     signal?: AbortSignal,
 ) {
-    const response = await fetch(insertionsEndpoint(lapisUrl, sequenceType), {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
+    const response = await callLapis(
+        insertionsEndpoint(lapisUrl, sequenceType),
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+            signal,
         },
-        body: JSON.stringify(body),
-        signal,
-    });
-
-    await handleErrors(response, `${sequenceType} insertions`);
+        `${sequenceType} insertions`,
+    );
 
     return insertionsResponse.parse(await response.json());
 }
@@ -75,31 +79,52 @@ export async function fetchSubstitutionsOrDeletions(
     sequenceType: SequenceType,
     signal?: AbortSignal,
 ) {
-    const response = await fetch(substitutionsOrDeletionsEndpoint(lapisUrl, sequenceType), {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
+    const response = await callLapis(
+        substitutionsOrDeletionsEndpoint(lapisUrl, sequenceType),
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+            signal,
         },
-        body: JSON.stringify(body),
-        signal,
-    });
-
-    await handleErrors(response, `${sequenceType} mutations`);
+        `${sequenceType} mutations`,
+    );
 
     return mutationsResponse.parse(await response.json());
 }
 
 export async function fetchReferenceGenome(lapisUrl: string, signal?: AbortSignal) {
-    const response = await fetch(referenceGenomeEndpoint(lapisUrl), {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
+    const response = await callLapis(
+        referenceGenomeEndpoint(lapisUrl),
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            signal,
         },
-        signal,
-    });
+        'the reference genomes',
+    );
 
-    await handleErrors(response, 'the reference genomes');
     return referenceGenomeResponse.parse(await response.json());
+}
+
+async function callLapis(
+    input: Parameters<typeof fetch>[0],
+    init: Parameters<typeof fetch>[1],
+    requestedDataName: string,
+) {
+    try {
+        const response = await fetch(input, init);
+
+        await handleErrors(response, requestedDataName);
+        return response;
+    } catch (error) {
+        const message = error instanceof Error ? error.message : `${error}`;
+        throw new UnknownLapisError(`Failed to connect to LAPIS: ${message}`, 500, requestedDataName);
+    }
 }
 
 const handleErrors = async (response: Response, requestedData: string) => {
