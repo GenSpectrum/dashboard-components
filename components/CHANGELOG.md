@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.8.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.1...dashboard-components-v0.8.2) (2024-11-15)
+
+
+### Features
+
+* **components:** add info text for mutations-over-time component ([fbf7e42](https://github.com/GenSpectrum/dashboard-components/commit/fbf7e42517f3001c491b006dcb99f363f504817f))
+* **components:** show no data message for strict filters on mutation over time ([d7565ce](https://github.com/GenSpectrum/dashboard-components/commit/d7565ce4dae4412472e68a65d7e2592a155bb525)), closes [#487](https://github.com/GenSpectrum/dashboard-components/issues/487)
+
+
+### Bug Fixes
+
+* **components:** show no data indicator on mutation over time instead of error ([d621fdd](https://github.com/GenSpectrum/dashboard-components/commit/d621fdd03b624a6d2411d4a87878ea9d626f0ce6)), closes [#501](https://github.com/GenSpectrum/dashboard-components/issues/501)
+
 ## [0.8.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.0...dashboard-components-v0.8.1) (2024-11-15)
 
 
