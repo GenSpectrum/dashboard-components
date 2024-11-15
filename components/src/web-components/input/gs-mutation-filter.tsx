@@ -53,16 +53,6 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * Fired when:
  * - The user has submitted a valid mutation or insertion
  * - The user has removed a mutation or insertion
- *
- * @fires {CustomEvent<{
- *      nucleotideMutations: string[],
- *      aminoAcidMutations: string[],
- *      nucleotideInsertions: string[],
- *      aminoAcidInsertions: string[]
- *  }>} gs-mutation-filter-on-blur
- * Fired when:
- * - the mutation filter has lost focus
- * Contains the selected mutations in the format
  */
 @customElement('gs-mutation-filter')
 export class MutationFilterComponent extends PreactLitAdapter {
@@ -108,7 +98,6 @@ declare global {
 
     interface HTMLElementEventMap {
         'gs-mutation-filter-changed': CustomEvent<SelectedMutationFilterStrings>;
-        'gs-mutation-filter-on-blur': CustomEvent<SelectedMutationFilterStrings>;
     }
 }
 

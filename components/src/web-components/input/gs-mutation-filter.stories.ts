@@ -21,7 +21,7 @@ const meta: Meta<MutationFilterProps> = {
     component: 'gs-mutation-filter',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-mutation-filter-changed', 'gs-mutation-filter-on-blur', ...previewHandles],
+            handles: ['gs-mutation-filter-changed', ...previewHandles],
         },
         fetchMock: {},
         componentDocs: {
@@ -98,32 +98,6 @@ export const FiresFilterChangedEvent: StoryObj<MutationFilterProps> = {
                     }),
                 ),
             );
-        });
-    },
-};
-
-export const FiresFilterOnBlurEvent: StoryObj<MutationFilterProps> = {
-    ...Template,
-    play: async ({ canvasElement, step }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
-
-        const inputField = () => canvas.getByPlaceholderText('Enter a mutation', { exact: false });
-        const listenerMock = fn();
-        await step('Setup event listener mock', async () => {
-            canvasElement.addEventListener('gs-mutation-filter-on-blur', listenerMock);
-        });
-
-        await step('wait until data is loaded', async () => {
-            await waitFor(() => {
-                return expect(inputField()).toBeEnabled();
-            });
-        });
-
-        await step('Move outside of input', async () => {
-            await userEvent.type(inputField(), 'A123T');
-            await userEvent.tab();
-
-            await expect(listenerMock).toHaveBeenCalled();
         });
     },
 };
