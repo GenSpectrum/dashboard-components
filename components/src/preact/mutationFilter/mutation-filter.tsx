@@ -35,7 +35,7 @@ export type SelectedMutationFilterStrings = {
 
 export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initialValue, width }) => {
     return (
-        <ErrorBoundary size={{ height: '3.375rem', width }}>
+        <ErrorBoundary size={{ height: '3.375rem', width }} layout='horizontal'>
             <div style={width}>
                 <MutationFilterInner initialValue={initialValue} />
             </div>

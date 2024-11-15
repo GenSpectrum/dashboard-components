@@ -15,7 +15,7 @@ export default meta;
 export const GenericErrorStory: StoryObj = {
     render: () => (
         <ResizeContainer size={{ height: '600px', width: '100%' }}>
-            <ErrorDisplay error={new Error('some message')} />
+            <ErrorDisplay error={new Error('some message')} resetError={() => {}} />
         </ResizeContainer>
     ),
 
@@ -30,7 +30,7 @@ export const GenericErrorStory: StoryObj = {
 export const UserFacingErrorStory: StoryObj = {
     render: () => (
         <ResizeContainer size={{ height: '600px', width: '100%' }}>
-            <ErrorDisplay error={new UserFacingError('Error Title', 'some message')} />
+            <ErrorDisplay error={new UserFacingError('Error Title', 'some message')} resetError={() => {}} />
         </ResizeContainer>
     ),
 
@@ -52,7 +52,7 @@ export const UserFacingErrorStory: StoryObj = {
 export const FiresEvent: StoryObj = {
     render: () => (
         <ResizeContainer size={{ height: '600px', width: '100%' }}>
-            <ErrorDisplay error={new UserFacingError('Error Title', 'some message')} />
+            <ErrorDisplay error={new UserFacingError('Error Title', 'some message')} resetError={() => {}} />
         </ResizeContainer>
     ),
 
@@ -63,6 +63,26 @@ export const FiresEvent: StoryObj = {
         await waitFor(() => {
             expect(listenerMock.mock.calls.at(-1)![0].error.name).toStrictEqual('UserFacingError');
             expect(listenerMock.mock.calls.at(-1)![0].error.message).toStrictEqual('some message');
+        });
+    },
+};
+
+const resetErrorMock = fn();
+
+export const TriggersResetErrorOnReloadButton: StoryObj = {
+    render: () => (
+        <ResizeContainer size={{ height: '600px', width: '100%' }}>
+            <ErrorDisplay error={new UserFacingError('Error Title', 'some message')} resetError={resetErrorMock} />
+        </ResizeContainer>
+    ),
+
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await userEvent.click(canvas.getByText('Try again'));
+
+        await waitFor(() => {
+            expect(resetErrorMock).toHaveBeenCalled();
         });
     },
 };

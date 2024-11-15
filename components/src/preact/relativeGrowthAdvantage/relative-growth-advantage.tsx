@@ -9,7 +9,6 @@ import {
 import { type LapisFilter } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
-import { ErrorDisplay } from '../components/error-display';
 import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
@@ -63,7 +62,7 @@ export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvan
     }
 
     if (error !== null) {
-        return <ErrorDisplay error={error} />;
+        throw error;
     }
 
     if (data === null) {
