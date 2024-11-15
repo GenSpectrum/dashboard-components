@@ -18,8 +18,8 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  *
  * The grid view shows the proportion for each mutation over date ranges.
  *
- * The grid limits the number of rows columns for browser performance reasons.
- * Too much data might make the browser unresponsive.
+ * The grid limits the number of rows and columns for browser performance reasons as
+ * too much data might make the browser unresponsive.
  *
  * The number of columns is limited to 200.
  * If this number are exceeded, an error message will be shown.

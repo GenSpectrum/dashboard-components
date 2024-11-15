@@ -231,8 +231,14 @@ const MutationsOverTimeInfo: FunctionComponent<MutationsOverTimeInfoProps> = ({ 
     const lapis = useContext(LapisUrlContext);
     return (
         <Info>
-            <InfoHeadline1>Info for mutations over time</InfoHeadline1>
-            <InfoParagraph>TODO: https://github.com/GenSpectrum/dashboard-components/issues/441</InfoParagraph>
+            <InfoHeadline1>Mutations over time</InfoHeadline1>
+            <InfoParagraph>
+                This presents the proportions of {originalComponentProps.sequenceType} mutations per{' '}
+                {originalComponentProps.granularity}. In the toolbar, you can configure which mutations are displayed by
+                selecting the mutation type (substitution or deletion), choosing specific segments/genes (if the
+                organism has multiple segments/genes), and applying a filter based on the proportion of the mutation's
+                occurrence over the entire time range.
+            </InfoParagraph>
             <InfoComponentCode componentName='mutations-over-time' params={originalComponentProps} lapisUrl={lapis} />
         </Info>
     );
