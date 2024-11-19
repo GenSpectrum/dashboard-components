@@ -7,6 +7,11 @@
     "main": "dist/genspectrum-components.js",
     "module": "dist/genspectrum-components.js",
     "types": "dist/genspectrum-components.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GenSpectrum/dashboard-components.git",
+        "directory": "components"
+    },
     "publishConfig": {
         "access": "public"
     },
