@@ -18,6 +18,17 @@ export type DateRangeOption = {
     dateTo?: string;
 };
 
+export type DateRangeSelectOption = string | { dateFrom: string; dateTo: string };
+export class DateRangeOptionChangedEvent extends CustomEvent<DateRangeSelectOption> {
+    constructor(detail: DateRangeSelectOption) {
+        super('gs-date-range-option-changed', {
+            detail,
+            bubbles: true,
+            composed: true,
+        });
+    }
+}
+
 const today = new Date();
 
 const twoWeeksAgo = new Date();

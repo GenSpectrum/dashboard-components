@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 
 import { computeInitialValues } from './computeInitialValues';
 import { toYYYYMMDD } from './dateConversion';
-import { type DateRangeOption } from './dateRangeOption';
+import { type DateRangeOption, DateRangeOptionChangedEvent, type DateRangeSelectOption } from './dateRangeOption';
 import { getDatesForSelectorValue, getSelectableOptions } from './selectableOptions';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Select } from '../components/select';
@@ -115,7 +115,8 @@ export const DateRangeSelectorInner = ({
             dateTo: dateRange.dateTo,
         });
 
-        submit();
+        fireFilterChangedEvent();
+        fireOptionChangedEvent(value);
     };
 
     const onChangeDateFrom = () => {
@@ -123,11 +124,18 @@ export const DateRangeSelectorInner = ({
             return;
         }
 
-        selectedDates.dateFrom = dateFromPicker?.selectedDates[0] || new Date();
-        dateToPicker?.set('minDate', dateFromPicker?.selectedDates[0]);
+        const dateTo = dateToPicker?.selectedDates[0];
+        const dateFrom = dateFromPicker?.selectedDates[0];
+
+        selectedDates.dateFrom = dateFrom || new Date();
+        dateToPicker?.set('minDate', dateFrom);
         setSelectedDateRange(customOption);
 
-        submit();
+        fireFilterChangedEvent();
+        fireOptionChangedEvent({
+            dateFrom: dateFrom !== undefined ? toYYYYMMDD(dateFrom) : earliestDate,
+            dateTo: toYYYYMMDD(dateTo || new Date())!,
+        });
     };
 
     const onChangeDateTo = () => {
@@ -135,24 +143,35 @@ export const DateRangeSelectorInner = ({
             return;
         }
 
-        selectedDates.dateTo = dateToPicker?.selectedDates[0] || new Date();
-        dateFromPicker?.set('maxDate', dateToPicker?.selectedDates[0]);
+        const dateTo = dateToPicker?.selectedDates[0];
+        const dateFrom = dateFromPicker?.selectedDates[0];
+
+        selectedDates.dateTo = dateTo || new Date();
+        dateFromPicker?.set('maxDate', dateTo);
         setSelectedDateRange(customOption);
 
-        submit();
+        fireFilterChangedEvent();
+        fireOptionChangedEvent({
+            dateFrom: dateFrom !== undefined ? toYYYYMMDD(dateFrom) : earliestDate,
+            dateTo: toYYYYMMDD(dateTo || new Date())!,
+        });
     };
 
-    const submit = () => {
-        const dateFrom = toYYYYMMDD(dateFromPicker?.selectedDates[0]);
-        const dateTo = toYYYYMMDD(dateToPicker?.selectedDates[0]);
+    const fireOptionChangedEvent = (option: DateRangeSelectOption) => {
+        divRef.current?.dispatchEvent(new DateRangeOptionChangedEvent(option));
+    };
+
+    const fireFilterChangedEvent = () => {
+        const dateFrom = dateFromPicker?.selectedDates[0];
+        const dateTo = dateToPicker?.selectedDates[0];
 
         const detail = {
-            ...(dateFrom !== undefined && { [`${dateColumn}From`]: dateFrom }),
-            ...(dateTo !== undefined && { [`${dateColumn}To`]: dateTo }),
+            ...(dateFrom !== undefined && { [`${dateColumn}From`]: toYYYYMMDD(dateFrom) }),
+            ...(dateTo !== undefined && { [`${dateColumn}To`]: toYYYYMMDD(dateTo) }),
         };
 
         divRef.current?.dispatchEvent(
-            new CustomEvent('gs-date-range-changed', {
+            new CustomEvent('gs-date-range-filter-changed', {
                 detail,
                 bubbles: true,
                 composed: true,

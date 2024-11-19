@@ -1,5 +1,6 @@
-import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, userEvent, waitFor, within } from '@storybook/test';
+import { type Meta, type PreactRenderer, type StoryObj } from '@storybook/preact';
+import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
+import type { StepFunction } from '@storybook/types';
 import dayjs from 'dayjs/esm';
 
 import { DateRangeSelector, type DateRangeSelectorProps } from './date-range-selector';
@@ -10,12 +11,18 @@ import { dateRangeOptionPresets } from './dateRangeOption';
 
 const earliestDate = '1970-01-01';
 
+const customDateRange = {
+    label: 'CustomDateRange',
+    dateFrom: '2021-01-01',
+    dateTo: '2021-12-31',
+};
+
 const meta: Meta<DateRangeSelectorProps> = {
     title: 'Input/DateRangeSelector',
     component: DateRangeSelector,
     parameters: {
         actions: {
-            handles: ['gs-date-range-changed', ...previewHandles],
+            handles: ['gs-date-range-filter-changed', 'gs-date-range-option-changed', ...previewHandles],
         },
         fetchMock: {},
     },
@@ -43,15 +50,7 @@ const meta: Meta<DateRangeSelectorProps> = {
         },
     },
     args: {
-        dateRangeOptions: [
-            dateRangeOptionPresets.lastMonth,
-            dateRangeOptionPresets.allTimes,
-            {
-                label: 'CustomDateRange',
-                dateFrom: '2021-01-01',
-                dateTo: '2021-12-31',
-            },
-        ],
+        dateRangeOptions: [dateRangeOptionPresets.lastMonth, dateRangeOptionPresets.allTimes, customDateRange],
         earliestDate,
         initialValue: dateRangeOptionPresets.lastMonth.label,
         dateColumn: 'aDateColumn',
@@ -88,14 +87,10 @@ export const SetCorrectInitialValues: StoryObj<DateRangeSelectorProps> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        const dateFrom = () => canvas.getByPlaceholderText('Date from');
-        const dateTo = () => canvas.getByPlaceholderText('Date to');
-        const selectField = () => canvas.getByRole('combobox');
-
         await waitFor(() => {
-            expect(selectField()).toHaveValue('CustomDateRange');
-            expect(dateFrom()).toHaveValue('2021-01-01');
-            expect(dateTo()).toHaveValue('2021-12-31');
+            expect(selectField(canvas)).toHaveValue('CustomDateRange');
+            expect(dateFromPicker(canvas)).toHaveValue('2021-01-01');
+            expect(dateToPicker(canvas)).toHaveValue('2021-12-31');
         });
     },
 };
@@ -111,14 +106,10 @@ export const SetCorrectInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        const dateFrom = () => canvas.getByPlaceholderText('Date from');
-        const dateTo = () => canvas.getByPlaceholderText('Date to');
-        const selectField = () => canvas.getByRole('combobox');
-
         await waitFor(() => {
-            expect(selectField()).toHaveValue('Custom');
-            expect(dateFrom()).toHaveValue(initialDateFrom);
-            expect(dateTo()).toHaveValue(dayjs().format('YYYY-MM-DD'));
+            expect(selectField(canvas)).toHaveValue('Custom');
+            expect(dateFromPicker(canvas)).toHaveValue(initialDateFrom);
+            expect(dateToPicker(canvas)).toHaveValue(dayjs().format('YYYY-MM-DD'));
         });
     },
 };
@@ -134,37 +125,83 @@ export const SetCorrectInitialDateTo: StoryObj<DateRangeSelectorProps> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        const dateFrom = () => canvas.getByPlaceholderText('Date from');
-        const dateTo = () => canvas.getByPlaceholderText('Date to');
-        const selectField = () => canvas.getByRole('combobox');
-
         await waitFor(() => {
-            expect(selectField()).toHaveValue('Custom');
-            expect(dateFrom()).toHaveValue(earliestDate);
-            expect(dateTo()).toHaveValue(initialDateTo);
+            expect(selectField(canvas)).toHaveValue('Custom');
+            expect(dateFromPicker(canvas)).toHaveValue(earliestDate);
+            expect(dateToPicker(canvas)).toHaveValue(initialDateTo);
         });
     },
 };
 
 export const ChangingDateSetsOptionToCustom: StoryObj<DateRangeSelectorProps> = {
     ...Primary,
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-
-        const dateFrom = () => canvas.getByPlaceholderText('Date from');
-        const dateTo = () => canvas.getByPlaceholderText('Date to');
-        const selectField = () => canvas.getByRole('combobox');
+    play: async ({ canvasElement, step }) => {
+        const { canvas, filterChangedListenerMock, optionChangedListenerMock } = await prepare(canvasElement, step);
 
         await waitFor(() => {
-            expect(selectField()).toHaveValue('Last month');
+            expect(selectField(canvas)).toHaveValue('Last month');
         });
 
-        await userEvent.type(dateFrom(), '{backspace>12}');
-        await userEvent.type(dateFrom(), '2000-01-01');
-        await userEvent.click(dateTo());
+        step('Change date to custom value', async () => {
+            await userEvent.type(dateFromPicker(canvas), '{backspace>12}');
+            await userEvent.type(dateFromPicker(canvas), '2000-01-01');
+            await userEvent.click(dateToPicker(canvas));
+
+            await waitFor(() => {
+                expect(selectField(canvas)).toHaveValue('Custom');
+            });
+
+            await expect(filterChangedListenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: {
+                        aDateColumnFrom: '2000-01-01',
+                        aDateColumnTo: dayjs().format('YYYY-MM-DD'),
+                    },
+                }),
+            );
+
+            await expect(optionChangedListenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: {
+                        dateFrom: '2000-01-01',
+                        dateTo: dayjs().format('YYYY-MM-DD'),
+                    },
+                }),
+            );
+        });
+    },
+};
+
+export const ChangingDateOption: StoryObj<DateRangeSelectorProps> = {
+    ...Primary,
+    play: async ({ canvasElement, step }) => {
+        const { canvas, filterChangedListenerMock, optionChangedListenerMock } = await prepare(canvasElement, step);
 
         await waitFor(() => {
-            expect(selectField()).toHaveValue('Custom');
+            expect(selectField(canvas)).toHaveValue('Last month');
+        });
+
+        step('Change date to custom', async () => {
+            await userEvent.selectOptions(selectField(canvas), 'CustomDateRange');
+
+            await waitFor(() => {
+                expect(selectField(canvas)).toHaveValue('CustomDateRange');
+            });
+
+            await expect(filterChangedListenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: {
+                        aDateColumnFrom: customDateRange.dateFrom,
+                        aDateColumnTo: customDateRange.dateTo,
+                    },
+                }),
+            );
+
+            await expect(optionChangedListenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: customDateRange.label,
+                }),
+            );
         });
     },
 };
@@ -183,3 +220,23 @@ export const HandlesInvalidInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
         });
     },
 };
+
+async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRenderer, unknown>) {
+    const canvas = within(canvasElement);
+
+    const filterChangedListenerMock = fn();
+    await step('Setup event listener mock', async () => {
+        canvasElement.addEventListener('gs-date-range-filter-changed', filterChangedListenerMock);
+    });
+
+    const optionChangedListenerMock = fn();
+    await step('Setup event listener mock', async () => {
+        canvasElement.addEventListener('gs-date-range-option-changed', optionChangedListenerMock);
+    });
+
+    return { canvas, filterChangedListenerMock, optionChangedListenerMock };
+}
+
+const dateFromPicker = (canvas: ReturnType<typeof within>) => canvas.getByPlaceholderText('Date from');
+const dateToPicker = (canvas: ReturnType<typeof within>) => canvas.getByPlaceholderText('Date to');
+const selectField = (canvas: ReturnType<typeof within>) => canvas.getByRole('combobox');

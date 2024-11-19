@@ -46,11 +46,11 @@
                         const sequencesElements = document.querySelectorAll(
                             "gs-prevalence-over-time",
                         );
-                        sequencesElements.forEach((el) => {
-                            ["numeratorFilter", "denominatorFilter"].forEach((attr) => {
-                                const old = JSON.parse(el.getAttribute(attr));
-                                el.setAttribute(
-                                    attr,
+                        sequencesElements.forEach((element) => {
+                            ["numeratorFilter", "denominatorFilter"].forEach((attribute) => {
+                                const old = JSON.parse(element.getAttribute(attribute));
+                                element.setAttribute(
+                                    attribute,
                                     JSON.stringify({ ...old, ...event.detail }),
                                 );
                             });
@@ -58,15 +58,15 @@
                     });
                 document
                     .querySelector("gs-date-range-selector")
-                    .addEventListener("gs-date-range-changed", (event) => {
+                    .addEventListener("gs-date-range-filter-changed", (event) => {
                         const sequencesElements = document.querySelectorAll(
                             "gs-prevalence-over-time",
                         );
-                        sequencesElements.forEach((el) => {
-                            ["numeratorFilter", "denominatorFilter"].forEach((attr) => {
-                                const old = JSON.parse(el.getAttribute(attr));
-                                el.setAttribute(
-                                    attr,
+                        sequencesElements.forEach((element) => {
+                            ["numeratorFilter", "denominatorFilter"].forEach((attribute) => {
+                                const old = JSON.parse(element.getAttribute(attribute));
+                                element.setAttribute(
+                                    attribute,
                                     JSON.stringify({ ...old, ...event.detail }),
                                 );
                             });
