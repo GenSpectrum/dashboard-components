@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.3...dashboard-components-v0.8.4) (2024-11-19)
+
+
+### Features
+
+* **components:** use a dropdown in the MutationFilter for selecting valid mutations and allow a `,` or `;` separated list as input for mutation filter ([#500](https://github.com/GenSpectrum/dashboard-components/issues/500)) ([2c5b252](https://github.com/GenSpectrum/dashboard-components/commit/2c5b2520257af8d6ce77e014eca23a09146b4638)), closes [#481](https://github.com/GenSpectrum/dashboard-components/issues/481) [#482](https://github.com/GenSpectrum/dashboard-components/issues/482)
+
 ## [0.8.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.2...dashboard-components-v0.8.3) (2024-11-19)
 
 
