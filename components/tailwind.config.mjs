@@ -3,7 +3,7 @@ import containerQueries from '@tailwindcss/container-queries';
 import daisyui from 'daisyui';
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const tailwindConfig = {
     content: ['src/**/*.{ts,tsx,html}', 'index.html'],
     theme: {
         extend: {},
@@ -13,3 +13,4 @@ module.exports = {
         themes: ['light'],
     },
 };
+export default tailwindConfig;
