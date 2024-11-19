@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.4...dashboard-components-v0.8.5) (2024-11-19)
+
+
+### Bug Fixes
+
+* **components:** propagate UserFacingErrors through the web worker ([#528](https://github.com/GenSpectrum/dashboard-components/issues/528)) ([97bd6ad](https://github.com/GenSpectrum/dashboard-components/commit/97bd6ad4d24e5330b40c11fdf746a9c6bb9d0193))
+
 ## [0.8.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.3...dashboard-components-v0.8.4) (2024-11-19)
 
 
