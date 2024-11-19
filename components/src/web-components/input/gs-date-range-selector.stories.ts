@@ -1,4 +1,4 @@
-import { expect, waitFor } from '@storybook/test';
+import { expect, fn, userEvent, waitFor, type within } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
@@ -23,12 +23,14 @@ const codeExample = String.raw`
     dateColumn="myDateColumn"
 ></gs-date-range-selector>`;
 
+const customDateRange = { label: 'CustomDateRange', dateFrom: '2021-01-01', dateTo: '2021-12-31' };
+
 const meta: Meta<Required<DateRangeSelectorProps>> = {
     title: 'Input/DateRangeSelector',
     component: 'gs-date-range-selector',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-date-range-changed', ...previewHandles],
+            handles: ['gs-date-range-filter-changed', 'gs-date-range-option-changed', ...previewHandles],
         },
         fetchMock: {},
         componentDocs: {
@@ -66,7 +68,7 @@ const meta: Meta<Required<DateRangeSelectorProps>> = {
             dateRangeOptionPresets.lastMonth,
             dateRangeOptionPresets.last3Months,
             dateRangeOptionPresets.allTimes,
-            { label: 'CustomDateRange', dateFrom: '2021-01-01', dateTo: '2021-12-31' },
+            customDateRange,
         ],
         earliestDate: '1970-01-01',
         initialValue: dateRangeOptionPresets.lastMonth.label,
@@ -80,7 +82,7 @@ const meta: Meta<Required<DateRangeSelectorProps>> = {
 
 export default meta;
 
-export const DateRangeSelectorStory: StoryObj<Required<DateRangeSelectorProps>> = {
+export const Default: StoryObj<Required<DateRangeSelectorProps>> = {
     render: (args) =>
         html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
@@ -95,19 +97,48 @@ export const DateRangeSelectorStory: StoryObj<Required<DateRangeSelectorProps>> 
                 ></gs-date-range-selector>
             </div>
         </gs-app>`,
+};
+
+export const FiresEvents: StoryObj<Required<DateRangeSelectorProps>> = {
+    ...Default,
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-selector');
-        const dateTo = () => canvas.getByPlaceholderText('Date to');
+
+        const filterChangedListenerMock = fn();
+        const optionChangedListenerMock = fn();
+        await step('Setup event listener mock', async () => {
+            canvasElement.addEventListener('gs-date-range-filter-changed', filterChangedListenerMock);
+            canvasElement.addEventListener('gs-date-range-option-changed', optionChangedListenerMock);
+        });
 
         await step('Expect last 6 months to be selected', async () => {
-            await expect(canvas.getByRole('combobox')).toHaveValue('Last month');
+            await expect(selectField(canvas)).toHaveValue('Last month');
             await waitFor(() => {
-                expect(dateTo()).toHaveValue(toYYYYMMDD(new Date()));
+                expect(dateToPicker(canvas)).toHaveValue(toYYYYMMDD(new Date()));
             });
         });
 
-        // Due to the limitations of storybook testing which does not fire an event,
-        // when selecting a value from the dropdown we can't test the fired event here.
-        // An e2e test (using playwright) for that can be found in tests/dateRangeSelector.spec.ts
+        await step('Expect event to be fired when selecting a different value', async () => {
+            await userEvent.selectOptions(selectField(canvas), 'CustomDateRange');
+            await expect(dateToPicker(canvas)).toHaveValue(customDateRange.dateTo);
+
+            await expect(filterChangedListenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: {
+                        aDateColumnFrom: customDateRange.dateFrom,
+                        aDateColumnTo: customDateRange.dateTo,
+                    },
+                }),
+            );
+
+            await expect(optionChangedListenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: customDateRange.label,
+                }),
+            );
+        });
     },
 };
+
+const dateToPicker = (canvas: ReturnType<typeof within>) => canvas.getByPlaceholderText('Date to');
+const selectField = (canvas: ReturnType<typeof within>) => canvas.getByRole('combobox');

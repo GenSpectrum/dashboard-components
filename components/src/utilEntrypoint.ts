@@ -1,1 +1,6 @@
-export { type DateRangeOption, dateRangeOptionPresets } from './preact/dateRangeSelector/dateRangeOption';
+export {
+    type DateRangeOption,
+    type DateRangeSelectOption,
+    dateRangeOptionPresets,
+    DateRangeOptionChangedEvent,
+} from './preact/dateRangeSelector/dateRangeOption';

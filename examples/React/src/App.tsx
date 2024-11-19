@@ -29,7 +29,7 @@ function App() {
 
         const dateRangeSelector = document.querySelector('gs-date-range-selector');
         if (dateRangeSelector) {
-            dateRangeSelector.addEventListener('gs-date-range-changed', handleDateRangeChange);
+            dateRangeSelector.addEventListener('gs-date-range-filter-changed', handleDateRangeChange);
         }
 
         return () => {
@@ -37,7 +37,7 @@ function App() {
                 locationFilter.removeEventListener('gs-location-changed', handleLocationChange);
             }
             if (dateRangeSelector) {
-                dateRangeSelector.removeEventListener('gs-date-range-changed', handleDateRangeChange);
+                dateRangeSelector.removeEventListener('gs-date-range-filter-changed', handleDateRangeChange);
             }
         };
     }, []);

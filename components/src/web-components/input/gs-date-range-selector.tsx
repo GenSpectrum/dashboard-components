@@ -2,6 +2,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { DateRangeSelector, type DateRangeSelectorProps } from '../../preact/dateRangeSelector/date-range-selector';
+import { type DateRangeOptionChangedEvent } from '../../preact/dateRangeSelector/dateRangeOption';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -18,7 +19,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * Setting a value in either of the date pickers will set the select field to "custom",
  * which represents an arbitrary date range.
  *
- * @fires {CustomEvent<{ `${dateColumn}From`: string; `${dateColumn}To`: string; }>} gs-date-range-changed
+ * @fires {CustomEvent<{ `${dateColumn}From`: string; `${dateColumn}To`: string; }>} gs-date-range-filter-changed
  * Fired when:
  * - The select field is changed,
  * - A date is selected in either of the date pickers,
@@ -33,6 +34,18 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * }
  *  ```
  *  will be fired.
+ *
+ *  Use this event, when you want to use the filter directly as a LAPIS filter.
+ *
+ *
+ * @fires {CustomEvent<{ string | {dateFrom: string, dateTo: string}}>} gs-date-range-option-changed
+ * Fired when:
+ * - The select field is changed,
+ * - A date is selected in either of the date pickers,
+ * - A date was typed into either of the date input fields, and the input field loses focus ("on blur").
+ * Contains the selected dateRangeOption or when users select custom values it contains the selected dates.
+ *
+ * Use this event, when you want to control this component in your JS application.
  */
 @customElement('gs-date-range-selector')
 export class DateRangeSelectorComponent extends PreactLitAdapter {
@@ -116,7 +129,8 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-date-range-changed': CustomEvent<Record<string, string>>;
+        'gs-date-range-filter-changed': CustomEvent<Record<string, string>>;
+        'gs-date-range-option-changed': DateRangeOptionChangedEvent;
     }
 }
 
