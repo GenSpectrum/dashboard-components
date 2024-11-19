@@ -14,8 +14,9 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * ## Context
  * This component provides an input field to specify filters for nucleotide and amino acid mutations and insertions.
  *
- * Input values have to be provided one at a time and submitted by pressing the Enter key or by clicking the '+' button.
- * After submission, the component validates the input and fires an event with the selected mutations.
+ * Input values have to be provided one at a time and submitted by pressing the Enter key or by selecting an option from the dropdown.
+ * Alternatively, they can be provided as a string of comma-separated values, which will be directly parsed and validated.
+ * After submission (after pressing Enter or pasting a comma-separated string) an event is fired with the selected mutations.
  * All previously selected mutations are displayed at the input field and added to the event.
  * Users can remove a mutation by clicking the 'x' button next to the mutation.
  *

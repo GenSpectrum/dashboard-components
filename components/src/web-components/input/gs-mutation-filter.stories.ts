@@ -70,7 +70,6 @@ export const FiresFilterChangedEvent: StoryObj<MutationFilterProps> = {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
 
         const inputField = () => canvas.getByPlaceholderText('Enter a mutation', { exact: false });
-        const submitButton = () => canvas.getByRole('button', { name: '+' });
         const listenerMock = fn();
         await step('Setup event listener mock', async () => {
             canvasElement.addEventListener('gs-mutation-filter-changed', listenerMock);
@@ -84,7 +83,8 @@ export const FiresFilterChangedEvent: StoryObj<MutationFilterProps> = {
 
         await step('Enter a valid mutation', async () => {
             await userEvent.type(inputField(), 'A123T');
-            await waitFor(() => submitButton().click());
+            const option = await canvas.findByRole('option');
+            await userEvent.click(option);
 
             await waitFor(() =>
                 expect(listenerMock).toHaveBeenCalledWith(
@@ -149,6 +149,16 @@ export const MultiSegmentedReferenceGenomes: StoryObj<MutationFilterProps> = {
     },
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
+
+        const inputField = () => canvas.getByPlaceholderText('Enter a mutation', { exact: false });
+
+        await waitFor(() => {
+            const placeholderText = inputField().getAttribute('placeholder');
+
+            expect(placeholderText).toEqual(
+                'Enter a mutation (e.g. seg1:A123T, ins_seg1:123:AT, gene1:M123E, ins_gene1:123:ME)',
+            );
+        });
 
         await waitFor(() => {
             expect(canvas.getByText('seg1:123T')).toBeVisible();

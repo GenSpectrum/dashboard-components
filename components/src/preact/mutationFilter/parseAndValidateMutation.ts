@@ -3,7 +3,7 @@ import { sequenceTypeFromSegment } from './sequenceTypeFromSegment';
 import type { ReferenceGenome } from '../../lapisApi/ReferenceGenome';
 import { DeletionClass, InsertionClass, SubstitutionClass } from '../../utils/mutations';
 
-type ParsedMutationFilter = {
+export type ParsedMutationFilter = {
     [MutationType in keyof SelectedFilters]: { type: MutationType; value: SelectedFilters[MutationType][number] };
 }[keyof SelectedFilters];
 
