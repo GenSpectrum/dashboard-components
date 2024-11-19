@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.2...dashboard-components-v0.8.3) (2024-11-19)
+
+
+### Bug Fixes
+
+* **components:** gs-mutations-over-time: also show proportion number when switching tabs ([#523](https://github.com/GenSpectrum/dashboard-components/issues/523)) ([321f5bf](https://github.com/GenSpectrum/dashboard-components/commit/321f5bfc3c5ce6e8c7c1723eb11428b80d023115))
+* **components:** remove corresponding event listeners when destroying a graph ([#525](https://github.com/GenSpectrum/dashboard-components/issues/525)) ([06c3664](https://github.com/GenSpectrum/dashboard-components/commit/06c3664735f0e06d1b5ce4587d4e106442324181))
+
 ## [0.8.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.1...dashboard-components-v0.8.2) (2024-11-15)
 
 
