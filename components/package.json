@@ -27,10 +27,15 @@
         ]
     },
     "exports": {
-        ".": {
-            "import": "./dist/dashboard-components.js",
-            "require": "./dist/dashboard-components.js",
-            "types": "./dist/genspectrum-components.d.ts"
+        "./components": {
+            "import": "./dist/components.js",
+            "require": "./dist/components.js",
+            "types": "./dist/components.d.ts"
+        },
+        "./util": {
+            "import": "./dist/util.js",
+            "require": "./dist/util.js",
+            "types": "./dist/util.d.ts"
         },
         "./custom-elements.json": "./custom-elements.json",
         "./package.json": "./package.json",

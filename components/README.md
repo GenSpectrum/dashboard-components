@@ -13,7 +13,7 @@ Usage with a bundler in HTML:
 ```html
 <body>
     <script>
-        import '@genspectrum/dashboard-components';
+        import '@genspectrum/dashboard-components/components';
         import '@genspectrum/dashboard-components/style.css';
     </script>
     <gs-app lapis="https://your.lapis.url"></gs-app>
@@ -41,6 +41,13 @@ We also provide a standalone version of the components that can be used without 
 
 Internally, the components use [Preact](https://preactjs.com/).
 We use [Lit](https://lit.dev/) to create web components.
+
+We have split the package into two parts:
+
+-   The components, which are web components that can be used in the browser.
+    -   They can be imported with `import '@genspectrum/dashboard-components/components';`
+-   utility functions, which can also be used in a node environment.
+    -   They can be imported with `import '@genspectrum/dashboard-components/util';`
 
 We primarily provide two kinds of components:
 
@@ -130,4 +137,9 @@ We follow this testing concept:
 
 #### Mocking
 
-All our tests use mock data. In general, we use `storybook-addon-fetch-mock` for all outgoing requests. This strategy cannot be used for components that use web workers, like gs-mutations-over-time. Therefore, we created custom mock workers that return mocked data. The mock workers are enabled in the package.json using Node.js [subpath imports](https://nodejs.org/api/packages.html#subpath-imports), following the guide from [storybook](https://storybook.js.org/docs/writing-stories/mocking-data-and-modules/mocking-modules). This ensures that when importing the worker in the component, the mock worker is used inside Storybook instead of the real worker.
+All our tests use mock data. In general, we use `storybook-addon-fetch-mock` for all outgoing requests. This strategy
+cannot be used for components that use web workers, like gs-mutations-over-time. Therefore, we created custom mock
+workers that return mocked data. The mock workers are enabled in the package.json using
+Node.js [subpath imports](https://nodejs.org/api/packages.html#subpath-imports), following the guide
+from [storybook](https://storybook.js.org/docs/writing-stories/mocking-data-and-modules/mocking-modules). This ensures
+that when importing the worker in the component, the mock worker is used inside Storybook instead of the real worker.

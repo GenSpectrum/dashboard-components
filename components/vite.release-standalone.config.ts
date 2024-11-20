@@ -5,7 +5,7 @@ export default defineConfig({
         lib: {
             formats: ['es'],
             entry: {
-                'dashboard-components': 'dist/dashboard-components.js',
+                'dashboard-components': 'src/standaloneEntrypoint.ts',
             },
         },
         sourcemap: true,
