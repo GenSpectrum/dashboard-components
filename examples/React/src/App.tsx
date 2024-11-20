@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
-import {DateRangeOption, dateRangeOptionPresets} from '@genspectrum/dashboard-components';
-import '@genspectrum/dashboard-components';
+import {DateRangeOption, dateRangeOptionPresets} from '@genspectrum/dashboard-components/util';
+import '@genspectrum/dashboard-components/components';
 import '@genspectrum/dashboard-components/style.css';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     });
     const [dateRange, setDateRange] = useState({
         dateFrom: '2021-01-01',
-        dateTo: '2022-01-01',
+        dateTo: '2021-12-31',
     });
 
     useEffect(() => {
@@ -72,7 +72,7 @@ function App() {
             ></gs-location-filter>
             <gs-date-range-selector
                 dateRangeOptions={JSON.stringify(dataRangeOptions)}
-                initialValue={dateRangeOptionPresets.last6Months.label}
+                initialValue={'2021'}
             ></gs-date-range-selector>
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <div>

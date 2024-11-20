@@ -8,7 +8,8 @@ export default defineConfig({
         lib: {
             formats: ['es'],
             entry: {
-                'dashboard-components': 'src/index.ts',
+                components: 'src/componentsEntrypoint.ts',
+                util: 'src/utilEntrypoint.ts',
             },
         },
         sourcemap: true,
