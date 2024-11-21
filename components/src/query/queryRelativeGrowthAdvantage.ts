@@ -1,10 +1,17 @@
 import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { MapOperator } from '../operator/MapOperator';
 import { RenameFieldOperator } from '../operator/RenameFieldOperator';
+import { UserFacingError } from '../preact/components/error-display';
 import { type LapisFilter } from '../types';
 import { getMinMaxTemporal, TemporalCache, type YearMonthDayClass } from '../utils/temporalClass';
 
 export type RelativeGrowthAdvantageData = Awaited<ReturnType<typeof queryRelativeGrowthAdvantage>>;
+
+export class NotEnoughDataToComputeFitError extends Error {
+    constructor() {
+        super('Not enough data to compute computeFit');
+    }
+}
 
 export async function queryRelativeGrowthAdvantage<LapisDateField extends string>(
     numerator: LapisFilter,
@@ -54,6 +61,37 @@ export async function queryRelativeGrowthAdvantage<LapisDateField extends string
             requestData.k.push(numeratorCounts.get(d.date) ?? 0);
         }
     });
+
+    const responseData = await computeFit(generationTime, maxDate, minDate, requestData, signal);
+
+    const transformed = {
+        ...responseData,
+        estimatedProportions: {
+            ...responseData.estimatedProportions,
+            t: responseData.estimatedProportions.t.map((t) => minDate.addDays(t)),
+        },
+    };
+    const observedProportions = transformed.estimatedProportions.t.map(
+        (t) => (numeratorCounts.get(t) ?? 0) / (denominatorCounts.get(t) ?? 0),
+    );
+
+    return {
+        ...transformed,
+        observedProportions,
+    };
+}
+
+async function computeFit(
+    generationTime: number,
+    maxDate: YearMonthDayClass,
+    minDate: YearMonthDayClass,
+    requestData: {
+        t: number[];
+        k: number[];
+        n: number[];
+    },
+    signal: AbortSignal | undefined,
+) {
     const requestPayload = {
         config: {
             alpha: 0.95,
@@ -66,15 +104,29 @@ export async function queryRelativeGrowthAdvantage<LapisDateField extends string
         },
         data: requestData,
     };
-    const response = await fetch('https://cov-spectrum.org/api/v2/computed/model/chen2021Fitness', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestPayload),
-        signal,
-    });
-    const responseData = (await response.json()) as {
+
+    let response;
+    try {
+        response = await fetch('https://cov-spectrum.org/api/v2/computed/model/chen2021Fitness', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestPayload),
+            signal,
+        });
+    } catch {
+        throw new UserFacingError(
+            'Failed to compute relative growth advantage',
+            'Could not connect to the server that computes the relative growth advantage. Please try again later.',
+        );
+    }
+
+    if (!response.ok) {
+        throw new NotEnoughDataToComputeFitError();
+    }
+
+    return (await response.json()) as {
         estimatedAbsoluteNumbers: {
             t: number[];
             variantCases: number[];
@@ -108,21 +160,6 @@ export async function queryRelativeGrowthAdvantage<LapisDateField extends string
                 ciUpper: number;
             };
         };
-    };
-    const transformed = {
-        ...responseData,
-        estimatedProportions: {
-            ...responseData.estimatedProportions,
-            t: responseData.estimatedProportions.t.map((t) => minDate.addDays(t)),
-        },
-    };
-    const observedProportions = transformed.estimatedProportions.t.map(
-        (t) => (numeratorCounts.get(t) ?? 0) / (denominatorCounts.get(t) ?? 0),
-    );
-
-    return {
-        ...transformed,
-        observedProportions,
     };
 }
 

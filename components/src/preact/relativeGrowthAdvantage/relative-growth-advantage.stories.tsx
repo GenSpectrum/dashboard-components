@@ -1,4 +1,5 @@
 import { type StoryObj } from '@storybook/preact';
+import { expect, waitFor, within } from '@storybook/test';
 
 import denominator from './__mockData__/denominatorFilter.json';
 import numerator from './__mockData__/numeratorFilter.json';
@@ -97,5 +98,95 @@ export const Primary: StoryObj<RelativeGrowthAdvantageProps> = {
                 },
             ],
         },
+    },
+};
+
+export const TooFewDataToComputeGrowthAdvantage: StoryObj<RelativeGrowthAdvantageProps> = {
+    ...Primary,
+    args: {
+        ...Primary.args,
+        numeratorFilter: {
+            country: 'Switzerland',
+            pangoLineage: 'B.1.1.7',
+            dateFrom: '2021-02-28',
+            dateTo: '2021-03-01',
+        },
+        denominatorFilter: {
+            country: 'Switzerland',
+            dateFrom: '2021-02-28',
+            dateTo: '2021-03-01',
+        },
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'numeratorFilter',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            country: 'Switzerland',
+                            pangoLineage: 'B.1.1.7',
+                            dateFrom: '2021-02-28',
+                            dateTo: '2021-03-01',
+                            fields: ['date'],
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: {
+                            data: [
+                                {
+                                    date: '2021-02-28',
+                                    count: 5,
+                                },
+                                {
+                                    date: '2021-03-01',
+                                    count: 5,
+                                },
+                            ],
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'denominatorFilter',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            country: 'Switzerland',
+                            dateFrom: '2021-02-28',
+                            dateTo: '2021-03-01',
+                            fields: ['date'],
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: {
+                            data: [
+                                {
+                                    date: '2021-02-28',
+                                    count: 5,
+                                },
+                                {
+                                    date: '2021-03-01',
+                                    count: 7,
+                                },
+                            ],
+                        },
+                    },
+                },
+            ],
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(() => {
+            const notEnoughDataMessage = canvas.queryByText(
+                'It was not possible to estimate the relative growth advantage',
+                { exact: false },
+            );
+            return expect(notEnoughDataMessage).toBeVisible();
+        });
     },
 };
