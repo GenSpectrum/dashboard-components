@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.9.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.5...dashboard-components-v0.9.0) (2024-11-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** Change name of event 'gs-date-range-changed' to 'gs-date-range-filter-changed'
+* **components:** The web components must now be imported from `/components`. `DateRangeOption` and `dateRangeOptionPresets` must be imported from `/util`
+
+### Features
+
+* **components:** add last year date range preset ([#530](https://github.com/GenSpectrum/dashboard-components/issues/530)) ([cccde1f](https://github.com/GenSpectrum/dashboard-components/commit/cccde1fe9540f737abeeb1485927875cdc168ab0))
+* **components:** add utils entrypoint for usage on node environment ([3c45773](https://github.com/GenSpectrum/dashboard-components/commit/3c457736bb9afbef9e8f0b042aad2c3ebc3b6ebf))
+* **components:** fire additional event for date range option change ([8334ddf](https://github.com/GenSpectrum/dashboard-components/commit/8334ddf2a6a8cb4130892087a2168f204efd7f72)), closes [#526](https://github.com/GenSpectrum/dashboard-components/issues/526)
+
 ## [0.8.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.4...dashboard-components-v0.8.5) (2024-11-19)
 
 
