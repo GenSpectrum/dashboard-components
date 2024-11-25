@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.9.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.9.0...dashboard-components-v0.9.1) (2024-11-25)
+
+
+### Features
+
+* **components:** gs-relative-growth-advantage: show better errors when fit fails ([#535](https://github.com/GenSpectrum/dashboard-components/issues/535)) ([5b28eb1](https://github.com/GenSpectrum/dashboard-components/commit/5b28eb1a09e7768c1ead516bbbd59e8718080ae1)), closes [#506](https://github.com/GenSpectrum/dashboard-components/issues/506)
+
+
+### Bug Fixes
+
+* **components:** hide proportion on width of mutation over time cell ([#539](https://github.com/GenSpectrum/dashboard-components/issues/539)) ([998d8cf](https://github.com/GenSpectrum/dashboard-components/commit/998d8cf9ae56494379ad4be916f06bb92d8fceae)), closes [#538](https://github.com/GenSpectrum/dashboard-components/issues/538)
+
 ## [0.9.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.8.5...dashboard-components-v0.9.0) (2024-11-21)
 
 
