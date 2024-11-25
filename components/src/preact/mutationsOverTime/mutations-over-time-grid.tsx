@@ -43,7 +43,6 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                     gridTemplateRows: `repeat(${shownMutations.length}, 24px)`,
                     gridTemplateColumns: `${MUTATION_CELL_WIDTH_REM}rem repeat(${dates.length}, minmax(0.05rem, 1fr))`,
                 }}
-                className='@container'
             >
                 {shownMutations.map((mutation, rowIndex) => {
                     return (
@@ -122,9 +121,9 @@ const ProportionCell: FunctionComponent<{
                         backgroundColor: getColorWithingScale(value.proportion, colorScale),
                         color: getTextColorForScale(value.proportion, colorScale),
                     }}
-                    className={`w-full h-full text-center hover:font-bold text-xs group`}
+                    className={`w-full h-full text-center hover:font-bold text-xs group @container`}
                 >
-                    <span className='invisible @[30rem]:visible'>{formatProportion(value.proportion, 0)}</span>
+                    <span className='invisible @[2rem]:visible'>{formatProportion(value.proportion, 0)}</span>
                 </div>
             </Tooltip>
         </div>
