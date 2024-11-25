@@ -3,6 +3,7 @@ import { useContext, useState } from 'preact/hooks';
 
 import RelativeGrowthAdvantageChart from './relative-growth-advantage-chart';
 import {
+    NotEnoughDataToComputeFitError,
     queryRelativeGrowthAdvantage,
     type RelativeGrowthAdvantageData,
 } from '../../query/queryRelativeGrowthAdvantage';
@@ -62,6 +63,11 @@ export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvan
     }
 
     if (error !== null) {
+        if (error instanceof NotEnoughDataToComputeFitError) {
+            return (
+                <NoDataDisplay message='It was not possible to estimate the relative growth advantage due to insufficient data in the specified filter.' />
+            );
+        }
         throw error;
     }
 
