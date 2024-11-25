@@ -9,11 +9,12 @@ export const sequenceTypeFromSegment = (
         return isSingleSegmented(referenceGenome) ? 'nucleotide' : undefined;
     }
 
-    if (referenceGenome.nucleotideSequences.some((sequence) => sequence.name === possibleSegment)) {
+    const segment = possibleSegment.toLowerCase();
+    if (referenceGenome.nucleotideSequences.some((sequence) => sequence.name.toLowerCase() === segment)) {
         return 'nucleotide';
     }
 
-    if (referenceGenome.genes.some((gene) => gene.name === possibleSegment)) {
+    if (referenceGenome.genes.some((gene) => gene.name.toLowerCase() === segment)) {
         return 'amino acid';
     }
     return undefined;
