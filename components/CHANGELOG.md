@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.10.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.9.1...dashboard-components-v0.10.0) (2024-11-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** pass `['wilson', 'none']` instead of `['wilson']` to `confidenceIntervalMethods` of `gs-prevalence-over-time` to achieve the same behavior as before
+
+### Features
+
+* **components:** gs-prevalence-over-time: don't show confidence interval by default, explicitly require 'none' as `confidenceIntervalMethods` to show it ([#542](https://github.com/GenSpectrum/dashboard-components/issues/542)) ([b68dfb3](https://github.com/GenSpectrum/dashboard-components/commit/b68dfb3bb3c726c336b9938781cda61eedd29a85)), closes [#537](https://github.com/GenSpectrum/dashboard-components/issues/537)
+
+
+### Bug Fixes
+
+* **components:** gs-mutation-filter: make input fully case-insensitive ([#541](https://github.com/GenSpectrum/dashboard-components/issues/541)) ([08d0be3](https://github.com/GenSpectrum/dashboard-components/commit/08d0be3e43508a0b04c68db721dd3772930994b0)), closes [#536](https://github.com/GenSpectrum/dashboard-components/issues/536)
+
 ## [0.9.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.9.0...dashboard-components-v0.9.1) (2024-11-25)
 
 
