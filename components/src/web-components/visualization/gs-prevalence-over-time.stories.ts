@@ -46,7 +46,7 @@ const meta: Meta<Required<PrevalenceOverTimeProps>> = {
             control: { type: 'check' },
         },
         confidenceIntervalMethods: {
-            options: ['wilson'],
+            options: ['none', 'wilson'],
             control: { type: 'check' },
         },
         width: { control: 'text' },

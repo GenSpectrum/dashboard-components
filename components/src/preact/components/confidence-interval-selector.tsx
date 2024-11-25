@@ -20,7 +20,7 @@ export const ConfidenceIntervalSelector: FunctionComponent<ConfidenceIntervalSel
 
     const items = [
         { label: 'Confidence interval method', value: 'none', disabled: true },
-        ...confidenceIntervalMethods.concat('none').map((method) => {
+        ...confidenceIntervalMethods.map((method) => {
             switch (method) {
                 case 'wilson':
                     return { label: 'Wilson, 95% CI', value: 'wilson' };

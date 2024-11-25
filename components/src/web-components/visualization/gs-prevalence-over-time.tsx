@@ -103,11 +103,11 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
 
     /**
      * A list of methods to calculate the confidence interval.
-     * The option `none` is always available and disables confidence intervals.
      * Pass an empty array to disable the confidence interval selector.
+     * The first entry will be selected by default.
      */
     @property({ type: Array })
-    confidenceIntervalMethods: ('wilson' | 'none')[] = ['wilson'];
+    confidenceIntervalMethods: ('wilson' | 'none')[] = ['none', 'wilson'];
 
     /**
      * The width of the component.

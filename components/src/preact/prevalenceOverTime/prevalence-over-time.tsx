@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useState } from 'preact/hooks';
+import { useContext, useEffect, useState } from 'preact/hooks';
 
 import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
 import PrevalenceOverTimeBarChart from './prevalence-over-time-bar-chart';
@@ -97,6 +97,16 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
     const [confidenceIntervalMethod, setConfidenceIntervalMethod] = useState<ConfidenceIntervalMethod>(
         confidenceIntervalMethods.length > 0 ? confidenceIntervalMethods[0] : 'none',
     );
+
+    useEffect(() => {
+        setConfidenceIntervalMethod((confidenceIntervalMethod) => {
+            if (!confidenceIntervalMethods.includes(confidenceIntervalMethod)) {
+                return confidenceIntervalMethods.length > 0 ? confidenceIntervalMethods[0] : 'none';
+            }
+            return confidenceIntervalMethod;
+        });
+    }, [confidenceIntervalMethods]);
+
     const yAxisMaxConfig = { linear: yAxisMaxLinear, logarithmic: yAxisMaxLogarithmic };
 
     const getTab = (view: View) => {
