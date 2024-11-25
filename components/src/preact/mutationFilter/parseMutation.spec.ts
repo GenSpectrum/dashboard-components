@@ -36,6 +36,16 @@ describe('parseMutation', () => {
                 expected: { type: 'aminoAcidInsertions', value: new InsertionClass('gene1', 10, 'ACGT') },
             },
             {
+                name: 'should parse amino acid insertions in all upper case',
+                input: 'INS_GENE1:10:ACGT',
+                expected: { type: 'aminoAcidInsertions', value: new InsertionClass('GENE1', 10, 'ACGT') },
+            },
+            {
+                name: 'should parse amino acid insertions in all lower case',
+                input: 'ins_gene1:10:acgt',
+                expected: { type: 'aminoAcidInsertions', value: new InsertionClass('gene1', 10, 'acgt') },
+            },
+            {
                 name: 'should parse amino acid insertion with LAPIS-style wildcard',
                 input: 'ins_gene1:10:?AC?GT',
                 expected: { type: 'aminoAcidInsertions', value: new InsertionClass('gene1', 10, '?AC?GT') },
@@ -77,6 +87,16 @@ describe('parseMutation', () => {
                 name: 'should parse amino acid deletion',
                 input: 'gene1:A123-',
                 expected: { type: 'aminoAcidMutations', value: new DeletionClass('gene1', 'A', 123) },
+            },
+            {
+                name: 'should parse amino acid deletion in all upper case',
+                input: 'GENE1:A123-',
+                expected: { type: 'aminoAcidMutations', value: new DeletionClass('GENE1', 'A', 123) },
+            },
+            {
+                name: 'should parse amino acid deletion in all lower case',
+                input: 'gene1:a123-',
+                expected: { type: 'aminoAcidMutations', value: new DeletionClass('gene1', 'a', 123) },
             },
             {
                 name: 'should parse amino acid deletion without valueAtReference',
@@ -122,6 +142,16 @@ describe('parseMutation', () => {
                 name: 'should parse amino acid substitution',
                 input: 'gene1:A123T',
                 expected: { type: 'aminoAcidMutations', value: new SubstitutionClass('gene1', 'A', 'T', 123) },
+            },
+            {
+                name: 'should parse amino acid substitution in all upper case',
+                input: 'GENE1:A123T',
+                expected: { type: 'aminoAcidMutations', value: new SubstitutionClass('GENE1', 'A', 'T', 123) },
+            },
+            {
+                name: 'should parse amino acid substitution in all lower case',
+                input: 'gene1:a123t',
+                expected: { type: 'aminoAcidMutations', value: new SubstitutionClass('gene1', 'a', 't', 123) },
             },
             {
                 name: 'should return null for substitution with segment not in reference genome',
