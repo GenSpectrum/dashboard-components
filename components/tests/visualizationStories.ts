@@ -113,4 +113,9 @@ export const visualizationStories = [
         title: 'Mutations over time',
         loadingIsDoneIndicator: 'Grid',
     },
+    {
+        id: 'visualization-statistics--default',
+        title: 'Statistics',
+        loadingIsDoneIndicator: 'Sequences',
+    },
 ];
