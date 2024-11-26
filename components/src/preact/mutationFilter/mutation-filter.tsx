@@ -303,7 +303,6 @@ const SelectedFilter = ({ handleRemoveValue, mutationFilter }: SelectedFilterPro
     return (
         <span
             key={mutationFilter.value.toString()}
-            name={mutationFilter.value.toString()}
             className='center p-2 m-1 inline-flex text-black rounded-md'
             style={{
                 backgroundColor: backgroundColorMap(mutationFilter),

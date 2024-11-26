@@ -44,8 +44,8 @@ export const PercentInput: FunctionComponent<PercentInputProps> = ({
             <input
                 type='number'
                 step={0.1}
-                min={0}
-                max={100}
+                min='0'
+                max='100'
                 value={internalPercentage}
                 onInput={handleInputChange}
                 lang='en'
