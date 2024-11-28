@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.0...dashboard-components-v0.10.1) (2024-11-28)
+
+
+### Features
+
+* **components:** add statistics component ([bd231e0](https://github.com/GenSpectrum/dashboard-components/commit/bd231e01613dfe4edde212d3f22e0d19be7d87ea)), closes [#549](https://github.com/GenSpectrum/dashboard-components/issues/549)
+
 ## [0.10.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.9.1...dashboard-components-v0.10.0) (2024-11-25)
 
 
