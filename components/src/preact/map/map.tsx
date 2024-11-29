@@ -1,35 +1,69 @@
-import { ActiveElement, Chart, type ChartConfiguration, ChartEvent, registerables } from 'chart.js';
-import {
-    ChoroplethController,
-    ColorScale,
-    type Feature,
-    GeoFeature,
-    ProjectionScale,
-    topojson,
-} from 'chartjs-chart-geo';
-import type { FunctionComponent } from 'preact';
-import countries50m from 'world-atlas/countries-50m.json';
-import germany from './germany.json';
-import germany2 from './germany2.json';
-
-import GsChart from '../components/chart';
-import { useEffect, useRef } from 'preact/hooks';
-
+import { Chart, registerables } from 'chart.js';
+import { ChoroplethController, ColorScale, GeoFeature, ProjectionScale, topojson } from 'chartjs-chart-geo';
 import L from 'leaflet';
+import type { FunctionComponent } from 'preact';
+import { useEffect, useRef } from 'preact/hooks';
+import { type GeometryCollection, type Topology } from 'topojson-specification';
+
+import germany from './germany.json';
+import uk from './uk.topo.json';
+import us from './us.topo.json';
+import { formatProportion } from '../shared/table/formatProportion';
+
 import 'leaflet/dist/leaflet.css';
 
-export type MapProps = {};
+export type MapProps = { country: keyof typeof countryConfig };
 
 Chart.register(...registerables, ChoroplethController, GeoFeature, ColorScale, ProjectionScale);
 
-export const Map: FunctionComponent<MapProps> = ({}) => {
+function getColor(d: number) {
+    return d > 1.0
+        ? '#800026'
+        : d > 0.5
+          ? '#BD0026'
+          : d > 0.2
+            ? '#E31A1C'
+            : d > 0.1
+              ? '#FC4E2A'
+              : d > 0.05
+                ? '#FD8D3C'
+                : d > 0.02
+                  ? '#FEB24C'
+                  : d > 0.01
+                    ? '#FED976'
+                    : '#FFEDA0';
+}
+
+type GeoColl = GeometryCollection<{
+    name: string;
+}>;
+
+const countryConfig = {
+    de: [germany, germany.objects.states, [51.1657, 10.4515], 6],
+    uk: [uk, uk.objects.subunits, [55.3781, -5], 5],
+    us: [us, us.objects.usa, [40, -100], 4],
+} as const;
+
+export const Map: FunctionComponent<MapProps> = ({ country }) => {
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!ref.current) {
             return;
         }
-        const countries: Feature = topojson.feature(germany2, germany2.objects.deu).features;
+
+        const [topoJson, geoCollection, offset, zoom] =
+            country in countryConfig ? countryConfig[country] : countryConfig.us;
+
+        const feature1 = topojson.feature(topoJson as Topology, geoCollection as GeoColl);
+
+        const countries = feature1.features.map((feature) => ({
+            ...feature,
+            properties: {
+                ...feature.properties,
+                value: Math.random(),
+            },
+        }));
 
         const map = L.map(ref.current, {
             scrollWheelZoom: false,
@@ -37,22 +71,29 @@ export const Map: FunctionComponent<MapProps> = ({}) => {
             keyboard: false,
             dragging: false,
         });
-        map.setView([51.1657, 10.4515], 5);
+        map.setView(offset, zoom);
 
-        // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {
-        //     foo: 'bar',
-        //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        // }).addTo(map);
-        // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.geoJson(countries, {
+            style: (feature) => ({
+                fillColor: getColor(feature?.properties.value),
+                fillOpacity: 0.5,
+                color: 'black',
+                weight: 1,
+            }),
+        })
+            .bindTooltip((a) => {
+                return `${a.feature.properties.name}: ${formatProportion(a.feature.properties.value)}`;
+            })
+            .addTo(map);
 
-        L.geoJson(countries).bindPopup('asdaf').addTo(map);
-
-        console.log('ok');
-    }, [ref]);
+        return () => {
+            map.remove();
+        };
+    }, [ref, country]);
 
     return (
         <div className='border-2 p-4'>
-            <div ref={ref} className='w-[800px] h-[600px]' />
+            <div ref={ref} className='w-[800px] h-[600px] bg-white' />
         </div>
     );
 };
