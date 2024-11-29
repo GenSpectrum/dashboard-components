@@ -5,7 +5,7 @@ import aggregatedData from './__mockData__/aggregated.json';
 import { Aggregate, type AggregateProps } from './aggregate';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const meta: Meta<AggregateProps> = {
     title: 'Visualization/Aggregate',

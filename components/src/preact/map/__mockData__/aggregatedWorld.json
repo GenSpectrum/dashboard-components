@@ -1,0 +1,259 @@
+{
+    "data": [
+        {
+            "count": 3,
+            "country": "Turkey"
+        },
+        {
+            "count": 966167,
+            "country": "United Kingdom"
+        },
+        {
+            "count": 1,
+            "country": "Netherlands"
+        },
+        {
+            "count": 138004,
+            "country": "Denmark"
+        },
+        {
+            "count": 2611,
+            "country": "Brazil"
+        },
+        {
+            "count": 4,
+            "country": "Côte d'Ivoire"
+        },
+        {
+            "count": 4,
+            "country": "Finland"
+        },
+        {
+            "count": 204,
+            "country": "Djibouti"
+        },
+        {
+            "count": 138,
+            "country": "China"
+        },
+        {
+            "count": 5904,
+            "country": "Iceland"
+        },
+        {
+            "count": 8,
+            "country": "Ireland"
+        },
+        {
+            "count": 180,
+            "country": "Malaysia"
+        },
+        {
+            "count": 855,
+            "country": "Kenya"
+        },
+        {
+            "count": 868,
+            "country": "South Africa"
+        },
+        {
+            "count": 329479,
+            "country": "Germany"
+        },
+        {
+            "count": 5,
+            "country": "Spain"
+        },
+        {
+            "count": 664,
+            "country": "Liechtenstein"
+        },
+        {
+            "count": 2,
+            "country": "Chile"
+        },
+        {
+            "count": 2,
+            "country": "Mali"
+        },
+        {
+            "count": 31,
+            "country": "South Korea"
+        },
+        {
+            "count": 13540,
+            "country": "Slovakia"
+        },
+        {
+            "count": 1,
+            "country": "Norway"
+        },
+        {
+            "count": 4949,
+            "country": "New Zealand"
+        },
+        {
+            "count": 354,
+            "country": "Laos"
+        },
+        {
+            "count": 5,
+            "country": "Saudi Arabia"
+        },
+        {
+            "count": 566,
+            "country": "Vietnam"
+        },
+        {
+            "count": 37,
+            "country": "Australia"
+        },
+        {
+            "count": 25,
+            "country": "Cameroon"
+        },
+        {
+            "count": 54,
+            "country": "Gambia"
+        },
+        {
+            "count": 1310,
+            "country": "Argentina"
+        },
+        {
+            "count": 548918,
+            "country": "USA"
+        },
+        {
+            "count": 4562,
+            "country": "Mexico"
+        },
+        {
+            "count": 28636,
+            "country": "Switzerland"
+        },
+        {
+            "count": 9,
+            "country": "Palau"
+        },
+        {
+            "count": 6,
+            "country": "Taiwan"
+        },
+        {
+            "count": 181,
+            "country": "Iraq"
+        },
+        {
+            "count": 7547,
+            "country": "France"
+        },
+        {
+            "count": 4536,
+            "country": "Japan"
+        },
+        {
+            "count": 1640,
+            "country": "Thailand"
+        },
+        {
+            "count": 59,
+            "country": "Colombia"
+        },
+        {
+            "count": 243,
+            "country": "India"
+        },
+        {
+            "count": 132,
+            "country": "Italy"
+        },
+        {
+            "count": 92,
+            "country": "Mongolia"
+        },
+        {
+            "count": 2,
+            "country": "Libya"
+        },
+        {
+            "count": 216,
+            "country": "Peru"
+        },
+        {
+            "count": 4,
+            "country": "Singapore"
+        },
+        {
+            "count": 25,
+            "country": "Myanmar"
+        },
+        {
+            "count": 395,
+            "country": "Bangladesh"
+        },
+        {
+            "count": 37,
+            "country": "Malawi"
+        },
+        {
+            "count": 3669,
+            "country": "Bahrain"
+        },
+        {
+            "count": 171,
+            "country": "Haiti"
+        },
+        {
+            "count": 40,
+            "country": "Palestine"
+        },
+        {
+            "count": 499,
+            "country": "Hong Kong"
+        },
+        {
+            "count": 19,
+            "country": "Austria"
+        },
+        {
+            "count": 9,
+            "country": "Jamaica"
+        },
+        {
+            "count": 83,
+            "country": "Russia"
+        },
+        {
+            "count": 197,
+            "country": "Seychelles"
+        },
+        {
+            "count": 20,
+            "country": "Nigeria"
+        },
+        {
+            "count": 6,
+            "country": "Canada"
+        },
+        {
+            "count": 208,
+            "country": "Kazakhstan"
+        },
+        {
+            "count": 34,
+            "country": "Benin"
+        },
+        {
+            "count": 113,
+            "country": "Pakistan"
+        }
+    ],
+    "info": {
+        "dataVersion": "1733676577",
+        "requestId": "91268a09-b192-42da-b7c6-bcfc72bba982",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2024-12-09T15:45:35.460317204",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "0.3.10"
+    }
+}

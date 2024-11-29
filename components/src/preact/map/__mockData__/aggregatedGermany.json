@@ -1,0 +1,83 @@
+{
+    "data": [
+        {
+            "count": 1748,
+            "division": "Mecklenburg-Vorpommern"
+        },
+        {
+            "count": 10343,
+            "division": "Rheinland-Pfalz"
+        },
+        {
+            "count": 25459,
+            "division": "Saxony"
+        },
+        {
+            "count": 6198,
+            "division": "Niedersachsen"
+        },
+        {
+            "count": 3846,
+            "division": "Berlin"
+        },
+        {
+            "count": 7,
+            "division": "Germany"
+        },
+        {
+            "count": 3778,
+            "division": "Brandenburg"
+        },
+        {
+            "count": 1672,
+            "division": "Bremen"
+        },
+        {
+            "count": 4969,
+            "division": "Hesse"
+        },
+        {
+            "count": 3238,
+            "division": "Thuringia"
+        },
+        {
+            "count": 4747,
+            "division": "Saxony-Anhalt"
+        },
+        {
+            "count": 109800,
+            "division": null
+        },
+        {
+            "count": 4911,
+            "division": "Saarland"
+        },
+        {
+            "count": 50650,
+            "division": "Baden-Wuerttemberg"
+        },
+        {
+            "count": 50102,
+            "division": "North Rhine Westphalia"
+        },
+        {
+            "count": 9832,
+            "division": "Schleswig-Holstein"
+        },
+        {
+            "count": 28546,
+            "division": "Bavaria"
+        },
+        {
+            "count": 9633,
+            "division": "Hamburg"
+        }
+    ],
+    "info": {
+        "dataVersion": "1733676577",
+        "requestId": "7517dbd2-10ed-4a5a-8b2b-a6e08de55982",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2024-12-09T16:14:08.190102574",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "0.3.10"
+    }
+}
