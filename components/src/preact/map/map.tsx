@@ -1,4 +1,4 @@
-import { Chart, type ChartConfiguration } from 'chart.js';
+import { ActiveElement, Chart, type ChartConfiguration, ChartEvent, registerables } from 'chart.js';
 import {
     ChoroplethController,
     ColorScale,
@@ -13,53 +13,46 @@ import germany from './germany.json';
 import germany2 from './germany2.json';
 
 import GsChart from '../components/chart';
+import { useEffect, useRef } from 'preact/hooks';
+
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 export type MapProps = {};
 
-Chart.register(ChoroplethController, GeoFeature, ColorScale, ProjectionScale);
+Chart.register(...registerables, ChoroplethController, GeoFeature, ColorScale, ProjectionScale);
 
 export const Map: FunctionComponent<MapProps> = ({}) => {
-    // const countries: Feature = topojson.feature(germany, germany.objects.states).features;
-    const countries: Feature = topojson.feature(germany2, germany2.objects.deu).features;
-    // const countries: Feature = topojson.feature(countries50m, countries50m.objects.countries).features;
+    const ref = useRef<HTMLDivElement>(null);
 
-    console.log(countries);
+    useEffect(() => {
+        if (!ref.current) {
+            return;
+        }
+        const countries: Feature = topojson.feature(germany2, germany2.objects.deu).features;
 
-    const data: ChartConfiguration<'choropleth'>['data'] = {
-        labels: countries.map((d) => d.properties.name),
-        datasets: [
-            {
-                label: 'Countries',
-                data: countries.map((d) => ({
-                    feature: d,
-                    value: Math.random(),
-                })),
-            },
-        ],
-    };
+        const map = L.map(ref.current, {
+            scrollWheelZoom: false,
+            zoomControl: false,
+            keyboard: false,
+            dragging: false,
+        });
+        map.setView([51.1657, 10.4515], 5);
 
-    const config: ChartConfiguration<'choropleth'> = {
-        type: 'choropleth',
-        data,
-        options: {
-            showOutline: true,
-            showGraticule: true,
-            scales: {
-                projection: {
-                    axis: 'x',
-                    projection: 'mercator',
-                    // offset: true,
-                    // min: 100,
-                    // max: 101,
-                    projectionOffset: [0, 1500],
-                    projectionScale: 10,
-                },
-            },
-            onClick: (evt, elems) => {
-                console.log(elems.map((elem) => elem.element.feature.properties.name));
-            },
-        },
-    };
+        // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {
+        //     foo: 'bar',
+        //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        // }).addTo(map);
+        // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-    return <GsChart configuration={config} />;
+        L.geoJson(countries).bindPopup('asdaf').addTo(map);
+
+        console.log('ok');
+    }, [ref]);
+
+    return (
+        <div className='border-2 p-4'>
+            <div ref={ref} className='w-[800px] h-[600px]' />
+        </div>
+    );
 };
