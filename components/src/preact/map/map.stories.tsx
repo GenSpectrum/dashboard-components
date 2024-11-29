@@ -8,12 +8,7 @@ const meta: Meta<MapProps> = {
     title: 'Visualization/Map',
     component: Map,
     argTypes: {
-        fields: [{ control: 'object' }],
-        width: { control: 'text' },
-        height: { control: 'text' },
-        initialSortField: { control: 'text' },
-        initialSortDirection: { control: 'radio', options: ['ascending', 'descending'] },
-        pageSize: { control: 'object' },
+        country: { control: 'select', options: ['us', 'de', 'uk'] },
     },
     parameters: {
         fetchMock: {},
@@ -28,5 +23,7 @@ export const Default: StoryObj<MapProps> = {
             <Map {...args} />
         </LapisUrlContext.Provider>
     ),
-    args: {},
+    args: {
+        country: 'us',
+    },
 };
