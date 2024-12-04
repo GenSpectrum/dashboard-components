@@ -1,10 +1,11 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import { useEffect, useRef, useState } from 'preact/hooks';
+import z from 'zod';
 
 import { computeInitialValues } from './computeInitialValues';
 import { toYYYYMMDD } from './dateConversion';
-import { type DateRangeOption, DateRangeOptionChangedEvent, type DateRangeSelectOption } from './dateRangeOption';
+import { DateRangeOptionChangedEvent, dateRangeOptionSchema, type DateRangeSelectOption } from './dateRangeOption';
 import { getDatesForSelectorValue, getSelectableOptions } from './selectableOptions';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Select } from '../components/select';
@@ -12,24 +13,28 @@ import type { ScaleType } from '../shared/charts/getYAxisScale';
 
 const customOption = 'Custom';
 
-export interface DateRangeSelectorProps extends DateRangeSelectorPropsInner {
-    width: string;
-}
+const dateRangeSelectorInnerPropsSchema = z.object({
+    dateRangeOptions: z.array(dateRangeOptionSchema),
+    earliestDate: z.string().date(),
+    initialValue: z.string().optional(),
+    initialDateFrom: z.string().date().optional(),
+    initialDateTo: z.string().date().optional(),
+    dateColumn: z.string(),
+});
 
-export interface DateRangeSelectorPropsInner {
-    dateRangeOptions: DateRangeOption[];
-    earliestDate: string;
-    initialValue: string | undefined;
-    initialDateFrom: string;
-    initialDateTo: string;
-    dateColumn: string;
-}
+const dateRangeSelectorPropsSchema = dateRangeSelectorInnerPropsSchema.extend({
+    width: z.string(),
+});
 
-export const DateRangeSelector = ({ width, ...innerProps }: DateRangeSelectorProps) => {
+export type DateRangeSelectorProps = z.infer<typeof dateRangeSelectorPropsSchema>;
+export type DateRangeSelectorInnerProps = z.infer<typeof dateRangeSelectorInnerPropsSchema>;
+
+export const DateRangeSelector = (props: DateRangeSelectorProps) => {
+    const { width, ...innerProps } = props;
     const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary size={size} layout='horizontal'>
+        <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={dateRangeSelectorPropsSchema}>
             <div style={{ width }}>
                 <DateRangeSelectorInner {...innerProps} />
             </div>
@@ -44,7 +49,7 @@ export const DateRangeSelectorInner = ({
     dateColumn,
     initialDateFrom,
     initialDateTo,
-}: DateRangeSelectorPropsInner) => {
+}: DateRangeSelectorInnerProps) => {
     const initialValues = computeInitialValues(
         initialValue,
         initialDateFrom,

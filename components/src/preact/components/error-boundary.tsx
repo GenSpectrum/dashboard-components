@@ -1,16 +1,26 @@
-import type { FunctionComponent } from 'preact';
-import { useErrorBoundary } from 'preact/hooks';
+import { type RenderableProps } from 'preact';
+import { useErrorBoundary, useMemo } from 'preact/hooks';
+import { type ZodSchema } from 'zod';
 
-import { ErrorDisplay, type ErrorDisplayProps } from './error-display';
+import { ErrorDisplay, type ErrorDisplayProps, InvalidPropsError } from './error-display';
 import { ResizeContainer, type Size } from './resize-container';
 
-type ErrorBoundaryProps = {
+type ErrorBoundaryProps<T> = {
     size: Size;
     layout?: ErrorDisplayProps['layout'];
+    componentProps?: T;
+    schema?: ZodSchema<T>;
 };
 
-export const ErrorBoundary: FunctionComponent<ErrorBoundaryProps> = ({ size, layout, children }) => {
+export const ErrorBoundary = <T extends Record<string, unknown>>({
+    size,
+    layout,
+    componentProps,
+    schema,
+    children,
+}: RenderableProps<ErrorBoundaryProps<T>>) => {
     const [internalError, resetError] = useErrorBoundary();
+    const componentPropsParseError = useCheckComponentProps(schema, componentProps);
 
     if (internalError) {
         return (
@@ -20,5 +30,29 @@ export const ErrorBoundary: FunctionComponent<ErrorBoundaryProps> = ({ size, lay
         );
     }
 
+    if (componentPropsParseError !== undefined) {
+        return (
+            <ResizeContainer size={size}>
+                <ErrorDisplay error={componentPropsParseError} layout={layout} />
+            </ResizeContainer>
+        );
+    }
+
     return <>{children}</>;
 };
+
+// TODO #554 - make both arguments required once all components validate their props
+function useCheckComponentProps<T extends Record<string, unknown>>(schema?: ZodSchema<T>, componentProps?: T) {
+    return useMemo(() => {
+        if (schema === undefined || componentProps === undefined) {
+            return undefined;
+        }
+
+        const parseResult = schema.safeParse(componentProps);
+        if (parseResult.success) {
+            return undefined;
+        }
+
+        return new InvalidPropsError(parseResult.error, componentProps);
+    }, [componentProps, schema]);
+}

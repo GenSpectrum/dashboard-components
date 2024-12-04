@@ -50,9 +50,15 @@ describe('computeInitialValues', () => {
         expectDateMatches(result.initialSelectedDateTo, today);
     });
 
-    it('should fall back to default when initial value is unknown', () => {
+    it('should throw when initial value is unknown', () => {
+        expect(() =>
+            computeInitialValues('not a known value', undefined, undefined, earliestDate, dateRangeOptions),
+        ).toThrowError(/Invalid initialValue "not a known value", It must be one of/);
+    });
+
+    it('should throw when initial value is set but no options are provided', () => {
         expect(() => computeInitialValues('not a known value', undefined, undefined, earliestDate, [])).toThrowError(
-            /Invalid initialValue "not a known value", It must be one of/,
+            /There are no selectable options/,
         );
     });
 

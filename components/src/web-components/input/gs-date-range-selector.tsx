@@ -84,7 +84,7 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
      * If `initialDateTo` is set, but this is unset, it will default to `earliestDate`.
      */
     @property()
-    initialDateFrom: string = '';
+    initialDateFrom: string | undefined = undefined;
 
     /**
      * A date string in the format `YYYY-MM-DD`.
@@ -92,7 +92,7 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
      * If `initialDateFrom` is set, but this is unset, it will default to the current date.
      */
     @property()
-    initialDateTo: string = '';
+    initialDateTo: string | undefined = undefined;
 
     /**
      * The width of the component.
