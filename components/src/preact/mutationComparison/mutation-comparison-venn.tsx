@@ -1,7 +1,7 @@
 import { type ActiveElement, Chart, type ChartConfiguration, type ChartEvent, registerables } from 'chart.js';
 import { ArcSlice, extractSets, VennDiagramController } from 'chartjs-chart-venn';
 import { type FunctionComponent } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 
 import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
@@ -19,8 +19,6 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
     data,
     proportionInterval,
 }) => {
-    const divRef = useRef<HTMLDivElement>(null);
-    const noElementSelectedMessage = 'You have no elements selected. Click in the venn diagram to select.';
     const [selectedDatasetIndex, setSelectedDatasetIndex] = useState<null | number>(null);
 
     const sets = useMemo(
@@ -44,20 +42,6 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
             ),
         [data, proportionInterval],
     );
-
-    useEffect(() => {
-        if (divRef.current === null) {
-            return;
-        }
-        if (selectedDatasetIndex === null) {
-            divRef.current.innerText = noElementSelectedMessage;
-            return;
-        }
-
-        const values = sets.datasets[0].data[selectedDatasetIndex].values;
-        const label = sets.datasets[0].data[selectedDatasetIndex].label;
-        divRef.current!.innerText = `${label}: ${values.join(', ')}` || '';
-    }, [divRef, selectedDatasetIndex, sets]);
 
     const config: ChartConfiguration = useMemo(
         () => ({
@@ -119,7 +103,22 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
             <div className='flex-1'>
                 <GsChart configuration={config} />
             </div>
-            <div class='flex flex-wrap break-words m-2' ref={divRef} />
+            <p class='flex flex-wrap break-words m-2'>{getSelectedMutationsDescription(selectedDatasetIndex, sets)}</p>
         </div>
     );
 };
+
+const noElementSelectedMessage = 'You have no elements selected. Click in the venn diagram to select.';
+
+function getSelectedMutationsDescription(
+    selectedDatasetIndex: number | null,
+    sets: ReturnType<typeof extractSets<string>>,
+) {
+    if (selectedDatasetIndex === null) {
+        return noElementSelectedMessage;
+    }
+
+    const values = sets.datasets[0].data[selectedDatasetIndex].values;
+    const label = sets.datasets[0].data[selectedDatasetIndex].label;
+    return `${label}: ${values.join(', ')}` || '';
+}
