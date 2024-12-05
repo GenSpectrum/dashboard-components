@@ -1,5 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useRef } from 'preact/hooks';
+import z from 'zod';
 
 import { fetchLineageAutocompleteList } from './fetchLineageAutocompleteList';
 import { LapisUrlContext } from '../LapisUrlContext';
@@ -9,21 +10,25 @@ import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
-export interface LineageFilterInnerProps {
-    lapisField: string;
-    placeholderText: string;
-    initialValue: string;
-}
+const lineageFilterInnerPropsSchema = z.object({
+    lapisField: z.string().min(1),
+    placeholderText: z.string().optional(),
+    initialValue: z.string(),
+});
 
-export interface LineageFilterProps extends LineageFilterInnerProps {
-    width: string;
-}
+const lineageFilterPropsSchema = lineageFilterInnerPropsSchema.extend({
+    width: z.string(),
+});
 
-export const LineageFilter: FunctionComponent<LineageFilterProps> = ({ width, ...innerProps }) => {
+export type LineageFilterInnerProps = z.infer<typeof lineageFilterInnerPropsSchema>;
+export type LineageFilterProps = z.infer<typeof lineageFilterPropsSchema>;
+
+export const LineageFilter: FunctionComponent<LineageFilterProps> = (props) => {
+    const { width, ...innerProps } = props;
     const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary size={size} layout='horizontal'>
+        <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={lineageFilterPropsSchema}>
             <ResizeContainer size={size}>
                 <LineageFilterInner {...innerProps} />
             </ResizeContainer>
