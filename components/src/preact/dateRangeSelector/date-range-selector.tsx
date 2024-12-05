@@ -19,7 +19,7 @@ const dateRangeSelectorInnerPropsSchema = z.object({
     initialValue: z.string().optional(),
     initialDateFrom: z.string().date().optional(),
     initialDateTo: z.string().date().optional(),
-    dateColumn: z.string(),
+    dateColumn: z.string().min(1),
 });
 
 const dateRangeSelectorPropsSchema = dateRangeSelectorInnerPropsSchema.extend({
