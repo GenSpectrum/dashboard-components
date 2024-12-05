@@ -106,7 +106,7 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
      * The name of the column in LAPIS that contains the date information.
      */
     @property({ type: String })
-    dateColumn: string = 'date';
+    dateColumn: string = '';
 
     override render() {
         return (
