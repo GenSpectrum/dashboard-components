@@ -48,7 +48,7 @@ export class LineageFilterComponent extends PreactLitAdapter {
      * The placeholder text to display in the input field.
      */
     @property()
-    placeholderText: string = '';
+    placeholderText: string | undefined = undefined;
 
     /**
      * The width of the component.
