@@ -1,3 +1,5 @@
+import z from 'zod';
+
 import {
     type Deletion,
     type DeletionClass,
@@ -7,16 +9,19 @@ import {
     type SubstitutionClass,
 } from './utils/mutations';
 
-export type LapisFilter = Record<string, string | number | null | boolean>;
+export const lapisFilterSchema = z.record(z.union([z.string(), z.number(), z.null(), z.boolean()]));
+export type LapisFilter = z.infer<typeof lapisFilterSchema>;
 
-export type NamedLapisFilter = {
-    lapisFilter: LapisFilter;
-    displayName: string;
-};
+export const namedLapisFilterSchema = z.object({
+    lapisFilter: lapisFilterSchema,
+    displayName: z.string(),
+});
+export type NamedLapisFilter = z.infer<typeof namedLapisFilterSchema>;
 
 export type TemporalGranularity = 'day' | 'week' | 'month' | 'year';
 
-export type SequenceType = 'nucleotide' | 'amino acid';
+export const sequenceTypeSchema = z.union([z.literal('nucleotide'), z.literal('amino acid')]);
+export type SequenceType = z.infer<typeof sequenceTypeSchema>;
 
 export type SubstitutionOrDeletion = 'substitution' | 'deletion';
 
@@ -44,3 +49,11 @@ export type SubstitutionOrDeletionEntry<
 > = SubstitutionEntry<S> | DeletionEntry<D>;
 
 export type MutationEntry = SubstitutionEntry | DeletionEntry | InsertionEntry;
+
+export const views = {
+    table: 'table',
+    venn: 'venn',
+} as const;
+
+export const mutationComparisonViewSchema = z.union([z.literal(views.table), z.literal(views.venn)]);
+export type MutationComparisonView = z.infer<typeof mutationComparisonViewSchema>;
