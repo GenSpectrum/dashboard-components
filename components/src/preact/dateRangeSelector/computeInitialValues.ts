@@ -18,6 +18,12 @@ export function computeInitialValues(
         const initialSelectedDateRange = selectableOptions.find((option) => option.value === initialValue)?.value;
 
         if (initialValue !== undefined && initialSelectedDateRange === undefined) {
+            if (selectableOptions.length === 0) {
+                throw new UserFacingError(
+                    'Invalid initialValue',
+                    'There are no selectable options, but initialValue is set.',
+                );
+            }
             throw new UserFacingError(
                 'Invalid initialValue',
                 `Invalid initialValue "${initialValue}", It must be one of ${selectableOptions.map((option) => `'${option.value}'`).join(', ')}`,

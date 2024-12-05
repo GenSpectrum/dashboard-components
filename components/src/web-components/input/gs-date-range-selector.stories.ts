@@ -74,8 +74,8 @@ const meta: Meta<Required<DateRangeSelectorProps>> = {
         initialValue: dateRangeOptionPresets.lastMonth.label,
         dateColumn: 'aDateColumn',
         width: '100%',
-        initialDateFrom: '',
-        initialDateTo: '',
+        initialDateFrom: undefined,
+        initialDateTo: undefined,
     },
     tags: ['autodocs'],
 };

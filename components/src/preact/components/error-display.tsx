@@ -1,5 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
+import { type ZodError } from 'zod';
 
 import { LapisError, UnknownLapisError } from '../../lapisApi/lapisApi';
 
@@ -24,9 +25,19 @@ export class UserFacingError extends Error {
     }
 }
 
+export class InvalidPropsError extends Error {
+    constructor(
+        public readonly zodError: ZodError,
+        public readonly componentProps: Record<string, unknown>,
+    ) {
+        super(zodError.message);
+        this.name = 'InvalidPropsError';
+    }
+}
+
 export type ErrorDisplayProps = {
     error: Error;
-    resetError: () => void;
+    resetError?: () => void;
     layout?: 'horizontal' | 'vertical';
 };
 
@@ -76,10 +87,12 @@ export const ErrorDisplay: FunctionComponent<ErrorDisplayProps> = ({ error, rese
                     )}
                 </div>
             </div>
-            <button onClick={resetError} className='btn btn-sm flex items-center m-4'>
-                <span className='iconify mdi--reload text-lg' />
-                Try again
-            </button>
+            {resetError !== undefined && (
+                <button onClick={resetError} className='btn btn-sm flex items-center m-4'>
+                    <span className='iconify mdi--reload text-lg' />
+                    Try again
+                </button>
+            )}
         </div>
     );
 };
@@ -112,6 +125,28 @@ function getDisplayedErrorMessage(error: Error) {
                 headline: `LAPIS request failed: An unexpected error occurred while fetching ${error.requestedData}`,
                 message: error.message,
             },
+        };
+    }
+
+    if (error instanceof InvalidPropsError) {
+        const firstError = error.zodError.errors[0];
+        let message = error.zodError.issues
+            .map((issue) => {
+                const actual =
+                    issue.path[0] in error.componentProps
+                        ? ` '${JSON.stringify(error.componentProps[issue.path[0]])}'`
+                        : '';
+                return `Unexpected value${actual} for "${issue.path}": ${issue.message}`;
+            })
+            .join(' - ');
+
+        if (firstError.code === 'invalid_type' && firstError.received === 'null') {
+            message = `Is the "${firstError.path[0]}" attribute in the HTML of the correct type? ${message}`;
+        }
+
+        return {
+            headline: 'Error - Invalid component attributes',
+            details: { headline: 'Invalid component attributes', message },
         };
     }
 

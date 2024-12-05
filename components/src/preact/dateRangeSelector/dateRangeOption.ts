@@ -1,24 +1,29 @@
+import z from 'zod';
+
 import { toYYYYMMDD } from './dateConversion';
 
 /**
  * A date range option that can be used in the `gs-date-range-selector` component.
  */
-export type DateRangeOption = {
+export const dateRangeOptionSchema = z.object({
     /** The label of the date range option that will be shown to the user */
-    label: string;
+    label: z.string(),
     /**
      * The start date of the date range in the format `YYYY-MM-DD`.
      * If not set, the date range selector will default to the `earliestDate` property.
      */
-    dateFrom?: string;
+    dateFrom: z.string().date().optional(),
     /**
      * The end date of the date range in the format `YYYY-MM-DD`.
      * If not set, the date range selector will default to the current date.
      */
-    dateTo?: string;
-};
+    dateTo: z.string().date().optional(),
+});
+
+export type DateRangeOption = z.infer<typeof dateRangeOptionSchema>;
 
 export type DateRangeSelectOption = string | { dateFrom: string; dateTo: string };
+
 export class DateRangeOptionChangedEvent extends CustomEvent<DateRangeSelectOption> {
     constructor(detail: DateRangeSelectOption) {
         super('gs-date-range-option-changed', {
