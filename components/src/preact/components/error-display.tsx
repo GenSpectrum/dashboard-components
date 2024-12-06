@@ -136,7 +136,7 @@ function getDisplayedErrorMessage(error: Error) {
                     issue.path[0] in error.componentProps
                         ? ` '${JSON.stringify(error.componentProps[issue.path[0]])}'`
                         : '';
-                return `Unexpected value${actual} for "${issue.path}": ${issue.message}`;
+                return `Unexpected value${actual} for "${issue.path.join('.')}": ${issue.message}`;
             })
             .join(' - ');
 

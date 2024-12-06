@@ -1,11 +1,17 @@
 import { type FunctionComponent } from 'preact';
 import { type Dispatch, type StateUpdater, useContext, useMemo, useState } from 'preact/hooks';
+import z from 'zod';
 
 import { getMutationComparisonTableData } from './getMutationComparisonTableData';
 import { MutationComparisonTable } from './mutation-comparison-table';
 import { MutationComparisonVenn } from './mutation-comparison-venn';
 import { filterMutationData, type MutationData, queryMutationData } from './queryMutationData';
-import { type NamedLapisFilter, type SequenceType } from '../../types';
+import {
+    type MutationComparisonView,
+    mutationComparisonViewSchema,
+    namedLapisFilterSchema,
+    sequenceTypeSchema,
+} from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -21,23 +27,23 @@ import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '..
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
 
-export type View = 'table' | 'venn';
+const mutationComparisonPropsSchema = z.object({
+    width: z.string(),
+    height: z.string(),
+    lapisFilters: z.array(namedLapisFilterSchema).min(1),
+    sequenceType: sequenceTypeSchema,
+    views: z.array(mutationComparisonViewSchema),
+    pageSize: z.union([z.boolean(), z.number()]),
+});
 
-export interface MutationComparisonProps {
-    width: string;
-    height: string;
-    lapisFilters: NamedLapisFilter[];
-    sequenceType: SequenceType;
-    views: View[];
-    pageSize: boolean | number;
-}
+export type MutationComparisonProps = z.infer<typeof mutationComparisonPropsSchema>;
 
 export const MutationComparison: FunctionComponent<MutationComparisonProps> = (componentProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} componentProps={componentProps} schema={mutationComparisonPropsSchema}>
             <ResizeContainer size={size}>
                 <MutationComparisonInner {...componentProps} />
             </ResizeContainer>
@@ -86,7 +92,7 @@ const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = (
         [data, displayedSegments, displayedMutationTypes],
     );
 
-    const getTab = (view: View) => {
+    const getTab = (view: MutationComparisonView) => {
         switch (view) {
             case 'table':
                 return {
