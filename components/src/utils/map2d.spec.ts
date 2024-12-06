@@ -32,7 +32,7 @@ describe('Map2dBase', () => {
         map2d.set('c', 'b', 3);
         map2d.set('c', 'd', 4);
 
-        expect(map2d.getAsArray(0)).toEqual([
+        expect(map2d.getAsArray()).toEqual([
             [1, 2],
             [3, 4],
         ]);
@@ -45,9 +45,9 @@ describe('Map2dBase', () => {
         );
         map2d.set('a', 'b', 2);
         map2d.set('c', 'd', 4);
-        expect(map2d.getAsArray(0)).toEqual([
-            [2, 0],
-            [0, 4],
+        expect(map2d.getAsArray()).toEqual([
+            [2, undefined],
+            [undefined, 4],
         ]);
     });
 
@@ -103,8 +103,8 @@ describe('Map2dBase', () => {
         map2d.set('a', 'b', 2);
         map2d.set('c', 'd', 4);
 
-        expect(map2d.getRow('a', 0)).toEqual([2, 0]);
-        expect(map2d.getRow('c', 0)).toEqual([0, 4]);
+        expect(map2d.getRow('a')).toEqual([2, undefined]);
+        expect(map2d.getRow('c')).toEqual([undefined, 4]);
     });
 
     it('should return an empty array when the row does not exist', () => {
@@ -114,7 +114,7 @@ describe('Map2dBase', () => {
         );
         map2d.set('a', 'b', 2);
 
-        expect(map2d.getRow('c', 0)).toEqual([]);
+        expect(map2d.getRow('c')).toEqual([]);
     });
 
     it('should return content as object', () => {
@@ -185,7 +185,7 @@ describe('Map2dView', () => {
         const view = new Map2dView<string, string, number>(container);
         view.deleteRow('c');
 
-        expect(view.getAsArray(0)).toEqual([[1, 0]]);
+        expect(view.getAsArray()).toEqual([[1, undefined]]);
     });
 
     it('should throw an error when trying to set a value', () => {
@@ -198,7 +198,7 @@ describe('Map2dView', () => {
         const container = createBaseContainer();
         const view = new Map2dView<string, string, number>(container);
 
-        expect(view.getRow('a', 0)).toEqual([1, 0]);
+        expect(view.getRow('a')).toEqual([1, undefined]);
     });
 
     it('should return an empty array when the row does not exist', () => {
@@ -206,7 +206,7 @@ describe('Map2dView', () => {
         const view = new Map2dView<string, string, number>(container);
         view.deleteRow('c');
 
-        expect(view.getRow('c', 0)).toEqual([]);
+        expect(view.getRow('c')).toEqual([]);
     });
 
     function createBaseContainer() {

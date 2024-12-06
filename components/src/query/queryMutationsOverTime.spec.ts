@@ -99,12 +99,8 @@ describe('queryMutationsOverTime', () => {
             granularity: 'day',
         });
 
-        expect(mutationOverTimeData.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([
-            [
-                { proportion: 0.4, count: 4, totalCount: 11 },
-                { proportion: 0, count: 0, totalCount: 0 },
-                { proportion: 0, count: 0, totalCount: 0 },
-            ],
+        expect(mutationOverTimeData.getAsArray()).to.deep.equal([
+            [{ proportion: 0.4, count: 4, totalCount: 11 }, null, null],
             [
                 { proportion: 0.1, count: 1, totalCount: 11 },
                 { proportion: 0.2, count: 2, totalCount: 12 },
@@ -250,17 +246,9 @@ describe('queryMutationsOverTime', () => {
             granularity: 'day',
         });
 
-        expect(mutationOverTimeData.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([
-            [
-                { proportion: 0.4, count: 4, totalCount: 11 },
-                { proportion: 0, count: 0, totalCount: 0 },
-                { proportion: 0, count: 0, totalCount: 0 },
-            ],
-            [
-                { proportion: 0.1, count: 1, totalCount: 11 },
-                { proportion: 0, count: 0, totalCount: 0 },
-                { proportion: 0.3, count: 3, totalCount: 13 },
-            ],
+        expect(mutationOverTimeData.getAsArray()).to.deep.equal([
+            [{ proportion: 0.4, count: 4, totalCount: 11 }, null, null],
+            [{ proportion: 0.1, count: 1, totalCount: 11 }, null, { proportion: 0.3, count: 3, totalCount: 13 }],
         ]);
 
         const sequences = mutationOverTimeData.getFirstAxisKeys();
@@ -368,7 +356,7 @@ describe('queryMutationsOverTime', () => {
             granularity: 'day',
         });
 
-        expect(mutationOverTimeData.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([]);
+        expect(mutationOverTimeData.getAsArray()).to.deep.equal([]);
         expect(mutationOverTimeData.getFirstAxisKeys()).to.deep.equal([]);
         expect(mutationOverTimeData.getSecondAxisKeys()).to.deep.equal([]);
     });
@@ -450,7 +438,7 @@ describe('queryMutationsOverTime', () => {
             granularity: 'day',
         });
 
-        expect(mutationOverTimeData.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([
+        expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
                 { proportion: 0.2, count: 2, totalCount: 11 },
                 { proportion: 0.3, count: 3, totalCount: 12 },
@@ -542,7 +530,7 @@ describe('queryMutationsOverTime', () => {
             granularity: 'day',
         });
 
-        expect(mutationOverTimeData.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([
+        expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
                 { proportion: 0.1, count: 1, totalCount: 11 },
                 { proportion: 0.2, count: 2, totalCount: 12 },
@@ -605,7 +593,7 @@ describe('queryMutationsOverTime', () => {
             granularity: 'day',
         });
 
-        expect(mutationOverTimeData.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([
+        expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
                 {
                     proportion: 0.2,
@@ -699,11 +687,8 @@ describe('queryMutationsOverTime', () => {
             granularity: 'month',
         });
 
-        expect(mutationOverTimeData.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([
-            [
-                { proportion: 0.4, count: 4, totalCount: 11 },
-                { proportion: 0, count: 0, totalCount: 0 },
-            ],
+        expect(mutationOverTimeData.getAsArray()).to.deep.equal([
+            [{ proportion: 0.4, count: 4, totalCount: 11 }, null],
             [
                 { proportion: 0.1, count: 1, totalCount: 11 },
                 { proportion: 0.2, count: 2, totalCount: 12 },
@@ -740,7 +725,7 @@ describe('queryMutationsOverTime', () => {
             granularity: 'month',
         });
 
-        expect(mutationOverTimeData.getAsArray({ count: 0, proportion: 0, totalCount: 0 })).to.deep.equal([]);
+        expect(mutationOverTimeData.getAsArray()).to.deep.equal([]);
 
         const sequences = mutationOverTimeData.getFirstAxisKeys();
         expect(sequences.length).toBe(0);
