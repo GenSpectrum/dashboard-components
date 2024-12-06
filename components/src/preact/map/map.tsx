@@ -1,8 +1,7 @@
-import { Chart, registerables } from 'chart.js';
-import { ChoroplethController, ColorScale, GeoFeature, ProjectionScale, topojson } from 'chartjs-chart-geo';
 import L from 'leaflet';
 import type { FunctionComponent } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
+import * as topojson from 'topojson-client';
 import { type GeometryCollection, type Topology } from 'topojson-specification';
 
 import germany from './germany.json';
@@ -13,8 +12,6 @@ import { formatProportion } from '../shared/table/formatProportion';
 import 'leaflet/dist/leaflet.css';
 
 export type MapProps = { country: keyof typeof countryConfig };
-
-Chart.register(...registerables, ChoroplethController, GeoFeature, ColorScale, ProjectionScale);
 
 function getColor(d: number) {
     return d > 1.0
