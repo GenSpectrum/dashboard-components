@@ -24,7 +24,7 @@ const mapSourceSchema = z.object({
     topologyObjectsKey: z.string(),
 });
 
-type MapSource = z.infer<typeof mapSourceSchema>;
+export type MapSource = z.infer<typeof mapSourceSchema>;
 
 const mapPropsSchema = z.object({
     mapSource: mapSourceSchema,
@@ -35,21 +35,28 @@ export type MapProps = z.infer<typeof mapPropsSchema>;
 function getColor(d: number) {
     return d > 0.5
         ? '#800026'
-        : d > 0.2
+        : d > 0.4
           ? '#BD0026'
-          : d > 0.1
+          : d > 0.3
             ? '#E31A1C'
-            : d > 0.05
+            : d > 0.2
               ? '#FC4E2A'
-              : d > 0.02
+              : d > 0.1
                 ? '#FD8D3C'
-                : d > 0.01
+                : d > 0.05
                   ? '#FEB24C'
-                  : d > 0.005
+                  : d > 0.02
                     ? '#FED976'
-                    : '#FFEDA0';
+                    : d > 0.01
+                      ? '#FFEDA0'
+                      : d > 0.005
+                        ? '#FFF7BC'
+                        : d > 0.002
+                          ? '#FFFFCC'
+                          : d > 0
+                            ? '#FFFFE5'
+                            : '#FFFFFF';
 }
-
 type GeoColl = GeometryCollection<{
     name: string;
 }>;
@@ -132,7 +139,7 @@ const MapInner: FunctionComponent<MapProps> = ({ mapSource }) => {
             // scrollWheelZoom: false,
             zoomControl: false,
             keyboard: false,
-            dragging: false,
+            // dragging: false,
         });
         leafletMap.setView([10, 0], 1.5);
 
