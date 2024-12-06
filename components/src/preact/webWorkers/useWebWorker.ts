@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'preact/hooks';
 
 import { UserFacingError } from '../components/error-display';
 
@@ -23,12 +23,14 @@ export type ErrorWorkerStatus =
       };
 export type WorkerStatus<Response> = LoadingWorkerStatus | SuccessWorkerStatus<Response> | ErrorWorkerStatus;
 
-export function useWebWorker<Request, Response>(messageToWorker: Request, worker: Worker) {
+export function useWebWorker<Request, Response>(messageToWorker: Request, WorkerConstructor: new () => Worker) {
     const [data, setData] = useState<Response | undefined>(undefined);
     const [error, setError] = useState<Error | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
+    const worker = useMemo(() => {
+        const worker = new WorkerConstructor();
+
         worker.onmessage = (event: MessageEvent<WorkerStatus<Response>>) => {
             const eventData = event.data;
             const status = eventData.status;
@@ -59,7 +61,9 @@ export function useWebWorker<Request, Response>(messageToWorker: Request, worker
             setError(new Error(`Worker received a message that it cannot deserialize: ${event.data}`));
             setIsLoading(false);
         };
-    }, [worker]);
+
+        return worker;
+    }, [WorkerConstructor]);
 
     useEffect(() => {
         worker.postMessage(messageToWorker);
