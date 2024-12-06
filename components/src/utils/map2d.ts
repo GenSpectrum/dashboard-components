@@ -3,7 +3,7 @@ export interface Map2d<Key1, Key2, Value> {
 
     set(keyFirstAxis: Key1, keySecondAxis: Key2, value: Value): void;
 
-    getRow(key: Key1, fillEmptyWith: Value): Value[];
+    getRow(key: Key1): (Value | undefined)[];
 
     deleteRow(key: Key1): void;
 
@@ -11,7 +11,7 @@ export interface Map2d<Key1, Key2, Value> {
 
     getSecondAxisKeys(): Key2[];
 
-    getAsArray(fillEmptyWith: Value): Value[][];
+    getAsArray(): (Value | undefined)[][];
 
     serializeFirstAxis(key: Key1): string;
 
@@ -52,13 +52,13 @@ export class Map2dBase<Key1 extends object | string, Key2 extends object | strin
         return this.data.get(serializedKeyFirstAxis)?.get(serializedKeySecondAxis);
     }
 
-    getRow(key: Key1, fillEmptyWith: Value) {
+    getRow(key: Key1) {
         const serializedKeyFirstAxis = this.serializeFirstAxis(key);
         const row = this.data.get(serializedKeyFirstAxis);
         if (row === undefined) {
             return [];
         }
-        return Array.from(this.keysSecondAxis.keys()).map((key) => row.get(key) ?? fillEmptyWith);
+        return Array.from(this.keysSecondAxis.keys()).map((key) => row.get(key));
     }
 
     set(keyFirstAxis: Key1, keySecondAxis: Key2, value: Value) {
@@ -89,10 +89,10 @@ export class Map2dBase<Key1 extends object | string, Key2 extends object | strin
         return Array.from(this.keysSecondAxis.values());
     }
 
-    getAsArray(fillEmptyWith: Value) {
+    getAsArray() {
         return this.getFirstAxisKeys().map((firstAxisKey) => {
             return this.getSecondAxisKeys().map((secondAxisKey) => {
-                return this.get(firstAxisKey, secondAxisKey) ?? fillEmptyWith;
+                return this.get(firstAxisKey, secondAxisKey);
             });
         });
     }
@@ -159,20 +159,20 @@ export class Map2dView<Key1 extends object | string, Key2 extends object | strin
         return Array.from(this.keysSecondAxis.values());
     }
 
-    getAsArray(fillEmptyWith: Value) {
+    getAsArray() {
         return this.getFirstAxisKeys().map((firstAxisKey) => {
             return this.getSecondAxisKeys().map((secondAxisKey) => {
-                return this.baseMap.get(firstAxisKey, secondAxisKey) ?? fillEmptyWith;
+                return this.baseMap.get(firstAxisKey, secondAxisKey);
             });
         });
     }
 
-    getRow(key: Key1, fillEmptyWith: Value) {
+    getRow(key: Key1) {
         const serializedKeyFirstAxis = this.serializeFirstAxis(key);
         if (!this.keysFirstAxis.has(serializedKeyFirstAxis)) {
             return [];
         }
 
-        return this.baseMap.getRow(key, fillEmptyWith);
+        return this.baseMap.getRow(key);
     }
 }

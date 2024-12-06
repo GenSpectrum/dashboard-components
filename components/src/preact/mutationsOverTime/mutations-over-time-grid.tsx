@@ -54,7 +54,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                                 <MutationCell mutation={mutation} />
                             </div>
                             {dates.map((date, columnIndex) => {
-                                const value = data.get(mutation, date) ?? { proportion: 0, count: 0, totalCount: 0 };
+                                const value = data.get(mutation, date) ?? null;
                                 const tooltipPosition = getTooltipPosition(
                                     rowIndex,
                                     shownMutations.length,
@@ -106,10 +106,16 @@ const ProportionCell: FunctionComponent<{
             </p>
             <p>({timeIntervalDisplay(dateClass)})</p>
             <p>{mutation.code}</p>
-            <p>Proportion: {formatProportion(value.proportion)}</p>
-            <p>
-                Count: {value.count} / {value.totalCount} total
-            </p>
+            {value === null ? (
+                <p>No data</p>
+            ) : (
+                <>
+                    <p>Proportion: {formatProportion(value.proportion)}</p>
+                    <p>
+                        Count: {value.count} / {value.totalCount} total
+                    </p>
+                </>
+            )}
         </div>
     );
 
@@ -118,12 +124,14 @@ const ProportionCell: FunctionComponent<{
             <Tooltip content={tooltipContent} position={tooltipPosition}>
                 <div
                     style={{
-                        backgroundColor: getColorWithingScale(value.proportion, colorScale),
-                        color: getTextColorForScale(value.proportion, colorScale),
+                        backgroundColor: getColorWithingScale(value?.proportion, colorScale),
+                        color: getTextColorForScale(value?.proportion, colorScale),
                     }}
                     className={`w-full h-full text-center hover:font-bold text-xs group @container`}
                 >
-                    <span className='invisible @[2rem]:visible'>{formatProportion(value.proportion, 0)}</span>
+                    <span className='invisible @[2rem]:visible'>
+                        {value === null ? '' : formatProportion(value.proportion, 0)}
+                    </span>
                 </div>
             </Tooltip>
         </div>

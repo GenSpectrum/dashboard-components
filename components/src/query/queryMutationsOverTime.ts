@@ -41,7 +41,7 @@ export type MutationOverTimeData = {
     totalCount: number;
 };
 
-export type MutationOverTimeMutationValue = { proportion: number; count: number; totalCount: number };
+export type MutationOverTimeMutationValue = { proportion: number; count: number; totalCount: number } | null;
 export type MutationOverTimeDataGroupedByMutation = Map2d<
     SubstitutionClass | DeletionClass,
     TemporalClass,
@@ -239,11 +239,7 @@ export function groupByMutation(
 
     sortedOverallMutationData.forEach((mutationData) => {
         sortedDates.forEach((date) => {
-            dataArray.set(mutationData, date, {
-                count: 0,
-                proportion: 0,
-                totalCount: 0,
-            });
+            dataArray.set(mutationData, date, null);
         });
     });
 
