@@ -1,6 +1,6 @@
-import Leaflet, { LatLng, LayerGroup } from 'leaflet';
+import Leaflet, { type LayerGroup } from 'leaflet';
 import type { FunctionComponent } from 'preact';
-import { useEffect, useRef } from 'preact/hooks';
+import { useContext, useEffect, useRef } from 'preact/hooks';
 import * as topojson from 'topojson-client';
 import { type GeometryCollection, type Topology } from 'topojson-specification';
 import z from 'zod';
@@ -8,6 +8,8 @@ import z from 'zod';
 import germany from './germany.json';
 import uk from './uk.topo.json';
 import us from './us.topo.json';
+import { queryAggregateData } from '../../query/queryAggregateData';
+import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
@@ -31,19 +33,19 @@ const mapPropsSchema = z.object({
 export type MapProps = z.infer<typeof mapPropsSchema>;
 
 function getColor(d: number) {
-    return d > 1.0
+    return d > 0.5
         ? '#800026'
-        : d > 0.5
+        : d > 0.2
           ? '#BD0026'
-          : d > 0.2
+          : d > 0.1
             ? '#E31A1C'
-            : d > 0.1
+            : d > 0.05
               ? '#FC4E2A'
-              : d > 0.05
+              : d > 0.02
                 ? '#FD8D3C'
-                : d > 0.02
+                : d > 0.01
                   ? '#FEB24C'
-                  : d > 0.01
+                  : d > 0.005
                     ? '#FED976'
                     : '#FFEDA0';
 }
@@ -76,23 +78,58 @@ export const Map: FunctionComponent<MapProps> = (componentProps) => {
 const MapInner: FunctionComponent<MapProps> = ({ mapSource }) => {
     const ref = useRef<HTMLDivElement>(null);
 
-    const { isLoading, geojsonData } = useGeoJsonMap(mapSource);
+    const lapis = useContext(LapisUrlContext);
+    const { isLoading: isLoadingMap, geojsonData } = useGeoJsonMap(mapSource);
+    const {
+        data,
+        error,
+        isLoading: isLoadingLapisData,
+    } = useQuery(
+        async () => queryAggregateData({ dateFrom: '2022-01-01', dateTo: '2022-04-01' }, ['country'], lapis),
+        [lapis],
+    );
 
     useEffect(() => {
-        if (!ref.current || geojsonData === undefined) {
+        if (!ref.current || geojsonData === undefined || data === undefined) {
             return;
         }
 
-        const countries = geojsonData.features.map((feature) => ({
-            ...feature,
-            properties: {
-                ...feature.properties,
-                value: Math.random(),
-            },
-        }));
+        const dataByCountry = data.reduce(
+            (acc, row) => ({
+                ...acc,
+                [row.country as string]: row,
+            }),
+            {} as Record<string, { count: number; proportion: number }>,
+        );
+        console.log(dataByCountry);
+
+        const found = [];
+
+        const countries = geojsonData.features.map((feature) => {
+            const name = feature.properties.name;
+
+            if (!(name in dataByCountry)) {
+                // console.log(name);
+            } else {
+                found.push(name);
+            }
+
+            const data2 = dataByCountry[name] || { count: 0, proportion: 0 };
+
+            return {
+                ...feature,
+                properties: {
+                    ...feature.properties,
+                    ...data2,
+                },
+            };
+        });
+
+        const notFound = Object.keys(dataByCountry).filter((name) => !found.includes(name));
+        console.warn('notFound', notFound);
 
         const leafletMap = Leaflet.map(ref.current, {
-            scrollWheelZoom: false,
+            // scrollWheelZoom: false,
             zoomControl: false,
             keyboard: false,
             dragging: false,
@@ -101,28 +138,33 @@ const MapInner: FunctionComponent<MapProps> = ({ mapSource }) => {
 
         Leaflet.geoJson(countries, {
             style: (feature) => ({
-                fillColor: getColor(feature?.properties.value),
+                fillColor: getColor(feature?.properties.proportion),
                 fillOpacity: 0.5,
                 color: 'black',
                 weight: 1,
             }),
         })
             .bindTooltip((a) => {
-                const feature = (a as LayerGroup<{ name: string; value: number }>).feature;
+                const feature = (a as LayerGroup<{ name: string; proportion: number; count: number }>).feature;
                 if (feature === undefined || feature.type !== 'Feature') {
                     return '';
                 }
-                return `${feature.properties.name}: ${formatProportion(feature.properties.value)}`;
+                const properties = feature.properties;
+                return `${properties.name}: ${properties.count.toLocaleString('en-us')} (${formatProportion(properties.proportion)})`;
             })
             .addTo(leafletMap);
 
         return () => {
             leafletMap.remove();
         };
-    }, [ref, geojsonData]);
+    }, [ref, data, geojsonData]);
 
-    if (isLoading) {
+    if (isLoadingMap || isLoadingLapisData) {
         return <LoadingDisplay />;
+    }
+
+    if (error) {
+        throw error;
     }
 
     return (
