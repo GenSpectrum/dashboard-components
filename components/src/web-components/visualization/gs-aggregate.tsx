@@ -101,7 +101,7 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-aggregate-component': AggregateComponent;
+        'gs-aggregate': AggregateComponent;
     }
 }
 
@@ -109,7 +109,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-aggregate-component': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-aggregate': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
         }
     }
 }
