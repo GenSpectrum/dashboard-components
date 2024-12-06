@@ -54,7 +54,11 @@ export const ColorScaleSelector: FunctionComponent<ColorScaleSelectorProps> = ({
     );
 };
 
-export const getColorWithingScale = (value: number, colorScale: ColorScale) => {
+export const getColorWithingScale = (value: number | undefined, colorScale: ColorScale) => {
+    if (value === undefined) {
+        return 'lightgrey';
+    }
+
     if (colorScale.min === colorScale.max) {
         return singleGraphColorRGBByName(colorScale.color, 0);
     }
@@ -66,8 +70,8 @@ export const getColorWithingScale = (value: number, colorScale: ColorScale) => {
     return singleGraphColorRGBByName(colorScale.color, alpha);
 };
 
-export const getTextColorForScale = (value: number, colorScale: ColorScale) => {
-    if (colorScale.min === colorScale.max) {
+export const getTextColorForScale = (value: number | undefined, colorScale: ColorScale) => {
+    if (value === undefined || colorScale.min === colorScale.max) {
         return 'black';
     }
 

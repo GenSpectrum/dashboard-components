@@ -13178,30 +13178,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -13340,14 +13319,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -13568,43 +13540,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:R40H',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -13629,43 +13573,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:T49I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -13674,22 +13590,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -13698,14 +13600,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -13727,14 +13622,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -13743,14 +13631,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -13767,14 +13648,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -13788,22 +13662,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -13828,27 +13688,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:A134V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -13857,14 +13703,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -13873,14 +13712,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -13926,14 +13758,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -13950,14 +13775,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -13979,22 +13797,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -14003,75 +13807,19 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:D144H',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -14085,22 +13833,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'N:A155V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -14117,43 +13851,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:P168S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -14162,14 +13868,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -14194,35 +13893,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:S194P',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -14231,38 +13909,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -14398,14 +14048,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -14414,14 +14057,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -14512,14 +14148,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'N:Q240L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -14544,14 +14173,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -14573,14 +14195,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'N:T265I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -14589,22 +14204,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -14642,22 +14243,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -14666,14 +14253,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -14682,14 +14262,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -14711,14 +14284,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -14735,22 +14301,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -14788,14 +14340,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -14817,14 +14362,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'N:T362I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -14833,22 +14371,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -14878,30 +14402,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'N:P364-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -14926,14 +14429,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -14963,14 +14459,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -14979,51 +14468,16 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:P365-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -15048,14 +14502,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -15069,14 +14516,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -15085,14 +14525,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -15122,30 +14555,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'N:T366-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -15170,43 +14582,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:E367-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -15231,43 +14615,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:P368-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -15292,43 +14648,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:K369-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -15353,43 +14681,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:K370-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -15414,43 +14714,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:D371-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -15475,43 +14747,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:K372-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -15536,43 +14780,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:K373-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -15597,43 +14813,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:K374-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -15658,43 +14846,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:K375-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -15719,35 +14879,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:A376-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -15780,35 +14919,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:D377-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -15841,35 +14959,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:E378-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -15902,35 +14999,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:T379I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -15939,22 +15015,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -15976,22 +15038,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'N:T379-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16024,35 +15072,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:Q380-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16085,35 +15112,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:A381-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16146,35 +15152,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:L382-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16207,27 +15192,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:P383L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -16236,22 +15207,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -16260,22 +15217,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -16297,30 +15240,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -16329,35 +15251,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:P383-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16390,35 +15291,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:Q384-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16451,35 +15331,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:R385-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16512,35 +15371,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:Q386-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16573,35 +15411,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:K387-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16634,35 +15451,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:K388-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16695,35 +15491,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:Q389-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16756,35 +15531,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:Q390-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16817,35 +15571,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:T391-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16878,35 +15611,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:V392-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -16939,35 +15651,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:T393-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17000,35 +15691,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:L394-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17061,35 +15731,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:L395-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17122,35 +15771,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:P396-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17183,35 +15811,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:A397-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17244,35 +15851,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:A398-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17305,35 +15891,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:D399-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17366,35 +15931,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:L400-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17427,35 +15971,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:D401-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17488,35 +16011,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:D402-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17549,35 +16051,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:F403-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17610,35 +16091,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:S404-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17671,35 +16131,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:K405-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17732,35 +16171,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:Q406-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17793,35 +16211,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:L407-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17854,35 +16251,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:Q408-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17915,35 +16291,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:Q409-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -17976,35 +16331,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:S410-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18037,35 +16371,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:M411-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18098,35 +16411,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:S412-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18159,14 +16451,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -18233,22 +16518,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'N:S413-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18281,14 +16552,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -18318,14 +16582,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -18355,22 +16612,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'N:A414-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18403,35 +16646,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:D415-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18464,35 +16686,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:S416-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18525,27 +16726,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:T417I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -18554,22 +16741,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -18599,22 +16772,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'N:T417-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18647,35 +16806,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:Q418-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18708,35 +16846,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:A419-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18769,35 +16886,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'N:*420-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18830,27 +16926,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:L16F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -18859,14 +16941,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -18891,14 +16966,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -18912,14 +16980,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -18965,14 +17026,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:L27F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -18981,14 +17035,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -19034,22 +17081,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -19087,14 +17120,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:H81-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -19127,22 +17153,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -19514,30 +17526,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:V106I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -19546,14 +17537,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -19575,14 +17559,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:H110Y',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -20071,30 +18048,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -20111,14 +18067,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -20132,14 +18081,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -20148,22 +18090,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -20185,14 +18113,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:P286L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -20201,14 +18122,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -20225,43 +18139,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:M297I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -20270,14 +18156,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -20286,14 +18165,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -20307,38 +18179,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:S302F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -20368,30 +18212,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:P309L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -20445,22 +18268,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -20490,30 +18299,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:T346I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -20612,14 +18400,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:K399R',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -20660,14 +18441,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -20795,30 +18569,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:L446F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -20843,14 +18596,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -20864,14 +18610,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -20880,14 +18619,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -20904,35 +18636,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:A498V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -21100,14 +18811,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:K515T',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -21124,14 +18828,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -21148,14 +18845,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -21193,14 +18883,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -21283,14 +18966,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:A540V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -21299,14 +18975,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -21323,22 +18992,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -21352,14 +19007,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -21368,14 +19016,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -21384,22 +19025,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -21482,22 +19109,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -21506,14 +19119,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -21535,38 +19141,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -21588,14 +19166,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:L580F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -21620,22 +19191,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -21649,38 +19206,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:S610L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -21697,14 +19226,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -21718,22 +19240,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -21758,14 +19266,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -21779,14 +19280,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -21795,14 +19289,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -21893,14 +19380,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:A656V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -21925,14 +19405,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -21941,43 +19414,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:A690V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -22015,14 +19460,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:S723F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -22031,30 +19469,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -22076,14 +19493,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:P732S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -22092,14 +19502,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -22116,59 +19519,17 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:K734R',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -22185,14 +19546,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -22259,30 +19613,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:A872V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -22299,14 +19632,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -22320,14 +19646,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:M902V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -22336,22 +19655,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -22381,22 +19686,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:A903V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -22405,14 +19696,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -22466,14 +19750,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -22490,14 +19767,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -22551,27 +19821,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:Q998H',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -22612,14 +19868,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -22633,14 +19882,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -22665,22 +19907,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -22694,14 +19922,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -22726,22 +19947,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -22763,14 +19970,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -22787,22 +19987,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -22869,14 +20055,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:L1130F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -22885,14 +20064,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -22930,38 +20102,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:A1151V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -22991,14 +20135,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:H1160Y',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -23007,22 +20144,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -23031,14 +20154,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -23052,22 +20168,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:R1170C',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -23084,14 +20186,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -23113,14 +20208,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:N1172S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -23129,30 +20217,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -23174,22 +20241,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:A1204S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -23222,14 +20275,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -23243,22 +20289,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -23296,14 +20328,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:T1241I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -23320,22 +20345,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -23344,14 +20355,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -23487,22 +20491,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -23527,27 +20517,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:M1448T',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -23564,14 +20540,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -23588,43 +20557,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:T1474I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -23662,38 +20603,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:P1497L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -23710,14 +20623,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -23731,30 +20637,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -23792,22 +20677,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -23824,14 +20695,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -23845,14 +20709,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:S1510F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -23869,14 +20726,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -23906,38 +20756,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:T1597I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -23967,38 +20789,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:S1612L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -24015,14 +20809,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -24044,14 +20831,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -24060,14 +20840,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -24089,38 +20862,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:P1640S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -24150,14 +20895,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:K1655N',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -24166,22 +20904,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -24211,38 +20935,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:V1750M',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -24280,14 +20976,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -24320,43 +21009,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:T1788M',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -24365,14 +21026,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -24394,14 +21048,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:T1794I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -24418,14 +21065,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -24455,14 +21095,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:P1803S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -24471,22 +21104,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -24524,30 +21143,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -24577,14 +21175,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:T1822I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -24593,22 +21184,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -24617,14 +21194,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -24646,14 +21216,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -24686,27 +21249,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:T1854I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -24715,14 +21264,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -24739,14 +21281,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -24768,30 +21303,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -24808,14 +21322,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -24837,22 +21344,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -24861,14 +21354,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -24967,14 +21453,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -24991,35 +21470,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:T2016I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -25028,14 +21486,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -25044,14 +21495,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -25065,30 +21509,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:E2042K',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -25113,67 +21536,18 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:V2090A',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -25195,46 +21569,11 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -25272,14 +21611,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -25309,38 +21641,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:S2103F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -25357,43 +21661,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:S2114F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -25402,22 +21678,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -25439,30 +21701,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -25471,43 +21712,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:T2124I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -25516,14 +21729,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -25540,14 +21746,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -25561,30 +21760,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -25593,14 +21771,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -25630,14 +21801,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -25744,30 +21908,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -25776,59 +21919,17 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:K2219R',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -25866,22 +21967,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -25988,30 +22075,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -26020,14 +22086,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -26065,14 +22124,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -26102,22 +22154,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:T2300I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -26126,14 +22164,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -26163,14 +22194,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:S2488F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -26179,14 +22203,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -26224,14 +22241,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:S2500F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -26272,14 +22282,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -26346,14 +22349,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:A2529V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -26386,14 +22382,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -26431,14 +22420,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -26447,14 +22429,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -26484,22 +22459,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -26508,59 +22469,17 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:V2577G',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -26569,35 +22488,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:A2584V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -26614,14 +22512,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -26630,14 +22521,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -26651,38 +22535,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:E2585G',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -26691,22 +22547,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -26720,14 +22562,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -26736,22 +22571,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -26781,14 +22602,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -26805,30 +22619,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -26911,22 +22704,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -26935,22 +22714,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -27033,14 +22798,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -27261,14 +23019,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:A3143V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -27330,14 +23081,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -27362,14 +23106,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -27399,22 +23136,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -27431,14 +23154,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -27492,35 +23208,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:S3244L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -27537,14 +23232,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -27627,14 +23315,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:L3352F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -27643,22 +23324,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -27675,14 +23342,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -27797,14 +23457,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -27871,14 +23524,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:P3395Y',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -27932,30 +23578,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:V3420L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -27964,14 +23589,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -27993,14 +23611,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:A3523V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -28017,14 +23628,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -28041,14 +23645,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -28062,14 +23659,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -28192,22 +23782,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -28346,14 +23922,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -28375,22 +23944,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -28399,22 +23954,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -28436,22 +23977,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -28468,14 +23995,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -28725,22 +24245,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:T4065I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -28749,14 +24255,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -28773,14 +24272,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -28834,51 +24326,16 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:T4090I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -28908,38 +24365,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:D4117N',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -28956,27 +24385,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1a:T4129I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -28993,14 +24408,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -29017,14 +24425,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -29038,46 +24439,11 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -29168,22 +24534,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -29200,14 +24552,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -29282,14 +24627,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -29351,14 +24689,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -29367,22 +24698,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -29457,14 +24774,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1a:S4398L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -29481,22 +24791,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -29526,14 +24822,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -29542,30 +24831,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -29595,14 +24863,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -29611,14 +24872,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -29664,30 +24918,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -29701,14 +24934,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:P218L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -29717,14 +24943,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -29749,51 +24968,16 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1b:G219S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -29810,14 +24994,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -29839,14 +25016,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -29945,38 +25115,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:I457V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -29985,14 +25127,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -30006,14 +25141,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:A520V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -30022,14 +25150,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -30038,14 +25159,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -30128,14 +25242,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:P976S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -30144,22 +25251,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -30189,14 +25282,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:P1005S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -30237,35 +25323,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1b:S1159T',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -30274,51 +25339,16 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1b:A1160V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -30327,14 +25357,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -30351,35 +25374,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1b:Y1176H',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -30396,22 +25398,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -30420,27 +25408,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1b:S1182L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -30449,22 +25423,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -30481,14 +25441,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -30555,14 +25508,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:V1310I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -30571,14 +25517,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -30677,14 +25616,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:P1427S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -30693,22 +25625,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -30725,43 +25643,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1b:T1511I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -30778,14 +25668,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -30815,14 +25698,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -30847,14 +25723,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -30868,14 +25737,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -30884,14 +25746,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -30900,14 +25755,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -30982,30 +25830,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:G1568S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -31022,14 +25849,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -31043,38 +25863,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:Y1593D',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -31083,22 +25875,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -31165,22 +25943,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:A1662V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -31189,22 +25953,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -31226,22 +25976,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:L1681F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -31295,22 +26031,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -31319,14 +26041,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -31348,22 +26063,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:L1701F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -31388,14 +26089,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -31417,14 +26111,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -31531,14 +26218,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:A1744V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -31555,14 +26235,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -31579,14 +26252,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -31600,22 +26266,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -31661,14 +26313,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -31677,22 +26322,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -31714,38 +26345,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:P1967S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -31754,14 +26357,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -31775,14 +26371,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:T2048I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -31791,14 +26380,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -31807,14 +26389,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -31852,22 +26427,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -31958,14 +26519,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:D2183G',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -31974,14 +26528,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -31990,22 +26537,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -32019,14 +26552,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:L2213F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -32043,14 +26569,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -32067,14 +26586,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -32088,14 +26600,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -32104,14 +26609,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -32128,43 +26626,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF1b:P2256S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -32189,14 +26659,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -32226,14 +26689,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -32263,22 +26719,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:F2330L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -32287,14 +26729,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -32303,22 +26738,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -32340,22 +26761,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -32372,14 +26779,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -32409,14 +26809,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -32425,14 +26818,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -32446,14 +26832,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:T2432I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -32462,14 +26841,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -32629,30 +27001,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:L2560F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -32690,14 +27041,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF1b:R2613N',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -32751,14 +27095,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF3a:V13L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -32812,14 +27149,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF3a:G18D',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -32873,14 +27203,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF3a:A23S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -32889,14 +27212,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -32934,14 +27250,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF3a:A23V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -32958,14 +27267,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -32982,27 +27284,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF3a:T24I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -33043,14 +27331,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -33072,14 +27353,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -33088,22 +27362,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -33117,14 +27377,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF3a:L53F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -33141,22 +27394,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -33178,14 +27417,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF3a:A59T',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -33202,14 +27434,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -33247,30 +27472,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -33348,14 +27552,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -33430,14 +27627,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -33552,38 +27742,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -33592,14 +27754,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -33621,14 +27776,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -33666,38 +27814,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF3a:L106F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -33706,14 +27826,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -33727,14 +27840,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF3a:L108F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -33743,14 +27849,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -33788,14 +27887,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF3a:A110V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -33804,14 +27896,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -33828,43 +27913,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF3a:N119Y',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -33873,14 +27930,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -33910,22 +27960,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF3a:T175I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -33934,14 +27970,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -33971,14 +28000,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF3a:D199H',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -33987,14 +28009,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -34003,14 +28018,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -34040,14 +28048,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -34056,14 +28057,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -34080,14 +28074,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -34162,22 +28149,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -34202,43 +28175,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF3a:P240S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -34263,59 +28208,17 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF6:L35F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -34324,14 +28227,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -34398,22 +28294,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF7a:L5F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -34483,14 +28365,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -34507,14 +28382,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -34581,14 +28449,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF7a:P34S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -34597,22 +28458,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -34629,14 +28476,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -34666,14 +28506,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -34682,14 +28515,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -34727,30 +28553,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -34788,30 +28593,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -34849,30 +28633,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -34894,14 +28657,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -34947,22 +28703,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF7a:F63H',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -34995,14 +28737,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -35016,14 +28751,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -35032,14 +28760,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35077,30 +28798,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35138,30 +28838,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35199,30 +28878,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35260,30 +28918,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35321,30 +28958,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35382,30 +28998,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35443,30 +29038,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35504,30 +29078,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35565,30 +29118,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35626,30 +29158,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35687,30 +29198,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -35748,38 +29238,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -35801,46 +29263,11 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF7a:L77-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -35862,14 +29289,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF7a:L96F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -35902,43 +29322,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF7a:A105S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -35955,14 +29347,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -36106,30 +29491,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF7b:F28L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -36138,14 +29502,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -36167,30 +29524,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF7b:H42Y',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -36260,30 +29596,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -36313,14 +29628,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -36329,22 +29637,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -36358,38 +29652,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -36398,35 +29664,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF8:P36L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -36435,22 +29680,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -36480,22 +29711,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -36533,30 +29750,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF8:A51V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -36594,38 +29790,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF8:S54L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -36642,14 +29810,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -36663,14 +29824,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -36695,14 +29849,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -36724,14 +29871,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -36777,22 +29917,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF8:S67F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -36825,14 +29951,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -36846,14 +29965,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -36907,14 +30019,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -36931,14 +30036,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -37204,14 +30302,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF9b:P3L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -37220,14 +30311,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -37350,14 +30434,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -37464,22 +30541,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -37488,22 +30551,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -37724,30 +30773,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -37769,14 +30797,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -37814,14 +30835,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF9b:V37I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -37846,30 +30860,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -37883,14 +30876,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -37899,14 +30885,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -37923,51 +30902,16 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'ORF9b:S50L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -37976,14 +30920,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -38013,22 +30950,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -38037,22 +30960,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -38119,38 +31028,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'ORF9b:A75V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -38159,14 +31040,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -38241,38 +31115,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:L8F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -38289,35 +31135,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'S:L18F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -38342,14 +31167,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -38790,14 +31608,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:G35S',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -38973,22 +31784,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:S60F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -39005,14 +31802,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -39034,14 +31824,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:A67V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -39058,14 +31841,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -39217,22 +31993,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:V70I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -39241,22 +32003,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -39265,14 +32013,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -39347,14 +32088,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -39363,14 +32097,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -39379,22 +32106,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -39408,22 +32121,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -39448,27 +32147,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'S:T95I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -39501,14 +32186,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -39538,14 +32216,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -39554,14 +32225,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -39583,22 +32247,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:R102G',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -39615,14 +32265,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -39631,14 +32274,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -39843,22 +32479,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -39867,14 +32489,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -39896,14 +32511,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -39949,14 +32557,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:H146-',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -39973,14 +32574,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -40018,14 +32612,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -40034,14 +32621,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -40050,51 +32630,16 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'S:K150I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -40140,14 +32685,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -40164,22 +32702,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -40193,14 +32717,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:M153I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -40803,22 +33320,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:A222V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -40941,14 +33444,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -40965,14 +33461,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -41047,30 +33536,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:T307I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -41079,14 +33547,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -41108,14 +33569,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:T323I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -41124,22 +33578,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -41156,14 +33596,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -41291,14 +33724,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:R346I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -41315,14 +33741,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -41339,35 +33758,14 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'S:R346K',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -41384,14 +33782,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -41429,14 +33820,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -41840,22 +34224,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:T385I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -41888,14 +34258,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -42206,14 +34569,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:L441F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -42230,38 +34586,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -42885,38 +35213,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -43015,46 +35315,11 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -43365,14 +35630,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:T547I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -43381,14 +35639,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -43405,22 +35656,8 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -43617,38 +35854,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
                         [
                             '2024-01-25',
                             {
@@ -43792,14 +36001,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:E654V',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -43914,14 +36116,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:T678I',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -43938,14 +36133,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -43954,14 +36142,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -44036,14 +36217,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:S680F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -44235,14 +36409,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -44259,14 +36426,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 980,
                             },
                         ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -44288,14 +36448,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -44304,14 +36457,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -44328,14 +36474,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -44402,14 +36541,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                 [
                     'S:S704L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -44426,14 +36558,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -44540,38 +36665,10 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
+                        ['2024-01-23', null],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
                         [
                             '2024-01-26',
                             {
@@ -45020,14 +37117,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 457,
                             },
                         ],
-                        [
-                            '2024-01-21',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-21', null],
                         [
                             '2024-01-22',
                             {
@@ -45097,14 +37187,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -45158,14 +37241,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -45349,30 +37425,9 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
@@ -45394,14 +37449,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -45410,43 +37458,15 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1037,
                             },
                         ],
-                        [
-                            '2024-01-24',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-25',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-24', null],
+                        ['2024-01-25', null],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'S:L1224F',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -45455,14 +37475,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 538,
                             },
                         ],
-                        [
-                            '2024-01-22',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-22', null],
                         [
                             '2024-01-23',
                             {
@@ -45585,14 +37598,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
@@ -45609,27 +37615,13 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 841,
                             },
                         ],
-                        [
-                            '2024-01-26',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-26', null],
                     ],
                 ],
                 [
                     'S:V1264L',
                     [
-                        [
-                            '2024-01-20',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-20', null],
                         [
                             '2024-01-21',
                             {
@@ -45646,14 +37638,7 @@ export const aminoAcidMutationsByDay: MutationOverTimeMockData = {
                                 totalCount: 1135,
                             },
                         ],
-                        [
-                            '2024-01-23',
-                            {
-                                count: 0,
-                                proportion: 0,
-                                totalCount: 0,
-                            },
-                        ],
+                        ['2024-01-23', null],
                         [
                             '2024-01-24',
                             {
