@@ -1,5 +1,6 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useState, useRef } from 'preact/hooks';
+import { useContext, useRef, useState } from 'preact/hooks';
+import z from 'zod';
 
 import { MutationFilterInfo } from './mutation-filter-info';
 import { parseAndValidateMutation, type ParsedMutationFilter } from './parseAndValidateMutation';
@@ -9,13 +10,23 @@ import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 
-export interface MutationFilterInnerProps {
-    initialValue?: SelectedMutationFilterStrings | string[] | undefined;
-}
+const selectedMutationFilterStringsSchema = z.object({
+    nucleotideMutations: z.array(z.string()),
+    aminoAcidMutations: z.array(z.string()),
+    nucleotideInsertions: z.array(z.string()),
+    aminoAcidInsertions: z.array(z.string()),
+});
+export type SelectedMutationFilterStrings = z.infer<typeof selectedMutationFilterStringsSchema>;
+const mutationFilterInnerPropsSchema = z.object({
+    initialValue: z.union([selectedMutationFilterStringsSchema.optional(), z.array(z.string()), z.undefined()]),
+});
 
-export interface MutationFilterProps extends MutationFilterInnerProps {
-    width: string;
-}
+const mutationFilterPropsSchema = mutationFilterInnerPropsSchema.extend({
+    width: z.string(),
+});
+
+export type MutationFilterInnerProps = z.infer<typeof mutationFilterInnerPropsSchema>;
+export type MutationFilterProps = z.infer<typeof mutationFilterPropsSchema>;
 
 export type SelectedFilters = {
     nucleotideMutations: (SubstitutionClass | DeletionClass)[];
@@ -24,13 +35,15 @@ export type SelectedFilters = {
     aminoAcidInsertions: InsertionClass[];
 };
 
-export type SelectedMutationFilterStrings = {
-    [Key in keyof SelectedFilters]: string[];
-};
-
-export const MutationFilter: FunctionComponent<MutationFilterProps> = ({ initialValue, width }) => {
+export const MutationFilter: FunctionComponent<MutationFilterProps> = (props) => {
+    const { width, initialValue } = props;
     return (
-        <ErrorBoundary size={{ height: '3.375rem', width }} layout='horizontal'>
+        <ErrorBoundary
+            size={{ height: '3.375rem', width }}
+            layout='horizontal'
+            schema={mutationFilterPropsSchema}
+            componentProps={props}
+        >
             <div style={width}>
                 <MutationFilterInner initialValue={initialValue} />
             </div>
