@@ -47,7 +47,6 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     // prettier-ignore
     // The multiline union type must not start with `|` because it looks weird in the Storybook docs
     /**
-     *   Required.
      * Either a LAPIS filter or an array of LAPIS filters to calculate the prevalence for.
      *
      * The `lapisFilter` will be sent as is to LAPIS to select the data.
@@ -57,7 +56,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
      * It should be human-readable.
      *
      */
-    @property({type: Object})
+    @property({ type: Object })
     numeratorFilter:
         {
             lapisFilter: Record<string, string | number | null | boolean>;
@@ -66,11 +65,9 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
         | {
         lapisFilter: Record<string, string | number | null | boolean>;
         displayName: string;
-    }[] = {displayName: '', lapisFilter: {}};
+    }[] = { displayName: '', lapisFilter: {} };
 
     /**
-     * Required.
-     *
      * The LAPIS filter, to select the data of the reference.
      * It must be a valid LAPIS filter object.
      */
@@ -133,7 +130,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
      * Must be a field of type `date` in LAPIS.
      */
     @property({ type: String })
-    lapisDateField: string = 'date';
+    lapisDateField: string = '';
 
     /**
      * The maximum number of rows to display in the table view.

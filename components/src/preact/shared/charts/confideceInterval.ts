@@ -1,10 +1,11 @@
-// calculateWilsonInterval calculates the Wilson score interval for 95% confidence.
-//
-// This function is based on https://github.com/erikfox/wilson-interval, but without
-// high precision math.
-//
-// observed - number of observed positive outcomes
-// sample - number of experiments or size of the sample
+import z from 'zod';
+
+/*
+ * calculateWilsonInterval calculates the Wilson score interval for 95% confidence.
+ *This function is based on https://github.com/erikfox/wilson-interval, but without high precision math.
+ * observed - number of observed positive outcomes
+ * sample - number of experiments or size of the sample
+ */
 export function wilson95PercentConfidenceInterval(observed: number, sample: number) {
     const p = observed / sample;
     const n = sample;
@@ -31,4 +32,5 @@ export const confidenceIntervalDataLabel = (
     return `${label}${value.toFixed(3)} (${lowerLimit?.toFixed(3)} - ${upperLimit?.toFixed(3)})`;
 };
 
-export type ConfidenceIntervalMethod = 'wilson' | 'none';
+export const confidenceIntervalMethodSchema = z.union([z.literal('wilson'), z.literal('none')]);
+export type ConfidenceIntervalMethod = z.infer<typeof confidenceIntervalMethodSchema>;

@@ -10,6 +10,7 @@ import numeratorFilterNoData from './__mockData__/numeratorFilterNoData.json';
 import numeratorOneDataset from './__mockData__/numeratorFilterOneDataset.json';
 import { PrevalenceOverTime, type PrevalenceOverTimeProps } from './prevalence-over-time';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
 
 export default {
     title: 'Visualization/PrevalenceOverTime',
@@ -253,6 +254,19 @@ export const ShowsNoDataBanner: StoryObj<PrevalenceOverTimeProps> = {
     play: async ({ canvas }) => {
         await waitFor(() => expect(canvas.getByText('No data available.', { exact: false })).toBeVisible(), {
             timeout: 10000,
+        });
+    },
+};
+
+export const WithNoLapisDateField: StoryObj<PrevalenceOverTimeProps> = {
+    ...OneVariant,
+    args: {
+        ...OneVariant.args,
+        lapisDateField: '',
+    },
+    play: async ({ canvasElement, step }) => {
+        step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
         });
     },
 };
