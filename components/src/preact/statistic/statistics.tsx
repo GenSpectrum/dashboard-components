@@ -1,8 +1,9 @@
 import { type FunctionComponent } from 'preact';
 import { useContext } from 'preact/hooks';
+import z from 'zod';
 
 import { queryGeneralStatistics } from '../../query/queryGeneralStatistics';
-import { type LapisFilter } from '../../types';
+import { lapisFilterSchema } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
@@ -11,19 +12,20 @@ import { ResizeContainer } from '../components/resize-container';
 import { formatProportion } from '../shared/table/formatProportion';
 import { useQuery } from '../useQuery';
 
-export type StatisticsProps = {
-    width: string;
-    height: string;
-    numeratorFilter: LapisFilter;
-    denominatorFilter: LapisFilter;
-};
+const statisticsPropsSchema = z.object({
+    width: z.string(),
+    height: z.string(),
+    numeratorFilter: lapisFilterSchema,
+    denominatorFilter: lapisFilterSchema,
+});
+export type StatisticsProps = z.infer<typeof statisticsPropsSchema>;
 
 export const Statistics: FunctionComponent<StatisticsProps> = (componentProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} schema={statisticsPropsSchema} componentProps={componentProps}>
             <ResizeContainer size={size}>
                 <StatisticsInner {...componentProps} />
             </ResizeContainer>
