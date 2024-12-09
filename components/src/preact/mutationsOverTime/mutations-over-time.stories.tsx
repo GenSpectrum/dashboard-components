@@ -6,6 +6,7 @@ import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
 
 const meta: Meta<MutationsOverTimeProps> = {
     title: 'Visualization/Mutation over time',
@@ -153,5 +154,18 @@ export const ShowsNoDataMessageForStrictFilters: StoryObj<MutationsOverTimeProps
                 timeout: 10000,
             },
         );
+    },
+};
+
+export const WithNoLapisDateFieldField: StoryObj<MutationsOverTimeProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        lapisDateField: '',
+    },
+    play: async ({ canvasElement, step }) => {
+        step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
+        });
     },
 };
