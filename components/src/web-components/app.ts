@@ -3,11 +3,14 @@ import { Task } from '@lit/task';
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import z from 'zod';
 
 import { lapisContext } from './lapis-context';
 import { referenceGenomeContext } from './reference-genome-context';
 import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import { fetchReferenceGenome } from '../lapisApi/lapisApi';
+
+const lapisUrlSchema = z.string().url();
 
 /**
  * ## Context
@@ -50,7 +53,9 @@ export class App extends LitElement {
      */
     private updateReferenceGenome = new Task(this, {
         task: async () => {
-            this.referenceGenome = await fetchReferenceGenome(this.lapis);
+            const lapisUrl = lapisUrlSchema.parse(this.lapis);
+
+            this.referenceGenome = await fetchReferenceGenome(lapisUrl);
         },
         args: () => [this.lapis],
     });
@@ -58,16 +63,23 @@ export class App extends LitElement {
     override render() {
         return this.updateReferenceGenome.render({
             complete: () => html``, // Children will be rendered in the light DOM anyway. We can't use slots without a shadow DOM.
-            error: () =>
-                html` <div class="m-2 w-full alert alert-error">
-                    Error: Cannot fetch reference genome. Is LAPIS available?
-                </div>`,
+            error: (error) => {
+                if (error instanceof z.ZodError) {
+                    return GsAppError(`Invalid LAPIS URL: '${this.lapis}'`);
+                }
+
+                return GsAppError('Cannot fetch reference genome. Is LAPIS available?');
+            },
         });
     }
 
     override createRenderRoot() {
         return this;
     }
+}
+
+function GsAppError(error: string) {
+    return html` <div class="m-2 w-full alert alert-error">Error: ${error}</div>`;
 }
 
 declare global {
