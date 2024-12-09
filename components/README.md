@@ -44,19 +44,19 @@ We use [Lit](https://lit.dev/) to create web components.
 
 We have split the package into two parts:
 
--   The components, which are web components that can be used in the browser.
-    -   They can be imported with `import '@genspectrum/dashboard-components/components';`
--   utility functions, which can also be used in a node environment.
-    -   They can be imported with `import '@genspectrum/dashboard-components/util';`
+- The components, which are web components that can be used in the browser.
+    - They can be imported with `import '@genspectrum/dashboard-components/components';`
+- utility functions, which can also be used in a node environment.
+    - They can be imported with `import '@genspectrum/dashboard-components/util';`
 
 We primarily provide two kinds of components:
 
--   **Visualization components** (charts, tables, etc.)
-    -   Those components fetch data from the LAPIS instance and visualize it.
--   **Input components** that let you specify sequence filters for the LAPIS requests.
-    -   Input changes will fire events that can be listened to by the visualization components.
-        It is the responsibility of the dashbaord maintainer to listen to those events
-        and to wire the data correctly into the visualization components.
+- **Visualization components** (charts, tables, etc.)
+    - Those components fetch data from the LAPIS instance and visualize it.
+- **Input components** that let you specify sequence filters for the LAPIS requests.
+    - Input changes will fire events that can be listened to by the visualization components.
+      It is the responsibility of the dashbaord maintainer to listen to those events
+      and to wire the data correctly into the visualization components.
 
 ## Local Development
 
@@ -125,15 +125,15 @@ This assumes that the Storybooks are running.
 
 We follow this testing concept:
 
--   Domain logic is tested with unit tests. Thus, that code should be kept separate from the components.
--   Detailed tests of the components are done with interaction tests in the Preact Storybook.
--   The Lit Storybook only contains tests for the most important functionality to ensure that the web component build
-    works.
--   We use Playwright for
-    -   snapshot tests of the visualization components:
-        -   Screenshots of charts and tables that serve as visual regression.
-        -   Snapshots of the CSV data that the visualization components offer as download.
-    -   testing functionality of components that cannot be tested within Storybook due to technical limitations.
+- Domain logic is tested with unit tests. Thus, that code should be kept separate from the components.
+- Detailed tests of the components are done with interaction tests in the Preact Storybook.
+- The Lit Storybook only contains tests for the most important functionality to ensure that the web component build
+  works.
+- We use Playwright for
+    - snapshot tests of the visualization components:
+        - Screenshots of charts and tables that serve as visual regression.
+        - Snapshots of the CSV data that the visualization components offer as download.
+    - testing functionality of components that cannot be tested within Storybook due to technical limitations.
 
 #### Mocking
 
