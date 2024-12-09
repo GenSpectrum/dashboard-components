@@ -178,10 +178,11 @@ const MapInner: FunctionComponent<MapProps> = ({ lapisFilter, lapisLocationField
         throw error;
     }
 
-    // TODO height, width
     return (
-        <div className='border-2 p-4'>
-            <div ref={ref} className='w-[1000px] h-[800px]  bg-white' />
+        <div className='border-2 p-4 h-full '>
+            <div className='overflow-hidden h-full'>
+                <div ref={ref} className='h-full bg-white' />
+            </div>
         </div>
     );
 };

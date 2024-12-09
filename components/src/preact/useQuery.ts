@@ -23,6 +23,7 @@ export function useQuery<Data>(fetchDataCallback: () => Promise<Data>, dependenc
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [JSON.stringify(dependencies)]);
 
+    // return { data, error, isLoading };
     if (isLoading) {
         return { isLoading: true } as const;
     }
@@ -31,5 +32,5 @@ export function useQuery<Data>(fetchDataCallback: () => Promise<Data>, dependenc
         return { error, isLoading: false as const };
     }
 
-    return { data: data!, isLoading: false as const };
+    return { data: data!, error: null, isLoading: false as const };
 }
