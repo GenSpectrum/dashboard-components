@@ -1,6 +1,6 @@
 import type * as GeoJSON from 'geojson';
 import type { Feature, GeometryObject } from 'geojson';
-import Leaflet, { type LayerGroup } from 'leaflet';
+import Leaflet, { type Layer, type LayerGroup } from 'leaflet';
 import type { FunctionComponent } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 
@@ -101,23 +101,12 @@ export const MapComponentMapView: FunctionComponent<MapViewProps> = ({ geojsonDa
         Leaflet.geoJson(locations, {
             style: (feature: Feature<GeometryObject, EnhancedGeoJsonFeatureProperties> | undefined) => ({
                 fillColor: getColor(feature?.properties.data?.proportion),
-                fillOpacity: 0.5,
-                color: 'black',
+                fillOpacity: 1,
+                color: 'grey',
                 weight: 1,
             }),
         })
-            .bindTooltip((layer) => {
-                const feature = (layer as LayerGroup<EnhancedGeoJsonFeatureProperties>).feature;
-                if (feature === undefined || feature.type !== 'Feature') {
-                    return '';
-                }
-                const properties = feature.properties;
-                const value =
-                    properties.data === null
-                        ? 'No data'
-                        : `${properties.data.count.toLocaleString('en-us')} (${formatProportion(properties.data.proportion)})`;
-                return `${properties.name}: ${value}`;
-            })
+            .bindTooltip(createTooltip)
             .addTo(leafletMap);
 
         return () => {
@@ -131,3 +120,38 @@ export const MapComponentMapView: FunctionComponent<MapViewProps> = ({ geojsonDa
         </div>
     );
 };
+
+function createTooltip(layer: Layer) {
+    const feature = (layer as LayerGroup<EnhancedGeoJsonFeatureProperties>).feature;
+    if (feature === undefined || feature.type !== 'Feature') {
+        return '';
+    }
+    const properties = feature.properties;
+
+    const div = document.createElement('div');
+    div.appendChild(p({ innerText: properties.name, className: 'font-bold' }));
+    if (properties.data !== null) {
+        div.appendChild(
+            p({
+                innerText: `Count: ${properties.data.count.toLocaleString('en-us')}`,
+                className: 'text-sm',
+            }),
+        );
+        div.appendChild(
+            p({
+                innerText: `Proportion: ${formatProportion(properties.data.proportion)}`,
+                className: 'text-sm',
+            }),
+        );
+    } else {
+        div.appendChild(p({ innerText: 'No data', className: 'text-sm' }));
+    }
+    return div;
+}
+
+function p({ innerText, className }: { innerText: string; className: string }) {
+    const headline = document.createElement('p');
+    headline.innerText = innerText;
+    headline.className = className;
+    return headline;
+}
