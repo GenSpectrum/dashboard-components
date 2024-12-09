@@ -1,8 +1,14 @@
+import leafletStyle from 'leaflet/dist/leaflet.css?inline';
+import { unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
+import leafletStyleModifications from '../../preact/map/leafletStyleModifications.css?inline';
 import { Map, type MapSource } from '../../preact/map/map';
-import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
+import { PreactLitAdapter } from '../PreactLitAdapter';
+
+const leafletCss = unsafeCSS(leafletStyle);
+const leafletModificationsCss = unsafeCSS(leafletStyleModifications);
 
 /**
  * ## Context
@@ -10,7 +16,9 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  * TODO
  */
 @customElement('gs-map')
-export class MapComponent extends PreactLitAdapterWithGridJsStyles {
+export class MapComponent extends PreactLitAdapter {
+    static override styles = [...PreactLitAdapter.styles, leafletCss, leafletModificationsCss];
+
     /**
      * Required.
      *

@@ -73,6 +73,7 @@ export const Default: StoryObj<MapProps> = {
         enableMapNavigation: false,
         width: '1100px',
         height: '800px',
+        views: ['map'],
     },
     parameters: {
         fetchMock: {
