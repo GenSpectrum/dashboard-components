@@ -4,10 +4,7 @@ import type { FunctionComponent } from 'preact';
 import { useContext } from 'preact/hooks';
 import z from 'zod';
 
-import germany from './germany.json';
 import { MapComponentMapView } from './map-component-map-view';
-import uk from './uk.topo.json';
-import us from './us.topo.json';
 import { type AggregateData, queryAggregateData } from '../../query/queryAggregateData';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -36,15 +33,12 @@ const mapPropsSchema = z.object({
     width: z.string(),
     height: z.string(),
     views: z.array(mapViewSchema),
+    zoom: z.number(),
+    offsetX: z.number(),
+    offsetY: z.number(),
 });
 
 export type MapProps = z.infer<typeof mapPropsSchema>;
-
-const countryConfig = {
-    de: [germany, germany.objects.states, [51.1657, 10.4515], 6],
-    uk: [uk, uk.objects.subunits, [55.3781, -5], 5],
-    us: [us, us.objects.usa, [40, -100], 4],
-} as const;
 
 export const Map: FunctionComponent<MapProps> = (componentProps) => {
     const { width, height } = componentProps;
@@ -102,6 +96,9 @@ const MapTabs: FunctionComponent<MapTabsProps> = ({ originalComponentProps, geoj
                             geojsonData={geojsonData}
                             enableMapNavigation={originalComponentProps.enableMapNavigation}
                             lapisLocationField={originalComponentProps.lapisLocationField}
+                            zoom={originalComponentProps.zoom}
+                            offsetX={originalComponentProps.offsetX}
+                            offsetY={originalComponentProps.offsetY}
                         />
                     ),
                 };

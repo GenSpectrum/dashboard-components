@@ -1,6 +1,5 @@
-import type * as GeoJSON from 'geojson';
 import type { Feature, GeometryObject } from 'geojson';
-import Leaflet, { type Layer, type LayerGroup } from 'leaflet';
+import Leaflet, { type GeoJSON, type Layer, type LayerGroup } from 'leaflet';
 import type { FunctionComponent } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 
@@ -18,6 +17,9 @@ type MapViewProps = {
     locationData: AggregateData;
     enableMapNavigation: boolean;
     lapisLocationField: string;
+    zoom: number;
+    offsetX: number;
+    offsetY: number;
 };
 
 export const MapComponentMapView: FunctionComponent<MapViewProps> = ({
@@ -25,6 +27,9 @@ export const MapComponentMapView: FunctionComponent<MapViewProps> = ({
     locationData,
     enableMapNavigation,
     lapisLocationField,
+    zoom,
+    offsetX,
+    offsetY,
 }) => {
     const ref = useRef<HTMLDivElement>(null);
 
@@ -34,7 +39,11 @@ export const MapComponentMapView: FunctionComponent<MapViewProps> = ({
         }
 
         const countAndProportionByCountry = buildLookupByLocationField(locationData, lapisLocationField);
-        const locations = matchLocationDataAndGeoJsonFeatures(geojsonData, countAndProportionByCountry);
+        const locations = matchLocationDataAndGeoJsonFeatures(
+            geojsonData,
+            countAndProportionByCountry,
+            lapisLocationField,
+        );
 
         const leafletMap = Leaflet.map(ref.current, {
             scrollWheelZoom: enableMapNavigation,
@@ -42,7 +51,7 @@ export const MapComponentMapView: FunctionComponent<MapViewProps> = ({
             keyboard: enableMapNavigation,
             dragging: enableMapNavigation,
         });
-        leafletMap.setView([10, 0], 1.5);
+        leafletMap.setView([offsetY, offsetX], zoom);
 
         Leaflet.geoJson(locations, {
             style: (feature: Feature<GeometryObject, EnhancedGeoJsonFeatureProperties> | undefined) => ({
@@ -58,7 +67,7 @@ export const MapComponentMapView: FunctionComponent<MapViewProps> = ({
         return () => {
             leafletMap.remove();
         };
-    }, [ref, locationData, geojsonData, enableMapNavigation, lapisLocationField]);
+    }, [ref, locationData, geojsonData, enableMapNavigation, lapisLocationField, zoom, offsetX, offsetY]);
 
     return <div ref={ref} className='h-full' />;
 };
@@ -74,6 +83,7 @@ function buildLookupByLocationField(locationData: AggregateData, lapisLocationFi
 function matchLocationDataAndGeoJsonFeatures(
     geojsonData: GeoJSON.FeatureCollection<GeometryObject, GeoJsonFeatureProperties>,
     countAndProportionByCountry: Map<string, FeatureData>,
+    lapisLocationField: string,
 ) {
     const matchedLocations: string[] = [];
 
@@ -81,25 +91,25 @@ function matchLocationDataAndGeoJsonFeatures(
         (feature) => {
             const name = feature.properties.name;
 
-            if (countAndProportionByCountry.has(name)) {
+            const data = countAndProportionByCountry.get(name) ?? null;
+            if (data !== null) {
                 matchedLocations.push(name);
             }
-
             return {
                 ...feature,
                 properties: {
                     ...feature.properties,
-                    data: countAndProportionByCountry.get(name) || null,
+                    data,
                 },
             };
         },
     );
 
-    const unmatchedLocations = Object.keys(countAndProportionByCountry).filter(
+    const unmatchedLocations = [...countAndProportionByCountry.keys()].filter(
         (name) => !matchedLocations.includes(name),
     );
     if (unmatchedLocations.length > 0) {
-        const unmatchedLocationsWarning = `gs-map: Found data from LAPIS that could not be matched on locations on the given map: ${unmatchedLocations.join(', ')}`;
+        const unmatchedLocationsWarning = `gs-map: Found location data from LAPIS (aggregated by "${lapisLocationField}") that could not be matched on locations on the given map. Unmatched location names are: ${unmatchedLocations.map((it) => `"${it}"`).join(', ')}`;
         console.warn(unmatchedLocationsWarning); // eslint-disable-line no-console -- We should give some feedback about unmatched location data.
     }
 
@@ -132,6 +142,7 @@ function getColor(value: number | undefined): string {
 
     return '#FFFFE5';
 }
+
 function createTooltip(layer: Layer) {
     const feature = (layer as LayerGroup<EnhancedGeoJsonFeatureProperties>).feature;
     if (feature === undefined || feature.type !== 'Feature') {

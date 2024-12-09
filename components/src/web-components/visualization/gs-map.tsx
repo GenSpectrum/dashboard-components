@@ -69,6 +69,24 @@ export class MapComponent extends PreactLitAdapter {
     @property({ type: Array })
     views: 'map'[] = ['map'];
 
+    /**
+     * TODO
+     */
+    @property({ type: Number })
+    zoom: number = 1;
+
+    /**
+     * TODO
+     */
+    @property({ type: Number })
+    offsetX: number = 0;
+
+    /**
+     * TODO
+     */
+    @property({ type: Number })
+    offsetY: number = 0;
+
     override render() {
         return (
             <Map
@@ -79,6 +97,9 @@ export class MapComponent extends PreactLitAdapter {
                 width={this.width}
                 height={this.height}
                 views={this.views}
+                zoom={this.zoom}
+                offsetX={this.offsetX}
+                offsetY={this.offsetY}
             />
         );
     }
