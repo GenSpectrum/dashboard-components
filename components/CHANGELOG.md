@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.10.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.1...dashboard-components-v0.10.2) (2024-12-09)
+
+
+### Features
+
+* **components:** gs-mutations-over-time: show empty grey box when we don't have mutation data for time interval ([9026098](https://github.com/GenSpectrum/dashboard-components/commit/90260989294a41d643ebbe4204aad2d3fd72e949)), closes [#565](https://github.com/GenSpectrum/dashboard-components/issues/565)
+
+
+### Bug Fixes
+
+* **components:** fix gs-aggregate name in `HTMLElementTagNameMap` and `IntrinsicElements` ([#566](https://github.com/GenSpectrum/dashboard-components/issues/566)) ([8cc1ced](https://github.com/GenSpectrum/dashboard-components/commit/8cc1ced82c70bc3936f30a69136f4d45aa4901a0))
+* **components:** gs-date-range-selector: require that `dateColumn` is set ([beb040e](https://github.com/GenSpectrum/dashboard-components/commit/beb040ec8f4d7cf93bf03004daba433ceefd5612))
+* **components:** gs-date-range-selector: validate component attributes ([#558](https://github.com/GenSpectrum/dashboard-components/issues/558)) ([114f907](https://github.com/GenSpectrum/dashboard-components/commit/114f90750c1cddc2675963f05a5f9efeaa709eee)), closes [#557](https://github.com/GenSpectrum/dashboard-components/issues/557)
+* **components:** gs-lineage-filter: validate attributes ([e8aa1a9](https://github.com/GenSpectrum/dashboard-components/commit/e8aa1a9eba0889a6a28d56edee05cb76ca97223e)), closes [#561](https://github.com/GenSpectrum/dashboard-components/issues/561)
+* **components:** gs-location-filter: validate attributes ([7272e6e](https://github.com/GenSpectrum/dashboard-components/commit/7272e6e41536c1928cf5fd91ec367d794b2e003c)), closes [#568](https://github.com/GenSpectrum/dashboard-components/issues/568)
+* **components:** gs-mutation-comparison: validate attributes ([#564](https://github.com/GenSpectrum/dashboard-components/issues/564)) ([aa6a4c8](https://github.com/GenSpectrum/dashboard-components/commit/aa6a4c81a72f4faf9e62cd4825fce0925e80ca25)), closes [#563](https://github.com/GenSpectrum/dashboard-components/issues/563)
+
 ## [0.10.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.0...dashboard-components-v0.10.1) (2024-11-28)
 
 
