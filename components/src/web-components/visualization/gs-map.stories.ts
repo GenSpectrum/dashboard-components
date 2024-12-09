@@ -85,7 +85,7 @@ export const WorldMap: StoryObj<MapProps> = {
         width: '1100px',
         height: '800px',
         views: ['map'],
-        zoom: 1.5,
+        zoom: 2,
         offsetX: 0,
         offsetY: 10,
     },
@@ -136,9 +136,9 @@ export const Germany: StoryObj<MapProps> = {
         width: '1100px',
         height: '800px',
         views: ['map'],
-        zoom: 6,
+        zoom: 6.3,
         offsetX: 10,
-        offsetY: 51.1657,
+        offsetY: 51.4,
     },
     parameters: {
         fetchMock: {

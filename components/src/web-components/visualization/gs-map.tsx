@@ -30,7 +30,11 @@ export class MapComponent extends PreactLitAdapter {
     /**
      * The location field to aggregate the data by.
      *
-     * TODO values must match map data
+     * The values that LAPIS returns for this field must match the "feature names" (i.e. countries, subdivisions, etc.)
+     * in the map data.
+     *
+     * This component will write a console warning if there is a value in the LAPIS data that did not match on any feature in the map data.
+     * If there is a feature in the map data that did not match on any value in the LAPIS data, it will be ignored.
      */
     @property({ type: String })
     lapisLocationField: string = '';
@@ -64,25 +68,30 @@ export class MapComponent extends PreactLitAdapter {
     height: string = '700px';
 
     /**
-     * TODO
+     A list of tabs with views that this component should provide.
      */
     @property({ type: Array })
     views: 'map'[] = ['map'];
 
     /**
-     * TODO
+     * The initial zoom level of the map.
      */
     @property({ type: Number })
     zoom: number = 1;
 
     /**
-     * TODO
+     * Initially shift the center of the map in x direction (longitude).
+     *
+     * `-180` is the International Date Line with the map shifted to the right, `0` is the prime meridian,
+     * `180` is the International Date Line with the map shifted to the left.
      */
     @property({ type: Number })
     offsetX: number = 0;
 
     /**
-     * TODO
+     * Initially shift the center of the map in y direction (latitude).
+     *
+     * `-90` is the South Pole, `0` is the equator, `90` is the North Pole.
      */
     @property({ type: Number })
     offsetY: number = 0;

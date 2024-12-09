@@ -50,8 +50,10 @@ export const MapComponentMapView: FunctionComponent<MapViewProps> = ({
             zoomControl: enableMapNavigation,
             keyboard: enableMapNavigation,
             dragging: enableMapNavigation,
+            zoomSnap: 0,
+            zoom,
+            center: [offsetY, offsetX],
         });
-        leafletMap.setView([offsetY, offsetX], zoom);
 
         Leaflet.geoJson(locations, {
             style: (feature: Feature<GeometryObject, EnhancedGeoJsonFeatureProperties> | undefined) => ({
