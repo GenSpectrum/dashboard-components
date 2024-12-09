@@ -25,8 +25,6 @@ export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJs
     // prettier-ignore
     // The multiline union type must not start with `|` because it looks weird in the Storybook docs
     /**
-     * Required.
-     *
      * Either a LAPIS filter or an array of LAPIS filters to fetch the number of sequences for.
      *
      * The `lapisFilter` will be sent as is to LAPIS to select the data.
@@ -54,7 +52,7 @@ export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJs
      * Must be a field of type `date` in LAPIS.
      */
     @property({ type: String })
-    lapisDateField: string = 'date';
+    lapisDateField: string = '';
 
     /**
      * A list of tabs with views that this component should provide.

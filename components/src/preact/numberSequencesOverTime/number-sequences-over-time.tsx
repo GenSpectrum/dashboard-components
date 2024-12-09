@@ -1,5 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useState } from 'preact/hooks';
+import z from 'zod';
 
 import { getNumberOfSequencesOverTimeTableData } from './getNumberOfSequencesOverTimeTableData';
 import { NumberSequencesOverTimeBarChart } from './number-sequences-over-time-bar-chart';
@@ -9,7 +10,7 @@ import {
     type NumberOfSequencesDatasets,
     queryNumberOfSequencesOverTime,
 } from '../../query/queryNumberOfSequencesOverTime';
-import type { NamedLapisFilter, TemporalGranularity } from '../../types';
+import { namedLapisFilterSchema, temporalGranularitySchema, views } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -23,25 +24,32 @@ import Tabs from '../components/tabs';
 import type { ScaleType } from '../shared/charts/getYAxisScale';
 import { useQuery } from '../useQuery';
 
-type NumberSequencesOverTimeView = 'bar' | 'line' | 'table';
+const numberSequencesOverTimeViewSchema = z.union([
+    z.literal(views.bar),
+    z.literal(views.line),
+    z.literal(views.table),
+]);
+export type NumberSequencesOverTimeView = z.infer<typeof numberSequencesOverTimeViewSchema>;
 
-export interface NumberSequencesOverTimeProps {
-    width: string;
-    height: string;
-    lapisFilter: NamedLapisFilter | NamedLapisFilter[];
-    lapisDateField: string;
-    views: NumberSequencesOverTimeView[];
-    granularity: TemporalGranularity;
-    smoothingWindow: number;
-    pageSize: boolean | number;
-}
+const numberSequencesOverTimePropsSchema = z.object({
+    width: z.string(),
+    height: z.string(),
+    lapisFilter: z.union([namedLapisFilterSchema, z.array(namedLapisFilterSchema)]),
+    lapisDateField: z.string().min(1),
+    views: z.array(numberSequencesOverTimeViewSchema),
+    granularity: temporalGranularitySchema,
+    smoothingWindow: z.number(),
+    pageSize: z.union([z.boolean(), z.number()]),
+});
+
+export type NumberSequencesOverTimeProps = z.infer<typeof numberSequencesOverTimePropsSchema>;
 
 export const NumberSequencesOverTime = (componentProps: NumberSequencesOverTimeProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} componentProps={componentProps} schema={numberSequencesOverTimePropsSchema}>
             <ResizeContainer size={size}>
                 <NumberSequencesOverTimeInner {...componentProps} />
             </ResizeContainer>
