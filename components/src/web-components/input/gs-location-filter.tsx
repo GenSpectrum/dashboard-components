@@ -40,7 +40,7 @@ export class LocationFilterComponent extends PreactLitAdapter {
      * Must be of the form `valueForField1 / valueForField2 / ... / valueForFieldN`.
      */
     @property()
-    initialValue = '';
+    initialValue: string | undefined = undefined;
 
     /**
      * Required.
@@ -65,7 +65,7 @@ export class LocationFilterComponent extends PreactLitAdapter {
      * The placeholder text to display in the input field, if it is empty.
      */
     @property()
-    placeholderText: string = '';
+    placeholderText: string | undefined = undefined;
 
     override render() {
         return (
