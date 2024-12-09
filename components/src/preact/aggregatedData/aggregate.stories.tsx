@@ -5,6 +5,7 @@ import aggregatedData from './__mockData__/aggregated.json';
 import { Aggregate, type AggregateProps } from './aggregate';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
 
 const meta: Meta<AggregateProps> = {
     title: 'Visualization/Aggregate',
@@ -91,6 +92,19 @@ export const FailsLoadingData: StoryObj<AggregateProps> = {
         await waitFor(async () => {
             await expect(canvas.getByText('Error - Failed fetching aggregated data from LAPIS')).toBeInTheDocument();
             await expect(canvas.getByRole('button', { name: 'Try again' })).toBeInTheDocument();
+        });
+    },
+};
+
+export const WithEmptyFieldString: StoryObj<AggregateProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        fields: [''],
+    },
+    play: async ({ canvasElement, step }) => {
+        step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
         });
     },
 };
