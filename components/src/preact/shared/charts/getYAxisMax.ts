@@ -1,9 +1,12 @@
+import z from 'zod';
+
 export interface YAxisMaxConfig {
     linear?: AxisMax;
     logarithmic?: AxisMax;
 }
 
-export type AxisMax = 'maxInData' | 'limitTo1' | number;
+export const axisMaxSchema = z.union([z.literal('maxInData'), z.literal('limitTo1'), z.number()]);
+export type AxisMax = z.infer<typeof axisMaxSchema>;
 
 export const getYAxisMax = (maxInData: number, axisMax?: AxisMax) => {
     if (!axisMax) {

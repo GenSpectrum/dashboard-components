@@ -63,6 +63,7 @@ export const views = {
     insertions: 'insertions',
     bar: 'bar',
     line: 'line',
+    bubble: 'bubble',
 } as const;
 
 export const mutationComparisonViewSchema = z.union([z.literal(views.table), z.literal(views.venn)]);
