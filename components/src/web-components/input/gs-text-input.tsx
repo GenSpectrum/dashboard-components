@@ -27,7 +27,7 @@ export class TextInputComponent extends PreactLitAdapter {
      * The initial value to use for this text input.
      */
     @property()
-    initialValue: string = '';
+    initialValue: string | undefined = undefined;
 
     /**
      * Required.
@@ -42,7 +42,7 @@ export class TextInputComponent extends PreactLitAdapter {
      * The placeholder text to display in the input field.
      */
     @property()
-    placeholderText: string = '';
+    placeholderText: string | undefined = undefined;
 
     /**
      * The width of the component.
