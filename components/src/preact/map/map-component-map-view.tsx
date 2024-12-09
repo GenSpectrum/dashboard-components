@@ -8,87 +8,33 @@ import { type GeoJsonFeatureProperties } from './useGeoJsonMap';
 import { type AggregateData } from '../../query/queryAggregateData';
 import { formatProportion } from '../shared/table/formatProportion';
 
-function getColor(value: number | undefined) {
-    if (value === undefined) {
-        return 'lightgrey';
-    }
-
-    return value > 0.5
-        ? '#800026'
-        : value > 0.4
-          ? '#BD0026'
-          : value > 0.3
-            ? '#E31A1C'
-            : value > 0.2
-              ? '#FC4E2A'
-              : value > 0.1
-                ? '#FD8D3C'
-                : value > 0.05
-                  ? '#FEB24C'
-                  : value > 0.02
-                    ? '#FED976'
-                    : value > 0.01
-                      ? '#FFEDA0'
-                      : value > 0.005
-                        ? '#FFF7BC'
-                        : value > 0.002
-                          ? '#FFFFCC'
-                          : value > 0
-                            ? '#FFFFE5'
-                            : '#FFFFFF';
-}
+type FeatureData = { proportion: number; count: number };
 
 type EnhancedGeoJsonFeatureProperties = GeoJsonFeatureProperties & {
-    data: { proportion: number; count: number } | null;
+    data: FeatureData | null;
 };
-
 type MapViewProps = {
     geojsonData: GeoJSON.FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
-    data: AggregateData;
+    locationData: AggregateData;
     enableMapNavigation: boolean;
+    lapisLocationField: string;
 };
 
-export const MapComponentMapView: FunctionComponent<MapViewProps> = ({ geojsonData, data, enableMapNavigation }) => {
+export const MapComponentMapView: FunctionComponent<MapViewProps> = ({
+    geojsonData,
+    locationData,
+    enableMapNavigation,
+    lapisLocationField,
+}) => {
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!ref.current || geojsonData === undefined || data === undefined) {
+        if (!ref.current || geojsonData === undefined || locationData === undefined) {
             return;
         }
 
-        const dataByCountry = data.reduce(
-            (acc, row) => ({
-                ...acc,
-                [row.country as string]: row,
-            }),
-            {} as Record<string, { count: number; proportion: number }>,
-        );
-
-        const found: string[] = [];
-
-        const locations: Feature<GeometryObject, EnhancedGeoJsonFeatureProperties>[] = geojsonData.features.map(
-            (feature) => {
-                const name = feature.properties.name;
-
-                if (name in dataByCountry) {
-                    found.push(name);
-                }
-
-                return {
-                    ...feature,
-                    properties: {
-                        ...feature.properties,
-                        data: dataByCountry[name] || null,
-                    },
-                };
-            },
-        );
-
-        const unmatchedLocations = Object.keys(dataByCountry).filter((name) => !found.includes(name));
-        if (unmatchedLocations.length > 0) {
-            const unmatchedLocationsWarning = `gs-map: Found data from LAPIS that could not be matched on locations on the given map: ${unmatchedLocations.join(', ')}`;
-            console.warn(unmatchedLocationsWarning); // eslint-disable-line no-console -- We should give some feedback about unmatched location data.
-        }
+        const countAndProportionByCountry = buildLookupByLocationField(locationData, lapisLocationField);
+        const locations = matchLocationDataAndGeoJsonFeatures(geojsonData, countAndProportionByCountry);
 
         const leafletMap = Leaflet.map(ref.current, {
             scrollWheelZoom: enableMapNavigation,
@@ -112,15 +58,80 @@ export const MapComponentMapView: FunctionComponent<MapViewProps> = ({ geojsonDa
         return () => {
             leafletMap.remove();
         };
-    }, [ref, data, geojsonData, enableMapNavigation]);
+    }, [ref, locationData, geojsonData, enableMapNavigation, lapisLocationField]);
 
-    return (
-        <div className='overflow-hidden h-full'>
-            <div ref={ref} className='h-full bg-white' />
-        </div>
-    );
+    return <div ref={ref} className='h-full' />;
 };
 
+function buildLookupByLocationField(locationData: AggregateData, lapisLocationField: string) {
+    return new Map<string, FeatureData>(
+        locationData
+            .filter((row) => typeof row[lapisLocationField] === 'string')
+            .map((row) => [row[lapisLocationField] as string, row]),
+    );
+}
+
+function matchLocationDataAndGeoJsonFeatures(
+    geojsonData: GeoJSON.FeatureCollection<GeometryObject, GeoJsonFeatureProperties>,
+    countAndProportionByCountry: Map<string, FeatureData>,
+) {
+    const matchedLocations: string[] = [];
+
+    const locations: Feature<GeometryObject, EnhancedGeoJsonFeatureProperties>[] = geojsonData.features.map(
+        (feature) => {
+            const name = feature.properties.name;
+
+            if (countAndProportionByCountry.has(name)) {
+                matchedLocations.push(name);
+            }
+
+            return {
+                ...feature,
+                properties: {
+                    ...feature.properties,
+                    data: countAndProportionByCountry.get(name) || null,
+                },
+            };
+        },
+    );
+
+    const unmatchedLocations = Object.keys(countAndProportionByCountry).filter(
+        (name) => !matchedLocations.includes(name),
+    );
+    if (unmatchedLocations.length > 0) {
+        const unmatchedLocationsWarning = `gs-map: Found data from LAPIS that could not be matched on locations on the given map: ${unmatchedLocations.join(', ')}`;
+        console.warn(unmatchedLocationsWarning); // eslint-disable-line no-console -- We should give some feedback about unmatched location data.
+    }
+
+    return locations;
+}
+
+function getColor(value: number | undefined): string {
+    if (value === undefined) {
+        return 'lightgrey';
+    }
+
+    const thresholds = [
+        { limit: 0.5, color: '#800026' },
+        { limit: 0.4, color: '#BD0026' },
+        { limit: 0.3, color: '#E31A1C' },
+        { limit: 0.2, color: '#FC4E2A' },
+        { limit: 0.1, color: '#FD8D3C' },
+        { limit: 0.05, color: '#FEB24C' },
+        { limit: 0.02, color: '#FED976' },
+        { limit: 0.01, color: '#FFEDA0' },
+        { limit: 0.005, color: '#FFF7BC' },
+        { limit: 0.002, color: '#FFFFCC' },
+    ];
+
+    for (const { limit, color } of thresholds) {
+        if (value > limit) {
+            return color;
+        }
+    }
+
+    return '#FFFFE5';
+}
 function createTooltip(layer: Layer) {
     const feature = (layer as LayerGroup<EnhancedGeoJsonFeatureProperties>).feature;
     if (feature === undefined || feature.type !== 'Feature') {
@@ -134,13 +145,11 @@ function createTooltip(layer: Layer) {
         div.appendChild(
             p({
                 innerText: `Count: ${properties.data.count.toLocaleString('en-us')}`,
-                className: 'text-sm',
             }),
         );
         div.appendChild(
             p({
                 innerText: `Proportion: ${formatProportion(properties.data.proportion)}`,
-                className: 'text-sm',
             }),
         );
     } else {
@@ -149,7 +158,7 @@ function createTooltip(layer: Layer) {
     return div;
 }
 
-function p({ innerText, className }: { innerText: string; className: string }) {
+function p({ innerText, className = '' }: { innerText: string; className?: string }) {
     const headline = document.createElement('p');
     headline.innerText = innerText;
     headline.className = className;

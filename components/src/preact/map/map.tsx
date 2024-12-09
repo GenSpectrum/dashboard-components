@@ -95,9 +95,10 @@ const MapTabs: FunctionComponent<MapTabsProps> = ({ originalComponentProps, geoj
                     title: 'Map',
                     content: (
                         <MapComponentMapView
-                            data={data}
+                            locationData={data}
                             geojsonData={geojsonData}
                             enableMapNavigation={originalComponentProps.enableMapNavigation}
+                            lapisLocationField={originalComponentProps.lapisLocationField}
                         />
                     ),
                 };
