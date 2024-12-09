@@ -12,14 +12,60 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
 @customElement('gs-map')
 export class MapComponent extends PreactLitAdapterWithGridJsStyles {
     /**
-     * The filter to apply to the data.
-     * It must be a valid LAPIS filter object.
+     * Required.
+     *
+     * LAPIS filter to select the displayed data.
      */
     @property({ type: Object })
-    mapSource: MapSource = {};
+    lapisFilter: Record<string, string | number | null | boolean> = {};
+
+    /**
+     * The location field to aggregate the data by.
+     *
+     * TODO values must match map data
+     */
+    @property({ type: String })
+    lapisLocationField: string = '';
+
+    /**
+     * TODO
+     */
+    @property({ type: Object })
+    mapSource: MapSource = { type: 'topojson', url: '', topologyObjectsKey: '' };
+
+    /**
+     * Enable map navigation (dragging, keyboard navigation, zooming).
+     */
+    @property({ type: Boolean })
+    enableMapNavigation: boolean = true;
+
+    /**
+     * The width of the component.
+     *
+     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
+     */
+    @property({ type: String })
+    width: string = '100%';
+
+    /**
+     * The height of the component.
+     *
+     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
+     */
+    @property({ type: String })
+    height: string = '700px';
 
     override render() {
-        return <Map mapSource={this.mapSource} />;
+        return (
+            <Map
+                lapisFilter={this.lapisFilter}
+                lapisLocationField={this.lapisLocationField}
+                mapSource={this.mapSource}
+                width={this.width}
+                height={this.height}
+                enableMapNavigation={this.enableMapNavigation}
+            />
+        );
     }
 }
 
