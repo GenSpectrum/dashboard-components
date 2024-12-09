@@ -51,7 +51,7 @@ export const MutationComparison: FunctionComponent<MutationComparisonProps> = (c
     );
 };
 
-export const MutationComparisonInner: FunctionComponent<MutationComparisonProps> = (componentProps) => {
+const MutationComparisonInner: FunctionComponent<MutationComparisonProps> = (componentProps) => {
     const { lapisFilters, sequenceType } = componentProps;
     const lapis = useContext(LapisUrlContext);
 

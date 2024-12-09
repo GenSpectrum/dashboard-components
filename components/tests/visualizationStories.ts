@@ -118,4 +118,14 @@ export const visualizationStories = [
         title: 'Statistics',
         loadingIsDoneIndicator: 'Sequences',
     },
+    {
+        id: 'visualization-map--world-map',
+        title: 'Map',
+        loadingIsDoneIndicator: 'Leaflet',
+    },
+    {
+        id: 'visualization-map--germany',
+        title: 'Map',
+        loadingIsDoneIndicator: 'Leaflet',
+    },
 ];
