@@ -1,7 +1,8 @@
 import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { SortOperator } from '../operator/SortOperator';
-import { type InitialSort } from '../preact/aggregatedData/aggregate';
 import { type LapisFilter } from '../types';
+
+export type InitialSort = { field: string; direction: 'ascending' | 'descending' };
 
 export type AggregateData = (Record<string, string | null | number | boolean> & {
     count: number;

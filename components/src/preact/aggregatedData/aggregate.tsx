@@ -1,9 +1,10 @@
 import { type FunctionComponent } from 'preact';
 import { useContext } from 'preact/hooks';
+import z from 'zod';
 
 import { AggregateTable } from './aggregate-table';
 import { type AggregateData, queryAggregateData } from '../../query/queryAggregateData';
-import { type LapisFilter } from '../../types';
+import { lapisFilterSchema, views } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -15,26 +16,27 @@ import { ResizeContainer } from '../components/resize-container';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
 
-export type View = 'table';
-export type InitialSort = { field: string; direction: 'ascending' | 'descending' };
+const viewSchema = z.literal(views.table);
+export type View = z.infer<typeof viewSchema>;
 
-export type AggregateProps = {
-    width: string;
-    height: string;
-    filter: LapisFilter;
-    fields: string[];
-    views: View[];
-    initialSortField: string;
-    initialSortDirection: 'ascending' | 'descending';
-    pageSize: boolean | number;
-};
+const aggregatePropsSchema = z.object({
+    filter: lapisFilterSchema,
+    fields: z.array(z.string().min(1)),
+    views: z.array(viewSchema),
+    initialSortField: z.string(),
+    initialSortDirection: z.union([z.literal('ascending'), z.literal('descending')]),
+    pageSize: z.union([z.boolean(), z.number()]),
+    width: z.string(),
+    height: z.string(),
+});
+export type AggregateProps = z.infer<typeof aggregatePropsSchema>;
 
 export const Aggregate: FunctionComponent<AggregateProps> = (componentProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} schema={aggregatePropsSchema} componentProps={componentProps}>
             <ResizeContainer size={size}>
                 <AggregateInner {...componentProps} />
             </ResizeContainer>
