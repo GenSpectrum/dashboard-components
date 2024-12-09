@@ -180,34 +180,3 @@ const MapInner: FunctionComponent<MapProps> = ({ mapSource }) => {
         </div>
     );
 };
-
-function useGeoJsonMap(mapSource: MapSource) {
-    if (mapSource.type !== 'topojson') {
-        throw new Error('Unknown map source type');
-    }
-
-    const {
-        data: geojsonData,
-        error,
-        isLoading,
-    } = useQuery(async () => {
-        const response = await fetch(mapSource.url);
-        const topology = (await response.json()) as Topology;
-        return topojson.feature(
-            topology,
-            topology.objects[mapSource.topologyObjectsKey] as GeometryCollection<{
-                name: string;
-            }>,
-        );
-    }, [mapSource.url]);
-
-    if (isLoading) {
-        return { isLoading };
-    }
-
-    if (error) {
-        throw error;
-    }
-
-    return { geojsonData, isLoading: false as const };
-}
