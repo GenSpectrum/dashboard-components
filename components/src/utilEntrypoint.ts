@@ -11,4 +11,5 @@ export {
     type SequenceType,
     views,
     type MutationComparisonView,
+    type TemporalGranularity,
 } from './types';

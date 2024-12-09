@@ -33,9 +33,7 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
 @customElement('gs-mutations-over-time')
 export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
     /**
-     * Required.
-     *
-     * LAPIS filter to select the displayed data.
+     * LAPIS filter to select the displayed data. If not provided, all data is displayed.
      */
     @property({ type: Object })
     lapisFilter: Record<string, string | number | null | boolean> = {};
