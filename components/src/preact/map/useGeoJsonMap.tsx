@@ -28,14 +28,17 @@ export function useGeoJsonMap(mapSource: MapSource) {
     return { geojsonData, isLoading: false as const };
 }
 
-type Properties = {
+export type GeoJsonFeatureProperties = {
     name: string;
 };
 
 async function loadTopojsonMap(
     mapSource: MapSource,
-): Promise<GeoJSON.FeatureCollection<GeoJSON.GeometryObject, Properties>> {
+): Promise<GeoJSON.FeatureCollection<GeoJSON.GeometryObject, GeoJsonFeatureProperties>> {
     const response = await fetch(mapSource.url);
     const topology = (await response.json()) as Topology;
-    return topojson.feature(topology, topology.objects[mapSource.topologyObjectsKey] as GeometryCollection<Properties>);
+    return topojson.feature(
+        topology,
+        topology.objects[mapSource.topologyObjectsKey] as GeometryCollection<GeoJsonFeatureProperties>,
+    );
 }

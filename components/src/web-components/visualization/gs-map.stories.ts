@@ -71,8 +71,8 @@ export const Default: StoryObj<MapProps> = {
             topologyObjectsKey: 'countries',
         },
         enableMapNavigation: false,
-        width: '100%',
-        height: '700px',
+        width: '1100px',
+        height: '800px',
     },
     parameters: {
         fetchMock: {
