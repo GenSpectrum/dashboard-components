@@ -7,7 +7,7 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Nordrhein-Westfalen"
+                        "name": "North Rhine Westphalia"
                     },
                     "id": "DE.NW",
                     "arcs": [[0, 1, 2, 3]]
@@ -15,7 +15,7 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Baden-Württemberg"
+                        "name": "Baden-Wuerttemberg"
                     },
                     "id": "DE.BW",
                     "arcs": [[4, 5, 6, 7]]
@@ -23,7 +23,7 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Hessen"
+                        "name": "Hesse"
                     },
                     "id": "DE.HE",
                     "arcs": [[8, 9, -7, 10, -1, 11]]
@@ -58,7 +58,7 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Thüringen"
+                        "name": "Thuringia"
                     },
                     "id": "DE.TH",
                     "arcs": [[32, 33, -9, -30, 34]]
@@ -109,7 +109,7 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Bayern"
+                        "name": "Bavaria"
                     },
                     "id": "DE.BY",
                     "arcs": [[52, 53, -8, -10, -34]]
@@ -125,7 +125,7 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Sachsen-Anhalt"
+                        "name": "Saxony-Anhalt"
                     },
                     "id": "DE.ST",
                     "arcs": [[55, -35, -29, 56]]
@@ -133,7 +133,7 @@
                 {
                     "type": "Polygon",
                     "properties": {
-                        "name": "Sachsen"
+                        "name": "Saxony"
                     },
                     "id": "DE.SN",
                     "arcs": [[57, 58, -53, -33, -56]]

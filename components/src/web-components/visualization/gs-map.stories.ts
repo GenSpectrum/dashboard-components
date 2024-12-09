@@ -5,7 +5,9 @@ import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import aggregatedData from '../../preact/aggregatedData/__mockData__/aggregated.json';
 import type { AggregateProps } from '../../preact/aggregatedData/aggregate';
+import aggregatedGermany from '../../preact/map/__mockData__/aggregatedGermany.json';
 import aggregatedWorld from '../../preact/map/__mockData__/aggregatedWorld.json';
+import mapOfGermany from '../../preact/map/__mockData__/germanyMap.json';
 import worldAtlas from '../../preact/map/__mockData__/worldAtlas.json';
 import { type MapProps } from '../../preact/map/map';
 
@@ -48,9 +50,9 @@ const meta: Meta<Required<AggregateProps>> = {
 
 export default meta;
 
-const worldMapUrl = 'https://mock.map.data/world.topo.json';
+const mockMapUrl = 'https://mock.map.data/topo.json';
 
-export const WorldMap: StoryObj<MapProps> = {
+const Template: StoryObj<MapProps> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-map
@@ -60,21 +62,32 @@ export const WorldMap: StoryObj<MapProps> = {
                 .enableMapNavigation=${args.enableMapNavigation}
                 .width=${args.width}
                 .height=${args.height}
+                .views=${args.views}
+                .zoom=${args.zoom}
+                .offsetX=${args.offsetX}
+                .offsetY=${args.offsetY}
             ></gs-map>
         </gs-app>
     `,
+};
+
+export const WorldMap: StoryObj<MapProps> = {
+    ...Template,
     args: {
         lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01' },
         lapisLocationField: 'country',
         mapSource: {
             type: 'topojson',
-            url: worldMapUrl,
+            url: mockMapUrl,
             topologyObjectsKey: 'countries',
         },
         enableMapNavigation: false,
         width: '1100px',
         height: '800px',
         views: ['map'],
+        zoom: 1.5,
+        offsetX: 0,
+        offsetY: 10,
     },
     parameters: {
         fetchMock: {
@@ -82,7 +95,7 @@ export const WorldMap: StoryObj<MapProps> = {
                 {
                     matcher: {
                         name: 'worldMap',
-                        url: worldMapUrl,
+                        url: mockMapUrl,
                     },
                     response: {
                         status: 200,
@@ -102,6 +115,58 @@ export const WorldMap: StoryObj<MapProps> = {
                     response: {
                         status: 200,
                         body: aggregatedWorld,
+                    },
+                },
+            ],
+        },
+    },
+};
+
+export const Germany: StoryObj<MapProps> = {
+    ...Template,
+    args: {
+        lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01', country: 'Germany' },
+        lapisLocationField: 'division',
+        mapSource: {
+            type: 'topojson',
+            url: mockMapUrl,
+            topologyObjectsKey: 'deu',
+        },
+        enableMapNavigation: false,
+        width: '1100px',
+        height: '800px',
+        views: ['map'],
+        zoom: 6,
+        offsetX: 10,
+        offsetY: 51.1657,
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'worldMap',
+                        url: mockMapUrl,
+                    },
+                    response: {
+                        status: 200,
+                        body: mapOfGermany,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            fields: ['division'],
+                            dateFrom: '2022-01-01',
+                            dateTo: '2022-04-01',
+                            country: 'Germany',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregatedGermany,
                     },
                 },
             ],
