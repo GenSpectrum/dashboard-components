@@ -1,5 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useState } from 'preact/hooks';
+import z from 'zod';
 
 import RelativeGrowthAdvantageChart from './relative-growth-advantage-chart';
 import {
@@ -7,7 +8,7 @@ import {
     queryRelativeGrowthAdvantage,
     type RelativeGrowthAdvantageData,
 } from '../../query/queryRelativeGrowthAdvantage';
-import { type LapisFilter } from '../../types';
+import { lapisFilterSchema, views } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
@@ -17,29 +18,31 @@ import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
-import { type YAxisMaxConfig } from '../shared/charts/getYAxisMax';
+import { yAxisMaxConfigSchema } from '../shared/charts/getYAxisMax';
 import { type ScaleType } from '../shared/charts/getYAxisScale';
 import { useQuery } from '../useQuery';
 
-export type View = 'line';
+const viewSchema = z.literal(views.line);
+export type View = z.infer<typeof viewSchema>;
 
-export interface RelativeGrowthAdvantageProps {
-    width: string;
-    height: string;
-    numeratorFilter: LapisFilter;
-    denominatorFilter: LapisFilter;
-    generationTime: number;
-    views: View[];
-    lapisDateField: string;
-    yAxisMaxConfig: YAxisMaxConfig;
-}
+export const relativeGrowthAdvantagePropsSchema = z.object({
+    width: z.string(),
+    height: z.string(),
+    numeratorFilter: lapisFilterSchema,
+    denominatorFilter: lapisFilterSchema,
+    generationTime: z.number(),
+    views: z.array(viewSchema),
+    lapisDateField: z.string().min(1),
+    yAxisMaxConfig: yAxisMaxConfigSchema,
+});
+export type RelativeGrowthAdvantageProps = z.infer<typeof relativeGrowthAdvantagePropsSchema>;
 
 export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageProps> = (componentProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} schema={relativeGrowthAdvantagePropsSchema} componentProps={componentProps}>
             <ResizeContainer size={size}>
                 <RelativeGrowthAdvantageInner {...componentProps} />
             </ResizeContainer>
