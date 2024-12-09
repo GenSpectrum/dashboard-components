@@ -35,9 +35,7 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
 @customElement('gs-mutations')
 export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
     /**
-     * Required.
-     *
-     * LAPIS filter to select the displayed data.
+     * LAPIS filter to select the displayed data. If not provided, all data is displayed.
      */
     @property({ type: Object })
     lapisFilter: Record<string, string | number | null | boolean> = {};

@@ -53,6 +53,8 @@ export type MutationEntry = SubstitutionEntry | DeletionEntry | InsertionEntry;
 export const views = {
     table: 'table',
     venn: 'venn',
+    grid: 'grid',
+    insertions: 'insertions',
 } as const;
 
 export const mutationComparisonViewSchema = z.union([z.literal(views.table), z.literal(views.venn)]);

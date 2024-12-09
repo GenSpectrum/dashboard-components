@@ -1,5 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { type Dispatch, type StateUpdater, useContext, useState } from 'preact/hooks';
+import z from 'zod';
 
 import { getInsertionsTableData } from './getInsertionsTableData';
 import { getMutationsTableData } from './getMutationsTableData';
@@ -9,9 +10,10 @@ import MutationsTable from './mutations-table';
 import { filterMutationsData, queryMutationsData } from './queryMutations';
 import {
     type InsertionEntry,
-    type LapisFilter,
-    type SequenceType,
+    lapisFilterSchema,
+    sequenceTypeSchema,
     type SubstitutionOrDeletionEntry,
+    views,
 } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
@@ -28,23 +30,25 @@ import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '..
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
 
-export type View = 'table' | 'grid' | 'insertions';
+const viewSchema = z.union([z.literal(views.table), z.literal(views.grid), z.literal(views.insertions)]);
+export type View = z.infer<typeof viewSchema>;
 
-export interface MutationsProps {
-    width: string;
-    height: string;
-    lapisFilter: LapisFilter;
-    sequenceType: SequenceType;
-    views: View[];
-    pageSize: boolean | number;
-}
+const mutationsPropsSchema = z.object({
+    lapisFilter: lapisFilterSchema,
+    sequenceType: sequenceTypeSchema,
+    views: viewSchema.array(),
+    pageSize: z.union([z.boolean(), z.number()]),
+    width: z.string(),
+    height: z.string(),
+});
+export type MutationsProps = z.infer<typeof mutationsPropsSchema>;
 
 export const Mutations: FunctionComponent<MutationsProps> = (componentProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} componentProps={componentProps} schema={mutationsPropsSchema}>
             <ResizeContainer size={size}>
                 <MutationsInner {...componentProps} />
             </ResizeContainer>
