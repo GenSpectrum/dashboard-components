@@ -6,6 +6,7 @@ import oneVariantEG from '../../preact/numberSequencesOverTime/__mockData__/oneV
 import twoVariantsEG from '../../preact/numberSequencesOverTime/__mockData__/twoVariantsEG.json';
 import twoVariantsJN1 from '../../preact/numberSequencesOverTime/__mockData__/twoVariantsJN1.json';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
 
 export default {
     title: 'Visualization/NumberSequencesOverTime',
@@ -127,5 +128,18 @@ export const TwoVariants = {
                 },
             ],
         },
+    },
+};
+
+export const WithNoLapisDateField: StoryObj<NumberSequencesOverTimeProps> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        lapisDateField: '',
+    },
+    play: async ({ canvasElement, step }) => {
+        step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
+        });
     },
 };
