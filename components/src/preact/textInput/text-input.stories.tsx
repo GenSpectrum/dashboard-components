@@ -6,6 +6,7 @@ import { TextInput, type TextInputProps } from './text-input';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
 
 const meta: Meta<TextInputProps> = {
     title: 'Input/TextInput',
@@ -90,6 +91,19 @@ export const WithInitialValue: StoryObj<TextInputProps> = {
         await waitFor(() => {
             const input = canvas.getByPlaceholderText('Enter a host name', { exact: false });
             expect(input).toHaveValue('Homo sapiens');
+        });
+    },
+};
+
+export const WithNoLapisField: StoryObj<TextInputProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        lapisField: '',
+    },
+    play: async ({ canvasElement, step }) => {
+        step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
         });
     },
 };

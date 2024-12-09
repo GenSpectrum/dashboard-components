@@ -1,5 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useRef } from 'preact/hooks';
+import z from 'zod';
 
 import { fetchAutocompleteList } from './fetchAutocompleteList';
 import { LapisUrlContext } from '../LapisUrlContext';
@@ -9,21 +10,25 @@ import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
-export interface TextInputInnerProps {
-    lapisField: string;
-    placeholderText: string;
-    initialValue: string;
-}
+const textInputInnerPropsSchema = z.object({
+    lapisField: z.string().min(1),
+    placeholderText: z.string().optional(),
+    initialValue: z.string().optional(),
+});
 
-export interface TextInputProps extends TextInputInnerProps {
-    width: string;
-}
+const textInputPropsSchema = textInputInnerPropsSchema.extend({
+    width: z.string(),
+});
 
-export const TextInput: FunctionComponent<TextInputProps> = ({ width, ...innerProps }) => {
+export type TextInputInnerProps = z.infer<typeof textInputInnerPropsSchema>;
+export type TextInputProps = z.infer<typeof textInputPropsSchema>;
+
+export const TextInput: FunctionComponent<TextInputProps> = (props) => {
+    const { width, ...innerProps } = props;
     const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary size={size} layout='horizontal'>
+        <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={textInputPropsSchema}>
             <ResizeContainer size={size}>
                 <TextInputInner {...innerProps} />
             </ResizeContainer>
@@ -76,7 +81,7 @@ const TextInputInner: FunctionComponent<TextInputInnerProps> = ({ lapisField, pl
             <input
                 type='text'
                 class='input input-bordered w-full'
-                placeholder={placeholderText !== undefined ? placeholderText : lapisField}
+                placeholder={placeholderText ?? lapisField}
                 onInput={onInput}
                 ref={inputRef}
                 list={lapisField}
