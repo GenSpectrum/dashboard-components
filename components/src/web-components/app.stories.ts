@@ -57,6 +57,21 @@ export const Default: StoryObj<{ lapis: string }> = {
     },
 };
 
+export const WithNoLapisUrl: StoryObj<{ lapis: string }> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        lapis: 'notAValidUrl',
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(() => {
+            expect(canvas.getByText("Error: Invalid LAPIS URL: 'notAValidUrl'", { exact: false })).toBeVisible();
+        });
+    },
+};
+
 export const DelayFetchingReferenceGenome: StoryObj<{ lapis: string }> = {
     ...Template,
     parameters: {
@@ -83,13 +98,13 @@ export const DelayFetchingReferenceGenome: StoryObj<{ lapis: string }> = {
 export const FailsToFetchReferenceGenome: StoryObj<{ lapis: string }> = {
     ...Template,
     args: {
-        lapis: 'definitely-not-a-valid-url',
+        lapis: 'https://url.to.lapis-definitely-not-a-valid-url',
     },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
         await waitFor(() => {
-            expect(canvas.getByText('Error', { exact: false })).toBeVisible();
+            expect(canvas.getByText('Error: Cannot fetch reference genome.', { exact: false })).toBeVisible();
         });
     },
 };
