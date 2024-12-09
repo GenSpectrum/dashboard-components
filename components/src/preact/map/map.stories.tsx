@@ -1,10 +1,12 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
 
 import worldAtlas from './__mockData__/worldAtlas.json';
-// import worldAtlas from 'world-atlas/countries-10m.json';
 import { LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { Map, type MapProps } from './map';
+
+import 'leaflet/dist/leaflet.css';
+import './leafletStyleModifications.css';
 
 const meta: Meta<MapProps> = {
     title: 'Visualization/Map',
@@ -25,11 +27,17 @@ export const Default: StoryObj<MapProps> = {
         </LapisUrlContext.Provider>
     ),
     args: {
+        lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01' },
+        lapisLocationField: 'country',
         mapSource: {
             type: 'topojson',
             url: worldMapUrl,
             topologyObjectsKey: 'countries',
         },
+        enableMapNavigation: false,
+        width: '1100px',
+        height: '800px',
+        views: ['map'],
     },
     parameters: {
         fetchMock: {

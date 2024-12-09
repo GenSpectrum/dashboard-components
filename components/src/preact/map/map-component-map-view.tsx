@@ -8,8 +8,6 @@ import { type GeoJsonFeatureProperties } from './useGeoJsonMap';
 import { type AggregateData } from '../../query/queryAggregateData';
 import { formatProportion } from '../shared/table/formatProportion';
 
-import 'leaflet/dist/leaflet.css'; // TODO
-
 function getColor(value: number | undefined) {
     if (value === undefined) {
         return 'lightgrey';
