@@ -8,6 +8,7 @@ import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { dateRangeOptionPresets } from './dateRangeOption';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
 
 const earliestDate = '1970-01-01';
 
@@ -217,6 +218,19 @@ export const HandlesInvalidInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
 
         await waitFor(() => {
             expect(canvas.getByText('Oops! Something went wrong.')).toBeVisible();
+        });
+    },
+};
+
+export const WithNoDateColumn: StoryObj<DateRangeSelectorProps> = {
+    ...Primary,
+    args: {
+        ...Primary.args,
+        dateColumn: '',
+    },
+    play: async ({ canvasElement, step }) => {
+        step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
         });
     },
 };
