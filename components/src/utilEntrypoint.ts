@@ -11,6 +11,7 @@ export {
     type SequenceType,
     views,
     type MutationComparisonView,
+    type TemporalGranularity,
 } from './types';
 
 export { type SelectedMutationFilterStrings } from './preact/mutationFilter/mutation-filter';

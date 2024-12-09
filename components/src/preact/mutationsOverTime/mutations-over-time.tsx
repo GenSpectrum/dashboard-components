@@ -1,5 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { type Dispatch, type StateUpdater, useContext, useMemo, useState } from 'preact/hooks';
+import z from 'zod';
 
 // @ts-expect-error -- uses subpath imports and vite worker import
 import MutationOverTimeWorker from '#mutationOverTime?worker&inline';
@@ -9,10 +10,11 @@ import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
 import MutationsOverTimeGrid from './mutations-over-time-grid';
 import { type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
 import {
-    type LapisFilter,
-    type SequenceType,
+    lapisFilterSchema,
+    sequenceTypeSchema,
     type SubstitutionOrDeletionEntry,
-    type TemporalGranularity,
+    temporalGranularitySchema,
+    views,
 } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { toTemporalClass } from '../../utils/temporalClass';
@@ -33,24 +35,26 @@ import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '..
 import Tabs from '../components/tabs';
 import { useWebWorker } from '../webWorkers/useWebWorker';
 
-export type View = 'grid';
+const viewSchema = z.literal(views.grid);
+export type View = z.infer<typeof viewSchema>;
 
-export interface MutationsOverTimeProps {
-    width: string;
-    height: string;
-    lapisFilter: LapisFilter;
-    sequenceType: SequenceType;
-    views: View[];
-    granularity: TemporalGranularity;
-    lapisDateField: string;
-}
+const mutationOverTimeSchema = z.object({
+    lapisFilter: lapisFilterSchema,
+    sequenceType: sequenceTypeSchema,
+    views: z.array(viewSchema),
+    granularity: temporalGranularitySchema,
+    lapisDateField: z.string().min(1),
+    width: z.string(),
+    height: z.string(),
+});
+export type MutationsOverTimeProps = z.infer<typeof mutationOverTimeSchema>;
 
 export const MutationsOverTime: FunctionComponent<MutationsOverTimeProps> = (componentProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} schema={mutationOverTimeSchema} componentProps={componentProps}>
             <ResizeContainer size={size}>
                 <MutationsOverTimeInner {...componentProps} />
             </ResizeContainer>
