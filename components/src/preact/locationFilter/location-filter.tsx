@@ -1,6 +1,7 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useRef, useState } from 'preact/hooks';
 import { type JSXInternal } from 'preact/src/jsx';
+import z from 'zod';
 
 import { fetchAutocompletionList } from './fetchAutocompletionList';
 import { LapisUrlContext } from '../LapisUrlContext';
@@ -9,21 +10,25 @@ import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
-export interface LocationFilterInnerProps {
-    initialValue: string;
-    placeholderText: string;
-    fields: string[];
-}
+const lineageFilterInnerPropsSchema = z.object({
+    initialValue: z.string().optional(),
+    placeholderText: z.string().optional(),
+    fields: z.array(z.string()).min(1),
+});
 
-export interface LocationFilterProps extends LocationFilterInnerProps {
-    width: string;
-}
+const lineageFilterPropsSchema = lineageFilterInnerPropsSchema.extend({
+    width: z.string(),
+});
 
-export const LocationFilter: FunctionComponent<LocationFilterProps> = ({ width, ...innerProps }) => {
+export type LocationFilterInnerProps = z.infer<typeof lineageFilterInnerPropsSchema>;
+export type LocationFilterProps = z.infer<typeof lineageFilterPropsSchema>;
+
+export const LocationFilter: FunctionComponent<LocationFilterProps> = (props) => {
+    const { width, ...innerProps } = props;
     const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary size={size} layout='horizontal'>
+        <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={lineageFilterPropsSchema}>
             <ResizeContainer size={size}>
                 <LocationFilterInner {...innerProps} />
             </ResizeContainer>
