@@ -1,5 +1,5 @@
-import type { Feature, GeometryObject } from 'geojson';
-import Leaflet, { type GeoJSON, type Layer, type LayerGroup } from 'leaflet';
+import type { Feature, FeatureCollection, GeometryObject } from 'geojson';
+import Leaflet, { type Layer, type LayerGroup } from 'leaflet';
 import type { FunctionComponent } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 
@@ -13,7 +13,7 @@ type EnhancedGeoJsonFeatureProperties = GeoJsonFeatureProperties & {
     data: FeatureData | null;
 };
 type MapViewProps = {
-    geojsonData: GeoJSON.FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
+    geojsonData: FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
     locationData: AggregateData;
     enableMapNavigation: boolean;
     lapisLocationField: string;
@@ -83,7 +83,7 @@ function buildLookupByLocationField(locationData: AggregateData, lapisLocationFi
 }
 
 function matchLocationDataAndGeoJsonFeatures(
-    geojsonData: GeoJSON.FeatureCollection<GeometryObject, GeoJsonFeatureProperties>,
+    geojsonData: FeatureCollection<GeometryObject, GeoJsonFeatureProperties>,
     countAndProportionByCountry: Map<string, FeatureData>,
     lapisLocationField: string,
 ) {
