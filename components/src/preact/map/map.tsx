@@ -1,23 +1,24 @@
-import type { Feature, GeometryObject } from 'geojson';
-import Leaflet, { type LayerGroup } from 'leaflet';
+import type * as GeoJSON from 'geojson';
+import type { GeometryObject } from 'geojson';
 import type { FunctionComponent } from 'preact';
-import { useContext, useEffect, useRef } from 'preact/hooks';
+import { useContext } from 'preact/hooks';
 import z from 'zod';
 
 import germany from './germany.json';
+import { MapComponentMapView } from './map-component-map-view';
 import uk from './uk.topo.json';
 import us from './us.topo.json';
-import { queryAggregateData } from '../../query/queryAggregateData';
+import { type AggregateData, queryAggregateData } from '../../query/queryAggregateData';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
+import { Fullscreen } from '../components/fullscreen';
+import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
-import { formatProportion } from '../shared/table/formatProportion';
 import { useQuery } from '../useQuery';
-import { useGeoJsonMap } from './useGeoJsonMap';
-import { lapisFilterSchema } from '../../types';
-
-import 'leaflet/dist/leaflet.css';
+import { type GeoJsonFeatureProperties, useGeoJsonMap } from './useGeoJsonMap';
+import { lapisFilterSchema, type MapView, mapViewSchema, views } from '../../types';
+import Tabs from '../components/tabs';
 
 const mapSourceSchema = z.object({
     type: z.literal('topojson'),
@@ -34,39 +35,10 @@ const mapPropsSchema = z.object({
     enableMapNavigation: z.boolean(),
     width: z.string(),
     height: z.string(),
+    views: z.array(mapViewSchema),
 });
 
 export type MapProps = z.infer<typeof mapPropsSchema>;
-
-function getColor(value: number | undefined) {
-    if (value === undefined) {
-        return 'lightgrey';
-    }
-
-    return value > 0.5
-        ? '#800026'
-        : value > 0.4
-          ? '#BD0026'
-          : value > 0.3
-            ? '#E31A1C'
-            : value > 0.2
-              ? '#FC4E2A'
-              : value > 0.1
-                ? '#FD8D3C'
-                : value > 0.05
-                  ? '#FEB24C'
-                  : value > 0.02
-                    ? '#FED976'
-                    : value > 0.01
-                      ? '#FFEDA0'
-                      : value > 0.005
-                        ? '#FFF7BC'
-                        : value > 0.002
-                          ? '#FFFFCC'
-                          : value > 0
-                            ? '#FFFFE5'
-                            : '#FFFFFF';
-}
 
 const countryConfig = {
     de: [germany, germany.objects.states, [51.1657, 10.4515], 6],
@@ -87,10 +59,8 @@ export const Map: FunctionComponent<MapProps> = (componentProps) => {
     );
 };
 
-type GeoJsonFeatureProperties = { name: string; data: { proportion: number; count: number } | null };
-
-const MapInner: FunctionComponent<MapProps> = ({ lapisFilter, lapisLocationField, mapSource, enableMapNavigation }) => {
-    const ref = useRef<HTMLDivElement>(null);
+const MapInner: FunctionComponent<MapProps> = (props) => {
+    const { lapisFilter, lapisLocationField, mapSource } = props;
 
     const lapis = useContext(LapisUrlContext);
     const { isLoading: isLoadingMap, geojsonData } = useGeoJsonMap(mapSource);
@@ -100,76 +70,6 @@ const MapInner: FunctionComponent<MapProps> = ({ lapisFilter, lapisLocationField
         isLoading: isLoadingLapisData,
     } = useQuery(async () => queryAggregateData(lapisFilter, [lapisLocationField], lapis), [lapis]);
 
-    useEffect(() => {
-        if (!ref.current || geojsonData === undefined || data === undefined) {
-            return;
-        }
-
-        const dataByCountry = data.reduce(
-            (acc, row) => ({
-                ...acc,
-                [row.country as string]: row,
-            }),
-            {} as Record<string, { count: number; proportion: number }>,
-        );
-
-        const found: string[] = [];
-
-        const locations: Feature<GeometryObject, GeoJsonFeatureProperties>[] = geojsonData.features.map((feature) => {
-            const name = feature.properties.name;
-
-            if (name in dataByCountry) {
-                found.push(name);
-            }
-
-            return {
-                ...feature,
-                properties: {
-                    ...feature.properties,
-                    data: dataByCountry[name] || null,
-                },
-            };
-        });
-
-        const notFound = Object.keys(dataByCountry).filter((name) => !found.includes(name));
-        const unmatchedLocationsWarning = `Found data from LAPIS that could not be matched on locations on the given map: ${notFound.join(', ')}`;
-        console.warn(unmatchedLocationsWarning); // eslint-disable-line no-console -- We should give some feedback about unmatched location data.
-
-        const leafletMap = Leaflet.map(ref.current, {
-            scrollWheelZoom: enableMapNavigation,
-            zoomControl: enableMapNavigation,
-            keyboard: enableMapNavigation,
-            dragging: enableMapNavigation,
-        });
-        leafletMap.setView([10, 0], 1.5);
-
-        Leaflet.geoJson(locations, {
-            style: (feature: Feature<GeometryObject, GeoJsonFeatureProperties> | undefined) => ({
-                fillColor: getColor(feature?.properties.data?.proportion),
-                fillOpacity: 0.5,
-                color: 'black',
-                weight: 1,
-            }),
-        })
-            .bindTooltip((layer) => {
-                const feature = (layer as LayerGroup<GeoJsonFeatureProperties>).feature;
-                if (feature === undefined || feature.type !== 'Feature') {
-                    return '';
-                }
-                const properties = feature.properties;
-                const value =
-                    properties.data === null
-                        ? 'No data'
-                        : `${properties.data.count.toLocaleString('en-us')} (${formatProportion(properties.data.proportion)})`;
-                return `${properties.name}: ${value}`;
-            })
-            .addTo(leafletMap);
-
-        return () => {
-            leafletMap.remove();
-        };
-    }, [ref, data, geojsonData, enableMapNavigation]);
-
     if (isLoadingMap || isLoadingLapisData) {
         return <LoadingDisplay />;
     }
@@ -178,11 +78,61 @@ const MapInner: FunctionComponent<MapProps> = ({ lapisFilter, lapisLocationField
         throw error;
     }
 
+    return <MapTabs geojsonData={geojsonData} data={data} originalComponentProps={props} />;
+};
+
+type MapTabsProps = {
+    originalComponentProps: MapProps;
+    geojsonData: GeoJSON.FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
+    data: AggregateData;
+};
+
+const MapTabs: FunctionComponent<MapTabsProps> = ({ originalComponentProps, geojsonData, data }) => {
+    const getTab = (view: MapView) => {
+        switch (view) {
+            case views.map:
+                return {
+                    title: 'Map',
+                    content: (
+                        <MapComponentMapView
+                            data={data}
+                            geojsonData={geojsonData}
+                            enableMapNavigation={originalComponentProps.enableMapNavigation}
+                        />
+                    ),
+                };
+        }
+    };
+
+    const tabs = originalComponentProps.views.map((view) => getTab(view));
+
+    return <Tabs tabs={tabs} toolbar={<Toolbar originalComponentProps={originalComponentProps} />} />;
+};
+
+type ToolbarProps = {
+    originalComponentProps: MapProps;
+};
+
+const Toolbar: FunctionComponent<ToolbarProps> = ({ originalComponentProps }) => {
     return (
-        <div className='border-2 p-4 h-full '>
-            <div className='overflow-hidden h-full'>
-                <div ref={ref} className='h-full bg-white' />
-            </div>
+        <div class='flex flex-row'>
+            <MapInfo originalComponentProps={originalComponentProps} />
+            <Fullscreen />
         </div>
+    );
+};
+
+type MapInfoProps = {
+    originalComponentProps: MapProps;
+};
+
+const MapInfo: FunctionComponent<MapInfoProps> = ({ originalComponentProps }) => {
+    const lapis = useContext(LapisUrlContext);
+    return (
+        <Info>
+            <InfoHeadline1>Map</InfoHeadline1>
+            <InfoParagraph>TODO: Add description</InfoParagraph>
+            <InfoComponentCode componentName='map' params={originalComponentProps} lapisUrl={lapis} />
+        </Info>
     );
 };

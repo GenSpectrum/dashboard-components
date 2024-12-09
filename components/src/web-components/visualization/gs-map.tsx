@@ -55,15 +55,22 @@ export class MapComponent extends PreactLitAdapterWithGridJsStyles {
     @property({ type: String })
     height: string = '700px';
 
+    /**
+     * TODO
+     */
+    @property({ type: Array })
+    views: 'map'[] = ['map'];
+
     override render() {
         return (
             <Map
                 lapisFilter={this.lapisFilter}
                 lapisLocationField={this.lapisLocationField}
                 mapSource={this.mapSource}
+                enableMapNavigation={this.enableMapNavigation}
                 width={this.width}
                 height={this.height}
-                enableMapNavigation={this.enableMapNavigation}
+                views={this.views}
             />
         );
     }
