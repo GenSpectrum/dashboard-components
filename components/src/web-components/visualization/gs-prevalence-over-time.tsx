@@ -47,7 +47,6 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     // prettier-ignore
     // The multiline union type must not start with `|` because it looks weird in the Storybook docs
     /**
-     *   Required.
      * Either a LAPIS filter or an array of LAPIS filters to calculate the prevalence for.
      *
      * The `lapisFilter` will be sent as is to LAPIS to select the data.
@@ -69,8 +68,6 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     }[] = {displayName: '', lapisFilter: {}};
 
     /**
-     * Required.
-     *
      * The LAPIS filter, to select the data of the reference.
      * It must be a valid LAPIS filter object.
      */

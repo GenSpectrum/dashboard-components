@@ -1,5 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
+import z from 'zod';
 
 import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
 import PrevalenceOverTimeBarChart from './prevalence-over-time-bar-chart';
@@ -7,7 +8,7 @@ import PrevalenceOverTimeBubbleChart from './prevalence-over-time-bubble-chart';
 import PrevalenceOverTimeLineChart from './prevalence-over-time-line-chart';
 import PrevalenceOverTimeTable from './prevalence-over-time-table';
 import { type PrevalenceOverTimeData, queryPrevalenceOverTime } from '../../query/queryPrevalenceOverTime';
-import { type LapisFilter, type NamedLapisFilter, type TemporalGranularity } from '../../types';
+import { lapisFilterSchema, namedLapisFilterSchema, temporalGranularitySchema, views } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ConfidenceIntervalSelector } from '../components/confidence-interval-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
@@ -19,34 +20,42 @@ import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
-import { type ConfidenceIntervalMethod } from '../shared/charts/confideceInterval';
-import { type AxisMax } from '../shared/charts/getYAxisMax';
+import { type ConfidenceIntervalMethod, confidenceIntervalMethodSchema } from '../shared/charts/confideceInterval';
+import { axisMaxSchema } from '../shared/charts/getYAxisMax';
 import { type ScaleType } from '../shared/charts/getYAxisScale';
 import { useQuery } from '../useQuery';
 
-export type View = 'bar' | 'line' | 'bubble' | 'table';
+const viewSchema = z.union([
+    z.literal(views.table),
+    z.literal(views.bar),
+    z.literal(views.line),
+    z.literal(views.bubble),
+]);
+export type View = z.infer<typeof viewSchema>;
 
-export interface PrevalenceOverTimeProps {
-    width: string;
-    height: string;
-    numeratorFilter: NamedLapisFilter | NamedLapisFilter[];
-    denominatorFilter: LapisFilter;
-    granularity: TemporalGranularity;
-    smoothingWindow: number;
-    views: View[];
-    confidenceIntervalMethods: ConfidenceIntervalMethod[];
-    lapisDateField: string;
-    pageSize: boolean | number;
-    yAxisMaxLinear: AxisMax;
-    yAxisMaxLogarithmic: AxisMax;
-}
+const prevalenceOverTimePropsSchema = z.object({
+    width: z.string(),
+    height: z.string(),
+    numeratorFilter: z.union([namedLapisFilterSchema, z.array(namedLapisFilterSchema)]),
+    denominatorFilter: lapisFilterSchema,
+    granularity: temporalGranularitySchema,
+    smoothingWindow: z.number(),
+    views: z.array(viewSchema),
+    confidenceIntervalMethods: z.array(confidenceIntervalMethodSchema),
+    lapisDateField: z.string().min(1),
+    pageSize: z.union([z.boolean(), z.number()]),
+    yAxisMaxLinear: axisMaxSchema,
+    yAxisMaxLogarithmic: axisMaxSchema,
+});
+
+export type PrevalenceOverTimeProps = z.infer<typeof prevalenceOverTimePropsSchema>;
 
 export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = (componentProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} schema={prevalenceOverTimePropsSchema} componentProps={componentProps}>
             <ResizeContainer size={size}>
                 <PrevalenceOverTimeInner {...componentProps} />
             </ResizeContainer>
