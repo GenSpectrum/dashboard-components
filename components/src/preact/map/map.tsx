@@ -1,8 +1,7 @@
+import type { Feature, GeometryObject } from 'geojson';
 import Leaflet, { type LayerGroup } from 'leaflet';
 import type { FunctionComponent } from 'preact';
 import { useContext, useEffect, useRef } from 'preact/hooks';
-import * as topojson from 'topojson-client';
-import { type GeometryCollection, type Topology } from 'topojson-specification';
 import z from 'zod';
 
 import germany from './germany.json';
@@ -15,51 +14,59 @@ import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { formatProportion } from '../shared/table/formatProportion';
 import { useQuery } from '../useQuery';
+import { useGeoJsonMap } from './useGeoJsonMap';
+import { lapisFilterSchema } from '../../types';
 
 import 'leaflet/dist/leaflet.css';
 
 const mapSourceSchema = z.object({
     type: z.literal('topojson'),
-    url: z.string(),
-    topologyObjectsKey: z.string(),
+    url: z.string().min(1),
+    topologyObjectsKey: z.string().min(1),
 });
 
 export type MapSource = z.infer<typeof mapSourceSchema>;
 
 const mapPropsSchema = z.object({
+    lapisFilter: lapisFilterSchema,
+    lapisLocationField: z.string().min(1),
     mapSource: mapSourceSchema,
+    enableMapNavigation: z.boolean(),
+    width: z.string(),
+    height: z.string(),
 });
 
 export type MapProps = z.infer<typeof mapPropsSchema>;
 
-function getColor(d: number) {
-    return d > 0.5
+function getColor(value: number | undefined) {
+    if (value === undefined) {
+        return 'lightgrey';
+    }
+
+    return value > 0.5
         ? '#800026'
-        : d > 0.4
+        : value > 0.4
           ? '#BD0026'
-          : d > 0.3
+          : value > 0.3
             ? '#E31A1C'
-            : d > 0.2
+            : value > 0.2
               ? '#FC4E2A'
-              : d > 0.1
+              : value > 0.1
                 ? '#FD8D3C'
-                : d > 0.05
+                : value > 0.05
                   ? '#FEB24C'
-                  : d > 0.02
+                  : value > 0.02
                     ? '#FED976'
-                    : d > 0.01
+                    : value > 0.01
                       ? '#FFEDA0'
-                      : d > 0.005
+                      : value > 0.005
                         ? '#FFF7BC'
-                        : d > 0.002
+                        : value > 0.002
                           ? '#FFFFCC'
-                          : d > 0
+                          : value > 0
                             ? '#FFFFE5'
                             : '#FFFFFF';
 }
-type GeoColl = GeometryCollection<{
-    name: string;
-}>;
 
 const countryConfig = {
     de: [germany, germany.objects.states, [51.1657, 10.4515], 6],
@@ -68,13 +75,11 @@ const countryConfig = {
 } as const;
 
 export const Map: FunctionComponent<MapProps> = (componentProps) => {
-    // const { width, height } = componentProps;
-    const width = '1000px';
-    const height = '800px';
+    const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size}>
+        <ErrorBoundary size={size} componentProps={componentProps} schema={mapPropsSchema}>
             <ResizeContainer size={size}>
                 <MapInner {...componentProps} />
             </ResizeContainer>
@@ -82,7 +87,9 @@ export const Map: FunctionComponent<MapProps> = (componentProps) => {
     );
 };
 
-const MapInner: FunctionComponent<MapProps> = ({ mapSource }) => {
+type GeoJsonFeatureProperties = { name: string; data: { proportion: number; count: number } | null };
+
+const MapInner: FunctionComponent<MapProps> = ({ lapisFilter, lapisLocationField, mapSource, enableMapNavigation }) => {
     const ref = useRef<HTMLDivElement>(null);
 
     const lapis = useContext(LapisUrlContext);
@@ -91,10 +98,7 @@ const MapInner: FunctionComponent<MapProps> = ({ mapSource }) => {
         data,
         error,
         isLoading: isLoadingLapisData,
-    } = useQuery(
-        async () => queryAggregateData({ dateFrom: '2022-01-01', dateTo: '2022-04-01' }, ['country'], lapis),
-        [lapis],
-    );
+    } = useQuery(async () => queryAggregateData(lapisFilter, [lapisLocationField], lapis), [lapis]);
 
     useEffect(() => {
         if (!ref.current || geojsonData === undefined || data === undefined) {
@@ -108,63 +112,63 @@ const MapInner: FunctionComponent<MapProps> = ({ mapSource }) => {
             }),
             {} as Record<string, { count: number; proportion: number }>,
         );
-        console.log(dataByCountry);
 
-        const found = [];
+        const found: string[] = [];
 
-        const countries = geojsonData.features.map((feature) => {
+        const locations: Feature<GeometryObject, GeoJsonFeatureProperties>[] = geojsonData.features.map((feature) => {
             const name = feature.properties.name;
 
-            if (!(name in dataByCountry)) {
-                // console.log(name);
-            } else {
+            if (name in dataByCountry) {
                 found.push(name);
             }
-
-            const data2 = dataByCountry[name] || { count: 0, proportion: 0 };
 
             return {
                 ...feature,
                 properties: {
                     ...feature.properties,
-                    ...data2,
+                    data: dataByCountry[name] || null,
                 },
             };
         });
 
         const notFound = Object.keys(dataByCountry).filter((name) => !found.includes(name));
-        console.warn('notFound', notFound);
+        const unmatchedLocationsWarning = `Found data from LAPIS that could not be matched on locations on the given map: ${notFound.join(', ')}`;
+        console.warn(unmatchedLocationsWarning); // eslint-disable-line no-console -- We should give some feedback about unmatched location data.
 
         const leafletMap = Leaflet.map(ref.current, {
-            // scrollWheelZoom: false,
-            zoomControl: false,
-            keyboard: false,
-            // dragging: false,
+            scrollWheelZoom: enableMapNavigation,
+            zoomControl: enableMapNavigation,
+            keyboard: enableMapNavigation,
+            dragging: enableMapNavigation,
         });
         leafletMap.setView([10, 0], 1.5);
 
-        Leaflet.geoJson(countries, {
-            style: (feature) => ({
-                fillColor: getColor(feature?.properties.proportion),
+        Leaflet.geoJson(locations, {
+            style: (feature: Feature<GeometryObject, GeoJsonFeatureProperties> | undefined) => ({
+                fillColor: getColor(feature?.properties.data?.proportion),
                 fillOpacity: 0.5,
                 color: 'black',
                 weight: 1,
             }),
         })
-            .bindTooltip((a) => {
-                const feature = (a as LayerGroup<{ name: string; proportion: number; count: number }>).feature;
+            .bindTooltip((layer) => {
+                const feature = (layer as LayerGroup<GeoJsonFeatureProperties>).feature;
                 if (feature === undefined || feature.type !== 'Feature') {
                     return '';
                 }
                 const properties = feature.properties;
-                return `${properties.name}: ${properties.count.toLocaleString('en-us')} (${formatProportion(properties.proportion)})`;
+                const value =
+                    properties.data === null
+                        ? 'No data'
+                        : `${properties.data.count.toLocaleString('en-us')} (${formatProportion(properties.data.proportion)})`;
+                return `${properties.name}: ${value}`;
             })
             .addTo(leafletMap);
 
         return () => {
             leafletMap.remove();
         };
-    }, [ref, data, geojsonData]);
+    }, [ref, data, geojsonData, enableMapNavigation]);
 
     if (isLoadingMap || isLoadingLapisData) {
         return <LoadingDisplay />;
@@ -174,6 +178,7 @@ const MapInner: FunctionComponent<MapProps> = ({ mapSource }) => {
         throw error;
     }
 
+    // TODO height, width
     return (
         <div className='border-2 p-4'>
             <div ref={ref} className='w-[1000px] h-[800px]  bg-white' />

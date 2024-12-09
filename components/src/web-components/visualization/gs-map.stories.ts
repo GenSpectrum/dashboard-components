@@ -52,15 +52,27 @@ const worldMapUrl = 'https://mock.map.data/world.topo.json';
 export const Default: StoryObj<MapProps> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
-            <gs-map .mapSource=${args.mapSource}></gs-map>
+            <gs-map
+                .lapisFilter=${args.lapisFilter}
+                .lapisLocationField=${args.lapisLocationField}
+                .mapSource=${args.mapSource}
+                .enableMapNavigation=${args.enableMapNavigation}
+                .width=${args.width}
+                .height=${args.height}
+            ></gs-map>
         </gs-app>
     `,
     args: {
+        lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01' },
+        lapisLocationField: 'country',
         mapSource: {
             type: 'topojson',
             url: worldMapUrl,
             topologyObjectsKey: 'countries',
         },
+        enableMapNavigation: false,
+        width: '100%',
+        height: '700px',
     },
     parameters: {
         fetchMock: {

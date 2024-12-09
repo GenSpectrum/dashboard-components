@@ -1,3 +1,4 @@
+import type * as GeoJSON from 'geojson';
 import * as topojson from 'topojson-client';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 
@@ -27,13 +28,14 @@ export function useGeoJsonMap(mapSource: MapSource) {
     return { geojsonData, isLoading: false as const };
 }
 
-async function loadTopojsonMap(mapSource: MapSource) {
+type Properties = {
+    name: string;
+};
+
+async function loadTopojsonMap(
+    mapSource: MapSource,
+): Promise<GeoJSON.FeatureCollection<GeoJSON.GeometryObject, Properties>> {
     const response = await fetch(mapSource.url);
     const topology = (await response.json()) as Topology;
-    return topojson.feature(
-        topology,
-        topology.objects[mapSource.topologyObjectsKey] as GeometryCollection<{
-            name: string;
-        }>,
-    );
+    return topojson.feature(topology, topology.objects[mapSource.topologyObjectsKey] as GeometryCollection<Properties>);
 }
