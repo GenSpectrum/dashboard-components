@@ -6,6 +6,7 @@ import numerator from './__mockData__/numeratorFilter.json';
 import { RelativeGrowthAdvantage, type RelativeGrowthAdvantageProps } from './relative-growth-advantage';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
 
 export default {
     title: 'Visualization/RelativeGrowthAdvantage',
@@ -187,6 +188,19 @@ export const TooFewDataToComputeGrowthAdvantage: StoryObj<RelativeGrowthAdvantag
                 { exact: false },
             );
             return expect(notEnoughDataMessage).toBeVisible();
+        });
+    },
+};
+
+export const WithNoLapisDateField: StoryObj<RelativeGrowthAdvantageProps> = {
+    ...Primary,
+    args: {
+        ...Primary.args,
+        lapisDateField: '',
+    },
+    play: async ({ canvasElement, step }) => {
+        step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
         });
     },
 };
