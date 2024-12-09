@@ -38,8 +38,6 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
 @customElement('gs-relative-growth-advantage')
 export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
     /**
-     * Required.
-     *
      * LAPIS filter to select the data of the focal variant.
      * It must be a valid LAPIS filter object.
      */
@@ -47,8 +45,6 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
     numeratorFilter: Record<string, string | number | null | boolean> = {};
 
     /**
-     * Required.
-     *
      * LAPIS filter to select the data of the baseline variant.
      * It must be a valid LAPIS filter object.
      */
@@ -92,7 +88,7 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
      * Must be a field of type `date` in LAPIS.
      */
     @property({ type: String })
-    lapisDateField: string = 'date';
+    lapisDateField: string = '';
 
     /**
      * The maximum value for the y-axis on all graphs in linear view.
