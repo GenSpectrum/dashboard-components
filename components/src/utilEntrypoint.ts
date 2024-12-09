@@ -12,3 +12,5 @@ export {
     views,
     type MutationComparisonView,
 } from './types';
+
+export { type SelectedMutationFilterStrings } from './preact/mutationFilter/mutation-filter';

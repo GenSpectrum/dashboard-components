@@ -60,6 +60,7 @@ const Template: StoryObj<MutationFilterProps> = {
 export const Default: StoryObj<MutationFilterProps> = {
     ...Template,
     args: {
+        ...Template.args,
         initialValue: ['A123T'],
     },
 };
@@ -105,6 +106,7 @@ export const FiresFilterChangedEvent: StoryObj<MutationFilterProps> = {
 export const MultiSegmentedReferenceGenomes: StoryObj<MutationFilterProps> = {
     ...Template,
     args: {
+        ...Template.args,
         initialValue: ['seg1:123T', 'gene2:56', 'ins_seg2:78:AAA'],
     },
     parameters: {
