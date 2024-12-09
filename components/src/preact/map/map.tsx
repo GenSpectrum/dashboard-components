@@ -68,7 +68,10 @@ const MapInner: FunctionComponent<MapProps> = (props) => {
         data,
         error,
         isLoading: isLoadingLapisData,
-    } = useQuery(async () => queryAggregateData(lapisFilter, [lapisLocationField], lapis), [lapis]);
+    } = useQuery(
+        async () => queryAggregateData(lapisFilter, [lapisLocationField], lapis),
+        [lapisFilter, lapisLocationField, lapis],
+    );
 
     if (isLoadingMap || isLoadingLapisData) {
         return <LoadingDisplay />;

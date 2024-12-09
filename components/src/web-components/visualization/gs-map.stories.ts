@@ -5,6 +5,7 @@ import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import aggregatedData from '../../preact/aggregatedData/__mockData__/aggregated.json';
 import type { AggregateProps } from '../../preact/aggregatedData/aggregate';
+import aggregatedWorld from '../../preact/map/__mockData__/aggregatedWorld.json';
 import worldAtlas from '../../preact/map/__mockData__/worldAtlas.json';
 import { type MapProps } from '../../preact/map/map';
 
@@ -49,7 +50,7 @@ export default meta;
 
 const worldMapUrl = 'https://mock.map.data/world.topo.json';
 
-export const Default: StoryObj<MapProps> = {
+export const WorldMap: StoryObj<MapProps> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-map
@@ -86,6 +87,21 @@ export const Default: StoryObj<MapProps> = {
                     response: {
                         status: 200,
                         body: worldAtlas,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            fields: ['country'],
+                            dateFrom: '2022-01-01',
+                            dateTo: '2022-04-01',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregatedWorld,
                     },
                 },
             ],
