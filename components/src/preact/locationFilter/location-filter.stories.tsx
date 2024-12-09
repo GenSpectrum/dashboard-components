@@ -5,6 +5,7 @@ import { LocationFilter, type LocationFilterProps } from './location-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
 
 const meta: Meta<LocationFilterProps> = {
     title: 'Input/LocationFilter',
@@ -74,4 +75,17 @@ export const Primary: StoryObj<LocationFilterProps> = {
             />
         </LapisUrlContext.Provider>
     ),
+};
+
+export const WithNoFields: StoryObj<LocationFilterProps> = {
+    ...Primary,
+    args: {
+        ...Primary.args,
+        fields: [],
+    },
+    play: async ({ canvasElement, step }) => {
+        step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(canvasElement, 'Array must contain at least 1 element(s)');
+        });
+    },
 };
