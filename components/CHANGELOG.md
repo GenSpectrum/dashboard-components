@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.10.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.2...dashboard-components-v0.10.3) (2024-12-09)
+
+
+### Bug Fixes
+
+* **components:** gs-aggregate: validate attributes ([84fc7ff](https://github.com/GenSpectrum/dashboard-components/commit/84fc7ff6c742f505dc8136ade5d1caae7739f28b)), closes [#572](https://github.com/GenSpectrum/dashboard-components/issues/572)
+* **components:** gs-mutation-filter: validate attributes ([f2b8fbc](https://github.com/GenSpectrum/dashboard-components/commit/f2b8fbc64afd7442bdf2f3be49ae17eaee01398b)), closes [#570](https://github.com/GenSpectrum/dashboard-components/issues/570)
+* **components:** gs-text-input: validate attributes ([823f798](https://github.com/GenSpectrum/dashboard-components/commit/823f7981d2143048ef9cc68d88a50221c929358a)), closes [#571](https://github.com/GenSpectrum/dashboard-components/issues/571)
+
 ## [0.10.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.1...dashboard-components-v0.10.2) (2024-12-09)
 
 
