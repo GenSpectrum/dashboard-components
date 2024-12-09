@@ -18,7 +18,13 @@ export const namedLapisFilterSchema = z.object({
 });
 export type NamedLapisFilter = z.infer<typeof namedLapisFilterSchema>;
 
-export type TemporalGranularity = 'day' | 'week' | 'month' | 'year';
+export const temporalGranularitySchema = z.union([
+    z.literal('day'),
+    z.literal('week'),
+    z.literal('month'),
+    z.literal('year'),
+]);
+export type TemporalGranularity = z.infer<typeof temporalGranularitySchema>;
 
 export const sequenceTypeSchema = z.union([z.literal('nucleotide'), z.literal('amino acid')]);
 export type SequenceType = z.infer<typeof sequenceTypeSchema>;
@@ -53,6 +59,9 @@ export type MutationEntry = SubstitutionEntry | DeletionEntry | InsertionEntry;
 export const views = {
     table: 'table',
     venn: 'venn',
+    bar: 'bar',
+    line: 'line',
+    bubble: 'bubble',
 } as const;
 
 export const mutationComparisonViewSchema = z.union([z.literal(views.table), z.literal(views.venn)]);
