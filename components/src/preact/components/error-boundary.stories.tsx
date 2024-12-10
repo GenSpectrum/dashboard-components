@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, waitFor, within } from '@storybook/test';
+import z from 'zod';
 
 import { ErrorBoundary } from './error-boundary';
 import { UserFacingError } from './error-display';
@@ -21,9 +22,15 @@ const meta: Meta = {
 
 export default meta;
 
+const someSchema = z.object({
+    test: z.string().min(1),
+});
+const someValidProps = { test: 'someValue' };
+const someInvalidProps = { test: '' };
+
 export const ErrorBoundaryWithoutErrorStory: StoryObj = {
     render: (args) => (
-        <ErrorBoundary size={args.size}>
+        <ErrorBoundary size={args.size} schema={someSchema} componentProps={someValidProps}>
             <div>Some content</div>
         </ErrorBoundary>
     ),
@@ -36,7 +43,7 @@ export const ErrorBoundaryWithoutErrorStory: StoryObj = {
 
 export const ErrorBoundaryWithErrorStory: StoryObj = {
     render: (args) => (
-        <ErrorBoundary size={args.size}>
+        <ErrorBoundary size={args.size} schema={someSchema} componentProps={someValidProps}>
             <ContentThatThrowsError error={() => new Error('Some error')} />
         </ErrorBoundary>
     ),
@@ -48,9 +55,23 @@ export const ErrorBoundaryWithErrorStory: StoryObj = {
     },
 };
 
+export const ErrorBoundaryWithParsingErrorStory: StoryObj = {
+    render: (args) => (
+        <ErrorBoundary size={args.size} schema={someSchema} componentProps={someInvalidProps}>
+            <ContentThatThrowsError error={() => new Error('Some error')} />
+        </ErrorBoundary>
+    ),
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const content = canvas.queryByText('Some content.', { exact: false });
+        await waitFor(() => expect(content).not.toBeInTheDocument());
+        await waitFor(() => expect(canvas.getByText('Error - Invalid component attributes')).toBeInTheDocument());
+    },
+};
+
 export const ErrorBoundaryWithUserFacingErrorStory: StoryObj = {
     render: (args) => (
-        <ErrorBoundary size={args.size}>
+        <ErrorBoundary size={args.size} schema={someSchema} componentProps={someValidProps}>
             <ContentThatThrowsError error={() => new UserFacingError('Error Headline', 'Some error')} />
         </ErrorBoundary>
     ),
