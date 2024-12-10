@@ -7,9 +7,9 @@ import { ResizeContainer, type Size } from './resize-container';
 
 type ErrorBoundaryProps<T> = {
     size: Size;
+    componentProps: T;
+    schema: ZodSchema<T>;
     layout?: ErrorDisplayProps['layout'];
-    componentProps?: T;
-    schema?: ZodSchema<T>;
 };
 
 export const ErrorBoundary = <T extends Record<string, unknown>>({
@@ -41,8 +41,7 @@ export const ErrorBoundary = <T extends Record<string, unknown>>({
     return <>{children}</>;
 };
 
-// TODO #554 - make both arguments required once all components validate their props
-function useCheckComponentProps<T extends Record<string, unknown>>(schema?: ZodSchema<T>, componentProps?: T) {
+function useCheckComponentProps<T extends Record<string, unknown>>(schema: ZodSchema<T>, componentProps: T) {
     return useMemo(() => {
         if (schema === undefined || componentProps === undefined) {
             return undefined;
