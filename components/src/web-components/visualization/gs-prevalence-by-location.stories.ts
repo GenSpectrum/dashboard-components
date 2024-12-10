@@ -14,7 +14,18 @@ import { type PrevalenceByLocationProps } from '../../preact/map/prevalence-by-l
 import './gs-prevalence-by-location';
 import '../app';
 
-const codeExample = `TODO!`; // TODO
+const codeExample = `<gs-prevalence-by-location
+    lapisFilter='{"dateFrom":"2022-01-01","dateTo":"2022-04-01"}'
+    lapisLocationField='country'
+    mapSource='{"type":"topojson","url":"https://mock.map.data/topo.json","topologyObjectsKey":"countries"}'
+    enableMapNavigation='false'
+    width='1100px'
+    height='800px'
+    views='["map"]'
+    zoom='2'
+    offsetX='0'
+    offsetY='10'
+/>`;
 
 const meta: Meta<Required<AggregateProps>> = {
     title: 'Visualization/Prevalence by location',

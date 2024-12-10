@@ -4,7 +4,12 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import leafletStyleModifications from '../../preact/map/leafletStyleModifications.css?inline';
-import { type MapSource, PrevalenceByLocation } from '../../preact/map/prevalence-by-location';
+import {
+    type MapSource,
+    PrevalenceByLocation,
+    type PrevalenceByLocationProps,
+} from '../../preact/map/prevalence-by-location';
+import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 const leafletCss = unsafeCSS(leafletStyle);
@@ -13,34 +18,95 @@ const leafletModificationsCss = unsafeCSS(leafletStyleModifications);
 /**
  * ## Context
  *
- * TODO
+ * This component shows the geographic distribution of sequence data from LAPIS.
+ * It displays the prevalence (number of sample per `lapisLocationField` / number of samples matching the `lapisFilter`) of the data by location.
+ *
+ * ## Views
+ *
+ * ### Map View
+ *
+ * This view displays a chloropleth map based on [Leaflet](https://leafletjs.com/).
+ * The component expects a `mapSource` object that specifies where the map data can be downloaded from.
+ * We can imagine that we add other map source types later (for example, GeoJSON).
+ *
+ * #### TopoJSON
+ *
+ * Suppose you provide this example object as `mapSource`:
+ *
+ * ```json
+ * {
+ *    "type": "topojson",
+ *    "url": "https://example.com/map.topojson",
+ *    "topologyObjectsKey": "myObjectKey"
+ * }
+ * ```
+ *
+ * The URL must point to a [TopoJSON file](https://github.com/topojson/topojson) that contains the map data.
+ * The TopoJSON file must schematically look like this,
+ * where `objects[topologyObjectsKey]` must be a valid GeometryCollection (`objects.myObjectKey` in this example):
+ *
+ * ```json
+ * {
+ *   "type": "Topology",
+ *   "objects": {
+ *     "myObjectKey": {
+ *       "type": "GeometryCollection",
+ *       "geometries": [
+ *         {
+ *           "type": "Polygon",
+ *           "properties": {
+ *             "name": "North Rhine Westphalia"
+ *           },
+ *           "id": "DE.NW",
+ *           "arcs": [...]
+ *         },
+ *         ...
+ *       ]
+ *     }
+ *   },
+ *   "arcs": [...],
+ *   "transform": {...}
+ * }
+ * ```
+ *
+ * You can use any valid TopoJSON file.
+ * https://github.com/markmarkoh/datamaps/tree/master/src/js/data contains TopoJSON files for many countries.
+ *
+ * The `lapisFilter` is used to select the data to display, and it is aggregated by the `lapisLocationField`.
+ * This component assumes that every geometry object in the TopoJSON file has a `properties.name` field.
+ *
+ * The values that LAPIS returns for `lapisLocationField` must match the `properties.name` in the map data.
+ *
+ * This component will write a console warning if there is a value in the LAPIS data that did not match
+ * on any geometry name in the map data.
+ * This is supposed to help creating map data that fits the LAPIS data.
+ * If there is a geometry name in the map data that did not match on any value in the LAPIS data, it will be ignored.
+ * It is expected that not all locations on the map have data in LAPIS.
  */
 @customElement('gs-prevalence-by-location')
 export class PrevalenceByLocationComponent extends PreactLitAdapter {
     static override styles = [...PreactLitAdapter.styles, leafletCss, leafletModificationsCss];
 
     /**
-     * Required.
-     *
      * LAPIS filter to select the displayed data.
+     * If you want to display the distribution over the states of a certain country,
+     * you should usually filter by that country here (e.g. { country: 'USA' }).
      */
     @property({ type: Object })
     lapisFilter: Record<string, string | number | null | boolean> = {};
 
     /**
+     * Required.
+     *
      * The location field to aggregate the data by.
-     *
-     * The values that LAPIS returns for this field must match the "feature names" (i.e. countries, subdivisions, etc.)
-     * in the map data.
-     *
-     * This component will write a console warning if there is a value in the LAPIS data that did not match on any feature in the map data.
-     * If there is a feature in the map data that did not match on any value in the LAPIS data, it will be ignored.
      */
     @property({ type: String })
     lapisLocationField: string = '';
 
     /**
-     * TODO
+     * Required.
+     *
+     * The source of the map data. See component level docs for more information.
      */
     @property({ type: Object })
     mapSource: MapSource = { type: 'topojson', url: '', topologyObjectsKey: '' };
@@ -130,5 +196,40 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-// TODO
+type LapisFilterMatches = Expect<
+    Equals<typeof PrevalenceByLocationComponent.prototype.lapisFilter, PrevalenceByLocationProps['lapisFilter']>
+>;
+type LapisLocationFieldMatches = Expect<
+    Equals<
+        typeof PrevalenceByLocationComponent.prototype.lapisLocationField,
+        PrevalenceByLocationProps['lapisLocationField']
+    >
+>;
+type MapSourceMatches = Expect<
+    Equals<typeof PrevalenceByLocationComponent.prototype.mapSource, PrevalenceByLocationProps['mapSource']>
+>;
+type EnableMapNavigationMatches = Expect<
+    Equals<
+        typeof PrevalenceByLocationComponent.prototype.enableMapNavigation,
+        PrevalenceByLocationProps['enableMapNavigation']
+    >
+>;
+type WidthMatches = Expect<
+    Equals<typeof PrevalenceByLocationComponent.prototype.width, PrevalenceByLocationProps['width']>
+>;
+type HeightMatches = Expect<
+    Equals<typeof PrevalenceByLocationComponent.prototype.height, PrevalenceByLocationProps['height']>
+>;
+type ViewsMatches = Expect<
+    Equals<typeof PrevalenceByLocationComponent.prototype.views, PrevalenceByLocationProps['views']>
+>;
+type ZoomMatches = Expect<
+    Equals<typeof PrevalenceByLocationComponent.prototype.zoom, PrevalenceByLocationProps['zoom']>
+>;
+type OffsetXMatches = Expect<
+    Equals<typeof PrevalenceByLocationComponent.prototype.offsetX, PrevalenceByLocationProps['offsetX']>
+>;
+type OffsetYMatches = Expect<
+    Equals<typeof PrevalenceByLocationComponent.prototype.offsetY, PrevalenceByLocationProps['offsetY']>
+>;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
