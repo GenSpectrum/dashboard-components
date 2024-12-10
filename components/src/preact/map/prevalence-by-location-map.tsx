@@ -12,7 +12,7 @@ type FeatureData = { proportion: number; count: number };
 type EnhancedGeoJsonFeatureProperties = GeoJsonFeatureProperties & {
     data: FeatureData | null;
 };
-type MapViewProps = {
+type PrevalenceByLocationMapProps = {
     geojsonData: FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
     locationData: AggregateData;
     enableMapNavigation: boolean;
@@ -22,7 +22,7 @@ type MapViewProps = {
     offsetY: number;
 };
 
-export const MapComponentMapView: FunctionComponent<MapViewProps> = ({
+export const PrevalenceByLocationMap: FunctionComponent<PrevalenceByLocationMapProps> = ({
     geojsonData,
     locationData,
     enableMapNavigation,

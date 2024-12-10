@@ -4,7 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import leafletStyleModifications from '../../preact/map/leafletStyleModifications.css?inline';
-import { Map, type MapSource } from '../../preact/map/map';
+import { type MapSource, PrevalenceByLocation } from '../../preact/map/prevalence-by-location';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 const leafletCss = unsafeCSS(leafletStyle);
@@ -15,8 +15,8 @@ const leafletModificationsCss = unsafeCSS(leafletStyleModifications);
  *
  * TODO
  */
-@customElement('gs-map')
-export class MapComponent extends PreactLitAdapter {
+@customElement('gs-prevalence-by-location')
+export class PrevalenceByLocationComponent extends PreactLitAdapter {
     static override styles = [...PreactLitAdapter.styles, leafletCss, leafletModificationsCss];
 
     /**
@@ -98,7 +98,7 @@ export class MapComponent extends PreactLitAdapter {
 
     override render() {
         return (
-            <Map
+            <PrevalenceByLocation
                 lapisFilter={this.lapisFilter}
                 lapisLocationField={this.lapisLocationField}
                 mapSource={this.mapSource}
@@ -116,7 +116,7 @@ export class MapComponent extends PreactLitAdapter {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-map': MapComponent;
+        'gs-prevalence-by-location': PrevalenceByLocationComponent;
     }
 }
 
@@ -124,7 +124,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-map': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-prevalence-by-location': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
         }
     }
 }

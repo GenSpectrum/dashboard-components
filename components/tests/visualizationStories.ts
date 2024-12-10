@@ -119,12 +119,12 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Sequences',
     },
     {
-        id: 'visualization-map--world-map',
+        id: 'visualization-prevalence-by-location--world-map',
         title: 'Map',
         loadingIsDoneIndicator: 'Leaflet',
     },
     {
-        id: 'visualization-map--germany',
+        id: 'visualization-prevalence-by-location--germany',
         title: 'Map',
         loadingIsDoneIndicator: 'Leaflet',
     },

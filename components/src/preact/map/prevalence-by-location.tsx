@@ -4,7 +4,7 @@ import type { FunctionComponent } from 'preact';
 import { useContext } from 'preact/hooks';
 import z from 'zod';
 
-import { MapComponentMapView } from './map-component-map-view';
+import { PrevalenceByLocationMap } from './prevalence-by-location-map';
 import { type AggregateData, queryAggregateData } from '../../query/queryAggregateData';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -14,8 +14,11 @@ import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 import { type GeoJsonFeatureProperties, useGeoJsonMap } from './useGeoJsonMap';
-import { lapisFilterSchema, type MapView, mapViewSchema, views } from '../../types';
+import { lapisFilterSchema, views } from '../../types';
 import Tabs from '../components/tabs';
+
+export const prevalenceByLocationViewSchema = z.literal(views.map);
+export type PrevalenceByLocationView = z.infer<typeof prevalenceByLocationViewSchema>;
 
 const mapSourceSchema = z.object({
     type: z.literal('topojson'),
@@ -25,35 +28,35 @@ const mapSourceSchema = z.object({
 
 export type MapSource = z.infer<typeof mapSourceSchema>;
 
-const mapPropsSchema = z.object({
+const prevalenceByLocationPropsSchema = z.object({
     lapisFilter: lapisFilterSchema,
     lapisLocationField: z.string().min(1),
     mapSource: mapSourceSchema,
     enableMapNavigation: z.boolean(),
     width: z.string(),
     height: z.string(),
-    views: z.array(mapViewSchema),
+    views: z.array(prevalenceByLocationViewSchema),
     zoom: z.number(),
     offsetX: z.number(),
     offsetY: z.number(),
 });
 
-export type MapProps = z.infer<typeof mapPropsSchema>;
+export type PrevalenceByLocationProps = z.infer<typeof prevalenceByLocationPropsSchema>;
 
-export const Map: FunctionComponent<MapProps> = (componentProps) => {
+export const PrevalenceByLocation: FunctionComponent<PrevalenceByLocationProps> = (componentProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} componentProps={componentProps} schema={mapPropsSchema}>
+        <ErrorBoundary size={size} componentProps={componentProps} schema={prevalenceByLocationPropsSchema}>
             <ResizeContainer size={size}>
-                <MapInner {...componentProps} />
+                <PrevalenceByLocationInner {...componentProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-const MapInner: FunctionComponent<MapProps> = (props) => {
+const PrevalenceByLocationInner: FunctionComponent<PrevalenceByLocationProps> = (props) => {
     const { lapisFilter, lapisLocationField, mapSource } = props;
 
     const lapis = useContext(LapisUrlContext);
@@ -75,23 +78,27 @@ const MapInner: FunctionComponent<MapProps> = (props) => {
         throw error;
     }
 
-    return <MapTabs geojsonData={geojsonData} data={data} originalComponentProps={props} />;
+    return <PrevalenceByLocationTabs geojsonData={geojsonData} data={data} originalComponentProps={props} />;
 };
 
-type MapTabsProps = {
-    originalComponentProps: MapProps;
+type PrevalenceByLocationTabsProps = {
+    originalComponentProps: PrevalenceByLocationProps;
     geojsonData: GeoJSON.FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
     data: AggregateData;
 };
 
-const MapTabs: FunctionComponent<MapTabsProps> = ({ originalComponentProps, geojsonData, data }) => {
-    const getTab = (view: MapView) => {
+const PrevalenceByLocationTabs: FunctionComponent<PrevalenceByLocationTabsProps> = ({
+    originalComponentProps,
+    geojsonData,
+    data,
+}) => {
+    const getTab = (view: PrevalenceByLocationView) => {
         switch (view) {
             case views.map:
                 return {
                     title: 'Map',
                     content: (
-                        <MapComponentMapView
+                        <PrevalenceByLocationMap
                             locationData={data}
                             geojsonData={geojsonData}
                             enableMapNavigation={originalComponentProps.enableMapNavigation}
@@ -111,31 +118,35 @@ const MapTabs: FunctionComponent<MapTabsProps> = ({ originalComponentProps, geoj
 };
 
 type ToolbarProps = {
-    originalComponentProps: MapProps;
+    originalComponentProps: PrevalenceByLocationProps;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({ originalComponentProps }) => {
     return (
         <div class='flex flex-row'>
-            <MapInfo originalComponentProps={originalComponentProps} />
+            <PrevalenceByLocationInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
         </div>
     );
 };
 
-type MapInfoProps = {
-    originalComponentProps: MapProps;
+type PrevalenceByLocationInfoProps = {
+    originalComponentProps: PrevalenceByLocationProps;
 };
 
-const MapInfo: FunctionComponent<MapInfoProps> = ({ originalComponentProps }) => {
+const PrevalenceByLocationInfo: FunctionComponent<PrevalenceByLocationInfoProps> = ({ originalComponentProps }) => {
     const lapis = useContext(LapisUrlContext);
     return (
         <Info>
-            <InfoHeadline1>Map</InfoHeadline1>
+            <InfoHeadline1>Prevalence By Location</InfoHeadline1>
             <InfoParagraph>
                 TODO: Add description https://github.com/GenSpectrum/dashboard-components/issues/598
             </InfoParagraph>
-            <InfoComponentCode componentName='map' params={originalComponentProps} lapisUrl={lapis} />
+            <InfoComponentCode
+                componentName='prevalence-by-location'
+                params={originalComponentProps}
+                lapisUrl={lapis}
+            />
         </Info>
     );
 };

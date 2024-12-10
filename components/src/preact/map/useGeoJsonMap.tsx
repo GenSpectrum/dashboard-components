@@ -3,7 +3,7 @@ import * as topojson from 'topojson-client';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 
 import { useQuery } from '../useQuery';
-import { type MapSource } from './map';
+import { type MapSource } from './prevalence-by-location';
 
 export function useGeoJsonMap(mapSource: MapSource) {
     const {

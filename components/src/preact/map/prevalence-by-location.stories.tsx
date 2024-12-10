@@ -4,25 +4,25 @@ import worldAtlas from './__mockData__/worldAtlas.json';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 import aggregatedWorld from './__mockData__/aggregatedWorld.json';
-import { Map, type MapProps } from './map';
+import { PrevalenceByLocation, type PrevalenceByLocationProps } from './prevalence-by-location';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
 
 import 'leaflet/dist/leaflet.css';
 import './leafletStyleModifications.css';
 
-const meta: Meta<MapProps> = {
-    title: 'Visualization/Map',
-    component: Map,
+const meta: Meta<PrevalenceByLocationProps> = {
+    title: 'Visualization/PrevalenceByLocation',
+    component: PrevalenceByLocation,
 };
 
 export default meta;
 
 const worldMapUrl = 'https://mock.map.data/world.topo.json';
 
-export const Default: StoryObj<MapProps> = {
+export const Default: StoryObj<PrevalenceByLocationProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
-            <Map {...args} />
+            <PrevalenceByLocation {...args} />
         </LapisUrlContext.Provider>
     ),
     args: {
@@ -74,7 +74,7 @@ export const Default: StoryObj<MapProps> = {
     },
 };
 
-export const InvalidProps: StoryObj<MapProps> = {
+export const InvalidProps: StoryObj<PrevalenceByLocationProps> = {
     ...Default,
     args: {
         ...Default.args,

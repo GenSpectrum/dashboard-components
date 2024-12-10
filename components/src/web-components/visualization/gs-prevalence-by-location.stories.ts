@@ -9,16 +9,16 @@ import aggregatedGermany from '../../preact/map/__mockData__/aggregatedGermany.j
 import aggregatedWorld from '../../preact/map/__mockData__/aggregatedWorld.json';
 import mapOfGermany from '../../preact/map/__mockData__/germanyMap.json';
 import worldAtlas from '../../preact/map/__mockData__/worldAtlas.json';
-import { type MapProps } from '../../preact/map/map';
+import { type PrevalenceByLocationProps } from '../../preact/map/prevalence-by-location';
 
-import './gs-map';
+import './gs-prevalence-by-location';
 import '../app';
 
 const codeExample = `TODO!`; // TODO
 
 const meta: Meta<Required<AggregateProps>> = {
-    title: 'Visualization/Map',
-    component: 'gs-map',
+    title: 'Visualization/Prevalence by location',
+    component: 'gs-prevalence-by-location',
     argTypes: {},
     parameters: withComponentDocs({
         fetchMock: {
@@ -52,10 +52,10 @@ export default meta;
 
 const mockMapUrl = 'https://mock.map.data/topo.json';
 
-const Template: StoryObj<MapProps> = {
+const Template: StoryObj<PrevalenceByLocationProps> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
-            <gs-map
+            <gs-prevalence-by-location
                 .lapisFilter=${args.lapisFilter}
                 .lapisLocationField=${args.lapisLocationField}
                 .mapSource=${args.mapSource}
@@ -66,12 +66,12 @@ const Template: StoryObj<MapProps> = {
                 .zoom=${args.zoom}
                 .offsetX=${args.offsetX}
                 .offsetY=${args.offsetY}
-            ></gs-map>
+            ></gs-prevalence-by-location>
         </gs-app>
     `,
 };
 
-export const WorldMap: StoryObj<MapProps> = {
+export const WorldMap: StoryObj<PrevalenceByLocationProps> = {
     ...Template,
     args: {
         lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01' },
@@ -122,7 +122,7 @@ export const WorldMap: StoryObj<MapProps> = {
     },
 };
 
-export const Germany: StoryObj<MapProps> = {
+export const Germany: StoryObj<PrevalenceByLocationProps> = {
     ...Template,
     args: {
         lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01', country: 'Germany' },
