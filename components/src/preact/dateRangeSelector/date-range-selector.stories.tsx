@@ -8,7 +8,7 @@ import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { dateRangeOptionPresets } from './dateRangeOption';
-import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const earliestDate = '1970-01-01';
 
