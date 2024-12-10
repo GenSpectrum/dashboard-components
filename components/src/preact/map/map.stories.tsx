@@ -5,6 +5,7 @@ import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 import aggregatedWorld from './__mockData__/aggregatedWorld.json';
 import { Map, type MapProps } from './map';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
 
 import 'leaflet/dist/leaflet.css';
 import './leafletStyleModifications.css';
@@ -36,6 +37,9 @@ export const Default: StoryObj<MapProps> = {
         width: '1100px',
         height: '800px',
         views: ['map'],
+        zoom: 2,
+        offsetX: 0,
+        offsetY: 10,
     },
     parameters: {
         fetchMock: {
@@ -67,5 +71,21 @@ export const Default: StoryObj<MapProps> = {
                 },
             ],
         },
+    },
+};
+
+export const InvalidProps: StoryObj<MapProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        lapisLocationField: '',
+    },
+    play: async ({ canvasElement, step }) => {
+        step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(
+                canvasElement,
+                '"lapisLocationField": String must contain at least 1 character(s)',
+            );
+        });
     },
 };

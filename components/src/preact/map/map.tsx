@@ -132,7 +132,9 @@ const MapInfo: FunctionComponent<MapInfoProps> = ({ originalComponentProps }) =>
     return (
         <Info>
             <InfoHeadline1>Map</InfoHeadline1>
-            <InfoParagraph>TODO: Add description</InfoParagraph>
+            <InfoParagraph>
+                TODO: Add description https://github.com/GenSpectrum/dashboard-components/issues/598
+            </InfoParagraph>
             <InfoComponentCode componentName='map' params={originalComponentProps} lapisUrl={lapis} />
         </Info>
     );
