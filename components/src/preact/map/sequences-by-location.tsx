@@ -4,7 +4,7 @@ import type { FunctionComponent } from 'preact';
 import { useContext } from 'preact/hooks';
 import z from 'zod';
 
-import { PrevalenceByLocationMap } from './prevalence-by-location-map';
+import { SequencesByLocationMap } from './sequences-by-location-map';
 import { type AggregateData, queryAggregateData } from '../../query/queryAggregateData';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -13,50 +13,42 @@ import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../compon
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
-import { type GeoJsonFeatureProperties, useGeoJsonMap } from './useGeoJsonMap';
+import { type GeoJsonFeatureProperties, mapSourceSchema, useGeoJsonMap } from './useGeoJsonMap';
 import { lapisFilterSchema, views } from '../../types';
 import Tabs from '../components/tabs';
 
-export const prevalenceByLocationViewSchema = z.literal(views.map);
-export type PrevalenceByLocationView = z.infer<typeof prevalenceByLocationViewSchema>;
+export const sequencesByLocationViewSchema = z.literal(views.map);
+export type SequencesByLocationMapView = z.infer<typeof sequencesByLocationViewSchema>;
 
-const mapSourceSchema = z.object({
-    type: z.literal('topojson'),
-    url: z.string().min(1),
-    topologyObjectsKey: z.string().min(1),
-});
-
-export type MapSource = z.infer<typeof mapSourceSchema>;
-
-const prevalenceByLocationPropsSchema = z.object({
+const sequencesByLocationPropsSchema = z.object({
     lapisFilter: lapisFilterSchema,
     lapisLocationField: z.string().min(1),
     mapSource: mapSourceSchema,
     enableMapNavigation: z.boolean(),
     width: z.string(),
     height: z.string(),
-    views: z.array(prevalenceByLocationViewSchema),
+    views: z.array(sequencesByLocationViewSchema),
     zoom: z.number(),
     offsetX: z.number(),
     offsetY: z.number(),
 });
 
-export type PrevalenceByLocationProps = z.infer<typeof prevalenceByLocationPropsSchema>;
+export type SequencesByLocationProps = z.infer<typeof sequencesByLocationPropsSchema>;
 
-export const PrevalenceByLocation: FunctionComponent<PrevalenceByLocationProps> = (componentProps) => {
+export const SequencesByLocation: FunctionComponent<SequencesByLocationProps> = (componentProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} componentProps={componentProps} schema={prevalenceByLocationPropsSchema}>
+        <ErrorBoundary size={size} componentProps={componentProps} schema={sequencesByLocationPropsSchema}>
             <ResizeContainer size={size}>
-                <PrevalenceByLocationInner {...componentProps} />
+                <SequencesByLocationMapInner {...componentProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-const PrevalenceByLocationInner: FunctionComponent<PrevalenceByLocationProps> = (props) => {
+const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationProps> = (props) => {
     const { lapisFilter, lapisLocationField, mapSource } = props;
 
     const lapis = useContext(LapisUrlContext);
@@ -78,27 +70,27 @@ const PrevalenceByLocationInner: FunctionComponent<PrevalenceByLocationProps> = 
         throw error;
     }
 
-    return <PrevalenceByLocationTabs geojsonData={geojsonData} data={data} originalComponentProps={props} />;
+    return <SequencesByLocationMapTabs geojsonData={geojsonData} data={data} originalComponentProps={props} />;
 };
 
-type PrevalenceByLocationTabsProps = {
-    originalComponentProps: PrevalenceByLocationProps;
+type SequencesByLocationMapTabsProps = {
+    originalComponentProps: SequencesByLocationProps;
     geojsonData: GeoJSON.FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
     data: AggregateData;
 };
 
-const PrevalenceByLocationTabs: FunctionComponent<PrevalenceByLocationTabsProps> = ({
+const SequencesByLocationMapTabs: FunctionComponent<SequencesByLocationMapTabsProps> = ({
     originalComponentProps,
     geojsonData,
     data,
 }) => {
-    const getTab = (view: PrevalenceByLocationView) => {
+    const getTab = (view: SequencesByLocationMapView) => {
         switch (view) {
             case views.map:
                 return {
                     title: 'Map',
                     content: (
-                        <PrevalenceByLocationMap
+                        <SequencesByLocationMap
                             locationData={data}
                             geojsonData={geojsonData}
                             enableMapNavigation={originalComponentProps.enableMapNavigation}
@@ -118,23 +110,23 @@ const PrevalenceByLocationTabs: FunctionComponent<PrevalenceByLocationTabsProps>
 };
 
 type ToolbarProps = {
-    originalComponentProps: PrevalenceByLocationProps;
+    originalComponentProps: SequencesByLocationProps;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({ originalComponentProps }) => {
     return (
         <div class='flex flex-row'>
-            <PrevalenceByLocationInfo originalComponentProps={originalComponentProps} />
+            <SequencesByLocationMapInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
         </div>
     );
 };
 
-type PrevalenceByLocationInfoProps = {
-    originalComponentProps: PrevalenceByLocationProps;
+type SequencesByLocationMapInfoProps = {
+    originalComponentProps: SequencesByLocationProps;
 };
 
-const PrevalenceByLocationInfo: FunctionComponent<PrevalenceByLocationInfoProps> = ({ originalComponentProps }) => {
+const SequencesByLocationMapInfo: FunctionComponent<SequencesByLocationMapInfoProps> = ({ originalComponentProps }) => {
     const lapis = useContext(LapisUrlContext);
     return (
         <Info>
@@ -142,11 +134,7 @@ const PrevalenceByLocationInfo: FunctionComponent<PrevalenceByLocationInfoProps>
             <InfoParagraph>
                 TODO: Add description https://github.com/GenSpectrum/dashboard-components/issues/598
             </InfoParagraph>
-            <InfoComponentCode
-                componentName='prevalence-by-location'
-                params={originalComponentProps}
-                lapisUrl={lapis}
-            />
+            <InfoComponentCode componentName='sequences-by-location' params={originalComponentProps} lapisUrl={lapis} />
         </Info>
     );
 };

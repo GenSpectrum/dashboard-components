@@ -4,11 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import leafletStyleModifications from '../../preact/map/leafletStyleModifications.css?inline';
-import {
-    type MapSource,
-    PrevalenceByLocation,
-    type PrevalenceByLocationProps,
-} from '../../preact/map/prevalence-by-location';
+import { SequencesByLocation, type SequencesByLocationProps } from '../../preact/map/sequences-by-location';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -19,7 +15,8 @@ const leafletModificationsCss = unsafeCSS(leafletStyleModifications);
  * ## Context
  *
  * This component shows the geographic distribution of sequence data from LAPIS.
- * It displays the prevalence (number of sample per `lapisLocationField` / number of samples matching the `lapisFilter`) of the data by location.
+ * It displays the count and proportion (number of sample per `lapisLocationField` / number of samples matching the `lapisFilter`)
+ * of the data by location.
  *
  * ## Views
  *
@@ -83,8 +80,8 @@ const leafletModificationsCss = unsafeCSS(leafletStyleModifications);
  * If there is a geometry name in the map data that did not match on any value in the LAPIS data, it will be ignored.
  * It is expected that not all locations on the map have data in LAPIS.
  */
-@customElement('gs-prevalence-by-location')
-export class PrevalenceByLocationComponent extends PreactLitAdapter {
+@customElement('gs-sequences-by-location')
+export class SequencesByLocationComponent extends PreactLitAdapter {
     static override styles = [...PreactLitAdapter.styles, leafletCss, leafletModificationsCss];
 
     /**
@@ -109,7 +106,11 @@ export class PrevalenceByLocationComponent extends PreactLitAdapter {
      * The source of the map data. See component level docs for more information.
      */
     @property({ type: Object })
-    mapSource: MapSource = { type: 'topojson', url: '', topologyObjectsKey: '' };
+    mapSource: { type: 'topojson'; url: string; topologyObjectsKey: string } = {
+        type: 'topojson',
+        url: '',
+        topologyObjectsKey: '',
+    };
 
     /**
      * Enable map navigation (dragging, keyboard navigation, zooming).
@@ -164,7 +165,7 @@ export class PrevalenceByLocationComponent extends PreactLitAdapter {
 
     override render() {
         return (
-            <PrevalenceByLocation
+            <SequencesByLocation
                 lapisFilter={this.lapisFilter}
                 lapisLocationField={this.lapisLocationField}
                 mapSource={this.mapSource}
@@ -182,7 +183,7 @@ export class PrevalenceByLocationComponent extends PreactLitAdapter {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-prevalence-by-location': PrevalenceByLocationComponent;
+        'gs-sequences-by-location': SequencesByLocationComponent;
     }
 }
 
@@ -190,46 +191,44 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-prevalence-by-location': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-sequences-by-location': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
         }
     }
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type LapisFilterMatches = Expect<
-    Equals<typeof PrevalenceByLocationComponent.prototype.lapisFilter, PrevalenceByLocationProps['lapisFilter']>
+    Equals<typeof SequencesByLocationComponent.prototype.lapisFilter, SequencesByLocationProps['lapisFilter']>
 >;
 type LapisLocationFieldMatches = Expect<
     Equals<
-        typeof PrevalenceByLocationComponent.prototype.lapisLocationField,
-        PrevalenceByLocationProps['lapisLocationField']
+        typeof SequencesByLocationComponent.prototype.lapisLocationField,
+        SequencesByLocationProps['lapisLocationField']
     >
 >;
 type MapSourceMatches = Expect<
-    Equals<typeof PrevalenceByLocationComponent.prototype.mapSource, PrevalenceByLocationProps['mapSource']>
+    Equals<typeof SequencesByLocationComponent.prototype.mapSource, SequencesByLocationProps['mapSource']>
 >;
 type EnableMapNavigationMatches = Expect<
     Equals<
-        typeof PrevalenceByLocationComponent.prototype.enableMapNavigation,
-        PrevalenceByLocationProps['enableMapNavigation']
+        typeof SequencesByLocationComponent.prototype.enableMapNavigation,
+        SequencesByLocationProps['enableMapNavigation']
     >
 >;
 type WidthMatches = Expect<
-    Equals<typeof PrevalenceByLocationComponent.prototype.width, PrevalenceByLocationProps['width']>
+    Equals<typeof SequencesByLocationComponent.prototype.width, SequencesByLocationProps['width']>
 >;
 type HeightMatches = Expect<
-    Equals<typeof PrevalenceByLocationComponent.prototype.height, PrevalenceByLocationProps['height']>
+    Equals<typeof SequencesByLocationComponent.prototype.height, SequencesByLocationProps['height']>
 >;
 type ViewsMatches = Expect<
-    Equals<typeof PrevalenceByLocationComponent.prototype.views, PrevalenceByLocationProps['views']>
+    Equals<typeof SequencesByLocationComponent.prototype.views, SequencesByLocationProps['views']>
 >;
-type ZoomMatches = Expect<
-    Equals<typeof PrevalenceByLocationComponent.prototype.zoom, PrevalenceByLocationProps['zoom']>
->;
+type ZoomMatches = Expect<Equals<typeof SequencesByLocationComponent.prototype.zoom, SequencesByLocationProps['zoom']>>;
 type OffsetXMatches = Expect<
-    Equals<typeof PrevalenceByLocationComponent.prototype.offsetX, PrevalenceByLocationProps['offsetX']>
+    Equals<typeof SequencesByLocationComponent.prototype.offsetX, SequencesByLocationProps['offsetX']>
 >;
 type OffsetYMatches = Expect<
-    Equals<typeof PrevalenceByLocationComponent.prototype.offsetY, PrevalenceByLocationProps['offsetY']>
+    Equals<typeof SequencesByLocationComponent.prototype.offsetY, SequencesByLocationProps['offsetY']>
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

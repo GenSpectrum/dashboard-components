@@ -1,10 +1,17 @@
 import type { FeatureCollection, GeometryObject } from 'geojson';
 import * as topojson from 'topojson-client';
 import type { GeometryCollection, Topology } from 'topojson-specification';
+import z from 'zod';
 
-import { useQuery } from '../useQuery';
-import { type MapSource } from './prevalence-by-location';
 import { UserFacingError } from '../components/error-display';
+import { useQuery } from '../useQuery';
+
+export const mapSourceSchema = z.object({
+    type: z.literal('topojson'),
+    url: z.string().min(1),
+    topologyObjectsKey: z.string().min(1),
+});
+export type MapSource = z.infer<typeof mapSourceSchema>;
 
 export function useGeoJsonMap(mapSource: MapSource) {
     const {

@@ -4,15 +4,15 @@ import worldAtlas from './__mockData__/worldAtlas.json';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 import aggregatedWorld from './__mockData__/aggregatedWorld.json';
-import { PrevalenceByLocation, type PrevalenceByLocationProps } from './prevalence-by-location';
+import { SequencesByLocation, type SequencesByLocationProps } from './sequences-by-location';
 import { expectInvalidAttributesErrorMessage, playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
 
 import 'leaflet/dist/leaflet.css';
 import './leafletStyleModifications.css';
 
-const meta: Meta<PrevalenceByLocationProps> = {
-    title: 'Visualization/PrevalenceByLocation',
-    component: PrevalenceByLocation,
+const meta: Meta<SequencesByLocationProps> = {
+    title: 'Visualization/SequencesByLocation',
+    component: SequencesByLocation,
 };
 
 export default meta;
@@ -35,10 +35,10 @@ const aggregatedWorldMatcher = {
     },
 };
 
-export const Default: StoryObj<PrevalenceByLocationProps> = {
+export const Default: StoryObj<SequencesByLocationProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
-            <PrevalenceByLocation {...args} />
+            <SequencesByLocation {...args} />
         </LapisUrlContext.Provider>
     ),
     args: {
@@ -76,7 +76,7 @@ export const Default: StoryObj<PrevalenceByLocationProps> = {
     },
 };
 
-export const InvalidTopoJsonTopology: StoryObj<PrevalenceByLocationProps> = {
+export const InvalidTopoJsonTopology: StoryObj<SequencesByLocationProps> = {
     ...Default,
     parameters: {
         fetchMock: {
@@ -101,7 +101,7 @@ export const InvalidTopoJsonTopology: StoryObj<PrevalenceByLocationProps> = {
     ),
 };
 
-export const InvalidTopoJsonObjects: StoryObj<PrevalenceByLocationProps> = {
+export const InvalidTopoJsonObjects: StoryObj<SequencesByLocationProps> = {
     ...Default,
     parameters: {
         fetchMock: {
@@ -126,7 +126,7 @@ export const InvalidTopoJsonObjects: StoryObj<PrevalenceByLocationProps> = {
     ),
 };
 
-export const InvalidProps: StoryObj<PrevalenceByLocationProps> = {
+export const InvalidProps: StoryObj<SequencesByLocationProps> = {
     ...Default,
     args: {
         ...Default.args,

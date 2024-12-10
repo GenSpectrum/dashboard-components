@@ -13,7 +13,7 @@ type EnhancedGeoJsonFeatureProperties = GeoJsonFeatureProperties & {
     data: FeatureData | null;
 };
 
-type PrevalenceByLocationMapProps = {
+type SequencesByLocationMapProps = {
     geojsonData: FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
     locationData: AggregateData;
     enableMapNavigation: boolean;
@@ -23,7 +23,7 @@ type PrevalenceByLocationMapProps = {
     offsetY: number;
 };
 
-export const PrevalenceByLocationMap: FunctionComponent<PrevalenceByLocationMapProps> = ({
+export const SequencesByLocationMap: FunctionComponent<SequencesByLocationMapProps> = ({
     geojsonData,
     locationData,
     enableMapNavigation,

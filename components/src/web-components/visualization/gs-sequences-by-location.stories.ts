@@ -4,17 +4,16 @@ import { html } from 'lit';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import aggregatedData from '../../preact/aggregatedData/__mockData__/aggregated.json';
-import type { AggregateProps } from '../../preact/aggregatedData/aggregate';
 import aggregatedGermany from '../../preact/map/__mockData__/aggregatedGermany.json';
 import aggregatedWorld from '../../preact/map/__mockData__/aggregatedWorld.json';
 import mapOfGermany from '../../preact/map/__mockData__/germanyMap.json';
 import worldAtlas from '../../preact/map/__mockData__/worldAtlas.json';
-import { type PrevalenceByLocationProps } from '../../preact/map/prevalence-by-location';
+import { type SequencesByLocationProps } from '../../preact/map/sequences-by-location';
 
-import './gs-prevalence-by-location';
+import './gs-sequences-by-location';
 import '../app';
 
-const codeExample = `<gs-prevalence-by-location
+const codeExample = `<gs-sequences-by-location
     lapisFilter='{"dateFrom":"2022-01-01","dateTo":"2022-04-01"}'
     lapisLocationField='country'
     mapSource='{"type":"topojson","url":"https://mock.map.data/topo.json","topologyObjectsKey":"countries"}'
@@ -27,9 +26,9 @@ const codeExample = `<gs-prevalence-by-location
     offsetY='10'
 />`;
 
-const meta: Meta<Required<AggregateProps>> = {
-    title: 'Visualization/Prevalence by location',
-    component: 'gs-prevalence-by-location',
+const meta: Meta<Required<SequencesByLocationProps>> = {
+    title: 'Visualization/Sequences by location',
+    component: 'gs-sequences-by-location',
     argTypes: {},
     parameters: withComponentDocs({
         fetchMock: {
@@ -63,10 +62,10 @@ export default meta;
 
 const mockMapUrl = 'https://mock.map.data/topo.json';
 
-const Template: StoryObj<PrevalenceByLocationProps> = {
+const Template: StoryObj<SequencesByLocationProps> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
-            <gs-prevalence-by-location
+            <gs-sequences-by-location
                 .lapisFilter=${args.lapisFilter}
                 .lapisLocationField=${args.lapisLocationField}
                 .mapSource=${args.mapSource}
@@ -77,12 +76,12 @@ const Template: StoryObj<PrevalenceByLocationProps> = {
                 .zoom=${args.zoom}
                 .offsetX=${args.offsetX}
                 .offsetY=${args.offsetY}
-            ></gs-prevalence-by-location>
+            ></gs-sequences-by-location>
         </gs-app>
     `,
 };
 
-export const WorldMap: StoryObj<PrevalenceByLocationProps> = {
+export const WorldMap: StoryObj<SequencesByLocationProps> = {
     ...Template,
     args: {
         lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01' },
@@ -133,7 +132,7 @@ export const WorldMap: StoryObj<PrevalenceByLocationProps> = {
     },
 };
 
-export const Germany: StoryObj<PrevalenceByLocationProps> = {
+export const Germany: StoryObj<SequencesByLocationProps> = {
     ...Template,
     args: {
         lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01', country: 'Germany' },
