@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.10.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.2...dashboard-components-v0.10.3) (2024-12-10)
+
+
+### Bug Fixes
+
+* **components:** better explanation of "invalid attributes" error ([#595](https://github.com/GenSpectrum/dashboard-components/issues/595)) ([57e1f0a](https://github.com/GenSpectrum/dashboard-components/commit/57e1f0a8ab393460e70c83d2a90cabfa16cdcf0e))
+* **components:** don't crash components when someone passes empty `views` attribute ([#594](https://github.com/GenSpectrum/dashboard-components/issues/594)) ([24ffc86](https://github.com/GenSpectrum/dashboard-components/commit/24ffc863f0267124c89af1731f4948deda82cb79))
+* **components:** gs-aggregate: validate attributes ([84fc7ff](https://github.com/GenSpectrum/dashboard-components/commit/84fc7ff6c742f505dc8136ade5d1caae7739f28b)), closes [#572](https://github.com/GenSpectrum/dashboard-components/issues/572)
+* **components:** gs-app: validate attributes ([4231ea7](https://github.com/GenSpectrum/dashboard-components/commit/4231ea760d13e73dd6e6f0729d716ba30a2ccdf8)), closes [#579](https://github.com/GenSpectrum/dashboard-components/issues/579)
+* **components:** gs-mutation-filter: validate attributes ([f2b8fbc](https://github.com/GenSpectrum/dashboard-components/commit/f2b8fbc64afd7442bdf2f3be49ae17eaee01398b)), closes [#570](https://github.com/GenSpectrum/dashboard-components/issues/570)
+* **components:** gs-mutations-over-time: validate attributes ([7d8798d](https://github.com/GenSpectrum/dashboard-components/commit/7d8798d89efde6ae861fa40b170cfcae43f81fc8)), closes [#574](https://github.com/GenSpectrum/dashboard-components/issues/574)
+* **components:** gs-mutations: validate attributes ([218f7bb](https://github.com/GenSpectrum/dashboard-components/commit/218f7bb12ecf15688e18517752ec3a25395db545)), closes [#573](https://github.com/GenSpectrum/dashboard-components/issues/573)
+* **components:** gs-number-sequences-over-time: validate attributes ([577ef87](https://github.com/GenSpectrum/dashboard-components/commit/577ef8744a6be2a10bb30910ce68816a11d26000)), closes [#575](https://github.com/GenSpectrum/dashboard-components/issues/575)
+* **components:** gs-prevalence-over-time: validate attributes ([aa9a3bb](https://github.com/GenSpectrum/dashboard-components/commit/aa9a3bb6555a1279409365678d3146d5eebdc735)), closes [#576](https://github.com/GenSpectrum/dashboard-components/issues/576)
+* **components:** gs-relative-growth-advantage: validate attributes ([182d4e4](https://github.com/GenSpectrum/dashboard-components/commit/182d4e4a790077abe72225b9c7272a3c8774c2c7)), closes [#577](https://github.com/GenSpectrum/dashboard-components/issues/577)
+* **components:** gs-statistics: validate attributes ([66d75fe](https://github.com/GenSpectrum/dashboard-components/commit/66d75fe155d324e6b59a2335772360fdeeefde88)), closes [#578](https://github.com/GenSpectrum/dashboard-components/issues/578)
+* **components:** gs-text-input: validate attributes ([823f798](https://github.com/GenSpectrum/dashboard-components/commit/823f7981d2143048ef9cc68d88a50221c929358a)), closes [#571](https://github.com/GenSpectrum/dashboard-components/issues/571)
+
 ## [0.10.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.1...dashboard-components-v0.10.2) (2024-12-09)
 
 
