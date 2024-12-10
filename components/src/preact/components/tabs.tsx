@@ -13,7 +13,7 @@ interface ComponentTabsProps {
 }
 
 const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
-    const [activeTab, setActiveTab] = useState(tabs[0].title);
+    const [activeTab, setActiveTab] = useState(tabs[0]?.title);
     const [heightOfTabs, setHeightOfTabs] = useState('3rem');
     const tabRef = useRef<HTMLDivElement>(null);
 
@@ -65,7 +65,7 @@ const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
                 {toolbar && <div className='py-2 flex flex-wrap gap-y-1'>{toolbarElement}</div>}
             </div>
             <div
-                className={`p-2 border-2 border-gray-100 rounded-b-md rounded-tr-md ${activeTab === tabs[0].title ? '' : 'rounded-tl-md'}`}
+                className={`p-2 border-2 border-gray-100 rounded-b-md rounded-tr-md ${activeTab === tabs[0]?.title ? '' : 'rounded-tl-md'}`}
                 style={{ height: `calc(100% - ${heightOfTabs})` }}
             >
                 {tabs.map((tab) => (
