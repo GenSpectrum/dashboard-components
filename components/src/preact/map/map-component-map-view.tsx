@@ -120,20 +120,19 @@ function matchLocationDataAndGeoJsonFeatures(
 
 function getColor(value: number | undefined): string {
     if (value === undefined) {
-        return 'lightgrey';
+        return '#888888';
     }
 
     const thresholds = [
-        { limit: 0.5, color: '#800026' },
-        { limit: 0.4, color: '#BD0026' },
-        { limit: 0.3, color: '#E31A1C' },
-        { limit: 0.2, color: '#FC4E2A' },
-        { limit: 0.1, color: '#FD8D3C' },
-        { limit: 0.05, color: '#FEB24C' },
-        { limit: 0.02, color: '#FED976' },
-        { limit: 0.01, color: '#FFEDA0' },
+        { limit: 0.4, color: '#662506' },
+        { limit: 0.3, color: '#993404' },
+        { limit: 0.2, color: '#CC4C02' },
+        { limit: 0.1, color: '#EC7014' },
+        { limit: 0.05, color: '#FB9A29' },
+        { limit: 0.02, color: '#FEC44F' },
+        { limit: 0.01, color: '#FEE391' },
         { limit: 0.005, color: '#FFF7BC' },
-        { limit: 0.002, color: '#FFFFCC' },
+        { limit: 0.002, color: '#FFFFE5' },
     ];
 
     for (const { limit, color } of thresholds) {
