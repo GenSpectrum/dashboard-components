@@ -12,6 +12,7 @@ type FeatureData = { proportion: number; count: number };
 type EnhancedGeoJsonFeatureProperties = GeoJsonFeatureProperties & {
     data: FeatureData | null;
 };
+
 type PrevalenceByLocationMapProps = {
     geojsonData: FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
     locationData: AggregateData;
@@ -165,7 +166,7 @@ function createTooltip(layer: Layer) {
             }),
         );
     } else {
-        div.appendChild(p({ innerText: 'No data', className: 'text-sm' }));
+        div.appendChild(p({ innerText: 'No data' }));
     }
     return div;
 }

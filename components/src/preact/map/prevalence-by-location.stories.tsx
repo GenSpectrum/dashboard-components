@@ -5,7 +5,7 @@ import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
 import aggregatedWorld from './__mockData__/aggregatedWorld.json';
 import { PrevalenceByLocation, type PrevalenceByLocationProps } from './prevalence-by-location';
-import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
+import { expectInvalidAttributesErrorMessage, playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
 
 import 'leaflet/dist/leaflet.css';
 import './leafletStyleModifications.css';
@@ -18,6 +18,22 @@ const meta: Meta<PrevalenceByLocationProps> = {
 export default meta;
 
 const worldMapUrl = 'https://mock.map.data/world.topo.json';
+
+const aggregatedWorldMatcher = {
+    matcher: {
+        name: 'aggregatedData',
+        url: AGGREGATED_ENDPOINT,
+        body: {
+            fields: ['country'],
+            dateFrom: '2022-01-01',
+            dateTo: '2022-04-01',
+        },
+    },
+    response: {
+        status: 200,
+        body: aggregatedWorld,
+    },
+};
 
 export const Default: StoryObj<PrevalenceByLocationProps> = {
     render: (args) => (
@@ -54,24 +70,60 @@ export const Default: StoryObj<PrevalenceByLocationProps> = {
                         body: worldAtlas,
                     },
                 },
-                {
-                    matcher: {
-                        name: 'aggregatedData',
-                        url: AGGREGATED_ENDPOINT,
-                        body: {
-                            fields: ['country'],
-                            dateFrom: '2022-01-01',
-                            dateTo: '2022-04-01',
-                        },
-                    },
-                    response: {
-                        status: 200,
-                        body: aggregatedWorld,
-                    },
-                },
+                aggregatedWorldMatcher,
             ],
         },
     },
+};
+
+export const InvalidTopoJsonTopology: StoryObj<PrevalenceByLocationProps> = {
+    ...Default,
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'worldMap',
+                        url: worldMapUrl,
+                    },
+                    response: {
+                        status: 200,
+                        body: { type: 'not a topology' },
+                    },
+                },
+                aggregatedWorldMatcher,
+            ],
+        },
+    },
+    play: playThatExpectsErrorMessage(
+        'Error - Invalid map source',
+        `does not look like a topojson Topology definition: missing 'type: "Topology"'`,
+    ),
+};
+
+export const InvalidTopoJsonObjects: StoryObj<PrevalenceByLocationProps> = {
+    ...Default,
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'worldMap',
+                        url: worldMapUrl,
+                    },
+                    response: {
+                        status: 200,
+                        body: { type: 'Topology', objects: 'invalid topology objects' },
+                    },
+                },
+                aggregatedWorldMatcher,
+            ],
+        },
+    },
+    play: playThatExpectsErrorMessage(
+        'Error - Invalid map source',
+        `does not have a GeometryCollection at key objects.countries`,
+    ),
 };
 
 export const InvalidProps: StoryObj<PrevalenceByLocationProps> = {

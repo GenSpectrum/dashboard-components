@@ -6,7 +6,7 @@ import oneVariantEG from '../../preact/numberSequencesOverTime/__mockData__/oneV
 import twoVariantsEG from '../../preact/numberSequencesOverTime/__mockData__/twoVariantsEG.json';
 import twoVariantsJN1 from '../../preact/numberSequencesOverTime/__mockData__/twoVariantsJN1.json';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
 export default {
     title: 'Visualization/NumberSequencesOverTime',

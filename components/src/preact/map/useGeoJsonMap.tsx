@@ -4,6 +4,7 @@ import type { GeometryCollection, Topology } from 'topojson-specification';
 
 import { useQuery } from '../useQuery';
 import { type MapSource } from './prevalence-by-location';
+import { UserFacingError } from '../components/error-display';
 
 export function useGeoJsonMap(mapSource: MapSource) {
     const {
@@ -37,8 +38,18 @@ async function loadTopojsonMap(
 ): Promise<FeatureCollection<GeometryObject, GeoJsonFeatureProperties>> {
     const response = await fetch(mapSource.url);
     const topology = (await response.json()) as Topology;
-    return topojson.feature(
-        topology,
-        topology.objects[mapSource.topologyObjectsKey] as GeometryCollection<GeoJsonFeatureProperties>,
-    );
+    if (topology?.type !== 'Topology') {
+        throw new UserFacingError(
+            'Invalid map source',
+            `JSON downloaded from ${mapSource.url} does not look like a topojson Topology definition: missing 'type: "Topology"', got '${JSON.stringify(topology).substring(0, 100)}'`,
+        );
+    }
+    const object = topology?.objects[mapSource.topologyObjectsKey] as GeometryCollection<GeoJsonFeatureProperties>;
+    if (object?.type !== 'GeometryCollection') {
+        throw new UserFacingError(
+            'Invalid map source',
+            `JSON downloaded from ${mapSource.url} does not have a GeometryCollection at key objects.${mapSource.topologyObjectsKey}, got '${JSON.stringify(topology)?.substring(0, 100)}'`,
+        );
+    }
+    return topojson.feature(topology, object);
 }
