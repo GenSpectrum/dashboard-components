@@ -6,7 +6,7 @@ import numerator from './__mockData__/numeratorFilter.json';
 import { RelativeGrowthAdvantage, type RelativeGrowthAdvantageProps } from './relative-growth-advantage';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
 export default {
     title: 'Visualization/RelativeGrowthAdvantage',
