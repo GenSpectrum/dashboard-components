@@ -6,7 +6,7 @@ import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 import leafletStyleModifications from '../../preact/map/leafletStyleModifications.css?inline';
 import { SequencesByLocation, type SequencesByLocationProps } from '../../preact/map/sequences-by-location';
 import type { Equals, Expect } from '../../utils/typeAssertions';
-import { PreactLitAdapter } from '../PreactLitAdapter';
+import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
 const leafletCss = unsafeCSS(leafletStyle);
 const leafletModificationsCss = unsafeCSS(leafletStyleModifications);
@@ -73,6 +73,7 @@ const leafletModificationsCss = unsafeCSS(leafletStyleModifications);
  * This component assumes that every geometry object in the TopoJSON file has a `properties.name` field.
  *
  * The values that LAPIS returns for `lapisLocationField` must match the `properties.name` in the map data.
+ * LAPIS entries where `lapisLocationField` is `null` are ignored on the map.
  *
  * The names of the locations in the TopoJSON map and in LAPIS should match.
  * However, there are two cases of misalignment:
@@ -81,10 +82,19 @@ const leafletModificationsCss = unsafeCSS(leafletStyleModifications);
  * - If a TopoJSON location does not match any LAPIS location for the given filter,
  *   no data will be displayed for this location.
  *   This is expected, as LAPIS will only return locations where sequences have been collected for that filter.
+ *
+ * ### Table View
+ *
+ * This view displays the data in a table format.
+ * It is similar to the table view of the `gs-aggregate` component.
+ * The table has three columns:
+ * - `lapisLocationField`,
+ * - `count` (the number of samples in this location matching the `lapisFilter`),
+ * - `proportion` (`count` / sum of the `count` of all locations).
  */
 @customElement('gs-sequences-by-location')
-export class SequencesByLocationComponent extends PreactLitAdapter {
-    static override styles = [...PreactLitAdapter.styles, leafletCss, leafletModificationsCss];
+export class SequencesByLocationComponent extends PreactLitAdapterWithGridJsStyles {
+    static override styles = [...PreactLitAdapterWithGridJsStyles.styles, leafletCss, leafletModificationsCss];
 
     /**
      * LAPIS filter to select the displayed data.
@@ -104,16 +114,12 @@ export class SequencesByLocationComponent extends PreactLitAdapter {
     lapisLocationField: string = '';
 
     /**
-     * Required.
+     * Required when using the map view.
      *
      * The source of the map data. See component level docs for more information.
      */
     @property({ type: Object })
-    mapSource: { type: 'topojson'; url: string; topologyObjectsKey: string } = {
-        type: 'topojson',
-        url: '',
-        topologyObjectsKey: '',
-    };
+    mapSource: { type: 'topojson'; url: string; topologyObjectsKey: string } | undefined = undefined;
 
     /**
      * Enable map navigation (dragging, keyboard navigation, zooming).
@@ -143,7 +149,7 @@ export class SequencesByLocationComponent extends PreactLitAdapter {
      A list of tabs with views that this component should provide.
      */
     @property({ type: Array })
-    views: 'map'[] = ['map'];
+    views: ('map' | 'table')[] = ['map', 'table'];
 
     /**
      * The initial zoom level of the map.
@@ -168,6 +174,13 @@ export class SequencesByLocationComponent extends PreactLitAdapter {
     @property({ type: Number })
     offsetY: number = 0;
 
+    /**
+     * The maximum number of rows to display in the table view.
+     * Set to `false` to disable pagination. Set to `true` to enable pagination with a default limit (10).
+     */
+    @property({ type: Object })
+    pageSize: boolean | number = false;
+
     override render() {
         return (
             <SequencesByLocation
@@ -181,6 +194,7 @@ export class SequencesByLocationComponent extends PreactLitAdapter {
                 zoom={this.zoom}
                 offsetX={this.offsetX}
                 offsetY={this.offsetY}
+                pageSize={this.pageSize}
             />
         );
     }

@@ -52,10 +52,11 @@ export const Default: StoryObj<SequencesByLocationProps> = {
         enableMapNavigation: false,
         width: '1100px',
         height: '800px',
-        views: ['map'],
+        views: ['map', 'table'],
         zoom: 2,
         offsetX: 0,
         offsetY: 10,
+        pageSize: 10,
     },
     parameters: {
         fetchMock: {

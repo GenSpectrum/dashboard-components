@@ -23,7 +23,7 @@ export function useGeoJsonMap(mapSource: MapSource) {
             case 'topojson':
                 return await loadTopojsonMap(mapSource);
         }
-    }, [mapSource.url]);
+    }, [mapSource]);
 
     if (isLoading) {
         return { isLoading };

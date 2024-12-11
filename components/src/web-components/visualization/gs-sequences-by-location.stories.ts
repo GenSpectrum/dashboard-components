@@ -24,6 +24,7 @@ const codeExample = `<gs-sequences-by-location
     zoom='2'
     offsetX='0'
     offsetY='10'
+    pageSize='5'
 />`;
 
 const meta: Meta<Required<SequencesByLocationProps>> = {
@@ -76,14 +77,23 @@ const Template: StoryObj<SequencesByLocationProps> = {
                 .zoom=${args.zoom}
                 .offsetX=${args.offsetX}
                 .offsetY=${args.offsetY}
+                .pageSize=${args.pageSize}
             ></gs-sequences-by-location>
         </gs-app>
     `,
+    args: {
+        enableMapNavigation: false,
+        width: '1100px',
+        height: '800px',
+        views: ['map', 'table'],
+        pageSize: 10,
+    },
 };
 
 export const WorldMap: StoryObj<SequencesByLocationProps> = {
     ...Template,
     args: {
+        ...Template.args,
         lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01' },
         lapisLocationField: 'country',
         mapSource: {
@@ -91,10 +101,6 @@ export const WorldMap: StoryObj<SequencesByLocationProps> = {
             url: mockMapUrl,
             topologyObjectsKey: 'countries',
         },
-        enableMapNavigation: false,
-        width: '1100px',
-        height: '800px',
-        views: ['map'],
         zoom: 2,
         offsetX: 0,
         offsetY: 10,
@@ -135,6 +141,7 @@ export const WorldMap: StoryObj<SequencesByLocationProps> = {
 export const Germany: StoryObj<SequencesByLocationProps> = {
     ...Template,
     args: {
+        ...Template.args,
         lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01', country: 'Germany' },
         lapisLocationField: 'division',
         mapSource: {
@@ -142,10 +149,7 @@ export const Germany: StoryObj<SequencesByLocationProps> = {
             url: mockMapUrl,
             topologyObjectsKey: 'deu',
         },
-        enableMapNavigation: false,
-        width: '1100px',
-        height: '800px',
-        views: ['map'],
+        views: ['map', 'table'],
         zoom: 6.3,
         offsetX: 10,
         offsetY: 51.4,
@@ -163,6 +167,51 @@ export const Germany: StoryObj<SequencesByLocationProps> = {
                         body: mapOfGermany,
                     },
                 },
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            fields: ['division'],
+                            dateFrom: '2022-01-01',
+                            dateTo: '2022-04-01',
+                            country: 'Germany',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregatedGermany,
+                    },
+                },
+            ],
+        },
+    },
+};
+
+export const GermanyTableOnly: StoryObj<SequencesByLocationProps> = {
+    render: (args) => html`
+        <gs-app lapis="${LAPIS_URL}">
+            <gs-sequences-by-location
+                .lapisFilter=${args.lapisFilter}
+                .lapisLocationField=${args.lapisLocationField}
+                .width=${args.width}
+                .height=${args.height}
+                .views=${args.views}
+                .pageSize=${args.pageSize}
+            ></gs-sequences-by-location>
+        </gs-app>
+    `,
+    args: {
+        lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01', country: 'Germany' },
+        lapisLocationField: 'division',
+        width: '100%',
+        height: '700px',
+        views: ['table'],
+        pageSize: 10,
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
                 {
                     matcher: {
                         name: 'aggregatedData',
