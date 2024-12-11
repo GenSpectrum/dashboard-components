@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.3...dashboard-components-v0.10.4) (2024-12-11)
+
+
+### Features
+
+* **components:** add `gs-sequences-by-location` with a map view ([#553](https://github.com/GenSpectrum/dashboard-components/issues/553)) ([b3734f9](https://github.com/GenSpectrum/dashboard-components/commit/b3734f932f3c5383587254b954de8c072153a3cb)), closes [#548](https://github.com/GenSpectrum/dashboard-components/issues/548)
+* **components:** gs-sequences-by-location: add table view ([#602](https://github.com/GenSpectrum/dashboard-components/issues/602)) ([c04b7ba](https://github.com/GenSpectrum/dashboard-components/commit/c04b7baf77c4c8119deb22a5724c10202b2d3478)), closes [#597](https://github.com/GenSpectrum/dashboard-components/issues/597)
+
 ## [0.10.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.2...dashboard-components-v0.10.3) (2024-12-10)
 
 
