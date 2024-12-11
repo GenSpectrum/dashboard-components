@@ -73,6 +73,7 @@ function App() {
             <gs-date-range-selector
                 dateRangeOptions={JSON.stringify(dataRangeOptions)}
                 initialValue={'2021'}
+                dateColumn='date'
             ></gs-date-range-selector>
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <div>
