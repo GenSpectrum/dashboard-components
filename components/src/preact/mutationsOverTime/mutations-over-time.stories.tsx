@@ -6,7 +6,7 @@ import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
-import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectInvalidAttributesErrorMessage';
+import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const meta: Meta<MutationsOverTimeProps> = {
     title: 'Visualization/Mutation over time',
