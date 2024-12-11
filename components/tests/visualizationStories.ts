@@ -120,12 +120,17 @@ export const visualizationStories = [
     },
     {
         id: 'visualization-sequences-by-location--world-map',
-        title: 'Map',
+        title: 'Sequences by location',
         loadingIsDoneIndicator: 'Leaflet',
     },
     {
         id: 'visualization-sequences-by-location--germany',
-        title: 'Map',
+        title: 'Sequences by location',
         loadingIsDoneIndicator: 'Leaflet',
+    },
+    {
+        id: 'visualization-sequences-by-location--germany-table-only',
+        title: 'Sequences by location',
+        loadingIsDoneIndicator: 'division',
     },
 ];

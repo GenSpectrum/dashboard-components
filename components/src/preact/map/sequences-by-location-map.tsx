@@ -3,8 +3,9 @@ import Leaflet, { type Layer, type LayerGroup } from 'leaflet';
 import type { FunctionComponent } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 
-import { type GeoJsonFeatureProperties } from './useGeoJsonMap';
+import { type GeoJsonFeatureProperties, type MapSource, useGeoJsonMap } from './useGeoJsonMap';
 import { type AggregateData } from '../../query/queryAggregateData';
+import { LoadingDisplay } from '../components/loading-display';
 import { formatProportion } from '../shared/table/formatProportion';
 
 type FeatureData = { proportion: number; count: number };
@@ -14,7 +15,7 @@ type EnhancedGeoJsonFeatureProperties = GeoJsonFeatureProperties & {
 };
 
 type SequencesByLocationMapProps = {
-    geojsonData: FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
+    mapSource: MapSource;
     locationData: AggregateData;
     enableMapNavigation: boolean;
     lapisLocationField: string;
@@ -24,6 +25,23 @@ type SequencesByLocationMapProps = {
 };
 
 export const SequencesByLocationMap: FunctionComponent<SequencesByLocationMapProps> = ({
+    mapSource,
+    ...otherProps
+}) => {
+    const { isLoading: isLoadingMap, geojsonData } = useGeoJsonMap(mapSource);
+
+    if (isLoadingMap) {
+        return <LoadingDisplay />;
+    }
+
+    return <SequencesByLocationMapInner geojsonData={geojsonData} {...otherProps} />;
+};
+
+type SequencesByLocationMapInnerProps = Omit<SequencesByLocationMapProps, 'mapSource'> & {
+    geojsonData: FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
+};
+
+export const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationMapInnerProps> = ({
     geojsonData,
     locationData,
     enableMapNavigation,

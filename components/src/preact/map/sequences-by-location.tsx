@@ -1,10 +1,9 @@
-import type * as GeoJSON from 'geojson';
-import type { GeometryObject } from 'geojson';
 import type { FunctionComponent } from 'preact';
 import { useContext } from 'preact/hooks';
 import z from 'zod';
 
 import { SequencesByLocationMap } from './sequences-by-location-map';
+import { SequencesByLocationTable } from './sequences-by-location-table';
 import { type AggregateData, queryAggregateData } from '../../query/queryAggregateData';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -13,17 +12,17 @@ import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../compon
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
-import { type GeoJsonFeatureProperties, mapSourceSchema, useGeoJsonMap } from './useGeoJsonMap';
+import { mapSourceSchema } from './useGeoJsonMap';
 import { lapisFilterSchema, views } from '../../types';
 import Tabs from '../components/tabs';
 
-export const sequencesByLocationViewSchema = z.literal(views.map);
+export const sequencesByLocationViewSchema = z.union([z.literal(views.map), z.literal(views.table)]);
 export type SequencesByLocationMapView = z.infer<typeof sequencesByLocationViewSchema>;
 
 const sequencesByLocationPropsSchema = z.object({
     lapisFilter: lapisFilterSchema,
     lapisLocationField: z.string().min(1),
-    mapSource: mapSourceSchema,
+    mapSource: mapSourceSchema.optional(),
     enableMapNavigation: z.boolean(),
     width: z.string(),
     height: z.string(),
@@ -31,6 +30,7 @@ const sequencesByLocationPropsSchema = z.object({
     zoom: z.number(),
     offsetX: z.number(),
     offsetY: z.number(),
+    pageSize: z.union([z.boolean(), z.number()]),
 });
 
 export type SequencesByLocationProps = z.infer<typeof sequencesByLocationPropsSchema>;
@@ -49,10 +49,9 @@ export const SequencesByLocation: FunctionComponent<SequencesByLocationProps> = 
 };
 
 const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationProps> = (props) => {
-    const { lapisFilter, lapisLocationField, mapSource } = props;
+    const { lapisFilter, lapisLocationField } = props;
 
     const lapis = useContext(LapisUrlContext);
-    const { isLoading: isLoadingMap, geojsonData } = useGeoJsonMap(mapSource);
     const {
         data,
         error,
@@ -62,7 +61,7 @@ const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationProps> =
         [lapisFilter, lapisLocationField, lapis],
     );
 
-    if (isLoadingMap || isLoadingLapisData) {
+    if (isLoadingLapisData) {
         return <LoadingDisplay />;
     }
 
@@ -70,34 +69,46 @@ const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationProps> =
         throw error;
     }
 
-    return <SequencesByLocationMapTabs geojsonData={geojsonData} data={data} originalComponentProps={props} />;
+    return <SequencesByLocationMapTabs data={data} originalComponentProps={props} />;
 };
 
 type SequencesByLocationMapTabsProps = {
     originalComponentProps: SequencesByLocationProps;
-    geojsonData: GeoJSON.FeatureCollection<GeometryObject, GeoJsonFeatureProperties>;
     data: AggregateData;
 };
 
 const SequencesByLocationMapTabs: FunctionComponent<SequencesByLocationMapTabsProps> = ({
     originalComponentProps,
-    geojsonData,
     data,
 }) => {
     const getTab = (view: SequencesByLocationMapView) => {
         switch (view) {
             case views.map:
+                if (originalComponentProps.mapSource === undefined) {
+                    throw new Error('mapSource is required when using the map view');
+                }
                 return {
                     title: 'Map',
                     content: (
                         <SequencesByLocationMap
                             locationData={data}
-                            geojsonData={geojsonData}
+                            mapSource={originalComponentProps.mapSource}
                             enableMapNavigation={originalComponentProps.enableMapNavigation}
                             lapisLocationField={originalComponentProps.lapisLocationField}
                             zoom={originalComponentProps.zoom}
                             offsetX={originalComponentProps.offsetX}
                             offsetY={originalComponentProps.offsetY}
+                        />
+                    ),
+                };
+            case views.table:
+                return {
+                    title: 'Table',
+                    content: (
+                        <SequencesByLocationTable
+                            locationData={data}
+                            lapisLocationField={originalComponentProps.lapisLocationField}
+                            pageSize={originalComponentProps.pageSize}
                         />
                     ),
                 };
