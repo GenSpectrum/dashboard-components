@@ -76,6 +76,3 @@ export const views = {
     bubble: 'bubble',
     map: 'map',
 } as const;
-
-export const mutationComparisonViewSchema = z.union([z.literal(views.table), z.literal(views.venn)]);
-export type MutationComparisonView = z.infer<typeof mutationComparisonViewSchema>;

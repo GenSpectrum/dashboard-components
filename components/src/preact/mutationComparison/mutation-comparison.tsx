@@ -6,12 +6,7 @@ import { getMutationComparisonTableData } from './getMutationComparisonTableData
 import { MutationComparisonTable } from './mutation-comparison-table';
 import { MutationComparisonVenn } from './mutation-comparison-venn';
 import { filterMutationData, type MutationData, queryMutationData } from './queryMutationData';
-import {
-    type MutationComparisonView,
-    mutationComparisonViewSchema,
-    namedLapisFilterSchema,
-    sequenceTypeSchema,
-} from '../../types';
+import { namedLapisFilterSchema, sequenceTypeSchema, views } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -26,6 +21,9 @@ import { ResizeContainer } from '../components/resize-container';
 import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/segment-selector';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
+
+export const mutationComparisonViewSchema = z.union([z.literal(views.table), z.literal(views.venn)]);
+export type MutationComparisonView = z.infer<typeof mutationComparisonViewSchema>;
 
 const mutationComparisonPropsSchema = z.object({
     width: z.string(),

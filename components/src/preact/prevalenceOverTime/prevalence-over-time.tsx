@@ -25,13 +25,13 @@ import { axisMaxSchema } from '../shared/charts/getYAxisMax';
 import { type ScaleType } from '../shared/charts/getYAxisScale';
 import { useQuery } from '../useQuery';
 
-const viewSchema = z.union([
+const prevalenceOverTimeViewSchema = z.union([
     z.literal(views.table),
     z.literal(views.bar),
     z.literal(views.line),
     z.literal(views.bubble),
 ]);
-export type View = z.infer<typeof viewSchema>;
+export type PrevalenceOverTimeView = z.infer<typeof prevalenceOverTimeViewSchema>;
 
 const prevalenceOverTimePropsSchema = z.object({
     width: z.string(),
@@ -40,7 +40,7 @@ const prevalenceOverTimePropsSchema = z.object({
     denominatorFilter: lapisFilterSchema,
     granularity: temporalGranularitySchema,
     smoothingWindow: z.number(),
-    views: z.array(viewSchema),
+    views: z.array(prevalenceOverTimeViewSchema),
     confidenceIntervalMethods: z.array(confidenceIntervalMethodSchema),
     lapisDateField: z.string().min(1),
     pageSize: z.union([z.boolean(), z.number()]),
@@ -118,7 +118,7 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
 
     const yAxisMaxConfig = { linear: yAxisMaxLinear, logarithmic: yAxisMaxLogarithmic };
 
-    const getTab = (view: View) => {
+    const getTab = (view: PrevalenceOverTimeView) => {
         switch (view) {
             case 'bar':
                 return {
