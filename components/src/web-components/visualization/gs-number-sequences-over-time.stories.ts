@@ -15,7 +15,7 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
 <gs-number-sequences-over-time
-    lapisFilter='[{ "displayName": "EG", "lapisFilter": { "country": "USA", "pangoLineage": "EG*" }}, { "displayName": "JN.1", "lapisFilter": { "country": "USA", "pangoLineage": "JN.1*" }}]'
+    lapisFilters='[{ "displayName": "EG", "lapisFilter": { "country": "USA", "pangoLineage": "EG*" }}, { "displayName": "JN.1", "lapisFilter": { "country": "USA", "pangoLineage": "JN.1*" }}]'
     lapisDateField="date"
     views='["bar", "line", "table"]'
     width="100%"
@@ -55,7 +55,7 @@ const Template: StoryObj<NumberSequencesOverTimeProps> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-number-sequences-over-time
-                .lapisFilter=${args.lapisFilter}
+                .lapisFilters=${args.lapisFilters}
                 .lapisDateField=${args.lapisDateField}
                 .views=${args.views}
                 .width=${args.width}
@@ -68,7 +68,7 @@ const Template: StoryObj<NumberSequencesOverTimeProps> = {
     `,
     args: {
         views: ['bar', 'line', 'table'],
-        lapisFilter: [
+        lapisFilters: [
             { displayName: 'EG', lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateFrom: '2022-12-01' } },
         ],
         lapisDateField: 'date',
@@ -139,7 +139,7 @@ export const TwoDatasets: StoryObj<NumberSequencesOverTimeProps> = {
     ...Template,
     args: {
         ...Template.args,
-        lapisFilter: [
+        lapisFilters: [
             {
                 displayName: 'EG',
                 lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateFrom: '2022-10-01' },
@@ -191,7 +191,7 @@ export const TwoDatasetsWithNonOverlappingDates: StoryObj<NumberSequencesOverTim
     ...Template,
     args: {
         ...Template.args,
-        lapisFilter: [
+        lapisFilters: [
             {
                 displayName: 'XBB',
                 lapisFilter: { country: 'USA', pangoLineage: 'XBB*', dateFrom: '2022-01-01', dateTo: '2022-12-31' },

@@ -30,21 +30,12 @@ export default {
 const Template: StoryObj<NumberSequencesOverTimeProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
-            <NumberSequencesOverTime
-                lapisFilter={args.lapisFilter}
-                lapisDateField={args.lapisDateField}
-                views={args.views}
-                width={args.width}
-                height={args.height}
-                granularity={args.granularity}
-                smoothingWindow={args.smoothingWindow}
-                pageSize={args.pageSize}
-            />
+            <NumberSequencesOverTime {...args} />
         </LapisUrlContext.Provider>
     ),
     args: {
         views: ['bar', 'line', 'table'],
-        lapisFilter: [
+        lapisFilters: [
             { displayName: 'EG', lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateFrom: '2022-12-01' } },
         ],
         lapisDateField: 'date',
@@ -82,11 +73,11 @@ export const Table = {
     ...Template,
 };
 
-export const TwoVariants = {
+export const TwoVariants: StoryObj<NumberSequencesOverTimeProps> = {
     ...Template,
     args: {
         ...Template.args,
-        lapisFilter: [
+        lapisFilters: [
             { displayName: 'EG', lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateTo: '2023-06-30' } },
             { displayName: 'JN.1', lapisFilter: { country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' } },
         ],

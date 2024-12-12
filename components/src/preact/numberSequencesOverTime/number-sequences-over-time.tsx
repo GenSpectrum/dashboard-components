@@ -34,7 +34,7 @@ export type NumberSequencesOverTimeView = z.infer<typeof numberSequencesOverTime
 const numberSequencesOverTimePropsSchema = z.object({
     width: z.string(),
     height: z.string(),
-    lapisFilter: z.union([namedLapisFilterSchema, z.array(namedLapisFilterSchema)]),
+    lapisFilters: z.array(namedLapisFilterSchema),
     lapisDateField: z.string().min(1),
     views: z.array(numberSequencesOverTimeViewSchema),
     granularity: temporalGranularitySchema,
@@ -58,12 +58,12 @@ export const NumberSequencesOverTime = (componentProps: NumberSequencesOverTimeP
 };
 
 const NumberSequencesOverTimeInner = (componentProps: NumberSequencesOverTimeProps) => {
-    const { lapisFilter, lapisDateField, granularity, smoothingWindow } = componentProps;
+    const { lapisFilters, lapisDateField, granularity, smoothingWindow } = componentProps;
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(
-        () => queryNumberOfSequencesOverTime(lapis, lapisFilter, lapisDateField, granularity, smoothingWindow),
-        [lapis, lapisFilter, lapisDateField, granularity, smoothingWindow],
+        () => queryNumberOfSequencesOverTime(lapis, lapisFilters, lapisDateField, granularity, smoothingWindow),
+        [lapis, lapisFilters, lapisDateField, granularity, smoothingWindow],
     );
 
     if (isLoading) {
