@@ -5,7 +5,6 @@ import {
     RelativeGrowthAdvantage,
     type RelativeGrowthAdvantageProps,
 } from '../../preact/relativeGrowthAdvantage/relative-growth-advantage';
-import { type AxisMax } from '../../preact/shared/charts/getYAxisMax';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -130,18 +129,11 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
                 width={this.width}
                 height={this.height}
                 lapisDateField={this.lapisDateField}
-                yAxisMaxConfig={{
-                    linear: this.yAxisMaxLinear,
-                    logarithmic: this.yAxisMaxLogarithmic,
-                }}
+                yAxisMaxLinear={this.yAxisMaxLinear}
+                yAxisMaxLogarithmic={this.yAxisMaxLogarithmic}
             />
         );
     }
-}
-
-export interface RelativeGrowthAdvantageComponentProps extends Omit<RelativeGrowthAdvantageProps, 'yAxisMaxConfig'> {
-    yAxisMaxLinear?: AxisMax;
-    yAxisMaxLogarithmic?: AxisMax;
 }
 
 declare global {
@@ -196,13 +188,13 @@ type LapisDateFieldMatches = Expect<
 type YAxisMaxLinearMatches = Expect<
     Equals<
         typeof RelativeGrowthAdvantageComponent.prototype.yAxisMaxLinear,
-        Required<RelativeGrowthAdvantageProps['yAxisMaxConfig']>['linear']
+        RelativeGrowthAdvantageProps['yAxisMaxLinear']
     >
 >;
 type YAxisMaxLogarithmicMatches = Expect<
     Equals<
         typeof RelativeGrowthAdvantageComponent.prototype.yAxisMaxLogarithmic,
-        Required<RelativeGrowthAdvantageProps['yAxisMaxConfig']>['logarithmic']
+        RelativeGrowthAdvantageProps['yAxisMaxLogarithmic']
     >
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

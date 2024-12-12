@@ -31,16 +31,7 @@ export default {
 export const Primary: StoryObj<RelativeGrowthAdvantageProps> = {
     render: (args: RelativeGrowthAdvantageProps) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
-            <RelativeGrowthAdvantage
-                numeratorFilter={args.numeratorFilter}
-                denominatorFilter={args.denominatorFilter}
-                generationTime={args.generationTime}
-                views={args.views}
-                width={args.width}
-                height={args.height}
-                lapisDateField={args.lapisDateField}
-                yAxisMaxConfig={args.yAxisMaxConfig}
-            />
+            <RelativeGrowthAdvantage {...args} />
         </LapisUrlContext.Provider>
     ),
     args: {
@@ -56,10 +47,8 @@ export const Primary: StoryObj<RelativeGrowthAdvantageProps> = {
         width: '100%',
         height: '700px',
         lapisDateField: 'date',
-        yAxisMaxConfig: {
-            linear: 1,
-            logarithmic: 1,
-        },
+        yAxisMaxLinear: 1,
+        yAxisMaxLogarithmic: 1,
     },
     parameters: {
         fetchMock: {
