@@ -22,8 +22,6 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  */
 @customElement('gs-number-sequences-over-time')
 export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
-    // prettier-ignore
-    // The multiline union type must not start with `|` because it looks weird in the Storybook docs
     /**
      * Either a LAPIS filter or an array of LAPIS filters to fetch the number of sequences for.
      *
@@ -33,26 +31,16 @@ export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJs
      * The `displayName` will be used to label the component views.
      * It should be human-readable.
      *
-     */ @property({type: Object})
-    lapisFilter:
-        {
-            lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
-                nucleotideMutations?: string[];
-                aminoAcidMutations?: string[];
-                nucleotideInsertions?: string[];
-                aminoAcidInsertions?: string[];
-            };
-            displayName: string;
-        }
-        | {
-            lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
-                nucleotideMutations?: string[];
-                aminoAcidMutations?: string[];
-                nucleotideInsertions?: string[];
-                aminoAcidInsertions?: string[];
-            };
-            displayName: string;
-        }[]= { displayName: '', lapisFilter: {} };
+     */ @property({ type: Object })
+    lapisFilters: {
+        lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+            nucleotideMutations?: string[];
+            aminoAcidMutations?: string[];
+            nucleotideInsertions?: string[];
+            aminoAcidInsertions?: string[];
+        };
+        displayName: string;
+    }[] = [];
 
     /**
      * Required.
@@ -114,7 +102,7 @@ export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJs
     override render() {
         return (
             <NumberSequencesOverTime
-                lapisFilter={this.lapisFilter}
+                lapisFilters={this.lapisFilters}
                 lapisDateField={this.lapisDateField}
                 views={this.views}
                 width={this.width}
@@ -144,7 +132,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type LapisFilterMatches = Expect<
-    Equals<typeof NumberSequencesOverTimeComponent.prototype.lapisFilter, NumberSequencesOverTimeProps['lapisFilter']>
+    Equals<typeof NumberSequencesOverTimeComponent.prototype.lapisFilters, NumberSequencesOverTimeProps['lapisFilters']>
 >;
 type LapisDateFieldMatches = Expect<
     Equals<

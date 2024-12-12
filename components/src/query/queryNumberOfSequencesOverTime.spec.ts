@@ -21,7 +21,7 @@ describe('queryNumberOfSequencesOverTime', () => {
 
         const result = await queryNumberOfSequencesOverTime(
             DUMMY_LAPIS_URL,
-            { displayName: 'displayName', lapisFilter },
+            [{ displayName: 'displayName', lapisFilter }],
             lapisDateField,
             'day',
             0,
@@ -51,7 +51,7 @@ describe('queryNumberOfSequencesOverTime', () => {
 
         const result = await queryNumberOfSequencesOverTime(
             DUMMY_LAPIS_URL,
-            { displayName: 'displayName', lapisFilter },
+            [{ displayName: 'displayName', lapisFilter }],
             lapisDateField,
             'day',
             0,
@@ -87,7 +87,7 @@ describe('queryNumberOfSequencesOverTime', () => {
 
         const result = await queryNumberOfSequencesOverTime(
             DUMMY_LAPIS_URL,
-            { displayName: 'displayName', lapisFilter },
+            [{ displayName: 'displayName', lapisFilter }],
             lapisDateField,
             'day',
             3,
@@ -122,7 +122,7 @@ describe('queryNumberOfSequencesOverTime', () => {
 
         const result = await queryNumberOfSequencesOverTime(
             DUMMY_LAPIS_URL,
-            { displayName: 'displayName', lapisFilter },
+            [{ displayName: 'displayName', lapisFilter }],
             lapisDateField,
             'month',
             0,

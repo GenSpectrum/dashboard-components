@@ -14,10 +14,3 @@ export function getMinMaxNumber(values: Iterable<number>): [number, number] | nu
     }
     return [min, max];
 }
-
-export function makeArray<T>(arrayOrSingleItem: T | T[]) {
-    if (Array.isArray(arrayOrSingleItem)) {
-        return arrayOrSingleItem;
-    }
-    return [arrayOrSingleItem];
-}
