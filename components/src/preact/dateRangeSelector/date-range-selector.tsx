@@ -19,7 +19,7 @@ const dateRangeSelectorInnerPropsSchema = z.object({
     initialValue: z.string().optional(),
     initialDateFrom: z.string().date().optional(),
     initialDateTo: z.string().date().optional(),
-    dateColumn: z.string().min(1),
+    lapisDateField: z.string().min(1),
 });
 
 const dateRangeSelectorPropsSchema = dateRangeSelectorInnerPropsSchema.extend({
@@ -46,7 +46,7 @@ export const DateRangeSelectorInner = ({
     dateRangeOptions,
     earliestDate = '1900-01-01',
     initialValue,
-    dateColumn,
+    lapisDateField,
     initialDateFrom,
     initialDateTo,
 }: DateRangeSelectorInnerProps) => {
@@ -171,8 +171,8 @@ export const DateRangeSelectorInner = ({
         const dateTo = dateToPicker?.selectedDates[0];
 
         const detail = {
-            ...(dateFrom !== undefined && { [`${dateColumn}From`]: toYYYYMMDD(dateFrom) }),
-            ...(dateTo !== undefined && { [`${dateColumn}To`]: toYYYYMMDD(dateTo) }),
+            ...(dateFrom !== undefined && { [`${lapisDateField}From`]: toYYYYMMDD(dateFrom) }),
+            ...(dateTo !== undefined && { [`${lapisDateField}To`]: toYYYYMMDD(dateTo) }),
         };
 
         divRef.current?.dispatchEvent(

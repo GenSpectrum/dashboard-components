@@ -73,7 +73,7 @@ function App() {
             <gs-date-range-selector
                 dateRangeOptions={JSON.stringify(dataRangeOptions)}
                 initialValue={'2021'}
-                dateColumn='date'
+                lapisDateField='date'
             ></gs-date-range-selector>
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <div>
@@ -81,6 +81,7 @@ function App() {
                     <gs-prevalence-over-time
                         numeratorFilters={JSON.stringify([numerator])}
                         denominatorFilter={JSON.stringify(denominator)}
+                        lapisDateField='date'
                         granularity='day'
                         smoothingWindow='7'
                         views='["line", "table"]'
@@ -93,6 +94,7 @@ function App() {
                     <gs-prevalence-over-time
                         numeratorFilters={JSON.stringify([numerator])}
                         denominatorFilter={JSON.stringify(denominator)}
+                        lapisDateField='date'
                         granularity='day'
                         smoothingWindow='7'
                         views='["line", "table"]'
@@ -106,6 +108,7 @@ function App() {
                 <gs-prevalence-over-time
                     numeratorFilters={JSON.stringify([numerator])}
                     denominatorFilter={JSON.stringify(denominator)}
+                    lapisDateField='date'
                     granularity='day'
                     smoothingWindow='7'
                     views='["line", "table"]'
@@ -115,6 +118,7 @@ function App() {
             <gs-relative-growth-advantage
                 numeratorFilter={JSON.stringify(numerator.lapisFilter)}
                 denominatorFilter={JSON.stringify(denominator)}
+                lapisDateField='date'
                 generationTime='7'
                 views='["line"]'
                 width='100%'

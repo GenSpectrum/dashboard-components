@@ -54,7 +54,7 @@ const meta: Meta<DateRangeSelectorProps> = {
         dateRangeOptions: [dateRangeOptionPresets.lastMonth, dateRangeOptionPresets.allTimes, customDateRange],
         earliestDate,
         initialValue: dateRangeOptionPresets.lastMonth.label,
-        dateColumn: 'aDateColumn',
+        lapisDateField: 'aDateColumn',
         width: '100%',
         initialDateFrom: undefined,
         initialDateTo: undefined,
@@ -66,15 +66,7 @@ export default meta;
 export const Primary: StoryObj<DateRangeSelectorProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
-            <DateRangeSelector
-                dateRangeOptions={args.dateRangeOptions}
-                earliestDate={args.earliestDate}
-                initialValue={args.initialValue}
-                initialDateFrom={args.initialDateFrom}
-                initialDateTo={args.initialDateTo}
-                width={args.width}
-                dateColumn={args.dateColumn}
-            />
+            <DateRangeSelector {...args} />
         </LapisUrlContext.Provider>
     ),
 };
@@ -226,7 +218,7 @@ export const WithNoDateColumn: StoryObj<DateRangeSelectorProps> = {
     ...Primary,
     args: {
         ...Primary.args,
-        dateColumn: '',
+        lapisDateField: '',
     },
     play: async ({ canvasElement, step }) => {
         step('expect error message', async () => {
