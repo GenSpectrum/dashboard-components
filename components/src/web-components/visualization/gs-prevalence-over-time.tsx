@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { PrevalenceOverTime, type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
@@ -59,20 +59,35 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     @property({ type: Object })
     numeratorFilter:
         {
-            lapisFilter: Record<string, string | number | null | boolean>;
-            displayName: string;
-        }
+              lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+                  nucleotideMutations?: string[];
+                  aminoAcidMutations?: string[];
+                  nucleotideInsertions?: string[];
+                  aminoAcidInsertions?: string[];
+              };
+              displayName: string;
+          }
         | {
-        lapisFilter: Record<string, string | number | null | boolean>;
-        displayName: string;
-    }[] = { displayName: '', lapisFilter: {} };
+              lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+                  nucleotideMutations?: string[];
+                  aminoAcidMutations?: string[];
+                  nucleotideInsertions?: string[];
+                  aminoAcidInsertions?: string[];
+              };
+              displayName: string;
+          }[] = { displayName: '', lapisFilter: {} };
 
     /**
      * The LAPIS filter, to select the data of the reference.
      * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
-    denominatorFilter: Record<string, string | number | null | boolean> = {};
+    denominatorFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
 
     /**
      * The granularity of the time axis.

@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import {
     RelativeGrowthAdvantage,
@@ -42,14 +42,24 @@ export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {
      * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
-    numeratorFilter: Record<string, string | number | null | boolean> = {};
+    numeratorFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
 
     /**
      * LAPIS filter to select the data of the baseline variant.
      * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
-    denominatorFilter: Record<string, string | number | null | boolean> = {};
+    denominatorFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
 
     /**
      * The generation time represents the number of days over which the variant's relative growth advantage is measured.

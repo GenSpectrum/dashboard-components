@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import {
     NumberSequencesOverTime,
@@ -36,11 +36,21 @@ export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJs
      */ @property({type: Object})
     lapisFilter:
         {
-            lapisFilter: Record<string, string | number | null | boolean>;
+            lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+                nucleotideMutations?: string[];
+                aminoAcidMutations?: string[];
+                nucleotideInsertions?: string[];
+                aminoAcidInsertions?: string[];
+            };
             displayName: string;
         }
         | {
-            lapisFilter: Record<string, string | number | null | boolean>;
+            lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+                nucleotideMutations?: string[];
+                aminoAcidMutations?: string[];
+                nucleotideInsertions?: string[];
+                aminoAcidInsertions?: string[];
+            };
             displayName: string;
         }[]= { displayName: '', lapisFilter: {} };
 

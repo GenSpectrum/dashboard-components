@@ -2,7 +2,6 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { Statistics, type StatisticsProps } from '../../preact/statistic/statistics';
-import type { LapisFilter } from '../../types';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
@@ -19,14 +18,24 @@ export class StatisticsComponent extends PreactLitAdapterWithGridJsStyles {
      * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
-    numeratorFilter: LapisFilter = {};
+    numeratorFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
 
     /**
      * The filter to apply to the data for the denominator of the proportion.
      * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
-    denominatorFilter: LapisFilter = {};
+    denominatorFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
 
     /**
      * The width of the component.

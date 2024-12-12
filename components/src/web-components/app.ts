@@ -2,7 +2,7 @@ import { provide } from '@lit/context';
 import { Task } from '@lit/task';
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 import z from 'zod';
 
 import { lapisContext } from './lapis-context';

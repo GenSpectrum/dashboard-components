@@ -102,7 +102,12 @@ export class SequencesByLocationComponent extends PreactLitAdapterWithGridJsStyl
      * you should usually filter by that country here (e.g. { country: 'USA' }).
      */
     @property({ type: Object })
-    lapisFilter: Record<string, string | number | null | boolean> = {};
+    lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
 
     /**
      * Required.

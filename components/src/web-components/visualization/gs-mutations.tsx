@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { Mutations, type MutationsProps } from '../../preact/mutations/mutations';
 import type { Equals, Expect } from '../../utils/typeAssertions';
@@ -38,7 +38,12 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
      * LAPIS filter to select the displayed data. If not provided, all data is displayed.
      */
     @property({ type: Object })
-    lapisFilter: Record<string, string | number | null | boolean> = {};
+    lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
 
     /**
      * The type of the sequence for which the mutations should be shown.

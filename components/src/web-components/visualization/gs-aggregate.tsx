@@ -2,7 +2,6 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { Aggregate, type AggregateProps, type View } from '../../preact/aggregatedData/aggregate';
-import { type LapisFilter } from '../../types';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
@@ -45,7 +44,12 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
      * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
-    filter: LapisFilter = {};
+    filter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
 
     /**
      * The width of the component.
