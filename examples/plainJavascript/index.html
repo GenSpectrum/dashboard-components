@@ -22,11 +22,12 @@
             <gs-date-range-selector
                 dateRangeOptions='[{"label":"2020","dateFrom":"2020-01-01","dateTo":"2020-12-31"},{"label":"2021","dateFrom":"2021-01-01","dateTo":"2021-12-31"},{"label":"2022","dateFrom":"2022-01-01","dateTo":"2022-12-31"}]'
                 initialValue="2021"
-                dateColumn="date"
+                lapisDateField="date"
             ></gs-date-range-selector>
             <gs-prevalence-over-time
                 numeratorFilters='[{"displayName": "My variant","lapisFilter":{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01", "dateFrom":"2021-01-01"}}]'
                 denominatorFilter='{"country":"Switzerland", "dateTo":"2022-01-01", "dateFrom":"2021-01-01"}'
+                lapisDateField='date'
                 granularity="day"
                 smoothingWindow="7"
                 views='["line", "table"]'
@@ -34,6 +35,7 @@
             <gs-prevalence-over-time
                 numeratorFilters='[{"displayName": "My variant","lapisFilter":{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01", "dateFrom":"2021-01-01"}}]'
                 denominatorFilter='{"country":"Switzerland", "dateTo":"2022-01-01", "dateFrom":"2021-01-01"}'
+                lapisDateField='date'
                 granularity="month"
                 smoothingWindow="0"
                 views='["bar", "table"]'

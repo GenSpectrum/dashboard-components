@@ -20,7 +20,7 @@ const codeExample = String.raw`
     initialDateFrom="2020-01-01"
     initialDateTo="2021-01-01"
     width="100%"
-    dateColumn="myDateColumn"
+    lapisDateField="myDateColumn"
 ></gs-date-range-selector>`;
 
 const customDateRange = { label: 'CustomDateRange', dateFrom: '2021-01-01', dateTo: '2021-12-31' };
@@ -46,7 +46,7 @@ const meta: Meta<Required<DateRangeSelectorProps>> = {
             },
             options: [dateRangeOptionPresets.lastMonth.label, dateRangeOptionPresets.allTimes.label, 'CustomDateRange'],
         },
-        dateColumn: { control: { type: 'text' } },
+        lapisDateField: { control: { type: 'text' } },
         dateRangeOptions: {
             control: {
                 type: 'object',
@@ -72,7 +72,7 @@ const meta: Meta<Required<DateRangeSelectorProps>> = {
         ],
         earliestDate: '1970-01-01',
         initialValue: dateRangeOptionPresets.lastMonth.label,
-        dateColumn: 'aDateColumn',
+        lapisDateField: 'aDateColumn',
         width: '100%',
         initialDateFrom: undefined,
         initialDateTo: undefined,
@@ -93,7 +93,7 @@ export const Default: StoryObj<Required<DateRangeSelectorProps>> = {
                     .initialDateFrom=${args.initialDateFrom}
                     .initialDateTo=${args.initialDateTo}
                     .width=${args.width}
-                    .dateColumn=${args.dateColumn}
+                    .lapisDateField=${args.lapisDateField}
                 ></gs-date-range-selector>
             </div>
         </gs-app>`,

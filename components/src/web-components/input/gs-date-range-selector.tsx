@@ -103,10 +103,10 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
     width: string = '100%';
 
     /**
-     * The name of the column in LAPIS that contains the date information.
+     * The name of the metadata field in LAPIS that contains the date information.
      */
     @property({ type: String })
-    dateColumn: string = '';
+    lapisDateField: string = '';
 
     override render() {
         return (
@@ -116,7 +116,7 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
                 initialValue={this.initialValue}
                 initialDateFrom={this.initialDateFrom}
                 initialDateTo={this.initialDateTo}
-                dateColumn={this.dateColumn}
+                lapisDateField={this.lapisDateField}
                 width={this.width}
             />
         );
@@ -161,6 +161,6 @@ type InitialDateToMatches = Expect<
 >;
 type WidthMatches = Expect<Equals<typeof DateRangeSelectorComponent.prototype.width, DateRangeSelectorProps['width']>>;
 type DateColumnMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.dateColumn, DateRangeSelectorProps['dateColumn']>
+    Equals<typeof DateRangeSelectorComponent.prototype.lapisDateField, DateRangeSelectorProps['lapisDateField']>
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
