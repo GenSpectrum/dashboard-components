@@ -44,7 +44,7 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
      * It must be a valid LAPIS filter object.
      */
     @property({ type: Object })
-    filter: Record<string, string | string[] | number | null | boolean | undefined> & {
+    lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
         nucleotideMutations?: string[];
         aminoAcidMutations?: string[];
         nucleotideInsertions?: string[];
@@ -92,7 +92,7 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
             <Aggregate
                 fields={this.fields}
                 views={this.views}
-                filter={this.filter}
+                lapisFilter={this.lapisFilter}
                 width={this.width}
                 height={this.height}
                 initialSortField={this.initialSortField}
@@ -121,7 +121,7 @@ declare global {
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type FieldsMatches = Expect<Equals<typeof AggregateComponent.prototype.fields, AggregateProps['fields']>>;
 type ViewsMatches = Expect<Equals<typeof AggregateComponent.prototype.views, AggregateProps['views']>>;
-type FilterMatches = Expect<Equals<typeof AggregateComponent.prototype.filter, AggregateProps['filter']>>;
+type FilterMatches = Expect<Equals<typeof AggregateComponent.prototype.lapisFilter, AggregateProps['lapisFilter']>>;
 type WidthMatches = Expect<Equals<typeof AggregateComponent.prototype.width, AggregateProps['width']>>;
 type HeightMatches = Expect<Equals<typeof AggregateComponent.prototype.height, AggregateProps['height']>>;
 type InitialSortFieldMatches = Expect<
