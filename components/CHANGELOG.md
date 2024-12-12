@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.11.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.4...dashboard-components-v0.11.0) (2024-12-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** gs-number-sequences-over-time: rename `lapisFilter` attribute to `lapisFilters`, `lapisFilters` must be an array (a single object is no longer allowed)
+* **components:** gs-date-range-selector: rename attribute `dateColumn` to `lapisDateField`
+* **components:** gs-prevalence-over-time: rename `numeratorFilter` to `numeratorFilters`, `numeratorFilters` must be an array (a single object is no longer allowed)
+* **components:** gs-aggregate: rename attribute `filter` to `lapisFilter`
+* **components:** rename type `SelectedMutationFilterStrings` to `MutationsFilter`
+
+### Features
+
+* **components:** export prop types of visualization components ([92e3796](https://github.com/GenSpectrum/dashboard-components/commit/92e3796c98d0536d6081b8bb53c84ba21da366ac))
+
+
+### Bug Fixes
+
+* **components:** allow arrays in LapisFilter ([4751ce8](https://github.com/GenSpectrum/dashboard-components/commit/4751ce89527a2f801a6bdb0114fb062c6231f117))
+* **components:** gs-aggregate: rename attribute `filter` to `lapisFilter` ([6c70244](https://github.com/GenSpectrum/dashboard-components/commit/6c70244fc231e8783f13cf058e206bc5c42d0a11))
+* **components:** gs-date-range-selector: consistently name `lapisDateField` ([21c5e43](https://github.com/GenSpectrum/dashboard-components/commit/21c5e43a65261a44cc1b42abee2d9fcb52487ed3))
+* **components:** gs-number-sequences-over-time: rename `lapisFilter` attribute to `lapisFilters` ([fc35557](https://github.com/GenSpectrum/dashboard-components/commit/fc355575b925acdba02dc532be9b65e1a23fd5f5))
+* **components:** gs-prevalence-over-time, gs-number-sequences-over-time: require at least one lapis filter ([b3267d6](https://github.com/GenSpectrum/dashboard-components/commit/b3267d60a53b29c690b75f0a9f48c36e2359da65))
+* **components:** gs-prevalence-over-time: rename `numeratorFilter` attribute ([61d0c78](https://github.com/GenSpectrum/dashboard-components/commit/61d0c782346b31f4ff143ac6e91e294b72d93265))
+* **components:** gs-relative-growth-advantage: fix code example in info box ([d6ddbb2](https://github.com/GenSpectrum/dashboard-components/commit/d6ddbb28563cc3a7a96445d0e179eca84cdb5dea))
+
 ## [0.10.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.3...dashboard-components-v0.10.4) (2024-12-11)
 
 
