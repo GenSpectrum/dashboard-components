@@ -12,9 +12,8 @@ export {
     views,
     type MutationComparisonView,
     type TemporalGranularity,
+    type MutationsFilter,
 } from './types';
-
-export { type SelectedMutationFilterStrings } from './preact/mutationFilter/mutation-filter';
 
 export { type ConfidenceIntervalMethod } from './preact/shared/charts/confideceInterval';
 

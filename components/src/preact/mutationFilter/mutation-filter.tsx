@@ -5,20 +5,14 @@ import z from 'zod';
 import { MutationFilterInfo } from './mutation-filter-info';
 import { parseAndValidateMutation, type ParsedMutationFilter } from './parseAndValidateMutation';
 import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
+import { type MutationsFilter, mutationsFilterSchema } from '../../types';
 import { type DeletionClass, type InsertionClass, type SubstitutionClass } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 
-const selectedMutationFilterStringsSchema = z.object({
-    nucleotideMutations: z.array(z.string()),
-    aminoAcidMutations: z.array(z.string()),
-    nucleotideInsertions: z.array(z.string()),
-    aminoAcidInsertions: z.array(z.string()),
-});
-export type SelectedMutationFilterStrings = z.infer<typeof selectedMutationFilterStringsSchema>;
 const mutationFilterInnerPropsSchema = z.object({
-    initialValue: z.union([selectedMutationFilterStringsSchema.optional(), z.array(z.string()), z.undefined()]),
+    initialValue: z.union([mutationsFilterSchema.optional(), z.array(z.string()), z.undefined()]),
 });
 
 const mutationFilterPropsSchema = mutationFilterInnerPropsSchema.extend({
@@ -73,7 +67,7 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
         const detail = mapToMutationFilterStrings(selectedFilters);
 
         filterRef.current?.dispatchEvent(
-            new CustomEvent<SelectedMutationFilterStrings>('gs-mutation-filter-changed', {
+            new CustomEvent<MutationsFilter>('gs-mutation-filter-changed', {
                 detail,
                 bubbles: true,
                 composed: true,
@@ -105,10 +99,7 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
     );
 };
 
-function getInitialState(
-    initialValue: SelectedMutationFilterStrings | string[] | undefined,
-    referenceGenome: ReferenceGenome,
-) {
+function getInitialState(initialValue: MutationsFilter | string[] | undefined, referenceGenome: ReferenceGenome) {
     if (initialValue === undefined) {
         return {
             nucleotideMutations: [],

@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { LineageFilter, type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
 import type { Equals, Expect } from '../../utils/typeAssertions';

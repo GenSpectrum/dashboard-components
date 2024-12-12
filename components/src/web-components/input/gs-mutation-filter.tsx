@@ -1,12 +1,9 @@
 import { customElement, property } from 'lit/decorators.js';
-import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { ReferenceGenomesAwaiter } from '../../preact/components/ReferenceGenomesAwaiter';
-import {
-    MutationFilter,
-    type MutationFilterProps,
-    type SelectedMutationFilterStrings,
-} from '../../preact/mutationFilter/mutation-filter';
+import { MutationFilter, type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
+import type { MutationsFilter } from '../../types';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -64,7 +61,7 @@ export class MutationFilterComponent extends PreactLitAdapter {
      * All values provided must be valid mutations or insertions.
      * Invalid values will be ignored.
      */
-    @property({ type: Object })
+    @property({type: Object})
     initialValue:
         {
             nucleotideMutations: string[];
@@ -98,7 +95,7 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-mutation-filter-changed': CustomEvent<SelectedMutationFilterStrings>;
+        'gs-mutation-filter-changed': CustomEvent<MutationsFilter>;
     }
 }
 

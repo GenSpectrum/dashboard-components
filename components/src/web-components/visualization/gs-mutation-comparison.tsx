@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { MutationComparison, type MutationComparisonProps } from '../../preact/mutationComparison/mutation-comparison';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
@@ -44,7 +44,12 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
      */
     @property({ type: Array })
     lapisFilters: {
-        lapisFilter: Record<string, string | number | null | boolean>;
+        lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+            nucleotideMutations?: string[];
+            aminoAcidMutations?: string[];
+            nucleotideInsertions?: string[];
+            aminoAcidInsertions?: string[];
+        };
         displayName: string;
     }[] = [];
 

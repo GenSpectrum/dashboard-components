@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { LocationFilter, type LocationFilterProps } from '../../preact/locationFilter/location-filter';
 import type { Equals, Expect } from '../../utils/typeAssertions';

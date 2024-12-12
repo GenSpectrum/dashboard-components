@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { TextInput, type TextInputProps } from '../../preact/textInput/text-input';
 import type { Equals, Expect } from '../../utils/typeAssertions';
