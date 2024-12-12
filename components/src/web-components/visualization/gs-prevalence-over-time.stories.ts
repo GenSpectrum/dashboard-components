@@ -34,8 +34,6 @@ const meta: Meta<Required<PrevalenceOverTimeProps>> = {
     title: 'Visualization/Prevalence over time',
     component: 'gs-prevalence-over-time',
     argTypes: {
-        numeratorFilter: { control: 'object' },
-        denominatorFilter: { control: 'object' },
         granularity: {
             options: ['day', 'week', 'month', 'year'],
             control: { type: 'radio' },
@@ -71,7 +69,7 @@ const Template: StoryObj<Required<PrevalenceOverTimeProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-prevalence-over-time
-                .numeratorFilter=${args.numeratorFilter}
+                .numeratorFilters=${args.numeratorFilters}
                 .denominatorFilter=${args.denominatorFilter}
                 .granularity=${args.granularity}
                 .smoothingWindow=${args.smoothingWindow}
@@ -91,7 +89,7 @@ const Template: StoryObj<Required<PrevalenceOverTimeProps>> = {
 export const TwoDatasets: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...Template,
     args: {
-        numeratorFilter: [
+        numeratorFilters: [
             { displayName: 'EG', lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' } },
             { displayName: 'JN.1', lapisFilter: { country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' } },
         ],
@@ -165,10 +163,12 @@ export const TwoDatasets: StoryObj<Required<PrevalenceOverTimeProps>> = {
 export const OneDataset: StoryObj<Required<PrevalenceOverTimeProps>> = {
     ...Template,
     args: {
-        numeratorFilter: {
-            displayName: 'EG',
-            lapisFilter: { country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
-        },
+        numeratorFilters: [
+            {
+                displayName: 'EG',
+                lapisFilter: { country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
+            },
+        ],
         denominatorFilter: { country: 'USA', dateFrom: '2023-10-01' },
         granularity: 'week',
         smoothingWindow: 2,

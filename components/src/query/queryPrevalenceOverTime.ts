@@ -2,7 +2,6 @@ import { queryAggregatedDataOverTime } from './queryAggregatedDataOverTime';
 import { DivisionOperator } from '../operator/DivisionOperator';
 import { type LapisFilter, type NamedLapisFilter, type TemporalGranularity } from '../types';
 import { type TemporalClass } from '../utils/temporalClass';
-import { makeArray } from '../utils/utils';
 
 export type PrevalenceOverTimeData = PrevalenceOverTimeVariantData[];
 
@@ -19,7 +18,7 @@ export type PrevalenceOverTimeVariantDataPoint = {
 };
 
 export function queryPrevalenceOverTime(
-    numeratorFilter: NamedLapisFilter | NamedLapisFilter[],
+    numeratorFilters: NamedLapisFilter[],
     denominatorFilter: LapisFilter,
     granularity: TemporalGranularity,
     smoothingWindow: number,
@@ -27,8 +26,6 @@ export function queryPrevalenceOverTime(
     lapisDateField: string,
     signal?: AbortSignal,
 ): Promise<PrevalenceOverTimeData> {
-    const numeratorFilters = makeArray(numeratorFilter);
-
     const denominatorData = queryAggregatedDataOverTime(
         denominatorFilter,
         granularity,

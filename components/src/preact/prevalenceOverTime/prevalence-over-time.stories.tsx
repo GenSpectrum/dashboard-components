@@ -19,8 +19,6 @@ export default {
         fetchMock: {},
     },
     argTypes: {
-        numerator: { control: 'object' },
-        denominator: { control: 'object' },
         granularity: {
             options: ['day', 'week', 'month', 'year'],
             control: { type: 'radio' },
@@ -45,20 +43,7 @@ export default {
 const Template = {
     render: (args: PrevalenceOverTimeProps) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
-            <PrevalenceOverTime
-                numeratorFilter={args.numeratorFilter}
-                denominatorFilter={args.denominatorFilter}
-                granularity={args.granularity}
-                smoothingWindow={args.smoothingWindow}
-                views={args.views}
-                confidenceIntervalMethods={args.confidenceIntervalMethods}
-                width={args.width}
-                height={args.height}
-                lapisDateField={args.lapisDateField}
-                pageSize={args.pageSize}
-                yAxisMaxLinear={args.yAxisMaxLinear}
-                yAxisMaxLogarithmic={args.yAxisMaxLogarithmic}
-            />
+            <PrevalenceOverTime {...args} />
         </LapisUrlContext.Provider>
     ),
 };
@@ -66,7 +51,7 @@ const Template = {
 export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
     ...Template,
     args: {
-        numeratorFilter: [
+        numeratorFilters: [
             { displayName: 'EG', lapisFilter: { country: 'USA', pangoLineage: 'EG*', dateFrom: '2023-01-01' } },
             { displayName: 'JN.1', lapisFilter: { country: 'USA', pangoLineage: 'JN.1*', dateFrom: '2023-01-01' } },
         ],
@@ -140,10 +125,12 @@ export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
 export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
     ...Template,
     args: {
-        numeratorFilter: {
-            displayName: 'EG',
-            lapisFilter: { country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
-        },
+        numeratorFilters: [
+            {
+                displayName: 'EG',
+                lapisFilter: { country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
+            },
+        ],
         denominatorFilter: { country: 'USA', dateFrom: '2023-10-01' },
         granularity: 'day',
         smoothingWindow: 7,
@@ -198,10 +185,12 @@ export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {
 export const ShowsNoDataBanner: StoryObj<PrevalenceOverTimeProps> = {
     ...Template,
     args: {
-        numeratorFilter: {
-            displayName: 'EG',
-            lapisFilter: { country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
-        },
+        numeratorFilters: [
+            {
+                displayName: 'EG',
+                lapisFilter: { country: 'USA', pangoLineage: 'BA.2.86*', dateFrom: '2023-10-01' },
+            },
+        ],
         denominatorFilter: { country: 'USA', dateFrom: '2023-10-01' },
         granularity: 'day',
         smoothingWindow: 7,

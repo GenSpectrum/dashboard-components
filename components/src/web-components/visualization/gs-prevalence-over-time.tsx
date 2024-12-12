@@ -44,8 +44,6 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  */
 @customElement('gs-prevalence-over-time')
 export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
-    // prettier-ignore
-    // The multiline union type must not start with `|` because it looks weird in the Storybook docs
     /**
      * Either a LAPIS filter or an array of LAPIS filters to calculate the prevalence for.
      *
@@ -57,25 +55,15 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
      *
      */
     @property({ type: Object })
-    numeratorFilter:
-        {
-              lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
-                  nucleotideMutations?: string[];
-                  aminoAcidMutations?: string[];
-                  nucleotideInsertions?: string[];
-                  aminoAcidInsertions?: string[];
-              };
-              displayName: string;
-          }
-        | {
-              lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
-                  nucleotideMutations?: string[];
-                  aminoAcidMutations?: string[];
-                  nucleotideInsertions?: string[];
-                  aminoAcidInsertions?: string[];
-              };
-              displayName: string;
-          }[] = { displayName: '', lapisFilter: {} };
+    numeratorFilters: {
+        lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+            nucleotideMutations?: string[];
+            aminoAcidMutations?: string[];
+            nucleotideInsertions?: string[];
+            aminoAcidInsertions?: string[];
+        };
+        displayName: string;
+    }[] = [];
 
     /**
      * The LAPIS filter, to select the data of the reference.
@@ -177,7 +165,7 @@ export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyle
     override render() {
         return (
             <PrevalenceOverTime
-                numeratorFilter={this.numeratorFilter}
+                numeratorFilters={this.numeratorFilters}
                 denominatorFilter={this.denominatorFilter}
                 granularity={this.granularity}
                 smoothingWindow={this.smoothingWindow}
@@ -211,7 +199,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type NumeratorMatches = Expect<
-    Equals<typeof PrevalenceOverTimeComponent.prototype.numeratorFilter, PrevalenceOverTimeProps['numeratorFilter']>
+    Equals<typeof PrevalenceOverTimeComponent.prototype.numeratorFilters, PrevalenceOverTimeProps['numeratorFilters']>
 >;
 type DenominatorMatches = Expect<
     Equals<typeof PrevalenceOverTimeComponent.prototype.denominatorFilter, PrevalenceOverTimeProps['denominatorFilter']>
