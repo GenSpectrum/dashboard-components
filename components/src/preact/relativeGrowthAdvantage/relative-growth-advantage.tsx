@@ -18,7 +18,7 @@ import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
-import { yAxisMaxConfigSchema } from '../shared/charts/getYAxisMax';
+import { axisMaxSchema } from '../shared/charts/getYAxisMax';
 import { type ScaleType } from '../shared/charts/getYAxisScale';
 import { useQuery } from '../useQuery';
 
@@ -33,7 +33,8 @@ export const relativeGrowthAdvantagePropsSchema = z.object({
     generationTime: z.number(),
     views: z.array(viewSchema),
     lapisDateField: z.string().min(1),
-    yAxisMaxConfig: yAxisMaxConfigSchema,
+    yAxisMaxLinear: axisMaxSchema,
+    yAxisMaxLogarithmic: axisMaxSchema,
 });
 export type RelativeGrowthAdvantageProps = z.infer<typeof relativeGrowthAdvantagePropsSchema>;
 
@@ -114,7 +115,10 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
                                 params: data.params,
                             }}
                             yAxisScaleType={yAxisScaleType}
-                            yAxisMaxConfig={originalComponentProps.yAxisMaxConfig}
+                            yAxisMaxConfig={{
+                                linear: originalComponentProps.yAxisMaxLinear,
+                                logarithmic: originalComponentProps.yAxisMaxLogarithmic,
+                            }}
                         />
                     ),
                 };

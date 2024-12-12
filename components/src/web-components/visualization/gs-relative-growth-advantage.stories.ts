@@ -3,12 +3,11 @@ import { html } from 'lit';
 
 import './gs-relative-growth-advantage';
 import '../app';
-// eslint-disable-next-line no-duplicate-imports
-import { type RelativeGrowthAdvantageComponentProps } from './gs-relative-growth-advantage';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import denominatorFilter from '../../preact/relativeGrowthAdvantage/__mockData__/denominatorFilter.json';
 import numeratorFilter from '../../preact/relativeGrowthAdvantage/__mockData__/numeratorFilter.json';
+import type { RelativeGrowthAdvantageProps } from '../../preact/relativeGrowthAdvantage/relative-growth-advantage';
 
 const codeExample = String.raw`
 <gs-relative-growth-advantage
@@ -23,7 +22,7 @@ const codeExample = String.raw`
     yAxisMaxLogarithmic="limitTo1"    
 ></gs-relative-growth-advantage>`;
 
-const meta: Meta<RelativeGrowthAdvantageComponentProps> = {
+const meta: Meta<RelativeGrowthAdvantageProps> = {
     title: 'Visualization/Relative growth advantage',
     component: 'gs-relative-growth-advantage',
     argTypes: {
@@ -51,7 +50,7 @@ const meta: Meta<RelativeGrowthAdvantageComponentProps> = {
 
 export default meta;
 
-const Template: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> = {
+const Template: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
     render: (args) => html`
         <gs-app lapis="${LAPIS_URL}">
             <gs-relative-growth-advantage
@@ -69,7 +68,7 @@ const Template: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> = {
     `,
 };
 
-export const Default: StoryObj<Required<RelativeGrowthAdvantageComponentProps>> = {
+export const Default: StoryObj<Required<RelativeGrowthAdvantageProps>> = {
     ...Template,
     args: {
         numeratorFilter: {
