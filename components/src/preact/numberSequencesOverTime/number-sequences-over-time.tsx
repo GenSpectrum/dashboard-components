@@ -34,7 +34,7 @@ export type NumberSequencesOverTimeView = z.infer<typeof numberSequencesOverTime
 const numberSequencesOverTimePropsSchema = z.object({
     width: z.string(),
     height: z.string(),
-    lapisFilters: z.array(namedLapisFilterSchema),
+    lapisFilters: z.array(namedLapisFilterSchema).min(1),
     lapisDateField: z.string().min(1),
     views: z.array(numberSequencesOverTimeViewSchema),
     granularity: temporalGranularitySchema,

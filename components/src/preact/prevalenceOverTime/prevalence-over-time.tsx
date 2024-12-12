@@ -36,7 +36,7 @@ export type View = z.infer<typeof viewSchema>;
 const prevalenceOverTimePropsSchema = z.object({
     width: z.string(),
     height: z.string(),
-    numeratorFilters: z.array(namedLapisFilterSchema),
+    numeratorFilters: z.array(namedLapisFilterSchema).min(1),
     denominatorFilter: lapisFilterSchema,
     granularity: temporalGranularitySchema,
     smoothingWindow: z.number(),
