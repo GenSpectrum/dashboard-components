@@ -36,7 +36,7 @@ export type View = z.infer<typeof viewSchema>;
 const prevalenceOverTimePropsSchema = z.object({
     width: z.string(),
     height: z.string(),
-    numeratorFilter: z.union([namedLapisFilterSchema, z.array(namedLapisFilterSchema)]),
+    numeratorFilters: z.array(namedLapisFilterSchema),
     denominatorFilter: lapisFilterSchema,
     granularity: temporalGranularitySchema,
     smoothingWindow: z.number(),
@@ -64,20 +64,20 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = (c
 };
 
 export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeProps> = (componentProps) => {
-    const { numeratorFilter, denominatorFilter, granularity, smoothingWindow, lapisDateField } = componentProps;
+    const { numeratorFilters, denominatorFilter, granularity, smoothingWindow, lapisDateField } = componentProps;
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(
         () =>
             queryPrevalenceOverTime(
-                numeratorFilter,
+                numeratorFilters,
                 denominatorFilter,
                 granularity,
                 smoothingWindow,
                 lapis,
                 lapisDateField,
             ),
-        [lapis, numeratorFilter, denominatorFilter, granularity, smoothingWindow, lapisDateField],
+        [lapis, numeratorFilters, denominatorFilter, granularity, smoothingWindow, lapisDateField],
     );
 
     if (isLoading) {

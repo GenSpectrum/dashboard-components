@@ -79,7 +79,7 @@ function App() {
                 <div>
                     <h1 className='text-xl bold'>Prevalence over time</h1>
                     <gs-prevalence-over-time
-                        numeratorFilter={JSON.stringify(numerator)}
+                        numeratorFilters={JSON.stringify([numerator])}
                         denominatorFilter={JSON.stringify(denominator)}
                         granularity='day'
                         smoothingWindow='7'
@@ -91,7 +91,7 @@ function App() {
                 <div style={{height: '300px', width: '1000px'}}>
                     <h1 className='text-xl bold'>Prevalence over time</h1>
                     <gs-prevalence-over-time
-                        numeratorFilter={JSON.stringify(numerator)}
+                        numeratorFilters={JSON.stringify([numerator])}
                         denominatorFilter={JSON.stringify(denominator)}
                         granularity='day'
                         smoothingWindow='7'
@@ -104,7 +104,7 @@ function App() {
             <h1 className='text-xl bold'>Prevalence over time</h1>
             <div>
                 <gs-prevalence-over-time
-                    numeratorFilter={JSON.stringify(numerator)}
+                    numeratorFilters={JSON.stringify([numerator])}
                     denominatorFilter={JSON.stringify(denominator)}
                     granularity='day'
                     smoothingWindow='7'
