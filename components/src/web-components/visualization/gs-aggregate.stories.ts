@@ -12,7 +12,7 @@ import '../app';
 const codeExample = `
 <gs-aggregate 
     fields='["division", "host"]'
-    filter='{"country": "USA"}'
+    lapisFilter='{"country": "USA"}'
     views='["table"]'
     width='100%'
     height='700px'
@@ -74,7 +74,7 @@ export const Table: StoryObj<Required<AggregateProps>> = {
         <gs-app lapis="${LAPIS_URL}">
             <gs-aggregate
                 .fields=${args.fields}
-                .filter=${args.filter}
+                .lapisFilter=${args.lapisFilter}
                 .views=${args.views}
                 .width=${args.width}
                 .height=${args.height}
@@ -87,7 +87,7 @@ export const Table: StoryObj<Required<AggregateProps>> = {
     args: {
         fields: ['division', 'host'],
         views: ['table'],
-        filter: {
+        lapisFilter: {
             country: 'USA',
         },
         width: '100%',

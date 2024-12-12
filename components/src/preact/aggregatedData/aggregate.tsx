@@ -20,7 +20,7 @@ const viewSchema = z.literal(views.table);
 export type View = z.infer<typeof viewSchema>;
 
 const aggregatePropsSchema = z.object({
-    filter: lapisFilterSchema,
+    lapisFilter: lapisFilterSchema,
     fields: z.array(z.string().min(1)),
     views: z.array(viewSchema),
     initialSortField: z.string(),
@@ -45,12 +45,15 @@ export const Aggregate: FunctionComponent<AggregateProps> = (componentProps) => 
 };
 
 export const AggregateInner: FunctionComponent<AggregateProps> = (componentProps) => {
-    const { fields, filter, initialSortField, initialSortDirection } = componentProps;
+    const { fields, lapisFilter, initialSortField, initialSortDirection } = componentProps;
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
-        return queryAggregateData(filter, fields, lapis, { field: initialSortField, direction: initialSortDirection });
-    }, [filter, fields, lapis]);
+        return queryAggregateData(lapisFilter, fields, lapis, {
+            field: initialSortField,
+            direction: initialSortDirection,
+        });
+    }, [lapisFilter, fields, lapis]);
 
     if (isLoading) {
         return <LoadingDisplay />;
