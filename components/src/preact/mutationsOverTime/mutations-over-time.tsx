@@ -35,13 +35,13 @@ import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '..
 import Tabs from '../components/tabs';
 import { useWebWorker } from '../webWorkers/useWebWorker';
 
-const viewSchema = z.literal(views.grid);
-export type View = z.infer<typeof viewSchema>;
+const mutationsOverTimeViewSchema = z.literal(views.grid);
+export type MutationsOverTimeView = z.infer<typeof mutationsOverTimeViewSchema>;
 
 const mutationOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
     sequenceType: sequenceTypeSchema,
-    views: z.array(viewSchema),
+    views: z.array(mutationsOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
     width: z.string(),
@@ -134,7 +134,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         );
     }, [mutationOverTimeData, overallMutationData, displayedSegments, displayedMutationTypes, proportionInterval]);
 
-    const getTab = (view: View) => {
+    const getTab = (view: MutationsOverTimeView) => {
         if (filteredData === undefined) {
             return {
                 title: 'Calculating',

@@ -30,13 +30,13 @@ import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '..
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
 
-const viewSchema = z.union([z.literal(views.table), z.literal(views.grid), z.literal(views.insertions)]);
-export type View = z.infer<typeof viewSchema>;
+const mutationsViewSchema = z.union([z.literal(views.table), z.literal(views.grid), z.literal(views.insertions)]);
+export type MutationsView = z.infer<typeof mutationsViewSchema>;
 
 const mutationsPropsSchema = z.object({
     lapisFilter: lapisFilterSchema,
     sequenceType: sequenceTypeSchema,
-    views: viewSchema.array(),
+    views: mutationsViewSchema.array(),
     pageSize: z.union([z.boolean(), z.number()]),
     width: z.string(),
     height: z.string(),
@@ -95,7 +95,7 @@ const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, or
 
     const filteredData = filterMutationsData(mutationsData, displayedSegments, displayedMutationTypes);
 
-    const getTab = (view: View) => {
+    const getTab = (view: MutationsView) => {
         switch (view) {
             case 'table':
                 return {

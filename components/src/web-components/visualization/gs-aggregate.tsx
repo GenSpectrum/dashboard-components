@@ -1,7 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-import { Aggregate, type AggregateProps, type View } from '../../preact/aggregatedData/aggregate';
+import { Aggregate, type AggregateProps, type AggregateView } from '../../preact/aggregatedData/aggregate';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
@@ -37,7 +37,7 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
      * A list of tabs with views that this component should provide.
      */
     @property({ type: Array })
-    views: View[] = ['table'];
+    views: AggregateView[] = ['table'];
 
     /**
      * The filter to apply to the data.

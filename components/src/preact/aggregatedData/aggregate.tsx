@@ -16,13 +16,13 @@ import { ResizeContainer } from '../components/resize-container';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
 
-const viewSchema = z.literal(views.table);
-export type View = z.infer<typeof viewSchema>;
+const aggregateViewSchema = z.literal(views.table);
+export type AggregateView = z.infer<typeof aggregateViewSchema>;
 
 const aggregatePropsSchema = z.object({
     lapisFilter: lapisFilterSchema,
     fields: z.array(z.string().min(1)),
-    views: z.array(viewSchema),
+    views: z.array(aggregateViewSchema),
     initialSortField: z.string(),
     initialSortDirection: z.union([z.literal('ascending'), z.literal('descending')]),
     pageSize: z.union([z.boolean(), z.number()]),
@@ -76,7 +76,7 @@ type AggregatedDataTabsProps = {
 };
 
 const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, originalComponentProps }) => {
-    const getTab = (view: View) => {
+    const getTab = (view: AggregateView) => {
         switch (view) {
             case 'table':
                 return {

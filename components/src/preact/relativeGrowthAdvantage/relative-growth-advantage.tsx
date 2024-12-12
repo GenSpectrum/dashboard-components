@@ -22,8 +22,8 @@ import { axisMaxSchema } from '../shared/charts/getYAxisMax';
 import { type ScaleType } from '../shared/charts/getYAxisScale';
 import { useQuery } from '../useQuery';
 
-const viewSchema = z.literal(views.line);
-export type View = z.infer<typeof viewSchema>;
+const relativeGrowthAdvantageViewSchema = z.literal(views.line);
+export type RelativeGrowthAdvantageView = z.infer<typeof relativeGrowthAdvantageViewSchema>;
 
 export const relativeGrowthAdvantagePropsSchema = z.object({
     width: z.string(),
@@ -31,7 +31,7 @@ export const relativeGrowthAdvantagePropsSchema = z.object({
     numeratorFilter: lapisFilterSchema,
     denominatorFilter: lapisFilterSchema,
     generationTime: z.number(),
-    views: z.array(viewSchema),
+    views: z.array(relativeGrowthAdvantageViewSchema),
     lapisDateField: z.string().min(1),
     yAxisMaxLinear: axisMaxSchema,
     yAxisMaxLogarithmic: axisMaxSchema,
@@ -102,7 +102,7 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
     setYAxisScaleType,
     originalComponentProps,
 }) => {
-    const getTab = (view: View) => {
+    const getTab = (view: RelativeGrowthAdvantageView) => {
         switch (view) {
             case 'line':
                 return {
