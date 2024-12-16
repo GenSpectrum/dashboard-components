@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.0...dashboard-components-v0.11.1) (2024-12-13)
+
+
+### Features
+
+* **components:** export type `MapSource` ([#606](https://github.com/GenSpectrum/dashboard-components/issues/606)) ([94c12d1](https://github.com/GenSpectrum/dashboard-components/commit/94c12d167734f0c28985b7332228d1e5e95fd035))
+
 ## [0.11.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.10.4...dashboard-components-v0.11.0) (2024-12-12)
 
 
