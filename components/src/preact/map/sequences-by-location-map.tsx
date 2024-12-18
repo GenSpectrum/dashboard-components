@@ -90,7 +90,7 @@ export const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationM
             style: (feature: Feature<GeometryObject, EnhancedGeoJsonFeatureProperties> | undefined) => ({
                 fillColor: getColor(feature?.properties.data?.proportion),
                 fillOpacity: 1,
-                color: 'grey',
+                color: '#666666',
                 weight: 1,
             }),
         })
@@ -232,7 +232,7 @@ function matchLocationDataAndGeoJsonFeatures(
 
 function getColor(value: number | undefined): string {
     if (value === undefined) {
-        return '#888888';
+        return '#DDDDDD';
     }
 
     const thresholds = [
