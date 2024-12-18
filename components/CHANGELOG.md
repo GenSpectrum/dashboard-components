@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.1...dashboard-components-v0.11.2) (2024-12-18)
+
+
+### Features
+
+* **components:** gs-sequences-by-location: show how many sequences were matched on locations in map view ([#616](https://github.com/GenSpectrum/dashboard-components/issues/616)) ([2eb42ad](https://github.com/GenSpectrum/dashboard-components/commit/2eb42ad08e5be10c31a89c326ef2eb3c72b942e8)), closes [#614](https://github.com/GenSpectrum/dashboard-components/issues/614)
+
+
+### Bug Fixes
+
+* **components:** set default of `enableMapNavigation` to false ([#610](https://github.com/GenSpectrum/dashboard-components/issues/610)) ([bb7bae4](https://github.com/GenSpectrum/dashboard-components/commit/bb7bae44c0e9b43a8ba0ef45f7c927457f323a9a))
+
 ## [0.11.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.0...dashboard-components-v0.11.1) (2024-12-13)
 
 
