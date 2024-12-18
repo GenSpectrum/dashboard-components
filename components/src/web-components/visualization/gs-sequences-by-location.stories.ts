@@ -84,7 +84,7 @@ const Template: StoryObj<SequencesByLocationProps> = {
     args: {
         enableMapNavigation: false,
         width: '1100px',
-        height: '800px',
+        height: '700px',
         views: ['map', 'table'],
         pageSize: 10,
     },
@@ -150,7 +150,7 @@ export const Germany: StoryObj<SequencesByLocationProps> = {
             topologyObjectsKey: 'deu',
         },
         views: ['map', 'table'],
-        zoom: 6.3,
+        zoom: 6,
         offsetX: 10,
         offsetY: 51.4,
     },

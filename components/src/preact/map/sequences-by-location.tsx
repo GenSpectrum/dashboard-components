@@ -98,6 +98,7 @@ const SequencesByLocationMapTabs: FunctionComponent<SequencesByLocationMapTabsPr
                             zoom={originalComponentProps.zoom}
                             offsetX={originalComponentProps.offsetX}
                             offsetY={originalComponentProps.offsetY}
+                            hasTableView={originalComponentProps.views.includes(views.table)}
                         />
                     ),
                 };

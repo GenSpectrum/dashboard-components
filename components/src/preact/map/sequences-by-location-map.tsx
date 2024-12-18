@@ -1,10 +1,11 @@
 import type { Feature, FeatureCollection, GeometryObject } from 'geojson';
 import Leaflet, { type Layer, type LayerGroup } from 'leaflet';
 import type { FunctionComponent } from 'preact';
-import { useEffect, useRef } from 'preact/hooks';
+import { useEffect, useMemo, useRef } from 'preact/hooks';
 
 import { type GeoJsonFeatureProperties, type MapSource, useGeoJsonMap } from './useGeoJsonMap';
 import { type AggregateData } from '../../query/queryAggregateData';
+import { InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { formatProportion } from '../shared/table/formatProportion';
 
@@ -22,6 +23,7 @@ type SequencesByLocationMapProps = {
     zoom: number;
     offsetX: number;
     offsetY: number;
+    hasTableView: boolean;
 };
 
 export const SequencesByLocationMap: FunctionComponent<SequencesByLocationMapProps> = ({
@@ -49,20 +51,30 @@ export const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationM
     zoom,
     offsetX,
     offsetY,
+    hasTableView,
 }) => {
     const ref = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        if (!ref.current || geojsonData === undefined || locationData === undefined) {
-            return;
-        }
-
+    const { locations, totalCount, countOfMatchedLocationData, unmatchedLocations } = useMemo(() => {
         const countAndProportionByCountry = buildLookupByLocationField(locationData, lapisLocationField);
-        const locations = matchLocationDataAndGeoJsonFeatures(
+        const { locations, unmatchedLocations } = matchLocationDataAndGeoJsonFeatures(
             geojsonData,
             countAndProportionByCountry,
             lapisLocationField,
         );
+
+        const totalCount = locationData.map((value) => value.count).reduce((sum, b) => sum + b, 0);
+        const countOfMatchedLocationData = locations
+            .map((location) => location.properties.data?.count ?? 0)
+            .reduce((sum, b) => sum + b, 0);
+
+        return { locations, totalCount, countOfMatchedLocationData, unmatchedLocations };
+    }, [geojsonData, locationData, lapisLocationField]);
+
+    useEffect(() => {
+        if (!ref.current) {
+            return;
+        }
 
         const leafletMap = Leaflet.map(ref.current, {
             scrollWheelZoom: enableMapNavigation,
@@ -88,9 +100,85 @@ export const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationM
         return () => {
             leafletMap.remove();
         };
-    }, [ref, locationData, geojsonData, enableMapNavigation, lapisLocationField, zoom, offsetX, offsetY]);
+    }, [ref, locations, enableMapNavigation, lapisLocationField, zoom, offsetX, offsetY]);
 
-    return <div ref={ref} className='h-full' />;
+    const nullCount = locationData.find((row) => row[lapisLocationField] === null)?.count ?? 0;
+
+    return (
+        <div className='h-full'>
+            <div ref={ref} className='h-full' />
+            <div className='relative'>
+                <DataMatchInformation
+                    totalCount={totalCount}
+                    countOfMatchedLocationData={countOfMatchedLocationData}
+                    unmatchedLocations={unmatchedLocations}
+                    nullCount={nullCount}
+                    hasTableView={hasTableView}
+                />
+            </div>
+        </div>
+    );
+};
+
+type DataMatchInformationProps = {
+    totalCount: number;
+    countOfMatchedLocationData: number;
+    unmatchedLocations: string[];
+    nullCount: number;
+    hasTableView: boolean;
+};
+
+const DataMatchInformation: FunctionComponent<DataMatchInformationProps> = ({
+    totalCount,
+    countOfMatchedLocationData,
+    unmatchedLocations,
+    nullCount,
+    hasTableView,
+}) => {
+    const dialogRef = useRef<HTMLDialogElement>(null);
+
+    const proportion = formatProportion(countOfMatchedLocationData / totalCount);
+
+    return (
+        <>
+            <button
+                onClick={() => dialogRef.current?.showModal()}
+                className='text-sm absolute bottom-0 px-1 z-[1001] bg-white rounded border cursor-pointer tooltip'
+                data-tip='Click for detailed information'
+            >
+                This map shows {proportion} of the data.
+            </button>
+            <dialog ref={dialogRef} className={'modal modal-middle'}>
+                <div className='modal-box max-w-3xl'>
+                    <InfoHeadline1>Sequences By Location - Map View</InfoHeadline1>
+                    <InfoParagraph>
+                        The current filter has matched {totalCount.toLocaleString('en-us')} sequences. From these
+                        sequences, we were able to match {countOfMatchedLocationData.toLocaleString('en-us')} (
+                        {proportion}) on locations on the map.
+                    </InfoParagraph>
+                    <InfoParagraph>
+                        {unmatchedLocations.length > 0 && (
+                            <>
+                                The following locations from the data could not be matched on the map:{' '}
+                                {unmatchedLocations.map((it) => `"${it}"`).join(', ')}.{' '}
+                            </>
+                        )}
+                        {nullCount > 0 &&
+                            `${nullCount.toLocaleString('en-us')} matching sequences have no location information. `}
+                        {hasTableView && 'You can check the table view for more detailed information.'}
+                    </InfoParagraph>
+                    <div className='modal-action'>
+                        <form method='dialog'>
+                            <button className={'float-right underline text-sm hover:text-blue-700 mr-2'}>Close</button>
+                        </form>
+                    </div>
+                </div>
+                <form method='dialog' className='modal-backdrop'>
+                    <button>Helper to close when clicked outside</button>
+                </form>
+            </dialog>
+        </>
+    );
 };
 
 function buildLookupByLocationField(locationData: AggregateData, lapisLocationField: string) {
@@ -139,7 +227,7 @@ function matchLocationDataAndGeoJsonFeatures(
         console.warn(unmatchedLocationsWarning); // eslint-disable-line no-console -- We should give some feedback about unmatched location data.
     }
 
-    return locations;
+    return { locations, unmatchedLocations };
 }
 
 function getColor(value: number | undefined): string {
