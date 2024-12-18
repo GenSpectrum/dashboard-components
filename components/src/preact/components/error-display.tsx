@@ -2,6 +2,8 @@ import { type FunctionComponent } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 import { type ZodError } from 'zod';
 
+import { InfoHeadline1, InfoParagraph } from './info';
+import { Modal, useModalRef } from './modal';
 import { LapisError, UnknownLapisError } from '../../lapisApi/lapisApi';
 
 export const GS_ERROR_EVENT_TYPE = 'gs-error';
@@ -46,7 +48,7 @@ export const ErrorDisplay: FunctionComponent<ErrorDisplayProps> = ({ error, rese
     console.error(error);
 
     const containerRef = useRef<HTMLInputElement>(null);
-    const ref = useRef<HTMLDialogElement>(null);
+    const modalRef = useModalRef();
 
     useEffect(() => {
         containerRef.current?.dispatchEvent(new ErrorEvent(error));
@@ -66,23 +68,16 @@ export const ErrorDisplay: FunctionComponent<ErrorDisplayProps> = ({ error, rese
                     {details !== undefined && (
                         <>
                             {' '}
-                            <button className='underline hover:text-gray-400' onClick={() => ref.current?.showModal()}>
+                            <button
+                                className='underline hover:text-gray-400'
+                                onClick={() => modalRef.current?.showModal()}
+                            >
                                 Show details.
                             </button>
-                            <dialog ref={ref} class='modal'>
-                                <div class='modal-box'>
-                                    <form method='dialog'>
-                                        <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
-                                            ✕
-                                        </button>
-                                    </form>
-                                    <h1 class='text-lg'>{details.headline}</h1>
-                                    <div class='py-4'>{details.message}</div>
-                                </div>
-                                <form method='dialog' class='modal-backdrop'>
-                                    <button>close</button>
-                                </form>
-                            </dialog>
+                            <Modal modalRef={modalRef}>
+                                <InfoHeadline1>{details.headline}</InfoHeadline1>
+                                <InfoParagraph>{details.message}</InfoParagraph>
+                            </Modal>
                         </>
                     )}
                 </div>
