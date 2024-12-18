@@ -130,7 +130,7 @@ export class SequencesByLocationComponent extends PreactLitAdapterWithGridJsStyl
      * Enable map navigation (dragging, keyboard navigation, zooming).
      */
     @property({ type: Boolean })
-    enableMapNavigation: boolean = true;
+    enableMapNavigation: boolean = false;
 
     /**
      * The width of the component.

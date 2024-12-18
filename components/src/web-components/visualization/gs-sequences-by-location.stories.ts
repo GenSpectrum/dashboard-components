@@ -17,7 +17,7 @@ const codeExample = `<gs-sequences-by-location
     lapisFilter='{"dateFrom":"2022-01-01","dateTo":"2022-04-01"}'
     lapisLocationField='country'
     mapSource='{"type":"topojson","url":"https://mock.map.data/topo.json","topologyObjectsKey":"countries"}'
-    enableMapNavigation='false'
+    enableMapNavigation
     width='1100px'
     height='800px'
     views='["map"]'
@@ -25,7 +25,7 @@ const codeExample = `<gs-sequences-by-location
     offsetX='0'
     offsetY='10'
     pageSize='5'
-/>`;
+></gs-sequences-by-location>`;
 
 const meta: Meta<Required<SequencesByLocationProps>> = {
     title: 'Visualization/Sequences by location',
