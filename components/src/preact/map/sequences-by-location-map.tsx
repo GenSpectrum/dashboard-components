@@ -7,6 +7,7 @@ import { type GeoJsonFeatureProperties, type MapSource, useGeoJsonMap } from './
 import { type AggregateData } from '../../query/queryAggregateData';
 import { InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
+import { Modal, useModalRef } from '../components/modal';
 import { formatProportion } from '../shared/table/formatProportion';
 
 type FeatureData = { proportion: number; count: number };
@@ -135,48 +136,38 @@ const DataMatchInformation: FunctionComponent<DataMatchInformationProps> = ({
     nullCount,
     hasTableView,
 }) => {
-    const dialogRef = useRef<HTMLDialogElement>(null);
+    const modalRef = useModalRef();
 
     const proportion = formatProportion(countOfMatchedLocationData / totalCount);
 
     return (
         <>
             <button
-                onClick={() => dialogRef.current?.showModal()}
+                onClick={() => modalRef.current?.showModal()}
                 className='text-sm absolute bottom-0 px-1 z-[1001] bg-white rounded border cursor-pointer tooltip'
                 data-tip='Click for detailed information'
             >
                 This map shows {proportion} of the data.
             </button>
-            <dialog ref={dialogRef} className={'modal modal-middle'}>
-                <div className='modal-box max-w-3xl'>
-                    <InfoHeadline1>Sequences By Location - Map View</InfoHeadline1>
-                    <InfoParagraph>
-                        The current filter has matched {totalCount.toLocaleString('en-us')} sequences. From these
-                        sequences, we were able to match {countOfMatchedLocationData.toLocaleString('en-us')} (
-                        {proportion}) on locations on the map.
-                    </InfoParagraph>
-                    <InfoParagraph>
-                        {unmatchedLocations.length > 0 && (
-                            <>
-                                The following locations from the data could not be matched on the map:{' '}
-                                {unmatchedLocations.map((it) => `"${it}"`).join(', ')}.{' '}
-                            </>
-                        )}
-                        {nullCount > 0 &&
-                            `${nullCount.toLocaleString('en-us')} matching sequences have no location information. `}
-                        {hasTableView && 'You can check the table view for more detailed information.'}
-                    </InfoParagraph>
-                    <div className='modal-action'>
-                        <form method='dialog'>
-                            <button className={'float-right underline text-sm hover:text-blue-700 mr-2'}>Close</button>
-                        </form>
-                    </div>
-                </div>
-                <form method='dialog' className='modal-backdrop'>
-                    <button>Helper to close when clicked outside</button>
-                </form>
-            </dialog>
+            <Modal modalRef={modalRef}>
+                <InfoHeadline1>Sequences By Location - Map View</InfoHeadline1>
+                <InfoParagraph>
+                    The current filter has matched {totalCount.toLocaleString('en-us')} sequences. From these sequences,
+                    we were able to match {countOfMatchedLocationData.toLocaleString('en-us')} ({proportion}) on
+                    locations on the map.
+                </InfoParagraph>
+                <InfoParagraph>
+                    {unmatchedLocations.length > 0 && (
+                        <>
+                            The following locations from the data could not be matched on the map:{' '}
+                            {unmatchedLocations.map((it) => `"${it}"`).join(', ')}.{' '}
+                        </>
+                    )}
+                    {nullCount > 0 &&
+                        `${nullCount.toLocaleString('en-us')} matching sequences have no location information. `}
+                    {hasTableView && 'You can check the table view for more detailed information.'}
+                </InfoParagraph>
+            </Modal>
         </>
     );
 };
