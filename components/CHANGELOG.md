@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.2...dashboard-components-v0.11.3) (2024-12-19)
+
+
+### Bug Fixes
+
+* **components:** gs-sequences-by-location map view: more distinct colors of location borders and locations without data ([#620](https://github.com/GenSpectrum/dashboard-components/issues/620)) ([5aa4802](https://github.com/GenSpectrum/dashboard-components/commit/5aa4802551d305e4069fd3eeb3e60d1d7d5d14d8))
+
 ## [0.11.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.1...dashboard-components-v0.11.2) (2024-12-18)
 
 
