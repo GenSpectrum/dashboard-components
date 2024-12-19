@@ -8,10 +8,11 @@ import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
-import Select from 'react-select';
+import { useCombobox } from 'downshift';
 
+const locationFilterValueSchema = z.record(z.string().nullable()).optional();
 const lineageFilterInnerPropsSchema = z.object({
-    initialValue: z.string().optional(),
+    value: locationFilterValueSchema,
     placeholderText: z.string().optional(),
     fields: z.array(z.string()).min(1),
 });
@@ -36,7 +37,13 @@ export const LocationFilter: FunctionComponent<LocationFilterProps> = (props) =>
     );
 };
 
-export const LocationFilterInner = ({ initialValue, fields, placeholderText }: LocationFilterInnerProps) => {
+type SelectItem = {
+    lapisFilter: Record<string, string | null>;
+    label: string;
+    description: string;
+};
+
+export const LocationFilterInner = ({ value, fields, placeholderText }: LocationFilterInnerProps) => {
     const lapis = useContext(LapisUrlContext);
 
     const divRef = useRef<HTMLDivElement>(null);
@@ -50,97 +57,165 @@ export const LocationFilterInner = ({ initialValue, fields, placeholderText }: L
         throw error;
     }
 
-    const selectOptions = data?.map((v) => {
-        const value = fields
-            .map((field) => v[field])
-            .filter((value) => value !== null)
-            .join(' / ');
+    const allItems = data
+        ?.map((locationFilter) => {
+            return toSelectOption(locationFilter, fields);
+        })
+        .filter((item): item is SelectItem => item !== undefined);
 
-        const lastNonUndefinedValue = Object.values(v)
-            .filter((value) => value !== null)
-            .pop();
-
-        return {
-            value,
-            label: lastNonUndefinedValue,
-            description: `${value}`,
-        };
-    });
-
-    const formatOptionLabel = (
-        data: {
-            value: string;
-            label: string | null | undefined;
-            description: string;
-        },
-        formatOptionLabelMeta: { context: 'menu' | 'value' },
-    ) => {
-        if (formatOptionLabelMeta.context === 'menu') {
-            return (
-                <div class='flex flex-col justify-between'>
-                    <span>{data.label}</span>
-                    <span class='text-gray-500 text-sm'>{data.description}</span>
-                </div>
-            );
-        }
-
-        return data.label;
-    };
-
-    const defaultInputValue = useMemo(
-        () => selectOptions?.find((option) => option.value === initialValue)?.value,
-        [selectOptions, initialValue],
+    const initialInputValue = useMemo(
+        () => (value !== undefined ? toSelectOption(value, fields) : undefined)?.label ?? '',
+        [value, fields],
     );
 
-    return (
-        <div ref={divRef}>
-            <Select
-                defaultInputValue={defaultInputValue}
-                options={selectOptions}
-                formatOptionLabel={formatOptionLabel}
-                isClearable={true}
-                isSearchable={true}
-                placeholder={placeholderText}
-                onChange={(option) => {
-                    if (option === null) {
-                        return;
-                    }
-                    const eventDetail = parseLocation(option.value, fields);
-                    if (hasAllUndefined(eventDetail) || hasMatchingEntry(data, eventDetail)) {
-                        divRef.current?.dispatchEvent(
-                            new CustomEvent('gs-location-changed', {
-                                detail: eventDetail,
-                                bubbles: true,
-                                composed: true,
-                            }),
+    function ComboBox() {
+        const [items, setItems] = useState(allItems);
+        const {
+            isOpen,
+            getToggleButtonProps,
+            getMenuProps,
+            getInputProps,
+            highlightedIndex,
+            getItemProps,
+            selectedItem,
+            inputValue,
+            selectItem,
+            setInputValue,
+        } = useCombobox({
+            onInputValueChange({ inputValue }) {
+                if (inputValue === '') {
+                    setItems(allItems);
+                    return;
+                }
+
+                setItems(
+                    allItems.filter((item) => {
+                        return (
+                            item?.label.toLowerCase().includes(inputValue.toLowerCase()) ||
+                            item?.description.toLowerCase().includes(inputValue.toLowerCase())
                         );
-                    }
-                }}
-            />
-        </div>
-    );
-};
+                    }),
+                );
+            },
+            onSelectedItemChange({ selectedItem }) {
+                if (selectedItem !== null) {
+                    divRef.current?.dispatchEvent(
+                        new CustomEvent('gs-location-changed', {
+                            detail: selectedItem.lapisFilter,
+                            bubbles: true,
+                            composed: true,
+                        }),
+                    );
+                }
+            },
+            items,
+            itemToString(item) {
+                return item?.label ?? '';
+            },
+            initialInputValue,
+        });
 
-const parseLocation = (location: string, fields: string[]) => {
-    if (location === '') {
-        return fields.reduce((acc, field) => ({ ...acc, [field]: undefined }), {});
+        // TODO: hide clear selection button when input is empty
+
+        return (
+            <div ref={divRef}>
+                <div className='w-72 flex flex-col gap-1'>
+                    <div className='flex shadow-sm bg-white gap-0.5'>
+                        <input
+                            placeholder={placeholderText}
+                            className='w-full p-1.5'
+                            {...getInputProps()}
+                            onBlur={() => {
+                                if (inputValue === '') {
+                                    divRef.current?.dispatchEvent(
+                                        new CustomEvent('gs-location-changed', {
+                                            detail: { region: null, country: null, division: null, location: null },
+                                            bubbles: true,
+                                            composed: true,
+                                        }),
+                                    );
+                                    selectItem(null);
+                                    return;
+                                }
+
+                                if (selectedItem) {
+                                    if (inputValue !== selectedItem.label) {
+                                        setInputValue(selectedItem.label);
+                                    }
+                                }
+                            }}
+                        />
+                        <button
+                            aria-label='clear selection'
+                            className='px-2'
+                            type='button'
+                            onClick={() => {
+                                divRef.current?.dispatchEvent(
+                                    new CustomEvent('gs-location-changed', {
+                                        detail: { region: null, country: null, division: null, location: null },
+                                        bubbles: true,
+                                        composed: true,
+                                    }),
+                                );
+                                selectItem(null);
+                            }}
+                            tabIndex={-1}
+                        >
+                            &#215;
+                        </button>
+                        <button aria-label='toggle menu' className='px-2' type='button' {...getToggleButtonProps()}>
+                            {isOpen ? <>&#8593;</> : <>&#8595;</>}
+                        </button>
+                    </div>
+                </div>
+                <ul
+                    className={`absolute w-72 bg-white mt-1 shadow-md max-h-80 overflow-scroll p-0 z-10 ${
+                        !(isOpen && items.length) && 'hidden'
+                    }`}
+                    {...getMenuProps()}
+                >
+                    {isOpen &&
+                        items.map((item, index) => (
+                            <li
+                                className={`${highlightedIndex === index && 'bg-blue-300'} ${selectedItem !== null && selectedItem === item && 'font-bold'} py-2 px-3 shadow-sm flex flex-col`}
+                                key={item.description}
+                                {...getItemProps({ item, index })}
+                            >
+                                <span>{item.label}</span>
+                                <span className='text-sm text-gray-500'>{item.description}</span>
+                            </li>
+                        ))}
+                </ul>
+            </div>
+        );
     }
-    const fieldValues = location.split('/').map((part) => part.trim());
 
-    return fields.reduce((acc, field, i) => ({ ...acc, [field]: fieldValues[i] }), {});
+    return <ComboBox />;
 };
 
-const hasAllUndefined = (obj: Record<string, string | undefined>) =>
-    Object.values(obj).every((value) => value === undefined);
+function toSelectOption(locationFilter: Record<string, string | null>, fields: string[]) {
+    const concatenatedLocation = concatenateLocation(locationFilter, fields);
 
-const hasMatchingEntry = (data: Record<string, string | null>[] | null, eventDetail: Record<string, string>) => {
-    if (data === null) {
-        return false;
+    const lastNonUndefinedValue = Object.values(locationFilter)
+        .filter((value) => value !== null)
+        .pop();
+
+    if (lastNonUndefinedValue === undefined || lastNonUndefinedValue === null) {
+        return undefined;
     }
 
-    const matchingEntries = Object.entries(eventDetail)
-        .filter(([, value]) => value !== undefined)
-        .reduce((filteredData, [key, value]) => filteredData.filter((it) => it[key] === value), data);
+    return {
+        lapisFilter: locationFilter,
+        label: lastNonUndefinedValue,
+        description: `${concatenatedLocation}`,
+    };
+}
 
-    return matchingEntries.length > 0;
-};
+function concatenateLocation(locationFilter: Record<string, string | null>, fields: string[]) {
+    return fields
+        .map((field) => locationFilter[field])
+        .filter((value) => value !== null)
+        .join(' / ');
+}
+
+const hasAllUndefined = (obj: Record<string, string | null>) => Object.values(obj).every((value) => value === null);

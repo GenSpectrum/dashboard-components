@@ -40,7 +40,7 @@ export class LocationFilterComponent extends PreactLitAdapter {
      * Must be of the form `valueForField1 / valueForField2 / ... / valueForFieldN`.
      */
     @property()
-    initialValue: string | undefined = undefined;
+    value: Record<string, string | null> | undefined = undefined;
 
     /**
      * Required.
@@ -70,7 +70,7 @@ export class LocationFilterComponent extends PreactLitAdapter {
     override render() {
         return (
             <LocationFilter
-                initialValue={this.initialValue}
+                value={this.value}
                 fields={this.fields}
                 width={this.width}
                 placeholderText={this.placeholderText}
@@ -99,9 +99,7 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type InitialValueMatches = Expect<
-    Equals<typeof LocationFilterComponent.prototype.initialValue, LocationFilterProps['initialValue']>
->;
+type InitialValueMatches = Expect<Equals<typeof LocationFilterComponent.prototype.value, LocationFilterProps['value']>>;
 type FieldsMatches = Expect<Equals<typeof LocationFilterComponent.prototype.fields, LocationFilterProps['fields']>>;
 type PlaceholderTextMatches = Expect<
     Equals<typeof LocationFilterComponent.prototype.placeholderText, LocationFilterProps['placeholderText']>

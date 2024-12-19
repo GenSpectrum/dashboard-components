@@ -12,21 +12,21 @@ const meta: Meta<LocationFilterProps> = {
     component: LocationFilter,
     parameters: {
         fetchMock: {
-            mocks: [
-                {
-                    matcher: {
-                        name: 'numeratorEG',
-                        url: AGGREGATED_ENDPOINT,
-                        body: {
-                            fields: ['region', 'country', 'division', 'location'],
-                        },
-                    },
-                    response: {
-                        status: 200,
-                        body: data,
-                    },
-                },
-            ],
+            // mocks: [
+            //     {
+            //         matcher: {
+            //             name: 'numeratorEG',
+            //             url: AGGREGATED_ENDPOINT,
+            //             body: {
+            //                 fields: ['region', 'country', 'division', 'location'],
+            //             },
+            //         },
+            //         response: {
+            //             status: 200,
+            //             body: data,
+            //         },
+            //     },
+            // ],
         },
         actions: {
             handles: ['gs-location-changed', ...previewHandles],
@@ -35,7 +35,7 @@ const meta: Meta<LocationFilterProps> = {
     args: {
         width: '100%',
         fields: ['region', 'country', 'division', 'location'],
-        initialValue: 'Europe',
+        value: { region: 'Europe', country: null, division: null, location: null },
         placeholderText: 'Enter a location',
     },
     argTypes: {
@@ -44,9 +44,9 @@ const meta: Meta<LocationFilterProps> = {
                 type: 'object',
             },
         },
-        initialValue: {
+        value: {
             control: {
-                type: 'text',
+                type: 'object',
             },
         },
         width: {
@@ -69,7 +69,7 @@ export const Primary: StoryObj<LocationFilterProps> = {
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <LocationFilter
                 fields={args.fields}
-                initialValue={args.initialValue}
+                value={args.value}
                 width={args.width}
                 placeholderText={args.placeholderText}
             />

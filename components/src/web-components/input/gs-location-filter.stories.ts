@@ -39,9 +39,9 @@ const meta: Meta = {
                 type: 'object',
             },
         },
-        initialValue: {
+        value: {
             control: {
-                type: 'text',
+                type: 'object',
             },
         },
         width: {
@@ -66,7 +66,7 @@ const Template: StoryObj<LocationFilterProps> = {
             <div class="max-w-screen-lg">
                 <gs-location-filter
                     .fields=${args.fields}
-                    initialValue=${ifDefined(args.initialValue)}
+                    initialValue=${ifDefined(args.value)}
                     .width=${args.width}
                     placeholderText=${ifDefined(args.placeholderText)}
                 ></gs-location-filter>
@@ -75,7 +75,7 @@ const Template: StoryObj<LocationFilterProps> = {
     },
     args: {
         fields: ['region', 'country', 'division', 'location'],
-        initialValue: '',
+        value: undefined,
         width: '100%',
         placeholderText: 'Enter a location',
     },
