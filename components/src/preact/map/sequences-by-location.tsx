@@ -1,18 +1,21 @@
+import type { FeatureCollection, GeometryObject } from 'geojson';
 import type { FunctionComponent } from 'preact';
-import { useContext } from 'preact/hooks';
+import { useContext, useMemo } from 'preact/hooks';
 import z from 'zod';
 
 import { SequencesByLocationMap } from './sequences-by-location-map';
 import { SequencesByLocationTable } from './sequences-by-location-table';
 import { type AggregateData, queryAggregateData } from '../../query/queryAggregateData';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { computeMapLocationData } from './computeMapLocationData';
+import { getSequencesByLocationTableData } from './getSequencesByLocationTableData';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
-import { mapSourceSchema } from './useGeoJsonMap';
+import { type GeoJsonFeatureProperties, loadMapSource, mapSourceSchema } from './loadMapSource';
 import { lapisFilterSchema, views } from '../../types';
 import Tabs from '../components/tabs';
 
@@ -49,17 +52,20 @@ export const SequencesByLocation: FunctionComponent<SequencesByLocationProps> = 
 };
 
 const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationProps> = (props) => {
-    const { lapisFilter, lapisLocationField } = props;
+    const { lapisFilter, lapisLocationField, mapSource } = props;
 
     const lapis = useContext(LapisUrlContext);
     const {
         data,
         error,
         isLoading: isLoadingLapisData,
-    } = useQuery(
-        async () => queryAggregateData(lapisFilter, [lapisLocationField], lapis),
-        [lapisFilter, lapisLocationField, lapis],
-    );
+    } = useQuery(async () => {
+        const [locationData, geojsonData] = await Promise.all([
+            queryAggregateData(lapisFilter, [lapisLocationField], lapis),
+            mapSource !== undefined ? loadMapSource(mapSource) : undefined,
+        ]);
+        return { locationData, geojsonData };
+    }, [lapisFilter, lapisLocationField, lapis, mapSource]);
 
     if (isLoadingLapisData) {
         return <LoadingDisplay />;
@@ -69,32 +75,51 @@ const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationProps> =
         throw error;
     }
 
-    return <SequencesByLocationMapTabs data={data} originalComponentProps={props} />;
+    return (
+        <SequencesByLocationMapTabs
+            locationData={data.locationData}
+            geojsonData={data.geojsonData}
+            originalComponentProps={props}
+        />
+    );
 };
 
 type SequencesByLocationMapTabsProps = {
     originalComponentProps: SequencesByLocationProps;
-    data: AggregateData;
+    locationData: AggregateData;
+    geojsonData: FeatureCollection<GeometryObject, GeoJsonFeatureProperties> | undefined;
 };
 
 const SequencesByLocationMapTabs: FunctionComponent<SequencesByLocationMapTabsProps> = ({
     originalComponentProps,
-    data,
+    locationData,
+    geojsonData,
 }) => {
+    const { lapisLocationField } = originalComponentProps;
+
+    const mapLocationData = useMemo(
+        () => computeMapLocationData(locationData, geojsonData, lapisLocationField),
+        [geojsonData, locationData, lapisLocationField],
+    );
+
+    const tableData = useMemo(
+        () => getSequencesByLocationTableData(locationData, mapLocationData?.unmatchedLocations, lapisLocationField),
+        [locationData, mapLocationData?.unmatchedLocations, lapisLocationField],
+    );
+
     const getTab = (view: SequencesByLocationMapView) => {
         switch (view) {
             case views.map:
-                if (originalComponentProps.mapSource === undefined) {
+                if (mapLocationData === undefined) {
                     throw new Error('mapSource is required when using the map view');
                 }
                 return {
                     title: 'Map',
                     content: (
                         <SequencesByLocationMap
-                            locationData={data}
-                            mapSource={originalComponentProps.mapSource}
+                            {...mapLocationData}
                             enableMapNavigation={originalComponentProps.enableMapNavigation}
-                            lapisLocationField={originalComponentProps.lapisLocationField}
+                            lapisLocationField={lapisLocationField}
                             zoom={originalComponentProps.zoom}
                             offsetX={originalComponentProps.offsetX}
                             offsetY={originalComponentProps.offsetY}
@@ -107,8 +132,8 @@ const SequencesByLocationMapTabs: FunctionComponent<SequencesByLocationMapTabsPr
                     title: 'Table',
                     content: (
                         <SequencesByLocationTable
-                            locationData={data}
-                            lapisLocationField={originalComponentProps.lapisLocationField}
+                            tableData={tableData}
+                            lapisLocationField={lapisLocationField}
                             pageSize={originalComponentProps.pageSize}
                         />
                     ),
