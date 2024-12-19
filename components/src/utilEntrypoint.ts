@@ -32,3 +32,5 @@ export type { MapSource } from './preact/map/loadMapSource';
 export type { ConfidenceIntervalMethod } from './preact/shared/charts/confideceInterval';
 
 export type { AxisMax, YAxisMaxConfig } from './preact/shared/charts/getYAxisMax';
+
+export { LocationChangedEvent } from './preact/locationFilter/LocationChangedEvent';

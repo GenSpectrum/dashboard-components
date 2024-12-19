@@ -1,6 +1,10 @@
 import { FetchAggregatedOperator } from '../../operator/FetchAggregatedOperator';
 
-export async function fetchAutocompletionList(fields: string[], lapis: string, signal?: AbortSignal) {
+export async function fetchAutocompletionList(
+    fields: string[],
+    lapis: string,
+    signal?: AbortSignal,
+): Promise<Record<string, string | undefined>[]> {
     const toAncestorInHierarchyOverwriteValues = Array(fields.length - 1)
         .fill(0)
         .map((_, i) => i + 1)
@@ -20,7 +24,10 @@ export async function fetchAutocompletionList(fields: string[], lapis: string, s
             return setOfAllHierarchies;
         }, new Set());
 
-    return [...locationValues].map((json) => JSON.parse(json)).sort(compareLocationEntries(fields));
+    return [...locationValues]
+        .map((json) => JSON.parse(json))
+        .sort(compareLocationEntries(fields))
+        .map((entry) => fields.reduce((acc, field) => ({ ...acc, [field]: entry[field] ?? undefined }), {}));
 }
 
 function compareLocationEntries(fields: string[]) {

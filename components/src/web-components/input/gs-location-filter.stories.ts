@@ -15,7 +15,7 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 const codeExample = String.raw`
 <gs-location-filter
     fields='["region", "country"]'
-    initialValue='Europe / Switzerland'
+    value='{ "region": "Europe", "country": null}'
     width="100%"
     placeholderText="Enter a location"
 ></gs-location-filter>`;
@@ -39,9 +39,9 @@ const meta: Meta = {
                 type: 'object',
             },
         },
-        initialValue: {
+        value: {
             control: {
-                type: 'text',
+                type: 'object',
             },
         },
         width: {
@@ -66,7 +66,7 @@ const Template: StoryObj<LocationFilterProps> = {
             <div class="max-w-screen-lg">
                 <gs-location-filter
                     .fields=${args.fields}
-                    initialValue=${ifDefined(args.initialValue)}
+                    .value=${args.value}
                     .width=${args.width}
                     placeholderText=${ifDefined(args.placeholderText)}
                 ></gs-location-filter>
@@ -75,7 +75,7 @@ const Template: StoryObj<LocationFilterProps> = {
     },
     args: {
         fields: ['region', 'country', 'division', 'location'],
-        initialValue: '',
+        value: undefined,
         width: '100%',
         placeholderText: 'Enter a location',
     },
@@ -107,10 +107,7 @@ export const LocationFilter: StoryObj<LocationFilterProps> = {
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-location-filter');
         await waitFor(() => {
-            return expect(canvas.getByRole('combobox')).toBeEnabled();
-        });
-        await waitFor(() => {
-            return expect(canvas.getByPlaceholderText('Enter a location')).toBeInTheDocument();
+            return expect(canvas.getByPlaceholderText('Enter a location')).toBeVisible();
         });
     },
 };
@@ -199,36 +196,44 @@ export const FiresEvent: StoryObj<LocationFilterProps> = {
 
         await step('Empty input', async () => {
             await userEvent.type(inputField(), '{backspace>18/}');
-            await expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
-                region: undefined,
-                country: undefined,
-                division: undefined,
-                location: undefined,
+            await userEvent.click(canvas.getByLabelText('toggle menu'));
+
+            await waitFor(() => {
+                return expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    region: undefined,
+                    country: undefined,
+                    division: undefined,
+                    location: undefined,
+                });
             });
         });
 
         await step('Select Asia', async () => {
             await userEvent.type(inputField(), 'Asia');
-            await expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
-                region: 'Asia',
-                country: undefined,
-                division: undefined,
-                location: undefined,
+            await userEvent.click(canvas.getByRole('option', { name: 'Asia Asia' }));
+
+            await waitFor(() => {
+                return expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    region: 'Asia',
+                    country: undefined,
+                    division: undefined,
+                    location: undefined,
+                });
             });
         });
 
         await step('Select Asia / Bangladesh / Rajshahi / Chapainawabgonj', async () => {
             await userEvent.type(inputField(), ' / Bangladesh / Rajshahi / Chapainawabgonj');
-            await expect(listenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        region: 'Asia',
-                        country: 'Bangladesh',
-                        division: 'Rajshahi',
-                        location: 'Chapainawabgonj',
-                    },
-                }),
-            );
+            await userEvent.click(canvas.getByText('Asia / Bangladesh / Rajshahi / Chapainawabgonj'));
+
+            await waitFor(() => {
+                return expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    region: 'Asia',
+                    country: 'Bangladesh',
+                    division: 'Rajshahi',
+                    location: 'Chapainawabgonj',
+                });
+            });
         });
     },
 };
