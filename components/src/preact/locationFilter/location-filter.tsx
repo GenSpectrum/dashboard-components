@@ -1,6 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useRef, useState } from 'preact/hooks';
-import { type JSXInternal } from 'preact/src/jsx';
+import { useContext, useMemo, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { fetchAutocompletionList } from './fetchAutocompletionList';
@@ -9,6 +8,7 @@ import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
+import Select from 'react-select';
 
 const lineageFilterInnerPropsSchema = z.object({
     initialValue: z.string().optional(),
@@ -39,9 +39,6 @@ export const LocationFilter: FunctionComponent<LocationFilterProps> = (props) =>
 export const LocationFilterInner = ({ initialValue, fields, placeholderText }: LocationFilterInnerProps) => {
     const lapis = useContext(LapisUrlContext);
 
-    const [value, setValue] = useState(initialValue ?? '');
-    const [unknownLocation, setUnknownLocation] = useState(false);
-
     const divRef = useRef<HTMLDivElement>(null);
 
     const { data, error, isLoading } = useQuery(() => fetchAutocompletionList(fields, lapis), [fields, lapis]);
@@ -53,46 +50,73 @@ export const LocationFilterInner = ({ initialValue, fields, placeholderText }: L
         throw error;
     }
 
-    const onInput = (event: JSXInternal.TargetedInputEvent<HTMLInputElement>) => {
-        const inputValue = event.currentTarget.value;
-        setValue(inputValue);
-        if (inputValue.trim() === value.trim() && inputValue !== '') {
-            return;
-        }
-        const eventDetail = parseLocation(inputValue, fields);
-        if (hasAllUndefined(eventDetail) || hasMatchingEntry(data, eventDetail)) {
-            divRef.current?.dispatchEvent(
-                new CustomEvent('gs-location-changed', {
-                    detail: eventDetail,
-                    bubbles: true,
-                    composed: true,
-                }),
+    const selectOptions = data?.map((v) => {
+        const value = fields
+            .map((field) => v[field])
+            .filter((value) => value !== null)
+            .join(' / ');
+
+        const lastNonUndefinedValue = Object.values(v)
+            .filter((value) => value !== null)
+            .pop();
+
+        return {
+            value,
+            label: lastNonUndefinedValue,
+            description: `${value}`,
+        };
+    });
+
+    const formatOptionLabel = (
+        data: {
+            value: string;
+            label: string | null | undefined;
+            description: string;
+        },
+        formatOptionLabelMeta: { context: 'menu' | 'value' },
+    ) => {
+        if (formatOptionLabelMeta.context === 'menu') {
+            return (
+                <div class='flex flex-col justify-between'>
+                    <span>{data.label}</span>
+                    <span class='text-gray-500 text-sm'>{data.description}</span>
+                </div>
             );
-            setUnknownLocation(false);
-        } else {
-            setUnknownLocation(true);
         }
+
+        return data.label;
     };
 
+    const defaultInputValue = useMemo(
+        () => selectOptions?.find((option) => option.value === initialValue)?.value,
+        [selectOptions, initialValue],
+    );
+
     return (
-        <div class='flex w-full' ref={divRef}>
-            <input
-                type='text'
-                class={`input input-bordered grow ${unknownLocation ? 'border-2 border-error' : ''}`}
-                value={value}
-                onInput={onInput}
-                list='countries'
+        <div ref={divRef}>
+            <Select
+                defaultInputValue={defaultInputValue}
+                options={selectOptions}
+                formatOptionLabel={formatOptionLabel}
+                isClearable={true}
+                isSearchable={true}
                 placeholder={placeholderText}
+                onChange={(option) => {
+                    if (option === null) {
+                        return;
+                    }
+                    const eventDetail = parseLocation(option.value, fields);
+                    if (hasAllUndefined(eventDetail) || hasMatchingEntry(data, eventDetail)) {
+                        divRef.current?.dispatchEvent(
+                            new CustomEvent('gs-location-changed', {
+                                detail: eventDetail,
+                                bubbles: true,
+                                composed: true,
+                            }),
+                        );
+                    }
+                }}
             />
-            <datalist id='countries'>
-                {data?.map((v) => {
-                    const value = fields
-                        .map((field) => v[field])
-                        .filter((value) => value !== null)
-                        .join(' / ');
-                    return <option key={value} value={value} />;
-                })}
-            </datalist>
         </div>
     );
 };
@@ -109,7 +133,7 @@ const parseLocation = (location: string, fields: string[]) => {
 const hasAllUndefined = (obj: Record<string, string | undefined>) =>
     Object.values(obj).every((value) => value === undefined);
 
-const hasMatchingEntry = (data: Record<string, string>[] | null, eventDetail: Record<string, string>) => {
+const hasMatchingEntry = (data: Record<string, string | null>[] | null, eventDetail: Record<string, string>) => {
     if (data === null) {
         return false;
     }
