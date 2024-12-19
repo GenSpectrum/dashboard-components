@@ -1,6 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
+import { type LocationChangedEvent } from '../../preact/locationFilter/LocationChangedEvent';
 import { LocationFilter, type LocationFilterProps } from '../../preact/locationFilter/location-filter';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
@@ -13,11 +14,6 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * It expects a list of fields that form a strict hierarchical order, such as continent, country, and city.
  * The component retrieves a list of all possible values for these fields from the Lapis instance.
  * This list is then utilized to display autocomplete suggestions and to validate the input.
- *
- * Given `fields` are `['field1', 'field2', ..., 'fieldN']`,
- * then valid values for the location filter must be in the form `valueForField1 / valueForField2 / ... / valueForFieldK`,
- * where `1 <= K <= N`.
- * Values for the fields `i > K` are considered `undefined`.
  *
  * @fires {CustomEvent<Record<string, string>>} gs-location-changed
  * Fired when a value from the datalist is selected or when a valid value is typed into the field.
@@ -37,10 +33,9 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
 export class LocationFilterComponent extends PreactLitAdapter {
     /**
      * The initial value to use for this location filter.
-     * Must be of the form `valueForField1 / valueForField2 / ... / valueForFieldN`.
      */
-    @property()
-    initialValue: string | undefined = undefined;
+    @property({ type: Object })
+    value: Record<string, string | null | undefined> | undefined = undefined;
 
     /**
      * Required.
@@ -70,7 +65,7 @@ export class LocationFilterComponent extends PreactLitAdapter {
     override render() {
         return (
             <LocationFilter
-                initialValue={this.initialValue}
+                value={this.value}
                 fields={this.fields}
                 width={this.width}
                 placeholderText={this.placeholderText}
@@ -85,7 +80,7 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-location-changed': CustomEvent<Record<string, string>>;
+        'gs-location-changed': LocationChangedEvent;
     }
 }
 
@@ -99,9 +94,7 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type InitialValueMatches = Expect<
-    Equals<typeof LocationFilterComponent.prototype.initialValue, LocationFilterProps['initialValue']>
->;
+type InitialValueMatches = Expect<Equals<typeof LocationFilterComponent.prototype.value, LocationFilterProps['value']>>;
 type FieldsMatches = Expect<Equals<typeof LocationFilterComponent.prototype.fields, LocationFilterProps['fields']>>;
 type PlaceholderTextMatches = Expect<
     Equals<typeof LocationFilterComponent.prototype.placeholderText, LocationFilterProps['placeholderText']>

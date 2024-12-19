@@ -23,14 +23,14 @@ describe('fetchAutocompletionList', () => {
         const result = await fetchAutocompletionList(fields, DUMMY_LAPIS_URL);
 
         expect(result).to.deep.equal([
-            { region: 'region1', country: null, division: null },
-            { region: 'region1', country: 'country1_1', division: null },
+            { region: 'region1', country: undefined, division: undefined },
+            { region: 'region1', country: 'country1_1', division: undefined },
             { region: 'region1', country: 'country1_1', division: 'division1_1_1' },
             { region: 'region1', country: 'country1_1', division: 'division1_1_2' },
-            { region: 'region1', country: 'country1_2', division: null },
+            { region: 'region1', country: 'country1_2', division: undefined },
             { region: 'region1', country: 'country1_2', division: 'division1_2_1' },
-            { region: 'region2', country: null, division: null },
-            { region: 'region2', country: 'country2_1', division: null },
+            { region: 'region2', country: undefined, division: undefined },
+            { region: 'region2', country: 'country2_1', division: undefined },
         ]);
     });
 });
