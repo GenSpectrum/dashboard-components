@@ -1,3 +1,4 @@
+import { expect, userEvent, waitFor } from '@storybook/test';
 import { type Meta, type StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
@@ -9,6 +10,7 @@ import aggregatedWorld from '../../preact/map/__mockData__/aggregatedWorld.json'
 import mapOfGermany from '../../preact/map/__mockData__/germanyMap.json';
 import worldAtlas from '../../preact/map/__mockData__/worldAtlas.json';
 import { type SequencesByLocationProps } from '../../preact/map/sequences-by-location';
+import { withinShadowRoot } from '../withinShadowRoot.story';
 
 import './gs-sequences-by-location';
 import '../app';
@@ -185,6 +187,21 @@ export const Germany: StoryObj<SequencesByLocationProps> = {
                 },
             ],
         },
+    },
+};
+
+export const GermanyOnTableTab: StoryObj<SequencesByLocationProps> = {
+    ...Germany,
+    play: async ({ canvasElement, step }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-sequences-by-location');
+
+        await waitFor(() => expect(canvas.getByRole('button', { name: 'Table' })).toBeInTheDocument());
+        await userEvent.click(canvas.getByRole('button', { name: 'Table' }));
+
+        await step('Sort by division', async () => {
+            await waitFor(() => expect(canvas.getByText('division')).toBeInTheDocument());
+            await userEvent.click(canvas.getByText('division'));
+        });
     },
 };
 

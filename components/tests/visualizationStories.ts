@@ -129,6 +129,11 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Leaflet',
     },
     {
+        id: 'visualization-sequences-by-location--germany-on-table-tab',
+        title: 'Sequences by location',
+        loadingIsDoneIndicator: 'division',
+    },
+    {
         id: 'visualization-sequences-by-location--germany-table-only',
         title: 'Sequences by location',
         loadingIsDoneIndicator: 'division',
