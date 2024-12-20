@@ -27,7 +27,7 @@ const meta: Meta<Required<AggregateProps>> = {
     argTypes: {
         fields: [{ control: 'object' }],
         views: {
-            options: ['table'],
+            options: ['table', 'bar'],
             control: { type: 'check' },
         },
         width: { control: 'text' },
@@ -85,10 +85,13 @@ export const Table: StoryObj<Required<AggregateProps>> = {
         </gs-app>
     `,
     args: {
-        fields: ['division', 'host'],
-        views: ['table'],
+        fields: ['division', 'nextcladePangoLineage'],
+        views: ['bar', 'table'],
         lapisFilter: {
-            country: 'USA',
+            country: 'Germany',
+            // dateFrom: '2024-01-01',
+            dateTo: '2022-02-01',
+            // nextcladePangoLineage: 'JN.1.4*',
         },
         width: '100%',
         height: '700px',

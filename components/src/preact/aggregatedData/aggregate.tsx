@@ -15,8 +15,9 @@ import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
+import { AggregateBarChart } from './aggregate-bar-chart';
 
-const aggregateViewSchema = z.literal(views.table);
+const aggregateViewSchema = z.union([z.literal(views.table), z.literal(views.bar)]);
 export type AggregateView = z.infer<typeof aggregateViewSchema>;
 
 const aggregatePropsSchema = z.object({
@@ -78,7 +79,7 @@ type AggregatedDataTabsProps = {
 const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, originalComponentProps }) => {
     const getTab = (view: AggregateView) => {
         switch (view) {
-            case 'table':
+            case views.table:
                 return {
                     title: 'Table',
                     content: (
@@ -88,6 +89,11 @@ const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, 
                             pageSize={originalComponentProps.pageSize}
                         />
                     ),
+                };
+            case views.bar:
+                return {
+                    title: 'Bar',
+                    content: <AggregateBarChart data={data} fields={originalComponentProps.fields} />,
                 };
         }
     };
