@@ -127,6 +127,7 @@ export const visualizationStories = [
         id: 'visualization-sequences-by-location--germany',
         title: 'Sequences by location',
         loadingIsDoneIndicator: 'Leaflet',
+        testDownloadWithFilename: 'sequences_by_location.csv',
     },
     {
         id: 'visualization-sequences-by-location--germany-on-table-tab',
@@ -137,5 +138,6 @@ export const visualizationStories = [
         id: 'visualization-sequences-by-location--germany-table-only',
         title: 'Sequences by location',
         loadingIsDoneIndicator: 'division',
+        testDownloadWithFilename: 'sequences_by_location.csv',
     },
 ];
