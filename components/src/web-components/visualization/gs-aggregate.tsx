@@ -20,6 +20,16 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  * along with the aggregated value and its proportion.
  * The proportion represents the ratio of the aggregated value to the total count of the data
  * (considering the applied filter).
+ *
+ * ### Bar Chart View
+ *
+ * In the bar chart view, the data is presented in vertical bars.
+ * The bar chart is supported when `fields` contains one or two entries.
+ * The first field will be used as the y-axis.
+ * If a second field is provided, it's values will be stacked along the x-axis for each key on the y-axis.
+ *
+ * The chart shows the bars with the highest aggregated `count`.
+ * The number of bars can be adjusted with the `maxNumberOfBars` property.
  */
 @customElement('gs-aggregate')
 export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
@@ -87,6 +97,12 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
     @property({ type: Object })
     pageSize: boolean | number = false;
 
+    /**
+     * The maximum number of bars to display in the bar chart view.
+     */
+    @property({ type: Object })
+    maxNumberOfBars: number = 20;
+
     override render() {
         return (
             <Aggregate
@@ -98,6 +114,7 @@ export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {
                 initialSortField={this.initialSortField}
                 initialSortDirection={this.initialSortDirection}
                 pageSize={this.pageSize}
+                maxNumberOfBars={this.maxNumberOfBars}
             />
         );
     }
@@ -131,4 +148,7 @@ type InitialSortDirectionMatches = Expect<
     Equals<typeof AggregateComponent.prototype.initialSortDirection, AggregateProps['initialSortDirection']>
 >;
 type PageSizeMatches = Expect<Equals<typeof AggregateComponent.prototype.pageSize, AggregateProps['pageSize']>>;
+type MaxNumberOfBarsMatches = Expect<
+    Equals<typeof AggregateComponent.prototype.maxNumberOfBars, AggregateProps['maxNumberOfBars']>
+>;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

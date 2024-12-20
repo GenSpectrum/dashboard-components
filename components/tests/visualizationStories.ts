@@ -65,6 +65,16 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Table',
     },
     {
+        id: 'visualization-aggregate--bar-chart-with-one-field',
+        title: 'Aggregate',
+        loadingIsDoneIndicator: 'Bar',
+    },
+    {
+        id: 'visualization-aggregate--bar-chart-with-two-fields',
+        title: 'Aggregate',
+        loadingIsDoneIndicator: 'Bar',
+    },
+    {
         id: 'visualization-number-sequences-over-time--one-dataset-bar-chart',
         title: 'Number of sequences over time',
         loadingIsDoneIndicator: 'Bar',

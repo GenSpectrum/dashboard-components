@@ -59,6 +59,7 @@ export const Default: StoryObj<AggregateProps> = {
         initialSortField: 'count',
         initialSortDirection: 'descending',
         pageSize: 10,
+        maxNumberOfBars: 20,
     },
 };
 
@@ -105,6 +106,78 @@ export const WithEmptyFieldString: StoryObj<AggregateProps> = {
     play: async ({ canvasElement, step }) => {
         step('expect error message', async () => {
             await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
+        });
+    },
+};
+
+export const BarChartWithNoFields: StoryObj<AggregateProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        views: ['bar', 'table'],
+        fields: [],
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregatedData,
+                    },
+                },
+            ],
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(async () => {
+            await expect(
+                canvas.getByText('Cannot display a bar chart when there are no fields given', {
+                    exact: false,
+                }),
+            ).toBeVisible();
+        });
+    },
+};
+
+export const BarChartWithMoreThan2Fields: StoryObj<AggregateProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        views: ['bar', 'table'],
+        fields: ['division', 'host', 'country'],
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregatedData,
+                    },
+                },
+            ],
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(async () => {
+            await expect(
+                canvas.getByText('Cannot display a bar chart when there are more than two fields given', {
+                    exact: false,
+                }),
+            ).toBeVisible();
         });
     },
 };

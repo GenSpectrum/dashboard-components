@@ -4,6 +4,8 @@ import { html } from 'lit';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import aggregatedData from '../../preact/aggregatedData/__mockData__/aggregated.json';
+import aggregatedDataWith1Field from '../../preact/aggregatedData/__mockData__/aggregatedWith1Field.json';
+import aggregatedDataWith2Fields from '../../preact/aggregatedData/__mockData__/aggregatedWith2Fields.json';
 import type { AggregateProps } from '../../preact/aggregatedData/aggregate';
 
 import './gs-aggregate';
@@ -19,6 +21,7 @@ const codeExample = `
     initialSortField="count"
     initialSortDirection="descending"
     pageSize="10"
+    maxNumberOfBars="50"
 ></gs-aggregate>`;
 
 const meta: Meta<Required<AggregateProps>> = {
@@ -27,7 +30,7 @@ const meta: Meta<Required<AggregateProps>> = {
     argTypes: {
         fields: [{ control: 'object' }],
         views: {
-            options: ['table'],
+            options: ['table', 'bar'],
             control: { type: 'check' },
         },
         width: { control: 'text' },
@@ -40,24 +43,6 @@ const meta: Meta<Required<AggregateProps>> = {
         },
     },
     parameters: withComponentDocs({
-        fetchMock: {
-            mocks: [
-                {
-                    matcher: {
-                        name: 'aggregatedData',
-                        url: AGGREGATED_ENDPOINT,
-                        body: {
-                            fields: ['division', 'host'],
-                            country: 'USA',
-                        },
-                    },
-                    response: {
-                        status: 200,
-                        body: aggregatedData,
-                    },
-                },
-            ],
-        },
         componentDocs: {
             opensShadowDom: true,
             expectsChildren: false,
@@ -81,12 +66,33 @@ export const Table: StoryObj<Required<AggregateProps>> = {
                 .initialSortField=${args.initialSortField}
                 .initialSortDirection=${args.initialSortDirection}
                 .pageSize=${args.pageSize}
+                .maxNumberOfBars=${args.maxNumberOfBars}
             ></gs-aggregate>
         </gs-app>
     `,
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            fields: ['division', 'host'],
+                            country: 'USA',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregatedData,
+                    },
+                },
+            ],
+        },
+    },
     args: {
         fields: ['division', 'host'],
-        views: ['table'],
+        views: ['table', 'bar'],
         lapisFilter: {
             country: 'USA',
         },
@@ -95,5 +101,69 @@ export const Table: StoryObj<Required<AggregateProps>> = {
         initialSortField: 'count',
         initialSortDirection: 'descending',
         pageSize: 10,
+        maxNumberOfBars: 10,
+    },
+};
+
+export const BarChartWithOneField: StoryObj<Required<AggregateProps>> = {
+    ...Table,
+    args: {
+        ...Table.args,
+        fields: ['division'],
+        views: ['bar', 'table'],
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            fields: ['division'],
+                            country: 'USA',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregatedDataWith1Field,
+                    },
+                },
+            ],
+        },
+    },
+};
+
+export const BarChartWithTwoFields: StoryObj<Required<AggregateProps>> = {
+    ...Table,
+    args: {
+        ...Table.args,
+        fields: ['division', 'nextstrainClade'],
+        lapisFilter: {
+            country: 'Germany',
+            dateTo: '2022-02-01',
+        },
+        views: ['bar', 'table'],
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            fields: ['division', 'nextstrainClade'],
+                            country: 'Germany',
+                            dateTo: '2022-02-01',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregatedDataWith2Fields,
+                    },
+                },
+            ],
+        },
     },
 };

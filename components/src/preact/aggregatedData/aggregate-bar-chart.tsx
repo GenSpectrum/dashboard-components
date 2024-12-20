@@ -1,0 +1,166 @@
+import { BarController, Chart, type ChartConfiguration, type ChartDataset, registerables } from 'chart.js';
+import { type FunctionComponent } from 'preact';
+import { useMemo } from 'preact/hooks';
+
+import type { AggregateData } from '../../query/queryAggregateData';
+import GsChart from '../components/chart';
+import { NoDataDisplay } from '../components/no-data-display';
+import { singleGraphColorRGBAById } from '../shared/charts/colors';
+import { formatProportion } from '../shared/table/formatProportion';
+
+interface AggregateBarChartProps {
+    data: AggregateData;
+    fields: string[];
+    maxNumberOfBars: number;
+}
+
+Chart.register(...registerables, BarController);
+
+type DataPoint = {
+    y: string;
+    x: number;
+    proportion: number;
+};
+
+export const AggregateBarChart: FunctionComponent<AggregateBarChartProps> = ({ data, fields, maxNumberOfBars }) => {
+    if (data.length === 0) {
+        return <NoDataDisplay />;
+    }
+
+    if (fields.length === 0) {
+        return (
+            <NoDataDisplay message='Cannot display a bar chart when there are no fields given that the data should be stratified by.' />
+        );
+    }
+
+    if (fields.length > 2) {
+        return (
+            <NoDataDisplay
+                message={`Cannot display a bar chart when there are more than two fields given that the data should be stratified by. Got: ${fields.join(', ')}`}
+            />
+        );
+    }
+
+    return <AggregateBarChartInner data={data} fields={fields} maxNumberOfBars={maxNumberOfBars} />;
+};
+
+const AggregateBarChartInner: FunctionComponent<AggregateBarChartProps> = ({ data, fields, maxNumberOfBars }) => {
+    const config = useMemo(
+        (): ChartConfiguration<'bar', DataPoint[]> => ({
+            type: 'bar',
+            data: {
+                datasets: getDatasets(fields, maxNumberOfBars, data),
+            },
+            options: {
+                maintainAspectRatio: false,
+                animation: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                    },
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    tooltip: {
+                        mode: 'y',
+                        callbacks: {
+                            label: (context) => {
+                                const { x, proportion } = context.dataset.data[
+                                    context.dataIndex
+                                ] as unknown as DataPoint;
+                                return fields.length === 1
+                                    ? `${x} (${formatProportion(proportion)}})`
+                                    : `${context.dataset.label}: ${x} (${formatProportion(proportion)}})`;
+                            },
+                        },
+                    },
+                },
+            },
+        }),
+        [data, fields, maxNumberOfBars],
+    );
+
+    return <GsChart configuration={config} />;
+};
+
+function getDatasets(
+    fields: string[],
+    maxNumberOfBars: number,
+    data: (Record<string, string | number | boolean | null> & {
+        count: number;
+        proportion: number;
+    })[],
+): ChartDataset<'bar', DataPoint[]>[] {
+    const sortedData = data.sort((a, b) => b.count - a.count);
+
+    if (fields.length === 1) {
+        return [
+            {
+                borderWidth: 1,
+                backgroundColor: singleGraphColorRGBAById(0, 0.3),
+                borderColor: singleGraphColorRGBAById(0),
+                data: sortedData.slice(0, maxNumberOfBars).map((row) => ({
+                    y: row[fields[0]] as string,
+                    x: row.count,
+                    proportion: row.proportion,
+                })),
+            },
+        ];
+    }
+
+    const map = new Map<string, DataPoint[]>();
+    const countsOfEachBar = new Map<string, number>();
+
+    for (const row of sortedData) {
+        const yValue = row[fields[0]];
+        const secondaryValue = row[fields[1]];
+        if (yValue === null || secondaryValue === null) {
+            continue;
+        }
+        const yAxisKey = String(yValue);
+        const secondaryKey = String(secondaryValue);
+
+        if (!map.has(secondaryKey)) {
+            map.set(secondaryKey, []);
+        }
+        map.get(secondaryKey)?.push({
+            y: yAxisKey.toString(),
+            x: row.count,
+            proportion: row.proportion,
+        });
+        countsOfEachBar.set(yAxisKey, (countsOfEachBar.get(yAxisKey) ?? 0) + row.count);
+    }
+
+    return Array.from(map.entries())
+        .map(sortAndTruncateYAxisKeys(countsOfEachBar, maxNumberOfBars))
+        .map(([key, value], index) => ({
+            borderWidth: 1,
+            backgroundColor: singleGraphColorRGBAById(index, 0.3),
+            borderColor: singleGraphColorRGBAById(index),
+            label: key,
+            data: value,
+        }));
+}
+
+function sortAndTruncateYAxisKeys(countsOfEachBar: Map<string, number>, maxNumberOfBars: number) {
+    const yAxisKeysToConsider = new Set(
+        Array.from(countsOfEachBar.entries())
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, maxNumberOfBars)
+            .map(([key]) => key),
+    );
+
+    return ([key, value]: [string, DataPoint[]]): [string, DataPoint[]] => {
+        const sortedValues = value.sort((a, b) => (countsOfEachBar.get(b.y) ?? 0) - (countsOfEachBar.get(a.y) ?? 0));
+        const valuesWithLargestBars = sortedValues
+            .slice(0, maxNumberOfBars)
+            .filter((v) => yAxisKeysToConsider.has(v.y));
+        return [key, valuesWithLargestBars];
+    };
+}
