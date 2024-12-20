@@ -4,7 +4,6 @@ import type { GeometryCollection, Topology } from 'topojson-specification';
 import z from 'zod';
 
 import { UserFacingError } from '../components/error-display';
-import { useQuery } from '../useQuery';
 
 export const mapSourceSchema = z.object({
     type: z.literal('topojson'),
@@ -13,32 +12,16 @@ export const mapSourceSchema = z.object({
 });
 export type MapSource = z.infer<typeof mapSourceSchema>;
 
-export function useGeoJsonMap(mapSource: MapSource) {
-    const {
-        data: geojsonData,
-        error,
-        isLoading,
-    } = useQuery(async () => {
-        switch (mapSource.type) {
-            case 'topojson':
-                return await loadTopojsonMap(mapSource);
-        }
-    }, [mapSource]);
-
-    if (isLoading) {
-        return { isLoading };
-    }
-
-    if (error) {
-        throw error;
-    }
-
-    return { geojsonData, isLoading: false as const };
-}
-
 export type GeoJsonFeatureProperties = {
     name: string;
 };
+
+export async function loadMapSource(mapSource: MapSource) {
+    switch (mapSource.type) {
+        case 'topojson':
+            return await loadTopojsonMap(mapSource);
+    }
+}
 
 async function loadTopojsonMap(
     mapSource: MapSource,
