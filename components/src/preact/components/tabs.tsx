@@ -14,24 +14,6 @@ interface ComponentTabsProps {
 
 const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
     const [activeTab, setActiveTab] = useState(tabs[0]?.title);
-    const [heightOfTabs, setHeightOfTabs] = useState('3rem');
-    const tabRef = useRef<HTMLDivElement>(null);
-
-    const updateHeightOfTabs = () => {
-        if (tabRef.current) {
-            const heightOfTabs = tabRef.current.getBoundingClientRect().height;
-            setHeightOfTabs(`${heightOfTabs}px`);
-        }
-    };
-
-    useEffect(() => {
-        updateHeightOfTabs();
-
-        window.addEventListener('resize', updateHeightOfTabs);
-        return () => {
-            window.removeEventListener('resize', updateHeightOfTabs);
-        };
-    }, []);
 
     const tabElements = (
         <div className='flex flex-row'>
@@ -59,17 +41,16 @@ const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
     const toolbarElement = typeof toolbar === 'function' ? toolbar(activeTab) : toolbar;
 
     return (
-        <div className='h-full w-full'>
-            <div ref={tabRef} className='flex flex-row justify-between flex-wrap'>
+        <div className='h-full w-full flex flex-col'>
+            <div className='flex flex-row justify-between flex-wrap'>
                 {tabElements}
                 {toolbar && <div className='py-2 flex flex-wrap gap-y-1'>{toolbarElement}</div>}
             </div>
             <div
-                className={`p-2 border-2 border-gray-100 rounded-b-md rounded-tr-md ${activeTab === tabs[0]?.title ? '' : 'rounded-tl-md'}`}
-                style={{ height: `calc(100% - ${heightOfTabs})` }}
+                className={`p-2 flex-grow overflow-scroll border-2 border-gray-100 rounded-b-md rounded-tr-md ${activeTab === tabs[0]?.title ? '' : 'rounded-tl-md'}`}
             >
                 {tabs.map((tab) => (
-                    <div className='h-full overflow-auto' key={tab.title} hidden={activeTab !== tab.title}>
+                    <div className='h-full' key={tab.title} hidden={activeTab !== tab.title}>
                         {tab.content}
                     </div>
                 ))}
