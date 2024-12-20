@@ -1,5 +1,5 @@
-import { Fragment, type FunctionComponent } from 'preact';
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { type FunctionComponent } from 'preact';
+import { useState } from 'preact/hooks';
 import { type JSXInternal } from 'preact/src/jsx';
 
 type Tab = {
@@ -19,20 +19,19 @@ const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
         <div className='flex flex-row'>
             {tabs.map((tab) => {
                 return (
-                    <Fragment key={tab.title}>
-                        <button
-                            className={`px-4 py-2 text-sm font-medium leading-5 transition-colors duration-150 ${
-                                activeTab === tab.title
-                                    ? 'border-b-2 border-gray-400'
-                                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-700'
-                            }`}
-                            onClick={() => {
-                                setActiveTab(tab.title);
-                            }}
-                        >
-                            {tab.title}
-                        </button>
-                    </Fragment>
+                    <button
+                        key={tab.title}
+                        className={`px-4 py-2 text-sm font-medium leading-5 transition-colors duration-150 ${
+                            activeTab === tab.title
+                                ? 'border-b-2 border-gray-400'
+                                : 'text-gray-600 hover:bg-gray-100 hover:text-gray-700'
+                        }`}
+                        onClick={() => {
+                            setActiveTab(tab.title);
+                        }}
+                    >
+                        {tab.title}
+                    </button>
                 );
             })}
         </div>
