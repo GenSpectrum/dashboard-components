@@ -53,7 +53,7 @@ export const AggregateInner: FunctionComponent<AggregateProps> = (componentProps
             field: initialSortField,
             direction: initialSortDirection,
         });
-    }, [lapisFilter, fields, lapis]);
+    }, [lapisFilter, fields, lapis, initialSortField, initialSortDirection]);
 
     if (isLoading) {
         return <LoadingDisplay />;
