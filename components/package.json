@@ -109,7 +109,7 @@
         "@storybook/preact": "^8.0.9",
         "@storybook/preact-vite": "^8.0.9",
         "@storybook/test": "^8.0.0",
-        "@storybook/test-runner": "^0.20.1",
+        "@storybook/test-runner": "^0.21.0",
         "@storybook/types": "^8.0.9",
         "@storybook/web-components": "^8.0.9",
         "@storybook/web-components-vite": "^8.0.9",
