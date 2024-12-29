@@ -45,6 +45,10 @@ export const aggregatedItem = z.object({ count: z.number() }).catchall(z.union([
 export const aggregatedResponse = makeLapisResponse(z.array(aggregatedItem));
 export type AggregatedItem = z.infer<typeof aggregatedItem>;
 
+export const detailsItem = z.object({}).catchall(z.union([z.string(), z.number(), z.null()]));
+export const detailsResponse = makeLapisResponse(z.array(detailsItem));
+export type DetailsItem = z.infer<typeof detailsItem>;
+
 function makeLapisResponse<T extends ZodTypeAny>(data: T) {
     return z.object({
         data,

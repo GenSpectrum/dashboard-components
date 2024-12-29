@@ -7,3 +7,4 @@ export { NumberSequencesOverTimeComponent } from './gs-number-sequences-over-tim
 export { MutationsOverTimeComponent } from './gs-mutations-over-time';
 export { SequencesByLocationComponent } from './gs-sequences-by-location';
 export { StatisticsComponent } from './gs-statistics';
+export { WastewaterMutationsOverTimeComponent } from './gs-wastewater-mutations-over-time';
