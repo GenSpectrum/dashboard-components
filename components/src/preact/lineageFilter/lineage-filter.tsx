@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useRef } from 'preact/hooks';
+import { useContext, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { fetchLineageAutocompleteList } from './fetchLineageAutocompleteList';
@@ -45,6 +45,9 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
 
     const inputRef = useRef<HTMLInputElement>(null);
 
+    const [hasInput, setHasInput] = useState<boolean>(!!initialValue);
+    const [inputValue, setInputValue] = useState(initialValue || '');
+
     const { data, error, isLoading } = useQuery(
         () => fetchLineageAutocompleteList(lapis, lapisField),
         [lapisField, lapis],
@@ -73,6 +76,8 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
                     composed: true,
                 }),
             );
+            setHasInput(value !== undefined);
+            setInputValue(value || '');
         }
     };
 
@@ -85,15 +90,32 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
 
     return (
         <>
-            <input
-                type='text'
-                class='input input-bordered w-full'
-                placeholder={placeholderText !== undefined ? placeholderText : lapisField}
-                onInput={onInput}
-                ref={inputRef}
-                list={lapisField}
-                value={initialValue}
-            />
+            <div className='relative w-full'>
+                <input
+                    type='text'
+                    class='input input-bordered w-full pr-10'
+                    placeholder={placeholderText !== undefined ? placeholderText : lapisField}
+                    onInput={onInput}
+                    ref={inputRef}
+                    list={lapisField}
+                    value={inputValue}
+                />
+                {hasInput && (
+                    <button
+                        type='button'
+                        name='✕'
+                        className='absolute top-1/2 right-2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700'
+                        onClick={() => {
+                            if (inputRef.current) {
+                                inputRef.current.value = '';
+                                onInput();
+                            }
+                        }}
+                    >
+                        ✕
+                    </button>
+                )}
+            </div>
             <datalist id={lapisField}>
                 {data.map((item) => (
                     <option value={item} key={item} />

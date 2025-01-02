@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
+import { expect, fireEvent, fn, waitFor, within } from '@storybook/test';
 
 import { LineageFilter, type LineageFilterProps } from './lineage-filter';
 import { previewHandles } from '../../../.storybook/preview';
@@ -53,6 +54,39 @@ export const Default: StoryObj<LineageFilterProps> = {
             />
         </LapisUrlContext.Provider>
     ),
+};
+
+export const WithInitialValue: StoryObj<LineageFilterProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        initialValue: 'XCB',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+
+        const changedListenerMock = fn();
+        await step('Setup event listener mock', async () => {
+            canvasElement.addEventListener('gs-lineage-filter-changed', changedListenerMock);
+        });
+
+        await waitFor(() => {
+            const input = canvas.getByPlaceholderText('Enter lineage', { exact: false });
+            expect(input).toHaveValue('XCB');
+        });
+
+        await step('Remove initial value', async () => {
+            await fireEvent.click(canvas.getByRole('button', { name: '✕' }));
+
+            await expect(changedListenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: {
+                        host: undefined,
+                    },
+                }),
+            );
+        });
+    },
 };
 
 export const WithNoLapisField: StoryObj<LineageFilterProps> = {
