@@ -9,6 +9,27 @@ describe('fetchLineageAutocompleteList', () => {
 
         const result = await fetchLineageAutocompleteList(DUMMY_LAPIS_URL, 'lineageField');
 
-        expect(result).to.deep.equal(['B.1.1.7', 'B.1.1.7*']);
+        expect(result).to.deep.equal([
+            {
+                count: 1,
+                lineageField: 'B.1.1.7',
+            },
+            {
+                count: 1,
+                lineageField: 'B.1.1.7*',
+            },
+            {
+                count: 1,
+                lineageField: 'B.1.1*',
+            },
+            {
+                count: 1,
+                lineageField: 'B.1*',
+            },
+            {
+                count: 1,
+                lineageField: 'B*',
+            },
+        ]);
     });
 });

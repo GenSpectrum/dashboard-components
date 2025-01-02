@@ -78,7 +78,7 @@ const TextInputInner: FunctionComponent<TextInputInnerProps> = ({ lapisField, pl
         if (value === undefined) {
             return true;
         }
-        return data.includes(value);
+        return data.map((item) => item[lapisField]).includes(value);
     };
 
     return (
@@ -111,7 +111,11 @@ const TextInputInner: FunctionComponent<TextInputInnerProps> = ({ lapisField, pl
             </div>
             <datalist id={lapisField}>
                 {data.map((item) => (
-                    <option value={item} key={item} />
+                    <option
+                        value={item[lapisField]}
+                        key={item[lapisField]}
+                        style='white-space: nowrap;'
+                    >{`${item[lapisField]} (${item['count']})`}</option>
                 ))}
             </datalist>
         </>

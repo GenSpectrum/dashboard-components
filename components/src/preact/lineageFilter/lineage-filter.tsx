@@ -85,7 +85,7 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
         if (value === undefined) {
             return true;
         }
-        return data.includes(value);
+        return data.map((item) => item[lapisField]).includes(value);
     };
 
     return (
@@ -118,7 +118,10 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
             </div>
             <datalist id={lapisField}>
                 {data.map((item) => (
-                    <option value={item} key={item} />
+                    <option
+                        value={item[lapisField]}
+                        key={item[lapisField]}
+                    >{`${item[lapisField]} (${item['count']})`}</option>
                 ))}
             </datalist>
         </>
