@@ -5,5 +5,5 @@ export async function fetchAutocompleteList(lapis: string, field: string, signal
 
     const data = (await fetchAggregatedOperator.evaluate(lapis, signal)).content;
 
-    return data.map((item) => item[field]);
+    return data.map((item) => item[field]).sort();
 }
