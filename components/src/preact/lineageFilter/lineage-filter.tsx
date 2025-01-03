@@ -3,6 +3,7 @@ import { useContext, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { fetchLineageAutocompleteList } from './fetchLineageAutocompleteList';
+import { lapisFilterSchema } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
@@ -12,6 +13,7 @@ import { useQuery } from '../useQuery';
 
 const lineageFilterInnerPropsSchema = z.object({
     lapisField: z.string().min(1),
+    lapisFilter: lapisFilterSchema,
     placeholderText: z.string().optional(),
     initialValue: z.string(),
 });
@@ -38,6 +40,7 @@ export const LineageFilter: FunctionComponent<LineageFilterProps> = (props) => {
 
 const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
     lapisField,
+    lapisFilter,
     placeholderText,
     initialValue,
 }) => {
@@ -49,8 +52,8 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
     const [inputValue, setInputValue] = useState(initialValue || '');
 
     const { data, error, isLoading } = useQuery(
-        () => fetchLineageAutocompleteList(lapis, lapisField),
-        [lapisField, lapis],
+        () => fetchLineageAutocompleteList(lapisFilter, lapis, lapisField),
+        [lapisFilter, lapisField, lapis],
     );
 
     if (isLoading) {

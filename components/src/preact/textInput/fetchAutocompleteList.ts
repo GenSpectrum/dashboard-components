@@ -11,25 +11,26 @@ export async function fetchAutocompleteList(
 
     const data = (await fetchAggregatedOperator.evaluate(lapis, signal)).content;
 
-    return sortDataByField(data, field);
+    const filteredData = data.filter((record) => record[field] !== null);
+
+    return sortDataByField(filteredData, field);
 }
 
-const sortDataByField = (data: (Record<string, string | null> & { count: number })[], field: string) => {
+const sortDataByField = (data: (Record<string, string> & { count: number })[], field: string) => {
     return data.sort((a, b) => {
         const aValue = a[field];
         const bValue = b[field];
 
-        if ((aValue === undefined || aValue === null) && bValue !== undefined && bValue !== null) {
+        if (aValue === undefined && bValue !== undefined) {
             return 1;
         }
-        if ((bValue === undefined || bValue === null) && aValue !== undefined && aValue !== null) {
+        if (bValue === undefined && aValue !== undefined) {
             return -1;
         }
-        if ((aValue === undefined || aValue === null) && (bValue === undefined || bValue === null)) {
+        if (aValue === undefined && bValue === undefined) {
             return 0;
         }
 
-        // Compare values when both are non-null and defined
-        return aValue!.localeCompare(bValue!);
+        return aValue.localeCompare(bValue);
     });
 };

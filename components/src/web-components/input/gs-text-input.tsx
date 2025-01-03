@@ -30,6 +30,20 @@ export class TextInputComponent extends PreactLitAdapter {
     initialValue: string | undefined = undefined;
 
     /**
+     * A LAPIS filter to fetch the number of sequences for.
+     *
+     * The `lapisFilter` will be sent as is to LAPIS to select the data.
+     * It must be a valid LAPIS filter object.
+     */
+    @property({ type: Object })
+    lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
+
+    /**
      * Required.
      *
      * The LAPIS field name to use for this text input.
@@ -55,6 +69,7 @@ export class TextInputComponent extends PreactLitAdapter {
     override render() {
         return (
             <TextInput
+                lapisFilter={this.lapisFilter}
                 lapisField={this.lapisField}
                 placeholderText={this.placeholderText}
                 initialValue={this.initialValue}
@@ -84,6 +99,9 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+type LapisFilterMatches = Expect<
+    Equals<typeof TextInputComponent.prototype.lapisFilter, TextInputProps['lapisFilter']>
+>;
 type InitialValueMatches = Expect<
     Equals<typeof TextInputComponent.prototype.initialValue, TextInputProps['initialValue']>
 >;

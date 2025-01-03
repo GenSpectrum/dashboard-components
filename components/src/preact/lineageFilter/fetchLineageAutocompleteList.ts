@@ -1,9 +1,15 @@
 import { FetchAggregatedOperator } from '../../operator/FetchAggregatedOperator';
+import { type LapisFilter } from '../../types';
 
 type GroupType = Record<string, string> & { count: number };
 
-export async function fetchLineageAutocompleteList(lapis: string, field: string, signal?: AbortSignal) {
-    const fetchAggregatedOperator = new FetchAggregatedOperator<Record<string, string>>({}, [field]);
+export async function fetchLineageAutocompleteList(
+    lapisFilter: LapisFilter,
+    lapis: string,
+    field: string,
+    signal?: AbortSignal,
+) {
+    const fetchAggregatedOperator = new FetchAggregatedOperator<Record<string, string>>(lapisFilter, [field]);
 
     const data = (await fetchAggregatedOperator.evaluate(lapis, signal)).content;
 

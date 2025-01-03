@@ -36,6 +36,20 @@ export class LineageFilterComponent extends PreactLitAdapter {
     initialValue: string = '';
 
     /**
+     * A LAPIS filter to fetch the number of sequences for.
+     *
+     * The `lapisFilter` will be sent as is to LAPIS to select the data.
+     * It must be a valid LAPIS filter object.
+     */
+    @property({ type: Object })
+    lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
+
+    /**
      * Required.
      *
      * The LAPIS field name to use for this lineage filter.
@@ -62,6 +76,7 @@ export class LineageFilterComponent extends PreactLitAdapter {
         return (
             <LineageFilter
                 lapisField={this.lapisField}
+                lapisFilter={this.lapisFilter}
                 placeholderText={this.placeholderText}
                 initialValue={this.initialValue}
                 width={this.width}
@@ -90,6 +105,9 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+type LapisFilterMatches = Expect<
+    Equals<typeof LineageFilterComponent.prototype.lapisFilter, LineageFilterProps['lapisFilter']>
+>;
 type InitialValueMatches = Expect<
     Equals<typeof LineageFilterComponent.prototype.initialValue, LineageFilterProps['initialValue']>
 >;
