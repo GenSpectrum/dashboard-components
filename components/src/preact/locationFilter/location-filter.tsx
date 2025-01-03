@@ -1,17 +1,22 @@
+import Choices from 'choices.js';
+import { type ChoiceFull } from 'choices.js/src/scripts/interfaces/choice-full';
 import { type FunctionComponent } from 'preact';
-import { useContext, useRef, useState } from 'preact/hooks';
-import { type JSXInternal } from 'preact/src/jsx';
+import { useContext, useEffect, useMemo, useRef } from 'preact/hooks';
 import z from 'zod';
 
 import { fetchAutocompletionList } from './fetchAutocompletionList';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { type LapisLocationFilter } from './location-filter-event';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
+import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
+import 'choices.js/public/assets/styles/choices.css';
+
 const lineageFilterInnerPropsSchema = z.object({
-    initialValue: z.string().optional(),
+    value: z.record(z.string().nullable()).optional(),
     placeholderText: z.string().optional(),
     fields: z.array(z.string()).min(1),
 });
@@ -36,13 +41,8 @@ export const LocationFilter: FunctionComponent<LocationFilterProps> = (props) =>
     );
 };
 
-export const LocationFilterInner = ({ initialValue, fields, placeholderText }: LocationFilterInnerProps) => {
+export const LocationFilterInner = ({ value, fields, placeholderText }: LocationFilterInnerProps) => {
     const lapis = useContext(LapisUrlContext);
-
-    const [value, setValue] = useState(initialValue ?? '');
-    const [unknownLocation, setUnknownLocation] = useState(false);
-
-    const divRef = useRef<HTMLDivElement>(null);
 
     const { data, error, isLoading } = useQuery(() => fetchAutocompletionList(fields, lapis), [fields, lapis]);
 
@@ -52,71 +52,123 @@ export const LocationFilterInner = ({ initialValue, fields, placeholderText }: L
     if (error) {
         throw error;
     }
+    if (data === undefined) {
+        return <NoDataDisplay />;
+    }
 
-    const onInput = (event: JSXInternal.TargetedInputEvent<HTMLInputElement>) => {
-        const inputValue = event.currentTarget.value;
-        setValue(inputValue);
-        if (inputValue.trim() === value.trim() && inputValue !== '') {
-            return;
-        }
-        const eventDetail = parseLocation(inputValue, fields);
-        if (hasAllUndefined(eventDetail) || hasMatchingEntry(data, eventDetail)) {
-            divRef.current?.dispatchEvent(
-                new CustomEvent('gs-location-changed', {
-                    detail: eventDetail,
-                    bubbles: true,
-                    composed: true,
-                }),
-            );
-            setUnknownLocation(false);
-        } else {
-            setUnknownLocation(true);
-        }
-    };
+    return <LocationSelector fields={fields} value={value} placeholderText={placeholderText} locationData={data} />;
+};
 
-    return (
-        <div class='flex w-full' ref={divRef}>
-            <input
-                type='text'
-                class={`input input-bordered grow ${unknownLocation ? 'border-2 border-error' : ''}`}
-                value={value}
-                onInput={onInput}
-                list='countries'
-                placeholder={placeholderText}
-            />
-            <datalist id='countries'>
-                {data?.map((v) => {
-                    const value = fields
-                        .map((field) => v[field])
-                        .filter((value) => value !== null)
-                        .join(' / ');
-                    return <option key={value} value={value} />;
-                })}
-            </datalist>
-        </div>
+type SelectItem = {
+    lapisFilter: LapisLocationFilter;
+    label: string;
+    value: string;
+    selected: boolean;
+    disabled: boolean;
+};
+
+const LocationSelector = ({
+    fields,
+    value,
+    placeholderText,
+    locationData,
+}: LocationFilterInnerProps & {
+    locationData: LapisLocationFilter[];
+}) => {
+    const allItems = useMemo(
+        () =>
+            locationData
+                .map((locationFilter) => {
+                    return toSelectOption(locationFilter, fields, value);
+                })
+                .filter((item): item is SelectItem => item !== undefined),
+        [locationData, fields, value],
     );
+
+    const inputRef = useRef<HTMLSelectElement>(null);
+
+    useEffect(() => {
+        if (inputRef.current) {
+            const choices = new Choices(inputRef.current, {
+                searchEnabled: true,
+                removeItemButton: true,
+                choices: allItems,
+                placeholderValue: placeholderText,
+                searchChoices: true,
+                searchFields: ['value'],
+                searchResultLimit: -1,
+
+                callbackOnCreateTemplates(strToEl, escapeForTemplate, getClassNames) {
+                    return {
+                        choice: ({ classNames }, data: ChoiceFull) => {
+                            return strToEl(`
+                                  <div class="${getClassNames(classNames.item)} ${getClassNames(classNames.itemChoice)} ${getClassNames(
+                                      data.disabled ? classNames.itemDisabled : classNames.itemSelectable,
+                                  )}"  data-choice ${
+                                      data.disabled
+                                          ? 'data-choice-disabled aria-disabled="true"'
+                                          : 'data-choice-selectable'
+                                  } data-id="${data.id}" data-value="${escapeForTemplate(true, data.value)}" >
+                                    <div>
+                                      ${data.label}
+                                    </div>
+                                    <div>
+                                      ${data.value}
+                                    </div>
+                                    
+                                  </div>
+                                `) as HTMLDivElement;
+                        },
+                    };
+                },
+                allowHTML: true,
+            });
+
+            return () => {
+                choices.destroy();
+            };
+        }
+        return () => {};
+    }, [allItems, placeholderText]);
+
+    return <select ref={inputRef} className={'input'} />;
 };
 
-const parseLocation = (location: string, fields: string[]) => {
-    if (location === '') {
-        return fields.reduce((acc, field) => ({ ...acc, [field]: undefined }), {});
+function toSelectOption(locationFilter: LapisLocationFilter, fields: string[], value: LapisLocationFilter | undefined) {
+    const concatenatedLocation = concatenateLocation(locationFilter, fields);
+
+    const lastNonUndefinedValue = Object.values(locationFilter)
+        .filter((value) => value !== null)
+        .pop();
+
+    if (lastNonUndefinedValue === undefined || lastNonUndefinedValue === null) {
+        return undefined;
     }
-    const fieldValues = location.split('/').map((part) => part.trim());
 
-    return fields.reduce((acc, field, i) => ({ ...acc, [field]: fieldValues[i] }), {});
-};
+    const selected = value !== undefined && concatenateLocation(value, fields) === concatenatedLocation;
 
-const hasAllUndefined = (obj: Record<string, string | undefined>) =>
-    Object.values(obj).every((value) => value === undefined);
+    return {
+        lapisFilter: locationFilter,
+        label: lastNonUndefinedValue,
+        value: `${concatenatedLocation}`,
+        selected,
+        disabled: false,
+    };
+}
 
-const hasMatchingEntry = (data: Record<string, string>[] | null, eventDetail: Record<string, string>) => {
-    if (data === null) {
-        return false;
-    }
+function concatenateLocation(locationFilter: LapisLocationFilter, fields: string[]) {
+    return fields
+        .map((field) => locationFilter[field])
+        .filter((value) => value !== null)
+        .join(' / ');
+}
 
-    const matchingEntries = Object.entries(eventDetail)
-        .filter(([, value]) => value !== undefined)
-        .reduce((filteredData, [key, value]) => filteredData.filter((it) => it[key] === value), data);
-
-    return matchingEntries.length > 0;
-};
+function emptyLocationFilter(fields: string[]) {
+    return fields.reduce(
+        (acc, field) => {
+            acc[field] = null;
+            return acc;
+        },
+        {} as Record<string, string | null>,
+    );
+}
