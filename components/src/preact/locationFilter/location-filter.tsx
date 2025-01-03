@@ -1,16 +1,19 @@
-import { useCombobox } from 'downshift';
+import Choices from 'choices.js';
+import { type ChoiceFull } from 'choices.js/src/scripts/interfaces/choice-full';
 import { type FunctionComponent } from 'preact';
-import { useContext, useMemo, useRef, useState } from 'preact/hooks';
+import { useContext, useEffect, useMemo, useRef } from 'preact/hooks';
 import z from 'zod';
 
 import { fetchAutocompletionList } from './fetchAutocompletionList';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { type LapisLocationFilter, LocationChangedEvent } from './location-filter-event';
+import { type LapisLocationFilter } from './location-filter-event';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
+
+import 'choices.js/public/assets/styles/choices.css';
 
 const lineageFilterInnerPropsSchema = z.object({
     value: z.record(z.string().nullable()).optional(),
@@ -59,7 +62,9 @@ export const LocationFilterInner = ({ value, fields, placeholderText }: Location
 type SelectItem = {
     lapisFilter: LapisLocationFilter;
     label: string;
-    description: string;
+    value: string;
+    selected: boolean;
+    disabled: boolean;
 };
 
 const LocationSelector = ({
@@ -74,119 +79,62 @@ const LocationSelector = ({
         () =>
             locationData
                 .map((locationFilter) => {
-                    return toSelectOption(locationFilter, fields);
+                    return toSelectOption(locationFilter, fields, value);
                 })
                 .filter((item): item is SelectItem => item !== undefined),
-        [locationData, fields],
+        [locationData, fields, value],
     );
 
-    const initialSelectedItem = useMemo(
-        () => (value !== undefined ? toSelectOption(value, fields) : null),
-        [value, fields],
-    );
+    const inputRef = useRef<HTMLSelectElement>(null);
 
-    const [items, setItems] = useState(allItems.filter((item) => filterByInputValue(item, initialSelectedItem?.label)));
-    const divRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (inputRef.current) {
+            const choices = new Choices(inputRef.current, {
+                searchEnabled: true,
+                removeItemButton: true,
+                choices: allItems,
+                placeholderValue: placeholderText,
+                searchChoices: true,
+                searchFields: ['value'],
+                searchResultLimit: -1,
 
-    const {
-        isOpen,
-        getToggleButtonProps,
-        getMenuProps,
-        getInputProps,
-        highlightedIndex,
-        getItemProps,
-        selectedItem,
-        inputValue,
-        selectItem,
-        setInputValue,
-    } = useCombobox({
-        onInputValueChange({ inputValue }) {
-            setItems(allItems.filter((item) => filterByInputValue(item, inputValue)));
-        },
-        onSelectedItemChange({ selectedItem }) {
-            if (selectedItem !== null) {
-                divRef.current?.dispatchEvent(new LocationChangedEvent(selectedItem.lapisFilter));
-            }
-        },
-        items,
-        itemToString(item) {
-            return item?.label ?? '';
-        },
-        initialSelectedItem,
-    });
+                callbackOnCreateTemplates(strToEl, escapeForTemplate, getClassNames) {
+                    return {
+                        choice: ({ classNames }, data: ChoiceFull) => {
+                            return strToEl(`
+                                  <div class="${getClassNames(classNames.item)} ${getClassNames(classNames.itemChoice)} ${getClassNames(
+                                      data.disabled ? classNames.itemDisabled : classNames.itemSelectable,
+                                  )}"  data-choice ${
+                                      data.disabled
+                                          ? 'data-choice-disabled aria-disabled="true"'
+                                          : 'data-choice-selectable'
+                                  } data-id="${data.id}" data-value="${escapeForTemplate(true, data.value)}" >
+                                    <div>
+                                      ${data.label}
+                                    </div>
+                                    <div>
+                                      ${data.value}
+                                    </div>
+                                    
+                                  </div>
+                                `) as HTMLDivElement;
+                        },
+                    };
+                },
+                allowHTML: true,
+            });
 
-    const onInputBlur = () => {
-        if (inputValue === '') {
-            divRef.current?.dispatchEvent(new LocationChangedEvent(emptyLocationFilter(fields)));
-            selectItem(null);
-        } else if (inputValue !== selectedItem?.label) {
-            setInputValue(selectedItem?.label || '');
+            return () => {
+                choices.destroy();
+            };
         }
-    };
+        return () => {};
+    }, [allItems, placeholderText]);
 
-    const clearInput = () => {
-        divRef.current?.dispatchEvent(new LocationChangedEvent(emptyLocationFilter(fields)));
-        selectItem(null);
-    };
-
-    return (
-        <div ref={divRef}>
-            <div className='w-full flex flex-col gap-1 '>
-                <div className='flex gap-0.5 input input-bordered'>
-                    <input
-                        placeholder={placeholderText}
-                        className='w-full p-1.5 min-w-12'
-                        {...getInputProps()}
-                        onBlur={onInputBlur}
-                    />
-
-                    <button
-                        aria-label='clear selection'
-                        className={`px-2 ${inputValue === '' && 'hidden'}`}
-                        type='button'
-                        onClick={clearInput}
-                        tabIndex={-1}
-                    >
-                        ×
-                    </button>
-                    <button aria-label='toggle menu' className='px-2' type='button' {...getToggleButtonProps()}>
-                        {isOpen ? <>↑</> : <>↓</>}
-                    </button>
-                </div>
-            </div>
-            <ul
-                className={`absolute bg-white mt-1 shadow-md max-h-80 overflow-scroll z-10 w-11/12 ${
-                    !(isOpen && items.length > 0) && 'hidden'
-                }`}
-                {...getMenuProps()}
-            >
-                {isOpen &&
-                    items.map((item, index) => (
-                        <li
-                            className={`${highlightedIndex === index && 'bg-blue-300'} ${selectedItem !== null && selectedItem.description === item.description && 'font-bold'} py-2 px-3 shadow-sm flex flex-col`}
-                            key={item.description}
-                            {...getItemProps({ item, index })}
-                        >
-                            <span>{item.label}</span>
-                            <span className='text-sm text-gray-500'>{item.description}</span>
-                        </li>
-                    ))}
-            </ul>
-        </div>
-    );
+    return <select ref={inputRef} className={'input'} />;
 };
 
-function filterByInputValue(item: SelectItem, inputValue: string | undefined) {
-    if (inputValue === undefined) {
-        return true;
-    }
-    return (
-        item?.label.toLowerCase().includes(inputValue.toLowerCase()) ||
-        item?.description.toLowerCase().includes(inputValue.toLowerCase())
-    );
-}
-
-function toSelectOption(locationFilter: LapisLocationFilter, fields: string[]) {
+function toSelectOption(locationFilter: LapisLocationFilter, fields: string[], value: LapisLocationFilter | undefined) {
     const concatenatedLocation = concatenateLocation(locationFilter, fields);
 
     const lastNonUndefinedValue = Object.values(locationFilter)
@@ -197,10 +145,14 @@ function toSelectOption(locationFilter: LapisLocationFilter, fields: string[]) {
         return undefined;
     }
 
+    const selected = value !== undefined && concatenateLocation(value, fields) === concatenatedLocation;
+
     return {
         lapisFilter: locationFilter,
         label: lastNonUndefinedValue,
-        description: `${concatenatedLocation}`,
+        value: `${concatenatedLocation}`,
+        selected,
+        disabled: false,
     };
 }
 

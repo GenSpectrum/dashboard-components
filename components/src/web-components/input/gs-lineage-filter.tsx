@@ -4,7 +4,6 @@ import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { LineageFilter, type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
-
 /**
  *
  * ## Context
