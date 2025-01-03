@@ -14,6 +14,7 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 const codeExample = String.raw`
 <gs-text-input 
     lapisField="host"
+    lapisFilter={{}}
     placeholderText="Enter host name"
     initialValue="Homo sapiens"
     width="50%">
@@ -82,6 +83,7 @@ export const Default: StoryObj<Required<TextInputProps>> = {
             <div class="max-w-screen-lg">
                 <gs-text-input
                     .lapisField=${args.lapisField}
+                    .lapisFilter=${args.lapisFilter}
                     .placeholderText=${args.placeholderText}
                     .initialValue=${args.initialValue}
                     .width=${args.width}
@@ -91,6 +93,7 @@ export const Default: StoryObj<Required<TextInputProps>> = {
     },
     args: {
         lapisField: 'host',
+        lapisFilter: {},
         placeholderText: 'Enter host name',
         initialValue: 'Homo sapiens',
         width: '100%',

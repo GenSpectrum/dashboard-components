@@ -3,6 +3,7 @@ import { useContext, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { fetchAutocompleteList } from './fetchAutocompleteList';
+import { lapisFilterSchema } from '../../types';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
@@ -11,6 +12,7 @@ import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
 const textInputInnerPropsSchema = z.object({
+    lapisFilter: lapisFilterSchema,
     lapisField: z.string().min(1),
     placeholderText: z.string().optional(),
     initialValue: z.string().optional(),
@@ -36,7 +38,12 @@ export const TextInput: FunctionComponent<TextInputProps> = (props) => {
     );
 };
 
-const TextInputInner: FunctionComponent<TextInputInnerProps> = ({ lapisField, placeholderText, initialValue }) => {
+const TextInputInner: FunctionComponent<TextInputInnerProps> = ({
+    lapisFilter,
+    lapisField,
+    placeholderText,
+    initialValue,
+}) => {
     const lapis = useContext(LapisUrlContext);
 
     const inputRef = useRef<HTMLInputElement>(null);
@@ -44,7 +51,10 @@ const TextInputInner: FunctionComponent<TextInputInnerProps> = ({ lapisField, pl
     const [hasInput, setHasInput] = useState<boolean>(!!initialValue);
     const [inputValue, setInputValue] = useState(initialValue || '');
 
-    const { data, error, isLoading } = useQuery(() => fetchAutocompleteList(lapis, lapisField), [lapisField, lapis]);
+    const { data, error, isLoading } = useQuery(
+        () => fetchAutocompleteList(lapisFilter, lapis, lapisField),
+        [lapisFilter, lapis, lapisField],
+    );
 
     if (isLoading) {
         return <LoadingDisplay />;
@@ -78,7 +88,7 @@ const TextInputInner: FunctionComponent<TextInputInnerProps> = ({ lapisField, pl
         if (value === undefined) {
             return true;
         }
-        return data.includes(value);
+        return data.map((item) => item[lapisField]).includes(value);
     };
 
     return (
@@ -111,7 +121,11 @@ const TextInputInner: FunctionComponent<TextInputInnerProps> = ({ lapisField, pl
             </div>
             <datalist id={lapisField}>
                 {data.map((item) => (
-                    <option value={item} key={item} />
+                    <option
+                        value={item[lapisField]}
+                        key={item[lapisField]}
+                        style='white-space: nowrap;'
+                    >{`${item[lapisField]} (${item['count']})`}</option>
                 ))}
             </datalist>
         </>

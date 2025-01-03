@@ -14,6 +14,7 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 const codeExample = String.raw`
 <gs-lineage-filter 
     lapisField="pangoLineage"
+    lapisFilter={{}}
     placeholderText="Enter lineage"
     initialValue="B.1.1.7"
     width="50%">
@@ -60,6 +61,7 @@ export const Default: StoryObj<Required<LineageFilterProps>> = {
             <div class="max-w-screen-lg">
                 <gs-lineage-filter
                     .lapisField=${args.lapisField}
+                    .lapisFilter=${args.lapisFilter}
                     .placeholderText=${args.placeholderText}
                     .initialValue=${args.initialValue}
                     .width=${args.width}
@@ -69,6 +71,7 @@ export const Default: StoryObj<Required<LineageFilterProps>> = {
     },
     args: {
         lapisField: 'pangoLineage',
+        lapisFilter: {},
         placeholderText: 'Enter lineage',
         initialValue: 'B.1.1.7',
         width: '100%',

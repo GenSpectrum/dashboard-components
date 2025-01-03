@@ -64,6 +64,7 @@ export const Default: StoryObj<TextInputProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <TextInput
+                lapisFilter={args.lapisFilter}
                 lapisField={args.lapisField}
                 placeholderText={args.placeholderText}
                 initialValue={args.initialValue}
@@ -72,6 +73,7 @@ export const Default: StoryObj<TextInputProps> = {
         </LapisUrlContext.Provider>
     ),
     args: {
+        lapisFilter: {},
         lapisField: 'host',
         placeholderText: 'Enter a host name',
         initialValue: '',

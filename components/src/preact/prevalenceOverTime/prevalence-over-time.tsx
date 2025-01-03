@@ -229,7 +229,7 @@ const PrevalenceOverTimeInfo: FunctionComponent<PrevalenceOverTimeProps> = (comp
     const lapis = useContext(LapisUrlContext);
     return (
         <Info>
-            <InfoHeadline1>Prevalence over time</InfoHeadline1>
+            <InfoHeadline1>Info for Prevalence over time</InfoHeadline1>
             <InfoParagraph>
                 This presents the proportion of one or more variants per <b>{granularity}</b>
                 {smoothingWindow > 0 && `, smoothed using a ${smoothingWindow}-${granularity} sliding window`}. The
