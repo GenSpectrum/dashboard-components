@@ -15,14 +15,12 @@ import tailwindStyle from '../styles/tailwind.css?inline';
 
 import '../styles/tailwind.css';
 import '../preact/components/min-max-percent-slider.css';
-import 'choices.js/public/assets/styles/choices.css';
 
 const tailwindElementCss = unsafeCSS(tailwindStyle);
 const minMaxPercentSliderElementCss = unsafeCSS(minMaxPercentSliderCss);
-const choicesCss = unsafeCSS(choicesStyle);
 
 export abstract class PreactLitAdapter extends ReactiveElement {
-    static override styles = [tailwindElementCss, minMaxPercentSliderElementCss, choicesCss];
+    static override styles = [tailwindElementCss, minMaxPercentSliderElementCss];
 
     /**
      * @internal

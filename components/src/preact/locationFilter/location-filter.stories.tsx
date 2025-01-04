@@ -38,7 +38,7 @@ const meta: Meta<LocationFilterProps> = {
         width: '100%',
         fields: ['region', 'country', 'division', 'location'],
         value: { region: 'Europe', country: null, division: null, location: null },
-        placeholderText: 'Enter a location',
+        placeholderText: 'Select a location',
     },
     argTypes: {
         fields: {
