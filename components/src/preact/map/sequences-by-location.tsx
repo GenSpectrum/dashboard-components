@@ -4,9 +4,15 @@ import z from 'zod';
 
 import { SequencesByLocationMap } from './sequences-by-location-map';
 import { SequencesByLocationTable } from './sequences-by-location-table';
-import { type MapLocationData, MapLocationDataType } from '../../query/computeMapLocationData';
+import {
+    type EnhancedLocationsTableData,
+    type MapLocationData,
+    MapLocationDataType,
+} from '../../query/computeMapLocationData';
+import { type AggregateData } from '../../query/queryAggregateData';
 import { querySequencesByLocationData } from '../../query/querySequencesByLocationData';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
@@ -120,16 +126,27 @@ const SequencesByLocationMapTabs: FunctionComponent<SequencesByLocationMapTabsPr
 
     const tabs = originalComponentProps.views.map((view) => getTab(view));
 
-    return <Tabs tabs={tabs} toolbar={<Toolbar originalComponentProps={originalComponentProps} />} />;
+    return (
+        <Tabs
+            tabs={tabs}
+            toolbar={<Toolbar originalComponentProps={originalComponentProps} tableData={data.tableData} />}
+        />
+    );
 };
 
 type ToolbarProps = {
     originalComponentProps: SequencesByLocationProps;
+    tableData: AggregateData | EnhancedLocationsTableData;
 };
 
-const Toolbar: FunctionComponent<ToolbarProps> = ({ originalComponentProps }) => {
+const Toolbar: FunctionComponent<ToolbarProps> = ({ originalComponentProps, tableData }) => {
     return (
         <div class='flex flex-row'>
+            <CsvDownloadButton
+                className='mx-1 btn btn-xs'
+                getData={() => tableData}
+                filename='sequences_by_location.csv'
+            />
             <SequencesByLocationMapInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
         </div>
