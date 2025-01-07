@@ -19,7 +19,7 @@ export function useQuery<Data>(fetchDataCallback: () => Promise<Data>, dependenc
             }
         };
 
-        fetchData();
+        void fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [JSON.stringify(dependencies)]);
 

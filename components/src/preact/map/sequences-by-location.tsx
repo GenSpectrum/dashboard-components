@@ -4,7 +4,8 @@ import z from 'zod';
 
 import { SequencesByLocationMap } from './sequences-by-location-map';
 import { SequencesByLocationTable } from './sequences-by-location-table';
-import { type AggregateData, queryAggregateData } from '../../query/queryAggregateData';
+import { type MapLocationData, MapLocationDataType } from '../../query/computeMapLocationData';
+import { querySequencesByLocationData } from '../../query/querySequencesByLocationData';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
@@ -12,7 +13,7 @@ import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../compon
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
-import { mapSourceSchema } from './useGeoJsonMap';
+import { mapSourceSchema } from './loadMapSource';
 import { lapisFilterSchema, views } from '../../types';
 import Tabs from '../components/tabs';
 
@@ -49,7 +50,7 @@ export const SequencesByLocation: FunctionComponent<SequencesByLocationProps> = 
 };
 
 const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationProps> = (props) => {
-    const { lapisFilter, lapisLocationField } = props;
+    const { lapisFilter, lapisLocationField, mapSource } = props;
 
     const lapis = useContext(LapisUrlContext);
     const {
@@ -57,8 +58,8 @@ const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationProps> =
         error,
         isLoading: isLoadingLapisData,
     } = useQuery(
-        async () => queryAggregateData(lapisFilter, [lapisLocationField], lapis),
-        [lapisFilter, lapisLocationField, lapis],
+        async () => querySequencesByLocationData(lapisFilter, lapisLocationField, lapis, mapSource),
+        [lapisFilter, lapisLocationField, lapis, mapSource],
     );
 
     if (isLoadingLapisData) {
@@ -74,7 +75,7 @@ const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationProps> =
 
 type SequencesByLocationMapTabsProps = {
     originalComponentProps: SequencesByLocationProps;
-    data: AggregateData;
+    data: MapLocationData;
 };
 
 const SequencesByLocationMapTabs: FunctionComponent<SequencesByLocationMapTabsProps> = ({
@@ -83,16 +84,16 @@ const SequencesByLocationMapTabs: FunctionComponent<SequencesByLocationMapTabsPr
 }) => {
     const getTab = (view: SequencesByLocationMapView) => {
         switch (view) {
-            case views.map:
-                if (originalComponentProps.mapSource === undefined) {
+            case views.map: {
+                if (data.type !== MapLocationDataType.tableAndMapData) {
                     throw new Error('mapSource is required when using the map view');
                 }
+                const { type: _type, tableData: _tableData, ...dataForMap } = data;
                 return {
                     title: 'Map',
                     content: (
                         <SequencesByLocationMap
-                            locationData={data}
-                            mapSource={originalComponentProps.mapSource}
+                            {...dataForMap}
                             enableMapNavigation={originalComponentProps.enableMapNavigation}
                             lapisLocationField={originalComponentProps.lapisLocationField}
                             zoom={originalComponentProps.zoom}
@@ -102,12 +103,13 @@ const SequencesByLocationMapTabs: FunctionComponent<SequencesByLocationMapTabsPr
                         />
                     ),
                 };
+            }
             case views.table:
                 return {
                     title: 'Table',
                     content: (
                         <SequencesByLocationTable
-                            locationData={data}
+                            tableData={data.tableData}
                             lapisLocationField={originalComponentProps.lapisLocationField}
                             pageSize={originalComponentProps.pageSize}
                         />
