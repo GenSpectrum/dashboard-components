@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.11.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.3...dashboard-components-v0.11.4) (2025-01-07)
+
+
+### Features
+
+* **components:** gs-sequences-by-location table view: say whether a location is shown on the map ([#623](https://github.com/GenSpectrum/dashboard-components/issues/623)) ([0cdde85](https://github.com/GenSpectrum/dashboard-components/commit/0cdde8580e64340b63ab10117ef9758111b87c41)), closes [#617](https://github.com/GenSpectrum/dashboard-components/issues/617)
+* **components:** gs-sequences-by-location: add button to download the data ([#625](https://github.com/GenSpectrum/dashboard-components/issues/625)) ([865f0a2](https://github.com/GenSpectrum/dashboard-components/commit/865f0a2096370dbc0ffd748b5e300b773451db67)), closes [#624](https://github.com/GenSpectrum/dashboard-components/issues/624)
+
+
+### Bug Fixes
+
+* **components:** gs-aggregate: rerender when `initialSortField` or `initialSortDirection` changes ([60d578f](https://github.com/GenSpectrum/dashboard-components/commit/60d578fe903091ad674aad4126bc1ea839543bf8))
+
 ## [0.11.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.2...dashboard-components-v0.11.3) (2024-12-19)
 
 
