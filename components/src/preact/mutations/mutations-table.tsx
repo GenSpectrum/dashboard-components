@@ -1,4 +1,5 @@
 import { type FunctionComponent } from 'preact';
+import { useMemo } from 'preact/hooks';
 
 import { getMutationsTableData } from './getMutationsTableData';
 import { type SubstitutionOrDeletionEntry } from '../../types';
@@ -10,41 +11,60 @@ import { formatProportion } from '../shared/table/formatProportion';
 
 export interface MutationsTableProps {
     data: SubstitutionOrDeletionEntry[];
+    baselineSubstitutionsOrDeletions: SubstitutionOrDeletionEntry[] | undefined;
+    overallVariantCount: number;
     proportionInterval: ProportionInterval;
     pageSize: boolean | number;
 }
 
-const MutationsTable: FunctionComponent<MutationsTableProps> = ({ data, proportionInterval, pageSize }) => {
-    const getHeaders = () => {
-        return [
-            {
-                name: 'Mutation',
-                sort: {
-                    compare: (a: SubstitutionClass | DeletionClass, b: SubstitutionClass | DeletionClass) => {
-                        return sortSubstitutionsAndDeletions(a, b);
-                    },
+const MutationsTable: FunctionComponent<MutationsTableProps> = ({
+    data,
+    baselineSubstitutionsOrDeletions,
+    overallVariantCount,
+    proportionInterval,
+    pageSize,
+}) => {
+    const headers = [
+        {
+            name: 'Mutation',
+            sort: {
+                compare: (a: SubstitutionClass | DeletionClass, b: SubstitutionClass | DeletionClass) => {
+                    return sortSubstitutionsAndDeletions(a, b);
                 },
-                formatter: (cell: SubstitutionClass | DeletionClass) => cell.toString(),
             },
-            {
-                name: 'Type',
-                sort: true,
-            },
-            {
-                name: 'Count',
-                sort: true,
-            },
-            {
-                name: 'Proportion',
-                sort: true,
-                formatter: (cell: number) => formatProportion(cell),
-            },
-        ];
-    };
+            formatter: (cell: SubstitutionClass | DeletionClass) => cell.toString(),
+        },
+        {
+            name: 'Type',
+            sort: true,
+        },
+        {
+            name: 'Count',
+            sort: true,
+        },
+        {
+            name: 'Proportion',
+            sort: true,
+            formatter: (cell: number) => formatProportion(cell),
+        },
+    ];
+    if (baselineSubstitutionsOrDeletions !== undefined) {
+        headers.push({
+            name: 'Jaccard similarity',
+            sort: true,
+            formatter: (cell: number) => cell.toFixed(2),
+        });
+    }
 
-    const tableData = getMutationsTableData(data, proportionInterval).map((row) => Object.values(row));
+    const tableData = useMemo(
+        () =>
+            getMutationsTableData(data, baselineSubstitutionsOrDeletions, overallVariantCount, proportionInterval).map(
+                (row) => Object.values(row),
+            ),
+        [data, baselineSubstitutionsOrDeletions, overallVariantCount, proportionInterval],
+    );
 
-    return <Table data={tableData} columns={getHeaders()} pageSize={pageSize} />;
+    return <Table data={tableData} columns={headers} pageSize={pageSize} />;
 };
 
 export default MutationsTable;

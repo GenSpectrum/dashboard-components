@@ -1,0 +1,14 @@
+{
+    "data": [
+        {
+            "count": 16616
+        }
+    ],
+    "info": {
+        "dataVersion": "1736354557",
+        "requestId": "a11bb8e3-cd57-4178-8f51-7ff1210ffebf",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2025-01-09T08:05:35.534992279",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "0.3.10"
+    }
+}

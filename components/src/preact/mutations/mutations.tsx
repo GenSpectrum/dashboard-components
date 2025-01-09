@@ -7,7 +7,7 @@ import { getMutationsTableData } from './getMutationsTableData';
 import { MutationsGrid } from './mutations-grid';
 import { InsertionsTable } from './mutations-insertions-table';
 import MutationsTable from './mutations-table';
-import { filterMutationsData, queryMutationsData } from './queryMutations';
+import { filterMutationsData, type QueriedMutationsData, queryMutationsData } from './queryMutations';
 import {
     type InsertionEntry,
     lapisFilterSchema,
@@ -35,6 +35,7 @@ export type MutationsView = z.infer<typeof mutationsViewSchema>;
 
 const mutationsPropsSchema = z.object({
     lapisFilter: lapisFilterSchema,
+    baselineLapisFilter: lapisFilterSchema.optional(),
     sequenceType: sequenceTypeSchema,
     views: mutationsViewSchema.array(),
     pageSize: z.union([z.boolean(), z.number()]),
@@ -58,11 +59,11 @@ export const Mutations: FunctionComponent<MutationsProps> = (componentProps) => 
 
 export const MutationsInner: FunctionComponent<MutationsProps> = (componentProps) => {
     const lapis = useContext(LapisUrlContext);
-    const { lapisFilter, sequenceType } = componentProps;
+    const { lapisFilter, baselineLapisFilter, sequenceType } = componentProps;
 
     const { data, error, isLoading } = useQuery(async () => {
-        return queryMutationsData(lapisFilter, sequenceType, lapis);
-    }, [lapisFilter, sequenceType, lapis]);
+        return queryMutationsData(lapisFilter, baselineLapisFilter, sequenceType, lapis);
+    }, [lapisFilter, baselineLapisFilter, sequenceType, lapis]);
 
     if (isLoading) {
         return <LoadingDisplay />;
@@ -80,7 +81,7 @@ export const MutationsInner: FunctionComponent<MutationsProps> = (componentProps
 };
 
 type MutationTabsProps = {
-    mutationsData: { insertions: InsertionEntry[]; substitutionsOrDeletions: SubstitutionOrDeletionEntry[] };
+    mutationsData: QueriedMutationsData;
     originalComponentProps: MutationsProps;
 };
 
@@ -103,6 +104,8 @@ const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, or
                     content: (
                         <MutationsTable
                             data={filteredData.tableData}
+                            baselineSubstitutionsOrDeletions={mutationsData.baselineSubstitutionsOrDeletions}
+                            overallVariantCount={mutationsData.overallVariantCount}
                             proportionInterval={proportionInterval}
                             pageSize={originalComponentProps.pageSize}
                         />
@@ -143,6 +146,8 @@ const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, or
             proportionInterval={proportionInterval}
             setProportionInterval={setProportionInterval}
             originalComponentProps={originalComponentProps}
+            baselineSubstitutionsOrDeletions={mutationsData.baselineSubstitutionsOrDeletions}
+            overallVariantCount={mutationsData.overallVariantCount}
         />
     );
 
@@ -159,6 +164,8 @@ type ToolbarProps = {
     proportionInterval: ProportionInterval;
     setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
     originalComponentProps: MutationsProps;
+    baselineSubstitutionsOrDeletions: SubstitutionOrDeletionEntry[] | undefined;
+    overallVariantCount: number;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -171,6 +178,8 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     proportionInterval,
     setProportionInterval,
     originalComponentProps,
+    baselineSubstitutionsOrDeletions,
+    overallVariantCount,
 }) => {
     return (
         <>
@@ -190,7 +199,14 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                     />
                     <CsvDownloadButton
                         className='mx-1 btn btn-xs'
-                        getData={() => getMutationsTableData(filteredData.tableData, proportionInterval)}
+                        getData={() =>
+                            getMutationsTableData(
+                                filteredData.tableData,
+                                baselineSubstitutionsOrDeletions,
+                                overallVariantCount,
+                                proportionInterval,
+                            )
+                        }
                         filename='substitutions_and_deletions.csv'
                     />
                 </>

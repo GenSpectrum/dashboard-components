@@ -4,8 +4,15 @@ import { expect, waitFor, within } from '@storybook/test';
 import nucleotideInsertions from './__mockData__/nucleotideInsertions.json';
 import nucleotideMutations from './__mockData__/nucleotideMutations.json';
 import { Mutations, type MutationsProps } from './mutations';
-import { LAPIS_URL, NUCLEOTIDE_INSERTIONS_ENDPOINT, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
+import {
+    AGGREGATED_ENDPOINT,
+    LAPIS_URL,
+    NUCLEOTIDE_INSERTIONS_ENDPOINT,
+    NUCLEOTIDE_MUTATIONS_ENDPOINT,
+} from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
+import baselineNucleotideMutations from '../../preact/mutations/__mockData__/baselineNucleotideMutations.json';
+import overallVariantCount from '../../preact/mutations/__mockData__/overallVariantCount.json';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 
@@ -34,14 +41,7 @@ const Template = {
     render: (args: MutationsProps) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <Mutations
-                    lapisFilter={args.lapisFilter}
-                    sequenceType={args.sequenceType}
-                    views={args.views}
-                    width={args.width}
-                    height={args.height}
-                    pageSize={args.pageSize}
-                />
+                <Mutations {...args} />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
     ),
@@ -51,6 +51,7 @@ export const Default: StoryObj<MutationsProps> = {
     ...Template,
     args: {
         lapisFilter: { country: 'Switzerland', pangoLineage: 'B.1.1.7', dateTo: '2022-01-01' },
+        baselineLapisFilter: { country: 'Switzerland', dateTo: '2022-01-01' },
         sequenceType: 'nucleotide',
         views: ['grid', 'table', 'insertions'],
         width: '100%',
@@ -74,6 +75,37 @@ export const Default: StoryObj<MutationsProps> = {
                     response: {
                         status: 200,
                         body: nucleotideMutations,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'baselineNucleotideMutations',
+                        url: NUCLEOTIDE_MUTATIONS_ENDPOINT,
+                        body: {
+                            country: 'Switzerland',
+                            dateTo: '2022-01-01',
+                            minProportion: 0,
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: baselineNucleotideMutations,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'overallVariantCount',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            country: 'Switzerland',
+                            pangoLineage: 'B.1.1.7',
+                            dateTo: '2022-01-01',
+                            fields: [],
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: overallVariantCount,
                     },
                 },
                 {

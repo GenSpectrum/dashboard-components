@@ -1,30 +1,49 @@
+import { FetchAggregatedOperator } from '../../operator/FetchAggregatedOperator';
 import { queryInsertions } from '../../query/queryInsertions';
 import { querySubstitutionsOrDeletions } from '../../query/querySubstitutionsOrDeletions';
-import {
-    type InsertionEntry,
-    type LapisFilter,
-    type MutationEntry,
-    type SubstitutionOrDeletionEntry,
-} from '../../types';
+import type { InsertionEntry, LapisFilter, MutationEntry, SubstitutionOrDeletionEntry } from '../../types';
 import { type DisplayedMutationType } from '../components/mutation-type-selector';
 import { type DisplayedSegment } from '../components/segment-selector';
 
+export type QueriedMutationsData = {
+    insertions: InsertionEntry[];
+    substitutionsOrDeletions: SubstitutionOrDeletionEntry[];
+    baselineSubstitutionsOrDeletions: SubstitutionOrDeletionEntry[] | undefined;
+    overallVariantCount: number;
+};
+
 export async function queryMutationsData(
     lapisFilter: LapisFilter,
+    baselineLapisFilter: LapisFilter | undefined,
     sequenceType: 'nucleotide' | 'amino acid',
     lapis: string,
-) {
+): Promise<QueriedMutationsData> {
     const substitutionsOrDeletions = (await querySubstitutionsOrDeletions(lapisFilter, sequenceType, lapis)).content;
+    const baselineSubstitutionsOrDeletions =
+        baselineLapisFilter === undefined
+            ? undefined
+            : (await querySubstitutionsOrDeletions(baselineLapisFilter, sequenceType, lapis)).content;
     const insertions = (await queryInsertions(lapisFilter, sequenceType, lapis)).content;
+
+    const aggregatedData = await new FetchAggregatedOperator<Record<string, string | null | number>>(
+        lapisFilter,
+        [],
+    ).evaluate(lapis);
+    if (aggregatedData.content.length === 0) {
+        throw new Error('No aggregated data found for the given filters - did LAPIS respond properly?');
+    }
+    const overallVariantCount = aggregatedData.content[0].count;
 
     return {
         substitutionsOrDeletions,
+        baselineSubstitutionsOrDeletions,
         insertions,
+        overallVariantCount,
     };
 }
 
 export function filterMutationsData(
-    data: { insertions: InsertionEntry[]; substitutionsOrDeletions: SubstitutionOrDeletionEntry[] },
+    data: QueriedMutationsData,
     displayedSegments: DisplayedSegment[],
     displayedMutationTypes: DisplayedMutationType[],
 ) {
@@ -51,5 +70,6 @@ export function filterMutationsData(
         insertions: data.insertions.filter(bySelectedSegments),
         tableData: filteredSubstitutionsOrDeletions.filter(byDisplayedMutationTypes),
         gridData: filteredSubstitutionsOrDeletions,
+        baselineSubstitutionsOrDeletions: data.baselineSubstitutionsOrDeletions,
     };
 }

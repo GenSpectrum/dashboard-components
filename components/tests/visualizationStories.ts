@@ -42,6 +42,12 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Insertions',
     },
     {
+        id: 'visualization-mutations--on-table-tab-without-jaccard-similarity',
+        title: 'Mutations',
+        loadingIsDoneIndicator: 'Insertions',
+        testDownloadWithFilename: 'substitutions_and_deletions.csv',
+    },
+    {
         id: 'visualization-mutations--on-insertions-tab',
         title: 'Mutations',
         loadingIsDoneIndicator: 'Insertions',
