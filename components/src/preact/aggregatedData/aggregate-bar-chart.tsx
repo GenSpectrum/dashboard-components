@@ -46,11 +46,13 @@ export const AggregateBarChart: FunctionComponent<AggregateBarChartProps> = ({ d
 };
 
 const AggregateBarChartInner: FunctionComponent<AggregateBarChartProps> = ({ data, fields, maxNumberOfBars }) => {
-    const config = useMemo(
-        (): ChartConfiguration<'bar', DataPoint[]> => ({
+    const config = useMemo((): ChartConfiguration<'bar', DataPoint[]> => {
+        const { datasets, countsOfEachBar } = getDatasets(fields, maxNumberOfBars, data);
+
+        return {
             type: 'bar',
             data: {
-                datasets: getDatasets(fields, maxNumberOfBars, data),
+                datasets,
             },
             options: {
                 maintainAspectRatio: false,
@@ -71,6 +73,12 @@ const AggregateBarChartInner: FunctionComponent<AggregateBarChartProps> = ({ dat
                     tooltip: {
                         mode: 'y',
                         callbacks: {
+                            afterTitle:
+                                countsOfEachBar === undefined
+                                    ? undefined
+                                    : (tooltipItems) => {
+                                          return `Total: ${countsOfEachBar.get(tooltipItems[0].label)}`;
+                                      },
                             label: (context) => {
                                 const { x, proportion } = context.dataset.data[
                                     context.dataIndex
@@ -83,9 +91,8 @@ const AggregateBarChartInner: FunctionComponent<AggregateBarChartProps> = ({ dat
                     },
                 },
             },
-        }),
-        [data, fields, maxNumberOfBars],
-    );
+        };
+    }, [data, fields, maxNumberOfBars]);
 
     return <GsChart configuration={config} />;
 };
@@ -97,22 +104,24 @@ function getDatasets(
         count: number;
         proportion: number;
     })[],
-): ChartDataset<'bar', DataPoint[]>[] {
+) {
     const sortedData = data.sort((a, b) => b.count - a.count);
 
     if (fields.length === 1) {
-        return [
-            {
-                borderWidth: 1,
-                backgroundColor: singleGraphColorRGBAById(0, 0.3),
-                borderColor: singleGraphColorRGBAById(0),
-                data: sortedData.slice(0, maxNumberOfBars).map((row) => ({
-                    y: row[fields[0]] as string,
-                    x: row.count,
-                    proportion: row.proportion,
-                })),
-            },
-        ];
+        return {
+            datasets: [
+                {
+                    borderWidth: 1,
+                    backgroundColor: singleGraphColorRGBAById(0, 0.3),
+                    borderColor: singleGraphColorRGBAById(0),
+                    data: sortedData.slice(0, maxNumberOfBars).map((row) => ({
+                        y: row[fields[0]] as string,
+                        x: row.count,
+                        proportion: row.proportion,
+                    })),
+                },
+            ],
+        };
     }
 
     const map = new Map<string, DataPoint[]>();
@@ -138,7 +147,7 @@ function getDatasets(
         countsOfEachBar.set(yAxisKey, (countsOfEachBar.get(yAxisKey) ?? 0) + row.count);
     }
 
-    return Array.from(map.entries())
+    const datasets: ChartDataset<'bar', DataPoint[]>[] = Array.from(map.entries())
         .map(sortAndTruncateYAxisKeys(countsOfEachBar, maxNumberOfBars))
         .map(([key, value], index) => ({
             borderWidth: 1,
@@ -147,6 +156,7 @@ function getDatasets(
             label: key,
             data: value,
         }));
+    return { datasets, countsOfEachBar };
 }
 
 function sortAndTruncateYAxisKeys(countsOfEachBar: Map<string, number>, maxNumberOfBars: number) {
