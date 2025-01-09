@@ -7,6 +7,7 @@ import GsChart from '../components/chart';
 import { NoDataDisplay } from '../components/no-data-display';
 import { singleGraphColorRGBAById } from '../shared/charts/colors';
 import { formatProportion } from '../shared/table/formatProportion';
+import { UserFacingError } from '../components/error-display';
 
 interface AggregateBarChartProps {
     data: AggregateData;
@@ -28,16 +29,16 @@ export const AggregateBarChart: FunctionComponent<AggregateBarChartProps> = ({ d
     }
 
     if (fields.length === 0) {
-        return (
-            <NoDataDisplay message='Cannot display a bar chart when there are no fields given that the data should be stratified by.' />
+        throw new UserFacingError(
+            'No fields given',
+            'Cannot display a bar chart when the "fields" attribute of this component is empty, i.e. there are no fields given that the data should be stratified by. This must be fixed by the administrator of this page.',
         );
     }
 
     if (fields.length > 2) {
-        return (
-            <NoDataDisplay
-                message={`Cannot display a bar chart when there are more than two fields given that the data should be stratified by. Got: ${fields.join(', ')}`}
-            />
+        throw new UserFacingError(
+            'Too many fields given',
+            `Cannot display a bar chart when the "fields" attribute of this component contains more than two values. Got the fields: ${fields.join(', ')}. This must be fixed by the administrator of this page.`,
         );
     }
 

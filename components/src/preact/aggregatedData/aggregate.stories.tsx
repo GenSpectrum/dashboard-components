@@ -5,7 +5,7 @@ import aggregatedData from './__mockData__/aggregated.json';
 import { Aggregate, type AggregateProps } from './aggregate';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
+import { expectInvalidAttributesErrorMessage, playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const meta: Meta<AggregateProps> = {
     title: 'Visualization/Aggregate',
@@ -133,17 +133,10 @@ export const BarChartWithNoFields: StoryObj<AggregateProps> = {
             ],
         },
     },
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-
-        await waitFor(async () => {
-            await expect(
-                canvas.getByText('Cannot display a bar chart when there are no fields given', {
-                    exact: false,
-                }),
-            ).toBeVisible();
-        });
-    },
+    play: playThatExpectsErrorMessage(
+        'Error - No fields given',
+        `Cannot display a bar chart when the "fields" attribute of this component is empty`,
+    ),
 };
 
 export const BarChartWithMoreThan2Fields: StoryObj<AggregateProps> = {
@@ -169,15 +162,8 @@ export const BarChartWithMoreThan2Fields: StoryObj<AggregateProps> = {
             ],
         },
     },
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-
-        await waitFor(async () => {
-            await expect(
-                canvas.getByText('Cannot display a bar chart when there are more than two fields given', {
-                    exact: false,
-                }),
-            ).toBeVisible();
-        });
-    },
+    play: playThatExpectsErrorMessage(
+        'Error - Too many fields given',
+        'Cannot display a bar chart when the "fields" attribute of this component contains more than two values.',
+    ),
 };
