@@ -68,15 +68,69 @@ describe('YearMonthDay', () => {
 });
 
 describe('YearWeek', () => {
-    it('should parse from string', () => {
-        const underTest = YearWeekClass.parse('2020-W02', cache);
+    const examples = [
+        {
+            string: '2020-W01',
+            expectedYear: 2020,
+            expectedWeek: 1,
+            expectedFirstDay: '2019-12-30',
+            expectedLastDay: '2020-01-05',
+            expectedText: '2020-W01',
+        },
+        {
+            string: '2020-W53',
+            expectedYear: 2020,
+            expectedWeek: 53,
+            expectedFirstDay: '2020-12-28',
+            expectedLastDay: '2021-01-03',
+            expectedText: '2020-W53',
+        },
+        {
+            string: '2021-W01',
+            expectedYear: 2021,
+            expectedWeek: 1,
+            expectedFirstDay: '2021-01-04',
+            expectedLastDay: '2021-01-10',
+            expectedText: '2021-W01',
+        },
+        {
+            string: '2021-W53',
+            expectedYear: 2021,
+            expectedWeek: 53,
+            expectedFirstDay: '2022-01-03',
+            expectedLastDay: '2022-01-09',
+            expectedText: '2022-W01',
+        },
+        {
+            string: '2022-W01',
+            expectedYear: 2022,
+            expectedWeek: 1,
+            expectedFirstDay: '2022-01-03',
+            expectedLastDay: '2022-01-09',
+            expectedText: '2022-W01',
+        },
+        {
+            string: '2024-W01',
+            expectedYear: 2024,
+            expectedWeek: 1,
+            expectedFirstDay: '2024-01-01',
+            expectedLastDay: '2024-01-07',
+            expectedText: '2024-W01',
+        },
+    ];
 
-        expect(underTest.isoYearNumber).equal(2020);
-        expect(underTest.isoWeekNumber).equal(2);
-        expect(underTest.firstDay.text).equal('2020-01-06');
-        expect(underTest.text).equal('2020-W02');
-        expect(underTest.lastDay.text).equal('2020-01-12');
-    });
+    for (const example of examples) {
+        const { string, expectedYear, expectedWeek, expectedFirstDay, expectedLastDay, expectedText } = example;
+        it(`should parse ${string} from string`, () => {
+            const underTest = YearWeekClass.parse(string, cache);
+
+            expect(underTest.isoYearNumber).equal(expectedYear);
+            expect(underTest.isoWeekNumber).equal(expectedWeek);
+            expect(underTest.firstDay.text).equal(expectedFirstDay);
+            expect(underTest.text).equal(expectedText);
+            expect(underTest.lastDay.text).equal(expectedLastDay);
+        });
+    }
 });
 
 describe('YearMonth', () => {

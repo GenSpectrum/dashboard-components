@@ -171,14 +171,7 @@ export class YearWeekClass implements YearWeek {
     }
 
     get lastDay(): YearMonthDayClass {
-        const firstDay = dayjs()
-            .year(this.isoYearNumber)
-            .startOf('year')
-            .add((this.isoWeekNumber - 1) * 7, 'day')
-            .startOf('week')
-            .add(1, 'day');
-        const lastDay = firstDay.add(6, 'day');
-
+        const lastDay = this.firstDay.dayjs.add(6, 'days');
         return this.cache.getYearMonthDay(lastDay.format('YYYY-MM-DD'));
     }
 
