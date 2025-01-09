@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.4...dashboard-components-v0.11.5) (2025-01-09)
+
+
+### Bug Fixes
+
+* **components:** fix `lastDay` of `YearWeekClass` ([#635](https://github.com/GenSpectrum/dashboard-components/issues/635) case 1) ([#641](https://github.com/GenSpectrum/dashboard-components/issues/641)) ([e56c5a9](https://github.com/GenSpectrum/dashboard-components/commit/e56c5a933f612f38d542512183a6f60d184362ac))
+
 ## [0.11.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.3...dashboard-components-v0.11.4) (2025-01-07)
 
 
