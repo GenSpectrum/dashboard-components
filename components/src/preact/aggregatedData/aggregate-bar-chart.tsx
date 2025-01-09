@@ -4,10 +4,10 @@ import { useMemo } from 'preact/hooks';
 
 import type { AggregateData } from '../../query/queryAggregateData';
 import GsChart from '../components/chart';
+import { UserFacingError } from '../components/error-display';
 import { NoDataDisplay } from '../components/no-data-display';
 import { singleGraphColorRGBAById } from '../shared/charts/colors';
 import { formatProportion } from '../shared/table/formatProportion';
-import { UserFacingError } from '../components/error-display';
 
 interface AggregateBarChartProps {
     data: AggregateData;
