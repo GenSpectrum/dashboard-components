@@ -85,7 +85,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
 };
 
 function getTooltipPosition(rowIndex: number, rows: number, columnIndex: number, columns: number) {
-    const tooltipX = rowIndex < rows / 2 ? 'bottom' : 'top';
+    const tooltipX = rowIndex < rows / 2 || rowIndex < 6 ? 'bottom' : 'top';
     const tooltipY = columnIndex < columns / 2 ? 'start' : 'end';
     return `${tooltipX}-${tooltipY}` as const;
 }
