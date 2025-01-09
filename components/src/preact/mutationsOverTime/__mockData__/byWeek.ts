@@ -21838,7 +21838,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'T2G',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -21848,29 +21855,57 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'T10A',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 1,
-                                proportion: 0.004098360655737705,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'T10G',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -21880,7 +21915,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -21894,14 +21936,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 511,
-                                proportion: 0.998046875,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -21931,15 +21966,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 2,
-                                proportion: 0.0024096385542168677,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -21961,14 +21996,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 539,
-                                proportion: 0.5614583333333333,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -21990,15 +22018,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C106T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0016556291390728477,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22028,14 +22056,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.0030857848179386958,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22065,14 +22086,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.0023734177215189874,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22102,14 +22116,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 19,
-                                proportion: 0.003740893876747391,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22139,14 +22146,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 27,
-                                proportion: 0.005278592375366569,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22176,14 +22176,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 25,
-                                proportion: 0.004881859011911736,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22213,14 +22206,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5097,
-                                proportion: 0.9988242210464433,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22242,9 +22228,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'G242A',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -22258,15 +22258,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C335T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 11,
-                                proportion: 0.0021284829721362228,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22296,14 +22296,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0013539651837524177,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22325,23 +22318,44 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C344T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0019305019305019305,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C346T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -22364,7 +22378,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A405G',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -22395,14 +22416,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 46,
-                                proportion: 0.009599332220367279,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22432,14 +22446,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 87,
-                                proportion: 0.01817801922273297,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22469,14 +22476,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 87,
-                                proportion: 0.01817422185084604,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22506,14 +22506,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 86,
-                                proportion: 0.017987868646726628,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22543,14 +22536,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 86,
-                                proportion: 0.01798034706251307,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22580,14 +22566,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 86,
-                                proportion: 0.017972831765935213,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22617,14 +22596,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 129,
-                                proportion: 0.026998744244453747,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22654,14 +22626,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 148,
-                                proportion: 0.030981787732886748,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22691,14 +22656,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 148,
-                                proportion: 0.03098827470686767,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22728,14 +22686,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 184,
-                                proportion: 0.03857442348008386,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22765,14 +22716,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 127,
-                                proportion: 0.02655792555416144,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22802,14 +22746,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 127,
-                                proportion: 0.02656348044342188,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22839,14 +22776,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 54,
-                                proportion: 0.01127348643006263,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22876,14 +22806,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 51,
-                                proportion: 0.01065385418842699,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22913,14 +22836,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 50,
-                                proportion: 0.010418837257762034,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -22972,15 +22888,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'G581A',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 5,
-                                proportion: 0.0010362694300518134,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23010,14 +22926,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5,
-                                proportion: 0.0010358400662937642,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23047,14 +22956,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0014498757249378626,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23063,7 +22965,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -23077,14 +22986,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.002266172229089411,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23106,15 +23008,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C643T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0014388489208633094,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23144,14 +23046,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5282,
-                                proportion: 0.9936042136945071,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23173,7 +23068,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C673T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -23204,14 +23106,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 23,
-                                proportion: 0.004299065420560748,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23241,14 +23136,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 52,
-                                proportion: 0.009732360097323601,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23278,14 +23166,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 52,
-                                proportion: 0.009732360097323601,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23315,14 +23196,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 52,
-                                proportion: 0.009732360097323601,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23352,14 +23226,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 52,
-                                proportion: 0.009732360097323601,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23389,14 +23256,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 52,
-                                proportion: 0.009732360097323601,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23426,14 +23286,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 52,
-                                proportion: 0.009734181954324224,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23463,14 +23316,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 52,
-                                proportion: 0.009736004493540536,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23500,14 +23346,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 52,
-                                proportion: 0.009732360097323601,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23537,14 +23376,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 51,
-                                proportion: 0.009546986147510296,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23566,15 +23398,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C745T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0011206574523720584,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23596,15 +23428,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'T772C',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0015012197410395947,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23634,14 +23466,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 1324,
-                                proportion: 0.2508050767190756,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23671,14 +23496,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 20,
-                                proportion: 0.003723701359150996,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23708,14 +23526,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 31,
-                                proportion: 0.005769588684161549,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23737,15 +23548,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C832T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018615040953090098,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23767,7 +23578,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C835T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -23777,7 +23595,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -23791,14 +23616,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5274,
-                                proportion: 0.9907946646627841,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23820,7 +23638,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C934T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -23851,14 +23676,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018556318426424198,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23888,14 +23706,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 75,
-                                proportion: 0.014026556947821208,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23925,14 +23736,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.002056843679880329,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -23941,7 +23745,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -23955,16 +23766,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 12,
-                                proportion: 0.0022275849266753297,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -23978,14 +23796,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014831294030404152,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24007,7 +23818,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A1194G',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -24030,7 +23848,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C1263T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -24091,14 +23916,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.002238388360380526,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24128,14 +23946,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 28,
-                                proportion: 0.005372217958557176,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24165,14 +23976,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0015384615384615385,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24194,16 +23998,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'T1570C',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0015217804831653035,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -24225,14 +24036,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 18,
-                                proportion: 0.003401360544217687,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24262,14 +24066,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.00207782395164337,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24299,14 +24096,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 18,
-                                proportion: 0.003297307199120718,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24336,14 +24126,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.0031135531135531138,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24373,15 +24156,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 15,
-                                proportion: 0.0027462467960454044,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -24403,14 +24186,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0016477480776272428,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24440,14 +24216,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014646649578908824,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24477,14 +24246,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.0025636330342428126,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24514,14 +24276,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 350,
-                                proportion: 0.06412605349945034,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24551,14 +24306,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 82,
-                                proportion: 0.015012815818381545,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24588,14 +24336,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0016474464579901153,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24625,15 +24366,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 8,
-                                proportion: 0.0014643968515467693,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -24655,15 +24396,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.001282521069989007,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -24685,14 +24426,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.002932551319648094,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24722,16 +24456,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.0010993037742762918,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -24745,14 +24486,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 35,
-                                proportion: 0.006404391582799634,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24782,14 +24516,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.0021957913998170175,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24819,14 +24546,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 21,
-                                proportion: 0.0038489736070381232,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24856,14 +24576,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.001284168042560998,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24885,15 +24598,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C2062T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012848751835535977,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24902,7 +24615,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -24916,14 +24636,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.001834862385321101,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24953,14 +24666,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020190895741556535,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -24999,21 +24705,28 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C2113T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.0016516792071939806,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25043,15 +24756,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0012787723785166241,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -25073,14 +24786,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 29,
-                                proportion: 0.00529390288426433,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25110,14 +24816,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012827560930914422,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25139,15 +24838,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C2334T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018443378827001106,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25156,7 +24855,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -25170,14 +24876,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011047689191677407,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25207,14 +24906,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.0022099447513812156,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25244,14 +24936,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 26,
-                                proportion: 0.004788213627992633,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25273,15 +24958,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C2488T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.0016574585635359116,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25341,14 +25026,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0017713048612477858,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25408,14 +25086,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 114,
-                                proportion: 0.022641509433962263,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25437,15 +25108,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C2788T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0013910969793322733,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25475,14 +25146,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5031,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25513,7 +25177,14 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -25527,16 +25198,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C2880T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0013335873499714232,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -25567,7 +25245,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -25581,15 +25266,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.0010966916468652897,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -25611,14 +25296,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018261504747991235,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25627,7 +25305,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -25641,14 +25326,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5476,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25678,14 +25356,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0023739956172388606,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25745,14 +25416,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 26,
-                                proportion: 0.004746257758305951,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25791,7 +25455,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -25805,14 +25476,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0018057784911717496,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25821,13 +25485,27 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C3411T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -25858,14 +25536,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4926,
-                                proportion: 0.9977719262710147,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25887,15 +25558,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'T3488C',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 5,
-                                proportion: 0.0010036130068245685,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25904,7 +25575,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -25918,15 +25596,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 17,
-                                proportion: 0.003108997805413314,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -25948,14 +25626,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5363,
-                                proportion: 0.9959145775301764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -25977,15 +25648,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C3583T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012804097311139564,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26015,14 +25686,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.0021937842778793418,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26074,15 +25738,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C3773T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012939001848428836,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26091,7 +25755,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -26105,14 +25776,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.002021315692760015,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26143,7 +25807,14 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -26165,14 +25836,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 19,
-                                proportion: 0.0034945742137208018,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26202,14 +25866,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.003140007388252678,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26239,14 +25896,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 72,
-                                proportion: 0.013279232755440797,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26276,16 +25926,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0012903225806451613,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -26299,14 +25956,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018288222384784199,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26336,14 +25986,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5478,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26365,16 +26008,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C4189T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0010954902318787657,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -26396,14 +26046,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 25,
-                                proportion: 0.0045662100456621,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26425,15 +26068,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A4209G',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012783053323593865,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26442,7 +26085,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -26456,16 +26106,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.0011015237745548008,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -26479,14 +26136,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.0027527986786566342,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26516,14 +26166,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5370,
-                                proportion: 0.9891324369128753,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26545,15 +26188,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C4331T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.001652285661832201,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26583,14 +26226,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 31,
-                                proportion: 0.005724838411819021,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26612,15 +26248,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C4543T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.001688872208669544,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26650,14 +26286,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.002810041213937804,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26679,16 +26308,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C4582T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0013118440779610195,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -26702,15 +26338,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C4586T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0013130744700806604,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26740,14 +26376,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010995052226498076,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26756,7 +26385,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -26770,15 +26406,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 12,
-                                proportion: 0.002198204799413812,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -26800,15 +26436,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 13,
-                                proportion: 0.002380952380952381,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -26830,14 +26466,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 34,
-                                proportion: 0.006228246931672467,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26876,21 +26505,28 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C4897T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014654698662758747,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26899,7 +26535,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -26943,14 +26586,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 22,
-                                proportion: 0.0040256175663311985,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26980,14 +26616,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014703179562580407,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -26996,7 +26625,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -27010,14 +26646,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.002749266862170088,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27047,14 +26676,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.001832508704416346,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27076,15 +26698,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C5183T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012827560930914422,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27106,7 +26728,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C5192T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -27137,14 +26766,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.001282051282051282,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27153,7 +26775,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -27167,16 +26796,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 10,
-                                proportion: 0.0018318373328448433,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -27190,14 +26826,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.002380952380952381,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27227,15 +26856,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.0011019283746556473,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -27257,14 +26886,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.001281347245103423,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27273,7 +26895,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -27287,14 +26916,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 23,
-                                proportion: 0.004210911753936287,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27324,14 +26946,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018301610541727673,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27361,14 +26976,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0023796448837635,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27398,14 +27006,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 58,
-                                proportion: 0.010618820944708897,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27435,30 +27036,37 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.0010984987184181618,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C5628T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018301610541727673,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27480,16 +27088,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C5646T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014635931211123307,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -27511,14 +27126,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 21,
-                                proportion: 0.0038426349496797803,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27548,14 +27156,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.002403846153846154,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27585,14 +27186,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.00277623542476402,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27622,14 +27216,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014825796886582653,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27651,9 +27238,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C5835T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -27675,14 +27276,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.003156917363045497,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27712,14 +27306,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014847809948032665,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27749,14 +27336,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 24,
-                                proportion: 0.004394799487273393,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27786,14 +27366,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 29,
-                                proportion: 0.005313301575668743,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27823,14 +27396,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014678899082568807,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27839,13 +27405,27 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C6027T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -27876,14 +27456,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020164986251145736,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27913,16 +27486,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 17,
-                                proportion: 0.0031169783645031168,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -27936,15 +27516,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0012818165171214063,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -27966,14 +27546,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5408,
-                                proportion: 0.9937522969496508,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -27995,15 +27568,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C6286T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0013115982761851227,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28033,14 +27606,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 32,
-                                proportion: 0.005962362586174772,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28062,16 +27628,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C6312T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0013040238450074517,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -28085,15 +27658,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C6401T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.001861850679575498,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28102,7 +27675,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -28125,13 +27705,27 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'A6459G',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -28154,7 +27748,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'G6532T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -28177,15 +27778,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C6539T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.001102333272092596,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28215,16 +27816,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.0011019283746556473,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -28268,14 +27876,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 22,
-                                proportion: 0.004041888664339519,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28297,15 +27898,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C6573T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.001866368047779022,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28314,23 +27915,44 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C6628T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018698578908002991,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -28344,16 +27966,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0013089005235602095,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -28367,14 +27996,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0013101253977166386,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28404,14 +28026,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 33,
-                                proportion: 0.00617399438727783,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28441,14 +28056,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 25,
-                                proportion: 0.0046816479400749065,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28478,14 +28086,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0016857089342573516,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28515,14 +28116,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014908684308609765,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28552,14 +28146,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.001646843549862763,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28589,14 +28176,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0016477480776272428,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28605,37 +28185,58 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C6968T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 15,
-                                proportion: 0.002745241581259151,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C6982T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.001463860933211345,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28665,14 +28266,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 27,
-                                proportion: 0.004942339373970346,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28703,7 +28297,14 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -28717,7 +28318,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C7086T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -28748,14 +28356,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.0027522935779816515,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28777,15 +28378,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C7165T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.0016501650165016502,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28794,13 +28395,27 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'T7258C',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -28832,7 +28447,14 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -28854,15 +28476,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0013227513227513227,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -28884,14 +28506,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0024546827794561933,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28913,31 +28528,45 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A7444G',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 11,
-                                proportion: 0.002072343632253203,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C7528T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0014406256431364478,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -28967,14 +28596,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 30,
-                                proportion: 0.0062827225130890054,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29004,14 +28626,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0012575979878432194,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29020,7 +28635,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -29034,14 +28656,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.003136762860727729,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29071,15 +28686,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 8,
-                                proportion: 0.0016604400166044002,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -29101,14 +28716,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0018722696068233825,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29130,7 +28738,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C7735T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -29161,14 +28776,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 31,
-                                proportion: 0.006403635612476761,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29190,16 +28798,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C7765T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.001446280991735537,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -29221,14 +28836,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5469,
-                                proportion: 0.9989041095890411,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29258,14 +28866,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.002190580503833516,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29295,16 +28896,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 10,
-                                proportion: 0.0018244845831052727,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -29319,14 +28927,35 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'G7936T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -29336,7 +28965,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -29350,14 +28986,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 24,
-                                proportion: 0.004379562043795621,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29379,33 +29008,61 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A7990G',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 26,
-                                proportion: 0.004745391494798321,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'T7995G',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 56,
-                                proportion: 0.010220843219565614,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -29419,14 +29076,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 35,
-                                proportion: 0.006409082585607032,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29486,14 +29136,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 19,
-                                proportion: 0.003475397841595025,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29515,15 +29158,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C8290T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.001282521069989007,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29553,14 +29196,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5451,
-                                proportion: 0.9990835777126099,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29590,14 +29226,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020157595748579804,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29619,15 +29248,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C8318A',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.001282991202346041,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29649,7 +29278,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C8326T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -29680,14 +29316,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.002374429223744292,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29718,7 +29347,14 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -29740,14 +29376,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5470,
-                                proportion: 0.999451854558743,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29777,14 +29406,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 58,
-                                proportion: 0.010597478530970218,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29823,13 +29445,27 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C8655T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -29869,7 +29505,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -29883,14 +29526,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 24,
-                                proportion: 0.004533434076312807,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29912,7 +29548,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C9073T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -29922,23 +29565,44 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'A9085G',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.001281347245103423,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -29952,14 +29616,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.001650467632495874,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -29989,14 +29646,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 130,
-                                proportion: 0.023853211009174313,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30018,9 +29668,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C9166T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -30072,15 +29736,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 8,
-                                proportion: 0.0014692378328741965,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -30102,14 +29766,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5464,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30148,7 +29805,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -30162,14 +29826,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5359,
-                                proportion: 0.9983233979135618,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30199,15 +29856,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0013025679196129512,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -30229,14 +29886,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 21,
-                                proportion: 0.003908431044109436,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30258,16 +29908,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C9532T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 13,
-                                proportion: 0.0024132170038982737,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -30289,14 +29946,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5382,
-                                proportion: 0.9990718396138852,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30326,14 +29976,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018532246108228317,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30363,16 +30006,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 9,
-                                proportion: 0.0016651248843663274,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -30386,14 +30036,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 35,
-                                proportion: 0.006469500924214418,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30423,14 +30066,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.0029968158831241805,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30460,14 +30096,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.003181733108740408,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30489,15 +30118,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'G9753A',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0011248593925759281,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30506,7 +30135,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -30520,14 +30156,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 20,
-                                proportion: 0.0037439161362785474,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30557,14 +30186,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011244377811094452,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30624,14 +30246,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020461309523809525,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30661,14 +30276,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011282437006393381,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30677,7 +30285,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -30691,14 +30306,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018786398647379298,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30728,14 +30336,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0015029118917903438,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30765,14 +30366,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5320,
-                                proportion: 0.9996242014280345,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30832,14 +30426,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 19,
-                                proportion: 0.003580177124552478,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30869,14 +30456,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.002072343632253203,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30885,21 +30465,28 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C10189T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0015091492171288435,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30908,7 +30495,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -30922,14 +30516,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5303,
-                                proportion: 0.9996229971724788,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -30981,15 +30568,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C10279T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.001484230055658627,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31019,14 +30606,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 41,
-                                proportion: 0.007617985878855444,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31056,14 +30636,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 20,
-                                proportion: 0.003734827264239029,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31093,14 +30666,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.002011336624611446,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31130,14 +30696,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5475,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31167,14 +30726,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 27,
-                                proportion: 0.004931506849315068,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31204,14 +30756,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5475,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31241,15 +30786,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 20,
-                                proportion: 0.0036496350364963502,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -31271,14 +30816,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0016423357664233577,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31287,7 +30825,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -31301,14 +30846,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010948905109489052,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31330,15 +30868,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C10537T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012773722627737226,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31347,13 +30885,27 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C10702T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -31384,14 +30936,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 20,
-                                proportion: 0.0037030179596371044,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31413,15 +30958,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C10747T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0011115227862171174,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31443,16 +30988,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C10789T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012984603969578928,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -31474,14 +31026,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011088523378303455,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31490,13 +31035,27 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C10834T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -31519,15 +31078,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C10969T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0011015237745548008,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31549,15 +31108,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C11003T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 13,
-                                proportion: 0.0023870730811604846,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31587,14 +31146,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 27,
-                                proportion: 0.0049586776859504135,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31624,14 +31176,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5448,
-                                proportion: 0.9994496422674739,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31661,14 +31206,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.0022123893805309734,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31698,14 +31236,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 105,
-                                proportion: 0.01935483870967742,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31727,15 +31258,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C11173T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014635931211123307,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31765,14 +31296,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 22,
-                                proportion: 0.0040145985401459855,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31803,8 +31327,22 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -31819,8 +31357,22 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -31835,8 +31387,22 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -31850,14 +31416,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5114,
-                                proportion: 0.9996090695856138,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31887,14 +31446,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5100,
-                                proportion: 0.999607996863975,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31924,14 +31476,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5065,
-                                proportion: 0.9994080505130228,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31961,14 +31506,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5057,
-                                proportion: 0.9994071146245059,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -31998,14 +31536,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5053,
-                                proportion: 0.9992090172038758,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32035,14 +31566,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5050,
-                                proportion: 0.999208547685002,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32072,14 +31596,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5045,
-                                proportion: 0.999009900990099,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32109,14 +31626,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5033,
-                                proportion: 0.998809287557055,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32147,7 +31657,14 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -32169,14 +31686,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5024,
-                                proportion: 0.9990057665539869,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32206,14 +31716,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012785388127853881,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32222,21 +31725,28 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C11518T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0011483253588516747,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32266,14 +31776,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 38,
-                                proportion: 0.0074393108848864525,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32325,15 +31828,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C11620T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.0017567831348819052,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32363,14 +31866,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 22,
-                                proportion: 0.004301075268817204,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32400,14 +31896,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.001582591493570722,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32437,14 +31926,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5054,
-                                proportion: 0.9986168741355463,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32474,14 +31956,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 316,
-                                proportion: 0.062058130400628436,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32520,7 +31995,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -32534,14 +32016,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.0026138909634055266,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32550,7 +32025,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -32564,14 +32046,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.002423112767940354,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32601,15 +32076,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0013023255813953488,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -32623,9 +32098,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C11833T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -32647,14 +32136,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011142061281337048,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32684,14 +32166,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 22,
-                                proportion: 0.00408997955010225,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32721,14 +32196,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020347761746207916,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32737,7 +32205,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -32752,8 +32227,22 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -32767,14 +32256,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.002397639247510144,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32804,14 +32286,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014768321949418497,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32841,14 +32316,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.002748763056624519,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32870,15 +32338,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C12513T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0011003117549972493,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32908,14 +32376,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.0025664527956003667,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32945,15 +32406,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 8,
-                                proportion: 0.001466544454628781,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -32975,14 +32436,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.001099102399706906,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -32991,7 +32445,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -33005,14 +32466,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010997067448680353,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33034,15 +32488,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C12651T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.0016477480776272428,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33051,7 +32505,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -33065,14 +32526,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.00145985401459854,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33102,14 +32556,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5475,
-                                proportion: 0.9985409447382819,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33139,14 +32586,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5469,
-                                proportion: 0.9994517543859649,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33176,14 +32616,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5466,
-                                proportion: 0.9996342355523044,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33243,14 +32676,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 139,
-                                proportion: 0.025411334552102375,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33280,14 +32706,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.002191380569758948,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33317,15 +32736,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.001095890410958904,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -33347,14 +32766,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 84,
-                                proportion: 0.015370539798719121,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33384,15 +32796,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 8,
-                                proportion: 0.0014603870025556773,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -33444,14 +32856,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 30,
-                                proportion: 0.005639097744360902,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33481,14 +32886,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 32,
-                                proportion: 0.00600375234521576,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33518,22 +32916,36 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 17,
-                                proportion: 0.0031859070464767617,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C13335T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -33564,14 +32976,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5320,
-                                proportion: 0.9966279505432747,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33601,14 +33006,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020665038512117226,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33638,15 +33036,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 9,
-                                proportion: 0.0016822429906542056,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -33668,14 +33066,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 41,
-                                proportion: 0.007797641688855078,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33705,14 +33096,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 25,
-                                proportion: 0.004606596646397641,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33742,16 +33126,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 18,
-                                proportion: 0.0033143067575032224,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -33774,7 +33165,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -33788,14 +33186,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.002213613724405091,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33825,14 +33216,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 18,
-                                proportion: 0.0032858707557502738,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33862,14 +33246,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 19,
-                                proportion: 0.0034652562465803394,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33899,14 +33276,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020072992700729928,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -33966,30 +33336,37 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0012780719371918933,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'T14064C',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.001276440554339898,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34019,14 +33396,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012769062385990515,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34035,7 +33405,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -34079,14 +33456,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 19,
-                                proportion: 0.0034665207079000184,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34116,14 +33486,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5487,
-                                proportion: 0.9998177842565598,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34153,14 +33516,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.003136531365313653,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34220,14 +33576,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018821757952192735,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34257,14 +33606,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.002210759027266028,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34286,15 +33628,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A14836G',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012898470609913396,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34303,7 +33645,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -34317,16 +33666,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0012888970723623642,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -34340,14 +33696,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.0029498525073746312,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34377,14 +33726,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0023705324580598104,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34414,14 +33756,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 37,
-                                proportion: 0.00674690007293946,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34473,7 +33808,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C15450T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -34504,14 +33846,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0016602102933038186,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34541,14 +33876,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 55,
-                                proportion: 0.010183299389002037,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34570,15 +33898,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C15540T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014643968515467693,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34587,7 +33915,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -34601,14 +33936,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.0021901806899069175,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34638,14 +33966,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5485,
-                                proportion: 0.9998177178271965,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34675,14 +33996,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.002393665991530105,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34721,7 +34035,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -34735,14 +34056,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5439,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34772,14 +34086,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018368846436443791,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34809,14 +34116,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018372221201543267,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34838,15 +34138,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C15951T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018351991191044228,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34868,15 +34168,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C15952T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018351991191044228,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34906,14 +34206,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012848751835535977,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34943,14 +34236,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010938924339106654,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -34980,14 +34266,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020069330414158,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35017,14 +34296,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 39,
-                                proportion: 0.0071154898741105635,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35054,14 +34326,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 36,
-                                proportion: 0.006570542069720752,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35091,14 +34356,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 59,
-                                proportion: 0.010768388392042343,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35128,14 +34386,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.00145985401459854,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35144,21 +34395,28 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C16332T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.0016417365924844946,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35180,15 +34438,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C16338T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0010944910616563297,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35210,15 +34468,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'T16374C',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.0016420361247947454,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35227,7 +34485,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -35241,16 +34506,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 11,
-                                proportion: 0.0020419528494523853,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -35264,14 +34536,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014839547393804488,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35301,14 +34566,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0023709648002918113,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35338,14 +34596,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 128,
-                                proportion: 0.023370458280080338,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35397,16 +34648,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'T16950C',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012787723785166241,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -35428,14 +34686,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012757426644796792,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35465,14 +34716,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 26,
-                                proportion: 0.004744525547445255,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35502,14 +34746,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 25,
-                                proportion: 0.004562043795620438,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35539,14 +34776,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.001459321415541773,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35576,14 +34806,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 28,
-                                proportion: 0.005131024372365769,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35613,14 +34836,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014633254069873788,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35680,14 +34896,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.00202020202020202,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35717,14 +34926,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5447,
-                                proportion: 0.9996329601761791,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35754,14 +34956,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.001457991616548205,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35791,14 +34986,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 400,
-                                proportion: 0.07296607077708865,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35828,14 +35016,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014577259475218659,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35865,14 +35046,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 21,
-                                proportion: 0.0038272279934390375,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35924,15 +35098,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C17745T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.001095690284879474,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -35962,15 +35136,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.001095890410958904,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -36031,21 +35205,28 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C17999T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014834044131281292,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36075,14 +35256,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 28,
-                                proportion: 0.005191915445948452,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36104,7 +35278,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C18086T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -36135,15 +35316,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 10,
-                                proportion: 0.0018573551263001485,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -36165,14 +35346,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.001483679525222552,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36202,14 +35376,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5385,
-                                proportion: 0.9996287358455541,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36231,17 +35398,31 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'T18244G',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 41,
-                                proportion: 0.007640700708162505,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -36264,21 +35445,28 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C18348T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0011005135730007337,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36287,7 +35475,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -36301,14 +35496,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.001650467632495874,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36317,7 +35505,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -36361,14 +35556,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 1078,
-                                proportion: 0.19885629957572404,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36428,14 +35616,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 19,
-                                proportion: 0.003493931592497242,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36457,15 +35638,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C18483T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.001840264998159735,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36495,14 +35676,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5478,
-                                proportion: 0.9996350364963503,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36532,14 +35706,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.0029223744292237444,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36569,14 +35736,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012783053323593865,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36598,15 +35758,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C18570T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0010954902318787657,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36636,14 +35796,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 26,
-                                proportion: 0.0047419296005836225,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36673,14 +35826,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 40,
-                                proportion: 0.007297938332421091,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36710,14 +35856,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 55,
-                                proportion: 0.01004382761139518,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36747,14 +35886,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 30,
-                                proportion: 0.005472455308281649,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36784,14 +35916,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.002736726874657909,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36813,15 +35938,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C18744T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.001277139208173691,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36851,14 +35976,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 37,
-                                proportion: 0.006753057127212995,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36888,14 +36006,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 20,
-                                proportion: 0.0036496350364963502,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -36917,16 +36028,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C18877T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.0017068082685378343,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -36940,7 +36058,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C18888T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -36971,14 +36096,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5256,
-                                proportion: 0.9998097774396043,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37000,7 +36118,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C18928T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -37023,15 +36148,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C19011T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0015003750937734434,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37053,15 +36178,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C19017T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018744142455482662,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37083,7 +36208,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'G19132A',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -37144,14 +36276,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018231540565177757,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37181,14 +36306,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 36,
-                                proportion: 0.006564551422319475,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37218,14 +36336,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0016408386508659982,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37255,16 +36366,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 8,
-                                proportion: 0.00145985401459854,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -37278,14 +36396,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 29,
-                                proportion: 0.005289075323727886,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37315,14 +36426,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0023709648002918113,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37344,16 +36448,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C19572T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014633254069873788,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -37375,14 +36486,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 24,
-                                proportion: 0.00437636761487965,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37412,16 +36516,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.001277139208173691,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -37435,14 +36546,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5112,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37472,14 +36576,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0025355958650282815,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37509,14 +36606,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5244,
-                                proportion: 0.9990474376071633,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37546,16 +36636,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 9,
-                                proportion: 0.0017077798861480076,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -37569,14 +36666,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 20,
-                                proportion: 0.003781433163168841,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37606,14 +36696,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0015142911224682945,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37643,15 +36726,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 11,
-                                proportion: 0.002085308056872038,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -37665,15 +36748,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C20233T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0013250047321597578,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37695,16 +36778,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'T20337C',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.0016958733747880158,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -37735,7 +36825,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -37749,14 +36846,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.0029690109482278714,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37765,7 +36855,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -37779,14 +36876,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.0025901942645698427,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37817,7 +36907,14 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -37839,14 +36936,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012977382276603633,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37855,7 +36945,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -37869,14 +36966,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0019406171162429653,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37898,7 +36988,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C20759T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -37929,14 +37026,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.001750291715285881,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37967,8 +37057,22 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -37982,14 +37086,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.001168679392286716,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -37998,7 +37095,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -38012,14 +37116,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 44,
-                                proportion: 0.008585365853658537,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38049,14 +37146,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.0023396373562097877,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38086,14 +37176,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011679968853416391,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38123,14 +37206,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011682242990654205,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38160,14 +37236,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 23,
-                                proportion: 0.004493942946463462,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38189,15 +37258,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C21145T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.001957713390759593,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38227,14 +37296,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0015658641612840086,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38273,21 +37335,28 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'T21246C',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 12,
-                                proportion: 0.0023405500292568754,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38317,14 +37386,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 18,
-                                proportion: 0.0035121951219512196,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38354,14 +37416,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 20,
-                                proportion: 0.0039032006245121,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38391,14 +37446,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 24,
-                                proportion: 0.004763795156808257,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38428,14 +37476,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 27,
-                                proportion: 0.005060918462980318,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38457,9 +37498,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C21595T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -38481,14 +37536,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 300,
-                                proportion: 0.061677631578947366,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38510,16 +37558,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A21612T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0017497812773403325,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -38541,14 +37596,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0013123359580052493,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38578,16 +37626,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 8,
-                                proportion: 0.00175054704595186,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -38601,14 +37656,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4566,
-                                proportion: 0.9989061474513236,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38638,14 +37686,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4556,
-                                proportion: 0.9975914166849135,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38675,14 +37716,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4557,
-                                proportion: 0.9973736047275115,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38712,14 +37746,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0013126230584117262,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38728,7 +37755,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -38743,8 +37777,22 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -38758,14 +37806,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4225,
-                                proportion: 0.9936500470366886,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38795,14 +37836,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4225,
-                                proportion: 0.9981100874084574,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38832,14 +37866,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4227,
-                                proportion: 0.9988185255198487,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38869,14 +37896,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4227,
-                                proportion: 0.9988185255198487,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38906,14 +37926,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4227,
-                                proportion: 0.9985825655563431,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38943,14 +37956,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4227,
-                                proportion: 0.9985825655563431,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -38980,14 +37986,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4227,
-                                proportion: 0.9981109799291618,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39017,14 +38016,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4226,
-                                proportion: 0.9941190308162785,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39054,14 +38046,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 512,
-                                proportion: 0.10792580101180438,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39091,14 +38076,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4224,
-                                proportion: 0.8903878583473862,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39128,14 +38106,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 19,
-                                proportion: 0.0034926470588235296,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39157,16 +38128,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C21658T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.001838235294117647,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -39188,14 +38166,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 23,
-                                proportion: 0.004224058769513315,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39225,16 +38196,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 8,
-                                proportion: 0.0014681592952835382,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -39248,14 +38226,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5156,
-                                proportion: 0.9984508133230054,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39285,14 +38256,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 53,
-                                proportion: 0.01017274472168906,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39322,14 +38286,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 40,
-                                proportion: 0.007689350249903883,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39351,7 +38308,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'T21740G',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -39382,15 +38346,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 10,
-                                proportion: 0.001923816852635629,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -39404,7 +38368,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C21742T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -39435,14 +38406,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.001539349624783529,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39472,14 +38436,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 49,
-                                proportion: 0.009485094850948509,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39509,14 +38466,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4467,
-                                proportion: 0.9891496899911426,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39546,14 +38496,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4467,
-                                proportion: 0.9950991312096236,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39583,14 +38526,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4502,
-                                proportion: 0.9960176991150442,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39620,14 +38556,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4454,
-                                proportion: 0.9856162867891126,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39657,14 +38586,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4454,
-                                proportion: 0.992866696388765,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39694,14 +38616,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4420,
-                                proportion: 0.994823317578213,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39723,17 +38638,31 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C21846T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 13,
-                                proportion: 0.0024942440521872602,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -39748,8 +38677,22 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -39763,14 +38706,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5446,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39800,14 +38736,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5440,
-                                proportion: 0.9968847352024922,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39837,14 +38766,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5099,
-                                proportion: 0.9945387165984007,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39874,14 +38796,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5102,
-                                proportion: 0.9949297971918877,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39911,14 +38826,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5100,
-                                proportion: 0.9330406147091108,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39948,14 +38856,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018301610541727673,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -39985,14 +38886,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018291567587342234,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40022,14 +38916,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018288222384784199,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40059,14 +38946,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012808783165599268,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40096,14 +38976,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 20,
-                                proportion: 0.003658313517468447,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40155,15 +39028,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A22011T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018261504747991235,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40193,16 +39066,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 11,
-                                proportion: 0.0020087655222790356,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -40216,14 +39096,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.0021921812203142127,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40253,14 +39126,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5459,
-                                proportion: 0.9989021043000915,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40290,14 +39156,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5459,
-                                proportion: 0.9992678015742266,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40327,14 +39186,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5460,
-                                proportion: 0.9996338337605273,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40356,7 +39208,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C22088T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -40387,14 +39246,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010984987184181618,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40403,7 +39255,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -40417,14 +39276,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 85,
-                                proportion: 0.015562065177590626,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40454,14 +39306,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 77,
-                                proportion: 0.014118078474514118,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40521,14 +39366,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5243,
-                                proportion: 0.9954433263717486,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40558,14 +39396,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5243,
-                                proportion: 0.9931805266148892,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40595,14 +39426,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5256,
-                                proportion: 0.9956431142261792,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40632,14 +39456,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0023875114784205694,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40648,7 +39465,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -40663,8 +39487,22 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -40678,14 +39516,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5433,
-                                proportion: 0.9988968560397132,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40715,14 +39546,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5437,
-                                proportion: 0.9994485294117647,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40744,7 +39568,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C22224T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -40775,14 +39606,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 31,
-                                proportion: 0.005695388572478413,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40804,15 +39628,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C22264T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.001486988847583643,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40821,7 +39645,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -40835,14 +39666,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5356,
-                                proportion: 0.9988810145468109,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40872,14 +39696,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011181513231457323,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40909,14 +39726,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5334,
-                                proportion: 0.98905989245318,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -40938,16 +39748,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'G22364A',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0011121408711770157,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -40969,14 +39786,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011115227862171174,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41015,7 +39825,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -41029,14 +39846,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020476545048399106,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41066,14 +39876,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0013032954757028485,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41082,7 +39885,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -41096,14 +39906,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012977382276603633,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41133,14 +39936,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0013052396046988625,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41170,14 +39966,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.002980070776680946,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41207,14 +39996,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5357,
-                                proportion: 0.9979508196721312,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41244,14 +40026,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0013042668157257314,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41281,14 +40056,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5352,
-                                proportion: 0.9983212087297146,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41318,14 +40086,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5358,
-                                proportion: 0.9996268656716418,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41377,15 +40138,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'G22599A',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 12,
-                                proportion: 0.002229654403567447,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41415,14 +40176,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 166,
-                                proportion: 0.030843552582683016,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41444,15 +40198,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'G22599T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018580453363062058,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41461,21 +40215,28 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'A22600T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014856081708449396,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41505,14 +40266,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012991833704528583,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41542,14 +40296,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 49,
-                                proportion: 0.009111193752324285,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41579,14 +40326,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5307,
-                                proportion: 0.999058734939759,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41616,14 +40356,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 26,
-                                proportion: 0.004835410079970244,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41653,14 +40386,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5359,
-                                proportion: 0.9994405072734055,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41690,14 +40416,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5410,
-                                proportion: 0.9998151912770282,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41727,14 +40446,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5404,
-                                proportion: 0.9996300406955235,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41764,14 +40476,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5397,
-                                proportion: 0.9992593964080726,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41801,14 +40506,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.002397639247510144,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41838,14 +40536,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4368,
-                                proportion: 0.9952153110047847,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41875,14 +40566,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5437,
-                                proportion: 0.9998161088635528,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41912,14 +40596,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5420,
-                                proportion: 0.9959573686144799,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41949,14 +40626,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.002796420581655481,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -41986,14 +40656,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5310,
-                                proportion: 0.9936377245508982,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42023,14 +40686,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.003004694835680751,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42060,14 +40716,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5369,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42127,14 +40776,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5364,
-                                proportion: 0.9992548435171386,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42164,14 +40806,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5362,
-                                proportion: 0.9990683808459102,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42201,14 +40836,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5368,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42238,14 +40866,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5366,
-                                proportion: 0.999813676169182,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42275,14 +40896,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5357,
-                                proportion: 0.9994402985074626,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42312,14 +40926,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5364,
-                                proportion: 0.9996272828922848,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42349,14 +40956,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5364,
-                                proportion: 0.9986967045242972,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42386,14 +40986,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 36,
-                                proportion: 0.006701414743112435,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42423,14 +41016,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 19,
-                                proportion: 0.0035361995160990136,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42460,14 +41046,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5378,
-                                proportion: 0.9998140918386317,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42497,14 +41076,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 20,
-                                proportion: 0.00370919881305638,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42534,14 +41106,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5388,
-                                proportion: 0.9994435169727324,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42580,7 +41145,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -42594,14 +41166,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5385,
-                                proportion: 0.9990723562152134,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42631,14 +41196,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5362,
-                                proportion: 0.9988822652757079,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42668,14 +41226,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4796,
-                                proportion: 0.9919338159255429,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42705,14 +41256,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4794,
-                                proportion: 0.9925465838509316,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42742,14 +41286,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4794,
-                                proportion: 0.8940693770980978,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42779,14 +41316,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5357,
-                                proportion: 0.9983227730152814,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42817,8 +41347,22 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -42832,14 +41376,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5364,
-                                proportion: 0.9985107967237528,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42869,14 +41406,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5364,
-                                proportion: 0.9985107967237528,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42906,14 +41436,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5385,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42943,14 +41466,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5385,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -42980,14 +41496,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5366,
-                                proportion: 0.9975831939022123,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43009,15 +41518,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C23086T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 16,
-                                proportion: 0.002971216341689879,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43047,14 +41556,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 21,
-                                proportion: 0.003832116788321168,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43084,14 +41586,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5482,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43113,7 +41608,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'G23262A',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -43144,14 +41646,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5485,
-                                proportion: 0.9998177178271965,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43181,14 +41676,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 422,
-                                proportion: 0.0770213542617266,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43218,14 +41706,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010940919037199124,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43255,14 +41736,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5485,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43284,15 +41758,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A23416T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 16,
-                                proportion: 0.0029175784099197666,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43322,14 +41796,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5484,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43351,15 +41818,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C23481T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0011799410029498525,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43389,14 +41856,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.00216025137470542,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43426,14 +41886,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5095,
-                                proportion: 0.9994115339348765,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43463,14 +41916,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 23,
-                                proportion: 0.004431599229287091,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43501,7 +41947,14 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -43523,14 +41976,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5414,
-                                proportion: 0.9948548327820654,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43560,14 +42006,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 18,
-                                proportion: 0.0032924821657216025,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43597,14 +42036,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.00202020202020202,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43634,14 +42066,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5415,
-                                proportion: 0.9944903581267218,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43671,14 +42096,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0016459400146305778,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43700,15 +42118,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'G23610A',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014768321949418497,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43738,14 +42156,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.0031598513011152417,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43775,14 +42186,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 22,
-                                proportion: 0.004091500836897899,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43842,14 +42246,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.0022317277292170355,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43879,14 +42276,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.002411873840445269,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43916,14 +42306,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018563207722294413,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43953,14 +42336,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.0027881040892193307,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -43990,14 +42366,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 22,
-                                proportion: 0.004088459394164653,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44028,8 +42397,22 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -44043,14 +42426,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5384,
-                                proportion: 0.9990721840786788,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44080,14 +42456,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 35,
-                                proportion: 0.006457564575645757,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44109,15 +42478,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C23896T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 11,
-                                proportion: 0.002029520295202952,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44126,13 +42495,27 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C23929T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -44163,14 +42546,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5239,
-                                proportion: 0.9994276993513926,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44192,15 +42568,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C24023T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0015378700499807767,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44230,14 +42606,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011536243030186503,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44267,16 +42636,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0013338414634146342,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -44290,14 +42666,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 24,
-                                proportion: 0.00456534144949591,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44319,15 +42688,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C24370T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0011487650775416428,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44357,14 +42726,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5156,
-                                proportion: 0.9884969325153374,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44395,7 +42757,14 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -44417,14 +42786,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.001913143294432753,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44463,7 +42825,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -44477,14 +42846,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5218,
-                                proportion: 0.9988514548238897,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44514,14 +42876,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.00210727969348659,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44551,14 +42906,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5364,
-                                proportion: 0.9998136067101584,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44588,14 +42936,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 28,
-                                proportion: 0.005122575923893158,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44625,16 +42966,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 8,
-                                proportion: 0.0014619883040935672,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -44648,14 +42996,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 40,
-                                proportion: 0.007362414872078042,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44685,14 +43026,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020457504184489494,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44722,14 +43056,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 20,
-                                proportion: 0.003721622627465575,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44751,15 +43078,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C24904T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.001864628006712661,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44789,14 +43116,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5374,
-                                proportion: 0.9990704591931586,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44826,14 +43146,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5384,
-                                proportion: 0.9992576095025983,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44855,15 +43168,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C25006T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018552875695732839,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44893,14 +43206,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 161,
-                                proportion: 0.02988121752041574,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44922,15 +43228,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A25020T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018552875695732839,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44939,7 +43245,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -44983,14 +43296,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.001301841175376604,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -44999,7 +43305,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -45013,14 +43326,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5156,
-                                proportion: 0.9998060888113244,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45050,14 +43356,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 26,
-                                proportion: 0.005014464802314368,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45066,7 +43365,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -45080,14 +43386,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 42,
-                                proportion: 0.008038277511961723,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45117,14 +43416,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.001709077098366882,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45154,14 +43446,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 61,
-                                proportion: 0.011601369341955116,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45191,14 +43476,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 23,
-                                proportion: 0.00439266615737204,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45228,14 +43506,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.002188183807439825,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45265,14 +43536,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 35,
-                                proportion: 0.006377551020408163,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45302,14 +43566,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 24,
-                                proportion: 0.0043771657851541124,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45339,16 +43596,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 11,
-                                proportion: 0.0020062009848623016,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -45384,15 +43648,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'G25459T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.001276673354003283,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45422,14 +43686,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.001276673354003283,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45438,7 +43695,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -45452,14 +43716,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 23,
-                                proportion: 0.004196314541142127,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45498,7 +43755,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -45512,14 +43776,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 29,
-                                proportion: 0.005291005291005291,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45541,15 +43798,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C25549T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.0016414371694327922,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45579,14 +43836,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 185,
-                                proportion: 0.03375296478744755,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45616,15 +43866,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.001276673354003283,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -45646,14 +43896,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5481,
-                                proportion: 0.9996352361845705,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45683,15 +43926,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.001276673354003283,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -45713,14 +43956,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.003134796238244514,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45750,14 +43986,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0016414371694327922,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45766,7 +43995,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -45780,14 +44016,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010942914462885281,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45817,14 +44046,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 22,
-                                proportion: 0.0040138660828316,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45854,14 +44076,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 26,
-                                proportion: 0.0047419296005836225,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45891,14 +44106,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 162,
-                                proportion: 0.029551258664720904,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45928,14 +44136,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 35,
-                                proportion: 0.006391526661796932,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -45965,14 +44166,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.0029170464904284413,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46002,14 +44196,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 30,
-                                proportion: 0.0054694621695533276,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46039,14 +44226,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.001276440554339898,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46076,14 +44256,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.002020573108008817,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46113,14 +44286,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.002935241240139424,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46142,15 +44308,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C25791T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012839325018341892,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46180,14 +44346,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011011194714626537,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46217,14 +44376,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.002748259435690729,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46254,16 +44406,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 9,
-                                proportion: 0.001648653599560359,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -46277,14 +44436,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0018358729575913347,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46314,15 +44466,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0012848751835535977,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -46336,15 +44488,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C26029A',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014713996689350744,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46374,14 +44526,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5388,
-                                proportion: 0.9977777777777778,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46411,14 +44556,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.002037037037037037,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46427,7 +44565,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -46450,13 +44595,27 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'A26166T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -46466,7 +44625,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -46480,14 +44646,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5401,
-                                proportion: 0.9996298352766981,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46517,14 +44676,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 20,
-                                proportion: 0.003679175864606328,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46554,14 +44706,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 19,
-                                proportion: 0.003492005146112847,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46591,14 +44736,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 49,
-                                proportion: 0.00900404263138552,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46628,14 +44766,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014617211766855473,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46665,14 +44796,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5457,
-                                proportion: 0.9994505494505495,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46702,14 +44826,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5426,
-                                proportion: 0.9974264705882353,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46739,14 +44856,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4781,
-                                proportion: 0.9968723936613845,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46776,14 +44886,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.0029287937030935385,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46813,14 +44916,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5433,
-                                proportion: 0.9990805443177638,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46850,14 +44946,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5441,
-                                proportion: 0.9987151248164464,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46887,14 +44976,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.002010233918128655,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46925,7 +45007,14 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -46947,14 +45036,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.003103322380430814,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -46984,14 +45066,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.002555677254472435,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47021,14 +45096,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014601204599379448,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47058,14 +45126,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5473,
-                                proportion: 0.9992696731787475,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47095,14 +45156,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5470,
-                                proportion: 0.999269272926562,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47132,14 +45186,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.0029218407596785976,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47169,14 +45216,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012787723785166241,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47185,7 +45225,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -47199,14 +45246,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.0027397260273972603,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47236,14 +45276,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 200,
-                                proportion: 0.03661662394727206,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47282,7 +45315,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -47296,14 +45336,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.0022997316979685703,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47333,14 +45366,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012757426644796792,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47370,14 +45396,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5485,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47399,16 +45418,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C27294T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.001457991616548205,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -47422,7 +45448,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C27297T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -47453,14 +45486,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.002186987424822307,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47469,7 +45495,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -47483,14 +45516,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5454,
-                                proportion: 0.9987181834828786,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47520,14 +45546,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5453,
-                                proportion: 0.9985350668375755,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47557,14 +45576,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5446,
-                                proportion: 0.9976186114673017,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47594,15 +45606,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 11,
-                                proportion: 0.002011704462326262,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -47624,15 +45636,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 9,
-                                proportion: 0.0016565433462175593,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -47654,14 +45666,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 193,
-                                proportion: 0.03547142069472523,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47691,14 +45696,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.0027447392497712718,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47720,7 +45718,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C27494T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -47751,14 +45756,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.002013177159590044,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47818,14 +45816,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.001097494055240534,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47834,7 +45825,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -47848,14 +45846,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.001097494055240534,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47864,7 +45855,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -47878,14 +45876,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.001097494055240534,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47915,14 +45906,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.001097494055240534,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47952,14 +45936,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.001097494055240534,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -47989,14 +45966,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010978956999085087,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48116,14 +46086,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010978956999085087,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48153,14 +46116,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010980966325036604,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48190,14 +46146,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.00292772186642269,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48227,14 +46176,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 18,
-                                proportion: 0.003293084522502744,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48264,14 +46206,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 18,
-                                proportion: 0.003293084522502744,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48293,16 +46228,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'T27582-',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0010976948408342481,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -48324,15 +46266,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.0010976948408342481,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -48354,15 +46296,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.0010984987184181618,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -48384,15 +46326,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.0010984987184181618,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -48406,16 +46348,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C27600T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0010984987184181618,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -48437,14 +46386,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 31,
-                                proportion: 0.005674537799743731,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48496,7 +46438,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C27654T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -48527,14 +46476,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.002011336624611446,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48543,7 +46485,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -48557,14 +46506,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014823049842505095,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48573,7 +46515,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -48587,14 +46536,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.002745241581259151,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48616,15 +46558,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'T27793-',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 12,
-                                proportion: 0.0021957913998170175,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48633,7 +46575,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -48647,15 +46596,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.0010972933430870519,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -48677,14 +46626,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5468,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48714,14 +46656,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5464,
-                                proportion: 0.999085756079722,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48781,14 +46716,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0016483516483516484,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48848,14 +46776,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012984603969578928,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48885,15 +46806,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 14,
-                                proportion: 0.002619760479041916,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -48915,14 +46836,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0024326347305389222,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48931,22 +46845,36 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C28045T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0013135672734096453,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -48960,15 +46888,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C28054T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0013133208255159475,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -48998,14 +46926,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 25,
-                                proportion: 0.004696599661844825,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49035,14 +46956,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.0026375282592313487,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49072,14 +46986,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.0030775149067128293,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49109,14 +47016,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.003078699249567058,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49146,14 +47046,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.0030775149067128293,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49183,14 +47076,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.0019357336430507162,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49220,14 +47106,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.003097173828881146,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49257,14 +47136,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.0031007751937984496,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49294,14 +47166,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.0031013762357045937,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49331,14 +47196,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 42,
-                                proportion: 0.008136381247578458,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49368,16 +47226,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 8,
-                                proportion: 0.0015372790161414297,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -49391,14 +47256,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 236,
-                                proportion: 0.04359069080162541,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49428,14 +47286,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012910365178900774,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49444,7 +47295,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -49458,14 +47316,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 122,
-                                proportion: 0.022559171597633137,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49495,14 +47346,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5428,
-                                proportion: 0.9996316758747698,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49532,14 +47376,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012900847769996315,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49569,14 +47406,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 18,
-                                proportion: 0.00331858407079646,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49598,15 +47428,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C28310T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014751982297621243,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49636,14 +47466,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5420,
-                                proportion: 0.9994468006638392,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49673,14 +47496,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.0031342182890855457,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49710,14 +47526,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4880,
-                                proportion: 0.9967320261437909,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49747,14 +47556,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4879,
-                                proportion: 0.9977505112474437,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49784,14 +47586,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4879,
-                                proportion: 0.9977505112474437,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49821,14 +47616,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4879,
-                                proportion: 0.998567335243553,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49858,14 +47646,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4879,
-                                proportion: 0.998567335243553,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49895,14 +47676,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4879,
-                                proportion: 0.998567335243553,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49932,14 +47706,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4879,
-                                proportion: 0.998567335243553,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -49969,14 +47736,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4879,
-                                proportion: 0.998567335243553,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50006,14 +47766,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4855,
-                                proportion: 0.9983549249434506,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50043,14 +47796,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.0025806451612903226,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50080,14 +47826,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020265291083271923,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50096,13 +47835,27 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C28422T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -50125,15 +47878,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C28432T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012888970723623642,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50163,14 +47916,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.0027659966808039832,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50192,15 +47938,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C28507T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012799414883891023,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50209,7 +47955,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -50253,14 +48006,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 22,
-                                proportion: 0.004032258064516129,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50290,14 +48036,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.002565982404692082,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50319,15 +48058,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A28650G',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.001282991202346041,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50357,14 +48096,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 9,
-                                proportion: 0.0016498625114573786,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50373,7 +48105,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -50387,14 +48126,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.0025655121861828845,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50424,14 +48156,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014660069635330768,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50440,7 +48165,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -50454,14 +48186,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.001282991202346041,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50491,14 +48216,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 18,
-                                proportion: 0.0032967032967032967,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50520,15 +48238,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C28708T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 11,
-                                proportion: 0.0020135456708768075,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50550,15 +48268,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C28724T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 6,
-                                proportion: 0.0010978956999085087,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50567,7 +48285,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -50581,14 +48306,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 19,
-                                proportion: 0.003477306002928258,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50618,22 +48336,36 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.001281581838154522,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C28791T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -50664,14 +48396,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.002563163676309044,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50680,7 +48405,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -50694,16 +48426,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 12,
-                                proportion: 0.002196595277320154,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -50717,14 +48456,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 10,
-                                proportion: 0.001825150574922431,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50754,14 +48486,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 70,
-                                proportion: 0.012792397660818713,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50791,14 +48516,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 70,
-                                proportion: 0.012794735880095047,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50828,14 +48546,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5468,
-                                proportion: 0.9992690058479532,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50865,14 +48576,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5463,
-                                proportion: 0.9983552631578947,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50902,14 +48606,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5468,
-                                proportion: 0.9990864242645715,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50948,7 +48645,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -50962,14 +48666,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 16,
-                                proportion: 0.002924511058307439,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -50999,14 +48696,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014619883040935672,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51036,14 +48726,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 34,
-                                proportion: 0.006216858657889925,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51065,17 +48748,31 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C28957T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018288222384784199,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -51089,14 +48786,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5461,
-                                proportion: 0.9992680695333943,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51126,14 +48816,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014622555291537195,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51163,14 +48846,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 213,
-                                proportion: 0.03893967093235832,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51200,14 +48876,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 18,
-                                proportion: 0.0032912781130005485,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51229,17 +48898,31 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C29119T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 14,
-                                proportion: 0.0025589471760190095,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -51253,14 +48936,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0023757309941520467,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51282,15 +48958,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A29155G',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 14,
-                                proportion: 0.002559414990859232,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51320,14 +48996,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010960906101571063,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51349,7 +49018,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C29171T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -51372,16 +49048,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C29200T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014603870025556773,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -51395,16 +49078,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A29209G',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014611872146118722,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -51426,14 +49116,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 30,
-                                proportion: 0.005479452054794521,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51485,15 +49168,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C29272T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 16,
-                                proportion: 0.0029218407596785976,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51523,14 +49206,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.0025561438743837866,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51560,14 +49236,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014614541468761417,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51597,14 +49266,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014617211766855473,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51634,14 +49296,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 72,
-                                proportion: 0.01315068493150685,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51663,7 +49318,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C29353T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -51694,14 +49356,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010964912280701754,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51731,15 +49386,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0012783053323593865,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -51761,14 +49416,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.002556610664718773,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51798,14 +49446,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.0012792397660818713,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51814,7 +49455,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -51828,14 +49476,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.003105590062111801,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51865,14 +49506,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0010960906101571063,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51894,15 +49528,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C29421T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 7,
-                                proportion: 0.0012790060295998539,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51932,14 +49566,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5464,
-                                proportion: 1,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -51969,14 +49596,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.002408745599407078,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52006,30 +49626,37 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0012994245405606088,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'C29541T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 8,
-                                proportion: 0.0014853323431117712,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52051,16 +49678,23 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A29551G',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 10,
-                                proportion: 0.0018628912071535022,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -52074,7 +49708,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C29585T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -52105,14 +49746,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020591538749532012,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52142,14 +49776,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 6,
-                                proportion: 0.0011235955056179776,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52171,15 +49798,15 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C29640T',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 9,
-                                proportion: 0.0016841317365269462,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52188,7 +49815,14 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -52202,14 +49836,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.0014972861688190156,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52239,14 +49866,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0024528301886792454,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52276,14 +49896,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 22,
-                                proportion: 0.004162724692526017,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52313,15 +49926,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0013252555850056798,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -52343,14 +49956,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0020845177184006065,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52380,14 +49986,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0024649222601441033,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52417,14 +50016,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0024776062511911567,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52454,14 +50046,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0024776062511911567,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52491,14 +50076,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0024780785360274493,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52528,14 +50106,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.003301611963488056,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52565,14 +50136,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 4001,
-                                proportion: 0.9825638506876228,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52602,14 +50166,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9832800590115565,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52639,14 +50196,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9835218888342351,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52676,14 +50226,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9835218888342351,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52713,14 +50256,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52750,14 +50286,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52787,14 +50316,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52824,14 +50346,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52861,14 +50376,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52898,14 +50406,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52935,14 +50436,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -52972,14 +50466,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53009,14 +50496,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53046,14 +50526,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53083,14 +50556,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53120,14 +50586,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53157,14 +50616,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53194,14 +50646,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53231,14 +50676,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53268,14 +50706,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53305,14 +50736,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53342,14 +50766,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53379,14 +50796,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53416,14 +50826,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53453,14 +50856,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3999,
-                                proportion: 0.9837638376383764,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53490,14 +50886,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 3995,
-                                proportion: 0.982779827798278,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53527,14 +50916,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 17,
-                                proportion: 0.003774422735346359,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53564,14 +50946,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.0031069684864624943,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53601,14 +50976,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 28,
-                                proportion: 0.006212558242733526,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53638,14 +51006,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.003106279121366763,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53675,14 +51036,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.003106279121366763,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53712,16 +51066,23 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 7,
-                                proportion: 0.0015531395606833815,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -53735,14 +51096,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.003106279121366763,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53772,14 +51126,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.003106279121366763,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53809,14 +51156,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.003105590062111801,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53846,14 +51186,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.003105590062111801,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53883,14 +51216,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 14,
-                                proportion: 0.003105590062111801,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53920,14 +51246,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 8,
-                                proportion: 0.001776988005330964,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53957,14 +51276,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0028876055086628164,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -53994,14 +51306,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0028869642460581835,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54031,14 +51336,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0028869642460581835,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54068,14 +51366,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0028869642460581835,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54105,14 +51396,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0028869642460581835,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54142,14 +51426,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.00244173140954495,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54179,14 +51456,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 13,
-                                proportion: 0.0028856825749167593,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54216,14 +51486,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.0026637069922308544,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54253,14 +51516,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 12,
-                                proportion: 0.002662524961171511,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54290,14 +51546,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 15,
-                                proportion: 0.0033281562014643887,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54327,14 +51576,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 11,
-                                proportion: 0.0024401064773735583,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54364,14 +51606,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 30,
-                                proportion: 0.0068981375028742235,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54393,7 +51628,14 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'C29835T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
                         [
                             '2024-W05',
@@ -54424,15 +51666,15 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
+                        ['2024-W04', null],
                         [
-                            '2024-W04',
+                            '2024-W05',
                             {
-                                count: 6,
-                                proportion: 0.0020840569642236887,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
                             },
                         ],
-                        ['2024-W05', null],
                         [
                             '2024-W06',
                             {
@@ -54454,14 +51696,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 7,
-                                proportion: 0.002441576560865016,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54521,14 +51756,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 1,
-                                proportion: 0.0015552099533437014,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54558,14 +51786,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 2,
-                                proportion: 0.005747126436781609,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {
@@ -54574,15 +51795,36 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5415,
                             },
                         ],
-                        ['2024-W06', null],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'G29868A',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -54596,25 +51838,53 @@ export const byWeek: MutationOverTimeMockData = {
                 [
                     'A29869C',
                     [
-                        ['2024-W03', null],
                         [
-                            '2024-W04',
+                            '2024-W03',
                             {
-                                count: 1,
-                                proportion: 0.006211180124223602,
-                                totalCount: 5488,
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
                             },
                         ],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        ['2024-W04', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
                     'A29869T',
                     [
-                        ['2024-W03', null],
+                        [
+                            '2024-W03',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5301,
+                            },
+                        ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
                         [
                             '2024-W06',
                             {
@@ -54637,8 +51907,22 @@ export const byWeek: MutationOverTimeMockData = {
                             },
                         ],
                         ['2024-W04', null],
-                        ['2024-W05', null],
-                        ['2024-W06', null],
+                        [
+                            '2024-W05',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5415,
+                            },
+                        ],
+                        [
+                            '2024-W06',
+                            {
+                                count: 0,
+                                proportion: 0,
+                                totalCount: 5123,
+                            },
+                        ],
                     ],
                 ],
                 [
@@ -54652,14 +51936,7 @@ export const byWeek: MutationOverTimeMockData = {
                                 totalCount: 5301,
                             },
                         ],
-                        [
-                            '2024-W04',
-                            {
-                                count: 5,
-                                proportion: 0.026881720430107527,
-                                totalCount: 5488,
-                            },
-                        ],
+                        ['2024-W04', null],
                         [
                             '2024-W05',
                             {

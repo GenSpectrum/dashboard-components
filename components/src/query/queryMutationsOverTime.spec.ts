@@ -100,7 +100,11 @@ describe('queryMutationsOverTime', () => {
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
-            [{ proportion: 0.4, count: 4, totalCount: 11 }, null, null],
+            [
+                { proportion: 0.4, count: 4, totalCount: 11 },
+                { proportion: 0, count: 0, totalCount: 12 },
+                { proportion: 0, count: 0, totalCount: 13 },
+            ],
             [
                 { proportion: 0.1, count: 1, totalCount: 11 },
                 { proportion: 0.2, count: 2, totalCount: 12 },
@@ -177,7 +181,7 @@ describe('queryMutationsOverTime', () => {
                     dateFieldTo: '2023-01-02',
                     fields: [],
                 },
-                response: { data: [{ count: 12 }] },
+                response: { data: [{ count: 0 }] },
             },
             {
                 body: {
@@ -247,7 +251,7 @@ describe('queryMutationsOverTime', () => {
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
-            [{ proportion: 0.4, count: 4, totalCount: 11 }, null, null],
+            [{ proportion: 0.4, count: 4, totalCount: 11 }, null, { proportion: 0, count: 0, totalCount: 13 }],
             [{ proportion: 0.1, count: 1, totalCount: 11 }, null, { proportion: 0.3, count: 3, totalCount: 13 }],
         ]);
 
@@ -688,7 +692,10 @@ describe('queryMutationsOverTime', () => {
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
-            [{ proportion: 0.4, count: 4, totalCount: 11 }, null],
+            [
+                { proportion: 0.4, count: 4, totalCount: 11 },
+                { proportion: 0, count: 0, totalCount: 12 },
+            ],
             [
                 { proportion: 0.1, count: 1, totalCount: 11 },
                 { proportion: 0.2, count: 2, totalCount: 12 },
@@ -732,6 +739,139 @@ describe('queryMutationsOverTime', () => {
 
         const dates = mutationOverTimeData.getSecondAxisKeys();
         expect(dates.length).toBe(0);
+    });
+
+    it('should fill with 0 if the mutation does not exist in a date range but count > 0', async () => {
+        const lapisFilter = { field1: 'value1', field2: 'value2' };
+        const dateField = 'dateField';
+
+        lapisRequestMocks.multipleAggregated([
+            {
+                body: { ...lapisFilter, fields: [dateField] },
+                response: {
+                    data: [
+                        { count: 1, [dateField]: '2023-01-01' },
+                        { count: 1, [dateField]: '2023-01-02' },
+                    ],
+                },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-01',
+                    dateFieldTo: '2023-01-01',
+                    fields: [],
+                },
+                response: { data: [{ count: 11 }] },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-02',
+                    dateFieldTo: '2023-01-02',
+                    fields: [],
+                },
+                response: { data: [{ count: 11 }] },
+            },
+        ]);
+
+        lapisRequestMocks.multipleMutations(
+            [
+                {
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-01',
+                        dateFieldTo: '2023-01-01',
+                        minProportion: 0.001,
+                    },
+                    response: { data: [getSomeTestMutation(0.1, 1)] },
+                },
+                {
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-02',
+                        dateFieldTo: '2023-01-02',
+                        minProportion: 0.001,
+                    },
+                    response: { data: [] },
+                },
+                {
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-01',
+                        dateFieldTo: '2023-01-02',
+                        minProportion: 0.001,
+                    },
+                    response: {
+                        data: [getSomeTestMutation(0.21, 6)],
+                    },
+                },
+            ],
+            'nucleotide',
+        );
+
+        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+            lapisFilter,
+            sequenceType: 'nucleotide',
+            lapis: DUMMY_LAPIS_URL,
+            lapisDateField: dateField,
+            granularity: 'day',
+        });
+
+        expect(mutationOverTimeData.getAsArray()).to.deep.equal([
+            [
+                { proportion: 0.1, count: 1, totalCount: 11 },
+                { proportion: 0, count: 0, totalCount: 11 },
+            ],
+        ]);
+    });
+
+    it('should return null if count in a date range is 0', async () => {
+        const lapisFilter = { field1: 'value1', field2: 'value2' };
+        const dateField = 'dateField';
+
+        lapisRequestMocks.multipleAggregated([
+            {
+                body: { ...lapisFilter, fields: [dateField] },
+                response: {
+                    data: [{ count: 0, [dateField]: '2023-01-01' }],
+                },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-01',
+                    dateFieldTo: '2023-01-01',
+                    fields: [],
+                },
+                response: { data: [{ count: 0 }] },
+            },
+        ]);
+
+        lapisRequestMocks.multipleMutations(
+            [
+                {
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-01',
+                        dateFieldTo: '2023-01-01',
+                        minProportion: 0.001,
+                    },
+                    response: { data: [getSomeTestMutation(0.1, 1)] },
+                },
+            ],
+            'nucleotide',
+        );
+
+        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+            lapisFilter,
+            sequenceType: 'nucleotide',
+            lapis: DUMMY_LAPIS_URL,
+            lapisDateField: dateField,
+            granularity: 'day',
+        });
+
+        expect(mutationOverTimeData.getAsArray()).to.deep.equal([[null]]);
     });
 
     function getSomeTestMutation(proportion: number, count: number) {
