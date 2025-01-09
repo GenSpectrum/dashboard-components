@@ -75,8 +75,8 @@ const AggregateBarChartInner: FunctionComponent<AggregateBarChartProps> = ({ dat
                                     context.dataIndex
                                 ] as unknown as DataPoint;
                                 return fields.length === 1
-                                    ? `${x} (${formatProportion(proportion)}})`
-                                    : `${context.dataset.label}: ${x} (${formatProportion(proportion)}})`;
+                                    ? `${x} (${formatProportion(proportion)})`
+                                    : `${context.dataset.label}: ${x} (${formatProportion(proportion)})`;
                             },
                         },
                     },
@@ -130,7 +130,7 @@ function getDatasets(
             map.set(secondaryKey, []);
         }
         map.get(secondaryKey)?.push({
-            y: yAxisKey.toString(),
+            y: yAxisKey,
             x: row.count,
             proportion: row.proportion,
         });

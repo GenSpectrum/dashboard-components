@@ -50,7 +50,7 @@ export const Default: StoryObj<AggregateProps> = {
     ),
     args: {
         fields: ['division', 'host'],
-        views: ['table'],
+        views: ['table', 'bar'],
         lapisFilter: {
             country: 'USA',
         },
