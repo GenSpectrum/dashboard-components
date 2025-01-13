@@ -122,6 +122,7 @@ export async function queryMutationsOverTimeData({
 
         const data = await fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal);
         const totalCountQuery = await getTotalNumberOfSequencesInDateRange(filter).evaluate(lapis, signal);
+
         return {
             date,
             mutations: data.content,
@@ -244,9 +245,14 @@ export function groupByMutation(
     });
 
     data.forEach((mutationData) => {
+        if (mutationData.totalCount == 0) {
+            return;
+        }
+
+        const date = toTemporal(mutationData.date);
+
         mutationData.mutations.forEach((mutationEntry) => {
             const mutation = toSubstitutionOrDeletion(mutationEntry.mutation);
-            const date = toTemporal(mutationData.date);
 
             if (dataArray.get(mutation, date) !== undefined) {
                 dataArray.set(mutation, date, {
@@ -256,6 +262,16 @@ export function groupByMutation(
                 });
             }
         });
+
+        for (const firstAxisKey of dataArray.getFirstAxisKeys()) {
+            if (dataArray.get(firstAxisKey, date) === null) {
+                dataArray.set(firstAxisKey, date, {
+                    count: 0,
+                    proportion: 0,
+                    totalCount: mutationData.totalCount,
+                });
+            }
+        }
     });
 
     return dataArray;
