@@ -18,7 +18,7 @@ export const singleGraphColorRGBAById = (id: number, alpha = 1) => {
     const keys = Object.keys(ColorsRGB) as GraphColor[];
     const key = keys[id % keys.length];
 
-    return `rgba(${ColorsRGB[key].join(',')},${alpha})`;
+    return singleGraphColorRGBByName(key, alpha);
 };
 
 export const singleGraphColorRGBByName = (name: GraphColor, alpha = 1) => {

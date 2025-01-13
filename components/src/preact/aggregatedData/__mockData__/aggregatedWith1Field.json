@@ -1,0 +1,399 @@
+{
+    "data": [
+        {
+            "count": 1793,
+            "division": "Virgin Islands"
+        },
+        {
+            "count": 80581,
+            "division": "Colorado"
+        },
+        {
+            "count": 5,
+            "division": "American Samoa"
+        },
+        {
+            "count": 3462,
+            "division": "Northern Mariana Islands"
+        },
+        {
+            "count": 29845,
+            "division": "Oklahoma"
+        },
+        {
+            "count": 2582,
+            "division": "Wyoming"
+        },
+        {
+            "count": 18733,
+            "division": "Kentucky"
+        },
+        {
+            "count": 88,
+            "division": "New York City"
+        },
+        {
+            "count": 30814,
+            "division": "Arkansas"
+        },
+        {
+            "count": 8932,
+            "division": "Maine"
+        },
+        {
+            "count": 10710,
+            "division": "Puerto Rico"
+        },
+        {
+            "count": 11354,
+            "division": "Kansas"
+        },
+        {
+            "count": 15336,
+            "division": "Alaska"
+        },
+        {
+            "count": 1,
+            "division": "Sp"
+        },
+        {
+            "count": 12017,
+            "division": "Washington DC"
+        },
+        {
+            "count": 27043,
+            "division": "Vermont"
+        },
+        {
+            "count": 30166,
+            "division": "Nevada"
+        },
+        {
+            "count": 22443,
+            "division": "Utah"
+        },
+        {
+            "count": 85817,
+            "division": "Pennsylvania"
+        },
+        {
+            "count": 892,
+            "division": "Guam"
+        },
+        {
+            "count": 2,
+            "division": "Virginia Beach"
+        },
+        {
+            "count": 13808,
+            "division": "New Hampshire"
+        },
+        {
+            "count": 9,
+            "division": "Fairfax"
+        },
+        {
+            "count": 22914,
+            "division": "Rhode Island"
+        },
+        {
+            "count": 78889,
+            "division": "Illinois"
+        },
+        {
+            "count": 23674,
+            "division": "Nebraska"
+        },
+        {
+            "count": 1,
+            "division": "Beltsville"
+        },
+        {
+            "count": 141180,
+            "division": "Minnesota"
+        },
+        {
+            "count": 35292,
+            "division": "Indiana"
+        },
+        {
+            "count": 8949,
+            "division": "Montana"
+        },
+        {
+            "count": 88026,
+            "division": "Virginia"
+        },
+        {
+            "count": 199883,
+            "division": "Florida"
+        },
+        {
+            "count": 9733,
+            "division": "Delaware"
+        },
+        {
+            "count": 1,
+            "division": "Fishersville"
+        },
+        {
+            "count": 22250,
+            "division": "Louisiana"
+        },
+        {
+            "count": 6,
+            "division": "Springfield"
+        },
+        {
+            "count": 2,
+            "division": "Afton"
+        },
+        {
+            "count": 1,
+            "division": "Mt Solon"
+        },
+        {
+            "count": 27784,
+            "division": "Iowa"
+        },
+        {
+            "count": 30026,
+            "division": "Connecticut"
+        },
+        {
+            "count": 9255,
+            "division": "South Dakota"
+        },
+        {
+            "count": 14,
+            "division": "Annandale"
+        },
+        {
+            "count": 2,
+            "division": "Burke"
+        },
+        {
+            "count": 124361,
+            "division": "New York"
+        },
+        {
+            "count": 36230,
+            "division": "West Virginia"
+        },
+        {
+            "count": 11,
+            "division": "Falls Church"
+        },
+        {
+            "count": 3,
+            "division": "Arlington"
+        },
+        {
+            "count": 3,
+            "division": "Louisana"
+        },
+        {
+            "count": 13,
+            "division": "Temple"
+        },
+        {
+            "count": 10,
+            "division": "Louisiana/Caddo Parish"
+        },
+        {
+            "count": 6,
+            "division": "Alexandria"
+        },
+        {
+            "count": 1,
+            "division": "Louisiana/Bossier Parish"
+        },
+        {
+            "count": 45448,
+            "division": "Wisconsin"
+        },
+        {
+            "count": 2,
+            "division": "Un"
+        },
+        {
+            "count": 3,
+            "division": "Mclean"
+        },
+        {
+            "count": 6192,
+            "division": "Hawaii"
+        },
+        {
+            "count": 142321,
+            "division": "Washington"
+        },
+        {
+            "count": 1,
+            "division": "Chantilly"
+        },
+        {
+            "count": 2,
+            "division": "Crozet"
+        },
+        {
+            "count": 51468,
+            "division": "Tennessee"
+        },
+        {
+            "count": 1,
+            "division": "Chilhowie"
+        },
+        {
+            "count": 10,
+            "division": "Saipan"
+        },
+        {
+            "count": 176243,
+            "division": "Massachusetts"
+        },
+        {
+            "count": 1,
+            "division": "Fairfax Station"
+        },
+        {
+            "count": 1,
+            "division": "Paeonian Springs"
+        },
+        {
+            "count": 7,
+            "division": "Waynesboro"
+        },
+        {
+            "count": 765924,
+            "division": "USA"
+        },
+        {
+            "count": 5,
+            "division": "Louisiana/Webster Parish"
+        },
+        {
+            "count": 1,
+            "division": "Harrisonburg"
+        },
+        {
+            "count": 1,
+            "division": "Stafford"
+        },
+        {
+            "count": 1,
+            "division": "Grottoes"
+        },
+        {
+            "count": 144151,
+            "division": "Texas"
+        },
+        {
+            "count": 92995,
+            "division": "North Carolina"
+        },
+        {
+            "count": 1,
+            "division": "Severn"
+        },
+        {
+            "count": 1,
+            "division": "Great Falls"
+        },
+        {
+            "count": 1,
+            "division": "Temple Hills"
+        },
+        {
+            "count": 98998,
+            "division": "Michigan"
+        },
+        {
+            "count": 1,
+            "division": "Chesapeake"
+        },
+        {
+            "count": 386575,
+            "division": "California"
+        },
+        {
+            "count": 1,
+            "division": "Yap"
+        },
+        {
+            "count": 12380,
+            "division": "Mississippi"
+        },
+        {
+            "count": 17575,
+            "division": "Alabama"
+        },
+        {
+            "count": 48541,
+            "division": "Maryland"
+        },
+        {
+            "count": 1,
+            "division": "North America"
+        },
+        {
+            "count": 16034,
+            "division": "Idaho"
+        },
+        {
+            "count": 50896,
+            "division": "Ohio"
+        },
+        {
+            "count": 75921,
+            "division": "Arizona"
+        },
+        {
+            "count": 2394,
+            "division": "North Dakota"
+        },
+        {
+            "count": 2,
+            "division": "Deleware"
+        },
+        {
+            "count": 47723,
+            "division": "New Mexico"
+        },
+        {
+            "count": 35425,
+            "division": "South Carolina"
+        },
+        {
+            "count": 26192,
+            "division": "Missouri"
+        },
+        {
+            "count": 5,
+            "division": "Vienna"
+        },
+        {
+            "count": 1,
+            "division": "Woodbridge"
+        },
+        {
+            "count": 104569,
+            "division": "New Jersey"
+        },
+        {
+            "count": 70288,
+            "division": "Georgia"
+        },
+        {
+            "count": 27269,
+            "division": "Oregon"
+        }
+    ],
+    "info": {
+        "dataVersion": "1736095391",
+        "requestId": "dd98582e-c486-4a0f-9341-d9c4ce78bc9d",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2025-01-08T10:56:47.562437009",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "0.3.10"
+    }
+}

@@ -1,0 +1,1771 @@
+{
+    "data": [
+        {
+            "count": 549,
+            "division": "Berlin",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 460,
+            "division": null,
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 4,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 617,
+            "division": "Saxony",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 8,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "21F"
+        },
+        {
+            "count": 2,
+            "division": "Bavaria",
+            "nextstrainClade": "21G"
+        },
+        {
+            "count": 8361,
+            "division": "Hesse",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 176,
+            "division": "Saxony",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 16,
+            "division": "Thuringia",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 10,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 2,
+            "division": "Saarland",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 7,
+            "division": "Berlin",
+            "nextstrainClade": "21G"
+        },
+        {
+            "count": 3,
+            "division": "Hesse",
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 721,
+            "division": "Germany",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 320,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 44,
+            "division": "Germany",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 60,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 42566,
+            "division": null,
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 14,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 2,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 19,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 40951,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 16,
+            "division": "Saarland",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 398,
+            "division": "Hesse",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 4,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 5,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 5042,
+            "division": null,
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 422,
+            "division": "Hamburg",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 11,
+            "division": "Bremen",
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 4,
+            "division": "Germany",
+            "nextstrainClade": "21F"
+        },
+        {
+            "count": 27,
+            "division": "Germany",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 41,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 5,
+            "division": "Hesse",
+            "nextstrainClade": "21G"
+        },
+        {
+            "count": 33,
+            "division": "Hesse",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 136,
+            "division": "Hesse",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 406,
+            "division": "Bavaria",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 22,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 1,
+            "division": "Saxony",
+            "nextstrainClade": "21F"
+        },
+        {
+            "count": 13,
+            "division": "Bavaria",
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 99,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 97,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 1,
+            "division": "Germany",
+            "nextstrainClade": "19A"
+        },
+        {
+            "count": 224,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 55,
+            "division": "Hamburg",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 1,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "19A"
+        },
+        {
+            "count": 7542,
+            "division": null,
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 3,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "21F"
+        },
+        {
+            "count": 1,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 5,
+            "division": "Germany",
+            "nextstrainClade": "21E"
+        },
+        {
+            "count": 1,
+            "division": "Hamburg",
+            "nextstrainClade": "21G"
+        },
+        {
+            "count": 13,
+            "division": "Germany",
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 4,
+            "division": "Germany",
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 120,
+            "division": "Germany",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 3,
+            "division": "Hamburg",
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 2,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "recombinant"
+        },
+        {
+            "count": 2,
+            "division": "Hamburg",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 15,
+            "division": "Hamburg",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 56,
+            "division": null,
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 133,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 91,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 7167,
+            "division": "Berlin",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 56,
+            "division": "Germany",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 18,
+            "division": "Bremen",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 7,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 5,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 7,
+            "division": null,
+            "nextstrainClade": "21F"
+        },
+        {
+            "count": 1338,
+            "division": "Bavaria",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 3,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "21C"
+        },
+        {
+            "count": 224,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 36,
+            "division": "Niedersachsen",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 8002,
+            "division": "Saxony",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 51,
+            "division": "Saxony",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 11,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 12,
+            "division": "Saxony",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 64,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 4,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 3,
+            "division": "Saxony",
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 13,
+            "division": "Saxony",
+            "nextstrainClade": "21G"
+        },
+        {
+            "count": 118,
+            "division": "Berlin",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 3,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "21E"
+        },
+        {
+            "count": 44,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 499,
+            "division": null,
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 57,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "21G"
+        },
+        {
+            "count": 1,
+            "division": "Thuringia",
+            "nextstrainClade": "21F"
+        },
+        {
+            "count": 69,
+            "division": "Bavaria",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 92,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 18,
+            "division": "Brandenburg",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 3,
+            "division": "Hamburg",
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 565,
+            "division": "Saxony",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 1211,
+            "division": "Bavaria",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 66,
+            "division": "Niedersachsen",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 3034,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 814,
+            "division": "Germany",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 1,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 7,
+            "division": "Niedersachsen",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 164,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 1191,
+            "division": "Saxony",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 7406,
+            "division": "Bavaria",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 10,
+            "division": "Saarland",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 2607,
+            "division": "Niedersachsen",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 6,
+            "division": "Bremen",
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 50,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 2,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 503,
+            "division": "Germany",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 2,
+            "division": "Niedersachsen",
+            "nextstrainClade": "19A"
+        },
+        {
+            "count": 21854,
+            "division": "Bavaria",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 2,
+            "division": "Germany",
+            "nextstrainClade": "21G"
+        },
+        {
+            "count": 157,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 122494,
+            "division": null,
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 8,
+            "division": "Hesse",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 8,
+            "division": null,
+            "nextstrainClade": "21C"
+        },
+        {
+            "count": 10,
+            "division": "Brandenburg",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 12,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 187,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 72,
+            "division": null,
+            "nextstrainClade": "19A"
+        },
+        {
+            "count": 3188,
+            "division": "Berlin",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 32,
+            "division": "Saarland",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 180,
+            "division": "Bremen",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 26,
+            "division": "Berlin",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 19,
+            "division": "Lower Saxony",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 212,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 8,
+            "division": "Hamburg",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 2326,
+            "division": "Hamburg",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 24,
+            "division": "Bavaria",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 158,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 1756,
+            "division": "Bremen",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 130,
+            "division": "Brandenburg",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 1,
+            "division": "Saxony",
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 32,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "19A"
+        },
+        {
+            "count": 6,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 173,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 2,
+            "division": "Hesse",
+            "nextstrainClade": "19A"
+        },
+        {
+            "count": 13,
+            "division": "Saarland",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 5,
+            "division": "Thuringia",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 4,
+            "division": "Hamburg",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 49,
+            "division": "Niedersachsen",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 2037,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 440,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 617,
+            "division": "Saxony",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 20,
+            "division": "Thuringia",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 2,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 286,
+            "division": "Niedersachsen",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 7,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 4058,
+            "division": null,
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 118,
+            "division": "Saarland",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 7,
+            "division": "Bavaria",
+            "nextstrainClade": "recombinant"
+        },
+        {
+            "count": 48,
+            "division": "Bremen",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 6,
+            "division": "Niedersachsen",
+            "nextstrainClade": "21G"
+        },
+        {
+            "count": 2,
+            "division": "Hesse",
+            "nextstrainClade": "recombinant"
+        },
+        {
+            "count": 1056,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 419,
+            "division": "Berlin",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 2,
+            "division": "Hamburg",
+            "nextstrainClade": "21F"
+        },
+        {
+            "count": 10824,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 164,
+            "division": "Hesse",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 732,
+            "division": "Bavaria",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 129,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 11,
+            "division": "Saarland",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 216,
+            "division": "Hamburg",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 14,
+            "division": "Bavaria",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 1,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 219,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 14,
+            "division": "Berlin",
+            "nextstrainClade": "21B"
+        },
+        {
+            "count": 1297,
+            "division": "Brandenburg",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 103,
+            "division": null,
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 1,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "recombinant"
+        },
+        {
+            "count": 720,
+            "division": "Saarland",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 1,
+            "division": "Hamburg",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 58,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 74,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 2,
+            "division": "Germany",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 551,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 179,
+            "division": "Niedersachsen",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 734,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 85,
+            "division": "Hesse",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 64,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 11,
+            "division": "Saxony",
+            "nextstrainClade": "recombinant"
+        },
+        {
+            "count": 303,
+            "division": "Niedersachsen",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 1103,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 1,
+            "division": "Berlin",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 42,
+            "division": "Hesse",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 1,
+            "division": "Hesse",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 2,
+            "division": "Hesse",
+            "nextstrainClade": "21C"
+        },
+        {
+            "count": 335,
+            "division": "Germany",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 1,
+            "division": "Hesse",
+            "nextstrainClade": "21E"
+        },
+        {
+            "count": 2,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "recombinant"
+        },
+        {
+            "count": 9,
+            "division": "Brandenburg",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 4,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "recombinant"
+        },
+        {
+            "count": 1,
+            "division": "Bremen",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 1,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 40,
+            "division": "Thuringia",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 1,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 14,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 2,
+            "division": "Germany",
+            "nextstrainClade": "21H"
+        },
+        {
+            "count": 26,
+            "division": "Saxony",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 6217,
+            "division": "Bavaria",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 412,
+            "division": "Germany",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 2782,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 1,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "21F"
+        },
+        {
+            "count": 109,
+            "division": null,
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 2,
+            "division": "Thuringia",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 92,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 435,
+            "division": "Bremen",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 270,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 10,
+            "division": "Berlin",
+            "nextstrainClade": "recombinant"
+        },
+        {
+            "count": 23,
+            "division": "Niedersachsen",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 72,
+            "division": "Germany",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 1,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 2,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 15,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 87,
+            "division": "Berlin",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 173,
+            "division": "Thuringia",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 40,
+            "division": "Saxony",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 1,
+            "division": "Bavaria",
+            "nextstrainClade": "21C"
+        },
+        {
+            "count": 1,
+            "division": "Thuringia",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 1,
+            "division": "Niedersachsen",
+            "nextstrainClade": null
+        },
+        {
+            "count": 196,
+            "division": null,
+            "nextstrainClade": "21H"
+        },
+        {
+            "count": 699,
+            "division": "Thuringia",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 79,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 70,
+            "division": "Hesse",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 742,
+            "division": "Saarland",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 2709,
+            "division": "Brandenburg",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 3194,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 171,
+            "division": "Berlin",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 3891,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 1927,
+            "division": "Niedersachsen",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 298,
+            "division": "Hamburg",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 51,
+            "division": "Bremen",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 2,
+            "division": "Thuringia",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 3836,
+            "division": "Thuringia",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 100,
+            "division": "Saxony",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 45,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 50,
+            "division": "Brandenburg",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 531,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 4189,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 4761,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 115,
+            "division": "Saarland",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 8,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 25767,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 10295,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 11,
+            "division": "Niedersachsen",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 3,
+            "division": "Bremen",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 17705,
+            "division": "Germany",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 90,
+            "division": "Brandenburg",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 5506,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 1,
+            "division": "Hamburg",
+            "nextstrainClade": "21C"
+        },
+        {
+            "count": 731,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 2573,
+            "division": "Hesse",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 57,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 83,
+            "division": "Berlin",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 73,
+            "division": null,
+            "nextstrainClade": "21G"
+        },
+        {
+            "count": 12,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 140,
+            "division": "Hesse",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 2,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 484,
+            "division": "Berlin",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 2,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "recombinant"
+        },
+        {
+            "count": 162,
+            "division": "Brandenburg",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 27,
+            "division": "Brandenburg",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 430,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 5790,
+            "division": "Niedersachsen",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 4231,
+            "division": "Hamburg",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 146,
+            "division": null,
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 14148,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 1583,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 1323,
+            "division": "Bremen",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 71,
+            "division": "Saxony",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 3141,
+            "division": "Thuringia",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 1209,
+            "division": null,
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 420,
+            "division": "Niedersachsen",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 2819,
+            "division": null,
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 1,
+            "division": "Hamburg",
+            "nextstrainClade": "21E"
+        },
+        {
+            "count": 9080,
+            "division": "Saxony",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 10,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 409,
+            "division": "Thuringia",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 16883,
+            "division": "Saxony",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 12,
+            "division": "Bavaria",
+            "nextstrainClade": "21F"
+        },
+        {
+            "count": 29,
+            "division": "Bremen",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 1,
+            "division": "Bavaria",
+            "nextstrainClade": "21E"
+        },
+        {
+            "count": 17,
+            "division": "Germany",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 1415,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 141,
+            "division": "Niedersachsen",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 471,
+            "division": null,
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 984,
+            "division": null,
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 1,
+            "division": "Saarland",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 98,
+            "division": "Hesse",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 338,
+            "division": "Bavaria",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 44,
+            "division": "Schleswig-Holstein",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 67,
+            "division": "Bavaria",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 91,
+            "division": "Hamburg",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 5,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 20,
+            "division": "Berlin",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 4,
+            "division": "Bremen",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 80,
+            "division": "Berlin",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 5,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "21G"
+        },
+        {
+            "count": 92,
+            "division": "Bremen",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 807,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 51,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 54816,
+            "division": null,
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 1295,
+            "division": "Brandenburg",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 721,
+            "division": "Saxony-Anhalt",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 1761,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 74,
+            "division": "Bavaria",
+            "nextstrainClade": "19A"
+        },
+        {
+            "count": 2,
+            "division": "Thuringia",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 762,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 48579,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 943,
+            "division": "Bavaria",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 141,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 28,
+            "division": "Hamburg",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 2,
+            "division": "Hesse",
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 26,
+            "division": null,
+            "nextstrainClade": null
+        },
+        {
+            "count": 3,
+            "division": "Hesse",
+            "nextstrainClade": "21M"
+        },
+        {
+            "count": 22,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "19A"
+        },
+        {
+            "count": 5336,
+            "division": null,
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 469,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "21A"
+        },
+        {
+            "count": 14,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 56,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 1309,
+            "division": "Berlin",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 1879,
+            "division": "Saarland",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 1,
+            "division": "Thuringia",
+            "nextstrainClade": "21C"
+        },
+        {
+            "count": 2,
+            "division": "Niedersachsen",
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 8,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "21H"
+        },
+        {
+            "count": 337,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 1,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "21H"
+        },
+        {
+            "count": 1008,
+            "division": "North Rhine Westphalia",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 214,
+            "division": "Thuringia",
+            "nextstrainClade": "20B"
+        },
+        {
+            "count": 298,
+            "division": "Brandenburg",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 5224,
+            "division": "Hamburg",
+            "nextstrainClade": "21J"
+        },
+        {
+            "count": 1576,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 1411,
+            "division": "Saxony",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 593,
+            "division": "Thuringia",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 21,
+            "division": null,
+            "nextstrainClade": "recombinant"
+        },
+        {
+            "count": 1,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 12859,
+            "division": "Baden-Wuerttemberg",
+            "nextstrainClade": "21K"
+        },
+        {
+            "count": 341,
+            "division": "Bremen",
+            "nextstrainClade": "20E"
+        },
+        {
+            "count": 10,
+            "division": "Hesse",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 1370,
+            "division": null,
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 18,
+            "division": null,
+            "nextstrainClade": "21E"
+        },
+        {
+            "count": 19,
+            "division": "Thuringia",
+            "nextstrainClade": "20D"
+        },
+        {
+            "count": 5,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "21F"
+        },
+        {
+            "count": 70,
+            "division": "Mecklenburg-Vorpommern",
+            "nextstrainClade": "21L"
+        },
+        {
+            "count": 186,
+            "division": "Hamburg",
+            "nextstrainClade": "20A"
+        },
+        {
+            "count": 71,
+            "division": "Saarland",
+            "nextstrainClade": "20H"
+        },
+        {
+            "count": 163,
+            "division": "Bavaria",
+            "nextstrainClade": "20J"
+        },
+        {
+            "count": 16,
+            "division": "Hamburg",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 1,
+            "division": "Brandenburg",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 4,
+            "division": "Bavaria",
+            "nextstrainClade": "20G"
+        },
+        {
+            "count": 2902,
+            "division": "Hesse",
+            "nextstrainClade": "20I"
+        },
+        {
+            "count": 4,
+            "division": "Bremen",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 26,
+            "division": "Saxony",
+            "nextstrainClade": "21D"
+        },
+        {
+            "count": 3,
+            "division": "Berlin",
+            "nextstrainClade": "20C"
+        },
+        {
+            "count": 3,
+            "division": "Bavaria",
+            "nextstrainClade": "19B"
+        },
+        {
+            "count": 388,
+            "division": "Rheinland-Pfalz",
+            "nextstrainClade": "21I"
+        },
+        {
+            "count": 516,
+            "division": "Bavaria",
+            "nextstrainClade": "20H"
+        }
+    ],
+    "info": {
+        "dataVersion": "1736095391",
+        "requestId": "e56e0f4b-b981-49b6-9779-7b5bd9b74dd4",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2025-01-08T10:54:50.257111317",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "0.3.10"
+    }
+}

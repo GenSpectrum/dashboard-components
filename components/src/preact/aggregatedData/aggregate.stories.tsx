@@ -5,7 +5,7 @@ import aggregatedData from './__mockData__/aggregated.json';
 import { Aggregate, type AggregateProps } from './aggregate';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
+import { expectInvalidAttributesErrorMessage, playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const meta: Meta<AggregateProps> = {
     title: 'Visualization/Aggregate',
@@ -50,7 +50,7 @@ export const Default: StoryObj<AggregateProps> = {
     ),
     args: {
         fields: ['division', 'host'],
-        views: ['table'],
+        views: ['table', 'bar'],
         lapisFilter: {
             country: 'USA',
         },
@@ -59,6 +59,7 @@ export const Default: StoryObj<AggregateProps> = {
         initialSortField: 'count',
         initialSortDirection: 'descending',
         pageSize: 10,
+        maxNumberOfBars: 20,
     },
 };
 
@@ -107,4 +108,62 @@ export const WithEmptyFieldString: StoryObj<AggregateProps> = {
             await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
         });
     },
+};
+
+export const BarChartWithNoFields: StoryObj<AggregateProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        views: ['bar', 'table'],
+        fields: [],
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregatedData,
+                    },
+                },
+            ],
+        },
+    },
+    play: playThatExpectsErrorMessage(
+        'Error - No fields given',
+        `Cannot display a bar chart when the "fields" attribute of this component is empty`,
+    ),
+};
+
+export const BarChartWithMoreThan2Fields: StoryObj<AggregateProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        views: ['bar', 'table'],
+        fields: ['division', 'host', 'country'],
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                    },
+                    response: {
+                        status: 200,
+                        body: aggregatedData,
+                    },
+                },
+            ],
+        },
+    },
+    play: playThatExpectsErrorMessage(
+        'Error - Too many fields given',
+        'Cannot display a bar chart when the "fields" attribute of this component contains more than two values.',
+    ),
 };

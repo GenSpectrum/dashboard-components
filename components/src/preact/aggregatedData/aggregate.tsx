@@ -15,8 +15,9 @@ import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
+import { AggregateBarChart } from './aggregate-bar-chart';
 
-const aggregateViewSchema = z.literal(views.table);
+const aggregateViewSchema = z.union([z.literal(views.table), z.literal(views.bar)]);
 export type AggregateView = z.infer<typeof aggregateViewSchema>;
 
 const aggregatePropsSchema = z.object({
@@ -28,6 +29,7 @@ const aggregatePropsSchema = z.object({
     pageSize: z.union([z.boolean(), z.number()]),
     width: z.string(),
     height: z.string(),
+    maxNumberOfBars: z.number(),
 });
 export type AggregateProps = z.infer<typeof aggregatePropsSchema>;
 
@@ -49,10 +51,7 @@ export const AggregateInner: FunctionComponent<AggregateProps> = (componentProps
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(async () => {
-        return queryAggregateData(lapisFilter, fields, lapis, {
-            field: initialSortField,
-            direction: initialSortDirection,
-        });
+        return queryAggregateData(lapisFilter, fields, lapis);
     }, [lapisFilter, fields, lapis, initialSortField, initialSortDirection]);
 
     if (isLoading) {
@@ -78,7 +77,7 @@ type AggregatedDataTabsProps = {
 const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, originalComponentProps }) => {
     const getTab = (view: AggregateView) => {
         switch (view) {
-            case 'table':
+            case views.table:
                 return {
                     title: 'Table',
                     content: (
@@ -86,6 +85,19 @@ const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, 
                             data={data}
                             fields={originalComponentProps.fields}
                             pageSize={originalComponentProps.pageSize}
+                            initialSortField={originalComponentProps.initialSortField}
+                            initialSortDirection={originalComponentProps.initialSortDirection}
+                        />
+                    ),
+                };
+            case views.bar:
+                return {
+                    title: 'Bar',
+                    content: (
+                        <AggregateBarChart
+                            data={data}
+                            fields={originalComponentProps.fields}
+                            maxNumberOfBars={originalComponentProps.maxNumberOfBars}
                         />
                     ),
                 };

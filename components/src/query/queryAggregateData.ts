@@ -9,7 +9,7 @@ export type AggregateData = (Record<string, string | null | number | boolean> & 
     proportion: number;
 })[];
 
-export const compareAscending = (a: string | null | number, b: string | null | number) => {
+export const compareAscending = (a: string | null | number | boolean, b: string | null | number | boolean) => {
     if (typeof a === 'number' && typeof b === 'number') {
         return a - b;
     }
@@ -24,20 +24,10 @@ export async function queryAggregateData(
     lapisFilter: LapisFilter,
     fields: string[],
     lapis: string,
-    initialSort: InitialSort = { field: 'count', direction: 'descending' },
     signal?: AbortSignal,
 ) {
-    const validSortFields = ['count', 'proportion', ...fields];
-    if (!validSortFields.includes(initialSort.field)) {
-        throw new Error(`InitialSort field not in fields. Valid fields are: ${validSortFields.join(', ')}`);
-    }
-
     const fetchData = new FetchAggregatedOperator<Record<string, string | null | number>>(lapisFilter, fields);
-    const sortData = new SortOperator(fetchData, (a, b) => {
-        return initialSort.direction === 'ascending'
-            ? compareAscending(a[initialSort.field], b[initialSort.field])
-            : compareAscending(b[initialSort.field], a[initialSort.field]);
-    });
+    const sortData = new SortOperator(fetchData, (a, b) => compareAscending(b.count, a.count));
     const data = (await sortData.evaluate(lapis, signal)).content;
 
     const total = data.reduce((acc, row) => acc + row.count, 0);

@@ -7,8 +7,8 @@ export async function queryGeneralStatistics(
     lapis: string,
     signal?: AbortSignal,
 ) {
-    const numeratorCount = await queryAggregateData(numeratorFilter, [], lapis, undefined, signal);
-    const denominatorCount = await queryAggregateData(denominatorFilter, [], lapis, undefined, signal);
+    const numeratorCount = await queryAggregateData(numeratorFilter, [], lapis, signal);
+    const denominatorCount = await queryAggregateData(denominatorFilter, [], lapis, signal);
 
     if (numeratorCount.length === 0 || denominatorCount.length === 0) {
         throw new Error('No data found for the given filters');
