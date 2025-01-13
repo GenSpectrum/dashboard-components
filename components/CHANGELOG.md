@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.5...dashboard-components-v0.11.6) (2025-01-13)
+
+
+### Features
+
+* **components:** gs-aggregate: add bar chart view ([#639](https://github.com/GenSpectrum/dashboard-components/issues/639)) ([6d834ce](https://github.com/GenSpectrum/dashboard-components/commit/6d834ce4f336099fbf51ae0caaa1ad0cf605bf51))
+
+
+### Bug Fixes
+
+* **components:** show mutation over time tooltip below value on first six rows ([89dc0f3](https://github.com/GenSpectrum/dashboard-components/commit/89dc0f3e3cffea40f7d8a6a1ba62095eae6f483e)), closes [#634](https://github.com/GenSpectrum/dashboard-components/issues/634)
+
 ## [0.11.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.4...dashboard-components-v0.11.5) (2025-01-09)
 
 
