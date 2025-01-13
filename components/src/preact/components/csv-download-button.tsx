@@ -33,9 +33,9 @@ export const CsvDownloadButton: FunctionComponent<CsvDownloadButtonProps> = ({
     const getDownloadContent = () => {
         const data = getData();
         const keys = getDataKeys(data);
-        const header = `${keys.join(',')}\n`;
+        const header = keys.join(',');
         const rows = data.map((row) => keys.map((key) => row[key]).join(',')).join('\n');
-        return header + rows;
+        return `${header}\n${rows}\n`;
     };
 
     const getDataKeys = (data: Record<string, DataValue>[]) => {
