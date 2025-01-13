@@ -22,9 +22,24 @@ describe('getMutationsTableData', () => {
 
         const proportionInterval = { min: 0, max: 1 };
 
-        const result = getMutationsTableData(data, proportionInterval);
+        const result = getMutationsTableData(data, data, 2, proportionInterval);
 
-        expect(result).toEqual(data);
+        expect(result).toEqual([
+            {
+                type: 'substitution' as const,
+                mutation: new SubstitutionClass('segment1', 'A', 'T', 123),
+                count: 1,
+                proportion: 0.1,
+                jaccardSimilarity: 0.5,
+            },
+            {
+                type: 'deletion' as const,
+                mutation: new DeletionClass('segment2', 'C', 123),
+                count: 2,
+                proportion: 0.2,
+                jaccardSimilarity: 1,
+            },
+        ]);
     });
 
     test('should filter out data below/above proportionInterval', () => {
@@ -64,7 +79,7 @@ describe('getMutationsTableData', () => {
 
         const proportionInterval = { min: 0.05, max: 0.9 };
 
-        const result = getMutationsTableData(data, proportionInterval);
+        const result = getMutationsTableData(data, data, 2, proportionInterval);
 
         expect(result).toEqual([
             {
@@ -72,12 +87,14 @@ describe('getMutationsTableData', () => {
                 type: 'substitution',
                 count: 1,
                 proportion: inInterval,
+                jaccardSimilarity: 0.5,
             },
             {
                 mutation: deletionInInterval,
                 type: 'deletion',
                 count: 2,
                 proportion: inInterval,
+                jaccardSimilarity: 1,
             },
         ]);
     });
