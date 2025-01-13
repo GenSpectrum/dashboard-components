@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.6...dashboard-components-v0.11.7) (2025-01-13)
+
+
+### Features
+
+* **components:** gs-mutations: compute Jaccard similarity ([#640](https://github.com/GenSpectrum/dashboard-components/issues/640)) ([a3a5869](https://github.com/GenSpectrum/dashboard-components/commit/a3a58691e7d725690ba7fef0ed5fb1288e1cf0b7)), closes [#608](https://github.com/GenSpectrum/dashboard-components/issues/608)
+
+
+### Bug Fixes
+
+* **components:** gs-mutations-over-time: show 0 instead of "no data" when there are sequences but no mutation ([#635](https://github.com/GenSpectrum/dashboard-components/issues/635) case 2) ([#644](https://github.com/GenSpectrum/dashboard-components/issues/644)) ([6067e3c](https://github.com/GenSpectrum/dashboard-components/commit/6067e3cc8fcf7154c575228c6e200488b0c08e7f))
+
 ## [0.11.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.5...dashboard-components-v0.11.6) (2025-01-13)
 
 
