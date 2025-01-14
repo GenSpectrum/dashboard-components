@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.12.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.7...dashboard-components-v0.12.0) (2025-01-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** gs-location-filter prop initialValue changed to value, a json with the event value
+
+### Features
+
+* **components:** gs-mutation-filter: add quickstart guide to info text ([#646](https://github.com/GenSpectrum/dashboard-components/issues/646)) ([5390aa7](https://github.com/GenSpectrum/dashboard-components/commit/5390aa7143f9c098219f3398bdbd8392765ec9ae)), closes [#637](https://github.com/GenSpectrum/dashboard-components/issues/637)
+* **components:** improve design of location filter ([18fc805](https://github.com/GenSpectrum/dashboard-components/commit/18fc80571d668ccc5b9f763949bdcb07fc5db533)), closes [#267](https://github.com/GenSpectrum/dashboard-components/issues/267)
+
+
+### Bug Fixes
+
+* **components:** add trailing newline to all downloaded CSVs ([#647](https://github.com/GenSpectrum/dashboard-components/issues/647)) ([342de23](https://github.com/GenSpectrum/dashboard-components/commit/342de23544fe651f3d35de0dc46445ffb2cb7354))
+
 ## [0.11.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.6...dashboard-components-v0.11.7) (2025-01-13)
 
 
