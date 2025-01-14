@@ -1,10 +1,9 @@
 import {useEffect, useState} from 'react';
-import {DateRangeOption, dateRangeOptionPresets} from '@genspectrum/dashboard-components/util';
-import '@genspectrum/dashboard-components/components';
+import {DateRangeOption, dateRangeOptionPresets, LocationChangedEvent, LapisLocationFilter } from '@genspectrum/dashboard-components/util';
 import '@genspectrum/dashboard-components/style.css';
 
 function App() {
-    const [location, setLocation] = useState({
+    const [location, setLocation] = useState<LapisLocationFilter>({
         region: 'Europe',
         country: 'Switzerland',
     });
@@ -14,7 +13,6 @@ function App() {
     });
 
     useEffect(() => {
-        const handleLocationChange = (event: CustomEvent) => setLocation(event.detail);
         const handleDateRangeChange = (
             event: CustomEvent<{
                 dateFrom: string;
@@ -22,10 +20,6 @@ function App() {
             }>,
         ) => setDateRange(event.detail);
 
-        const locationFilter = document.querySelector('gs-location-filter');
-        if (locationFilter) {
-            locationFilter.addEventListener('gs-location-changed', handleLocationChange);
-        }
 
         const dateRangeSelector = document.querySelector('gs-date-range-selector');
         if (dateRangeSelector) {
@@ -33,9 +27,6 @@ function App() {
         }
 
         return () => {
-            if (locationFilter) {
-                locationFilter.removeEventListener('gs-location-changed', handleLocationChange);
-            }
             if (dateRangeSelector) {
                 dateRangeSelector.removeEventListener('gs-date-range-filter-changed', handleDateRangeChange);
             }
@@ -67,15 +58,18 @@ function App() {
     return (
         <gs-app lapis='https://lapis.cov-spectrum.org/open/v2/'>
             <gs-location-filter
-                value={JSON.stringify({
+                value={{
                     region: 'Europe',
                     country: 'Switzerland',
-                })}
-                fields='["region", "country", "division", "location"]'
+                }}
+                fields={["region", "country", "division", "location"]}
                 placeholderText='Enter a location'
+                ongs-location-changed={(event: LocationChangedEvent) => {
+                    setLocation(event.detail);
+                }}
             ></gs-location-filter>
             <gs-date-range-selector
-                dateRangeOptions={JSON.stringify(dataRangeOptions)}
+                dateRangeOptions={dataRangeOptions}
                 initialValue={'2021'}
                 lapisDateField='date'
             ></gs-date-range-selector>
@@ -83,12 +77,12 @@ function App() {
                 <div>
                     <h1 className='text-xl bold'>Prevalence over time</h1>
                     <gs-prevalence-over-time
-                        numeratorFilters={JSON.stringify([numerator])}
-                        denominatorFilter={JSON.stringify(denominator)}
+                        numeratorFilters={[numerator]}
+                        denominatorFilter={denominator}
                         lapisDateField='date'
                         granularity='day'
-                        smoothingWindow='7'
-                        views='["line", "table"]'
+                        smoothingWindow={7}
+                        views={["line", "table"]}
                         width='800px'
                         height='300px'
                     ></gs-prevalence-over-time>
@@ -96,12 +90,12 @@ function App() {
                 <div style={{height: '300px', width: '1000px'}}>
                     <h1 className='text-xl bold'>Prevalence over time</h1>
                     <gs-prevalence-over-time
-                        numeratorFilters={JSON.stringify([numerator])}
-                        denominatorFilter={JSON.stringify(denominator)}
+                        numeratorFilters={[numerator]}
+                        denominatorFilter={denominator}
                         lapisDateField='date'
                         granularity='day'
-                        smoothingWindow='7'
-                        views='["line", "table"]'
+                        smoothingWindow={7}
+                        views={["line", "table"]}
                         width='80%'
                         height='100%'
                     ></gs-prevalence-over-time>
@@ -110,28 +104,28 @@ function App() {
             <h1 className='text-xl bold'>Prevalence over time</h1>
             <div>
                 <gs-prevalence-over-time
-                    numeratorFilters={JSON.stringify([numerator])}
-                    denominatorFilter={JSON.stringify(denominator)}
+                    numeratorFilters={[numerator]}
+                    denominatorFilter={denominator}
                     lapisDateField='date'
                     granularity='day'
-                    smoothingWindow='7'
-                    views='["line", "table"]'
+                    smoothingWindow={7}
+                    views={["line", "table"]}
                 ></gs-prevalence-over-time>
             </div>
             <h1 className='text-xl bold'>Relative Growth Advantage</h1>
             <gs-relative-growth-advantage
-                numeratorFilter={JSON.stringify(numerator.lapisFilter)}
-                denominatorFilter={JSON.stringify(denominator)}
+                numeratorFilter={numerator.lapisFilter}
+                denominatorFilter={denominator}
                 lapisDateField='date'
-                generationTime='7'
-                views='["line"]'
+                generationTime={7}
+                views={["line"]}
                 width='100%'
                 height='700px'
             ></gs-relative-growth-advantage>
             <gs-mutations-over-time
-                lapisFilter={JSON.stringify(numerator.lapisFilter)}
+                lapisFilter={numerator.lapisFilter}
                 sequenceType='nucleotide'
-                views='["grid"]'
+                views={["grid"]}
                 width='100%'
                 height='700px'
                 granularity='week'

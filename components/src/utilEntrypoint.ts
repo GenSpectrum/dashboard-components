@@ -33,4 +33,4 @@ export type { ConfidenceIntervalMethod } from './preact/shared/charts/confideceI
 
 export type { AxisMax, YAxisMaxConfig } from './preact/shared/charts/getYAxisMax';
 
-export { LocationChangedEvent } from './preact/locationFilter/LocationChangedEvent';
+export { LocationChangedEvent, type LapisLocationFilter } from './preact/locationFilter/LocationChangedEvent';
