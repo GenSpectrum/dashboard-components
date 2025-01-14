@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.12.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.12.0...dashboard-components-v0.12.1) (2025-01-14)
+
+
+### Features
+
+* **components:** sort options of textput filter ([#657](https://github.com/GenSpectrum/dashboard-components/issues/657)) ([e675040](https://github.com/GenSpectrum/dashboard-components/commit/e67504075d4ba3d8338574b23f480c158c482cdc))
+
+
+### Bug Fixes
+
+* **components:** don't use Leaflet default export ([#656](https://github.com/GenSpectrum/dashboard-components/issues/656)) ([648c9fb](https://github.com/GenSpectrum/dashboard-components/commit/648c9fb2b68909444bf5996e562d531722f6e217))
+
 ## [0.12.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.11.7...dashboard-components-v0.12.0) (2025-01-14)
 
 
