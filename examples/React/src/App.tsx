@@ -1,5 +1,10 @@
 import {useEffect, useState} from 'react';
-import {DateRangeOption, dateRangeOptionPresets, LocationChangedEvent, LapisLocationFilter } from '@genspectrum/dashboard-components/util';
+import {
+    DateRangeOption,
+    dateRangeOptionPresets,
+    LocationChangedEvent,
+    LapisLocationFilter
+} from '@genspectrum/dashboard-components/util';
 import '@genspectrum/dashboard-components/style.css';
 
 function App() {
@@ -64,14 +69,16 @@ function App() {
                 }}
                 fields={["region", "country", "division", "location"]}
                 placeholderText='Enter a location'
-                ongs-location-changed={(event: LocationChangedEvent) => {
-                    setLocation(event.detail);
-                }}
+                ongs-location-changed={(event: LocationChangedEvent) => setLocation(event.detail)}
             ></gs-location-filter>
             <gs-date-range-selector
                 dateRangeOptions={dataRangeOptions}
                 initialValue={'2021'}
                 lapisDateField='date'
+                ongs-date-range-filter-changed={(event: CustomEvent<{
+                    dateFrom: string;
+                    dateTo: string;
+                }>) => setDateRange(event.detail)}
             ></gs-date-range-selector>
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <div>
