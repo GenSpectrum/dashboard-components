@@ -1,5 +1,5 @@
 import type { Feature, Geometry, GeometryObject } from 'geojson';
-import Leaflet, { type Layer, type LayerGroup } from 'leaflet';
+import { geoJson, type Layer, type LayerGroup, map } from 'leaflet';
 import type { FunctionComponent } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 
@@ -42,7 +42,7 @@ export const SequencesByLocationMap: FunctionComponent<SequencesByLocationMapPro
             return;
         }
 
-        const leafletMap = Leaflet.map(ref.current, {
+        const leafletMap = map(ref.current, {
             scrollWheelZoom: enableMapNavigation,
             zoomControl: enableMapNavigation,
             keyboard: enableMapNavigation,
@@ -52,7 +52,7 @@ export const SequencesByLocationMap: FunctionComponent<SequencesByLocationMapPro
             center: [offsetY, offsetX],
         });
 
-        Leaflet.geoJson(locations, {
+        geoJson(locations, {
             style: (feature: Feature<GeometryObject, EnhancedGeoJsonFeatureProperties> | undefined) => ({
                 fillColor: getColor(feature?.properties.data?.proportion),
                 fillOpacity: 1,
