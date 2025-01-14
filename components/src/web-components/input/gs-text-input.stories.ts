@@ -1,4 +1,4 @@
-import { expect, fn, userEvent, waitFor } from '@storybook/test';
+import { expect, fireEvent, fn, userEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
@@ -97,7 +97,7 @@ export const Default: StoryObj<Required<TextInputProps>> = {
     },
 };
 
-export const FiresEvent: StoryObj<Required<TextInputProps>> = {
+export const FiresEventNoValidInput: StoryObj<Required<TextInputProps>> = {
     ...Default,
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-text-input');
@@ -118,27 +118,66 @@ export const FiresEvent: StoryObj<Required<TextInputProps>> = {
             await userEvent.type(inputField(), 'notInList');
             await expect(listenerMock).not.toHaveBeenCalled();
         });
+    },
+    args: {
+        ...Default.args,
+        initialValue: '',
+    },
+};
 
-        await step('Empty input', async () => {
-            await userEvent.type(inputField(), '{backspace>9/}');
-            await inputField().blur();
-            await expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
-                host: null,
+export const FiresEventValidInput: StoryObj<Required<TextInputProps>> = {
+    ...Default,
+    play: async ({ canvasElement, step }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-text-input');
+
+        const inputField = () => canvas.getByPlaceholderText('Enter host name');
+        const listenerMock = fn();
+        await step('Setup event listener mock', async () => {
+            canvasElement.addEventListener('gs-text-input-changed', listenerMock);
+        });
+
+        await step('wait until data is loaded', async () => {
+            await waitFor(() => {
+                return expect(inputField()).toBeEnabled();
             });
         });
 
         await step('Enter a valid host name', async () => {
             await userEvent.type(inputField(), 'Homo s');
+
             const dropdownOption = await canvas.findByText('Homo sapiens');
             await userEvent.click(dropdownOption);
+        });
+
+        await step('Verify event is fired with correct detail', async () => {
+            await waitFor(() => {
+                expect(listenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            host: 'Homo sapiens',
+                        },
+                    }),
+                );
+            });
+        });
+
+        await step('Remove initial value', async () => {
+            await fireEvent.click(canvas.getByRole('button', { name: 'clear selection' }));
 
             await expect(listenerMock).toHaveBeenCalledWith(
                 expect.objectContaining({
                     detail: {
-                        host: 'Homo',
+                        host: undefined,
                     },
                 }),
             );
+        });
+
+        await step('Empty input', async () => {
+            inputField().blur();
+            await expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                host: undefined,
+            });
         });
     },
     args: {
