@@ -121,13 +121,16 @@ export const FiresEvent: StoryObj<Required<TextInputProps>> = {
 
         await step('Empty input', async () => {
             await userEvent.type(inputField(), '{backspace>9/}');
+            await inputField().blur();
             await expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
-                host: undefined,
+                host: null,
             });
         });
 
         await step('Enter a valid host name', async () => {
-            await userEvent.type(inputField(), 'Homo');
+            await userEvent.type(inputField(), 'Homo s');
+            const dropdownOption = await canvas.findByText('Homo sapiens');
+            await userEvent.click(dropdownOption);
 
             await expect(listenerMock).toHaveBeenCalledWith(
                 expect.objectContaining({
