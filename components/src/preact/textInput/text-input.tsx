@@ -5,7 +5,7 @@ import z from 'zod';
 
 import { fetchAutocompleteList } from './fetchAutocompleteList';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { TextChangedEvent } from './TextChangedEvent';
+import { TextInputChangedEvent } from './TextInputChangedEvent';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -93,7 +93,7 @@ const TextSelector = ({
         if (inputValue === undefined || inputValue === null || inputValue === '') {
             return true;
         }
-        return item === inputValue;
+        return item?.toLowerCase().includes(inputValue?.toLowerCase() || '');
     }
 
     const {
@@ -114,12 +114,12 @@ const TextSelector = ({
         },
         onSelectedItemChange({ selectedItem }) {
             if (selectedItem !== null) {
-                divRef.current?.dispatchEvent(new TextChangedEvent({ [lapisField]: selectedItem }));
+                divRef.current?.dispatchEvent(new TextInputChangedEvent({ [lapisField]: selectedItem }));
             }
         },
         items,
         itemToString(item) {
-            return item || '';
+            return item ?? '';
         },
         initialSelectedItem: initialValue,
         environment,
@@ -127,15 +127,15 @@ const TextSelector = ({
 
     const onInputBlur = () => {
         if (inputValue === '') {
-            divRef.current?.dispatchEvent(new TextChangedEvent({ [lapisField]: null }));
+            divRef.current?.dispatchEvent(new TextInputChangedEvent({ [lapisField]: undefined }));
             selectItem(null);
         } else if (inputValue !== selectedItem) {
-            setInputValue(selectedItem || '');
+            setInputValue(selectedItem ?? '');
         }
     };
 
     const clearInput = () => {
-        divRef.current?.dispatchEvent(new TextChangedEvent({ [lapisField]: null }));
+        divRef.current?.dispatchEvent(new TextInputChangedEvent({ [lapisField]: undefined }));
         selectItem(null);
     };
 

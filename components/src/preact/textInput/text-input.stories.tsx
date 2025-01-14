@@ -79,7 +79,7 @@ export const Default: StoryObj<TextInputProps> = {
     },
 };
 
-export const WithInitialValue: StoryObj<TextInputProps> = {
+export const RemoveInitialValue: StoryObj<TextInputProps> = {
     ...Default,
     args: {
         ...Default.args,
@@ -104,7 +104,7 @@ export const WithInitialValue: StoryObj<TextInputProps> = {
             await expect(changedListenerMock).toHaveBeenCalledWith(
                 expect.objectContaining({
                     detail: {
-                        host: null,
+                        host: undefined,
                     },
                 }),
             );
