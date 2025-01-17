@@ -27,7 +27,7 @@ export class TextInputComponent extends PreactLitAdapter {
      * The initial value to use for this text input.
      */
     @property()
-    initialValue: string | undefined = undefined;
+    value: string | undefined = undefined;
 
     /**
      * Required.
@@ -57,7 +57,7 @@ export class TextInputComponent extends PreactLitAdapter {
             <TextInput
                 lapisField={this.lapisField}
                 placeholderText={this.placeholderText}
-                initialValue={this.initialValue}
+                value={this.value}
                 width={this.width}
             />
         );
@@ -84,9 +84,7 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type InitialValueMatches = Expect<
-    Equals<typeof TextInputComponent.prototype.initialValue, TextInputProps['initialValue']>
->;
+type InitialValueMatches = Expect<Equals<typeof TextInputComponent.prototype.value, TextInputProps['value']>>;
 type LapisFieldMatches = Expect<Equals<typeof TextInputComponent.prototype.lapisField, TextInputProps['lapisField']>>;
 type PlaceholderTextMatches = Expect<
     Equals<typeof TextInputComponent.prototype.placeholderText, TextInputProps['placeholderText']>
