@@ -68,8 +68,7 @@ const TextSelector = ({
 }) => {
     return (
         <DownshiftCombobox
-            allData={data}
-            convertToItem={(data: string) => data}
+            allItems={data}
             value={value}
             filterItemsByInputValue={filterByInputValue}
             createEvent={(item: string | null) => new TextInputChangedEvent({ [lapisField]: item ?? undefined })}

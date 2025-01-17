@@ -54,7 +54,7 @@ const meta: Meta<Required<LineageFilterProps>> = {
 
 export default meta;
 
-export const Default: StoryObj<Required<LineageFilterProps>> = {
+const Template: StoryObj<Required<LineageFilterProps>> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
@@ -69,18 +69,82 @@ export const Default: StoryObj<Required<LineageFilterProps>> = {
     },
     args: {
         lapisField: 'pangoLineage',
-        placeholderText: 'Enter lineage',
+        placeholderText: 'Enter a lineage',
         initialValue: 'B.1.1.7',
         width: '100%',
     },
 };
 
+const aggregatedEndpointMatcher = {
+    name: 'pangoLineage',
+    url: AGGREGATED_ENDPOINT,
+    body: {
+        fields: ['pangoLineage'],
+    },
+};
+
+export const LineageFilter: StoryObj<Required<LineageFilterProps>> = {
+    ...Template,
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter');
+        await waitFor(() => {
+            return expect(canvas.getByPlaceholderText('Enter a lineage')).toBeVisible();
+        });
+    },
+};
+
+export const DelayToShowLoadingState: StoryObj<Required<LineageFilterProps>> = {
+    ...Template,
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: aggregatedEndpointMatcher,
+                    response: {
+                        status: 200,
+                        body: aggregatedData,
+                    },
+                    options: {
+                        delay: 5000,
+                    },
+                },
+            ],
+        },
+    },
+};
+
+export const FetchingLocationsFails: StoryObj<Required<LineageFilterProps>> = {
+    ...Template,
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: aggregatedEndpointMatcher,
+                    response: {
+                        status: 400,
+                        body: {
+                            error: { status: 400, detail: 'Dummy error message from mock LAPIS', type: 'about:blank' },
+                        },
+                    },
+                },
+            ],
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter');
+
+        await waitFor(() =>
+            expect(canvas.getByText('Oops! Something went wrong.', { exact: false })).toBeInTheDocument(),
+        );
+    },
+};
+
 export const FiresEvent: StoryObj<Required<LineageFilterProps>> = {
-    ...Default,
+    ...LineageFilter,
     play: async ({ canvasElement, step }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter');
 
-        const inputField = () => canvas.getByPlaceholderText('Enter lineage');
+        const inputField = () => canvas.getByPlaceholderText('Enter a lineage');
         const listenerMock = fn();
         await step('Setup event listener mock', async () => {
             canvasElement.addEventListener('gs-lineage-filter-changed', listenerMock);
@@ -99,38 +163,28 @@ export const FiresEvent: StoryObj<Required<LineageFilterProps>> = {
 
         await step('Empty input', async () => {
             await userEvent.type(inputField(), '{backspace>9/}');
-            await expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
-                pangoLineage: undefined,
+            await userEvent.click(canvas.getByLabelText('toggle menu'));
+
+            await waitFor(() => {
+                return expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    pangoLineage: undefined,
+                });
             });
         });
 
         await step('Enter a valid lineage value', async () => {
-            await userEvent.type(inputField(), 'B.1.1.7');
-
-            await expect(listenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        pangoLineage: 'B.1.1.7',
-                    },
-                }),
-            );
-        });
-
-        await step('Enter a valid lineage value', async () => {
-            await userEvent.type(inputField(), '{backspace>9/}');
             await userEvent.type(inputField(), 'B.1.1.7*');
+            await userEvent.click(canvas.getByRole('option', { name: 'B.1.1.7*' }));
 
-            await expect(listenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        pangoLineage: 'B.1.1.7*',
-                    },
-                }),
-            );
+            await waitFor(() => {
+                return expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    pangoLineage: 'B.1.1.7*',
+                });
+            });
         });
     },
     args: {
-        ...Default.args,
+        ...LineageFilter.args,
         initialValue: '',
     },
 };

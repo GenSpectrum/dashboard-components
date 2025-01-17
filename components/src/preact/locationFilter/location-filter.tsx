@@ -1,35 +1,36 @@
 import { type FunctionComponent } from 'preact';
-import { useContext } from 'preact/hooks';
+import { useContext, useMemo } from 'preact/hooks';
 import z from 'zod';
 
 import { fetchAutocompletionList } from './fetchAutocompletionList';
 import { LapisUrlContext } from '../LapisUrlContext';
-import { type LapisLocationFilter, LocationChangedEvent } from './LocationChangedEvent';
+import { LocationChangedEvent } from './LocationChangedEvent';
+import { type LapisLocationFilter, lapisLocationFilterSchema } from '../../types';
 import { DownshiftCombobox } from '../components/downshift-combobox';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
-const lineageFilterInnerPropsSchema = z.object({
-    value: z.record(z.string().nullable().optional()).optional(),
+const locationFilterInnerPropsSchema = z.object({
+    value: lapisLocationFilterSchema.optional(),
     placeholderText: z.string().optional(),
     fields: z.array(z.string()).min(1),
 });
 
-const lineageFilterPropsSchema = lineageFilterInnerPropsSchema.extend({
+const locationFilterPropsSchema = locationFilterInnerPropsSchema.extend({
     width: z.string(),
 });
 
-export type LocationFilterInnerProps = z.infer<typeof lineageFilterInnerPropsSchema>;
-export type LocationFilterProps = z.infer<typeof lineageFilterPropsSchema>;
+export type LocationFilterInnerProps = z.infer<typeof locationFilterInnerPropsSchema>;
+export type LocationFilterProps = z.infer<typeof locationFilterPropsSchema>;
 
 export const LocationFilter: FunctionComponent<LocationFilterProps> = (props) => {
     const { width, ...innerProps } = props;
     const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={lineageFilterPropsSchema}>
+        <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={locationFilterPropsSchema}>
             <ResizeContainer size={size}>
                 <LocationFilterInner {...innerProps} />
             </ResizeContainer>
@@ -66,11 +67,20 @@ const LocationSelector = ({
 }: LocationFilterInnerProps & {
     locationData: LapisLocationFilter[];
 }) => {
+    const allItems = useMemo(() => {
+        return locationData
+            .map((location) => toSelectItem(location, fields))
+            .filter((item): item is SelectItem => item !== undefined);
+    }, [fields, locationData]);
+
+    const selectedItem = useMemo(() => {
+        return value !== undefined ? toSelectItem(value, fields) : undefined;
+    }, [fields, value]);
+
     return (
         <DownshiftCombobox
-            allData={locationData}
-            convertToItem={(data: LapisLocationFilter) => toSelectOption(data, fields)}
-            value={value}
+            allItems={allItems}
+            value={selectedItem}
             filterItemsByInputValue={filterByInputValue}
             createEvent={(item: SelectItem | null) =>
                 new LocationChangedEvent(item?.lapisFilter ?? emptyLocationFilter(fields))
@@ -99,7 +109,7 @@ function filterByInputValue(item: SelectItem, inputValue: string | undefined | n
     );
 }
 
-function toSelectOption(locationFilter: LapisLocationFilter, fields: string[]) {
+function toSelectItem(locationFilter: LapisLocationFilter, fields: string[]): SelectItem | undefined {
     const concatenatedLocation = concatenateLocation(locationFilter, fields);
 
     const lastNonUndefinedField = [...fields]

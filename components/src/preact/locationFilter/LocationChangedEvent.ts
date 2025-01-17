@@ -1,4 +1,4 @@
-export type LapisLocationFilter = Record<string, string | null | undefined>;
+import { type LapisLocationFilter } from '../../types';
 
 export class LocationChangedEvent extends CustomEvent<LapisLocationFilter> {
     constructor(detail: LapisLocationFilter) {

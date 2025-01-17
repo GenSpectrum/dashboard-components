@@ -1,4 +1,4 @@
-type LapisTextFilter = Record<string, string | null | undefined>;
+type LapisTextFilter = Record<string, string | undefined>;
 
 export class TextInputChangedEvent extends CustomEvent<LapisTextFilter> {
     constructor(detail: LapisTextFilter) {

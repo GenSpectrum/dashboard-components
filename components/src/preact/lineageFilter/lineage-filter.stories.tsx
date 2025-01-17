@@ -1,4 +1,6 @@
-import { type Meta, type StoryObj } from '@storybook/preact';
+import { type Meta, type PreactRenderer, type StoryObj } from '@storybook/preact';
+import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
+import type { StepFunction } from '@storybook/types';
 
 import { LineageFilter, type LineageFilterProps } from './lineage-filter';
 import { previewHandles } from '../../../.storybook/preview';
@@ -34,8 +36,8 @@ const meta: Meta = {
     },
     args: {
         lapisField: 'pangoLineage',
-        placeholderText: 'Enter lineage',
-        initialValue: '',
+        placeholderText: 'Enter a lineage',
+        initialValue: 'A.1',
         width: '100%',
     },
 };
@@ -53,6 +55,59 @@ export const Default: StoryObj<LineageFilterProps> = {
             />
         </LapisUrlContext.Provider>
     ),
+    play: async ({ canvasElement, step }) => {
+        const { canvas, lineageChangedListenerMock } = await prepare(canvasElement, step);
+
+        step('change lineage filter value fires event', async () => {
+            const input = await inputField(canvas);
+            await userEvent.clear(input);
+            await userEvent.type(input, 'B.1');
+            await userEvent.click(canvas.getByRole('option', { name: 'B.1' }));
+
+            await waitFor(() => {
+                return expect(lineageChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    pangoLineage: 'B.1',
+                });
+            });
+        });
+    },
+};
+
+export const ClearSelection: StoryObj<LineageFilterProps> = {
+    ...Default,
+    play: async ({ canvasElement, step }) => {
+        const { canvas, lineageChangedListenerMock } = await prepare(canvasElement, step);
+
+        step('clear selection fires event with empty filter', async () => {
+            const clearSelectionButton = await canvas.findByLabelText('clear selection');
+            await userEvent.click(clearSelectionButton);
+
+            await waitFor(() => {
+                return expect(lineageChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    pangoLineage: undefined,
+                });
+            });
+        });
+    },
+};
+
+export const OnBlurInput: StoryObj<LineageFilterProps> = {
+    ...Default,
+    play: async ({ canvasElement, step }) => {
+        const { canvas, lineageChangedListenerMock } = await prepare(canvasElement, step);
+
+        step('after cleared selection by hand and then blur fires event with empty filter', async () => {
+            const input = await inputField(canvas);
+            await userEvent.clear(input);
+            await userEvent.click(canvas.getByLabelText('toggle menu'));
+
+            await waitFor(() => {
+                return expect(lineageChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    pangoLineage: undefined,
+                });
+            });
+        });
+    },
 };
 
 export const WithNoLapisField: StoryObj<LineageFilterProps> = {
@@ -67,3 +122,22 @@ export const WithNoLapisField: StoryObj<LineageFilterProps> = {
         });
     },
 };
+
+async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRenderer, unknown>) {
+    const canvas = within(canvasElement);
+
+    const lineageChangedListenerMock = fn();
+    step('Setup event listener mock', () => {
+        canvasElement.addEventListener('gs-lineage-filter-changed', lineageChangedListenerMock);
+    });
+
+    step('location filter is rendered with value', async () => {
+        await waitFor(async () => {
+            return expect(await inputField(canvas)).toHaveValue('A.1');
+        });
+    });
+
+    return { canvas, lineageChangedListenerMock };
+}
+
+const inputField = (canvas: ReturnType<typeof within>) => canvas.findByPlaceholderText('Enter a lineage');
