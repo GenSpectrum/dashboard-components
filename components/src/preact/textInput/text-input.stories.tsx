@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, waitFor, within } from '@storybook/test';
+import { expect, fireEvent, fn, waitFor, within } from '@storybook/test';
 
 import data from './__mockData__/aggregated_hosts.json';
 import { TextInput, type TextInputProps } from './text-input';
@@ -79,18 +79,35 @@ export const Default: StoryObj<TextInputProps> = {
     },
 };
 
-export const WithInitialValue: StoryObj<TextInputProps> = {
+export const RemoveInitialValue: StoryObj<TextInputProps> = {
     ...Default,
     args: {
         ...Default.args,
         initialValue: 'Homo sapiens',
     },
-    play: async ({ canvasElement }) => {
+    play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
+
+        const changedListenerMock = fn();
+        await step('Setup event listener mock', async () => {
+            canvasElement.addEventListener('gs-text-input-changed', changedListenerMock);
+        });
 
         await waitFor(() => {
             const input = canvas.getByPlaceholderText('Enter a host name', { exact: false });
             expect(input).toHaveValue('Homo sapiens');
+        });
+
+        await step('Remove initial value', async () => {
+            await fireEvent.click(canvas.getByRole('button', { name: 'clear selection' }));
+
+            await expect(changedListenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: {
+                        host: undefined,
+                    },
+                }),
+            );
         });
     },
 };
