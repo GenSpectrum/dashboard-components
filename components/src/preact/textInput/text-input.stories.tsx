@@ -45,7 +45,7 @@ const meta: Meta<TextInputProps> = {
                 type: 'text',
             },
         },
-        initialValue: {
+        value: {
             control: {
                 type: 'text',
             },
@@ -66,7 +66,7 @@ export const Default: StoryObj<TextInputProps> = {
             <TextInput
                 lapisField={args.lapisField}
                 placeholderText={args.placeholderText}
-                initialValue={args.initialValue}
+                value={args.value}
                 width={args.width}
             />
         </LapisUrlContext.Provider>
@@ -74,7 +74,7 @@ export const Default: StoryObj<TextInputProps> = {
     args: {
         lapisField: 'host',
         placeholderText: 'Enter a host name',
-        initialValue: '',
+        value: '',
         width: '100%',
     },
 };
@@ -83,7 +83,7 @@ export const RemoveInitialValue: StoryObj<TextInputProps> = {
     ...Default,
     args: {
         ...Default.args,
-        initialValue: 'Homo sapiens',
+        value: 'Homo sapiens',
     },
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);

@@ -81,16 +81,14 @@ export const Primary: StoryObj<LocationFilterProps> = {
             await userEvent.type(input, 'Germany');
             await userEvent.click(canvas.getByRole('option', { name: 'Germany Europe / Germany' }));
 
-            await expect(locationChangedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        country: 'Germany',
-                        region: 'Europe',
-                        division: undefined,
-                        location: undefined,
-                    },
-                }),
-            );
+            await waitFor(() => {
+                return expect(locationChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    country: 'Germany',
+                    region: 'Europe',
+                    division: undefined,
+                    location: undefined,
+                });
+            });
         });
     },
 };
@@ -104,16 +102,14 @@ export const ClearSelection: StoryObj<LocationFilterProps> = {
             const clearSelectionButton = await canvas.findByLabelText('clear selection');
             await userEvent.click(clearSelectionButton);
 
-            await expect(locationChangedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        country: undefined,
-                        region: undefined,
-                        division: undefined,
-                        location: undefined,
-                    },
-                }),
-            );
+            await waitFor(() => {
+                return expect(locationChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    country: undefined,
+                    region: undefined,
+                    division: undefined,
+                    location: undefined,
+                });
+            });
         });
     },
 };
@@ -128,16 +124,14 @@ export const OnBlurInput: StoryObj<LocationFilterProps> = {
             await userEvent.clear(input);
             await userEvent.click(canvas.getByLabelText('toggle menu'));
 
-            await expect(locationChangedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        country: undefined,
-                        region: undefined,
-                        division: undefined,
-                        location: undefined,
-                    },
-                }),
-            );
+            await waitFor(() => {
+                return expect(locationChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    country: undefined,
+                    region: undefined,
+                    division: undefined,
+                    location: undefined,
+                });
+            });
         });
     },
 };

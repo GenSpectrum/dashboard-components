@@ -15,7 +15,7 @@ const codeExample = String.raw`
 <gs-text-input 
     lapisField="host"
     placeholderText="Enter host name"
-    initialValue="Homo sapiens"
+    value="Homo sapiens"
     width="50%">
 </gs-text-input>`;
 
@@ -60,7 +60,7 @@ const meta: Meta<Required<TextInputProps>> = {
                 type: 'text',
             },
         },
-        initialValue: {
+        value: {
             control: {
                 type: 'text',
             },
@@ -83,7 +83,7 @@ export const Default: StoryObj<Required<TextInputProps>> = {
                 <gs-text-input
                     .lapisField=${args.lapisField}
                     .placeholderText=${args.placeholderText}
-                    .initialValue=${args.initialValue}
+                    .value=${args.value}
                     .width=${args.width}
                 ></gs-text-input>
             </div>
@@ -92,7 +92,7 @@ export const Default: StoryObj<Required<TextInputProps>> = {
     args: {
         lapisField: 'host',
         placeholderText: 'Enter host name',
-        initialValue: 'Homo sapiens',
+        value: 'Homo sapiens',
         width: '100%',
     },
 };
@@ -163,6 +163,6 @@ export const FiresEvents: StoryObj<Required<TextInputProps>> = {
     },
     args: {
         ...Default.args,
-        initialValue: '',
+        value: '',
     },
 };
