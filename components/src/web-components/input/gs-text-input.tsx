@@ -1,6 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
+import { type TextInputChangedEvent } from '../../preact/textInput/TextInputChangedEvent';
 import { TextInput, type TextInputProps } from '../../preact/textInput/text-input';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
@@ -11,7 +12,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  *
  * This component provides a text input field to specify filters for arbitrary fields of this LAPIS instance.
  *
- * @fires {CustomEvent<Record<string, string>>} gs-text-input-changed
+ * @fires {CustomEvent<Record<string, string | undefined>>} gs-text-input-changed
  * Fired when the input field is changed.
  * The `details` of this event contain an object with the `lapisField` as key and the input value as value.
  * Example:
@@ -70,7 +71,7 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-text-input-changed': CustomEvent<Record<string, string>>;
+        'gs-text-input-changed': TextInputChangedEvent;
     }
 }
 

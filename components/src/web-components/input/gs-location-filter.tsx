@@ -15,7 +15,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * The component retrieves a list of all possible values for these fields from the Lapis instance.
  * This list is then utilized to display autocomplete suggestions and to validate the input.
  *
- * @fires {CustomEvent<Record<string, string>>} gs-location-changed
+ * @fires {CustomEvent<Record<string, string | undefined>>} gs-location-changed
  * Fired when a value from the datalist is selected or when a valid value is typed into the field.
  * The `details` of this event contain an object with all `fields` as keys
  * and the corresponding values as values, even if they are `undefined`.
@@ -35,7 +35,7 @@ export class LocationFilterComponent extends PreactLitAdapter {
      * The initial value to use for this location filter.
      */
     @property({ type: Object })
-    value: Record<string, string | null | undefined> | undefined = undefined;
+    value: Record<string, string | undefined> | undefined = undefined;
 
     /**
      * Required.

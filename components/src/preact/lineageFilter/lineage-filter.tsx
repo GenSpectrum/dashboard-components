@@ -1,19 +1,20 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useRef } from 'preact/hooks';
+import { useContext } from 'preact/hooks';
 import z from 'zod';
 
 import { fetchLineageAutocompleteList } from './fetchLineageAutocompleteList';
 import { LapisUrlContext } from '../LapisUrlContext';
+import { LineageFilterChangedEvent } from './LineageFilterChangedEvent';
+import { DownshiftCombobox } from '../components/downshift-combobox';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
-import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
 const lineageFilterInnerPropsSchema = z.object({
     lapisField: z.string().min(1),
     placeholderText: z.string().optional(),
-    initialValue: z.string(),
+    value: z.string(),
 });
 
 const lineageFilterPropsSchema = lineageFilterInnerPropsSchema.extend({
@@ -36,14 +37,8 @@ export const LineageFilter: FunctionComponent<LineageFilterProps> = (props) => {
     );
 };
 
-const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
-    lapisField,
-    placeholderText,
-    initialValue,
-}) => {
+const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({ lapisField, placeholderText, value }) => {
     const lapis = useContext(LapisUrlContext);
-
-    const inputRef = useRef<HTMLInputElement>(null);
 
     const { data, error, isLoading } = useQuery(
         () => fetchLineageAutocompleteList(lapis, lapisField),
@@ -58,47 +53,33 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
         throw error;
     }
 
-    if (data === null) {
-        return <NoDataDisplay />;
-    }
+    return <LineageSelector lapisField={lapisField} value={value} placeholderText={placeholderText} data={data} />;
+};
 
-    const onInput = () => {
-        const value = inputRef.current?.value === '' ? undefined : inputRef.current?.value;
-
-        if (isValidValue(value)) {
-            inputRef.current?.dispatchEvent(
-                new CustomEvent('gs-lineage-filter-changed', {
-                    detail: { [lapisField]: value },
-                    bubbles: true,
-                    composed: true,
-                }),
-            );
-        }
-    };
-
-    const isValidValue = (value: string | undefined) => {
-        if (value === undefined) {
-            return true;
-        }
-        return data.includes(value);
-    };
-
+const LineageSelector = ({
+    lapisField,
+    value,
+    placeholderText,
+    data,
+}: LineageFilterInnerProps & {
+    data: string[];
+}) => {
     return (
-        <>
-            <input
-                type='text'
-                class='input input-bordered w-full'
-                placeholder={placeholderText !== undefined ? placeholderText : lapisField}
-                onInput={onInput}
-                ref={inputRef}
-                list={lapisField}
-                value={initialValue}
-            />
-            <datalist id={lapisField}>
-                {data.map((item) => (
-                    <option value={item} key={item} />
-                ))}
-            </datalist>
-        </>
+        <DownshiftCombobox
+            allItems={data}
+            value={value}
+            filterItemsByInputValue={filterByInputValue}
+            createEvent={(item: string | null) => new LineageFilterChangedEvent({ [lapisField]: item ?? undefined })}
+            itemToString={(item: string | undefined | null) => item ?? ''}
+            placeholderText={placeholderText}
+            formatItemInList={(item: string) => item}
+        />
     );
 };
+
+function filterByInputValue(item: string, inputValue: string | undefined | null) {
+    if (inputValue === undefined || inputValue === null || inputValue === '') {
+        return true;
+    }
+    return item?.toLowerCase().includes(inputValue?.toLowerCase() || '');
+}

@@ -1,10 +1,9 @@
 import { useCombobox } from 'downshift/preact';
 import { type ComponentChild } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 
-export function DownshiftCombobox<Item, Data>({
-    allData,
-    convertToItem,
+export function DownshiftCombobox<Item>({
+    allItems,
     value,
     filterItemsByInputValue,
     createEvent,
@@ -12,29 +11,15 @@ export function DownshiftCombobox<Item, Data>({
     placeholderText,
     formatItemInList,
 }: {
-    allData: Data[];
-    convertToItem: (data: Data) => Item | undefined;
-    value?: Data;
+    allItems: Item[];
+    value?: Item;
     filterItemsByInputValue: (item: Item, value: string) => boolean;
     createEvent: (item: Item | null) => CustomEvent;
     itemToString: (item: Item | undefined | null) => string;
     placeholderText?: string;
     formatItemInList: (item: Item) => ComponentChild;
 }) {
-    const allItems = useMemo(
-        () =>
-            allData
-                .map((data) => {
-                    return convertToItem(data);
-                })
-                .filter((item): item is Item => item !== undefined),
-        [allData, convertToItem],
-    );
-
-    const initialSelectedItem = useMemo(
-        () => (value !== undefined ? convertToItem(value) : null),
-        [value, convertToItem],
-    );
+    const initialSelectedItem = value ?? null;
 
     const [items, setItems] = useState(
         allItems.filter((item) => filterItemsByInputValue(item, itemToString(initialSelectedItem))),

@@ -1,6 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
+import { type LineageFilterChangedEvent } from '../../preact/lineageFilter/LineageFilterChangedEvent';
 import { LineageFilter, type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
@@ -17,7 +18,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * and provides an autocomplete list with the available values of the lineage and sublineage queries
  * (a `*` appended to the lineage value).
  *
- * @fires {CustomEvent<Record<string, string>>} gs-lineage-filter-changed
+ * @fires {CustomEvent<Record<string, string | undefined>>} gs-lineage-filter-changed
  * Fired when the input field is changed.
  * The `details` of this event contain an object with the `lapisField` as key and the input value as value.
  * Example:
@@ -76,7 +77,7 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-lineage-filter-changed': CustomEvent<Record<string, string>>;
+        'gs-lineage-filter-changed': LineageFilterChangedEvent;
     }
 }
 

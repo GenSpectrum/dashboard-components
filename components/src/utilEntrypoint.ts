@@ -34,3 +34,5 @@ export type { ConfidenceIntervalMethod } from './preact/shared/charts/confideceI
 export type { AxisMax, YAxisMaxConfig } from './preact/shared/charts/getYAxisMax';
 
 export { LocationChangedEvent } from './preact/locationFilter/LocationChangedEvent';
+export { LineageFilterChangedEvent } from './preact/lineageFilter/LineageFilterChangedEvent';
+export { TextInputChangedEvent } from './preact/textInput/TextInputChangedEvent';
