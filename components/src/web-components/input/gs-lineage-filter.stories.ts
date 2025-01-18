@@ -15,7 +15,7 @@ const codeExample = String.raw`
 <gs-lineage-filter 
     lapisField="pangoLineage"
     placeholderText="Enter lineage"
-    initialValue="B.1.1.7"
+    value="B.1.1.7"
     width="50%">
 </gs-lineage-filter>`;
 
@@ -61,7 +61,7 @@ const Template: StoryObj<Required<LineageFilterProps>> = {
                 <gs-lineage-filter
                     .lapisField=${args.lapisField}
                     .placeholderText=${args.placeholderText}
-                    .initialValue=${args.initialValue}
+                    .value=${args.value}
                     .width=${args.width}
                 ></gs-lineage-filter>
             </div>
@@ -70,7 +70,7 @@ const Template: StoryObj<Required<LineageFilterProps>> = {
     args: {
         lapisField: 'pangoLineage',
         placeholderText: 'Enter a lineage',
-        initialValue: 'B.1.1.7',
+        value: 'B.1.1.7',
         width: '100%',
     },
 };
@@ -185,6 +185,6 @@ export const FiresEvent: StoryObj<Required<LineageFilterProps>> = {
     },
     args: {
         ...LineageFilter.args,
-        initialValue: '',
+        value: '',
     },
 };

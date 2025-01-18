@@ -37,7 +37,7 @@ const meta: Meta = {
     args: {
         lapisField: 'pangoLineage',
         placeholderText: 'Enter a lineage',
-        initialValue: 'A.1',
+        value: 'A.1',
         width: '100%',
     },
 };
@@ -50,7 +50,7 @@ export const Default: StoryObj<LineageFilterProps> = {
             <LineageFilter
                 lapisField={args.lapisField}
                 placeholderText={args.placeholderText}
-                initialValue={args.initialValue}
+                value={args.value}
                 width={args.width}
             />
         </LapisUrlContext.Provider>

@@ -34,7 +34,7 @@ export class LineageFilterComponent extends PreactLitAdapter {
      * The initial value to use for this lineage filter.
      */
     @property()
-    initialValue: string = '';
+    value: string = '';
 
     /**
      * Required.
@@ -64,7 +64,7 @@ export class LineageFilterComponent extends PreactLitAdapter {
             <LineageFilter
                 lapisField={this.lapisField}
                 placeholderText={this.placeholderText}
-                initialValue={this.initialValue}
+                value={this.value}
                 width={this.width}
             />
         );
@@ -91,9 +91,7 @@ declare global {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type InitialValueMatches = Expect<
-    Equals<typeof LineageFilterComponent.prototype.initialValue, LineageFilterProps['initialValue']>
->;
+type InitialValueMatches = Expect<Equals<typeof LineageFilterComponent.prototype.value, LineageFilterProps['value']>>;
 type LapisFieldMatches = Expect<
     Equals<typeof LineageFilterComponent.prototype.lapisField, LineageFilterProps['lapisField']>
 >;
