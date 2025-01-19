@@ -111,9 +111,11 @@ const ProportionCell: FunctionComponent<{
             ) : (
                 <>
                     <p>Proportion: {formatProportion(value.proportion)}</p>
-                    <p>
-                        Count: {value.count} / {value.totalCount} total
-                    </p>
+                    {value.count !== null && value.totalCount !== null && (
+                        <p>
+                            Count: {value.count} / {value.totalCount} total
+                        </p>
+                    )}
                 </>
             )}
         </div>

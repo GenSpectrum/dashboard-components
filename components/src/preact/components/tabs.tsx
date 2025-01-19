@@ -16,7 +16,7 @@ const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
     const [activeTab, setActiveTab] = useState(tabs[0]?.title);
 
     const tabElements = (
-        <div className='flex flex-row'>
+        <div className='flex flex-row flex-wrap'>
             {tabs.map((tab) => {
                 return (
                     <button

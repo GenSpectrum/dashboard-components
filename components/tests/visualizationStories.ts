@@ -156,4 +156,9 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'division',
         testDownloadWithFilename: 'sequences_by_location.csv',
     },
+    {
+        id: 'wastewater-visualization-wastewater-mutations-over-time--wastewater-mutations-over-time',
+        title: 'Wastewater Mutations Over Time',
+        loadingIsDoneIndicator: 'Lugano',
+    },
 ];

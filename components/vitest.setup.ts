@@ -4,7 +4,7 @@ import { type DefaultBodyType, http, type StrictRequest } from 'msw';
 import { setupServer } from 'msw/node';
 import { afterAll, afterEach, beforeAll, expect } from 'vitest';
 
-import { aggregatedEndpoint, substitutionsOrDeletionsEndpoint } from './src/lapisApi/lapisApi';
+import { aggregatedEndpoint, detailsEndpoint, substitutionsOrDeletionsEndpoint } from './src/lapisApi/lapisApi';
 import { type LapisBaseRequest, type MutationsRequest, type MutationsResponse } from './src/lapisApi/lapisTypes';
 
 export const DUMMY_LAPIS_URL = 'http://lapis.dummy';
@@ -54,6 +54,15 @@ export const lapisRequestMocks = {
     ) => {
         testServer.use(http.post(aggregatedEndpoint(DUMMY_LAPIS_URL), resolver(expectedRequests)));
     },
+    details: (
+        body: LapisBaseRequest,
+        response: {
+            data: Record<string, string | number | boolean | null>[];
+        },
+        statusCode: number = 200,
+    ) => {
+        testServer.use(http.post(detailsEndpoint(DUMMY_LAPIS_URL), resolver([{ body, response, statusCode }])));
+    },
     multipleMutations: (
         expectedRequests: {
             body: MutationsRequest;
@@ -71,13 +80,14 @@ function resolver(
     expectedRequests: {
         body: unknown;
         response: unknown;
+        statusCode?: number;
     }[],
 ) {
     return async ({ request }: { request: StrictRequest<DefaultBodyType> }) => {
         const actualBody = await request.json();
 
         const errors = [];
-        for (const { body, response } of expectedRequests) {
+        for (const { body, response, statusCode } of expectedRequests) {
             try {
                 expect(actualBody, 'Request body did not match').to.deep.equal(body);
             } catch (error) {
@@ -85,7 +95,7 @@ function resolver(
                 continue;
             }
             return new Response(JSON.stringify(response), {
-                status: 200,
+                status: statusCode ?? 200,
             });
         }
 

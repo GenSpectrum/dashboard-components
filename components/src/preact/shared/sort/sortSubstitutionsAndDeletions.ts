@@ -1,9 +1,6 @@
-import { DeletionClass, type SubstitutionClass } from '../../../utils/mutations';
+import type { Deletion, Substitution } from '../../../utils/mutations';
 
-export const sortSubstitutionsAndDeletions = (
-    a: SubstitutionClass | DeletionClass,
-    b: SubstitutionClass | DeletionClass,
-) => {
+export const sortSubstitutionsAndDeletions = (a: Substitution | Deletion, b: Substitution | Deletion) => {
     if (a.segment !== b.segment) {
         return compareSegments(a.segment, b.segment);
     }
@@ -12,8 +9,8 @@ export const sortSubstitutionsAndDeletions = (
         return comparePositions(a.position, b.position);
     }
 
-    const aIsDeletion = a instanceof DeletionClass;
-    const bIsDeletion = b instanceof DeletionClass;
+    const aIsDeletion = a.type === 'deletion';
+    const bIsDeletion = b.type === 'deletion';
 
     if (aIsDeletion !== bIsDeletion) {
         return aIsDeletion ? 1 : -1;

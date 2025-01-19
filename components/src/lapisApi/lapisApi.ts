@@ -1,6 +1,7 @@
 import { referenceGenomeResponse } from './ReferenceGenome';
 import {
     aggregatedResponse,
+    detailsResponse,
     insertionsResponse,
     type LapisBaseRequest,
     lapisError,
@@ -49,6 +50,21 @@ export async function fetchAggregated(lapisUrl: string, body: LapisBaseRequest, 
     );
 
     return aggregatedResponse.parse(await response.json());
+}
+
+export async function fetchDetails(lapisUrl: string, body: LapisBaseRequest, signal?: AbortSignal) {
+    const response = await fetch(detailsEndpoint(lapisUrl), {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+        signal,
+    });
+
+    await handleErrors(response, 'aggregated data');
+
+    return detailsResponse.parse(await response.json());
 }
 
 export async function fetchInsertions(
@@ -163,6 +179,7 @@ const handleErrors = async (response: Response, requestedData: string) => {
 };
 
 export const aggregatedEndpoint = (lapisUrl: string) => `${lapisUrl}/sample/aggregated`;
+export const detailsEndpoint = (lapisUrl: string) => `${lapisUrl}/sample/details`;
 export const insertionsEndpoint = (lapisUrl: string, sequenceType: SequenceType) => {
     return sequenceType === 'amino acid'
         ? `${lapisUrl}/sample/aminoAcidInsertions`

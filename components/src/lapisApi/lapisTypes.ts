@@ -41,9 +41,15 @@ const insertionCount = z.object({
 });
 export const insertionsResponse = makeLapisResponse(z.array(insertionCount));
 
-export const aggregatedItem = z.object({ count: z.number() }).catchall(z.union([z.string(), z.number(), z.null()]));
+const baseResponseValueSchema = z.union([z.string(), z.number(), z.boolean(), z.null()]);
+
+export const aggregatedItem = z.object({ count: z.number() }).catchall(baseResponseValueSchema);
 export const aggregatedResponse = makeLapisResponse(z.array(aggregatedItem));
 export type AggregatedItem = z.infer<typeof aggregatedItem>;
+
+export const detailsItem = z.object({}).catchall(baseResponseValueSchema);
+export const detailsResponse = makeLapisResponse(z.array(detailsItem));
+export type DetailsItem = z.infer<typeof detailsItem>;
 
 function makeLapisResponse<T extends ZodTypeAny>(data: T) {
     return z.object({
