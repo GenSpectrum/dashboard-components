@@ -14,7 +14,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * Currently, it is designed to work well with Pango Lineages,
  * but it may also be used for other lineage types, if suitable.
  *
- * It fetches all available values of the `lapisField` from the LAPIS instance
+ * It fetches all available values of the `lapisField` from the LAPIS instance within the given `lapisFilter`
  * and provides an autocomplete list with the available values of the lineage and sublineage queries
  * (a `*` appended to the lineage value).
  *
@@ -46,6 +46,19 @@ export class LineageFilterComponent extends PreactLitAdapter {
     lapisField = '';
 
     /**
+     * The filter that is used to fetch the available the autocomplete options.
+     * If not set it fetches all available options.
+     * It must be a valid LAPIS filter object.
+     */
+    @property({ type: Object })
+    lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
+
+    /**
      * The placeholder text to display in the input field.
      */
     @property()
@@ -63,6 +76,7 @@ export class LineageFilterComponent extends PreactLitAdapter {
         return (
             <LineageFilter
                 lapisField={this.lapisField}
+                lapisFilter={this.lapisFilter}
                 placeholderText={this.placeholderText}
                 value={this.value}
                 width={this.width}
@@ -94,6 +108,9 @@ declare global {
 type InitialValueMatches = Expect<Equals<typeof LineageFilterComponent.prototype.value, LineageFilterProps['value']>>;
 type LapisFieldMatches = Expect<
     Equals<typeof LineageFilterComponent.prototype.lapisField, LineageFilterProps['lapisField']>
+>;
+type LapisFilterMatches = Expect<
+    Equals<typeof LineageFilterComponent.prototype.lapisFilter, LineageFilterProps['lapisFilter']>
 >;
 type PlaceholderTextMatches = Expect<
     Equals<typeof LineageFilterComponent.prototype.placeholderText, LineageFilterProps['placeholderText']>
