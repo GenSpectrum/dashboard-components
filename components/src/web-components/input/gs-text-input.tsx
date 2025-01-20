@@ -40,6 +40,19 @@ export class TextInputComponent extends PreactLitAdapter {
     lapisField = '';
 
     /**
+     * The filter that is used to fetch the available the autocomplete options.
+     * If not set it fetches all available options.
+     * It must be a valid LAPIS filter object.
+     */
+    @property({ type: Object })
+    lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
+
+    /**
      * The placeholder text to display in the input field.
      */
     @property()
@@ -57,6 +70,7 @@ export class TextInputComponent extends PreactLitAdapter {
         return (
             <TextInput
                 lapisField={this.lapisField}
+                lapisFilter={this.lapisFilter}
                 placeholderText={this.placeholderText}
                 value={this.value}
                 width={this.width}
@@ -87,6 +101,9 @@ declare global {
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type InitialValueMatches = Expect<Equals<typeof TextInputComponent.prototype.value, TextInputProps['value']>>;
 type LapisFieldMatches = Expect<Equals<typeof TextInputComponent.prototype.lapisField, TextInputProps['lapisField']>>;
+type LapisFilterMatches = Expect<
+    Equals<typeof TextInputComponent.prototype.lapisFilter, TextInputProps['lapisFilter']>
+>;
 type PlaceholderTextMatches = Expect<
     Equals<typeof TextInputComponent.prototype.placeholderText, TextInputProps['placeholderText']>
 >;

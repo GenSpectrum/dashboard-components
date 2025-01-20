@@ -23,6 +23,7 @@ const meta: Meta<TextInputProps> = {
                         url: AGGREGATED_ENDPOINT,
                         body: {
                             fields: ['host'],
+                            country: 'Germany',
                         },
                     },
                     response: {
@@ -36,9 +37,8 @@ const meta: Meta<TextInputProps> = {
     argTypes: {
         lapisField: {
             control: {
-                type: 'select',
+                type: 'text',
             },
-            options: ['host'],
         },
         placeholderText: {
             control: {
@@ -55,6 +55,11 @@ const meta: Meta<TextInputProps> = {
                 type: 'text',
             },
         },
+        lapisFilter: {
+            control: {
+                type: 'object',
+            },
+        },
     },
 };
 
@@ -63,12 +68,7 @@ export default meta;
 export const Default: StoryObj<TextInputProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
-            <TextInput
-                lapisField={args.lapisField}
-                placeholderText={args.placeholderText}
-                value={args.value}
-                width={args.width}
-            />
+            <TextInput {...args} />
         </LapisUrlContext.Provider>
     ),
     args: {
@@ -76,6 +76,9 @@ export const Default: StoryObj<TextInputProps> = {
         placeholderText: 'Enter a host name',
         value: '',
         width: '100%',
+        lapisFilter: {
+            country: 'Germany',
+        },
     },
 };
 

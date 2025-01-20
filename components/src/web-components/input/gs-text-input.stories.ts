@@ -14,6 +14,7 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 const codeExample = String.raw`
 <gs-text-input 
     lapisField="host"
+    lapisFilter='{"country": "Germany"}'
     placeholderText="Enter host name"
     value="Homo sapiens"
     width="50%">
@@ -34,6 +35,7 @@ const meta: Meta<Required<TextInputProps>> = {
                         url: AGGREGATED_ENDPOINT,
                         body: {
                             fields: ['host'],
+                            country: 'Germany',
                         },
                     },
                     response: {
@@ -70,6 +72,11 @@ const meta: Meta<Required<TextInputProps>> = {
                 type: 'text',
             },
         },
+        lapisFilter: {
+            control: {
+                type: 'object',
+            },
+        },
     },
     tags: ['autodocs'],
 };
@@ -82,6 +89,7 @@ export const Default: StoryObj<Required<TextInputProps>> = {
             <div class="max-w-screen-lg">
                 <gs-text-input
                     .lapisField=${args.lapisField}
+                    .lapisFilter=${args.lapisFilter}
                     .placeholderText=${args.placeholderText}
                     .value=${args.value}
                     .width=${args.width}
@@ -91,6 +99,7 @@ export const Default: StoryObj<Required<TextInputProps>> = {
     },
     args: {
         lapisField: 'host',
+        lapisFilter: { country: 'Germany' },
         placeholderText: 'Enter host name',
         value: 'Homo sapiens',
         width: '100%',
