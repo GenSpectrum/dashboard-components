@@ -8,7 +8,7 @@ describe('fetchAutocompletionList', () => {
         const fields = ['region', 'country', 'division'];
 
         lapisRequestMocks.aggregated(
-            { fields },
+            { fields, country: 'Germany' },
             {
                 data: [
                     { count: 0, region: 'region1', country: 'country1_1', division: 'division1_1_1' },
@@ -20,7 +20,11 @@ describe('fetchAutocompletionList', () => {
             },
         );
 
-        const result = await fetchAutocompletionList(fields, DUMMY_LAPIS_URL);
+        const result = await fetchAutocompletionList({
+            fields,
+            lapis: DUMMY_LAPIS_URL,
+            lapisFilter: { country: 'Germany' },
+        });
 
         expect(result).to.deep.equal([
             { region: 'region1', country: undefined, division: undefined },

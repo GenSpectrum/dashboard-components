@@ -1,16 +1,26 @@
 import { FetchAggregatedOperator } from '../../operator/FetchAggregatedOperator';
+import type { LapisFilter } from '../../types';
 
-export async function fetchAutocompletionList(
-    fields: string[],
-    lapis: string,
-    signal?: AbortSignal,
-): Promise<Record<string, string | undefined>[]> {
+export async function fetchAutocompletionList({
+    fields,
+    lapis,
+    signal,
+    lapisFilter,
+}: {
+    fields: string[];
+    lapis: string;
+    lapisFilter?: LapisFilter;
+    signal?: AbortSignal;
+}): Promise<Record<string, string | undefined>[]> {
     const toAncestorInHierarchyOverwriteValues = Array(fields.length - 1)
         .fill(0)
         .map((_, i) => i + 1)
         .map((i) => fields.slice(i).reduce((acc, field) => ({ ...acc, [field]: null }), {}));
 
-    const fetchAggregatedOperator = new FetchAggregatedOperator<Record<string, string | null>>({}, fields);
+    const fetchAggregatedOperator = new FetchAggregatedOperator<Record<string, string | null>>(
+        lapisFilter ?? {},
+        fields,
+    );
 
     const data = (await fetchAggregatedOperator.evaluate(lapis, signal)).content;
 

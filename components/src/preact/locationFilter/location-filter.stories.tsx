@@ -21,6 +21,7 @@ const meta: Meta<LocationFilterProps> = {
                         url: AGGREGATED_ENDPOINT,
                         body: {
                             fields: ['region', 'country', 'division', 'location'],
+                            age: 18,
                         },
                     },
                     response: {
@@ -39,6 +40,9 @@ const meta: Meta<LocationFilterProps> = {
         fields: ['region', 'country', 'division', 'location'],
         value: { region: 'Europe', country: undefined, division: undefined, location: undefined },
         placeholderText: 'Enter a location',
+        lapisFilter: {
+            age: 18,
+        },
     },
     argTypes: {
         fields: {
@@ -59,6 +63,11 @@ const meta: Meta<LocationFilterProps> = {
         placeholderText: {
             control: {
                 type: 'text',
+            },
+        },
+        lapisFilter: {
+            control: {
+                type: 'object',
             },
         },
     },

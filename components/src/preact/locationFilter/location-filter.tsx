@@ -5,25 +5,26 @@ import z from 'zod';
 import { fetchAutocompletionList } from './fetchAutocompletionList';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { LocationChangedEvent } from './LocationChangedEvent';
-import { type LapisLocationFilter, lapisLocationFilterSchema } from '../../types';
+import { lapisFilterSchema, type LapisLocationFilter, lapisLocationFilterSchema } from '../../types';
 import { DownshiftCombobox } from '../components/downshift-combobox';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
-const locationFilterInnerPropsSchema = z.object({
+const locationSelectorPropsSchema = z.object({
     value: lapisLocationFilterSchema.optional(),
     placeholderText: z.string().optional(),
     fields: z.array(z.string()).min(1),
 });
-
+const locationFilterInnerPropsSchema = locationSelectorPropsSchema.extend({ lapisFilter: lapisFilterSchema });
 const locationFilterPropsSchema = locationFilterInnerPropsSchema.extend({
     width: z.string(),
 });
 
 export type LocationFilterInnerProps = z.infer<typeof locationFilterInnerPropsSchema>;
 export type LocationFilterProps = z.infer<typeof locationFilterPropsSchema>;
+type LocationSelectorProps = z.infer<typeof locationSelectorPropsSchema>;
 
 export const LocationFilter: FunctionComponent<LocationFilterProps> = (props) => {
     const { width, ...innerProps } = props;
@@ -38,10 +39,13 @@ export const LocationFilter: FunctionComponent<LocationFilterProps> = (props) =>
     );
 };
 
-export const LocationFilterInner = ({ value, fields, placeholderText }: LocationFilterInnerProps) => {
+export const LocationFilterInner = ({ value, fields, placeholderText, lapisFilter }: LocationFilterInnerProps) => {
     const lapis = useContext(LapisUrlContext);
 
-    const { data, error, isLoading } = useQuery(() => fetchAutocompletionList(fields, lapis), [fields, lapis]);
+    const { data, error, isLoading } = useQuery(
+        () => fetchAutocompletionList({ fields, lapis, lapisFilter }),
+        [fields, lapis],
+    );
 
     if (isLoading) {
         return <LoadingDisplay />;
@@ -64,7 +68,7 @@ const LocationSelector = ({
     value,
     placeholderText,
     locationData,
-}: LocationFilterInnerProps & {
+}: LocationSelectorProps & {
     locationData: LapisLocationFilter[];
 }) => {
     const allItems = useMemo(() => {

@@ -12,7 +12,8 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * This component provides an input field to specify filters for locations.
  *
  * It expects a list of fields that form a strict hierarchical order, such as continent, country, and city.
- * The component retrieves a list of all possible values for these fields from the Lapis instance.
+ * The component retrieves a list of all possible values for these fields from the Lapis instance,
+ * within the `lapisFilter`.
  * This list is then utilized to display autocomplete suggestions and to validate the input.
  *
  * @fires {CustomEvent<Record<string, string | undefined>>} gs-location-changed
@@ -49,6 +50,19 @@ export class LocationFilterComponent extends PreactLitAdapter {
     fields: string[] = [];
 
     /**
+     * The filter that is used to fetch the available the autocomplete options.
+     * If not set it fetches all available options.
+     * It must be a valid LAPIS filter object.
+     */
+    @property({ type: Object })
+    lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
+
+    /**
      * The width of the component.
      *
      * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
@@ -67,6 +81,7 @@ export class LocationFilterComponent extends PreactLitAdapter {
             <LocationFilter
                 value={this.value}
                 fields={this.fields}
+                lapisFilter={this.lapisFilter}
                 width={this.width}
                 placeholderText={this.placeholderText}
             />
@@ -96,6 +111,9 @@ declare global {
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type InitialValueMatches = Expect<Equals<typeof LocationFilterComponent.prototype.value, LocationFilterProps['value']>>;
 type FieldsMatches = Expect<Equals<typeof LocationFilterComponent.prototype.fields, LocationFilterProps['fields']>>;
+type LapisFilterMatches = Expect<
+    Equals<typeof LocationFilterComponent.prototype.lapisFilter, LocationFilterProps['lapisFilter']>
+>;
 type PlaceholderTextMatches = Expect<
     Equals<typeof LocationFilterComponent.prototype.placeholderText, LocationFilterProps['placeholderText']>
 >;

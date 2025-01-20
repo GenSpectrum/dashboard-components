@@ -15,6 +15,7 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 const codeExample = String.raw`
 <gs-location-filter
     fields='["region", "country"]'
+    lapisFilter='{"age": 10}'
     value='{ "region": "Europe", "country": null}'
     width="100%"
     placeholderText="Enter a location"
@@ -54,6 +55,9 @@ const meta: Meta = {
                 type: 'text',
             },
         },
+        lapisFilter: {
+            age: 18,
+        },
     },
     tags: ['autodocs'],
 };
@@ -66,6 +70,7 @@ const Template: StoryObj<LocationFilterProps> = {
             <div class="max-w-screen-lg">
                 <gs-location-filter
                     .fields=${args.fields}
+                    .lapisFilter=${args.lapisFilter}
                     .value=${args.value}
                     .width=${args.width}
                     placeholderText=${ifDefined(args.placeholderText)}
@@ -75,6 +80,9 @@ const Template: StoryObj<LocationFilterProps> = {
     },
     args: {
         fields: ['region', 'country', 'division', 'location'],
+        lapisFilter: {
+            age: 18,
+        },
         value: undefined,
         width: '100%',
         placeholderText: 'Enter a location',
@@ -86,6 +94,7 @@ const aggregatedEndpointMatcher = {
     url: AGGREGATED_ENDPOINT,
     body: {
         fields: ['region', 'country', 'division', 'location'],
+        age: 18,
     },
 };
 
