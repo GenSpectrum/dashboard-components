@@ -44,7 +44,7 @@ export const LocationFilterInner = ({ value, fields, placeholderText, lapisFilte
 
     const { data, error, isLoading } = useQuery(
         () => fetchAutocompletionList({ fields, lapis, lapisFilter }),
-        [fields, lapis],
+        [fields, lapis, lapisFilter],
     );
 
     if (isLoading) {

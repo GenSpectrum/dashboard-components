@@ -50,7 +50,7 @@ const TextInputInner: FunctionComponent<TextInputInnerProps> = ({
 
     const { data, error, isLoading } = useQuery(
         () => fetchStringAutocompleteList({ lapis, field: lapisField, lapisFilter }),
-        [lapisField, lapis],
+        [lapisField, lapis, lapisFilter],
     );
 
     if (isLoading) {

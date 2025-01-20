@@ -51,7 +51,7 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
 
     const { data, error, isLoading } = useQuery(
         () => fetchLineageAutocompleteList({ lapis, field: lapisField, lapisFilter }),
-        [lapisField, lapis],
+        [lapisField, lapis, lapisFilter],
     );
 
     if (isLoading) {
