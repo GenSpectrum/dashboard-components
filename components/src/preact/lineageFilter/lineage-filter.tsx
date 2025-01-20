@@ -5,24 +5,28 @@ import z from 'zod';
 import { fetchLineageAutocompleteList } from './fetchLineageAutocompleteList';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { LineageFilterChangedEvent } from './LineageFilterChangedEvent';
+import { lapisFilterSchema } from '../../types';
 import { DownshiftCombobox } from '../components/downshift-combobox';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
-const lineageFilterInnerPropsSchema = z.object({
+const lineageSelectorPropsSchema = z.object({
     lapisField: z.string().min(1),
     placeholderText: z.string().optional(),
     value: z.string(),
 });
-
+const lineageFilterInnerPropsSchema = lineageSelectorPropsSchema.extend({
+    lapisFilter: lapisFilterSchema,
+});
 const lineageFilterPropsSchema = lineageFilterInnerPropsSchema.extend({
     width: z.string(),
 });
 
 export type LineageFilterInnerProps = z.infer<typeof lineageFilterInnerPropsSchema>;
 export type LineageFilterProps = z.infer<typeof lineageFilterPropsSchema>;
+type LineageSelectorProps = z.infer<typeof lineageSelectorPropsSchema>;
 
 export const LineageFilter: FunctionComponent<LineageFilterProps> = (props) => {
     const { width, ...innerProps } = props;
@@ -37,11 +41,16 @@ export const LineageFilter: FunctionComponent<LineageFilterProps> = (props) => {
     );
 };
 
-const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({ lapisField, placeholderText, value }) => {
+const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
+    lapisField,
+    placeholderText,
+    value,
+    lapisFilter,
+}) => {
     const lapis = useContext(LapisUrlContext);
 
     const { data, error, isLoading } = useQuery(
-        () => fetchLineageAutocompleteList(lapis, lapisField),
+        () => fetchLineageAutocompleteList({ lapis, field: lapisField, lapisFilter }),
         [lapisField, lapis],
     );
 
@@ -61,7 +70,7 @@ const LineageSelector = ({
     value,
     placeholderText,
     data,
-}: LineageFilterInnerProps & {
+}: LineageSelectorProps & {
     data: string[];
 }) => {
     return (

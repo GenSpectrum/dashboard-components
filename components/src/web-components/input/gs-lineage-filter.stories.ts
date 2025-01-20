@@ -14,6 +14,7 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 const codeExample = String.raw`
 <gs-lineage-filter 
     lapisField="pangoLineage"
+    lapisFilter='{"counrty": "Germany"}'
     placeholderText="Enter lineage"
     value="B.1.1.7"
     width="50%">
@@ -34,6 +35,7 @@ const meta: Meta<Required<LineageFilterProps>> = {
                         url: AGGREGATED_ENDPOINT,
                         body: {
                             fields: ['pangoLineage'],
+                            country: 'Germany',
                         },
                     },
                     response: {
@@ -50,6 +52,34 @@ const meta: Meta<Required<LineageFilterProps>> = {
         },
     }),
     tags: ['autodocs'],
+    argTypes: {
+        lapisField: {
+            control: {
+                type: 'select',
+            },
+            options: ['host'],
+        },
+        placeholderText: {
+            control: {
+                type: 'text',
+            },
+        },
+        value: {
+            control: {
+                type: 'text',
+            },
+        },
+        width: {
+            control: {
+                type: 'text',
+            },
+        },
+        lapisFilter: {
+            control: {
+                type: 'object',
+            },
+        },
+    },
 };
 
 export default meta;
@@ -60,6 +90,7 @@ const Template: StoryObj<Required<LineageFilterProps>> = {
             <div class="max-w-screen-lg">
                 <gs-lineage-filter
                     .lapisField=${args.lapisField}
+                    .lapisFilter=${args.lapisFilter}
                     .placeholderText=${args.placeholderText}
                     .value=${args.value}
                     .width=${args.width}
@@ -69,6 +100,9 @@ const Template: StoryObj<Required<LineageFilterProps>> = {
     },
     args: {
         lapisField: 'pangoLineage',
+        lapisFilter: {
+            country: 'Germany',
+        },
         placeholderText: 'Enter a lineage',
         value: 'B.1.1.7',
         width: '100%',
@@ -80,6 +114,7 @@ const aggregatedEndpointMatcher = {
     url: AGGREGATED_ENDPOINT,
     body: {
         fields: ['pangoLineage'],
+        country: 'Germany',
     },
 };
 

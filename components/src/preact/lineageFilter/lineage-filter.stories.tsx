@@ -24,6 +24,7 @@ const meta: Meta = {
                         url: AGGREGATED_ENDPOINT,
                         body: {
                             fields: ['pangoLineage'],
+                            country: 'Germany',
                         },
                     },
                     response: {
@@ -34,8 +35,39 @@ const meta: Meta = {
             ],
         },
     },
+    argTypes: {
+        lapisField: {
+            control: {
+                type: 'text',
+            },
+        },
+        placeholderText: {
+            control: {
+                type: 'text',
+            },
+        },
+        value: {
+            control: {
+                type: 'text',
+            },
+        },
+        width: {
+            control: {
+                type: 'text',
+            },
+        },
+        lapisFilter: {
+            control: {
+                type: 'object',
+            },
+        },
+    },
+
     args: {
         lapisField: 'pangoLineage',
+        lapisFilter: {
+            country: 'Germany',
+        },
         placeholderText: 'Enter a lineage',
         value: 'A.1',
         width: '100%',
@@ -47,12 +79,7 @@ export default meta;
 export const Default: StoryObj<LineageFilterProps> = {
     render: (args) => (
         <LapisUrlContext.Provider value={LAPIS_URL}>
-            <LineageFilter
-                lapisField={args.lapisField}
-                placeholderText={args.placeholderText}
-                value={args.value}
-                width={args.width}
-            />
+            <LineageFilter {...args} />
         </LapisUrlContext.Provider>
     ),
     play: async ({ canvasElement, step }) => {
