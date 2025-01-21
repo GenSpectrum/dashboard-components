@@ -1,0 +1,9 @@
+{
+    "nucleotideSequences": [
+        {
+            "name": "main",
+            "sequence": "NNN"
+        }
+    ],
+    "genes": []
+}

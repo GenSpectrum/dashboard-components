@@ -1,6 +1,6 @@
 import { Preview, setCustomElementsManifest } from '@storybook/web-components';
 import '../src/styles/tailwind.css';
-import { REFERENCE_GENOME_ENDPOINT } from '../src/constants';
+import { REFERENCE_GENOME_ENDPOINT, WISE_REFERENCE_GENOME_ENDPOINT } from '../src/constants';
 import referenceGenome from '../src/lapisApi/__mockData__/referenceGenome.json';
 import customElements from '../custom-elements.json';
 import DocumentationTemplate from './DocumentationTemplate.mdx';
@@ -23,6 +23,19 @@ const preview: Preview = {
                     matcher: {
                         name: 'referenceGenome',
                         url: REFERENCE_GENOME_ENDPOINT,
+                    },
+                    response: {
+                        status: 200,
+                        body: referenceGenome,
+                    },
+                    options: {
+                        overwriteRoutes: false,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'wiseReferenceGenome',
+                        url: WISE_REFERENCE_GENOME_ENDPOINT,
                     },
                     response: {
                         status: 200,

@@ -16,14 +16,7 @@ import {
     type SubstitutionOrDeletionEntry,
     type TemporalGranularity,
 } from '../types';
-import { type Map2d } from '../utils/map2d';
-import {
-    type Deletion,
-    type DeletionClass,
-    type Substitution,
-    type SubstitutionClass,
-    toSubstitutionOrDeletion,
-} from '../utils/mutations';
+import { type Deletion, type Substitution, toSubstitutionOrDeletion } from '../utils/mutations';
 import {
     compareTemporal,
     dateRangeCompare,
@@ -41,12 +34,11 @@ export type MutationOverTimeData = {
     totalCount: number;
 };
 
-export type MutationOverTimeMutationValue = { proportion: number; count: number; totalCount: number } | null;
-export type MutationOverTimeDataGroupedByMutation = Map2d<
-    SubstitutionClass | DeletionClass,
-    TemporalClass,
-    MutationOverTimeMutationValue
->;
+export type MutationOverTimeMutationValue = {
+    proportion: number;
+    count: number | null;
+    totalCount: number | null;
+} | null;
 
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 

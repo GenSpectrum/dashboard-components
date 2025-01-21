@@ -1,0 +1,88 @@
+{
+    "data": [
+        {
+            "aminoAcidMutationFrequency": null,
+            "date": "2024-11-13",
+            "location": "Lugano",
+            "nucleotideMutationFrequency": "{\"A12183T\": null, \"C2554T\": null, \"C3422A\": 0.9598659873008728, \"A966C\": null, \"G6661A\": 0.5527499914169312, \"G7731A\": 0.9832900166511536, \"T4026G\": 0.9991809725761414, \"T5260C\": null, \"T5287C\": null}",
+            "reference": "RSV-B"
+        },
+        {
+            "aminoAcidMutationFrequency": null,
+            "date": "2024-11-17",
+            "location": "Genève",
+            "nucleotideMutationFrequency": "{\"A12183T\": 1.0, \"C2554T\": null, \"C3422A\": 0.0, \"A966C\": null, \"G6661A\": 0.8785049915313721, \"G7731A\": 0.9855599999427795, \"T4026G\": null, \"T5260C\": 1.0, \"T5287C\": 0.9932659864425659}",
+            "reference": "RSV-B"
+        },
+        {
+            "aminoAcidMutationFrequency": "{\"ORF1a:S4286C\": null, \"S:R346T\": 0.25, \"S:Q493E\": 0.60, \"N:G204P\": null}",
+            "date": "2024-11-17",
+            "location": "Lugano",
+            "nucleotideMutationFrequency": "{\"A12183T\": 0.998993992805481, \"C2554T\": null, \"C3422A\": null, \"A966C\": null, \"G6661A\": 0.8917459845542908, \"G7731A\": 0.9770470261573792, \"T4026G\": 0.0, \"T5260C\": null, \"T5287C\": null}",
+            "reference": "RSV-B"
+        },
+        {
+            "aminoAcidMutationFrequency": "{\"ORF1a:S4286C\": 0.42, \"S:R346T\": 0.22, \"S:Q493E\": 0.66, \"N:G204P\": null}",
+            "date": "2024-11-16",
+            "location": "Lugano",
+            "nucleotideMutationFrequency": "{\"A12183T\": null, \"C2554T\": null, \"C3422A\": null, \"A966C\": null, \"G6661A\": 0.9476320147514343, \"G7731A\": 0.9809200167655945, \"T4026G\": 0.9992259740829468, \"T5260C\": null, \"T5287C\": null}",
+            "reference": "RSV-B"
+        },
+        {
+            "aminoAcidMutationFrequency": null,
+            "date": "2024-11-18",
+            "location": "Genève",
+            "nucleotideMutationFrequency": "{\"A12183T\": null, \"C2554T\": 0.9978219866752625, \"C3422A\": null, \"A966C\": 1.0, \"G6661A\": null, \"G7731A\": null, \"T4026G\": null, \"T5260C\": null, \"T5287C\": null}",
+            "reference": "RSV-B"
+        },
+        {
+            "aminoAcidMutationFrequency": null,
+            "date": "2024-11-14",
+            "location": "Genève",
+            "nucleotideMutationFrequency": "{\"A12183T\": null, \"C2554T\": 0.9994590282440186, \"C3422A\": 0.05333299934864044, \"A966C\": 1.0, \"G6661A\": 0.9282640218734741, \"G7731A\": 0.9803630113601685, \"T4026G\": 0.0, \"T5260C\": 0.9970409870147705, \"T5287C\": 0.996694028377533}",
+            "reference": "RSV-B"
+        },
+        {
+            "aminoAcidMutationFrequency": null,
+            "date": "2024-11-13",
+            "location": "Laupen",
+            "nucleotideMutationFrequency": "{\"A12668G\": null, \"A3564G\": null, \"C10862T\": null, \"C12710T\": null, \"C3624T\": null, \"G11123A\": null, \"G3616A\": null, \"G7379A\": 0.9470750093460083, \"T11034A\": null, \"T3483C\": null}",
+            "reference": "RSV-A"
+        },
+        {
+            "aminoAcidMutationFrequency": null,
+            "date": "2024-11-13",
+            "location": "Zürich",
+            "nucleotideMutationFrequency": "{\"A12668G\": 0.9988809823989868, \"A3564G\": null, \"C10862T\": 1.0, \"C12710T\": 0.9991809725761414, \"C3624T\": null, \"G11123A\": 1.0, \"G3616A\": null, \"G7379A\": 0.9414680004119873, \"T11034A\": 0.9988250136375427, \"T3483C\": null}",
+            "reference": "RSV-A"
+        },
+        {
+            "aminoAcidMutationFrequency": null,
+            "date": "2024-11-16",
+            "location": "Zürich",
+            "nucleotideMutationFrequency": "{\"A12668G\": 0.999222993850708, \"A3564G\": 0.9998199939727783, \"C10862T\": 1.0, \"C12710T\": 0.9996299743652344, \"C3624T\": 0.9999099969863892, \"G11123A\": 1.0, \"G3616A\": 0.08799900114536285, \"G7379A\": null, \"T11034A\": 0.9970099925994873, \"T3483C\": 0.9993579983711243}",
+            "reference": "RSV-A"
+        },
+        {
+            "aminoAcidMutationFrequency": null,
+            "date": "2024-11-16",
+            "location": "Chur",
+            "nucleotideMutationFrequency": "{\"A12668G\": null, \"A3564G\": null, \"C10862T\": null, \"C12710T\": null, \"C3624T\": null, \"G11123A\": null, \"G3616A\": null, \"G7379A\": 0.6464089751243591, \"T11034A\": null, \"T3483C\": null}",
+            "reference": "RSV-A"
+        },
+        {
+            "aminoAcidMutationFrequency": null,
+            "date": "2024-11-18",
+            "location": "Basel",
+            "nucleotideMutationFrequency": "{\"A12668G\": null, \"A3564G\": 1.0, \"C10862T\": null, \"C12710T\": null, \"C3624T\": 1.0, \"G11123A\": null, \"G3616A\": 0.08222199976444244, \"G7379A\": null, \"T11034A\": null, \"T3483C\": 0.9998080134391785}",
+            "reference": "RSV-A"
+        }
+    ],
+    "info": {
+        "dataVersion": "1737327031",
+        "requestId": "5591b455-3d84-438c-8434-2e57ee2ad569",
+        "requestInfo": "RSV on api.wise-loculus.genspectrum.org at 2025-01-20T11:58:03.498206810",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "0.3.10"
+    }
+}
