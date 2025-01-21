@@ -120,26 +120,24 @@ export function DownshiftCombobox<Item>({
                     </button>
                 </div>
             </div>
-            {isOpen && (
-                <ul
-                    className='absolute bg-white mt-1 shadow-md max-h-80 overflow-scroll z-10 w-full min-w-32'
-                    {...getMenuProps()}
-                >
-                    {items.length > 0 ? (
-                        items.map((item, index) => (
-                            <li
-                                className={`${highlightedIndex === index ? 'bg-blue-300' : ''} ${selectedItem !== null && itemToString(selectedItem) === itemToString(item) ? 'font-bold' : ''} py-2 px-3 shadow-sm flex flex-col`}
-                                key={itemToString(item)}
-                                {...getItemProps({ item, index })}
-                            >
-                                {formatItemInList(item)}
-                            </li>
-                        ))
-                    ) : (
-                        <li className='py-2 px-3 shadow-sm flex flex-col'>No elements to select.</li>
-                    )}
-                </ul>
-            )}
+            <ul
+                className={`absolute bg-white mt-1 shadow-md max-h-80 overflow-scroll z-10 w-full min-w-32 ${isOpen ? '' : 'hidden'}`}
+                {...getMenuProps()}
+            >
+                {items.length > 0 ? (
+                    items.map((item, index) => (
+                        <li
+                            className={`${highlightedIndex === index ? 'bg-blue-300' : ''} ${selectedItem !== null && itemToString(selectedItem) === itemToString(item) ? 'font-bold' : ''} py-2 px-3 shadow-sm flex flex-col`}
+                            key={itemToString(item)}
+                            {...getItemProps({ item, index })}
+                        >
+                            {formatItemInList(item)}
+                        </li>
+                    ))
+                ) : (
+                    <li className='py-2 px-3 shadow-sm flex flex-col'>No elements to select.</li>
+                )}
+            </ul>
         </div>
     );
 }
