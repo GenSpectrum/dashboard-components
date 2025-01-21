@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.13.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.12.1...dashboard-components-v0.13.0) (2025-01-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** Rename initialValue to value for gs-lineage-filter
+* **components:** Rename initialValue to value for text input
+
+### Features
+
+* **components:** add lapis filter to lineage filter ([4a7df02](https://github.com/GenSpectrum/dashboard-components/commit/4a7df029f207faabefbd04c76bd5efd9602f3b0d)), closes [#609](https://github.com/GenSpectrum/dashboard-components/issues/609)
+* **components:** add lapis filter to location filter ([a42abb9](https://github.com/GenSpectrum/dashboard-components/commit/a42abb9fd61e822e35545030dba4f980841ca01d)), closes [#609](https://github.com/GenSpectrum/dashboard-components/issues/609)
+* **components:** add lapis filter to text input ([199d2fe](https://github.com/GenSpectrum/dashboard-components/commit/199d2fe8414206dfc6c20cc72c037a78f3c3f4b9)), closes [#609](https://github.com/GenSpectrum/dashboard-components/issues/609)
+* **components:** gs-lineage-filter: rename initialValue to value ([1ff38e4](https://github.com/GenSpectrum/dashboard-components/commit/1ff38e4fc39939e5f6761f93ddd5b487146adddd))
+* **components:** gs-lineage-filter: use downshift for selector ([e66d526](https://github.com/GenSpectrum/dashboard-components/commit/e66d526f04147f5608d92825bbdc2dffb2c967ca)), closes [#654](https://github.com/GenSpectrum/dashboard-components/issues/654)
+* **components:** let users know that they can not select anything in filter ([3c32543](https://github.com/GenSpectrum/dashboard-components/commit/3c32543f9bd5bb9de5d9c339052f08f97ed41498))
+
+
+### Bug Fixes
+
+* **components:** add lapisFilter as dependency so that filter is reloaded upon change ([bc08949](https://github.com/GenSpectrum/dashboard-components/commit/bc089490b7aace384cf1a22705232a2390574745))
+
+
+### Code Refactoring
+
+* **components:** extract downshift combobox from location filter and text input ([dfe105e](https://github.com/GenSpectrum/dashboard-components/commit/dfe105e1de2530aeb7667e2fa893ad380454bbf4)), closes [#660](https://github.com/GenSpectrum/dashboard-components/issues/660)
+
 ## [0.12.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.12.0...dashboard-components-v0.12.1) (2025-01-17)
 
 
