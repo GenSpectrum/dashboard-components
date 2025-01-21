@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.0...dashboard-components-v0.13.1) (2025-01-21)
+
+
+### Features
+
+* **components:** add mutations over time plot for wastewater / WISE ([#668](https://github.com/GenSpectrum/dashboard-components/issues/668)) ([#504](https://github.com/GenSpectrum/dashboard-components/issues/504)) ([c4359eb](https://github.com/GenSpectrum/dashboard-components/commit/c4359eb36a2237f7c3562e01d202403b677dbad8))
+
 ## [0.13.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.12.1...dashboard-components-v0.13.0) (2025-01-21)
 
 
