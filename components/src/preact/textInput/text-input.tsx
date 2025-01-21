@@ -68,32 +68,46 @@ const TextInputInner: FunctionComponent<TextInputInnerProps> = ({
     return <TextSelector lapisField={lapisField} value={value} placeholderText={placeholderText} data={data} />;
 };
 
+type SelectItem = {
+    count: number;
+    value: string;
+};
+
 const TextSelector = ({
     lapisField,
     value,
     placeholderText,
     data,
 }: TextSelectorProps & {
-    data: string[];
+    data: SelectItem[];
 }) => {
+    const initialSelectedItem = data.find((candidate) => candidate.value == value);
+
     return (
         <DownshiftCombobox
             allItems={data}
-            value={value}
+            value={initialSelectedItem}
             filterItemsByInputValue={filterByInputValue}
-            createEvent={(item: string | null) => new TextInputChangedEvent({ [lapisField]: item ?? undefined })}
-            itemToString={(item: string | undefined | null) => item ?? ''}
+            createEvent={(item: SelectItem | null) =>
+                new TextInputChangedEvent({ [lapisField]: item?.value ?? undefined })
+            }
+            itemToString={(item: SelectItem | undefined | null) => item?.value ?? ''}
             placeholderText={placeholderText}
-            formatItemInList={(item: string) => {
-                return <span>{item}</span>;
+            formatItemInList={(item: SelectItem) => {
+                return (
+                    <p>
+                        <span>{item.value}</span>
+                        <span className='ml-2 text-gray-500'>({item.count})</span>
+                    </p>
+                );
             }}
         />
     );
 };
 
-function filterByInputValue(item: string, inputValue: string | undefined | null) {
+function filterByInputValue(item: SelectItem, inputValue: string | undefined | null) {
     if (inputValue === undefined || inputValue === null || inputValue === '') {
         return true;
     }
-    return item?.toLowerCase().includes(inputValue?.toLowerCase() || '');
+    return item.value?.toLowerCase().includes(inputValue?.toLowerCase() || '');
 }
