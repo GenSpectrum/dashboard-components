@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.13.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.1...dashboard-components-v0.13.2) (2025-01-21)
+
+
+### Features
+
+* **components:** gs-text-input: show count on autocomplete options ([b14cb8c](https://github.com/GenSpectrum/dashboard-components/commit/b14cb8c43212e5d97ba4684787638375b93ed0c0)), closes [#664](https://github.com/GenSpectrum/dashboard-components/issues/664)
+
+
+### Bug Fixes
+
+* **components:** remove console error from downshift: getMenuProps not called ([b8fb7a3](https://github.com/GenSpectrum/dashboard-components/commit/b8fb7a3e82c9448e19a965128505b31f9ce41134))
+
 ## [0.13.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.0...dashboard-components-v0.13.1) (2025-01-21)
 
 
