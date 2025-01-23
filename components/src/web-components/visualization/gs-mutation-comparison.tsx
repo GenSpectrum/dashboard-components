@@ -1,6 +1,5 @@
 import { consume } from '@lit/context';
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
 import { MutationLinkTemplateContextProvider } from '../../preact/MutationLinkTemplateContext';
@@ -135,11 +134,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-mutation-comparison': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-mutation-comparison': Partial<MutationComparisonProps>;
         }
     }
 }

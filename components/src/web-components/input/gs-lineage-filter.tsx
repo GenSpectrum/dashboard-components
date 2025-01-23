@@ -1,11 +1,10 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import {
     type LineageFilterChangedEvent,
     type LineageMultiFilterChangedEvent,
 } from '../../preact/lineageFilter/LineageFilterChangedEvent';
-import { LineageFilter } from '../../preact/lineageFilter/lineage-filter';
+import { LineageFilter, type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
 import { type gsEventNames } from '../../utils/gsEventNames';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -144,11 +143,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-lineage-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-lineage-filter': Partial<LineageFilterProps>;
         }
     }
 }

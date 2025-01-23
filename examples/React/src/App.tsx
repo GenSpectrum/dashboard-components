@@ -82,14 +82,14 @@ function App() {
     return (
         <gs-app lapis='https://lapis.cov-spectrum.org/open/v2/'>
             <gs-location-filter
-                fields='["region", "country", "division", "location"]'
+                fields={["region", "country", "division", "location"]}
                 placeholderText='Enter a location'
                 ref={locationFilterRef}
-                lapisFilter={JSON.stringify(location)}
-                value={JSON.stringify(location)}
+                lapisFilter={location}
+                value={location}
             ></gs-location-filter>
             <gs-date-range-filter
-                dateRangeOptions={JSON.stringify(dataRangeOptions)}
+                dateRangeOptions={dataRangeOptions}
                 lapisDateField='date'
                 ref={dateRangeFilterRef}
             ></gs-date-range-filter>
@@ -97,12 +97,12 @@ function App() {
                 <div>
                     <h1>Prevalence over time</h1>
                     <gs-prevalence-over-time
-                        numeratorFilters={JSON.stringify([numerator])}
-                        denominatorFilter={JSON.stringify(denominator)}
+                        numeratorFilters={[numerator]}
+                        denominatorFilter={denominator}
                         lapisDateField='date'
                         granularity='day'
-                        smoothingWindow='7'
-                        views='["line", "table"]'
+                        smoothingWindow={7}
+                        views={["line", "table"]}
                         width='800px'
                         height='300px'
                     ></gs-prevalence-over-time>
@@ -110,12 +110,12 @@ function App() {
                 <div style={{height: '300px', width: '1000px'}}>
                     <h1>Prevalence over time</h1>
                     <gs-prevalence-over-time
-                        numeratorFilters={JSON.stringify([numerator])}
-                        denominatorFilter={JSON.stringify(denominator)}
+                        numeratorFilters={[numerator]}
+                        denominatorFilter={denominator}
                         lapisDateField='date'
                         granularity='day'
-                        smoothingWindow='7'
-                        views='["line", "table"]'
+                        smoothingWindow={7}
+                        views={["line", "table"]}
                         width='80%'
                         height='100%'
                     ></gs-prevalence-over-time>
@@ -124,28 +124,28 @@ function App() {
             <h1>Prevalence over time</h1>
             <div>
                 <gs-prevalence-over-time
-                    numeratorFilters={JSON.stringify([numerator])}
-                    denominatorFilter={JSON.stringify(denominator)}
+                    numeratorFilters={[numerator]}
+                    denominatorFilter={denominator}
                     lapisDateField='date'
                     granularity='day'
-                    smoothingWindow='7'
-                    views='["line", "table"]'
+                    smoothingWindow={7}
+                    views={["line", "table"]}
                 ></gs-prevalence-over-time>
             </div>
             <h1>Relative Growth Advantage</h1>
             <gs-relative-growth-advantage
-                numeratorFilter={JSON.stringify(numerator.lapisFilter)}
-                denominatorFilter={JSON.stringify(denominator)}
+                numeratorFilter={numerator.lapisFilter}
+                denominatorFilter={denominator}
                 lapisDateField='date'
-                generationTime='7'
-                views='["line"]'
+                generationTime={7}
+                views={["line"]}
                 width='100%'
                 height='700px'
             ></gs-relative-growth-advantage>
             <gs-mutations-over-time
-                lapisFilter={JSON.stringify(numerator.lapisFilter)}
+                lapisFilter={numerator.lapisFilter}
                 sequenceType='nucleotide'
-                views='["grid"]'
+                views={["grid"]}
                 width='100%'
                 height='700px'
                 granularity='week'

@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { type TextFilterChangedEvent } from '../../preact/textFilter/TextFilterChangedEvent';
 import { TextFilter, type TextFilterProps } from '../../preact/textFilter/text-filter';
@@ -98,11 +97,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-text-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-text-filter': Partial<TextFilterProps>;
         }
     }
 }
