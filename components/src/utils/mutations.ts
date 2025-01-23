@@ -14,7 +14,7 @@ export interface MutationClass extends Mutation {
 }
 
 export const substitutionRegex =
-    /^((?<segment>[A-Z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Z])?(?<position>\d+)(?<substitutionValue>[A-Z.])?$/i;
+    /^((?<segment>[A-Z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Z])?(?<position>\d+)(?<substitutionValue>[A-Z.*])?$/i;
 
 export interface Substitution extends Mutation {
     type: 'substitution';
