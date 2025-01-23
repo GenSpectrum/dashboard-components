@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { ReferenceGenomesAwaiter } from '../../preact/components/ReferenceGenomesAwaiter';
 import { MutationFilter, type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
@@ -99,11 +98,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-mutation-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-mutation-filter': Partial<MutationFilterProps>;
         }
     }
 }

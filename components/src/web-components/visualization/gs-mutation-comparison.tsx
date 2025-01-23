@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { MutationComparison, type MutationComparisonProps } from '../../preact/mutationComparison/mutation-comparison';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
@@ -108,11 +107,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-mutation-comparison-component': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-mutation-comparison': Partial<MutationComparisonProps>;
         }
     }
 }

@@ -1,7 +1,6 @@
 import leafletStyle from 'leaflet/dist/leaflet.css?inline';
 import { unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import leafletStyleModifications from '../../preact/map/leafletStyleModifications.css?inline';
 import { SequencesByLocation, type SequencesByLocationProps } from '../../preact/map/sequences-by-location';
@@ -211,11 +210,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-sequences-by-location': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-sequences-by-location': Partial<SequencesByLocationProps>;
         }
     }
 }

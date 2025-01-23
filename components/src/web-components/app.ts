@@ -2,7 +2,6 @@ import { provide } from '@lit/context';
 import { Task } from '@lit/task';
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 import z from 'zod';
 
 import { lapisContext } from './lapis-context';
@@ -88,11 +87,15 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-app': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-app': {
+                lapis: string;
+                // eslint-disable-next-line no-undef
+                children: React.ReactNode;
+            };
         }
     }
 }

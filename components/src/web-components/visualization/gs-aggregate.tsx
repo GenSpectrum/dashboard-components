@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { Aggregate, type AggregateProps, type AggregateView } from '../../preact/aggregatedData/aggregate';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
@@ -126,11 +125,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-aggregate': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-aggregate': Partial<AggregateProps>;
         }
     }
 }
