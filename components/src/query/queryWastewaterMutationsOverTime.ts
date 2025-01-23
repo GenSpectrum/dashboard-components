@@ -25,18 +25,26 @@ export async function queryWastewaterMutationsOverTime(
     ]);
     const data = (await fetchData.evaluate(lapis, signal)).content;
 
-    return data.map((row) => ({
-        location: row.location as string,
-        date: toTemporalClass(parseDateStringToTemporal(row.date as string, 'day')),
-        nucleotideMutationFrequency:
-            row.nucleotideMutationFrequency !== null
-                ? transformMutations(JSON.parse(row.nucleotideMutationFrequency as string))
-                : [],
-        aminoAcidMutationFrequency:
-            row.aminoAcidMutationFrequency !== null
-                ? transformMutations(JSON.parse(row.aminoAcidMutationFrequency as string))
-                : [],
-    }));
+    return data.map((row) => {
+        try {
+            return {
+                location: row.location as string,
+                date: toTemporalClass(parseDateStringToTemporal(row.date as string, 'day')),
+                nucleotideMutationFrequency:
+                    row.nucleotideMutationFrequency !== null
+                        ? transformMutations(JSON.parse(row.nucleotideMutationFrequency as string))
+                        : [],
+                aminoAcidMutationFrequency:
+                    row.aminoAcidMutationFrequency !== null
+                        ? transformMutations(JSON.parse(row.aminoAcidMutationFrequency as string))
+                        : [],
+            };
+        } catch (e) {
+            throw new Error(
+                `Failed to parse row of wastewater data: ${JSON.stringify(row)}: ${(e as Error)?.message ?? 'Unknown error'}`,
+            );
+        }
+    });
 }
 
 const mutationFrequencySchema = z.record(z.number().nullable());
@@ -48,8 +56,14 @@ function transformMutations(input: unknown): { mutation: Substitution; proportio
         throw new Error(`Failed to parse mutation frequency: ${mutationFrequency.error.message}`);
     }
 
-    return Object.entries(mutationFrequency.data).map(([key, value]) => ({
-        mutation: SubstitutionClass.parse(key)!,
-        proportion: value,
-    }));
+    return Object.entries(mutationFrequency.data).map(([key, value]) => {
+        const mutation = SubstitutionClass.parse(key);
+        if (mutation === null) {
+            throw new Error(`Failed to parse mutation: "${key}"`);
+        }
+        return {
+            mutation,
+            proportion: value,
+        };
+    });
 }

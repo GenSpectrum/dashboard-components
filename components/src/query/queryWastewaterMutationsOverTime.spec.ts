@@ -88,7 +88,35 @@ describe('queryWastewaterMutationsOverTime', () => {
         );
 
         await expect(queryWastewaterMutationsOverTime(DUMMY_LAPIS_URL, lapisFilter)).rejects.toThrowError(
-            /^Failed to parse mutation frequency/,
+            /Failed to parse mutation frequency/,
+        );
+    });
+
+    it('should error on invalid mutation', async () => {
+        const lapisFilter = { country: 'Germany' };
+
+        lapisRequestMocks.details(
+            {
+                country: 'Germany',
+                fields: ['date', 'location', 'nucleotideMutationFrequency', 'aminoAcidMutationFrequency'],
+            },
+            {
+                data: [
+                    {
+                        date: '2021-01-01',
+                        location: 'Germany',
+                        reference: 'organismA',
+                        nucleotideMutationFrequency: JSON.stringify({
+                            'not a mutation': 0.4,
+                        }),
+                        aminoAcidMutationFrequency: null,
+                    },
+                ],
+            },
+        );
+
+        await expect(queryWastewaterMutationsOverTime(DUMMY_LAPIS_URL, lapisFilter)).rejects.toThrowError(
+            /Failed to parse mutation: "not a mutation"/,
         );
     });
 });
