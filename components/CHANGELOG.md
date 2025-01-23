@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.2...dashboard-components-v0.13.3) (2025-01-23)
+
+
+### Features
+
+* **components:** allow mutations to end in * ([#688](https://github.com/GenSpectrum/dashboard-components/issues/688)) ([30078e3](https://github.com/GenSpectrum/dashboard-components/commit/30078e30f85364a8a47bcb252dca500f4f0abd9b))
+
 ## [0.13.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.1...dashboard-components-v0.13.2) (2025-01-21)
 
 
