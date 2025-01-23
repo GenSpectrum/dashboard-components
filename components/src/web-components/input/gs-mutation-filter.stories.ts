@@ -158,7 +158,7 @@ export const MultiSegmentedReferenceGenomes: StoryObj<MutationFilterProps> = {
             const placeholderText = inputField().getAttribute('placeholder');
 
             expect(placeholderText).toEqual(
-                'Enter a mutation (e.g. seg1:A123T, ins_seg1:123:AT, gene1:M123E, ins_gene1:123:ME)',
+                'Enter a mutation (e.g. seg1:23T, ins_seg1:10462:A, gene1:57Q, ins_gene1:31:N)',
             );
         });
 

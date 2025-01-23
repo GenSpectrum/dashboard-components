@@ -2,6 +2,7 @@ import { type FunctionComponent } from 'preact';
 import { useContext, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
+import { getExampleMutation } from './ExampleMutation';
 import { MutationFilterInfo } from './mutation-filter-info';
 import { parseAndValidateMutation, type ParsedMutationFilter } from './parseAndValidateMutation';
 import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
@@ -208,7 +209,6 @@ const MutationFilterSelector: FunctionComponent<{
     };
 
     const handleBlur = (event: FocusEvent) => {
-        // Check if click was inside the selector
         if (!selectorRef.current?.contains(event.relatedTarget as Node)) {
             setOption(null);
         }
@@ -242,11 +242,16 @@ const MutationFilterSelector: FunctionComponent<{
 };
 
 function getPlaceholder(referenceGenome: ReferenceGenome) {
-    const segmentPrefix =
-        referenceGenome.nucleotideSequences.length > 1 ? `${referenceGenome.nucleotideSequences[0].name}:` : '';
-    const firstGene = referenceGenome.genes[0].name;
+    const nucleotideSubstitution = getExampleMutation(referenceGenome, 'nucleotide', 'substitution');
+    const nucleotideInsertion = getExampleMutation(referenceGenome, 'nucleotide', 'insertion');
+    const aminoAcidSubstitution = getExampleMutation(referenceGenome, 'amino acid', 'substitution');
+    const aminoAcidInsertion = getExampleMutation(referenceGenome, 'amino acid', 'insertion');
 
-    return `Enter a mutation (e.g. ${segmentPrefix}A123T, ins_${segmentPrefix}123:AT, ${firstGene}:M123E, ins_${firstGene}:123:ME)`;
+    const exampleMutations = [nucleotideSubstitution, nucleotideInsertion, aminoAcidSubstitution, aminoAcidInsertion]
+        .filter((example) => example !== '')
+        .join(', ');
+
+    return `Enter a mutation (e.g. ${exampleMutations})`;
 }
 
 const backgroundColor: { [key in keyof SelectedFilters]: string } = {
