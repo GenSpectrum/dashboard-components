@@ -219,7 +219,7 @@ export const FiresEvent: StoryObj<LocationFilterProps> = {
 
         await step('Select Asia', async () => {
             await userEvent.type(inputField(), 'Asia');
-            await userEvent.click(canvas.getByRole('option', { name: 'Asia Asia' }));
+            await userEvent.click(canvas.getByRole('option', { name: /^Asia.*Asia$/ }));
 
             await waitFor(() => {
                 return expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({

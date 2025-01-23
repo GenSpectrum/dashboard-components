@@ -11,11 +11,11 @@ describe('fetchAutocompletionList', () => {
             { fields, country: 'Germany' },
             {
                 data: [
-                    { count: 0, region: 'region1', country: 'country1_1', division: 'division1_1_1' },
-                    { count: 0, region: 'region1', country: 'country1_1', division: 'division1_1_2' },
-                    { count: 0, region: 'region1', country: 'country1_1', division: null },
-                    { count: 0, region: 'region1', country: 'country1_2', division: 'division1_2_1' },
-                    { count: 0, region: 'region2', country: 'country2_1', division: null },
+                    { count: 1, region: 'region1', country: 'country1_1', division: 'division1_1_1' },
+                    { count: 2, region: 'region1', country: 'country1_1', division: 'division1_1_2' },
+                    { count: 3, region: 'region1', country: 'country1_1', division: null },
+                    { count: 4, region: 'region1', country: 'country1_2', division: 'division1_2_1' },
+                    { count: 5, region: 'region2', country: 'country2_1', division: null },
                 ],
             },
         );
@@ -27,14 +27,14 @@ describe('fetchAutocompletionList', () => {
         });
 
         expect(result).to.deep.equal([
-            { region: 'region1', country: undefined, division: undefined },
-            { region: 'region1', country: 'country1_1', division: undefined },
-            { region: 'region1', country: 'country1_1', division: 'division1_1_1' },
-            { region: 'region1', country: 'country1_1', division: 'division1_1_2' },
-            { region: 'region1', country: 'country1_2', division: undefined },
-            { region: 'region1', country: 'country1_2', division: 'division1_2_1' },
-            { region: 'region2', country: undefined, division: undefined },
-            { region: 'region2', country: 'country2_1', division: undefined },
+            { value: { region: 'region1', country: undefined, division: undefined }, count: 10 },
+            { value: { region: 'region1', country: 'country1_1', division: undefined }, count: 6 },
+            { value: { region: 'region1', country: 'country1_1', division: 'division1_1_1' }, count: 1 },
+            { value: { region: 'region1', country: 'country1_1', division: 'division1_1_2' }, count: 2 },
+            { value: { region: 'region1', country: 'country1_2', division: undefined }, count: 4 },
+            { value: { region: 'region1', country: 'country1_2', division: 'division1_2_1' }, count: 4 },
+            { value: { region: 'region2', country: undefined, division: undefined }, count: 5 },
+            { value: { region: 'region2', country: 'country2_1', division: undefined }, count: 5 },
         ]);
     });
 });

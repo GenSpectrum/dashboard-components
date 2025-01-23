@@ -2,7 +2,7 @@ import { type FunctionComponent } from 'preact';
 import { useContext, useMemo } from 'preact/hooks';
 import z from 'zod';
 
-import { fetchAutocompletionList } from './fetchAutocompletionList';
+import { fetchAutocompletionList, type LocationEntry } from './fetchAutocompletionList';
 import { LapisUrlContext } from '../LapisUrlContext';
 import { LocationChangedEvent } from './LocationChangedEvent';
 import { lapisFilterSchema, type LapisLocationFilter, lapisLocationFilterSchema } from '../../types';
@@ -61,6 +61,7 @@ type SelectItem = {
     lapisFilter: LapisLocationFilter;
     label: string | null | undefined;
     description: string;
+    count: number;
 };
 
 const LocationSelector = ({
@@ -69,7 +70,7 @@ const LocationSelector = ({
     placeholderText,
     locationData,
 }: LocationSelectorProps & {
-    locationData: LapisLocationFilter[];
+    locationData: LocationEntry[];
 }) => {
     const allItems = useMemo(() => {
         return locationData
@@ -78,8 +79,10 @@ const LocationSelector = ({
     }, [fields, locationData]);
 
     const selectedItem = useMemo(() => {
-        return value !== undefined ? toSelectItem(value, fields) : undefined;
-    }, [fields, value]);
+        return value !== undefined
+            ? allItems.find((item) => item.description == concatenateLocation(value, fields))
+            : undefined;
+    }, [fields, value, allItems]);
 
     return (
         <DownshiftCombobox
@@ -91,14 +94,15 @@ const LocationSelector = ({
             }
             itemToString={(item: SelectItem | undefined | null) => item?.label ?? ''}
             placeholderText={placeholderText}
-            formatItemInList={(item: SelectItem) => {
-                return (
-                    <>
+            formatItemInList={(item: SelectItem) => (
+                <>
+                    <p>
                         <span>{item.label}</span>
-                        <span className='text-sm text-gray-500'>{item.description}</span>
-                    </>
-                );
-            }}
+                        <span className='ml-2 text-gray-500'>({item.count})</span>
+                    </p>
+                    <span className='text-sm text-gray-500'>{item.description}</span>
+                </>
+            )}
         />
     );
 };
@@ -113,7 +117,8 @@ function filterByInputValue(item: SelectItem, inputValue: string | undefined | n
     );
 }
 
-function toSelectItem(locationFilter: LapisLocationFilter, fields: string[]): SelectItem | undefined {
+function toSelectItem(locationEntry: LocationEntry, fields: string[]): SelectItem | undefined {
+    const locationFilter = locationEntry.value;
     const concatenatedLocation = concatenateLocation(locationFilter, fields);
 
     const lastNonUndefinedField = [...fields]
@@ -128,6 +133,7 @@ function toSelectItem(locationFilter: LapisLocationFilter, fields: string[]): Se
         lapisFilter: locationFilter,
         label: locationFilter[lastNonUndefinedField],
         description: concatenatedLocation,
+        count: locationEntry.count,
     };
 }
 

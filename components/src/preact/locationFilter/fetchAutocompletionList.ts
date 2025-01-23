@@ -1,5 +1,10 @@
 import { FetchAggregatedOperator } from '../../operator/FetchAggregatedOperator';
-import type { LapisFilter } from '../../types';
+import type { LapisFilter, LapisLocationFilter } from '../../types';
+
+export type LocationEntry = {
+    value: LapisLocationFilter;
+    count: number;
+};
 
 export async function fetchAutocompletionList({
     fields,
@@ -11,11 +16,10 @@ export async function fetchAutocompletionList({
     lapis: string;
     lapisFilter?: LapisFilter;
     signal?: AbortSignal;
-}): Promise<Record<string, string | undefined>[]> {
-    const toAncestorInHierarchyOverwriteValues = Array(fields.length - 1)
-        .fill(0)
-        .map((_, i) => i + 1)
-        .map((i) => fields.slice(i).reduce((acc, field) => ({ ...acc, [field]: null }), {}));
+}): Promise<LocationEntry[]> {
+    const helpersThatOverwriteAValueToItsAncestor = fields.map((_, i) =>
+        fields.slice(i + 1).reduce((acc, field) => ({ ...acc, [field]: null }), {}),
+    );
 
     const fetchAggregatedOperator = new FetchAggregatedOperator<Record<string, string | null>>(
         lapisFilter ?? {},
@@ -25,26 +29,58 @@ export async function fetchAutocompletionList({
     const data = (await fetchAggregatedOperator.evaluate(lapis, signal)).content;
 
     const locationValues = data
-        .map((entry) => fields.reduce((acc, field) => ({ ...acc, [field]: entry[field] }), {}))
-        .reduce<Set<string>>((setOfAllHierarchies, entry) => {
-            setOfAllHierarchies.add(JSON.stringify(entry));
-            toAncestorInHierarchyOverwriteValues.forEach((overwriteValues) => {
-                setOfAllHierarchies.add(JSON.stringify({ ...entry, ...overwriteValues }));
-            });
-            return setOfAllHierarchies;
-        }, new Set());
+        .map((entry) => ({
+            value: fields.reduce((acc, field) => ({ ...acc, [field]: entry[field] }), {}),
+            count: entry.count,
+        }))
+        .reduce((mapOfAllHierarchiesAndCounts, entry) => {
+            return addValueAndAllAncestorsToMap(
+                entry,
+                helpersThatOverwriteAValueToItsAncestor,
+                mapOfAllHierarchiesAndCounts,
+            );
+        }, new Map<string, number>());
 
     return [...locationValues]
-        .map((json) => JSON.parse(json))
+        .map<EntryWithNullValues>(([json, count]) => ({
+            value: JSON.parse(json),
+            count,
+        }))
         .sort(compareLocationEntries(fields))
-        .map((entry) => fields.reduce((acc, field) => ({ ...acc, [field]: entry[field] ?? undefined }), {}));
+        .map(({ value, count }) => ({
+            value: fields.reduce((acc, field) => ({ ...acc, [field]: value[field] ?? undefined }), {}),
+            count,
+        }));
 }
 
+function addValueAndAllAncestorsToMap(
+    { value, count }: LocationEntry,
+    helpersThatOverwriteAValueToItsAncestor: Record<string, null>[],
+    mapOfAllHierarchiesAndCounts: Map<string, number>,
+) {
+    const keysOfAllHierarchyLevels = new Set(
+        helpersThatOverwriteAValueToItsAncestor
+            .map((overwriteValues) => ({ ...value, ...overwriteValues }))
+            .map((value) => JSON.stringify(value)),
+    );
+
+    for (const key of keysOfAllHierarchyLevels) {
+        mapOfAllHierarchiesAndCounts.set(key, (mapOfAllHierarchiesAndCounts.get(key) ?? 0) + count);
+    }
+
+    return mapOfAllHierarchiesAndCounts;
+}
+
+type EntryWithNullValues = {
+    value: Record<string, string | null>;
+    count: number;
+};
+
 function compareLocationEntries(fields: string[]) {
-    return (a: Record<string, string | null>, b: Record<string, string | null>) => {
+    return (a: EntryWithNullValues, b: EntryWithNullValues) => {
         for (const field of fields) {
-            const valueA = a[field];
-            const valueB = b[field];
+            const valueA = a.value[field];
+            const valueB = b.value[field];
             if (valueA === valueB) {
                 continue;
             }
