@@ -140,7 +140,9 @@ const WastewaterMutationsOverTimeInfo: FunctionComponent<WastewaterMutationsOver
     return (
         <Info>
             <InfoHeadline1>Info for mutations over time</InfoHeadline1>
-            <InfoParagraph> </InfoParagraph>
+            <InfoParagraph>
+                <slot name='infoText' />
+            </InfoParagraph>
             <InfoComponentCode
                 componentName='wastewater-mutations-over-time'
                 params={originalComponentProps}

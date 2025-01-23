@@ -14,9 +14,11 @@ const codeExample = String.raw`
     sequenceType='nucleotide'
     width='100%'
     height='700px'
-></gs-wastewater-mutations-over-time>`;
+>
+    <span slot="infoText">Some info text</span>
+</gs-wastewater-mutations-over-time>`;
 
-const meta: Meta<Required<WastewaterMutationsOverTimeProps>> = {
+const meta: Meta<WastewaterMutationsOverTimeProps & { infoText: string }> = {
     title: 'Wastewater visualization/Wastewater mutations over time',
     component: 'gs-wastewater-mutations-over-time',
     argTypes: {
@@ -33,6 +35,7 @@ const meta: Meta<Required<WastewaterMutationsOverTimeProps>> = {
         sequenceType: 'nucleotide',
         width: '100%',
         height: '700px',
+        infoText: 'Some info text',
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -47,7 +50,7 @@ const meta: Meta<Required<WastewaterMutationsOverTimeProps>> = {
 
 export default meta;
 
-export const WastewaterMutationsOverTime: StoryObj<Required<WastewaterMutationsOverTimeProps>> = {
+export const WastewaterMutationsOverTime: StoryObj<WastewaterMutationsOverTimeProps & { infoText: string }> = {
     render: (args) => html`
         <gs-app lapis="${WISE_LAPIS_URL}">
             <gs-wastewater-mutations-over-time
@@ -55,7 +58,9 @@ export const WastewaterMutationsOverTime: StoryObj<Required<WastewaterMutationsO
                 .sequenceType=${args.sequenceType}
                 .width=${args.width}
                 .height=${args.height}
-            ></gs-wastewater-mutations-over-time>
+            >
+                <span slot="infoText">${args.infoText}</span>
+            </gs-wastewater-mutations-over-time>
         </gs-app>
     `,
     parameters: {
