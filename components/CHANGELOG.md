@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.4...dashboard-components-v0.13.5) (2025-01-24)
+
+
+### Features
+
+* **components:** let maxNumberOfGridRows be configurable for wastewater-mutations-over-time ([#692](https://github.com/GenSpectrum/dashboard-components/issues/692)) ([768dc3a](https://github.com/GenSpectrum/dashboard-components/commit/768dc3afd1e4236d4a8f5cf505c357c8f6928a35))
+
 ## [0.13.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.3...dashboard-components-v0.13.4) (2025-01-24)
 
 
