@@ -23,6 +23,8 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  * The content of the tab is a "mutations over time" grid, similar to the one used in the `gs-mutations-over-time` component.
  *
  * This component also assumes that the LAPIS instance has the field `date` which can be used for the time axis.
+ *
+ * @slot infoText - Additional information text to be shown in the info modal (the "?" button).
  */
 @customElement('gs-wastewater-mutations-over-time')
 export class WastewaterMutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
