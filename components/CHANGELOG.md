@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.3...dashboard-components-v0.13.4) (2025-01-24)
+
+
+### Features
+
+* **components:** gs-wastewater-mutations-over-time - add infoText slot in info box ([#686](https://github.com/GenSpectrum/dashboard-components/issues/686)) ([cb8aafa](https://github.com/GenSpectrum/dashboard-components/commit/cb8aafaf622460e64587091e403881c3534ec046))
+
 ## [0.13.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.2...dashboard-components-v0.13.3) (2025-01-23)
 
 
