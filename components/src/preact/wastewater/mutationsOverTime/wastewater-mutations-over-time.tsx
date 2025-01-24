@@ -23,6 +23,7 @@ const wastewaterMutationOverTimeSchema = z.object({
     sequenceType: sequenceTypeSchema,
     width: z.string(),
     height: z.string(),
+    maxNumberOfGridRows: z.number().optional(),
 });
 
 export type WastewaterMutationsOverTimeProps = z.infer<typeof wastewaterMutationOverTimeSchema>;
@@ -75,6 +76,7 @@ export const WastewaterMutationsOverTimeInner: FunctionComponent<WastewaterMutat
         <MutationsOverTimeTabs
             mutationOverTimeDataPerLocation={mutationOverTimeDataPerLocation}
             originalComponentProps={componentProps}
+            maxNumberOfGridRows={componentProps.maxNumberOfGridRows}
         />
     );
 };
@@ -87,22 +89,20 @@ type MutationOverTimeDataPerLocation = {
 type MutationOverTimeTabsProps = {
     mutationOverTimeDataPerLocation: MutationOverTimeDataPerLocation;
     originalComponentProps: WastewaterMutationsOverTimeProps;
+    maxNumberOfGridRows?: number;
 };
 
 const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     mutationOverTimeDataPerLocation,
     originalComponentProps,
+    maxNumberOfGridRows,
 }) => {
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
 
     const tabs = mutationOverTimeDataPerLocation.map(({ location, data }) => ({
         title: location,
         content: (
-            <MutationsOverTimeGrid
-                data={data}
-                colorScale={colorScale}
-                maxNumberOfGridRows={data.getFirstAxisKeys().length}
-            />
+            <MutationsOverTimeGrid data={data} colorScale={colorScale} maxNumberOfGridRows={maxNumberOfGridRows} />
         ),
     }));
 
