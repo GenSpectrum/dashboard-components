@@ -1,5 +1,5 @@
 import { Fragment, type FunctionComponent } from 'preact';
-import { useRef } from 'preact/hooks';
+import {useEffect, useRef, useState} from 'preact/hooks';
 
 import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
@@ -31,6 +31,63 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
 
     const gridRef = useRef<HTMLDivElement>(null);
 
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    const [tooltip, setTooltip] = useState<{ x: number, y: number, value: MutationOverTimeMutationValue, date: Temporal, mutation: Substitution | Deletion } | null>(null);
+
+    const handleMouseMove = (event: MouseEvent) => {
+        const canvas = canvasRef.current;
+        if (canvas) {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            const cellWidth = 80;
+            shownMutations.forEach((mutation, rowIndex) => {
+                const y = 20 + 20 * rowIndex;
+                dates.forEach((date, columnIndex) => {
+                    const cellX = 100 + columnIndex * cellWidth;
+                    if (
+                        mouseX >= cellX &&
+                        mouseX <= cellX + cellWidth &&
+                        mouseY >= y &&
+                        mouseY <= y + 15
+                    ) {
+                        const value = data.get(mutation, date) ?? null;
+                        setTooltip({ x: event.clientX, y: event.clientY, value, date, mutation });
+                    }
+                });
+            });
+        }
+    };
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            if (ctx) {
+                ctx.clearRect(0, 0, 1000, 700)
+                canvas.addEventListener('mousemove', handleMouseMove);
+                canvas.addEventListener('mouseleave', () => setTooltip(null));
+
+                shownMutations.forEach((mutation, rowIndex) => {
+                    const y = 20 + 20 * rowIndex;
+                    ctx.fillStyle = 'black';
+                    ctx.font = '14px Arial';
+                    ctx.textBaseline = 'middle'
+                    ctx.fillText(mutation.code, 10, 10 + y);
+
+                    const cellWidth = 30;
+                    dates.forEach((date, columnIndex) => {
+                        const value = data.get(mutation, date) ?? null;
+                        ctx.fillStyle = getColorWithingScale(value?.proportion, colorScale);
+                        ctx.fillRect(100 + columnIndex * cellWidth, y, cellWidth, 15);
+                    })
+                });
+            }
+        }
+    }, [data]);
+
     return (
         <>
             {allMutations.length > currentMaxNumberOfGridRows && (
@@ -42,50 +99,82 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
             {allMutations.length === 0 && (
                 <div className={'flex justify-center'}>No data available for your filters.</div>
             )}
-            <div
-                ref={gridRef}
-                style={{
-                    display: 'grid',
-                    gridTemplateRows: `repeat(${shownMutations.length}, 24px)`,
-                    gridTemplateColumns: `${MUTATION_CELL_WIDTH_REM}rem repeat(${dates.length}, minmax(0.05rem, 1fr))`,
-                }}
-            >
-                {shownMutations.map((mutation, rowIndex) => {
-                    return (
-                        <Fragment key={`fragment-${mutation.toString()}`}>
-                            <div
-                                key={`mutation-${mutation.toString()}`}
-                                style={{ gridRowStart: rowIndex + 1, gridColumnStart: 1 }}
-                            >
-                                <MutationCell mutation={mutation} />
-                            </div>
-                            {dates.map((date, columnIndex) => {
-                                const value = data.get(mutation, date) ?? null;
-                                const tooltipPosition = getTooltipPosition(
-                                    rowIndex,
-                                    shownMutations.length,
-                                    columnIndex,
-                                    dates.length,
-                                );
-                                return (
-                                    <div
-                                        style={{ gridRowStart: rowIndex + 1, gridColumnStart: columnIndex + 2 }}
-                                        key={`${mutation.toString()}-${date.toString()}`}
-                                    >
-                                        <ProportionCell
-                                            value={value}
-                                            date={date}
-                                            mutation={mutation}
-                                            tooltipPosition={tooltipPosition}
-                                            colorScale={colorScale}
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </Fragment>
-                    );
-                })}
-            </div>
+            <canvas ref={canvasRef} width={1000} height={700} />
+            {tooltip && (
+                <div
+                    style={{
+                        position: 'absolute',
+                        left: tooltip.x + 10,
+                        top: tooltip.y + 10,
+                        background: 'white',
+                        padding: '5px',
+                        borderRadius: '4px',
+                        pointerEvents: 'none',
+                    }}
+                >
+                    <p>
+                        <span className='font-bold'>{toTemporalClass(tooltip.date).englishName()}</span>
+                    </p>
+                    <p>({timeIntervalDisplay(toTemporalClass(tooltip.date))})</p>
+                    <p>{tooltip.mutation.code}</p>
+                    {tooltip.value === null ? (
+                        <p>No data</p>
+                    ) : (
+                        <>
+                            <p>Proportion: {formatProportion(tooltip.value.proportion)}</p>
+                            {tooltip.value.count !== null && tooltip.value.totalCount !== null && (
+                                <p>
+                                    Count: {tooltip.value.count} / {tooltip.value.totalCount} total
+                                </p>
+                            )}
+                        </>
+                    )}
+                </div>
+            )}
+            {/*<div*/}
+            {/*    ref={gridRef}*/}
+            {/*    style={{*/}
+            {/*        display: 'grid',*/}
+            {/*        gridTemplateRows: `repeat(${shownMutations.length}, 24px)`,*/}
+            {/*        gridTemplateColumns: `${MUTATION_CELL_WIDTH_REM}rem repeat(${dates.length}, minmax(0.05rem, 1fr))`,*/}
+            {/*    }}*/}
+            {/*>*/}
+            {/*    {shownMutations.map((mutation, rowIndex) => {*/}
+            {/*        return (*/}
+            {/*            <Fragment key={`fragment-${mutation.toString()}`}>*/}
+            {/*                <div*/}
+            {/*                    key={`mutation-${mutation.toString()}`}*/}
+            {/*                    style={{ gridRowStart: rowIndex + 1, gridColumnStart: 1 }}*/}
+            {/*                >*/}
+            {/*                    <MutationCell mutation={mutation} />*/}
+            {/*                </div>*/}
+            {/*                {dates.map((date, columnIndex) => {*/}
+            {/*                    const value = data.get(mutation, date) ?? null;*/}
+            {/*                    const tooltipPosition = getTooltipPosition(*/}
+            {/*                        rowIndex,*/}
+            {/*                        shownMutations.length,*/}
+            {/*                        columnIndex,*/}
+            {/*                        dates.length,*/}
+            {/*                    );*/}
+            {/*                    return (*/}
+            {/*                        <div*/}
+            {/*                            style={{ gridRowStart: rowIndex + 1, gridColumnStart: columnIndex + 2 }}*/}
+            {/*                            key={`${mutation.toString()}-${date.toString()}`}*/}
+            {/*                        >*/}
+            {/*                            <ProportionCell*/}
+            {/*                                value={value}*/}
+            {/*                                date={date}*/}
+            {/*                                mutation={mutation}*/}
+            {/*                                tooltipPosition={tooltipPosition}*/}
+            {/*                                colorScale={colorScale}*/}
+            {/*                            />*/}
+            {/*                        </div>*/}
+            {/*                    );*/}
+            {/*                })}*/}
+            {/*            </Fragment>*/}
+            {/*        );*/}
+            {/*    })}*/}
+            {/*</div>*/}
         </>
     );
 };
