@@ -1,5 +1,5 @@
 import { Fragment, type FunctionComponent } from 'preact';
-import {useEffect, useRef, useState} from 'preact/hooks';
+import {useCallback, useEffect, useMemo, useRef, useState} from 'preact/hooks';
 
 import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
@@ -24,10 +24,15 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
     maxNumberOfGridRows,
 }) => {
     const currentMaxNumberOfGridRows = maxNumberOfGridRows ?? MAX_NUMBER_OF_GRID_ROWS;
-    const allMutations = data.getFirstAxisKeys();
-    const shownMutations = allMutations.slice(0, currentMaxNumberOfGridRows);
 
-    const dates = data.getSecondAxisKeys();
+    const [dates, allMutations, shownMutations] = useMemo(
+        () => [
+            data.getSecondAxisKeys(),
+            data.getFirstAxisKeys(),
+            data.getFirstAxisKeys().slice(0, currentMaxNumberOfGridRows)
+        ],
+        [data]
+    );
 
 
     const gridRef = useRef<HTMLDivElement>(null);
@@ -43,31 +48,33 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
 
     const labelWidth = 120;
     const cellWidth = (canvasWidth - labelWidth) / dates.length;
-    const handleMouseMove = (event: MouseEvent) => {
-        const canvas = canvasRef.current;
-        if (canvas) {
-            const rect = canvas.getBoundingClientRect();
-            const mouseX = event.clientX - rect.left;
-            const mouseY = event.clientY - rect.top;
+    const cellHeight = 15;
+    const rowHeight = 20;
+    const yOffset = 20;
+    const handleMouseMove = useCallback(
+        (event: MouseEvent) => {
+            const canvas = canvasRef.current;
+            if (canvas) {
+                const rect = canvas.getBoundingClientRect();
+                const mouseX = event.x - rect.left;
+                const mouseY = event.y - rect.top;
 
+                const column = Math.floor((mouseX - labelWidth) / cellWidth)
+                const row = Math.floor((mouseY - yOffset) / rowHeight);
 
-            shownMutations.forEach((mutation, rowIndex) => {
-                const y = 20 + 20 * rowIndex;
-                dates.forEach((date, columnIndex) => {
-                    const cellX = 100 + columnIndex * cellWidth;
-                    if (
-                        mouseX >= cellX &&
-                        mouseX <= cellX + cellWidth &&
-                        mouseY >= y &&
-                        mouseY <= y + 15
-                    ) {
-                        const value = data.get(mutation, date) ?? null;
-                        setTooltip({ x: event.clientX, y: event.clientY, value, date, mutation });
-                    }
-                });
-            });
-        }
-    };
+                if (column > dates.length || row > shownMutations.length || column < 0 || row < 0) {
+                    return;
+                }
+
+                const mutation = shownMutations[row];
+                const date = dates[column];
+
+                const value = data.get(mutation, date) ?? null;
+                setTooltip({ x: event.clientX, y: event.clientY, value, date, mutation });
+            }
+        },
+        [cellWidth, data, dates, shownMutations]
+    );
 
     useEffect(() => {
         const resizeObserver = new ResizeObserver(() => {
@@ -89,22 +96,22 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
         const canvas = canvasRef.current;
         if (canvas) {
             const ratio = 4;
-            canvas.width = canvasWidth * ratio;
-            canvas.height = canvasHeight * ratio;
-            canvas.style.width = `${canvasWidth}px`;
-            canvas.style.height = `${canvasWidth}px`;
+            // canvas.width = canvasWidth * ratio;
+            // canvas.height = canvasHeight * ratio;
+            // canvas.style.width = `${canvasWidth}px`;
+            // canvas.style.height = `${canvasWidth}px`;
             canvas.getContext("2d")
 
             const ctx = canvas.getContext('2d');
             if (ctx) {
-                ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+                // ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
                 ctx.clearRect(0, 0, canvasWidth, 700)
                 canvas.addEventListener('mousemove', handleMouseMove);
                 canvas.addEventListener('mouseleave', () => setTooltip(null));
 
                 shownMutations.forEach((mutation, rowIndex) => {
-                    const y = 20 + 20 * rowIndex;
+                    const y = yOffset + rowHeight * rowIndex;
                     ctx.fillStyle = 'black';
                     ctx.font = '400 14px sans-serif';
                     ctx.textBaseline = 'middle'
@@ -116,7 +123,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                         const cellX = labelWidth + columnIndex * cellWidth;
                         const value = data.get(mutation, date) ?? null;
                         ctx.fillStyle = getColorWithingScale(value?.proportion, colorScale);
-                        ctx.fillRect(cellX, y, cellWidth, 15);
+                        ctx.fillRect(cellX, y, cellWidth, cellHeight);
 
                         if (cellWidth > 32 && value !== null) {
                             ctx.font = '400 12px sans-serif';
