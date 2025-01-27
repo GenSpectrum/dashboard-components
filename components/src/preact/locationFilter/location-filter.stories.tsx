@@ -88,7 +88,7 @@ export const Primary: StoryObj<LocationFilterProps> = {
             const input = await inputField(canvas);
             await userEvent.clear(input);
             await userEvent.type(input, 'Germany');
-            await userEvent.click(canvas.getByRole('option', { name: 'Germany Europe / Germany' }));
+            await userEvent.click(canvas.getByRole('option', { name: 'Germany(42) Europe / Germany' }));
 
             await waitFor(() => {
                 return expect(locationChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
