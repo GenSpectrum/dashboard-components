@@ -11,8 +11,9 @@ import { LapisUrlContext } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
-import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
+import Info, { InfoComponentCode, InfoHeadline1, InfoHeadline2, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
+import { DeletionsLink, ProportionExplanation, SubstitutionsLink } from '../components/mutation-info';
 import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
 import { NoDataDisplay } from '../components/no-data-display';
 import { type ProportionInterval } from '../components/proportion-selector';
@@ -190,7 +191,30 @@ const MutationComparisonInfo: FunctionComponent<MutationComparisonInfoProps> = (
     return (
         <Info>
             <InfoHeadline1>Info for mutation comparison</InfoHeadline1>
-            <InfoParagraph>TODO: https://github.com/GenSpectrum/dashboard-components/issues/465</InfoParagraph>
+            <InfoParagraph>
+                This displays <SubstitutionsLink /> and <DeletionsLink /> of several variants. It shows mutations where
+                the proportion for any given variant falls within the range you can select in the component's toolbar.
+            </InfoParagraph>
+            <ProportionExplanation />
+            {originalComponentProps.views.includes(views.table) && (
+                <>
+                    <InfoHeadline2>Table View</InfoHeadline2>
+                    <InfoParagraph>
+                        The table view displays the proportion of mutations that appear in any of the variants.
+                    </InfoParagraph>
+                </>
+            )}
+            {originalComponentProps.views.includes(views.venn) && (
+                <>
+                    <InfoHeadline2>Venn Diagram View</InfoHeadline2>
+                    <InfoParagraph>
+                        The Venn diagram view illustrates which mutations overlap between the variants and which are
+                        exclusive to specific variants. Mutations overlap if their proportion falls within the selected
+                        range for two variants. If the proportion of a mutation is within the selected range for one
+                        variant but not for the other, the mutation is considered exclusive to that variant.
+                    </InfoParagraph>
+                </>
+            )}
             <InfoComponentCode componentName='mutation-comparison' params={originalComponentProps} lapisUrl={lapis} />
         </Info>
     );
