@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.13.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.5...dashboard-components-v0.13.6) (2025-01-27)
+
+
+### Features
+
+* **components:** gs-location-filter: show counts in autocomplete options ([#685](https://github.com/GenSpectrum/dashboard-components/issues/685)) ([260a33b](https://github.com/GenSpectrum/dashboard-components/commit/260a33b5b40180dff97ecf6d95fe319a9f10df4f)), closes [#665](https://github.com/GenSpectrum/dashboard-components/issues/665)
+* **components:** gs-mutation-comparison: add info text ([#684](https://github.com/GenSpectrum/dashboard-components/issues/684)) ([f19cb9e](https://github.com/GenSpectrum/dashboard-components/commit/f19cb9e092faded8964147112c8e3ca4aaa1d133)), closes [#465](https://github.com/GenSpectrum/dashboard-components/issues/465)
+
+
+### Bug Fixes
+
+* **components:** gs-wastewater-mutations-over-time: throw proper error when there is an invalid mutation ([#687](https://github.com/GenSpectrum/dashboard-components/issues/687)) ([3b98625](https://github.com/GenSpectrum/dashboard-components/commit/3b98625c24911eec29224db4071966464e23b8fb))
+
 ## [0.13.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.4...dashboard-components-v0.13.5) (2025-01-24)
 
 
