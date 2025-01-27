@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { MutationsOverTime, type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
 import type { Equals, Expect } from '../../utils/typeAssertions';
@@ -108,11 +107,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-mutations-over-time': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-mutations-over-time': Partial<MutationsOverTimeProps>;
         }
     }
 }

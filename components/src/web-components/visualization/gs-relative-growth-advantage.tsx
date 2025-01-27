@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import {
     RelativeGrowthAdvantage,
@@ -142,11 +141,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-relative-growth-advantage': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-relative-growth-advantage': Partial<RelativeGrowthAdvantageProps>;
         }
     }
 }

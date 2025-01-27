@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import {
     NumberSequencesOverTime,
@@ -121,11 +120,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-number-sequences-over-time': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-number-sequences-over-time': Partial<NumberSequencesOverTimeProps>;
         }
     }
 }

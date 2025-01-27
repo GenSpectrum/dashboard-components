@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { DateRangeSelector, type DateRangeSelectorProps } from '../../preact/dateRangeSelector/date-range-selector';
 import { type DateRangeOptionChangedEvent } from '../../preact/dateRangeSelector/dateRangeOption';
@@ -134,11 +133,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-date-range-selector': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-date-range-selector': Partial<DateRangeSelectorProps>;
         }
     }
 }

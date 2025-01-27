@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { type TextInputChangedEvent } from '../../preact/textInput/TextInputChangedEvent';
 import { TextInput, type TextInputProps } from '../../preact/textInput/text-input';
@@ -89,11 +88,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-text-input': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-text-input': Partial<TextInputProps>;
         }
     }
 }

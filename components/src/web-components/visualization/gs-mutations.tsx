@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { Mutations, type MutationsProps } from '../../preact/mutations/mutations';
 import type { Equals, Expect } from '../../utils/typeAssertions';
@@ -75,14 +74,14 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
      * If not provided, the Jaccard similarity is not computed.
      * For details, see the [Jaccard Similarity](#jaccard-similarity) section in the component description.
      */
-    @property({ type: Object })
+    @property({type: Object})
     baselineLapisFilter:
         (Record<string, string | string[] | number | null | boolean | undefined> & {
-              nucleotideMutations?: string[];
-              aminoAcidMutations?: string[];
-              nucleotideInsertions?: string[];
-              aminoAcidInsertions?: string[];
-          })
+            nucleotideMutations?: string[];
+            aminoAcidMutations?: string[];
+            nucleotideInsertions?: string[];
+            aminoAcidInsertions?: string[];
+        })
         | undefined = undefined;
 
     /**
@@ -141,11 +140,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-mutations-component': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-mutations': Partial<MutationsProps>;
         }
     }
 }

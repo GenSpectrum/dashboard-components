@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { PrevalenceOverTime, type PrevalenceOverTimeProps } from '../../preact/prevalenceOverTime/prevalence-over-time';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
@@ -188,11 +187,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-prevalence-over-time': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-prevalence-over-time': Partial<PrevalenceOverTimeProps>;
         }
     }
 }

@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import {
     WastewaterMutationsOverTime,
@@ -90,11 +89,11 @@ declare global {
     }
 }
 
-declare global {
+declare module 'react' {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-wastewater-mutations-over-time': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-wastewater-mutations-over-time': Partial<WastewaterMutationsOverTimeProps>;
         }
     }
 }
