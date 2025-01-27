@@ -67,8 +67,6 @@ export class WastewaterMutationsOverTimeComponent extends PreactLitAdapterWithGr
 
     /**
      * The maximum number of grid rows to display.
-     *
-     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
      */
     @property({ type: Number })
     maxNumberOfGridRows: number = 100;
@@ -119,5 +117,11 @@ type WidthMatches = Expect<
 >;
 type HeightMatches = Expect<
     Equals<typeof WastewaterMutationsOverTimeComponent.prototype.height, WastewaterMutationsOverTimeProps['height']>
+>;
+type MaxNumberOfGridRowsMatches = Expect<
+    Equals<
+        typeof WastewaterMutationsOverTimeComponent.prototype.maxNumberOfGridRows,
+        WastewaterMutationsOverTimeProps['maxNumberOfGridRows']
+    >
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

@@ -30,12 +30,7 @@ const Template = {
     render: (args: WastewaterMutationsOverTimeProps) => (
         <LapisUrlContext.Provider value={WISE_LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <WastewaterMutationsOverTime
-                    width={args.width}
-                    height={args.height}
-                    lapisFilter={args.lapisFilter}
-                    sequenceType={args.sequenceType}
-                />
+                <WastewaterMutationsOverTime {...args} />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContext.Provider>
     ),
@@ -48,6 +43,7 @@ export const Default: StoryObj<WastewaterMutationsOverTimeProps> = {
         height: '700px',
         lapisFilter: {},
         sequenceType: 'nucleotide',
+        maxNumberOfGridRows: 100,
     },
     parameters: {
         fetchMock: {

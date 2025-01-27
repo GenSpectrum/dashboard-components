@@ -14,6 +14,7 @@ const codeExample = String.raw`
     sequenceType='nucleotide'
     width='100%'
     height='700px'
+    maxNumberOfGridRows='100'
 >
     <span slot="infoText">Some info text</span>
 </gs-wastewater-mutations-over-time>`;
@@ -36,6 +37,7 @@ const meta: Meta<WastewaterMutationsOverTimeProps & { infoText: string }> = {
         width: '100%',
         height: '700px',
         infoText: 'Some info text',
+        maxNumberOfGridRows: 100,
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -58,6 +60,7 @@ export const WastewaterMutationsOverTime: StoryObj<WastewaterMutationsOverTimePr
                 .sequenceType=${args.sequenceType}
                 .width=${args.width}
                 .height=${args.height}
+                .maxNumberOfGridRows=${args.maxNumberOfGridRows}
             >
                 <span slot="infoText">${args.infoText}</span>
             </gs-wastewater-mutations-over-time>

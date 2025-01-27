@@ -23,7 +23,7 @@ const wastewaterMutationOverTimeSchema = z.object({
     sequenceType: sequenceTypeSchema,
     width: z.string(),
     height: z.string(),
-    maxNumberOfGridRows: z.number().optional(),
+    maxNumberOfGridRows: z.number(),
 });
 
 export type WastewaterMutationsOverTimeProps = z.infer<typeof wastewaterMutationOverTimeSchema>;
