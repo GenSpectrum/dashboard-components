@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.6...dashboard-components-v0.13.7) (2025-01-28)
+
+
+### Bug Fixes
+
+* **components:** gs-mutation-filter: allow for reference genome with no genes ([af26d8b](https://github.com/GenSpectrum/dashboard-components/commit/af26d8b70d16f55aa286a750d5df99ff1aff3ea4))
+
 ## [0.13.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.5...dashboard-components-v0.13.6) (2025-01-27)
 
 
