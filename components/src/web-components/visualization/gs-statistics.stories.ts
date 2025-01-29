@@ -8,7 +8,7 @@ import numeratorData from '../../preact/statistic/__mockData__/numerator.json';
 import { type StatisticsProps } from '../../preact/statistic/statistics';
 
 import './gs-statistics';
-import '../app';
+import '../gs-app';
 
 const codeExample = `
 <gs-statistics

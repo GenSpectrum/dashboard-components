@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
 import './gs-wastewater-mutations-over-time';
-import '../app';
+import '../gs-app';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { WISE_DETAILS_ENDPOINT, WISE_LAPIS_URL } from '../../constants';
 import details from '../../preact/wastewater/mutationsOverTime/__mockData__/details.json';

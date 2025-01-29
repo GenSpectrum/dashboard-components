@@ -5,7 +5,7 @@ import { html } from 'lit';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import '../app';
+import '../gs-app';
 import './gs-lineage-filter';
 import aggregatedData from '../../preact/lineageFilter/__mockData__/aggregated.json';
 import { type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';

@@ -5,7 +5,7 @@ import { html } from 'lit';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL, REFERENCE_GENOME_ENDPOINT } from '../../constants';
-import '../app';
+import '../gs-app';
 import { type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 import './gs-mutation-filter';

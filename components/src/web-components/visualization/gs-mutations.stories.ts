@@ -17,7 +17,7 @@ import { type MutationsProps } from '../../preact/mutations/mutations';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 import './gs-mutations';
-import '../app';
+import '../gs-app';
 
 const codeExample = String.raw`
 <gs-mutations

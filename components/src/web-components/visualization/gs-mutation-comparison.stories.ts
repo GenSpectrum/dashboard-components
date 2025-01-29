@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
 import './gs-mutation-comparison';
-import '../app';
+import '../gs-app';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import nucleotideMutationsOtherDataset from '../../preact/mutationComparison/__mockData__/nucleotideMutationsOtherDataset.json';

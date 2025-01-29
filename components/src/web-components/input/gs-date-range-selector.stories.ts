@@ -7,7 +7,7 @@ import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import { type DateRangeSelectorProps } from '../../preact/dateRangeSelector/date-range-selector';
 import './gs-date-range-selector';
-import '../app';
+import '../gs-app';
 import { toYYYYMMDD } from '../../preact/dateRangeSelector/dateConversion';
 import { dateRangeOptionPresets } from '../../preact/dateRangeSelector/dateRangeOption';
 import { withinShadowRoot } from '../withinShadowRoot.story';
