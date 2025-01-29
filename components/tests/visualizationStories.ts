@@ -26,7 +26,17 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Bubble',
     },
     {
+        id: 'visualization-prevalence-over-time--with-fixed-height',
+        title: 'Prevalence over time',
+        loadingIsDoneIndicator: 'Bar',
+    },
+    {
         id: 'visualization-relative-growth-advantage--default',
+        title: 'Relative growth advantage',
+        loadingIsDoneIndicator: 'Relative advantage:',
+    },
+    {
+        id: 'visualization-relative-growth-advantage--with-fixed-height',
         title: 'Relative growth advantage',
         loadingIsDoneIndicator: 'Relative advantage:',
     },
@@ -54,6 +64,11 @@ export const visualizationStories = [
         testDownloadWithFilename: 'insertions.csv',
     },
     {
+        id: 'visualization-mutations--with-fixed-height',
+        title: 'Mutations',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
         id: 'visualization-mutation-comparison--default',
         title: 'Mutation comparison',
         loadingIsDoneIndicator: 'Table',
@@ -65,9 +80,19 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Table',
     },
     {
-        id: 'visualization-aggregate--table',
+        id: 'visualization-mutation-comparison--with-fixed-height',
+        title: 'Mutation comparison',
+        loadingIsDoneIndicator: 'Table',
+    },
+    {
+        id: 'visualization-aggregate--default',
         title: 'Aggregate',
         testDownloadWithFilename: 'aggregate.csv',
+        loadingIsDoneIndicator: 'Table',
+    },
+    {
+        id: 'visualization-aggregate--with-fixed-height',
+        title: 'Aggregate',
         loadingIsDoneIndicator: 'Table',
     },
     {
@@ -107,6 +132,11 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Bar',
     },
     {
+        id: 'visualization-number-sequences-over-time--with-fixed-height',
+        title: 'Number of sequences over time',
+        loadingIsDoneIndicator: 'Bar',
+    },
+    {
         id: 'visualization-mutations-over-time--by-month',
         title: 'Mutations over time',
         loadingIsDoneIndicator: 'Grid',
@@ -126,6 +156,11 @@ export const visualizationStories = [
     },
     {
         id: 'visualization-mutations-over-time--hide-proportion-on-small-screen',
+        title: 'Mutations over time',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
+        id: 'visualization-mutations-over-time--with-fixed-height',
         title: 'Mutations over time',
         loadingIsDoneIndicator: 'Grid',
     },
@@ -155,6 +190,11 @@ export const visualizationStories = [
         title: 'Sequences by location',
         loadingIsDoneIndicator: 'division',
         testDownloadWithFilename: 'sequences_by_location.csv',
+    },
+    {
+        id: 'visualization-sequences-by-location--with-fixed-height',
+        title: 'Sequences by location',
+        loadingIsDoneIndicator: 'Leaflet',
     },
     {
         id: 'wastewater-visualization-wastewater-mutations-over-time--wastewater-mutations-over-time',

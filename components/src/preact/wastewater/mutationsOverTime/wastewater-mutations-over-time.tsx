@@ -22,7 +22,7 @@ const wastewaterMutationOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
     sequenceType: sequenceTypeSchema,
     width: z.string(),
-    height: z.string(),
+    height: z.string().optional(),
     maxNumberOfGridRows: z.number(),
 });
 

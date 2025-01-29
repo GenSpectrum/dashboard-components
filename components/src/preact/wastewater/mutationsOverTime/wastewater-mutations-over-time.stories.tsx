@@ -40,7 +40,6 @@ export const Default: StoryObj<WastewaterMutationsOverTimeProps> = {
     ...Template,
     args: {
         width: '100%',
-        height: '700px',
         lapisFilter: {},
         sequenceType: 'nucleotide',
         maxNumberOfGridRows: 100,
