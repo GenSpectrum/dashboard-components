@@ -1,4 +1,4 @@
-import { Download } from '@playwright/test';
+import { type Download } from '@playwright/test';
 
 export async function getDownloadedContent(download: Download) {
     const readable = await download.createReadStream();

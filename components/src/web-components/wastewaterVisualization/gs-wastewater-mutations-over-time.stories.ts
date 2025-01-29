@@ -35,7 +35,7 @@ const meta: Meta<WastewaterMutationsOverTimeProps & { infoText: string }> = {
         lapisFilter: { versionStatus: 'LATEST_VERSION', isRevocation: false },
         sequenceType: 'nucleotide',
         width: '100%',
-        height: '700px',
+        height: undefined,
         infoText: 'Some info text',
         maxNumberOfGridRows: 100,
     },
@@ -86,5 +86,13 @@ export const WastewaterMutationsOverTime: StoryObj<WastewaterMutationsOverTimePr
                 },
             ],
         },
+    },
+};
+
+export const WithFixedHeight: StoryObj<WastewaterMutationsOverTimeProps & { infoText: string }> = {
+    ...WastewaterMutationsOverTime,
+    args: {
+        ...WastewaterMutationsOverTime.args,
+        height: '700px',
     },
 };

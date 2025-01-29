@@ -6,6 +6,7 @@ import { useEffect, useRef } from 'preact/hooks';
 import type { EnhancedGeoJsonFeatureProperties } from '../../query/computeMapLocationData';
 import { InfoHeadline1, InfoParagraph } from '../components/info';
 import { Modal, useModalRef } from '../components/modal';
+import { AspectRatio } from '../shared/aspectRatio/AspectRatio';
 import { formatProportion } from '../shared/table/formatProportion';
 
 type SequencesByLocationMapProps = {
@@ -20,6 +21,7 @@ type SequencesByLocationMapProps = {
     offsetX: number;
     offsetY: number;
     hasTableView: boolean;
+    maintainAspectRatio: boolean;
 };
 
 export const SequencesByLocationMap: FunctionComponent<SequencesByLocationMapProps> = ({
@@ -34,6 +36,7 @@ export const SequencesByLocationMap: FunctionComponent<SequencesByLocationMapPro
     offsetX,
     offsetY,
     hasTableView,
+    maintainAspectRatio,
 }) => {
     const ref = useRef<HTMLDivElement>(null);
 
@@ -69,8 +72,8 @@ export const SequencesByLocationMap: FunctionComponent<SequencesByLocationMapPro
     }, [ref, locations, enableMapNavigation, lapisLocationField, zoom, offsetX, offsetY]);
 
     return (
-        <div className='h-full'>
-            <div ref={ref} className='h-full' />
+        <AspectRatio aspectRatio={maintainAspectRatio ? 50 : undefined}>
+            <div className='h-full' ref={ref} />
             <div className='relative'>
                 <DataMatchInformation
                     totalCount={totalCount}
@@ -80,7 +83,7 @@ export const SequencesByLocationMap: FunctionComponent<SequencesByLocationMapPro
                     hasTableView={hasTableView}
                 />
             </div>
-        </div>
+        </AspectRatio>
     );
 };
 
