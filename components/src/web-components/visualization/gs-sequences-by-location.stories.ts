@@ -13,7 +13,7 @@ import { type SequencesByLocationProps } from '../../preact/map/sequences-by-loc
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 import './gs-sequences-by-location';
-import '../app';
+import '../gs-app';
 
 const codeExample = `<gs-sequences-by-location
     lapisFilter='{"dateFrom":"2022-01-01","dateTo":"2022-04-01"}'

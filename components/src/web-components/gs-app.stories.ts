@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
-import './app';
+import './gs-app';
 
 import { lapisContext } from './lapis-context';
 import { referenceGenomeContext } from './reference-genome-context';

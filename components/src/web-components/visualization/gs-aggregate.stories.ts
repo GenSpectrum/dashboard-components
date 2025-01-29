@@ -9,7 +9,7 @@ import aggregatedDataWith2Fields from '../../preact/aggregatedData/__mockData__/
 import type { AggregateProps } from '../../preact/aggregatedData/aggregate';
 
 import './gs-aggregate';
-import '../app';
+import '../gs-app';
 
 const codeExample = `
 <gs-aggregate 

@@ -29,7 +29,7 @@ const lapisUrlSchema = z.string().url();
  * This component does __not__ use a shadow DOM. Children of this component will be rendered directly in the light DOM.
  */
 @customElement('gs-app')
-export class App extends LitElement {
+export class AppComponent extends LitElement {
     /**
      * Required.
      *
@@ -84,7 +84,7 @@ function GsAppError(error: string) {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-app': App;
+        'gs-app': AppComponent;
     }
 }
 

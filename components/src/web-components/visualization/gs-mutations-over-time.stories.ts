@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
 import './gs-mutations-over-time';
-import '../app';
+import '../gs-app';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL } from '../../constants';
 import { type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
