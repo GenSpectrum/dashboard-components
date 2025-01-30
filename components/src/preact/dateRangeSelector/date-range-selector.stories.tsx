@@ -28,11 +28,10 @@ const meta: Meta<DateRangeSelectorProps> = {
         fetchMock: {},
     },
     argTypes: {
-        initialValue: {
+        value: {
             control: {
-                type: 'select',
+                type: 'object',
             },
-            options: [dateRangeOptionPresets.lastMonth.label, dateRangeOptionPresets.allTimes.label, 'CustomDateRange'],
         },
         dateRangeOptions: {
             control: {
@@ -53,11 +52,9 @@ const meta: Meta<DateRangeSelectorProps> = {
     args: {
         dateRangeOptions: [dateRangeOptionPresets.lastMonth, dateRangeOptionPresets.allTimes, customDateRange],
         earliestDate,
-        initialValue: dateRangeOptionPresets.lastMonth.label,
+        value: dateRangeOptionPresets.lastMonth.label,
         lapisDateField: 'aDateColumn',
         width: '100%',
-        initialDateFrom: undefined,
-        initialDateTo: undefined,
     },
 };
 
@@ -75,7 +72,7 @@ export const SetCorrectInitialValues: StoryObj<DateRangeSelectorProps> = {
     ...Primary,
     args: {
         ...Primary.args,
-        initialValue: 'CustomDateRange',
+        value: 'CustomDateRange',
     },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
@@ -94,7 +91,7 @@ export const SetCorrectInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
     ...Primary,
     args: {
         ...Primary.args,
-        initialDateFrom,
+        value: { dateFrom: initialDateFrom },
     },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
@@ -113,7 +110,7 @@ export const SetCorrectInitialDateTo: StoryObj<DateRangeSelectorProps> = {
     ...Primary,
     args: {
         ...Primary.args,
-        initialDateTo,
+        value: { dateTo: initialDateTo },
     },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
@@ -203,7 +200,7 @@ export const HandlesInvalidInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
     ...Primary,
     args: {
         ...Primary.args,
-        initialDateFrom: 'not a date',
+        value: { dateFrom: 'not a date' },
     },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);

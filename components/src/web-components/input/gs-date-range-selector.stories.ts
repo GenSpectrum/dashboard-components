@@ -40,11 +40,10 @@ const meta: Meta<Required<DateRangeSelectorProps>> = {
         },
     }),
     argTypes: {
-        initialValue: {
+        value: {
             control: {
-                type: 'select',
+                type: 'object',
             },
-            options: [dateRangeOptionPresets.lastMonth.label, dateRangeOptionPresets.allTimes.label, 'CustomDateRange'],
         },
         lapisDateField: { control: { type: 'text' } },
         dateRangeOptions: {
@@ -71,11 +70,9 @@ const meta: Meta<Required<DateRangeSelectorProps>> = {
             customDateRange,
         ],
         earliestDate: '1970-01-01',
-        initialValue: dateRangeOptionPresets.lastMonth.label,
+        value: dateRangeOptionPresets.lastMonth.label,
         lapisDateField: 'aDateColumn',
         width: '100%',
-        initialDateFrom: undefined,
-        initialDateTo: undefined,
     },
     tags: ['autodocs'],
 };
@@ -89,9 +86,7 @@ export const Default: StoryObj<Required<DateRangeSelectorProps>> = {
                 <gs-date-range-selector
                     .dateRangeOptions=${args.dateRangeOptions}
                     .earliestDate=${args.earliestDate}
-                    .initialValue=${args.initialValue}
-                    .initialDateFrom=${args.initialDateFrom}
-                    .initialDateTo=${args.initialDateTo}
+                    .value=${args.value}
                     .width=${args.width}
                     .lapisDateField=${args.lapisDateField}
                 ></gs-date-range-selector>
