@@ -49,13 +49,23 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                     gridTemplateRows: `repeat(${shownMutations.length}, 24px)`,
                     gridTemplateColumns: `${MUTATION_CELL_WIDTH_REM}rem repeat(${dates.length}, minmax(0.05rem, 1fr))`,
                 }}
+                className='text-center'
             >
+                {dates.map((date, columnIndex) => (
+                    <div
+                        className='@container font-semibold'
+                        style={{ gridRowStart: 1, gridColumnStart: columnIndex + 2 }}
+                        key={date.dateString}
+                    >
+                        <p {...styleGridHeader(columnIndex, dates)}>{date.dateString}</p>
+                    </div>
+                ))}
                 {shownMutations.map((mutation, rowIndex) => {
                     return (
                         <Fragment key={`fragment-${mutation.toString()}`}>
                             <div
                                 key={`mutation-${mutation.toString()}`}
-                                style={{ gridRowStart: rowIndex + 1, gridColumnStart: 1 }}
+                                style={{ gridRowStart: rowIndex + 2, gridColumnStart: 1 }}
                             >
                                 <MutationCell mutation={mutation} />
                             </div>
@@ -69,7 +79,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                                 );
                                 return (
                                     <div
-                                        style={{ gridRowStart: rowIndex + 1, gridColumnStart: columnIndex + 2 }}
+                                        style={{ gridRowStart: rowIndex + 2, gridColumnStart: columnIndex + 2 }}
                                         key={`${mutation.toString()}-${date.toString()}`}
                                     >
                                         <ProportionCell
@@ -89,6 +99,18 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
         </>
     );
 };
+
+function styleGridHeader(columnIndex: number, dates: Temporal[]) {
+    if (columnIndex === 0) {
+        return { className: 'overflow-visible text-nowrap' };
+    }
+
+    if (columnIndex === dates.length - 1) {
+        return { className: 'overflow-visible text-nowrap', style: { direction: 'rtl' } };
+    }
+
+    return { className: 'invisible @[6rem]:visible' };
+}
 
 function getTooltipPosition(rowIndex: number, rows: number, columnIndex: number, columns: number) {
     const tooltipX = rowIndex < rows / 2 || rowIndex < 6 ? 'bottom' : 'top';
@@ -135,7 +157,7 @@ const ProportionCell: FunctionComponent<{
                         backgroundColor: getColorWithingScale(value?.proportion, colorScale),
                         color: getTextColorForScale(value?.proportion, colorScale),
                     }}
-                    className={`w-full h-full text-center hover:font-bold text-xs group @container`}
+                    className={`w-full h-full hover:font-bold text-xs group @container`}
                 >
                     <span className='invisible @[2rem]:visible'>
                         {value === null ? '' : formatProportion(value.proportion, 0)}
@@ -155,7 +177,7 @@ const timeIntervalDisplay = (date: TemporalClass) => {
 };
 
 const MutationCell: FunctionComponent<{ mutation: Substitution | Deletion }> = ({ mutation }) => {
-    return <div className='text-center'>{mutation.code}</div>;
+    return <div>{mutation.code}</div>;
 };
 
 export default MutationsOverTimeGrid;
