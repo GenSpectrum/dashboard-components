@@ -4,7 +4,7 @@ import { expect, waitFor, within } from '@storybook/test';
 import aggregatedData from './__mockData__/aggregated.json';
 import { Aggregate, type AggregateProps } from './aggregate';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage, playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const meta: Meta<AggregateProps> = {
@@ -44,9 +44,9 @@ export default meta;
 
 export const Default: StoryObj<AggregateProps> = {
     render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <Aggregate {...args} />
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
     args: {
         fields: ['division', 'host'],

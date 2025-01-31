@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/preact';
 import { expect, waitFor } from '@storybook/test';
 
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import denominatorFilter from './__mockData__/denominatorFilter.json';
 import denominatorOneDataset from './__mockData__/denominatorFilterOneDataset.json';
 import numeratorFilterEG from './__mockData__/numeratorFilterEG.json';
@@ -42,9 +42,9 @@ export default {
 
 const Template = {
     render: (args: PrevalenceOverTimeProps) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <PrevalenceOverTime {...args} />
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
 };
 

@@ -1,11 +1,10 @@
 import { type FunctionComponent } from 'preact';
-import { useContext } from 'preact/hooks';
 import z from 'zod';
 
+import { useLapisUrl } from '../LapisUrlContext';
 import { AggregateTable } from './aggregate-table';
 import { type AggregateData, queryAggregateData } from '../../query/queryAggregateData';
 import { lapisFilterSchema, views } from '../../types';
-import { LapisUrlContext } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
@@ -48,7 +47,7 @@ export const Aggregate: FunctionComponent<AggregateProps> = (componentProps) => 
 
 export const AggregateInner: FunctionComponent<AggregateProps> = (componentProps) => {
     const { fields, lapisFilter, initialSortField, initialSortDirection } = componentProps;
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
 
     const { data, error, isLoading } = useQuery(async () => {
         return queryAggregateData(lapisFilter, fields, lapis);
@@ -129,7 +128,7 @@ type AggregateInfoProps = {
 };
 
 const AggregateInfo: FunctionComponent<AggregateInfoProps> = ({ originalComponentProps }) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
     return (
         <Info>
             <InfoHeadline1>Aggregated data</InfoHeadline1>

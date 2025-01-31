@@ -55,7 +55,9 @@ export class AppComponent extends LitElement {
         task: async () => {
             const lapisUrl = lapisUrlSchema.parse(this.lapis);
 
-            this.referenceGenome = await fetchReferenceGenome(lapisUrl);
+            this.referenceGenome = await fetchReferenceGenome(
+                lapisUrl.endsWith('/') ? lapisUrl.slice(0, -1) : lapisUrl,
+            );
         },
         args: () => [this.lapis],
     });

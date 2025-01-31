@@ -1,10 +1,9 @@
 import { type FunctionComponent } from 'preact';
-import { useContext } from 'preact/hooks';
 import z from 'zod';
 
-import { fetchLineageAutocompleteList } from './fetchLineageAutocompleteList';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { useLapisUrl } from '../LapisUrlContext';
 import { LineageFilterChangedEvent } from './LineageFilterChangedEvent';
+import { fetchLineageAutocompleteList } from './fetchLineageAutocompleteList';
 import { lapisFilterSchema } from '../../types';
 import { DownshiftCombobox } from '../components/downshift-combobox';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -47,7 +46,7 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
     value,
     lapisFilter,
 }) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
 
     const { data, error, isLoading } = useQuery(
         () => fetchLineageAutocompleteList({ lapis, field: lapisField, lapisFilter }),

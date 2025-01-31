@@ -5,7 +5,7 @@ import denominator from './__mockData__/denominatorFilter.json';
 import numerator from './__mockData__/numeratorFilter.json';
 import { RelativeGrowthAdvantage, type RelativeGrowthAdvantageProps } from './relative-growth-advantage';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
 export default {
@@ -30,9 +30,9 @@ export default {
 
 export const Primary: StoryObj<RelativeGrowthAdvantageProps> = {
     render: (args: RelativeGrowthAdvantageProps) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <RelativeGrowthAdvantage {...args} />
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
     args: {
         numeratorFilter: {

@@ -6,7 +6,7 @@ import { MutationFilter, type MutationFilterProps } from './mutation-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 
 const meta: Meta<MutationFilterProps> = {
@@ -32,11 +32,11 @@ export default meta;
 
 export const Default: StoryObj<MutationFilterProps> = {
     render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
                 <MutationFilter width={args.width} initialValue={args.initialValue} />
             </ReferenceGenomeContext.Provider>
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
     args: {
         width: '100%',
@@ -184,11 +184,11 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
 
 export const WithInitialValue: StoryObj<MutationFilterProps> = {
     render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
                 <MutationFilter initialValue={args.initialValue} width={args.width} />
             </ReferenceGenomeContext.Provider>
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
     args: {
         initialValue: {

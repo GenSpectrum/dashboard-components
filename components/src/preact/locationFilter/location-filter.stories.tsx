@@ -6,7 +6,7 @@ import data from './__mockData__/aggregated.json';
 import { LocationFilter, type LocationFilterProps } from './location-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const meta: Meta<LocationFilterProps> = {
@@ -77,9 +77,9 @@ export default meta;
 
 export const Primary: StoryObj<LocationFilterProps> = {
     render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <LocationFilter {...args} />
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
     play: async ({ canvasElement, step }) => {
         const { canvas, locationChangedListenerMock } = await prepare(canvasElement, step);

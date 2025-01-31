@@ -3,7 +3,7 @@ import { type Meta, type StoryObj } from '@storybook/preact';
 import { WastewaterMutationsOverTime, type WastewaterMutationsOverTimeProps } from './wastewater-mutations-over-time';
 import { WISE_DETAILS_ENDPOINT, WISE_LAPIS_URL } from '../../../constants';
 import referenceGenome from '../../../lapisApi/__mockData__/referenceGenome.json';
-import { LapisUrlContext } from '../../LapisUrlContext';
+import { LapisUrlContextProvider } from '../../LapisUrlContext';
 import { ReferenceGenomeContext } from '../../ReferenceGenomeContext';
 import details from './__mockData__/details.json';
 
@@ -28,11 +28,11 @@ export default meta;
 
 const Template = {
     render: (args: WastewaterMutationsOverTimeProps) => (
-        <LapisUrlContext.Provider value={WISE_LAPIS_URL}>
+        <LapisUrlContextProvider value={WISE_LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
                 <WastewaterMutationsOverTime {...args} />
             </ReferenceGenomeContext.Provider>
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
 };
 

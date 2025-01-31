@@ -5,7 +5,7 @@ import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import oneVariantEG from '../../preact/numberSequencesOverTime/__mockData__/oneVariantEG.json';
 import twoVariantsEG from '../../preact/numberSequencesOverTime/__mockData__/twoVariantsEG.json';
 import twoVariantsJN1 from '../../preact/numberSequencesOverTime/__mockData__/twoVariantsJN1.json';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
 export default {
@@ -29,9 +29,9 @@ export default {
 
 const Template: StoryObj<NumberSequencesOverTimeProps> = {
     render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <NumberSequencesOverTime {...args} />
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
     args: {
         views: ['bar', 'line', 'table'],

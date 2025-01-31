@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/preact';
 
 import worldAtlas from './__mockData__/worldAtlas.json';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import aggregatedWorld from './__mockData__/aggregatedWorld.json';
 import { SequencesByLocation, type SequencesByLocationProps } from './sequences-by-location';
 import { expectInvalidAttributesErrorMessage, playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
@@ -37,9 +37,9 @@ const aggregatedWorldMatcher = {
 
 export const Default: StoryObj<SequencesByLocationProps> = {
     render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <SequencesByLocation {...args} />
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
     args: {
         lapisFilter: { dateFrom: '2022-01-01', dateTo: '2022-04-01' },

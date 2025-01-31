@@ -1,11 +1,11 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useMemo } from 'preact/hooks';
+import { useMemo } from 'preact/hooks';
 import z from 'zod';
 
-import { fetchAutocompletionList, type LocationEntry } from './fetchAutocompletionList';
-import { LapisUrlContext } from '../LapisUrlContext';
 import { LocationChangedEvent } from './LocationChangedEvent';
+import { fetchAutocompletionList, type LocationEntry } from './fetchAutocompletionList';
 import { lapisFilterSchema, type LapisLocationFilter, lapisLocationFilterSchema } from '../../types';
+import { useLapisUrl } from '../LapisUrlContext';
 import { DownshiftCombobox } from '../components/downshift-combobox';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
@@ -40,7 +40,7 @@ export const LocationFilter: FunctionComponent<LocationFilterProps> = (props) =>
 };
 
 export const LocationFilterInner = ({ value, fields, placeholderText, lapisFilter }: LocationFilterInnerProps) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
 
     const { data, error, isLoading } = useQuery(
         () => fetchAutocompletionList({ fields, lapis, lapisFilter }),

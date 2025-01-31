@@ -13,7 +13,7 @@ import {
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import baselineNucleotideMutations from '../../preact/mutations/__mockData__/baselineNucleotideMutations.json';
 import overallVariantCount from '../../preact/mutations/__mockData__/overallVariantCount.json';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 
 const meta: Meta<MutationsProps> = {
@@ -39,11 +39,11 @@ export default meta;
 
 const Template = {
     render: (args: MutationsProps) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
                 <Mutations {...args} />
             </ReferenceGenomeContext.Provider>
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
 };
 

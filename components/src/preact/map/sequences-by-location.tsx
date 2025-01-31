@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'preact';
-import { useContext } from 'preact/hooks';
 import z from 'zod';
 
+import { useLapisUrl } from '../LapisUrlContext';
 import { SequencesByLocationMap } from './sequences-by-location-map';
 import { SequencesByLocationTable } from './sequences-by-location-table';
 import {
@@ -11,7 +11,6 @@ import {
 } from '../../query/computeMapLocationData';
 import { type AggregateData } from '../../query/queryAggregateData';
 import { querySequencesByLocationData } from '../../query/querySequencesByLocationData';
-import { LapisUrlContext } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
@@ -58,7 +57,7 @@ export const SequencesByLocation: FunctionComponent<SequencesByLocationProps> = 
 const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationProps> = (props) => {
     const { lapisFilter, lapisLocationField, mapSource } = props;
 
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
     const {
         data,
         error,
@@ -158,7 +157,7 @@ type SequencesByLocationMapInfoProps = {
 };
 
 const SequencesByLocationMapInfo: FunctionComponent<SequencesByLocationMapInfoProps> = ({ originalComponentProps }) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
     return (
         <Info>
             <InfoHeadline1>Prevalence by location</InfoHeadline1>
