@@ -6,7 +6,7 @@ import { LineageFilter, type LineageFilterProps } from './lineage-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import aggregatedData from '../../preact/lineageFilter/__mockData__/aggregated.json';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const meta: Meta = {
@@ -78,9 +78,9 @@ export default meta;
 
 export const Default: StoryObj<LineageFilterProps> = {
     render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <LineageFilter {...args} />
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
     play: async ({ canvasElement, step }) => {
         const { canvas, lineageChangedListenerMock } = await prepare(canvasElement, step);

@@ -1,10 +1,9 @@
 import { type FunctionComponent } from 'preact';
-import { useContext } from 'preact/hooks';
 import z from 'zod';
 
-import { fetchStringAutocompleteList } from './fetchStringAutocompleteList';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { useLapisUrl } from '../LapisUrlContext';
 import { TextInputChangedEvent } from './TextInputChangedEvent';
+import { fetchStringAutocompleteList } from './fetchStringAutocompleteList';
 import { lapisFilterSchema } from '../../types';
 import { DownshiftCombobox } from '../components/downshift-combobox';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -46,7 +45,7 @@ const TextInputInner: FunctionComponent<TextInputInnerProps> = ({
     placeholderText,
     lapisFilter,
 }) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
 
     const { data, error, isLoading } = useQuery(
         () => fetchStringAutocompleteList({ lapis, field: lapisField, lapisFilter }),

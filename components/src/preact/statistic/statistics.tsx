@@ -1,10 +1,9 @@
 import { type FunctionComponent } from 'preact';
-import { useContext } from 'preact/hooks';
 import z from 'zod';
 
 import { queryGeneralStatistics } from '../../query/queryGeneralStatistics';
 import { lapisFilterSchema } from '../../types';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { useLapisUrl } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -35,7 +34,7 @@ export const Statistics: FunctionComponent<StatisticsProps> = (componentProps) =
 
 export const StatisticsInner: FunctionComponent<StatisticsProps> = (componentProps) => {
     const { numeratorFilter, denominatorFilter } = componentProps;
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
 
     const { data, error, isLoading } = useQuery(async () => {
         return queryGeneralStatistics(numeratorFilter, denominatorFilter, lapis);

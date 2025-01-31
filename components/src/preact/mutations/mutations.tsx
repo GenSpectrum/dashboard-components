@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { type Dispatch, type StateUpdater, useContext, useState } from 'preact/hooks';
+import { type Dispatch, type StateUpdater, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { getInsertionsTableData } from './getInsertionsTableData';
@@ -15,7 +15,7 @@ import {
     type SubstitutionOrDeletionEntry,
     views,
 } from '../../types';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { useLapisUrl } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
@@ -59,7 +59,7 @@ export const Mutations: FunctionComponent<MutationsProps> = (componentProps) => 
 };
 
 export const MutationsInner: FunctionComponent<MutationsProps> = (componentProps) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
     const { lapisFilter, baselineLapisFilter, sequenceType } = componentProps;
 
     const { data, error, isLoading } = useQuery(async () => {
@@ -237,7 +237,7 @@ type MutationsInfoProps = {
 };
 
 const MutationsInfo: FunctionComponent<MutationsInfoProps> = ({ originalComponentProps }) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
 
     return (
         <Info>

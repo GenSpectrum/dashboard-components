@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { type Dispatch, type StateUpdater, useContext, useMemo, useState } from 'preact/hooks';
+import { type Dispatch, type StateUpdater, useMemo, useState } from 'preact/hooks';
 import z from 'zod';
 
 // @ts-expect-error -- uses subpath imports and vite worker import
@@ -18,7 +18,7 @@ import {
 } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { toTemporalClass } from '../../utils/temporalClass';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { useLapisUrl } from '../LapisUrlContext';
 import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
 import { CsvDownloadButton } from '../components/csv-download-button';
@@ -63,7 +63,7 @@ export const MutationsOverTime: FunctionComponent<MutationsOverTimeProps> = (com
 };
 
 export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> = (componentProps) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
     const { lapisFilter, sequenceType, granularity, lapisDateField } = componentProps;
 
     const messageToWorker = useMemo(() => {
@@ -230,7 +230,7 @@ type MutationsOverTimeInfoProps = {
 };
 
 const MutationsOverTimeInfo: FunctionComponent<MutationsOverTimeInfoProps> = ({ originalComponentProps }) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
     return (
         <Info>
             <InfoHeadline1>Mutations over time</InfoHeadline1>

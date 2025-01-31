@@ -5,7 +5,7 @@ import data from './__mockData__/aggregated_hosts.json';
 import { TextInput, type TextInputProps } from './text-input';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const meta: Meta<TextInputProps> = {
@@ -67,9 +67,9 @@ export default meta;
 
 export const Default: StoryObj<TextInputProps> = {
     render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <TextInput {...args} />
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
     args: {
         lapisField: 'host',

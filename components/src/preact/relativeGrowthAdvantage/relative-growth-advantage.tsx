@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import z from 'zod';
 
 import RelativeGrowthAdvantageChart from './relative-growth-advantage-chart';
@@ -9,7 +9,7 @@ import {
     type RelativeGrowthAdvantageData,
 } from '../../query/queryRelativeGrowthAdvantage';
 import { lapisFilterSchema, views } from '../../types';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { useLapisUrl } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoHeadline2, InfoLink, InfoParagraph } from '../components/info';
@@ -52,7 +52,7 @@ export const RelativeGrowthAdvantage: FunctionComponent<RelativeGrowthAdvantageP
 };
 
 export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvantageProps> = (componentProps) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
     const { numeratorFilter, denominatorFilter, generationTime, lapisDateField } = componentProps;
 
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
@@ -160,7 +160,7 @@ const RelativeGrowthAdvantageToolbar: FunctionComponent<RelativeGrowthAdvantageT
 const RelativeGrowthAdvantageInfo: FunctionComponent<{ originalComponentProps: RelativeGrowthAdvantageProps }> = ({
     originalComponentProps,
 }) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
     const generationTime = originalComponentProps.generationTime;
 
     return (

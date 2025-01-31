@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { useContext, useEffect, useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { getPrevalenceOverTimeTableData } from './getPrevalenceOverTimeTableData';
@@ -9,7 +9,7 @@ import PrevalenceOverTimeLineChart from './prevalence-over-time-line-chart';
 import PrevalenceOverTimeTable from './prevalence-over-time-table';
 import { type PrevalenceOverTimeData, queryPrevalenceOverTime } from '../../query/queryPrevalenceOverTime';
 import { lapisFilterSchema, namedLapisFilterSchema, temporalGranularitySchema, views } from '../../types';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { useLapisUrl } from '../LapisUrlContext';
 import { ConfidenceIntervalSelector } from '../components/confidence-interval-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -65,7 +65,7 @@ export const PrevalenceOverTime: FunctionComponent<PrevalenceOverTimeProps> = (c
 
 export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeProps> = (componentProps) => {
     const { numeratorFilters, denominatorFilter, granularity, smoothingWindow, lapisDateField } = componentProps;
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
 
     const { data, error, isLoading } = useQuery(
         () =>
@@ -226,7 +226,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
 
 const PrevalenceOverTimeInfo: FunctionComponent<PrevalenceOverTimeProps> = (componentProps) => {
     const { granularity, smoothingWindow, views } = componentProps;
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
     return (
         <Info>
             <InfoHeadline1>Prevalence over time</InfoHeadline1>

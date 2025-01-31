@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, waitFor, within } from '@storybook/test';
 
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import denominatorData from './__mockData__/denominator.json';
 import numeratorData from './__mockData__/numerator.json';
 import { Statistics, type StatisticsProps } from './statistics';
@@ -55,9 +55,9 @@ export default meta;
 
 export const Default: StoryObj<StatisticsProps> = {
     render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <Statistics {...args} />
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
     args: {
         numeratorFilter: {

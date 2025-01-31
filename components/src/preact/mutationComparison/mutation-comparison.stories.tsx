@@ -6,7 +6,7 @@ import nucleotideMutationsSomeDataset from './__mockData__/nucleotideMutationsSo
 import { MutationComparison, type MutationComparisonProps } from './mutation-comparison';
 import { LAPIS_URL, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 
 const dateToSomeDataset = '2022-01-01';
@@ -76,7 +76,7 @@ export default meta;
 
 const Template: StoryObj<MutationComparisonProps> = {
     render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
                 <MutationComparison
                     lapisFilters={args.lapisFilters}
@@ -87,7 +87,7 @@ const Template: StoryObj<MutationComparisonProps> = {
                     pageSize={args.pageSize}
                 />
             </ReferenceGenomeContext.Provider>
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
 };
 

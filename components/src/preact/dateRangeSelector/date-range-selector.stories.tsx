@@ -6,7 +6,7 @@ import dayjs from 'dayjs/esm';
 import { DateRangeSelector, type DateRangeSelectorProps } from './date-range-selector';
 import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { dateRangeOptionPresets } from './dateRangeOption';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
@@ -65,9 +65,9 @@ export default meta;
 
 export const Primary: StoryObj<DateRangeSelectorProps> = {
     render: (args) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <DateRangeSelector {...args} />
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
 };
 

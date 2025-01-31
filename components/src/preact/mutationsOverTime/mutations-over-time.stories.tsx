@@ -4,7 +4,7 @@ import { expect, userEvent, waitFor } from '@storybook/test';
 import { MutationsOverTime, type MutationsOverTimeProps } from './mutations-over-time';
 import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
-import { LapisUrlContext } from '../LapisUrlContext';
+import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
@@ -38,7 +38,7 @@ export default meta;
 
 const Template = {
     render: (args: MutationsOverTimeProps) => (
-        <LapisUrlContext.Provider value={LAPIS_URL}>
+        <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
                 <MutationsOverTime
                     lapisFilter={args.lapisFilter}
@@ -50,7 +50,7 @@ const Template = {
                     lapisDateField={args.lapisDateField}
                 />
             </ReferenceGenomeContext.Provider>
-        </LapisUrlContext.Provider>
+        </LapisUrlContextProvider>
     ),
 };
 

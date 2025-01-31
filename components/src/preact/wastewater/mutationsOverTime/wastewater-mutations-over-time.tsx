@@ -1,10 +1,10 @@
 import { type FunctionComponent } from 'preact';
-import { type Dispatch, type StateUpdater, useContext, useState } from 'preact/hooks';
+import { type Dispatch, type StateUpdater, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { computeWastewaterMutationsOverTimeDataPerLocation } from './computeWastewaterMutationsOverTimeDataPerLocation';
 import { lapisFilterSchema, sequenceTypeSchema } from '../../../types';
-import { LapisUrlContext } from '../../LapisUrlContext';
+import { useLapisUrl } from '../../LapisUrlContext';
 import { type ColorScale } from '../../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../../components/color-scale-selector-dropdown';
 import { ErrorBoundary } from '../../components/error-boundary';
@@ -44,7 +44,7 @@ export const WastewaterMutationsOverTime: FunctionComponent<WastewaterMutationsO
 export const WastewaterMutationsOverTimeInner: FunctionComponent<WastewaterMutationsOverTimeProps> = (
     componentProps,
 ) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
 
     const {
         data: mutationOverTimeDataPerLocation,
@@ -142,7 +142,7 @@ type WastewaterMutationsOverTimeInfoProps = {
 const WastewaterMutationsOverTimeInfo: FunctionComponent<WastewaterMutationsOverTimeInfoProps> = ({
     originalComponentProps,
 }) => {
-    const lapis = useContext(LapisUrlContext);
+    const lapis = useLapisUrl();
     return (
         <Info>
             <InfoHeadline1>Info for mutations over time</InfoHeadline1>
