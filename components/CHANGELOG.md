@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.13.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.6...dashboard-components-v0.13.7) (2025-01-31)
+
+
+### Features
+
+* **components:** gs-mutations-over-time: add x-axis tick labels to grid ([#708](https://github.com/GenSpectrum/dashboard-components/issues/708)) ([686d9d3](https://github.com/GenSpectrum/dashboard-components/commit/686d9d3970fa962f14485b8d6fe16a33ee5d35c2)), closes [#681](https://github.com/GenSpectrum/dashboard-components/issues/681)
+* **components:** make component tabs layout better suited for multiline layout ([#706](https://github.com/GenSpectrum/dashboard-components/issues/706)) ([0a22115](https://github.com/GenSpectrum/dashboard-components/commit/0a22115b963b90f9d3dec6348df4b4b78d77ab57)), closes [#675](https://github.com/GenSpectrum/dashboard-components/issues/675)
+
+
+### Bug Fixes
+
+* **components:** gs-mutation-filter: allow for reference genome with no genes ([af26d8b](https://github.com/GenSpectrum/dashboard-components/commit/af26d8b70d16f55aa286a750d5df99ff1aff3ea4))
+
 ## [0.13.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.5...dashboard-components-v0.13.6) (2025-01-27)
 
 
