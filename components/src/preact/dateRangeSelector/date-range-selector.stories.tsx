@@ -63,7 +63,7 @@ const meta: Meta<DateRangeSelectorProps> = {
 
 export default meta;
 
-export const Primary: StoryObj<DateRangeSelectorProps> = {
+const Primary: StoryObj<DateRangeSelectorProps> = {
     render: (args) => (
         <LapisUrlContextProvider value={LAPIS_URL}>
             <DateRangeSelector {...args} />
@@ -80,10 +80,10 @@ export const SetCorrectInitialValues: StoryObj<DateRangeSelectorProps> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await waitFor(() => {
-            expect(selectField(canvas)).toHaveValue('CustomDateRange');
-            expect(dateFromPicker(canvas)).toHaveValue('2021-01-01');
-            expect(dateToPicker(canvas)).toHaveValue('2021-12-31');
+        await waitFor(async () => {
+            await expect(selectField(canvas)).toHaveValue('CustomDateRange');
+            await expect(dateFromPicker(canvas)).toHaveValue('2021-01-01');
+            await expect(dateToPicker(canvas)).toHaveValue('2021-12-31');
         });
     },
 };
@@ -99,10 +99,10 @@ export const SetCorrectInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await waitFor(() => {
-            expect(selectField(canvas)).toHaveValue('Custom');
-            expect(dateFromPicker(canvas)).toHaveValue(initialDateFrom);
-            expect(dateToPicker(canvas)).toHaveValue(dayjs().format('YYYY-MM-DD'));
+        await waitFor(async () => {
+            await expect(selectField(canvas)).toHaveValue('Custom');
+            await expect(dateFromPicker(canvas)).toHaveValue(initialDateFrom);
+            await expect(dateToPicker(canvas)).toHaveValue(dayjs().format('YYYY-MM-DD'));
         });
     },
 };
@@ -118,10 +118,10 @@ export const SetCorrectInitialDateTo: StoryObj<DateRangeSelectorProps> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await waitFor(() => {
-            expect(selectField(canvas)).toHaveValue('Custom');
-            expect(dateFromPicker(canvas)).toHaveValue(earliestDate);
-            expect(dateToPicker(canvas)).toHaveValue(initialDateTo);
+        await waitFor(async () => {
+            await expect(selectField(canvas)).toHaveValue('Custom');
+            await expect(dateFromPicker(canvas)).toHaveValue(earliestDate);
+            await expect(dateToPicker(canvas)).toHaveValue(initialDateTo);
         });
     },
 };
@@ -131,17 +131,17 @@ export const ChangingDateSetsOptionToCustom: StoryObj<DateRangeSelectorProps> = 
     play: async ({ canvasElement, step }) => {
         const { canvas, filterChangedListenerMock, optionChangedListenerMock } = await prepare(canvasElement, step);
 
-        await waitFor(() => {
-            expect(selectField(canvas)).toHaveValue('Last month');
+        await waitFor(async () => {
+            await expect(selectField(canvas)).toHaveValue('Last month');
         });
 
-        step('Change date to custom value', async () => {
+        await step('Change date to custom value', async () => {
             await userEvent.type(dateFromPicker(canvas), '{backspace>12}');
             await userEvent.type(dateFromPicker(canvas), '2000-01-01');
             await userEvent.click(dateToPicker(canvas));
 
-            await waitFor(() => {
-                expect(selectField(canvas)).toHaveValue('Custom');
+            await waitFor(async () => {
+                await expect(selectField(canvas)).toHaveValue('Custom');
             });
 
             await expect(filterChangedListenerMock).toHaveBeenCalledWith(
@@ -170,15 +170,15 @@ export const ChangingDateOption: StoryObj<DateRangeSelectorProps> = {
     play: async ({ canvasElement, step }) => {
         const { canvas, filterChangedListenerMock, optionChangedListenerMock } = await prepare(canvasElement, step);
 
-        await waitFor(() => {
-            expect(selectField(canvas)).toHaveValue('Last month');
+        await waitFor(async () => {
+            await expect(selectField(canvas)).toHaveValue('Last month');
         });
 
-        step('Change date to custom', async () => {
+        await step('Change date to custom', async () => {
             await userEvent.selectOptions(selectField(canvas), 'CustomDateRange');
 
-            await waitFor(() => {
-                expect(selectField(canvas)).toHaveValue('CustomDateRange');
+            await waitFor(async () => {
+                await expect(selectField(canvas)).toHaveValue('CustomDateRange');
             });
 
             await expect(filterChangedListenerMock).toHaveBeenCalledWith(
@@ -208,8 +208,8 @@ export const HandlesInvalidInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await waitFor(() => {
-            expect(canvas.getByText('Oops! Something went wrong.')).toBeVisible();
+        await waitFor(async () => {
+            await expect(canvas.getByText('Oops! Something went wrong.')).toBeVisible();
         });
     },
 };
