@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.14.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.7...dashboard-components-v0.14.0) (2025-02-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** gs-date-range-selector: remove `initialValue`, `initialDateFrom`, `initialDateTo`. Use `value` instead.
+
+### Features
+
+* **components:** gs-date-range-selector: make the component controllable from a surrounding JS app ([#710](https://github.com/GenSpectrum/dashboard-components/issues/710)) ([250587e](https://github.com/GenSpectrum/dashboard-components/commit/250587ea37bcf3967c6ccfc1b70e41dd4b86a556)), closes [#683](https://github.com/GenSpectrum/dashboard-components/issues/683)
+
+
+### Bug Fixes
+
+* **components:** trim trailing slash off the `lapis` url that is provided to `gs-app` ([#711](https://github.com/GenSpectrum/dashboard-components/issues/711)) ([091d792](https://github.com/GenSpectrum/dashboard-components/commit/091d792e7adfa45a99d004a69dd4e319a9a530a1)), closes [#703](https://github.com/GenSpectrum/dashboard-components/issues/703)
+
 ## [0.13.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.6...dashboard-components-v0.13.7) (2025-01-31)
 
 
