@@ -55,13 +55,13 @@ const QuickStart = () => {
                     )}
                 </ul>
             </InfoParagraph>
-
-            {referenceGenome.nucleotideSequences.length > 1 ? (
+            {referenceGenome.nucleotideSequences.length > 1 && (
                 <InfoParagraph>
                     This organism has the following segments:{' '}
                     {referenceGenome.nucleotideSequences.map((gene) => gene.name).join(', ')}.
                 </InfoParagraph>
-            ) : (
+            )}
+            {referenceGenome.nucleotideSequences.length === 0 && (
                 <InfoParagraph>This organism doesn't support nucleotide sequences.</InfoParagraph>
             )}
             {referenceGenome.genes.length !== 0 ? (
