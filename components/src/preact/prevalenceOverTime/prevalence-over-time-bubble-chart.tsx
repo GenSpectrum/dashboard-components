@@ -87,13 +87,13 @@ const PrevalenceOverTimeBubbleChart = ({
                     intersect: false,
                     callbacks: {
                         title: (context) => {
-                            const dataset = nonNullDateRangeData[context[0].datasetIndex!];
-                            const dataPoint = dataset.content[context[0].dataIndex!];
+                            const dataset = nonNullDateRangeData[context[0].datasetIndex];
+                            const dataPoint = dataset.content[context[0].dataIndex];
                             return dataPoint.dateRange?.toString();
                         },
                         label: (context) => {
-                            const dataset = nonNullDateRangeData[context.datasetIndex!];
-                            const dataPoint = dataset.content[context.dataIndex!];
+                            const dataset = nonNullDateRangeData[context.datasetIndex];
+                            const dataPoint = dataset.content[context.dataIndex];
 
                             const percentage = (dataPoint.prevalence * 100).toFixed(2);
                             const count = dataPoint.count.toFixed(0);

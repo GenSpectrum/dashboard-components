@@ -84,7 +84,7 @@ export const Primary: StoryObj<LocationFilterProps> = {
     play: async ({ canvasElement, step }) => {
         const { canvas, locationChangedListenerMock } = await prepare(canvasElement, step);
 
-        step('change location filter value fires event', async () => {
+        await step('change location filter value fires event', async () => {
             const input = await inputField(canvas);
             await userEvent.clear(input);
             await userEvent.type(input, 'Germany');
@@ -107,7 +107,7 @@ export const ClearSelection: StoryObj<LocationFilterProps> = {
     play: async ({ canvasElement, step }) => {
         const { canvas, locationChangedListenerMock } = await prepare(canvasElement, step);
 
-        step('clear selection fires event with empty filter', async () => {
+        await step('clear selection fires event with empty filter', async () => {
             const clearSelectionButton = await canvas.findByLabelText('clear selection');
             await userEvent.click(clearSelectionButton);
 
@@ -128,7 +128,7 @@ export const OnBlurInput: StoryObj<LocationFilterProps> = {
     play: async ({ canvasElement, step }) => {
         const { canvas, locationChangedListenerMock } = await prepare(canvasElement, step);
 
-        step('after cleared selection by hand and then blur fires event with empty filter', async () => {
+        await step('after cleared selection by hand and then blur fires event with empty filter', async () => {
             const input = await inputField(canvas);
             await userEvent.clear(input);
             await userEvent.click(canvas.getByLabelText('toggle menu'));
@@ -151,11 +151,11 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
     const canvas = within(canvasElement);
 
     const locationChangedListenerMock = fn();
-    step('Setup event listener mock', () => {
+    await step('Setup event listener mock', () => {
         canvasElement.addEventListener('gs-location-changed', locationChangedListenerMock);
     });
 
-    step('location filter is rendered with value', async () => {
+    await step('location filter is rendered with value', async () => {
         await waitFor(async () => {
             return expect(await inputField(canvas)).toHaveValue('Europe');
         });
@@ -171,7 +171,7 @@ export const WithNoFields: StoryObj<LocationFilterProps> = {
         fields: [],
     },
     play: async ({ canvasElement, step }) => {
-        step('expect error message', async () => {
+        await step('expect error message', async () => {
             await expectInvalidAttributesErrorMessage(canvasElement, 'Array must contain at least 1 element(s)');
         });
     },

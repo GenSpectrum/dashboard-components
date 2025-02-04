@@ -85,7 +85,7 @@ export const Default: StoryObj<LineageFilterProps> = {
     play: async ({ canvasElement, step }) => {
         const { canvas, lineageChangedListenerMock } = await prepare(canvasElement, step);
 
-        step('change lineage filter value fires event', async () => {
+        await step('change lineage filter value fires event', async () => {
             const input = await inputField(canvas);
             await userEvent.clear(input);
             await userEvent.type(input, 'B.1');
@@ -105,7 +105,7 @@ export const ClearSelection: StoryObj<LineageFilterProps> = {
     play: async ({ canvasElement, step }) => {
         const { canvas, lineageChangedListenerMock } = await prepare(canvasElement, step);
 
-        step('clear selection fires event with empty filter', async () => {
+        await step('clear selection fires event with empty filter', async () => {
             const clearSelectionButton = await canvas.findByLabelText('clear selection');
             await userEvent.click(clearSelectionButton);
 
@@ -123,7 +123,7 @@ export const OnBlurInput: StoryObj<LineageFilterProps> = {
     play: async ({ canvasElement, step }) => {
         const { canvas, lineageChangedListenerMock } = await prepare(canvasElement, step);
 
-        step('after cleared selection by hand and then blur fires event with empty filter', async () => {
+        await step('after cleared selection by hand and then blur fires event with empty filter', async () => {
             const input = await inputField(canvas);
             await userEvent.clear(input);
             await userEvent.click(canvas.getByLabelText('toggle menu'));
@@ -144,7 +144,7 @@ export const WithNoLapisField: StoryObj<LineageFilterProps> = {
         lapisField: '',
     },
     play: async ({ canvasElement, step }) => {
-        step('expect error message', async () => {
+        await step('expect error message', async () => {
             await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
         });
     },
@@ -154,11 +154,11 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
     const canvas = within(canvasElement);
 
     const lineageChangedListenerMock = fn();
-    step('Setup event listener mock', () => {
+    await step('Setup event listener mock', () => {
         canvasElement.addEventListener('gs-lineage-filter-changed', lineageChangedListenerMock);
     });
 
-    step('location filter is rendered with value', async () => {
+    await step('location filter is rendered with value', async () => {
         await waitFor(async () => {
             return expect(await inputField(canvas)).toHaveValue('A.1');
         });

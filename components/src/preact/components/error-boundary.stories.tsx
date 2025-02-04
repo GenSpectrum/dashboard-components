@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, waitFor, within } from '@storybook/test';
 import z from 'zod';
 
-import { ErrorBoundary } from './error-boundary';
+import { ErrorBoundary, type ErrorBoundaryProps } from './error-boundary';
 import { UserFacingError } from './error-display';
 
 const meta: Meta = {
@@ -28,7 +28,7 @@ const someSchema = z.object({
 const someValidProps = { test: 'someValue' };
 const someInvalidProps = { test: '' };
 
-export const ErrorBoundaryWithoutErrorStory: StoryObj = {
+export const ErrorBoundaryWithoutErrorStory: StoryObj<ErrorBoundaryProps<typeof someValidProps>> = {
     render: (args) => (
         <ErrorBoundary size={args.size} schema={someSchema} componentProps={someValidProps}>
             <div>Some content</div>
@@ -41,7 +41,7 @@ export const ErrorBoundaryWithoutErrorStory: StoryObj = {
     },
 };
 
-export const ErrorBoundaryWithErrorStory: StoryObj = {
+export const ErrorBoundaryWithErrorStory: StoryObj<ErrorBoundaryProps<typeof someValidProps>> = {
     render: (args) => (
         <ErrorBoundary size={args.size} schema={someSchema} componentProps={someValidProps}>
             <ContentThatThrowsError error={() => new Error('Some error')} />
@@ -55,7 +55,7 @@ export const ErrorBoundaryWithErrorStory: StoryObj = {
     },
 };
 
-export const ErrorBoundaryWithParsingErrorStory: StoryObj = {
+export const ErrorBoundaryWithParsingErrorStory: StoryObj<ErrorBoundaryProps<typeof someValidProps>> = {
     render: (args) => (
         <ErrorBoundary size={args.size} schema={someSchema} componentProps={someInvalidProps}>
             <ContentThatThrowsError error={() => new Error('Some error')} />
@@ -69,7 +69,7 @@ export const ErrorBoundaryWithParsingErrorStory: StoryObj = {
     },
 };
 
-export const ErrorBoundaryWithUserFacingErrorStory: StoryObj = {
+export const ErrorBoundaryWithUserFacingErrorStory: StoryObj<ErrorBoundaryProps<typeof someValidProps>> = {
     render: (args) => (
         <ErrorBoundary size={args.size} schema={someSchema} componentProps={someValidProps}>
             <ContentThatThrowsError error={() => new UserFacingError('Error Headline', 'Some error')} />

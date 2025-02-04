@@ -113,7 +113,7 @@ export const FiresEvents: StoryObj<Required<TextInputProps>> = {
 
         const inputField = () => canvas.getByPlaceholderText('Enter host name');
         const listenerMock = fn();
-        await step('Setup event listener mock', async () => {
+        await step('Setup event listener mock', () => {
             canvasElement.addEventListener('gs-text-input-changed', listenerMock);
         });
 
@@ -140,8 +140,8 @@ export const FiresEvents: StoryObj<Required<TextInputProps>> = {
         });
 
         await step('Verify event is fired with correct detail', async () => {
-            await waitFor(() => {
-                expect(listenerMock).toHaveBeenCalledWith(
+            await waitFor(async () => {
+                await expect(listenerMock).toHaveBeenCalledWith(
                     expect.objectContaining({
                         detail: {
                             host: 'Homo sapiens',

@@ -285,7 +285,7 @@ export const WithNoDateColumn: StoryObj<DateRangeSelectorProps> = {
         lapisDateField: '',
     },
     play: async ({ canvasElement, step }) => {
-        step('expect error message', async () => {
+        await step('expect error message', async () => {
             await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
         });
     },
@@ -295,12 +295,9 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
     const canvas = within(canvasElement);
 
     const filterChangedListenerMock = fn();
-    await step('Setup event listener mock', async () => {
-        canvasElement.addEventListener('gs-date-range-filter-changed', filterChangedListenerMock);
-    });
-
     const optionChangedListenerMock = fn();
-    await step('Setup event listener mock', async () => {
+    await step('Setup event listener mock', () => {
+        canvasElement.addEventListener('gs-date-range-filter-changed', filterChangedListenerMock);
         canvasElement.addEventListener('gs-date-range-option-changed', optionChangedListenerMock);
     });
 

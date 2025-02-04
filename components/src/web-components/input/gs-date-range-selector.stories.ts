@@ -16,7 +16,7 @@ const codeExample = String.raw`
 <gs-date-range-selector
     dateRangeOptions='[{ "label": "Year 2021", "dateFrom": "2021-01-01", "dateTo": "2021-12-31" }]'
     earliestDate="1970-01-01"
-    valule="Year 2021"
+    value="Year 2021"
     width="100%"
     lapisDateField="myDateColumn"
 ></gs-date-range-selector>`;
@@ -99,15 +99,15 @@ export const FiresEvents: StoryObj<Required<DateRangeSelectorProps>> = {
 
         const filterChangedListenerMock = fn();
         const optionChangedListenerMock = fn();
-        await step('Setup event listener mock', async () => {
+        await step('Setup event listener mock', () => {
             canvasElement.addEventListener('gs-date-range-filter-changed', filterChangedListenerMock);
             canvasElement.addEventListener('gs-date-range-option-changed', optionChangedListenerMock);
         });
 
         await step('Expect last 6 months to be selected', async () => {
             await expect(selectField(canvas)).toHaveValue('Last month');
-            await waitFor(() => {
-                expect(dateToPicker(canvas)).toHaveValue(toYYYYMMDD(new Date()));
+            await waitFor(async () => {
+                await expect(dateToPicker(canvas)).toHaveValue(toYYYYMMDD(new Date()));
             });
         });
 
@@ -133,5 +133,5 @@ export const FiresEvents: StoryObj<Required<DateRangeSelectorProps>> = {
     },
 };
 
-const dateToPicker = (canvas: ReturnType<typeof within>) => canvas.getByPlaceholderText('Date to');
-const selectField = (canvas: ReturnType<typeof within>) => canvas.getByRole('combobox');
+const dateToPicker = (canvas: ReturnType<typeof within>): HTMLElement => canvas.getByPlaceholderText('Date to');
+const selectField = (canvas: ReturnType<typeof within>): HTMLElement => canvas.getByRole('combobox');

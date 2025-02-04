@@ -1,7 +1,7 @@
 import { type StoryObj } from '@storybook/preact';
 import { type Meta } from '@storybook/web-components';
 
-import { CsvDownloadButton, type CsvDownloadButtonProps } from './csv-download-button';
+import { CsvDownloadButton, type CsvDownloadButtonProps, type DataValue } from './csv-download-button';
 
 const meta: Meta<CsvDownloadButtonProps> = {
     title: 'Component/CSV Download Button',
@@ -10,7 +10,7 @@ const meta: Meta<CsvDownloadButtonProps> = {
 
 export default meta;
 
-export const DownloadButton: StoryObj = {
+export const DownloadButton: StoryObj<CsvDownloadButtonProps & { data: Record<string, DataValue>[] }> = {
     render: (args) => {
         return <CsvDownloadButton label={args.label} filename={args.filename} getData={() => args.data} />;
     },

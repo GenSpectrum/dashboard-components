@@ -62,9 +62,9 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                 ))}
                 {shownMutations.map((mutation, rowIndex) => {
                     return (
-                        <Fragment key={`fragment-${mutation.toString()}`}>
+                        <Fragment key={`fragment-${mutation.code}`}>
                             <div
-                                key={`mutation-${mutation.toString()}`}
+                                key={`mutation-${mutation.code}`}
                                 style={{ gridRowStart: rowIndex + 2, gridColumnStart: 1 }}
                             >
                                 <MutationCell mutation={mutation} />
@@ -80,7 +80,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                                 return (
                                     <div
                                         style={{ gridRowStart: rowIndex + 2, gridColumnStart: columnIndex + 2 }}
-                                        key={`${mutation.toString()}-${date.toString()}`}
+                                        key={`${mutation.code}-${date.dateString}`}
                                     >
                                         <ProportionCell
                                             value={value}

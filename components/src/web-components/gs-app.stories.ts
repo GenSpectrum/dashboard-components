@@ -50,9 +50,9 @@ export const Default: StoryObj<{ lapis: string }> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await waitFor(() => {
-            expect(canvas.getByText(LAPIS_URL)).toBeVisible();
-            expect(canvas.getByText('"name": "ORF1a",', { exact: false })).toBeVisible();
+        await waitFor(async () => {
+            await expect(canvas.getByText(LAPIS_URL)).toBeVisible();
+            await expect(canvas.getByText('"name": "ORF1a",', { exact: false })).toBeVisible();
         });
     },
 };
@@ -66,8 +66,8 @@ export const WithNoLapisUrl: StoryObj<{ lapis: string }> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await waitFor(() => {
-            expect(canvas.getByText("Error: Invalid LAPIS URL: 'notAValidUrl'", { exact: false })).toBeVisible();
+        await waitFor(async () => {
+            await expect(canvas.getByText("Error: Invalid LAPIS URL: 'notAValidUrl'", { exact: false })).toBeVisible();
         });
     },
 };
@@ -103,8 +103,8 @@ export const FailsToFetchReferenceGenome: StoryObj<{ lapis: string }> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await waitFor(() => {
-            expect(canvas.getByText('Error: Cannot fetch reference genome.', { exact: false })).toBeVisible();
+        await waitFor(async () => {
+            await expect(canvas.getByText('Error: Cannot fetch reference genome.', { exact: false })).toBeVisible();
         });
     },
 };

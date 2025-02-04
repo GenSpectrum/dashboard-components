@@ -72,7 +72,7 @@ export const FiresFilterChangedEvent: StoryObj<MutationFilterProps> = {
 
         const inputField = () => canvas.getByPlaceholderText('Enter a mutation', { exact: false });
         const listenerMock = fn();
-        await step('Setup event listener mock', async () => {
+        await step('Setup event listener mock', () => {
             canvasElement.addEventListener('gs-mutation-filter-changed', listenerMock);
         });
 
@@ -154,18 +154,18 @@ export const MultiSegmentedReferenceGenomes: StoryObj<MutationFilterProps> = {
 
         const inputField = () => canvas.getByPlaceholderText('Enter a mutation', { exact: false });
 
-        await waitFor(() => {
+        await waitFor(async () => {
             const placeholderText = inputField().getAttribute('placeholder');
 
-            expect(placeholderText).toEqual(
+            await expect(placeholderText).toEqual(
                 'Enter a mutation (e.g. seg1:23T, ins_seg1:10462:A, gene1:57Q, ins_gene1:31:N)',
             );
         });
 
-        await waitFor(() => {
-            expect(canvas.getByText('seg1:123T')).toBeVisible();
-            expect(canvas.getByText('gene2:56')).toBeVisible();
-            return expect(canvas.getByText('ins_seg2:78:AAA')).toBeVisible();
+        await waitFor(async () => {
+            await expect(canvas.getByText('seg1:123T')).toBeVisible();
+            await expect(canvas.getByText('gene2:56')).toBeVisible();
+            await expect(canvas.getByText('ins_seg2:78:AAA')).toBeVisible();
         });
     },
 };

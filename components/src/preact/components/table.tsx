@@ -22,7 +22,7 @@ export const tableStyle = {
     },
 };
 
-interface TableProps {
+export interface TableProps {
     data: TData;
     columns: OneDArray<TColumn | string | ComponentChild>;
     pageSize: number | boolean;

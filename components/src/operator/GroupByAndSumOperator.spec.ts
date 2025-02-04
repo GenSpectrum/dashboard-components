@@ -14,7 +14,7 @@ describe('GroupByAndSumOperator', () => {
 
         const query = new GroupByAndSumOperator(child, 'lineage', 'n');
         const result = await query.evaluate('lapis');
-        await expectEqualAfterSorting(
+        expectEqualAfterSorting(
             result.content,
             [
                 { lineage: 'A', n: 3 },

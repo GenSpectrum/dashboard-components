@@ -92,13 +92,13 @@ export const RemoveInitialValue: StoryObj<TextInputProps> = {
         const canvas = within(canvasElement);
 
         const changedListenerMock = fn();
-        await step('Setup event listener mock', async () => {
+        await step('Setup event listener mock', () => {
             canvasElement.addEventListener('gs-text-input-changed', changedListenerMock);
         });
 
-        await waitFor(() => {
+        await waitFor(async () => {
             const input = canvas.getByPlaceholderText('Enter a host name', { exact: false });
-            expect(input).toHaveValue('Homo sapiens');
+            await expect(input).toHaveValue('Homo sapiens');
         });
 
         await step('Remove initial value', async () => {
@@ -122,7 +122,7 @@ export const WithNoLapisField: StoryObj<TextInputProps> = {
         lapisField: '',
     },
     play: async ({ canvasElement, step }) => {
-        step('expect error message', async () => {
+        await step('expect error message', async () => {
             await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
         });
     },

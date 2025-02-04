@@ -39,12 +39,12 @@ export const UserFacingErrorStory: StoryObj = {
         const error = canvas.getByText('Oops! Something went wrong.', { exact: false });
         const detailMessage = () => canvas.getByText('some message');
         await waitFor(() => expect(error).toBeInTheDocument());
-        await waitFor(() => {
-            expect(detailMessage()).not.toBeVisible();
+        await waitFor(async () => {
+            await expect(detailMessage()).not.toBeVisible();
         });
         await userEvent.click(canvas.getByText('Show details.'));
-        await waitFor(() => {
-            expect(detailMessage()).toBeVisible();
+        await waitFor(async () => {
+            await expect(detailMessage()).toBeVisible();
         });
     },
 };
@@ -60,9 +60,9 @@ export const FiresEvent: StoryObj = {
         const listenerMock = fn();
         canvasElement.addEventListener('gs-error', listenerMock);
 
-        await waitFor(() => {
-            expect(listenerMock.mock.calls.at(-1)![0].error.name).toStrictEqual('UserFacingError');
-            expect(listenerMock.mock.calls.at(-1)![0].error.message).toStrictEqual('some message');
+        await waitFor(async () => {
+            await expect(listenerMock.mock.calls.at(-1)![0].error.name).toStrictEqual('UserFacingError');
+            await expect(listenerMock.mock.calls.at(-1)![0].error.message).toStrictEqual('some message');
         });
     },
 };
@@ -81,8 +81,8 @@ export const TriggersResetErrorOnReloadButton: StoryObj = {
 
         await userEvent.click(canvas.getByText('Try again'));
 
-        await waitFor(() => {
-            expect(resetErrorMock).toHaveBeenCalled();
+        await waitFor(async () => {
+            await expect(resetErrorMock).toHaveBeenCalled();
         });
     },
 };

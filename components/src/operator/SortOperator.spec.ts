@@ -8,6 +8,6 @@ describe('SortOperator', () => {
         const child = new MockOperator([3, 1, 2]);
         const query = new SortOperator(child, (a, b) => a - b);
         const result = await query.evaluate('lapis');
-        await expect(result.content).deep.equal([1, 2, 3]);
+        expect(result.content).deep.equal([1, 2, 3]);
     });
 });

@@ -134,7 +134,7 @@ export const InvalidProps: StoryObj<SequencesByLocationProps> = {
         lapisLocationField: '',
     },
     play: async ({ canvasElement, step }) => {
-        step('expect error message', async () => {
+        await step('expect error message', async () => {
             await expectInvalidAttributesErrorMessage(
                 canvasElement,
                 '"lapisLocationField": String must contain at least 1 character(s)',

@@ -9,6 +9,8 @@ import { GS_ERROR_EVENT_TYPE } from '../src/preact/components/error-display';
 
 setCustomElementsManifest(customElements);
 
+export const previewHandles = [GS_ERROR_EVENT_TYPE];
+
 const preview: Preview = {
     parameters: {
         controls: {
@@ -50,11 +52,9 @@ const preview: Preview = {
         docs: {
             page: DocumentationTemplate,
         },
-        actions: { handles: [GS_ERROR_EVENT_TYPE] },
+        actions: { handles: previewHandles },
     },
     decorators: [withActions],
 };
 
 export default preview;
-
-export const previewHandles = preview.parameters!.actions.handles;

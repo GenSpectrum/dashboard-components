@@ -108,7 +108,7 @@ export const OneTypesSelected: StoryObj<MutationTypeSelectorProps> = {
         const canvas = within(canvasElement);
 
         await step('Show the selected type as label', async () => {
-            const substitutionElements = await canvas.getAllByText('Substitution');
+            const substitutionElements = canvas.getAllByText('Substitution');
             await expect(substitutionElements.length).toBe(2);
         });
     },

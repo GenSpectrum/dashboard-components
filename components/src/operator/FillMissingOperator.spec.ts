@@ -23,6 +23,6 @@ describe('FillMissingOperator', () => {
             (id) => ({ id }),
         );
         const result = await query.evaluate('lapis');
-        await expectEqualAfterSorting(result.content, [{ id: 1 }, { id: 2 }, { id: 3 }], (a, b) => a.id - b.id);
+        expectEqualAfterSorting(result.content, [{ id: 1 }, { id: 2 }, { id: 3 }], (a, b) => a.id - b.id);
     });
 });

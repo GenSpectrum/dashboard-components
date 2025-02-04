@@ -4,7 +4,7 @@ type ToStringable = {
     toString: () => string;
 };
 
-type DataValue = string | number | boolean | null | ToStringable;
+export type DataValue = string | number | boolean | null | undefined | ToStringable;
 
 export interface CsvDownloadButtonProps {
     label?: string;

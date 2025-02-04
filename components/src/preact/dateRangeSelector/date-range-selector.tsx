@@ -148,7 +148,7 @@ export const DateRangeSelectorInner = ({
         fireFilterChangedEvent();
         fireOptionChangedEvent({
             dateFrom: dateFrom !== undefined ? toYYYYMMDD(dateFrom) : earliestDate,
-            dateTo: toYYYYMMDD(dateTo || new Date())!,
+            dateTo: toYYYYMMDD(dateTo || new Date()),
         });
     };
 
@@ -167,7 +167,7 @@ export const DateRangeSelectorInner = ({
         fireFilterChangedEvent();
         fireOptionChangedEvent({
             dateFrom: dateFrom !== undefined ? toYYYYMMDD(dateFrom) : earliestDate,
-            dateTo: toYYYYMMDD(dateTo || new Date())!,
+            dateTo: toYYYYMMDD(dateTo || new Date()),
         });
     };
 

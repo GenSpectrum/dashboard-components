@@ -25,7 +25,7 @@ const accumulateByPosition = (data: SubstitutionOrDeletionEntry[], sequenceType:
 
         const initiallyFillPositionsToProportionAtBase = () => {
             if (!positionsToProportionAtBase.has(position)) {
-                const empty = new Map();
+                const empty = new Map<string | undefined, number>();
                 basesOfView.forEach((base) => empty.set(base, 0));
                 empty.set(mutationEntry.mutation.valueAtReference, 1);
                 positionsToProportionAtBase.set(position, empty);
