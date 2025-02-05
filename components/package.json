@@ -9,7 +9,7 @@
     "types": "dist/genspectrum-components.d.ts",
     "repository": {
         "type": "git",
-        "url": "https://github.com/GenSpectrum/dashboard-components.git",
+        "url": "git+https://github.com/GenSpectrum/dashboard-components.git",
         "directory": "components"
     },
     "publishConfig": {
