@@ -240,9 +240,8 @@ export const ChangingDateOption: StoryObj<DateRangeSelectorProps> = {
         });
 
         await step('Change date to custom', async () => {
-            await userEvent.selectOptions(selectField(canvas), 'CustomDateRange');
-
             await waitFor(async () => {
+                await userEvent.selectOptions(selectField(canvas), 'CustomDateRange');
                 await expect(selectField(canvas)).toHaveValue('CustomDateRange');
             });
 
