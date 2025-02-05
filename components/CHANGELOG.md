@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.14.0...dashboard-components-v0.14.1) (2025-02-05)
+
+
+### Bug Fixes
+
+* **components:** gs-mutation-filter: fix info wrongly showing "no nucleotide sequences" when there is only one ([#720](https://github.com/GenSpectrum/dashboard-components/issues/720)) ([10c79cb](https://github.com/GenSpectrum/dashboard-components/commit/10c79cb9d4907a3b585364f7739e922d4828e613))
+
 ## [0.14.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.13.7...dashboard-components-v0.14.0) (2025-02-04)
 
 
