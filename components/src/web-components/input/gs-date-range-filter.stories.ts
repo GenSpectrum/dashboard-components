@@ -157,23 +157,27 @@ export const FiresEvents: StoryObj<Required<DateRangeFilterProps>> = {
         });
 
         await step('Expect event to be fired when selecting a different value', async () => {
-            await userEvent.selectOptions(selectField(canvas), 'CustomDateRange');
-            await expect(dateToPicker(canvas)).toHaveValue(customDateRange.dateTo);
+            await userEvent.type(selectField(canvas), '{backspace>12}');
+            await userEvent.click(canvas.getByText('CustomDateRange'));
 
-            await expect(filterChangedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        aDateColumnFrom: customDateRange.dateFrom,
-                        aDateColumnTo: customDateRange.dateTo,
-                    },
-                }),
-            );
+            await waitFor(async () => {
+                await expect(dateToPicker(canvas)).toHaveValue(customDateRange.dateTo);
 
-            await expect(optionChangedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: customDateRange.label,
-                }),
-            );
+                await expect(filterChangedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            aDateColumnFrom: customDateRange.dateFrom,
+                            aDateColumnTo: customDateRange.dateTo,
+                        },
+                    }),
+                );
+
+                await expect(optionChangedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: customDateRange.label,
+                    }),
+                );
+            });
         });
     },
 };

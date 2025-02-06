@@ -1,27 +1,26 @@
-import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
+import { DatePicker } from './DatePicker';
 import { computeInitialValues } from './computeInitialValues';
 import { toYYYYMMDD } from './dateConversion';
 import {
+    type DateRangeOption,
     DateRangeOptionChangedEvent,
     dateRangeOptionSchema,
-    type DateRangeSelectOption,
+    type DateRangeValue,
     dateRangeValueSchema,
 } from './dateRangeOption';
-import { getDatesForSelectorValue, getSelectableOptions } from './selectableOptions';
+import { DownshiftCombobox } from '../components/downshift-combobox';
 import { ErrorBoundary } from '../components/error-boundary';
-import { Select } from '../components/select';
-import type { ScaleType } from '../shared/charts/getYAxisScale';
 
 const customOption = 'Custom';
 
 const dateRangeFilterInnerPropsSchema = z.object({
     dateRangeOptions: z.array(dateRangeOptionSchema),
     earliestDate: z.string().date(),
-    value: dateRangeValueSchema.optional(),
+    value: dateRangeValueSchema,
     lapisDateField: z.string().min(1),
 });
 
@@ -56,129 +55,40 @@ export const DateRangeFilterInner = ({
         [value, earliestDate, dateRangeOptions],
     );
 
-    const fromDatePickerRef = useRef<HTMLInputElement>(null);
-    const toDatePickerRef = useRef<HTMLInputElement>(null);
     const divRef = useRef<HTMLDivElement>(null);
-    const [dateFromPicker, setDateFromPicker] = useState<flatpickr.Instance | null>(null);
-    const [dateToPicker, setDateToPicker] = useState<flatpickr.Instance | null>(null);
 
-    const [selectedDateRange, setSelectedDateRange] = useState<string | undefined>(
-        initialValues.initialSelectedDateRange,
-    );
+    const getInitialComboboxValue = useCallback(() => {
+        if (!initialValues) {
+            return null;
+        }
+        return initialValues.initialSelectedDateRange
+            ? {
+                  label: initialValues.initialSelectedDateRange,
+                  dateFrom: toYYYYMMDD(initialValues.initialSelectedDateFrom),
+                  dateTo: toYYYYMMDD(initialValues.initialSelectedDateTo),
+              }
+            : { label: customOption };
+    }, [initialValues]);
 
-    const [selectedDates, setSelectedDates] = useState<{ dateFrom: Date; dateTo: Date }>({
-        dateFrom: initialValues.initialSelectedDateFrom,
-        dateTo: initialValues.initialSelectedDateTo,
-    });
+    const [comboboxValue, setComboboxValue] = useState<DateRangeOption | null>(getInitialComboboxValue());
+    const [dateFromValue, setDateFromValue] = useState(initialValues?.initialSelectedDateFrom);
+    const [dateToValue, setDateToValue] = useState(initialValues?.initialSelectedDateTo);
 
     useEffect(() => {
-        setSelectedDateRange(initialValues.initialSelectedDateRange);
-        setSelectedDates({
-            dateFrom: initialValues.initialSelectedDateFrom,
-            dateTo: initialValues.initialSelectedDateTo,
-        });
+        setDateFromValue(initialValues?.initialSelectedDateFrom);
+        setDateToValue(initialValues?.initialSelectedDateTo);
+        setComboboxValue(getInitialComboboxValue());
+    }, [getInitialComboboxValue, initialValues]);
 
-        const commonConfig = {
-            allowInput: true,
-            dateFormat: 'Y-m-d',
-        };
-
-        if (fromDatePickerRef.current) {
-            setDateFromPicker(
-                flatpickr(fromDatePickerRef.current, {
-                    ...commonConfig,
-                    defaultDate: initialValues.initialSelectedDateFrom,
-                }),
-            );
-        }
-
-        if (toDatePickerRef.current) {
-            setDateToPicker(
-                flatpickr(toDatePickerRef.current, {
-                    ...commonConfig,
-                    defaultDate: initialValues.initialSelectedDateTo,
-                }),
-            );
-        }
-
-        return () => {
-            setDateFromPicker((prev) => {
-                prev?.destroy();
-                return null;
-            });
-            setDateToPicker((prev) => {
-                prev?.destroy();
-                return null;
-            });
-        };
-    }, [fromDatePickerRef, toDatePickerRef, initialValues]);
-
-    const onSelectChange = (value: string) => {
-        setSelectedDateRange(value);
-
-        const dateRange = getDatesForSelectorValue(value, dateRangeOptions, earliestDate);
-
-        dateToPicker?.set('minDate', dateRange.dateFrom);
-        dateFromPicker?.set('maxDate', dateRange.dateTo);
-
-        dateFromPicker?.setDate(dateRange.dateFrom);
-        dateToPicker?.setDate(dateRange.dateTo);
-
-        setSelectedDates({
-            dateFrom: dateRange.dateFrom,
-            dateTo: dateRange.dateTo,
-        });
-
-        fireFilterChangedEvent();
-        fireOptionChangedEvent(value);
-    };
-
-    const onChangeDateFrom = () => {
-        if (selectedDates.dateFrom.toDateString() === dateFromPicker?.selectedDates[0].toDateString()) {
-            return;
-        }
-
-        const dateTo = dateToPicker?.selectedDates[0];
-        const dateFrom = dateFromPicker?.selectedDates[0];
-
-        selectedDates.dateFrom = dateFrom || new Date();
-        dateToPicker?.set('minDate', dateFrom);
-        setSelectedDateRange(customOption);
-
-        fireFilterChangedEvent();
-        fireOptionChangedEvent({
-            dateFrom: dateFrom !== undefined ? toYYYYMMDD(dateFrom) : earliestDate,
-            dateTo: toYYYYMMDD(dateTo || new Date()),
-        });
-    };
-
-    const onChangeDateTo = () => {
-        if (selectedDates.dateTo.toDateString() === dateToPicker?.selectedDates[0].toDateString()) {
-            return;
-        }
-
-        const dateTo = dateToPicker?.selectedDates[0];
-        const dateFrom = dateFromPicker?.selectedDates[0];
-
-        selectedDates.dateTo = dateTo || new Date();
-        dateFromPicker?.set('maxDate', dateTo);
-        setSelectedDateRange(customOption);
-
-        fireFilterChangedEvent();
-        fireOptionChangedEvent({
-            dateFrom: dateFrom !== undefined ? toYYYYMMDD(dateFrom) : earliestDate,
-            dateTo: toYYYYMMDD(dateTo || new Date()),
-        });
-    };
-
-    const fireOptionChangedEvent = (option: DateRangeSelectOption) => {
-        divRef.current?.dispatchEvent(new DateRangeOptionChangedEvent(option));
-    };
-
-    const fireFilterChangedEvent = () => {
-        const dateFrom = dateFromPicker?.selectedDates[0];
-        const dateTo = dateToPicker?.selectedDates[0];
-
+    const fireFilterChangedEvent = ({
+        dateFrom,
+        dateTo,
+        lapisDateField,
+    }: {
+        dateFrom: Date | undefined;
+        dateTo: Date | undefined;
+        lapisDateField: string;
+    }) => {
         const detail = {
             ...(dateFrom !== undefined && { [`${lapisDateField}From`]: toYYYYMMDD(dateFrom) }),
             ...(dateTo !== undefined && { [`${lapisDateField}To`]: toYYYYMMDD(dateTo) }),
@@ -193,40 +103,129 @@ export const DateRangeFilterInner = ({
         );
     };
 
+    const customComboboxValue = { label: customOption };
+
+    const onSelectChange = (option: DateRangeOption | null) => {
+        setComboboxValue(option);
+
+        const dateFrom = getFromDate(option, earliestDate);
+        const dateTo = getToDate(option);
+
+        setDateFromValue(dateFrom);
+        setDateToValue(dateTo);
+
+        fireFilterChangedEvent({ dateFrom, dateTo, lapisDateField });
+    };
+
+    function getFromDate(option: DateRangeOption | null, earliestDate: string) {
+        if (!option || option.label === customOption) {
+            return undefined;
+        }
+        return new Date(option?.dateFrom ?? earliestDate);
+    }
+
+    function getToDate(option: DateRangeOption | null) {
+        if (!option || option.label === customOption) {
+            return undefined;
+        }
+        if (!option.dateTo) {
+            return new Date();
+        }
+
+        return new Date(option.dateTo);
+    }
+
+    const onChangeDateFrom = (date: Date | undefined) => {
+        if (date?.toDateString() === dateFromValue?.toDateString()) {
+            return;
+        }
+
+        setDateFromValue(date);
+        setComboboxValue(customComboboxValue);
+
+        fireFilterChangedEvent({ dateFrom: date, dateTo: dateToValue, lapisDateField });
+
+        fireOptionChangedEvent({
+            dateFrom: date !== undefined ? toYYYYMMDD(date) : undefined,
+            dateTo: dateToValue !== undefined ? toYYYYMMDD(dateToValue) : undefined,
+        });
+    };
+
+    const onChangeDateTo = (date: Date | undefined) => {
+        if (date?.toDateString() === dateToValue?.toDateString()) {
+            return;
+        }
+
+        setDateToValue(date);
+        setComboboxValue(customComboboxValue);
+
+        fireFilterChangedEvent({ dateFrom: dateFromValue, dateTo: date, lapisDateField });
+
+        fireOptionChangedEvent({
+            dateFrom: dateFromValue !== undefined ? toYYYYMMDD(dateFromValue) : undefined,
+            dateTo: date !== undefined ? toYYYYMMDD(date) : undefined,
+        });
+    };
+
+    const fireOptionChangedEvent = (option: DateRangeValue) => {
+        divRef.current?.dispatchEvent(new DateRangeOptionChangedEvent(option));
+    };
+
     return (
-        <div class='flex flex-wrap' ref={divRef}>
-            <Select
-                items={[
-                    ...getSelectableOptions(dateRangeOptions),
-                    { label: customOption, value: customOption, disabled: true },
-                ]}
-                selected={selectedDateRange ?? customOption}
-                selectStyle='select-bordered rounded-none flex-grow min-w-[7.5rem]'
-                onChange={(event: Event) => {
-                    event.preventDefault();
-                    const select = event.target as HTMLSelectElement;
-                    const value = select.value as ScaleType;
-                    onSelectChange(value);
-                }}
-            />
+        <div className='flex flex-wrap' ref={divRef}>
+            <div className='flex-grow min-w-[7.5rem]'>
+                <DownshiftCombobox
+                    allItems={[...dateRangeOptions, customComboboxValue]}
+                    filterItemsByInputValue={filterByInputValue}
+                    createEvent={(item: DateRangeOption | null) => {
+                        onSelectChange(item);
+                        const eventDetail =
+                            item?.label === customOption
+                                ? {
+                                      dateFrom: item?.dateFrom,
+                                      dateTo: item?.dateTo,
+                                  }
+                                : item?.label;
+
+                        return new DateRangeOptionChangedEvent(eventDetail);
+                    }}
+                    itemToString={(item: DateRangeOption | undefined | null) => {
+                        return item?.label ?? '';
+                    }}
+                    formatItemInList={(item: DateRangeOption) => item.label}
+                    placeholderText={'Select a date range'}
+                    value={comboboxValue}
+                />
+            </div>
             <div className={'flex flex-wrap flex-grow'}>
-                <input
-                    class='input input-bordered rounded-none flex-grow w-[7.5rem]'
-                    type='text'
-                    placeholder='Date from'
-                    ref={fromDatePickerRef}
-                    onChange={onChangeDateFrom}
-                    onBlur={onChangeDateFrom}
-                />
-                <input
-                    class='input input-bordered rounded-none flex-grow w-[7.5rem]'
-                    type='text'
-                    placeholder='Date to'
-                    ref={toDatePickerRef}
-                    onChange={onChangeDateTo}
-                    onBlur={onChangeDateTo}
-                />
+                <div className={'flex-grow min-w-[7.5rem]'}>
+                    <DatePicker
+                        value={dateFromValue}
+                        onChange={(date) => {
+                            onChangeDateFrom(date);
+                        }}
+                        maxDate={dateToValue}
+                        placeholderText={'Date from'}
+                    />
+                </div>
+                <div className={'flex-grow min-w-[7.5rem]'}>
+                    <DatePicker
+                        value={dateToValue}
+                        onChange={(date) => {
+                            onChangeDateTo(date);
+                        }}
+                        minDate={dateFromValue}
+                        placeholderText={'Date to'}
+                    />
+                </div>
             </div>
         </div>
     );
 };
+
+function filterByInputValue(item: DateRangeOption, inputValue: string) {
+    if (inputValue === undefined || inputValue === null || inputValue === '') {
+        return true;
+    }
+    return item?.label.toLowerCase().includes(inputValue?.toLowerCase() || '');
+}

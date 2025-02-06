@@ -22,20 +22,20 @@ export const dateRangeOptionSchema = z.object({
 
 export type DateRangeOption = z.infer<typeof dateRangeOptionSchema>;
 
-export const dateRangeValueSchema = z.union([
-    z.string(),
-    z.object({
-        dateFrom: z.string().date().optional(),
-        dateTo: z.string().date().optional(),
-    }),
-]);
+export const dateRangeValueSchema = z
+    .union([
+        z.string(),
+        z.object({
+            dateFrom: z.string().date().optional(),
+            dateTo: z.string().date().optional(),
+        }),
+    ])
+    .optional();
 
 export type DateRangeValue = z.infer<typeof dateRangeValueSchema>;
 
-export type DateRangeSelectOption = Required<DateRangeValue>;
-
-export class DateRangeOptionChangedEvent extends CustomEvent<DateRangeSelectOption> {
-    constructor(detail: DateRangeSelectOption) {
+export class DateRangeOptionChangedEvent extends CustomEvent<DateRangeValue> {
+    constructor(detail: DateRangeValue) {
         super('gs-date-range-option-changed', {
             detail,
             bubbles: true,
