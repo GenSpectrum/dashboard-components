@@ -18,36 +18,34 @@ const dateRangeOptions = [
 ];
 
 describe('computeInitialValues', () => {
+    it('should return undefined for unedfined value', () => {
+        const result = computeInitialValues(undefined, earliestDate, dateRangeOptions);
+
+        expect(result).toBeUndefined();
+    });
+
     it('should compute initial value if value is dateRangeOption label', () => {
         const result = computeInitialValues(fromToOption, earliestDate, dateRangeOptions);
 
-        expect(result.initialSelectedDateRange).toEqual(fromToOption);
-        expectDateMatches(result.initialSelectedDateFrom, new Date(dateFromOptionValue));
-        expectDateMatches(result.initialSelectedDateTo, new Date(dateToOptionValue));
+        expect(result?.initialSelectedDateRange).toEqual(fromToOption);
+        expectDateMatches(result?.initialSelectedDateFrom, new Date(dateFromOptionValue));
+        expectDateMatches(result?.initialSelectedDateTo, new Date(dateToOptionValue));
     });
 
     it('should use today as "dateTo" if it is unset in selected option', () => {
         const result = computeInitialValues(fromOption, earliestDate, dateRangeOptions);
 
-        expect(result.initialSelectedDateRange).toEqual(fromOption);
-        expectDateMatches(result.initialSelectedDateFrom, new Date(dateFromOptionValue));
-        expectDateMatches(result.initialSelectedDateTo, today);
+        expect(result?.initialSelectedDateRange).toEqual(fromOption);
+        expectDateMatches(result?.initialSelectedDateFrom, new Date(dateFromOptionValue));
+        expectDateMatches(result?.initialSelectedDateTo, today);
     });
 
     it('should use earliest date as "dateFrom" if it is unset in selected option', () => {
         const result = computeInitialValues(toOption, earliestDate, dateRangeOptions);
 
-        expect(result.initialSelectedDateRange).toEqual(toOption);
-        expectDateMatches(result.initialSelectedDateFrom, new Date(earliestDate));
-        expectDateMatches(result.initialSelectedDateTo, new Date(dateToOptionValue));
-    });
-
-    it('should fall back to full range if initial value is not set', () => {
-        const result = computeInitialValues(undefined, earliestDate, dateRangeOptions);
-
-        expect(result.initialSelectedDateRange).toBeUndefined();
-        expectDateMatches(result.initialSelectedDateFrom, new Date(earliestDate));
-        expectDateMatches(result.initialSelectedDateTo, today);
+        expect(result?.initialSelectedDateRange).toEqual(toOption);
+        expectDateMatches(result?.initialSelectedDateFrom, new Date(earliestDate));
+        expectDateMatches(result?.initialSelectedDateTo, new Date(dateToOptionValue));
     });
 
     it('should throw when initial value is unknown', () => {
@@ -66,18 +64,18 @@ describe('computeInitialValues', () => {
         const initialDateFrom = '2020-01-01';
         const result = computeInitialValues({ dateFrom: initialDateFrom }, earliestDate, dateRangeOptions);
 
-        expect(result.initialSelectedDateRange).toBeUndefined();
-        expectDateMatches(result.initialSelectedDateFrom, new Date(initialDateFrom));
-        expectDateMatches(result.initialSelectedDateTo, today);
+        expect(result?.initialSelectedDateRange).toBeUndefined();
+        expectDateMatches(result?.initialSelectedDateFrom, new Date(initialDateFrom));
+        expectDateMatches(result?.initialSelectedDateTo, today);
     });
 
     it('should select from earliest date until date if only dateTo is given', () => {
         const initialDateTo = '2020-01-01';
         const result = computeInitialValues({ dateTo: initialDateTo }, earliestDate, dateRangeOptions);
 
-        expect(result.initialSelectedDateRange).toBeUndefined();
-        expectDateMatches(result.initialSelectedDateFrom, new Date(earliestDate));
-        expectDateMatches(result.initialSelectedDateTo, new Date(initialDateTo));
+        expect(result?.initialSelectedDateRange).toBeUndefined();
+        expectDateMatches(result?.initialSelectedDateFrom, new Date(earliestDate));
+        expectDateMatches(result?.initialSelectedDateTo, new Date(initialDateTo));
     });
 
     it('should select date range is dateFrom and dateTo are given', () => {
@@ -92,9 +90,9 @@ describe('computeInitialValues', () => {
             dateRangeOptions,
         );
 
-        expect(result.initialSelectedDateRange).toBeUndefined();
-        expectDateMatches(result.initialSelectedDateFrom, new Date(initialDateFrom));
-        expectDateMatches(result.initialSelectedDateTo, new Date(initialDateTo));
+        expect(result?.initialSelectedDateRange).toBeUndefined();
+        expectDateMatches(result?.initialSelectedDateFrom, new Date(initialDateFrom));
+        expectDateMatches(result?.initialSelectedDateTo, new Date(initialDateTo));
     });
 
     it('should set initial "to" to "from" if "from" is after "to"', () => {
@@ -109,9 +107,9 @@ describe('computeInitialValues', () => {
             dateRangeOptions,
         );
 
-        expect(result.initialSelectedDateRange).toBeUndefined();
-        expectDateMatches(result.initialSelectedDateFrom, new Date(initialDateFrom));
-        expectDateMatches(result.initialSelectedDateTo, new Date(initialDateFrom));
+        expect(result?.initialSelectedDateRange).toBeUndefined();
+        expectDateMatches(result?.initialSelectedDateFrom, new Date(initialDateFrom));
+        expectDateMatches(result?.initialSelectedDateTo, new Date(initialDateFrom));
     });
 
     it('should throw if initial "from" is not a valid date', () => {
@@ -126,9 +124,9 @@ describe('computeInitialValues', () => {
         );
     });
 
-    function expectDateMatches(actual: Date, expected: Date) {
-        expect(actual.getFullYear()).toEqual(expected.getFullYear());
-        expect(actual.getMonth()).toEqual(expected.getMonth());
-        expect(actual.getDate()).toEqual(expected.getDate());
+    function expectDateMatches(actual: Date | undefined, expected: Date | undefined) {
+        expect(actual?.getFullYear()).toEqual(expected?.getFullYear());
+        expect(actual?.getMonth()).toEqual(expected?.getMonth());
+        expect(actual?.getDate()).toEqual(expected?.getDate());
     }
 });

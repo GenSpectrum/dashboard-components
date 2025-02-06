@@ -6,7 +6,13 @@ import daisyui from 'daisyui';
 const tailwindConfig = {
     content: ['src/**/*.{ts,tsx,html}', 'index.html'],
     theme: {
-        extend: {},
+        extend: {
+            containers: {
+                '2xs': '18rem',
+                '3xs': '16rem',
+                '4xs': '14rem',
+            },
+        },
     },
     plugins: [daisyui, containerQueries, addIconSelectors(['mdi', 'mdi-light'])],
     daisyui: {
