@@ -12,16 +12,14 @@ export function DownshiftCombobox<Item>({
     formatItemInList,
 }: {
     allItems: Item[];
-    value?: Item;
+    value?: Item | null;
     filterItemsByInputValue: (item: Item, value: string) => boolean;
     createEvent: (item: Item | null) => CustomEvent;
     itemToString: (item: Item | undefined | null) => string;
     placeholderText?: string;
     formatItemInList: (item: Item) => ComponentChild;
 }) {
-    const initialSelectedItem = value ?? null;
-
-    const [itemsFilter, setItemsFilter] = useState(itemToString(initialSelectedItem));
+    const [itemsFilter, setItemsFilter] = useState(itemToString(value));
     const items = useMemo(
         () => allItems.filter((item) => filterItemsByInputValue(item, itemsFilter)),
         [allItems, filterItemsByInputValue, itemsFilter],
@@ -65,7 +63,7 @@ export function DownshiftCombobox<Item>({
         itemToString(item) {
             return itemToString(item);
         },
-        initialSelectedItem,
+        selectedItem: value,
         environment,
     });
 
