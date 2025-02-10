@@ -35,4 +35,4 @@ export type { AxisMax, YAxisMaxConfig } from './preact/shared/charts/getYAxisMax
 
 export { LocationChangedEvent } from './preact/locationFilter/LocationChangedEvent';
 export { LineageFilterChangedEvent } from './preact/lineageFilter/LineageFilterChangedEvent';
-export { TextInputChangedEvent } from './preact/textInput/TextInputChangedEvent';
+export { TextFilterChangedEvent } from './preact/textFilter/TextFilterChangedEvent';

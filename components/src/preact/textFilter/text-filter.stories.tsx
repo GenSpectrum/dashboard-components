@@ -2,18 +2,18 @@ import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, fireEvent, fn, waitFor, within } from '@storybook/test';
 
 import data from './__mockData__/aggregated_hosts.json';
-import { TextInput, type TextInputProps } from './text-input';
+import { TextFilter, type TextFilterProps } from './text-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
-const meta: Meta<TextInputProps> = {
-    title: 'Input/TextInput',
-    component: TextInput,
+const meta: Meta<TextFilterProps> = {
+    title: 'Input/TextFilter',
+    component: TextFilter,
     parameters: {
         actions: {
-            handles: ['gs-text-input-changed', ...previewHandles],
+            handles: ['gs-text-filter-changed', ...previewHandles],
         },
         fetchMock: {
             mocks: [
@@ -65,10 +65,10 @@ const meta: Meta<TextInputProps> = {
 
 export default meta;
 
-export const Default: StoryObj<TextInputProps> = {
+export const Default: StoryObj<TextFilterProps> = {
     render: (args) => (
         <LapisUrlContextProvider value={LAPIS_URL}>
-            <TextInput {...args} />
+            <TextFilter {...args} />
         </LapisUrlContextProvider>
     ),
     args: {
@@ -82,7 +82,7 @@ export const Default: StoryObj<TextInputProps> = {
     },
 };
 
-export const RemoveInitialValue: StoryObj<TextInputProps> = {
+export const RemoveInitialValue: StoryObj<TextFilterProps> = {
     ...Default,
     args: {
         ...Default.args,
@@ -93,7 +93,7 @@ export const RemoveInitialValue: StoryObj<TextInputProps> = {
 
         const changedListenerMock = fn();
         await step('Setup event listener mock', () => {
-            canvasElement.addEventListener('gs-text-input-changed', changedListenerMock);
+            canvasElement.addEventListener('gs-text-filter-changed', changedListenerMock);
         });
 
         await waitFor(async () => {
@@ -115,7 +115,7 @@ export const RemoveInitialValue: StoryObj<TextInputProps> = {
     },
 };
 
-export const WithNoLapisField: StoryObj<TextInputProps> = {
+export const WithNoLapisField: StoryObj<TextFilterProps> = {
     ...Default,
     args: {
         ...Default.args,
