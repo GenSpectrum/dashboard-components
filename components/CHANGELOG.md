@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.14.1...dashboard-components-v0.14.2) (2025-02-10)
+
+
+### Bug Fixes
+
+* **components:** reset error when the component props have changed ([#726](https://github.com/GenSpectrum/dashboard-components/issues/726)) ([b0b3429](https://github.com/GenSpectrum/dashboard-components/commit/b0b34291e844ec10a07a8d962a25c16accc68ac8))
+
 ## [0.14.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.14.0...dashboard-components-v0.14.1) (2025-02-05)
 
 
