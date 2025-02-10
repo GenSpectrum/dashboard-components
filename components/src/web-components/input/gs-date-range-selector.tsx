@@ -78,7 +78,22 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
      * The `detail` of the `gs-date-range-option-changed` event can be used for this attribute,
      * if you want to control this component in your JS application.
      */
-    @property({ type: Object })
+    @property({
+        converter: (value) => {
+            if (value === null) {
+                return undefined;
+            }
+            try {
+                const result = JSON.parse(value) as unknown;
+                if (typeof result !== 'object' && typeof result !== 'string') {
+                    return value;
+                }
+                return result;
+            } catch (_) {
+                return value;
+            }
+        },
+    })
     value: string | { dateFrom?: string; dateTo?: string } | undefined = undefined;
 
     /**

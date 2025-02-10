@@ -65,6 +65,7 @@ const meta: Meta<Required<DateRangeSelectorProps>> = {
             dateRangeOptionPresets.lastMonth,
             dateRangeOptionPresets.last3Months,
             dateRangeOptionPresets.allTimes,
+            { label: '2021', dateFrom: '2021-01-01', dateTo: '2021-12-31' },
             customDateRange,
         ],
         earliestDate: '1970-01-01',
@@ -90,6 +91,50 @@ export const Default: StoryObj<Required<DateRangeSelectorProps>> = {
                 ></gs-date-range-selector>
             </div>
         </gs-app>`,
+};
+
+export const TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression: StoryObj<Required<DateRangeSelectorProps>> = {
+    render: (args) =>
+        html` <gs-app lapis="${LAPIS_URL}">
+            <div class="max-w-screen-lg">
+                <gs-date-range-selector
+                    .dateRangeOptions=${args.dateRangeOptions}
+                    earliestDate="${args.earliestDate}"
+                    value="${args.value}"
+                    width="${args.width}"
+                    lapisDateField="${args.lapisDateField}"
+                ></gs-date-range-selector>
+            </div>
+        </gs-app>`,
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-selector');
+
+        await waitFor(async () => {
+            await expect(selectField(canvas)).toHaveValue('Last month');
+        });
+    },
+    argTypes: {
+        value: {
+            control: {
+                type: 'text',
+            },
+        },
+    },
+};
+
+export const TestSettingANumericValueIsTreatedAsString: StoryObj<Required<DateRangeSelectorProps>> = {
+    ...TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression,
+    args: {
+        ...TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression.args,
+        value: '2021',
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-selector');
+
+        await waitFor(async () => {
+            await expect(selectField(canvas)).toHaveValue('2021');
+        });
+    },
 };
 
 export const FiresEvents: StoryObj<Required<DateRangeSelectorProps>> = {
