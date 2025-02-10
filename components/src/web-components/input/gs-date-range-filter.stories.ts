@@ -5,27 +5,27 @@ import { html } from 'lit';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
-import { type DateRangeSelectorProps } from '../../preact/dateRangeSelector/date-range-selector';
-import './gs-date-range-selector';
+import { type DateRangeFilterProps } from '../../preact/dateRangeFilter/date-range-filter';
+import './gs-date-range-filter';
 import '../gs-app';
-import { toYYYYMMDD } from '../../preact/dateRangeSelector/dateConversion';
-import { dateRangeOptionPresets } from '../../preact/dateRangeSelector/dateRangeOption';
+import { toYYYYMMDD } from '../../preact/dateRangeFilter/dateConversion';
+import { dateRangeOptionPresets } from '../../preact/dateRangeFilter/dateRangeOption';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
-<gs-date-range-selector
+<gs-date-range-filter
     dateRangeOptions='[{ "label": "Year 2021", "dateFrom": "2021-01-01", "dateTo": "2021-12-31" }]'
     earliestDate="1970-01-01"
     value="Year 2021"
     width="100%"
     lapisDateField="myDateColumn"
-></gs-date-range-selector>`;
+></gs-date-range-filter>`;
 
 const customDateRange = { label: 'CustomDateRange', dateFrom: '2021-01-01', dateTo: '2021-12-31' };
 
-const meta: Meta<Required<DateRangeSelectorProps>> = {
-    title: 'Input/DateRangeSelector',
-    component: 'gs-date-range-selector',
+const meta: Meta<Required<DateRangeFilterProps>> = {
+    title: 'Input/DateRangeFilter',
+    component: 'gs-date-range-filter',
     parameters: withComponentDocs({
         actions: {
             handles: ['gs-date-range-filter-changed', 'gs-date-range-option-changed', ...previewHandles],
@@ -78,36 +78,36 @@ const meta: Meta<Required<DateRangeSelectorProps>> = {
 
 export default meta;
 
-export const Default: StoryObj<Required<DateRangeSelectorProps>> = {
+export const Default: StoryObj<Required<DateRangeFilterProps>> = {
     render: (args) =>
         html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
-                <gs-date-range-selector
+                <gs-date-range-filter
                     .dateRangeOptions=${args.dateRangeOptions}
                     .earliestDate=${args.earliestDate}
                     .value=${args.value}
                     .width=${args.width}
                     .lapisDateField=${args.lapisDateField}
-                ></gs-date-range-selector>
+                ></gs-date-range-filter>
             </div>
         </gs-app>`,
 };
 
-export const TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression: StoryObj<Required<DateRangeSelectorProps>> = {
+export const TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression: StoryObj<Required<DateRangeFilterProps>> = {
     render: (args) =>
         html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
-                <gs-date-range-selector
+                <gs-date-range-filter
                     .dateRangeOptions=${args.dateRangeOptions}
                     earliestDate="${args.earliestDate}"
                     value="${args.value}"
                     width="${args.width}"
                     lapisDateField="${args.lapisDateField}"
-                ></gs-date-range-selector>
+                ></gs-date-range-filter>
             </div>
         </gs-app>`,
     play: async ({ canvasElement }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-selector');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-filter');
 
         await waitFor(async () => {
             await expect(selectField(canvas)).toHaveValue('Last month');
@@ -122,14 +122,14 @@ export const TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression: StoryOb
     },
 };
 
-export const TestSettingANumericValueIsTreatedAsString: StoryObj<Required<DateRangeSelectorProps>> = {
+export const TestSettingANumericValueIsTreatedAsString: StoryObj<Required<DateRangeFilterProps>> = {
     ...TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression,
     args: {
         ...TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression.args,
         value: '2021',
     },
     play: async ({ canvasElement }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-selector');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-filter');
 
         await waitFor(async () => {
             await expect(selectField(canvas)).toHaveValue('2021');
@@ -137,10 +137,10 @@ export const TestSettingANumericValueIsTreatedAsString: StoryObj<Required<DateRa
     },
 };
 
-export const FiresEvents: StoryObj<Required<DateRangeSelectorProps>> = {
+export const FiresEvents: StoryObj<Required<DateRangeFilterProps>> = {
     ...Default,
     play: async ({ canvasElement, step }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-selector');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-filter');
 
         const filterChangedListenerMock = fn();
         const optionChangedListenerMock = fn();

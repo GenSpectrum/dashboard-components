@@ -4,7 +4,7 @@ import type { StepFunction } from '@storybook/types';
 import dayjs from 'dayjs/esm';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
-import { DateRangeSelector, type DateRangeSelectorProps } from './date-range-selector';
+import { DateRangeFilter, type DateRangeFilterProps } from './date-range-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
@@ -19,9 +19,9 @@ const customDateRange = {
     dateTo: '2021-12-31',
 };
 
-const meta: Meta<DateRangeSelectorProps> = {
-    title: 'Input/DateRangeSelector',
-    component: DateRangeSelector,
+const meta: Meta<DateRangeFilterProps> = {
+    title: 'Input/DateRangeFilter',
+    component: DateRangeFilter,
     parameters: {
         actions: {
             handles: ['gs-date-range-filter-changed', 'gs-date-range-option-changed', ...previewHandles],
@@ -61,15 +61,15 @@ const meta: Meta<DateRangeSelectorProps> = {
 
 export default meta;
 
-const Primary: StoryObj<DateRangeSelectorProps> = {
+const Primary: StoryObj<DateRangeFilterProps> = {
     render: (args) => (
         <LapisUrlContextProvider value={LAPIS_URL}>
-            <DateRangeSelector {...args} />
+            <DateRangeFilter {...args} />
         </LapisUrlContextProvider>
     ),
 };
 
-export const SetCorrectInitialValues: StoryObj<DateRangeSelectorProps> = {
+export const SetCorrectInitialValues: StoryObj<DateRangeFilterProps> = {
     ...Primary,
     args: {
         ...Primary.args,
@@ -88,7 +88,7 @@ export const SetCorrectInitialValues: StoryObj<DateRangeSelectorProps> = {
 
 const initialDateFrom = '2000-01-01';
 
-export const SetCorrectInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
+export const SetCorrectInitialDateFrom: StoryObj<DateRangeFilterProps> = {
     ...Primary,
     args: {
         ...Primary.args,
@@ -107,7 +107,7 @@ export const SetCorrectInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
 
 const initialDateTo = '2000-01-01';
 
-export const SetCorrectInitialDateTo: StoryObj<DateRangeSelectorProps> = {
+export const SetCorrectInitialDateTo: StoryObj<DateRangeFilterProps> = {
     ...Primary,
     args: {
         ...Primary.args,
@@ -124,7 +124,7 @@ export const SetCorrectInitialDateTo: StoryObj<DateRangeSelectorProps> = {
     },
 };
 
-export const ChangingDateSetsOptionToCustom: StoryObj<DateRangeSelectorProps> = {
+export const ChangingDateSetsOptionToCustom: StoryObj<DateRangeFilterProps> = {
     ...Primary,
     args: {
         ...Primary.args,
@@ -167,7 +167,7 @@ export const ChangingDateSetsOptionToCustom: StoryObj<DateRangeSelectorProps> = 
     },
 };
 
-export const ChangingTheValueProgrammatically: StoryObj<DateRangeSelectorProps> = {
+export const ChangingTheValueProgrammatically: StoryObj<DateRangeFilterProps> = {
     ...Primary,
     render: (args) => {
         const StatefulWrapper = () => {
@@ -183,7 +183,7 @@ export const ChangingTheValueProgrammatically: StoryObj<DateRangeSelectorProps> 
             return (
                 <div ref={ref}>
                     <LapisUrlContextProvider value={LAPIS_URL}>
-                        <DateRangeSelector {...args} value={value} />
+                        <DateRangeFilter {...args} value={value} />
                     </LapisUrlContextProvider>
                     <button className='btn' onClick={() => setValue(customDateRange.label)}>
                         Set to Custom
@@ -230,7 +230,7 @@ export const ChangingTheValueProgrammatically: StoryObj<DateRangeSelectorProps> 
     },
 };
 
-export const ChangingDateOption: StoryObj<DateRangeSelectorProps> = {
+export const ChangingDateOption: StoryObj<DateRangeFilterProps> = {
     ...Primary,
     play: async ({ canvasElement, step }) => {
         const { canvas, filterChangedListenerMock, optionChangedListenerMock } = await prepare(canvasElement, step);
@@ -263,7 +263,7 @@ export const ChangingDateOption: StoryObj<DateRangeSelectorProps> = {
     },
 };
 
-export const HandlesInvalidInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
+export const HandlesInvalidInitialDateFrom: StoryObj<DateRangeFilterProps> = {
     ...Primary,
     args: {
         ...Primary.args,
@@ -278,7 +278,7 @@ export const HandlesInvalidInitialDateFrom: StoryObj<DateRangeSelectorProps> = {
     },
 };
 
-export const WithNoDateColumn: StoryObj<DateRangeSelectorProps> = {
+export const WithNoDateColumn: StoryObj<DateRangeFilterProps> = {
     ...Primary,
     args: {
         ...Primary.args,

@@ -27,17 +27,17 @@ function App() {
             locationFilter.addEventListener('gs-location-changed', handleLocationChange);
         }
 
-        const dateRangeSelector = document.querySelector('gs-date-range-selector');
-        if (dateRangeSelector) {
-            dateRangeSelector.addEventListener('gs-date-range-filter-changed', handleDateRangeChange);
+        const dateRangeFilter = document.querySelector('gs-date-range-filter');
+        if (dateRangeFilter) {
+            dateRangeFilter.addEventListener('gs-date-range-filter-changed', handleDateRangeChange);
         }
 
         return () => {
             if (locationFilter) {
                 locationFilter.removeEventListener('gs-location-changed', handleLocationChange);
             }
-            if (dateRangeSelector) {
-                dateRangeSelector.removeEventListener('gs-date-range-filter-changed', handleDateRangeChange);
+            if (dateRangeFilter) {
+                dateRangeFilter.removeEventListener('gs-date-range-filter-changed', handleDateRangeChange);
             }
         };
     }, []);
@@ -74,11 +74,11 @@ function App() {
                 fields='["region", "country", "division", "location"]'
                 placeholderText='Enter a location'
             ></gs-location-filter>
-            <gs-date-range-selector
+            <gs-date-range-filter
                 dateRangeOptions={JSON.stringify(dataRangeOptions)}
                 value={JSON.stringify(dateRange)}
                 lapisDateField='date'
-            ></gs-date-range-selector>
+            ></gs-date-range-filter>
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <div>
                     <h1 className='text-xl bold'>Prevalence over time</h1>
