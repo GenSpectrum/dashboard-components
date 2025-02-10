@@ -18,39 +18,39 @@ import type { ScaleType } from '../shared/charts/getYAxisScale';
 
 const customOption = 'Custom';
 
-const dateRangeSelectorInnerPropsSchema = z.object({
+const dateRangeFilterInnerPropsSchema = z.object({
     dateRangeOptions: z.array(dateRangeOptionSchema),
     earliestDate: z.string().date(),
     value: dateRangeValueSchema.optional(),
     lapisDateField: z.string().min(1),
 });
 
-const dateRangeSelectorPropsSchema = dateRangeSelectorInnerPropsSchema.extend({
+const dateRangeFilterPropsSchema = dateRangeFilterInnerPropsSchema.extend({
     width: z.string(),
 });
 
-export type DateRangeSelectorProps = z.infer<typeof dateRangeSelectorPropsSchema>;
-export type DateRangeSelectorInnerProps = z.infer<typeof dateRangeSelectorInnerPropsSchema>;
+export type DateRangeFilterProps = z.infer<typeof dateRangeFilterPropsSchema>;
+export type DateRangeFilterInnerProps = z.infer<typeof dateRangeFilterInnerPropsSchema>;
 
-export const DateRangeSelector = (props: DateRangeSelectorProps) => {
+export const DateRangeFilter = (props: DateRangeFilterProps) => {
     const { width, ...innerProps } = props;
     const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={dateRangeSelectorPropsSchema}>
+        <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={dateRangeFilterPropsSchema}>
             <div style={{ width }}>
-                <DateRangeSelectorInner {...innerProps} />
+                <DateRangeFilterInner {...innerProps} />
             </div>
         </ErrorBoundary>
     );
 };
 
-export const DateRangeSelectorInner = ({
+export const DateRangeFilterInner = ({
     dateRangeOptions,
     earliestDate = '1900-01-01',
     value,
     lapisDateField,
-}: DateRangeSelectorInnerProps) => {
+}: DateRangeFilterInnerProps) => {
     const initialValues = useMemo(
         () => computeInitialValues(value, earliestDate, dateRangeOptions),
         [value, earliestDate, dateRangeOptions],

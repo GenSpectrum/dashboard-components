@@ -3,7 +3,7 @@ export {
     type DateRangeSelectOption,
     dateRangeOptionPresets,
     DateRangeOptionChangedEvent,
-} from './preact/dateRangeSelector/dateRangeOption';
+} from './preact/dateRangeFilter/dateRangeOption';
 
 export {
     type NamedLapisFilter,

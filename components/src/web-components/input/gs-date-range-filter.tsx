@@ -1,8 +1,8 @@
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-import { DateRangeSelector, type DateRangeSelectorProps } from '../../preact/dateRangeSelector/date-range-selector';
-import { type DateRangeOptionChangedEvent } from '../../preact/dateRangeSelector/dateRangeOption';
+import { DateRangeFilter, type DateRangeFilterProps } from '../../preact/dateRangeFilter/date-range-filter';
+import { type DateRangeOptionChangedEvent } from '../../preact/dateRangeFilter/dateRangeOption';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -48,8 +48,8 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * Use this event, when you want to control this component in your JS application.
  * You can supply the `detail` of this event to the `value` attribute of this component.
  */
-@customElement('gs-date-range-selector')
-export class DateRangeSelectorComponent extends PreactLitAdapter {
+@customElement('gs-date-range-filter')
+export class DateRangeFilterComponent extends PreactLitAdapter {
     /**
      * An array of date range options that the select field should provide.
      * The `label` will be shown to the user, and it will be available as `value`.
@@ -112,7 +112,7 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
 
     override render() {
         return (
-            <DateRangeSelector
+            <DateRangeFilter
                 dateRangeOptions={this.dateRangeOptions}
                 earliestDate={this.earliestDate}
                 value={this.value}
@@ -125,7 +125,7 @@ export class DateRangeSelectorComponent extends PreactLitAdapter {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-date-range-selector': DateRangeSelectorComponent;
+        'gs-date-range-filter': DateRangeFilterComponent;
     }
 
     interface HTMLElementEventMap {
@@ -138,21 +138,21 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-date-range-selector': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-date-range-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
         }
     }
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type CustomSelectOptionsMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.dateRangeOptions, DateRangeSelectorProps['dateRangeOptions']>
+    Equals<typeof DateRangeFilterComponent.prototype.dateRangeOptions, DateRangeFilterProps['dateRangeOptions']>
 >;
 type EarliestDateMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.earliestDate, DateRangeSelectorProps['earliestDate']>
+    Equals<typeof DateRangeFilterComponent.prototype.earliestDate, DateRangeFilterProps['earliestDate']>
 >;
-type ValueMatches = Expect<Equals<typeof DateRangeSelectorComponent.prototype.value, DateRangeSelectorProps['value']>>;
-type WidthMatches = Expect<Equals<typeof DateRangeSelectorComponent.prototype.width, DateRangeSelectorProps['width']>>;
+type ValueMatches = Expect<Equals<typeof DateRangeFilterComponent.prototype.value, DateRangeFilterProps['value']>>;
+type WidthMatches = Expect<Equals<typeof DateRangeFilterComponent.prototype.width, DateRangeFilterProps['width']>>;
 type DateColumnMatches = Expect<
-    Equals<typeof DateRangeSelectorComponent.prototype.lapisDateField, DateRangeSelectorProps['lapisDateField']>
+    Equals<typeof DateRangeFilterComponent.prototype.lapisDateField, DateRangeFilterProps['lapisDateField']>
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

@@ -3,7 +3,7 @@ import z from 'zod';
 import { toYYYYMMDD } from './dateConversion';
 
 /**
- * A date range option that can be used in the `gs-date-range-selector` component.
+ * A date range option that can be used in the `gs-date-range-filter` component.
  */
 export const dateRangeOptionSchema = z.object({
     /** The label of the date range option that will be shown to the user */
@@ -65,7 +65,7 @@ const lastYear = new Date(today);
 lastYear.setFullYear(today.getFullYear() - 1);
 
 /**
- * Presets for the `gs-date-range-selector` component that can be used as `dateRangeOptions`.
+ * Presets for the `gs-date-range-filter` component that can be used as `dateRangeOptions`.
  */
 export const dateRangeOptionPresets = {
     last2Weeks: {

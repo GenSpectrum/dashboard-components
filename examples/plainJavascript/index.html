@@ -20,11 +20,11 @@
                 fields='["region", "country", "division", "location"]'
                 placeholderText='Enter a location'
             ></gs-location-filter>
-            <gs-date-range-selector
+            <gs-date-range-filter
                 dateRangeOptions='[{"label":"2020","dateFrom":"2020-01-01","dateTo":"2020-12-31"},{"label":"2021","dateFrom":"2021-01-01","dateTo":"2021-12-31"},{"label":"2022","dateFrom":"2022-01-01","dateTo":"2022-12-31"}]'
                 value="2021"
                 lapisDateField="date"
-            ></gs-date-range-selector>
+            ></gs-date-range-filter>
             <gs-prevalence-over-time
                 numeratorFilters='[{"displayName": "My variant","lapisFilter":{"country":"Switzerland", "pangoLineage":"B.1.1.7", "dateTo":"2022-01-01", "dateFrom":"2021-01-01"}}]'
                 denominatorFilter='{"country":"Switzerland", "dateTo":"2022-01-01", "dateFrom":"2021-01-01"}'
@@ -61,7 +61,7 @@
                         });
                     });
                 document
-                    .querySelector("gs-date-range-selector")
+                    .querySelector("gs-date-range-filter")
                     .addEventListener("gs-date-range-filter-changed", (event) => {
                         const sequencesElements = document.querySelectorAll(
                             "gs-prevalence-over-time",
