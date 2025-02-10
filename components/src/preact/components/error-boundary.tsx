@@ -1,5 +1,5 @@
 import { type RenderableProps } from 'preact';
-import { useErrorBoundary, useMemo } from 'preact/hooks';
+import { useEffect, useErrorBoundary, useMemo } from 'preact/hooks';
 import { type ZodSchema } from 'zod';
 
 import { ErrorDisplay, type ErrorDisplayProps, InvalidPropsError } from './error-display';
@@ -22,6 +22,16 @@ export const ErrorBoundary = <T extends Record<string, unknown>>({
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- useErrorBoundary unfortunately return `[any, ...]`
     const [internalError, resetError] = useErrorBoundary();
     const componentPropsParseError = useCheckComponentProps(schema, componentProps);
+
+    useEffect(
+        () => {
+            if (internalError) {
+                resetError();
+            }
+        },
+        // eslint-disable-next-line react-hooks/exhaustive-deps -- this should run if and only if the props of the component change
+        [componentProps],
+    );
 
     if (internalError) {
         return (
