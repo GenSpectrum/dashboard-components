@@ -97,6 +97,7 @@ function componentParametersToCode(componentName: string, params: object, lapisU
 
     const attributes = indentLines(
         Object.entries(params)
+            .filter(([_, value]) => value !== undefined)
             .map(([key, value]) => `${key}='${stringifyIfNeeded(value) as string}'`)
             .join('\n'),
         4,
