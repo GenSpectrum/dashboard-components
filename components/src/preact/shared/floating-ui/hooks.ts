@@ -20,7 +20,7 @@ export function useFloatingUi(
         const { current: floating } = floatingRef;
 
         const update = () => {
-            computePosition(reference, floating, {
+            void computePosition(reference, floating, {
                 placement,
                 middleware,
             }).then(({ x, y }) => {

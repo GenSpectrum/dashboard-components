@@ -3,14 +3,15 @@
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-type-checked",
         "plugin:storybook/recommended",
         "preact"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": 2020,
-        "sourceType": "module"
+        "sourceType": "module",
+        "projectService": true
     },
     "plugins": ["@typescript-eslint", "eslint-plugin-import"],
     "env": {
@@ -26,6 +27,8 @@
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-floating-promises": "error",
+        "@typescript-eslint/restrict-template-expressions": "off",
         "@typescript-eslint/no-unused-vars": [
             "warn",
             {
@@ -71,6 +74,16 @@
             ],
             "rules": {
                 "@typescript-eslint/no-explicit-any": "off"
+            }
+        },
+        {
+            "files": ["*.stories.*"],
+            "rules": {
+                "@typescript-eslint/no-unsafe-member-access": "off",
+                "@typescript-eslint/no-unsafe-call": "off",
+                "@typescript-eslint/no-unsafe-argument": "off",
+                "@typescript-eslint/no-unsafe-assignment": "off",
+                "@typescript-eslint/no-unsafe-return": "off"
             }
         }
     ]

@@ -181,7 +181,7 @@ export const FiresEvent: StoryObj<Required<LineageFilterProps>> = {
 
         const inputField = () => canvas.getByPlaceholderText('Enter a lineage');
         const listenerMock = fn();
-        await step('Setup event listener mock', async () => {
+        await step('Setup event listener mock', () => {
             canvasElement.addEventListener('gs-lineage-filter-changed', listenerMock);
         });
 

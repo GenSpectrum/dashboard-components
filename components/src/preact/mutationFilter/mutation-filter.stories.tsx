@@ -223,7 +223,7 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
     const canvas = within(canvasElement);
 
     const changedListenerMock = fn();
-    await step('Setup event listener mock', async () => {
+    await step('Setup event listener mock', () => {
         canvasElement.addEventListener('gs-mutation-filter-changed', changedListenerMock);
     });
 
@@ -265,5 +265,5 @@ const testNoOptionsExist = async (canvas: ReturnType<typeof within>, mutation: s
     await expect(options).toHaveLength(0);
 };
 
-const inputField = (canvas: ReturnType<typeof within>) =>
+const inputField = (canvas: ReturnType<typeof within>): HTMLElement =>
     canvas.getByPlaceholderText('Enter a mutation', { exact: false });

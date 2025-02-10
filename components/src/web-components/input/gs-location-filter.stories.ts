@@ -188,7 +188,7 @@ export const FiresEvent: StoryObj<LocationFilterProps> = {
         const inputField = () => canvas.getByRole('combobox');
 
         const listenerMock = fn();
-        await step('Setup event listener mock', async () => {
+        await step('Setup event listener mock', () => {
             canvasElement.addEventListener('gs-location-changed', listenerMock);
         });
 

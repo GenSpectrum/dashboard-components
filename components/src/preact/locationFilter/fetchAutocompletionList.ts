@@ -43,7 +43,7 @@ export async function fetchAutocompletionList({
 
     return [...locationValues]
         .map<EntryWithNullValues>(([json, count]) => ({
-            value: JSON.parse(json),
+            value: JSON.parse(json) as Record<string, string | null>,
             count,
         }))
         .sort(compareLocationEntries(fields))

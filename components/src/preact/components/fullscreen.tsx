@@ -6,14 +6,14 @@ export const Fullscreen = () => {
     return (
         <button
             ref={element}
-            onClick={async () => {
+            onClick={() => {
                 if (element.current) {
                     if (isFullscreen) {
-                        await document.exitFullscreen();
+                        void document.exitFullscreen();
                     } else {
                         const componentRoot = findComponentRoot(element.current);
                         if (componentRoot) {
-                            await componentRoot.requestFullscreen();
+                            void componentRoot.requestFullscreen();
                         }
                     }
                 }

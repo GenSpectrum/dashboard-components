@@ -17,7 +17,7 @@ describe('GroupByOperator', () => {
             n: values.length,
         }));
         const resultCount = await queryCount.evaluate('lapis');
-        await expectEqualAfterSorting(
+        expectEqualAfterSorting(
             resultCount.content,
             [
                 { lineage: 'A', n: 2 },
@@ -31,7 +31,7 @@ describe('GroupByOperator', () => {
             n: values.reduce((a, b) => a + b.n, 0),
         }));
         const resultSum = await querySum.evaluate('lapis');
-        await expectEqualAfterSorting(
+        expectEqualAfterSorting(
             resultSum.content,
             [
                 { lineage: 'A', n: 3 },

@@ -78,6 +78,7 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
 
     const { data, error, isLoading } = useWebWorker<MutationOverTimeQuery, MutationOverTimeWorkerResponse>(
         messageToWorker,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         MutationOverTimeWorker,
     );
 

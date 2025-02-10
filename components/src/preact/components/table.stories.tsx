@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, userEvent, waitFor, within } from '@storybook/test';
 
-import { Table } from './table';
+import { Table, type TableProps } from './table';
 
 const meta: Meta = {
     title: 'Component/Table',
@@ -16,7 +16,7 @@ const meta: Meta = {
 
 export default meta;
 
-export const TableStory: StoryObj = {
+export const TableStory: StoryObj<TableProps> = {
     render: (args) => {
         return <Table data={args.data} columns={args.columns} pageSize={args.pageSize} />;
     },
@@ -49,7 +49,7 @@ export const TableStory: StoryObj = {
     },
 };
 
-export const TableStoryNoPagination: StoryObj = {
+export const TableStoryNoPagination: StoryObj<TableProps> = {
     render: (args) => {
         return <Table data={args.data} columns={args.columns} pageSize={args.pageSize} />;
     },

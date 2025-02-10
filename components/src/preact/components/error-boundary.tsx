@@ -5,7 +5,7 @@ import { type ZodSchema } from 'zod';
 import { ErrorDisplay, type ErrorDisplayProps, InvalidPropsError } from './error-display';
 import { ResizeContainer, type Size } from './resize-container';
 
-type ErrorBoundaryProps<T> = {
+export type ErrorBoundaryProps<T> = {
     size: Size;
     componentProps: T;
     schema: ZodSchema<T>;
@@ -19,13 +19,14 @@ export const ErrorBoundary = <T extends Record<string, unknown>>({
     schema,
     children,
 }: RenderableProps<ErrorBoundaryProps<T>>) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- useErrorBoundary unfortunately return `[any, ...]`
     const [internalError, resetError] = useErrorBoundary();
     const componentPropsParseError = useCheckComponentProps(schema, componentProps);
 
     if (internalError) {
         return (
             <ResizeContainer size={size}>
-                <ErrorDisplay error={internalError} resetError={resetError} layout={layout} />
+                <ErrorDisplay error={internalError as Error} resetError={resetError} layout={layout} />
             </ResizeContainer>
         );
     }

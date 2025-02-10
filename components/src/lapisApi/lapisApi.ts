@@ -146,7 +146,7 @@ async function callLapis(
 const handleErrors = async (response: Response, requestedData: string) => {
     if (!response.ok) {
         if (response.status >= 400 && response.status < 500) {
-            const json = await response.json();
+            const json = (await response.json()) as unknown;
 
             const lapisErrorResult = lapisError.safeParse(json);
             if (lapisErrorResult.success) {

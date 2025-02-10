@@ -8,6 +8,6 @@ describe('MapOperator', () => {
         const child = new MockOperator([1, 2, 3]);
         const query = new MapOperator(child, (x) => x * 2);
         const result = await query.evaluate('lapis');
-        await expect(result.content).deep.equal([2, 4, 6]);
+        expect(result.content).deep.equal([2, 4, 6]);
     });
 });

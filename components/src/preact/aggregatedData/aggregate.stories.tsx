@@ -104,7 +104,7 @@ export const WithEmptyFieldString: StoryObj<AggregateProps> = {
         fields: [''],
     },
     play: async ({ canvasElement, step }) => {
-        step('expect error message', async () => {
+        await step('expect error message', async () => {
             await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
         });
     },
