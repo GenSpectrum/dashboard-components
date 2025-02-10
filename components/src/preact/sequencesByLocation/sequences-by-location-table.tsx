@@ -32,7 +32,7 @@ export const SequencesByLocationTable: FunctionComponent<SequencesByLocationTabl
             sort: true,
             formatter: (cell: number) => formatProportion(cell),
         },
-        ...('isShownOnMap' in tableData[0]
+        ...(tableData.length > 0 && 'isShownOnMap' in tableData[0]
             ? [{ id: 'isShownOnMap', name: 'shown on map', sort: true, width: '20%' }]
             : []),
     ];
