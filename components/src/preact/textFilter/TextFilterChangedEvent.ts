@@ -1,8 +1,8 @@
 type LapisTextFilter = Record<string, string | undefined>;
 
-export class TextInputChangedEvent extends CustomEvent<LapisTextFilter> {
+export class TextFilterChangedEvent extends CustomEvent<LapisTextFilter> {
     constructor(detail: LapisTextFilter) {
-        super('gs-text-input-changed', {
+        super('gs-text-filter-changed', {
             detail,
             bubbles: true,
             composed: true,

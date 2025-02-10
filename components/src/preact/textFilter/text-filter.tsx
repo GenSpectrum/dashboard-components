@@ -2,7 +2,7 @@ import { type FunctionComponent } from 'preact';
 import z from 'zod';
 
 import { useLapisUrl } from '../LapisUrlContext';
-import { TextInputChangedEvent } from './TextInputChangedEvent';
+import { TextFilterChangedEvent } from './TextFilterChangedEvent';
 import { fetchStringAutocompleteList } from './fetchStringAutocompleteList';
 import { lapisFilterSchema } from '../../types';
 import { DownshiftCombobox } from '../components/downshift-combobox';
@@ -17,29 +17,29 @@ const textSelectorPropsSchema = z.object({
     placeholderText: z.string().optional(),
     value: z.string().optional(),
 });
-const textInputInnerPropsSchema = textSelectorPropsSchema.extend({ lapisFilter: lapisFilterSchema });
-const textInputPropsSchema = textInputInnerPropsSchema.extend({
+const textFilterInnerPropsSchema = textSelectorPropsSchema.extend({ lapisFilter: lapisFilterSchema });
+const textFilterPropsSchema = textFilterInnerPropsSchema.extend({
     width: z.string(),
 });
 
-export type TextInputInnerProps = z.infer<typeof textInputInnerPropsSchema>;
-export type TextInputProps = z.infer<typeof textInputPropsSchema>;
+export type TextFilterInnerProps = z.infer<typeof textFilterInnerPropsSchema>;
+export type TextFilterProps = z.infer<typeof textFilterPropsSchema>;
 type TextSelectorProps = z.infer<typeof textSelectorPropsSchema>;
 
-export const TextInput: FunctionComponent<TextInputProps> = (props) => {
+export const TextFilter: FunctionComponent<TextFilterProps> = (props) => {
     const { width, ...innerProps } = props;
     const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={textInputPropsSchema}>
+        <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={textFilterPropsSchema}>
             <ResizeContainer size={size}>
-                <TextInputInner {...innerProps} />
+                <TextFilterInner {...innerProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-const TextInputInner: FunctionComponent<TextInputInnerProps> = ({
+const TextFilterInner: FunctionComponent<TextFilterInnerProps> = ({
     value,
     lapisField,
     placeholderText,
@@ -88,7 +88,7 @@ const TextSelector = ({
             value={initialSelectedItem}
             filterItemsByInputValue={filterByInputValue}
             createEvent={(item: SelectItem | null) =>
-                new TextInputChangedEvent({ [lapisField]: item?.value ?? undefined })
+                new TextFilterChangedEvent({ [lapisField]: item?.value ?? undefined })
             }
             itemToString={(item: SelectItem | undefined | null) => item?.value ?? ''}
             placeholderText={placeholderText}

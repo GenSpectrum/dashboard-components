@@ -6,26 +6,26 @@ import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../gs-app';
-import './gs-text-input';
-import data from '../../preact/textInput/__mockData__/aggregated_hosts.json';
-import type { TextInputProps } from '../../preact/textInput/text-input';
+import './gs-text-filter';
+import data from '../../preact/textFilter/__mockData__/aggregated_hosts.json';
+import type { TextFilterProps } from '../../preact/textFilter/text-filter';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
-<gs-text-input 
+<gs-text-filter 
     lapisField="host"
     lapisFilter='{"country": "Germany"}'
     placeholderText="Enter host name"
     value="Homo sapiens"
     width="50%">
-</gs-text-input>`;
+</gs-text-filter>`;
 
-const meta: Meta<Required<TextInputProps>> = {
-    title: 'Input/Text input',
-    component: 'gs-text-input',
+const meta: Meta<Required<TextFilterProps>> = {
+    title: 'Input/Text filter',
+    component: 'gs-text-filter',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-text-input-changed', ...previewHandles],
+            handles: ['gs-text-filter-changed', ...previewHandles],
         },
         fetchMock: {
             mocks: [
@@ -83,17 +83,17 @@ const meta: Meta<Required<TextInputProps>> = {
 
 export default meta;
 
-export const Default: StoryObj<Required<TextInputProps>> = {
+export const Default: StoryObj<Required<TextFilterProps>> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-screen-lg">
-                <gs-text-input
+                <gs-text-filter
                     .lapisField=${args.lapisField}
                     .lapisFilter=${args.lapisFilter}
                     .placeholderText=${args.placeholderText}
                     .value=${args.value}
                     .width=${args.width}
-                ></gs-text-input>
+                ></gs-text-filter>
             </div>
         </gs-app>`;
     },
@@ -106,15 +106,15 @@ export const Default: StoryObj<Required<TextInputProps>> = {
     },
 };
 
-export const FiresEvents: StoryObj<Required<TextInputProps>> = {
+export const FiresEvents: StoryObj<Required<TextFilterProps>> = {
     ...Default,
     play: async ({ canvasElement, step }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-text-input');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-text-filter');
 
         const inputField = () => canvas.getByPlaceholderText('Enter host name');
         const listenerMock = fn();
         await step('Setup event listener mock', () => {
-            canvasElement.addEventListener('gs-text-input-changed', listenerMock);
+            canvasElement.addEventListener('gs-text-filter-changed', listenerMock);
         });
 
         await step('wait until data is loaded', async () => {

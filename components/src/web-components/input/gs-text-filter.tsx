@@ -1,8 +1,8 @@
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-import { type TextInputChangedEvent } from '../../preact/textInput/TextInputChangedEvent';
-import { TextInput, type TextInputProps } from '../../preact/textInput/text-input';
+import { type TextFilterChangedEvent } from '../../preact/textFilter/TextFilterChangedEvent';
+import { TextFilter, type TextFilterProps } from '../../preact/textFilter/text-filter';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -12,7 +12,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  *
  * This component provides a text input field to specify filters for arbitrary fields of this LAPIS instance.
  *
- * @fires {CustomEvent<Record<string, string | undefined>>} gs-text-input-changed
+ * @fires {CustomEvent<Record<string, string | undefined>>} gs-text-filter-changed
  * Fired when the input field is changed.
  * The `details` of this event contain an object with the `lapisField` as key and the input value as value.
  * Example:
@@ -22,10 +22,10 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * }
  *  ```
  */
-@customElement('gs-text-input')
-export class TextInputComponent extends PreactLitAdapter {
+@customElement('gs-text-filter')
+export class TextFilterComponent extends PreactLitAdapter {
     /**
-     * The initial value to use for this text input.
+     * The initial value to use for this text filter.
      */
     @property()
     value: string | undefined = undefined;
@@ -33,7 +33,7 @@ export class TextInputComponent extends PreactLitAdapter {
     /**
      * Required.
      *
-     * The LAPIS field name to use for this text input.
+     * The LAPIS field name to use for this text filter.
      * The field must exist on this LAPIS instance.
      */
     @property()
@@ -68,7 +68,7 @@ export class TextInputComponent extends PreactLitAdapter {
 
     override render() {
         return (
-            <TextInput
+            <TextFilter
                 lapisField={this.lapisField}
                 lapisFilter={this.lapisFilter}
                 placeholderText={this.placeholderText}
@@ -81,11 +81,11 @@ export class TextInputComponent extends PreactLitAdapter {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-text-input': TextInputComponent;
+        'gs-text-filter': TextFilterComponent;
     }
 
     interface HTMLElementEventMap {
-        'gs-text-input-changed': TextInputChangedEvent;
+        'gs-text-filter-changed': TextFilterChangedEvent;
     }
 }
 
@@ -93,19 +93,19 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-text-input': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-text-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
         }
     }
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type InitialValueMatches = Expect<Equals<typeof TextInputComponent.prototype.value, TextInputProps['value']>>;
-type LapisFieldMatches = Expect<Equals<typeof TextInputComponent.prototype.lapisField, TextInputProps['lapisField']>>;
+type InitialValueMatches = Expect<Equals<typeof TextFilterComponent.prototype.value, TextFilterProps['value']>>;
+type LapisFieldMatches = Expect<Equals<typeof TextFilterComponent.prototype.lapisField, TextFilterProps['lapisField']>>;
 type LapisFilterMatches = Expect<
-    Equals<typeof TextInputComponent.prototype.lapisFilter, TextInputProps['lapisFilter']>
+    Equals<typeof TextFilterComponent.prototype.lapisFilter, TextFilterProps['lapisFilter']>
 >;
 type PlaceholderTextMatches = Expect<
-    Equals<typeof TextInputComponent.prototype.placeholderText, TextInputProps['placeholderText']>
+    Equals<typeof TextFilterComponent.prototype.placeholderText, TextFilterProps['placeholderText']>
 >;
-type WidthMatches = Expect<Equals<typeof TextInputComponent.prototype.width, TextInputProps['width']>>;
+type WidthMatches = Expect<Equals<typeof TextFilterComponent.prototype.width, TextFilterProps['width']>>;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
