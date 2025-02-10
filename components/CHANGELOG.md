@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.15.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.14.2...dashboard-components-v0.15.0) (2025-02-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** rename gs-text-input to gs-text-filter ([#709](https://github.com/GenSpectrum/dashboard-components/issues/709))
+* **components:** rename gs-date-range-selector to gs-date-range-filter ([#709](https://github.com/GenSpectrum/dashboard-components/issues/709))
+
+### Bug Fixes
+
+* **components:** gs-date-range-selector `value`: make sure that strings are recognized as strings ([#727](https://github.com/GenSpectrum/dashboard-components/issues/727)) ([016f99d](https://github.com/GenSpectrum/dashboard-components/commit/016f99db275105d561b3a3c078dac02e8d2afc9f))
+
+
+### Code Refactoring
+
+* **components:** rename gs-date-range-selector to gs-date-range-filter ([#709](https://github.com/GenSpectrum/dashboard-components/issues/709)) ([a04c13d](https://github.com/GenSpectrum/dashboard-components/commit/a04c13d7f8cfa2de062b611a08951759cc779f81))
+* **components:** rename gs-text-input to gs-text-filter ([#709](https://github.com/GenSpectrum/dashboard-components/issues/709)) ([4870f5b](https://github.com/GenSpectrum/dashboard-components/commit/4870f5b7cd449adc5fb368ed85b9744a53150527))
+
 ## [0.14.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.14.1...dashboard-components-v0.14.2) (2025-02-10)
 
 
