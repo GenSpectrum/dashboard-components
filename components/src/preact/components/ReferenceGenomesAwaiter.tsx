@@ -1,8 +1,7 @@
 import { type ComponentChildren, type FunctionalComponent } from 'preact';
 import { useContext } from 'preact/hooks';
 
-import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
-import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
+import { isNotInitialized, ReferenceGenomeContext } from '../ReferenceGenomeContext';
 
 /**
  * Sometimes the reference genome is not immediately available.
@@ -19,7 +18,3 @@ export const ReferenceGenomesAwaiter: FunctionalComponent<{ children: ComponentC
 
     return <>{children}</>;
 };
-
-function isNotInitialized(referenceGenome: ReferenceGenome) {
-    return referenceGenome.nucleotideSequences.length === 0 && referenceGenome.genes.length === 0;
-}
