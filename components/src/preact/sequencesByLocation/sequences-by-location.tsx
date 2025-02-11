@@ -20,6 +20,7 @@ import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 import { mapSourceSchema } from './loadMapSource';
 import { lapisFilterSchema, views } from '../../types';
+import { NoDataDisplay } from '../components/no-data-display';
 import Tabs from '../components/tabs';
 import { getMaintainAspectRatio } from '../shared/charts/getMaintainAspectRatio';
 
@@ -74,6 +75,10 @@ const SequencesByLocationMapInner: FunctionComponent<SequencesByLocationProps> =
 
     if (error) {
         throw error;
+    }
+
+    if (data.tableData.length === 0) {
+        return <NoDataDisplay />;
     }
 
     return <SequencesByLocationMapTabs data={data} originalComponentProps={props} />;

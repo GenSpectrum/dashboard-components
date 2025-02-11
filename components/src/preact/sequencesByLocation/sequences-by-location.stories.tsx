@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
+import { expect, waitFor, within } from '@storybook/test';
 
 import worldAtlas from './__mockData__/worldAtlas.json';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
@@ -88,6 +89,48 @@ export const Default: StoryObj<SequencesByLocationProps> = {
                 aggregatedWorldMatcher,
             ],
         },
+    },
+};
+
+export const NoData: StoryObj<SequencesByLocationProps> = {
+    ...Default,
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'worldMap',
+                        url: worldMapUrl,
+                    },
+                    response: {
+                        status: 200,
+                        body: worldAtlas,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'aggregatedData',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            fields: ['country'],
+                            dateFrom: '2022-01-01',
+                            dateTo: '2022-04-01',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: { data: [] },
+                    },
+                },
+            ],
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(async () => {
+            await expect(canvas.getByText('No data available.')).toBeVisible();
+        });
     },
 };
 
