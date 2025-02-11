@@ -10,6 +10,7 @@ export function DownshiftCombobox<Item>({
     itemToString,
     placeholderText,
     formatItemInList,
+    inputClassName,
 }: {
     allItems: Item[];
     value?: Item | null;
@@ -18,6 +19,7 @@ export function DownshiftCombobox<Item>({
     itemToString: (item: Item | undefined | null) => string;
     placeholderText?: string;
     formatItemInList: (item: Item) => ComponentChild;
+    inputClassName?: string;
 }) {
     const [itemsFilter, setItemsFilter] = useState(itemToString(value));
     const items = useMemo(
@@ -87,7 +89,7 @@ export function DownshiftCombobox<Item>({
         <div ref={divRef} className={'relative w-full'}>
             <div className='w-full flex flex-col gap-1'>
                 <div
-                    className='flex gap-0.5 input input-bordered min-w-32'
+                    className={`flex gap-0.5 input input-bordered min-w-32 ${inputClassName}`}
                     onBlur={(event) => {
                         if (event.relatedTarget != buttonRef.current) {
                             closeMenu();

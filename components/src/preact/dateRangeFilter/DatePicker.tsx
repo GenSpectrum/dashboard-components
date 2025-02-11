@@ -1,19 +1,22 @@
 import flatpickr from 'flatpickr';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
+import { type WithClassName } from '../shared/WithClassName/WithClassName';
+
 export function DatePicker({
     onChange,
     value,
     minDate,
     maxDate,
     placeholderText,
-}: {
+    className,
+}: WithClassName<{
     onChange?: (date: Date | undefined) => void;
     value?: Date;
     minDate?: Date;
     maxDate?: Date;
     placeholderText?: string;
-}) {
+}>) {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const [datePicker, setDatePicker] = useState<flatpickr.Instance | null>(null);
@@ -50,7 +53,7 @@ export function DatePicker({
 
     return (
         <input
-            class='input input-bordered rounded-none w-full'
+            className={`input input-bordered w-full ${className}`}
             type='text'
             placeholder={placeholderText}
             ref={inputRef}

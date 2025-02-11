@@ -172,34 +172,36 @@ export const DateRangeFilterInner = ({
     };
 
     return (
-        <div className='flex flex-wrap' ref={divRef}>
-            <div className='flex-grow min-w-[7.5rem]'>
-                <DownshiftCombobox
-                    allItems={[...dateRangeOptions, customComboboxValue]}
-                    filterItemsByInputValue={filterByInputValue}
-                    createEvent={(item: DateRangeOption | null) => {
-                        onSelectChange(item);
-                        const eventDetail =
-                            item?.label === customOption
-                                ? {
-                                      dateFrom: item?.dateFrom,
-                                      dateTo: item?.dateTo,
-                                  }
-                                : item?.label;
+        <div className={'@container'} ref={divRef}>
+            <div className='flex min-w-[7.5rem] flex-col @md:flex-row'>
+                <div className='flex-grow'>
+                    <DownshiftCombobox
+                        allItems={[...dateRangeOptions, customComboboxValue]}
+                        filterItemsByInputValue={filterByInputValue}
+                        createEvent={(item: DateRangeOption | null) => {
+                            onSelectChange(item);
+                            const eventDetail =
+                                item?.label === customOption
+                                    ? {
+                                          dateFrom: item?.dateFrom,
+                                          dateTo: item?.dateTo,
+                                      }
+                                    : item?.label;
 
-                        return new DateRangeOptionChangedEvent(eventDetail);
-                    }}
-                    itemToString={(item: DateRangeOption | undefined | null) => {
-                        return item?.label ?? '';
-                    }}
-                    formatItemInList={(item: DateRangeOption) => item.label}
-                    placeholderText={'Select a date range'}
-                    value={comboboxValue}
-                />
-            </div>
-            <div className={'flex flex-wrap flex-grow'}>
-                <div className={'flex-grow min-w-[7.5rem]'}>
+                            return new DateRangeOptionChangedEvent(eventDetail);
+                        }}
+                        itemToString={(item: DateRangeOption | undefined | null) => {
+                            return item?.label ?? '';
+                        }}
+                        formatItemInList={(item: DateRangeOption) => item.label}
+                        placeholderText={'Select a date range'}
+                        value={comboboxValue}
+                        inputClassName={'rounded-t-md rounded-b-none @md:rounded-l-md @md:rounded-r-none'}
+                    />
+                </div>
+                <div className={'flex flex-grow flex-col @4xs:flex-row'}>
                     <DatePicker
+                        className={'flex-grow min-w-[7.5rem] @4xs:rounded-bl-md @md:rounded-l-none rounded-none'}
                         value={dateFromValue}
                         onChange={(date) => {
                             onChangeDateFrom(date);
@@ -207,9 +209,10 @@ export const DateRangeFilterInner = ({
                         maxDate={dateToValue}
                         placeholderText={'Date from'}
                     />
-                </div>
-                <div className={'flex-grow min-w-[7.5rem]'}>
                     <DatePicker
+                        className={
+                            'flex-grow min-w-[7.5rem] rounded-b-md rounded-t-none @4xs:rounded-tr-none @4xs:rounded-l-none @md:rounded-r-md '
+                        }
                         value={dateToValue}
                         onChange={(date) => {
                             onChangeDateTo(date);
