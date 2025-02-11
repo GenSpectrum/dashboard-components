@@ -1,4 +1,3 @@
-import 'flatpickr/dist/flatpickr.min.css';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
