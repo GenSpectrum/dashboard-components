@@ -87,6 +87,13 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
     @property({ type: String })
     lapisDateField: string = 'date';
 
+    /**
+     * If provided, only the given mutations will be displayed.
+     * The mutations must be provided in the exact format as they would be displayed by the component.
+     */
+    @property({ type: Array })
+    displayMutations: string[] | undefined | null = null;
+
     override render() {
         return (
             <MutationsOverTime
@@ -97,6 +104,7 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
                 height={this.height}
                 granularity={this.granularity}
                 lapisDateField={this.lapisDateField}
+                displayMutations={this.displayMutations}
             />
         );
     }
@@ -134,5 +142,8 @@ type GranularityMatches = Expect<
 >;
 type LapisDateFieldMatches = Expect<
     Equals<typeof MutationsOverTimeComponent.prototype.lapisDateField, MutationsOverTimeProps['lapisDateField']>
+>;
+type DisplayMutationsMatches = Expect<
+    Equals<typeof MutationsOverTimeComponent.prototype.displayMutations, MutationsOverTimeProps['displayMutations']>
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

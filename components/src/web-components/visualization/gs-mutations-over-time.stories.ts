@@ -16,6 +16,7 @@ const codeExample = String.raw`
     height='700px'
     granularity="month"
     lapisDateField="date"
+    displayMutations='["A23403G","C241T"]'
 ></gs-mutations-over-time>`;
 
 const meta: Meta<Required<MutationsOverTimeProps>> = {
@@ -38,6 +39,7 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
             control: { type: 'radio' },
         },
         lapisDateField: { control: 'text' },
+        displayMutations: { control: 'object' },
     },
     args: {
         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
@@ -71,6 +73,7 @@ const Template: StoryObj<Required<MutationsOverTimeProps>> = {
                 .height=${args.height}
                 .granularity=${args.granularity}
                 .lapisDateField=${args.lapisDateField}
+                .displayMutations=${args.displayMutations}
             ></gs-mutations-over-time>
         </gs-app>
     `,
@@ -79,6 +82,15 @@ const Template: StoryObj<Required<MutationsOverTimeProps>> = {
 // This test uses mock data: defaultMockData.ts (through mutationOverTimeWorker.mock.ts)
 export const ByMonth: StoryObj<Required<MutationsOverTimeProps>> = {
     ...Template,
+};
+
+// This test uses mock data: defaultMockData.ts (through mutationOverTimeWorker.mock.ts)
+export const ByMonthWithFilterOnDisplayedMutations: StoryObj<Required<MutationsOverTimeProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        displayMutations: ['A19722G', 'G21641T', 'T21653-'],
+    },
 };
 
 // This test uses mock data: byWeek.ts (through mutationOverTimeWorker.mock.ts)

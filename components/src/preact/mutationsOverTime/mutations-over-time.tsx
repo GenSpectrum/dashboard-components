@@ -5,7 +5,7 @@ import z from 'zod';
 // @ts-expect-error -- uses subpath imports and vite worker import
 import MutationOverTimeWorker from '#mutationOverTime?worker&inline';
 import { BaseMutationOverTimeDataMap, type MutationOverTimeDataMap } from './MutationOverTimeData';
-import { getFilteredMutationOverTimeData } from './getFilteredMutationsOverTimeData';
+import { displayMutationsSchema, getFilteredMutationOverTimeData } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
 import MutationsOverTimeGrid from './mutations-over-time-grid';
 import { type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
@@ -44,6 +44,7 @@ const mutationOverTimeSchema = z.object({
     views: z.array(mutationsOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
+    displayMutations: displayMutationsSchema,
     width: z.string(),
     height: z.string().optional(),
 });
@@ -125,6 +126,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         { label: 'Deletions', checked: true, type: 'deletion' },
     ]);
 
+    const displayMutations = originalComponentProps.displayMutations;
+
     const filteredData = useMemo(() => {
         return getFilteredMutationOverTimeData(
             mutationOverTimeData,
@@ -132,8 +135,16 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             displayedSegments,
             displayedMutationTypes,
             proportionInterval,
+            displayMutations,
         );
-    }, [mutationOverTimeData, overallMutationData, displayedSegments, displayedMutationTypes, proportionInterval]);
+    }, [
+        mutationOverTimeData,
+        overallMutationData,
+        displayedSegments,
+        displayedMutationTypes,
+        proportionInterval,
+        displayMutations,
+    ]);
 
     const getTab = (view: MutationsOverTimeView) => {
         if (filteredData === undefined) {
