@@ -162,23 +162,25 @@ export const SetsValueOnBlur: StoryObj<DateRangeFilterProps> = {
                 await expect(selectField(canvas)).toHaveValue('Custom');
             });
 
-            await expect(filterChangedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        aDateColumnFrom: '2000-01-01',
-                        aDateColumnTo: dayjs().format('YYYY-MM-DD'),
-                    },
-                }),
-            );
+            await waitFor(async () => {
+                await expect(filterChangedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            aDateColumnFrom: '2000-01-01',
+                            aDateColumnTo: dayjs().format('YYYY-MM-DD'),
+                        },
+                    }),
+                );
 
-            await expect(optionChangedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        dateFrom: '2000-01-01',
-                        dateTo: dayjs().format('YYYY-MM-DD'),
-                    },
-                }),
-            );
+                await expect(optionChangedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            dateFrom: '2000-01-01',
+                            dateTo: dayjs().format('YYYY-MM-DD'),
+                        },
+                    }),
+                );
+            });
         });
     },
 };
