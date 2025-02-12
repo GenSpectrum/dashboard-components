@@ -29,11 +29,13 @@
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-floating-promises": "error",
         "@typescript-eslint/restrict-template-expressions": "off",
+        "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": [
-            "warn",
+            "error",
             {
                 "argsIgnorePattern": "^_",
                 "varsIgnorePattern": "^_",
+                "destructuredArrayIgnorePattern": "^_",
                 "caughtErrorsIgnorePattern": "^_"
             }
         ],
