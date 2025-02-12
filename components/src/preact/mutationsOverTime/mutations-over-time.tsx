@@ -45,6 +45,10 @@ const mutationOverTimeSchema = z.object({
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
     displayMutations: displayMutationsSchema.optional(),
+    initialMeanProportionInterval: z.object({
+        min: z.number().min(0).max(1),
+        max: z.number().min(0).max(1),
+    }),
     width: z.string(),
     height: z.string().optional(),
 });
@@ -117,7 +121,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     originalComponentProps,
     overallMutationData,
 }) => {
-    const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 0.9 });
+    const [proportionInterval, setProportionInterval] = useState(originalComponentProps.initialMeanProportionInterval);
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
 
     const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(originalComponentProps.sequenceType);

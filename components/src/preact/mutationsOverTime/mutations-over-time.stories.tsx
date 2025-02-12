@@ -29,6 +29,7 @@ const meta: Meta<MutationsOverTimeProps> = {
         },
         lapisDateField: { control: 'text' },
         displayMutations: { control: 'object' },
+        initialMeanProportionInterval: { control: 'object' },
     },
     parameters: {
         fetchMock: {},
@@ -37,7 +38,7 @@ const meta: Meta<MutationsOverTimeProps> = {
 
 export default meta;
 
-const Template = {
+export const Default: StoryObj<MutationsOverTimeProps> = {
     render: (args: MutationsOverTimeProps) => (
         <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
@@ -45,11 +46,6 @@ const Template = {
             </ReferenceGenomeContext.Provider>
         </LapisUrlContextProvider>
     ),
-};
-
-// This test uses mock data: defaultMockData.ts (through mutationOverTimeWorker.mock.ts)
-export const Default: StoryObj<MutationsOverTimeProps> = {
-    ...Template,
     args: {
         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
         sequenceType: 'nucleotide',
@@ -57,19 +53,17 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
         width: '100%',
         granularity: 'month',
         lapisDateField: 'date',
+        initialMeanProportionInterval: { min: 0.05, max: 0.9 },
     },
 };
 
 // This test uses mock data: showMessagWhenTooManyMutations.ts (through mutationOverTimeWorker.mock.ts)
 export const ShowsMessageWhenTooManyMutations: StoryObj<MutationsOverTimeProps> = {
-    ...Template,
+    ...Default,
     args: {
+        ...Default.args,
         lapisFilter: { dateFrom: '2023-01-01', dateTo: '2023-12-31' },
-        sequenceType: 'nucleotide',
-        views: ['grid'],
-        width: '100%',
         granularity: 'year',
-        lapisDateField: 'date',
     },
     play: async ({ canvas }) => {
         await waitFor(() => expect(canvas.getByText('Showing 100 of 137 mutations.', { exact: false })).toBeVisible(), {
@@ -79,15 +73,12 @@ export const ShowsMessageWhenTooManyMutations: StoryObj<MutationsOverTimeProps> 
 };
 
 export const ShowsNoDataWhenNoMutationsAreInFilter: StoryObj<MutationsOverTimeProps> = {
-    ...Template,
+    ...Default,
     args: {
+        ...Default.args,
         lapisFilter: { dateFrom: '1800-01-01', dateTo: '1800-01-02' },
-        sequenceType: 'nucleotide',
-        views: ['grid'],
-        width: '100%',
         height: '700px',
         granularity: 'year',
-        lapisDateField: 'date',
     },
     play: async ({ canvas }) => {
         await waitFor(() => expect(canvas.getByText('No data available.', { exact: false })).toBeVisible(), {
@@ -97,15 +88,12 @@ export const ShowsNoDataWhenNoMutationsAreInFilter: StoryObj<MutationsOverTimePr
 };
 
 export const ShowsNoDataMessageWhenThereAreNoDatesInFilter: StoryObj<MutationsOverTimeProps> = {
-    ...Template,
+    ...Default,
     args: {
+        ...Default.args,
         lapisFilter: { dateFrom: '2345-01-01', dateTo: '2020-01-02' },
-        sequenceType: 'nucleotide',
-        views: ['grid'],
-        width: '100%',
         height: '700px',
         granularity: 'year',
-        lapisDateField: 'date',
     },
     play: async ({ canvas }) => {
         await waitFor(() => expect(canvas.getByText('No data available.', { exact: false })).toBeVisible(), {
@@ -115,15 +103,10 @@ export const ShowsNoDataMessageWhenThereAreNoDatesInFilter: StoryObj<MutationsOv
 };
 
 export const ShowsNoDataMessageForStrictFilters: StoryObj<MutationsOverTimeProps> = {
-    ...Template,
+    ...Default,
     args: {
+        ...Default.args,
         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
-        sequenceType: 'nucleotide',
-        views: ['grid'],
-        width: '100%',
-        height: '700px',
-        granularity: 'month',
-        lapisDateField: 'date',
     },
     play: async ({ canvas }) => {
         await waitFor(() => expect(canvas.getByText('Grid')).toBeVisible(), { timeout: 10000 });
@@ -144,6 +127,19 @@ export const ShowsNoDataMessageForStrictFilters: StoryObj<MutationsOverTimeProps
             {
                 timeout: 10000,
             },
+        );
+    },
+};
+
+export const ShowsNoDataForStrictInitialProportionInterval: StoryObj<MutationsOverTimeProps> = {
+    ...ShowsNoDataMessageForStrictFilters,
+    args: {
+        ...ShowsNoDataMessageForStrictFilters.args,
+        initialMeanProportionInterval: { min: 0.4, max: 0.41 },
+    },
+    play: async ({ canvas }) => {
+        await waitFor(() =>
+            expect(canvas.getByText('No data available for your filters.', { exact: false })).toBeVisible(),
         );
     },
 };
