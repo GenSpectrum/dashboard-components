@@ -29,6 +29,10 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  *
  * The number of rows is limited to 100.
  * If there are more, the component will only show 100 mutations and notify the user.
+ *
+ * Users can filter the displayed rows by mean proportion via a slider in the toolbar.
+ * The mean proportion of each row is calculated by LAPIS over the whole data range that the component displays.
+ * The initial mean proportion can be set via `initialMeanProportionInterval`.
  */
 @customElement('gs-mutations-over-time')
 export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
@@ -94,6 +98,13 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
     @property({ type: Array })
     displayMutations: string[] | undefined = undefined;
 
+    /**
+     * The initial proportion interval for the grid view.
+     * The values must be between 0 and 1, inclusive.
+     */
+    @property({ type: Object })
+    initialMeanProportionInterval: { min: number; max: number } = { min: 0.05, max: 0.9 };
+
     override render() {
         return (
             <MutationsOverTime
@@ -105,6 +116,7 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
                 granularity={this.granularity}
                 lapisDateField={this.lapisDateField}
                 displayMutations={this.displayMutations}
+                initialMeanProportionInterval={this.initialMeanProportionInterval}
             />
         );
     }
@@ -145,5 +157,11 @@ type LapisDateFieldMatches = Expect<
 >;
 type DisplayMutationsMatches = Expect<
     Equals<typeof MutationsOverTimeComponent.prototype.displayMutations, MutationsOverTimeProps['displayMutations']>
+>;
+type InitialMeanProportionIntervalMatches = Expect<
+    Equals<
+        typeof MutationsOverTimeComponent.prototype.initialMeanProportionInterval,
+        MutationsOverTimeProps['initialMeanProportionInterval']
+    >
 >;
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
