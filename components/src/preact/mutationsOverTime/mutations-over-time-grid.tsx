@@ -39,63 +39,64 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                     to reduce the number of mutations.
                 </div>
             )}
-            {allMutations.length === 0 && (
+            {allMutations.length === 0 ? (
                 <div className={'flex justify-center'}>No data available for your filters.</div>
+            ) : (
+                <div
+                    ref={gridRef}
+                    style={{
+                        display: 'grid',
+                        gridTemplateRows: `repeat(${shownMutations.length}, 24px)`,
+                        gridTemplateColumns: `${MUTATION_CELL_WIDTH_REM}rem repeat(${dates.length}, minmax(0.05rem, 1fr))`,
+                    }}
+                    className='text-center'
+                >
+                    {dates.map((date, columnIndex) => (
+                        <div
+                            className='@container font-semibold'
+                            style={{ gridRowStart: 1, gridColumnStart: columnIndex + 2 }}
+                            key={date.dateString}
+                        >
+                            <p {...styleGridHeader(columnIndex, dates)}>{date.dateString}</p>
+                        </div>
+                    ))}
+                    {shownMutations.map((mutation, rowIndex) => {
+                        return (
+                            <Fragment key={`fragment-${mutation.code}`}>
+                                <div
+                                    key={`mutation-${mutation.code}`}
+                                    style={{ gridRowStart: rowIndex + 2, gridColumnStart: 1 }}
+                                >
+                                    <MutationCell mutation={mutation} />
+                                </div>
+                                {dates.map((date, columnIndex) => {
+                                    const value = data.get(mutation, date) ?? null;
+                                    const tooltipPosition = getTooltipPosition(
+                                        rowIndex,
+                                        shownMutations.length,
+                                        columnIndex,
+                                        dates.length,
+                                    );
+                                    return (
+                                        <div
+                                            style={{ gridRowStart: rowIndex + 2, gridColumnStart: columnIndex + 2 }}
+                                            key={`${mutation.code}-${date.dateString}`}
+                                        >
+                                            <ProportionCell
+                                                value={value}
+                                                date={date}
+                                                mutation={mutation}
+                                                tooltipPosition={tooltipPosition}
+                                                colorScale={colorScale}
+                                            />
+                                        </div>
+                                    );
+                                })}
+                            </Fragment>
+                        );
+                    })}
+                </div>
             )}
-            <div
-                ref={gridRef}
-                style={{
-                    display: 'grid',
-                    gridTemplateRows: `repeat(${shownMutations.length}, 24px)`,
-                    gridTemplateColumns: `${MUTATION_CELL_WIDTH_REM}rem repeat(${dates.length}, minmax(0.05rem, 1fr))`,
-                }}
-                className='text-center'
-            >
-                {dates.map((date, columnIndex) => (
-                    <div
-                        className='@container font-semibold'
-                        style={{ gridRowStart: 1, gridColumnStart: columnIndex + 2 }}
-                        key={date.dateString}
-                    >
-                        <p {...styleGridHeader(columnIndex, dates)}>{date.dateString}</p>
-                    </div>
-                ))}
-                {shownMutations.map((mutation, rowIndex) => {
-                    return (
-                        <Fragment key={`fragment-${mutation.code}`}>
-                            <div
-                                key={`mutation-${mutation.code}`}
-                                style={{ gridRowStart: rowIndex + 2, gridColumnStart: 1 }}
-                            >
-                                <MutationCell mutation={mutation} />
-                            </div>
-                            {dates.map((date, columnIndex) => {
-                                const value = data.get(mutation, date) ?? null;
-                                const tooltipPosition = getTooltipPosition(
-                                    rowIndex,
-                                    shownMutations.length,
-                                    columnIndex,
-                                    dates.length,
-                                );
-                                return (
-                                    <div
-                                        style={{ gridRowStart: rowIndex + 2, gridColumnStart: columnIndex + 2 }}
-                                        key={`${mutation.code}-${date.dateString}`}
-                                    >
-                                        <ProportionCell
-                                            value={value}
-                                            date={date}
-                                            mutation={mutation}
-                                            tooltipPosition={tooltipPosition}
-                                            colorScale={colorScale}
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </Fragment>
-                    );
-                })}
-            </div>
         </>
     );
 };
