@@ -143,6 +143,11 @@ export const visualizationStories = [
         testDownloadWithFilename: 'mutations_over_time.csv',
     },
     {
+        id: 'visualization-mutations-over-time--by-month-with-filter-on-displayed-mutations',
+        title: 'Mutations over time',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
         id: 'visualization-mutations-over-time--by-week',
         title: 'Mutations over time',
         loadingIsDoneIndicator: 'Grid',

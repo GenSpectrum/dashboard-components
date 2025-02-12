@@ -15,16 +15,17 @@ describe('getFilteredMutationOverTimeData', () => {
             someDeletionEntry,
         ]);
 
-        const result = getFilteredMutationOverTimeData(
+        const result = getFilteredMutationOverTimeData({
             data,
             overallMutationData,
-            [
+            displayedSegments: [
                 { segment: 'someSegment', checked: false, label: 'Some Segment' },
                 { segment: 'someOtherSegment', checked: true, label: 'Some Other Segment' },
             ],
-            [],
+            displayedMutationTypes: [],
             proportionInterval,
-        );
+            displayMutations: undefined,
+        });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([anotherSubstitution]);
     });
@@ -36,11 +37,11 @@ describe('getFilteredMutationOverTimeData', () => {
             someDeletionEntry,
         ]);
 
-        const result = getFilteredMutationOverTimeData(
+        const result = getFilteredMutationOverTimeData({
             data,
             overallMutationData,
-            [],
-            [
+            displayedSegments: [],
+            displayedMutationTypes: [
                 {
                     type: 'substitution',
                     checked: false,
@@ -53,7 +54,7 @@ describe('getFilteredMutationOverTimeData', () => {
                 },
             ],
             proportionInterval,
-        );
+        });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([someDeletion]);
     });
@@ -65,7 +66,13 @@ describe('getFilteredMutationOverTimeData', () => {
             { ...someDeletionEntry, proportion: inFilter },
         ]);
 
-        const result = getFilteredMutationOverTimeData(data, overallMutationData, [], [], proportionInterval);
+        const result = getFilteredMutationOverTimeData({
+            data,
+            overallMutationData,
+            displayedSegments: [],
+            displayedMutationTypes: [],
+            proportionInterval,
+        });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([anotherSubstitution, someDeletion]);
     });
@@ -77,7 +84,13 @@ describe('getFilteredMutationOverTimeData', () => {
             { ...someDeletionEntry, proportion: inFilter },
         ]);
 
-        const result = getFilteredMutationOverTimeData(data, overallMutationData, [], [], proportionInterval);
+        const result = getFilteredMutationOverTimeData({
+            data,
+            overallMutationData,
+            displayedSegments: [],
+            displayedMutationTypes: [],
+            proportionInterval,
+        });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([anotherSubstitution, someDeletion]);
     });
@@ -90,7 +103,13 @@ describe('getFilteredMutationOverTimeData', () => {
         ]);
         data.set(someSubstitution, someTemporal, { ...someMutationOverTimeValue, proportion: belowFilter });
 
-        const result = getFilteredMutationOverTimeData(data, overallMutationData, [], [], proportionInterval);
+        const result = getFilteredMutationOverTimeData({
+            data,
+            overallMutationData,
+            displayedSegments: [],
+            displayedMutationTypes: [],
+            proportionInterval,
+        });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
     });
@@ -103,7 +122,13 @@ describe('getFilteredMutationOverTimeData', () => {
         ]);
         data.set(someSubstitution, someTemporal, { ...someMutationOverTimeValue, proportion: aboveFilter });
 
-        const result = getFilteredMutationOverTimeData(data, overallMutationData, [], [], proportionInterval);
+        const result = getFilteredMutationOverTimeData({
+            data,
+            overallMutationData,
+            displayedSegments: [],
+            displayedMutationTypes: [],
+            proportionInterval,
+        });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
     });
@@ -114,7 +139,13 @@ describe('getFilteredMutationOverTimeData', () => {
             { ...anotherSubstitutionEntry, proportion: inFilter },
             { ...someDeletionEntry, proportion: inFilter },
         ]);
-        const result = getFilteredMutationOverTimeData(data, overallMutationData, [], [], proportionInterval);
+        const result = getFilteredMutationOverTimeData({
+            data,
+            overallMutationData,
+            displayedSegments: [],
+            displayedMutationTypes: [],
+            proportionInterval,
+        });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
     });
@@ -126,9 +157,34 @@ describe('getFilteredMutationOverTimeData', () => {
             { ...someDeletionEntry, proportion: inFilter },
         ]);
 
-        const result = getFilteredMutationOverTimeData(data, overallMutationData, [], [], proportionInterval);
+        const result = getFilteredMutationOverTimeData({
+            data,
+            overallMutationData,
+            displayedSegments: [],
+            displayedMutationTypes: [],
+            proportionInterval,
+        });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
+    });
+
+    it('should filter by displayMutations', () => {
+        const { data, overallMutationData } = prepareMutationOverTimeData([
+            someSubstitutionEntry,
+            anotherSubstitutionEntry,
+            someDeletionEntry,
+        ]);
+
+        const result = getFilteredMutationOverTimeData({
+            data,
+            overallMutationData,
+            displayedSegments: [],
+            displayedMutationTypes: [],
+            proportionInterval,
+            displayMutations: [anotherSubstitution.code, someDeletion.code],
+        });
+
+        expect(result.getFirstAxisKeys()).to.deep.equal([anotherSubstitution, someDeletion]);
     });
 
     const belowFilter = 0.1;
