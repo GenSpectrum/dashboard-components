@@ -28,6 +28,7 @@ const meta: Meta<MutationsOverTimeProps> = {
             control: { type: 'radio' },
         },
         lapisDateField: { control: 'text' },
+        displayMutations: { control: 'object' },
     },
     parameters: {
         fetchMock: {},
@@ -40,15 +41,7 @@ const Template = {
     render: (args: MutationsOverTimeProps) => (
         <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationsOverTime
-                    lapisFilter={args.lapisFilter}
-                    sequenceType={args.sequenceType}
-                    views={args.views}
-                    width={args.width}
-                    height={args.height}
-                    granularity={args.granularity}
-                    lapisDateField={args.lapisDateField}
-                />
+                <MutationsOverTime {...args} />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContextProvider>
     ),
