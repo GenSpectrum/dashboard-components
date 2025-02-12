@@ -9,6 +9,7 @@ import { lapisContext } from './lapis-context';
 import { referenceGenomeContext } from './reference-genome-context';
 import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import { fetchReferenceGenome } from '../lapisApi/lapisApi';
+import { INITIAL_REFERENCE_GENOMES } from '../preact/ReferenceGenomeContext';
 
 const lapisUrlSchema = z.string().url();
 
@@ -43,10 +44,7 @@ export class AppComponent extends LitElement {
      * @internal
      */
     @provide({ context: referenceGenomeContext })
-    referenceGenome: ReferenceGenome = {
-        nucleotideSequences: [],
-        genes: [],
-    };
+    referenceGenome: ReferenceGenome = INITIAL_REFERENCE_GENOMES;
 
     /**
      * @internal

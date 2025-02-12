@@ -4,10 +4,12 @@ import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 
 const UNINITIALIZED_SEQUENCE = '__uninitialized__';
 
-export const ReferenceGenomeContext = createContext<ReferenceGenome>({
+export const INITIAL_REFERENCE_GENOMES = {
     nucleotideSequences: [{ name: UNINITIALIZED_SEQUENCE, sequence: '' }],
     genes: [],
-});
+};
+
+export const ReferenceGenomeContext = createContext<ReferenceGenome>(INITIAL_REFERENCE_GENOMES);
 
 export function isNotInitialized(referenceGenome: ReferenceGenome) {
     return (

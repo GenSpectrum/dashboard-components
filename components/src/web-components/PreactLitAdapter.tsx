@@ -8,7 +8,7 @@ import { lapisContext } from './lapis-context';
 import { referenceGenomeContext } from './reference-genome-context';
 import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import { LapisUrlContextProvider } from '../preact/LapisUrlContext';
-import { ReferenceGenomeContext } from '../preact/ReferenceGenomeContext';
+import { INITIAL_REFERENCE_GENOMES, ReferenceGenomeContext } from '../preact/ReferenceGenomeContext';
 import minMaxPercentSliderCss from '../preact/components/min-max-percent-slider.css?inline';
 import tailwindStyle from '../styles/tailwind.css?inline';
 
@@ -40,10 +40,7 @@ export abstract class PreactLitAdapter extends ReactiveElement {
      * This value will automatically be injected by the parent `gs-app` component.
      */
     @consume({ context: referenceGenomeContext, subscribe: true })
-    referenceGenome: ReferenceGenome = {
-        nucleotideSequences: [],
-        genes: [],
-    };
+    referenceGenome: ReferenceGenome = INITIAL_REFERENCE_GENOMES;
 
     override update(changedProperties: PropertyValues) {
         const vdom = (
