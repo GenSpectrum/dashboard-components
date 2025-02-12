@@ -92,7 +92,7 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
      * The mutations must be provided in the exact format as they would be displayed by the component.
      */
     @property({ type: Array })
-    displayMutations: string[] | undefined | null = null;
+    displayMutations: string[] | undefined = undefined;
 
     override render() {
         return (

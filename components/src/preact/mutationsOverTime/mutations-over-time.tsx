@@ -44,7 +44,7 @@ const mutationOverTimeSchema = z.object({
     views: z.array(mutationsOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
-    displayMutations: displayMutationsSchema,
+    displayMutations: displayMutationsSchema.optional(),
     width: z.string(),
     height: z.string().optional(),
 });
@@ -129,14 +129,14 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     const displayMutations = originalComponentProps.displayMutations;
 
     const filteredData = useMemo(() => {
-        return getFilteredMutationOverTimeData(
-            mutationOverTimeData,
+        return getFilteredMutationOverTimeData({
+            data: mutationOverTimeData,
             overallMutationData,
             displayedSegments,
             displayedMutationTypes,
             proportionInterval,
             displayMutations,
-        );
+        });
     }, [
         mutationOverTimeData,
         overallMutationData,

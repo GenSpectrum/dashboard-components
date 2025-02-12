@@ -7,23 +7,30 @@ import type { Deletion, Substitution } from '../../utils/mutations';
 import type { DisplayedMutationType } from '../components/mutation-type-selector';
 import type { DisplayedSegment } from '../components/segment-selector';
 
-export const displayMutationsSchema = z.array(z.string()).min(1).nullable().optional();
+export const displayMutationsSchema = z.array(z.string()).min(1);
 export type DisplayMutations = z.infer<typeof displayMutationsSchema>;
 
-export function getFilteredMutationOverTimeData(
-    data: MutationOverTimeDataMap,
-    overallMutationData: SubstitutionOrDeletionEntry<Substitution, Deletion>[],
-    displayedSegments: DisplayedSegment[],
-    displayedMutationTypes: DisplayedMutationType[],
-    proportionInterval: { min: number; max: number },
-    displayMutations: DisplayMutations,
-) {
+export type GetFilteredMutationOverTimeDataArgs = {
+    data: MutationOverTimeDataMap;
+    overallMutationData: SubstitutionOrDeletionEntry<Substitution, Deletion>[];
+    displayedSegments: DisplayedSegment[];
+    displayedMutationTypes: DisplayedMutationType[];
+    proportionInterval: { min: number; max: number };
+    displayMutations?: DisplayMutations;
+};
+
+export function getFilteredMutationOverTimeData({
+    data,
+    overallMutationData,
+    displayedSegments,
+    displayedMutationTypes,
+    proportionInterval,
+    displayMutations,
+}: GetFilteredMutationOverTimeDataArgs) {
     const filteredData = new Map2dView(data);
 
     const displayMutationsSet =
-        displayMutations === null || displayMutations === undefined
-            ? null
-            : new Set(displayMutations.map((it) => it.toUpperCase()));
+        displayMutations === undefined ? null : new Set(displayMutations.map((it) => it.toUpperCase()));
 
     const mutationsToFilterOut = overallMutationData.filter((entry) => {
         if (entry.proportion < proportionInterval.min || entry.proportion > proportionInterval.max) {
