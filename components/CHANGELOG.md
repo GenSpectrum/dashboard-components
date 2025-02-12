@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.16.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.16.0...dashboard-components-v0.16.1) (2025-02-12)
+
+
+### Features
+
+* **components:** gs-mutations-over-time: add `displayMutations` attribute to filter the displayed mutations ([#747](https://github.com/GenSpectrum/dashboard-components/issues/747)) ([c6a144f](https://github.com/GenSpectrum/dashboard-components/commit/c6a144f2a685c7bd794ce7188b7a39b68fb9c90b)), closes [#733](https://github.com/GenSpectrum/dashboard-components/issues/733)
+* **components:** gs-mutations-over-time: add `initialMeanProportionInterval` attribute ([#750](https://github.com/GenSpectrum/dashboard-components/issues/750)) ([d40a990](https://github.com/GenSpectrum/dashboard-components/commit/d40a990793c47fc84dc7835c43cfdd7dfb424a01)), closes [#734](https://github.com/GenSpectrum/dashboard-components/issues/734)
+
+
+### Bug Fixes
+
+* **components:** gs-mutations-over-time: hide x-axis labels when there is no data to be displayed ([#749](https://github.com/GenSpectrum/dashboard-components/issues/749)) ([926aec3](https://github.com/GenSpectrum/dashboard-components/commit/926aec3f780ff3bc3a33e308c419dbc8f59858c8)), closes [#748](https://github.com/GenSpectrum/dashboard-components/issues/748)
+* **components:** initialize the reference genomes context with a value that is recognized as "uninitialized" ([#751](https://github.com/GenSpectrum/dashboard-components/issues/751)) ([8735088](https://github.com/GenSpectrum/dashboard-components/commit/873508825915216dabac8b74d306ec5130d94270))
+* **components:** omit attributes that are undefined in code examples ([#739](https://github.com/GenSpectrum/dashboard-components/issues/739)) ([11e2571](https://github.com/GenSpectrum/dashboard-components/commit/11e2571c8c9187b212b5c228c71bb864f016e33b))
+
 ## [0.16.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.15.0...dashboard-components-v0.16.0) (2025-02-12)
 
 
