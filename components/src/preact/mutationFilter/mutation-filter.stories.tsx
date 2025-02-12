@@ -1,4 +1,4 @@
-import { type PreactRenderer, type Meta, type StoryObj } from '@storybook/preact';
+import { type Meta, type PreactRenderer, type StoryObj } from '@storybook/preact';
 import { expect, fireEvent, fn, userEvent, waitFor, within } from '@storybook/test';
 import { type StepFunction } from '@storybook/types';
 
@@ -8,6 +8,7 @@ import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
+import { playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const meta: Meta<MutationFilterProps> = {
     title: 'Input/MutationFilter',
@@ -217,6 +218,21 @@ export const WithInitialValue: StoryObj<MutationFilterProps> = {
             );
         });
     },
+};
+
+export const WithNoReferenceSequencesDefined: StoryObj<MutationFilterProps> = {
+    ...Default,
+    render: (args) => (
+        <LapisUrlContextProvider value={LAPIS_URL}>
+            <ReferenceGenomeContext.Provider value={{ nucleotideSequences: [], genes: [] }}>
+                <MutationFilter {...args} />
+            </ReferenceGenomeContext.Provider>
+        </LapisUrlContextProvider>
+    ),
+    play: playThatExpectsErrorMessage(
+        'Error - No reference sequences available',
+        'This organism has neither nucleotide nor amino acid sequences',
+    ),
 };
 
 async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRenderer, unknown>) {
