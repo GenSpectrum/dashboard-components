@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.16.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.15.0...dashboard-components-v0.16.0) (2025-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** If height is not set, use automatic determined height by content instead of default value.
+
+### Features
+
+* **components:** gs-mutation-filter: show error when the reference genomes are empty ([#743](https://github.com/GenSpectrum/dashboard-components/issues/743)) ([892196a](https://github.com/GenSpectrum/dashboard-components/commit/892196a55390177c87689a17f6d77b7128f3672f)), closes [#704](https://github.com/GenSpectrum/dashboard-components/issues/704)
+* **components:** visualization components: determine height automatically by content height ([e058cb4](https://github.com/GenSpectrum/dashboard-components/commit/e058cb4bd85e05648155547fa6b8bc771dbca5a9)), closes [#381](https://github.com/GenSpectrum/dashboard-components/issues/381)
+
+
+### Bug Fixes
+
+* **components:** gs-sequences-by-location: don't crash table view when there is no data ([#731](https://github.com/GenSpectrum/dashboard-components/issues/731)) ([3ff3ab9](https://github.com/GenSpectrum/dashboard-components/commit/3ff3ab96d0d7abcbb94cfc9de126a075b9ac540c))
+
 ## [0.15.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.14.2...dashboard-components-v0.15.0) (2025-02-10)
 
 
