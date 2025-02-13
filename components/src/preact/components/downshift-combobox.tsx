@@ -2,6 +2,8 @@ import { useCombobox } from 'downshift/preact';
 import { type ComponentChild } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 
+import { DeleteIcon } from '../shared/icons/DeleteIcon';
+
 export function DownshiftCombobox<Item>({
     allItems,
     value,
@@ -109,7 +111,7 @@ export function DownshiftCombobox<Item>({
                         onClick={clearInput}
                         tabIndex={-1}
                     >
-                        ×
+                        <DeleteIcon />
                     </button>
                     <button
                         aria-label='toggle menu'
