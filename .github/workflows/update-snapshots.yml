@@ -1,70 +1,13 @@
-name: Tests
+name: Update Playwright Snapshots
 
-on: [push]
+on:
+  workflow_dispatch:
 
 defaults:
   run:
     working-directory: ./components
 
 jobs:
-  linter:
-    name: Run checks and build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
-
-      - name: Install npm packages
-        run: npm ci
-
-      - name: Generate manifest for type tests
-        run: npm run generate-manifest
-
-      - name: Check format
-        run: npm run check-format
-
-      - name: Check types
-        run: npm run check-types
-
-      - name: Check dependencies
-        run: npm run check-dependencies
-
-      - name: Run linter
-        run: npm run lint
-
-      - name: Build
-        run: npm run build
-
-  unit_tests:
-    name: Run unit tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
-
-      - name: Install npm packages
-        run: npm ci
-
-      - name: Generate manifest for type tests
-        run: npm run generate-manifest
-
-      - name: Run unit test
-        run: npm run test
-
   storybook_tests:
     name: Run storybook tests
     runs-on: ubuntu-latest
@@ -106,28 +49,25 @@ jobs:
       - name: build Storybook
         run: npm run build-storybook -- --quiet
 
-      - name: build Preact Storybook
-        run: npm run build-storybook-preact -- --quiet
-
       - name: Start Storybook server
         run:
           npx http-server storybook-static --port 6006 --silent &
-          npx http-server storybook-static-preact --port 6007 --silent &
-
-      - name: Wait for Preact Storybook server to be ready
-        run: npx wait-on tcp:6007
-
-      - name: Run Preact Storybook tests
-        run: npm run test:storybook:preact
 
       - name: Wait for Storybook server to be ready
         run: npx wait-on tcp:6006
 
-      - name: Run Storybook tests
-        run: npm run test:storybook
-
       - name: Run Playwright tests
-        run: npm run test:playwright
+        run: npm run test:playwright:update-snapshots
+
+      - name: Commit and Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Squash me: Update Playwright snapshots"
+          git push
 
       - name: Upload Test Results
         if: always()

@@ -10,6 +10,7 @@ import { lapisContext } from './lapis-context';
 import { referenceGenomeContext } from './reference-genome-context';
 import { withComponentDocs } from '../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL, REFERENCE_GENOME_ENDPOINT } from '../constants';
+import { type MutationAnnotations, mutationAnnotationsContext } from './mutation-annotations-context';
 import type { ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import referenceGenome from '../lapisApi/__mockData__/referenceGenome.json';
 
@@ -34,18 +35,29 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryObj<{ lapis: string }> = {
+type StoryProps = { lapis: string; mutationAnnotations: MutationAnnotations };
+
+const Template: StoryObj<StoryProps> = {
     render: (args) => {
-        return html` <gs-app lapis="${args.lapis}">
+        return html` <gs-app lapis="${args.lapis}" .mutationAnnotations="${args.mutationAnnotations}">
             <gs-app-display></gs-app-display>
         </gs-app>`;
     },
     args: {
         lapis: LAPIS_URL,
+        mutationAnnotations: [
+            {
+                name: 'I am an annotation!',
+                description: 'This describes what is special about these mutations.',
+                symbol: '*',
+                nucleotideMutations: ['C44T', 'C774T', 'G24872T', 'T23011-'],
+                aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
+            },
+        ],
     },
 };
 
-export const Default: StoryObj<{ lapis: string }> = {
+export const Default: StoryObj<StoryProps> = {
     ...Template,
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
@@ -53,11 +65,12 @@ export const Default: StoryObj<{ lapis: string }> = {
         await waitFor(async () => {
             await expect(canvas.getByText(LAPIS_URL)).toBeVisible();
             await expect(canvas.getByText('"name": "ORF1a",', { exact: false })).toBeVisible();
+            await expect(canvas.getByText('I am an annotation!', { exact: false })).toBeVisible();
         });
     },
 };
 
-export const WithNoLapisUrl: StoryObj<{ lapis: string }> = {
+export const WithNoLapisUrl: StoryObj<StoryProps> = {
     ...Default,
     args: {
         ...Default.args,
@@ -72,7 +85,7 @@ export const WithNoLapisUrl: StoryObj<{ lapis: string }> = {
     },
 };
 
-export const DelayFetchingReferenceGenome: StoryObj<{ lapis: string }> = {
+export const DelayFetchingReferenceGenome: StoryObj<StoryProps> = {
     ...Template,
     parameters: {
         fetchMock: {
@@ -95,7 +108,7 @@ export const DelayFetchingReferenceGenome: StoryObj<{ lapis: string }> = {
     },
 };
 
-export const FailsToFetchReferenceGenome: StoryObj<{ lapis: string }> = {
+export const FailsToFetchReferenceGenome: StoryObj<StoryProps> = {
     ...Template,
     args: {
         lapis: 'https://url.to.lapis-definitely-not-a-valid-url',
@@ -121,6 +134,9 @@ class AppDisplay extends LitElement {
         genes: [],
     };
 
+    @consume({ context: mutationAnnotationsContext, subscribe: true })
+    mutationAnnotations: MutationAnnotations = [];
+
     override render() {
         return html`
             <h1 class="text-xl font-bold">Dummy component</h1>
@@ -132,6 +148,8 @@ class AppDisplay extends LitElement {
             <p>${this.lapis}</p>
             <h2 class="text-lg font-bold">Reference genomes</h2>
             <pre><code>${JSON.stringify(this.referenceGenome, null, 2)}</code></pre>
+            <h2 class="text-lg font-bold">Mutation annotations</h2>
+            <pre><code>${JSON.stringify(this.mutationAnnotations, null, 2)}</code></pre>
         `;
     }
 

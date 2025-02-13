@@ -1,9 +1,12 @@
+import { consume } from '@lit/context';
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
+import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
 import { MutationsOverTime, type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
+import { type MutationAnnotations, mutationAnnotationsContext } from '../mutation-annotations-context';
 
 /**
  * ## Context
@@ -105,19 +108,27 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
     @property({ type: Object })
     initialMeanProportionInterval: { min: number; max: number } = { min: 0.05, max: 0.9 };
 
+    /**
+     * @internal
+     */
+    @consume({ context: mutationAnnotationsContext, subscribe: true })
+    mutationAnnotations: MutationAnnotations = [];
+
     override render() {
         return (
-            <MutationsOverTime
-                lapisFilter={this.lapisFilter}
-                sequenceType={this.sequenceType}
-                views={this.views}
-                width={this.width}
-                height={this.height}
-                granularity={this.granularity}
-                lapisDateField={this.lapisDateField}
-                displayMutations={this.displayMutations}
-                initialMeanProportionInterval={this.initialMeanProportionInterval}
-            />
+            <MutationAnnotationsContextProvider value={this.mutationAnnotations}>
+                <MutationsOverTime
+                    lapisFilter={this.lapisFilter}
+                    sequenceType={this.sequenceType}
+                    views={this.views}
+                    width={this.width}
+                    height={this.height}
+                    granularity={this.granularity}
+                    lapisDateField={this.lapisDateField}
+                    displayMutations={this.displayMutations}
+                    initialMeanProportionInterval={this.initialMeanProportionInterval}
+                />
+            </MutationAnnotationsContextProvider>
         );
     }
 }

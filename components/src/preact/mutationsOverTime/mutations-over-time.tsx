@@ -161,7 +161,13 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             case 'grid':
                 return {
                     title: 'Grid',
-                    content: <MutationsOverTimeGrid data={filteredData} colorScale={colorScale} />,
+                    content: (
+                        <MutationsOverTimeGrid
+                            data={filteredData}
+                            colorScale={colorScale}
+                            sequenceType={originalComponentProps.sequenceType}
+                        />
+                    ),
                 };
         }
     };
