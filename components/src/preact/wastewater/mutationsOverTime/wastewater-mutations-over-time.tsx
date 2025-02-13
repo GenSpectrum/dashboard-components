@@ -57,7 +57,7 @@ export const WastewaterMutationsOverTimeInner: FunctionComponent<WastewaterMutat
                 componentProps.lapisFilter,
                 componentProps.sequenceType,
             ),
-        [],
+        [componentProps.lapisFilter, componentProps.sequenceType],
     );
 
     if (isLoading) {
