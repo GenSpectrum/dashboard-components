@@ -1,12 +1,15 @@
+import { consume } from '@lit/context';
 import { customElement, property } from 'lit/decorators.js';
 import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
+import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
 import {
     WastewaterMutationsOverTime,
     type WastewaterMutationsOverTimeProps,
 } from '../../preact/wastewater/mutationsOverTime/wastewater-mutations-over-time';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
+import { type MutationAnnotations, mutationAnnotationsContext } from '../mutation-annotations-context';
 
 /**
  * ## Context
@@ -71,15 +74,23 @@ export class WastewaterMutationsOverTimeComponent extends PreactLitAdapterWithGr
     @property({ type: Number })
     maxNumberOfGridRows: number = 100;
 
+    /**
+     * @internal
+     */
+    @consume({ context: mutationAnnotationsContext, subscribe: true })
+    mutationAnnotations: MutationAnnotations = [];
+
     override render() {
         return (
-            <WastewaterMutationsOverTime
-                lapisFilter={this.lapisFilter}
-                sequenceType={this.sequenceType}
-                width={this.width}
-                height={this.height}
-                maxNumberOfGridRows={this.maxNumberOfGridRows}
-            />
+            <MutationAnnotationsContextProvider value={this.mutationAnnotations}>
+                <WastewaterMutationsOverTime
+                    lapisFilter={this.lapisFilter}
+                    sequenceType={this.sequenceType}
+                    width={this.width}
+                    height={this.height}
+                    maxNumberOfGridRows={this.maxNumberOfGridRows}
+                />
+            </MutationAnnotationsContextProvider>
         );
     }
 }

@@ -5,6 +5,7 @@ import { MutationsOverTime, type MutationsOverTimeProps } from './mutations-over
 import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
+import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
@@ -38,13 +39,32 @@ const meta: Meta<MutationsOverTimeProps> = {
 
 export default meta;
 
+const mutationAnnotations = [
+    {
+        name: 'I am a mutation annotation!',
+        description: 'This describes what is special about these mutations.',
+        symbol: '🞯',
+        nucleotideMutations: ['C44T', 'C774T', 'G24872T', 'T23011-'],
+        aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
+    },
+    {
+        name: 'I am another mutation annotation!',
+        description: 'This describes what is special about these other mutations.',
+        symbol: '+',
+        nucleotideMutations: ['C44T', 'A13121T'],
+        aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
+    },
+];
+
 export const Default: StoryObj<MutationsOverTimeProps> = {
     render: (args: MutationsOverTimeProps) => (
-        <LapisUrlContextProvider value={LAPIS_URL}>
-            <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationsOverTime {...args} />
-            </ReferenceGenomeContext.Provider>
-        </LapisUrlContextProvider>
+        <MutationAnnotationsContextProvider value={mutationAnnotations}>
+            <LapisUrlContextProvider value={LAPIS_URL}>
+                <ReferenceGenomeContext.Provider value={referenceGenome}>
+                    <MutationsOverTime {...args} />
+                </ReferenceGenomeContext.Provider>
+            </LapisUrlContextProvider>
+        </MutationAnnotationsContextProvider>
     ),
     args: {
         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
@@ -54,6 +74,15 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
         granularity: 'month',
         lapisDateField: 'date',
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
+    },
+    play: async ({ canvas }) => {
+        await waitFor(async () => {
+            const annotatedMutation = canvas.getAllByText('C44T')[0];
+            await expect(annotatedMutation).toBeVisible();
+            await userEvent.click(annotatedMutation);
+        });
+
+        await waitFor(() => expect(canvas.getByText('Annotations for C44T')).toBeVisible());
     },
 };
 

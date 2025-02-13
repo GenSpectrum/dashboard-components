@@ -64,9 +64,26 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
 
 export default meta;
 
+const mutationAnnotations = [
+    {
+        name: 'I am a mutation annotation!',
+        description: 'This describes what is special about these mutations.',
+        symbol: '🞯',
+        nucleotideMutations: ['C44T', 'C774T', 'G24872T', 'T23011-'],
+        aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
+    },
+    {
+        name: 'I am another mutation annotation!',
+        description: 'This describes what is special about these other mutations.',
+        symbol: '+',
+        nucleotideMutations: ['C44T', 'A13121T'],
+        aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
+    },
+];
+
 const Template: StoryObj<Required<MutationsOverTimeProps>> = {
     render: (args) => html`
-        <gs-app lapis="${LAPIS_URL}">
+        <gs-app lapis="${LAPIS_URL}" .mutationAnnotations=${mutationAnnotations}>
             <gs-mutations-over-time
                 .lapisFilter=${args.lapisFilter}
                 .sequenceType=${args.sequenceType}

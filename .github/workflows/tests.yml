@@ -22,7 +22,10 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
 
       - name: Install npm packages
-        run: npm ci && npm run generate-manifest
+        run: npm ci
+
+      - name: Generate manifest for type tests
+        run: npm run generate-manifest
 
       - name: Check format
         run: npm run check-format
@@ -55,6 +58,9 @@ jobs:
 
       - name: Install npm packages
         run: npm ci
+
+      - name: Generate manifest for type tests
+        run: npm run generate-manifest
 
       - name: Run unit test
         run: npm run test

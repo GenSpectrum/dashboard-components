@@ -1,30 +1,23 @@
 import { type FunctionComponent } from 'preact';
 
-import { Modal, useModalRef } from './modal';
+import { ModalButton } from './modal';
 
 const Info: FunctionComponent = ({ children }) => {
-    const modalRef = useModalRef();
-
-    const toggleHelp = () => {
-        modalRef.current?.showModal();
-    };
-
     return (
         <div className='relative'>
-            <button type='button' className='btn btn-xs' onClick={toggleHelp}>
+            <ModalButton buttonClass='btn btn-xs' modalContent={children}>
                 ?
-            </button>
-            <Modal modalRef={modalRef}>{children}</Modal>
+            </ModalButton>
         </div>
     );
 };
 
 export const InfoHeadline1: FunctionComponent = ({ children }) => {
-    return <h1 className='text-lg font-bold'>{children}</h1>;
+    return <h1 className='text-justify text-lg font-bold'>{children}</h1>;
 };
 
 export const InfoHeadline2: FunctionComponent = ({ children }) => {
-    return <h2 className='text-base font-bold mt-4'>{children}</h2>;
+    return <h2 className='text-justify text-base font-bold mt-4'>{children}</h2>;
 };
 
 export const InfoParagraph: FunctionComponent = ({ children }) => {

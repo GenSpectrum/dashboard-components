@@ -52,9 +52,19 @@ const meta: Meta<WastewaterMutationsOverTimeProps & { infoText: string }> = {
 
 export default meta;
 
+const mutationAnnotations = [
+    {
+        name: 'I am an annotation!',
+        description: 'This describes what is special about these mutations.',
+        symbol: '*',
+        nucleotideMutations: ['C3422A', 'G6661A', 'G7731A'],
+        aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
+    },
+];
+
 export const WastewaterMutationsOverTime: StoryObj<WastewaterMutationsOverTimeProps & { infoText: string }> = {
     render: (args) => html`
-        <gs-app lapis="${WISE_LAPIS_URL}">
+        <gs-app lapis="${WISE_LAPIS_URL}" .mutationAnnotations=${mutationAnnotations}>
             <gs-wastewater-mutations-over-time
                 .lapisFilter=${args.lapisFilter}
                 .sequenceType=${args.sequenceType}
