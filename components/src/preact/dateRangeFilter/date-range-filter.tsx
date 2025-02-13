@@ -11,7 +11,7 @@ import {
     type DateRangeValue,
     dateRangeValueSchema,
 } from './dateRangeOption';
-import { DownshiftCombobox } from '../components/downshift-combobox';
+import { ClearableSelect } from '../components/clearable-select';
 import { ErrorBoundary } from '../components/error-boundary';
 
 const customOption = 'Custom';
@@ -79,29 +79,6 @@ export const DateRangeFilterInner = ({
         setComboboxValue(getInitialComboboxValue());
     }, [getInitialComboboxValue, initialValues]);
 
-    const fireFilterChangedEvent = ({
-        dateFrom,
-        dateTo,
-        lapisDateField,
-    }: {
-        dateFrom: Date | undefined;
-        dateTo: Date | undefined;
-        lapisDateField: string;
-    }) => {
-        const detail = {
-            ...(dateFrom !== undefined && { [`${lapisDateField}From`]: toYYYYMMDD(dateFrom) }),
-            ...(dateTo !== undefined && { [`${lapisDateField}To`]: toYYYYMMDD(dateTo) }),
-        };
-
-        divRef.current?.dispatchEvent(
-            new CustomEvent('gs-date-range-filter-changed', {
-                detail,
-                bubbles: true,
-                composed: true,
-            }),
-        );
-    };
-
     const customComboboxValue = { label: customOption };
 
     const onSelectChange = (option: DateRangeOption | null) => {
@@ -114,6 +91,16 @@ export const DateRangeFilterInner = ({
         setDateToValue(dateTo);
 
         fireFilterChangedEvent({ dateFrom, dateTo, lapisDateField });
+
+        const eventDetail =
+            option?.label === customOption
+                ? {
+                      dateFrom: dateFrom !== undefined ? toYYYYMMDD(dateFrom) : undefined,
+                      dateTo: dateTo !== undefined ? toYYYYMMDD(dateTo) : undefined,
+                  }
+                : option?.label;
+
+        fireOptionChangedEvent(eventDetail);
     };
 
     function getFromDate(option: DateRangeOption | null, earliestDate: string) {
@@ -166,36 +153,48 @@ export const DateRangeFilterInner = ({
         });
     };
 
+    const fireFilterChangedEvent = ({
+        dateFrom,
+        dateTo,
+        lapisDateField,
+    }: {
+        dateFrom: Date | undefined;
+        dateTo: Date | undefined;
+        lapisDateField: string;
+    }) => {
+        const detail = {
+            ...(dateFrom !== undefined && { [`${lapisDateField}From`]: toYYYYMMDD(dateFrom) }),
+            ...(dateTo !== undefined && { [`${lapisDateField}To`]: toYYYYMMDD(dateTo) }),
+        };
+
+        divRef.current?.dispatchEvent(
+            new CustomEvent('gs-date-range-filter-changed', {
+                detail,
+                bubbles: true,
+                composed: true,
+            }),
+        );
+    };
+
     const fireOptionChangedEvent = (option: DateRangeValue) => {
         divRef.current?.dispatchEvent(new DateRangeOptionChangedEvent(option));
     };
+
+    const allDateRangeOptions = [...dateRangeOptions, customComboboxValue];
 
     return (
         <div className={'@container'} ref={divRef}>
             <div className='flex min-w-[7.5rem] flex-col @md:flex-row'>
                 <div className='flex-grow'>
-                    <DownshiftCombobox
-                        allItems={[...dateRangeOptions, customComboboxValue]}
-                        filterItemsByInputValue={filterByInputValue}
-                        createEvent={(item: DateRangeOption | null) => {
-                            onSelectChange(item);
-                            const eventDetail =
-                                item?.label === customOption
-                                    ? {
-                                          dateFrom: item?.dateFrom,
-                                          dateTo: item?.dateTo,
-                                      }
-                                    : item?.label;
-
-                            return new DateRangeOptionChangedEvent(eventDetail);
-                        }}
-                        itemToString={(item: DateRangeOption | undefined | null) => {
-                            return item?.label ?? '';
-                        }}
-                        formatItemInList={(item: DateRangeOption) => item.label}
+                    <ClearableSelect
+                        items={allDateRangeOptions.map((item) => item.label)}
                         placeholderText={'Select a date range'}
-                        value={comboboxValue}
-                        inputClassName={'rounded-t-md rounded-b-none @md:rounded-l-md @md:rounded-r-none'}
+                        onChange={(value) => {
+                            const dateRangeOption = allDateRangeOptions.find((item) => item.label === value);
+                            onSelectChange(dateRangeOption ?? null);
+                        }}
+                        value={comboboxValue?.label ?? null}
+                        selectClassName={'rounded-t-md rounded-b-none @md:rounded-l-md @md:rounded-r-none'}
                     />
                 </div>
                 <div className={'flex flex-grow flex-col @4xs:flex-row'}>
@@ -224,10 +223,3 @@ export const DateRangeFilterInner = ({
         </div>
     );
 };
-
-function filterByInputValue(item: DateRangeOption, inputValue: string) {
-    if (inputValue === undefined || inputValue === null || inputValue === '') {
-        return true;
-    }
-    return item?.label.toLowerCase().includes(inputValue?.toLowerCase() || '');
-}

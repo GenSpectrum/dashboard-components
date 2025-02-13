@@ -5,6 +5,7 @@ import { html } from 'lit';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
+import { expectOptionSelected } from '../../preact/components/clearable-select.stories';
 import { type DateRangeFilterProps } from '../../preact/dateRangeFilter/date-range-filter';
 import './gs-date-range-filter';
 import '../gs-app';
@@ -110,7 +111,7 @@ export const TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression: StoryOb
         const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-filter');
 
         await waitFor(async () => {
-            await expect(selectField(canvas)).toHaveValue('Last month');
+            await expectOptionSelected(canvas, 'Last month');
         });
     },
     argTypes: {
@@ -150,14 +151,16 @@ export const FiresEvents: StoryObj<Required<DateRangeFilterProps>> = {
         });
 
         await step('Expect last 6 months to be selected', async () => {
-            await expect(selectField(canvas)).toHaveValue('Last month');
+            await waitFor(async () => {
+                await expectOptionSelected(canvas, 'Last month');
+            });
             await waitFor(async () => {
                 await expect(dateToPicker(canvas)).toHaveValue(toYYYYMMDD(new Date()));
             });
         });
 
         await step('Expect event to be fired when selecting a different value', async () => {
-            await userEvent.type(selectField(canvas), '{backspace>12}');
+            await userEvent.selectOptions(selectField(canvas), 'CustomDateRange');
             await userEvent.click(canvas.getByText('CustomDateRange'));
 
             await waitFor(async () => {
