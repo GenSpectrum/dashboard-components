@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.16.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.16.1...dashboard-components-v0.16.2) (2025-02-17)
+
+
+### Bug Fixes
+
+* **components:** gs-wastewater-mutations-over-times: update when props change ([#754](https://github.com/GenSpectrum/dashboard-components/issues/754)) ([e2c4662](https://github.com/GenSpectrum/dashboard-components/commit/e2c4662e70062c8f296d2f90f2517f685df1b951))
+* **components:** make sure to render the downshift combobox with the correct items ([#757](https://github.com/GenSpectrum/dashboard-components/issues/757)) ([41bfc0b](https://github.com/GenSpectrum/dashboard-components/commit/41bfc0b70d80e6743855cf5fecc0993656377d4f))
+
 ## [0.16.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.16.0...dashboard-components-v0.16.1) (2025-02-12)
 
 
