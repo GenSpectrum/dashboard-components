@@ -257,6 +257,12 @@ const MutationsOverTimeInfo: FunctionComponent<MutationsOverTimeInfoProps> = ({ 
                 organism has multiple segments/genes), and applying a filter based on the proportion of the mutation's
                 occurrence over the entire time range.
             </InfoParagraph>
+            <InfoParagraph>
+                The grid cells have a tooltip that will show more detailed information. It shows the count of samples
+                that have the mutation and the count of samples with coverage (i.e. a non-ambiguous read) in this
+                timeframe. Ambiguous reads are excluded when calculating the proportion. It also shows the total count
+                of samples in this timeframe.
+            </InfoParagraph>
             <InfoComponentCode componentName='mutations-over-time' params={originalComponentProps} lapisUrl={lapis} />
         </Info>
     );
