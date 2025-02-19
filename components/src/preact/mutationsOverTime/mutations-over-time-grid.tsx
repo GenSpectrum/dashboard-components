@@ -141,9 +141,12 @@ const ProportionCell: FunctionComponent<{
                 <>
                     <p>Proportion: {formatProportion(value.proportion)}</p>
                     {value.count !== null && value.totalCount !== null && (
-                        <p>
-                            Count: {value.count} / {value.totalCount} total
-                        </p>
+                        <>
+                            <p>
+                                {value.count} / {totalCountWithCoverage(value.count, value.proportion)} with coverage
+                            </p>
+                            <p>{value.totalCount} in timeframe</p>
+                        </>
                     )}
                 </>
             )}
@@ -168,6 +171,13 @@ const ProportionCell: FunctionComponent<{
         </div>
     );
 };
+
+function totalCountWithCoverage(count: number, proportion: number) {
+    if (count === 0) {
+        return 0;
+    }
+    return Math.round(count / proportion);
+}
 
 const timeIntervalDisplay = (date: TemporalClass) => {
     if (date instanceof YearMonthDayClass) {
