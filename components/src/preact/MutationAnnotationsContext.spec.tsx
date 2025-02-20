@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/preact';
 import { type FunctionalComponent } from 'preact';
 import { describe, expect, it } from 'vitest';
 
-import { MutationAnnotationsContextProvider, useMutationAnnotation } from './MutationAnnotationsContext';
+import { MutationAnnotationsContextProvider, useMutationAnnotationsProvider } from './MutationAnnotationsContext';
 import { type MutationAnnotations } from '../web-components/mutation-annotations-context';
 
 describe('useMutationAnnotation', () => {
@@ -27,27 +27,32 @@ describe('useMutationAnnotation', () => {
         <MutationAnnotationsContextProvider value={mockAnnotations}>{children}</MutationAnnotationsContextProvider>
     );
 
-    it('should return the correct annotation for a given nucleotide mutation', () => {
-        const { result } = renderHook(() => useMutationAnnotation('A123', 'nucleotide'), { wrapper });
+    function renderAnnotationsHook() {
+        const { result } = renderHook(() => useMutationAnnotationsProvider(), { wrapper });
+        return result.current;
+    }
 
-        expect(result.current).toEqual([mockAnnotations[0]]);
+    it('should return the correct annotation for a given nucleotide mutation', () => {
+        const result = renderAnnotationsHook()('A123', 'nucleotide');
+
+        expect(result).toEqual([mockAnnotations[0]]);
     });
 
     it('should return the correct annotations if multiple contain a mutation', () => {
-        const { result } = renderHook(() => useMutationAnnotation('A456', 'nucleotide'), { wrapper });
+        const result = renderAnnotationsHook()('A456', 'nucleotide');
 
-        expect(result.current).toEqual([mockAnnotations[0], mockAnnotations[1]]);
+        expect(result).toEqual([mockAnnotations[0], mockAnnotations[1]]);
     });
 
     it('should return undefined for a non-existent mutation code', () => {
-        const { result } = renderHook(() => useMutationAnnotation('NON_EXISTENT', 'nucleotide'), { wrapper });
+        const result = renderAnnotationsHook()('NON_EXISTENT', 'nucleotide');
 
-        expect(result.current).toBeUndefined();
+        expect(result).toBeUndefined();
     });
 
     it('should return the correct mutation annotation for amino acid mutations', () => {
-        const { result } = renderHook(() => useMutationAnnotation('B456', 'amino acid'), { wrapper });
+        const result = renderAnnotationsHook()('B456', 'amino acid');
 
-        expect(result.current).toEqual([mockAnnotations[1]]);
+        expect(result).toEqual([mockAnnotations[1]]);
     });
 });

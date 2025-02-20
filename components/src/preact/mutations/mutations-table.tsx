@@ -2,8 +2,10 @@ import { type FunctionComponent } from 'preact';
 import { useMemo } from 'preact/hooks';
 
 import { getMutationsTableData } from './getMutationsTableData';
-import { type SubstitutionOrDeletionEntry } from '../../types';
+import { type SequenceType, type SubstitutionOrDeletionEntry } from '../../types';
 import { type DeletionClass, type SubstitutionClass } from '../../utils/mutations';
+import { useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
+import { GridJsAnnotatedMutation } from '../components/annotated-mutation';
 import type { ProportionInterval } from '../components/proportion-selector';
 import { Table } from '../components/table';
 import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
@@ -15,6 +17,7 @@ export interface MutationsTableProps {
     overallVariantCount: number;
     proportionInterval: ProportionInterval;
     pageSize: boolean | number;
+    sequenceType: SequenceType;
 }
 
 const MutationsTable: FunctionComponent<MutationsTableProps> = ({
@@ -23,7 +26,10 @@ const MutationsTable: FunctionComponent<MutationsTableProps> = ({
     overallVariantCount,
     proportionInterval,
     pageSize,
+    sequenceType,
 }) => {
+    const annotationsProvider = useMutationAnnotationsProvider();
+
     const headers = [
         {
             name: 'Mutation',
@@ -32,7 +38,13 @@ const MutationsTable: FunctionComponent<MutationsTableProps> = ({
                     return sortSubstitutionsAndDeletions(a, b);
                 },
             },
-            formatter: (cell: SubstitutionClass | DeletionClass) => cell.toString(),
+            formatter: (cell: SubstitutionClass | DeletionClass) => (
+                <GridJsAnnotatedMutation
+                    mutation={cell}
+                    sequenceType={sequenceType}
+                    annotationsProvider={annotationsProvider}
+                />
+            ),
         },
         {
             name: 'Type',

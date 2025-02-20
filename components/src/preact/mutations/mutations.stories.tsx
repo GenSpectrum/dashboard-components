@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, waitFor, within } from '@storybook/test';
+import { expect, userEvent, waitFor, within } from '@storybook/test';
 
 import nucleotideInsertions from './__mockData__/nucleotideInsertions.json';
 import nucleotideMutations from './__mockData__/nucleotideMutations.json';
@@ -14,6 +14,7 @@ import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import baselineNucleotideMutations from '../../preact/mutations/__mockData__/baselineNucleotideMutations.json';
 import overallVariantCount from '../../preact/mutations/__mockData__/overallVariantCount.json';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
+import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 
 const meta: Meta<MutationsProps> = {
@@ -37,11 +38,30 @@ const meta: Meta<MutationsProps> = {
 
 export default meta;
 
+const mutationAnnotations = [
+    {
+        name: 'I am a mutation annotation!',
+        description: 'This describes what is special about these mutations.',
+        symbol: '#',
+        nucleotideMutations: ['C241T', 'C3037T'],
+        aminoAcidMutations: ['N:G204R', 'N:S235F'],
+    },
+    {
+        name: 'I am another mutation annotation!',
+        description: 'This describes what is special about these other mutations.',
+        symbol: '+',
+        nucleotideMutations: ['C3037T', 'C11750T'],
+        aminoAcidMutations: ['ORF1a:S2255F'],
+    },
+];
+
 const Template = {
     render: (args: MutationsProps) => (
         <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <Mutations {...args} />
+                <MutationAnnotationsContextProvider value={mutationAnnotations}>
+                    <Mutations {...args} />
+                </MutationAnnotationsContextProvider>
             </ReferenceGenomeContext.Provider>
         </LapisUrlContextProvider>
     ),
@@ -135,5 +155,23 @@ export const GridTab: StoryObj<MutationsProps> = {
             await waitFor(() => expect(mutationAboveThreshold()[0]).toBeVisible());
             await waitFor(() => expect(mutationBelowThreshold()[0]).toBeVisible());
         });
+    },
+};
+
+export const TableTab: StoryObj<MutationsProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        views: ['table'],
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(async () => {
+            const annotatedMutation = canvas.getByText('C241T');
+            await expect(annotatedMutation).toBeVisible();
+            await userEvent.click(annotatedMutation);
+        });
+        await waitFor(() => expect(canvas.getByText('Annotations for C241T')).toBeVisible());
     },
 };
