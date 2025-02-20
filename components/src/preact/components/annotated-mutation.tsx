@@ -4,7 +4,7 @@ import type { SequenceType } from '../../types';
 import type { Deletion, Substitution } from '../../utils/mutations';
 import { useMutationAnnotation } from '../MutationAnnotationsContext';
 import { InfoHeadline1, InfoHeadline2, InfoParagraph } from './info';
-import { ModalButton } from './modal';
+import { Modal } from './modal';
 
 export type AnnotatedMutationProps = {
     mutation: Substitution | Deletion;
@@ -31,7 +31,7 @@ export const AnnotatedMutation: FunctionComponent<AnnotatedMutationProps> = ({ m
     );
 
     return (
-        <ModalButton modalContent={modalContent}>
+        <Modal modalContent={modalContent}>
             {mutation.code}
             <sup>
                 {mutationAnnotations
@@ -43,6 +43,6 @@ export const AnnotatedMutation: FunctionComponent<AnnotatedMutationProps> = ({ m
                         </Fragment>
                     ))}
             </sup>
-        </ModalButton>
+        </Modal>
     );
 };

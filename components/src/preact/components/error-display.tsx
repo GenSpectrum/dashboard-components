@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'preact/hooks';
 import { type ZodError } from 'zod';
 
 import { InfoHeadline1, InfoParagraph } from './info';
-import { Modal, useModalRef } from './modal';
+import { Modal } from './modal';
 import { LapisError, UnknownLapisError } from '../../lapisApi/lapisApi';
 
 export const GS_ERROR_EVENT_TYPE = 'gs-error';
@@ -48,7 +48,6 @@ export const ErrorDisplay: FunctionComponent<ErrorDisplayProps> = ({ error, rese
     console.error(error);
 
     const containerRef = useRef<HTMLInputElement>(null);
-    const modalRef = useModalRef();
 
     useEffect(() => {
         containerRef.current?.dispatchEvent(new ErrorEvent(error));
@@ -68,15 +67,16 @@ export const ErrorDisplay: FunctionComponent<ErrorDisplayProps> = ({ error, rese
                     {details !== undefined && (
                         <>
                             {' '}
-                            <button
-                                className='underline hover:text-gray-400'
-                                onClick={() => modalRef.current?.showModal()}
+                            <Modal
+                                buttonClassName='underline hover:text-gray-400'
+                                modalContent={
+                                    <>
+                                        <InfoHeadline1>{details.headline}</InfoHeadline1>
+                                        <InfoParagraph>{details.message}</InfoParagraph>
+                                    </>
+                                }
                             >
                                 Show details.
-                            </button>
-                            <Modal modalRef={modalRef}>
-                                <InfoHeadline1>{details.headline}</InfoHeadline1>
-                                <InfoParagraph>{details.message}</InfoParagraph>
                             </Modal>
                         </>
                     )}
