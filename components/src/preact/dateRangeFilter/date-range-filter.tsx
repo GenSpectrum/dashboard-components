@@ -1,14 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
-import { DatePicker } from './DatePicker';
 import { computeInitialValues } from './computeInitialValues';
+import { DatePicker } from './date-picker';
 import { toYYYYMMDD } from './dateConversion';
 import {
     type DateRangeOption,
     DateRangeOptionChangedEvent,
     dateRangeOptionSchema,
-    type DateRangeValue,
     dateRangeValueSchema,
 } from './dateRangeOption';
 import { ClearableSelect } from '../components/clearable-select';
@@ -56,51 +55,53 @@ export const DateRangeFilterInner = ({
 
     const divRef = useRef<HTMLDivElement>(null);
 
-    const getInitialComboboxValue = useCallback(() => {
+    const getInitialState = useCallback(() => {
         if (!initialValues) {
             return null;
         }
         return initialValues.initialSelectedDateRange
             ? {
                   label: initialValues.initialSelectedDateRange,
-                  dateFrom: toYYYYMMDD(initialValues.initialSelectedDateFrom),
-                  dateTo: toYYYYMMDD(initialValues.initialSelectedDateTo),
+                  dateFrom: initialValues.initialSelectedDateFrom,
+                  dateTo: initialValues.initialSelectedDateTo,
               }
             : { label: customOption };
     }, [initialValues]);
 
-    const [comboboxValue, setComboboxValue] = useState<DateRangeOption | null>(getInitialComboboxValue());
-    const [dateFromValue, setDateFromValue] = useState(initialValues?.initialSelectedDateFrom);
-    const [dateToValue, setDateToValue] = useState(initialValues?.initialSelectedDateTo);
+    const [state, setState] = useState<{
+        label: string;
+        dateFrom?: Date;
+        dateTo?: Date;
+    } | null>(getInitialState());
+
+    function updateState(
+        newState: {
+            label: string;
+            dateFrom?: Date;
+            dateTo?: Date;
+        } | null,
+    ) {
+        setState(newState);
+        fireFilterChangedEvent({ dateFrom: newState?.dateFrom, dateTo: newState?.dateTo, lapisDateField });
+        fireOptionChangedEvent(newState);
+    }
 
     useEffect(() => {
-        setDateFromValue(initialValues?.initialSelectedDateFrom);
-        setDateToValue(initialValues?.initialSelectedDateTo);
-        setComboboxValue(getInitialComboboxValue());
-    }, [getInitialComboboxValue, initialValues]);
+        setState(getInitialState());
+    }, [getInitialState]);
 
     const customComboboxValue = { label: customOption };
 
     const onSelectChange = (option: DateRangeOption | null) => {
-        setComboboxValue(option);
-
-        const dateFrom = getFromDate(option, earliestDate);
-        const dateTo = getToDate(option);
-
-        setDateFromValue(dateFrom);
-        setDateToValue(dateTo);
-
-        fireFilterChangedEvent({ dateFrom, dateTo, lapisDateField });
-
-        const eventDetail =
-            option?.label === customOption
+        updateState(
+            option !== null
                 ? {
-                      dateFrom: dateFrom !== undefined ? toYYYYMMDD(dateFrom) : undefined,
-                      dateTo: dateTo !== undefined ? toYYYYMMDD(dateTo) : undefined,
+                      label: option?.label,
+                      dateFrom: getFromDate(option, earliestDate),
+                      dateTo: getToDate(option),
                   }
-                : option?.label;
-
-        fireOptionChangedEvent(eventDetail);
+                : null,
+        );
     };
 
     function getFromDate(option: DateRangeOption | null, earliestDate: string) {
@@ -122,34 +123,26 @@ export const DateRangeFilterInner = ({
     }
 
     const onChangeDateFrom = (date: Date | undefined) => {
-        if (date?.toDateString() === dateFromValue?.toDateString()) {
+        if (date?.toDateString() === state?.dateFrom?.toDateString()) {
             return;
         }
 
-        setDateFromValue(date);
-        setComboboxValue(customComboboxValue);
-
-        fireFilterChangedEvent({ dateFrom: date, dateTo: dateToValue, lapisDateField });
-
-        fireOptionChangedEvent({
-            dateFrom: date !== undefined ? toYYYYMMDD(date) : undefined,
-            dateTo: dateToValue !== undefined ? toYYYYMMDD(dateToValue) : undefined,
+        updateState({
+            label: customOption,
+            dateFrom: date,
+            dateTo: state?.dateTo,
         });
     };
 
     const onChangeDateTo = (date: Date | undefined) => {
-        if (date?.toDateString() === dateToValue?.toDateString()) {
+        if (date?.toDateString() === state?.dateTo?.toDateString()) {
             return;
         }
 
-        setDateToValue(date);
-        setComboboxValue(customComboboxValue);
-
-        fireFilterChangedEvent({ dateFrom: dateFromValue, dateTo: date, lapisDateField });
-
-        fireOptionChangedEvent({
-            dateFrom: dateFromValue !== undefined ? toYYYYMMDD(dateFromValue) : undefined,
-            dateTo: date !== undefined ? toYYYYMMDD(date) : undefined,
+        updateState({
+            label: customOption,
+            dateFrom: state?.dateFrom,
+            dateTo: date,
         });
     };
 
@@ -176,8 +169,22 @@ export const DateRangeFilterInner = ({
         );
     };
 
-    const fireOptionChangedEvent = (option: DateRangeValue) => {
-        divRef.current?.dispatchEvent(new DateRangeOptionChangedEvent(option));
+    const fireOptionChangedEvent = (
+        state: {
+            label: string;
+            dateFrom?: Date;
+            dateTo?: Date;
+        } | null,
+    ) => {
+        const eventDetail =
+            state?.label === customOption
+                ? {
+                      dateFrom: state.dateFrom !== undefined ? toYYYYMMDD(state.dateFrom) : undefined,
+                      dateTo: state.dateTo !== undefined ? toYYYYMMDD(state.dateTo) : undefined,
+                  }
+                : state?.label;
+
+        divRef.current?.dispatchEvent(new DateRangeOptionChangedEvent(eventDetail));
     };
 
     const allDateRangeOptions = [...dateRangeOptions, customComboboxValue];
@@ -193,25 +200,25 @@ export const DateRangeFilterInner = ({
                             const dateRangeOption = allDateRangeOptions.find((item) => item.label === value);
                             onSelectChange(dateRangeOption ?? null);
                         }}
-                        value={comboboxValue?.label ?? null}
+                        value={state?.label ?? null}
                         selectClassName={'rounded-t-md rounded-b-none @md:rounded-l-md @md:rounded-r-none'}
                     />
                 </div>
                 <div className={'flex flex-grow flex-col @4xs:flex-row'}>
                     <DatePicker
                         className={'flex-grow min-w-[7.5rem] @4xs:rounded-bl-md @md:rounded-l-none rounded-none'}
-                        value={dateFromValue}
+                        value={state?.dateFrom}
                         onChange={onChangeDateFrom}
-                        maxDate={dateToValue}
+                        maxDate={state?.dateTo}
                         placeholderText={'Date from'}
                     />
                     <DatePicker
                         className={
                             'flex-grow min-w-[7.5rem] rounded-b-md rounded-t-none @4xs:rounded-tr-none @4xs:rounded-l-none @md:rounded-r-md '
                         }
-                        value={dateToValue}
+                        value={state?.dateTo}
                         onChange={onChangeDateTo}
-                        minDate={dateFromValue}
+                        minDate={state?.dateFrom}
                         placeholderText={'Date to'}
                     />
                 </div>
