@@ -1,7 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, fn, userEvent, within } from '@storybook/test';
+import { fn, userEvent, within } from '@storybook/test';
 
 import { ClearableSelect, type ClearableSelectProps } from './clearable-select';
+import { expectOptionSelected } from '../shared/stories/expectOptionSelected';
 
 const meta: Meta<ClearableSelectProps> = {
     title: 'Component/ClearableSelect',
@@ -22,10 +23,8 @@ export const Default: StoryObj<ClearableSelectProps> = {
         onChange: fn(),
     },
     play: async ({ canvasElement, step }) => {
-        const canvas = within(canvasElement);
-
         await step('Show default placeholder', async () => {
-            await expectOptionSelected(canvas, 'Select an option');
+            await expectOptionSelected(canvasElement, 'Select an option');
         });
     },
 };
@@ -37,10 +36,8 @@ export const UseInitialSelectedItem: StoryObj<ClearableSelectProps> = {
         initiallySelectedItem: 'firstOption',
     },
     play: async ({ canvasElement, step }) => {
-        const canvas = within(canvasElement);
-
         await step('Show initiallySelectedItem', async () => {
-            await expectOptionSelected(canvas, 'firstOption');
+            await expectOptionSelected(canvasElement, 'firstOption');
         });
     },
 };
@@ -52,7 +49,7 @@ export const SwitchToOption: StoryObj<ClearableSelectProps> = {
 
         await step('Select an option', async () => {
             await userEvent.selectOptions(getSelectElement(canvas), 'firstOption');
-            await expectOptionSelected(canvas, 'firstOption');
+            await expectOptionSelected(canvasElement, 'firstOption');
         });
     },
 };
@@ -68,16 +65,11 @@ export const ClearOption: StoryObj<ClearableSelectProps> = {
 
         await step('Clear the selected option', async () => {
             await userEvent.click(canvas.getByRole('button', { name: '×' }));
-            await expectOptionSelected(canvas, 'Select an option');
+            await expectOptionSelected(canvasElement, 'Select an option');
         });
     },
 };
 
 const getSelectElement = (canvas: ReturnType<typeof within>) => {
     return canvas.getByRole('combobox');
-};
-
-export const expectOptionSelected = async (canvas: ReturnType<typeof within>, option: string) => {
-    const placeholderOption = getSelectElement(canvas).querySelector('option:checked');
-    await expect(placeholderOption).toHaveTextContent(option);
 };
