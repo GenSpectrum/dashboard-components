@@ -10,7 +10,6 @@ import './gs-date-range-filter';
 import '../gs-app';
 import { toYYYYMMDD } from '../../preact/dateRangeFilter/dateConversion';
 import { dateRangeOptionPresets } from '../../preact/dateRangeFilter/dateRangeOption';
-import { expectOptionSelected } from '../../preact/shared/stories/expectOptionSelected';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
@@ -109,7 +108,9 @@ export const TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression: StoryOb
         </gs-app>`,
     play: async ({ canvasElement }) => {
         await waitFor(async () => {
-            await expectOptionSelected(canvasElement, 'Last month');
+            const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-filter');
+            const placeholderOption = canvas.getByRole('combobox').querySelector('option:checked');
+            await expect(placeholderOption).toHaveTextContent('Last month');
         });
     },
     argTypes: {
@@ -150,7 +151,8 @@ export const FiresEvents: StoryObj<Required<DateRangeFilterProps>> = {
 
         await step('Expect last 6 months to be selected', async () => {
             await waitFor(async () => {
-                await expectOptionSelected(canvasElement, 'Last month');
+                const placeholderOption = canvas.getByRole('combobox').querySelector('option:checked');
+                await expect(placeholderOption).toHaveTextContent('Last month');
             });
             await waitFor(async () => {
                 await expect(dateToPicker(canvas)).toHaveValue(toYYYYMMDD(new Date()));
