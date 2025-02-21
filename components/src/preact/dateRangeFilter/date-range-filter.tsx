@@ -29,6 +29,12 @@ const dateRangeFilterPropsSchema = dateRangeFilterInnerPropsSchema.extend({
 export type DateRangeFilterProps = z.infer<typeof dateRangeFilterPropsSchema>;
 export type DateRangeFilterInnerProps = z.infer<typeof dateRangeFilterInnerPropsSchema>;
 
+type DateRangeFilterState = {
+    label: string;
+    dateFrom?: Date;
+    dateTo?: Date;
+} | null;
+
 export const DateRangeFilter = (props: DateRangeFilterProps) => {
     const { width, ...innerProps } = props;
     const size = { width, height: '3rem' };
@@ -65,22 +71,16 @@ export const DateRangeFilterInner = ({
                   dateFrom: initialValues.initialSelectedDateFrom,
                   dateTo: initialValues.initialSelectedDateTo,
               }
-            : { label: customOption };
+            : {
+                  label: customOption,
+                  dateFrom: initialValues.initialSelectedDateFrom,
+                  dateTo: initialValues.initialSelectedDateTo,
+              };
     }, [initialValues]);
 
-    const [state, setState] = useState<{
-        label: string;
-        dateFrom?: Date;
-        dateTo?: Date;
-    } | null>(getInitialState());
+    const [state, setState] = useState<DateRangeFilterState>(getInitialState());
 
-    function updateState(
-        newState: {
-            label: string;
-            dateFrom?: Date;
-            dateTo?: Date;
-        } | null,
-    ) {
+    function updateState(newState: DateRangeFilterState) {
         setState(newState);
         fireFilterChangedEvent({ dateFrom: newState?.dateFrom, dateTo: newState?.dateTo, lapisDateField });
         fireOptionChangedEvent(newState);
@@ -169,13 +169,7 @@ export const DateRangeFilterInner = ({
         );
     };
 
-    const fireOptionChangedEvent = (
-        state: {
-            label: string;
-            dateFrom?: Date;
-            dateTo?: Date;
-        } | null,
-    ) => {
+    const fireOptionChangedEvent = (state: DateRangeFilterState) => {
         const eventDetail =
             state?.label === customOption
                 ? {
