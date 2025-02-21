@@ -12,7 +12,7 @@ export function DownshiftCombobox<Item>({
     itemToString,
     placeholderText,
     formatItemInList,
-    inputClassName,
+    inputClassName = '',
 }: {
     allItems: Item[];
     value?: Item | null;
