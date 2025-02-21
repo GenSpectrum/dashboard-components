@@ -201,9 +201,7 @@ export const DateRangeFilterInner = ({
                     <DatePicker
                         className={'flex-grow min-w-[7.5rem] @4xs:rounded-bl-md @md:rounded-l-none rounded-none'}
                         value={dateFromValue}
-                        onChange={(date) => {
-                            onChangeDateFrom(date);
-                        }}
+                        onChange={onChangeDateFrom}
                         maxDate={dateToValue}
                         placeholderText={'Date from'}
                     />
@@ -212,9 +210,7 @@ export const DateRangeFilterInner = ({
                             'flex-grow min-w-[7.5rem] rounded-b-md rounded-t-none @4xs:rounded-tr-none @4xs:rounded-l-none @md:rounded-r-md '
                         }
                         value={dateToValue}
-                        onChange={(date) => {
-                            onChangeDateTo(date);
-                        }}
+                        onChange={onChangeDateTo}
                         minDate={dateFromValue}
                         placeholderText={'Date to'}
                     />
