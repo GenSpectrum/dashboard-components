@@ -23,22 +23,23 @@ export function DatePicker({
     const [datePicker, setDatePicker] = useState<flatpickr.Instance | null>(null);
 
     useEffect(() => {
-        if (inputRef.current) {
-            const instance = flatpickr(inputRef.current, {
-                allowInput: true,
-                dateFormat: 'Y-m-d',
-                defaultDate: value,
-                minDate,
-                maxDate,
-            });
-
-            setDatePicker(instance);
-
-            return () => {
-                instance.destroy();
-            };
+        if (!inputRef.current) {
+            return;
         }
-        return () => {};
+
+        const instance = flatpickr(inputRef.current, {
+            allowInput: true,
+            dateFormat: 'Y-m-d',
+            defaultDate: value,
+            minDate,
+            maxDate,
+        });
+
+        setDatePicker(instance);
+
+        return () => {
+            instance.destroy();
+        };
     }, [maxDate, minDate, onChange, value]);
 
     if (value === undefined && inputRef.current) {
