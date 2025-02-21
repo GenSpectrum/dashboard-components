@@ -251,6 +251,17 @@ export const ChangingTheValueProgrammatically: StoryObj<DateRangeFilterProps> = 
                 await expect(optionChangedListenerMock).toHaveBeenCalledTimes(1);
             });
         });
+
+        await step('Clearing the value from within the component is still possible', async () => {
+            await waitFor(async () => {
+                await userEvent.click(canvas.getByRole('button', { name: '×' }));
+                await expectOptionSelected(canvasElement, 'Select a date range');
+            });
+            await waitFor(async () => {
+                await expect(filterChangedListenerMock).toHaveBeenCalledTimes(2);
+                await expect(optionChangedListenerMock).toHaveBeenCalledTimes(2);
+            });
+        });
     },
 };
 
