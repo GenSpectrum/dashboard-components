@@ -3,8 +3,10 @@ import { useRef } from 'preact/hooks';
 
 import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
+import { type SequenceType } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type Temporal, type TemporalClass, toTemporalClass, YearMonthDayClass } from '../../utils/temporalClass';
+import { AnnotatedMutation } from '../components/annotated-mutation';
 import { type ColorScale, getColorWithingScale, getTextColorForScale } from '../components/color-scale-selector';
 import Tooltip, { type TooltipPosition } from '../components/tooltip';
 import { formatProportion } from '../shared/table/formatProportion';
@@ -13,6 +15,7 @@ export interface MutationsOverTimeGridProps {
     data: MutationOverTimeDataMap;
     colorScale: ColorScale;
     maxNumberOfGridRows?: number;
+    sequenceType: SequenceType;
 }
 
 const MAX_NUMBER_OF_GRID_ROWS = 100;
@@ -22,6 +25,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
     data,
     colorScale,
     maxNumberOfGridRows,
+    sequenceType,
 }) => {
     const currentMaxNumberOfGridRows = maxNumberOfGridRows ?? MAX_NUMBER_OF_GRID_ROWS;
     const allMutations = data.getFirstAxisKeys();
@@ -66,8 +70,9 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                                 <div
                                     key={`mutation-${mutation.code}`}
                                     style={{ gridRowStart: rowIndex + 2, gridColumnStart: 1 }}
+                                    className='flex items-center justify-center'
                                 >
-                                    <MutationCell mutation={mutation} />
+                                    <AnnotatedMutation mutation={mutation} sequenceType={sequenceType} />
                                 </div>
                                 {dates.map((date, columnIndex) => {
                                     const value = data.get(mutation, date) ?? null;
@@ -185,10 +190,6 @@ const timeIntervalDisplay = (date: TemporalClass) => {
     }
 
     return `${date.firstDay.toString()} - ${date.lastDay.toString()}`;
-};
-
-const MutationCell: FunctionComponent<{ mutation: Substitution | Deletion }> = ({ mutation }) => {
-    return <div>{mutation.code}</div>;
 };
 
 export default MutationsOverTimeGrid;

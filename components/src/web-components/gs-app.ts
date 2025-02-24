@@ -6,6 +6,7 @@ import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 import z from 'zod';
 
 import { lapisContext } from './lapis-context';
+import { mutationAnnotationsContext } from './mutation-annotations-context';
 import { referenceGenomeContext } from './reference-genome-context';
 import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import { fetchReferenceGenome } from '../lapisApi/lapisApi';
@@ -21,6 +22,7 @@ const lapisUrlSchema = z.string().url();
  * It makes use of the [Lit Context](https://lit.dev/docs/data/context/) to
  * - provide the URL to the LAPIS instance to all its children
  * - fetch the reference genomes from LAPIS and provide it to all its children
+ * - distribute the mutation annotations config to its children
  *
  * This will show an error message if the reference genome cannot be fetched
  * (e.g., due to an invalid LAPIS URL).
@@ -39,6 +41,21 @@ export class AppComponent extends LitElement {
     @provide({ context: lapisContext })
     @property()
     lapis: string = '';
+
+    /**
+     * Supply lists of mutations that are especially relevant for the current organism.
+     * Whenever other components display mutations, matching mutations will be highlighted by appending the `symbol`.
+     * On hover, a tooltip with the `name` and `description` will be shown.
+     */
+    @provide({ context: mutationAnnotationsContext })
+    @property({ type: Array })
+    mutationAnnotations: {
+        name: string;
+        description: string;
+        symbol: string;
+        nucleotideMutations: string[];
+        aminoAcidMutations: string[];
+    }[] = [];
 
     /**
      * @internal
