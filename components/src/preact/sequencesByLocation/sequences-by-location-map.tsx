@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'preact/hooks';
 
 import type { EnhancedGeoJsonFeatureProperties } from '../../query/computeMapLocationData';
 import { InfoHeadline1, InfoParagraph } from '../components/info';
-import { Modal, useModalRef } from '../components/modal';
+import { Modal } from '../components/modal';
 import { AspectRatio } from '../shared/aspectRatio/AspectRatio';
 import { formatProportion } from '../shared/table/formatProportion';
 
@@ -102,39 +102,37 @@ const DataMatchInformation: FunctionComponent<DataMatchInformationProps> = ({
     nullCount,
     hasTableView,
 }) => {
-    const modalRef = useModalRef();
-
     const proportion = formatProportion(countOfMatchedLocationData / totalCount);
 
     return (
-        <>
-            <button
-                onClick={() => modalRef.current?.showModal()}
-                className='text-sm absolute bottom-0 px-1 z-[1001] bg-white rounded border cursor-pointer tooltip'
-                data-tip='Click for detailed information'
-            >
+        <Modal
+            buttonClassName='text-sm absolute bottom-0 px-1 z-[1001] bg-white rounded border'
+            modalContent={
+                <>
+                    <InfoHeadline1>Sequences By Location - Map View</InfoHeadline1>
+                    <InfoParagraph>
+                        The current filter has matched {totalCount.toLocaleString('en-us')} sequences. From these
+                        sequences, we were able to match {countOfMatchedLocationData.toLocaleString('en-us')} (
+                        {proportion}) on locations on the map.
+                    </InfoParagraph>
+                    <InfoParagraph>
+                        {unmatchedLocations.length > 0 && (
+                            <>
+                                The following locations from the data could not be matched on the map:{' '}
+                                {unmatchedLocations.map((it) => `"${it}"`).join(', ')}.{' '}
+                            </>
+                        )}
+                        {nullCount > 0 &&
+                            `${nullCount.toLocaleString('en-us')} matching sequences have no location information. `}
+                        {hasTableView && 'You can check the table view for more detailed information.'}
+                    </InfoParagraph>
+                </>
+            }
+        >
+            <p className='tooltip' data-tip='Click for detailed information'>
                 This map shows {proportion} of the data.
-            </button>
-            <Modal modalRef={modalRef}>
-                <InfoHeadline1>Sequences By Location - Map View</InfoHeadline1>
-                <InfoParagraph>
-                    The current filter has matched {totalCount.toLocaleString('en-us')} sequences. From these sequences,
-                    we were able to match {countOfMatchedLocationData.toLocaleString('en-us')} ({proportion}) on
-                    locations on the map.
-                </InfoParagraph>
-                <InfoParagraph>
-                    {unmatchedLocations.length > 0 && (
-                        <>
-                            The following locations from the data could not be matched on the map:{' '}
-                            {unmatchedLocations.map((it) => `"${it}"`).join(', ')}.{' '}
-                        </>
-                    )}
-                    {nullCount > 0 &&
-                        `${nullCount.toLocaleString('en-us')} matching sequences have no location information. `}
-                    {hasTableView && 'You can check the table view for more detailed information.'}
-                </InfoParagraph>
-            </Modal>
-        </>
+            </p>
+        </Modal>
     );
 };
 

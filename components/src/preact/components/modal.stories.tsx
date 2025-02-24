@@ -1,35 +1,23 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, waitFor, within } from '@storybook/test';
-import { type FunctionComponent } from 'preact';
 
-import { Modal, type ModalProps, useModalRef } from './modal';
+import { Modal, ModalDialog, type ModalProps } from './modal';
 
 const meta: Meta<ModalProps> = {
     title: 'Component/Modal',
-    component: Modal,
+    component: ModalDialog,
     parameters: { fetchMock: {} },
 };
 
 export default meta;
 
-const WrapperWithButtonThatOpensTheModal: FunctionComponent = () => {
-    const modalRef = useModalRef();
-
-    return (
-        <div>
-            <button className='btn' onClick={() => modalRef.current?.showModal()}>
-                Open modal
-            </button>
-            <Modal modalRef={modalRef}>
-                <h1>Modal content</h1>
-            </Modal>
-        </div>
-    );
-};
-
 export const ModalStory: StoryObj<ModalProps> = {
     render: () => {
-        return <WrapperWithButtonThatOpensTheModal />;
+        return (
+            <Modal buttonClassName='btn' modalContent={<h1>Modal content</h1>}>
+                Open modal
+            </Modal>
+        );
     },
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);

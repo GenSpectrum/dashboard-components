@@ -1,13 +1,13 @@
 import { type FunctionComponent } from 'preact';
 
-import { ModalButton } from './modal';
+import { Modal } from './modal';
 
 const Info: FunctionComponent = ({ children }) => {
     return (
         <div className='relative'>
-            <ModalButton buttonClass='btn btn-xs' modalContent={children}>
+            <Modal buttonClassName='btn btn-xs' modalContent={children}>
                 ?
-            </ModalButton>
+            </Modal>
         </div>
     );
 };
