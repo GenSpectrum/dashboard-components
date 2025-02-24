@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.16.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.16.2...dashboard-components-v0.16.3) (2025-02-24)
+
+
+### Features
+
+* **components:** add mutation annotations to `gs-mutations-over-time` ([#755](https://github.com/GenSpectrum/dashboard-components/issues/755)) ([57ee029](https://github.com/GenSpectrum/dashboard-components/commit/57ee02928ae1ab001456767e12c35dd409dca40e)), closes [#753](https://github.com/GenSpectrum/dashboard-components/issues/753)
+* **components:** add mutation annotations to `gs-mutations` ([#768](https://github.com/GenSpectrum/dashboard-components/issues/768)) ([6bbbe8c](https://github.com/GenSpectrum/dashboard-components/commit/6bbbe8c52e6cd0b4675cf9e6c9e05fb0ce75cc0b)), closes [#766](https://github.com/GenSpectrum/dashboard-components/issues/766)
+* **components:** gs-mutations-over-time: add the count of samples with coverage to grid cell tooltip ([#758](https://github.com/GenSpectrum/dashboard-components/issues/758)) ([281a55a](https://github.com/GenSpectrum/dashboard-components/commit/281a55a800275e81836f9ca35fc232c6d0cf338e)), closes [#744](https://github.com/GenSpectrum/dashboard-components/issues/744)
+
 ## [0.16.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.16.1...dashboard-components-v0.16.2) (2025-02-17)
 
 
