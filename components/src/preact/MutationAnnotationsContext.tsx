@@ -64,8 +64,9 @@ function addAnnotationToMap(map: Map<string, MutationAnnotations>, code: string,
     map.set(code.toUpperCase(), [...oldAnnotations, annotation]);
 }
 
-export function useMutationAnnotation(mutationCode: string, sequenceType: SequenceType) {
+export function useMutationAnnotationsProvider() {
     const mutationAnnotations = useContext(MutationAnnotationsContext);
 
-    return mutationAnnotations[sequenceType].get(mutationCode.toUpperCase());
+    return (mutationCode: string, sequenceType: SequenceType) =>
+        mutationAnnotations[sequenceType].get(mutationCode.toUpperCase());
 }

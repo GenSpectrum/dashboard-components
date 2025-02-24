@@ -1,9 +1,12 @@
+import { consume } from '@lit/context';
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
+import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
 import { Mutations, type MutationsProps } from '../../preact/mutations/mutations';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
+import { type MutationAnnotations, mutationAnnotationsContext } from '../mutation-annotations-context';
 
 /**
  * ## Context
@@ -120,17 +123,25 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
     @property({ type: Object })
     pageSize: boolean | number = false;
 
+    /**
+     * @internal
+     */
+    @consume({ context: mutationAnnotationsContext, subscribe: true })
+    mutationAnnotations: MutationAnnotations = [];
+
     override render() {
         return (
-            <Mutations
-                lapisFilter={this.lapisFilter}
-                sequenceType={this.sequenceType}
-                views={this.views}
-                width={this.width}
-                height={this.height}
-                pageSize={this.pageSize}
-                baselineLapisFilter={this.baselineLapisFilter}
-            />
+            <MutationAnnotationsContextProvider value={this.mutationAnnotations}>
+                <Mutations
+                    lapisFilter={this.lapisFilter}
+                    sequenceType={this.sequenceType}
+                    views={this.views}
+                    width={this.width}
+                    height={this.height}
+                    pageSize={this.pageSize}
+                    baselineLapisFilter={this.baselineLapisFilter}
+                />
+            </MutationAnnotationsContextProvider>
         );
     }
 }

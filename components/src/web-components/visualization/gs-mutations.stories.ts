@@ -68,9 +68,26 @@ const meta: Meta<Required<MutationsProps>> = {
 
 export default meta;
 
+const mutationAnnotations = [
+    {
+        name: 'I am a mutation annotation!',
+        description: 'This describes what is special about these mutations.',
+        symbol: '#',
+        nucleotideMutations: ['C241T', 'C3037T'],
+        aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
+    },
+    {
+        name: 'I am another mutation annotation!',
+        description: 'This describes what is special about these other mutations.',
+        symbol: '+',
+        nucleotideMutations: ['C3037T', 'C11750T'],
+        aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
+    },
+];
+
 const Template: StoryObj<Required<MutationsProps>> = {
     render: (args) => html`
-        <gs-app lapis="${LAPIS_URL}">
+        <gs-app lapis="${LAPIS_URL}" .mutationAnnotations=${mutationAnnotations}>
             <gs-mutations
                 .lapisFilter=${args.lapisFilter}
                 .baselineLapisFilter=${args.baselineLapisFilter}

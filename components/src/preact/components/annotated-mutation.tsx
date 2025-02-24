@@ -1,18 +1,50 @@
-import { Fragment, type FunctionComponent } from 'preact';
+import { useRef } from 'gridjs';
+import { Fragment, type FunctionComponent, type RefObject } from 'preact';
 
 import type { SequenceType } from '../../types';
 import type { Deletion, Substitution } from '../../utils/mutations';
-import { useMutationAnnotation } from '../MutationAnnotationsContext';
+import { useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
 import { InfoHeadline1, InfoHeadline2, InfoParagraph } from './info';
-import { Modal } from './modal';
+import { ButtonWithModalDialog, useModalRef } from './modal';
 
 export type AnnotatedMutationProps = {
     mutation: Substitution | Deletion;
     sequenceType: SequenceType;
 };
 
-export const AnnotatedMutation: FunctionComponent<AnnotatedMutationProps> = ({ mutation, sequenceType }) => {
-    const mutationAnnotations = useMutationAnnotation(mutation.code, sequenceType);
+export const AnnotatedMutation: FunctionComponent<AnnotatedMutationProps> = (props) => {
+    const annotationsProvider = useMutationAnnotationsProvider();
+    const modalRef = useModalRef();
+
+    return <AnnotatedMutationWithoutContext {...props} annotationsProvider={annotationsProvider} modalRef={modalRef} />;
+};
+
+type GridJsAnnotatedMutationProps = AnnotatedMutationProps & {
+    annotationsProvider: ReturnType<typeof useMutationAnnotationsProvider>;
+};
+
+/**
+ * GridJS internally also uses Preact, but it uses its own Preact instance:
+ * - Our Preact contexts are not available in GridJS. We need to inject context content as long as we're in our Preact instance.
+ * - We must use the GridJS re-exports of the Preact hooks. I'm not sure why.
+ */
+export const GridJsAnnotatedMutation: FunctionComponent<GridJsAnnotatedMutationProps> = (props) => {
+    const modalRef = useRef<HTMLDialogElement>(null);
+
+    return <AnnotatedMutationWithoutContext {...props} modalRef={modalRef} />;
+};
+
+type AnnotatedMutationWithoutContextProps = GridJsAnnotatedMutationProps & {
+    modalRef: RefObject<HTMLDialogElement>;
+};
+
+const AnnotatedMutationWithoutContext: FunctionComponent<AnnotatedMutationWithoutContextProps> = ({
+    mutation,
+    sequenceType,
+    annotationsProvider,
+    modalRef,
+}) => {
+    const mutationAnnotations = annotationsProvider(mutation.code, sequenceType);
 
     if (mutationAnnotations === undefined || mutationAnnotations.length === 0) {
         return mutation.code;
@@ -31,7 +63,7 @@ export const AnnotatedMutation: FunctionComponent<AnnotatedMutationProps> = ({ m
     );
 
     return (
-        <Modal modalContent={modalContent}>
+        <ButtonWithModalDialog modalContent={modalContent} modalRef={modalRef}>
             {mutation.code}
             <sup>
                 {mutationAnnotations
@@ -43,6 +75,6 @@ export const AnnotatedMutation: FunctionComponent<AnnotatedMutationProps> = ({ m
                         </Fragment>
                     ))}
             </sup>
-        </Modal>
+        </ButtonWithModalDialog>
     );
 };

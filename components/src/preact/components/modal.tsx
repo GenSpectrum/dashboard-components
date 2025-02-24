@@ -1,4 +1,4 @@
-import { type ComponentChildren, type FunctionComponent, type Ref } from 'preact';
+import { type ComponentChildren, type FunctionComponent, type Ref, type RefObject } from 'preact';
 import { useRef } from 'preact/hooks';
 
 export type ModalButtonProps = {
@@ -6,9 +6,22 @@ export type ModalButtonProps = {
     modalContent: ComponentChildren;
 };
 
-export const Modal: FunctionComponent<ModalButtonProps> = ({ children, buttonClassName, modalContent }) => {
+export const Modal: FunctionComponent<ModalButtonProps> = (props) => {
     const modalRef = useModalRef();
 
+    return <ButtonWithModalDialog {...props} modalRef={modalRef} />;
+};
+
+type ButtonWithModalDialogProps = ModalButtonProps & {
+    modalRef: RefObject<HTMLDialogElement>;
+};
+
+export const ButtonWithModalDialog: FunctionComponent<ButtonWithModalDialogProps> = ({
+    children,
+    buttonClassName,
+    modalContent,
+    modalRef,
+}) => {
     return (
         <>
             <button type='button' className={buttonClassName} onClick={() => modalRef.current?.showModal()}>

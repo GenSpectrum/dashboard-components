@@ -109,6 +109,7 @@ const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, or
                             overallVariantCount={mutationsData.overallVariantCount}
                             proportionInterval={proportionInterval}
                             pageSize={originalComponentProps.pageSize}
+                            sequenceType={originalComponentProps.sequenceType}
                         />
                     ),
                 };

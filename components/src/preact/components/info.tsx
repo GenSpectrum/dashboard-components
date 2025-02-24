@@ -21,7 +21,7 @@ export const InfoHeadline2: FunctionComponent = ({ children }) => {
 };
 
 export const InfoParagraph: FunctionComponent = ({ children }) => {
-    return <p className='text-justify my-1'>{children}</p>;
+    return <p className='text-justify text-base font-normal my-1'>{children}</p>;
 };
 
 export const InfoLink: FunctionComponent<{ href: string }> = ({ children, href }) => {
