@@ -1,0 +1,79 @@
+name: Update Playwright Snapshots
+
+on:
+  workflow_dispatch:
+  push:
+
+defaults:
+  run:
+    working-directory: ./components
+
+jobs:
+  storybook_tests:
+    name: Run storybook tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
+
+      - name: Install npm packages
+        run: |
+          npm ci
+          npm run generate-manifest
+
+      - name: Get Installed Playwright Version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').packages['node_modules/playwright'].version)")" >> $GITHUB_ENV
+
+      - name: Cache Playwright Browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Install Playwright Browsers and System Dependencies
+        run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+      - name: Install only System Dependencies
+        run: npx playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+
+      - name: build Storybook
+        run: npm run build-storybook -- --quiet
+
+      - name: Start Storybook server
+        run:
+          npx http-server storybook-static --port 6006 --silent &
+
+      - name: Wait for Storybook server to be ready
+        run: npx wait-on tcp:6006
+
+      - name: Run Playwright tests
+        run: npm run test:playwright:update-snapshots
+
+      - name: Commit and Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Update Playwright snapshots"
+          git push
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: components/playwright-report/
+          retention-days: 7
