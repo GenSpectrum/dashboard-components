@@ -18,6 +18,7 @@ const meta: Meta<WastewaterMutationsOverTimeProps> = {
             options: ['nucleotide', 'amino acid'],
             control: { type: 'radio' },
         },
+        pageSizes: { control: 'object' },
     },
     parameters: {
         fetchMock: {},
@@ -42,7 +43,7 @@ export const Default: StoryObj<WastewaterMutationsOverTimeProps> = {
         width: '100%',
         lapisFilter: {},
         sequenceType: 'nucleotide',
-        maxNumberOfGridRows: 100,
+        pageSizes: [10, 20, 30, 40, 50],
     },
     parameters: {
         fetchMock: {

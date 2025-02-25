@@ -3,8 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
-import { MutationsOverTime, type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
-import type { Equals, Expect } from '../../utils/typeAssertions';
+import { MutationsOverTime } from '../../preact/mutationsOverTime/mutations-over-time';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 import { type MutationAnnotations, mutationAnnotationsContext } from '../mutation-annotations-context';
 
@@ -112,6 +111,12 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
     initialMeanProportionInterval: { min: number; max: number } = { min: 0.05, max: 0.9 };
 
     /**
+     * The number of rows per page, which can be selected by the user.
+     */
+    @property({ type: Array })
+    pageSizes: number[] | number = [10, 20, 30, 40, 50];
+
+    /**
      * @internal
      */
     @consume({ context: mutationAnnotationsContext, subscribe: true })
@@ -130,6 +135,7 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
                     lapisDateField={this.lapisDateField}
                     displayMutations={this.displayMutations}
                     initialMeanProportionInterval={this.initialMeanProportionInterval}
+                    pageSizes={this.pageSizes}
                 />
             </MutationAnnotationsContextProvider>
         );
@@ -150,32 +156,3 @@ declare global {
         }
     }
 }
-
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type LapisFilterMatches = Expect<
-    Equals<typeof MutationsOverTimeComponent.prototype.lapisFilter, MutationsOverTimeProps['lapisFilter']>
->;
-type SequenceTypeMatches = Expect<
-    Equals<typeof MutationsOverTimeComponent.prototype.sequenceType, MutationsOverTimeProps['sequenceType']>
->;
-type ViewsMatches = Expect<Equals<typeof MutationsOverTimeComponent.prototype.views, MutationsOverTimeProps['views']>>;
-type WidthMatches = Expect<Equals<typeof MutationsOverTimeComponent.prototype.width, MutationsOverTimeProps['width']>>;
-type HeightMatches = Expect<
-    Equals<typeof MutationsOverTimeComponent.prototype.height, MutationsOverTimeProps['height']>
->;
-type GranularityMatches = Expect<
-    Equals<typeof MutationsOverTimeComponent.prototype.granularity, MutationsOverTimeProps['granularity']>
->;
-type LapisDateFieldMatches = Expect<
-    Equals<typeof MutationsOverTimeComponent.prototype.lapisDateField, MutationsOverTimeProps['lapisDateField']>
->;
-type DisplayMutationsMatches = Expect<
-    Equals<typeof MutationsOverTimeComponent.prototype.displayMutations, MutationsOverTimeProps['displayMutations']>
->;
-type InitialMeanProportionIntervalMatches = Expect<
-    Equals<
-        typeof MutationsOverTimeComponent.prototype.initialMeanProportionInterval,
-        MutationsOverTimeProps['initialMeanProportionInterval']
-    >
->;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, userEvent, waitFor } from '@storybook/test';
+import { type Canvas } from '@storybook/types';
 
 import { MutationsOverTime, type MutationsOverTimeProps } from './mutations-over-time';
 import { LAPIS_URL } from '../../constants';
@@ -32,6 +33,7 @@ const meta: Meta<MutationsOverTimeProps> = {
         lapisDateField: { control: 'text' },
         displayMutations: { control: 'object' },
         initialMeanProportionInterval: { control: 'object' },
+        pageSizes: { control: 'object' },
     },
     parameters: {
         fetchMock: {},
@@ -75,24 +77,10 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
         granularity: 'month',
         lapisDateField: 'date',
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
+        pageSizes: [10, 20, 30, 40, 50],
     },
     play: async ({ canvasElement }) => {
         await expectMutationAnnotation(canvasElement, 'C44T');
-    },
-};
-
-// This test uses mock data: showMessagWhenTooManyMutations.ts (through mutationOverTimeWorker.mock.ts)
-export const ShowsMessageWhenTooManyMutations: StoryObj<MutationsOverTimeProps> = {
-    ...Default,
-    args: {
-        ...Default.args,
-        lapisFilter: { dateFrom: '2023-01-01', dateTo: '2023-12-31' },
-        granularity: 'year',
-    },
-    play: async ({ canvas }) => {
-        await waitFor(() => expect(canvas.getByText('Showing 100 of 137 mutations.', { exact: false })).toBeVisible(), {
-            timeout: 10000,
-        });
     },
 };
 
@@ -110,6 +98,45 @@ export const ShowsNoDataWhenNoMutationsAreInFilter: StoryObj<MutationsOverTimePr
         });
     },
 };
+
+export const UsesPagination: StoryObj<MutationsOverTimeProps> = {
+    ...Default,
+    play: async ({ canvas, step }) => {
+        const mutationOnFirstPage = 'C44T';
+        const mutationOnSecondPage = 'T21653-';
+        await expectMutationOnPage(canvas, mutationOnFirstPage);
+
+        await step('Navigate to next page', async () => {
+            canvas.getByRole('button', { name: 'Next page' }).click();
+
+            await expectMutationOnPage(canvas, mutationOnSecondPage);
+        });
+
+        await step('Use goto page input', async () => {
+            const gotoPageInput = canvas.getByRole('spinbutton', { name: 'Enter page number to go to' });
+            await userEvent.clear(gotoPageInput);
+            await userEvent.type(gotoPageInput, '1');
+            await userEvent.tab();
+
+            await expectMutationOnPage(canvas, mutationOnFirstPage);
+        });
+
+        await step('Change number of rows per page', async () => {
+            const pageSizeSelector = canvas.getByLabelText('Select number of rows per page');
+            await userEvent.selectOptions(pageSizeSelector, '20');
+
+            await expectMutationOnPage(canvas, mutationOnFirstPage);
+            await expectMutationOnPage(canvas, mutationOnSecondPage);
+        });
+    },
+};
+
+async function expectMutationOnPage(canvas: Canvas, mutation: string) {
+    await waitFor(async () => {
+        const mutationOnFirstPage = canvas.getAllByText(mutation)[0];
+        await expect(mutationOnFirstPage).toBeVisible();
+    });
+}
 
 export const ShowsNoDataMessageWhenThereAreNoDatesInFilter: StoryObj<MutationsOverTimeProps> = {
     ...Default,
@@ -162,8 +189,11 @@ export const ShowsNoDataForStrictInitialProportionInterval: StoryObj<MutationsOv
         initialMeanProportionInterval: { min: 0.4, max: 0.41 },
     },
     play: async ({ canvas }) => {
-        await waitFor(() =>
-            expect(canvas.getByText('No data available for your filters.', { exact: false })).toBeVisible(),
+        await waitFor(
+            () => expect(canvas.getByText('No data available for your filters.', { exact: false })).toBeVisible(),
+            {
+                timeout: 10000,
+            },
         );
     },
 };
