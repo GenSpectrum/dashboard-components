@@ -17,6 +17,7 @@ const codeExample = String.raw`
     granularity="month"
     lapisDateField="date"
     displayMutations='["A23403G","C241T"]'
+    pageSizes='[5,10]'
 ></gs-mutations-over-time>`;
 
 const meta: Meta<Required<MutationsOverTimeProps>> = {
@@ -41,6 +42,7 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
         lapisDateField: { control: 'text' },
         displayMutations: { control: 'object' },
         initialMeanProportionInterval: { control: 'object' },
+        pageSizes: { control: 'object' },
     },
     args: {
         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
@@ -50,6 +52,7 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
         granularity: 'month',
         lapisDateField: 'date',
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
+        pageSizes: [10, 20, 30, 40, 50],
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -95,6 +98,7 @@ const Template: StoryObj<Required<MutationsOverTimeProps>> = {
                 .lapisDateField=${args.lapisDateField}
                 .displayMutations=${args.displayMutations}
                 .initialMeanProportionInterval=${args.initialMeanProportionInterval}
+                .pageSizes=${args.pageSizes}
             ></gs-mutations-over-time>
         </gs-app>
     `,
