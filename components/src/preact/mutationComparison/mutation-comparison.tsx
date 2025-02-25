@@ -104,6 +104,7 @@ const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = (
                             data={{ content: filteredData }}
                             proportionInterval={proportionInterval}
                             pageSize={originalComponentProps.pageSize}
+                            sequenceType={originalComponentProps.sequenceType}
                         />
                     ),
                 };
@@ -115,6 +116,7 @@ const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = (
                             data={{ content: filteredData }}
                             proportionInterval={proportionInterval}
                             maintainAspectRatio={maintainAspectRatio}
+                            sequenceType={originalComponentProps.sequenceType}
                         />
                     ),
                 };

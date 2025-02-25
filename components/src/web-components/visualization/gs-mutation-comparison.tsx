@@ -1,9 +1,12 @@
+import { consume } from '@lit/context';
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
+import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
 import { MutationComparison, type MutationComparisonProps } from '../../preact/mutationComparison/mutation-comparison';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
+import { type MutationAnnotations, mutationAnnotationsContext } from '../mutation-annotations-context';
 
 /**
  * ## Context
@@ -88,16 +91,24 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
     @property({ type: Object })
     pageSize: boolean | number = false;
 
+    /**
+     * @internal
+     */
+    @consume({ context: mutationAnnotationsContext, subscribe: true })
+    mutationAnnotations: MutationAnnotations = [];
+
     override render() {
         return (
-            <MutationComparison
-                lapisFilters={this.lapisFilters}
-                sequenceType={this.sequenceType}
-                views={this.views}
-                width={this.width}
-                height={this.height}
-                pageSize={this.pageSize}
-            />
+            <MutationAnnotationsContextProvider value={this.mutationAnnotations}>
+                <MutationComparison
+                    lapisFilters={this.lapisFilters}
+                    sequenceType={this.sequenceType}
+                    views={this.views}
+                    width={this.width}
+                    height={this.height}
+                    pageSize={this.pageSize}
+                />
+            </MutationAnnotationsContextProvider>
         );
     }
 }

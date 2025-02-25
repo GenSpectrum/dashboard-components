@@ -8,6 +8,7 @@ import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
+import { expectMutationAnnotation } from '../shared/stories/expectMutationAnnotation';
 
 const meta: Meta<MutationsOverTimeProps> = {
     title: 'Visualization/Mutation over time',
@@ -75,14 +76,8 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
         lapisDateField: 'date',
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
     },
-    play: async ({ canvas }) => {
-        await waitFor(async () => {
-            const annotatedMutation = canvas.getAllByText('C44T')[0];
-            await expect(annotatedMutation).toBeVisible();
-            await userEvent.click(annotatedMutation);
-        });
-
-        await waitFor(() => expect(canvas.getByText('Annotations for C44T')).toBeVisible());
+    play: async ({ canvasElement }) => {
+        await expectMutationAnnotation(canvasElement, 'C44T');
     },
 };
 

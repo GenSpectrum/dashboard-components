@@ -7,7 +7,9 @@ import { MutationComparison, type MutationComparisonProps } from './mutation-com
 import { LAPIS_URL, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
+import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
+import { expectMutationAnnotation } from '../shared/stories/expectMutationAnnotation';
 
 const dateToSomeDataset = '2022-01-01';
 
@@ -74,20 +76,39 @@ const meta: Meta<MutationComparisonProps> = {
 
 export default meta;
 
+const mutationAnnotations = [
+    {
+        name: 'I am a mutation annotation!',
+        description: 'This describes what is special about these mutations.',
+        symbol: '#',
+        nucleotideMutations: ['G199-', 'C3037T'],
+        aminoAcidMutations: ['N:G204R'],
+    },
+    {
+        name: 'I am another mutation annotation!',
+        description: 'This describes what is special about these other mutations.',
+        symbol: '+',
+        nucleotideMutations: ['C3037T', 'A23403G'],
+        aminoAcidMutations: ['ORF1a:I2230T'],
+    },
+];
+
 const Template: StoryObj<MutationComparisonProps> = {
     render: (args) => (
-        <LapisUrlContextProvider value={LAPIS_URL}>
-            <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationComparison
-                    lapisFilters={args.lapisFilters}
-                    sequenceType={args.sequenceType}
-                    views={args.views}
-                    width={args.width}
-                    height={args.height}
-                    pageSize={args.pageSize}
-                />
-            </ReferenceGenomeContext.Provider>
-        </LapisUrlContextProvider>
+        <MutationAnnotationsContextProvider value={mutationAnnotations}>
+            <LapisUrlContextProvider value={LAPIS_URL}>
+                <ReferenceGenomeContext.Provider value={referenceGenome}>
+                    <MutationComparison
+                        lapisFilters={args.lapisFilters}
+                        sequenceType={args.sequenceType}
+                        views={args.views}
+                        width={args.width}
+                        height={args.height}
+                        pageSize={args.pageSize}
+                    />
+                </ReferenceGenomeContext.Provider>
+            </LapisUrlContextProvider>
+        </MutationAnnotationsContextProvider>
     ),
 };
 
@@ -113,6 +134,9 @@ export const TwoVariants: StoryObj<MutationComparisonProps> = {
         views: ['table', 'venn'],
         width: '100%',
         pageSize: 10,
+    },
+    play: async ({ canvasElement }) => {
+        await expectMutationAnnotation(canvasElement, 'C3037T');
     },
 };
 
