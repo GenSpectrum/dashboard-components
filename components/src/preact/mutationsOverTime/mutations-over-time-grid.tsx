@@ -1,5 +1,5 @@
 import { Fragment, type FunctionComponent } from 'preact';
-import { useRef } from 'preact/hooks';
+import { useMemo } from 'preact/hooks';
 
 import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
@@ -10,6 +10,7 @@ import { AnnotatedMutation } from '../components/annotated-mutation';
 import { type ColorScale, getColorWithingScale, getTextColorForScale } from '../components/color-scale-selector';
 import Tooltip, { type TooltipPosition } from '../components/tooltip';
 import { formatProportion } from '../shared/table/formatProportion';
+import { createColumnHelper, flexRender, getCoreRowModel, usePreactTable } from '../shared/tanstackTable/tanstackTable';
 
 export interface MutationsOverTimeGridProps {
     data: MutationOverTimeDataMap;
@@ -20,6 +21,8 @@ export interface MutationsOverTimeGridProps {
 
 const MAX_NUMBER_OF_GRID_ROWS = 100;
 const MUTATION_CELL_WIDTH_REM = 8;
+
+type RowType = { mutation: Substitution | Deletion; values: (MutationOverTimeMutationValue | undefined)[] };
 
 const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
     data,
@@ -33,7 +36,94 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
 
     const dates = data.getSecondAxisKeys();
 
-    const gridRef = useRef<HTMLDivElement>(null);
+    const myData = useMemo(() => {
+        return data.getAsArray().map((row, index) => {
+            return { mutation: allMutations[index], values: [...row] };
+        });
+    }, [data]);
+
+    const columns = useMemo(() => {
+        const columnHelper = createColumnHelper<RowType>();
+
+        const dateHeaders = dates.map((date, index) => {
+            return columnHelper.accessor((row) => row.values[index], {
+                id: `date-${index}`,
+                header: date.dateString,
+                cell: ({ getValue, row }) => {
+                    const value = getValue();
+                    return (
+                        <div className={'text-center'}>
+                            <ProportionCell
+                                value={value ?? null}
+                                date={date}
+                                mutation={row.original.mutation}
+                                tooltipPosition={'bottom'}
+                                colorScale={colorScale}
+                            />
+                        </div>
+                    );
+                },
+            });
+        });
+
+        return [
+            columnHelper.accessor((row) => row.mutation, {
+                id: 'mutation',
+                header: () => <span>Mutation</span>,
+                cell: ({ getValue }) => {
+                    const value = getValue();
+                    return (
+                        <div className={'text-center'}>
+                            <AnnotatedMutation mutation={value} sequenceType={sequenceType} />
+                        </div>
+                    );
+                },
+            }),
+            ...dateHeaders,
+        ];
+    }, [dates, sequenceType]);
+
+    const table = usePreactTable({
+        data: myData,
+        columns,
+        getCoreRowModel: getCoreRowModel(),
+        debugTable: true,
+    });
+
+    return (
+        <div className=''>
+            <table className={'table table-striped table-hover'}>
+                <thead>
+                    {table.getHeaderGroups().map((headerGroup) => (
+                        <tr key={headerGroup.id}>
+                            {headerGroup.headers.map((header) => (
+                                <th key={header.id}>
+                                    <div
+                                        onClick={header.column.getToggleSortingHandler()}
+                                        className={'d-flex justify-content-between'}
+                                    >
+                                        {header.isPlaceholder
+                                            ? null
+                                            : flexRender(header.column.columnDef.header, header.getContext())}
+                                    </div>
+                                </th>
+                            ))}
+                        </tr>
+                    ))}
+                </thead>
+                <tbody>
+                    {table.getRowModel().rows.map((row) => (
+                        <tr key={row.id}>
+                            {row.getVisibleCells().map((cell) => (
+                                <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                            ))}
+                        </tr>
+                    ))}
+                    {table.getRowModel().rows.length === 0 && <td colSpan={2}>Nothing to show</td>}
+                </tbody>
+            </table>
+        </div>
+    );
 
     return (
         <>
