@@ -63,7 +63,7 @@ const AnnotatedMutationWithoutContext: FunctionComponent<AnnotatedMutationWithou
     );
 
     return (
-        <ButtonWithModalDialog modalContent={modalContent} modalRef={modalRef}>
+        <ButtonWithModalDialog buttonClassName={'select-text'} modalContent={modalContent} modalRef={modalRef}>
             {mutation.code}
             <sup>
                 {mutationAnnotations
