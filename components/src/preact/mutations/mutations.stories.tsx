@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, userEvent, waitFor, within } from '@storybook/test';
+import { expect, waitFor, within } from '@storybook/test';
 
 import nucleotideInsertions from './__mockData__/nucleotideInsertions.json';
 import nucleotideMutations from './__mockData__/nucleotideMutations.json';
@@ -16,6 +16,7 @@ import overallVariantCount from '../../preact/mutations/__mockData__/overallVari
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
+import { expectMutationAnnotation } from '../shared/stories/expectMutationAnnotation';
 
 const meta: Meta<MutationsProps> = {
     title: 'Visualization/Mutations',
@@ -165,13 +166,6 @@ export const TableTab: StoryObj<MutationsProps> = {
         views: ['table'],
     },
     play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-
-        await waitFor(async () => {
-            const annotatedMutation = canvas.getByText('C241T');
-            await expect(annotatedMutation).toBeVisible();
-            await userEvent.click(annotatedMutation);
-        });
-        await waitFor(() => expect(canvas.getByText('Annotations for C241T')).toBeVisible());
+        await expectMutationAnnotation(canvasElement, 'C241T');
     },
 };

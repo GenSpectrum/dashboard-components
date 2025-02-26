@@ -50,9 +50,26 @@ const meta: Meta<Required<MutationComparisonProps>> = {
 
 export default meta;
 
+const mutationAnnotations = [
+    {
+        name: 'I am a mutation annotation!',
+        description: 'This describes what is special about these mutations.',
+        symbol: '#',
+        nucleotideMutations: ['G199-', 'C3037T'],
+        aminoAcidMutations: ['N:G204R'],
+    },
+    {
+        name: 'I am another mutation annotation!',
+        description: 'This describes what is special about these other mutations.',
+        symbol: '+',
+        nucleotideMutations: ['C3037T', 'A23403G'],
+        aminoAcidMutations: ['ORF1a:I2230T'],
+    },
+];
+
 const Template: StoryObj<Required<MutationComparisonProps>> = {
     render: (args) => html`
-        <gs-app lapis="${LAPIS_URL}">
+        <gs-app lapis="${LAPIS_URL}" .mutationAnnotations=${mutationAnnotations}>
             <gs-mutation-comparison
                 .lapisFilters=${args.lapisFilters}
                 .sequenceType=${args.sequenceType}

@@ -1,10 +1,13 @@
 import { type ActiveElement, Chart, type ChartConfiguration, type ChartEvent, registerables } from 'chart.js';
 import { ArcSlice, extractSets, VennDiagramController } from 'chartjs-chart-venn';
-import { type FunctionComponent } from 'preact';
+import { Fragment, type FunctionComponent } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 
 import { type MutationData } from './queryMutationData';
 import { type Dataset } from '../../operator/Dataset';
+import { type SequenceType } from '../../types';
+import { DeletionClass, SubstitutionClass } from '../../utils/mutations';
+import { AnnotatedMutation } from '../components/annotated-mutation';
 import GsChart from '../components/chart';
 import { type ProportionInterval } from '../components/proportion-selector';
 
@@ -14,12 +17,14 @@ export interface MutationComparisonVennProps {
     data: Dataset<MutationData>;
     proportionInterval: ProportionInterval;
     maintainAspectRatio: boolean;
+    sequenceType: SequenceType;
 }
 
 export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennProps> = ({
     data,
     proportionInterval,
     maintainAspectRatio,
+    sequenceType,
 }) => {
     const [selectedDatasetIndex, setSelectedDatasetIndex] = useState<null | number>(null);
 
@@ -105,22 +110,48 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
             <div className='flex-1'>
                 <GsChart configuration={config} />
             </div>
-            <p class='flex flex-wrap break-words m-2'>{getSelectedMutationsDescription(selectedDatasetIndex, sets)}</p>
+            <p class='flex flex-wrap break-words m-2'>
+                <SelectedMutationsDescription
+                    selectedDatasetIndex={selectedDatasetIndex}
+                    sets={sets}
+                    sequenceType={sequenceType}
+                />
+            </p>
         </div>
     );
 };
 
 const noElementSelectedMessage = 'You have no elements selected. Click in the venn diagram to select.';
 
-function getSelectedMutationsDescription(
-    selectedDatasetIndex: number | null,
-    sets: ReturnType<typeof extractSets<string>>,
-) {
+type SelectedMutationsDescriptionProps = {
+    selectedDatasetIndex: number | null;
+    sets: ReturnType<typeof extractSets<string>>;
+    sequenceType: SequenceType;
+};
+
+const SelectedMutationsDescription: FunctionComponent<SelectedMutationsDescriptionProps> = ({
+    selectedDatasetIndex,
+    sets,
+    sequenceType,
+}) => {
     if (selectedDatasetIndex === null) {
         return noElementSelectedMessage;
     }
 
     const values = sets.datasets[0].data[selectedDatasetIndex].values;
     const label = sets.datasets[0].data[selectedDatasetIndex].label;
-    return `${label}: ${values.join(', ')}` || '';
-}
+    return (
+        <span>
+            {`${label}: `}
+            {values
+                .map((value) => SubstitutionClass.parse(value) ?? DeletionClass.parse(value))
+                .filter((value) => value !== null)
+                .map((value, index) => (
+                    <Fragment key={value}>
+                        {index > 0 && ', '}
+                        <AnnotatedMutation mutation={value} sequenceType={sequenceType} />
+                    </Fragment>
+                ))}
+        </span>
+    );
+};
