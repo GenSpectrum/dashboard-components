@@ -48,7 +48,11 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
         const dateHeaders = dates.map((date, index) => {
             return columnHelper.accessor((row) => row.values[index], {
                 id: `date-${index}`,
-                header: date.dateString,
+                header: () => (
+                    <div className='@container min-w-[0.05rem]'>
+                        <p {...styleGridHeader(index, dates.length)}>{date.dateString}</p>
+                    </div>
+                ),
                 cell: ({ getValue, row }) => {
                     const value = getValue();
                     return (
@@ -91,17 +95,14 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
     });
 
     return (
-        <div className=''>
-            <table className={'table table-striped table-hover'}>
+        <div className='w-full'>
+            <table className={'w-full table-auto'}>
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map((header) => (
                                 <th key={header.id}>
-                                    <div
-                                        onClick={header.column.getToggleSortingHandler()}
-                                        className={'d-flex justify-content-between'}
-                                    >
+                                    <div onClick={header.column.getToggleSortingHandler()}>
                                         {header.isPlaceholder
                                             ? null
                                             : flexRender(header.column.columnDef.header, header.getContext())}
@@ -114,8 +115,10 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                 <tbody>
                     {table.getRowModel().rows.map((row) => (
                         <tr key={row.id}>
-                            {row.getVisibleCells().map((cell) => (
-                                <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                            {row.getVisibleCells().map((cell, index) => (
+                                <td key={cell.id} className={index === 0 ? 'w-32' : ''}>
+                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                </td>
                             ))}
                         </tr>
                     ))}
@@ -196,12 +199,12 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
     );
 };
 
-function styleGridHeader(columnIndex: number, dates: Temporal[]) {
+function styleGridHeader(columnIndex: number, numDateColumns: number) {
     if (columnIndex === 0) {
         return { className: 'overflow-visible text-nowrap' };
     }
 
-    if (columnIndex === dates.length - 1) {
+    if (columnIndex === numDateColumns - 1) {
         return { className: 'overflow-visible text-nowrap', style: { direction: 'rtl' } };
     }
 
