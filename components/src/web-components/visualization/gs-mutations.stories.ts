@@ -71,7 +71,8 @@ export default meta;
 const mutationAnnotations = [
     {
         name: 'I am a mutation annotation!',
-        description: 'This describes what is special about these mutations.',
+        description:
+            'This describes what is special about these mutations. <a class="link" href="/">And it has a link.</a>',
         symbol: '#',
         nucleotideMutations: ['C241T', 'C3037T'],
         aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],

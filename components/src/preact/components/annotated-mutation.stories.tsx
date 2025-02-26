@@ -66,7 +66,7 @@ export const MutationWithAnnotationEntry: StoryObj<AnnotatedMutationProps & { an
         annotations: [
             {
                 name: 'Test annotation',
-                description: 'This is a test annotation',
+                description: 'This is a test annotation <a class="link" href="/">with a link.</a>',
                 symbol: '*',
                 nucleotideMutations: ['A23403G'],
                 aminoAcidMutations: [],
@@ -81,6 +81,7 @@ export const MutationWithAnnotationEntry: StoryObj<AnnotatedMutationProps & { an
 
         await userEvent.click(canvas.getByText('A23403G'));
         await waitFor(() => expect(getAnnotationName(canvas)).toBeVisible());
+        await expect(canvas.getByRole('link', { name: 'with a link.' })).toBeVisible();
     },
 };
 
