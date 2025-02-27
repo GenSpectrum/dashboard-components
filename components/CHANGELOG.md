@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.16.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.16.3...dashboard-components-v0.16.4) (2025-02-27)
+
+
+### Features
+
+* **components:** add mutation annotations to 'gs-mutation-comparison' ([#777](https://github.com/GenSpectrum/dashboard-components/issues/777)) ([49eb036](https://github.com/GenSpectrum/dashboard-components/commit/49eb0364b2cbf8b7175745f3f204bb69acf414f2)), closes [#772](https://github.com/GenSpectrum/dashboard-components/issues/772)
+* **components:** allow HTML in mutation annotation description ([#780](https://github.com/GenSpectrum/dashboard-components/issues/780)) ([cdb0a0a](https://github.com/GenSpectrum/dashboard-components/commit/cdb0a0a95b9fcf699690ea83db22b283bba226e6)), closes [#762](https://github.com/GenSpectrum/dashboard-components/issues/762)
+* **components:** export mutation annotations types ([#782](https://github.com/GenSpectrum/dashboard-components/issues/782)) ([06a487e](https://github.com/GenSpectrum/dashboard-components/commit/06a487ec144253133ab1b768626278b4e6234c11))
+
+
+### Bug Fixes
+
+* **components:** make it possible to copy an annotated mutation in Firefox ([#779](https://github.com/GenSpectrum/dashboard-components/issues/779)) ([ab4add0](https://github.com/GenSpectrum/dashboard-components/commit/ab4add0779f3476564dbb4d875d3ad3aafd5e517)), closes [#778](https://github.com/GenSpectrum/dashboard-components/issues/778)
+
 ## [0.16.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.16.2...dashboard-components-v0.16.3) (2025-02-24)
 
 
