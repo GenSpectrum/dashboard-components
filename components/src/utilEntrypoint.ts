@@ -36,3 +36,5 @@ export type { AxisMax, YAxisMaxConfig } from './preact/shared/charts/getYAxisMax
 export { LocationChangedEvent } from './preact/locationFilter/LocationChangedEvent';
 export { LineageFilterChangedEvent } from './preact/lineageFilter/LineageFilterChangedEvent';
 export { TextFilterChangedEvent } from './preact/textFilter/TextFilterChangedEvent';
+
+export type { MutationAnnotations, MutationAnnotation } from './web-components/mutation-annotations-context';
