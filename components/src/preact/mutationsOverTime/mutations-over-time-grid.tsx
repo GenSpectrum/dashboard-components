@@ -11,6 +11,7 @@ import { AnnotatedMutation } from '../components/annotated-mutation';
 import { type ColorScale, getColorWithingScale, getTextColorForScale } from '../components/color-scale-selector';
 import Tooltip, { type TooltipPosition } from '../components/tooltip';
 import { formatProportion } from '../shared/table/formatProportion';
+import { Pagination } from '../shared/tanstackTable/pagination';
 import {
     createColumnHelper,
     flexRender,
@@ -28,11 +29,7 @@ export interface MutationsOverTimeGridProps {
 type RowType = { mutation: Substitution | Deletion; values: (MutationOverTimeMutationValue | undefined)[] };
 
 const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ data, colorScale, sequenceType }) => {
-    const dates = useMemo(() => {
-        return data.getSecondAxisKeys();
-    }, [data]);
-
-    const myData = useMemo(() => {
+    const tableData = useMemo(() => {
         const allMutations = data.getFirstAxisKeys();
         return data.getAsArray().map((row, index) => {
             return { mutation: allMutations[index], values: [...row] };
@@ -46,6 +43,20 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
 
     const columns = useMemo(() => {
         const columnHelper = createColumnHelper<RowType>();
+        const dates = data.getSecondAxisKeys();
+
+        const mutationHeader = columnHelper.accessor((row) => row.mutation, {
+            id: 'mutation',
+            header: () => <span>Mutation</span>,
+            cell: ({ getValue }) => {
+                const value = getValue();
+                return (
+                    <div className={'text-center'}>
+                        <AnnotatedMutation mutation={value} sequenceType={sequenceType} />
+                    </div>
+                );
+            },
+        });
 
         const dateHeaders = dates.map((date, index) => {
             return columnHelper.accessor((row) => row.values[index], {
@@ -82,25 +93,11 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
             });
         });
 
-        return [
-            columnHelper.accessor((row) => row.mutation, {
-                id: 'mutation',
-                header: () => <span>Mutation</span>,
-                cell: ({ getValue }) => {
-                    const value = getValue();
-                    return (
-                        <div className={'text-center'}>
-                            <AnnotatedMutation mutation={value} sequenceType={sequenceType} />
-                        </div>
-                    );
-                },
-            }),
-            ...dateHeaders,
-        ];
-    }, [colorScale, dates, pagination.pageIndex, pagination.pageSize, sequenceType]);
+        return [mutationHeader, ...dateHeaders];
+    }, [colorScale, data, pagination.pageIndex, pagination.pageSize, sequenceType]);
 
     const table = usePreactTable({
-        data: myData,
+        data: tableData,
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
@@ -119,11 +116,9 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map((header) => (
                                 <th key={header.id} colSpan={header.colSpan} style={{ width: `${header.getSize()}px` }}>
-                                    <div onClick={header.column.getToggleSortingHandler()}>
-                                        {header.isPlaceholder
-                                            ? null
-                                            : flexRender(header.column.columnDef.header, header.getContext())}
-                                    </div>
+                                    {header.isPlaceholder
+                                        ? null
+                                        : flexRender(header.column.columnDef.header, header.getContext())}
                                 </th>
                             ))}
                         </tr>
@@ -144,75 +139,8 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                     )}
                 </tbody>
             </table>
-            <div className='flex items-center gap-4 justify-end mt-2 flex-wrap'>
-                <div className='flex items-center gap-2'>
-                    <div className={'text-nowrap'}>Rows per page:</div>
-                    <select
-                        className={'select'}
-                        value={table.getState().pagination.pageSize}
-                        onChange={(e) => {
-                            table.setPageSize(Number(e.currentTarget?.value));
-                        }}
-                    >
-                        {[10, 20, 30, 40, 50].map((pageSize) => (
-                            <option key={pageSize} value={pageSize}>
-                                {pageSize}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-
-                <span className='flex items-center gap-1'>
-                    <div>Page</div>
-                    <strong>
-                        {table.getState().pagination.pageIndex + 1} of {table.getPageCount().toLocaleString()}
-                    </strong>
-                </span>
-
-                <span className='flex items-center'>
-                    Go to page:
-                    <input
-                        type='number'
-                        min='1'
-                        max={table.getPageCount()}
-                        defaultValue={table.getState().pagination.pageIndex + 1}
-                        onChange={(e) => {
-                            const page = e.currentTarget.value ? Number(e.currentTarget.value) - 1 : 0;
-                            table.setPageIndex(page);
-                        }}
-                        className='input'
-                    />
-                </span>
-                <div className={'join'}>
-                    <button
-                        className='btn btn-outline join-item btn-sm'
-                        onClick={() => table.firstPage()}
-                        disabled={!table.getCanPreviousPage()}
-                    >
-                        <div className='iconify mdi--chevron-left-first' />
-                    </button>
-                    <button
-                        className='btn btn-outline join-item btn-sm'
-                        onClick={() => table.previousPage()}
-                        disabled={!table.getCanPreviousPage()}
-                    >
-                        <div className='iconify mdi--chevron-left' />
-                    </button>
-                    <button
-                        className='btn btn-outline join-item btn-sm'
-                        onClick={() => table.nextPage()}
-                        disabled={!table.getCanNextPage()}
-                    >
-                        <div className='iconify mdi--chevron-right' />
-                    </button>
-                    <button
-                        className='btn btn-outline join-item btn-sm'
-                        onClick={() => table.lastPage()}
-                        disabled={!table.getCanNextPage()}
-                    >
-                        <div className='iconify mdi--chevron-right-last' />
-                    </button>
-                </div>
+            <div className={'mt-2'}>
+                <Pagination table={table} />
             </div>
         </div>
     );
