@@ -1,11 +1,19 @@
 import type { Table } from '@tanstack/table-core';
+import z from 'zod';
 
 type PaginationProps<RowType> = { table: Table<RowType> };
+export const pageSizesSchema = z.union([z.array(z.number()), z.number()]);
+export type PageSizes = z.infer<typeof pageSizesSchema>;
 
-export function Pagination<RowType>({ table }: PaginationProps<RowType>) {
+export function Pagination<RowType>({
+    table,
+    pageSizes,
+}: PaginationProps<RowType> & {
+    pageSizes: PageSizes;
+}) {
     return (
         <div className='flex items-center gap-4 justify-end flex-wrap'>
-            <PageSizeSelector table={table} />
+            <PageSizeSelector table={table} pageSizes={pageSizes} />
             <PageIndicator table={table} />
             <GotoPageSelector table={table} />
             <SelectPageButtons table={table} />
@@ -14,6 +22,10 @@ export function Pagination<RowType>({ table }: PaginationProps<RowType>) {
 }
 
 function PageIndicator<RowType>({ table }: PaginationProps<RowType>) {
+    if (table.getRowModel().rows.length <= 1) {
+        return null;
+    }
+
     return (
         <span className='flex items-center gap-1'>
             <div>Page</div>
@@ -24,7 +36,16 @@ function PageIndicator<RowType>({ table }: PaginationProps<RowType>) {
     );
 }
 
-function PageSizeSelector<RowType>({ table }: PaginationProps<RowType>) {
+function PageSizeSelector<RowType>({
+    table,
+    pageSizes,
+}: PaginationProps<RowType> & {
+    pageSizes: PageSizes;
+}) {
+    if (typeof pageSizes === 'number' || pageSizes.length === 0) {
+        return null;
+    }
+
     return (
         <div className='flex items-center gap-2'>
             <div className={'text-nowrap'}>Rows per page:</div>
@@ -35,7 +56,7 @@ function PageSizeSelector<RowType>({ table }: PaginationProps<RowType>) {
                     table.setPageSize(Number(e.currentTarget?.value));
                 }}
             >
-                {[10, 20, 30, 40, 50].map((pageSize) => (
+                {pageSizes.map((pageSize) => (
                     <option key={pageSize} value={pageSize}>
                         {pageSize}
                     </option>
@@ -46,6 +67,10 @@ function PageSizeSelector<RowType>({ table }: PaginationProps<RowType>) {
 }
 
 function GotoPageSelector<RowType>({ table }: PaginationProps<RowType>) {
+    if (table.getRowModel().rows.length === 0) {
+        return null;
+    }
+
     return (
         <span className='flex items-center'>
             Go to page:

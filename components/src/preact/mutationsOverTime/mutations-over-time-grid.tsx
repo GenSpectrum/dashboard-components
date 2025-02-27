@@ -11,7 +11,7 @@ import { AnnotatedMutation } from '../components/annotated-mutation';
 import { type ColorScale, getColorWithingScale, getTextColorForScale } from '../components/color-scale-selector';
 import Tooltip, { type TooltipPosition } from '../components/tooltip';
 import { formatProportion } from '../shared/table/formatProportion';
-import { Pagination } from '../shared/tanstackTable/pagination';
+import { type PageSizes, Pagination } from '../shared/tanstackTable/pagination';
 import {
     createColumnHelper,
     flexRender,
@@ -24,11 +24,17 @@ export interface MutationsOverTimeGridProps {
     data: MutationOverTimeDataMap;
     colorScale: ColorScale;
     sequenceType: SequenceType;
+    pageSizes: PageSizes;
 }
 
 type RowType = { mutation: Substitution | Deletion; values: (MutationOverTimeMutationValue | undefined)[] };
 
-const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ data, colorScale, sequenceType }) => {
+const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
+    data,
+    colorScale,
+    sequenceType,
+    pageSizes,
+}) => {
     const tableData = useMemo(() => {
         const allMutations = data.getFirstAxisKeys();
         return data.getAsArray().map((row, index) => {
@@ -38,7 +44,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
 
     const [pagination, setPagination] = useState<PaginationState>({
         pageIndex: 0,
-        pageSize: 10,
+        pageSize: typeof pageSizes === 'number' ? pageSizes : (pageSizes.at(0) ?? 10),
     });
 
     const columns = useMemo(() => {
@@ -80,7 +86,8 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                                 date={date}
                                 mutation={row.original.mutation}
                                 tooltipPosition={getTooltipPosition(
-                                    rowIndex - pagination.pageIndex * pagination.pageSize,
+                                    rowIndex -
+                                        table.getState().pagination.pageIndex * table.getState().pagination.pageSize,
                                     totalRows,
                                     columnIndex,
                                     totalColumns,
@@ -94,7 +101,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
         });
 
         return [mutationHeader, ...dateHeaders];
-    }, [colorScale, data, pagination.pageIndex, pagination.pageSize, sequenceType]);
+    }, [colorScale, data, sequenceType]);
 
     const table = usePreactTable({
         data: tableData,
@@ -134,13 +141,13 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                     ))}
                     {table.getRowModel().rows.length === 0 && (
                         <td colSpan={table.getFlatHeaders().length}>
-                            <div className={'text-center'}>Nothing to show</div>
+                            <div className={'text-center'}>No data available for your filters.</div>
                         </td>
                     )}
                 </tbody>
             </table>
             <div className={'mt-2'}>
-                <Pagination table={table} />
+                <Pagination table={table} pageSizes={pageSizes} />
             </div>
         </div>
     );

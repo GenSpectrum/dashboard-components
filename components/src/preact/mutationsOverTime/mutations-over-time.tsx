@@ -33,6 +33,7 @@ import { ProportionSelectorDropdown } from '../components/proportion-selector-dr
 import { ResizeContainer } from '../components/resize-container';
 import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/segment-selector';
 import Tabs from '../components/tabs';
+import { pageSizesSchema } from '../shared/tanstackTable/pagination';
 import { useWebWorker } from '../webWorkers/useWebWorker';
 
 const mutationsOverTimeViewSchema = z.literal(views.grid);
@@ -51,6 +52,7 @@ const mutationOverTimeSchema = z.object({
     }),
     width: z.string(),
     height: z.string().optional(),
+    pageSizes: pageSizesSchema,
 });
 export type MutationsOverTimeProps = z.infer<typeof mutationOverTimeSchema>;
 
@@ -166,6 +168,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                             data={filteredData}
                             colorScale={colorScale}
                             sequenceType={originalComponentProps.sequenceType}
+                            pageSizes={originalComponentProps.pageSizes}
                         />
                     ),
                 };

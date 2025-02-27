@@ -109,6 +109,13 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
     initialMeanProportionInterval: { min: number; max: number } = { min: 0.05, max: 0.9 };
 
     /**
+     * The number of rows per page, which can be selected by the user.
+     */
+
+    @property({ type: Array })
+    pageSizes: number[] | number = [10, 20, 30, 40, 50];
+
+    /**
      * @internal
      */
     @consume({ context: mutationAnnotationsContext, subscribe: true })
@@ -127,6 +134,7 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
                     lapisDateField={this.lapisDateField}
                     displayMutations={this.displayMutations}
                     initialMeanProportionInterval={this.initialMeanProportionInterval}
+                    pageSizes={this.pageSizes}
                 />
             </MutationAnnotationsContextProvider>
         );

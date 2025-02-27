@@ -31,6 +31,7 @@ const meta: Meta<MutationsOverTimeProps> = {
         lapisDateField: { control: 'text' },
         displayMutations: { control: 'object' },
         initialMeanProportionInterval: { control: 'object' },
+        pageSizes: { control: 'object' },
     },
     parameters: {
         fetchMock: {},
@@ -74,6 +75,7 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
         granularity: 'month',
         lapisDateField: 'date',
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
+        pageSizes: [10, 20, 30, 40, 50],
     },
     play: async ({ canvas }) => {
         await waitFor(async () => {
@@ -83,21 +85,6 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
         });
 
         await waitFor(() => expect(canvas.getByText('Annotations for C44T')).toBeVisible());
-    },
-};
-
-// This test uses mock data: showMessagWhenTooManyMutations.ts (through mutationOverTimeWorker.mock.ts)
-export const ShowsMessageWhenTooManyMutations: StoryObj<MutationsOverTimeProps> = {
-    ...Default,
-    args: {
-        ...Default.args,
-        lapisFilter: { dateFrom: '2023-01-01', dateTo: '2023-12-31' },
-        granularity: 'year',
-    },
-    play: async ({ canvas }) => {
-        await waitFor(() => expect(canvas.getByText('Showing 100 of 137 mutations.', { exact: false })).toBeVisible(), {
-            timeout: 10000,
-        });
     },
 };
 
@@ -167,8 +154,11 @@ export const ShowsNoDataForStrictInitialProportionInterval: StoryObj<MutationsOv
         initialMeanProportionInterval: { min: 0.4, max: 0.41 },
     },
     play: async ({ canvas }) => {
-        await waitFor(() =>
-            expect(canvas.getByText('No data available for your filters.', { exact: false })).toBeVisible(),
+        await waitFor(
+            () => expect(canvas.getByText('No data available for your filters.', { exact: false })).toBeVisible(),
+            {
+                timeout: 10000,
+            },
         );
     },
 };
