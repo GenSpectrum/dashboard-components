@@ -20,6 +20,7 @@ const dateRangeFilterInnerPropsSchema = z.object({
     earliestDate: z.string().date(),
     value: dateRangeValueSchema,
     lapisDateField: z.string().min(1),
+    placeholder: z.string().optional(),
 });
 
 const dateRangeFilterPropsSchema = dateRangeFilterInnerPropsSchema.extend({
@@ -53,6 +54,7 @@ export const DateRangeFilterInner = ({
     earliestDate = '1900-01-01',
     value,
     lapisDateField,
+    placeholder,
 }: DateRangeFilterInnerProps) => {
     const initialValues = useMemo(
         () => computeInitialValues(value, earliestDate, dateRangeOptions),
@@ -78,6 +80,10 @@ export const DateRangeFilterInner = ({
               };
     }, [initialValues]);
 
+    const customComboboxValue = { label: customOption };
+    const [options, setOptions] = useState(
+        getInitialState()?.label === customOption ? [...dateRangeOptions, customComboboxValue] : [...dateRangeOptions],
+    );
     const [state, setState] = useState<DateRangeFilterState>(getInitialState());
 
     function updateState(newState: DateRangeFilterState) {
@@ -90,8 +96,6 @@ export const DateRangeFilterInner = ({
         setState(getInitialState());
     }, [getInitialState]);
 
-    const customComboboxValue = { label: customOption };
-
     const onSelectChange = (option: DateRangeOption | null) => {
         updateState(
             option !== null
@@ -102,6 +106,9 @@ export const DateRangeFilterInner = ({
                   }
                 : null,
         );
+        if (option?.label !== customOption) {
+            setOptions([...dateRangeOptions]);
+        }
     };
 
     function getFromDate(option: DateRangeOption | null, earliestDate: string) {
@@ -132,6 +139,7 @@ export const DateRangeFilterInner = ({
             dateFrom: date,
             dateTo: state?.dateTo,
         });
+        setOptions([...dateRangeOptions, customComboboxValue]);
     };
 
     const onChangeDateTo = (date: Date | undefined) => {
@@ -144,6 +152,7 @@ export const DateRangeFilterInner = ({
             dateFrom: state?.dateFrom,
             dateTo: date,
         });
+        setOptions([...dateRangeOptions, customComboboxValue]);
     };
 
     const fireFilterChangedEvent = ({
@@ -181,17 +190,15 @@ export const DateRangeFilterInner = ({
         divRef.current?.dispatchEvent(new DateRangeOptionChangedEvent(eventDetail));
     };
 
-    const allDateRangeOptions = [...dateRangeOptions, customComboboxValue];
-
     return (
         <div className={'@container'} ref={divRef}>
             <div className='flex min-w-[7.5rem] flex-col @md:flex-row'>
                 <div className='flex-grow'>
                     <ClearableSelect
-                        items={allDateRangeOptions.map((item) => item.label)}
-                        placeholderText={'Select a date range'}
+                        items={options.map((item) => item.label)}
+                        placeholderText={placeholder}
                         onChange={(value) => {
-                            const dateRangeOption = allDateRangeOptions.find((item) => item.label === value);
+                            const dateRangeOption = options.find((item) => item.label === value);
                             onSelectChange(dateRangeOption ?? null);
                         }}
                         value={state?.label ?? null}
