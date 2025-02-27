@@ -22,28 +22,18 @@ import {
 export interface MutationsOverTimeGridProps {
     data: MutationOverTimeDataMap;
     colorScale: ColorScale;
-    maxNumberOfGridRows?: number;
     sequenceType: SequenceType;
 }
 
-const MAX_NUMBER_OF_GRID_ROWS = 100;
-const MUTATION_CELL_WIDTH_REM = 8;
-
 type RowType = { mutation: Substitution | Deletion; values: (MutationOverTimeMutationValue | undefined)[] };
 
-const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
-    data,
-    colorScale,
-    maxNumberOfGridRows,
-    sequenceType,
-}) => {
-    const currentMaxNumberOfGridRows = maxNumberOfGridRows ?? MAX_NUMBER_OF_GRID_ROWS;
-    const allMutations = data.getFirstAxisKeys();
-    const shownMutations = allMutations.slice(0, currentMaxNumberOfGridRows);
-
-    const dates = data.getSecondAxisKeys();
+const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ data, colorScale, sequenceType }) => {
+    const dates = useMemo(() => {
+        return data.getSecondAxisKeys();
+    }, [data]);
 
     const myData = useMemo(() => {
+        const allMutations = data.getFirstAxisKeys();
         return data.getAsArray().map((row, index) => {
             return { mutation: allMutations[index], values: [...row] };
         });
@@ -152,7 +142,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                         className={'select'}
                         value={table.getState().pagination.pageSize}
                         onChange={(e) => {
-                            table.setPageSize(Number(e.target.value));
+                            table.setPageSize(Number(e.currentTarget?.value));
                         }}
                     >
                         {[10, 20, 30, 40, 50].map((pageSize) => (
@@ -178,7 +168,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                         max={table.getPageCount()}
                         defaultValue={table.getState().pagination.pageIndex + 1}
                         onChange={(e) => {
-                            const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                            const page = e.currentTarget.value ? Number(e.currentTarget.value) - 1 : 0;
                             table.setPageIndex(page);
                         }}
                         className='input'
