@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 import { useRef } from 'gridjs';
 import { Fragment, type FunctionComponent, type RefObject } from 'preact';
 
@@ -56,7 +57,10 @@ const AnnotatedMutationWithoutContext: FunctionComponent<AnnotatedMutationWithou
             {mutationAnnotations.map((annotation) => (
                 <Fragment key={annotation.name}>
                     <InfoHeadline2>{annotation.name}</InfoHeadline2>
-                    <InfoParagraph>{annotation.description}</InfoParagraph>
+                    <InfoParagraph>
+                        {/* eslint-disable-next-line react/no-danger */}
+                        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(annotation.description) }} />
+                    </InfoParagraph>
                 </Fragment>
             ))}
         </div>

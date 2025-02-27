@@ -87,6 +87,7 @@
         "chartjs-chart-error-bars": "^4.4.0",
         "chartjs-chart-venn": "^4.3.0",
         "dayjs": "^1.11.10",
+        "dompurify": "^3.2.4",
         "downshift": "^9.0.8",
         "flatpickr": "^4.6.13",
         "gridjs": "^6.2.0",
