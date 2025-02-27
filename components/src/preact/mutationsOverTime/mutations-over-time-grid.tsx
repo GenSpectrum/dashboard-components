@@ -68,7 +68,12 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                                 value={value ?? null}
                                 date={date}
                                 mutation={row.original.mutation}
-                                tooltipPosition={getTooltipPosition(rowIndex, totalRows, columnIndex, totalColumns)}
+                                tooltipPosition={getTooltipPosition(
+                                    rowIndex - pagination.pageIndex * pagination.pageSize,
+                                    totalRows,
+                                    columnIndex,
+                                    totalColumns,
+                                )}
                                 colorScale={colorScale}
                             />
                         </div>
@@ -92,7 +97,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
             }),
             ...dateHeaders,
         ];
-    }, [colorScale, dates, sequenceType]);
+    }, [colorScale, dates, pagination.pageIndex, pagination.pageSize, sequenceType]);
 
     const table = usePreactTable({
         data: myData,
@@ -132,7 +137,11 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({ 
                             ))}
                         </tr>
                     ))}
-                    {table.getRowModel().rows.length === 0 && <td colSpan={2}>Nothing to show</td>}
+                    {table.getRowModel().rows.length === 0 && (
+                        <td colSpan={table.getFlatHeaders().length}>
+                            <div className={'text-center'}>Nothing to show</div>
+                        </td>
+                    )}
                 </tbody>
             </table>
             <div className='flex items-center gap-4 justify-end mt-2 flex-wrap'>
