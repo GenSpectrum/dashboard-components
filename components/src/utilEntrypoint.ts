@@ -1,6 +1,6 @@
 export {
     type DateRangeOption,
-    type DateRangeSelectOption,
+    type DateRangeValue,
     dateRangeOptionPresets,
     DateRangeOptionChangedEvent,
 } from './preact/dateRangeFilter/dateRangeOption';

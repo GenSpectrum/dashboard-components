@@ -73,7 +73,6 @@ export class DateRangeFilterComponent extends PreactLitAdapter {
      * - If it is a string, then it must be a valid label from the `dateRangeOptions`.
      * - If it is an object, then it accepts dates in the format `YYYY-MM-DD` for the keys `dateFrom` and `dateTo`.
      *   Keys that are not set will default to the `earliestDate` or the current date respectively.
-     * - If the attribute is not set, the component will default to the range `earliestDate` until today.
      *
      * The `detail` of the `gs-date-range-option-changed` event can be used for this attribute,
      * if you want to control this component in your JS application.
@@ -105,6 +104,12 @@ export class DateRangeFilterComponent extends PreactLitAdapter {
     width: string = '100%';
 
     /**
+     * The placeholder to display on the select dropdown.
+     */
+    @property({ type: String })
+    placeholder: string | undefined = undefined;
+
+    /**
      * The name of the metadata field in LAPIS that contains the date information.
      */
     @property({ type: String })
@@ -118,6 +123,7 @@ export class DateRangeFilterComponent extends PreactLitAdapter {
                 value={this.value}
                 lapisDateField={this.lapisDateField}
                 width={this.width}
+                placeholder={this.placeholder}
             />
         );
     }

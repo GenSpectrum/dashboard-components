@@ -8,8 +8,9 @@ import { DateRangeFilter, type DateRangeFilterProps } from './date-range-filter'
 import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
-import { dateRangeOptionPresets } from './dateRangeOption';
+import { dateRangeOptionPresets, type DateRangeValue } from './dateRangeOption';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
+import { expectOptionSelected } from '../shared/stories/expectOptionSelected';
 
 const earliestDate = '1970-01-01';
 
@@ -18,6 +19,8 @@ const customDateRange = {
     dateFrom: '2021-01-01',
     dateTo: '2021-12-31',
 };
+
+const placeholder = 'Date range';
 
 const meta: Meta<DateRangeFilterProps> = {
     title: 'Input/DateRangeFilter',
@@ -56,6 +59,7 @@ const meta: Meta<DateRangeFilterProps> = {
         value: undefined,
         lapisDateField: 'aDateColumn',
         width: '100%',
+        placeholder,
     },
 };
 
@@ -69,6 +73,22 @@ const Primary: StoryObj<DateRangeFilterProps> = {
     ),
 };
 
+export const WithUndefinedValue: StoryObj<DateRangeFilterProps> = {
+    ...Primary,
+    args: {
+        ...Primary.args,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(async () => {
+            await expectOptionSelected(canvasElement, placeholder);
+            await expect(dateFromPicker(canvas)).toHaveValue('');
+            await expect(dateToPicker(canvas)).toHaveValue('');
+        });
+    },
+};
+
 export const SetCorrectInitialValues: StoryObj<DateRangeFilterProps> = {
     ...Primary,
     args: {
@@ -79,6 +99,7 @@ export const SetCorrectInitialValues: StoryObj<DateRangeFilterProps> = {
         const canvas = within(canvasElement);
 
         await waitFor(async () => {
+            await expectOptionSelected(canvasElement, 'CustomDateRange');
             await expect(selectField(canvas)).toHaveValue('CustomDateRange');
             await expect(dateFromPicker(canvas)).toHaveValue('2021-01-01');
             await expect(dateToPicker(canvas)).toHaveValue('2021-12-31');
@@ -98,7 +119,7 @@ export const SetCorrectInitialDateFrom: StoryObj<DateRangeFilterProps> = {
         const canvas = within(canvasElement);
 
         await waitFor(async () => {
-            await expect(selectField(canvas)).toHaveValue('Custom');
+            await expectOptionSelected(canvasElement, 'Custom');
             await expect(dateFromPicker(canvas)).toHaveValue(initialDateFrom);
             await expect(dateToPicker(canvas)).toHaveValue(dayjs().format('YYYY-MM-DD'));
         });
@@ -117,14 +138,14 @@ export const SetCorrectInitialDateTo: StoryObj<DateRangeFilterProps> = {
         const canvas = within(canvasElement);
 
         await waitFor(async () => {
-            await expect(selectField(canvas)).toHaveValue('Custom');
+            await expectOptionSelected(canvasElement, 'Custom');
             await expect(dateFromPicker(canvas)).toHaveValue(earliestDate);
             await expect(dateToPicker(canvas)).toHaveValue(initialDateTo);
         });
     },
 };
 
-export const ChangingDateSetsOptionToCustom: StoryObj<DateRangeFilterProps> = {
+export const SetsValueOnBlur: StoryObj<DateRangeFilterProps> = {
     ...Primary,
     args: {
         ...Primary.args,
@@ -143,26 +164,28 @@ export const ChangingDateSetsOptionToCustom: StoryObj<DateRangeFilterProps> = {
             await userEvent.click(dateToPicker(canvas));
 
             await waitFor(async () => {
-                await expect(selectField(canvas)).toHaveValue('Custom');
+                await expectOptionSelected(canvasElement, 'Custom');
             });
 
-            await expect(filterChangedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        aDateColumnFrom: '2000-01-01',
-                        aDateColumnTo: dayjs().format('YYYY-MM-DD'),
-                    },
-                }),
-            );
+            await waitFor(async () => {
+                await expect(filterChangedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            aDateColumnFrom: '2000-01-01',
+                            aDateColumnTo: dayjs().format('YYYY-MM-DD'),
+                        },
+                    }),
+                );
 
-            await expect(optionChangedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        dateFrom: '2000-01-01',
-                        dateTo: dayjs().format('YYYY-MM-DD'),
-                    },
-                }),
-            );
+                await expect(optionChangedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            dateFrom: '2000-01-01',
+                            dateTo: dayjs().format('YYYY-MM-DD'),
+                        },
+                    }),
+                );
+            });
         });
     },
 };
@@ -171,12 +194,13 @@ export const ChangingTheValueProgrammatically: StoryObj<DateRangeFilterProps> = 
     ...Primary,
     render: (args) => {
         const StatefulWrapper = () => {
-            const [value, setValue] = useState('Last month');
+            const [value, setValue] = useState<DateRangeValue | undefined>('Last month');
             const ref = useRef<HTMLDivElement>(null);
 
             useEffect(() => {
                 ref.current?.addEventListener('gs-date-range-option-changed', (event) => {
-                    setValue((event as CustomEvent).detail);
+                    const newValue = (event as CustomEvent).detail;
+                    setValue(newValue ?? undefined);
                 });
             }, []);
 
@@ -207,12 +231,13 @@ export const ChangingTheValueProgrammatically: StoryObj<DateRangeFilterProps> = 
         await step('Change the value of the component programmatically', async () => {
             await userEvent.click(canvas.getByRole('button', { name: 'Set to Custom' }));
             await waitFor(async () => {
+                await expectOptionSelected(canvasElement, customDateRange.label);
                 await expect(selectField(canvas)).toHaveValue(customDateRange.label);
             });
 
             await userEvent.click(canvas.getByRole('button', { name: 'Set to Last month' }));
             await waitFor(async () => {
-                await expect(selectField(canvas)).toHaveValue('Last month');
+                await expectOptionSelected(canvasElement, 'Last month');
             });
 
             await expect(filterChangedListenerMock).toHaveBeenCalledTimes(0);
@@ -220,12 +245,25 @@ export const ChangingTheValueProgrammatically: StoryObj<DateRangeFilterProps> = 
         });
 
         await step('Changing the value from within the component is still possible', async () => {
-            await userEvent.selectOptions(selectField(canvas), 'All times');
             await waitFor(async () => {
-                await expect(selectField(canvas)).toHaveValue('All times');
+                await userEvent.selectOptions(selectField(canvas), 'All times');
+                await expectOptionSelected(canvasElement, 'All times');
             });
-            await expect(filterChangedListenerMock).toHaveBeenCalledTimes(1);
-            await expect(optionChangedListenerMock).toHaveBeenCalledTimes(1);
+            await waitFor(async () => {
+                await expect(filterChangedListenerMock).toHaveBeenCalledTimes(1);
+                await expect(optionChangedListenerMock).toHaveBeenCalledTimes(1);
+            });
+        });
+
+        await step('Clearing the value from within the component is still possible', async () => {
+            await waitFor(async () => {
+                await userEvent.click(canvas.getByRole('button', { name: '×' }));
+                await expectOptionSelected(canvasElement, placeholder);
+            });
+            await waitFor(async () => {
+                await expect(filterChangedListenerMock).toHaveBeenCalledTimes(2);
+                await expect(optionChangedListenerMock).toHaveBeenCalledTimes(2);
+            });
         });
     },
 };
@@ -236,13 +274,13 @@ export const ChangingDateOption: StoryObj<DateRangeFilterProps> = {
         const { canvas, filterChangedListenerMock, optionChangedListenerMock } = await prepare(canvasElement, step);
 
         await waitFor(async () => {
-            await expect(selectField(canvas)).toHaveValue('Custom');
+            await expectOptionSelected(canvasElement, placeholder);
         });
 
         await step('Change date to custom', async () => {
             await waitFor(async () => {
                 await userEvent.selectOptions(selectField(canvas), 'CustomDateRange');
-                await expect(selectField(canvas)).toHaveValue('CustomDateRange');
+                await expectOptionSelected(canvasElement, 'CustomDateRange');
             });
 
             await expect(filterChangedListenerMock).toHaveBeenCalledWith(

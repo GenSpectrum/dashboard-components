@@ -2,6 +2,8 @@ import { useCombobox } from 'downshift/preact';
 import { type ComponentChild } from 'preact';
 import { useMemo, useRef, useState } from 'preact/hooks';
 
+import { DeleteIcon } from '../shared/icons/DeleteIcon';
+
 export function DownshiftCombobox<Item>({
     allItems,
     value,
@@ -10,18 +12,18 @@ export function DownshiftCombobox<Item>({
     itemToString,
     placeholderText,
     formatItemInList,
+    inputClassName = '',
 }: {
     allItems: Item[];
-    value?: Item;
+    value?: Item | null;
     filterItemsByInputValue: (item: Item, value: string) => boolean;
     createEvent: (item: Item | null) => CustomEvent;
     itemToString: (item: Item | undefined | null) => string;
     placeholderText?: string;
     formatItemInList: (item: Item) => ComponentChild;
+    inputClassName?: string;
 }) {
-    const initialSelectedItem = value ?? null;
-
-    const [itemsFilter, setItemsFilter] = useState(itemToString(initialSelectedItem));
+    const [itemsFilter, setItemsFilter] = useState(itemToString(value));
     const items = useMemo(
         () => allItems.filter((item) => filterItemsByInputValue(item, itemsFilter)),
         [allItems, filterItemsByInputValue, itemsFilter],
@@ -65,7 +67,7 @@ export function DownshiftCombobox<Item>({
         itemToString(item) {
             return itemToString(item);
         },
-        initialSelectedItem,
+        selectedItem: value,
         environment,
     });
 
@@ -89,7 +91,7 @@ export function DownshiftCombobox<Item>({
         <div ref={divRef} className={'relative w-full'}>
             <div className='w-full flex flex-col gap-1'>
                 <div
-                    className='flex gap-0.5 input input-bordered min-w-32'
+                    className={`flex gap-0.5 input input-bordered min-w-32 ${inputClassName}`}
                     onBlur={(event) => {
                         if (event.relatedTarget != buttonRef.current) {
                             closeMenu();
@@ -109,7 +111,7 @@ export function DownshiftCombobox<Item>({
                         onClick={clearInput}
                         tabIndex={-1}
                     >
-                        ×
+                        <DeleteIcon />
                     </button>
                     <button
                         aria-label='toggle menu'

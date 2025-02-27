@@ -2,22 +2,9 @@ import { type DateRangeOption, type DateRangeValue } from './dateRangeOption';
 import { getDatesForSelectorValue, getSelectableOptions } from './selectableOptions';
 import { UserFacingError } from '../components/error-display';
 
-export function computeInitialValues(
-    value: DateRangeValue | undefined,
-    earliestDate: string,
-    dateRangeOptions: DateRangeOption[],
-): {
-    initialSelectedDateRange: string | undefined;
-    initialSelectedDateFrom: Date;
-    initialSelectedDateTo: Date;
-} {
+export function computeInitialValues(value: DateRangeValue, earliestDate: string, dateRangeOptions: DateRangeOption[]) {
     if (value === undefined) {
-        const { dateFrom, dateTo } = getDatesForSelectorValue(undefined, dateRangeOptions, earliestDate);
-        return {
-            initialSelectedDateRange: undefined,
-            initialSelectedDateFrom: dateFrom,
-            initialSelectedDateTo: dateTo,
-        };
+        return undefined;
     }
 
     if (typeof value === 'string') {
