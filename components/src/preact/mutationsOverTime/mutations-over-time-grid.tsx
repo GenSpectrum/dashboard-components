@@ -85,7 +85,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
             }),
             ...dateHeaders,
         ];
-    }, [dates, sequenceType]);
+    }, [colorScale, dates, sequenceType]);
 
     const table = usePreactTable({
         data: myData,
@@ -96,12 +96,12 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
 
     return (
         <div className='w-full'>
-            <table className={'w-full table-auto'}>
+            <table className={'w-full'}>
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map((header) => (
-                                <th key={header.id}>
+                                <th key={header.id} colSpan={header.colSpan} style={{ width: `${header.getSize()}px` }}>
                                     <div onClick={header.column.getToggleSortingHandler()}>
                                         {header.isPlaceholder
                                             ? null
@@ -116,9 +116,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                     {table.getRowModel().rows.map((row) => (
                         <tr key={row.id}>
                             {row.getVisibleCells().map((cell, index) => (
-                                <td key={cell.id} className={index === 0 ? 'w-32' : ''}>
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </td>
+                                <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
                             ))}
                         </tr>
                     ))}
