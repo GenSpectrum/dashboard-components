@@ -39,25 +39,20 @@ const meta: Meta<Required<DateRangeFilterProps>> = {
     }),
     argTypes: {
         value: {
-            control: {
-                type: 'object',
-            },
+            control: { type: 'object' },
         },
         lapisDateField: { control: { type: 'text' } },
         dateRangeOptions: {
-            control: {
-                type: 'object',
-            },
+            control: { type: 'object' },
         },
         earliestDate: {
-            control: {
-                type: 'text',
-            },
+            control: { type: 'text' },
         },
         width: {
-            control: {
-                type: 'text',
-            },
+            control: { type: 'text' },
+        },
+        placeholder: {
+            control: { type: 'text' },
         },
     },
     args: {
@@ -72,6 +67,7 @@ const meta: Meta<Required<DateRangeFilterProps>> = {
         value: dateRangeOptionPresets.lastMonth.label,
         lapisDateField: 'aDateColumn',
         width: '100%',
+        placeholder: 'Date range',
     },
     tags: ['autodocs'],
 };
@@ -88,6 +84,7 @@ export const Default: StoryObj<Required<DateRangeFilterProps>> = {
                     .value=${args.value}
                     .width=${args.width}
                     .lapisDateField=${args.lapisDateField}
+                    .placeholder=${args.placeholder}
                 ></gs-date-range-filter>
             </div>
         </gs-app>`,
@@ -103,6 +100,7 @@ export const TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression: StoryOb
                     value="${args.value}"
                     width="${args.width}"
                     lapisDateField="${args.lapisDateField}"
+                    placeholder="${args.placeholder}"
                 ></gs-date-range-filter>
             </div>
         </gs-app>`,

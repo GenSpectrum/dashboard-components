@@ -104,6 +104,12 @@ export class DateRangeFilterComponent extends PreactLitAdapter {
     width: string = '100%';
 
     /**
+     * The placeholder to display on the select dropdown.
+     */
+    @property({ type: String })
+    placeholder: string | undefined = undefined;
+
+    /**
      * The name of the metadata field in LAPIS that contains the date information.
      */
     @property({ type: String })
@@ -117,6 +123,7 @@ export class DateRangeFilterComponent extends PreactLitAdapter {
                 value={this.value}
                 lapisDateField={this.lapisDateField}
                 width={this.width}
+                placeholder={this.placeholder}
             />
         );
     }
