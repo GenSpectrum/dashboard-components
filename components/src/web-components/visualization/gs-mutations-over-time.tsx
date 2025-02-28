@@ -15,6 +15,9 @@ import { type MutationAnnotations, mutationAnnotationsContext } from '../mutatio
  * The shown date range is determined by the date field in the LAPIS filter.
  * If the date field is not set, the date range is determined by all available dates in the dataset.
  *
+ * This component supports mutations annotations.
+ * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-mutation-annotations--docs for more information.
+ *
  * ## Views
  *
  * ### Grid View

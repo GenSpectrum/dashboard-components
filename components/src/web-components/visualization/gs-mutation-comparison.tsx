@@ -16,6 +16,9 @@ import { type MutationAnnotations, mutationAnnotationsContext } from '../mutatio
  *
  * It only shows substitutions and deletions, it does not show insertions.
  *
+ * This component supports mutations annotations.
+ * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-mutation-annotations--docs for more information.
+ *
  * ## Views
  *
  * ### Table View
