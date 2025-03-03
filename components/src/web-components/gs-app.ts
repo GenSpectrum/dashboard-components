@@ -44,8 +44,8 @@ export class AppComponent extends LitElement {
 
     /**
      * Supply lists of mutations that are especially relevant for the current organism.
-     * Whenever other components display mutations, matching mutations will be highlighted by appending the `symbol`.
-     * On hover, a tooltip with the `name` and `description` will be shown.
+     *
+     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-mutation-annotations--docs for more information.
      */
     @provide({ context: mutationAnnotationsContext })
     @property({ type: Array })

@@ -15,6 +15,9 @@ import { type MutationAnnotations, mutationAnnotationsContext } from '../mutatio
  * The shown date range is determined by the date field in the LAPIS filter.
  * If the date field is not set, the date range is determined by all available dates in the dataset.
  *
+ * This component supports mutations annotations.
+ * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-mutation-annotations--docs for more information.
+ *
  * ## Views
  *
  * ### Grid View
@@ -65,7 +68,7 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
     /**
      * The width of the component.
      *
-     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
+     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-size-of-components--docs for more information.
      */
     @property({ type: String })
     width: string = '100%';
@@ -73,7 +76,7 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
     /**
      * The height of the component.
      *
-     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
+     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-size-of-components--docs for more information.
      */
     @property({ type: String })
     height: string | undefined = undefined;

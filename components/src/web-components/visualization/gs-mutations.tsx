@@ -13,6 +13,9 @@ import { type MutationAnnotations, mutationAnnotationsContext } from '../mutatio
  *
  * This component displays mutations (substitutions, deletions and insertions) for a dataset selected by a LAPIS filter.
  *
+ * This component supports mutations annotations.
+ * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-mutation-annotations--docs for more information.
+ *
  * ## Views
  *
  * ### Table View
@@ -103,7 +106,7 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
     /**
      * The width of the component.
      *
-     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
+     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-size-of-components--docs for more information.
      */
     @property({ type: String })
     width: string = '100%';
@@ -111,7 +114,7 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
     /**
      * The height of the component.
      *
-     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
+     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-size-of-components--docs for more information.
      */
     @property({ type: String })
     height: string | undefined = undefined;

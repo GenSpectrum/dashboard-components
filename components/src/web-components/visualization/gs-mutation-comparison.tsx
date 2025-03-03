@@ -16,6 +16,9 @@ import { type MutationAnnotations, mutationAnnotationsContext } from '../mutatio
  *
  * It only shows substitutions and deletions, it does not show insertions.
  *
+ * This component supports mutations annotations.
+ * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-mutation-annotations--docs for more information.
+ *
  * ## Views
  *
  * ### Table View
@@ -71,7 +74,7 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
     /**
      * The width of the component.
      *
-     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
+     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-size-of-components--docs for more information.
      */
     @property({ type: String })
     width: string = '100%';
@@ -79,7 +82,7 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
     /**
      * The height of the component.
      *
-     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/components-size-of-components--docs for more information.
+     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-size-of-components--docs for more information.
      */
     @property({ type: String })
     height: string | undefined = undefined;

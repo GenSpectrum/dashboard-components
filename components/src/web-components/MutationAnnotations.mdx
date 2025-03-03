@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='Concepts/Mutation Annotations' />
+
+# Mutation Annotations
+
+Organism data usually has a lot of mutations.
+It can be challenging for users to find out which mutations are relevant to investigate.
+To guide the user to the most interesting mutations, we provide a mutation annotation feature.
+
+The mutation annotations can be (optionally) supplied to `gs-app` as a JSON object:
+
+```html
+<gs-app
+    lapis="https://your.lapis.url"
+    mutationAnnotations="[
+        {
+            name: 'I am an annotation!',
+            description: 'This describes what is special about these mutations.',
+            symbol: '+',
+            nucleotideMutations: ['C44T', 'C774T', 'G24872T', 'T23011-'],
+            aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
+        },
+    ]"
+>
+    {/* children... */}
+</gs-app>
+```
+
+The mutation annotations are then distributed to child components.
+Whenever we display a mutation (e.g. in the `gs-mutations` table view)
+we will append the `symbol` of all matching annotations: <span>C44T<sup class='text-red-600'>+</sup></span>.
+Users can click on the mutation to open a modal that shows the `name` and `description` of the annotation.
