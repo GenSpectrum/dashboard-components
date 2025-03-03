@@ -19,6 +19,7 @@ const codeExample = String.raw`
     value="Year 2021"
     width="100%"
     lapisDateField="myDateColumn"
+    placeholder="My date column"
 ></gs-date-range-filter>`;
 
 const customDateRange = { label: 'CustomDateRange', dateFrom: '2021-01-01', dateTo: '2021-12-31' };
@@ -39,25 +40,20 @@ const meta: Meta<Required<DateRangeFilterProps>> = {
     }),
     argTypes: {
         value: {
-            control: {
-                type: 'object',
-            },
+            control: { type: 'object' },
         },
         lapisDateField: { control: { type: 'text' } },
         dateRangeOptions: {
-            control: {
-                type: 'object',
-            },
+            control: { type: 'object' },
         },
         earliestDate: {
-            control: {
-                type: 'text',
-            },
+            control: { type: 'text' },
         },
         width: {
-            control: {
-                type: 'text',
-            },
+            control: { type: 'text' },
+        },
+        placeholder: {
+            control: { type: 'text' },
         },
     },
     args: {
@@ -72,6 +68,7 @@ const meta: Meta<Required<DateRangeFilterProps>> = {
         value: dateRangeOptionPresets.lastMonth.label,
         lapisDateField: 'aDateColumn',
         width: '100%',
+        placeholder: 'Date range',
     },
     tags: ['autodocs'],
 };
@@ -88,6 +85,7 @@ export const Default: StoryObj<Required<DateRangeFilterProps>> = {
                     .value=${args.value}
                     .width=${args.width}
                     .lapisDateField=${args.lapisDateField}
+                    .placeholder=${args.placeholder}
                 ></gs-date-range-filter>
             </div>
         </gs-app>`,
@@ -103,14 +101,15 @@ export const TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression: StoryOb
                     value="${args.value}"
                     width="${args.width}"
                     lapisDateField="${args.lapisDateField}"
+                    placeholder="${args.placeholder}"
                 ></gs-date-range-filter>
             </div>
         </gs-app>`,
     play: async ({ canvasElement }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-filter');
-
         await waitFor(async () => {
-            await expect(selectField(canvas)).toHaveValue('Last month');
+            const canvas = await withinShadowRoot(canvasElement, 'gs-date-range-filter');
+            const placeholderOption = canvas.getByRole('combobox').querySelector('option:checked');
+            await expect(placeholderOption).toHaveTextContent('Last month');
         });
     },
     argTypes: {
@@ -150,7 +149,10 @@ export const FiresEvents: StoryObj<Required<DateRangeFilterProps>> = {
         });
 
         await step('Expect last 6 months to be selected', async () => {
-            await expect(selectField(canvas)).toHaveValue('Last month');
+            await waitFor(async () => {
+                const placeholderOption = canvas.getByRole('combobox').querySelector('option:checked');
+                await expect(placeholderOption).toHaveTextContent('Last month');
+            });
             await waitFor(async () => {
                 await expect(dateToPicker(canvas)).toHaveValue(toYYYYMMDD(new Date()));
             });
@@ -158,22 +160,26 @@ export const FiresEvents: StoryObj<Required<DateRangeFilterProps>> = {
 
         await step('Expect event to be fired when selecting a different value', async () => {
             await userEvent.selectOptions(selectField(canvas), 'CustomDateRange');
-            await expect(dateToPicker(canvas)).toHaveValue(customDateRange.dateTo);
+            await userEvent.click(canvas.getByText('CustomDateRange'));
 
-            await expect(filterChangedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        aDateColumnFrom: customDateRange.dateFrom,
-                        aDateColumnTo: customDateRange.dateTo,
-                    },
-                }),
-            );
+            await waitFor(async () => {
+                await expect(dateToPicker(canvas)).toHaveValue(customDateRange.dateTo);
 
-            await expect(optionChangedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: customDateRange.label,
-                }),
-            );
+                await expect(filterChangedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            aDateColumnFrom: customDateRange.dateFrom,
+                            aDateColumnTo: customDateRange.dateTo,
+                        },
+                    }),
+                );
+
+                await expect(optionChangedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: customDateRange.label,
+                    }),
+                );
+            });
         });
     },
 };
