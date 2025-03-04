@@ -86,7 +86,7 @@ export default meta;
 export const Default: StoryObj<Required<TextFilterProps>> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
-            <div class="max-w-screen-lg">
+            <div class="max-w-(--breakpoint-lg)">
                 <gs-text-filter
                     .lapisField=${args.lapisField}
                     .lapisFilter=${args.lapisFilter}

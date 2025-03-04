@@ -78,7 +78,7 @@ export default meta;
 export const Default: StoryObj<Required<DateRangeFilterProps>> = {
     render: (args) =>
         html` <gs-app lapis="${LAPIS_URL}">
-            <div class="max-w-screen-lg">
+            <div class="max-w-(--breakpoint-lg)">
                 <gs-date-range-filter
                     .dateRangeOptions=${args.dateRangeOptions}
                     .earliestDate=${args.earliestDate}
@@ -94,7 +94,7 @@ export const Default: StoryObj<Required<DateRangeFilterProps>> = {
 export const TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression: StoryObj<Required<DateRangeFilterProps>> = {
     render: (args) =>
         html` <gs-app lapis="${LAPIS_URL}">
-            <div class="max-w-screen-lg">
+            <div class="max-w-(--breakpoint-lg)">
                 <gs-date-range-filter
                     .dateRangeOptions=${args.dateRangeOptions}
                     earliestDate="${args.earliestDate}"

@@ -128,7 +128,7 @@ export const OnBlurInput: StoryObj<LocationFilterProps> = {
     play: async ({ canvasElement, step }) => {
         const { canvas, locationChangedListenerMock } = await prepare(canvasElement, step);
 
-        await step('after cleared selection by hand and then blur fires event with empty filter', async () => {
+        await step('after cleared selection by hand and then blur-sm fires event with empty filter', async () => {
             const input = await inputField(canvas);
             await userEvent.clear(input);
             await userEvent.click(canvas.getByLabelText('toggle menu'));

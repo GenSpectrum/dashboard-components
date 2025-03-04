@@ -131,7 +131,7 @@ export function DownshiftCombobox<Item>({
                 {items.length > 0 ? (
                     items.map((item, index) => (
                         <li
-                            className={`${highlightedIndex === index ? 'bg-blue-300' : ''} ${selectedItem !== null && itemToString(selectedItem) === itemToString(item) ? 'font-bold' : ''} py-2 px-3 shadow-sm`}
+                            className={`${highlightedIndex === index ? 'bg-blue-300' : ''} ${selectedItem !== null && itemToString(selectedItem) === itemToString(item) ? 'font-bold' : ''} py-2 px-3 shadow-xs`}
                             key={itemToString(item)}
                             {...getItemProps({ item, index })}
                         >
@@ -139,7 +139,7 @@ export function DownshiftCombobox<Item>({
                         </li>
                     ))
                 ) : (
-                    <li className='py-2 px-3 shadow-sm'>No elements to select.</li>
+                    <li className='py-2 px-3 shadow-xs'>No elements to select.</li>
                 )}
             </ul>
         </div>
