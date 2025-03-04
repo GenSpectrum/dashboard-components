@@ -4,7 +4,7 @@ import { Modal } from './modal';
 
 const Info: FunctionComponent = ({ children }) => {
     return (
-        <div className='relative'>
+        <div className='relative inline-flex'>
             <Modal buttonClassName='btn btn-xs' modalContent={children}>
                 ?
             </Modal>

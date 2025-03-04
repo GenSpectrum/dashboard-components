@@ -193,7 +193,7 @@ export const DateRangeFilterInner = ({
     return (
         <div className={'@container'} ref={divRef}>
             <div className='flex min-w-[7.5rem] flex-col @md:flex-row'>
-                <div className='flex-grow'>
+                <div className='grow'>
                     <ClearableSelect
                         items={options.map((item) => item.label)}
                         placeholderText={placeholder}
@@ -205,9 +205,9 @@ export const DateRangeFilterInner = ({
                         selectClassName={'rounded-t-md rounded-b-none @md:rounded-l-md @md:rounded-r-none'}
                     />
                 </div>
-                <div className={'flex flex-grow flex-col @4xs:flex-row'}>
+                <div className={'flex grow flex-col @4xs:flex-row'}>
                     <DatePicker
-                        className={'flex-grow min-w-[7.5rem] @4xs:rounded-bl-md @md:rounded-l-none rounded-none'}
+                        className={'grow min-w-[7.5rem] @4xs:rounded-bl-md @md:rounded-l-none rounded-none'}
                         value={state?.dateFrom}
                         onChange={onChangeDateFrom}
                         maxDate={state?.dateTo}
@@ -215,7 +215,7 @@ export const DateRangeFilterInner = ({
                     />
                     <DatePicker
                         className={
-                            'flex-grow min-w-[7.5rem] rounded-b-md rounded-t-none @4xs:rounded-tr-none @4xs:rounded-l-none @md:rounded-r-md '
+                            'grow min-w-[7.5rem] rounded-b-md rounded-t-none @4xs:rounded-tr-none @4xs:rounded-l-none @md:rounded-r-md '
                         }
                         value={state?.dateTo}
                         onChange={onChangeDateTo}

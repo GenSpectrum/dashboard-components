@@ -167,7 +167,7 @@ const Toolbar = ({ activeTab, data, yAxisScaleType, setYAxisScaleType, originalC
                 />
             )}
             <CsvDownloadButton
-                className='mx-1 btn btn-xs'
+                className='btn btn-xs'
                 getData={() => getNumberOfSequencesOverTimeTableData(data, originalComponentProps.granularity)}
                 filename='number_of_sequences_over_time.csv'
             />

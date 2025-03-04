@@ -149,15 +149,11 @@ type ToolbarProps = {
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({ originalComponentProps, tableData }) => {
     return (
-        <div class='flex flex-row'>
-            <CsvDownloadButton
-                className='mx-1 btn btn-xs'
-                getData={() => tableData}
-                filename='sequences_by_location.csv'
-            />
+        <>
+            <CsvDownloadButton className='btn btn-xs' getData={() => tableData} filename='sequences_by_location.csv' />
             <SequencesByLocationMapInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
-        </div>
+        </>
     );
 };
 
