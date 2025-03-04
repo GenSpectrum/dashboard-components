@@ -40,7 +40,7 @@ export const PercentInput: FunctionComponent<PercentInputProps> = ({
 
     const isError = indicateError || !percentageInRange(internalPercentage);
     return (
-        <label className={`input flex items-center gap-2 w-32 ${isError ? 'input-error' : ''}`}>
+        <label className={`input flex items-center w-32 ${isError ? 'input-error' : ''}`}>
             <input
                 type='number'
                 step={0.1}
@@ -51,7 +51,7 @@ export const PercentInput: FunctionComponent<PercentInputProps> = ({
                 lang='en'
                 className={`grow w-16`}
             />
-            %
+            <span className='label'>%</span>
         </label>
     );
 };
