@@ -3,11 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
-import {
-    WastewaterMutationsOverTime,
-    type WastewaterMutationsOverTimeProps,
-} from '../../preact/wastewater/mutationsOverTime/wastewater-mutations-over-time';
-import { type Equals, type Expect } from '../../utils/typeAssertions';
+import { WastewaterMutationsOverTime } from '../../preact/wastewater/mutationsOverTime/wastewater-mutations-over-time';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 import { type MutationAnnotations, mutationAnnotationsContext } from '../mutation-annotations-context';
 
@@ -69,10 +65,10 @@ export class WastewaterMutationsOverTimeComponent extends PreactLitAdapterWithGr
     height: string | undefined = undefined;
 
     /**
-     * The maximum number of grid rows to display.
+     * The number of rows per page, which can be selected by the user.
      */
-    @property({ type: Number })
-    maxNumberOfGridRows: number = 100;
+    @property({ type: Array })
+    pageSizes: number[] | number = [10, 20, 30, 40, 50];
 
     /**
      * @internal
@@ -88,7 +84,7 @@ export class WastewaterMutationsOverTimeComponent extends PreactLitAdapterWithGr
                     sequenceType={this.sequenceType}
                     width={this.width}
                     height={this.height}
-                    maxNumberOfGridRows={this.maxNumberOfGridRows}
+                    pageSizes={this.pageSizes}
                 />
             </MutationAnnotationsContextProvider>
         );
@@ -109,30 +105,3 @@ declare global {
         }
     }
 }
-
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type LapisFilterMatches = Expect<
-    Equals<
-        typeof WastewaterMutationsOverTimeComponent.prototype.lapisFilter,
-        WastewaterMutationsOverTimeProps['lapisFilter']
-    >
->;
-type SequenceTypeMatches = Expect<
-    Equals<
-        typeof WastewaterMutationsOverTimeComponent.prototype.sequenceType,
-        WastewaterMutationsOverTimeProps['sequenceType']
-    >
->;
-type WidthMatches = Expect<
-    Equals<typeof WastewaterMutationsOverTimeComponent.prototype.width, WastewaterMutationsOverTimeProps['width']>
->;
-type HeightMatches = Expect<
-    Equals<typeof WastewaterMutationsOverTimeComponent.prototype.height, WastewaterMutationsOverTimeProps['height']>
->;
-type MaxNumberOfGridRowsMatches = Expect<
-    Equals<
-        typeof WastewaterMutationsOverTimeComponent.prototype.maxNumberOfGridRows,
-        WastewaterMutationsOverTimeProps['maxNumberOfGridRows']
-    >
->;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */

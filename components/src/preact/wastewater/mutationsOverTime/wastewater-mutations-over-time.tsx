@@ -16,6 +16,7 @@ import { ResizeContainer } from '../../components/resize-container';
 import Tabs from '../../components/tabs';
 import { type MutationOverTimeDataMap } from '../../mutationsOverTime/MutationOverTimeData';
 import MutationsOverTimeGrid from '../../mutationsOverTime/mutations-over-time-grid';
+import { pageSizesSchema } from '../../shared/tanstackTable/pagination';
 import { useQuery } from '../../useQuery';
 
 const wastewaterMutationOverTimeSchema = z.object({
@@ -23,7 +24,7 @@ const wastewaterMutationOverTimeSchema = z.object({
     sequenceType: sequenceTypeSchema,
     width: z.string(),
     height: z.string().optional(),
-    maxNumberOfGridRows: z.number(),
+    pageSizes: pageSizesSchema,
 });
 
 export type WastewaterMutationsOverTimeProps = z.infer<typeof wastewaterMutationOverTimeSchema>;
@@ -76,7 +77,6 @@ export const WastewaterMutationsOverTimeInner: FunctionComponent<WastewaterMutat
         <MutationsOverTimeTabs
             mutationOverTimeDataPerLocation={mutationOverTimeDataPerLocation}
             originalComponentProps={componentProps}
-            maxNumberOfGridRows={componentProps.maxNumberOfGridRows}
         />
     );
 };
@@ -89,13 +89,11 @@ type MutationOverTimeDataPerLocation = {
 type MutationOverTimeTabsProps = {
     mutationOverTimeDataPerLocation: MutationOverTimeDataPerLocation;
     originalComponentProps: WastewaterMutationsOverTimeProps;
-    maxNumberOfGridRows?: number;
 };
 
 const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     mutationOverTimeDataPerLocation,
     originalComponentProps,
-    maxNumberOfGridRows,
 }) => {
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
 
@@ -105,7 +103,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             <MutationsOverTimeGrid
                 data={data}
                 colorScale={colorScale}
-                maxNumberOfGridRows={maxNumberOfGridRows}
+                pageSizes={originalComponentProps.pageSizes}
                 sequenceType={originalComponentProps.sequenceType}
             />
         ),
