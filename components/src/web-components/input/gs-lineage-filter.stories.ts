@@ -87,7 +87,7 @@ export default meta;
 const Template: StoryObj<Required<LineageFilterProps>> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
-            <div class="max-w-screen-lg">
+            <div class="max-w-(--breakpoint-lg)">
                 <gs-lineage-filter
                     .lapisField=${args.lapisField}
                     .lapisFilter=${args.lapisFilter}

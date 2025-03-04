@@ -119,11 +119,11 @@ type ToolbarProps = {
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({ data, originalComponentProps }) => {
     return (
-        <div class='flex flex-row'>
-            <CsvDownloadButton className='mx-1 btn btn-xs' getData={() => data} filename='aggregate.csv' />
+        <>
+            <CsvDownloadButton className='btn btn-xs' getData={() => data} filename='aggregate.csv' />
             <AggregateInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
-        </div>
+        </>
     );
 };
 

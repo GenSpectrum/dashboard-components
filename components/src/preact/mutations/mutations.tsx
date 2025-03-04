@@ -200,7 +200,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                         setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
                     />
                     <CsvDownloadButton
-                        className='mx-1 btn btn-xs'
+                        className='btn btn-xs'
                         getData={() =>
                             getMutationsTableData(
                                 filteredData.tableData,
@@ -215,7 +215,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
             )}
             {activeTab === 'Insertions' && (
                 <CsvDownloadButton
-                    className='mx-1 btn btn-xs'
+                    className='btn btn-xs'
                     getData={() =>
                         getInsertionsTableData(filteredData.insertions).map((row) => {
                             return {

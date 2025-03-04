@@ -84,7 +84,7 @@ export const ErrorDisplay: FunctionComponent<ErrorDisplayProps> = ({ error, rese
             </div>
             {resetError !== undefined && (
                 <button onClick={resetError} className='btn btn-sm flex items-center m-4'>
-                    <span className='iconify mdi--reload text-lg' />
+                    <span className='icon-[mdi--reload] text-lg' />
                     Try again
                 </button>
             )}

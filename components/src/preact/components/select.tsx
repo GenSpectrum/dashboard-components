@@ -10,7 +10,7 @@ export interface SelectProps {
 
 export const Select: FunctionComponent<SelectProps> = ({ items, selected, onChange, selectStyle }) => {
     return (
-        <select class={`select select-bordered ${selectStyle}`} value={selected} onChange={onChange}>
+        <select class={`select ${selectStyle} w-fit`} value={selected} onChange={onChange}>
             {items.map((item) => (
                 <option key={item.value} value={item.value} disabled={item.disabled}>
                     {item.label}

@@ -16,7 +16,7 @@ export const ProportionSelectorDropdown: FunctionComponent<ProportionSelectorDro
     const width = 'w-[calc(1.5 * var(--tw-space-x-reverse) + 1.5 * var(--tw-space-x))]';
 
     return (
-        <div className={width}>
+        <div className={`${width} inline-flex`}>
             <Dropdown buttonTitle={`${labelPrefix} ${percentLabel}`} placement={'bottom-start'}>
                 <ProportionSelector
                     proportionInterval={proportionInterval}
