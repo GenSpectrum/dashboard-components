@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.17.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.16.4...dashboard-components-v0.17.0) (2025-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** Rename DateRangeSelectOption to DateRangeValue
+
+### Features
+
+* **components:** gs-date-range-selector:  allow for undefined ([#741](https://github.com/GenSpectrum/dashboard-components/issues/741)) ([71d118c](https://github.com/GenSpectrum/dashboard-components/commit/71d118c7c3b3593fb59c967b52069dbd7a391f68)), closes [#719](https://github.com/GenSpectrum/dashboard-components/issues/719)
+
 ## [0.16.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.16.3...dashboard-components-v0.16.4) (2025-02-27)
 
 
