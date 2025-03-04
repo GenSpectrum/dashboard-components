@@ -14,7 +14,10 @@
         "eslint-plugin-import",
         "eslint-plugin-storybook",
         "@iconify-json/mdi",
-        "@iconify-json/mdi-light"
+        "@iconify-json/mdi-light",
+        "@iconify/tailwind4",
+        "daisyui",
+        "tailwindcss"
     ],
     "ignore-patterns": [".eslintrc.json"]
 }
