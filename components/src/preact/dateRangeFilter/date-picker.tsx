@@ -55,7 +55,7 @@ export function DatePicker({
 
     return (
         <input
-            className={`input input-bordered w-full ${className}`}
+            className={`input w-full ${className}`}
             type='text'
             placeholder={placeholderText}
             ref={inputRef}
