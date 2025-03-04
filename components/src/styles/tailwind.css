@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @plugin "daisyui";
+@plugin "@iconify/tailwind4";
 
 @theme {
   --container-2xs: 18rem;

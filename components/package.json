@@ -101,7 +101,7 @@
         "@custom-elements-manifest/analyzer": "^0.10.2",
         "@iconify-json/mdi": "^1.1.67",
         "@iconify-json/mdi-light": "^1.1.10",
-        "@iconify/tailwind": "^1.1.2",
+        "@iconify/tailwind4": "^1.0.6",
         "@playwright/test": "^1.43.1",
         "@storybook/addon-actions": "^8.0.9",
         "@storybook/addon-essentials": "^8.0.9",
