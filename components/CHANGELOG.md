@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.17.0...dashboard-components-v0.17.1) (2025-03-05)
+
+
+### Features
+
+* **components:** add pagination for gs-mutations-over-time and gs-wastewater-mutations-over-time ([#787](https://github.com/GenSpectrum/dashboard-components/issues/787)) ([078608e](https://github.com/GenSpectrum/dashboard-components/commit/078608e414b248ac4552400ca8ea724a05c7a852)), closes [#694](https://github.com/GenSpectrum/dashboard-components/issues/694)
+
 ## [0.17.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.16.4...dashboard-components-v0.17.0) (2025-03-03)
 
 
