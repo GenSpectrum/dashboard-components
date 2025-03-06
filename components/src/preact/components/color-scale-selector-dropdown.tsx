@@ -10,7 +10,7 @@ export const ColorScaleSelectorDropdown: FunctionComponent<ColorScaleSelectorDro
     setColorScale,
 }) => {
     return (
-        <div className='w-20'>
+        <div className='w-20 inline-flex'>
             <Dropdown buttonTitle={`Color scale`} placement={'bottom-start'}>
                 <ColorScaleSelector colorScale={colorScale} setColorScale={setColorScale} />
             </Dropdown>

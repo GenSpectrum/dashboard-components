@@ -39,7 +39,7 @@ export const ConfidenceIntervalSelector: FunctionComponent<ConfidenceIntervalSel
                 const value = select.value as ConfidenceIntervalMethod;
                 setConfidenceIntervalMethod(value);
             }}
-            selectStyle={'select-xs select-bordered'}
+            selectStyle={'select-xs'}
         />
     );
 };

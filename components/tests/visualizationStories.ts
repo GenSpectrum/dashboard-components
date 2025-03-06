@@ -60,7 +60,7 @@ export const visualizationStories = [
     {
         id: 'visualization-mutations--on-insertions-tab',
         title: 'Mutations',
-        loadingIsDoneIndicator: 'Insertions',
+        loadingIsDoneIndicator: 'ins_1813:A',
         testDownloadWithFilename: 'insertions.csv',
     },
     {
@@ -188,12 +188,12 @@ export const visualizationStories = [
     {
         id: 'visualization-sequences-by-location--germany-on-table-tab',
         title: 'Sequences by location',
-        loadingIsDoneIndicator: 'division',
+        loadingIsDoneIndicator: 'Bavaria',
     },
     {
         id: 'visualization-sequences-by-location--germany-table-only',
         title: 'Sequences by location',
-        loadingIsDoneIndicator: 'division',
+        loadingIsDoneIndicator: 'Bavaria',
         testDownloadWithFilename: 'sequences_by_location.csv',
     },
     {

@@ -14,3 +14,5 @@ storybook-static/
 
 *storybook.log
 genspectrum-dashboard-components*.tgz
+
+**/node_modules

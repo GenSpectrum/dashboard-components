@@ -46,7 +46,7 @@ export default meta;
 const Template: StoryObj<MutationFilterProps> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
-            <div class="max-w-screen-lg">
+            <div class="max-w-(--breakpoint-lg)">
                 <gs-mutation-filter .initialValue=${args.initialValue} .width=${args.width}></gs-mutation-filter>
             </div>
         </gs-app>`;

@@ -45,7 +45,7 @@ const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
                 {tabElements}
                 {toolbar && <div className='py-2 flex flex-wrap gap-y-1'>{toolbarElement}</div>}
             </div>
-            <div className={`p-2 flex-grow overflow-scroll border-2 border-gray-100 rounded-b-md rounded-tr-md`}>
+            <div className={`p-2 grow overflow-scroll border-2 border-gray-100 rounded-b-md rounded-tr-md`}>
                 {tabs.map((tab) => (
                     <div className='h-full' key={tab.title} hidden={activeTab !== tab.title}>
                         {tab.content}

@@ -18,9 +18,13 @@ export const Fullscreen = () => {
                     }
                 }
             }}
-            className={`mt-0.5 iconify text-2xl ${isFullscreen ? 'mdi--fullscreen-exit hover:scale-90' : 'mdi--fullscreen hover:scale-110'}`}
+            className={`btn btn-xs`}
             title={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
-        />
+        >
+            <div
+                className={`iconify text-2xl ${isFullscreen ? 'mdi--fullscreen-exit hover:scale-90' : 'mdi--fullscreen hover:scale-110'}`}
+            />
+        </button>
     );
 };
 

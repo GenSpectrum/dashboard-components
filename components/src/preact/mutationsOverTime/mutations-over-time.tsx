@@ -240,7 +240,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 labelPrefix='Mean proportion'
             />
             <CsvDownloadButton
-                className='mx-1 btn btn-xs'
+                className='btn btn-xs'
                 getData={() => getDownloadData(filteredData)}
                 filename='mutations_over_time.csv'
             />
