@@ -178,7 +178,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 setDisplayedMutationTypes={setDisplayedMutationTypes}
             />
             <CsvDownloadButton
-                className='mx-1 btn btn-xs'
+                className='btn btn-xs'
                 getData={() => getMutationComparisonTableData({ content: filteredData }, proportionInterval)}
                 filename='mutation_comparison.csv'
             />

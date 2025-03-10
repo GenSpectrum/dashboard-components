@@ -1,3 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin "daisyui" {
+  themes: light --default;
+}
+@plugin "@iconify/tailwind4" {
+  prefixes: mdi, mdi-light;
+}
+
+@theme {
+  --container-2xs: 18rem;
+  --container-3xs: 16rem;
+  --container-4xs: 14rem;
+}

@@ -50,7 +50,7 @@ export function ClearableSelect({
     return (
         <div className={`relative inline min-w-24 ${className}`}>
             <select
-                className={`w-full select select-bordered pr-14 ${selectClassName}`}
+                className={`w-full select pr-14 ${selectClassName}`}
                 value={selectedOption ?? undefinedValue}
                 onChange={handleChange}
             >

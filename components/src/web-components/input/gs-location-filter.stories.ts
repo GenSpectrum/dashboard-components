@@ -67,7 +67,7 @@ export default meta;
 const Template: StoryObj<LocationFilterProps> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
-            <div class="max-w-screen-lg">
+            <div class="max-w-(--breakpoint-lg)">
                 <gs-location-filter
                     .fields=${args.fields}
                     .lapisFilter=${args.lapisFilter}

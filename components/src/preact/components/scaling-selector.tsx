@@ -36,7 +36,7 @@ export const ScalingSelector: FunctionComponent<ScalingSelectorProps> = ({
                 const value = select.value as ScaleType;
                 setYAxisScaleType(value);
             }}
-            selectStyle={`${className} select-xs select-bordered`}
+            selectStyle={`${className ?? ''} select-xs`}
         />
     );
 };

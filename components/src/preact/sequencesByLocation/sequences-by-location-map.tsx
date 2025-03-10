@@ -106,7 +106,7 @@ const DataMatchInformation: FunctionComponent<DataMatchInformationProps> = ({
 
     return (
         <Modal
-            buttonClassName='text-sm absolute bottom-0 px-1 z-[1001] bg-white rounded border'
+            buttonClassName='text-sm absolute bottom-0 px-1 z-1001 bg-white rounded-sm border border-gray-200'
             modalContent={
                 <>
                     <InfoHeadline1>Sequences By Location - Map View</InfoHeadline1>
