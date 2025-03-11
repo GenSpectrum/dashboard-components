@@ -326,7 +326,7 @@ const SelectedFilter = ({ handleRemoveValue, mutationFilter }: SelectedFilterPro
             }}
         >
             {mutationFilter.value.toString()}
-            <button className='ml-1' onClick={() => handleRemoveValue(mutationFilter)}>
+            <button className='ml-1 cursor-pointer' onClick={() => handleRemoveValue(mutationFilter)}>
                 ×
             </button>
         </span>
