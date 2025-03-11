@@ -39822,6 +39822,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 9,
                                 proportion: 0.0010073875083948958,
                                 totalCount: 505427,
@@ -39835,6 +39836,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 120,
                                 proportion: 0.013431833445265278,
                                 totalCount: 505427,
@@ -39848,6 +39850,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 11,
                                 proportion: 0.0012312513991493172,
                                 totalCount: 505427,
@@ -39861,6 +39864,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 41,
                                 proportion: 0.0017979301876863709,
                                 totalCount: 505427,
@@ -39874,6 +39878,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 99,
                                 proportion: 0.002245152511622633,
                                 totalCount: 505427,
@@ -39887,6 +39892,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3313,
                                 proportion: 0.06698748407707705,
                                 totalCount: 505427,
@@ -39900,6 +39906,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 216,
                                 proportion: 0.0019316240844906682,
                                 totalCount: 505427,
@@ -39913,6 +39920,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 278,
                                 proportion: 0.002466419433255851,
                                 totalCount: 505427,
@@ -39926,6 +39934,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 78837,
                                 proportion: 0.6225874214233819,
                                 totalCount: 505427,
@@ -39939,6 +39948,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 486,
                                 proportion: 0.001129602082558572,
                                 totalCount: 505427,
@@ -39952,6 +39962,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1260,
                                 proportion: 0.0028696887981925516,
                                 totalCount: 505427,
@@ -39965,6 +39976,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1053,
                                 proportion: 0.002313212993534866,
                                 totalCount: 505427,
@@ -39978,6 +39990,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1006,
                                 proportion: 0.0022053471996913393,
                                 totalCount: 505427,
@@ -39991,6 +40004,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 6106,
                                 proportion: 0.013397725502414706,
                                 totalCount: 505427,
@@ -40004,6 +40018,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2146,
                                 proportion: 0.004675289591271631,
                                 totalCount: 505427,
@@ -40017,6 +40032,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 525,
                                 proportion: 0.0011435392212171178,
                                 totalCount: 505427,
@@ -40030,6 +40046,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 769,
                                 proportion: 0.0016715102062108886,
                                 totalCount: 505427,
@@ -40043,6 +40060,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1095,
                                 proportion: 0.002379364068777746,
                                 totalCount: 505427,
@@ -40056,6 +40074,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1607,
                                 proportion: 0.003490951115822676,
                                 totalCount: 505427,
@@ -40069,6 +40088,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 575,
                                 proportion: 0.0012501032694005156,
                                 totalCount: 505427,
@@ -40082,6 +40102,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 457827,
                                 proportion: 0.9953583122083999,
                                 totalCount: 505427,
@@ -40095,6 +40116,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 584,
                                 proportion: 0.0012596088310657498,
                                 totalCount: 505427,
@@ -40108,6 +40130,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2218,
                                 proportion: 0.004727104552555471,
                                 totalCount: 505427,
@@ -40121,6 +40144,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1272,
                                 proportion: 0.0027095248745886186,
                                 totalCount: 505427,
@@ -40134,6 +40158,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1474,
                                 proportion: 0.0030193842832239816,
                                 totalCount: 505427,
@@ -40147,6 +40172,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 517,
                                 proportion: 0.0010587579970018923,
                                 totalCount: 505427,
@@ -40160,6 +40186,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 737,
                                 proportion: 0.0015079715838407647,
                                 totalCount: 505427,
@@ -40173,6 +40200,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1427,
                                 proportion: 0.002918755509739071,
                                 totalCount: 505427,
@@ -40186,6 +40214,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 341614,
                                 proportion: 0.6998135818908122,
                                 totalCount: 505427,
@@ -40199,6 +40228,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 744,
                                 proportion: 0.0015571303594375913,
                                 totalCount: 505427,
@@ -40212,6 +40242,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 519,
                                 proportion: 0.001084897969422182,
                                 totalCount: 505427,
@@ -40225,6 +40256,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7392,
                                 proportion: 0.015496108154114162,
                                 totalCount: 505427,
@@ -40238,6 +40270,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 487,
                                 proportion: 0.0010218405299302756,
                                 totalCount: 505427,
@@ -40251,6 +40284,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 12300,
                                 proportion: 0.025808292645056245,
                                 totalCount: 505427,
@@ -40264,6 +40298,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 12292,
                                 proportion: 0.025792913873238697,
                                 totalCount: 505427,
@@ -40277,6 +40312,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 12261,
                                 proportion: 0.02573094260746934,
                                 totalCount: 505427,
@@ -40290,6 +40326,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 12408,
                                 proportion: 0.026041677597818946,
                                 totalCount: 505427,
@@ -40303,6 +40340,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 12401,
                                 proportion: 0.026023108335536727,
                                 totalCount: 505427,
@@ -40316,6 +40354,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 17679,
                                 proportion: 0.03712048040986016,
                                 totalCount: 505427,
@@ -40329,6 +40368,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 19167,
                                 proportion: 0.04026283119103786,
                                 totalCount: 505427,
@@ -40342,6 +40382,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 19149,
                                 proportion: 0.04022552679286028,
                                 totalCount: 505427,
@@ -40355,6 +40396,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 21994,
                                 proportion: 0.04623278672672963,
                                 totalCount: 505427,
@@ -40368,6 +40410,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 16036,
                                 proportion: 0.033679594399895825,
                                 totalCount: 505427,
@@ -40381,6 +40424,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 15975,
                                 proportion: 0.03355331143354029,
                                 totalCount: 505427,
@@ -40394,6 +40438,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 8461,
                                 proportion: 0.01774579530987502,
                                 totalCount: 505427,
@@ -40407,6 +40452,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 8244,
                                 proportion: 0.017298250031474255,
                                 totalCount: 505427,
@@ -40420,6 +40466,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 8204,
                                 proportion: 0.017184066825995613,
                                 totalCount: 505427,
@@ -40433,6 +40480,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 775,
                                 proportion: 0.0016227817620269069,
                                 totalCount: 505427,
@@ -40446,6 +40494,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1188,
                                 proportion: 0.002487702832588907,
                                 totalCount: 505427,
@@ -40459,6 +40508,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 567,
                                 proportion: 0.0011858848332231807,
                                 totalCount: 505427,
@@ -40472,6 +40522,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2352,
                                 proportion: 0.004916675725167861,
                                 totalCount: 505427,
@@ -40485,6 +40536,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2246,
                                 proportion: 0.004695326415078562,
                                 totalCount: 505427,
@@ -40498,6 +40550,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1952,
                                 proportion: 0.00408137662826437,
                                 totalCount: 505427,
@@ -40511,6 +40564,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2347,
                                 proportion: 0.004893691995571282,
                                 totalCount: 505427,
@@ -40524,6 +40578,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 907,
                                 proportion: 0.001894445744076463,
                                 totalCount: 505427,
@@ -40537,6 +40592,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 711,
                                 proportion: 0.0014836021275397035,
                                 totalCount: 505427,
@@ -40550,6 +40606,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 642,
                                 proportion: 0.0013310416748733749,
                                 totalCount: 505427,
@@ -40563,6 +40620,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 493686,
                                 proportion: 0.9920624713646119,
                                 totalCount: 505427,
@@ -40576,6 +40634,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 823,
                                 proportion: 0.001647024449207407,
                                 totalCount: 505427,
@@ -40589,6 +40648,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 593,
                                 proportion: 0.0011866977782936366,
                                 totalCount: 505427,
@@ -40602,6 +40662,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 541,
                                 proportion: 0.0010826755895678903,
                                 totalCount: 505427,
@@ -40615,6 +40676,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1719,
                                 proportion: 0.0034400915756780124,
                                 totalCount: 505427,
@@ -40628,6 +40690,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7422,
                                 proportion: 0.014860524903692907,
                                 totalCount: 505427,
@@ -40641,6 +40704,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7417,
                                 proportion: 0.01485063270863367,
                                 totalCount: 505427,
@@ -40654,6 +40718,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7412,
                                 proportion: 0.014842018210107069,
                                 totalCount: 505427,
@@ -40667,6 +40732,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7416,
                                 proportion: 0.014850801114210591,
                                 totalCount: 505427,
@@ -40680,6 +40746,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7415,
                                 proportion: 0.014848768843818586,
                                 totalCount: 505427,
@@ -40693,6 +40760,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7429,
                                 proportion: 0.014876119113079731,
                                 totalCount: 505427,
@@ -40706,6 +40774,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7427,
                                 proportion: 0.014872531173842608,
                                 totalCount: 505427,
@@ -40719,6 +40788,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7411,
                                 proportion: 0.014841055915795882,
                                 totalCount: 505427,
@@ -40732,6 +40802,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7281,
                                 proportion: 0.014583671335604708,
                                 totalCount: 505427,
@@ -40745,6 +40816,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 571,
                                 proportion: 0.0011427359219337253,
                                 totalCount: 505427,
@@ -40758,6 +40830,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 536,
                                 proportion: 0.0010745122095459183,
                                 totalCount: 505427,
@@ -40771,6 +40844,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 798,
                                 proportion: 0.0015997305716931886,
                                 totalCount: 505427,
@@ -40784,6 +40858,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5996,
                                 proportion: 0.012021066939860582,
                                 totalCount: 505427,
@@ -40797,6 +40872,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1585,
                                 proportion: 0.0031768874920828356,
                                 totalCount: 505427,
@@ -40810,6 +40886,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1167,
                                 proportion: 0.002339835549861354,
                                 totalCount: 505427,
@@ -40823,6 +40900,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 742,
                                 proportion: 0.0014874419406506656,
                                 totalCount: 505427,
@@ -40836,6 +40914,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1267,
                                 proportion: 0.002539302062706932,
                                 totalCount: 505427,
@@ -40849,6 +40928,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 942,
                                 proportion: 0.0018879495905434168,
                                 totalCount: 505427,
@@ -40862,6 +40942,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 681,
                                 proportion: 0.001364934609410232,
                                 totalCount: 505427,
@@ -40875,6 +40956,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1052,
                                 proportion: 0.002108355863213399,
                                 totalCount: 505427,
@@ -40888,6 +40970,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 525,
                                 proportion: 0.0010519545315195633,
                                 totalCount: 505427,
@@ -40901,6 +40984,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 671,
                                 proportion: 0.001344471137951555,
                                 totalCount: 505427,
@@ -40914,6 +40998,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29396,
                                 proportion: 0.058916431503335046,
                                 totalCount: 505427,
@@ -40927,6 +41012,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1496,
                                 proportion: 0.0029965067461462038,
                                 totalCount: 505427,
@@ -40940,6 +41026,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 807,
                                 proportion: 0.0016170853989411797,
                                 totalCount: 505427,
@@ -40953,6 +41040,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 779,
                                 proportion: 0.0015602780058885973,
                                 totalCount: 505427,
@@ -40966,6 +41054,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2329,
                                 proportion: 0.00466413800561539,
                                 totalCount: 505427,
@@ -40979,6 +41068,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 582,
                                 proportion: 0.0011653914774240443,
                                 totalCount: 505427,
@@ -40992,6 +41082,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 781,
                                 proportion: 0.0015635291314905978,
                                 totalCount: 505427,
@@ -41005,6 +41096,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 611,
                                 proportion: 0.0012231962859676764,
                                 totalCount: 505427,
@@ -41018,6 +41110,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 645,
                                 proportion: 0.001292212267401792,
                                 totalCount: 505427,
@@ -41031,6 +41124,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1270,
                                 proportion: 0.002541865729445413,
                                 totalCount: 505427,
@@ -41044,6 +41138,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1087,
                                 proportion: 0.0021708869481164013,
                                 totalCount: 505427,
@@ -41057,6 +41152,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1046,
                                 proportion: 0.0021039165835291087,
                                 totalCount: 505427,
@@ -41070,6 +41166,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 693,
                                 proportion: 0.001393914647367754,
                                 totalCount: 505427,
@@ -41083,6 +41180,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 782,
                                 proportion: 0.001573627452755961,
                                 totalCount: 505427,
@@ -41096,6 +41194,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 846,
                                 proportion: 0.0017027991522234008,
                                 totalCount: 505427,
@@ -41109,6 +41208,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 652,
                                 proportion: 0.0013139333360203136,
                                 totalCount: 505427,
@@ -41122,6 +41222,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 721,
                                 proportion: 0.0014539573452069822,
                                 totalCount: 505427,
@@ -41135,6 +41236,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 773,
                                 proportion: 0.0015582384044283805,
                                 totalCount: 505427,
@@ -41148,6 +41250,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1181,
                                 proportion: 0.0023678106072301426,
                                 totalCount: 505427,
@@ -41161,6 +41264,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 769,
                                 proportion: 0.0015419257429415292,
                                 totalCount: 505427,
@@ -41174,6 +41278,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1220,
                                 proportion: 0.0024462035722592496,
                                 totalCount: 505427,
@@ -41187,6 +41292,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 558,
                                 proportion: 0.00112349822716812,
                                 totalCount: 505427,
@@ -41200,6 +41306,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1425,
                                 proportion: 0.0028670474642222654,
                                 totalCount: 505427,
@@ -41213,6 +41320,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 600,
                                 proportion: 0.0012075520303981098,
                                 totalCount: 505427,
@@ -41226,6 +41334,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 697,
                                 proportion: 0.0014018729183092246,
                                 totalCount: 505427,
@@ -41239,6 +41348,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 668,
                                 proportion: 0.0013431671398582837,
                                 totalCount: 505427,
@@ -41252,6 +41362,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1863,
                                 proportion: 0.0037445730824891463,
                                 totalCount: 505427,
@@ -41265,6 +41376,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 567,
                                 proportion: 0.0011395725095718061,
                                 totalCount: 505427,
@@ -41278,6 +41390,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 595,
                                 proportion: 0.0011962347756506915,
                                 totalCount: 505427,
@@ -41291,6 +41404,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 751,
                                 proportion: 0.001509823907488606,
                                 totalCount: 505427,
@@ -41304,6 +41418,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1173,
                                 proportion: 0.002399160600587825,
                                 totalCount: 505427,
@@ -41317,6 +41432,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 826,
                                 proportion: 0.0016899183888080757,
                                 totalCount: 505427,
@@ -41330,6 +41446,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 783,
                                 proportion: 0.0016019280421288662,
                                 totalCount: 505427,
@@ -41343,6 +41460,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 553,
                                 proportion: 0.0011311129701635715,
                                 totalCount: 505427,
@@ -41356,6 +41474,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 600,
                                 proportion: 0.001226993865030675,
                                 totalCount: 505427,
@@ -41369,6 +41488,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 541,
                                 proportion: 0.0011065589697751906,
                                 totalCount: 505427,
@@ -41382,6 +41502,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 751,
                                 proportion: 0.0015366577795602008,
                                 totalCount: 505427,
@@ -41395,6 +41516,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 603,
                                 proportion: 0.001234317717064903,
                                 totalCount: 505427,
@@ -41408,6 +41530,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 591,
                                 proportion: 0.0012090612079564819,
                                 totalCount: 505427,
@@ -41421,6 +41544,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 742,
                                 proportion: 0.0015172055609059885,
                                 totalCount: 505427,
@@ -41434,6 +41558,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 992,
                                 proportion: 0.0020304111377875476,
                                 totalCount: 505427,
@@ -41447,6 +41572,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2573,
                                 proportion: 0.005266766966542827,
                                 totalCount: 505427,
@@ -41460,6 +41586,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2078,
                                 proportion: 0.004252341038569838,
                                 totalCount: 505427,
@@ -41473,6 +41600,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1155,
                                 proportion: 0.0023618279525916717,
                                 totalCount: 505427,
@@ -41486,6 +41614,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 726,
                                 proportion: 0.0014844531139777822,
                                 totalCount: 505427,
@@ -41499,6 +41628,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7138,
                                 proportion: 0.01462641976472324,
                                 totalCount: 505427,
@@ -41512,6 +41642,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3285,
                                 proportion: 0.006707901029361616,
                                 totalCount: 505427,
@@ -41525,6 +41656,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 504,
                                 proportion: 0.001019299959349347,
                                 totalCount: 505427,
@@ -41538,6 +41670,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 616,
                                 proportion: 0.001241387371301784,
                                 totalCount: 505427,
@@ -41551,6 +41684,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1106,
                                 proportion: 0.002227817504280391,
                                 totalCount: 505427,
@@ -41564,6 +41698,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1067,
                                 proportion: 0.002123691600968897,
                                 totalCount: 505427,
@@ -41577,6 +41712,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 16862,
                                 proportion: 0.03358475759501108,
                                 totalCount: 505427,
@@ -41590,6 +41726,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1276,
                                 proportion: 0.0025425670761474927,
                                 totalCount: 505427,
@@ -41603,6 +41740,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3028,
                                 proportion: 0.006036056868107772,
                                 totalCount: 505427,
@@ -41616,6 +41754,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1645,
                                 proportion: 0.003277519206860276,
                                 totalCount: 505427,
@@ -41629,6 +41768,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3734,
                                 proportion: 0.007460300969399579,
                                 totalCount: 505427,
@@ -41642,6 +41782,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 898,
                                 proportion: 0.0017947042235505965,
                                 totalCount: 505427,
@@ -41655,6 +41796,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3016,
                                 proportion: 0.006031119456559342,
                                 totalCount: 505427,
@@ -41668,6 +41810,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 996,
                                 proportion: 0.001988905263410134,
                                 totalCount: 505427,
@@ -41681,6 +41824,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1146,
                                 proportion: 0.0022881513294638416,
                                 totalCount: 505427,
@@ -41694,6 +41838,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 8835,
                                 proportion: 0.017646776841676353,
                                 totalCount: 505427,
@@ -41707,6 +41852,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1911,
                                 proportion: 0.0038121570105986344,
                                 totalCount: 505427,
@@ -41720,6 +41866,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 8807,
                                 proportion: 0.017569934604013134,
                                 totalCount: 505427,
@@ -41733,6 +41880,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3552,
                                 proportion: 0.007051746558005181,
                                 totalCount: 505427,
@@ -41746,6 +41894,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 694,
                                 proportion: 0.0013777905718624988,
                                 totalCount: 505427,
@@ -41759,6 +41908,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 66077,
                                 proportion: 0.1315352581456827,
                                 totalCount: 505427,
@@ -41772,6 +41922,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 595,
                                 proportion: 0.0011821270339538673,
                                 totalCount: 505427,
@@ -41785,6 +41936,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 606,
                                 proportion: 0.0012056318525548056,
                                 totalCount: 505427,
@@ -41798,6 +41950,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 799,
                                 proportion: 0.0015899326815736951,
                                 totalCount: 505427,
@@ -41811,6 +41964,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5715,
                                 proportion: 0.01137417554641818,
                                 totalCount: 505427,
@@ -41824,6 +41978,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 561,
                                 proportion: 0.0011167868390353829,
                                 totalCount: 505427,
@@ -41837,6 +41992,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 537,
                                 proportion: 0.0010690715800161256,
                                 totalCount: 505427,
@@ -41850,6 +42006,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 628,
                                 proportion: 0.0012506024000414212,
                                 totalCount: 505427,
@@ -41863,6 +42020,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1054,
                                 proportion: 0.002098598279706913,
                                 totalCount: 505427,
@@ -41876,6 +42034,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 532,
                                 proportion: 0.001059391646338428,
                                 totalCount: 505427,
@@ -41889,6 +42048,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 904,
                                 proportion: 0.0017999972123936977,
                                 totalCount: 505427,
@@ -41902,6 +42062,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 569,
                                 proportion: 0.0011330124790671465,
                                 totalCount: 505427,
@@ -41915,6 +42076,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 684,
                                 proportion: 0.001361950217135484,
                                 totalCount: 505427,
@@ -41928,6 +42090,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 825,
                                 proportion: 0.001642398977531982,
                                 totalCount: 505427,
@@ -41941,6 +42104,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 726,
                                 proportion: 0.0014452506793275403,
                                 totalCount: 505427,
@@ -41954,6 +42118,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1192,
                                 proportion: 0.0023725925748998814,
                                 totalCount: 505427,
@@ -41967,6 +42132,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 11473,
                                 proportion: 0.022842614327553492,
                                 totalCount: 505427,
@@ -41980,6 +42146,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 567,
                                 proportion: 0.00112918740328719,
                                 totalCount: 505427,
@@ -41993,6 +42160,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2630,
                                 proportion: 0.0052384698887572075,
                                 totalCount: 505427,
@@ -42006,6 +42174,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 691,
                                 proportion: 0.0013764172516273993,
                                 totalCount: 505427,
@@ -42019,6 +42188,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 974,
                                 proportion: 0.0019400148986770452,
                                 totalCount: 505427,
@@ -42032,6 +42202,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 689,
                                 proportion: 0.0013680107852461327,
                                 totalCount: 505427,
@@ -42045,6 +42216,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 697,
                                 proportion: 0.0013841421396811905,
                                 totalCount: 505427,
@@ -42058,6 +42230,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1388,
                                 proportion: 0.002753919076841882,
                                 totalCount: 505427,
@@ -42071,6 +42244,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1543,
                                 proportion: 0.003088303874690519,
                                 totalCount: 505427,
@@ -42084,6 +42258,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 863,
                                 proportion: 0.0017279941051973977,
                                 totalCount: 505427,
@@ -42097,6 +42272,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1479,
                                 proportion: 0.002971120467986629,
                                 totalCount: 505427,
@@ -42110,6 +42286,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1359,
                                 proportion: 0.0027399745962620216,
                                 totalCount: 505427,
@@ -42123,6 +42300,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 63192,
                                 proportion: 0.12756422420231986,
                                 totalCount: 505427,
@@ -42136,6 +42314,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 629,
                                 proportion: 0.0012680071121289214,
                                 totalCount: 505427,
@@ -42149,6 +42328,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 583,
                                 proportion: 0.0011743283365629042,
                                 totalCount: 505427,
@@ -42162,6 +42342,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 709,
                                 proportion: 0.0014280592493524386,
                                 totalCount: 505427,
@@ -42175,6 +42356,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 966,
                                 proportion: 0.0019477534297397349,
                                 totalCount: 505427,
@@ -42188,6 +42370,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1081,
                                 proportion: 0.002178025914680217,
                                 totalCount: 505427,
@@ -42201,6 +42384,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1231,
                                 proportion: 0.002477185144938473,
                                 totalCount: 505427,
@@ -42214,6 +42398,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 500,
                                 proportion: 0.0010070736855674256,
                                 totalCount: 505427,
@@ -42227,6 +42412,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 699,
                                 proportion: 0.0013955717052328948,
                                 totalCount: 505427,
@@ -42240,6 +42426,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 502,
                                 proportion: 0.0010020620120686592,
                                 totalCount: 505427,
@@ -42253,6 +42440,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 918,
                                 proportion: 0.0018313812564711798,
                                 totalCount: 505427,
@@ -42266,6 +42454,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1013,
                                 proportion: 0.002021278293905437,
                                 totalCount: 505427,
@@ -42279,6 +42468,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 805,
                                 proportion: 0.0016487927969260768,
                                 totalCount: 505427,
@@ -42292,6 +42482,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 603,
                                 proportion: 0.0012343707779606475,
                                 totalCount: 505427,
@@ -42305,6 +42496,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1694,
                                 proportion: 0.0034774397503797676,
                                 totalCount: 505427,
@@ -42318,6 +42510,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 777,
                                 proportion: 0.0015951648234335256,
                                 totalCount: 505427,
@@ -42331,6 +42524,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 556,
                                 proportion: 0.0011415970449883683,
                                 totalCount: 505427,
@@ -42344,6 +42538,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3011,
                                 proportion: 0.006173662185242672,
                                 totalCount: 505427,
@@ -42357,6 +42552,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 874,
                                 proportion: 0.0017924454780743311,
                                 totalCount: 505427,
@@ -42370,6 +42566,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1027,
                                 proportion: 0.0021088209083330255,
                                 totalCount: 505427,
@@ -42383,6 +42580,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 602,
                                 proportion: 0.0012368761685603337,
                                 totalCount: 505427,
@@ -42396,6 +42594,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 484981,
                                 proportion: 0.9988919074227786,
                                 totalCount: 505427,
@@ -42409,6 +42608,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1053,
                                 proportion: 0.0021602259928731006,
                                 totalCount: 505427,
@@ -42422,6 +42622,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 606,
                                 proportion: 0.0012073637233025183,
                                 totalCount: 505427,
@@ -42435,6 +42636,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 593,
                                 proportion: 0.0011802968058342092,
                                 totalCount: 505427,
@@ -42448,6 +42650,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 571,
                                 proportion: 0.0011365853075946193,
                                 totalCount: 505427,
@@ -42461,6 +42664,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 65473,
                                 proportion: 0.1304617260728177,
                                 totalCount: 505427,
@@ -42474,6 +42678,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 508,
                                 proportion: 0.0010107360864617075,
                                 totalCount: 505427,
@@ -42487,6 +42692,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 501185,
                                 proportion: 0.9995014308933361,
                                 totalCount: 505427,
@@ -42500,6 +42706,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1112,
                                 proportion: 0.002213481535742153,
                                 totalCount: 505427,
@@ -42513,6 +42720,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1501,
                                 proportion: 0.0029872786906126607,
                                 totalCount: 505427,
@@ -42526,6 +42734,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1030,
                                 proportion: 0.0020502286104426303,
                                 totalCount: 505427,
@@ -42539,6 +42748,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2340,
                                 proportion: 0.004656225313549018,
                                 totalCount: 505427,
@@ -42552,6 +42762,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 610,
                                 proportion: 0.0012124440486885727,
                                 totalCount: 505427,
@@ -42565,6 +42776,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 672,
                                 proportion: 0.0013360558121410097,
                                 totalCount: 505427,
@@ -42578,6 +42790,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 621,
                                 proportion: 0.0012351031838215404,
                                 totalCount: 505427,
@@ -42591,6 +42804,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 935,
                                 proportion: 0.001859819348884208,
                                 totalCount: 505427,
@@ -42604,6 +42818,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1333,
                                 proportion: 0.002685469654998741,
                                 totalCount: 505427,
@@ -42617,6 +42832,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 11770,
                                 proportion: 0.02373462391611212,
                                 totalCount: 505427,
@@ -42630,6 +42846,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 514,
                                 proportion: 0.0010406227540060938,
                                 totalCount: 505427,
@@ -42643,6 +42860,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1000,
                                 proportion: 0.002024471815303387,
                                 totalCount: 505427,
@@ -42656,6 +42874,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 565,
                                 proportion: 0.001143780264628241,
                                 totalCount: 505427,
@@ -42669,6 +42888,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 554,
                                 proportion: 0.001122953245415959,
                                 totalCount: 505427,
@@ -42682,6 +42902,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2130,
                                 proportion: 0.004320101248570107,
                                 totalCount: 505427,
@@ -42695,6 +42916,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 679,
                                 proportion: 0.0013784450976889221,
                                 totalCount: 505427,
@@ -42708,6 +42930,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 27231,
                                 proportion: 0.05528295183474598,
                                 totalCount: 505427,
@@ -42721,6 +42944,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 623,
                                 proportion: 0.0012656607744706268,
                                 totalCount: 505427,
@@ -42734,6 +42958,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 23248,
                                 proportion: 0.046337710381337355,
                                 totalCount: 505427,
@@ -42747,6 +42972,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2623,
                                 proportion: 0.0052227795222441024,
                                 totalCount: 505427,
@@ -42760,6 +42986,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 849,
                                 proportion: 0.0016903393819211335,
                                 totalCount: 505427,
@@ -42773,6 +43000,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1535,
                                 proportion: 0.003055316150580311,
                                 totalCount: 505427,
@@ -42786,6 +43014,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1317,
                                 proportion: 0.002620718200161581,
                                 totalCount: 505427,
@@ -42799,6 +43028,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 967,
                                 proportion: 0.0019250945127838618,
                                 totalCount: 505427,
@@ -42812,6 +43042,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 619,
                                 proportion: 0.001232112964256781,
                                 totalCount: 505427,
@@ -42825,6 +43056,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1403,
                                 proportion: 0.002792706716031689,
                                 totalCount: 505427,
@@ -42838,6 +43070,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 809,
                                 proportion: 0.0016103348063219076,
                                 totalCount: 505427,
@@ -42851,6 +43084,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 707,
                                 proportion: 0.0014071247882844421,
                                 totalCount: 505427,
@@ -42864,6 +43098,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 762,
                                 proportion: 0.001515097288333751,
                                 totalCount: 505427,
@@ -42877,6 +43112,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2089,
                                 proportion: 0.004153395286323818,
                                 totalCount: 505427,
@@ -42890,6 +43126,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 629,
                                 proportion: 0.0012505591729211193,
                                 totalCount: 505427,
@@ -42903,6 +43140,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 837,
                                 proportion: 0.0016653501712107315,
                                 totalCount: 505427,
@@ -42916,6 +43154,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 963,
                                 proportion: 0.0019372242774636243,
                                 totalCount: 505427,
@@ -42929,6 +43168,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2266,
                                 proportion: 0.0045575037912156426,
                                 totalCount: 505427,
@@ -42942,6 +43182,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1008,
                                 proportion: 0.002042342128776965,
                                 totalCount: 505427,
@@ -42955,6 +43196,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 31435,
                                 proportion: 0.06378726081045433,
                                 totalCount: 505427,
@@ -42968,6 +43210,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1409,
                                 proportion: 0.002856054064353445,
                                 totalCount: 505427,
@@ -42981,6 +43224,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 587,
                                 proportion: 0.0011938902109138244,
                                 totalCount: 505427,
@@ -42994,6 +43238,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 21719,
                                 proportion: 0.04426928870327,
                                 totalCount: 505427,
@@ -43007,6 +43252,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2358,
                                 proportion: 0.004805242972484991,
                                 totalCount: 505427,
@@ -43020,6 +43266,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 730,
                                 proportion: 0.0014919333412358113,
                                 totalCount: 505427,
@@ -43033,6 +43280,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 31157,
                                 proportion: 0.06382041712583829,
                                 totalCount: 505427,
@@ -43046,6 +43294,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1271,
                                 proportion: 0.002533260252130151,
                                 totalCount: 505427,
@@ -43059,6 +43308,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1445,
                                 proportion: 0.002883097863714268,
                                 totalCount: 505427,
@@ -43072,6 +43322,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 501389,
                                 proportion: 0.9982618633302938,
                                 totalCount: 505427,
@@ -43085,6 +43336,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 15906,
                                 proportion: 0.03165014117801563,
                                 totalCount: 505427,
@@ -43098,6 +43350,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1343,
                                 proportion: 0.0026957478241320617,
                                 totalCount: 505427,
@@ -43111,6 +43364,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1743,
                                 proportion: 0.0034899366485395527,
                                 totalCount: 505427,
@@ -43124,6 +43378,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 532,
                                 proportion: 0.001065869535164679,
                                 totalCount: 505427,
@@ -43137,6 +43392,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 494039,
                                 proportion: 0.9940022534304455,
                                 totalCount: 505427,
@@ -43150,6 +43406,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 978,
                                 proportion: 0.0019525167101890229,
                                 totalCount: 505427,
@@ -43163,6 +43420,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 723,
                                 proportion: 0.0014442495695217395,
                                 totalCount: 505427,
@@ -43176,6 +43434,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7087,
                                 proportion: 0.01461915321540921,
                                 totalCount: 505427,
@@ -43189,6 +43448,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 515,
                                 proportion: 0.0010677912685774947,
                                 totalCount: 505427,
@@ -43202,6 +43462,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1634,
                                 proportion: 0.003413696569590106,
                                 totalCount: 505427,
@@ -43215,6 +43476,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 628,
                                 proportion: 0.0013105968432981128,
                                 totalCount: 505427,
@@ -43228,6 +43490,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1477,
                                 proportion: 0.0030894863336770745,
                                 totalCount: 505427,
@@ -43241,6 +43504,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 578,
                                 proportion: 0.0012163837206610561,
                                 totalCount: 505427,
@@ -43254,6 +43518,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 877,
                                 proportion: 0.0018459038614540755,
                                 totalCount: 505427,
@@ -43267,6 +43532,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 594,
                                 proportion: 0.0012483895984346791,
                                 totalCount: 505427,
@@ -43280,6 +43546,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5386,
                                 proportion: 0.011330908387102203,
                                 totalCount: 505427,
@@ -43293,6 +43560,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1168,
                                 proportion: 0.002453570175678145,
                                 totalCount: 505427,
@@ -43306,6 +43574,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 30923,
                                 proportion: 0.06501154200322083,
                                 totalCount: 505427,
@@ -43319,6 +43588,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 660,
                                 proportion: 0.0013758054194226202,
                                 totalCount: 505427,
@@ -43332,6 +43602,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 990,
                                 proportion: 0.0019768173241081857,
                                 totalCount: 505427,
@@ -43345,6 +43616,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 816,
                                 proportion: 0.0016267747993445054,
                                 totalCount: 505427,
@@ -43358,6 +43630,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 522,
                                 proportion: 0.0010406968282670804,
                                 totalCount: 505427,
@@ -43371,6 +43644,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 895,
                                 proportion: 0.0017789845278038386,
                                 totalCount: 505427,
@@ -43384,6 +43658,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 692,
                                 proportion: 0.0013752561215790008,
                                 totalCount: 505427,
@@ -43397,6 +43672,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 548,
                                 proportion: 0.001087867105519139,
                                 totalCount: 505427,
@@ -43410,6 +43686,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 538,
                                 proportion: 0.0010680324777162368,
                                 totalCount: 505427,
@@ -43423,6 +43700,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 798,
                                 proportion: 0.0015843958845416172,
                                 totalCount: 505427,
@@ -43436,6 +43714,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1364,
                                 proportion: 0.0027078696966749186,
                                 totalCount: 505427,
@@ -43449,6 +43728,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 566,
                                 proportion: 0.0011236869638415006,
                                 totalCount: 505427,
@@ -43462,6 +43742,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 985,
                                 proportion: 0.0019553776856665855,
                                 totalCount: 505427,
@@ -43475,6 +43756,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1011,
                                 proportion: 0.002006298706324306,
                                 totalCount: 505427,
@@ -43488,6 +43770,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 678,
                                 proportion: 0.0013503716509588037,
                                 totalCount: 505427,
@@ -43501,6 +43784,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1309,
                                 proportion: 0.0026063599962567177,
                                 totalCount: 505427,
@@ -43514,6 +43798,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 615,
                                 proportion: 0.00122448004396182,
                                 totalCount: 505427,
@@ -43527,6 +43812,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 942,
                                 proportion: 0.0018757392443678042,
                                 totalCount: 505427,
@@ -43540,6 +43826,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1209,
                                 proportion: 0.002417666362042038,
                                 totalCount: 505427,
@@ -43553,6 +43840,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1114,
                                 proportion: 0.002228026736320836,
                                 totalCount: 505427,
@@ -43566,6 +43854,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 33457,
                                 proportion: 0.06695926446277684,
                                 totalCount: 505427,
@@ -43579,6 +43868,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 779,
                                 proportion: 0.001557722725354887,
                                 totalCount: 505427,
@@ -43592,6 +43882,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 918,
                                 proportion: 0.0018358054046271096,
                                 totalCount: 505427,
@@ -43605,6 +43896,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 731,
                                 proportion: 0.0014617719635736826,
                                 totalCount: 505427,
@@ -43618,6 +43910,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 755,
                                 proportion: 0.0015094747028034244,
                                 totalCount: 505427,
@@ -43631,6 +43924,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1007,
                                 proportion: 0.0020072836289774416,
                                 totalCount: 505427,
@@ -43644,6 +43938,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 800,
                                 proportion: 0.0015923598574041748,
                                 totalCount: 505427,
@@ -43657,6 +43952,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1604,
                                 proportion: 0.003200625758252985,
                                 totalCount: 505427,
@@ -43670,6 +43966,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 996,
                                 proportion: 0.0019873099485214893,
                                 totalCount: 505427,
@@ -43683,6 +43980,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1191,
                                 proportion: 0.0023816141785030823,
                                 totalCount: 505427,
@@ -43696,6 +43994,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 505,
                                 proportion: 0.0010075355680006703,
                                 totalCount: 505427,
@@ -43709,6 +44008,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 640,
                                 proportion: 0.0012939539999353023,
                                 totalCount: 505427,
@@ -43722,6 +44022,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 637,
                                 proportion: 0.0012890848711623417,
                                 totalCount: 505427,
@@ -43735,6 +44036,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 499,
                                 proportion: 0.001009669763122166,
                                 totalCount: 505427,
@@ -43748,6 +44050,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 658,
                                 proportion: 0.0013314447592067988,
                                 totalCount: 505427,
@@ -43761,6 +44064,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2038,
                                 proportion: 0.004124762947566127,
                                 totalCount: 505427,
@@ -43774,6 +44078,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 803,
                                 proportion: 0.0016253744636061857,
                                 totalCount: 505427,
@@ -43787,6 +44092,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 584,
                                 proportion: 0.001182018742283482,
                                 totalCount: 505427,
@@ -43800,6 +44106,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1033,
                                 proportion: 0.0020919654754816787,
                                 totalCount: 505427,
@@ -43813,6 +44120,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 509,
                                 proportion: 0.0010315190891828302,
                                 totalCount: 505427,
@@ -43826,6 +44134,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1818,
                                 proportion: 0.003671896459790916,
                                 totalCount: 505427,
@@ -43839,6 +44148,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1052,
                                 proportion: 0.002124441374909378,
                                 totalCount: 505427,
@@ -43852,6 +44162,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 604,
                                 proportion: 0.0012202611843806568,
                                 totalCount: 505427,
@@ -43865,6 +44176,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 617,
                                 proportion: 0.0012465376759446512,
                                 totalCount: 505427,
@@ -43878,6 +44190,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 101079,
                                 proportion: 0.2040371824503679,
                                 totalCount: 505427,
@@ -43891,6 +44204,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1071,
                                 proportion: 0.002144101219194811,
                                 totalCount: 505427,
@@ -43904,6 +44218,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1777,
                                 proportion: 0.0035659673865492594,
                                 totalCount: 505427,
@@ -43917,6 +44232,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 508,
                                 proportion: 0.001019607370878167,
                                 totalCount: 505427,
@@ -43930,6 +44246,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1324,
                                 proportion: 0.002655866677097563,
                                 totalCount: 505427,
@@ -43943,6 +44260,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 690,
                                 proportion: 0.0013841163620607686,
                                 totalCount: 505427,
@@ -43956,6 +44274,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1617,
                                 proportion: 0.00324450570948732,
                                 totalCount: 505427,
@@ -43969,6 +44288,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1126,
                                 proportion: 0.0022598597923578203,
                                 totalCount: 505427,
@@ -43982,6 +44302,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1150,
                                 proportion: 0.0023068189568364083,
                                 totalCount: 505427,
@@ -43995,6 +44316,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 777,
                                 proportion: 0.0015594800127648556,
                                 totalCount: 505427,
@@ -44008,6 +44330,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 22469,
                                 proportion: 0.04511521255491571,
                                 totalCount: 505427,
@@ -44021,6 +44344,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2057,
                                 proportion: 0.004129203728126964,
                                 totalCount: 505427,
@@ -44034,6 +44358,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1055,
                                 proportion: 0.002116654762573531,
                                 totalCount: 505427,
@@ -44047,6 +44372,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 905,
                                 proportion: 0.0018155956658421255,
                                 totalCount: 505427,
@@ -44060,6 +44386,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 674,
                                 proportion: 0.0013448235268296285,
                                 totalCount: 505427,
@@ -44073,6 +44400,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3180,
                                 proportion: 0.006340762127704545,
                                 totalCount: 505427,
@@ -44086,6 +44414,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1452,
                                 proportion: 0.0028960936642964705,
                                 totalCount: 505427,
@@ -44099,6 +44428,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1123,
                                 proportion: 0.002251936103569008,
                                 totalCount: 505427,
@@ -44112,6 +44442,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 505,
                                 proportion: 0.001012884695613106,
                                 totalCount: 505427,
@@ -44125,6 +44456,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1169,
                                 proportion: 0.002341076174092758,
                                 totalCount: 505427,
@@ -44138,6 +44470,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 681,
                                 proportion: 0.001363502579842987,
                                 totalCount: 505427,
@@ -44151,6 +44484,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1033,
                                 proportion: 0.0020682336923877787,
                                 totalCount: 505427,
@@ -44164,6 +44498,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1229,
                                 proportion: 0.00246142137571224,
                                 totalCount: 505427,
@@ -44177,6 +44512,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4204,
                                 proportion: 0.00842047915010045,
                                 totalCount: 505427,
@@ -44190,6 +44526,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2738,
                                 proportion: 0.005457999517590985,
                                 totalCount: 505427,
@@ -44203,6 +44540,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 613,
                                 proportion: 0.0012215900598838195,
                                 totalCount: 505427,
@@ -44216,6 +44554,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 657,
                                 proportion: 0.0013096467342553352,
                                 totalCount: 505427,
@@ -44229,6 +44568,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 28943,
                                 proportion: 0.05774510195123898,
                                 totalCount: 505427,
@@ -44242,6 +44582,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1660,
                                 proportion: 0.0033124542292657325,
                                 totalCount: 505427,
@@ -44255,6 +44596,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 575,
                                 proportion: 0.001147292389959695,
                                 totalCount: 505427,
@@ -44268,6 +44610,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 567,
                                 proportion: 0.0011900164545485072,
                                 totalCount: 505427,
@@ -44281,6 +44624,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1088,
                                 proportion: 0.0023121485555446936,
                                 totalCount: 505427,
@@ -44294,6 +44638,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 975,
                                 proportion: 0.0020731580256731384,
                                 totalCount: 505427,
@@ -44307,6 +44652,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 797,
                                 proportion: 0.0016905758351593108,
                                 totalCount: 505427,
@@ -44320,6 +44666,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 646,
                                 proportion: 0.0013653608378158453,
                                 totalCount: 505427,
@@ -44333,6 +44680,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 513,
                                 proportion: 0.0010844634231415616,
                                 totalCount: 505427,
@@ -44346,6 +44694,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 741,
                                 proportion: 0.001567040133991448,
                                 totalCount: 505427,
@@ -44359,6 +44708,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 841,
                                 proportion: 0.0017819231209292273,
                                 totalCount: 505427,
@@ -44372,6 +44722,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 631,
                                 proportion: 0.0013364906424474512,
                                 totalCount: 505427,
@@ -44385,6 +44736,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2090,
                                 proportion: 0.0044302844920964994,
                                 totalCount: 505427,
@@ -44398,6 +44750,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 567,
                                 proportion: 0.0011955744766989492,
                                 totalCount: 505427,
@@ -44411,6 +44764,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 933,
                                 proportion: 0.0019631937985801038,
                                 totalCount: 505427,
@@ -44424,6 +44778,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 668,
                                 proportion: 0.001406605994499918,
                                 totalCount: 505427,
@@ -44437,6 +44792,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 794,
                                 proportion: 0.0016787605081104852,
                                 totalCount: 505427,
@@ -44450,6 +44806,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 671,
                                 proportion: 0.0014201298646326287,
                                 totalCount: 505427,
@@ -44463,6 +44820,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 711,
                                 proportion: 0.0015005476682417845,
                                 totalCount: 505427,
@@ -44476,6 +44834,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1666,
                                 proportion: 0.0033880243709988366,
                                 totalCount: 505427,
@@ -44489,6 +44848,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 15018,
                                 proportion: 0.03058076576127129,
                                 totalCount: 505427,
@@ -44502,6 +44862,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1023,
                                 proportion: 0.0020824003582624274,
                                 totalCount: 505427,
@@ -44515,6 +44876,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 20192,
                                 proportion: 0.04110230386229751,
                                 totalCount: 505427,
@@ -44528,6 +44890,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 656,
                                 proportion: 0.0013335881245603834,
                                 totalCount: 505427,
@@ -44541,6 +44904,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 532,
                                 proportion: 0.0010850477563782248,
                                 totalCount: 505427,
@@ -44554,6 +44918,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1548,
                                 proportion: 0.0031922198919841875,
                                 totalCount: 505427,
@@ -44567,6 +44932,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 650,
                                 proportion: 0.0013403250185067956,
                                 totalCount: 505427,
@@ -44580,6 +44946,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 496,
                                 proportion: 0.0010236343974177997,
                                 totalCount: 505427,
@@ -44593,6 +44960,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 519,
                                 proportion: 0.0010711013150399961,
                                 totalCount: 505427,
@@ -44606,6 +44974,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 769,
                                 proportion: 0.001590709758559632,
                                 totalCount: 505427,
@@ -44619,6 +44988,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 924,
                                 proportion: 0.001911243031926446,
                                 totalCount: 505427,
@@ -44632,6 +45002,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 900,
                                 proportion: 0.0018619431238440435,
                                 totalCount: 505427,
@@ -44645,6 +45016,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 819,
                                 proportion: 0.0016946381978484924,
                                 totalCount: 505427,
@@ -44658,6 +45030,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 738,
                                 proportion: 0.001527760526642653,
                                 totalCount: 505427,
@@ -44671,6 +45044,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 730,
                                 proportion: 0.001506770145310436,
                                 totalCount: 505427,
@@ -44684,6 +45058,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1305,
                                 proportion: 0.0026967991783545184,
                                 totalCount: 505427,
@@ -44697,6 +45072,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 535,
                                 proportion: 0.001105438135756068,
                                 totalCount: 505427,
@@ -44710,6 +45086,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 574,
                                 proportion: 0.0011867841045362444,
                                 totalCount: 505427,
@@ -44723,6 +45100,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 919,
                                 proportion: 0.0019013648861974152,
                                 totalCount: 505427,
@@ -44736,6 +45114,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1997,
                                 proportion: 0.004133223500387037,
                                 totalCount: 505427,
@@ -44749,6 +45128,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 569,
                                 proportion: 0.0011703604669100632,
                                 totalCount: 505427,
@@ -44762,6 +45142,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 778,
                                 proportion: 0.0015772870662460567,
                                 totalCount: 505427,
@@ -44775,6 +45156,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 643,
                                 proportion: 0.0013043125481763966,
                                 totalCount: 505427,
@@ -44788,6 +45170,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 708,
                                 proportion: 0.0014297628976528058,
                                 totalCount: 505427,
@@ -44801,6 +45184,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2427,
                                 proportion: 0.004955609823827764,
                                 totalCount: 505427,
@@ -44814,6 +45198,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 586,
                                 proportion: 0.0011959818276071792,
                                 totalCount: 505427,
@@ -44827,6 +45212,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5255,
                                 proportion: 0.010726438067322432,
                                 totalCount: 505427,
@@ -44840,6 +45226,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 541,
                                 proportion: 0.0010931744290133747,
                                 totalCount: 505427,
@@ -44853,6 +45240,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 550,
                                 proportion: 0.0011109113714907824,
                                 totalCount: 505427,
@@ -44866,6 +45254,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1070,
                                 proportion: 0.002160821677686184,
                                 totalCount: 505427,
@@ -44879,6 +45268,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 749,
                                 proportion: 0.001512382760048057,
                                 totalCount: 505427,
@@ -44892,6 +45282,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1876,
                                 proportion: 0.003788001163053662,
                                 totalCount: 505427,
@@ -44905,6 +45296,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 562,
                                 proportion: 0.001134063681106136,
                                 totalCount: 505427,
@@ -44918,6 +45310,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1014,
                                 proportion: 0.0020470829068577278,
                                 totalCount: 505427,
@@ -44931,6 +45324,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4424,
                                 proportion: 0.008852125090292077,
                                 totalCount: 505427,
@@ -44944,6 +45338,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1080,
                                 proportion: 0.0021679999197037067,
                                 totalCount: 505427,
@@ -44957,6 +45352,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1954,
                                 proportion: 0.003923466304171042,
                                 totalCount: 505427,
@@ -44970,6 +45366,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 844,
                                 proportion: 0.0016943606298042853,
                                 totalCount: 505427,
@@ -44983,6 +45380,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1197,
                                 proportion: 0.0024041406653263465,
                                 totalCount: 505427,
@@ -44996,6 +45394,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1008,
                                 proportion: 0.0020295778759903756,
                                 totalCount: 505427,
@@ -45009,6 +45408,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2440,
                                 proportion: 0.0049127681636515555,
                                 totalCount: 505427,
@@ -45022,6 +45422,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 694,
                                 proportion: 0.0013973257520693105,
                                 totalCount: 505427,
@@ -45035,6 +45436,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 767,
                                 proportion: 0.0015727171508188587,
                                 totalCount: 505427,
@@ -45048,6 +45450,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 699,
                                 proportion: 0.0014322860637951277,
                                 totalCount: 505427,
@@ -45061,6 +45464,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1356,
                                 proportion: 0.0027742656175196103,
                                 totalCount: 505427,
@@ -45074,6 +45478,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 706,
                                 proportion: 0.0014382216572550745,
                                 totalCount: 505427,
@@ -45087,6 +45492,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 523,
                                 proportion: 0.001064771929110213,
                                 totalCount: 505427,
@@ -45100,6 +45506,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 652,
                                 proportion: 0.0013158027506735416,
                                 totalCount: 505427,
@@ -45113,6 +45520,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1043,
                                 proportion: 0.0021046938911411153,
                                 totalCount: 505427,
@@ -45126,6 +45534,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 6448,
                                 proportion: 0.013332837073888895,
                                 totalCount: 505427,
@@ -45139,6 +45548,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5395,
                                 proportion: 0.011203126492538863,
                                 totalCount: 505427,
@@ -45152,6 +45562,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 597,
                                 proportion: 0.001240047940211826,
                                 totalCount: 505427,
@@ -45165,6 +45576,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 883,
                                 proportion: 0.0018292442921570373,
                                 totalCount: 505427,
@@ -45178,6 +45590,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1667,
                                 proportion: 0.003454413961883329,
                                 totalCount: 505427,
@@ -45191,6 +45604,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 653,
                                 proportion: 0.0013554917134411637,
                                 totalCount: 505427,
@@ -45204,6 +45618,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1935,
                                 proportion: 0.004013240582884306,
                                 totalCount: 505427,
@@ -45217,6 +45632,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1181,
                                 proportion: 0.0024489372731985484,
                                 totalCount: 505427,
@@ -45230,6 +45646,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 845,
                                 proportion: 0.0017223245878650512,
                                 totalCount: 505427,
@@ -45243,6 +45660,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 506,
                                 proportion: 0.0010309110319704662,
                                 totalCount: 505427,
@@ -45256,6 +45674,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3188,
                                 proportion: 0.006346943691779036,
                                 totalCount: 505427,
@@ -45269,6 +45688,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1433,
                                 proportion: 0.002853200542366942,
                                 totalCount: 505427,
@@ -45282,6 +45702,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1210,
                                 proportion: 0.002408914176957641,
                                 totalCount: 505427,
@@ -45295,6 +45716,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29960,
                                 proportion: 0.05966582359150021,
                                 totalCount: 505427,
@@ -45308,6 +45730,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1144,
                                 proportion: 0.0022776367527748745,
                                 totalCount: 505427,
@@ -45321,6 +45744,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 705,
                                 proportion: 0.0014031302741776264,
                                 totalCount: 505427,
@@ -45334,6 +45758,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 804,
                                 proportion: 0.00160016558927491,
                                 totalCount: 505427,
@@ -45347,6 +45772,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 709,
                                 proportion: 0.0014109677367997898,
                                 totalCount: 505427,
@@ -45360,6 +45786,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 719,
                                 proportion: 0.001430094437947029,
                                 totalCount: 505427,
@@ -45373,6 +45800,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1538,
                                 proportion: 0.003059046762840339,
                                 totalCount: 505427,
@@ -45386,6 +45814,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 984,
                                 proportion: 0.0019576401682297284,
                                 totalCount: 505427,
@@ -45399,6 +45828,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1135,
                                 proportion: 0.002252162870069053,
                                 totalCount: 505427,
@@ -45412,6 +45842,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 680,
                                 proportion: 0.0013527977050184815,
                                 totalCount: 505427,
@@ -45425,6 +45856,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 907,
                                 proportion: 0.0018041708770617675,
                                 totalCount: 505427,
@@ -45438,6 +45870,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1333,
                                 proportion: 0.002652530450373006,
                                 totalCount: 505427,
@@ -45451,6 +45884,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 561,
                                 proportion: 0.001117516523706888,
                                 totalCount: 505427,
@@ -45464,6 +45898,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 928,
                                 proportion: 0.0018477332414776292,
                                 totalCount: 505427,
@@ -45477,6 +45912,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 692,
                                 proportion: 0.001378063303289429,
                                 totalCount: 505427,
@@ -45490,6 +45926,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1013,
                                 proportion: 0.002016799361313687,
                                 totalCount: 505427,
@@ -45503,6 +45940,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1038,
                                 proportion: 0.0020661650543413353,
                                 totalCount: 505427,
@@ -45516,6 +45954,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 30619,
                                 proportion: 0.06095686692972013,
                                 totalCount: 505427,
@@ -45529,6 +45968,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 676,
                                 proportion: 0.0013453191451253078,
                                 totalCount: 505427,
@@ -45542,6 +45982,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 752,
                                 proportion: 0.0014954519963886425,
                                 totalCount: 505427,
@@ -45555,6 +45996,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 588,
                                 proportion: 0.0011693394425353189,
                                 totalCount: 505427,
@@ -45568,6 +46010,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 610,
                                 proportion: 0.0012101565863268176,
                                 totalCount: 505427,
@@ -45581,6 +46024,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 583,
                                 proportion: 0.00115822828818627,
                                 totalCount: 505427,
@@ -45594,6 +46038,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 701,
                                 proportion: 0.0013926303827846251,
                                 totalCount: 505427,
@@ -45607,6 +46052,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 793,
                                 proportion: 0.0015754226125791436,
                                 totalCount: 505427,
@@ -45620,6 +46066,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 30062,
                                 proportion: 0.059758873284233335,
                                 totalCount: 505427,
@@ -45633,6 +46080,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 877,
                                 proportion: 0.0017491373980334669,
                                 totalCount: 505427,
@@ -45646,6 +46094,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 614,
                                 proportion: 0.0012244051464899057,
                                 totalCount: 505427,
@@ -45659,6 +46108,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 585,
                                 proportion: 0.001166693590364906,
                                 totalCount: 505427,
@@ -45672,6 +46122,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 909,
                                 proportion: 0.0018057282706725097,
                                 totalCount: 505427,
@@ -45685,6 +46136,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 772,
                                 proportion: 0.0015363887302304385,
                                 totalCount: 505427,
@@ -45698,6 +46150,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 945,
                                 proportion: 0.001881132342139156,
                                 totalCount: 505427,
@@ -45711,6 +46164,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 695,
                                 proportion: 0.0013841864170483968,
                                 totalCount: 505427,
@@ -45724,6 +46178,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3518,
                                 proportion: 0.007112789677356743,
                                 totalCount: 505427,
@@ -45737,6 +46192,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1760,
                                 proportion: 0.0035585821476447647,
                                 totalCount: 505427,
@@ -45750,6 +46206,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5214,
                                 proportion: 0.01054417572817301,
                                 totalCount: 505427,
@@ -45763,6 +46220,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 722,
                                 proportion: 0.0014683302319433004,
                                 totalCount: 505427,
@@ -45776,6 +46234,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 678,
                                 proportion: 0.001384280857927458,
                                 totalCount: 505427,
@@ -45789,6 +46248,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 809,
                                 proportion: 0.0016512057475839125,
                                 totalCount: 505427,
@@ -45802,6 +46262,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 554,
                                 proportion: 0.0011297591614495177,
                                 totalCount: 505427,
@@ -45815,6 +46276,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 528,
                                 proportion: 0.0010763955427439116,
                                 totalCount: 505427,
@@ -45828,6 +46290,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 587,
                                 proportion: 0.0011956386686247712,
                                 totalCount: 505427,
@@ -45841,6 +46304,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 607,
                                 proportion: 0.001233774944815503,
                                 totalCount: 505427,
@@ -45854,6 +46318,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 11725,
                                 proportion: 0.023515844364219815,
                                 totalCount: 505427,
@@ -45867,6 +46332,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 709,
                                 proportion: 0.0014208388359943167,
                                 totalCount: 505427,
@@ -45880,6 +46346,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 714,
                                 proportion: 0.0014320584536576658,
                                 totalCount: 505427,
@@ -45893,6 +46360,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1020,
                                 proportion: 0.0020456500855362512,
                                 totalCount: 505427,
@@ -45906,6 +46374,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 879,
                                 proportion: 0.0017660354613491386,
                                 totalCount: 505427,
@@ -45919,6 +46388,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1005,
                                 proportion: 0.002014653850394411,
                                 totalCount: 505427,
@@ -45932,6 +46402,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 809,
                                 proportion: 0.0016159316075423458,
                                 totalCount: 505427,
@@ -45945,6 +46416,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 956,
                                 proportion: 0.0019084350433390426,
                                 totalCount: 505427,
@@ -45958,6 +46430,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 570,
                                 proportion: 0.0011377722419502615,
                                 totalCount: 505427,
@@ -45971,6 +46444,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1431,
                                 proportion: 0.0028612274685834824,
                                 totalCount: 505427,
@@ -45984,6 +46458,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 532,
                                 proportion: 0.001064019152344742,
                                 totalCount: 505427,
@@ -45997,6 +46472,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 700,
                                 proportion: 0.0013968654339661798,
                                 totalCount: 505427,
@@ -46010,6 +46486,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 815,
                                 proportion: 0.001626350469546338,
                                 totalCount: 505427,
@@ -46023,6 +46500,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 633,
                                 proportion: 0.0012628101415823629,
                                 totalCount: 505427,
@@ -46036,6 +46514,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1222,
                                 proportion: 0.0024384841488552895,
                                 totalCount: 505427,
@@ -46049,6 +46528,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 919,
                                 proportion: 0.0018336981441538151,
                                 totalCount: 505427,
@@ -46062,6 +46542,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 853,
                                 proportion: 0.0017085320444899341,
                                 totalCount: 505427,
@@ -46075,6 +46556,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1114,
                                 proportion: 0.0022313604288057816,
                                 totalCount: 505427,
@@ -46088,6 +46570,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 493661,
                                 proportion: 0.9954307791267667,
                                 totalCount: 505427,
@@ -46101,6 +46584,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1037,
                                 proportion: 0.002098302540018494,
                                 totalCount: 505427,
@@ -46114,6 +46598,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 539,
                                 proportion: 0.0010962303100562351,
                                 totalCount: 505427,
@@ -46127,6 +46612,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 488222,
                                 proportion: 0.9949987364370786,
                                 totalCount: 505427,
@@ -46140,6 +46626,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1679,
                                 proportion: 0.0034151629982649588,
                                 totalCount: 505427,
@@ -46153,6 +46640,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 666,
                                 proportion: 0.001354481687041515,
                                 totalCount: 505427,
@@ -46166,6 +46654,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 532,
                                 proportion: 0.0010820441685548202,
                                 totalCount: 505427,
@@ -46179,6 +46668,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3356,
                                 proportion: 0.006758661801074619,
                                 totalCount: 505427,
@@ -46192,6 +46682,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 494209,
                                 proportion: 0.9957527144949699,
                                 totalCount: 505427,
@@ -46205,6 +46696,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 809,
                                 proportion: 0.0016300953071792701,
                                 totalCount: 505427,
@@ -46218,6 +46710,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 893,
                                 proportion: 0.0017931330834057883,
                                 totalCount: 505427,
@@ -46231,6 +46724,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 885,
                                 proportion: 0.001766051109718669,
                                 totalCount: 505427,
@@ -46244,6 +46738,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 59727,
                                 proportion: 0.12098028730463528,
                                 totalCount: 505427,
@@ -46257,6 +46752,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 848,
                                 proportion: 0.0017053761581173291,
                                 totalCount: 505427,
@@ -46270,6 +46766,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 560,
                                 proportion: 0.0011220241315332861,
                                 totalCount: 505427,
@@ -46283,6 +46780,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1004,
                                 proportion: 0.0020116330092146417,
                                 totalCount: 505427,
@@ -46296,6 +46794,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 994,
                                 proportion: 0.001990412379804323,
                                 totalCount: 505427,
@@ -46309,6 +46808,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 754,
                                 proportion: 0.0015109281788105349,
                                 totalCount: 505427,
@@ -46322,6 +46822,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 382997,
                                 proportion: 0.7699933454361956,
                                 totalCount: 505427,
@@ -46335,6 +46836,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 739,
                                 proportion: 0.0014824532896822054,
                                 totalCount: 505427,
@@ -46348,6 +46850,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 794,
                                 proportion: 0.001584786053882726,
                                 totalCount: 505427,
@@ -46361,6 +46864,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1196,
                                 proportion: 0.002404416406322248,
                                 totalCount: 505427,
@@ -46374,6 +46878,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 636,
                                 proportion: 0.001277316189982708,
                                 totalCount: 505427,
@@ -46387,6 +46892,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1055,
                                 proportion: 0.0021197167817274386,
                                 totalCount: 505427,
@@ -46400,6 +46906,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 604,
                                 proportion: 0.0012146954010505908,
                                 totalCount: 505427,
@@ -46413,6 +46920,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 496464,
                                 proportion: 0.9988873620017021,
                                 totalCount: 505427,
@@ -46426,6 +46934,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 761,
                                 proportion: 0.001530306503702095,
                                 totalCount: 505427,
@@ -46439,6 +46948,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 616,
                                 proportion: 0.0012387661406602865,
                                 totalCount: 505427,
@@ -46452,6 +46962,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 670,
                                 proportion: 0.0013472671590559477,
                                 totalCount: 505427,
@@ -46465,6 +46976,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1428,
                                 proportion: 0.0028728232529693885,
                                 totalCount: 505427,
@@ -46478,6 +46990,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 678,
                                 proportion: 0.0013629428307799932,
                                 totalCount: 505427,
@@ -46491,6 +47004,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 944,
                                 proportion: 0.0018934303582675111,
                                 totalCount: 505427,
@@ -46504,6 +47018,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1728,
                                 proportion: 0.0034673590683077763,
                                 totalCount: 505427,
@@ -46517,6 +47032,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 935,
                                 proportion: 0.001880391040891969,
                                 totalCount: 505427,
@@ -46530,6 +47046,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1344,
                                 proportion: 0.002709584550529518,
                                 totalCount: 505427,
@@ -46543,6 +47060,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1002,
                                 proportion: 0.002027068034229532,
                                 totalCount: 505427,
@@ -46556,6 +47074,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 493249,
                                 proportion: 0.9977506316234492,
                                 totalCount: 505427,
@@ -46569,6 +47088,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 58271,
                                 proportion: 0.11826200256530987,
                                 totalCount: 505427,
@@ -46582,6 +47102,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1313,
                                 proportion: 0.0026543377093853986,
                                 totalCount: 505427,
@@ -46595,6 +47116,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 739,
                                 proportion: 0.0014837033556993082,
                                 totalCount: 505427,
@@ -46608,6 +47130,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1611,
                                 proportion: 0.0032376442972442843,
                                 totalCount: 505427,
@@ -46621,6 +47144,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3648,
                                 proportion: 0.00733525830243463,
                                 totalCount: 505427,
@@ -46634,6 +47158,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1241,
                                 proportion: 0.0024952096398332775,
                                 totalCount: 505427,
@@ -46647,6 +47172,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 502,
                                 proportion: 0.001009363759015408,
                                 totalCount: 505427,
@@ -46660,6 +47186,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 649,
                                 proportion: 0.001305385873270967,
                                 totalCount: 505427,
@@ -46673,6 +47200,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 842,
                                 proportion: 0.0016948401979058054,
                                 totalCount: 505427,
@@ -46686,6 +47214,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2999,
                                 proportion: 0.006026614365005044,
                                 totalCount: 505427,
@@ -46699,6 +47228,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 706,
                                 proportion: 0.001403625967478026,
                                 totalCount: 505427,
@@ -46712,6 +47242,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 502459,
                                 proportion: 0.9980791615848208,
                                 totalCount: 505427,
@@ -46725,6 +47256,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 502397,
                                 proportion: 0.9983327901819424,
                                 totalCount: 505427,
@@ -46738,6 +47270,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 743,
                                 proportion: 0.0014721470958282562,
                                 totalCount: 505427,
@@ -46751,6 +47284,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1165,
                                 proportion: 0.002309954217302251,
                                 totalCount: 505427,
@@ -46764,6 +47298,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 897,
                                 proportion: 0.0017786925717277113,
                                 totalCount: 505427,
@@ -46777,6 +47312,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 805,
                                 proportion: 0.0016144688497761804,
                                 totalCount: 505427,
@@ -46790,6 +47326,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 545,
                                 proportion: 0.0010888545250396582,
                                 totalCount: 505427,
@@ -46803,6 +47340,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1331,
                                 proportion: 0.0026589953352711437,
                                 totalCount: 505427,
@@ -46816,6 +47354,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 507,
                                 proportion: 0.0010126551939024975,
                                 totalCount: 505427,
@@ -46829,6 +47368,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2819,
                                 proportion: 0.0056310962759656665,
                                 totalCount: 505427,
@@ -46842,6 +47382,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 572,
                                 proportion: 0.0011421086680457164,
                                 totalCount: 505427,
@@ -46855,6 +47396,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2987,
                                 proportion: 0.005965314502084964,
                                 totalCount: 505427,
@@ -46868,6 +47410,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 748,
                                 proportion: 0.0014936340836115593,
                                 totalCount: 505427,
@@ -46881,6 +47424,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 933,
                                 proportion: 0.0018670716991553151,
                                 totalCount: 505427,
@@ -46894,6 +47438,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 863,
                                 proportion: 0.0017259551251667456,
                                 totalCount: 505427,
@@ -46907,6 +47452,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 11091,
                                 proportion: 0.02212721302056109,
                                 totalCount: 505427,
@@ -46920,6 +47466,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1346,
                                 proportion: 0.0026858601237570914,
                                 totalCount: 505427,
@@ -46933,6 +47480,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 566,
                                 proportion: 0.0011293099836190196,
                                 totalCount: 505427,
@@ -46946,6 +47494,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 988,
                                 proportion: 0.001971890580031215,
                                 totalCount: 505427,
@@ -46959,6 +47508,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 820,
                                 proportion: 0.0016361648296393254,
                                 totalCount: 505427,
@@ -46972,6 +47522,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2076,
                                 proportion: 0.004142026001388656,
                                 totalCount: 505427,
@@ -46985,6 +47536,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29834,
                                 proportion: 0.05937102612731119,
                                 totalCount: 505427,
@@ -46998,6 +47550,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 616,
                                 proportion: 0.0012297716537633808,
                                 totalCount: 505427,
@@ -47011,6 +47564,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 6040,
                                 proportion: 0.012043316059283422,
                                 totalCount: 505427,
@@ -47024,6 +47578,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 598,
                                 proportion: 0.0011910428795353738,
                                 totalCount: 505427,
@@ -47037,6 +47592,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 519,
                                 proportion: 0.001033979886202445,
                                 totalCount: 505427,
@@ -47050,6 +47606,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3518,
                                 proportion: 0.007008470726984405,
                                 totalCount: 505427,
@@ -47063,6 +47620,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 643,
                                 proportion: 0.0012781572272535721,
                                 totalCount: 505427,
@@ -47076,6 +47634,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 882,
                                 proportion: 0.0017495001428163382,
                                 totalCount: 505427,
@@ -47089,6 +47648,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 568,
                                 proportion: 0.0011267963275961943,
                                 totalCount: 505427,
@@ -47102,6 +47662,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4785,
                                 proportion: 0.009502871714210815,
                                 totalCount: 505427,
@@ -47115,6 +47676,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4785,
                                 proportion: 0.00950334354835186,
                                 totalCount: 505427,
@@ -47128,6 +47690,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4782,
                                 proportion: 0.009497800331688134,
                                 totalCount: 505427,
@@ -47141,6 +47704,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 487632,
                                 proportion: 0.9975247626022314,
                                 totalCount: 505427,
@@ -47154,6 +47718,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 485984,
                                 proportion: 0.9978399954007506,
                                 totalCount: 505427,
@@ -47167,6 +47732,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 484208,
                                 proportion: 0.9973901848704877,
                                 totalCount: 505427,
@@ -47180,6 +47746,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 483668,
                                 proportion: 0.996772691113978,
                                 totalCount: 505427,
@@ -47193,6 +47760,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 482589,
                                 proportion: 0.9962695810865491,
                                 totalCount: 505427,
@@ -47206,6 +47774,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 482247,
                                 proportion: 0.9962690036008454,
                                 totalCount: 505427,
@@ -47219,6 +47788,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 477009,
                                 proportion: 0.9953862526605735,
                                 totalCount: 505427,
@@ -47232,6 +47802,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 476129,
                                 proportion: 0.9951073212531611,
                                 totalCount: 505427,
@@ -47245,6 +47816,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1140,
                                 proportion: 0.002385411326518869,
                                 totalCount: 505427,
@@ -47258,6 +47830,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 475799,
                                 proportion: 0.9955932664441678,
                                 totalCount: 505427,
@@ -47271,6 +47844,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 604,
                                 proportion: 0.001198828958467722,
                                 totalCount: 505427,
@@ -47284,6 +47858,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 585,
                                 proportion: 0.0011612465237043168,
                                 totalCount: 505427,
@@ -47297,6 +47872,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 513,
                                 proportion: 0.0010177238694932807,
                                 totalCount: 505427,
@@ -47310,6 +47886,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 831,
                                 proportion: 0.0016497227631962932,
                                 totalCount: 505427,
@@ -47323,6 +47900,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 712,
                                 proportion: 0.0014136127733414868,
                                 totalCount: 505427,
@@ -47336,6 +47914,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1286,
                                 proportion: 0.002568855720597988,
                                 totalCount: 505427,
@@ -47349,6 +47928,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1165,
                                 proportion: 0.002364858007023527,
                                 totalCount: 505427,
@@ -47362,6 +47942,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 761,
                                 proportion: 0.0015442652158825952,
                                 totalCount: 505427,
@@ -47375,6 +47956,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 565,
                                 proportion: 0.0011504574340930425,
                                 totalCount: 505427,
@@ -47388,6 +47970,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 509,
                                 proportion: 0.0010347547488940931,
                                 totalCount: 505427,
@@ -47401,6 +47984,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 818,
                                 proportion: 0.0016640796805292505,
                                 totalCount: 505427,
@@ -47414,6 +47998,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1310,
                                 proportion: 0.0026650283184688497,
                                 totalCount: 505427,
@@ -47427,6 +48012,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1561,
                                 proportion: 0.003173164097914778,
                                 totalCount: 505427,
@@ -47440,6 +48026,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1287,
                                 proportion: 0.0026187225435995937,
                                 totalCount: 505427,
@@ -47453,6 +48040,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 849,
                                 proportion: 0.0017296244535079392,
                                 totalCount: 505427,
@@ -47466,6 +48054,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 622,
                                 proportion: 0.001271689773119913,
                                 totalCount: 505427,
@@ -47479,6 +48068,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 22166,
                                 proportion: 0.04531914154104709,
                                 totalCount: 505427,
@@ -47492,6 +48082,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3628,
                                 proportion: 0.007410493978462996,
                                 totalCount: 505427,
@@ -47505,6 +48096,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 108607,
                                 proportion: 0.2222210854984511,
                                 totalCount: 505427,
@@ -47518,6 +48110,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 602,
                                 proportion: 0.001229504848578921,
                                 totalCount: 505427,
@@ -47531,6 +48124,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 874,
                                 proportion: 0.001785922273556703,
                                 totalCount: 505427,
@@ -47544,6 +48138,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1378,
                                 proportion: 0.0028112122077604143,
                                 totalCount: 505427,
@@ -47557,6 +48152,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1267,
                                 proportion: 0.002585835661673915,
                                 totalCount: 505427,
@@ -47570,6 +48166,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1599,
                                 proportion: 0.0032263336622216305,
                                 totalCount: 505427,
@@ -47583,6 +48180,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1653,
                                 proportion: 0.003334388987842491,
                                 totalCount: 505427,
@@ -47596,6 +48194,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 759,
                                 proportion: 0.0015300475947611493,
                                 totalCount: 505427,
@@ -47609,6 +48208,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 72199,
                                 proportion: 0.14636336729605137,
                                 totalCount: 505427,
@@ -47622,6 +48222,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 926,
                                 proportion: 0.0018555775535231927,
                                 totalCount: 505427,
@@ -47635,6 +48236,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 801,
                                 proportion: 0.0016051621694738636,
                                 totalCount: 505427,
@@ -47648,6 +48250,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 727,
                                 proportion: 0.0014566627795610375,
                                 totalCount: 505427,
@@ -47661,6 +48264,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 622,
                                 proportion: 0.0012449984887880079,
                                 totalCount: 505427,
@@ -47674,6 +48278,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 571,
                                 proportion: 0.0011429074685300128,
                                 totalCount: 505427,
@@ -47687,6 +48292,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1042,
                                 proportion: 0.0020858522367862664,
                                 totalCount: 505427,
@@ -47700,6 +48306,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 501,
                                 proportion: 0.0010026517236203533,
                                 totalCount: 505427,
@@ -47713,6 +48320,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 677,
                                 proportion: 0.0013546529427183904,
                                 totalCount: 505427,
@@ -47726,6 +48334,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1120,
                                 proportion: 0.0022420941159042545,
                                 totalCount: 505427,
@@ -47739,6 +48348,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 554,
                                 proportion: 0.0011085232229612377,
                                 totalCount: 505427,
@@ -47752,6 +48362,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 694,
                                 proportion: 0.001380580759001128,
                                 totalCount: 505427,
@@ -47765,6 +48376,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 82950,
                                 proportion: 0.1651893553930989,
                                 totalCount: 505427,
@@ -47778,6 +48390,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 751,
                                 proportion: 0.0014959503766767193,
                                 totalCount: 505427,
@@ -47791,6 +48404,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5448,
                                 proportion: 0.010835925628316612,
                                 totalCount: 505427,
@@ -47804,6 +48418,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 618,
                                 proportion: 0.0012305756226553353,
                                 totalCount: 505427,
@@ -47817,6 +48432,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 11186,
                                 proportion: 0.022292993630573247,
                                 totalCount: 505427,
@@ -47830,6 +48446,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 717,
                                 proportion: 0.001428648283529897,
                                 totalCount: 505427,
@@ -47843,6 +48460,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2648,
                                 proportion: 0.005278128257719362,
                                 totalCount: 505427,
@@ -47856,6 +48474,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 34799,
                                 proportion: 0.0693851264321063,
                                 totalCount: 505427,
@@ -47869,6 +48488,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5141,
                                 proportion: 0.010231680594834603,
                                 totalCount: 505427,
@@ -47882,6 +48502,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 578,
                                 proportion: 0.001150322010555896,
                                 totalCount: 505427,
@@ -47895,6 +48516,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1950,
                                 proportion: 0.0038809831824062097,
                                 totalCount: 505427,
@@ -47908,6 +48530,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 643,
                                 proportion: 0.0012797828150843203,
                                 totalCount: 505427,
@@ -47921,6 +48544,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7348,
                                 proportion: 0.014631883088307039,
                                 totalCount: 505427,
@@ -47934,6 +48558,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 885,
                                 proportion: 0.0017616217270660737,
                                 totalCount: 505427,
@@ -47947,6 +48572,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 508,
                                 proportion: 0.0010111887638615468,
                                 totalCount: 505427,
@@ -47960,6 +48586,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 783,
                                 proportion: 0.0015580756273592508,
                                 totalCount: 505427,
@@ -47973,6 +48600,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 723,
                                 proportion: 0.001437230022403295,
                                 totalCount: 505427,
@@ -47986,6 +48614,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1895,
                                 proportion: 0.0037752162531526543,
                                 totalCount: 505427,
@@ -47999,6 +48628,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 42314,
                                 proportion: 0.08428496021193742,
                                 totalCount: 505427,
@@ -48012,6 +48642,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 823,
                                 proportion: 0.0016376545126037712,
                                 totalCount: 505427,
@@ -48025,6 +48656,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 651,
                                 proportion: 0.0012962575789253607,
                                 totalCount: 505427,
@@ -48038,6 +48670,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1387,
                                 proportion: 0.002762144874199934,
                                 totalCount: 505427,
@@ -48051,6 +48684,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 530,
                                 proportion: 0.0010554236829108984,
                                 totalCount: 505427,
@@ -48064,6 +48698,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1544,
                                 proportion: 0.00306552358110335,
                                 totalCount: 505427,
@@ -48077,6 +48712,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 813,
                                 proportion: 0.001614312378380525,
                                 totalCount: 505427,
@@ -48090,6 +48726,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 139829,
                                 proportion: 0.2782849420956998,
                                 totalCount: 505427,
@@ -48103,6 +48740,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29746,
                                 proportion: 0.05915117095296899,
                                 totalCount: 505427,
@@ -48116,6 +48754,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 773,
                                 proportion: 0.0015362234738126562,
                                 totalCount: 505427,
@@ -48129,6 +48768,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 807,
                                 proportion: 0.0016056953436824743,
                                 totalCount: 505427,
@@ -48142,6 +48782,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3332,
                                 proportion: 0.006621990094838346,
                                 totalCount: 505427,
@@ -48155,6 +48796,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 502298,
                                 proportion: 0.9983324621325802,
                                 totalCount: 505427,
@@ -48168,6 +48810,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 939,
                                 proportion: 0.001866424435650098,
                                 totalCount: 505427,
@@ -48181,6 +48824,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1453,
                                 proportion: 0.0028886909637452387,
                                 totalCount: 505427,
@@ -48194,6 +48838,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 12730,
                                 proportion: 0.025322347717806008,
                                 totalCount: 505427,
@@ -48207,6 +48852,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 605,
                                 proportion: 0.0012027067860493964,
                                 totalCount: 505427,
@@ -48220,6 +48866,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1539,
                                 proportion: 0.003059842892277227,
                                 totalCount: 505427,
@@ -48233,6 +48880,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 672,
                                 proportion: 0.0013338467584744923,
                                 totalCount: 505427,
@@ -48246,6 +48894,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1008,
                                 proportion: 0.002001191185229303,
                                 totalCount: 505427,
@@ -48259,6 +48908,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 500,
                                 proportion: 0.0010029868949732303,
                                 totalCount: 505427,
@@ -48272,6 +48922,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 536,
                                 proportion: 0.0010753335339552612,
                                 totalCount: 505427,
@@ -48285,6 +48936,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 546,
                                 proportion: 0.0010977544287153257,
                                 totalCount: 505427,
@@ -48298,6 +48950,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 871,
                                 proportion: 0.0017518700357815934,
                                 totalCount: 505427,
@@ -48311,6 +48964,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 783,
                                 proportion: 0.0015739136377707112,
                                 totalCount: 505427,
@@ -48324,6 +48978,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29151,
                                 proportion: 0.05860298493060358,
                                 totalCount: 505427,
@@ -48337,6 +48992,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 644,
                                 proportion: 0.0012952977072828314,
                                 totalCount: 505427,
@@ -48350,6 +49006,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 679,
                                 proportion: 0.0013661229671627496,
                                 totalCount: 505427,
@@ -48363,6 +49020,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 528,
                                 proportion: 0.0010627120895576462,
                                 totalCount: 505427,
@@ -48376,6 +49034,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 611,
                                 proportion: 0.0012254164610935288,
                                 totalCount: 505427,
@@ -48389,6 +49048,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 732,
                                 proportion: 0.0014681165989434374,
                                 totalCount: 505427,
@@ -48402,6 +49062,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 897,
                                 proportion: 0.0018114551821350534,
                                 totalCount: 505427,
@@ -48415,6 +49076,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 599,
                                 proportion: 0.0011913332988595818,
                                 totalCount: 505427,
@@ -48428,6 +49090,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 505,
                                 proportion: 0.001004287612062588,
                                 totalCount: 505427,
@@ -48441,6 +49104,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 878,
                                 proportion: 0.0017634523496295345,
                                 totalCount: 505427,
@@ -48454,6 +49118,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 620,
                                 proportion: 0.0012451149321412362,
                                 totalCount: 505427,
@@ -48467,6 +49132,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 501,
                                 proportion: 0.0010059049229107395,
                                 totalCount: 505427,
@@ -48480,6 +49146,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 901,
                                 proportion: 0.0018112664391024482,
                                 totalCount: 505427,
@@ -48493,6 +49160,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 17955,
                                 proportion: 0.036152001498027796,
                                 totalCount: 505427,
@@ -48506,6 +49174,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 914,
                                 proportion: 0.0018430577820795903,
                                 totalCount: 505427,
@@ -48519,6 +49188,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 585,
                                 proportion: 0.0011777543345386022,
                                 totalCount: 505427,
@@ -48532,6 +49202,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 727,
                                 proportion: 0.0014607193088205747,
                                 totalCount: 505427,
@@ -48545,6 +49216,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 733,
                                 proportion: 0.0014540852256609343,
                                 totalCount: 505427,
@@ -48558,6 +49230,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1067,
                                 proportion: 0.002116803091683166,
                                 totalCount: 505427,
@@ -48571,6 +49244,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 516,
                                 proportion: 0.0010236571938699599,
                                 totalCount: 505427,
@@ -48584,6 +49258,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 929,
                                 proportion: 0.0018427969253657327,
                                 totalCount: 505427,
@@ -48597,6 +49272,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1303,
                                 proportion: 0.0025842765711429723,
                                 totalCount: 505427,
@@ -48610,6 +49286,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 942,
                                 proportion: 0.0018682432365429965,
                                 totalCount: 505427,
@@ -48623,6 +49300,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3236,
                                 proportion: 0.006418291734763499,
                                 totalCount: 505427,
@@ -48636,6 +49314,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4634,
                                 proportion: 0.009187262338568659,
                                 totalCount: 505427,
@@ -48649,6 +49328,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 650,
                                 proportion: 0.001288526955983919,
                                 totalCount: 505427,
@@ -48662,6 +49342,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1776,
                                 proportion: 0.003519661351502396,
                                 totalCount: 505427,
@@ -48675,6 +49356,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 768,
                                 proportion: 0.0015260774444561462,
                                 totalCount: 505427,
@@ -48688,6 +49370,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 523,
                                 proportion: 0.0010392841458495203,
                                 totalCount: 505427,
@@ -48701,6 +49384,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1677,
                                 proportion: 0.0033327901236530717,
                                 totalCount: 505427,
@@ -48714,6 +49398,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4368,
                                 proportion: 0.008680255399822341,
                                 totalCount: 505427,
@@ -48727,6 +49412,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4652,
                                 proportion: 0.009249612279794806,
                                 totalCount: 505427,
@@ -48740,6 +49426,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 602,
                                 proportion: 0.0011966715832243341,
                                 totalCount: 505427,
@@ -48753,6 +49440,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 65214,
                                 proportion: 0.12977342285511878,
                                 totalCount: 505427,
@@ -48766,6 +49454,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1700,
                                 proportion: 0.0033801315865343512,
                                 totalCount: 505427,
@@ -48779,6 +49468,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 938,
                                 proportion: 0.0018653006355544596,
                                 totalCount: 505427,
@@ -48792,6 +49482,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 761,
                                 proportion: 0.0015131932154858721,
                                 totalCount: 505427,
@@ -48805,6 +49496,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 605,
                                 proportion: 0.0012027952564140796,
                                 totalCount: 505427,
@@ -48818,6 +49510,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 503688,
                                 proportion: 0.9987210830939082,
                                 totalCount: 505427,
@@ -48831,6 +49524,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 629,
                                 proportion: 0.0012462429440656844,
                                 totalCount: 505427,
@@ -48844,6 +49538,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 911,
                                 proportion: 0.0018052616143120982,
                                 totalCount: 505427,
@@ -48857,6 +49552,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 616,
                                 proportion: 0.0012309192528959575,
                                 totalCount: 505427,
@@ -48870,6 +49566,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2069,
                                 proportion: 0.004136320653814551,
                                 totalCount: 505427,
@@ -48883,6 +49580,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4471,
                                 proportion: 0.008937048874923293,
                                 totalCount: 505427,
@@ -48896,6 +49594,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 510,
                                 proportion: 0.001019182615542335,
                                 totalCount: 505427,
@@ -48909,6 +49608,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1099,
                                 proportion: 0.002196458086423331,
                                 totalCount: 505427,
@@ -48922,6 +49622,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1134,
                                 proportion: 0.0023041427837051996,
                                 totalCount: 505427,
@@ -48935,6 +49636,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1606,
                                 proportion: 0.0032475476566496877,
                                 totalCount: 505427,
@@ -48948,6 +49650,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1068,
                                 proportion: 0.0021581643478524445,
                                 totalCount: 505427,
@@ -48961,6 +49664,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 41937,
                                 proportion: 0.08502731043879178,
                                 totalCount: 505427,
@@ -48974,6 +49678,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 753,
                                 proportion: 0.0015265751802798113,
                                 totalCount: 505427,
@@ -48987,6 +49692,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 951,
                                 proportion: 0.0019254052259263608,
                                 totalCount: 505427,
@@ -49000,6 +49706,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 644,
                                 proportion: 0.0012955765315565426,
                                 totalCount: 505427,
@@ -49013,6 +49720,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1624,
                                 proportion: 0.003224026141610981,
                                 totalCount: 505427,
@@ -49026,6 +49734,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2601,
                                 proportion: 0.005166218768807241,
                                 totalCount: 505427,
@@ -49039,6 +49748,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 569,
                                 proportion: 0.001129907601756222,
                                 totalCount: 505427,
@@ -49052,6 +49762,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1132,
                                 proportion: 0.002246651358211888,
                                 totalCount: 505427,
@@ -49065,6 +49776,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1058,
                                 proportion: 0.0021010280739450675,
                                 totalCount: 505427,
@@ -49078,6 +49790,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 593,
                                 proportion: 0.0011762022353792906,
                                 totalCount: 505427,
@@ -49091,6 +49804,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 554,
                                 proportion: 0.0010991910826635345,
                                 totalCount: 505427,
@@ -49104,6 +49818,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1431,
                                 proportion: 0.00283844094019637,
                                 totalCount: 505427,
@@ -49117,6 +49832,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1744,
                                 proportion: 0.0034597957450860583,
                                 totalCount: 505427,
@@ -49130,6 +49846,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 629,
                                 proportion: 0.001247367439941935,
                                 totalCount: 505427,
@@ -49143,6 +49860,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1945,
                                 proportion: 0.003857221333111221,
                                 totalCount: 505427,
@@ -49156,6 +49874,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 768,
                                 proportion: 0.0015853749163962445,
                                 totalCount: 505427,
@@ -49169,6 +49888,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 585,
                                 proportion: 0.0012070317335864317,
                                 totalCount: 505427,
@@ -49182,6 +49902,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 374089,
                                 proportion: 0.7740818758949486,
                                 totalCount: 505427,
@@ -49195,6 +49916,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2915,
                                 proportion: 0.0060340473450191685,
                                 totalCount: 505427,
@@ -49208,6 +49930,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 937,
                                 proportion: 0.00192095978285159,
                                 totalCount: 505427,
@@ -49221,6 +49944,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1325,
                                 proportion: 0.0026283372444313963,
                                 totalCount: 505427,
@@ -49234,6 +49958,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2996,
                                 proportion: 0.005940731487264904,
                                 totalCount: 505427,
@@ -49247,6 +49972,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 987,
                                 proportion: 0.001956656199448092,
                                 totalCount: 505427,
@@ -49260,6 +49986,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 800,
                                 proportion: 0.0015859579285010517,
                                 totalCount: 505427,
@@ -49273,6 +50000,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 501221,
                                 proportion: 0.9936541229367474,
                                 totalCount: 505427,
@@ -49286,6 +50014,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2516,
                                 proportion: 0.005007303976786489,
                                 totalCount: 505427,
@@ -49299,6 +50028,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 351695,
                                 proportion: 0.7017437092580805,
                                 totalCount: 505427,
@@ -49312,6 +50042,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 562,
                                 proportion: 0.0011187931367416047,
                                 totalCount: 505427,
@@ -49325,6 +50056,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29725,
                                 proportion: 0.05918826947239308,
                                 totalCount: 505427,
@@ -49338,6 +50070,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 664,
                                 proportion: 0.0013216955124058243,
                                 totalCount: 505427,
@@ -49351,6 +50084,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 646,
                                 proportion: 0.001285393079571005,
                                 totalCount: 505427,
@@ -49364,6 +50098,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 351179,
                                 proportion: 0.7000394692777521,
                                 totalCount: 505427,
@@ -49377,6 +50112,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 723,
                                 proportion: 0.0014388632383378443,
                                 totalCount: 505427,
@@ -49390,6 +50126,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 6076,
                                 proportion: 0.012095273168838148,
                                 totalCount: 505427,
@@ -49403,6 +50140,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1264,
                                 proportion: 0.002515883505039729,
                                 totalCount: 505427,
@@ -49416,6 +50154,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2783,
                                 proportion: 0.005539862926711774,
                                 totalCount: 505427,
@@ -49429,6 +50168,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 697,
                                 proportion: 0.00138752856676461,
                                 totalCount: 505427,
@@ -49442,6 +50182,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 720,
                                 proportion: 0.001432639100302645,
                                 totalCount: 505427,
@@ -49455,6 +50196,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1228,
                                 proportion: 0.0024338857143989708,
                                 totalCount: 505427,
@@ -49468,6 +50210,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1087,
                                 proportion: 0.0021544590563588257,
                                 totalCount: 505427,
@@ -49481,6 +50224,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 614,
                                 proportion: 0.0012176886128265846,
                                 totalCount: 505427,
@@ -49494,6 +50238,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 838,
                                 proportion: 0.0016624279383116239,
                                 totalCount: 505427,
@@ -49507,6 +50252,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 538,
                                 proportion: 0.001067439138112339,
                                 totalCount: 505427,
@@ -49520,6 +50266,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 723,
                                 proportion: 0.0014343217522928317,
                                 totalCount: 505427,
@@ -49533,6 +50280,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 726,
                                 proportion: 0.0014399476382676993,
                                 totalCount: 505427,
@@ -49546,6 +50294,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 640,
                                 proportion: 0.001269133677453642,
                                 totalCount: 505427,
@@ -49559,6 +50308,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 593,
                                 proportion: 0.0011758943638371833,
                                 totalCount: 505427,
@@ -49572,6 +50322,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 808,
                                 proportion: 0.001602189129701969,
                                 totalCount: 505427,
@@ -49585,6 +50336,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 550,
                                 proportion: 0.0010905947112105204,
                                 totalCount: 505427,
@@ -49598,6 +50350,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 337125,
                                 proportion: 0.67000884401737,
                                 totalCount: 505427,
@@ -49611,6 +50364,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 584,
                                 proportion: 0.0011579329310970423,
                                 totalCount: 505427,
@@ -49624,6 +50378,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 764,
                                 proportion: 0.001515028327460285,
                                 totalCount: 505427,
@@ -49637,6 +50392,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 583,
                                 proportion: 0.0011634148921097322,
                                 totalCount: 505427,
@@ -49650,6 +50406,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 713,
                                 proportion: 0.0014233582470933946,
                                 totalCount: 505427,
@@ -49663,6 +50420,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 987,
                                 proportion: 0.001972481189484097,
                                 totalCount: 505427,
@@ -49676,6 +50434,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 680,
                                 proportion: 0.0013583455351382017,
                                 totalCount: 505427,
@@ -49689,6 +50448,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1791,
                                 proportion: 0.003579401354616548,
                                 totalCount: 505427,
@@ -49702,6 +50462,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1233,
                                 proportion: 0.0024650287786612073,
                                 totalCount: 505427,
@@ -49715,6 +50476,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 667,
                                 proportion: 0.0013333919732601933,
                                 totalCount: 505427,
@@ -49728,6 +50490,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 535,
                                 proportion: 0.001069240839004307,
                                 totalCount: 505427,
@@ -49741,6 +50504,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 860,
                                 proportion: 0.0017185323733531564,
                                 totalCount: 505427,
@@ -49754,6 +50518,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 765,
                                 proportion: 0.0015287525379290498,
                                 totalCount: 505427,
@@ -49767,6 +50532,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1056,
                                 proportion: 0.0021114088055344503,
                                 totalCount: 505427,
@@ -49780,6 +50546,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5219,
                                 proportion: 0.010440735472693845,
                                 totalCount: 505427,
@@ -49793,6 +50560,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 948,
                                 proportion: 0.001896496882183132,
                                 totalCount: 505427,
@@ -49806,6 +50574,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1692,
                                 proportion: 0.0033517760252928346,
                                 totalCount: 505427,
@@ -49819,6 +50588,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2651,
                                 proportion: 0.005253395584056311,
                                 totalCount: 505427,
@@ -49832,6 +50602,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3220,
                                 proportion: 0.006380470212913517,
                                 totalCount: 505427,
@@ -49845,6 +50616,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 737,
                                 proportion: 0.0014599986132984677,
                                 totalCount: 505427,
@@ -49858,6 +50630,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 74303,
                                 proportion: 0.14739178646311685,
                                 totalCount: 505427,
@@ -49871,6 +50644,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 8410,
                                 proportion: 0.016670862464393536,
                                 totalCount: 505427,
@@ -49884,6 +50658,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 514,
                                 proportion: 0.0010184812740130738,
                                 totalCount: 505427,
@@ -49897,6 +50672,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 65692,
                                 proportion: 0.13030817570140918,
                                 totalCount: 505427,
@@ -49910,6 +50686,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 569,
                                 proportion: 0.0011289816942265185,
                                 totalCount: 505427,
@@ -49923,6 +50700,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 581,
                                 proportion: 0.001152738895711851,
                                 totalCount: 505427,
@@ -49936,6 +50714,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 53116,
                                 proportion: 0.10545856687057123,
                                 totalCount: 505427,
@@ -49949,6 +50728,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 167658,
                                 proportion: 0.33437306794838556,
                                 totalCount: 505427,
@@ -49962,6 +50742,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 720,
                                 proportion: 0.001429822523279298,
                                 totalCount: 505427,
@@ -49975,6 +50756,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 586,
                                 proportion: 0.001164660310721831,
                                 totalCount: 505427,
@@ -49988,6 +50770,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 707,
                                 proportion: 0.0014044971721333458,
                                 totalCount: 505427,
@@ -50001,6 +50784,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 856,
                                 proportion: 0.0017002411323288138,
                                 totalCount: 505427,
@@ -50014,6 +50798,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 518,
                                 proportion: 0.0010286390588945505,
                                 totalCount: 505427,
@@ -50027,6 +50812,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1298,
                                 proportion: 0.0025780106417419247,
                                 totalCount: 505427,
@@ -50040,6 +50826,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 502395,
                                 proportion: 0.9967897653433543,
                                 totalCount: 505427,
@@ -50053,6 +50840,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 559,
                                 proportion: 0.0011086584439512666,
                                 totalCount: 505427,
@@ -50066,6 +50854,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1104,
                                 proportion: 0.0021876548102645397,
                                 totalCount: 505427,
@@ -50079,6 +50868,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1178,
                                 proportion: 0.002333079823810882,
                                 totalCount: 505427,
@@ -50092,6 +50882,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1889,
                                 proportion: 0.0037422465762108814,
                                 totalCount: 505427,
@@ -50105,6 +50896,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1456,
                                 proportion: 0.0028850478826800033,
                                 totalCount: 505427,
@@ -50118,6 +50910,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 580,
                                 proportion: 0.0011495118538455136,
                                 totalCount: 505427,
@@ -50131,6 +50924,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2042,
                                 proportion: 0.004049096785707204,
                                 totalCount: 505427,
@@ -50144,6 +50938,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2688,
                                 proportion: 0.005331080317246877,
                                 totalCount: 505427,
@@ -50157,6 +50952,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 942,
                                 proportion: 0.0018681135622664858,
                                 totalCount: 505427,
@@ -50170,6 +50966,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 562,
                                 proportion: 0.001114500001983096,
                                 totalCount: 505427,
@@ -50183,6 +50980,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 613,
                                 proportion: 0.001219601968075476,
                                 totalCount: 505427,
@@ -50196,6 +50994,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1187,
                                 proportion: 0.002363571920685934,
                                 totalCount: 505427,
@@ -50209,6 +51008,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1207,
                                 proportion: 0.0024034201445238064,
                                 totalCount: 505427,
@@ -50222,6 +51022,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2490,
                                 proportion: 0.004952799226647253,
                                 totalCount: 505427,
@@ -50235,6 +51036,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 804,
                                 proportion: 0.001598651088434833,
                                 totalCount: 505427,
@@ -50248,6 +51050,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 351058,
                                 proportion: 0.6999936193461425,
                                 totalCount: 505427,
@@ -50261,6 +51064,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2299,
                                 proportion: 0.004570094999930425,
                                 totalCount: 505427,
@@ -50274,6 +51078,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 639,
                                 proportion: 0.001271186440677966,
                                 totalCount: 505427,
@@ -50287,6 +51092,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 799,
                                 proportion: 0.0016154239628634452,
                                 totalCount: 505427,
@@ -50300,6 +51106,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 545,
                                 proportion: 0.001103252266221857,
                                 totalCount: 505427,
@@ -50313,6 +51120,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 895,
                                 proportion: 0.001811040670509985,
                                 totalCount: 505427,
@@ -50326,6 +51134,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 497,
                                 proportion: 0.0010064436695300697,
                                 totalCount: 505427,
@@ -50339,6 +51148,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 743,
                                 proportion: 0.001504651662002179,
                                 totalCount: 505427,
@@ -50352,6 +51162,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 857,
                                 proportion: 0.0017342771686559252,
                                 totalCount: 505427,
@@ -50365,6 +51176,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1348,
                                 proportion: 0.0027317974741006145,
                                 totalCount: 505427,
@@ -50378,6 +51190,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1201,
                                 proportion: 0.002431676176052545,
                                 totalCount: 505427,
@@ -50391,6 +51204,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 895,
                                 proportion: 0.0018139881796881967,
                                 totalCount: 505427,
@@ -50404,6 +51218,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 569,
                                 proportion: 0.0011533885094936645,
                                 totalCount: 505427,
@@ -50417,6 +51232,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 933,
                                 proportion: 0.001888587506578681,
                                 totalCount: 505427,
@@ -50430,6 +51246,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 491565,
                                 proportion: 0.9960426975307891,
                                 totalCount: 505427,
@@ -50443,6 +51260,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1209,
                                 proportion: 0.002447239618967423,
                                 totalCount: 505427,
@@ -50456,6 +51274,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1403,
                                 proportion: 0.0028364292125926944,
                                 totalCount: 505427,
@@ -50469,6 +51288,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 818,
                                 proportion: 0.0016260194923559193,
                                 totalCount: 505427,
@@ -50482,6 +51302,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 506,
                                 proportion: 0.0010073600993822454,
                                 totalCount: 505427,
@@ -50495,6 +51316,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 636,
                                 proportion: 0.0012662436563382863,
                                 totalCount: 505427,
@@ -50508,6 +51330,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2796,
                                 proportion: 0.005570642157966357,
                                 totalCount: 505427,
@@ -50521,6 +51344,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5119,
                                 proportion: 0.010197617434957567,
                                 totalCount: 505427,
@@ -50534,6 +51358,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 91904,
                                 proportion: 0.18275496588656162,
                                 totalCount: 505427,
@@ -50547,6 +51372,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1629,
                                 proportion: 0.003237101274173933,
                                 totalCount: 505427,
@@ -50560,6 +51386,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1177,
                                 proportion: 0.0023389279483011474,
                                 totalCount: 505427,
@@ -50573,6 +51400,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 576,
                                 proportion: 0.0011445717294757028,
                                 totalCount: 505427,
@@ -50586,6 +51414,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3211,
                                 proportion: 0.00637039976192838,
                                 totalCount: 505427,
@@ -50599,6 +51428,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 541,
                                 proportion: 0.001073214664754321,
                                 totalCount: 505427,
@@ -50612,6 +51442,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 607,
                                 proportion: 0.0012039422663072692,
                                 totalCount: 505427,
@@ -50625,6 +51456,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 810,
                                 proportion: 0.001606578642024527,
                                 totalCount: 505427,
@@ -50638,6 +51470,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 26574,
                                 proportion: 0.05271238485158649,
                                 totalCount: 505427,
@@ -50651,6 +51484,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 553,
                                 proportion: 0.0010964499211864659,
                                 totalCount: 505427,
@@ -50664,6 +51498,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 900,
                                 proportion: 0.001784156688605186,
                                 totalCount: 505427,
@@ -50677,6 +51512,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1530,
                                 proportion: 0.003033397107368379,
                                 totalCount: 505427,
@@ -50690,6 +51526,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 857,
                                 proportion: 0.0016990921653412955,
                                 totalCount: 505427,
@@ -50703,6 +51540,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 523,
                                 proportion: 0.001037007074648647,
                                 totalCount: 505427,
@@ -50716,6 +51554,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 518,
                                 proportion: 0.0010271561852450402,
                                 totalCount: 505427,
@@ -50729,6 +51568,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 42629,
                                 proportion: 0.08460048503034416,
                                 totalCount: 505427,
@@ -50742,6 +51582,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 534,
                                 proportion: 0.0010589502114925844,
                                 totalCount: 505427,
@@ -50755,6 +51596,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 728,
                                 proportion: 0.001443530781112748,
                                 totalCount: 505427,
@@ -50768,6 +51610,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1051,
                                 proportion: 0.0020841347965241948,
                                 totalCount: 505427,
@@ -50781,6 +51624,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 634,
                                 proportion: 0.0012571807028710913,
                                 totalCount: 505427,
@@ -50794,6 +51638,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 805,
                                 proportion: 0.0015957657693375094,
                                 totalCount: 505427,
@@ -50807,6 +51652,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 587,
                                 proportion: 0.0011635005708486618,
                                 totalCount: 505427,
@@ -50820,6 +51666,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1354,
                                 proportion: 0.002683201848516015,
                                 totalCount: 505427,
@@ -50833,6 +51680,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 653,
                                 proportion: 0.0013135291490825411,
                                 totalCount: 505427,
@@ -50846,6 +51694,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 23093,
                                 proportion: 0.04649013848597525,
                                 totalCount: 505427,
@@ -50859,6 +51708,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1152,
                                 proportion: 0.002317935427791885,
                                 totalCount: 505427,
@@ -50872,6 +51722,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 705,
                                 proportion: 0.0014153926459811884,
                                 totalCount: 505427,
@@ -50885,6 +51736,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1334,
                                 proportion: 0.0026790591561967805,
                                 totalCount: 505427,
@@ -50898,6 +51750,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 815,
                                 proportion: 0.001636174924163794,
                                 totalCount: 505427,
@@ -50911,6 +51764,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1008,
                                 proportion: 0.0020242061316577404,
                                 totalCount: 505427,
@@ -50924,6 +51778,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 604,
                                 proportion: 0.0011993979181311634,
                                 totalCount: 505427,
@@ -50937,6 +51792,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1373,
                                 proportion: 0.0027276754761512163,
                                 totalCount: 505427,
@@ -50950,6 +51806,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4929,
                                 proportion: 0.009816280806572068,
                                 totalCount: 505427,
@@ -50963,6 +51820,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 728,
                                 proportion: 0.0014491916974055886,
                                 totalCount: 505427,
@@ -50976,6 +51834,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 802,
                                 proportion: 0.0015965727435967878,
                                 totalCount: 505427,
@@ -50989,6 +51848,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 820,
                                 proportion: 0.0016511951027969635,
                                 totalCount: 505427,
@@ -51002,6 +51862,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 971,
                                 proportion: 0.0019556110529283816,
                                 totalCount: 505427,
@@ -51015,6 +51876,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 686,
                                 proportion: 0.001381604917385665,
                                 totalCount: 505427,
@@ -51028,6 +51890,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 345799,
                                 proportion: 0.7001198589228084,
                                 totalCount: 505427,
@@ -51041,6 +51904,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 536,
                                 proportion: 0.0010838815091027847,
                                 totalCount: 505427,
@@ -51054,6 +51918,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 612,
                                 proportion: 0.001237453595490169,
                                 totalCount: 505427,
@@ -51067,6 +51932,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 583,
                                 proportion: 0.0011739736288874033,
                                 totalCount: 505427,
@@ -51080,6 +51946,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4803,
                                 proportion: 0.00966316729773339,
                                 totalCount: 505427,
@@ -51093,6 +51960,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2986,
                                 proportion: 0.005931311205132789,
                                 totalCount: 505427,
@@ -51106,6 +51974,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 734,
                                 proportion: 0.0014578851925341977,
                                 totalCount: 505427,
@@ -51119,6 +51988,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 596,
                                 proportion: 0.0011943696293446196,
                                 totalCount: 505427,
@@ -51132,6 +52002,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 607,
                                 proportion: 0.0012158115592232426,
                                 totalCount: 505427,
@@ -51145,6 +52016,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 515,
                                 proportion: 0.0010310578653698694,
                                 totalCount: 505427,
@@ -51158,6 +52030,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 728,
                                 proportion: 0.0014444329806906294,
                                 totalCount: 505427,
@@ -51171,6 +52044,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 714,
                                 proportion: 0.0014197766536222201,
                                 totalCount: 505427,
@@ -51184,6 +52058,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4408,
                                 proportion: 0.009354163748795715,
                                 totalCount: 505427,
@@ -51197,6 +52072,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 6357,
                                 proportion: 0.013488424398410331,
                                 totalCount: 505427,
@@ -51210,6 +52086,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 463506,
                                 proportion: 0.9966263505886147,
                                 totalCount: 505427,
@@ -51223,6 +52100,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 628,
                                 proportion: 0.0013510402795018361,
                                 totalCount: 505427,
@@ -51236,6 +52114,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1215,
                                 proportion: 0.002613684520749213,
                                 totalCount: 505427,
@@ -51249,6 +52128,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2456,
                                 proportion: 0.005293970564144127,
                                 totalCount: 505427,
@@ -51262,6 +52142,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 678,
                                 proportion: 0.0014631083067003024,
                                 totalCount: 505427,
@@ -51275,6 +52156,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 463674,
                                 proportion: 0.9955191611148206,
                                 totalCount: 505427,
@@ -51288,6 +52170,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 10637,
                                 proportion: 0.022777838450156213,
                                 totalCount: 505427,
@@ -51301,6 +52184,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1136,
                                 proportion: 0.0023901599471471673,
                                 totalCount: 505427,
@@ -51314,6 +52198,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 506,
                                 proportion: 0.0010643623712142565,
                                 totalCount: 505427,
@@ -51327,6 +52212,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 550,
                                 proportion: 0.0011075758185992188,
                                 totalCount: 505427,
@@ -51340,6 +52226,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 881,
                                 proportion: 0.0017738600281481988,
                                 totalCount: 505427,
@@ -51353,6 +52240,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 793,
                                 proportion: 0.0015982038848648278,
                                 totalCount: 505427,
@@ -51366,6 +52254,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1583,
                                 proportion: 0.0031932576472771578,
                                 totalCount: 505427,
@@ -51379,6 +52268,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 721,
                                 proportion: 0.001458129832203839,
                                 totalCount: 505427,
@@ -51392,6 +52282,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7473,
                                 proportion: 0.015099532041801034,
                                 totalCount: 505427,
@@ -51405,6 +52296,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 530,
                                 proportion: 0.0010689643349125768,
                                 totalCount: 505427,
@@ -51418,6 +52310,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 674,
                                 proportion: 0.0013462041636456965,
                                 totalCount: 505427,
@@ -51431,6 +52324,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1768,
                                 proportion: 0.0035320793918750186,
                                 totalCount: 505427,
@@ -51444,6 +52338,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1285,
                                 proportion: 0.002570730087344806,
                                 totalCount: 505427,
@@ -51457,6 +52352,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 552,
                                 proportion: 0.0011039116870650348,
                                 totalCount: 505427,
@@ -51470,6 +52366,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 626,
                                 proportion: 0.0012516795700300723,
                                 totalCount: 505427,
@@ -51483,6 +52380,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 719,
                                 proportion: 0.0014375284906550652,
                                 totalCount: 505427,
@@ -51496,6 +52394,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 615,
                                 proportion: 0.0012485230885416032,
                                 totalCount: 505427,
@@ -51509,6 +52408,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 818,
                                 proportion: 0.0016489841008097761,
                                 totalCount: 505427,
@@ -51522,6 +52422,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 615,
                                 proportion: 0.001244206348082405,
                                 totalCount: 505427,
@@ -51535,6 +52436,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 679,
                                 proportion: 0.0013640372287745562,
                                 totalCount: 505427,
@@ -51548,6 +52450,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 23024,
                                 proportion: 0.046282187870625366,
                                 totalCount: 505427,
@@ -51561,6 +52464,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1640,
                                 proportion: 0.0032955550196929508,
                                 totalCount: 505427,
@@ -51574,6 +52478,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1031,
                                 proportion: 0.002071733001641713,
                                 totalCount: 505427,
@@ -51587,6 +52492,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 585,
                                 proportion: 0.0011764280026062405,
                                 totalCount: 505427,
@@ -51600,6 +52506,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 683,
                                 proportion: 0.0013741597606587918,
                                 totalCount: 505427,
@@ -51613,6 +52520,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 513,
                                 proportion: 0.0010320851741870067,
                                 totalCount: 505427,
@@ -51626,6 +52534,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1019,
                                 proportion: 0.002051821066705327,
                                 totalCount: 505427,
@@ -51639,6 +52548,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 626,
                                 proportion: 0.001260932445443522,
                                 totalCount: 505427,
@@ -51652,6 +52562,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 665,
                                 proportion: 0.0013384186533294423,
                                 totalCount: 505427,
@@ -51665,6 +52576,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 8726,
                                 proportion: 0.01756519008490714,
                                 totalCount: 505427,
@@ -51678,6 +52590,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 660,
                                 proportion: 0.0013296827497839266,
                                 totalCount: 505427,
@@ -51691,6 +52604,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 738,
                                 proportion: 0.0014874443971919953,
                                 totalCount: 505427,
@@ -51704,6 +52618,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1463,
                                 proportion: 0.002941271079444476,
                                 totalCount: 505427,
@@ -51717,6 +52632,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 18836,
                                 proportion: 0.03796432530484732,
                                 totalCount: 505427,
@@ -51730,6 +52646,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 561,
                                 proportion: 0.001131093995725634,
                                 totalCount: 505427,
@@ -51743,6 +52660,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 734,
                                 proportion: 0.0014782085079559438,
                                 totalCount: 505427,
@@ -51756,6 +52674,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1964,
                                 proportion: 0.003955315408209092,
                                 totalCount: 505427,
@@ -51769,6 +52688,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1025,
                                 proportion: 0.002065266449595409,
                                 totalCount: 505427,
@@ -51782,6 +52702,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 825,
                                 proportion: 0.0016622340425531915,
                                 totalCount: 505427,
@@ -51795,6 +52716,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 991,
                                 proportion: 0.0019965709749753704,
                                 totalCount: 505427,
@@ -51808,6 +52730,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1176,
                                 proportion: 0.0023649029102784792,
                                 totalCount: 505427,
@@ -51821,6 +52744,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 522,
                                 proportion: 0.0010511393383863198,
                                 totalCount: 505427,
@@ -51834,6 +52758,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 498,
                                 proportion: 0.0010039006984971727,
                                 totalCount: 505427,
@@ -51847,6 +52772,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 583,
                                 proportion: 0.0012126481489955613,
                                 totalCount: 505427,
@@ -51860,6 +52786,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5496,
                                 proportion: 0.011289129898940103,
                                 totalCount: 505427,
@@ -51873,6 +52800,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 542,
                                 proportion: 0.0011119522558064629,
                                 totalCount: 505427,
@@ -51886,6 +52814,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 524,
                                 proportion: 0.0010750393907563026,
                                 totalCount: 505427,
@@ -51899,6 +52828,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 798,
                                 proportion: 0.0016054852066005963,
                                 totalCount: 505427,
@@ -51912,6 +52842,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 596,
                                 proportion: 0.0011990166454089331,
                                 totalCount: 505427,
@@ -51925,6 +52856,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1063,
                                 proportion: 0.0021493548902373188,
                                 totalCount: 505427,
@@ -51938,6 +52870,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 940,
                                 proportion: 0.0019036548147278076,
                                 totalCount: 505427,
@@ -51951,6 +52884,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 959,
                                 proportion: 0.0019450123312564902,
                                 totalCount: 505427,
@@ -51964,6 +52898,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 733,
                                 proportion: 0.0014967125413484707,
                                 totalCount: 505427,
@@ -51977,6 +52912,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 488193,
                                 proportion: 0.9968411810348348,
                                 totalCount: 505427,
@@ -51990,6 +52926,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1027,
                                 proportion: 0.0020843861817576633,
                                 totalCount: 505427,
@@ -52003,6 +52940,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 26418,
                                 proportion: 0.05361763792568057,
                                 totalCount: 505427,
@@ -52016,6 +52954,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 716,
                                 proportion: 0.0014528454261747553,
                                 totalCount: 505427,
@@ -52029,6 +52968,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 24986,
                                 proportion: 0.05072434346223182,
                                 totalCount: 505427,
@@ -52042,6 +52982,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3462,
                                 proportion: 0.007051476593863871,
                                 totalCount: 505427,
@@ -52055,6 +52996,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 483615,
                                 proportion: 0.9945687045506894,
                                 totalCount: 505427,
@@ -52068,6 +53010,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 483627,
                                 proportion: 0.9932268829901936,
                                 totalCount: 505427,
@@ -52081,6 +53024,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 484999,
                                 proportion: 0.996459991535209,
                                 totalCount: 505427,
@@ -52094,6 +53038,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 484999,
                                 proportion: 0.9964436135023524,
                                 totalCount: 505427,
@@ -52107,6 +53052,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 484986,
                                 proportion: 0.9964332822432518,
                                 totalCount: 505427,
@@ -52120,6 +53066,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 484975,
                                 proportion: 0.9963554111051076,
                                 totalCount: 505427,
@@ -52133,6 +53080,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 484975,
                                 proportion: 0.9963103800349651,
                                 totalCount: 505427,
@@ -52146,6 +53094,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 484933,
                                 proportion: 0.9959622016064933,
                                 totalCount: 505427,
@@ -52159,6 +53108,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1871,
                                 proportion: 0.0038549341508843067,
                                 totalCount: 505427,
@@ -52172,6 +53122,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 481534,
                                 proportion: 0.9921335443142296,
                                 totalCount: 505427,
@@ -52185,6 +53136,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1337,
                                 proportion: 0.002700731843789832,
                                 totalCount: 505427,
@@ -52198,6 +53150,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1335,
                                 proportion: 0.002685522319003842,
                                 totalCount: 505427,
@@ -52211,6 +53164,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 754,
                                 proportion: 0.0015160045037799581,
                                 totalCount: 505427,
@@ -52224,6 +53178,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 608,
                                 proportion: 0.0012222579607590865,
                                 totalCount: 505427,
@@ -52237,6 +53192,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 836,
                                 proportion: 0.0016802297653908844,
                                 totalCount: 505427,
@@ -52250,6 +53206,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 588,
                                 proportion: 0.0011871880602800794,
                                 totalCount: 505427,
@@ -52263,6 +53220,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1432,
                                 proportion: 0.00289161492250997,
                                 totalCount: 505427,
@@ -52276,6 +53234,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 28145,
                                 proportion: 0.05664106129792454,
                                 totalCount: 505427,
@@ -52289,6 +53248,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1021,
                                 proportion: 0.0020527605709127245,
                                 totalCount: 505427,
@@ -52302,6 +53262,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 729,
                                 proportion: 0.001477652782000608,
                                 totalCount: 505427,
@@ -52315,6 +53276,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 61943,
                                 proportion: 0.12555589338198034,
                                 totalCount: 505427,
@@ -52328,6 +53290,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 759,
                                 proportion: 0.0015374300408563424,
                                 totalCount: 505427,
@@ -52341,6 +53304,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 920,
                                 proportion: 0.0018658343423035347,
                                 totalCount: 505427,
@@ -52354,6 +53318,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 736,
                                 proportion: 0.00149345800461024,
                                 totalCount: 505427,
@@ -52367,6 +53332,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 644,
                                 proportion: 0.0013083872907646956,
                                 totalCount: 505427,
@@ -52380,6 +53346,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 715,
                                 proportion: 0.001453057110225051,
                                 totalCount: 505427,
@@ -52393,6 +53360,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 105065,
                                 proportion: 0.2160679802327566,
                                 totalCount: 505427,
@@ -52406,6 +53374,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 105163,
                                 proportion: 0.2163829927325701,
                                 totalCount: 505427,
@@ -52419,6 +53388,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 105710,
                                 proportion: 0.2173761052848036,
                                 totalCount: 505427,
@@ -52432,6 +53402,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 105144,
                                 proportion: 0.216274477538259,
                                 totalCount: 505427,
@@ -52445,6 +53416,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 105131,
                                 proportion: 0.2164498688507039,
                                 totalCount: 505427,
@@ -52458,6 +53430,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 103230,
                                 proportion: 0.2133499223937849,
                                 totalCount: 505427,
@@ -52471,6 +53444,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 742,
                                 proportion: 0.0015081178201803238,
                                 totalCount: 505427,
@@ -52484,6 +53458,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 602,
                                 proportion: 0.0012233982018891544,
                                 totalCount: 505427,
@@ -52497,6 +53472,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 599,
                                 proportion: 0.0012174945222909223,
                                 totalCount: 505427,
@@ -52510,6 +53486,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 581,
                                 proportion: 0.001181040738790785,
                                 totalCount: 505427,
@@ -52523,6 +53500,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 556,
                                 proportion: 0.0011304259428687607,
                                 totalCount: 505427,
@@ -52536,6 +53514,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 648,
                                 proportion: 0.0013171749037527289,
                                 totalCount: 505427,
@@ -52549,6 +53528,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 344703,
                                 proportion: 0.703798683068756,
                                 totalCount: 505427,
@@ -52562,6 +53542,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 9373,
                                 proportion: 0.01910334721296574,
                                 totalCount: 505427,
@@ -52575,6 +53556,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 945,
                                 proportion: 0.001925671132050096,
                                 totalCount: 505427,
@@ -52588,6 +53570,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1248,
                                 proportion: 0.0025453077007795005,
                                 totalCount: 505427,
@@ -52601,6 +53584,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1226,
                                 proportion: 0.0024905183569079383,
                                 totalCount: 505427,
@@ -52614,6 +53598,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4599,
                                 proportion: 0.009339417459166702,
                                 totalCount: 505427,
@@ -52627,6 +53612,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1569,
                                 proportion: 0.003239326121066975,
                                 totalCount: 505427,
@@ -52640,6 +53626,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29849,
                                 proportion: 0.06182579661634824,
                                 totalCount: 505427,
@@ -52653,6 +53640,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1127,
                                 proportion: 0.002313992571406279,
                                 totalCount: 505427,
@@ -52666,6 +53654,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 530,
                                 proportion: 0.0010789375111965214,
                                 totalCount: 505427,
@@ -52679,6 +53668,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 516,
                                 proportion: 0.0010505121246607721,
                                 totalCount: 505427,
@@ -52692,6 +53682,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 521,
                                 proportion: 0.00106089885215224,
                                 totalCount: 505427,
@@ -52705,6 +53696,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 626,
                                 proportion: 0.0012766391353115122,
                                 totalCount: 505427,
@@ -52718,6 +53710,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 483933,
                                 proportion: 0.9885968765002094,
                                 totalCount: 505427,
@@ -52731,6 +53724,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 891,
                                 proportion: 0.0018201689427290277,
                                 totalCount: 505427,
@@ -52744,6 +53738,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 879,
                                 proportion: 0.0017935225067690682,
                                 totalCount: 505427,
@@ -52757,6 +53752,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 816,
                                 proportion: 0.0016664250078113672,
                                 totalCount: 505427,
@@ -52770,6 +53766,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 924,
                                 proportion: 0.0018929228449565078,
                                 totalCount: 505427,
@@ -52783,6 +53780,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1978,
                                 proportion: 0.004241431365149072,
                                 totalCount: 505427,
@@ -52796,6 +53794,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 378387,
                                 proportion: 0.806571739176774,
                                 totalCount: 505427,
@@ -52809,6 +53808,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 378284,
                                 proportion: 0.8073020927145534,
                                 totalCount: 505427,
@@ -52822,6 +53822,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 378007,
                                 proportion: 0.768408427942716,
                                 totalCount: 505427,
@@ -52835,6 +53836,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2636,
                                 proportion: 0.005385559916397151,
                                 totalCount: 505427,
@@ -52848,6 +53850,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2318,
                                 proportion: 0.004717365113477256,
                                 totalCount: 505427,
@@ -52861,6 +53864,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1192,
                                 proportion: 0.0024173301480817514,
                                 totalCount: 505427,
@@ -52874,6 +53878,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 15672,
                                 proportion: 0.03181938156051408,
                                 totalCount: 505427,
@@ -52887,6 +53892,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1075,
                                 proportion: 0.0021826081660000405,
                                 totalCount: 505427,
@@ -52900,6 +53906,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 687,
                                 proportion: 0.001390342080817934,
                                 totalCount: 505427,
@@ -52913,6 +53920,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 341890,
                                 proportion: 0.6960046252376745,
                                 totalCount: 505427,
@@ -52926,6 +53934,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 686,
                                 proportion: 0.0013965286288368912,
                                 totalCount: 505427,
@@ -52939,6 +53948,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 691,
                                 proportion: 0.0014067074089304545,
                                 totalCount: 505427,
@@ -52952,6 +53962,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 33897,
                                 proportion: 0.06858492131257664,
                                 totalCount: 505427,
@@ -52965,6 +53976,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1380,
                                 proportion: 0.0027900206218915533,
                                 totalCount: 505427,
@@ -52978,6 +53990,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4232,
                                 proportion: 0.008557516540757397,
                                 totalCount: 505427,
@@ -52991,6 +54004,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2472,
                                 proportion: 0.004998614866026202,
                                 totalCount: 505427,
@@ -53004,6 +54018,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 849,
                                 proportion: 0.0017171878571154075,
                                 totalCount: 505427,
@@ -53017,6 +54032,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 33302,
                                 proportion: 0.06749958448697316,
                                 totalCount: 505427,
@@ -53030,6 +54046,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1059,
                                 proportion: 0.0021455879701198005,
                                 totalCount: 505427,
@@ -53043,6 +54060,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 669,
                                 proportion: 0.0013551096139861895,
                                 totalCount: 505427,
@@ -53056,6 +54074,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1850,
                                 proportion: 0.0037479133239331614,
                                 totalCount: 505427,
@@ -53069,6 +54088,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 703,
                                 proportion: 0.0014242070630946014,
                                 totalCount: 505427,
@@ -53082,6 +54102,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1146,
                                 proportion: 0.0023227344218701863,
                                 totalCount: 505427,
@@ -53095,6 +54116,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1146,
                                 proportion: 0.00232209904785834,
                                 totalCount: 505427,
@@ -53108,6 +54130,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1153,
                                 proportion: 0.00233700267751998,
                                 totalCount: 505427,
@@ -53121,6 +54144,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29740,
                                 proportion: 0.06033213101850537,
                                 totalCount: 505427,
@@ -53134,6 +54158,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1145,
                                 proportion: 0.0023228073307393626,
                                 totalCount: 505427,
@@ -53147,6 +54172,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 88794,
                                 proportion: 0.18039567833764714,
                                 totalCount: 505427,
@@ -53160,6 +54186,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1145,
                                 proportion: 0.0023262050554835457,
                                 totalCount: 505427,
@@ -53173,6 +54200,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29553,
                                 proportion: 0.05998818626724612,
                                 totalCount: 505427,
@@ -53186,6 +54214,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1143,
                                 proportion: 0.0023201196800142904,
                                 totalCount: 505427,
@@ -53199,6 +54228,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 577,
                                 proportion: 0.001167784528575303,
                                 totalCount: 505427,
@@ -53212,6 +54242,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2212,
                                 proportion: 0.004549867535502131,
                                 totalCount: 505427,
@@ -53225,6 +54256,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 41208,
                                 proportion: 0.08466504218048233,
                                 totalCount: 505427,
@@ -53238,6 +54270,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 933,
                                 proportion: 0.0019174647539972871,
                                 totalCount: 505427,
@@ -53251,6 +54284,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 859,
                                 proportion: 0.0017655280141406667,
                                 totalCount: 505427,
@@ -53264,6 +54298,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 759,
                                 proportion: 0.0015599950672092737,
                                 totalCount: 505427,
@@ -53277,6 +54312,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 791,
                                 proportion: 0.00162584580979865,
                                 totalCount: 505427,
@@ -53290,6 +54326,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4419,
                                 proportion: 0.009087487892603538,
                                 totalCount: 505427,
@@ -53303,6 +54340,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 338207,
                                 proportion: 0.6987098306975591,
                                 totalCount: 505427,
@@ -53316,6 +54354,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 539,
                                 proportion: 0.0011089006248109828,
                                 totalCount: 505427,
@@ -53329,6 +54368,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 678,
                                 proportion: 0.0013946370241161128,
                                 totalCount: 505427,
@@ -53342,6 +54382,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2227,
                                 proportion: 0.00458153151114421,
                                 totalCount: 505427,
@@ -53355,6 +54396,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 10607,
                                 proportion: 0.021786103066527,
                                 totalCount: 505427,
@@ -53368,6 +54410,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3133,
                                 proportion: 0.0064382092202225115,
                                 totalCount: 505427,
@@ -53381,6 +54424,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3133,
                                 proportion: 0.006438381218750835,
                                 totalCount: 505427,
@@ -53394,6 +54438,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 849,
                                 proportion: 0.0017447129443726329,
                                 totalCount: 505427,
@@ -53407,6 +54452,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3131,
                                 proportion: 0.00643427117647905,
                                 totalCount: 505427,
@@ -53420,6 +54466,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 755,
                                 proportion: 0.0015503239252969744,
                                 totalCount: 505427,
@@ -53433,6 +54480,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 544,
                                 proportion: 0.0011171004671697725,
                                 totalCount: 505427,
@@ -53446,6 +54494,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 589,
                                 proportion: 0.0012040114636609307,
                                 totalCount: 505427,
@@ -53459,6 +54508,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2973,
                                 proportion: 0.006038632624459204,
                                 totalCount: 505427,
@@ -53472,6 +54522,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 733,
                                 proportion: 0.001488427627491035,
                                 totalCount: 505427,
@@ -53485,6 +54536,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 31081,
                                 proportion: 0.0630124155604032,
                                 totalCount: 505427,
@@ -53498,6 +54550,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29754,
                                 proportion: 0.06041249588844175,
                                 totalCount: 505427,
@@ -53511,6 +54564,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29759,
                                 proportion: 0.060414306653511496,
                                 totalCount: 505427,
@@ -53524,6 +54578,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29889,
                                 proportion: 0.060691035944752864,
                                 totalCount: 505427,
@@ -53537,6 +54592,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 858,
                                 proportion: 0.0017390810841488233,
                                 totalCount: 505427,
@@ -53550,6 +54606,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 346343,
                                 proportion: 0.7024030437066376,
                                 totalCount: 505427,
@@ -53563,6 +54620,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 144555,
                                 proportion: 0.2931656536526305,
                                 totalCount: 505427,
@@ -53576,6 +54634,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 776,
                                 proportion: 0.0015699317605692216,
                                 totalCount: 505427,
@@ -53589,6 +54648,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1631,
                                 proportion: 0.003296461205441687,
                                 totalCount: 505427,
@@ -53602,6 +54662,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 847,
                                 proportion: 0.0017119030824361168,
                                 totalCount: 505427,
@@ -53615,6 +54676,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 30398,
                                 proportion: 0.06144895661296941,
                                 totalCount: 505427,
@@ -53628,6 +54690,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 983,
                                 proportion: 0.0019817989008374766,
                                 totalCount: 505427,
@@ -53641,6 +54704,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 954,
                                 proportion: 0.0020549405811992323,
                                 totalCount: 505427,
@@ -53654,6 +54718,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 561,
                                 proportion: 0.0012393353097896443,
                                 totalCount: 505427,
@@ -53667,6 +54732,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 563,
                                 proportion: 0.0012440311913753063,
                                 totalCount: 505427,
@@ -53680,6 +54746,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 561,
                                 proportion: 0.0012376510662330843,
                                 totalCount: 505427,
@@ -53693,6 +54760,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 521,
                                 proportion: 0.0011485358922977552,
                                 totalCount: 505427,
@@ -53706,6 +54774,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 519,
                                 proportion: 0.0011442454814429399,
                                 totalCount: 505427,
@@ -53719,6 +54788,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 574,
                                 proportion: 0.0012647684856710985,
                                 totalCount: 505427,
@@ -53732,6 +54802,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 30428,
                                 proportion: 0.0670616134634542,
                                 totalCount: 505427,
@@ -53745,6 +54816,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1026,
                                 proportion: 0.002261246727142895,
                                 totalCount: 505427,
@@ -53758,6 +54830,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1303,
                                 proportion: 0.0028673283013885527,
                                 totalCount: 505427,
@@ -53771,6 +54844,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 780,
                                 proportion: 0.0017164359747375833,
                                 totalCount: 505427,
@@ -53784,6 +54858,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 894,
                                 proportion: 0.001970682244020721,
                                 totalCount: 505427,
@@ -53797,6 +54872,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 289188,
                                 proportion: 0.6384757194740968,
                                 totalCount: 505427,
@@ -53810,6 +54886,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 18296,
                                 proportion: 0.04031598779238236,
                                 totalCount: 505427,
@@ -53823,6 +54900,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 525,
                                 proportion: 0.00115638257100189,
                                 totalCount: 505427,
@@ -53836,6 +54914,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1620,
                                 proportion: 0.0035749436174015896,
                                 totalCount: 505427,
@@ -53849,6 +54928,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1465,
                                 proportion: 0.0032332961081267186,
                                 totalCount: 505427,
@@ -53862,6 +54942,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 33956,
                                 proportion: 0.07497825021308167,
                                 totalCount: 505427,
@@ -53875,6 +54956,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 740,
                                 proportion: 0.0016326710719368111,
                                 totalCount: 505427,
@@ -53888,6 +54970,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 651,
                                 proportion: 0.0014291704444917663,
                                 totalCount: 505427,
@@ -53901,6 +54984,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 463,
                                 proportion: 0.001015756288694172,
                                 totalCount: 505427,
@@ -53914,6 +54998,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29423,
                                 proportion: 0.06452709444952509,
                                 totalCount: 505427,
@@ -53927,6 +55012,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 782,
                                 proportion: 0.0016883212214637011,
                                 totalCount: 505427,
@@ -53940,6 +55026,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 740,
                                 proportion: 0.0015949616454831333,
                                 totalCount: 505427,
@@ -53953,6 +55040,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 501,
                                 proportion: 0.001023200718895515,
                                 totalCount: 505427,
@@ -53966,6 +55054,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1096,
                                 proportion: 0.002241414217846647,
                                 totalCount: 505427,
@@ -53979,6 +55068,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 728,
                                 proportion: 0.0014887342895588192,
                                 totalCount: 505427,
@@ -53992,6 +55082,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2326,
                                 proportion: 0.00475575147416028,
                                 totalCount: 505427,
@@ -54005,6 +55096,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 60891,
                                 proportion: 0.12556450515323608,
                                 totalCount: 505427,
@@ -54018,6 +55110,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1374,
                                 proportion: 0.0028217666230600353,
                                 totalCount: 505427,
@@ -54031,6 +55124,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 710,
                                 proportion: 0.001457031923364225,
                                 totalCount: 505427,
@@ -54044,6 +55138,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2101,
                                 proportion: 0.004352185207127558,
                                 totalCount: 505427,
@@ -54057,6 +55152,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29273,
                                 proportion: 0.060053831603911,
                                 totalCount: 505427,
@@ -54070,6 +55166,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 557,
                                 proportion: 0.0011417560905615514,
                                 totalCount: 505427,
@@ -54083,6 +55180,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1110,
                                 proportion: 0.0022759100051874346,
                                 totalCount: 505427,
@@ -54096,6 +55194,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 8679,
                                 proportion: 0.017787168809024135,
                                 totalCount: 505427,
@@ -54109,6 +55208,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 401559,
                                 proportion: 0.826035529737024,
                                 totalCount: 505427,
@@ -54122,6 +55222,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 485004,
                                 proportion: 0.9975277968597672,
                                 totalCount: 505427,
@@ -54135,6 +55236,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1003,
                                 proportion: 0.0020588168884564623,
                                 totalCount: 505427,
@@ -54148,6 +55250,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 912,
                                 proportion: 0.0018726514855957783,
                                 totalCount: 505427,
@@ -54161,6 +55264,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 623,
                                 proportion: 0.0012787828778567352,
                                 totalCount: 505427,
@@ -54174,6 +55278,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 434234,
                                 proportion: 0.8907802640540252,
                                 totalCount: 505427,
@@ -54187,6 +55292,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 489,
                                 proportion: 0.0010031263077566895,
                                 totalCount: 505427,
@@ -54200,6 +55306,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 512,
                                 proportion: 0.0010489546306634843,
                                 totalCount: 505427,
@@ -54213,6 +55320,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 640,
                                 proportion: 0.001311161053599854,
                                 totalCount: 505427,
@@ -54226,6 +55334,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 490,
                                 proportion: 0.0010038576816623884,
                                 totalCount: 505427,
@@ -54239,6 +55348,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 6046,
                                 proportion: 0.01239320444072744,
                                 totalCount: 505427,
@@ -54252,6 +55362,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 37353,
                                 proportion: 0.07726389862797783,
                                 totalCount: 505427,
@@ -54265,6 +55376,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 336256,
                                 proportion: 0.6975874795395278,
                                 totalCount: 505427,
@@ -54278,6 +55390,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 479445,
                                 proportion: 0.9985525055192236,
                                 totalCount: 505427,
@@ -54291,6 +55404,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 479293,
                                 proportion: 0.9984750794229468,
                                 totalCount: 505427,
@@ -54304,6 +55418,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 479155,
                                 proportion: 0.9980753167707814,
                                 totalCount: 505427,
@@ -54317,6 +55432,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 479072,
                                 proportion: 0.9964267143659394,
                                 totalCount: 505427,
@@ -54330,6 +55446,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 593,
                                 proportion: 0.0012333867176937956,
                                 totalCount: 505427,
@@ -54343,6 +55460,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 511,
                                 proportion: 0.0010575090384945707,
                                 totalCount: 505427,
@@ -54356,6 +55474,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 25623,
                                 proportion: 0.05380270451873005,
                                 totalCount: 505427,
@@ -54369,6 +55488,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 486224,
                                 proportion: 0.9967630375376946,
                                 totalCount: 505427,
@@ -54382,6 +55502,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 464598,
                                 proportion: 0.9763436340902165,
                                 totalCount: 505427,
@@ -54395,6 +55516,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1437,
                                 proportion: 0.0029706900187296114,
                                 totalCount: 505427,
@@ -54408,6 +55530,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1036,
                                 proportion: 0.0022612780149645966,
                                 totalCount: 505427,
@@ -54421,6 +55544,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 444737,
                                 proportion: 0.9824837739083563,
                                 totalCount: 505427,
@@ -54434,6 +55558,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1076,
                                 proportion: 0.002327926025607186,
                                 totalCount: 505427,
@@ -54447,6 +55572,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1054,
                                 proportion: 0.0022786036094464765,
                                 totalCount: 505427,
@@ -54460,6 +55586,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 482595,
                                 proportion: 0.9950145666198638,
                                 totalCount: 505427,
@@ -54473,6 +55600,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 86415,
                                 proportion: 0.17830760977220206,
                                 totalCount: 505427,
@@ -54486,6 +55614,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1232,
                                 proportion: 0.002542093100033014,
                                 totalCount: 505427,
@@ -54499,6 +55628,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2307,
                                 proportion: 0.0047518414157892135,
                                 totalCount: 505427,
@@ -54512,6 +55642,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 365010,
                                 proportion: 0.7559083491413945,
                                 totalCount: 505427,
@@ -54525,6 +55656,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29272,
                                 proportion: 0.0606788015978143,
                                 totalCount: 505427,
@@ -54538,6 +55670,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 337020,
                                 proportion: 0.698618806863056,
                                 totalCount: 505427,
@@ -54551,6 +55684,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 400314,
                                 proportion: 0.8290099858764667,
                                 totalCount: 505427,
@@ -54564,6 +55698,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 779,
                                 proportion: 0.0016017073912936203,
                                 totalCount: 505427,
@@ -54577,6 +55712,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 31587,
                                 proportion: 0.06480860257412457,
                                 totalCount: 505427,
@@ -54590,6 +55726,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 652,
                                 proportion: 0.001337386517010654,
                                 totalCount: 505427,
@@ -54603,6 +55740,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1907,
                                 proportion: 0.003907586701500948,
                                 totalCount: 505427,
@@ -54616,6 +55754,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29566,
                                 proportion: 0.06058296193842529,
                                 totalCount: 505427,
@@ -54629,6 +55768,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 153915,
                                 proportion: 0.31593110540478964,
                                 totalCount: 505427,
@@ -54642,6 +55782,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 23273,
                                 proportion: 0.04768109617555527,
                                 totalCount: 505427,
@@ -54655,6 +55796,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 759,
                                 proportion: 0.0015553055591415697,
                                 totalCount: 505427,
@@ -54668,6 +55810,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 25837,
                                 proportion: 0.05294391268977699,
                                 totalCount: 505427,
@@ -54681,6 +55824,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 33874,
                                 proportion: 0.06944766208178972,
                                 totalCount: 505427,
@@ -54694,6 +55838,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 73123,
                                 proportion: 0.1499688261401019,
                                 totalCount: 505427,
@@ -54707,6 +55852,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 634,
                                 proportion: 0.0013002781036448804,
                                 totalCount: 505427,
@@ -54720,6 +55866,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 93268,
                                 proportion: 0.19139867473019534,
                                 totalCount: 505427,
@@ -54733,6 +55880,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 377581,
                                 proportion: 0.77484778276903,
                                 totalCount: 505427,
@@ -54746,6 +55894,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1369,
                                 proportion: 0.0028040177949646477,
                                 totalCount: 505427,
@@ -54759,6 +55908,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 574,
                                 proportion: 0.0011514728420917487,
                                 totalCount: 505427,
@@ -54772,6 +55922,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 6490,
                                 proportion: 0.013039276551201764,
                                 totalCount: 505427,
@@ -54785,6 +55936,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 513,
                                 proportion: 0.001031074950908371,
                                 totalCount: 505427,
@@ -54798,6 +55950,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 492804,
                                 proportion: 0.9918447195968249,
                                 totalCount: 505427,
@@ -54811,6 +55964,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 424767,
                                 proportion: 0.8558398278516106,
                                 totalCount: 505427,
@@ -54824,6 +55978,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 68075,
                                 proportion: 0.13716059929561006,
                                 totalCount: 505427,
@@ -54837,6 +55992,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1155,
                                 proportion: 0.0023271464147841293,
                                 totalCount: 505427,
@@ -54850,6 +56006,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 30168,
                                 proportion: 0.06077785500589284,
                                 totalCount: 505427,
@@ -54863,6 +56020,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 22001,
                                 proportion: 0.0449823452319859,
                                 totalCount: 505427,
@@ -54876,6 +56034,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 21994,
                                 proportion: 0.044991950380797105,
                                 totalCount: 505427,
@@ -54889,6 +56048,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 21988,
                                 proportion: 0.0443656188648713,
                                 totalCount: 505427,
@@ -54902,6 +56062,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29825,
                                 proportion: 0.060188810229171545,
                                 totalCount: 505427,
@@ -54915,6 +56076,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 461814,
                                 proportion: 0.9361214772351807,
                                 totalCount: 505427,
@@ -54928,6 +56090,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 564,
                                 proportion: 0.0011432579202030296,
                                 totalCount: 505427,
@@ -54941,6 +56104,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1230,
                                 proportion: 0.0024914066725137077,
                                 totalCount: 505427,
@@ -54954,6 +56118,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 373019,
                                 proportion: 0.7564436386938729,
                                 totalCount: 505427,
@@ -54967,6 +56132,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 81588,
                                 proportion: 0.16545195712217262,
                                 totalCount: 505427,
@@ -54980,6 +56146,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 401848,
                                 proportion: 0.8145094271549086,
                                 totalCount: 505427,
@@ -54993,6 +56160,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1226,
                                 proportion: 0.00247005113368497,
                                 totalCount: 505427,
@@ -55006,6 +56174,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 357279,
                                 proportion: 0.7208437575659753,
                                 totalCount: 505427,
@@ -55019,6 +56188,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3487,
                                 proportion: 0.007025426119192489,
                                 totalCount: 505427,
@@ -55032,6 +56202,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 494816,
                                 proportion: 0.9989703750661181,
                                 totalCount: 505427,
@@ -55045,6 +56216,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 495052,
                                 proportion: 0.9992491280196357,
                                 totalCount: 505427,
@@ -55058,6 +56230,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 495063,
                                 proportion: 0.9974653500456357,
                                 totalCount: 505427,
@@ -55071,6 +56244,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2104,
                                 proportion: 0.004268622983613276,
                                 totalCount: 505427,
@@ -55084,6 +56258,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1415,
                                 proportion: 0.0028661246348982575,
                                 totalCount: 505427,
@@ -55097,6 +56272,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 532,
                                 proportion: 0.0010945466066997773,
                                 totalCount: 505427,
@@ -55110,6 +56286,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5837,
                                 proportion: 0.011991461964035886,
                                 totalCount: 505427,
@@ -55123,6 +56300,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 18981,
                                 proportion: 0.03899433605265807,
                                 totalCount: 505427,
@@ -55136,6 +56314,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 704,
                                 proportion: 0.0014004654956334918,
                                 totalCount: 505427,
@@ -55149,6 +56328,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1537,
                                 proportion: 0.0030575686262027863,
                                 totalCount: 505427,
@@ -55162,6 +56342,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 767,
                                 proportion: 0.0015257001909611712,
                                 totalCount: 505427,
@@ -55175,6 +56356,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 809,
                                 proportion: 0.0016102066000557302,
                                 totalCount: 505427,
@@ -55188,6 +56370,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 6665,
                                 proportion: 0.0132657935591736,
                                 totalCount: 505427,
@@ -55201,6 +56384,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 34305,
                                 proportion: 0.0682533082112878,
                                 totalCount: 505427,
@@ -55214,6 +56398,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 703,
                                 proportion: 0.001397872767728427,
                                 totalCount: 505427,
@@ -55227,6 +56412,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 865,
                                 proportion: 0.001714993804213135,
                                 totalCount: 505427,
@@ -55240,6 +56426,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 789,
                                 proportion: 0.0015631810437056702,
                                 totalCount: 505427,
@@ -55253,6 +56440,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 30148,
                                 proportion: 0.059736981328725784,
                                 totalCount: 505427,
@@ -55266,6 +56454,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2846,
                                 proportion: 0.005638691807650472,
                                 totalCount: 505427,
@@ -55279,6 +56468,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4966,
                                 proportion: 0.009839469627621843,
                                 totalCount: 505427,
@@ -55292,6 +56482,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 8754,
                                 proportion: 0.017354516654705783,
                                 totalCount: 505427,
@@ -55305,6 +56496,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 503898,
                                 proportion: 0.9995378185431961,
                                 totalCount: 505427,
@@ -55318,6 +56510,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1286,
                                 proportion: 0.0025492959700903753,
                                 totalCount: 505427,
@@ -55331,6 +56524,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1513,
                                 proportion: 0.0029988068197584305,
                                 totalCount: 505427,
@@ -55344,6 +56538,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 32436,
                                 proportion: 0.0643147767740298,
                                 totalCount: 505427,
@@ -55357,6 +56552,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 539,
                                 proportion: 0.0010930934341385856,
                                 totalCount: 505427,
@@ -55370,6 +56566,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 492509,
                                 proportion: 0.9995656788905734,
                                 totalCount: 505427,
@@ -55383,6 +56580,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 669,
                                 proportion: 0.0013575955339368445,
                                 totalCount: 505427,
@@ -55396,6 +56594,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2000,
                                 proportion: 0.004062934860996841,
                                 totalCount: 505427,
@@ -55409,6 +56608,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 632,
                                 proportion: 0.001277882920043351,
                                 totalCount: 505427,
@@ -55422,6 +56622,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 690,
                                 proportion: 0.0013951569854903673,
                                 totalCount: 505427,
@@ -55435,6 +56636,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 690,
                                 proportion: 0.0013749183019559708,
                                 totalCount: 505427,
@@ -55448,6 +56650,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 497749,
                                 proportion: 0.9972491695417153,
                                 totalCount: 505427,
@@ -55461,6 +56664,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 466411,
                                 proportion: 0.9347138608543692,
                                 totalCount: 505427,
@@ -55474,6 +56678,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 30433,
                                 proportion: 0.060989442631886936,
                                 totalCount: 505427,
@@ -55487,6 +56692,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1481,
                                 proportion: 0.002992868445143207,
                                 totalCount: 505427,
@@ -55500,6 +56706,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3390,
                                 proportion: 0.00687342357320703,
                                 totalCount: 505427,
@@ -55513,6 +56720,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 978,
                                 proportion: 0.0019827995182891966,
                                 totalCount: 505427,
@@ -55526,6 +56734,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 14301,
                                 proportion: 0.028943650854688745,
                                 totalCount: 505427,
@@ -55539,6 +56748,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 521,
                                 proportion: 0.001054649465691504,
                                 totalCount: 505427,
@@ -55552,6 +56762,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 9002,
                                 proportion: 0.018230200325640548,
                                 totalCount: 505427,
@@ -55565,6 +56776,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 846,
                                 proportion: 0.0017131540259119609,
                                 totalCount: 505427,
@@ -55578,6 +56790,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1068,
                                 proportion: 0.002161890804271961,
                                 totalCount: 505427,
@@ -55591,6 +56804,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 869,
                                 proportion: 0.0017588885605450328,
                                 totalCount: 505427,
@@ -55604,6 +56818,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1311,
                                 proportion: 0.0026527560536864407,
                                 totalCount: 505427,
@@ -55617,6 +56832,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2091,
                                 proportion: 0.004233650536545859,
                                 totalCount: 505427,
@@ -55630,6 +56846,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 542,
                                 proportion: 0.0010980528807680698,
                                 totalCount: 505427,
@@ -55643,6 +56860,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 687,
                                 proportion: 0.0013879544944875781,
                                 totalCount: 505427,
@@ -55656,6 +56874,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 492338,
                                 proportion: 0.9982583024633159,
                                 totalCount: 505427,
@@ -55669,6 +56888,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 556,
                                 proportion: 0.0011264889002348202,
                                 totalCount: 505427,
@@ -55682,6 +56902,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 556,
                                 proportion: 0.001126829070568684,
                                 totalCount: 505427,
@@ -55695,6 +56916,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 619,
                                 proportion: 0.001267704860286227,
                                 totalCount: 505427,
@@ -55708,6 +56930,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 482308,
                                 proportion: 0.9982304108551359,
                                 totalCount: 505427,
@@ -55721,6 +56944,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 9406,
                                 proportion: 0.019805857952033018,
                                 totalCount: 505427,
@@ -55734,6 +56958,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 508,
                                 proportion: 0.0010696132968934893,
                                 totalCount: 505427,
@@ -55747,6 +56972,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1055,
                                 proportion: 0.0022204262376508523,
                                 totalCount: 505427,
@@ -55760,6 +56986,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1358,
                                 proportion: 0.00285361861114088,
                                 totalCount: 505427,
@@ -55773,6 +57000,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 734,
                                 proportion: 0.0015417738801659403,
                                 totalCount: 505427,
@@ -55786,6 +57014,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 519,
                                 proportion: 0.001054494401427123,
                                 totalCount: 505427,
@@ -55799,6 +57028,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 506,
                                 proportion: 0.0010281042245737229,
                                 totalCount: 505427,
@@ -55812,6 +57042,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1521,
                                 proportion: 0.0030908603199375734,
                                 totalCount: 505427,
@@ -55825,6 +57056,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3422,
                                 proportion: 0.00695122966887202,
                                 totalCount: 505427,
@@ -55838,6 +57070,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 663,
                                 proportion: 0.0013468081864811336,
                                 totalCount: 505427,
@@ -55851,6 +57084,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1218,
                                 proportion: 0.002443305483395352,
                                 totalCount: 505427,
@@ -55864,6 +57098,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4319,
                                 proportion: 0.008720848056537103,
                                 totalCount: 505427,
@@ -55877,6 +57112,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 753,
                                 proportion: 0.0015293656483758868,
                                 totalCount: 505427,
@@ -55890,6 +57126,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 687,
                                 proportion: 0.0013966168126642855,
                                 totalCount: 505427,
@@ -55903,6 +57140,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29354,
                                 proportion: 0.059685529603851886,
                                 totalCount: 505427,
@@ -55916,6 +57154,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1232,
                                 proportion: 0.0025043908150653746,
                                 totalCount: 505427,
@@ -55929,6 +57168,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 707,
                                 proportion: 0.0014350842579173213,
                                 totalCount: 505427,
@@ -55942,6 +57182,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 500,
                                 proportion: 0.0010113186786514673,
                                 totalCount: 505427,
@@ -55955,6 +57196,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 492456,
                                 proportion: 0.9962110254506614,
                                 totalCount: 505427,
@@ -55968,6 +57210,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 498391,
                                 proportion: 0.9989437141975235,
                                 totalCount: 505427,
@@ -55981,6 +57224,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 968,
                                 proportion: 0.001931738584682191,
                                 totalCount: 505427,
@@ -55994,6 +57238,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1395,
                                 proportion: 0.002778939819518317,
                                 totalCount: 505427,
@@ -56007,6 +57252,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1570,
                                 proportion: 0.003125964419755299,
                                 totalCount: 505427,
@@ -56020,6 +57266,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 810,
                                 proportion: 0.0016074139487810444,
                                 totalCount: 505427,
@@ -56033,6 +57280,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 526,
                                 proportion: 0.0010442972633852702,
                                 totalCount: 505427,
@@ -56046,6 +57294,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1292,
                                 proportion: 0.0025858048918144865,
                                 totalCount: 505427,
@@ -56059,6 +57308,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 754,
                                 proportion: 0.0015094279188111953,
                                 totalCount: 505427,
@@ -56072,6 +57322,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1513,
                                 proportion: 0.0030292109636214388,
                                 totalCount: 505427,
@@ -56085,6 +57336,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1441,
                                 proportion: 0.002884821355285469,
                                 totalCount: 505427,
@@ -56098,6 +57350,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 797,
                                 proportion: 0.0015957808914748859,
                                 totalCount: 505427,
@@ -56111,6 +57364,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1030,
                                 proportion: 0.0020625947441881886,
                                 totalCount: 505427,
@@ -56124,6 +57378,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1151,
                                 proportion: 0.0023024881274830264,
                                 totalCount: 505427,
@@ -56137,6 +57392,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29484,
                                 proportion: 0.05901237730773542,
                                 totalCount: 505427,
@@ -56150,6 +57406,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 8229,
                                 proportion: 0.01647091319594562,
                                 totalCount: 505427,
@@ -56163,6 +57420,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1051,
                                 proportion: 0.0021033756076474014,
                                 totalCount: 505427,
@@ -56176,6 +57434,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 495887,
                                 proportion: 0.9959210151069051,
                                 totalCount: 505427,
@@ -56189,6 +57448,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2875,
                                 proportion: 0.005753003067601288,
                                 totalCount: 505427,
@@ -56202,6 +57462,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 646,
                                 proportion: 0.001292253281643202,
                                 totalCount: 505427,
@@ -56215,6 +57476,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4281,
                                 proportion: 0.00856460363950641,
                                 totalCount: 505427,
@@ -56228,6 +57490,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1569,
                                 proportion: 0.003140952495345625,
                                 totalCount: 505427,
@@ -56241,6 +57504,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 983,
                                 proportion: 0.00196799554748515,
                                 totalCount: 505427,
@@ -56254,6 +57518,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 665,
                                 proportion: 0.0013320460226908532,
                                 totalCount: 505427,
@@ -56267,6 +57532,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1267,
                                 proportion: 0.0025341216378386164,
                                 totalCount: 505427,
@@ -56280,6 +57546,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 624,
                                 proportion: 0.0012625189681335356,
                                 totalCount: 505427,
@@ -56293,6 +57560,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29336,
                                 proportion: 0.05938281226278554,
                                 totalCount: 505427,
@@ -56306,6 +57574,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 562,
                                 proportion: 0.0011341575147016682,
                                 totalCount: 505427,
@@ -56319,6 +57588,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 573,
                                 proportion: 0.001156452013296171,
                                 totalCount: 505427,
@@ -56332,6 +57602,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 611,
                                 proportion: 0.0012327943473050026,
                                 totalCount: 505427,
@@ -56345,6 +57616,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 545,
                                 proportion: 0.0010979137623993746,
                                 totalCount: 505427,
@@ -56358,6 +57630,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 629,
                                 proportion: 0.0012696631254705726,
                                 totalCount: 505427,
@@ -56371,6 +57644,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1295,
                                 proportion: 0.0026149782724585236,
                                 totalCount: 505427,
@@ -56384,6 +57658,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 512,
                                 proportion: 0.0010331683358119957,
                                 totalCount: 505427,
@@ -56397,6 +57672,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1928,
                                 proportion: 0.0038220146457698147,
                                 totalCount: 505427,
@@ -56410,6 +57686,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 387527,
                                 proportion: 0.7700976515148504,
                                 totalCount: 505427,
@@ -56423,6 +57700,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1548,
                                 proportion: 0.003068469689941842,
                                 totalCount: 505427,
@@ -56436,6 +57714,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 668,
                                 proportion: 0.0013268816691694675,
                                 totalCount: 505427,
@@ -56449,6 +57728,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1476,
                                 proportion: 0.002933262320297937,
                                 totalCount: 505427,
@@ -56462,6 +57742,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 684,
                                 proportion: 0.0013592788667906711,
                                 totalCount: 505427,
@@ -56475,6 +57756,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 504,
                                 proportion: 0.0010015042434768093,
                                 totalCount: 505427,
@@ -56488,6 +57770,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 770,
                                 proportion: 0.00153009721085137,
                                 totalCount: 505427,
@@ -56501,6 +57784,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1604,
                                 proportion: 0.00318834069129746,
                                 totalCount: 505427,
@@ -56514,6 +57798,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 941,
                                 proportion: 0.0018700801093827941,
                                 totalCount: 505427,
@@ -56527,6 +57812,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4240,
                                 proportion: 0.00842809976166765,
                                 totalCount: 505427,
@@ -56540,6 +57826,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 908,
                                 proportion: 0.0018048855149986383,
                                 totalCount: 505427,
@@ -56553,6 +57840,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 978,
                                 proportion: 0.0019449488009132111,
                                 totalCount: 505427,
@@ -56566,6 +57854,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 663,
                                 proportion: 0.0013184453083829656,
                                 totalCount: 505427,
@@ -56579,6 +57868,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1091,
                                 proportion: 0.0021698704243280063,
                                 totalCount: 505427,
@@ -56592,6 +57882,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2242,
                                 proportion: 0.004457540042308855,
                                 totalCount: 505427,
@@ -56605,6 +57896,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 515,
                                 proportion: 0.0010232811360606259,
                                 totalCount: 505427,
@@ -56618,6 +57910,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 593,
                                 proportion: 0.00117826352171641,
                                 totalCount: 505427,
@@ -56631,6 +57924,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 830,
                                 proportion: 0.001649053582320556,
                                 totalCount: 505427,
@@ -56644,6 +57938,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2945,
                                 proportion: 0.005851613415991099,
                                 totalCount: 505427,
@@ -56657,6 +57952,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 743,
                                 proportion: 0.001476350572657113,
                                 totalCount: 505427,
@@ -56670,6 +57966,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1145,
                                 proportion: 0.0022751207105529835,
                                 totalCount: 505427,
@@ -56683,6 +57980,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 694,
                                 proportion: 0.0013790664078102055,
                                 totalCount: 505427,
@@ -56696,6 +57994,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 18680,
                                 proportion: 0.03712610553512869,
                                 totalCount: 505427,
@@ -56709,6 +58008,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 765,
                                 proportion: 0.001519759858076282,
                                 totalCount: 505427,
@@ -56722,6 +58022,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 598,
                                 proportion: 0.0011879646073955762,
                                 totalCount: 505427,
@@ -56735,6 +58036,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 501662,
                                 proportion: 0.9967157744156244,
                                 totalCount: 505427,
@@ -56748,6 +58050,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1106,
                                 proportion: 0.00220958271650814,
                                 totalCount: 505427,
@@ -56761,6 +58064,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1051,
                                 proportion: 0.0020877987926126488,
                                 totalCount: 505427,
@@ -56774,6 +58078,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1258,
                                 proportion: 0.002499349334732015,
                                 totalCount: 505427,
@@ -56787,6 +58092,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1083,
                                 proportion: 0.0021516656037478318,
                                 totalCount: 505427,
@@ -56800,6 +58106,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1972,
                                 proportion: 0.003917400848240447,
                                 totalCount: 505427,
@@ -56813,6 +58120,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1356,
                                 proportion: 0.0026946197029161906,
                                 totalCount: 505427,
@@ -56826,6 +58134,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1984,
                                 proportion: 0.0039431659409041855,
                                 totalCount: 505427,
@@ -56839,6 +58148,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3480,
                                 proportion: 0.0069168939171085795,
                                 totalCount: 505427,
@@ -56852,6 +58162,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 970,
                                 proportion: 0.0019278851695942697,
                                 totalCount: 505427,
@@ -56865,6 +58176,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3366,
                                 proportion: 0.006692554086215844,
                                 totalCount: 505427,
@@ -56878,6 +58190,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 599,
                                 proportion: 0.0011906394668161427,
                                 totalCount: 505427,
@@ -56891,6 +58204,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 529,
                                 proportion: 0.0010516480458033477,
                                 totalCount: 505427,
@@ -56904,6 +58218,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 944,
                                 proportion: 0.0018725663084854629,
                                 totalCount: 505427,
@@ -56917,6 +58232,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1242,
                                 proportion: 0.0024627464977246363,
                                 totalCount: 505427,
@@ -56930,6 +58246,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 613,
                                 proportion: 0.0012154836355849192,
                                 totalCount: 505427,
@@ -56943,6 +58260,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 763,
                                 proportion: 0.0015129492993438598,
                                 totalCount: 505427,
@@ -56956,6 +58274,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1675,
                                 proportion: 0.003321811110912794,
                                 totalCount: 505427,
@@ -56969,6 +58288,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 895,
                                 proportion: 0.001774849881412265,
                                 totalCount: 505427,
@@ -56982,6 +58302,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 711,
                                 proportion: 0.001409794003517545,
                                 totalCount: 505427,
@@ -56995,6 +58316,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1435,
                                 proportion: 0.0028455115277918235,
                                 totalCount: 505427,
@@ -57008,6 +58330,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1350,
                                 proportion: 0.002681375168082499,
                                 totalCount: 505427,
@@ -57021,6 +58344,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7747,
                                 proportion: 0.015402539719147701,
                                 totalCount: 505427,
@@ -57034,6 +58358,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1547,
                                 proportion: 0.003071455516508825,
                                 totalCount: 505427,
@@ -57047,6 +58372,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 562,
                                 proportion: 0.001115721347600802,
                                 totalCount: 505427,
@@ -57060,6 +58386,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 553,
                                 proportion: 0.001098202760401152,
                                 totalCount: 505427,
@@ -57073,6 +58400,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1985,
                                 proportion: 0.0039639668424657675,
                                 totalCount: 505427,
@@ -57086,6 +58414,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 630,
                                 proportion: 0.001258665814236909,
                                 totalCount: 505427,
@@ -57099,6 +58428,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1022,
                                 proportion: 0.0020417499915093566,
                                 totalCount: 505427,
@@ -57112,6 +58442,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 565,
                                 proportion: 0.001128832786898347,
                                 totalCount: 505427,
@@ -57125,6 +58456,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 505,
                                 proportion: 0.0010089325493627742,
                                 totalCount: 505427,
@@ -57138,6 +58470,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 856,
                                 proportion: 0.0017099822209792445,
                                 totalCount: 505427,
@@ -57151,6 +58484,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 644,
                                 proportion: 0.0012865384922727781,
                                 totalCount: 505427,
@@ -57164,6 +58498,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1029,
                                 proportion: 0.0020582346387488172,
                                 totalCount: 505427,
@@ -57177,6 +58512,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2151,
                                 proportion: 0.004302955256066847,
                                 totalCount: 505427,
@@ -57190,6 +58526,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 505,
                                 proportion: 0.0010099414233974429,
                                 totalCount: 505427,
@@ -57203,6 +58540,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1184,
                                 proportion: 0.00236786266396549,
                                 totalCount: 505427,
@@ -57216,6 +58554,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 759,
                                 proportion: 0.0015185770592825274,
                                 totalCount: 505427,
@@ -57229,6 +58568,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 921,
                                 proportion: 0.0018398620802627347,
                                 totalCount: 505427,
@@ -57242,6 +58582,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1632,
                                 proportion: 0.0032607653208017646,
                                 totalCount: 505427,
@@ -57255,6 +58596,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1173,
                                 proportion: 0.0023391602952965527,
                                 totalCount: 505427,
@@ -57268,6 +58610,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 980,
                                 proportion: 0.001954679362774528,
                                 totalCount: 505427,
@@ -57281,6 +58624,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1464,
                                 proportion: 0.002920080741030326,
                                 totalCount: 505427,
@@ -57294,6 +58638,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 995,
                                 proportion: 0.0019847483558504196,
                                 totalCount: 505427,
@@ -57307,6 +58652,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 582,
                                 proportion: 0.001160909658489102,
                                 totalCount: 505427,
@@ -57320,6 +58666,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1124,
                                 proportion: 0.0022434816280012056,
                                 totalCount: 505427,
@@ -57333,6 +58680,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1191,
                                 proportion: 0.002377003538561943,
                                 totalCount: 505427,
@@ -57346,6 +58694,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 502,
                                 proportion: 0.0010027305431323944,
                                 totalCount: 505427,
@@ -57359,6 +58708,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 495669,
                                 proportion: 0.990864366832654,
                                 totalCount: 505427,
@@ -57372,6 +58722,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3891,
                                 proportion: 0.007776571952776962,
                                 totalCount: 505427,
@@ -57385,6 +58736,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1164,
                                 proportion: 0.0023269296123783058,
                                 totalCount: 505427,
@@ -57398,6 +58750,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 883,
                                 proportion: 0.0017652056574541455,
                                 totalCount: 505427,
@@ -57411,6 +58764,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3858,
                                 proportion: 0.007712205594847335,
                                 totalCount: 505427,
@@ -57424,6 +58778,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1565,
                                 proportion: 0.0031332648619861896,
                                 totalCount: 505427,
@@ -57437,6 +58792,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 710,
                                 proportion: 0.0014217800686459447,
                                 totalCount: 505427,
@@ -57450,6 +58806,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 708,
                                 proportion: 0.0014177466638899123,
                                 totalCount: 505427,
@@ -57463,6 +58820,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 708,
                                 proportion: 0.0014174798489623166,
                                 totalCount: 505427,
@@ -57476,6 +58834,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 503,
                                 proportion: 0.0010069263722624815,
                                 totalCount: 505427,
@@ -57489,6 +58848,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 896,
                                 proportion: 0.0017936322053068291,
                                 totalCount: 505427,
@@ -57502,6 +58862,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 634,
                                 proportion: 0.0012694598788606899,
                                 totalCount: 505427,
@@ -57515,6 +58876,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1086,
                                 proportion: 0.002173969616472524,
                                 totalCount: 505427,
@@ -57528,6 +58890,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 542,
                                 proportion: 0.0010846616436025977,
                                 totalCount: 505427,
@@ -57541,6 +58904,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 598,
                                 proportion: 0.0011952565504256352,
                                 totalCount: 505427,
@@ -57554,6 +58918,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 496939,
                                 proportion: 0.9965387584851554,
                                 totalCount: 505427,
@@ -57567,6 +58932,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 383253,
                                 proportion: 0.7691179244715052,
                                 totalCount: 505427,
@@ -57580,6 +58946,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 565,
                                 proportion: 0.001128093521947908,
                                 totalCount: 505427,
@@ -57593,6 +58960,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3129,
                                 proportion: 0.006267853065018209,
                                 totalCount: 505427,
@@ -57606,6 +58974,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 886,
                                 proportion: 0.0017744203093018878,
                                 totalCount: 505427,
@@ -57619,6 +58988,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1308,
                                 proportion: 0.0026286543420023997,
                                 totalCount: 505427,
@@ -57632,6 +59002,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 578,
                                 proportion: 0.0011610762252568228,
                                 totalCount: 505427,
@@ -57645,6 +59016,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1139,
                                 proportion: 0.002287607953404298,
                                 totalCount: 505427,
@@ -57658,6 +59030,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 567,
                                 proportion: 0.0011386136625606959,
                                 totalCount: 505427,
@@ -57671,6 +59044,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 636,
                                 proportion: 0.0012772058912125825,
                                 totalCount: 505427,
@@ -57684,6 +59058,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 76749,
                                 proportion: 0.1559688586588739,
                                 totalCount: 505427,
@@ -57697,6 +59072,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29677,
                                 proportion: 0.060309421861123924,
                                 totalCount: 505427,
@@ -57710,6 +59086,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 509,
                                 proportion: 0.0010224106796721056,
                                 totalCount: 505427,
@@ -57723,6 +59100,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 482164,
                                 proportion: 0.9849549260615816,
                                 totalCount: 505427,
@@ -57736,6 +59114,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 752,
                                 proportion: 0.0015165295672849078,
                                 totalCount: 505427,
@@ -57749,6 +59128,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 25307,
                                 proportion: 0.051511956424389965,
                                 totalCount: 505427,
@@ -57762,6 +59142,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 534,
                                 proportion: 0.0010685513725082142,
                                 totalCount: 505427,
@@ -57775,6 +59156,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1534,
                                 proportion: 0.00306842958014122,
                                 totalCount: 505427,
@@ -57788,6 +59170,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 33106,
                                 proportion: 0.06598829966413856,
                                 totalCount: 505427,
@@ -57801,6 +59184,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 499286,
                                 proportion: 0.9964972926367304,
                                 totalCount: 505427,
@@ -57814,6 +59198,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2008,
                                 proportion: 0.0040025274924603785,
                                 totalCount: 505427,
@@ -57827,6 +59212,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1266,
                                 proportion: 0.002525670669302727,
                                 totalCount: 505427,
@@ -57840,6 +59226,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 845,
                                 proportion: 0.001685788899329475,
                                 totalCount: 505427,
@@ -57853,6 +59240,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1225,
                                 proportion: 0.0024437878911806187,
                                 totalCount: 505427,
@@ -57866,6 +59254,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1803,
                                 proportion: 0.003594046202331047,
                                 totalCount: 505427,
@@ -57879,6 +59268,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 537,
                                 proportion: 0.001069601797409054,
                                 totalCount: 505427,
@@ -57892,6 +59282,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1036,
                                 proportion: 0.002063638138263755,
                                 totalCount: 505427,
@@ -57905,6 +59296,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 31980,
                                 proportion: 0.06375382014564897,
                                 totalCount: 505427,
@@ -57918,6 +59310,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 416586,
                                 proportion: 0.8317563506911237,
                                 totalCount: 505427,
@@ -57931,6 +59324,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1616,
                                 proportion: 0.0032188157307667794,
                                 totalCount: 505427,
@@ -57944,6 +59338,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1331,
                                 proportion: 0.0026509349973211816,
                                 totalCount: 505427,
@@ -57957,6 +59352,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1536,
                                 proportion: 0.003060907272046105,
                                 totalCount: 505427,
@@ -57970,6 +59366,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3735,
                                 proportion: 0.007452382567610169,
                                 totalCount: 505427,
@@ -57983,6 +59380,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 605,
                                 proportion: 0.0012071438975384242,
                                 totalCount: 505427,
@@ -57996,6 +59394,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1212,
                                 proportion: 0.0024185196345082043,
                                 totalCount: 505427,
@@ -58009,6 +59408,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 542,
                                 proportion: 0.0010828110734413614,
                                 totalCount: 505427,
@@ -58022,6 +59422,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1115,
                                 proportion: 0.0023349611747262963,
                                 totalCount: 505427,
@@ -58035,6 +59436,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 760,
                                 proportion: 0.0016788716215469918,
                                 totalCount: 505427,
@@ -58048,6 +59450,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 582,
                                 proportion: 0.0012856025765066068,
                                 totalCount: 505427,
@@ -58061,6 +59464,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5262,
                                 proportion: 0.01162030616481313,
                                 totalCount: 505427,
@@ -58074,6 +59478,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 6231,
                                 proportion: 0.01371880738186766,
                                 totalCount: 505427,
@@ -58087,6 +59492,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1403,
                                 proportion: 0.003082960872985528,
                                 totalCount: 505427,
@@ -58100,6 +59506,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5021,
                                 proportion: 0.011033709840460598,
                                 totalCount: 505427,
@@ -58113,6 +59520,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 542,
                                 proportion: 0.0011905075691680505,
                                 totalCount: 505427,
@@ -58126,6 +59534,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 466,
                                 proportion: 0.0010239665299180607,
                                 totalCount: 505427,
@@ -58139,6 +59548,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 574,
                                 proportion: 0.001261114394500311,
                                 totalCount: 505427,
@@ -58152,6 +59562,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 731,
                                 proportion: 0.0016035308389032814,
                                 totalCount: 505427,
@@ -58165,6 +59576,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 530,
                                 proportion: 0.0011665657844054367,
                                 totalCount: 505427,
@@ -58178,6 +59590,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 602,
                                 proportion: 0.001195533233639366,
                                 totalCount: 505427,
@@ -58191,6 +59604,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 841,
                                 proportion: 0.0016700060167874327,
                                 totalCount: 505427,
@@ -58204,6 +59618,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 741,
                                 proportion: 0.0014901061776061775,
                                 totalCount: 505427,
@@ -58217,6 +59632,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 410911,
                                 proportion: 0.8307341155920718,
                                 totalCount: 505427,
@@ -58230,6 +59646,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 928,
                                 proportion: 0.0018640639406070662,
                                 totalCount: 505427,
@@ -58243,6 +59660,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 835,
                                 proportion: 0.0016772558086281253,
                                 totalCount: 505427,
@@ -58256,6 +59674,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 744,
                                 proportion: 0.0014944470445501896,
                                 totalCount: 505427,
@@ -58269,6 +59688,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1830,
                                 proportion: 0.0036830707552106393,
                                 totalCount: 505427,
@@ -58282,6 +59702,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 795,
                                 proportion: 0.0016109128708898927,
                                 totalCount: 505427,
@@ -58295,6 +59716,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 405569,
                                 proportion: 0.8274081539390576,
                                 totalCount: 505427,
@@ -58308,6 +59730,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 401293,
                                 proportion: 0.824755425846761,
                                 totalCount: 505427,
@@ -58321,6 +59744,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 404515,
                                 proportion: 0.8263232938946268,
                                 totalCount: 505427,
@@ -58334,6 +59758,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3037,
                                 proportion: 0.006159318885197759,
                                 totalCount: 505427,
@@ -58347,6 +59772,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2149,
                                 proportion: 0.004381913646327165,
                                 totalCount: 505427,
@@ -58360,6 +59786,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 14211,
                                 proportion: 0.02898252197499643,
                                 totalCount: 505427,
@@ -58373,6 +59800,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 863,
                                 proportion: 0.001760200699593094,
                                 totalCount: 505427,
@@ -58386,6 +59814,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1871,
                                 proportion: 0.0038163657020705466,
                                 totalCount: 505427,
@@ -58399,6 +59828,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1946,
                                 proportion: 0.003946357123012372,
                                 totalCount: 505427,
@@ -58412,6 +59842,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 532,
                                 proportion: 0.0010687130244377706,
                                 totalCount: 505427,
@@ -58425,6 +59856,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 618,
                                 proportion: 0.0012413676738216046,
                                 totalCount: 505427,
@@ -58438,6 +59870,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 823,
                                 proportion: 0.0016521957340025093,
                                 totalCount: 505427,
@@ -58451,6 +59884,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 72084,
                                 proportion: 0.14486683762470157,
                                 totalCount: 505427,
@@ -58464,6 +59898,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1536,
                                 proportion: 0.0030867546874057995,
                                 totalCount: 505427,
@@ -58477,6 +59912,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 9850,
                                 proportion: 0.019902246630256668,
                                 totalCount: 505427,
@@ -58490,6 +59926,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 521,
                                 proportion: 0.001054126673249057,
                                 totalCount: 505427,
@@ -58503,6 +59940,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1443,
                                 proportion: 0.0029195869280199413,
                                 totalCount: 505427,
@@ -58516,6 +59954,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1021,
                                 proportion: 0.002070884699792709,
                                 totalCount: 505427,
@@ -58529,6 +59968,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 563,
                                 proportion: 0.0011429453071234118,
                                 totalCount: 505427,
@@ -58542,6 +59982,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 561,
                                 proportion: 0.0011389406025219108,
                                 totalCount: 505427,
@@ -58555,6 +59996,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 567,
                                 proportion: 0.0011512199479819134,
                                 totalCount: 505427,
@@ -58568,6 +60010,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 567,
                                 proportion: 0.001146415681834265,
                                 totalCount: 505427,
@@ -58581,6 +60024,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 567,
                                 proportion: 0.0011473087818696884,
                                 totalCount: 505427,
@@ -58594,6 +60038,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 568,
                                 proportion: 0.0011489556236118472,
                                 totalCount: 505427,
@@ -58607,6 +60052,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 570,
                                 proportion: 0.0011521622244412013,
                                 totalCount: 505427,
@@ -58620,6 +60066,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 571,
                                 proportion: 0.0011534701067414368,
                                 totalCount: 505427,
@@ -58633,6 +60080,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 573,
                                 proportion: 0.0011575944661731906,
                                 totalCount: 505427,
@@ -58646,6 +60094,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 737,
                                 proportion: 0.0014888828732005123,
                                 totalCount: 505427,
@@ -58659,6 +60108,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 754,
                                 proportion: 0.0015230692471311152,
                                 totalCount: 505427,
@@ -58672,6 +60122,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 755,
                                 proportion: 0.0015251724151862732,
                                 totalCount: 505427,
@@ -58685,6 +60136,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 987,
                                 proportion: 0.001993907169177064,
                                 totalCount: 505427,
@@ -58698,6 +60150,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 972,
                                 proportion: 0.001963711738430364,
                                 totalCount: 505427,
@@ -58711,6 +60164,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 970,
                                 proportion: 0.0019602612603873636,
                                 totalCount: 505427,
@@ -58724,6 +60178,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1196,
                                 proportion: 0.0024174216056045373,
                                 totalCount: 505427,
@@ -58737,6 +60192,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1277,
                                 proportion: 0.0025813467878707023,
                                 totalCount: 505427,
@@ -58750,6 +60206,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1275,
                                 proportion: 0.0025775801071464674,
                                 totalCount: 505427,
@@ -58763,6 +60220,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1316,
                                 proportion: 0.002660364809599955,
                                 totalCount: 505427,
@@ -58776,6 +60234,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 560,
                                 proportion: 0.0011320724202899723,
                                 totalCount: 505427,
@@ -58789,6 +60248,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1315,
                                 proportion: 0.00265834862978806,
                                 totalCount: 505427,
@@ -58802,6 +60262,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3872,
                                 proportion: 0.007827472163147808,
                                 totalCount: 505427,
@@ -58815,6 +60276,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1317,
                                 proportion: 0.00266239174557481,
                                 totalCount: 505427,
@@ -58828,6 +60290,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 550,
                                 proportion: 0.001111515298492381,
                                 totalCount: 505427,
@@ -58841,6 +60304,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1367,
                                 proportion: 0.0027626207509801543,
                                 totalCount: 505427,
@@ -58854,6 +60318,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1523,
                                 proportion: 0.0030778371474532566,
                                 totalCount: 505427,
@@ -58867,6 +60332,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2066,
                                 proportion: 0.004175508801713858,
                                 totalCount: 505427,
@@ -58880,6 +60346,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2140,
                                 proportion: 0.004325373164495558,
                                 totalCount: 505427,
@@ -58893,6 +60360,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2080,
                                 proportion: 0.004203710178435371,
                                 totalCount: 505427,
@@ -58906,6 +60374,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1299,
                                 proportion: 0.002625313764404868,
                                 totalCount: 505427,
@@ -58919,6 +60388,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1255,
                                 proportion: 0.002537152607202279,
                                 totalCount: 505427,
@@ -58932,6 +60402,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1243,
                                 proportion: 0.0025151862209074095,
                                 totalCount: 505427,
@@ -58945,6 +60416,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1197,
                                 proportion: 0.0024230082548267863,
                                 totalCount: 505427,
@@ -58958,6 +60430,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1125,
                                 proportion: 0.0022764109194878986,
                                 totalCount: 505427,
@@ -58971,6 +60444,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1018,
                                 proportion: 0.0020598447629762125,
                                 totalCount: 505427,
@@ -58984,6 +60458,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 977,
                                 proportion: 0.001976532470159822,
                                 totalCount: 505427,
@@ -58997,6 +60472,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1001,
                                 proportion: 0.0020250204322740917,
                                 totalCount: 505427,
@@ -59010,6 +60486,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1001,
                                 proportion: 0.0020250695928011914,
                                 totalCount: 505427,
@@ -59023,6 +60500,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 586,
                                 proportion: 0.0011855100727895093,
                                 totalCount: 505427,
@@ -59036,6 +60514,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 992,
                                 proportion: 0.0020068702938689305,
                                 totalCount: 505427,
@@ -59049,6 +60528,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 967,
                                 proportion: 0.00195605649301524,
                                 totalCount: 505427,
@@ -59062,6 +60542,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 935,
                                 proportion: 0.0018912806903275657,
                                 totalCount: 505427,
@@ -59075,6 +60556,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 928,
                                 proportion: 0.0018769505217234774,
                                 totalCount: 505427,
@@ -59088,6 +60570,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 950,
                                 proportion: 0.0019224192533323621,
                                 totalCount: 505427,
@@ -59101,6 +60584,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 948,
                                 proportion: 0.0019176890633059909,
                                 totalCount: 505427,
@@ -59114,6 +60598,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 944,
                                 proportion: 0.0019104013664226723,
                                 totalCount: 505427,
@@ -59127,6 +60612,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 952,
                                 proportion: 0.0019265171322416404,
                                 totalCount: 505427,
@@ -59140,6 +60626,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 945,
                                 proportion: 0.0019124018755704321,
                                 totalCount: 505427,
@@ -59153,6 +60640,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2307,
                                 proportion: 0.004669066975913929,
                                 totalCount: 505427,
@@ -59166,6 +60654,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 942,
                                 proportion: 0.001906485085093594,
                                 totalCount: 505427,
@@ -59179,6 +60668,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 975,
                                 proportion: 0.00197318492284341,
                                 totalCount: 505427,
@@ -59192,6 +60682,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 975,
                                 proportion: 0.0019725901018463445,
                                 totalCount: 505427,
@@ -59205,6 +60696,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 973,
                                 proportion: 0.0019689301606509407,
                                 totalCount: 505427,
@@ -59218,6 +60710,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 974,
                                 proportion: 0.0019706307232255217,
                                 totalCount: 505427,
@@ -59231,6 +60724,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 981,
                                 proportion: 0.001984576542750328,
                                 totalCount: 505427,
@@ -59244,6 +60738,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 966,
                                 proportion: 0.0019542352891196027,
                                 totalCount: 505427,
@@ -59257,6 +60752,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 928,
                                 proportion: 0.0018770796039523853,
                                 totalCount: 505427,
@@ -59270,6 +60766,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 910,
                                 proportion: 0.0018408978726503265,
                                 totalCount: 505427,
@@ -59283,6 +60780,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 906,
                                 proportion: 0.0018327466925597766,
                                 totalCount: 505427,
@@ -59296,6 +60794,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 907,
                                 proportion: 0.001834966325232102,
                                 totalCount: 505427,
@@ -59309,6 +60808,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 893,
                                 proportion: 0.0018068839648659202,
                                 totalCount: 505427,
@@ -59322,6 +60822,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 893,
                                 proportion: 0.0018069790264976376,
                                 totalCount: 505427,
@@ -59335,6 +60836,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 891,
                                 proportion: 0.0018028517837306284,
                                 totalCount: 505427,
@@ -59348,6 +60850,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 889,
                                 proportion: 0.0017985429576624203,
                                 totalCount: 505427,
@@ -59361,6 +60864,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 885,
                                 proportion: 0.00179045414818891,
                                 totalCount: 505427,
@@ -59374,6 +60878,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 892,
                                 proportion: 0.001804604979657732,
                                 totalCount: 505427,
@@ -59387,6 +60892,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 857,
                                 proportion: 0.0017336386587260488,
                                 totalCount: 505427,
@@ -59400,6 +60906,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 865,
                                 proportion: 0.0017498326027192196,
                                 totalCount: 505427,
@@ -59413,6 +60920,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 824,
                                 proportion: 0.001666919536742022,
                                 totalCount: 505427,
@@ -59426,6 +60934,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 808,
                                 proportion: 0.0016345620870606608,
                                 totalCount: 505427,
@@ -59439,6 +60948,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 808,
                                 proportion: 0.0016340199722540173,
                                 totalCount: 505427,
@@ -59452,6 +60962,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 766,
                                 proportion: 0.0015493590184426313,
                                 totalCount: 505427,
@@ -59465,6 +60976,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 726,
                                 proportion: 0.0014679923082055917,
                                 totalCount: 505427,
@@ -59478,6 +60990,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 553,
                                 proportion: 0.0011180571280690972,
                                 totalCount: 505427,
@@ -59491,6 +61004,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1171,
                                 proportion: 0.002367550606141479,
                                 totalCount: 505427,
@@ -59504,6 +61018,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 580,
                                 proportion: 0.0011714142605548463,
                                 totalCount: 505427,
@@ -59517,6 +61032,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 664,
                                 proportion: 0.0013393334395656042,
                                 totalCount: 505427,
@@ -59530,6 +61046,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 664,
                                 proportion: 0.0013393280365329961,
                                 totalCount: 505427,
@@ -59543,6 +61060,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 671,
                                 proportion: 0.0013532427406896495,
                                 totalCount: 505427,
@@ -59556,6 +61074,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 670,
                                 proportion: 0.001351217810260785,
                                 totalCount: 505427,
@@ -59569,6 +61088,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 669,
                                 proportion: 0.0013491847415070938,
                                 totalCount: 505427,
@@ -59582,6 +61102,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 704,
                                 proportion: 0.001420004719902052,
                                 totalCount: 505427,
@@ -59595,6 +61116,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 707,
                                 proportion: 0.001425929324730697,
                                 totalCount: 505427,
@@ -59608,6 +61130,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 707,
                                 proportion: 0.001426027112668244,
                                 totalCount: 505427,
@@ -59621,6 +61144,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 701,
                                 proportion: 0.001413799571221414,
                                 totalCount: 505427,
@@ -59634,6 +61158,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 709,
                                 proportion: 0.0014299976805397284,
                                 totalCount: 505427,
@@ -59647,6 +61172,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 502,
                                 proportion: 0.0010124784949164301,
                                 totalCount: 505427,
@@ -59660,6 +61186,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 504,
                                 proportion: 0.0010165102235919115,
                                 totalCount: 505427,
@@ -59673,6 +61200,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 699,
                                 proportion: 0.001412677721526662,
                                 totalCount: 505427,
@@ -59686,6 +61214,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 879,
                                 proportion: 0.0017778407022369645,
                                 totalCount: 505427,
@@ -59699,6 +61228,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 528,
                                 proportion: 0.0010678747674136397,
                                 totalCount: 505427,
@@ -59712,6 +61242,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 519,
                                 proportion: 0.0010499420407717377,
                                 totalCount: 505427,
@@ -59725,6 +61256,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 512,
                                 proportion: 0.0010352427361142002,
                                 totalCount: 505427,
@@ -59738,6 +61270,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 725,
                                 proportion: 0.001465745033146055,
                                 totalCount: 505427,
@@ -59751,6 +61284,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 653,
                                 proportion: 0.0013201466919509463,
                                 totalCount: 505427,
@@ -59764,6 +61298,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 605,
                                 proportion: 0.001223091976516634,
                                 totalCount: 505427,
@@ -59777,6 +61312,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 653,
                                 proportion: 0.0013200773043738428,
                                 totalCount: 505427,
@@ -59790,6 +61326,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 606,
                                 proportion: 0.0012250318892377107,
                                 totalCount: 505427,
@@ -59803,6 +61340,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 580,
                                 proportion: 0.0011724775056147522,
                                 totalCount: 505427,
@@ -59816,6 +61354,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 652,
                                 proportion: 0.0013180077867576605,
                                 totalCount: 505427,
@@ -59829,6 +61368,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 592,
                                 proportion: 0.0011967138883498287,
                                 totalCount: 505427,
@@ -59842,6 +61382,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 538,
                                 proportion: 0.001087584954940021,
                                 totalCount: 505427,
@@ -59855,6 +61396,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2471,
                                 proportion: 0.005057896643693595,
                                 totalCount: 505427,
@@ -59868,6 +61410,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1197,
                                 proportion: 0.002413330779544149,
                                 totalCount: 505427,
@@ -59881,6 +61424,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 603,
                                 proportion: 0.0012141493705753014,
                                 totalCount: 505427,
@@ -59894,6 +61438,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2573,
                                 proportion: 0.005186381163740887,
                                 totalCount: 505427,
@@ -59907,6 +61452,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2004,
                                 proportion: 0.004036668419112537,
                                 totalCount: 505427,
@@ -59920,6 +61466,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 770,
                                 proportion: 0.0015505343302396482,
                                 totalCount: 505427,
@@ -59933,6 +61480,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1354,
                                 proportion: 0.002726661269730032,
                                 totalCount: 505427,
@@ -59946,6 +61494,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 495375,
                                 proportion: 0.9980618007523114,
                                 totalCount: 505427,
@@ -59959,6 +61508,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 24684,
                                 proportion: 0.049609798156213386,
                                 totalCount: 505427,
@@ -59972,6 +61522,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 606,
                                 proportion: 0.0012355117893513563,
                                 totalCount: 505427,
@@ -59985,6 +61536,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 505,
                                 proportion: 0.001029429451466988,
                                 totalCount: 505427,
@@ -59998,6 +61550,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 738,
                                 proportion: 0.001506414508935406,
                                 totalCount: 505427,
@@ -60011,6 +61564,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 752,
                                 proportion: 0.0015353675592351746,
                                 totalCount: 505427,
@@ -60024,6 +61578,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 698,
                                 proportion: 0.0014251267403186322,
                                 totalCount: 505427,
@@ -60037,6 +61592,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 951,
                                 proportion: 0.0019416841404627783,
                                 totalCount: 505427,
@@ -60050,6 +61606,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 952,
                                 proportion: 0.0019438211194531165,
                                 totalCount: 505427,
@@ -60063,6 +61620,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 935,
                                 proportion: 0.0019086462696682426,
                                 totalCount: 505427,
@@ -60076,6 +61634,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 825,
                                 proportion: 0.0016840996497072729,
                                 totalCount: 505427,
@@ -60089,6 +61648,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 880,
                                 proportion: 0.0017958890467094414,
                                 totalCount: 505427,
@@ -60102,6 +61662,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 982,
                                 proportion: 0.002005321658086531,
                                 totalCount: 505427,
@@ -60115,6 +61676,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 921,
                                 proportion: 0.0018807548341117058,
                                 totalCount: 505427,
@@ -60128,6 +61690,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 517,
                                 proportion: 0.001055364805114743,
                                 totalCount: 505427,
@@ -60141,6 +61704,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 912,
                                 proportion: 0.0018616880121173026,
                                 totalCount: 505427,
@@ -60154,6 +61718,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 958,
                                 proportion: 0.0019558883877803935,
                                 totalCount: 505427,
@@ -60167,6 +61732,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 882,
                                 proportion: 0.0018007313174125818,
                                 totalCount: 505427,
@@ -60180,6 +61746,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 619,
                                 proportion: 0.0012638740291242314,
                                 totalCount: 505427,
@@ -60193,6 +61760,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 79253,
                                 proportion: 0.16204970290308465,
                                 totalCount: 505427,
@@ -60206,6 +61774,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 619,
                                 proportion: 0.001265677843072305,
                                 totalCount: 505427,
@@ -60219,6 +61788,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 578,
                                 proportion: 0.0011804880439844126,
                                 totalCount: 505427,
@@ -60232,6 +61802,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 581,
                                 proportion: 0.0011866151445587261,
                                 totalCount: 505427,
@@ -60245,6 +61816,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 578,
                                 proportion: 0.001181136956712761,
                                 totalCount: 505427,
@@ -60258,6 +61830,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 573,
                                 proportion: 0.0011710463391006855,
                                 totalCount: 505427,
@@ -60271,6 +61844,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 566,
                                 proportion: 0.0011556586437549514,
                                 totalCount: 505427,
@@ -60284,6 +61858,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 561,
                                 proportion: 0.0011454613391484382,
                                 totalCount: 505427,
@@ -60297,6 +61872,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 563,
                                 proportion: 0.0011495567162289639,
                                 totalCount: 505427,
@@ -60310,6 +61886,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 556,
                                 proportion: 0.001135273098519653,
                                 totalCount: 505427,
@@ -60323,6 +61900,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 660,
                                 proportion: 0.0013476648643350702,
                                 totalCount: 505427,
@@ -60336,6 +61914,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 652,
                                 proportion: 0.0013300856395631118,
                                 totalCount: 505427,
@@ -60349,6 +61928,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 627,
                                 proportion: 0.0012790201930157747,
                                 totalCount: 505427,
@@ -60362,6 +61942,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 836,
                                 proportion: 0.0017053254703414118,
                                 totalCount: 505427,
@@ -60375,6 +61956,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 822,
                                 proportion: 0.0016764220015091876,
                                 totalCount: 505427,
@@ -60388,6 +61970,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 775,
                                 proportion: 0.0015811712092185341,
                                 totalCount: 505427,
@@ -60401,6 +61984,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 789,
                                 proportion: 0.001609816411558033,
                                 totalCount: 505427,
@@ -60414,6 +61998,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 787,
                                 proportion: 0.0016052935933079451,
                                 totalCount: 505427,
@@ -60427,6 +62012,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 784,
                                 proportion: 0.0015989916562820588,
                                 totalCount: 505427,
@@ -60440,6 +62026,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 914,
                                 proportion: 0.001864256051693332,
                                 totalCount: 505427,
@@ -60453,6 +62040,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 881,
                                 proportion: 0.0017969067097434767,
                                 totalCount: 505427,
@@ -60466,6 +62054,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 768,
                                 proportion: 0.0015666818982962335,
                                 totalCount: 505427,
@@ -60479,6 +62068,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1066,
                                 proportion: 0.0021743298535896838,
                                 totalCount: 505427,
@@ -60492,6 +62082,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 888,
                                 proportion: 0.0018113466179017345,
                                 totalCount: 505427,
@@ -60505,6 +62096,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1064,
                                 proportion: 0.0021703522538822585,
                                 totalCount: 505427,
@@ -60518,6 +62110,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 936,
                                 proportion: 0.0019092728240715244,
                                 totalCount: 505427,
@@ -60531,6 +62124,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 887,
                                 proportion: 0.0018097091815707541,
                                 totalCount: 505427,
@@ -60544,6 +62138,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 544,
                                 proportion: 0.0011095609891409878,
                                 totalCount: 505427,
@@ -60557,6 +62152,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 326770,
                                 proportion: 0.6677524429967426,
                                 totalCount: 505427,
@@ -60570,6 +62166,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1069,
                                 proportion: 0.002192137015740733,
                                 totalCount: 505427,
@@ -60583,6 +62180,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 821,
                                 proportion: 0.0016825528897487238,
                                 totalCount: 505427,
@@ -60596,6 +62194,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 560,
                                 proportion: 0.001147649163650672,
                                 totalCount: 505427,
@@ -60609,6 +62208,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1860,
                                 proportion: 0.003815729009387514,
                                 totalCount: 505427,
@@ -60622,6 +62222,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1194,
                                 proportion: 0.002447468591844641,
                                 totalCount: 505427,
@@ -60635,6 +62236,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 662,
                                 proportion: 0.001357453073544429,
                                 totalCount: 505427,
@@ -60648,6 +62250,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 661,
                                 proportion: 0.0013558390305238133,
                                 totalCount: 505427,
@@ -60661,6 +62264,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4561,
                                 proportion: 0.00935269353882875,
                                 totalCount: 505427,
@@ -60674,6 +62278,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 560,
                                 proportion: 0.0011478867609710302,
                                 totalCount: 505427,
@@ -60687,6 +62292,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 553,
                                 proportion: 0.0011335707067290644,
                                 totalCount: 505427,
@@ -60700,6 +62306,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 608,
                                 proportion: 0.0012467677341431855,
                                 totalCount: 505427,
@@ -60713,6 +62320,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1075,
                                 proportion: 0.002198773186830269,
                                 totalCount: 505427,
@@ -60726,6 +62334,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 528,
                                 proportion: 0.0010793948029593407,
                                 totalCount: 505427,
@@ -60739,6 +62348,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 736,
                                 proportion: 0.0015043772062325366,
                                 totalCount: 505427,
@@ -60752,6 +62362,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 935,
                                 proportion: 0.0019122257694407915,
                                 totalCount: 505427,
@@ -60765,6 +62376,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2108,
                                 proportion: 0.004311817201859727,
                                 totalCount: 505427,
@@ -60778,6 +62390,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 6481,
                                 proportion: 0.013248349833296879,
                                 totalCount: 505427,
@@ -60791,6 +62404,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 6256,
                                 proportion: 0.012790186557628418,
                                 totalCount: 505427,
@@ -60804,6 +62418,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1207,
                                 proportion: 0.002473948725516721,
                                 totalCount: 505427,
@@ -60817,6 +62432,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1212,
                                 proportion: 0.0024842123386645512,
                                 totalCount: 505427,
@@ -60830,6 +62446,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1237,
                                 proportion: 0.002535126981784795,
                                 totalCount: 505427,
@@ -60843,6 +62460,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3970,
                                 proportion: 0.008142854798746369,
                                 totalCount: 505427,
@@ -60856,6 +62474,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1260,
                                 proportion: 0.00258438212756182,
                                 totalCount: 505427,
@@ -60869,6 +62488,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1224,
                                 proportion: 0.002509173653676636,
                                 totalCount: 505427,
@@ -60882,6 +62502,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1228,
                                 proportion: 0.002516749294469915,
                                 totalCount: 505427,
@@ -60895,6 +62516,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 851,
                                 proportion: 0.001733359948182518,
                                 totalCount: 505427,
@@ -60908,6 +62530,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 544,
                                 proportion: 0.0011059360712027664,
                                 totalCount: 505427,
@@ -60921,6 +62544,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 966,
                                 proportion: 0.001963670070903532,
                                 totalCount: 505427,
@@ -60934,6 +62558,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 623,
                                 proportion: 0.0012566336338092942,
                                 totalCount: 505427,
@@ -60947,6 +62572,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1191,
                                 proportion: 0.002402115313636391,
                                 totalCount: 505427,
@@ -60960,6 +62586,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3349,
                                 proportion: 0.006749784345498666,
                                 totalCount: 505427,
@@ -60973,6 +62600,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1277,
                                 proportion: 0.0025730456841541087,
                                 totalCount: 505427,
@@ -60986,6 +62614,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1090,
                                 proportion: 0.002195655020294701,
                                 totalCount: 505427,
@@ -60999,6 +62628,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 566,
                                 proportion: 0.0011389544559077729,
                                 totalCount: 505427,
@@ -61012,6 +62642,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 557,
                                 proportion: 0.0011210311071037547,
                                 totalCount: 505427,
@@ -61025,6 +62656,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 544,
                                 proportion: 0.0010886030861097047,
                                 totalCount: 505427,
@@ -61038,6 +62670,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1356,
                                 proportion: 0.002710276264295908,
                                 totalCount: 505427,
@@ -61051,6 +62684,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 698,
                                 proportion: 0.0013951127083175101,
                                 totalCount: 505427,
@@ -61064,6 +62698,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 642,
                                 proportion: 0.0012825737779589097,
                                 totalCount: 505427,
@@ -61077,6 +62712,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3815,
                                 proportion: 0.007624738930138205,
                                 totalCount: 505427,
@@ -61090,6 +62726,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 737,
                                 proportion: 0.0014729836412875116,
                                 totalCount: 505427,
@@ -61103,6 +62740,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1686,
                                 proportion: 0.00337047654460184,
                                 totalCount: 505427,
@@ -61116,6 +62754,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 7987,
                                 proportion: 0.015966783014077637,
                                 totalCount: 505427,
@@ -61129,6 +62768,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1644,
                                 proportion: 0.003282780379197077,
                                 totalCount: 505427,
@@ -61142,6 +62782,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 497897,
                                 proportion: 0.9942132010103935,
                                 totalCount: 505427,
@@ -61155,6 +62796,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4679,
                                 proportion: 0.009339880631574746,
                                 totalCount: 505427,
@@ -61168,6 +62810,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 542,
                                 proportion: 0.0010820782290651802,
                                 totalCount: 505427,
@@ -61181,6 +62824,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1114,
                                 proportion: 0.002223970166059101,
                                 totalCount: 505427,
@@ -61194,6 +62838,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 154442,
                                 proportion: 0.30910098889420373,
                                 totalCount: 505427,
@@ -61207,6 +62852,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 786,
                                 proportion: 0.0015705362602054884,
                                 totalCount: 505427,
@@ -61220,6 +62866,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 498671,
                                 proportion: 0.9968316222094288,
                                 totalCount: 505427,
@@ -61233,6 +62880,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 67101,
                                 proportion: 0.1340813268058747,
                                 totalCount: 505427,
@@ -61246,6 +62894,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 12339,
                                 proportion: 0.024647584880257763,
                                 totalCount: 505427,
@@ -61259,6 +62908,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 652,
                                 proportion: 0.001301423182099443,
                                 totalCount: 505427,
@@ -61272,6 +62922,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4179,
                                 proportion: 0.008420208500400962,
                                 totalCount: 505427,
@@ -61285,6 +62936,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 931,
                                 proportion: 0.0018758588451479531,
                                 totalCount: 505427,
@@ -61298,6 +62950,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 483100,
                                 proportion: 0.994655092897615,
                                 totalCount: 505427,
@@ -61311,6 +62964,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 483048,
                                 proportion: 0.9965033017495869,
                                 totalCount: 505427,
@@ -61324,6 +62978,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 483033,
                                 proportion: 0.996587488420362,
                                 totalCount: 505427,
@@ -61337,6 +62992,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 483004,
                                 proportion: 0.9976350255809678,
                                 totalCount: 505427,
@@ -61350,6 +63006,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 483004,
                                 proportion: 0.9977257000030985,
                                 totalCount: 505427,
@@ -61363,6 +63020,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 483004,
                                 proportion: 0.9977133343386124,
                                 totalCount: 505427,
@@ -61376,6 +63034,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 482994,
                                 proportion: 0.9976906170472949,
                                 totalCount: 505427,
@@ -61389,6 +63048,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 482947,
                                 proportion: 0.997610017682151,
                                 totalCount: 505427,
@@ -61402,6 +63062,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 473127,
                                 proportion: 0.9951789894808579,
                                 totalCount: 505427,
@@ -61415,6 +63076,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1550,
                                 proportion: 0.003107688421153935,
                                 totalCount: 505427,
@@ -61428,6 +63090,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4705,
                                 proportion: 0.009433338078405976,
                                 totalCount: 505427,
@@ -61441,6 +63104,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 519,
                                 proportion: 0.00104057438101864,
                                 totalCount: 505427,
@@ -61454,6 +63118,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 594,
                                 proportion: 0.0011857281448744207,
                                 totalCount: 505427,
@@ -61467,6 +63132,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1001,
                                 proportion: 0.001998071790859171,
                                 totalCount: 505427,
@@ -61480,6 +63146,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 560,
                                 proportion: 0.0011178291757407116,
                                 totalCount: 505427,
@@ -61493,6 +63160,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 763,
                                 proportion: 0.0015228173118182998,
                                 totalCount: 505427,
@@ -61506,6 +63174,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1212,
                                 proportion: 0.002419683285019525,
                                 totalCount: 505427,
@@ -61519,6 +63188,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 841,
                                 proportion: 0.0016790649943898067,
                                 totalCount: 505427,
@@ -61532,6 +63202,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 41695,
                                 proportion: 0.08328140105302685,
                                 totalCount: 505427,
@@ -61545,6 +63216,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 529,
                                 proportion: 0.0010565398619108391,
                                 totalCount: 505427,
@@ -61558,6 +63230,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1035,
                                 proportion: 0.0020696647143162807,
                                 totalCount: 505427,
@@ -61571,6 +63244,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 625,
                                 proportion: 0.0012423940635429898,
                                 totalCount: 505427,
@@ -61584,6 +63258,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 887,
                                 proportion: 0.00176231234453107,
                                 totalCount: 505427,
@@ -61597,6 +63272,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 838,
                                 proportion: 0.0016658880594789627,
                                 totalCount: 505427,
@@ -61610,6 +63286,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1160,
                                 proportion: 0.0023059613075595772,
                                 totalCount: 505427,
@@ -61623,6 +63300,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 625,
                                 proportion: 0.00124188552001224,
                                 totalCount: 505427,
@@ -61636,6 +63314,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3051,
                                 proportion: 0.00606555812677434,
                                 totalCount: 505427,
@@ -61649,6 +63328,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 656,
                                 proportion: 0.0013039312732809375,
                                 totalCount: 505427,
@@ -61662,6 +63342,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1413,
                                 proportion: 0.0028087263330517317,
                                 totalCount: 505427,
@@ -61675,6 +63356,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1467,
                                 proportion: 0.0029158343519871204,
                                 totalCount: 505427,
@@ -61688,6 +63370,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 5287,
                                 proportion: 0.010510140387008536,
                                 totalCount: 505427,
@@ -61701,6 +63384,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 770,
                                 proportion: 0.0015303617815001123,
                                 totalCount: 505427,
@@ -61714,6 +63398,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1485,
                                 proportion: 0.00295072585869103,
                                 totalCount: 505427,
@@ -61727,6 +63412,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 65084,
                                 proportion: 0.1299803084346204,
                                 totalCount: 505427,
@@ -61740,6 +63426,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1071,
                                 proportion: 0.002127908986690138,
                                 totalCount: 505427,
@@ -61753,6 +63440,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 549,
                                 proportion: 0.0010907161972348656,
                                 totalCount: 505427,
@@ -61766,6 +63454,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 717,
                                 proportion: 0.0014223340163975076,
                                 totalCount: 505427,
@@ -61779,6 +63468,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 697,
                                 proportion: 0.00138262925699051,
                                 totalCount: 505427,
@@ -61792,6 +63482,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 975,
                                 proportion: 0.0019340172811882603,
                                 totalCount: 505427,
@@ -61805,6 +63496,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 709,
                                 proportion: 0.001406372115350284,
                                 totalCount: 505427,
@@ -61818,6 +63510,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 555,
                                 proportion: 0.0011008519205403101,
                                 totalCount: 505427,
@@ -61831,6 +63524,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1082,
                                 proportion: 0.0021463101120564308,
                                 totalCount: 505427,
@@ -61844,6 +63538,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1297,
                                 proportion: 0.0025726623385639506,
                                 totalCount: 505427,
@@ -61857,6 +63552,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 544,
                                 proportion: 0.0010791573843922896,
                                 totalCount: 505427,
@@ -61870,6 +63566,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 931,
                                 proportion: 0.0018476768093737348,
                                 totalCount: 505427,
@@ -61883,6 +63580,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 553,
                                 proportion: 0.0010976621582459638,
                                 totalCount: 505427,
@@ -61896,6 +63594,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 793,
                                 proportion: 0.0015732222885722165,
                                 totalCount: 505427,
@@ -61909,6 +63608,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 582,
                                 proportion: 0.0011546290307861396,
                                 totalCount: 505427,
@@ -61922,6 +63622,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1408,
                                 proportion: 0.0027890411284523793,
                                 totalCount: 505427,
@@ -61935,6 +63636,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1639,
                                 proportion: 0.0032475187886497336,
                                 totalCount: 505427,
@@ -61948,6 +63650,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 610,
                                 proportion: 0.0012098037737944603,
                                 totalCount: 505427,
@@ -61961,6 +63664,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4761,
                                 proportion: 0.009458702363781574,
                                 totalCount: 505427,
@@ -61974,6 +63678,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4665,
                                 proportion: 0.009269617710235526,
                                 totalCount: 505427,
@@ -61987,6 +63692,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 498999,
                                 proportion: 0.9982815119493936,
                                 totalCount: 505427,
@@ -62000,6 +63706,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 491557,
                                 proportion: 0.9937049068977158,
                                 totalCount: 505427,
@@ -62013,6 +63720,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2249,
                                 proportion: 0.0045464561294274375,
                                 totalCount: 505427,
@@ -62026,6 +63734,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 492428,
                                 proportion: 0.9937821512828223,
                                 totalCount: 505427,
@@ -62039,6 +63748,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 514,
                                 proportion: 0.0010201570327323538,
                                 totalCount: 505427,
@@ -62052,6 +63762,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 720,
                                 proportion: 0.0014298282021697644,
                                 totalCount: 505427,
@@ -62065,6 +63776,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 4107,
                                 proportion: 0.00815704749439414,
                                 totalCount: 505427,
@@ -62078,6 +63790,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1177,
                                 proportion: 0.002337102747138191,
                                 totalCount: 505427,
@@ -62091,6 +63804,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 583,
                                 proportion: 0.001157715388678616,
                                 totalCount: 505427,
@@ -62104,6 +63818,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 29717,
                                 proportion: 0.05901475915099136,
                                 totalCount: 505427,
@@ -62117,6 +63832,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 558,
                                 proportion: 0.0011081718738828912,
                                 totalCount: 505427,
@@ -62130,6 +63846,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 830,
                                 proportion: 0.001647348364560178,
                                 totalCount: 505427,
@@ -62143,6 +63860,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1041,
                                 proportion: 0.0020660090896461388,
                                 totalCount: 505427,
@@ -62156,6 +63874,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1248,
                                 proportion: 0.002476799847581548,
                                 totalCount: 505427,
@@ -62169,6 +63888,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2767,
                                 proportion: 0.005494134559635286,
                                 totalCount: 505427,
@@ -62182,6 +63902,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 566,
                                 proportion: 0.0011234327022129243,
                                 totalCount: 505427,
@@ -62195,6 +63916,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 813,
                                 proportion: 0.0016135818738984772,
                                 totalCount: 505427,
@@ -62208,6 +63930,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 765,
                                 proportion: 0.0015173694169731157,
                                 totalCount: 505427,
@@ -62221,6 +63944,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1574,
                                 proportion: 0.003122687495164199,
                                 totalCount: 505427,
@@ -62234,6 +63958,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2175,
                                 proportion: 0.004315133719546068,
                                 totalCount: 505427,
@@ -62247,6 +63972,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 811,
                                 proportion: 0.001606319112820645,
                                 totalCount: 505427,
@@ -62260,6 +63986,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 756,
                                 proportion: 0.0015001518010751087,
                                 totalCount: 505427,
@@ -62273,6 +64000,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 842,
                                 proportion: 0.001670827198368066,
                                 totalCount: 505427,
@@ -62286,6 +64014,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1113,
                                 proportion: 0.002208451643242793,
                                 totalCount: 505427,
@@ -62299,6 +64028,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 667,
                                 proportion: 0.0013234704689490415,
                                 totalCount: 505427,
@@ -62312,6 +64042,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 736,
                                 proportion: 0.0014602566162917816,
                                 totalCount: 505427,
@@ -62325,6 +64056,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 884,
                                 proportion: 0.001753533349863625,
                                 totalCount: 505427,
@@ -62338,6 +64070,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1107,
                                 proportion: 0.002196228122036481,
                                 totalCount: 505427,
@@ -62351,6 +64084,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1889,
                                 proportion: 0.0037475548642825684,
                                 totalCount: 505427,
@@ -62364,6 +64098,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1132,
                                 proportion: 0.002245621830935623,
                                 totalCount: 505427,
@@ -62377,6 +64112,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 611,
                                 proportion: 0.001212318425057491,
                                 totalCount: 505427,
@@ -62390,6 +64126,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1494,
                                 proportion: 0.002964338648904445,
                                 totalCount: 505427,
@@ -62403,6 +64140,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2126,
                                 proportion: 0.004225027424919315,
                                 totalCount: 505427,
@@ -62416,6 +64154,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 540,
                                 proportion: 0.00107300827806016,
                                 totalCount: 505427,
@@ -62429,6 +64168,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1093,
                                 proportion: 0.0021723403240424214,
                                 totalCount: 505427,
@@ -62442,6 +64182,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 42419,
                                 proportion: 0.08446281617057033,
                                 totalCount: 505427,
@@ -62455,6 +64196,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 689,
                                 proportion: 0.001371692955789281,
                                 totalCount: 505427,
@@ -62468,6 +64210,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1388,
                                 proportion: 0.0027622055455057445,
                                 totalCount: 505427,
@@ -62481,6 +64224,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 741,
                                 proportion: 0.0014746386040883908,
                                 totalCount: 505427,
@@ -62494,6 +64238,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 913,
                                 proportion: 0.0018196131578160656,
                                 totalCount: 505427,
@@ -62507,6 +64252,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 871,
                                 proportion: 0.0017363706862352254,
                                 totalCount: 505427,
@@ -62520,6 +64266,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 951,
                                 proportion: 0.00189327955437256,
                                 totalCount: 505427,
@@ -62533,6 +64280,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 496689,
                                 proportion: 0.9903001471426806,
                                 totalCount: 505427,
@@ -62546,6 +64294,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 537,
                                 proportion: 0.0010806764189160635,
                                 totalCount: 505427,
@@ -62559,6 +64308,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1772,
                                 proportion: 0.0035763805494951287,
                                 totalCount: 505427,
@@ -62572,6 +64322,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 575,
                                 proportion: 0.0011602777402228944,
                                 totalCount: 505427,
@@ -62585,6 +64336,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 848,
                                 proportion: 0.001722061681487634,
                                 totalCount: 505427,
@@ -62598,6 +64350,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1708,
                                 proportion: 0.0034679569307362913,
                                 totalCount: 505427,
@@ -62611,6 +64364,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 557,
                                 proportion: 0.0011320678021218649,
                                 totalCount: 505427,
@@ -62624,6 +64378,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 535,
                                 proportion: 0.0010873077650033229,
                                 totalCount: 505427,
@@ -62637,6 +64392,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1845,
                                 proportion: 0.0037491389172811937,
                                 totalCount: 505427,
@@ -62650,6 +64406,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 61965,
                                 proportion: 0.12603298641125826,
                                 totalCount: 505427,
@@ -62663,6 +64420,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1492,
                                 proportion: 0.0030337535583570556,
                                 totalCount: 505427,
@@ -62676,6 +64434,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1000,
                                 proportion: 0.0020325533748516236,
                                 totalCount: 505427,
@@ -62689,6 +64448,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 702,
                                 proportion: 0.0014287080774921493,
                                 totalCount: 505427,
@@ -62702,6 +64462,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 739,
                                 proportion: 0.0015040072941300976,
                                 totalCount: 505427,
@@ -62715,6 +64476,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2615,
                                 proportion: 0.005334992655459442,
                                 totalCount: 505427,
@@ -62728,6 +64490,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 502,
                                 proportion: 0.0010414656866101122,
                                 totalCount: 505427,
@@ -62741,6 +64504,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 668,
                                 proportion: 0.0014035471081256553,
                                 totalCount: 505427,
@@ -62754,6 +64518,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 788,
                                 proportion: 0.0016573563063669403,
                                 totalCount: 505427,
@@ -62767,6 +64532,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2937,
                                 proportion: 0.006198072414251557,
                                 totalCount: 505427,
@@ -62780,6 +64546,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 15087,
                                 proportion: 0.03183509139901796,
                                 totalCount: 505427,
@@ -62793,6 +64560,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1881,
                                 proportion: 0.003969518487488947,
                                 totalCount: 505427,
@@ -62806,6 +64574,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 648,
                                 proportion: 0.001411364972883497,
                                 totalCount: 505427,
@@ -62819,6 +64588,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 772,
                                 proportion: 0.0016825220395131147,
                                 totalCount: 505427,
@@ -62832,6 +64602,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 778,
                                 proportion: 0.0016972706230379399,
                                 totalCount: 505427,
@@ -62845,6 +64616,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 800,
                                 proportion: 0.0017466943808841767,
                                 totalCount: 505427,
@@ -62858,6 +64630,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 857,
                                 proportion: 0.0018729579404019102,
                                 totalCount: 505427,
@@ -62871,6 +64644,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1764,
                                 proportion: 0.003942163720472881,
                                 totalCount: 505427,
@@ -62884,6 +64658,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2985,
                                 proportion: 0.008034517471374509,
                                 totalCount: 505427,
@@ -62897,6 +64672,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358495,
                                 proportion: 0.9649361276048256,
                                 totalCount: 505427,
@@ -62910,6 +64686,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358416,
                                 proportion: 0.9690742833658686,
                                 totalCount: 505427,
@@ -62923,6 +64700,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358442,
                                 proportion: 0.9729220613542227,
                                 totalCount: 505427,
@@ -62936,6 +64714,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358441,
                                 proportion: 0.9733077000361147,
                                 totalCount: 505427,
@@ -62949,6 +64728,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358437,
                                 proportion: 0.9848712573122714,
                                 totalCount: 505427,
@@ -62962,6 +64742,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358436,
                                 proportion: 0.9851364870658854,
                                 totalCount: 505427,
@@ -62975,6 +64756,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358435,
                                 proportion: 0.9851689383257611,
                                 totalCount: 505427,
@@ -62988,6 +64770,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358436,
                                 proportion: 0.9854723413614869,
                                 totalCount: 505427,
@@ -63001,6 +64784,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 402,
                                 proportion: 0.0011054737449985564,
                                 totalCount: 505427,
@@ -63014,6 +64798,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358448,
                                 proportion: 0.9857085894210013,
                                 totalCount: 505427,
@@ -63027,6 +64812,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358442,
                                 proportion: 0.9857164857164857,
                                 totalCount: 505427,
@@ -63040,6 +64826,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358442,
                                 proportion: 0.9858574634747403,
                                 totalCount: 505427,
@@ -63053,6 +64840,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358441,
                                 proportion: 0.9858601360903455,
                                 totalCount: 505427,
@@ -63066,6 +64854,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358441,
                                 proportion: 0.9858547130786833,
                                 totalCount: 505427,
@@ -63079,6 +64868,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358438,
                                 proportion: 0.9858491733661915,
                                 totalCount: 505427,
@@ -63092,6 +64882,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358385,
                                 proportion: 0.9855787079688364,
                                 totalCount: 505427,
@@ -63105,6 +64896,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358381,
                                 proportion: 0.9853780186362899,
                                 totalCount: 505427,
@@ -63118,6 +64910,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358377,
                                 proportion: 0.9853805671801019,
                                 totalCount: 505427,
@@ -63131,6 +64924,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358412,
                                 proportion: 0.9857695290797776,
                                 totalCount: 505427,
@@ -63144,6 +64938,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358408,
                                 proportion: 0.9856907519299472,
                                 totalCount: 505427,
@@ -63157,6 +64952,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358400,
                                 proportion: 0.9856524859948792,
                                 totalCount: 505427,
@@ -63170,6 +64966,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358399,
                                 proportion: 0.9857229296735334,
                                 totalCount: 505427,
@@ -63183,6 +64980,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358404,
                                 proportion: 0.985731259213624,
                                 totalCount: 505427,
@@ -63196,6 +64994,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358355,
                                 proportion: 0.9856859546868596,
                                 totalCount: 505427,
@@ -63209,6 +65008,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358342,
                                 proportion: 0.9856257976499582,
                                 totalCount: 505427,
@@ -63222,6 +65022,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 358228,
                                 proportion: 0.9844944623079671,
                                 totalCount: 505427,
@@ -63235,6 +65036,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1493,
                                 proportion: 0.004086783238987857,
                                 totalCount: 505427,
@@ -63248,6 +65050,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 626,
                                 proportion: 0.0017135474263941049,
                                 totalCount: 505427,
@@ -63261,6 +65064,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 357286,
                                 proportion: 0.9779976130777064,
                                 totalCount: 505427,
@@ -63274,6 +65078,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 989,
                                 proportion: 0.002412589374361176,
                                 totalCount: 505427,
@@ -63287,6 +65092,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 950,
                                 proportion: 0.0023157006944664505,
                                 totalCount: 505427,
@@ -63300,6 +65106,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 3714,
                                 proportion: 0.009055908163240426,
                                 totalCount: 505427,
@@ -63313,6 +65120,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 823,
                                 proportion: 0.0020067346306803634,
                                 totalCount: 505427,
@@ -63326,6 +65134,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 814,
                                 proportion: 0.001982609542830699,
                                 totalCount: 505427,
@@ -63339,6 +65148,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 809,
                                 proportion: 0.0019700330936337977,
                                 totalCount: 505427,
@@ -63352,6 +65162,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 805,
                                 proportion: 0.001958632704056681,
                                 totalCount: 505427,
@@ -63365,6 +65176,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 731,
                                 proportion: 0.0017778188521759433,
                                 totalCount: 505427,
@@ -63378,6 +65190,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 688,
                                 proportion: 0.0016722448672047989,
                                 totalCount: 505427,
@@ -63391,6 +65204,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 679,
                                 proportion: 0.0016496318089828405,
                                 totalCount: 505427,
@@ -63404,6 +65218,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1769,
                                 proportion: 0.004338847029275567,
                                 totalCount: 505427,
@@ -63417,6 +65232,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 677,
                                 proportion: 0.0016604858331371163,
                                 totalCount: 505427,
@@ -63430,6 +65246,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 678,
                                 proportion: 0.0016627468676350492,
                                 totalCount: 505427,
@@ -63443,6 +65260,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 652,
                                 proportion: 0.0015983016818938403,
                                 totalCount: 505427,
@@ -63456,6 +65274,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 505,
                                 proportion: 0.0012377177954407867,
                                 totalCount: 505427,
@@ -63469,6 +65288,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 501,
                                 proportion: 0.0012277696498283327,
                                 totalCount: 505427,
@@ -63482,6 +65302,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1584,
                                 proportion: 0.003881506240060379,
                                 totalCount: 505427,
@@ -63495,6 +65316,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 481,
                                 proportion: 0.0011786644579981327,
                                 totalCount: 505427,
@@ -63508,6 +65330,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 475,
                                 proportion: 0.0011635512072762368,
                                 totalCount: 505427,
@@ -63521,6 +65344,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1915,
                                 proportion: 0.004688812224700614,
                                 totalCount: 505427,
@@ -63534,6 +65358,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1858,
                                 proportion: 0.004548759618374247,
                                 totalCount: 505427,
@@ -63547,6 +65372,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 411,
                                 proportion: 0.0010071209084181586,
                                 totalCount: 505427,
@@ -63560,6 +65386,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 16068,
                                 proportion: 0.03938100163229693,
                                 totalCount: 505427,
@@ -63573,6 +65400,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 1401,
                                 proportion: 0.0035603648293896554,
                                 totalCount: 505427,
@@ -63586,6 +65414,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 293,
                                 proportion: 0.0016283838984510902,
                                 totalCount: 505427,
@@ -63599,6 +65428,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 66,
                                 proportion: 0.00116420595861777,
                                 totalCount: 505427,
@@ -63612,6 +65442,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 63,
                                 proportion: 0.0017007261830845233,
                                 totalCount: 505427,
@@ -63625,6 +65456,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 64,
                                 proportion: 0.0023805095778315047,
                                 totalCount: 505427,
@@ -63638,6 +65470,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 2192,
                                 proportion: 0.09783093814156922,
                                 totalCount: 505427,
@@ -63651,6 +65484,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 23,
                                 proportion: 0.0010265107560474872,
                                 totalCount: 505427,
@@ -63664,6 +65498,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 27,
                                 proportion: 0.0010630339777156581,
                                 totalCount: 505427,
@@ -63677,6 +65512,7 @@ export const showsMessageWhenTooManyMutations: MutationOverTimeMockData = {
                         [
                             '2023',
                             {
+                                type: 'value',
                                 count: 992,
                                 proportion: 0.035953753035410096,
                                 totalCount: 505427,

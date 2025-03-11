@@ -283,7 +283,8 @@ function getDownloadData(filteredData: MutationOverTimeDataMap) {
     return filteredData.getFirstAxisKeys().map((mutation) => {
         return dates.reduce(
             (accumulated, date) => {
-                const proportion = filteredData.get(mutation, date)?.proportion ?? '';
+                const value = filteredData.get(mutation, date);
+                const proportion = value?.type === 'value' || value?.type === 'wastewaterValue' ? value.proportion : '';
                 return {
                     ...accumulated,
                     [date.dateString]: proportion,
