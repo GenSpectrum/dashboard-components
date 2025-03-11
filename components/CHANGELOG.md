@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.0...dashboard-components-v0.18.1) (2025-03-11)
+
+
+### Bug Fixes
+
+* **components:** gs-mutation-filter: indicate that one can click the x button that deletes selected mutations ([#803](https://github.com/GenSpectrum/dashboard-components/issues/803)) ([461f602](https://github.com/GenSpectrum/dashboard-components/commit/461f602f727265dafea572861876a2e03a0f19b3))
+
 ## [0.18.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.17.1...dashboard-components-v0.18.0) (2025-03-10)
 
 
