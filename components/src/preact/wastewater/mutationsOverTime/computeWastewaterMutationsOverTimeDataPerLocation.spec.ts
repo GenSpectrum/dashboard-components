@@ -59,10 +59,10 @@ describe('groupMutationDataByLocation', () => {
             temporalCache.getYearMonthDay('2025-01-02'),
         ]);
         expect(location1Data.getAsArray()).to.deep.equal([
-            [{ count: null, proportion: 0.1, totalCount: null }, null],
+            [{ type: 'wastewaterValue', proportion: 0.1 }, null],
             [
-                { count: null, proportion: 0.2, totalCount: null },
-                { count: null, proportion: 0.3, totalCount: null },
+                { type: 'wastewaterValue', proportion: 0.2 },
+                { type: 'wastewaterValue', proportion: 0.3 },
             ],
         ]);
     });
@@ -96,8 +96,8 @@ describe('groupMutationDataByLocation', () => {
         expect(location1Data.getFirstAxisKeys()).to.deep.equal([mutation2, mutation3]);
         expect(location1Data.getSecondAxisKeys()).to.deep.equal([temporalCache.getYearMonthDay('2025-01-01')]);
         expect(location1Data.getAsArray()).to.deep.equal([
-            [{ count: null, proportion: 0.2, totalCount: null }],
-            [{ count: null, proportion: 0.3, totalCount: null }],
+            [{ type: 'wastewaterValue', proportion: 0.2 }],
+            [{ type: 'wastewaterValue', proportion: 0.3 }],
         ]);
     });
 

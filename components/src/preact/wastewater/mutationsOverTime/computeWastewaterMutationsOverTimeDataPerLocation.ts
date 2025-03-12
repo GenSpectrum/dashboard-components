@@ -33,9 +33,7 @@ export function groupMutationDataByLocation(data: WastewaterData, sequenceType: 
             map.set(
                 mutation.mutation,
                 row.date,
-                mutation.proportion !== null
-                    ? { proportion: mutation.proportion, count: null, totalCount: null }
-                    : null,
+                mutation.proportion !== null ? { type: 'wastewaterValue', proportion: mutation.proportion } : null,
             );
         }
     }

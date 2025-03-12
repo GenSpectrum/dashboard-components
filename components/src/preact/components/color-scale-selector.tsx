@@ -54,7 +54,7 @@ export const ColorScaleSelector: FunctionComponent<ColorScaleSelectorProps> = ({
     );
 };
 
-export const getColorWithingScale = (value: number | undefined, colorScale: ColorScale) => {
+export const getColorWithinScale = (value: number | undefined, colorScale: ColorScale) => {
     if (value === undefined) {
         return 'lightgrey';
     }
