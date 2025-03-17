@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.1...dashboard-components-v0.18.2) (2025-03-17)
+
+
+### Bug Fixes
+
+* **components:** gs-date-range-filter make it explicit that the event contains `null` when deleting the input ([#816](https://github.com/GenSpectrum/dashboard-components/issues/816)) ([acd25da](https://github.com/GenSpectrum/dashboard-components/commit/acd25da2e0baa2b0e6a6b40b7cb180cbb03c894f))
+
 ## [0.18.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.0...dashboard-components-v0.18.1) (2025-03-17)
 
 
