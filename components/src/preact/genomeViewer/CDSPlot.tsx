@@ -167,15 +167,15 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
 
     const updateZoomStart = (newStart: number) => {
         if (newStart <= zoomEnd - 100) {
-          setZoomStart(newStart);
+            setZoomStart(newStart);
         }
-      };
-      
-      const updateZoomEnd = (newEnd: number) => {
+    };
+
+    const updateZoomEnd = (newEnd: number) => {
         if (newEnd >= zoomStart + 100) {
-          setZoomEnd(newEnd);
+            setZoomEnd(newEnd);
         }
-      };
+    };
 
     return (
         <div class='p-4'>

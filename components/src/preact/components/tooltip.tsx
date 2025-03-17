@@ -51,7 +51,7 @@ const Tooltip: FunctionComponent<TooltipProps> = ({
 }) => {
     return (
         <div className={`relative ${full ? 'w-full h-full' : ''}`}>
-            <div className={`peer ${full ? 'w-full h-full' : ''}`}>{children}</div>
+            <div className='peer w-full h-full'>{children}</div>
             <div
                 className={`left-10 absolute z-10 w-max bg-white p-4 border border-gray-200 rounded-md invisible peer-hover:visible ${getPositionCss(position)}`}
                 style={{ ...tooltipStyle }}

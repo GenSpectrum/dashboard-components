@@ -7,23 +7,13 @@ import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 import CDSPlot from './CDSPlot';
-import { Gff3SourceSchema } from './loadGff3';
-import { views } from '../../types';
 //import { getMaintainAspectRatio } from '../shared/charts/getMaintainAspectRatio';
 
-export const GenomeViewSchema = z.literal(views.genome);
-export type GenomeView = z.infer<typeof GenomeViewSchema>;
-
 const genomeDataViewerPropsSchema = z.object({
-    gff3Source: Gff3SourceSchema,
+    gff3Source: z.string(),
     genomeLength: z.number(),
     width: z.string(),
     height: z.string(),
-    views: z.array(GenomeViewSchema),
-    zoom: z.number(),
-    offsetX: z.number(),
-    offsetY: z.number(),
-    pageSize: z.union([z.boolean(), z.number()]),
 });
 
 export type GenomeDataViewerProps = z.infer<typeof genomeDataViewerPropsSchema>;
