@@ -3,13 +3,11 @@ import { type FunctionComponent } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 
 import { type MutationOverTimeDataMap } from './MutationOverTimeData';
-import {
-    type MutationOverTimeMutationValue,
-    MUTATIONS_OVER_TIME_MIN_PROPORTION,
-} from '../../query/queryMutationsOverTime';
+import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
+import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
 import { type SequenceType } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
-import { type Temporal, type TemporalClass, toTemporalClass, YearMonthDayClass } from '../../utils/temporalClass';
+import { type Temporal } from '../../utils/temporalClass';
 import { AnnotatedMutation } from '../components/annotated-mutation';
 import { type ColorScale, getColorWithinScale, getTextColorForScale } from '../components/color-scale-selector';
 import Tooltip, { type TooltipPosition } from '../components/tooltip';
@@ -181,24 +179,14 @@ const ProportionCell: FunctionComponent<{
     tooltipPosition: TooltipPosition;
     colorScale: ColorScale;
 }> = ({ value, mutation, date, tooltipPosition, colorScale }) => {
-    const dateClass = toTemporalClass(date);
-
-    const tooltipContent = (
-        <div>
-            <p>
-                <span className='font-bold'>{dateClass.englishName()}</span>
-            </p>
-            <p>({timeIntervalDisplay(dateClass)})</p>
-            <p>{mutation.code}</p>
-            <TooltipValueDescription value={value} />
-        </div>
-    );
-
     const proportion = value?.type === 'belowThreshold' ? 0 : value?.proportion;
 
     return (
         <div className={'py-1 w-full h-full'}>
-            <Tooltip content={tooltipContent} position={tooltipPosition}>
+            <Tooltip
+                content={<MutationsOverTimeGridTooltip mutation={mutation} date={date} value={value} />}
+                position={tooltipPosition}
+            >
                 <div
                     style={{
                         backgroundColor: getColorWithinScale(proportion, colorScale),
@@ -215,65 +203,6 @@ const ProportionCell: FunctionComponent<{
             </Tooltip>
         </div>
     );
-};
-
-const TooltipValueDescription: FunctionComponent<{ value: MutationOverTimeMutationValue }> = ({ value }) => {
-    if (value === null) {
-        return <p>No data</p>;
-    }
-
-    const proportion =
-        value.type === 'belowThreshold'
-            ? `<${formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)}`
-            : formatProportion(value.proportion);
-
-    return (
-        <>
-            <p>Proportion: {proportion}</p>
-            <TooltipValueCountsDescription value={value} />
-        </>
-    );
-};
-
-const TooltipValueCountsDescription: FunctionComponent<{
-    value: NonNullable<MutationOverTimeMutationValue>;
-}> = ({ value }) => {
-    switch (value.type) {
-        case 'wastewaterValue':
-            return;
-        case 'belowThreshold':
-            return (
-                <>
-                    <p>{value.totalCount} samples are in the timeframe</p>
-                    <p>none or less than {formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)} have the mutation</p>
-                </>
-            );
-        case 'value':
-            return (
-                <>
-                    <p>{value.totalCount} samples are in the timeframe</p>
-                    <p>
-                        {totalCountWithCoverage(value.count, value.proportion)} have coverage, of those {value.count}{' '}
-                        have the mutation
-                    </p>
-                </>
-            );
-    }
-};
-
-function totalCountWithCoverage(count: number, proportion: number) {
-    if (count === 0) {
-        return 0;
-    }
-    return Math.round(count / proportion);
-}
-
-const timeIntervalDisplay = (date: TemporalClass) => {
-    if (date instanceof YearMonthDayClass) {
-        return date.toString();
-    }
-
-    return `${date.firstDay.toString()} - ${date.lastDay.toString()}`;
 };
 
 export default MutationsOverTimeGrid;
