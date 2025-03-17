@@ -1,6 +1,6 @@
 import z from 'zod';
 
-import { ColorsRGB } from '../shared/charts/colors';
+import { ColorsRGB, type GraphColor } from '../shared/charts/colors';
 
 export const Gff3SourceSchema = z.object({
     url: z.string().min(1),
@@ -15,7 +15,7 @@ export type CDSFeature = {
     start: number;
     end: number;
     label: string;
-    color: string;
+    color: GraphColor;
 };
 
 async function parseGFF3(gff3Source: Gff3Source): Promise<CDSFeature[]> {
@@ -57,9 +57,8 @@ async function parseGFF3(gff3Source: Gff3Source): Promise<CDSFeature[]> {
             }
         }
 
-        // Assign a color from the palette
-        const ColorPalette = Object.keys(ColorsRGB);
-        const color = ColorPalette[colorIndex % ColorPalette.length];
+        const GraphColorList: GraphColor[] = Object.keys(ColorsRGB) as GraphColor[];
+        const color: GraphColor = GraphColorList[colorIndex % GraphColorList.length];
         colorIndex++;
 
         cdsFeatures.push({ start, end, label, color });
