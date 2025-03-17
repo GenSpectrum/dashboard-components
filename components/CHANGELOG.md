@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.18.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.0...dashboard-components-v0.18.1) (2025-03-17)
+
+
+### Features
+
+* **components:** mutations over time: don't show wrong "0" count when mutation cell doesn't have data ([#813](https://github.com/GenSpectrum/dashboard-components/issues/813)) ([2224eea](https://github.com/GenSpectrum/dashboard-components/commit/2224eea567a7fda55b529fec827e373445622696)), closes [#795](https://github.com/GenSpectrum/dashboard-components/issues/795)
+
+
+### Bug Fixes
+
+* **components:** gs-mutation-filter: indicate that one can click the x button that deletes selected mutations ([#803](https://github.com/GenSpectrum/dashboard-components/issues/803)) ([461f602](https://github.com/GenSpectrum/dashboard-components/commit/461f602f727265dafea572861876a2e03a0f19b3))
+
 ## [0.18.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.17.1...dashboard-components-v0.18.0) (2025-03-10)
 
 
