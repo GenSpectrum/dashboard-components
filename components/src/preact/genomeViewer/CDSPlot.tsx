@@ -1,7 +1,7 @@
 import { type FunctionComponent } from 'preact';
 
 import { type CDSFeature } from './loadGff3';
-import TooltipPro from '../components/tooltip';
+import Tooltip from '../components/tooltip';
 
 const max_chunk_number = 20;
 
@@ -66,13 +66,14 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
                         </div>
                     );
                     return (
-                        <TooltipPro
+                        <Tooltip
                             content={tooltipContent}
                             position={position}
                             key={idx}
                             tooltipStyle={{
                                 left: `${leftPercent}%`,
                             }}
+                            full={false}
                         >
                             <div
                                 key={idx}
@@ -86,7 +87,7 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
                             >
                                 {cds.label}
                             </div>
-                        </TooltipPro>
+                        </Tooltip>
                     );
                 })}
                 {chunks.map((chunk, idx) => {

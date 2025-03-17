@@ -1,4 +1,5 @@
 import { type FunctionComponent } from 'preact';
+import { type CSSProperties } from 'preact/compat';
 import { type JSXInternal } from 'preact/src/jsx';
 
 export type TooltipPosition =
@@ -14,6 +15,8 @@ export type TooltipPosition =
 export type TooltipProps = {
     content: string | JSXInternal.Element;
     position?: TooltipPosition;
+    tooltipStyle?: CSSProperties;
+    full?: boolean;
 };
 
 function getPositionCss(position?: TooltipPosition) {
@@ -39,12 +42,19 @@ function getPositionCss(position?: TooltipPosition) {
     }
 }
 
-const Tooltip: FunctionComponent<TooltipProps> = ({ children, content, position = 'bottom' }) => {
+const Tooltip: FunctionComponent<TooltipProps> = ({
+    children,
+    content,
+    position = 'bottom',
+    tooltipStyle,
+    full = true,
+}) => {
     return (
-        <div className='relative w-full h-full'>
-            <div className='peer w-full h-full'>{children}</div>
+        <div className={`relative ${full ? 'w-full h-full' : ''}`}>
+            <div className={`peer ${full ? 'w-full h-full' : ''}`}>{children}</div>
             <div
-                className={`absolute z-10 w-max bg-white p-4 border border-gray-200 rounded-md invisible peer-hover:visible ${getPositionCss(position)}`}
+                className={`left-10 absolute z-10 w-max bg-white p-4 border border-gray-200 rounded-md invisible peer-hover:visible ${getPositionCss(position)}`}
+                style={{ ...tooltipStyle }}
             >
                 {content}
             </div>
