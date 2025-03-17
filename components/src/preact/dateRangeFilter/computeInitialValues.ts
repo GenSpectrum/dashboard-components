@@ -3,7 +3,7 @@ import { getDatesForSelectorValue, getSelectableOptions } from './selectableOpti
 import { UserFacingError } from '../components/error-display';
 
 export function computeInitialValues(value: DateRangeValue, earliestDate: string, dateRangeOptions: DateRangeOption[]) {
-    if (value === undefined) {
+    if (value === null) {
         return undefined;
     }
 

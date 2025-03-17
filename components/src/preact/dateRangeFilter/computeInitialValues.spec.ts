@@ -18,8 +18,8 @@ const dateRangeOptions = [
 ];
 
 describe('computeInitialValues', () => {
-    it('should return undefined for unedfined value', () => {
-        const result = computeInitialValues(undefined, earliestDate, dateRangeOptions);
+    it('should return undefined for null value', () => {
+        const result = computeInitialValues(null, earliestDate, dateRangeOptions);
 
         expect(result).toBeUndefined();
     });

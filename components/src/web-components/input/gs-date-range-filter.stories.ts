@@ -98,7 +98,7 @@ export const TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression: StoryOb
                 <gs-date-range-filter
                     .dateRangeOptions=${args.dateRangeOptions}
                     earliestDate="${args.earliestDate}"
-                    value="${args.value}"
+                    value="${args.value ?? 'null'}"
                     width="${args.width}"
                     lapisDateField="${args.lapisDateField}"
                     placeholder="${args.placeholder}"
