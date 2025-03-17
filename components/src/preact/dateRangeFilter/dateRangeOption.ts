@@ -30,7 +30,7 @@ export const dateRangeValueSchema = z
             dateTo: z.string().date().optional(),
         }),
     ])
-    .optional();
+    .nullable();
 
 export type DateRangeValue = z.infer<typeof dateRangeValueSchema>;
 

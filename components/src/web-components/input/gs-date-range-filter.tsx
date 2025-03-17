@@ -38,12 +38,14 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  *  Use this event, when you want to use the filter directly as a LAPIS filter.
  *
  *
- * @fires {CustomEvent<{ string | {dateFrom: string, dateTo: string}}>} gs-date-range-option-changed
+ * @fires {CustomEvent<string | {dateFrom: string, dateTo: string} | null>} gs-date-range-option-changed
  * Fired when:
  * - The select field is changed,
  * - A date is selected in either of the date pickers,
- * - A date was typed into either of the date input fields, and the input field loses focus ("on blur").
- * Contains the selected dateRangeOption or when users select custom values it contains the selected dates.
+ * - A date was typed into either of the date input fields, and the input field loses focus ("on blur"),
+ * - The user deletes the current value by clicking the 'x' button.
+ * Contains the selected dateRangeOption or when users select custom values it contains the selected dates
+ * or `null` when the input was deleted.
  *
  * Use this event, when you want to control this component in your JS application.
  * You can supply the `detail` of this event to the `value` attribute of this component.
@@ -80,7 +82,7 @@ export class DateRangeFilterComponent extends PreactLitAdapter {
     @property({
         converter: (value) => {
             if (value === null) {
-                return undefined;
+                return null;
             }
             try {
                 const result = JSON.parse(value) as unknown;
@@ -93,7 +95,7 @@ export class DateRangeFilterComponent extends PreactLitAdapter {
             }
         },
     })
-    value: string | { dateFrom?: string; dateTo?: string } | undefined = undefined;
+    value: string | { dateFrom?: string; dateTo?: string } | null = null;
 
     /**
      * The width of the component.

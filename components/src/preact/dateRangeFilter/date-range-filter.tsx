@@ -179,13 +179,18 @@ export const DateRangeFilterInner = ({
     };
 
     const fireOptionChangedEvent = (state: DateRangeFilterState) => {
-        const eventDetail =
-            state?.label === customOption
-                ? {
-                      dateFrom: state.dateFrom !== undefined ? toYYYYMMDD(state.dateFrom) : undefined,
-                      dateTo: state.dateTo !== undefined ? toYYYYMMDD(state.dateTo) : undefined,
-                  }
-                : state?.label;
+        const eventDetail = (() => {
+            if (state === null) {
+                return null;
+            }
+            if (state.label === customOption) {
+                return {
+                    dateFrom: state.dateFrom !== undefined ? toYYYYMMDD(state.dateFrom) : undefined,
+                    dateTo: state.dateTo !== undefined ? toYYYYMMDD(state.dateTo) : undefined,
+                };
+            }
+            return state.label;
+        })();
 
         divRef.current?.dispatchEvent(new DateRangeOptionChangedEvent(eventDetail));
     };

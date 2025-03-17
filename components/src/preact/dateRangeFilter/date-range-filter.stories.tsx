@@ -56,7 +56,7 @@ const meta: Meta<DateRangeFilterProps> = {
     args: {
         dateRangeOptions: [dateRangeOptionPresets.lastMonth, dateRangeOptionPresets.allTimes, customDateRange],
         earliestDate,
-        value: undefined,
+        value: null,
         lapisDateField: 'aDateColumn',
         width: '100%',
         placeholder,
@@ -194,16 +194,14 @@ export const ChangingTheValueProgrammatically: StoryObj<DateRangeFilterProps> = 
     ...Primary,
     render: (args) => {
         const StatefulWrapper = () => {
-            const [value, setValue] = useState<DateRangeValue | undefined>('Last month');
+            const [value, setValue] = useState<DateRangeValue>('Last month');
             const ref = useRef<HTMLDivElement>(null);
 
             useEffect(() => {
                 ref.current?.addEventListener('gs-date-range-option-changed', (event) => {
-                    const newValue = (event as CustomEvent).detail;
-                    setValue(newValue ?? undefined);
+                    setValue(event.detail);
                 });
             }, []);
-
             return (
                 <div ref={ref}>
                     <LapisUrlContextProvider value={LAPIS_URL}>
