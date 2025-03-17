@@ -49,7 +49,7 @@ export const InvalidProps: StoryObj<GenomeDataViewerProps> = {
         await step('expect error message', async () => {
             await expectInvalidAttributesErrorMessage(
                 canvasElement,
-                '"gff3Source": url must contain at least 1 character(s)',
+                '"gff3Source.url": String must contain at least 1 character(s)',
             );
         });
     },
