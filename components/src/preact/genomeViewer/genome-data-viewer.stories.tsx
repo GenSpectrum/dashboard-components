@@ -9,10 +9,6 @@ const meta: Meta<GenomeDataViewerProps> = {
     argTypes: {
         width: { control: { type: 'text' } },
         height: { control: { type: 'text' } },
-        views: {
-            options: ['map', 'table'],
-            control: { type: 'check' },
-        },
         zoom: { control: { type: 'number' } },
         offsetX: { control: { type: 'number' } },
         offsetY: { control: { type: 'number' } },

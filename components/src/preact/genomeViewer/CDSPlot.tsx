@@ -2,6 +2,7 @@ import { type FunctionComponent } from 'preact';
 
 import { type CDSFeature } from './loadGff3';
 import Tooltip from '../components/tooltip';
+import { singleGraphColorRGBByName } from '../shared/charts/colors';
 
 const max_chunk_number = 20;
 
@@ -81,7 +82,7 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
                                 style={{
                                     left: `${leftPercent}%`,
                                     width: `${widthPercent}%`,
-                                    backgroundColor: cds.color,
+                                    backgroundColor: singleGraphColorRGBByName(cds.color),
                                     whiteSpace: 'nowrap',
                                 }}
                             >
