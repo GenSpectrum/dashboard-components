@@ -34,13 +34,25 @@ export type MutationOverTimeData = {
     totalCount: number;
 };
 
-export type MutationOverTimeMutationValue = {
-    proportion: number;
-    count: number | null;
-    totalCount: number | null;
-} | null;
+export type MutationOverTimeMutationValue =
+    | {
+          type: 'value';
+          proportion: number;
+          count: number;
+          totalCount: number;
+      }
+    | {
+          type: 'wastewaterValue';
+          proportion: number;
+      }
+    | {
+          type: 'belowThreshold';
+          totalCount: number | null;
+      }
+    | null;
 
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
+export const MUTATIONS_OVER_TIME_MIN_PROPORTION = 0.001;
 
 export async function queryOverallMutationData({
     lapisFilter,
@@ -204,7 +216,7 @@ function fetchAndPrepareDates<LapisDateField extends string>(
 }
 
 function fetchAndPrepareSubstitutionsOrDeletions(filter: LapisFilter, sequenceType: SequenceType) {
-    return new FetchSubstitutionsOrDeletionsOperator(filter, sequenceType, 0.001);
+    return new FetchSubstitutionsOrDeletionsOperator(filter, sequenceType, MUTATIONS_OVER_TIME_MIN_PROPORTION);
 }
 
 export function serializeSubstitutionOrDeletion(mutation: Substitution | Deletion) {
@@ -248,6 +260,7 @@ export function groupByMutation(
 
             if (dataArray.get(mutation, date) !== undefined) {
                 dataArray.set(mutation, date, {
+                    type: 'value',
                     count: mutationEntry.count,
                     proportion: mutationEntry.proportion,
                     totalCount: mutationData.totalCount,
@@ -258,8 +271,7 @@ export function groupByMutation(
         for (const firstAxisKey of dataArray.getFirstAxisKeys()) {
             if (dataArray.get(firstAxisKey, date) === null) {
                 dataArray.set(firstAxisKey, date, {
-                    count: 0,
-                    proportion: 0,
+                    type: 'belowThreshold',
                     totalCount: mutationData.totalCount,
                 });
             }

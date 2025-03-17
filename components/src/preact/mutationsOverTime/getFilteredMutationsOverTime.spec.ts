@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { BaseMutationOverTimeDataMap } from './MutationOverTimeData';
 import { getFilteredMutationOverTimeData } from './getFilteredMutationsOverTimeData';
+import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
 import { type DeletionEntry, type SubstitutionEntry } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type TemporalClass } from '../../utils/temporalClass';
@@ -240,10 +241,11 @@ describe('getFilteredMutationOverTimeData', () => {
     const someTemporal = yearMonthDay('2021-01-01');
     const anotherTemporal = yearMonthDay('2021-02-02');
     const someMutationOverTimeValue = {
+        type: 'value',
         count: 1,
         proportion: inFilter,
         totalCount: 10,
-    };
+    } satisfies MutationOverTimeMutationValue;
 
     function prepareMutationOverTimeData(
         mutationEntries: (SubstitutionEntry<Substitution> | DeletionEntry<Deletion>)[],

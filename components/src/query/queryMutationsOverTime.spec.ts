@@ -101,14 +101,14 @@ describe('queryMutationsOverTime', () => {
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
-                { proportion: 0.4, count: 4, totalCount: 11 },
-                { proportion: 0, count: 0, totalCount: 12 },
-                { proportion: 0, count: 0, totalCount: 13 },
+                { type: 'value', proportion: 0.4, count: 4, totalCount: 11 },
+                { type: 'belowThreshold', totalCount: 12 },
+                { type: 'belowThreshold', totalCount: 13 },
             ],
             [
-                { proportion: 0.1, count: 1, totalCount: 11 },
-                { proportion: 0.2, count: 2, totalCount: 12 },
-                { proportion: 0.3, count: 3, totalCount: 13 },
+                { type: 'value', proportion: 0.1, count: 1, totalCount: 11 },
+                { type: 'value', proportion: 0.2, count: 2, totalCount: 12 },
+                { type: 'value', proportion: 0.3, count: 3, totalCount: 13 },
             ],
         ]);
 
@@ -251,8 +251,16 @@ describe('queryMutationsOverTime', () => {
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
-            [{ proportion: 0.4, count: 4, totalCount: 11 }, null, { proportion: 0, count: 0, totalCount: 13 }],
-            [{ proportion: 0.1, count: 1, totalCount: 11 }, null, { proportion: 0.3, count: 3, totalCount: 13 }],
+            [
+                { type: 'value', proportion: 0.4, count: 4, totalCount: 11 },
+                null,
+                { type: 'belowThreshold', totalCount: 13 },
+            ],
+            [
+                { type: 'value', proportion: 0.1, count: 1, totalCount: 11 },
+                null,
+                { type: 'value', proportion: 0.3, count: 3, totalCount: 13 },
+            ],
         ]);
 
         const sequences = mutationOverTimeData.getFirstAxisKeys();
@@ -444,8 +452,8 @@ describe('queryMutationsOverTime', () => {
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
-                { proportion: 0.2, count: 2, totalCount: 11 },
-                { proportion: 0.3, count: 3, totalCount: 12 },
+                { type: 'value', proportion: 0.2, count: 2, totalCount: 11 },
+                { type: 'value', proportion: 0.3, count: 3, totalCount: 12 },
             ],
         ]);
 
@@ -536,8 +544,8 @@ describe('queryMutationsOverTime', () => {
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
-                { proportion: 0.1, count: 1, totalCount: 11 },
-                { proportion: 0.2, count: 2, totalCount: 12 },
+                { type: 'value', proportion: 0.1, count: 1, totalCount: 11 },
+                { type: 'value', proportion: 0.2, count: 2, totalCount: 12 },
             ],
         ]);
 
@@ -598,13 +606,7 @@ describe('queryMutationsOverTime', () => {
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
-            [
-                {
-                    proportion: 0.2,
-                    count: 2,
-                    totalCount: 11,
-                },
-            ],
+            [{ type: 'value', proportion: 0.2, count: 2, totalCount: 11 }],
         ]);
 
         const sequences = mutationOverTimeData.getFirstAxisKeys();
@@ -693,12 +695,12 @@ describe('queryMutationsOverTime', () => {
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
-                { proportion: 0.4, count: 4, totalCount: 11 },
-                { proportion: 0, count: 0, totalCount: 12 },
+                { type: 'value', proportion: 0.4, count: 4, totalCount: 11 },
+                { type: 'belowThreshold', totalCount: 12 },
             ],
             [
-                { proportion: 0.1, count: 1, totalCount: 11 },
-                { proportion: 0.2, count: 2, totalCount: 12 },
+                { type: 'value', proportion: 0.1, count: 1, totalCount: 11 },
+                { type: 'value', proportion: 0.2, count: 2, totalCount: 12 },
             ],
         ]);
 
@@ -741,7 +743,7 @@ describe('queryMutationsOverTime', () => {
         expect(dates.length).toBe(0);
     });
 
-    it('should fill with 0 if the mutation does not exist in a date range but count > 0', async () => {
+    it('should fill with "belowThreshold" if the mutation does not exist in a date range but count > 0', async () => {
         const lapisFilter = { field1: 'value1', field2: 'value2' };
         const dateField = 'dateField';
 
@@ -820,8 +822,8 @@ describe('queryMutationsOverTime', () => {
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
-                { proportion: 0.1, count: 1, totalCount: 11 },
-                { proportion: 0, count: 0, totalCount: 11 },
+                { type: 'value', proportion: 0.1, count: 1, totalCount: 11 },
+                { type: 'belowThreshold', totalCount: 11 },
             ],
         ]);
     });
