@@ -32,7 +32,8 @@ export const GenomeDataViewer: FunctionComponent<GenomeDataViewerProps> = (compo
 };
 
 const GenomeDataViewerInner: FunctionComponent<GenomeDataViewerProps> = (props) => {
-    const { gff3Source } = props;
+    const { gff3Source, width, height } = props;
+    const size = { height, width };
 
     const { data, error, isLoading: isLoadingData } = useQuery(async () => queryGff3Data(gff3Source), [gff3Source]);
 
@@ -46,5 +47,5 @@ const GenomeDataViewerInner: FunctionComponent<GenomeDataViewerProps> = (props) 
 
     //const maintainAspectRatio = getMaintainAspectRatio(props.height);
 
-    return <CDSPlot gffData={data} genomeLength={props.genomeLength} />;
+    return <CDSPlot gffData={data} genomeLength={props.genomeLength} size={size} />;
 };
