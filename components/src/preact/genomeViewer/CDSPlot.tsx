@@ -86,10 +86,12 @@ const XAxis: FunctionComponent<XAxisProps> = (componentProps) => {
 
     const ticks = useMemo(() => getTicks(zoomStart, zoomEnd, fullWidth), [zoomStart, zoomEnd, fullWidth]);
     const visibleRegionLength = useMemo(() => zoomEnd - zoomStart, [zoomStart, zoomEnd]);
+    const averageWidth = useMemo(() => visibleRegionLength / ticks.length, [visibleRegionLength, ticks.length]);
     return (
         <>
             {ticks.map((tick, idx) => {
-                const widthPercent = ((tick.end - tick.start) / visibleRegionLength) * 100;
+                const width = tick.end - tick.start;
+                const widthPercent = (width / visibleRegionLength) * 100;
                 const leftPercent = ((tick.start - zoomStart) / visibleRegionLength) * 100;
                 return (
                     <div
@@ -102,7 +104,7 @@ const XAxis: FunctionComponent<XAxisProps> = (componentProps) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        {tick.start}
+                        {width >= averageWidth ? tick.start : ''}
                     </div>
                 );
             })}
@@ -179,6 +181,8 @@ const CDSBars: FunctionComponent<CDSBarsProps> = (componentProps) => {
                                 width: `${widthPercent}%`,
                                 backgroundColor: singleGraphColorRGBByName(cds.color),
                                 whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
                             }}
                         >
                             {cds.label}
