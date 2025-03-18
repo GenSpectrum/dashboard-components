@@ -45,7 +45,7 @@ const AnnotatedMutationWithoutContext: FunctionComponent<AnnotatedMutationWithou
     annotationsProvider,
     modalRef,
 }) => {
-    const mutationAnnotations = annotationsProvider(mutation.code, sequenceType);
+    const mutationAnnotations = annotationsProvider(mutation, sequenceType);
 
     if (mutationAnnotations === undefined || mutationAnnotations.length === 0) {
         return mutation.code;
@@ -67,7 +67,11 @@ const AnnotatedMutationWithoutContext: FunctionComponent<AnnotatedMutationWithou
     );
 
     return (
-        <ButtonWithModalDialog buttonClassName={'select-text'} modalContent={modalContent} modalRef={modalRef}>
+        <ButtonWithModalDialog
+            buttonClassName={'select-text cursor-pointer'}
+            modalContent={modalContent}
+            modalRef={modalRef}
+        >
             {mutation.code}
             <sup>
                 {mutationAnnotations

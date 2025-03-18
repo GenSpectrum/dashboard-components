@@ -19,7 +19,9 @@ The mutation annotations can be (optionally) supplied to `gs-app` as a JSON obje
             description: 'This describes what is special about these mutations.',
             symbol: '+',
             nucleotideMutations: ['C44T', 'C774T', 'G24872T', 'T23011-'],
+            nucleotidePositions: ['123', '234'],
             aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
+            aminoAcidPositions: ['S:123', 'ORF1a:234']
         },
     ]"
 >
@@ -31,3 +33,9 @@ The mutation annotations are then distributed to child components.
 Whenever we display a mutation (e.g. in the `gs-mutations` table view)
 we will append the `symbol` of all matching annotations: <span>C44T<sup class='text-red-600'>+</sup></span>.
 Users can click on the mutation to open a modal that shows the `name` and `description` of the annotation.
+
+The annotation can be applied to specific mutations:
+
+- `nucleotideMutations: [C44T]` matches only the nucleotide mutation `C44T`,
+- `aminoAcidPositions: [S:123]` matches all amino acid mutations that occur on the gene `S` at position `123`
+- If the pathogen has only one segment, one can omit the segment, writing `123` for any mutation at position `123`.
