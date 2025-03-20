@@ -1,4 +1,4 @@
-import { type FunctionComponent } from 'preact';
+import { Fragment, type FunctionComponent } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 
 import { type CDSFeature } from './loadGff3';
@@ -128,68 +128,65 @@ const CDSBars: FunctionComponent<CDSBarsProps> = (componentProps) => {
     const visibleRegionLength = useMemo(() => zoomEnd - zoomStart, [zoomStart, zoomEnd]);
     return (
         <div className={'w-full h-fit'}>
-            {gffData.map((cds, idx) => {
-                const start = Math.max(cds.start, zoomStart);
-                const end = Math.min(cds.end, zoomEnd);
-                if (start >= end) {
-                    return null;
-                }
-                const widthPercent = ((end - start) / visibleRegionLength) * 100;
-                const leftPercent = ((start - zoomStart) / visibleRegionLength) * 100;
-                const position = getTooltipPosition(start, end, visibleRegionLength);
-                const tooltipContent = (
-                    <div>
-                        <p>
-                            <span className='font-bold'>{cds.label}</span>
-                        </p>
-                        <tbody>
-                            <tr>
-                                <th className='font-medium' scope='row'>
-                                    Start
-                                </th>
-                                <td>{start}</td>
-                            </tr>
-                            <tr>
-                                <th className='font-medium' scope='row'>
-                                    End
-                                </th>
-                                <td>{end}</td>
-                            </tr>
-                            <tr>
-                                <th className='font-medium' scope='row'>
-                                    Length
-                                </th>
-                                <td>{end - start}</td>
-                            </tr>
-                        </tbody>
-                    </div>
-                );
-                return (
-                    <Tooltip
-                        content={tooltipContent}
-                        position={position}
-                        key={idx}
-                        tooltipStyle={{
-                            left: `${leftPercent}%`,
-                        }}
-                    >
-                        <div
-                            key={idx}
-                            class='absolute text-xs text-white rounded px-1 py-0.5 cursor-pointer hover:opacity-80 shadow-md'
-                            style={{
-                                left: `${leftPercent}%`,
-                                width: `${widthPercent}%`,
-                                backgroundColor: singleGraphColorRGBByName(cds.color),
-                                whiteSpace: 'nowrap',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                            }}
-                        >
-                            {cds.label}
-                        </div>
-                    </Tooltip>
-                );
-            })}
+            {gffData.map((cds, idx) => (
+                <Fragment key={idx}>
+                    {cds.positions.map((position, posIdx) => {
+                        const start = Math.max(position.start, zoomStart);
+                        const end = Math.min(position.end, zoomEnd);
+
+                        if (start >= end) {
+                            return null;
+                        }
+
+                        const widthPercent = ((end - start) / visibleRegionLength) * 100;
+                        const leftPercent = ((start - zoomStart) / visibleRegionLength) * 100;
+                        const tooltipPosition = getTooltipPosition(start, end, visibleRegionLength);
+                        const tooltipContent = (
+                            <div>
+                                <p>
+                                    <span className='font-bold'>{cds.label}</span>
+                                </p>
+                                <tbody>
+                                    <tr>
+                                        <th className='font-medium'>Start</th>
+                                        <td>{position.start}</td>
+                                    </tr>
+                                    <tr>
+                                        <th className='font-medium'>End</th>
+                                        <td>{position.end}</td>
+                                    </tr>
+                                    <tr>
+                                        <th className='font-medium'>Length</th>
+                                        <td>{position.end - position.start}</td>
+                                    </tr>
+                                </tbody>
+                            </div>
+                        );
+                        return (
+                            <Tooltip
+                                content={tooltipContent}
+                                position={tooltipPosition}
+                                key={`${idx}-${posIdx}`}
+                                tooltipStyle={{ left: `${leftPercent}%` }}
+                            >
+                                <div
+                                    className='absolute text-xs text-white rounded px-1 py-0.5 cursor-pointer hover:opacity-80 shadow-md'
+                                    style={{
+                                        left: `${leftPercent}%`,
+                                        width: `${widthPercent}%`,
+                                        backgroundColor: singleGraphColorRGBByName(cds.color),
+                                        whiteSpace: 'nowrap',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                    }}
+                                >
+                                    {cds.label}
+                                </div>
+                            </Tooltip>
+                        );
+                    })}
+                </Fragment>
+            ))}
         </div>
     );
 };
