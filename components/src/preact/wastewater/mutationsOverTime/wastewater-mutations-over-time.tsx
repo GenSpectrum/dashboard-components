@@ -4,6 +4,7 @@ import z from 'zod';
 
 import { computeWastewaterMutationsOverTimeDataPerLocation } from './computeWastewaterMutationsOverTimeDataPerLocation';
 import { lapisFilterSchema, sequenceTypeSchema } from '../../../types';
+import { Map2dView } from '../../../utils/map2d';
 import { useLapisUrl } from '../../LapisUrlContext';
 import { type ColorScale } from '../../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../../components/color-scale-selector-dropdown';
@@ -100,6 +101,26 @@ type MutationOverTimeTabsProps = {
     originalComponentProps: WastewaterMutationsOverTimeProps;
 };
 
+export function getFilteredMutationOverTimeData({
+    data,
+    displayedSegments,
+}: {
+    data: MutationOverTimeDataMap;
+    displayedSegments: DisplayedSegment[];
+}): MutationOverTimeDataMap {
+    const filteredData = new Map2dView(data);
+
+    const mutationsToFilterOut = data.getFirstAxisKeys().filter((entry) => {
+        return displayedSegments.some((segment) => segment.segment === entry.segment && !segment.checked);
+    });
+
+    mutationsToFilterOut.forEach((entry) => {
+        filteredData.deleteRow(entry);
+    });
+
+    return filteredData;
+}
+
 const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     mutationOverTimeDataPerLocation,
     originalComponentProps,
@@ -111,7 +132,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         title: location,
         content: (
             <MutationsOverTimeGrid
-                data={data}
+                data={getFilteredMutationOverTimeData({ data, displayedSegments })}
                 colorScale={colorScale}
                 pageSizes={originalComponentProps.pageSizes}
                 sequenceType={originalComponentProps.sequenceType}
