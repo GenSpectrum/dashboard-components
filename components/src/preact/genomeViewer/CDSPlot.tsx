@@ -218,11 +218,11 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
     return (
         <div class='p-4'>
             <h2 class='text-xl font-semibold mb-2'>Genome Data Viewer</h2>
-            <div class='relative h-20 w-full'>
+            <div class='relative h-15 w-full'>
                 <CDSBars gffData={gffData} zoomStart={zoomStart} zoomEnd={zoomEnd} />
                 <XAxis zoomStart={zoomStart} zoomEnd={zoomEnd} fullWidth={size.width} />
             </div>
-            <div class='relative h-20 w-full'>
+            <div class='relative w-full'>
                 <MinMaxRangeSlider
                     min={zoomStart}
                     max={zoomEnd}
