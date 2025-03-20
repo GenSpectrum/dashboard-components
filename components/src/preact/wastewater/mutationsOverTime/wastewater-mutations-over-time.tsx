@@ -13,6 +13,7 @@ import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../../com
 import { LoadingDisplay } from '../../components/loading-display';
 import { NoDataDisplay } from '../../components/no-data-display';
 import { ResizeContainer } from '../../components/resize-container';
+import { type DisplayedSegment, SegmentSelector } from '../../components/segment-selector';
 import Tabs from '../../components/tabs';
 import { type MutationOverTimeDataMap } from '../../mutationsOverTime/MutationOverTimeData';
 import MutationsOverTimeGrid from '../../mutationsOverTime/mutations-over-time-grid';
@@ -86,6 +87,14 @@ type MutationOverTimeDataPerLocation = {
     data: MutationOverTimeDataMap;
 }[];
 
+export function useDisplayedSegments(mutations: MutationOverTimeDataPerLocation) {
+    const unique = [
+        ...new Set(mutations.flatMap(({ data }) => data.getFirstAxisKeys().map((mutation) => mutation.segment || ''))),
+    ];
+
+    return useState<DisplayedSegment[]>(unique.map((segment) => ({ segment, label: segment, checked: true })));
+}
+
 type MutationOverTimeTabsProps = {
     mutationOverTimeDataPerLocation: MutationOverTimeDataPerLocation;
     originalComponentProps: WastewaterMutationsOverTimeProps;
@@ -96,6 +105,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     originalComponentProps,
 }) => {
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
+    const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(mutationOverTimeDataPerLocation);
 
     const tabs = mutationOverTimeDataPerLocation.map(({ location, data }) => ({
         title: location,
@@ -115,6 +125,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             setColorScale={setColorScale}
             originalComponentProps={originalComponentProps}
             data={mutationOverTimeDataPerLocation}
+            displayedSegments={displayedSegments}
+            setDisplayedSegments={setDisplayedSegments}
         />
     );
 
@@ -126,12 +138,21 @@ type ToolbarProps = {
     setColorScale: Dispatch<StateUpdater<ColorScale>>;
     originalComponentProps: WastewaterMutationsOverTimeProps;
     data: MutationOverTimeDataPerLocation;
+    displayedSegments: DisplayedSegment[];
+    setDisplayedSegments: (segments: DisplayedSegment[]) => void;
 };
 
-const Toolbar: FunctionComponent<ToolbarProps> = ({ colorScale, setColorScale, originalComponentProps }) => {
+const Toolbar: FunctionComponent<ToolbarProps> = ({
+    colorScale,
+    setColorScale,
+    originalComponentProps,
+    displayedSegments,
+    setDisplayedSegments,
+}) => {
     return (
         <>
             <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
+            <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
             <WastewaterMutationsOverTimeInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
         </>
