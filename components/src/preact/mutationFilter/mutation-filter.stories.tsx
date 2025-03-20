@@ -44,7 +44,7 @@ export const Default: StoryObj<MutationFilterProps> = {
     },
 };
 
-export const FiresFilterMultipleCommaSeparatedQueries: StoryObj<MutationFilterProps> = {
+export const EnterSingleMutationByClick: StoryObj<MutationFilterProps> = {
     ...Default,
     play: async ({ canvasElement, step }) => {
         const { canvas, changedListenerMock } = await prepare(canvasElement, step);
@@ -65,9 +65,101 @@ export const FiresFilterMultipleCommaSeparatedQueries: StoryObj<MutationFilterPr
                 ),
             );
         });
+    },
+};
+
+export const EnterSingleMutationByEnter: StoryObj<MutationFilterProps> = {
+    ...Default,
+    play: async ({ canvasElement, step }) => {
+        const { canvas, changedListenerMock } = await prepare(canvasElement, step);
+
+        await step('Enter a valid mutation', async () => {
+            await submitMutation(canvas, 'A123T', 'enter');
+
+            await waitFor(() =>
+                expect(changedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            nucleotideMutations: ['A123T'],
+                            aminoAcidMutations: [],
+                            nucleotideInsertions: [],
+                            aminoAcidInsertions: [],
+                        },
+                    }),
+                ),
+            );
+        });
+    },
+};
+
+export const IgnoreDuplicates: StoryObj<MutationFilterProps> = {
+    ...Default,
+    play: async ({ canvasElement, step }) => {
+        const { canvas } = await prepare(canvasElement, step);
+
+        await step('Enter duplicate', async () => {
+            await userEvent.type(inputField(canvas), 'A123T', INPUT_DELAY);
+        });
+
+        await step('Should not show duplicate', async () => {
+            const options = await canvas.findAllByRole('option');
+            expect(options.length === 1);
+
+            const firstOption = await canvas.findByRole('option', { name: 'A123' });
+            await expect(firstOption).toBeVisible();
+        });
+    },
+    args: {
+        ...Default.args,
+        initialValue: {
+            nucleotideMutations: ['A123T'],
+            aminoAcidMutations: [],
+            nucleotideInsertions: [],
+            aminoAcidInsertions: [],
+        },
+    },
+};
+
+export const RemoveMutationByClick: StoryObj<MutationFilterProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        initialValue: {
+            nucleotideMutations: ['A234T'],
+            aminoAcidMutations: ['S:A123G'],
+            nucleotideInsertions: ['ins_123:AAA'],
+            aminoAcidInsertions: ['ins_S:123:AAA'],
+        },
+    },
+    play: async ({ canvasElement, step }) => {
+        const { canvas, changedListenerMock } = await prepare(canvasElement, step);
+
+        await step('Remove a mutation', async () => {
+            await fireEvent.click(canvas.getByRole('button', { name: 'remove mutation filter A234T' }));
+
+            await waitFor(() =>
+                expect(changedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            nucleotideMutations: [],
+                            aminoAcidMutations: ['S:A123G'],
+                            nucleotideInsertions: ['ins_123:AAA'],
+                            aminoAcidInsertions: ['ins_S:123:AAA'],
+                        },
+                    }),
+                ),
+            );
+        });
+    },
+};
+
+export const PasteCommaSeparatedList: StoryObj<MutationFilterProps> = {
+    ...Default,
+    play: async ({ canvasElement, step }) => {
+        const { canvas, changedListenerMock } = await prepare(canvasElement, step);
 
         await step('Enter a comma separated list of valid and invalid mutations', async () => {
-            await pasteMutations(canvas, 'A123T, error_insX, A234T, ins_123:AA');
+            await pasteMutations(canvas, 'A123T, error_insX, A234T, notAMutation, ins_123:AA');
 
             await waitFor(() =>
                 expect(changedListenerMock).toHaveBeenCalledWith(
@@ -83,26 +175,44 @@ export const FiresFilterMultipleCommaSeparatedQueries: StoryObj<MutationFilterPr
             );
             await expect(canvas.queryByText('A123T')).toBeVisible();
             await expect(canvas.queryByText('A234T')).toBeVisible();
-            await expect(inputField(canvas)).toHaveValue('error_insX');
+            await expect(inputField(canvas)).toHaveValue('error_insX,notAMutation');
         });
+    },
+};
 
-        await step('Remove the first mutation', async () => {
-            const mutationItem = within(canvas.getByText('A234T'));
-            await fireEvent.click(mutationItem.getByRole('button', { name: '×' }));
+export const IgnoresDuplicatesOnPasteCommaSeparatedList: StoryObj<MutationFilterProps> = {
+    ...Default,
+    play: async ({ canvasElement, step }) => {
+        const { canvas, changedListenerMock } = await prepare(canvasElement, step);
+
+        await step('Enter a comma separated list with duplicates', async () => {
+            await pasteMutations(canvas, 'A123T, error_insX, A234T, A234T');
 
             await waitFor(() =>
                 expect(changedListenerMock).toHaveBeenCalledWith(
                     expect.objectContaining({
                         detail: {
-                            nucleotideMutations: ['A123T'],
+                            nucleotideMutations: ['A123T', 'A234T'],
                             aminoAcidMutations: [],
-                            nucleotideInsertions: ['ins_123:AA'],
+                            nucleotideInsertions: [],
                             aminoAcidInsertions: [],
                         },
                     }),
                 ),
             );
+            await expect(canvas.queryByText('A123T')).toBeVisible();
+            await expect(canvas.queryByText('A234T')).toBeVisible();
+            await expect(inputField(canvas)).toHaveValue('error_insX');
         });
+    },
+    args: {
+        ...Default.args,
+        initialValue: {
+            nucleotideMutations: ['A123T'],
+            aminoAcidMutations: [],
+            nucleotideInsertions: [],
+            aminoAcidInsertions: [],
+        },
     },
 };
 
@@ -115,7 +225,7 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
             await testNoOptionsExist(canvas, 'notAMutation');
             await expect(changedListenerMock).not.toHaveBeenCalled();
 
-            await userEvent.type(inputField(canvas), '{backspace>12/}');
+            await userEvent.type(inputField(canvas), '{backspace>12/}', INPUT_DELAY);
         });
 
         await step('Enter a valid mutation', async () => {
@@ -138,46 +248,51 @@ export const FiresFilterChangedEvents: StoryObj<MutationFilterProps> = {
         await step('Enter a second valid nucleotide mutation', async () => {
             await submitMutation(canvas, 'A234-');
 
-            await expect(changedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        nucleotideMutations: ['A123T', 'A234-'],
-                        aminoAcidMutations: [],
-                        nucleotideInsertions: [],
-                        aminoAcidInsertions: [],
-                    },
-                }),
+            await waitFor(() =>
+                expect(changedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            nucleotideMutations: ['A123T', 'A234-'],
+                            aminoAcidMutations: [],
+                            nucleotideInsertions: [],
+                            aminoAcidInsertions: [],
+                        },
+                    }),
+                ),
             );
         });
 
         await step('Enter another valid mutation', async () => {
             await submitMutation(canvas, 'ins_123:AA', 'enter');
 
-            await expect(changedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        nucleotideMutations: ['A123T', 'A234-'],
-                        aminoAcidMutations: [],
-                        nucleotideInsertions: ['ins_123:AA'],
-                        aminoAcidInsertions: [],
-                    },
-                }),
+            await waitFor(() =>
+                expect(changedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            nucleotideMutations: ['A123T', 'A234-'],
+                            aminoAcidMutations: [],
+                            nucleotideInsertions: ['ins_123:AA'],
+                            aminoAcidInsertions: [],
+                        },
+                    }),
+                ),
             );
         });
 
         await step('Remove the first mutation', async () => {
-            const mutationItem = within(canvas.getByText('A234-'));
-            await fireEvent.click(mutationItem.getByRole('button', { name: '×' }));
+            await fireEvent.click(canvas.getByRole('button', { name: 'remove mutation filter A234-' }));
 
-            await expect(changedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        nucleotideMutations: ['A123T'],
-                        aminoAcidMutations: [],
-                        nucleotideInsertions: ['ins_123:AA'],
-                        aminoAcidInsertions: [],
-                    },
-                }),
+            await waitFor(() =>
+                expect(changedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            nucleotideMutations: ['A123T'],
+                            aminoAcidMutations: [],
+                            nucleotideInsertions: ['ins_123:AA'],
+                            aminoAcidInsertions: [],
+                        },
+                    }),
+                ),
             );
         });
     },
@@ -206,15 +321,17 @@ export const WithInitialValue: StoryObj<MutationFilterProps> = {
         await step('Add input to initial value', async () => {
             await submitMutation(canvas, 'G500T');
 
-            await expect(changedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        nucleotideMutations: ['A234T', 'G500T'],
-                        aminoAcidMutations: ['S:A123G'],
-                        nucleotideInsertions: ['ins_123:AAA'],
-                        aminoAcidInsertions: ['ins_S:123:AAA'],
-                    },
-                }),
+            await waitFor(() =>
+                expect(changedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            nucleotideMutations: ['A234T', 'G500T'],
+                            aminoAcidMutations: ['S:A123G'],
+                            nucleotideInsertions: ['ins_123:AAA'],
+                            aminoAcidInsertions: ['ins_S:123:AAA'],
+                        },
+                    }),
+                ),
             );
         });
     },
@@ -254,12 +371,14 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
 
 export type SubmissionMethod = 'click' | 'enter';
 
+const INPUT_DELAY = { delay: 50 };
+
 const submitMutation = async (
     canvas: ReturnType<typeof within>,
     mutation: string,
     submissionMethod: SubmissionMethod = 'click',
 ) => {
-    await userEvent.type(inputField(canvas), mutation);
+    await userEvent.type(inputField(canvas), mutation, INPUT_DELAY);
     const firstOption = await canvas.findByRole('option', { name: mutation });
     if (submissionMethod === 'click') {
         await userEvent.click(firstOption);
@@ -275,7 +394,7 @@ const pasteMutations = async (canvas: ReturnType<typeof within>, mutation: strin
 };
 
 const testNoOptionsExist = async (canvas: ReturnType<typeof within>, mutation: string) => {
-    await userEvent.type(inputField(canvas), mutation);
+    await userEvent.type(inputField(canvas), mutation, INPUT_DELAY);
     const options = canvas.queryAllByRole('option');
 
     await expect(options).toHaveLength(0);
