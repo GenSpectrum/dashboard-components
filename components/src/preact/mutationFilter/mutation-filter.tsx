@@ -1,5 +1,6 @@
+import { useCombobox, useMultipleSelection } from 'downshift';
 import { type FunctionComponent } from 'preact';
-import { useContext, useRef, useState } from 'preact/hooks';
+import { useContext, useMemo, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { getExampleMutation } from './ExampleMutation';
@@ -31,21 +32,174 @@ export type SelectedFilters = {
     aminoAcidInsertions: InsertionClass[];
 };
 
+type SelectedNucleotideMutation = {
+    type: 'nucleotideMutations';
+    value: SubstitutionClass | DeletionClass;
+};
+
+type SelectedAminoAcidMutation = {
+    type: 'aminoAcidMutations';
+    value: SubstitutionClass | DeletionClass;
+};
+
+type SelectedNucleotideInsertion = {
+    type: 'nucleotideInsertions';
+    value: InsertionClass;
+};
+
+type SelectedAminoAcidInsertion = {
+    type: 'aminoAcidInsertions';
+    value: InsertionClass;
+};
+
+type SelectedItem =
+    | SelectedNucleotideMutation
+    | SelectedAminoAcidMutation
+    | SelectedNucleotideInsertion
+    | SelectedAminoAcidInsertion;
+
 export const MutationFilter: FunctionComponent<MutationFilterProps> = (props) => {
     const { width, initialValue } = props;
     return (
         <ErrorBoundary
-            size={{ height: '3.375rem', width }}
+            size={{ height: '40px', width }}
             layout='horizontal'
             schema={mutationFilterPropsSchema}
             componentProps={props}
         >
             <div style={width}>
-                <MutationFilterInner initialValue={initialValue} />
+                <MutationFilterNewInner initialValue={initialValue} />
             </div>
         </ErrorBoundary>
     );
 };
+
+function MutationFilterNewInner({ initialValue }: MutationFilterInnerProps) {
+    const referenceGenome = useContext(ReferenceGenomeContext);
+    const [inputValue, setInputValue] = useState('');
+    const [selectedItems, setSelectedItems] = useState<SelectedItem[]>([] as SelectedItem[]);
+    const [itemCandidate, setItemCandidate] = useState<SelectedItem | null>(null);
+
+    const items = useMemo(() => {
+        return itemCandidate ? [itemCandidate] : [];
+    }, [itemCandidate]);
+
+    const { getDropdownProps, removeSelectedItem } = useMultipleSelection({
+        selectedItems,
+        onStateChange({ selectedItems: newSelectedItems, type }) {
+            switch (type) {
+                case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
+                case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
+                case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
+                case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
+                    setSelectedItems(newSelectedItems ?? []);
+                    break;
+                default:
+                    break;
+            }
+        },
+    });
+
+    const { isOpen, getToggleButtonProps, getMenuProps, getInputProps, highlightedIndex, getItemProps, selectedItem } =
+        useCombobox({
+            items,
+            itemToString(item: SelectedItem | undefined | null) {
+                return item ? item.value.code : '';
+            },
+            selectedItem: null,
+            inputValue,
+            onStateChange({ inputValue: newInputValue, type, selectedItem: newSelectedItem }) {
+                switch (type) {
+                    case useCombobox.stateChangeTypes.InputKeyDownEnter:
+                    case useCombobox.stateChangeTypes.ItemClick:
+                    case useCombobox.stateChangeTypes.InputBlur:
+                        if (newSelectedItem) {
+                            setSelectedItems([...selectedItems, newSelectedItem]);
+                            setInputValue('');
+                            setItemCandidate(null);
+                        }
+                        break;
+
+                    case useCombobox.stateChangeTypes.InputChange: {
+                        setInputValue(newInputValue ?? '');
+                        if (newInputValue) {
+                            const candidate = parseAndValidateMutation(newInputValue, referenceGenome);
+
+                            if (candidate) {
+                                setItemCandidate(candidate);
+                            } else {
+                                setItemCandidate(null);
+                            }
+                        }
+
+                        break;
+                    }
+                    default:
+                        break;
+                }
+            },
+        });
+
+    if (referenceGenome.nucleotideSequences.length === 0 && referenceGenome.genes.length === 0) {
+        throw new UserFacingError(
+            'No reference sequences available',
+            'This organism has neither nucleotide nor amino acid sequences configured in its reference genome. You cannot filter by mutations.',
+        );
+    }
+
+    return (
+        <div className='w-full'>
+            <div className='flex flex-col gap-1'>
+                <div className='border-1 border-gray-200 rounded bg-white inline-flex gap-2 items-center flex-wrap px-1'>
+                    {selectedItems.map((selectedItemForRender, index) => {
+                        return (
+                            <SelectedFilter
+                                key={`selected-item-${index}`}
+                                handleRemoveValue={() => {
+                                    removeSelectedItem(selectedItemForRender);
+                                }}
+                                mutationFilter={selectedItemForRender}
+                            />
+                        );
+                    })}
+                    <div className='flex gap-0.5 grow input input-ghost'>
+                        <input
+                            placeholder={getPlaceholder(referenceGenome)}
+                            className='w-full'
+                            {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
+                        />
+                        {items.length > 0 && (
+                            <button aria-label='toggle menu' className='px-2' type='button' {...getToggleButtonProps()}>
+                                &#8595;
+                            </button>
+                        )}
+                        <MutationFilterInfo />
+                    </div>
+                </div>
+            </div>
+            <ul
+                className={`absolute w-inherit bg-white mt-1 shadow-md max-h-80 overflow-scroll p-0 z-10 ${
+                    !(isOpen && items.length) && 'hidden'
+                }`}
+                {...getMenuProps()}
+            >
+                {isOpen &&
+                    items.map((item, index) => (
+                        <li
+                            className={`${highlightedIndex === index && 'bg-blue-300'} ${selectedItem === item && 'font-bold'} py-2 px-3 shadow-sm flex flex-col cursor-pointer`}
+                            key={`${item.value.code}${index}`}
+                            {...getItemProps({ item, index })}
+                            style={{
+                                backgroundColor: backgroundColorMap(item, highlightedIndex === index ? 0.4 : 0.2),
+                            }}
+                        >
+                            <span>{item.value.code}</span>
+                        </li>
+                    ))}
+            </ul>
+        </div>
+    );
+}
 
 export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = ({ initialValue }) => {
     const referenceGenome = useContext(ReferenceGenomeContext);
@@ -269,8 +423,17 @@ const backgroundColor: { [key in keyof SelectedFilters]: string } = {
     nucleotideInsertions: singleGraphColorRGBByName('indigo', 0.4),
 };
 
-const backgroundColorMap = (data: ParsedMutationFilter) => {
-    return backgroundColor[data.type] || 'lightgray';
+const backgroundColorMap = (data: ParsedMutationFilter, alpha: number = 0.4) => {
+    switch (data.type) {
+        case 'nucleotideMutations':
+            return singleGraphColorRGBByName('green', alpha);
+        case 'aminoAcidMutations':
+            return singleGraphColorRGBByName('teal', alpha);
+        case 'nucleotideInsertions':
+            return singleGraphColorRGBByName('indigo', alpha);
+        case 'aminoAcidInsertions':
+            return singleGraphColorRGBByName('purple', alpha);
+    }
 };
 
 const SelectedMutationFilterDisplay: FunctionComponent<{
@@ -320,7 +483,7 @@ const SelectedFilter = ({ handleRemoveValue, mutationFilter }: SelectedFilterPro
     return (
         <span
             key={mutationFilter.value.toString()}
-            className='center p-2 m-1 inline-flex text-black rounded-md'
+            className='center px-2 py-1 inline-flex text-black rounded-md'
             style={{
                 backgroundColor: backgroundColorMap(mutationFilter),
             }}
