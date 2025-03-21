@@ -86,7 +86,7 @@ export const AminoAcids: StoryObj<WastewaterMutationsOverTimeProps> = {
             canvas.getByRole('checkbox', { name: 'S' }).click();
             await canvas.findAllByText('S:Q493E');
             const element = canvas.queryByText(/ORF1a:/);
-            await expect(element).toBeNull();
+            await expect(element).not.toBeInTheDocument();
         });
     },
 };
