@@ -141,7 +141,7 @@ function MutationFilterNewInner({ initialValue }: MutationFilterInnerProps) {
 
                     case useCombobox.stateChangeTypes.InputChange: {
                         setInputValue(newInputValue ?? '');
-                        if (newInputValue) {
+                        if (newInputValue !== undefined) {
                             const candidate = parseAndValidateMutation(newInputValue, referenceGenome);
 
                             if (candidate) {
