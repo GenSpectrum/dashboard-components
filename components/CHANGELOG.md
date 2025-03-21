@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.18.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.2...dashboard-components-v0.18.3) (2025-03-21)
+
+
+### Features
+
+* **components:** add dropdown to select genes for WISE rsv ([#824](https://github.com/GenSpectrum/dashboard-components/issues/824)) ([511f270](https://github.com/GenSpectrum/dashboard-components/commit/511f2709171b9728bb8ba5cb3a513041fa120c90))
+* **components:** allow annotations of positions ([#822](https://github.com/GenSpectrum/dashboard-components/issues/822)) ([368199f](https://github.com/GenSpectrum/dashboard-components/commit/368199fd4e482c0a3f3aaba9ed0ff7142d867081)), closes [#776](https://github.com/GenSpectrum/dashboard-components/issues/776)
+
+
+### Bug Fixes
+
+* **components:** disable outline when selecting regions in map in Chrome ([#729](https://github.com/GenSpectrum/dashboard-components/issues/729)) ([a11f778](https://github.com/GenSpectrum/dashboard-components/commit/a11f778159d8cf88b8f056a6c382a2434dc8b4ee))
+
 ## [0.18.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.1...dashboard-components-v0.18.2) (2025-03-17)
 
 
