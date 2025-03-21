@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
+import { expect } from '@storybook/test';
 
 import { WastewaterMutationsOverTime, type WastewaterMutationsOverTimeProps } from './wastewater-mutations-over-time';
 import { WISE_DETAILS_ENDPOINT, WISE_LAPIS_URL } from '../../../constants';
@@ -63,5 +64,29 @@ export const Default: StoryObj<WastewaterMutationsOverTimeProps> = {
                 },
             ],
         },
+    },
+};
+
+export const AminoAcids: StoryObj<WastewaterMutationsOverTimeProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        sequenceType: 'amino acid',
+    },
+    play: async ({ canvas, step }) => {
+        await step('Wait for component to render', async () => {
+            await canvas.findByText('All segments');
+        });
+
+        await step("Click 'All segments' button", async () => {
+            canvas.getByRole('button', { name: 'All segments' }).click();
+            await expect(canvas.getByText('Select none')).toBeInTheDocument();
+            canvas.getByRole('button', { name: 'Select none' }).click();
+            await canvas.findAllByText('No data available for your filters.');
+            canvas.getByRole('checkbox', { name: 'S' }).click();
+            await canvas.findAllByText('S:Q493E');
+            const element = canvas.queryByText(/ORF1a:/);
+            await expect(element).not.toBeInTheDocument();
+        });
     },
 };
