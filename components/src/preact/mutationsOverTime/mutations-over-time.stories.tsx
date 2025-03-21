@@ -5,6 +5,7 @@ import { type Canvas } from '@storybook/types';
 import { MutationsOverTime, type MutationsOverTimeProps } from './mutations-over-time';
 import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
+import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
@@ -49,6 +50,7 @@ const mutationAnnotations = [
         symbol: '#',
         nucleotideMutations: ['C44T', 'C774T', 'G24872T', 'T23011-'],
         aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
+        nucleotidePositions: ['17334'],
     },
     {
         name: 'I am another mutation annotation!',
@@ -57,7 +59,7 @@ const mutationAnnotations = [
         nucleotideMutations: ['C44T', 'A13121T'],
         aminoAcidMutations: ['S:501Y', 'S:S31-', 'ORF1a:S4286C'],
     },
-];
+] satisfies MutationAnnotations;
 
 export const Default: StoryObj<MutationsOverTimeProps> = {
     render: (args: MutationsOverTimeProps) => (

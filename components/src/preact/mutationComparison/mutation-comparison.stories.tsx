@@ -6,6 +6,7 @@ import nucleotideMutationsSomeDataset from './__mockData__/nucleotideMutationsSo
 import { MutationComparison, type MutationComparisonProps } from './mutation-comparison';
 import { LAPIS_URL, NUCLEOTIDE_MUTATIONS_ENDPOINT } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
+import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
@@ -90,8 +91,9 @@ const mutationAnnotations = [
         symbol: '+',
         nucleotideMutations: ['C3037T', 'A23403G'],
         aminoAcidMutations: ['ORF1a:I2230T'],
+        aminoAcidPositions: ['ORF1a:3675'],
     },
-];
+] satisfies MutationAnnotations;
 
 const Template: StoryObj<MutationComparisonProps> = {
     render: (args) => (

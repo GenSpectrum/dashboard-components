@@ -53,8 +53,10 @@ export class AppComponent extends LitElement {
         name: string;
         description: string;
         symbol: string;
-        nucleotideMutations: string[];
-        aminoAcidMutations: string[];
+        nucleotideMutations?: string[];
+        nucleotidePositions?: string[];
+        aminoAcidMutations?: string[];
+        aminoAcidPositions?: string[];
     }[] = [];
 
     /**

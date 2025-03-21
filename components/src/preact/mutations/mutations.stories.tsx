@@ -13,6 +13,7 @@ import {
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import baselineNucleotideMutations from '../../preact/mutations/__mockData__/baselineNucleotideMutations.json';
 import overallVariantCount from '../../preact/mutations/__mockData__/overallVariantCount.json';
+import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
@@ -45,6 +46,7 @@ const mutationAnnotations = [
         description: 'This describes what is special about these mutations.',
         symbol: '#',
         nucleotideMutations: ['C241T', 'C3037T'],
+        nucleotidePositions: [],
         aminoAcidMutations: ['N:G204R', 'N:S235F'],
     },
     {
@@ -52,9 +54,10 @@ const mutationAnnotations = [
         description: 'This describes what is special about these other mutations.',
         symbol: '+',
         nucleotideMutations: ['C3037T', 'C11750T'],
+        nucleotidePositions: ['14408'],
         aminoAcidMutations: ['ORF1a:S2255F'],
     },
-];
+] satisfies MutationAnnotations;
 
 const Template = {
     render: (args: MutationsProps) => (
