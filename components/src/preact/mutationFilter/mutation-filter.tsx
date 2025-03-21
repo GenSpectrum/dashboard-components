@@ -80,6 +80,7 @@ function MutationFilterNewInner({ initialValue }: MutationFilterInnerProps) {
     const [inputValue, setInputValue] = useState('');
     const [selectedItems, setSelectedItems] = useState<SelectedItem[]>(getInitialState(initialValue, referenceGenome));
     const [itemCandidate, setItemCandidate] = useState<SelectedItem | null>(null);
+    const [showErrorIndicator, setShowErrorIndicator] = useState(false);
 
     const items = useMemo(() => {
         return itemCandidate ? [itemCandidate] : [];
@@ -118,62 +119,61 @@ function MutationFilterNewInner({ initialValue }: MutationFilterInnerProps) {
         },
     });
 
-    const { isOpen, getToggleButtonProps, getMenuProps, getInputProps, highlightedIndex, getItemProps, selectedItem } =
-        useCombobox({
-            items,
-            itemToString(item: SelectedItem | undefined | null) {
-                return item ? item.value.code : '';
-            },
-            defaultHighlightedIndex: 0,
-            selectedItem: null,
-            inputValue,
-            onStateChange({ inputValue: newInputValue, type, selectedItem: newSelectedItem }) {
-                switch (type) {
-                    case useCombobox.stateChangeTypes.InputKeyDownEnter:
-                    case useCombobox.stateChangeTypes.ItemClick:
-                    case useCombobox.stateChangeTypes.InputBlur:
-                        if (newSelectedItem) {
-                            handleSelectedItemsChanged([...selectedItems, newSelectedItem]);
-                            setInputValue('');
-                            setItemCandidate(null);
-                        }
-                        break;
+    const { isOpen, getMenuProps, getInputProps, highlightedIndex, getItemProps, selectedItem } = useCombobox({
+        items,
+        itemToString(item: SelectedItem | undefined | null) {
+            return item ? item.value.code : '';
+        },
+        defaultHighlightedIndex: 0,
+        selectedItem: null,
+        inputValue,
+        onStateChange({ inputValue: newInputValue, type, selectedItem: newSelectedItem }) {
+            switch (type) {
+                case useCombobox.stateChangeTypes.InputKeyDownEnter:
+                case useCombobox.stateChangeTypes.ItemClick:
+                case useCombobox.stateChangeTypes.InputBlur:
+                    if (newSelectedItem) {
+                        handleSelectedItemsChanged([...selectedItems, newSelectedItem]);
+                        setInputValue('');
+                        setItemCandidate(null);
+                        setShowErrorIndicator(false);
+                    }
+                    break;
 
-                    case useCombobox.stateChangeTypes.InputChange: {
-                        if (newInputValue?.includes(',')) {
-                            const values = newInputValue?.split(',').map((value) => {
-                                return { value, parsedValue: parseAndValidateMutation(value.trim(), referenceGenome) };
-                            });
-                            const validEntries = values
-                                .map((value) => value.parsedValue)
-                                .filter((value) => value !== null);
-                            const invalidInput = values
-                                .filter((value) => value.parsedValue === null)
-                                .map((value) => value.value.trim())
-                                .join(',');
+                case useCombobox.stateChangeTypes.InputChange: {
+                    setShowErrorIndicator(false);
+                    if (newInputValue?.includes(',')) {
+                        const values = newInputValue?.split(',').map((value) => {
+                            return { value, parsedValue: parseAndValidateMutation(value.trim(), referenceGenome) };
+                        });
+                        const validEntries = values.map((value) => value.parsedValue).filter((value) => value !== null);
+                        const invalidInput = values
+                            .filter((value) => value.parsedValue === null)
+                            .map((value) => value.value.trim())
+                            .join(',');
 
-                            handleSelectedItemsChanged([...selectedItems, ...validEntries]);
-                            setInputValue(invalidInput);
-                            setItemCandidate(null);
-                        } else {
-                            setInputValue(newInputValue ?? '');
-                            if (newInputValue !== undefined) {
-                                const candidate = parseAndValidateMutation(newInputValue, referenceGenome);
-                                if (candidate) {
-                                    setItemCandidate(candidate);
-                                } else {
-                                    setItemCandidate(null);
-                                }
+                        handleSelectedItemsChanged([...selectedItems, ...validEntries]);
+                        setInputValue(invalidInput);
+                        setItemCandidate(null);
+                    } else {
+                        setInputValue(newInputValue ?? '');
+                        if (newInputValue !== undefined) {
+                            const candidate = parseAndValidateMutation(newInputValue, referenceGenome);
+                            if (candidate) {
+                                setItemCandidate(candidate);
+                            } else {
+                                setItemCandidate(null);
                             }
                         }
-
-                        break;
                     }
-                    default:
-                        break;
+
+                    break;
                 }
-            },
-        });
+                default:
+                    break;
+            }
+        },
+    });
 
     if (referenceGenome.nucleotideSequences.length === 0 && referenceGenome.genes.length === 0) {
         throw new UserFacingError(
@@ -184,54 +184,49 @@ function MutationFilterNewInner({ initialValue }: MutationFilterInnerProps) {
 
     return (
         <div className='w-full' ref={filterRef}>
-            <div className='flex flex-col gap-1'>
-                <div className='border-1 border-gray-200 rounded bg-white inline-flex gap-x-1 items-center flex-wrap p-1'>
-                    {selectedItems.map((selectedItemForRender, index) => {
-                        return (
-                            <div className='my-1' key={`selected-item-${index}`}>
-                                <SelectedFilter
-                                    handleRemoveValue={() => {
-                                        removeSelectedItem(selectedItemForRender);
-                                    }}
-                                    mutationFilter={selectedItemForRender}
-                                />
-                            </div>
-                        );
-                    })}
-                    <div className='flex gap-0.5 grow input input-ghost p-1'>
-                        <input
-                            placeholder={getPlaceholder(referenceGenome)}
-                            className='w-full'
-                            {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
-                        />
-                        {items.length > 0 && (
-                            <button aria-label='toggle menu' className='px-2' type='button' {...getToggleButtonProps()}>
-                                &#8595;
-                            </button>
-                        )}
-                        <MutationFilterInfo />
-                    </div>
+            <div className={`flex gap-x-1 flex-wrap p-1 input h-fit w-full ${showErrorIndicator ? 'input-error' : ''}`}>
+                {selectedItems.map((selectedItemForRender, index) => {
+                    return (
+                        <div className='my-1' key={`selected-item-${index}`}>
+                            <SelectedFilter
+                                handleRemoveValue={() => {
+                                    removeSelectedItem(selectedItemForRender);
+                                }}
+                                mutationFilter={selectedItemForRender}
+                            />
+                        </div>
+                    );
+                })}
+                <div className='flex gap-0.5 grow p-1'>
+                    <input
+                        placeholder={getPlaceholder(referenceGenome)}
+                        className='w-full focus:outline-none min-w-8'
+                        {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
+                        onBlur={() => {
+                            setShowErrorIndicator(inputValue !== '');
+                        }}
+                    />
+                    <MutationFilterInfo />
                 </div>
             </div>
             <ul
                 className={`absolute w-inherit bg-white mt-1 shadow-md max-h-80 overflow-scroll p-0 z-10 ${
-                    !(isOpen && items.length) && 'hidden'
+                    !isOpen && 'hidden'
                 }`}
                 {...getMenuProps()}
             >
-                {isOpen &&
-                    items.map((item, index) => (
-                        <li
-                            className={`${highlightedIndex === index && 'bg-blue-300'} ${selectedItem === item && 'font-bold'} py-2 px-3 shadow-sm flex flex-col cursor-pointer`}
-                            key={`${item.value.code}${index}`}
-                            {...getItemProps({ item, index })}
-                            style={{
-                                backgroundColor: backgroundColorMap(item, highlightedIndex === index ? 0.4 : 0.2),
-                            }}
-                        >
-                            <span>{item.value.code}</span>
-                        </li>
-                    ))}
+                {items.map((item, index) => (
+                    <li
+                        className={`${highlightedIndex === index && 'bg-blue-300'} ${selectedItem === item && 'font-bold'} py-2 px-3 shadow-sm flex flex-col cursor-pointer`}
+                        key={`${item.value.code}${index}`}
+                        {...getItemProps({ item, index })}
+                        style={{
+                            backgroundColor: backgroundColorMap(item, highlightedIndex === index ? 0.4 : 0.2),
+                        }}
+                    >
+                        <span>{item.value.code}</span>
+                    </li>
+                ))}
             </ul>
         </div>
     );
