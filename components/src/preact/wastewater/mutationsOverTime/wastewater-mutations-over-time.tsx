@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { type Dispatch, type StateUpdater, useState } from 'preact/hooks';
+import { type Dispatch, type StateUpdater, useMemo, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { computeWastewaterMutationsOverTimeDataPerLocation } from './computeWastewaterMutationsOverTimeDataPerLocation';
@@ -88,12 +88,18 @@ type MutationOverTimeDataPerLocation = {
     data: MutationOverTimeDataMap;
 }[];
 
-export function useDisplayedSegments(mutations: MutationOverTimeDataPerLocation) {
-    const unique = [
-        ...new Set(mutations.flatMap(({ data }) => data.getFirstAxisKeys().map((mutation) => mutation.segment || ''))),
-    ];
+function useDisplayedSegments(mutations: MutationOverTimeDataPerLocation) {
+    const displayedSegments = useMemo(() => {
+        const unique = [
+            ...new Set(
+                mutations.flatMap(({ data }) => data.getFirstAxisKeys().map((mutation) => mutation.segment || '')),
+            ),
+        ];
 
-    return useState<DisplayedSegment[]>(unique.map((segment) => ({ segment, label: segment, checked: true })));
+        return unique.map((segment) => ({ segment, label: segment, checked: true }));
+    }, [mutations]);
+
+    return useState<DisplayedSegment[]>(displayedSegments);
 }
 
 type MutationOverTimeTabsProps = {
@@ -101,7 +107,7 @@ type MutationOverTimeTabsProps = {
     originalComponentProps: WastewaterMutationsOverTimeProps;
 };
 
-export function getFilteredMutationOverTimeData({
+function getFilteredMutationOverTimeData({
     data,
     displayedSegments,
 }: {
@@ -128,17 +134,21 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
     const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(mutationOverTimeDataPerLocation);
 
-    const tabs = mutationOverTimeDataPerLocation.map(({ location, data }) => ({
-        title: location,
-        content: (
-            <MutationsOverTimeGrid
-                data={getFilteredMutationOverTimeData({ data, displayedSegments })}
-                colorScale={colorScale}
-                pageSizes={originalComponentProps.pageSizes}
-                sequenceType={originalComponentProps.sequenceType}
-            />
-        ),
-    }));
+    const tabs = useMemo(
+        () =>
+            mutationOverTimeDataPerLocation.map(({ location, data }) => ({
+                title: location,
+                content: (
+                    <MutationsOverTimeGrid
+                        data={getFilteredMutationOverTimeData({ data, displayedSegments })}
+                        colorScale={colorScale}
+                        pageSizes={originalComponentProps.pageSizes}
+                        sequenceType={originalComponentProps.sequenceType}
+                    />
+                ),
+            })),
+        [mutationOverTimeDataPerLocation, displayedSegments, colorScale, originalComponentProps],
+    );
 
     const toolbar = (
         <Toolbar
