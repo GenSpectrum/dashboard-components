@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
 
 import { GenomeDataViewer, type GenomeDataViewerProps } from './genome-data-viewer';
-import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
+import { playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const meta: Meta<GenomeDataViewerProps> = {
     title: 'Visualization/GenomeDataViewer',
@@ -31,6 +31,18 @@ NC_009942.1	RefSeq	CDS	6469	6846	.	+	.	gene=NS4A;Parent=gene-WNVNY99_gp1;gbkey=P
 NC_009942.1	RefSeq	CDS	6847	6915	.	+	.	gene=2K;Parent=gene-WNVNY99_gp1;gbkey=Prot;product=protein 2K;protein_id=YP_001527885.1
 NC_009942.1	RefSeq	CDS	6916	7680	.	+	.	gene=NS4B;Parent=gene-WNVNY99_gp1;gbkey=Prot;product=nonstructural protein NS4B;protein_id=YP_001527886.1
 NC_009942.1	RefSeq	CDS	7681	10395	.	+	.	gene=NS5;Parent=gene-WNVNY99_gp1;gbkey=Prot;product=RNA-dependent RNA polymerase NS5;protein_id=YP_001527887.1
+`;
+
+const mock_data2 = `
+##gff-version 3
+#!gff-spec-version 1.21
+#!processor NCBI annotwriter
+##sequence-region NC_026431.1 1 982
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=641809
+NC_026431.1	RefSeq	region	1	982	.	+	.	ID=NC_026431.1:1..982;Dbxref=taxon:641809;Name=7;collection-date=09-Apr-2009;country=USA: California state;gbkey=Src;genome=genomic;mol_type=viral cRNA;nat-host=Homo sapiens%3B gender M%3B age 54;segment=7;serotype=H1N1;strain=A/California/07/2009
+NC_026431.1	RefSeq	CDS	1	26	.	+	0	Name=M2;gene=M2;gbkey=CDS;locus_tag=UJ99_s7gp1;protein_id=YP_009118622.1;product=matrix protein 2;ID=cds-YP_009118622.1;Dbxref=GenBank:YP_009118622.1,GeneID:23308108
+NC_026431.1	RefSeq	CDS	715	982	.	+	1	Name=M2;gene=M2;gbkey=CDS;locus_tag=UJ99_s7gp1;protein_id=YP_009118622.1;product=matrix protein 2;ID=cds-YP_009118622.1;Dbxref=GenBank:YP_009118622.1,GeneID:23308108
+NC_026431.1	RefSeq	CDS	1	759	.	+	0	Name=M1;gene=M1;gbkey=CDS;locus_tag=UJ99_s7gp2;protein_id=YP_009118623.1;product=matrix protein 1;ID=cds-YP_009118623.1;Dbxref=GenBank:YP_009118623.1,GeneID:23308107
 `;
 
 export default meta;
@@ -73,12 +85,34 @@ export const InvalidProps: StoryObj<GenomeDataViewerProps> = {
         ...Default.args,
         gff3Source: '',
     },
-    play: async ({ canvasElement, step }) => {
-        await step('expect error message', async () => {
-            await expectInvalidAttributesErrorMessage(
-                canvasElement,
-                '"gff3Source": String must contain at least 1 character(s)',
-            );
-        });
+    play: playThatExpectsErrorMessage('Error - Invalid gff3 source', `Invalid URL passed to parseGFF3: ""`),
+};
+
+export const SplicedGeneAndOverlap: StoryObj<GenomeDataViewerProps> = {
+    render: (args) => <GenomeDataViewer {...args} />,
+    args: {
+        gff3Source: gff3Url,
+        genomeLength: 11029,
+        width: '1100px',
+        height: '500px',
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'gff3Data',
+                        url: gff3Url,
+                    },
+                    response: {
+                        status: 200,
+                        body: mock_data2,
+                        headers: {
+                            'Content-Type': 'text/plain',
+                        },
+                    },
+                },
+            ],
+        },
     },
 };

@@ -117,6 +117,28 @@ function getTooltipPosition(cds_start: number, cds_end: number, genomeLength: nu
     return `bottom-${tooltipY}` as const;
 }
 
+function getToolTipContent(cds: CDSFeature) {
+    const cdsLength = cds.positions.reduce((acc, pos) => acc + pos.end - pos.start, 0);
+    const cdsCoordinates = cds.positions.map((pos) => `${pos.start}-${pos.end}`).join(', ');
+    return (
+        <div>
+            <p>
+                <span className='font-bold'>{cds.label}</span>
+            </p>
+            <tbody>
+                <tr>
+                    <th className='font-medium'>CDS Length</th>
+                    <td>{cdsLength}</td>
+                </tr>
+                <tr>
+                    <th className='font-medium'>CDS Coordinates</th>
+                    <td>{cdsCoordinates}</td>
+                </tr>
+            </tbody>
+        </div>
+    );
+}
+
 interface CDSBarsProps {
     gffData: CDSFeature[];
     zoomStart: number;
@@ -141,27 +163,7 @@ const CDSBars: FunctionComponent<CDSBarsProps> = (componentProps) => {
                         const widthPercent = ((end - start) / visibleRegionLength) * 100;
                         const leftPercent = ((start - zoomStart) / visibleRegionLength) * 100;
                         const tooltipPosition = getTooltipPosition(start, end, visibleRegionLength);
-                        const tooltipContent = (
-                            <div>
-                                <p>
-                                    <span className='font-bold'>{cds.label}</span>
-                                </p>
-                                <tbody>
-                                    <tr>
-                                        <th className='font-medium'>Start</th>
-                                        <td>{position.start}</td>
-                                    </tr>
-                                    <tr>
-                                        <th className='font-medium'>End</th>
-                                        <td>{position.end}</td>
-                                    </tr>
-                                    <tr>
-                                        <th className='font-medium'>Length</th>
-                                        <td>{position.end - position.start}</td>
-                                    </tr>
-                                </tbody>
-                            </div>
-                        );
+                        const tooltipContent = getToolTipContent(cds);
                         return (
                             <Tooltip
                                 content={tooltipContent}
@@ -174,7 +176,7 @@ const CDSBars: FunctionComponent<CDSBarsProps> = (componentProps) => {
                                     style={{
                                         left: `${leftPercent}%`,
                                         width: `${widthPercent}%`,
-                                        backgroundColor: singleGraphColorRGBByName(cds.color),
+                                        backgroundColor: singleGraphColorRGBByName(cds.color!),
                                         whiteSpace: 'nowrap',
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',

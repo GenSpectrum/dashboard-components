@@ -1,3 +1,4 @@
+import { UserFacingError } from '../components/error-display';
 import { ColorsRGB, type GraphColor } from '../shared/charts/colors';
 
 export async function loadGff3(gff3Source: string) {
@@ -78,7 +79,7 @@ function getSortedCDSFeatures(cdsMap: CDSMap): CDSFeature[] {
     });
 
     const GraphColorList: GraphColor[] = Object.keys(ColorsRGB) as GraphColor[];
-    let colorIndex = Math.floor(Math.random() * GraphColorList.length);
+    let colorIndex = cdsFeatures[0].label[0].toUpperCase().charCodeAt(0);
     for (const cdsFeature of cdsFeatures) {
         cdsFeature.color = GraphColorList[colorIndex % GraphColorList.length];
         colorIndex++;
@@ -87,6 +88,12 @@ function getSortedCDSFeatures(cdsMap: CDSMap): CDSFeature[] {
 }
 
 async function parseGFF3(gff3Source: string): Promise<CDSFeature[]> {
+    try {
+        new URL(gff3Source);
+    } catch (_error) {
+        throw new UserFacingError('Invalid gff3 source', `Invalid URL passed to parseGFF3: "${gff3Source}"`);
+    }
+
     const response = await fetch(gff3Source);
     const content = await response.text();
     const lines = content.split('\n');
