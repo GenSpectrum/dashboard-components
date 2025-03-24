@@ -192,7 +192,7 @@ const ProportionCell: FunctionComponent<{
                         backgroundColor: getColorWithinScale(proportion, colorScale),
                         color: getTextColorForScale(proportion, colorScale),
                     }}
-                    className={`w-full h-full hover:font-bold text-xs group @container`}
+                    className={`w-full h-full hover:font-bold text-xs group @container text-nowrap`}
                 >
                     {value === null ? (
                         <span className='invisible'>No data</span>
