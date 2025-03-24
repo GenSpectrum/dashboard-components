@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.3...dashboard-components-v0.18.4) (2025-03-24)
+
+
+### Bug Fixes
+
+* **components:** pin `vite-plugin-dts` to 4.5.0 to export JSX.IntrinsicElements namespace declarations ([#828](https://github.com/GenSpectrum/dashboard-components/issues/828)) ([3b38707](https://github.com/GenSpectrum/dashboard-components/commit/3b387075821dec881a4b48f46722bc2ad5c39020))
+
 ## [0.18.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.2...dashboard-components-v0.18.3) (2025-03-21)
 
 
