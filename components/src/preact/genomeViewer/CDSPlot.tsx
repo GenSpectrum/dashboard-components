@@ -88,7 +88,7 @@ const XAxis: FunctionComponent<XAxisProps> = (componentProps) => {
     const visibleRegionLength = useMemo(() => zoomEnd - zoomStart, [zoomStart, zoomEnd]);
     const averageWidth = useMemo(() => visibleRegionLength / ticks.length, [visibleRegionLength, ticks.length]);
     return (
-        <>
+        <div className={'w-full h-6 relative'}>
             {ticks.map((tick, idx) => {
                 const width = tick.end - tick.start;
                 const widthPercent = (width / visibleRegionLength) * 100;
@@ -108,7 +108,7 @@ const XAxis: FunctionComponent<XAxisProps> = (componentProps) => {
                     </div>
                 );
             })}
-        </>
+        </div>
     );
 };
 
@@ -140,7 +140,7 @@ function getToolTipContent(cds: CDSFeature) {
 }
 
 interface CDSBarsProps {
-    gffData: CDSFeature[];
+    gffData: CDSFeature[][];
     zoomStart: number;
     zoomEnd: number;
 }
@@ -149,52 +149,56 @@ const CDSBars: FunctionComponent<CDSBarsProps> = (componentProps) => {
     const { gffData, zoomStart, zoomEnd } = componentProps;
     const visibleRegionLength = useMemo(() => zoomEnd - zoomStart, [zoomStart, zoomEnd]);
     return (
-        <div className={'w-full h-fit'}>
-            {gffData.map((cds, idx) => (
-                <Fragment key={idx}>
-                    {cds.positions.map((position, posIdx) => {
-                        const start = Math.max(position.start, zoomStart);
-                        const end = Math.min(position.end, zoomEnd);
+        <>
+            {gffData.map((data, list_id) => (
+                <div className={'w-full h-6 relative'} key={list_id}>
+                    {data.map((cds, idx) => (
+                        <Fragment key={idx}>
+                            {cds.positions.map((position, posIdx) => {
+                                const start = Math.max(position.start, zoomStart);
+                                const end = Math.min(position.end, zoomEnd);
 
-                        if (start >= end) {
-                            return null;
-                        }
+                                if (start >= end) {
+                                    return null;
+                                }
 
-                        const widthPercent = ((end - start) / visibleRegionLength) * 100;
-                        const leftPercent = ((start - zoomStart) / visibleRegionLength) * 100;
-                        const tooltipPosition = getTooltipPosition(start, end, visibleRegionLength);
-                        const tooltipContent = getToolTipContent(cds);
-                        return (
-                            <Tooltip
-                                content={tooltipContent}
-                                position={tooltipPosition}
-                                key={`${idx}-${posIdx}`}
-                                tooltipStyle={{ left: `${leftPercent}%` }}
-                            >
-                                <div
-                                    className='absolute text-xs text-white rounded px-1 py-0.5 cursor-pointer hover:opacity-80 shadow-md'
-                                    style={{
-                                        left: `${leftPercent}%`,
-                                        width: `${widthPercent}%`,
-                                        backgroundColor: singleGraphColorRGBByName(cds.color!),
-                                        whiteSpace: 'nowrap',
-                                        overflow: 'hidden',
-                                        textOverflow: 'ellipsis',
-                                    }}
-                                >
-                                    {cds.label}
-                                </div>
-                            </Tooltip>
-                        );
-                    })}
-                </Fragment>
+                                const widthPercent = ((end - start) / visibleRegionLength) * 100;
+                                const leftPercent = ((start - zoomStart) / visibleRegionLength) * 100;
+                                const tooltipPosition = getTooltipPosition(start, end, visibleRegionLength);
+                                const tooltipContent = getToolTipContent(cds);
+                                return (
+                                    <Tooltip
+                                        content={tooltipContent}
+                                        position={tooltipPosition}
+                                        key={`${idx}-${posIdx}`}
+                                        tooltipStyle={{ left: `${leftPercent}%` }}
+                                    >
+                                        <div
+                                            className='absolute text-xs text-white rounded px-1 py-0.5 cursor-pointer hover:opacity-80 shadow-md'
+                                            style={{
+                                                left: `${leftPercent}%`,
+                                                width: `${widthPercent}%`,
+                                                backgroundColor: singleGraphColorRGBByName(cds.color!),
+                                                whiteSpace: 'nowrap',
+                                                overflow: 'hidden',
+                                                textOverflow: 'ellipsis',
+                                            }}
+                                        >
+                                            {cds.label}
+                                        </div>
+                                    </Tooltip>
+                                );
+                            })}
+                        </Fragment>
+                    ))}
+                </div>
             ))}
-        </div>
+        </>
     );
 };
 
 interface CDSProps {
-    gffData: CDSFeature[];
+    gffData: CDSFeature[][];
     genomeLength: number;
     size: Size;
 }
@@ -218,12 +222,13 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
     };
 
     return (
-        <div class='p-4'>
+        <div class='p-4 relative'>
             <h2 class='text-xl font-semibold mb-2'>Genome Data Viewer</h2>
-            <div class='relative h-15 w-full'>
+            <div class='relative w-full'>
                 <CDSBars gffData={gffData} zoomStart={zoomStart} zoomEnd={zoomEnd} />
                 <XAxis zoomStart={zoomStart} zoomEnd={zoomEnd} fullWidth={size.width} />
             </div>
+            <div className='h-10' />
             <div class='relative w-full'>
                 <MinMaxRangeSlider
                     min={zoomStart}

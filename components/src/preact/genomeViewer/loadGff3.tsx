@@ -73,7 +73,17 @@ function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMa
 }
 
 function getSortedCDSFeatures(cdsMap: CDSMap): CDSFeature[] {
-    const cdsFeatures = Object.values(cdsMap);
+    const sortedMap: CDSMap = {};
+
+    for (const id in cdsMap) {
+        const feature = cdsMap[id];
+        const sortedPositions = [...feature.positions].sort((a, b) => a.start - b.start);
+        sortedMap[id] = {
+            ...feature,
+            positions: sortedPositions,
+        };
+    }
+    const cdsFeatures = Object.values(sortedMap);
     cdsFeatures.sort((a, b) => {
         return a.positions[0].start - b.positions[0].start;
     });
@@ -87,7 +97,26 @@ function getSortedCDSFeatures(cdsMap: CDSMap): CDSFeature[] {
     return cdsFeatures;
 }
 
-async function parseGFF3(gff3Source: string): Promise<CDSFeature[]> {
+function getNonOverlappingCDSFeatures(cdsFeatures: CDSFeature[]): CDSFeature[][] {
+    const nonOverlappingCDSFeatures: CDSFeature[][] = [];
+    for (const cdsFeature of cdsFeatures) {
+        let added = false;
+        for (const [index, cdsList] of nonOverlappingCDSFeatures.entries()) {
+            const lastCds = cdsList[cdsList.length - 1];
+            if (cdsFeature.positions[0].start > lastCds.positions[0].end) {
+                nonOverlappingCDSFeatures[index].push(cdsFeature);
+                added = true;
+                break;
+            }
+        }
+        if (!added) {
+            nonOverlappingCDSFeatures.push([cdsFeature]);
+        }
+    }
+    return nonOverlappingCDSFeatures;
+}
+
+async function parseGFF3(gff3Source: string): Promise<CDSFeature[][]> {
     try {
         new URL(gff3Source);
     } catch (_error) {
@@ -103,5 +132,5 @@ async function parseGFF3(gff3Source: string): Promise<CDSFeature[]> {
     const geneFeatures = getCDSMap(lines, 'gene', map);
     const cdsFeatures = getCDSMap(lines, 'CDS', geneFeatures);
 
-    return getSortedCDSFeatures(cdsFeatures);
+    return getNonOverlappingCDSFeatures(getSortedCDSFeatures(cdsFeatures));
 }

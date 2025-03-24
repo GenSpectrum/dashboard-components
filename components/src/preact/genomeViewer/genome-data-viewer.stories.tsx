@@ -92,7 +92,7 @@ export const SplicedGeneAndOverlap: StoryObj<GenomeDataViewerProps> = {
     render: (args) => <GenomeDataViewer {...args} />,
     args: {
         gff3Source: gff3Url,
-        genomeLength: 11029,
+        genomeLength: 982,
         width: '1100px',
         height: '500px',
     },
