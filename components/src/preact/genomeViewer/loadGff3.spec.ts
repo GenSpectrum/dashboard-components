@@ -21,7 +21,7 @@ describe('parseGFF3', () => {
         expect(result).to.deep.equal([
             [
                 {
-                    color: 'sand',
+                    color: 'rose',
                     positions: [
                         { start: 1, end: 26 },
                         { start: 715, end: 982 },
@@ -29,7 +29,7 @@ describe('parseGFF3', () => {
                     label: 'M2',
                 },
             ],
-            [{ color: 'rose', positions: [{ start: 1, end: 759 }], label: 'M1' }],
+            [{ color: 'wine', positions: [{ start: 1, end: 759 }], label: 'M1' }],
         ]);
     });
 });

@@ -4,7 +4,7 @@ import { ColorsRGB, type GraphColor } from '../shared/charts/colors';
 export type CDSFeature = {
     positions: position[];
     label: string;
-    color: GraphColor | undefined;
+    color: GraphColor;
 };
 
 type position = {
@@ -13,7 +13,7 @@ type position = {
 };
 
 type CDSMap = {
-    [id: string]: CDSFeature;
+    [id: string]: { positions: position[]; label: string };
 };
 
 export async function loadGff3(gff3Source: string) {
@@ -90,34 +90,37 @@ function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMa
         if (id in geneMap) {
             geneMap[id].positions.push({ start, end });
         } else {
-            geneMap[id] = { positions: [{ start, end }], label, color: undefined };
+            geneMap[id] = { positions: [{ start, end }], label };
         }
     }
     return geneMap;
 }
 
 function getSortedCDSFeatures(cdsMap: CDSMap): CDSFeature[] {
-    const sortedMap: CDSMap = {};
+    const mapValues = Object.values(cdsMap);
 
-    for (const id in cdsMap) {
-        const feature = cdsMap[id];
-        const sortedPositions = [...feature.positions].sort((a, b) => a.start - b.start);
-        sortedMap[id] = {
-            ...feature,
-            positions: sortedPositions,
-        };
+    for (let i = 0; i < mapValues.length; i += 1) {
+        const feature = mapValues[i];
+        const sortedPositions = feature.positions.sort((a, b) => a.start - b.start);
+        mapValues[i].positions = sortedPositions;
     }
-    const cdsFeatures = Object.values(sortedMap);
-    cdsFeatures.sort((a, b) => {
+
+    mapValues.sort((a, b) => {
         return a.positions[0].start - b.positions[0].start;
     });
 
     const GraphColorList: GraphColor[] = Object.keys(ColorsRGB) as GraphColor[];
-    let colorIndex = cdsFeatures[0].label[0].toUpperCase().charCodeAt(0);
-    for (const cdsFeature of cdsFeatures) {
-        cdsFeature.color = GraphColorList[colorIndex % GraphColorList.length];
+    let colorIndex = mapValues[0].label[0].toUpperCase().charCodeAt(0);
+
+    const cdsFeatures: CDSFeature[] = mapValues.map((value) => {
         colorIndex++;
-    }
+        return {
+            positions: value.positions,
+            label: value.label,
+            color: GraphColorList[colorIndex % GraphColorList.length],
+        };
+    });
+
     return cdsFeatures;
 }
 

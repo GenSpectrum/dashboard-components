@@ -184,7 +184,7 @@ const CDSBars: FunctionComponent<CDSBarsProps> = (componentProps) => {
                                             style={{
                                                 left: `${leftPercent}%`,
                                                 width: `${widthPercent}%`,
-                                                backgroundColor: singleGraphColorRGBByName(cds.color!),
+                                                backgroundColor: singleGraphColorRGBByName(cds.color),
                                                 whiteSpace: 'nowrap',
                                                 overflow: 'hidden',
                                                 textOverflow: 'ellipsis',
