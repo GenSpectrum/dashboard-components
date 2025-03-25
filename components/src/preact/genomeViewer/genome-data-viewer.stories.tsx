@@ -47,8 +47,7 @@ NC_026431.1	RefSeq	CDS	1	759	.	+	0	Name=M1;gene=M1;gbkey=CDS;locus_tag=UJ99_s7gp
 
 export default meta;
 
-const gff3Url =
-    'https://raw.githubusercontent.com/nextstrain/nextclade_data/8f2e791d3a59013ee88e1d1d7e83b486d39c4ecb/data/nextstrain/wnv/all-lineages/genome_annotation.gff3';
+const gff3Url = 'http://my.gff.data';
 
 export const Default: StoryObj<GenomeDataViewerProps> = {
     render: (args) => <GenomeDataViewer {...args} />,

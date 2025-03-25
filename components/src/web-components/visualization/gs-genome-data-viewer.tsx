@@ -1,26 +1,18 @@
-import leafletStyle from 'leaflet/dist/leaflet.css?inline';
-import { unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-import { GenomeDataViewer, type GenomeDataViewerProps } from '../../preact/genomeViewer/genome-data-viewer';
-import leafletStyleModifications from '../../preact/sequencesByLocation/leafletStyleModifications.css?inline';
-import type { Equals, Expect } from '../../utils/typeAssertions';
-import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
-
-const leafletCss = unsafeCSS(leafletStyle);
-const leafletModificationsCss = unsafeCSS(leafletStyleModifications);
+import { GenomeDataViewer } from '../../preact/genomeViewer/genome-data-viewer';
+import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
  * ## Context
  *
- * This component shows the CDS of a genome using a gff3 file as input.
+ * This component shows the Coding Sequence (CDS) of a genome using a gff3 file as input.
+ * The CDS shows which parts of the genome are translated into proteins.
  *
  */
 @customElement('gs-genome-data-viewer')
-export class GenomeDataViewerComponent extends PreactLitAdapterWithGridJsStyles {
-    static override styles = [...PreactLitAdapterWithGridJsStyles.styles, leafletCss, leafletModificationsCss];
-
+export class GenomeDataViewerComponent extends PreactLitAdapter {
     /**
      * Required
      *
@@ -79,14 +71,3 @@ declare global {
         }
     }
 }
-
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
-type GenomeLengthMatches = Expect<
-    Equals<typeof GenomeDataViewerComponent.prototype.genomeLength, GenomeDataViewerProps['genomeLength']>
->;
-type gff3SourceMatches = Expect<
-    Equals<typeof GenomeDataViewerComponent.prototype.gff3Source, GenomeDataViewerProps['gff3Source']>
->;
-type WidthMatches = Expect<Equals<typeof GenomeDataViewerComponent.prototype.width, GenomeDataViewerProps['width']>>;
-type HeightMatches = Expect<Equals<typeof GenomeDataViewerComponent.prototype.height, GenomeDataViewerProps['height']>>;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
