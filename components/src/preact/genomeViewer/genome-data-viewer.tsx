@@ -9,8 +9,8 @@ import CDSPlot from './CDSPlot';
 import { loadGff3 } from './loadGff3';
 
 const genomeDataViewerPropsSchema = z.object({
-    gff3Source: z.string(),
-    genomeLength: z.number(),
+    gff3Source: z.string().min(1, 'gff3Source cannot be empty'),
+    genomeLength: z.number().gt(0, 'genomeLength must be greater than 0'),
     width: z.string(),
     height: z.string(),
 });

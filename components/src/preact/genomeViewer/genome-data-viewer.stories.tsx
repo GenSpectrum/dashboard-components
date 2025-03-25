@@ -82,9 +82,9 @@ export const InvalidProps: StoryObj<GenomeDataViewerProps> = {
     ...Default,
     args: {
         ...Default.args,
-        gff3Source: '',
+        gff3Source: 'bla',
     },
-    play: playThatExpectsErrorMessage('Error - Invalid gff3 source', `Invalid URL passed to parseGFF3: ""`),
+    play: playThatExpectsErrorMessage('Error - Invalid gff3 source', `Invalid URL passed to parseGFF3: "bla"`),
 };
 
 export const SplicedGeneAndOverlap: StoryObj<GenomeDataViewerProps> = {

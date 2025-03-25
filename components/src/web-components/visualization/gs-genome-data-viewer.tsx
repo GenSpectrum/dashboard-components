@@ -19,7 +19,7 @@ export class GenomeDataViewerComponent extends PreactLitAdapter {
      * The source of the gff3 file. See component level docs for more information.
      */
     @property({ type: String })
-    gff3Source!: string;
+    gff3Source: string = '';
 
     /**
      * Required
@@ -27,7 +27,7 @@ export class GenomeDataViewerComponent extends PreactLitAdapter {
      * The source of the gff3 file. See component level docs for more information.
      */
     @property({ type: Number })
-    genomeLength!: number;
+    genomeLength: number = 0;
 
     /**
      * The width of the component.
