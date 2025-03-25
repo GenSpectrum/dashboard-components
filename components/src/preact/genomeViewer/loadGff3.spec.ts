@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import { type CDSFeature, parseGFF3 } from './loadGff3';
 
-export const SplicedGeneData = `
+const SplicedGeneData = `
 ##gff-version 3
 #!gff-spec-version 1.21
 #!processor NCBI annotwriter
