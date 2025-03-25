@@ -78,5 +78,4 @@ export const views = {
     line: 'line',
     bubble: 'bubble',
     map: 'map',
-    genome: 'genome',
 } as const;

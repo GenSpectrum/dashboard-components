@@ -1,12 +1,12 @@
 import type { FunctionComponent } from 'preact';
 import z from 'zod';
 
-import { queryGff3Data } from '../../query/queryGff3Data';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 import CDSPlot from './CDSPlot';
+import { loadGff3 } from './loadGff3';
 
 const genomeDataViewerPropsSchema = z.object({
     gff3Source: z.string(),
@@ -34,7 +34,7 @@ const GenomeDataViewerInner: FunctionComponent<GenomeDataViewerProps> = (props) 
     const { gff3Source, width, height } = props;
     const size = { height, width };
 
-    const { data, error, isLoading: isLoadingData } = useQuery(() => queryGff3Data(gff3Source), [gff3Source]);
+    const { data, error, isLoading: isLoadingData } = useQuery(() => loadGff3(gff3Source), [gff3Source]);
 
     if (isLoadingData) {
         return <LoadingDisplay />;

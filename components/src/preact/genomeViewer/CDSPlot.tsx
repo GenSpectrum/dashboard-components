@@ -10,7 +10,7 @@ import { singleGraphColorRGBByName } from '../shared/charts/colors';
 const MAX_TICK_NUMBER = 20;
 const MIN_TICK_NUMBER = 2;
 
-function get_max_tick_number(fullWidth: string): number {
+function getMaxTickNumber(fullWidth: string): number {
     const baseValue = 1000;
 
     if (fullWidth.endsWith('%')) {
@@ -44,28 +44,28 @@ function get_max_tick_number(fullWidth: string): number {
 }
 
 function getTicks(zoomStart: number, zoomEnd: number, fullWidth: string) {
-    const max_tick_number = get_max_tick_number(fullWidth);
+    const maxTickNumber = getMaxTickNumber(fullWidth);
     const length = zoomEnd - zoomStart;
-    const min_tick_size = length / max_tick_number;
-    let max_tick_size = 10 ** Math.round(Math.log(min_tick_size) / Math.log(10));
-    const num_ticks = Math.round(length / max_tick_size);
-    if (num_ticks > max_tick_number) {
-        if (num_ticks > 2 * max_tick_number) {
-            max_tick_size = max_tick_size * 5;
+    const minTickSize = length / maxTickNumber;
+    let maxTickSize = 10 ** Math.round(Math.log(minTickSize) / Math.log(10));
+    const numTicks = Math.round(length / maxTickSize);
+    if (numTicks > maxTickNumber) {
+        if (numTicks > 2 * maxTickNumber) {
+            maxTickSize = maxTickSize * 5;
         } else {
-            max_tick_size = max_tick_size * 2;
+            maxTickSize = maxTickSize * 2;
         }
     }
     const ticks = [];
 
-    const offset = Math.ceil(zoomStart / max_tick_size);
-    ticks.push({ start: zoomStart, end: zoomStart + max_tick_size - (zoomStart % max_tick_size) });
-    for (let i = 0; i <= num_ticks; i++) {
-        const start = i * max_tick_size + offset * max_tick_size;
+    const offset = Math.ceil(zoomStart / maxTickSize);
+    ticks.push({ start: zoomStart, end: zoomStart + maxTickSize - (zoomStart % maxTickSize) });
+    for (let i = 0; i <= numTicks; i++) {
+        const start = i * maxTickSize + offset * maxTickSize;
         if (start >= zoomEnd) {
             break;
         }
-        const end = (i + 1) * max_tick_size + offset * max_tick_size;
+        const end = (i + 1) * maxTickSize + offset * maxTickSize;
         if (end > zoomEnd) {
             ticks.push({ start, end: zoomEnd });
             break;
@@ -96,7 +96,7 @@ const XAxis: FunctionComponent<XAxisProps> = (componentProps) => {
                 return (
                     <div
                         key={idx}
-                        class='absolute text-xs text-black px-1 py-0.5 cursor-pointer hover:opacity-80 border-l border-r border-gray-400 border-t'
+                        class='absolute text-xs text-black px-1 py-0.5 hover:opacity-80 border-l border-r border-gray-400 border-t'
                         style={{
                             left: `${leftPercent}%`,
                             width: `${widthPercent}%`,
@@ -147,11 +147,11 @@ interface CDSBarsProps {
 
 const CDSBars: FunctionComponent<CDSBarsProps> = (componentProps) => {
     const { gffData, zoomStart, zoomEnd } = componentProps;
-    const visibleRegionLength = useMemo(() => zoomEnd - zoomStart, [zoomStart, zoomEnd]);
+    const visibleRegionLength = zoomEnd - zoomStart;
     return (
         <>
-            {gffData.map((data, list_id) => (
-                <div className={'w-full h-6 relative'} key={list_id}>
+            {gffData.map((data, listId) => (
+                <div className={'w-full h-6 relative'} key={listId}>
                     {data.map((cds, idx) => (
                         <Fragment key={idx}>
                             {cds.positions.map((position, posIdx) => {
