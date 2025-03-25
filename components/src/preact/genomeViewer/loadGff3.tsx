@@ -1,18 +1,6 @@
 import { UserFacingError } from '../components/error-display';
 import { ColorsRGB, type GraphColor } from '../shared/charts/colors';
 
-export async function loadGff3(gff3Source: string) {
-    try {
-        new URL(gff3Source);
-    } catch (_error) {
-        throw new UserFacingError('Invalid gff3 source', `Invalid URL passed to parseGFF3: "${gff3Source}"`);
-    }
-
-    const response = await fetch(gff3Source);
-    const content = await response.text();
-    return parseGFF3(content);
-}
-
 export type CDSFeature = {
     positions: position[];
     label: string;
@@ -28,6 +16,36 @@ type CDSMap = {
     [id: string]: CDSFeature;
 };
 
+export async function loadGff3(gff3Source: string) {
+    try {
+        new URL(gff3Source);
+    } catch (_error) {
+        throw new UserFacingError('Invalid gff3 source', `Invalid URL passed to parseGFF3: "${gff3Source}"`);
+    }
+
+    const response = await fetch(gff3Source);
+    const content = await response.text();
+    return parseGFF3(content);
+}
+
+export function parseGFF3(content: string): CDSFeature[][] {
+    /**
+     * Reads in CDS from GFF3 according to nextclade rules:
+     * https://docs.nextstrain.org/projects/nextclade/en/stable/user/input-files/03-genome-annotation.html
+     * Read in both gene and CDS features
+     * If a CDS feature has a gene feature as a parent, remove the gene feature
+     * Split the CDS features into non-overlapping features
+     */
+    const lines = content.split('\n');
+
+    const map: CDSMap = {};
+
+    const geneFeatures = getCDSMap(lines, 'gene', map);
+    const cdsFeatures = getCDSMap(lines, 'CDS', geneFeatures);
+
+    return getNonOverlappingCDSFeatures(getSortedCDSFeatures(cdsFeatures));
+}
+
 function getAttributes(attributes: string): Map<string, string> {
     const attrPairs = attributes.split(';');
     const attrMap = new Map<string, string>();
@@ -40,12 +58,6 @@ function getAttributes(attributes: string): Map<string, string> {
 }
 
 function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMap {
-    /**
-     * Reads in CDS from GFF3 according to nextclade rules:
-     * https://docs.nextstrain.org/projects/nextclade/en/stable/user/input-files/03-genome-annotation.html
-     * Read in both gene and CDS features
-     * If a CDS feature has a gene feature as a parent, remove the gene feature
-     */
     for (const line of lines) {
         if (line.startsWith('#') || line.trim() === '') {
             continue;
@@ -126,15 +138,4 @@ function getNonOverlappingCDSFeatures(cdsFeatures: CDSFeature[]): CDSFeature[][]
         }
     }
     return nonOverlappingCDSFeatures;
-}
-
-function parseGFF3(content: string): CDSFeature[][] {
-    const lines = content.split('\n');
-
-    const map: CDSMap = {};
-
-    const geneFeatures = getCDSMap(lines, 'gene', map);
-    const cdsFeatures = getCDSMap(lines, 'CDS', geneFeatures);
-
-    return getNonOverlappingCDSFeatures(getSortedCDSFeatures(cdsFeatures));
 }
