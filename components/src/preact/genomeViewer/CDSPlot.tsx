@@ -117,27 +117,34 @@ function getTooltipPosition(cds_start: number, cds_end: number, genomeLength: nu
     return `bottom-${tooltipY}` as const;
 }
 
-function getToolTipContent(cds: CDSFeature) {
+interface TooltipContentProps {
+    cds: CDSFeature;
+}
+
+const TooltipContent: FunctionComponent<TooltipContentProps> = (componentProps) => {
+    const { cds } = componentProps;
     const cdsLength = cds.positions.reduce((acc, pos) => acc + pos.end - pos.start, 0);
     const cdsCoordinates = cds.positions.map((pos) => `${pos.start}-${pos.end}`).join(', ');
     return (
-        <div>
+        <>
             <p>
                 <span className='font-bold'>{cds.label}</span>
             </p>
-            <tbody>
-                <tr>
-                    <th className='font-medium'>CDS Length</th>
-                    <td>{cdsLength}</td>
-                </tr>
-                <tr>
-                    <th className='font-medium'>CDS Coordinates</th>
-                    <td>{cdsCoordinates}</td>
-                </tr>
-            </tbody>
-        </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <th className='font-medium px-2'>CDS Length</th>
+                        <td>{cdsLength}</td>
+                    </tr>
+                    <tr>
+                        <th className='font-medium px-2'>CDS Coordinates</th>
+                        <td>{cdsCoordinates}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </>
     );
-}
+};
 
 interface CDSBarsProps {
     gffData: CDSFeature[][];
@@ -165,10 +172,9 @@ const CDSBars: FunctionComponent<CDSBarsProps> = (componentProps) => {
                                 const widthPercent = ((end - start) / visibleRegionLength) * 100;
                                 const leftPercent = ((start - zoomStart) / visibleRegionLength) * 100;
                                 const tooltipPosition = getTooltipPosition(start, end, visibleRegionLength);
-                                const tooltipContent = getToolTipContent(cds);
                                 return (
                                     <Tooltip
-                                        content={tooltipContent}
+                                        content={<TooltipContent cds={cds} />}
                                         position={tooltipPosition}
                                         key={`${idx}-${posIdx}`}
                                         tooltipStyle={{ left: `${leftPercent}%` }}
