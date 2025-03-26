@@ -99,17 +99,15 @@ function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMa
 function getSortedCDSFeatures(cdsMap: CDSMap): CDSFeature[] {
     const mapValues = Object.values(cdsMap);
 
-    for (let i = 0; i < mapValues.length; i += 1) {
-        const feature = mapValues[i];
-        const sortedPositions = feature.positions.sort((a, b) => a.start - b.start);
-        mapValues[i].positions = sortedPositions;
-    }
+    mapValues.forEach(feature => {
+        feature.positions.sort((a, b) => a.start - b.start);
+    });
 
     mapValues.sort((a, b) => {
         return a.positions[0].start - b.positions[0].start;
     });
 
-    const GraphColorList: GraphColor[] = Object.keys(ColorsRGB) as GraphColor[];
+    const GraphColorList = Object.keys(ColorsRGB) as GraphColor[];
     let colorIndex = mapValues[0].label[0].toUpperCase().charCodeAt(0);
 
     const cdsFeatures: CDSFeature[] = mapValues.map((value) => {
@@ -128,10 +126,10 @@ function getNonOverlappingCDSFeatures(cdsFeatures: CDSFeature[]): CDSFeature[][]
     const nonOverlappingCDSFeatures: CDSFeature[][] = [];
     for (const cdsFeature of cdsFeatures) {
         let added = false;
-        for (const [index, cdsList] of nonOverlappingCDSFeatures.entries()) {
+        for (const cdsList of nonOverlappingCDSFeatures) {
             const lastCds = cdsList[cdsList.length - 1];
             if (cdsFeature.positions[0].start > lastCds.positions[0].end) {
-                nonOverlappingCDSFeatures[index].push(cdsFeature);
+                cdsList.push(cdsFeature);
                 added = true;
                 break;
             }

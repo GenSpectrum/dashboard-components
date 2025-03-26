@@ -18,7 +18,7 @@ const codeExample = String.raw`
 ></gs-genome-data-viewer>`;
 
 const meta: Meta<Required<GenomeDataViewerProps>> = {
-    title: 'Genome Data Viewer',
+    title: 'Visualization/Genome Data Viewer',
     component: 'gs-genome-data-viewer',
     argTypes: {
         gff3Source: { control: 'text' },
