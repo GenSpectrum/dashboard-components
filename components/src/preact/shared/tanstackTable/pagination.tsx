@@ -1,5 +1,5 @@
 import type { Table } from '@tanstack/table-core';
-import z from 'zod';
+import z from 'zod'; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type PaginationProps = { table: Table<any> };
@@ -13,11 +13,15 @@ export function Pagination({
     pageSizes: PageSizes;
 }) {
     return (
-        <div className='flex items-center gap-4 justify-end flex-wrap'>
-            <PageSizeSelector table={table} pageSizes={pageSizes} />
-            <PageIndicator table={table} />
-            <GotoPageSelector table={table} />
-            <SelectPageButtons table={table} />
+        <div className='@container'>
+            <div className='flex items-center gap-x-6 gap-y-2 flex-wrap @xl:justify-end justify-center'>
+                <PageSizeSelector table={table} pageSizes={pageSizes} />
+                <PageIndicator table={table} />
+                <div className='@xl:block hidden'>
+                    <GotoPageSelector table={table} />
+                </div>
+                <SelectPageButtons table={table} />
+            </div>
         </div>
     );
 }
@@ -27,15 +31,18 @@ function PageIndicator({ table }: PaginationProps) {
         return null;
     }
 
+    const minRow = table.getState().pagination.pageIndex * table.getState().pagination.pageSize + 1;
+    const maxRow = minRow + table.getRowModel().rows.length - 1;
+    const numRows = table.getCoreRowModel().rows.length;
+
     return (
-        <span className='flex items-center gap-1'>
-            <div>Page</div>
-            <strong>
-                {table.getState().pagination.pageIndex + 1} of {table.getPageCount().toLocaleString()}
-            </strong>
+        <span className='text-sm'>
+            {minRow} - {maxRow} of {numRows}
         </span>
     );
 }
+
+const heightForSmallerLines = 'h-[calc(var(--size)*0.7)]';
 
 function PageSizeSelector({
     table,
@@ -48,10 +55,10 @@ function PageSizeSelector({
     }
 
     return (
-        <label className='flex items-center gap-2'>
-            <div className={'text-nowrap'}>Rows per page:</div>
+        <label className='flex items-center'>
+            <div className={'text-nowrap text-sm'}>Rows per page:</div>
             <select
-                className={'select'}
+                className={`select select-ghost select-sm ${heightForSmallerLines}`}
                 value={table.getState().pagination.pageSize}
                 onChange={(e) => {
                     table.setPageSize(Number(e.currentTarget?.value));
@@ -74,8 +81,8 @@ function GotoPageSelector({ table }: PaginationProps) {
     }
 
     return (
-        <label className='flex items-center'>
-            Go to page:
+        <label className='items-center flex'>
+            <span className='text-nowrap text-sm'>Go to page:</span>
             <input
                 type='number'
                 min='1'
@@ -85,7 +92,7 @@ function GotoPageSelector({ table }: PaginationProps) {
                     const page = e.currentTarget.value ? Number(e.currentTarget.value) - 1 : 0;
                     table.setPageIndex(page);
                 }}
-                className='input'
+                className={`input input-ghost input-sm ${heightForSmallerLines}`}
                 aria-label='Enter page number to go to'
             />
         </label>
