@@ -12,6 +12,7 @@ NC_026431.1	RefSeq	region	1	982	.	+	.	ID=NC_026431.1:1..982;Dbxref=taxon:641809;
 NC_026431.1	RefSeq	CDS	1	26	.	+	0	Name=M2;gene=M2;gbkey=CDS;locus_tag=UJ99_s7gp1;protein_id=YP_009118622.1;product=matrix protein 2;ID=cds-YP_009118622.1;Dbxref=GenBank:YP_009118622.1,GeneID:23308108
 NC_026431.1	RefSeq	CDS	715	982	.	+	1	Name=M2;gene=M2;gbkey=CDS;locus_tag=UJ99_s7gp1;protein_id=YP_009118622.1;product=matrix protein 2;ID=cds-YP_009118622.1;Dbxref=GenBank:YP_009118622.1,GeneID:23308108
 NC_026431.1	RefSeq	CDS	1	759	.	+	0	Name=M1;gene=M1;gbkey=CDS;locus_tag=UJ99_s7gp2;protein_id=YP_009118623.1;product=matrix protein 1;ID=cds-YP_009118623.1;Dbxref=GenBank:YP_009118623.1,GeneID:23308107
+NC_026431.1	RefSeq	CDS	760	790	.	+	0	Name=fakeGene;gene=fakeGene;gbkey=CDS;locus_tag=UJ99_s7fake;protein_id=YP_009118624.1;product=None;ID=cds-YP_009118624.1;Dbxref=GenBank:YP_009118624.1,GeneID:23308109
 `;
 
 describe('parseGFF3', () => {
@@ -21,7 +22,7 @@ describe('parseGFF3', () => {
         expect(result).to.deep.equal([
             [
                 {
-                    color: 'rose',
+                    color: 'sand',
                     positions: [
                         { start: 1, end: 26 },
                         { start: 715, end: 982 },
@@ -29,7 +30,10 @@ describe('parseGFF3', () => {
                     label: 'M2',
                 },
             ],
-            [{ color: 'wine', positions: [{ start: 1, end: 759 }], label: 'M1' }],
+            [
+                { color: 'rose', positions: [{ start: 1, end: 759 }], label: 'M1' },
+                { color: 'wine', positions: [{ start: 760, end: 790 }], label: 'fakeGene' },
+            ],
         ]);
     });
 });

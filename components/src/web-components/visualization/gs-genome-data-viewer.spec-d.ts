@@ -1,6 +1,7 @@
 import { describe, expectTypeOf, test } from 'vitest';
 
 import { GenomeDataViewerComponent } from './gs-genome-data-viewer';
+import type { GenomeDataViewerProps } from '../../preact/genomeViewer/genome-data-viewer';
 
 describe('gs-app types', () => {
     test('mutationAnnotations type should match', ({}) => {

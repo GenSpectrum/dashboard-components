@@ -134,7 +134,7 @@ function getNonOverlappingCDSFeatures(cdsFeatures: CDSFeature[]): CDSFeature[][]
         let added = false;
         for (const cdsList of nonOverlappingCDSFeatures) {
             const lastCds = cdsList[cdsList.length - 1];
-            if (cdsFeature.positions[0].start > lastCds.positions[0].end) {
+            if (cdsFeature.positions[0].start > lastCds.positions[lastCds.positions.length - 1].end) {
                 cdsList.push(cdsFeature);
                 added = true;
                 break;
