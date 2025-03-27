@@ -7,6 +7,8 @@ import { type DeletionEntry, type SubstitutionEntry } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type TemporalClass } from '../../utils/temporalClass';
 import { yearMonthDay } from '../../utils/temporalTestHelpers';
+import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
+import { getMutationAnnotationsContext, getMutationAnnotationsProvider } from '../MutationAnnotationsContext';
 
 describe('getFilteredMutationOverTimeData', () => {
     it('should filter by displayed segments', () => {
@@ -26,6 +28,11 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedMutationTypes: [],
             proportionInterval,
             displayMutations: undefined,
+            mutationFilterValue: '',
+            sequenceType: 'nucleotide',
+            annotationProvider: () => {
+                return [];
+            },
         });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([anotherSubstitution]);
@@ -55,6 +62,11 @@ describe('getFilteredMutationOverTimeData', () => {
                 },
             ],
             proportionInterval,
+            mutationFilterValue: '',
+            sequenceType: 'nucleotide',
+            annotationProvider: () => {
+                return [];
+            },
         });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([someDeletion]);
@@ -73,6 +85,11 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            mutationFilterValue: '',
+            sequenceType: 'nucleotide',
+            annotationProvider: () => {
+                return [];
+            },
         });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([anotherSubstitution, someDeletion]);
@@ -91,6 +108,11 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            mutationFilterValue: '',
+            sequenceType: 'nucleotide',
+            annotationProvider: () => {
+                return [];
+            },
         });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([anotherSubstitution, someDeletion]);
@@ -110,6 +132,11 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            mutationFilterValue: '',
+            sequenceType: 'nucleotide',
+            annotationProvider: () => {
+                return [];
+            },
         });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
@@ -129,6 +156,11 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            mutationFilterValue: '',
+            sequenceType: 'nucleotide',
+            annotationProvider: () => {
+                return [];
+            },
         });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
@@ -146,6 +178,11 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            mutationFilterValue: '',
+            sequenceType: 'nucleotide',
+            annotationProvider: () => {
+                return [];
+            },
         });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
@@ -164,6 +201,11 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            mutationFilterValue: '',
+            sequenceType: 'nucleotide',
+            annotationProvider: () => {
+                return [];
+            },
         });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
@@ -183,9 +225,95 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedMutationTypes: [],
             proportionInterval,
             displayMutations: [anotherSubstitution.code, someDeletion.code],
+            mutationFilterValue: '',
+            sequenceType: 'nucleotide',
+            annotationProvider: () => {
+                return [];
+            },
         });
 
         expect(result.getFirstAxisKeys()).to.deep.equal([anotherSubstitution, someDeletion]);
+    });
+
+    it('should filter by mutation filter value', () => {
+        const { data, overallMutationData } = prepareMutationOverTimeData([
+            someSubstitutionEntry,
+            anotherSubstitutionEntry,
+            someDeletionEntry,
+        ]);
+
+        const result = getFilteredMutationOverTimeData({
+            data,
+            overallMutationData,
+            displayedSegments: [],
+            displayedMutationTypes: [],
+            proportionInterval,
+            mutationFilterValue: '23T',
+            sequenceType: 'nucleotide',
+            annotationProvider: () => {
+                return [];
+            },
+        });
+
+        expect(result.getFirstAxisKeys()).to.deep.equal([someSubstitution]);
+    });
+
+    describe('should filter by annotation', () => {
+        const { data, overallMutationData } = prepareMutationOverTimeData([
+            someSubstitutionEntry,
+            anotherSubstitutionEntry,
+            someDeletionEntry,
+        ]);
+
+        const expectFilteredValue = (filterValue: string, annotations: MutationAnnotations) => {
+            const annotationProvider = getMutationAnnotationsProvider(getMutationAnnotationsContext(annotations));
+
+            const result = getFilteredMutationOverTimeData({
+                data,
+                overallMutationData,
+                displayedSegments: [],
+                displayedMutationTypes: [],
+                proportionInterval,
+                mutationFilterValue: filterValue,
+                sequenceType: 'nucleotide',
+                annotationProvider,
+            });
+
+            expect(result.getFirstAxisKeys()).to.deep.equal([someSubstitution]);
+        };
+
+        it('with filter value in symbol', () => {
+            expectFilteredValue('#', [
+                {
+                    name: 'Annotation 1',
+                    description: 'Description 1',
+                    symbol: '#',
+                    nucleotideMutations: ['A123T'],
+                },
+            ]);
+        });
+
+        it('with filter value in name', () => {
+            expectFilteredValue('Annota', [
+                {
+                    name: 'Annotation 1 #',
+                    description: 'Description 1',
+                    symbol: '+',
+                    nucleotideMutations: ['A123T'],
+                },
+            ]);
+        });
+
+        it('with filter value in name', () => {
+            expectFilteredValue('Descr', [
+                {
+                    name: 'Annotation 1',
+                    description: 'Description 1',
+                    symbol: '#',
+                    nucleotideMutations: ['A123T'],
+                },
+            ]);
+        });
     });
 
     const belowFilter = 0.1;

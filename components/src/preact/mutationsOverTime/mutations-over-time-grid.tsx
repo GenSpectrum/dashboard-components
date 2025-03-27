@@ -109,7 +109,6 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
-        debugTable: true,
         onPaginationChange: setPagination,
         state: {
             pagination,

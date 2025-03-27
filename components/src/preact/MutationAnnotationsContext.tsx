@@ -37,33 +37,7 @@ export const MutationAnnotationsContextProvider: FunctionalComponent<
             return parseResult;
         }
 
-        const nucleotideMap = new Map<string, MutationAnnotations>();
-        const nucleotidePositions = new Map<string, MutationAnnotations>();
-        const aminoAcidMap = new Map<string, MutationAnnotations>();
-        const aminoAcidPositions = new Map<string, MutationAnnotations>();
-
-        value.forEach((annotation) => {
-            new Set(annotation.nucleotideMutations).forEach((code) => {
-                addAnnotationToMap(nucleotideMap, code, annotation);
-            });
-            new Set(annotation.aminoAcidMutations).forEach((code) => {
-                addAnnotationToMap(aminoAcidMap, code, annotation);
-            });
-            new Set(annotation.nucleotidePositions).forEach((position) => {
-                addAnnotationToMap(nucleotidePositions, position, annotation);
-            });
-            new Set(annotation.aminoAcidPositions).forEach((position) => {
-                addAnnotationToMap(aminoAcidPositions, position, annotation);
-            });
-        });
-
-        return {
-            success: true as const,
-            value: {
-                nucleotide: { mutation: nucleotideMap, position: nucleotidePositions },
-                'amino acid': { mutation: aminoAcidMap, position: aminoAcidPositions },
-            },
-        };
+        return { success: true as const, value: getMutationAnnotationsContext(value) };
     }, [value]);
 
     if (!parseResult.success) {
@@ -79,6 +53,33 @@ export const MutationAnnotationsContextProvider: FunctionalComponent<
     );
 };
 
+export function getMutationAnnotationsContext(value: MutationAnnotations) {
+    const nucleotideMap = new Map<string, MutationAnnotations>();
+    const nucleotidePositions = new Map<string, MutationAnnotations>();
+    const aminoAcidMap = new Map<string, MutationAnnotations>();
+    const aminoAcidPositions = new Map<string, MutationAnnotations>();
+
+    value.forEach((annotation) => {
+        new Set(annotation.nucleotideMutations).forEach((code) => {
+            addAnnotationToMap(nucleotideMap, code, annotation);
+        });
+        new Set(annotation.aminoAcidMutations).forEach((code) => {
+            addAnnotationToMap(aminoAcidMap, code, annotation);
+        });
+        new Set(annotation.nucleotidePositions).forEach((position) => {
+            addAnnotationToMap(nucleotidePositions, position, annotation);
+        });
+        new Set(annotation.aminoAcidPositions).forEach((position) => {
+            addAnnotationToMap(aminoAcidPositions, position, annotation);
+        });
+    });
+
+    return {
+        nucleotide: { mutation: nucleotideMap, position: nucleotidePositions },
+        'amino acid': { mutation: aminoAcidMap, position: aminoAcidPositions },
+    };
+}
+
 function addAnnotationToMap(map: Map<string, MutationAnnotations>, code: string, annotation: MutationAnnotation) {
     const oldAnnotations = map.get(code.toUpperCase()) ?? [];
     map.set(code.toUpperCase(), [...oldAnnotations, annotation]);
@@ -87,6 +88,12 @@ function addAnnotationToMap(map: Map<string, MutationAnnotations>, code: string,
 export function useMutationAnnotationsProvider() {
     const mutationAnnotations = useContext(MutationAnnotationsContext);
 
+    return getMutationAnnotationsProvider(mutationAnnotations);
+}
+
+export function getMutationAnnotationsProvider(
+    mutationAnnotations: Record<SequenceType, MutationAnnotationPerSequenceType>,
+) {
     return (mutation: Mutation, sequenceType: SequenceType) => {
         const position =
             mutation.segment === undefined

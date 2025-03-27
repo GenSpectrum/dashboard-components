@@ -81,6 +81,10 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
         pageSizes: [10, 20, 30, 40, 50],
     },
+};
+
+export const ShowsMutationAnnotations: StoryObj<MutationsOverTimeProps> = {
+    ...Default,
     play: async ({ canvasElement }) => {
         await expectMutationAnnotation(canvasElement, 'C44T');
     },
@@ -129,6 +133,29 @@ export const UsesPagination: StoryObj<MutationsOverTimeProps> = {
 
             await expectMutationOnPage(canvas, mutationOnFirstPage);
             await expectMutationOnPage(canvas, mutationOnSecondPage);
+        });
+    },
+};
+
+export const UsesMutationFilter: StoryObj<MutationsOverTimeProps> = {
+    ...Default,
+    play: async ({ canvas, step }) => {
+        await expectMutationOnPage(canvas, 'C44T');
+
+        await step('input filter', async () => {
+            const filterButton = canvas.getByRole('button', { name: 'Filter mutations' });
+            await userEvent.click(filterButton);
+
+            const filterInput = canvas.getByPlaceholderText('Filter');
+            await userEvent.type(filterInput, 'T21');
+        });
+
+        await step('should show only matching filter', async () => {
+            await expectMutationOnPage(canvas, 'T21653-');
+            await expectMutationOnPage(canvas, 'T21655-');
+
+            const filteredMutation = canvas.queryByText('C44T');
+            await expect(filteredMutation).not.toBeInTheDocument();
         });
     },
 };
