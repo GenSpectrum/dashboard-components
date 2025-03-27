@@ -1,5 +1,5 @@
-import { type PaginationState } from '@tanstack/table-core';
-import { type FunctionComponent } from 'preact';
+import { getFilteredRowModel, type PaginationState } from '@tanstack/table-core';
+import { type FunctionComponent, type h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 
 import { type MutationOverTimeDataMap } from './MutationOverTimeData';
@@ -109,7 +109,6 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
-        debugTable: true,
         onPaginationChange: setPagination,
         state: {
             pagination,
