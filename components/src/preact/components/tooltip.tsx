@@ -46,7 +46,7 @@ const Tooltip: FunctionComponent<TooltipProps> = ({ children, content, position 
         <div className={`relative group`}>
             <div>{children}</div>
             <div
-                className={`left-10 absolute z-10 w-max bg-white p-4 border border-gray-200 rounded-md invisible group-hover:visible ${getPositionCss(position)}`}
+                className={`absolute z-10 w-max bg-white p-4 border border-gray-200 rounded-md invisible group-hover:visible ${getPositionCss(position)}`}
                 style={{ ...tooltipStyle }}
             >
                 {content}
