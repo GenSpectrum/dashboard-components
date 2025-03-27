@@ -50,8 +50,8 @@ function getAttributes(attributes: string): Map<string, string> {
     const attrPairs = attributes.split(';');
     const attrMap = new Map<string, string>();
     for (const pair of attrPairs) {
-        const pair_trimmed = pair.trim();
-        const [key, value] = pair_trimmed.split('=');
+        const pairTrimmed = pair.trim();
+        const [key, value] = pairTrimmed.split('=');
         attrMap.set(key, value);
     }
     return attrMap;
@@ -65,7 +65,7 @@ function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMa
 
         const fields = line.split('\t');
         if (fields.length < 9) {
-            continue;
+            throw new UserFacingError('Invalid gff3 source', `Gff3 line has less than 9 fields: "${line}"`);
         }
 
         const [, , type, startStr, endStr, , , , attributes] = fields;
@@ -77,10 +77,19 @@ function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMa
         const start = parseInt(startStr, 10);
         const end = parseInt(endStr, 10);
 
+        if (isNaN(start) || isNaN(end)) {
+            throw new UserFacingError('Invalid gff3 source', `Invalid start or end position: "${line}"`);
+        }
+
         const attrPairs = getAttributes(attributes);
-        const id =
-            attrPairs.get('ID') || attrPairs.get('Name') || attrPairs.get('gene') || attrPairs.get('gene_name') || '';
-        const label = attrPairs.get('Name') || attrPairs.get('gene') || attrPairs.get('gene_name') || '';
+        const label = attrPairs.get('Name') || attrPairs.get('gene') || attrPairs.get('gene_name');
+        if (!label) {
+            throw new UserFacingError(
+                'Invalid gff3 source',
+                `No label found for feature: "${line}", must contain label in Name, gene, or gene_name attribute`,
+            );
+        }
+        const id = attrPairs.get('ID') || label;
         if (attrPairs.get('Parent')) {
             const parent = attrPairs.get('Parent');
             if (parent && parent in geneMap) {
@@ -99,7 +108,7 @@ function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMa
 function getSortedCDSFeatures(cdsMap: CDSMap): CDSFeature[] {
     const mapValues = Object.values(cdsMap);
 
-    mapValues.forEach(feature => {
+    mapValues.forEach((feature) => {
         feature.positions.sort((a, b) => a.start - b.start);
     });
 
@@ -108,16 +117,13 @@ function getSortedCDSFeatures(cdsMap: CDSMap): CDSFeature[] {
     });
 
     const GraphColorList = Object.keys(ColorsRGB) as GraphColor[];
-    let colorIndex = mapValues[0].label[0].toUpperCase().charCodeAt(0);
+    const colorIndex = mapValues[0].label[0].toUpperCase().charCodeAt(0);
 
-    const cdsFeatures: CDSFeature[] = mapValues.map((value) => {
-        colorIndex++;
-        return {
-            positions: value.positions,
-            label: value.label,
-            color: GraphColorList[colorIndex % GraphColorList.length],
-        };
-    });
+    const cdsFeatures: CDSFeature[] = mapValues.map((value, index) => ({
+        positions: value.positions,
+        label: value.label,
+        color: GraphColorList[(colorIndex + index) % GraphColorList.length],
+    }));
 
     return cdsFeatures;
 }
