@@ -10,7 +10,7 @@ import { loadGff3 } from './loadGff3';
 
 const genomeDataViewerPropsSchema = z.object({
     gff3Source: z.string().min(1, 'gff3Source cannot be empty'),
-    genomeLength: z.number().gt(0, 'genomeLength must be greater than 0'),
+    genomeLength: z.number().gt(0, 'genomeLength must be greater than 0').optional(),
     width: z.string(),
     height: z.string(),
 });
@@ -31,10 +31,14 @@ export const GenomeDataViewer: FunctionComponent<GenomeDataViewerProps> = (compo
 };
 
 const GenomeDataViewerInner: FunctionComponent<GenomeDataViewerProps> = (props) => {
-    const { gff3Source, width, height } = props;
+    const { gff3Source, width, height, genomeLength } = props;
     const size = { height, width };
 
-    const { data, error, isLoading: isLoadingData } = useQuery(() => loadGff3(gff3Source), [gff3Source]);
+    const {
+        data,
+        error,
+        isLoading: isLoadingData,
+    } = useQuery(() => loadGff3(gff3Source, genomeLength), [gff3Source, genomeLength]);
 
     if (isLoadingData) {
         return <LoadingDisplay />;
@@ -44,5 +48,5 @@ const GenomeDataViewerInner: FunctionComponent<GenomeDataViewerProps> = (props) 
         throw error;
     }
 
-    return <CDSPlot gffData={data} genomeLength={props.genomeLength} size={size} />;
+    return <CDSPlot gffData={data.features} genomeLength={data.length} size={size} />;
 };

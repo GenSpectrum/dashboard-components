@@ -16,7 +16,7 @@ type CDSMap = {
     [id: string]: { positions: position[]; label: string };
 };
 
-export async function loadGff3(gff3Source: string) {
+export async function loadGff3(gff3Source: string, genomeLength: number | undefined) {
     try {
         new URL(gff3Source);
     } catch (_error) {
@@ -25,7 +25,10 @@ export async function loadGff3(gff3Source: string) {
 
     const response = await fetch(gff3Source);
     const content = await response.text();
-    return parseGFF3(content);
+    if (!genomeLength) {
+        genomeLength = loadGenomeLength(content);
+    }
+    return { features: parseGFF3(content), length: genomeLength };
 }
 
 export function parseGFF3(content: string): CDSFeature[][] {
@@ -145,4 +148,24 @@ function getNonOverlappingCDSFeatures(cdsFeatures: CDSFeature[]): CDSFeature[][]
         }
     }
     return nonOverlappingCDSFeatures;
+}
+
+export function loadGenomeLength(content: string) {
+    const lines = content.split('\n');
+    for (const line of lines) {
+        if (!line.startsWith('#')) {
+            continue;
+        }
+        const fields = line.split(' ');
+        if (fields[0] === '##sequence-region') {
+            const start = fields[fields.length - 2];
+            const end = fields[fields.length - 1];
+            const length = parseInt(end, 10) - parseInt(start, 10);
+            if (isNaN(length)) {
+                throw new UserFacingError('Invalid gff3 source', `No length found in sequence-region: "${line}"`);
+            }
+            return length;
+        }
+    }
+    throw new UserFacingError('Invalid gff3 source', `No length found in sequence-region`);
 }

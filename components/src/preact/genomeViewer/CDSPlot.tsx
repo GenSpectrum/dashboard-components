@@ -214,15 +214,11 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
     const [zoomEnd, setZoomEnd] = useState(genomeLength);
 
     const updateZoomStart = (newStart: number) => {
-        if (newStart <= zoomEnd - 100) {
-            setZoomStart(newStart);
-        }
+        setZoomStart(newStart);
     };
 
     const updateZoomEnd = (newEnd: number) => {
-        if (newEnd >= zoomStart + 100) {
-            setZoomEnd(newEnd);
-        }
+        setZoomEnd(newEnd);
     };
 
     return (

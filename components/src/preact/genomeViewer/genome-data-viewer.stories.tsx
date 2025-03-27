@@ -53,7 +53,6 @@ export const Default: StoryObj<GenomeDataViewerProps> = {
     render: (args) => <GenomeDataViewer {...args} />,
     args: {
         gff3Source: gff3Url,
-        genomeLength: 11029,
         width: '1100px',
         height: '500px',
     },

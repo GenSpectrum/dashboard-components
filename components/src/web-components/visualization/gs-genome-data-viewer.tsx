@@ -16,15 +16,16 @@ export class GenomeDataViewerComponent extends PreactLitAdapter {
     /**
      * Required
      *
-     * The source of the gff3 file. See component level docs for more information.
+     * The source of the gff3 file. Any spec-compliant gff3 should be accepted, however we use the same format as Nextclade.
+     * See https://docs.nextstrain.org/projects/nextclade/en/stable/user/input-files/03-genome-annotation.html for more information.
+     * We only use the CDS and gene features from the gff3 file, if you have other features in the gff3 file they will be ignored.
+     * Also note that if a CDS has a gene feature as a parent, the gene feature will be ignored.
      */
     @property({ type: String })
     gff3Source: string = '';
 
     /**
-     * Required
-     *
-     * The source of the gff3 file. See component level docs for more information.
+     * The length of the genome, if this is not given it will be computed from the `sequence-region` line of the start of the gff3 file.
      */
     @property({ type: Number })
     genomeLength: number = 0;
