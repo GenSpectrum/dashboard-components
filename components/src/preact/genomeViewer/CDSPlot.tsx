@@ -85,10 +85,10 @@ const XAxis: FunctionComponent<XAxisProps> = (componentProps) => {
     const { zoomStart, zoomEnd, fullWidth } = componentProps;
 
     const ticks = useMemo(() => getTicks(zoomStart, zoomEnd, fullWidth), [zoomStart, zoomEnd, fullWidth]);
-    const visibleRegionLength = useMemo(() => zoomEnd - zoomStart, [zoomStart, zoomEnd]);
-    const averageWidth = useMemo(() => visibleRegionLength / ticks.length, [visibleRegionLength, ticks.length]);
+    const visibleRegionLength = zoomEnd - zoomStart;
+    const averageWidth = visibleRegionLength / ticks.length;
     return (
-        <div className={'w-full h-6 relative'}>
+        <div className={'h-6 relative'}>
             {ticks.map((tick, idx) => {
                 const width = tick.end - tick.start;
                 const widthPercent = (width / visibleRegionLength) * 100;
@@ -96,12 +96,10 @@ const XAxis: FunctionComponent<XAxisProps> = (componentProps) => {
                 return (
                     <div
                         key={idx}
-                        class='absolute text-xs text-black px-1 py-0.5 hover:opacity-80 border-l border-r border-gray-400 border-t'
+                        class='absolute text-xs text-black px-1 hover:opacity-80 border-l border-r border-gray-400 border-t'
                         style={{
-                            left: `${leftPercent}%`,
-                            width: `${widthPercent}%`,
-                            top: '1.5rem',
-                            whiteSpace: 'nowrap',
+                            left: `calc(${leftPercent}% - 1px)`,
+                            width: `calc(${widthPercent}% - 1px)`,
                         }}
                     >
                         {width >= averageWidth ? tick.start : ''}
@@ -133,11 +131,11 @@ const TooltipContent: FunctionComponent<TooltipContentProps> = (componentProps) 
             <table>
                 <tbody>
                     <tr>
-                        <th className='font-medium px-2'>CDS Length</th>
+                        <th className='font-medium px-2 text-right'>CDS Length</th>
                         <td>{cdsLength}</td>
                     </tr>
                     <tr>
-                        <th className='font-medium px-2'>CDS Coordinates</th>
+                        <th className='font-medium px-2 text-right'>CDS Coordinates</th>
                         <td>{cdsCoordinates}</td>
                     </tr>
                 </tbody>
@@ -228,14 +226,10 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
     };
 
     return (
-        <div class='p-4 relative'>
-            <h2 class='text-xl font-semibold mb-2'>Genome Data Viewer</h2>
-            <div class='relative w-full'>
-                <CDSBars gffData={gffData} zoomStart={zoomStart} zoomEnd={zoomEnd} />
-                <XAxis zoomStart={zoomStart} zoomEnd={zoomEnd} fullWidth={size.width} />
-            </div>
-            <div className='h-10' />
-            <div class='relative w-full'>
+        <div class='p-4'>
+            <CDSBars gffData={gffData} zoomStart={zoomStart} zoomEnd={zoomEnd} />
+            <XAxis zoomStart={zoomStart} zoomEnd={zoomEnd} fullWidth={size.width} />
+            <div class='relative w-full h-5'>
                 <MinMaxRangeSlider
                     min={zoomStart}
                     max={zoomEnd}
@@ -245,8 +239,8 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
                     rangeMax={genomeLength}
                     step={1}
                 />
-                <XAxis zoomStart={0} zoomEnd={genomeLength} fullWidth={size.width} />
             </div>
+            <XAxis zoomStart={0} zoomEnd={genomeLength} fullWidth={size.width} />
         </div>
     );
 };
