@@ -12,7 +12,8 @@ const genomeDataViewerPropsSchema = z.object({
     gff3Source: z.string().min(1, 'gff3Source cannot be empty'),
     genomeLength: z.number().gt(0, 'genomeLength must be greater than 0').optional(),
     width: z.string(),
-    height: z.string(),
+    height: z.string().optional(),
+    trueWidth: z.number(),
 });
 
 export type GenomeDataViewerProps = z.infer<typeof genomeDataViewerPropsSchema>;
@@ -31,8 +32,7 @@ export const GenomeDataViewer: FunctionComponent<GenomeDataViewerProps> = (compo
 };
 
 const GenomeDataViewerInner: FunctionComponent<GenomeDataViewerProps> = (props) => {
-    const { gff3Source, width, height, genomeLength } = props;
-    const size = { height, width };
+    const { gff3Source, genomeLength, trueWidth } = props;
 
     const {
         data,
@@ -48,5 +48,5 @@ const GenomeDataViewerInner: FunctionComponent<GenomeDataViewerProps> = (props) 
         throw error;
     }
 
-    return <CDSPlot gffData={data.features} genomeLength={data.length} size={size} />;
+    return <CDSPlot gffData={data.features} genomeLength={data.length} width={trueWidth} />;
 };

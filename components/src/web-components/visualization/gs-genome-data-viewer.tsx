@@ -1,4 +1,4 @@
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { GenomeDataViewer } from '../../preact/genomeViewer/genome-data-viewer';
@@ -28,7 +28,7 @@ export class GenomeDataViewerComponent extends PreactLitAdapter {
      * The length of the genome, if this is not given it will be computed from the `sequence-region` line of the start of the gff3 file.
      */
     @property({ type: Number })
-    genomeLength: number = 0;
+    genomeLength: number | undefined = 0;
 
     /**
      * The width of the component.
@@ -44,7 +44,27 @@ export class GenomeDataViewerComponent extends PreactLitAdapter {
      * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-size-of-components--docs for more information.
      */
     @property({ type: String })
-    height: string = '100%';
+    height: string | undefined = '100%';
+
+    @state() private rect: DOMRect = new DOMRect();
+
+    override connectedCallback() {
+        super.connectedCallback();
+        window.addEventListener('resize', this.updateSize);
+    }
+
+    override disconnectedCallback() {
+        super.disconnectedCallback();
+        window.removeEventListener('resize', this.updateSize);
+    }
+
+    override firstUpdated() {
+        this.updateSize(); // Get initial size after first render
+    }
+
+    private updateSize = () => {
+        this.rect = this.getBoundingClientRect(); // Measure the actual component size
+    };
 
     override render() {
         return (
@@ -53,6 +73,7 @@ export class GenomeDataViewerComponent extends PreactLitAdapter {
                 genomeLength={this.genomeLength}
                 width={this.width}
                 height={this.height}
+                trueWidth={this.rect.width}
             />
         );
     }

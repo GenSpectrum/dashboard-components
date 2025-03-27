@@ -3,47 +3,22 @@ import { useMemo, useState } from 'preact/hooks';
 
 import { type CDSFeature } from './loadGff3';
 import { MinMaxRangeSlider } from '../components/min-max-range-slider';
-import type { Size } from '../components/resize-container';
 import Tooltip from '../components/tooltip';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 
 const MAX_TICK_NUMBER = 20;
 const MIN_TICK_NUMBER = 2;
 
-function getMaxTickNumber(fullWidth: string): number {
+function getMaxTickNumber(fullWidth: number): number {
     const baseValue = 1000;
 
-    if (fullWidth.endsWith('%')) {
-        const percent = parseFloat(fullWidth.replace('%', '')) / 100;
-        return Math.max(MIN_TICK_NUMBER, Math.round(MAX_TICK_NUMBER * percent));
-    }
-
-    const value = parseFloat(fullWidth);
-    const unit = fullWidth.replace(value.toString(), '').trim();
-
-    let normalizedRatio = 1;
-
-    switch (unit) {
-        case 'px':
-            normalizedRatio = value / baseValue;
-            break;
-        case 'em':
-        case 'rem':
-            normalizedRatio = (value * 16) / baseValue;
-            break;
-        case 'vw':
-        case 'vh':
-            normalizedRatio = value / 100;
-            break;
-        default:
-            normalizedRatio = 1;
-    }
+    const normalizedRatio = fullWidth / baseValue;
 
     const ticks = Math.round(MAX_TICK_NUMBER * normalizedRatio);
     return Math.max(MIN_TICK_NUMBER, Math.min(MAX_TICK_NUMBER, ticks));
 }
 
-function getTicks(zoomStart: number, zoomEnd: number, fullWidth: string) {
+function getTicks(zoomStart: number, zoomEnd: number, fullWidth: number) {
     const maxTickNumber = getMaxTickNumber(fullWidth);
     const length = zoomEnd - zoomStart;
     const minTickSize = length / maxTickNumber;
@@ -78,7 +53,7 @@ function getTicks(zoomStart: number, zoomEnd: number, fullWidth: string) {
 interface XAxisProps {
     zoomStart: number;
     zoomEnd: number;
-    fullWidth: string;
+    fullWidth: number;
 }
 
 const XAxis: FunctionComponent<XAxisProps> = (componentProps) => {
@@ -204,11 +179,11 @@ const CDSBars: FunctionComponent<CDSBarsProps> = (componentProps) => {
 interface CDSProps {
     gffData: CDSFeature[][];
     genomeLength: number;
-    size: Size;
+    width: number;
 }
 
 const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
-    const { gffData, genomeLength, size } = componentProps;
+    const { gffData, genomeLength, width } = componentProps;
 
     const [zoomStart, setZoomStart] = useState(0);
     const [zoomEnd, setZoomEnd] = useState(genomeLength);
@@ -224,7 +199,7 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
     return (
         <div class='p-4'>
             <CDSBars gffData={gffData} zoomStart={zoomStart} zoomEnd={zoomEnd} />
-            <XAxis zoomStart={zoomStart} zoomEnd={zoomEnd} fullWidth={size.width} />
+            <XAxis zoomStart={zoomStart} zoomEnd={zoomEnd} fullWidth={width} />
             <div class='relative w-full h-5'>
                 <MinMaxRangeSlider
                     min={zoomStart}
@@ -236,7 +211,7 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
                     step={1}
                 />
             </div>
-            <XAxis zoomStart={0} zoomEnd={genomeLength} fullWidth={size.width} />
+            <XAxis zoomStart={0} zoomEnd={genomeLength} fullWidth={width} />
         </div>
     );
 };
