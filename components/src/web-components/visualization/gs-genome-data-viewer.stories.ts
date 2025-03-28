@@ -1,3 +1,4 @@
+import { expect, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
@@ -6,6 +7,7 @@ import '../gs-app';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL } from '../../constants';
 import type { GenomeDataViewerProps } from '../../preact/genomeViewer/genome-data-viewer';
+import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
 <gs-genome-data-viewer
@@ -95,5 +97,16 @@ export const Default: StoryObj<Required<GenomeDataViewerProps>> = {
                 },
             ],
         },
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-genome-data-viewer');
+
+        await step('CDS visible', async () => {
+            const all = await canvas.findAllByText('NS1');
+            await waitFor(async () => expect(all[0]).toBeVisible());
+            const xAxisTick = await canvas.findAllByText('1000');
+            await waitFor(async () => expect(xAxisTick[0]).toBeVisible());
+            await waitFor(async () => expect(xAxisTick.length).toBe(2));
+        });
     },
 };
