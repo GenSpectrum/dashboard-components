@@ -58,8 +58,8 @@ export const AllSegmentsSelected: StoryObj<SegmentSelectorProps> = {
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
 
-        await step("Show 'All segments' as label", async () => {
-            await expect(canvas.getByText('All segments')).toBeInTheDocument();
+        await step("Show 'All genes' as label", async () => {
+            await expect(canvas.getByText('All genes')).toBeInTheDocument();
         });
     },
 };
@@ -84,7 +84,6 @@ export const NoSegmentsSelected: StoryObj<SegmentSelectorProps> = {
                 checked: false,
             },
         ],
-        sequenceType: 'amino acid',
     },
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
@@ -120,8 +119,8 @@ export const LongSegmentsSelected: StoryObj<SegmentSelectorProps> = {
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
 
-        await step('Show number of active segments as label', async () => {
-            await expect(canvas.getByText('2 segments')).toBeInTheDocument();
+        await step('Show number of active genes as label', async () => {
+            await expect(canvas.getByText('2 genes')).toBeInTheDocument();
         });
     },
 };
