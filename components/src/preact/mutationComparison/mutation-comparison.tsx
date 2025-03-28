@@ -172,7 +172,11 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 setMinProportion={(min) => setProportionInterval((prev) => ({ ...prev, min }))}
                 setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
             />
-            <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
+            <SegmentSelector
+                displayedSegments={displayedSegments}
+                setDisplayedSegments={setDisplayedSegments}
+                sequenceType={originalComponentProps.sequenceType}
+            />
             <MutationTypeSelector
                 displayedMutationTypes={displayedMutationTypes}
                 setDisplayedMutationTypes={setDisplayedMutationTypes}

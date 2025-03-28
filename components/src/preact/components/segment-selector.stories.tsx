@@ -4,6 +4,7 @@ import { type FunctionComponent } from 'preact';
 import { useState } from 'preact/hooks';
 
 import { type DisplayedSegment, SegmentSelector, type SegmentSelectorProps } from './segment-selector';
+import type { SequenceType } from '../../types';
 
 const meta: Meta<SegmentSelectorProps> = {
     title: 'Component/Segment selector',
@@ -15,7 +16,8 @@ export default meta;
 
 const WrapperWithState: FunctionComponent<{
     displayedSegments: DisplayedSegment[];
-}> = ({ displayedSegments: initialDisplayedSegments }) => {
+    sequenceType?: SequenceType;
+}> = ({ displayedSegments: initialDisplayedSegments, sequenceType }) => {
     const [displayedSegments, setDisplayedSegments] = useState<DisplayedSegment[]>(initialDisplayedSegments);
 
     return (
@@ -24,6 +26,7 @@ const WrapperWithState: FunctionComponent<{
             setDisplayedSegments={(items: DisplayedSegment[]) => {
                 setDisplayedSegments(items);
             }}
+            sequenceType={sequenceType}
         />
     );
 };
@@ -50,6 +53,7 @@ export const AllSegmentsSelected: StoryObj<SegmentSelectorProps> = {
                 checked: true,
             },
         ],
+        sequenceType: 'amino acid',
     },
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
@@ -80,6 +84,7 @@ export const NoSegmentsSelected: StoryObj<SegmentSelectorProps> = {
                 checked: false,
             },
         ],
+        sequenceType: 'amino acid',
     },
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
@@ -110,6 +115,7 @@ export const LongSegmentsSelected: StoryObj<SegmentSelectorProps> = {
                 checked: true,
             },
         ],
+        sequenceType: 'amino acid',
     },
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
@@ -140,6 +146,7 @@ export const ShortSegmentsSelected: StoryObj<SegmentSelectorProps> = {
                 checked: false,
             },
         ],
+        sequenceType: 'amino acid',
     },
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);

@@ -228,7 +228,11 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
             {activeTab === 'Grid' && (
                 <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
             )}
-            <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
+            <SegmentSelector
+                displayedSegments={displayedSegments}
+                setDisplayedSegments={setDisplayedSegments}
+                sequenceType={originalComponentProps.sequenceType}
+            />
             <MutationTypeSelector
                 setDisplayedMutationTypes={setDisplayedMutationTypes}
                 displayedMutationTypes={displayedMutationTypes}
