@@ -183,7 +183,11 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     return (
         <>
             <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
-            <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
+            <SegmentSelector
+                displayedSegments={displayedSegments}
+                setDisplayedSegments={setDisplayedSegments}
+                sequenceType={originalComponentProps.sequenceType}
+            />
             <WastewaterMutationsOverTimeInfo originalComponentProps={originalComponentProps} />
             <Fullscreen />
         </>

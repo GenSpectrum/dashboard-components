@@ -185,7 +185,11 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
 }) => {
     return (
         <>
-            <SegmentSelector displayedSegments={displayedSegments} setDisplayedSegments={setDisplayedSegments} />
+            <SegmentSelector
+                displayedSegments={displayedSegments}
+                setDisplayedSegments={setDisplayedSegments}
+                sequenceType={originalComponentProps.sequenceType}
+            />
             {activeTab === 'Table' && (
                 <MutationTypeSelector
                     setDisplayedMutationTypes={setDisplayedMutationTypes}

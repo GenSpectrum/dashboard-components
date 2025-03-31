@@ -13,40 +13,44 @@ export type DisplayedSegment = CheckboxItem & {
 export type SegmentSelectorProps = {
     displayedSegments: DisplayedSegment[];
     setDisplayedSegments: (items: DisplayedSegment[]) => void;
+    sequenceType: SequenceType;
 };
 
 export const SegmentSelector: FunctionComponent<SegmentSelectorProps> = ({
     displayedSegments,
     setDisplayedSegments,
+    sequenceType,
 }) => {
     if (displayedSegments.length <= 1) {
         return null;
     }
 
     return (
-        <div className='w-24'>
+        <div className='w-20 inline-flex'>
             <CheckboxSelector
                 items={displayedSegments}
-                label={getSegmentSelectorLabel(displayedSegments)}
+                label={getSegmentSelectorLabel(displayedSegments, sequenceType)}
                 setItems={(items) => setDisplayedSegments(items)}
             />
         </div>
     );
 };
 
-const getSegmentSelectorLabel = (displayedSegments: DisplayedSegment[]) => {
+const getSegmentSelectorLabel = (displayedSegments: DisplayedSegment[], sequenceType: SequenceType) => {
     const allSelectedSelected = displayedSegments
         .filter((segment) => segment.checked)
         .map((segment) => segment.segment);
 
+    const label = sequenceType === 'amino acid' ? 'gene' : 'segment';
+
     if (allSelectedSelected.length === 0) {
-        return `No segments`;
+        return `No ${label}s`;
     }
     if (displayedSegments.length === allSelectedSelected.length) {
-        return `All segments`;
+        return `All ${label}s`;
     }
 
-    const longestDisplayString = `All segments`;
+    const longestDisplayString = `All ${label}s`;
 
     const allSelectedSelectedString = allSelectedSelected.join(', ');
 
@@ -54,7 +58,7 @@ const getSegmentSelectorLabel = (displayedSegments: DisplayedSegment[]) => {
         return allSelectedSelectedString;
     }
 
-    return `${allSelectedSelected.length} ${allSelectedSelected.length === 1 ? 'segment' : 'segments'}`;
+    return `${allSelectedSelected.length} ${allSelectedSelected.length === 1 ? label : `${label}s`}`;
 };
 
 export function useDisplayedSegments(sequenceType: SequenceType) {

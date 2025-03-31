@@ -75,11 +75,11 @@ export const AminoAcids: StoryObj<WastewaterMutationsOverTimeProps> = {
     },
     play: async ({ canvas, step }) => {
         await step('Wait for component to render', async () => {
-            await canvas.findByText('All segments');
+            await canvas.findByText('All genes');
         });
 
-        await step("Click 'All segments' button", async () => {
-            canvas.getByRole('button', { name: 'All segments' }).click();
+        await step("Click 'All genes' button", async () => {
+            canvas.getByRole('button', { name: 'All genes' }).click();
             await expect(canvas.getByText('Select none')).toBeInTheDocument();
             canvas.getByRole('button', { name: 'Select none' }).click();
             await canvas.findAllByText('No data available for your filters.');
