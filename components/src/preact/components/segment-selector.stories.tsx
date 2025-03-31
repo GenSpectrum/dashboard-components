@@ -16,7 +16,7 @@ export default meta;
 
 const WrapperWithState: FunctionComponent<{
     displayedSegments: DisplayedSegment[];
-    sequenceType?: SequenceType;
+    sequenceType: SequenceType;
 }> = ({ displayedSegments: initialDisplayedSegments, sequenceType }) => {
     const [displayedSegments, setDisplayedSegments] = useState<DisplayedSegment[]>(initialDisplayedSegments);
 
@@ -84,6 +84,7 @@ export const NoSegmentsSelected: StoryObj<SegmentSelectorProps> = {
                 checked: false,
             },
         ],
+        sequenceType: 'nucleotide',
     },
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);

@@ -13,13 +13,13 @@ export type DisplayedSegment = CheckboxItem & {
 export type SegmentSelectorProps = {
     displayedSegments: DisplayedSegment[];
     setDisplayedSegments: (items: DisplayedSegment[]) => void;
-    sequenceType?: SequenceType;
+    sequenceType: SequenceType;
 };
 
 export const SegmentSelector: FunctionComponent<SegmentSelectorProps> = ({
     displayedSegments,
     setDisplayedSegments,
-    sequenceType = 'nucleotide',
+    sequenceType,
 }) => {
     if (displayedSegments.length <= 1) {
         return null;
@@ -41,10 +41,7 @@ const getSegmentSelectorLabel = (displayedSegments: DisplayedSegment[], sequence
         .filter((segment) => segment.checked)
         .map((segment) => segment.segment);
 
-    let label = 'segment';
-    if (sequenceType === 'amino acid') {
-        label = 'gene';
-    }
+    const label = sequenceType === 'amino acid' ? 'gene' : 'segment';
 
     if (allSelectedSelected.length === 0) {
         return `No ${label}s`;
