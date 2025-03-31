@@ -36,8 +36,8 @@ export const GenomeDataViewer: FunctionComponent<GenomeDataViewerProps> = (compo
         };
 
         updateSize();
-        document.addEventListener('resize', updateSize);
-        return () => document.removeEventListener('resize', updateSize);
+        window.addEventListener('resize', updateSize);
+        return () => window.removeEventListener('resize', updateSize);
     }, []);
 
     return (
