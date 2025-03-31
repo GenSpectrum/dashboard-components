@@ -1,4 +1,5 @@
 import type { FunctionComponent } from 'preact';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { ErrorBoundary } from '../components/error-boundary';
@@ -13,25 +14,42 @@ const genomeDataViewerPropsSchema = z.object({
     genomeLength: z.number().gt(0, 'genomeLength must be greater than 0').optional(),
     width: z.string(),
     height: z.string().optional(),
-    trueWidth: z.number(),
 });
+
+interface ExtendedGenomeDataViewerProps extends GenomeDataViewerProps {
+    trueWidth: number;
+}
 
 export type GenomeDataViewerProps = z.infer<typeof genomeDataViewerPropsSchema>;
 
 export const GenomeDataViewer: FunctionComponent<GenomeDataViewerProps> = (componentProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [trueWidth, setTrueWidth] = useState(0);
+
+    useEffect(() => {
+        const updateSize = () => {
+            if (containerRef.current) {
+                setTrueWidth(containerRef.current.getBoundingClientRect().width);
+            }
+        };
+
+        updateSize();
+        document.addEventListener('resize', updateSize);
+        return () => document.removeEventListener('resize', updateSize);
+    }, []);
 
     return (
         <ErrorBoundary size={size} componentProps={componentProps} schema={genomeDataViewerPropsSchema}>
-            <ResizeContainer size={size}>
-                <GenomeDataViewerInner {...componentProps} />
+            <ResizeContainer size={size} ref={containerRef}>
+                <GenomeDataViewerInner {...componentProps} trueWidth={trueWidth} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-const GenomeDataViewerInner: FunctionComponent<GenomeDataViewerProps> = (props) => {
+const GenomeDataViewerInner: FunctionComponent<ExtendedGenomeDataViewerProps> = (props) => {
     const { gff3Source, genomeLength, trueWidth } = props;
 
     const {

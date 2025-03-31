@@ -1,4 +1,4 @@
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { GenomeDataViewer } from '../../preact/genomeViewer/genome-data-viewer';
@@ -46,26 +46,6 @@ export class GenomeDataViewerComponent extends PreactLitAdapter {
     @property({ type: String })
     height: string | undefined = '100%';
 
-    @state() private rect: DOMRect = new DOMRect();
-
-    override connectedCallback() {
-        super.connectedCallback();
-        window.addEventListener('resize', this.updateSize);
-    }
-
-    override disconnectedCallback() {
-        super.disconnectedCallback();
-        window.removeEventListener('resize', this.updateSize);
-    }
-
-    override firstUpdated() {
-        this.updateSize(); // Get initial size after first render
-    }
-
-    private updateSize = () => {
-        this.rect = this.getBoundingClientRect(); // Measure the actual component size
-    };
-
     override render() {
         return (
             <GenomeDataViewer
@@ -73,7 +53,6 @@ export class GenomeDataViewerComponent extends PreactLitAdapter {
                 genomeLength={this.genomeLength}
                 width={this.width}
                 height={this.height}
-                trueWidth={this.rect.width}
             />
         );
     }
