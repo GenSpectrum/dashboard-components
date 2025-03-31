@@ -19,6 +19,7 @@ import Tabs from '../../components/tabs';
 import { type MutationOverTimeDataMap } from '../../mutationsOverTime/MutationOverTimeData';
 import MutationsOverTimeGrid from '../../mutationsOverTime/mutations-over-time-grid';
 import { pageSizesSchema } from '../../shared/tanstackTable/pagination';
+import { PageSizeContextProvider } from '../../shared/tanstackTable/pagination-context';
 import { useQuery } from '../../useQuery';
 
 const wastewaterMutationOverTimeSchema = z.object({
@@ -161,7 +162,11 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         />
     );
 
-    return <Tabs tabs={tabs} toolbar={toolbar} />;
+    return (
+        <PageSizeContextProvider pageSizes={originalComponentProps.pageSizes}>
+            <Tabs tabs={tabs} toolbar={toolbar} />
+        </PageSizeContextProvider>
+    );
 };
 
 type ToolbarProps = {

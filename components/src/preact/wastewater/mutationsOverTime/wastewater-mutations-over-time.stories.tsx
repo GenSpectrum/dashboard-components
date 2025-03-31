@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect } from '@storybook/test';
+import { expect, userEvent } from '@storybook/test';
 
 import { WastewaterMutationsOverTime, type WastewaterMutationsOverTimeProps } from './wastewater-mutations-over-time';
 import { WISE_DETAILS_ENDPOINT, WISE_LAPIS_URL } from '../../../constants';
@@ -64,6 +64,24 @@ export const Default: StoryObj<WastewaterMutationsOverTimeProps> = {
                 },
             ],
         },
+    },
+};
+
+export const ChangingRowsPerPageChangesItForEveryTag: StoryObj<WastewaterMutationsOverTimeProps> = {
+    ...Default,
+    play: async ({ canvas, step }) => {
+        await step('Wait for component to render', async () => {
+            await canvas.findByText('Lugano');
+        });
+
+        const getRowsPerPageSelectors = async () => await canvas.findAllByLabelText('Rows per page', { exact: false });
+
+        await step('change rows per page', async () => {
+            await expect((await getRowsPerPageSelectors())[0]).toHaveValue('10');
+            await expect((await getRowsPerPageSelectors())[1]).toHaveValue('10');
+            await userEvent.selectOptions((await getRowsPerPageSelectors())[0], '20');
+            await expect((await getRowsPerPageSelectors())[1]).toHaveValue('20');
+        });
     },
 };
 

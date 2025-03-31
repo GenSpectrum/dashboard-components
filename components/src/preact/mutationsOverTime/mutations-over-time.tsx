@@ -36,6 +36,7 @@ import { ResizeContainer } from '../components/resize-container';
 import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/segment-selector';
 import Tabs from '../components/tabs';
 import { pageSizesSchema } from '../shared/tanstackTable/pagination';
+import { PageSizeContextProvider } from '../shared/tanstackTable/pagination-context';
 import { useWebWorker } from '../webWorkers/useWebWorker';
 
 const mutationsOverTimeViewSchema = z.literal(views.grid);
@@ -204,7 +205,11 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         />
     );
 
-    return <Tabs tabs={tabs} toolbar={toolbar} />;
+    return (
+        <PageSizeContextProvider pageSizes={originalComponentProps.pageSizes}>
+            <Tabs tabs={tabs} toolbar={toolbar} />
+        </PageSizeContextProvider>
+    );
 };
 
 type ToolbarProps = {

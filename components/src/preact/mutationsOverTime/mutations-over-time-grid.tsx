@@ -1,6 +1,5 @@
-import { type PaginationState } from '@tanstack/table-core';
 import { type FunctionComponent } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useMemo } from 'preact/hooks';
 
 import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
@@ -13,6 +12,7 @@ import { type ColorScale, getColorWithinScale, getTextColorForScale } from '../c
 import Tooltip, { type TooltipPosition } from '../components/tooltip';
 import { formatProportion } from '../shared/table/formatProportion';
 import { type PageSizes, Pagination } from '../shared/tanstackTable/pagination';
+import { usePageSizeContext } from '../shared/tanstackTable/pagination-context';
 import {
     createColumnHelper,
     flexRender,
@@ -42,11 +42,6 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
             return { mutation: allMutations[index], values: [...row] };
         });
     }, [data]);
-
-    const [pagination, setPagination] = useState<PaginationState>({
-        pageIndex: 0,
-        pageSize: typeof pageSizes === 'number' ? pageSizes : (pageSizes.at(0) ?? 10),
-    });
 
     const columns = useMemo(() => {
         const columnHelper = createColumnHelper<RowType>();
@@ -104,14 +99,17 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
         return [mutationHeader, ...dateHeaders];
     }, [colorScale, data, sequenceType]);
 
+    const { pageSize } = usePageSizeContext();
     const table = usePreactTable({
         data: tableData,
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
-        onPaginationChange: setPagination,
-        state: {
-            pagination,
+        initialState: {
+            pagination: {
+                pageIndex: 0,
+                pageSize,
+            },
         },
     });
 
