@@ -107,7 +107,7 @@ export const MultiSegmentedReferenceGenomes: StoryObj<MutationFilterProps> = {
     ...Template,
     args: {
         ...Template.args,
-        initialValue: ['seg1:123T', 'gene2:56', 'ins_seg2:78:AAA'],
+        initialValue: ['seg1:3T', 'gene2:4', 'ins_seg2:4:AAA'],
     },
     parameters: {
         fetchMock: {
@@ -163,9 +163,9 @@ export const MultiSegmentedReferenceGenomes: StoryObj<MutationFilterProps> = {
         });
 
         await waitFor(async () => {
-            await expect(canvas.getByText('seg1:123T')).toBeVisible();
-            await expect(canvas.getByText('gene2:56')).toBeVisible();
-            await expect(canvas.getByText('ins_seg2:78:AAA')).toBeVisible();
+            await expect(canvas.getByText('seg1:3T')).toBeVisible();
+            await expect(canvas.getByText('gene2:4')).toBeVisible();
+            await expect(canvas.getByText('ins_seg2:4:AAA')).toBeVisible();
         });
     },
 };

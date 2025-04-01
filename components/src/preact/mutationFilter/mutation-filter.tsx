@@ -1,10 +1,11 @@
+import { useCombobox, useMultipleSelection } from 'downshift/preact';
 import { type FunctionComponent } from 'preact';
-import { useContext, useRef, useState } from 'preact/hooks';
+import { useContext, useMemo, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { getExampleMutation } from './ExampleMutation';
 import { MutationFilterInfo } from './mutation-filter-info';
-import { parseAndValidateMutation, type ParsedMutationFilter } from './parseAndValidateMutation';
+import { parseAndValidateMutation } from './parseAndValidateMutation';
 import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
 import { type MutationsFilter, mutationsFilterSchema } from '../../types';
 import { type DeletionClass, type InsertionClass, type SubstitutionClass } from '../../utils/mutations';
@@ -24,55 +25,64 @@ const mutationFilterPropsSchema = mutationFilterInnerPropsSchema.extend({
 export type MutationFilterInnerProps = z.infer<typeof mutationFilterInnerPropsSchema>;
 export type MutationFilterProps = z.infer<typeof mutationFilterPropsSchema>;
 
-export type SelectedFilters = {
-    nucleotideMutations: (SubstitutionClass | DeletionClass)[];
-    aminoAcidMutations: (SubstitutionClass | DeletionClass)[];
-    nucleotideInsertions: InsertionClass[];
-    aminoAcidInsertions: InsertionClass[];
+type SelectedNucleotideMutation = {
+    type: 'nucleotideMutations';
+    value: SubstitutionClass | DeletionClass;
 };
+
+type SelectedAminoAcidMutation = {
+    type: 'aminoAcidMutations';
+    value: SubstitutionClass | DeletionClass;
+};
+
+type SelectedNucleotideInsertion = {
+    type: 'nucleotideInsertions';
+    value: InsertionClass;
+};
+
+type SelectedAminoAcidInsertion = {
+    type: 'aminoAcidInsertions';
+    value: InsertionClass;
+};
+
+export type MutationFilterItem =
+    | SelectedNucleotideMutation
+    | SelectedAminoAcidMutation
+    | SelectedNucleotideInsertion
+    | SelectedAminoAcidInsertion;
 
 export const MutationFilter: FunctionComponent<MutationFilterProps> = (props) => {
     const { width, initialValue } = props;
     return (
         <ErrorBoundary
-            size={{ height: '3.375rem', width }}
+            size={{ height: '40px', width }}
             layout='horizontal'
             schema={mutationFilterPropsSchema}
             componentProps={props}
         >
-            <div style={width}>
+            <div style={{ width }}>
                 <MutationFilterInner initialValue={initialValue} />
             </div>
         </ErrorBoundary>
     );
 };
 
-export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = ({ initialValue }) => {
+function MutationFilterInner({ initialValue }: MutationFilterInnerProps) {
     const referenceGenome = useContext(ReferenceGenomeContext);
-    const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>(
-        getInitialState(initialValue, referenceGenome),
-    );
-
     const filterRef = useRef<HTMLDivElement>(null);
+    const [inputValue, setInputValue] = useState('');
 
-    if (referenceGenome.nucleotideSequences.length === 0 && referenceGenome.genes.length === 0) {
-        throw new UserFacingError(
-            'No reference sequences available',
-            'This organism has neither nucleotide nor amino acid sequences configured in its reference genome. You cannot filter by mutations.',
-        );
-    }
+    const initialState = useMemo(() => {
+        return getInitialState(initialValue, referenceGenome);
+    }, [initialValue, referenceGenome]);
 
-    const handleRemoveValue = (option: ParsedMutationFilter) => {
-        const newSelectedFilters = {
-            ...selectedFilters,
-            [option.type]: selectedFilters[option.type].filter((i) => option.value.toString() != i.toString()),
-        };
+    const [selectedItems, setSelectedItems] = useState<MutationFilterItem[]>(initialState);
+    const [itemCandidate, setItemCandidate] = useState<MutationFilterItem | null>(null);
+    const [showErrorIndicator, setShowErrorIndicator] = useState(false);
 
-        setSelectedFilters(newSelectedFilters);
-        fireChangeEvent(newSelectedFilters);
-    };
+    const items = itemCandidate ? [itemCandidate] : [];
 
-    const fireChangeEvent = (selectedFilters: SelectedFilters) => {
+    const fireChangeEvent = (selectedFilters: MutationFilterItem[]) => {
         const detail = mapToMutationFilterStrings(selectedFilters);
 
         filterRef.current?.dispatchEvent(
@@ -84,170 +94,169 @@ export const MutationFilterInner: FunctionComponent<MutationFilterInnerProps> = 
         );
     };
 
-    return (
-        <div className='w-full border border-gray-300 rounded-md relative' ref={filterRef}>
-            <div className='absolute -top-3 -right-3 z-10'>
-                <MutationFilterInfo />
-            </div>
+    const handleSelectedItemsChanged = (newSelectedItems: MutationFilterItem[]) => {
+        fireChangeEvent(newSelectedItems);
+        setSelectedItems(newSelectedItems);
+    };
 
-            <div className='relative w-full p-1'>
-                <MutationFilterSelector
-                    referenceGenome={referenceGenome}
-                    setSelectedFilters={(newSelectedFilters) => {
-                        setSelectedFilters(newSelectedFilters);
-                        fireChangeEvent(newSelectedFilters);
-                    }}
-                    selectedFilters={selectedFilters}
-                />
-                <SelectedMutationFilterDisplay
-                    selectedFilters={selectedFilters}
-                    handleRemoveValue={handleRemoveValue}
-                />
+    const handleNewSelectedItem = (selectedItem: MutationFilterItem | null | undefined) => {
+        if (selectedItem) {
+            handleSelectedItemsChanged([...selectedItems, selectedItem]);
+            setInputValue('');
+            setItemCandidate(null);
+            setShowErrorIndicator(false);
+        }
+    };
+
+    const handleInputChange = (newInputValue: string | undefined) => {
+        setShowErrorIndicator(false);
+        if (newInputValue?.includes(',')) {
+            const values = newInputValue?.split(',').map((value) => {
+                return { value, parsedValue: parseAndValidateMutation(value.trim(), referenceGenome) };
+            });
+            const validEntries = values.map((value) => value.parsedValue).filter((value) => value !== null);
+            const invalidInput = values
+                .filter((value) => value.parsedValue === null)
+                .map((value) => value.value.trim())
+                .join(',');
+
+            const selectedItemCandidates = [...selectedItems, ...validEntries];
+
+            handleSelectedItemsChanged(extractUniqueValues(selectedItemCandidates));
+            setInputValue(invalidInput);
+            setItemCandidate(null);
+        } else {
+            setInputValue(newInputValue ?? '');
+            if (newInputValue !== undefined) {
+                const candidate = parseAndValidateMutation(newInputValue, referenceGenome);
+                const alreadyExists = selectedItems.find(
+                    (selectedItem) => selectedItem.value.code === candidate?.value.code,
+                );
+                if (!alreadyExists) {
+                    setItemCandidate(candidate);
+                }
+            }
+        }
+    };
+
+    const { getDropdownProps, removeSelectedItem } = useMultipleSelection({
+        selectedItems,
+        onStateChange({ selectedItems: newSelectedItems, type }) {
+            switch (type) {
+                case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
+                    handleSelectedItemsChanged(newSelectedItems ?? []);
+                    break;
+                default:
+                    break;
+            }
+        },
+    });
+
+    const { isOpen, getMenuProps, getInputProps, highlightedIndex, getItemProps, selectedItem } = useCombobox({
+        items,
+        itemToString(item: MutationFilterItem | undefined | null) {
+            return item ? item.value.code : '';
+        },
+        defaultHighlightedIndex: 0,
+        inputValue,
+        onStateChange({ inputValue: newInputValue, type, selectedItem: newSelectedItem }) {
+            switch (type) {
+                case useCombobox.stateChangeTypes.InputKeyDownEnter:
+                case useCombobox.stateChangeTypes.ItemClick:
+                case useCombobox.stateChangeTypes.InputBlur:
+                    handleNewSelectedItem(newSelectedItem);
+                    break;
+
+                case useCombobox.stateChangeTypes.InputChange: {
+                    handleInputChange(newInputValue);
+                    break;
+                }
+                default:
+                    break;
+            }
+        },
+    });
+
+    if (referenceGenome.nucleotideSequences.length === 0 && referenceGenome.genes.length === 0) {
+        throw new UserFacingError(
+            'No reference sequences available',
+            'This organism has neither nucleotide nor amino acid sequences configured in its reference genome. You cannot filter by mutations.',
+        );
+    }
+
+    return (
+        <div className='w-full' ref={filterRef}>
+            <div className={`flex gap-x-1 flex-wrap p-1 input h-fit w-full ${showErrorIndicator ? 'input-error' : ''}`}>
+                {selectedItems.map((selectedItemForRender, index) => {
+                    return (
+                        <div className='my-1' key={`selected-item-${index}`}>
+                            <SelectedFilter
+                                handleRemoveValue={() => {
+                                    removeSelectedItem(selectedItemForRender);
+                                }}
+                                mutationFilter={selectedItemForRender}
+                            />
+                        </div>
+                    );
+                })}
+                <div className='flex gap-0.5 grow p-1'>
+                    <input
+                        placeholder={getPlaceholder(referenceGenome)}
+                        className='w-full focus:outline-none min-w-8'
+                        {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
+                        onBlur={() => {
+                            setShowErrorIndicator(inputValue !== '');
+                        }}
+                        size={10}
+                    />
+                    <MutationFilterInfo />
+                </div>
             </div>
+            <ul
+                className={`absolute w-inherit bg-white mt-1 shadow-md max-h-80 overflow-scroll p-0 z-10 ${
+                    !isOpen && 'hidden'
+                }`}
+                {...getMenuProps()}
+            >
+                {items.map((item, index) => (
+                    <li
+                        className={`${highlightedIndex === index && 'bg-blue-300'} ${selectedItem === item && 'font-bold'} py-2 px-3 shadow-sm flex flex-col cursor-pointer`}
+                        key={`${item.value.code}${index}`}
+                        {...getItemProps({ item, index })}
+                        style={{
+                            backgroundColor: backgroundColorMap(item, highlightedIndex === index ? 0.4 : 0.2),
+                        }}
+                    >
+                        <span>{item.value.code}</span>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
-};
+}
+
+function extractUniqueValues(newSelectedItems: MutationFilterItem[]) {
+    const uniqueMutationsMap = new Map<string, MutationFilterItem>();
+    for (const mutation of newSelectedItems) {
+        if (!uniqueMutationsMap.has(mutation.value.code)) {
+            uniqueMutationsMap.set(mutation.value.code, mutation);
+        }
+    }
+
+    return Array.from(uniqueMutationsMap.values());
+}
 
 function getInitialState(initialValue: MutationsFilter | string[] | undefined, referenceGenome: ReferenceGenome) {
     if (initialValue === undefined) {
-        return {
-            nucleotideMutations: [],
-            aminoAcidMutations: [],
-            nucleotideInsertions: [],
-            aminoAcidInsertions: [],
-        };
+        return [];
     }
 
     const values = Array.isArray(initialValue) ? initialValue : Object.values(initialValue).flatMap((it) => it);
 
-    return values.reduce(
-        (selectedFilters, value) => {
-            const parsedMutation = parseAndValidateMutation(value, referenceGenome);
-            if (parsedMutation === null) {
-                return selectedFilters;
-            }
-
-            return {
-                ...selectedFilters,
-                [parsedMutation.type]: [...selectedFilters[parsedMutation.type], parsedMutation.value],
-            };
-        },
-        {
-            nucleotideMutations: [],
-            aminoAcidMutations: [],
-            nucleotideInsertions: [],
-            aminoAcidInsertions: [],
-        } as SelectedFilters,
-    );
+    return values
+        .map((value) => parseAndValidateMutation(value, referenceGenome))
+        .filter((parsedMutation) => parsedMutation !== null);
 }
-
-const MutationFilterSelector: FunctionComponent<{
-    referenceGenome: ReferenceGenome;
-    setSelectedFilters: (option: SelectedFilters) => void;
-    selectedFilters: SelectedFilters;
-}> = ({ referenceGenome, setSelectedFilters, selectedFilters }) => {
-    const [option, setOption] = useState<ParsedMutationFilter | null>(null);
-    const [inputValue, setInputValue] = useState('');
-
-    const selectorRef = useRef<HTMLDivElement>(null);
-
-    const handleInputChange = (newValue: string) => {
-        if (newValue.includes(',') || newValue.includes(';')) {
-            handleCommaSeparatedInput(newValue);
-        } else {
-            setInputValue(newValue);
-            const result = parseAndValidateMutation(newValue, referenceGenome);
-            setOption(result);
-        }
-    };
-
-    const handleCommaSeparatedInput = (inputValue: string) => {
-        const inputValues = inputValue.split(/[,;]/);
-        let newSelectedOptions = selectedFilters;
-        let updated: boolean = false;
-        const invalidQueries: string[] = [];
-        for (const value of inputValues) {
-            const trimmedValue = value.trim();
-            const parsedMutation = parseAndValidateMutation(trimmedValue, referenceGenome);
-            if (parsedMutation) {
-                const type = parsedMutation.type;
-                if (!selectedFilters[type].some((i) => parsedMutation.value.toString() === i.toString())) {
-                    newSelectedOptions = {
-                        ...newSelectedOptions,
-                        [parsedMutation.type]: [...newSelectedOptions[parsedMutation.type], parsedMutation.value],
-                    };
-                    updated = true;
-                }
-            } else {
-                invalidQueries.push(trimmedValue);
-            }
-        }
-
-        setInputValue(invalidQueries.join(','));
-
-        if (updated) {
-            setSelectedFilters(newSelectedOptions);
-            setOption(null);
-        }
-    };
-
-    const handleOptionClick = () => {
-        if (option === null) {
-            return;
-        }
-
-        const type = option.type;
-
-        if (!selectedFilters[type].some((i) => option.value.toString() === i.toString())) {
-            const newSelectedValues = {
-                ...selectedFilters,
-                [option?.type]: [...selectedFilters[option?.type], option?.value],
-            };
-            setSelectedFilters(newSelectedValues);
-        }
-
-        setInputValue('');
-        setOption(null);
-    };
-
-    const handleEnterPress = (event: KeyboardEvent) => {
-        if (event.key === 'Enter' && option !== null) {
-            handleOptionClick();
-        }
-    };
-
-    const handleBlur = (event: FocusEvent) => {
-        if (!selectorRef.current?.contains(event.relatedTarget as Node)) {
-            setOption(null);
-        }
-    };
-
-    return (
-        <div ref={selectorRef} tabIndex={-1}>
-            <input
-                type='text'
-                className='w-full p-2 border-gray-300 border rounded-md'
-                placeholder={getPlaceholder(referenceGenome)}
-                value={inputValue}
-                onInput={(e: Event) => {
-                    handleInputChange((e.target as HTMLInputElement).value);
-                }}
-                onKeyDown={(e) => handleEnterPress(e)}
-                onFocus={() => handleInputChange(inputValue)}
-                onBlur={handleBlur}
-            />
-            {option != null && (
-                <div
-                    role='option'
-                    className='hover:bg-gray-300 absolute cursor-pointer p-2 border-1 border-slate-500 bg-slate-200'
-                    onClick={() => handleOptionClick()}
-                >
-                    {option.value.toString()}
-                </div>
-            )}
-        </div>
-    );
-};
 
 function getPlaceholder(referenceGenome: ReferenceGenome) {
     const nucleotideSubstitution = getExampleMutation(referenceGenome, 'nucleotide', 'substitution');
@@ -262,82 +271,64 @@ function getPlaceholder(referenceGenome: ReferenceGenome) {
     return `Enter a mutation (e.g. ${exampleMutations})`;
 }
 
-const backgroundColor: { [key in keyof SelectedFilters]: string } = {
-    aminoAcidMutations: singleGraphColorRGBByName('teal', 0.4),
-    nucleotideMutations: singleGraphColorRGBByName('green', 0.4),
-    aminoAcidInsertions: singleGraphColorRGBByName('purple', 0.4),
-    nucleotideInsertions: singleGraphColorRGBByName('indigo', 0.4),
-};
-
-const backgroundColorMap = (data: ParsedMutationFilter) => {
-    return backgroundColor[data.type] || 'lightgray';
-};
-
-const SelectedMutationFilterDisplay: FunctionComponent<{
-    selectedFilters: SelectedFilters;
-    handleRemoveValue: (option: ParsedMutationFilter) => void;
-}> = ({ selectedFilters, handleRemoveValue }) => {
-    return (
-        <div className='flex flex-wrap'>
-            {selectedFilters.nucleotideMutations.map((mutation) => (
-                <SelectedFilter
-                    key={mutation.toString()}
-                    handleRemoveValue={handleRemoveValue}
-                    mutationFilter={{ type: 'nucleotideMutations', value: mutation }}
-                />
-            ))}
-            {selectedFilters.aminoAcidMutations.map((mutation) => (
-                <SelectedFilter
-                    key={mutation.toString()}
-                    handleRemoveValue={handleRemoveValue}
-                    mutationFilter={{ type: 'aminoAcidMutations', value: mutation }}
-                />
-            ))}
-            {selectedFilters.nucleotideInsertions.map((mutation) => (
-                <SelectedFilter
-                    key={mutation.toString()}
-                    handleRemoveValue={handleRemoveValue}
-                    mutationFilter={{ type: 'nucleotideInsertions', value: mutation }}
-                />
-            ))}
-            {selectedFilters.aminoAcidInsertions.map((mutation) => (
-                <SelectedFilter
-                    key={mutation.toString()}
-                    handleRemoveValue={handleRemoveValue}
-                    mutationFilter={{ type: 'aminoAcidInsertions', value: mutation }}
-                />
-            ))}
-        </div>
-    );
+const backgroundColorMap = (data: MutationFilterItem, alpha: number = 0.4) => {
+    switch (data.type) {
+        case 'nucleotideMutations':
+            return singleGraphColorRGBByName('green', alpha);
+        case 'aminoAcidMutations':
+            return singleGraphColorRGBByName('teal', alpha);
+        case 'nucleotideInsertions':
+            return singleGraphColorRGBByName('indigo', alpha);
+        case 'aminoAcidInsertions':
+            return singleGraphColorRGBByName('purple', alpha);
+    }
 };
 
 type SelectedFilterProps = {
-    handleRemoveValue: (mutation: ParsedMutationFilter) => void;
-    mutationFilter: ParsedMutationFilter;
+    handleRemoveValue: (mutation: MutationFilterItem) => void;
+    mutationFilter: MutationFilterItem;
 };
 
 const SelectedFilter = ({ handleRemoveValue, mutationFilter }: SelectedFilterProps) => {
     return (
         <span
             key={mutationFilter.value.toString()}
-            className='center p-2 m-1 inline-flex text-black rounded-md'
+            className='center px-2 py-1 inline-flex text-black rounded-md'
             style={{
                 backgroundColor: backgroundColorMap(mutationFilter),
             }}
         >
             {mutationFilter.value.toString()}
-            <button className='ml-1 cursor-pointer' onClick={() => handleRemoveValue(mutationFilter)}>
+            <button
+                className='ml-1 cursor-pointer'
+                aria-label={`remove mutation filter ${mutationFilter.value.code}`}
+                onClick={() => handleRemoveValue(mutationFilter)}
+            >
                 ×
             </button>
         </span>
     );
 };
 
-function mapToMutationFilterStrings(selectedFilters: SelectedFilters) {
-    return {
-        aminoAcidMutations: selectedFilters.aminoAcidMutations.map((mutation) => mutation.toString()),
-        nucleotideMutations: selectedFilters.nucleotideMutations.map((mutation) => mutation.toString()),
-        aminoAcidInsertions: selectedFilters.aminoAcidInsertions.map((insertion) => insertion.toString()),
-        nucleotideInsertions: selectedFilters.nucleotideInsertions.map((insertion) => insertion.toString()),
-    };
+function mapToMutationFilterStrings(selectedFilters: MutationFilterItem[]) {
+    return selectedFilters.reduce<MutationsFilter>(
+        (acc, filter) => {
+            switch (filter.type) {
+                case 'nucleotideMutations':
+                    return { ...acc, nucleotideMutations: [...acc.nucleotideMutations, filter.value.toString()] };
+                case 'aminoAcidMutations':
+                    return { ...acc, aminoAcidMutations: [...acc.aminoAcidMutations, filter.value.toString()] };
+                case 'nucleotideInsertions':
+                    return { ...acc, nucleotideInsertions: [...acc.nucleotideInsertions, filter.value.toString()] };
+                case 'aminoAcidInsertions':
+                    return { ...acc, aminoAcidInsertions: [...acc.aminoAcidInsertions, filter.value.toString()] };
+            }
+        },
+        {
+            aminoAcidMutations: [],
+            nucleotideMutations: [],
+            aminoAcidInsertions: [],
+            nucleotideInsertions: [],
+        },
+    );
 }
