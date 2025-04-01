@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.18.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.4...dashboard-components-v0.18.5) (2025-03-31)
+
+
+### Features
+
+* **components:** improve design of pagination on smaller screens ([#836](https://github.com/GenSpectrum/dashboard-components/issues/836)) ([0673ba2](https://github.com/GenSpectrum/dashboard-components/commit/0673ba2ed6a534df2f5fb94e01b75ac2c8fede45)), closes [#794](https://github.com/GenSpectrum/dashboard-components/issues/794)
+* **components:** rename segment selector for amino acids ([#839](https://github.com/GenSpectrum/dashboard-components/issues/839)) ([6ac3867](https://github.com/GenSpectrum/dashboard-components/commit/6ac38678aceb2c14ce15a08c607729685c4b53e5))
+
+
+### Bug Fixes
+
+* **components:** fix sequences by location test ([#831](https://github.com/GenSpectrum/dashboard-components/issues/831)) ([cc548ac](https://github.com/GenSpectrum/dashboard-components/commit/cc548ac5f691c2968a31f473dbe89bbc309d2a36)), closes [#797](https://github.com/GenSpectrum/dashboard-components/issues/797)
+* **components:** prevent mutation cell layout shift ([#827](https://github.com/GenSpectrum/dashboard-components/issues/827)) ([944fca2](https://github.com/GenSpectrum/dashboard-components/commit/944fca23b551de6896f3c62aa8eef5ba5814e073)), closes [#809](https://github.com/GenSpectrum/dashboard-components/issues/809)
+
 ## [0.18.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.3...dashboard-components-v0.18.4) (2025-03-24)
 
 
