@@ -1,8 +1,12 @@
 import type { Table } from '@tanstack/table-core';
-import z from 'zod'; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+import z from 'zod';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type PaginationProps = { table: Table<any> };
+import { usePageSizeContext } from './pagination-context';
+
+type PaginationProps = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    table: Table<any>;
+};
 export const pageSizesSchema = z.union([z.array(z.number()), z.number()]);
 export type PageSizes = z.infer<typeof pageSizesSchema>;
 
@@ -50,6 +54,8 @@ function PageSizeSelector({
 }: PaginationProps & {
     pageSizes: PageSizes;
 }) {
+    const { pageSize, setPageSize } = usePageSizeContext();
+
     if (typeof pageSizes === 'number' || pageSizes.length <= 1) {
         return null;
     }
@@ -59,9 +65,16 @@ function PageSizeSelector({
             <div className={'text-nowrap text-sm'}>Rows per page:</div>
             <select
                 className={`select select-ghost select-sm ${heightForSmallerLines}`}
-                value={table.getState().pagination.pageSize}
+                value={pageSize}
                 onChange={(e) => {
-                    table.setPageSize(Number(e.currentTarget?.value));
+                    const pageSize = Number(e.currentTarget?.value);
+                    if (Number.isNaN(pageSize)) {
+                        throw new Error(
+                            `Invalid page size selected: The value ${e.currentTarget?.value} could not be parsed as a number.`,
+                        );
+                    }
+                    setPageSize(pageSize);
+                    table.setPageSize(pageSize);
                 }}
                 aria-label='Select number of rows per page'
             >
@@ -90,7 +103,7 @@ function GotoPageSelector({ table }: PaginationProps) {
                 defaultValue={table.getState().pagination.pageIndex + 1}
                 onChange={(e) => {
                     const page = e.currentTarget.value ? Number(e.currentTarget.value) - 1 : 0;
-                    table.setPageIndex(page);
+                    table.setPageIndex(Math.min(page, table.getPageCount() - 1));
                 }}
                 className={`input input-ghost input-sm ${heightForSmallerLines}`}
                 aria-label='Enter page number to go to'
