@@ -20,6 +20,18 @@ Usage with a bundler in HTML:
 </body>
 ```
 
+**Note for vite (and potentially other bundlers) users**:
+There is currently an issue with one of our peer dependencies: leaflet.
+Vite will use the commonjs style of leaflet, which will create an error, when you run it in the browser.
+`Uncaught SyntaxError: The requested module ... doesn't provide an export named: 'geoJson'`
+To fix this add the following to your `vite.config.js`:
+
+```js
+optimizeDeps: {
+    include: ['leaflet'];
+}
+```
+
 We also provide a standalone version of the components that can be used without installing the dependencies:
 
 ```html

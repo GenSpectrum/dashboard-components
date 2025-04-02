@@ -2,6 +2,7 @@
     "name": "plainjavascript",
     "version": "1.0.0",
     "description": "A demo page for using the genspectrum dashboard components in plain javascript",
+    "type": "module",
     "scripts": {
         "dev": "vite dev",
         "start": "vite dev",
@@ -9,6 +10,6 @@
     },
     "dependencies": {
         "@genspectrum/dashboard-components": "file:../../components/genspectrum-dashboard-components.tgz",
-        "vite": "^5.2.8"
+        "vite": "^6.2.4"
     }
 }
