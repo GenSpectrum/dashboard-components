@@ -1,9 +1,10 @@
 import z from 'zod';
 
 import { type MutationOverTimeDataMap } from './MutationOverTimeData';
-import { type SubstitutionOrDeletionEntry } from '../../types';
+import { type SequenceType, type SubstitutionOrDeletionEntry } from '../../types';
 import { Map2dView } from '../../utils/map2d';
-import type { Deletion, Substitution } from '../../utils/mutations';
+import type { Deletion, Mutation, Substitution } from '../../utils/mutations';
+import { type useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
 import type { DisplayedMutationType } from '../components/mutation-type-selector';
 import type { DisplayedSegment } from '../components/segment-selector';
 
@@ -17,6 +18,9 @@ export type GetFilteredMutationOverTimeDataArgs = {
     displayedMutationTypes: DisplayedMutationType[];
     proportionInterval: { min: number; max: number };
     displayMutations?: DisplayMutations;
+    mutationFilterValue: string;
+    sequenceType: SequenceType;
+    annotationProvider: ReturnType<typeof useMutationAnnotationsProvider>;
 };
 
 export function getFilteredMutationOverTimeData({
@@ -26,6 +30,9 @@ export function getFilteredMutationOverTimeData({
     displayedMutationTypes,
     proportionInterval,
     displayMutations,
+    mutationFilterValue,
+    sequenceType,
+    annotationProvider,
 }: GetFilteredMutationOverTimeDataArgs) {
     const filteredData = new Map2dView(data);
 
@@ -44,6 +51,10 @@ export function getFilteredMutationOverTimeData({
             return true;
         }
 
+        if (applySearchFilter(entry.mutation, sequenceType, mutationFilterValue, annotationProvider)) {
+            return true;
+        }
+
         return displayedMutationTypes.some(
             (mutationType) => mutationType.type === entry.mutation.type && !mutationType.checked,
         );
@@ -54,4 +65,30 @@ export function getFilteredMutationOverTimeData({
     });
 
     return filteredData;
+}
+
+export function applySearchFilter(
+    mutation: Mutation,
+    sequenceType: SequenceType,
+    filterValue: string,
+    annotationProvider: ReturnType<typeof useMutationAnnotationsProvider>,
+) {
+    if (filterValue === '') {
+        return false;
+    }
+
+    if (mutation.code.includes(filterValue)) {
+        return false;
+    }
+
+    const mutationAnnotations = annotationProvider(mutation, sequenceType);
+    if (mutationAnnotations === undefined || mutationAnnotations.length === 0) {
+        return true;
+    }
+    return !mutationAnnotations.some(
+        (annotation) =>
+            annotation.description.includes(filterValue) ||
+            annotation.name.includes(filterValue) ||
+            annotation.symbol.includes(filterValue),
+    );
 }

@@ -26,7 +26,7 @@ export const SegmentSelector: FunctionComponent<SegmentSelectorProps> = ({
     }
 
     return (
-        <div className='w-20 inline-flex'>
+        <div className='w-24 inline-flex'>
             <CheckboxSelector
                 items={displayedSegments}
                 label={getSegmentSelectorLabel(displayedSegments, sequenceType)}

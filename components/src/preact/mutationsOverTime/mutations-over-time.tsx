@@ -19,6 +19,7 @@ import {
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { toTemporalClass } from '../../utils/temporalClass';
 import { useLapisUrl } from '../LapisUrlContext';
+import { useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
 import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
 import { CsvDownloadButton } from '../components/csv-download-button';
@@ -27,6 +28,7 @@ import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
+import { MutationsOverTimeTextFilter } from '../components/mutations-over-time-text-filter';
 import { NoDataDisplay } from '../components/no-data-display';
 import type { ProportionInterval } from '../components/proportion-selector';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
@@ -123,6 +125,9 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     originalComponentProps,
     overallMutationData,
 }) => {
+    const [mutationFilterValue, setMutationFilterValue] = useState('');
+    const annotationProvider = useMutationAnnotationsProvider();
+
     const [proportionInterval, setProportionInterval] = useState(originalComponentProps.initialMeanProportionInterval);
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
 
@@ -132,8 +137,6 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         { label: 'Deletions', checked: true, type: 'deletion' },
     ]);
 
-    const displayMutations = originalComponentProps.displayMutations;
-
     const filteredData = useMemo(() => {
         return getFilteredMutationOverTimeData({
             data: mutationOverTimeData,
@@ -141,7 +144,10 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             displayedSegments,
             displayedMutationTypes,
             proportionInterval,
-            displayMutations,
+            displayMutations: originalComponentProps.displayMutations,
+            mutationFilterValue,
+            sequenceType: originalComponentProps.sequenceType,
+            annotationProvider,
         });
     }, [
         mutationOverTimeData,
@@ -149,7 +155,10 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         displayedSegments,
         displayedMutationTypes,
         proportionInterval,
-        displayMutations,
+        originalComponentProps.displayMutations,
+        originalComponentProps.sequenceType,
+        mutationFilterValue,
+        annotationProvider,
     ]);
 
     const getTab = (view: MutationsOverTimeView) => {
@@ -190,6 +199,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             colorScale={colorScale}
             setColorScale={setColorScale}
             originalComponentProps={originalComponentProps}
+            setFilterValue={setMutationFilterValue}
+            mutationFilterValue={mutationFilterValue}
         />
     );
 
@@ -208,6 +219,8 @@ type ToolbarProps = {
     colorScale: ColorScale;
     setColorScale: Dispatch<StateUpdater<ColorScale>>;
     originalComponentProps: MutationsOverTimeProps;
+    mutationFilterValue: string;
+    setFilterValue: (filterValue: string) => void;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -222,9 +235,12 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     colorScale,
     setColorScale,
     originalComponentProps,
+    setFilterValue,
+    mutationFilterValue,
 }) => {
     return (
         <>
+            <MutationsOverTimeTextFilter setFilterValue={setFilterValue} value={mutationFilterValue} />
             {activeTab === 'Grid' && (
                 <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
             )}
