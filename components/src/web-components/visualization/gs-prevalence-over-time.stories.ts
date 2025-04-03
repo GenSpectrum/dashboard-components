@@ -16,7 +16,7 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
 <gs-prevalence-over-time
-    numeratorFilter='[{ "displayName": "EG", "lapisFilter": { "country": "USA", "pangoLineage": "EG*" }}, { "displayName": "JN.1", "lapisFilter": { "country": "USA", "pangoLineage": "JN.1*" }}]'
+    numeratorFilters='[{ "displayName": "EG", "lapisFilter": { "country": "USA", "pangoLineage": "EG*" }}, { "displayName": "JN.1", "lapisFilter": { "country": "USA", "pangoLineage": "JN.1*" }}]'
     denominatorFilter='{ "country": "USA"}'
     granularity="month"
     smoothingWindow="0"

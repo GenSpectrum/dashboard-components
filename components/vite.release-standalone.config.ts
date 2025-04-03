@@ -13,4 +13,7 @@ export default defineConfig({
         minify: true,
         outDir: 'standalone-bundle',
     },
+    define: {
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
+    },
 });
