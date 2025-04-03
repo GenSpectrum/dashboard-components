@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.18.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.5...dashboard-components-v0.18.6) (2025-04-03)
+
+
+### Features
+
+* **components:** gs-mutations-over-time search for mutations and annotations ([#843](https://github.com/GenSpectrum/dashboard-components/issues/843)) ([b5e24d8](https://github.com/GenSpectrum/dashboard-components/commit/b5e24d87f2c896dd0ef182a8d790d3c3f41a2616)), closes [#805](https://github.com/GenSpectrum/dashboard-components/issues/805)
+* **components:** gs-wastewater-mutations-over-time: persist pagination page size across tabs ([#840](https://github.com/GenSpectrum/dashboard-components/issues/840)) ([b5a1a58](https://github.com/GenSpectrum/dashboard-components/commit/b5a1a5810f467c72c489b5138ca3fb841ab3877a)), closes [#835](https://github.com/GenSpectrum/dashboard-components/issues/835)
+* **components:** validate mutations in gs-mutation-filter ([#826](https://github.com/GenSpectrum/dashboard-components/issues/826)) ([53bc289](https://github.com/GenSpectrum/dashboard-components/commit/53bc2896a3a48ed4dbe2106ddfdd6670030feb49)), closes [#792](https://github.com/GenSpectrum/dashboard-components/issues/792)
+
+
+### Bug Fixes
+
+* **components:** fix codePen of gs-mutations-over-time ([#845](https://github.com/GenSpectrum/dashboard-components/issues/845)) ([ff6c122](https://github.com/GenSpectrum/dashboard-components/commit/ff6c122c679e5890949c31ff93dbc4c1b0919e8c)), closes [#810](https://github.com/GenSpectrum/dashboard-components/issues/810)
+* **examples:** fix commonjs import of leaflet for plain js ([#844](https://github.com/GenSpectrum/dashboard-components/issues/844)) ([c4b4666](https://github.com/GenSpectrum/dashboard-components/commit/c4b466666fc7b84b929ed0d50ac57afb748daed5))
+
 ## [0.18.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.4...dashboard-components-v0.18.5) (2025-03-31)
 
 
