@@ -1,18 +1,15 @@
-import { type FunctionComponent } from 'preact';
+import { type ComponentChildren } from 'preact';
+import { forwardRef } from 'preact/compat';
 
 export type Size = {
     width: string;
     height?: string;
 };
 
-export interface ResizeContainerProps {
-    size: Size;
-}
-
-export const ResizeContainer: FunctionComponent<ResizeContainerProps> = ({ children, size }) => {
-    return (
-        <div style={size} className='bg-white'>
+export const ResizeContainer = forwardRef<HTMLDivElement, { size: Size; children: ComponentChildren }>(
+    ({ size, children }, ref) => (
+        <div ref={ref} style={{ width: size.width, height: size.height, position: 'relative' }}>
             {children}
         </div>
-    );
-};
+    ),
+);
