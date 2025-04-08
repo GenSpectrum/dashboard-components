@@ -22,8 +22,10 @@ export function DatePicker({
 
     const [datePicker, setDatePicker] = useState<flatpickr.Instance | null>(null);
 
+    const calendarRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
-        if (!inputRef.current) {
+        if (!inputRef.current || !calendarRef.current) {
             return;
         }
 
@@ -33,6 +35,7 @@ export function DatePicker({
             defaultDate: value,
             minDate,
             maxDate,
+            appendTo: calendarRef.current,
         });
 
         setDatePicker(instance);
@@ -54,13 +57,16 @@ export function DatePicker({
     };
 
     return (
-        <input
-            className={`input w-full ${className}`}
-            type='text'
-            placeholder={placeholderText}
-            ref={inputRef}
-            onChange={handleChange}
-            onBlur={handleChange}
-        />
+        <div className={'w-full'}>
+            <input
+                className={`input w-full ${className}`}
+                type='text'
+                placeholder={placeholderText}
+                ref={inputRef}
+                onChange={handleChange}
+                onBlur={handleChange}
+            />
+            <div ref={calendarRef} />
+        </div>
     );
 }

@@ -1,3 +1,5 @@
+import flatpickrStyle from 'flatpickr/dist/flatpickr.css?inline';
+import { unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
@@ -5,6 +7,8 @@ import { DateRangeFilter, type DateRangeFilterProps } from '../../preact/dateRan
 import { type DateRangeOptionChangedEvent } from '../../preact/dateRangeFilter/dateRangeOption';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
+
+const flatpickrCss = unsafeCSS(flatpickrStyle);
 
 /**
  * ## Context
@@ -52,6 +56,8 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  */
 @customElement('gs-date-range-filter')
 export class DateRangeFilterComponent extends PreactLitAdapter {
+    static override styles = [...PreactLitAdapter.styles, flatpickrCss];
+
     /**
      * An array of date range options that the select field should provide.
      * The `label` will be shown to the user, and it will be available as `value`.
