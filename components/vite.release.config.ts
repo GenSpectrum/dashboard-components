@@ -11,7 +11,6 @@ export default defineConfig({
                 components: 'src/componentsEntrypoint.ts',
                 util: 'src/utilEntrypoint.ts',
             },
-            cssFileName: 'style',
         },
         sourcemap: true,
         minify: false,

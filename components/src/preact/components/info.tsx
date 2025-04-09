@@ -103,7 +103,6 @@ function generateFullExampleCode(componentCode: string, componentName: string) {
     return `<html>
 <head>
   <script type="module" src="https://unpkg.com/@genspectrum/dashboard-components@latest/standalone-bundle/dashboard-components.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/@genspectrum/dashboard-components@latest/dist/style.css" />
 </head>
 
 <body>

@@ -3,8 +3,6 @@ import { unsafeCSS } from 'lit';
 
 import { PreactLitAdapter } from './PreactLitAdapter';
 
-import 'gridjs/dist/theme/mermaid.css';
-
 const gridJsElementCss = unsafeCSS(gridJsStyle);
 
 export abstract class PreactLitAdapterWithGridJsStyles extends PreactLitAdapter {
