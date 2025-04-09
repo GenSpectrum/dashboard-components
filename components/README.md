@@ -14,7 +14,6 @@ Usage with a bundler in HTML:
 <body>
     <script>
         import '@genspectrum/dashboard-components/components';
-        import '@genspectrum/dashboard-components/style.css';
     </script>
     <gs-app lapis="https://your.lapis.url"></gs-app>
 </body>
@@ -41,7 +40,6 @@ We also provide a standalone version of the components that can be used without 
             type="module"
             src="https://unpkg.com/@genspectrum/dashboard-components@latest/standalone-bundle/dashboard-components.js"
         ></script>
-        <link rel="stylesheet" href="https://unpkg.com/@genspectrum/dashboard-components@latest/dist/style.css" />
     </head>
     <body>
         <gs-app lapis="https://your.lapis.url"></gs-app>

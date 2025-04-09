@@ -1,4 +1,3 @@
-import 'flatpickr/dist/flatpickr.min.css';
 import flatpickr from 'flatpickr';
 import { useEffect, useRef, useState } from 'preact/hooks';
 

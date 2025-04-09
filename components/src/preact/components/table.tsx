@@ -3,8 +3,6 @@ import { type OneDArray, type TColumn, type TData } from 'gridjs/dist/src/types'
 import { type ComponentChild } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 
-import 'gridjs/dist/theme/mermaid.css';
-
 export const tableStyle = {
     table: {
         fontSize: '12px',
