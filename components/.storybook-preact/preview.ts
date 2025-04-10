@@ -5,7 +5,7 @@ import { withActions } from '@storybook/addon-actions/decorator';
 import { GS_ERROR_EVENT_TYPE } from '../src/preact/components/error-display';
 
 import '../src/styles/tailwind.css';
-import './daisyui.css';
+import './applyDaisyUiToRootInsteadOfHost.css';
 import '../src/preact/components/min-max-percent-slider.css';
 import 'gridjs/dist/theme/mermaid.css';
 import 'flatpickr/dist/flatpickr.min.css';
