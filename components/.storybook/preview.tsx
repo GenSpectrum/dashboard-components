@@ -1,5 +1,4 @@
 import { Preview, setCustomElementsManifest } from '@storybook/web-components';
-import '../src/styles/tailwind.css';
 import { REFERENCE_GENOME_ENDPOINT, WISE_REFERENCE_GENOME_ENDPOINT } from '../src/constants';
 import referenceGenome from '../src/lapisApi/__mockData__/referenceGenome.json';
 import customElements from '../custom-elements.json';

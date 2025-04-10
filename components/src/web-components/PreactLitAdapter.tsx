@@ -10,13 +10,16 @@ import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import { LapisUrlContextProvider } from '../preact/LapisUrlContext';
 import { INITIAL_REFERENCE_GENOMES, ReferenceGenomeContext } from '../preact/ReferenceGenomeContext';
 import minMaxPercentSliderCss from '../preact/components/min-max-percent-slider.css?inline';
+import { replaceCssProperties } from '../styles/replaceCssProperties';
 import tailwindStyle from '../styles/tailwind.css?inline';
-
-import '../styles/tailwind.css';
-import '../preact/components/min-max-percent-slider.css';
 
 const tailwindElementCss = unsafeCSS(tailwindStyle);
 const minMaxPercentSliderElementCss = unsafeCSS(minMaxPercentSliderCss);
+
+const styleSheet = tailwindElementCss.styleSheet;
+if (styleSheet !== undefined) {
+    replaceCssProperties(styleSheet);
+}
 
 export abstract class PreactLitAdapter extends ReactiveElement {
     static override styles = [tailwindElementCss, minMaxPercentSliderElementCss];

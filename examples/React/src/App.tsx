@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 import {DateRangeOption, dateRangeOptionPresets} from '@genspectrum/dashboard-components/util';
 import '@genspectrum/dashboard-components/components';
-import '@genspectrum/dashboard-components/style.css';
 
 function App() {
     const [location, setLocation] = useState({
@@ -81,7 +80,7 @@ function App() {
             ></gs-date-range-filter>
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <div>
-                    <h1 className='text-xl bold'>Prevalence over time</h1>
+                    <h1>Prevalence over time</h1>
                     <gs-prevalence-over-time
                         numeratorFilters={JSON.stringify([numerator])}
                         denominatorFilter={JSON.stringify(denominator)}
@@ -94,7 +93,7 @@ function App() {
                     ></gs-prevalence-over-time>
                 </div>
                 <div style={{height: '300px', width: '1000px'}}>
-                    <h1 className='text-xl bold'>Prevalence over time</h1>
+                    <h1>Prevalence over time</h1>
                     <gs-prevalence-over-time
                         numeratorFilters={JSON.stringify([numerator])}
                         denominatorFilter={JSON.stringify(denominator)}
@@ -107,7 +106,7 @@ function App() {
                     ></gs-prevalence-over-time>
                 </div>
             </div>
-            <h1 className='text-xl bold'>Prevalence over time</h1>
+            <h1>Prevalence over time</h1>
             <div>
                 <gs-prevalence-over-time
                     numeratorFilters={JSON.stringify([numerator])}
@@ -118,7 +117,7 @@ function App() {
                     views='["line", "table"]'
                 ></gs-prevalence-over-time>
             </div>
-            <h1 className='text-xl bold'>Relative Growth Advantage</h1>
+            <h1>Relative Growth Advantage</h1>
             <gs-relative-growth-advantage
                 numeratorFilter={JSON.stringify(numerator.lapisFilter)}
                 denominatorFilter={JSON.stringify(denominator)}

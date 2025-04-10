@@ -98,7 +98,10 @@ export class AppComponent extends LitElement {
 }
 
 function GsAppError(error: string) {
-    return html` <div class="m-2 w-full alert alert-error">Error: ${error}</div>`;
+    // We're in the light dom, we must not use Tailwind so that we don't pollute the user's styles.
+    return html`<div style="padding: 0.5rem; border: solid red; background-color: lightcoral; border-radius: 0.5rem;">
+        Error in gs-app: ${error}
+    </div>`;
 }
 
 declare global {

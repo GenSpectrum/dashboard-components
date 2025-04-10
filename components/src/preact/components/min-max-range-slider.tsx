@@ -1,8 +1,6 @@
 import { type FunctionComponent, type JSX } from 'preact';
 import { useState } from 'preact/hooks';
 
-import './min-max-percent-slider.css';
-
 export interface MinMaxPercentSliderProps {
     min: number;
     max: number;
