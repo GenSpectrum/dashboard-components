@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, fireEvent, fn, waitFor, within } from '@storybook/test';
+import { expect, fireEvent, fn, userEvent, waitFor, within } from '@storybook/test';
 
 import data from './__mockData__/aggregated_hosts.json';
 import { TextFilter, type TextFilterProps } from './text-filter';
@@ -108,6 +108,109 @@ export const RemoveInitialValue: StoryObj<TextFilterProps> = {
                 expect.objectContaining({
                     detail: {
                         host: undefined,
+                    },
+                }),
+            );
+        });
+    },
+};
+
+export const KeepsPartialInputs: StoryObj<TextFilterProps> = {
+    ...Default,
+    render: (args) => (
+        <>
+            <input data-testid='focusHelper' />
+            <LapisUrlContextProvider value={LAPIS_URL}>
+                <TextFilter {...args} />
+            </LapisUrlContextProvider>
+        </>
+    ),
+    args: {
+        ...Default.args,
+        value: 'Homo sapiens',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+
+        const changedListenerMock = fn();
+        await step('Setup event listener mock', () => {
+            canvasElement.addEventListener('gs-text-filter-changed', changedListenerMock);
+        });
+        const inputField = () => canvas.getByPlaceholderText('Enter a host name', { exact: false });
+
+        async function typeAndBlur(input: string) {
+            await userEvent.type(inputField(), input);
+            await userEvent.click(canvas.getByTestId('focusHelper'));
+        }
+
+        await waitFor(async () => {
+            await expect(inputField()).toHaveValue('Homo sapiens');
+        });
+
+        await step('Delete some input', async () => {
+            await typeAndBlur('{backspace>2}');
+            await expect(changedListenerMock).not.toHaveBeenCalled();
+            await expect(inputField()).toHaveValue('Homo sapie');
+        });
+
+        await step('Delete some input and hits another valid value', async () => {
+            await typeAndBlur('{backspace>6}');
+            await waitFor(async () => {
+                await expect(inputField()).toHaveValue('Homo');
+            });
+            await waitFor(async () => {
+                await expect(changedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            host: 'Homo',
+                        },
+                    }),
+                );
+            });
+        });
+    },
+};
+
+export const PasteAValue: StoryObj<TextFilterProps> = {
+    ...Default,
+    render: (args) => (
+        <>
+            <input data-testid='focusHelper' />
+            <LapisUrlContextProvider value={LAPIS_URL}>
+                <TextFilter {...args} />
+            </LapisUrlContextProvider>
+        </>
+    ),
+    args: {
+        ...Default.args,
+        value: '',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+
+        const changedListenerMock = fn();
+        await step('Setup event listener mock', () => {
+            canvasElement.addEventListener('gs-text-filter-changed', changedListenerMock);
+        });
+        const inputField = () => canvas.getByPlaceholderText('Enter a host name', { exact: false });
+
+        await waitFor(async () => {
+            await expect(inputField()).toHaveValue('');
+        });
+
+        await step('Paste a value and fire event', async () => {
+            await userEvent.click(inputField());
+            await userEvent.paste('Homo sapiens');
+            await userEvent.click(canvas.getByTestId('focusHelper'));
+
+            await waitFor(async () => {
+                await expect(inputField()).toHaveValue('Homo sapiens');
+            });
+
+            await expect(changedListenerMock).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    detail: {
+                        host: 'Homo sapiens',
                     },
                 }),
             );

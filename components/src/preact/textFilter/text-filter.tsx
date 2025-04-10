@@ -87,9 +87,10 @@ const TextSelector = ({
             allItems={data}
             value={initialSelectedItem}
             filterItemsByInputValue={filterByInputValue}
-            createEvent={(item: SelectItem | null) =>
-                new TextFilterChangedEvent({ [lapisField]: item?.value ?? undefined })
-            }
+            createEvent={(item: SelectItem | null) => {
+                console.log('firing', item);
+                return new TextFilterChangedEvent({ [lapisField]: item?.value ?? undefined });
+            }}
             itemToString={(item: SelectItem | undefined | null) => item?.value ?? ''}
             placeholderText={placeholderText}
             formatItemInList={(item: SelectItem) => {
