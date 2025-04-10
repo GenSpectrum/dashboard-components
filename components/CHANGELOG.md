@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.6...dashboard-components-v0.18.7) (2025-04-10)
+
+
+### Features
+
+* **components:** render calendar inside shadow dom ([#849](https://github.com/GenSpectrum/dashboard-components/issues/849)) ([3769481](https://github.com/GenSpectrum/dashboard-components/commit/376948180e973918ee75e47de28ff89e7194c658)), closes [#806](https://github.com/GenSpectrum/dashboard-components/issues/806)
+
 ## [0.18.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.5...dashboard-components-v0.18.6) (2025-04-03)
 
 
