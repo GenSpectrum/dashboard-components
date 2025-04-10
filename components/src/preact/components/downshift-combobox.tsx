@@ -1,6 +1,6 @@
 import { useCombobox } from 'downshift/preact';
 import { type ComponentChild } from 'preact';
-import { useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 
 import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
@@ -23,12 +23,20 @@ export function DownshiftCombobox<Item>({
     formatItemInList: (item: Item) => ComponentChild;
     inputClassName?: string;
 }) {
-    const [itemsFilter, setItemsFilter] = useState(itemToString(value));
+    const [selectedItem, setSelectedItem] = useState(() => value);
+    const [itemsFilter, setItemsFilter] = useState(() => itemToString(selectedItem));
+
+    useEffect(() => {
+        setSelectedItem(value);
+        setItemsFilter(itemToString(value));
+    }, [itemToString, value]);
+
     const items = useMemo(
         () => allItems.filter((item) => filterItemsByInputValue(item, itemsFilter)),
         [allItems, filterItemsByInputValue, itemsFilter],
     );
     const divRef = useRef<HTMLDivElement>(null);
+    const [inputIsInvalid, setInputIsInvalid] = useState(false);
 
     const shadowRoot = divRef.current?.shadowRoot ?? undefined;
 
@@ -49,16 +57,16 @@ export function DownshiftCombobox<Item>({
         getInputProps,
         highlightedIndex,
         getItemProps,
-        selectedItem,
         inputValue,
         selectItem,
-        setInputValue,
         closeMenu,
     } = useCombobox({
         onInputValueChange({ inputValue }) {
-            setItemsFilter(inputValue);
+            setInputIsInvalid(false);
+            setItemsFilter(inputValue.trim());
         },
         onSelectedItemChange({ selectedItem }) {
+            setSelectedItem(selectedItem);
             if (selectedItem !== null) {
                 divRef.current?.dispatchEvent(createEvent(selectedItem));
             }
@@ -67,7 +75,7 @@ export function DownshiftCombobox<Item>({
         itemToString(item) {
             return itemToString(item);
         },
-        selectedItem: value,
+        selectedItem,
         environment,
     });
 
@@ -75,9 +83,17 @@ export function DownshiftCombobox<Item>({
         if (inputValue === '') {
             divRef.current?.dispatchEvent(createEvent(null));
             selectItem(null);
-        } else if (inputValue !== itemToString(selectedItem)) {
-            setInputValue(itemToString(selectedItem) || '');
+            return;
         }
+
+        const trimmedInput = inputValue.trim();
+        const matchingItem = items.find((item) => itemToString(item) === trimmedInput);
+        if (matchingItem !== undefined) {
+            selectItem(matchingItem);
+            return;
+        }
+
+        setInputIsInvalid(true);
     };
 
     const clearInput = () => {
@@ -91,7 +107,7 @@ export function DownshiftCombobox<Item>({
         <div ref={divRef} className={'relative w-full'}>
             <div className='w-full flex flex-col gap-1'>
                 <div
-                    className={`flex gap-0.5 input min-w-32 w-full ${inputClassName}`}
+                    className={`flex gap-0.5 input min-w-32 w-full ${inputClassName} ${inputIsInvalid ? 'input-error' : ''}`}
                     onBlur={(event) => {
                         if (event.relatedTarget != buttonRef.current) {
                             closeMenu();
