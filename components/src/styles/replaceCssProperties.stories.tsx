@@ -38,9 +38,12 @@ export const InvalidProps: StoryObj = {
 
         replaceCssProperties(styleSheet);
 
-        const resultingCss = [...styleSheet.cssRules].map((rule) => rule.cssText).join('\n');
+        const resultingCss = [...styleSheet.cssRules]
+            .map((rule) => rule.cssText)
+            .join('\n')
+            .replaceAll(' ', '');
 
-        await expect(resultingCss).toContain(':host { --test-with-initial-value: solid ; }');
-        await expect(resultingCss).toContain('.some-other-rule { color: red; }');
+        await expect(resultingCss).toContain(':host{--test-with-initial-value:solid;}');
+        await expect(resultingCss).toContain('.some-other-rule{color:red;}');
     },
 };
