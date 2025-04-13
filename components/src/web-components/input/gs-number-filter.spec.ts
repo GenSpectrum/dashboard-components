@@ -12,9 +12,6 @@ describe('gs-number-filter types', () => {
             .toHaveProperty('lapisField')
             .toEqualTypeOf<NumberFilterProps['lapisField']>();
         expectTypeOf(NumberFilterComponent.prototype)
-            .toHaveProperty('placeholderText')
-            .toEqualTypeOf<NumberFilterProps['placeholderText']>();
-        expectTypeOf(NumberFilterComponent.prototype)
             .toHaveProperty('width')
             .toEqualTypeOf<NumberFilterProps['width']>();
     });

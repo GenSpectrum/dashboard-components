@@ -29,12 +29,6 @@ export class NumberFilterComponent extends PreactLitAdapter {
     lapisField = '';
 
     /**
-     * The placeholder text to display in the input field.
-     */
-    @property()
-    placeholderText: string | undefined = undefined;
-
-    /**
      * The width of the component.
      *
      * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-size-of-components--docs for more information.
@@ -43,14 +37,7 @@ export class NumberFilterComponent extends PreactLitAdapter {
     width: string = '100%';
 
     override render() {
-        return (
-            <NumberFilter
-                lapisField={this.lapisField}
-                placeholderText={this.placeholderText}
-                value={this.value}
-                width={this.width}
-            />
-        );
+        return <NumberFilter value={this.value} lapisField={this.lapisField} width={this.width} />;
     }
 }
 

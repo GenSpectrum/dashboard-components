@@ -1,9 +1,12 @@
+import '../gs-app';
+import './gs-number-filter';
+
 import { type Meta, type StoryObj } from '@storybook/web-components';
+import { html } from 'lit';
 
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
+import { LAPIS_URL } from '../../constants';
 import { type NumberFilterProps } from '../../preact/numberFilter/number-filter';
-
-import './gs-number-filter';
 
 const codeExample = String.raw`
 <gs-number-filter
@@ -47,16 +50,15 @@ export default meta;
 
 export const Default: StoryObj<NumberFilterProps> = {
     render: (args) => {
-        return `<gs-number-filter
-            value=${args.value}
-            lapisField="${args.lapisField}"
-            placeholderText="${args.placeholderText}"
-            width="${args.width}">
-        </gs-number-filter>`;
+        return html`
+            <gs-app lapis="${LAPIS_URL}">
+                <gs-number-filter .value=${args.value} .lapisField=${args.lapisField} .width=${args.width}>
+                </gs-number-filter>
+            </gs-app>
+        `;
     },
     args: {
         lapisField: 'age',
-        placeholderText: 'Enter age',
         value: { min: 10, max: 90 },
         width: '100%',
     },

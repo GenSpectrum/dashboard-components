@@ -17,7 +17,6 @@ type NumberRange = z.infer<typeof numberRangeSchema>;
 const numberFilterPropsSchema = z.object({
     value: numberRangeSchema,
     lapisField: z.string().min(1),
-    placeholderText: z.string().optional(),
     width: z.string(),
 });
 export type NumberFilterProps = z.infer<typeof numberFilterPropsSchema>;
