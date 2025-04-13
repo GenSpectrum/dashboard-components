@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.19.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.6...dashboard-components-v0.19.0) (2025-04-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** Removed the `styles.css` export. It's not necessary anymore.
+
+### Features
+
+* **components:** render calendar inside shadow dom ([#849](https://github.com/GenSpectrum/dashboard-components/issues/849)) ([3769481](https://github.com/GenSpectrum/dashboard-components/commit/376948180e973918ee75e47de28ff89e7194c658)), closes [#806](https://github.com/GenSpectrum/dashboard-components/issues/806)
+
+
+### Bug Fixes
+
+* **components:** apply daisyui styles to host instead of root ([#850](https://github.com/GenSpectrum/dashboard-components/issues/850)) ([4b66975](https://github.com/GenSpectrum/dashboard-components/commit/4b66975e946f6ec9d3a225c4b824d3f13a36a749))
+* **components:** apply Tailwind's `[@property](https://github.com/property)`s to the `:host` instead ([4b66975](https://github.com/GenSpectrum/dashboard-components/commit/4b66975e946f6ec9d3a225c4b824d3f13a36a749)), closes [#807](https://github.com/GenSpectrum/dashboard-components/issues/807) [#804](https://github.com/GenSpectrum/dashboard-components/issues/804)
+
 ## [0.18.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.5...dashboard-components-v0.18.6) (2025-04-03)
 
 
