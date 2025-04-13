@@ -77,16 +77,16 @@ const LineageSelector = ({
             allItems={data}
             value={value}
             filterItemsByInputValue={filterByInputValue}
-            createEvent={(item: string | null) => new LineageFilterChangedEvent({ [lapisField]: item ?? undefined })}
-            itemToString={(item: string | undefined | null) => item ?? ''}
+            createEvent={(item) => new LineageFilterChangedEvent({ [lapisField]: item ?? undefined })}
+            itemToString={(item) => item ?? ''}
             placeholderText={placeholderText}
             formatItemInList={(item: string) => item}
         />
     );
 };
 
-function filterByInputValue(item: string, inputValue: string | undefined | null) {
-    if (inputValue === undefined || inputValue === null || inputValue === '') {
+function filterByInputValue(item: string, inputValue: string | null) {
+    if (inputValue === null || inputValue === '') {
         return true;
     }
     return item?.toLowerCase().includes(inputValue?.toLowerCase() || '');

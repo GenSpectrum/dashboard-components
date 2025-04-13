@@ -15,7 +15,7 @@ export function DownshiftCombobox<Item>({
     inputClassName = '',
 }: {
     allItems: Item[];
-    value?: Item | null;
+    value: Item | null;
     filterItemsByInputValue: (item: Item, value: string) => boolean;
     createEvent: (item: Item | null) => CustomEvent;
     itemToString: (item: Item | undefined | null) => string;
@@ -23,7 +23,7 @@ export function DownshiftCombobox<Item>({
     formatItemInList: (item: Item) => ComponentChild;
     inputClassName?: string;
 }) {
-    const [selectedItem, setSelectedItem] = useState(() => value);
+    const [selectedItem, setSelectedItem] = useState<Item | null>(() => value);
     const [itemsFilter, setItemsFilter] = useState(() => itemToString(selectedItem));
 
     useEffect(() => {
@@ -37,6 +37,11 @@ export function DownshiftCombobox<Item>({
     );
     const divRef = useRef<HTMLDivElement>(null);
     const [inputIsInvalid, setInputIsInvalid] = useState(false);
+
+    const selectItem = (item: Item | null) => {
+        setSelectedItem(item);
+        divRef.current?.dispatchEvent(createEvent(item));
+    };
 
     const shadowRoot = divRef.current?.shadowRoot ?? undefined;
 
@@ -58,7 +63,6 @@ export function DownshiftCombobox<Item>({
         highlightedIndex,
         getItemProps,
         inputValue,
-        selectItem,
         closeMenu,
     } = useCombobox({
         onInputValueChange({ inputValue }) {
@@ -66,10 +70,7 @@ export function DownshiftCombobox<Item>({
             setItemsFilter(inputValue.trim());
         },
         onSelectedItemChange({ selectedItem }) {
-            setSelectedItem(selectedItem);
-            if (selectedItem !== null) {
-                divRef.current?.dispatchEvent(createEvent(selectedItem));
-            }
+            selectItem(selectedItem);
         },
         items,
         itemToString(item) {
@@ -81,7 +82,6 @@ export function DownshiftCombobox<Item>({
 
     const onInputBlur = () => {
         if (inputValue === '') {
-            divRef.current?.dispatchEvent(createEvent(null));
             selectItem(null);
             return;
         }
@@ -97,7 +97,6 @@ export function DownshiftCombobox<Item>({
     };
 
     const clearInput = () => {
-        divRef.current?.dispatchEvent(createEvent(null));
         selectItem(null);
     };
 

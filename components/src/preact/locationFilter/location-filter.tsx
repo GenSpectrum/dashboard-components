@@ -87,12 +87,10 @@ const LocationSelector = ({
     return (
         <DownshiftCombobox
             allItems={allItems}
-            value={selectedItem}
+            value={selectedItem ?? null}
             filterItemsByInputValue={filterByInputValue}
-            createEvent={(item: SelectItem | null) =>
-                new LocationChangedEvent(item?.lapisFilter ?? emptyLocationFilter(fields))
-            }
-            itemToString={(item: SelectItem | undefined | null) => item?.label ?? ''}
+            createEvent={(item) => new LocationChangedEvent(item?.lapisFilter ?? emptyLocationFilter(fields))}
+            itemToString={(item) => item?.label ?? ''}
             placeholderText={placeholderText}
             formatItemInList={(item: SelectItem) => (
                 <>
@@ -107,8 +105,8 @@ const LocationSelector = ({
     );
 };
 
-function filterByInputValue(item: SelectItem, inputValue: string | undefined | null) {
-    if (inputValue === undefined || inputValue === null) {
+function filterByInputValue(item: SelectItem, inputValue: string | null) {
+    if (inputValue === null) {
         return true;
     }
     return (
