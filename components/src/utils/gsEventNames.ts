@@ -6,4 +6,6 @@ export const gsEventNames = {
     lineageFilterChanged: 'gs-lineage-filter-changed',
     locationChanged: 'gs-location-changed',
     textFilterChanged: 'gs-text-filter-changed',
+    numberRangeFilterChanged: 'gs-number-range-filter-changed',
+    numberRangeValueChanged: 'gs-number-range-value-changed',
 } as const;

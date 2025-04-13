@@ -18,8 +18,8 @@ const codeExample = String.raw`
     lapisFilter='{"country": "Germany"}'
     placeholderText="Enter host name"
     value="Homo sapiens"
-    width="50%">
-</gs-text-filter>`;
+    width="50%"
+></gs-text-filter>`;
 
 const meta: Meta<Required<TextFilterProps>> = {
     title: 'Input/Text filter',
