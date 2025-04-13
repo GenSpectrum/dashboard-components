@@ -85,12 +85,10 @@ const TextSelector = ({
     return (
         <DownshiftCombobox
             allItems={data}
-            value={initialSelectedItem}
+            value={initialSelectedItem ?? null}
             filterItemsByInputValue={filterByInputValue}
-            createEvent={(item: SelectItem | null) =>
-                new TextFilterChangedEvent({ [lapisField]: item?.value ?? undefined })
-            }
-            itemToString={(item: SelectItem | undefined | null) => item?.value ?? ''}
+            createEvent={(item) => new TextFilterChangedEvent({ [lapisField]: item?.value ?? undefined })}
+            itemToString={(item) => item?.value ?? ''}
             placeholderText={placeholderText}
             formatItemInList={(item: SelectItem) => {
                 return (
@@ -104,8 +102,8 @@ const TextSelector = ({
     );
 };
 
-function filterByInputValue(item: SelectItem, inputValue: string | undefined | null) {
-    if (inputValue === undefined || inputValue === null || inputValue === '') {
+function filterByInputValue(item: SelectItem, inputValue: string | null) {
+    if (inputValue === null || inputValue === '') {
         return true;
     }
     return item.value?.toLowerCase().includes(inputValue?.toLowerCase() || '');

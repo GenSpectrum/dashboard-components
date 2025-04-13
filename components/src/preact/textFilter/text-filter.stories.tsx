@@ -104,13 +104,15 @@ export const RemoveInitialValue: StoryObj<TextFilterProps> = {
         await step('Remove initial value', async () => {
             await fireEvent.click(canvas.getByRole('button', { name: 'clear selection' }));
 
-            await expect(changedListenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        host: undefined,
-                    },
-                }),
-            );
+            await waitFor(async () => {
+                await expect(changedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            host: undefined,
+                        },
+                    }),
+                );
+            });
         });
     },
 };
