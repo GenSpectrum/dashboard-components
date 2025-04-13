@@ -82,7 +82,9 @@ export const WithNoLapisUrl: StoryObj<StoryProps> = {
         const canvas = within(canvasElement);
 
         await waitFor(async () => {
-            await expect(canvas.getByText("Error: Invalid LAPIS URL: 'notAValidUrl'", { exact: false })).toBeVisible();
+            await expect(
+                canvas.getByText("Error in gs-app: Invalid LAPIS URL: 'notAValidUrl'", { exact: false }),
+            ).toBeVisible();
         });
     },
 };
@@ -119,7 +121,9 @@ export const FailsToFetchReferenceGenome: StoryObj<StoryProps> = {
         const canvas = within(canvasElement);
 
         await waitFor(async () => {
-            await expect(canvas.getByText('Error: Cannot fetch reference genome.', { exact: false })).toBeVisible();
+            await expect(
+                canvas.getByText('Error in gs-app: Cannot fetch reference genome.', { exact: false }),
+            ).toBeVisible();
         });
     },
 };

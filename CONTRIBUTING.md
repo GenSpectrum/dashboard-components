@@ -29,3 +29,18 @@ where
 * `<name of the upstream branch>` is the name of the branch for which the changelog should be generated.
 
 __NOTE: This command does not respect local changes. It will pull the commit messages from the remote repository.__
+
+## CSS
+
+We use [Tailwind](https://tailwindcss.com/) and [DaisyUI](https://daisyui.com/) for styling.
+Prefer Tailwind or DaisyUI classes for styling the components.
+Only use custom CSS files and classes or inline styles if those don't work for your usecase.
+
+Notice that Tailwind and DaisyUI classes cannot be generated dynamically,
+because Tailwind scans the code at build time to generate the necessary style sheets.
+
+Make sure that you don't include any CSS files in the components like this:
+`import './my-component.css'`.
+If vite finds imports like these, it will generate a CSS file in the output.
+We don't want that. All styles should already be included in the components.
+Instead, apply the CSS files to the Lit components using the `static styles` field. 

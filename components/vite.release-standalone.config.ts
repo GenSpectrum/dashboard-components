@@ -7,7 +7,6 @@ export default defineConfig({
             entry: {
                 'dashboard-components': 'src/standaloneEntrypoint.ts',
             },
-            cssFileName: 'style',
         },
         sourcemap: true,
         minify: true,
