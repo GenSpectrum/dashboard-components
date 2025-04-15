@@ -63,7 +63,7 @@ const NumberFilterInner: FunctionComponent<NumberFilterInnerProps> = ({ value, l
         const trimmedInput = input.trim();
 
         if (trimmedInput === '') {
-            dispatchRange({ type: SET_MIN, value: undefined });
+            dispatchRange({ type: SET_MAX, value: undefined });
             return;
         }
 
@@ -71,7 +71,7 @@ const NumberFilterInner: FunctionComponent<NumberFilterInnerProps> = ({ value, l
         if (!Number.isFinite(value)) {
             return;
         }
-        dispatchRange({ type: SET_MIN, value });
+        dispatchRange({ type: SET_MAX, value });
     };
 
     return (
