@@ -43,11 +43,6 @@ const NumberFilterInner: FunctionComponent<NumberFilterInnerProps> = ({ value, l
     const divRef = useRef<HTMLDivElement>(null);
 
     const [currentRange, dispatchRange] = useRangeReducer(value, divRef, lapisField);
-    /*    
-        useEffect(() => {
-            setInputValue(value);
-        }, [value]);
-     */
 
     const onMinInput = (input: string) => {
         const trimmedInput = input.trim();
