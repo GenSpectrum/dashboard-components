@@ -47,7 +47,7 @@ export function getFilteredMutationOverTimeData({
             return true;
         }
 
-        if (displayMutationsSet !== null && !displayMutationsSet.has(entry.mutation.code)) {
+        if (displayMutationsSet !== null && !displayMutationsSet.has(entry.mutation.code.toUpperCase())) {
             return true;
         }
 
