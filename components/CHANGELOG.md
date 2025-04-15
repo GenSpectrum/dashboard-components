@@ -5,7 +5,7 @@
 
 ### Bug Fixes
 
-* **components:** bug with displayMutations in mutations-over-time ([#861](https://github.com/GenSpectrum/dashboard-components/issues/861)) ([4c3b871](https://github.com/GenSpectrum/dashboard-components/commit/4c3b8714219ad4d450ac2a92e966dce950ed677a))
+* **components:** fixes a bug that caused the `displayMutations` parameter of `gs-mutations-over-time` to not work for genes containing lowercase letters ([#861](https://github.com/GenSpectrum/dashboard-components/issues/861)) ([4c3b871](https://github.com/GenSpectrum/dashboard-components/commit/4c3b8714219ad4d450ac2a92e966dce950ed677a))
 
 ## [0.19.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.18.6...dashboard-components-v0.19.0) (2025-04-13)
 
