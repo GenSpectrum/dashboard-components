@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, fireEvent, fn, waitFor, within } from '@storybook/test';
+import { expect, fireEvent, fn, userEvent, waitFor, within } from '@storybook/test';
 
 import data from './__mockData__/aggregated_hosts.json';
 import { TextFilter, type TextFilterProps } from './text-filter';
@@ -111,6 +111,64 @@ export const RemoveInitialValue: StoryObj<TextFilterProps> = {
                     },
                 }),
             );
+        });
+    },
+};
+
+export const KeepsPartialInputInInputField: StoryObj<TextFilterProps> = {
+    ...Default,
+    render: (args) => (
+        <>
+            <button data-testid='focusHelper'>Focus helper</button>
+            <LapisUrlContextProvider value={LAPIS_URL}>
+                <TextFilter {...args} />
+            </LapisUrlContextProvider>
+        </>
+    ),
+    args: {
+        ...Default.args,
+        value: '',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+
+        const changedListenerMock = fn();
+        await step('Setup event listener mock', () => {
+            canvasElement.addEventListener('gs-text-filter-changed', changedListenerMock);
+        });
+        const inputField = () => canvas.getByPlaceholderText('Enter a host name', { exact: false });
+        async function typeAndBlur(input: string) {
+            await userEvent.click(inputField());
+            await userEvent.type(inputField(), input);
+            await userEvent.click(canvas.getByTestId('focusHelper'));
+        }
+
+        await waitFor(async () => {
+            await expect(inputField()).toHaveValue('');
+        });
+
+        await step('Type a value that it not valid yet and focus out', async () => {
+            await typeAndBlur('Homo sapi');
+            await waitFor(async () => {
+                await expect(inputField()).toHaveValue('Homo sapi');
+            });
+            await expect(changedListenerMock).not.toHaveBeenCalled();
+        });
+
+        await step('Complete the input value and expect an event', async () => {
+            await typeAndBlur('ens');
+            await waitFor(async () => {
+                await expect(inputField()).toHaveValue('Homo sapiens');
+            });
+            await waitFor(async () => {
+                await expect(changedListenerMock).toHaveBeenLastCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            host: 'Homo sapiens',
+                        },
+                    }),
+                );
+            });
         });
     },
 };
