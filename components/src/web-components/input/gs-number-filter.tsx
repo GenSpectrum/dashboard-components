@@ -1,0 +1,71 @@
+import { customElement, property } from 'lit/decorators.js';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
+
+import { type NumberFilterChangedEvent } from '../../preact/numberFilter/NumberFilterChangedEvent';
+import { NumberFilter } from '../../preact/numberFilter/number-filter';
+import { PreactLitAdapter } from '../PreactLitAdapter';
+
+/**
+ *
+ * ## Context
+ *
+ * TODO
+ */
+@customElement('gs-number-filter')
+export class NumberFilterComponent extends PreactLitAdapter {
+    /**
+     * The value to use for this number filter.
+     *
+     * Must be of the form:
+     * ```ts
+     * {
+     *     [`${lapisField}From`]: number | undefined
+     *     [`${lapisField}To`]: number | undefined
+     * }
+     * ```
+     *
+     * This is the same format that the `gs-number-filter-changed` event will emit.
+     */
+    @property({ type: Object })
+    value: Record<string, number | undefined> = {};
+
+    /**
+     * Required.
+     *
+     * The LAPIS field name to use for this text filter.
+     * The field must exist on this LAPIS instance.
+     */
+    @property()
+    lapisField = '';
+
+    /**
+     * The width of the component.
+     *
+     * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-size-of-components--docs for more information.
+     */
+    @property({ type: String })
+    width: string = '100%';
+
+    override render() {
+        return <NumberFilter value={this.value} lapisField={this.lapisField} width={this.width} />;
+    }
+}
+
+declare global {
+    interface HTMLElementTagNameMap {
+        'gs-number-filter': NumberFilterComponent;
+    }
+
+    interface HTMLElementEventMap {
+        'gs-number-filter-changed': NumberFilterChangedEvent;
+    }
+}
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            'gs-number-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+        }
+    }
+}
