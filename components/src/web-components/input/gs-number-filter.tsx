@@ -15,9 +15,19 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
 export class NumberFilterComponent extends PreactLitAdapter {
     /**
      * The value to use for this number filter.
+     *
+     * Must be of the form:
+     * ```ts
+     * {
+     *     [`${lapisField}From`]: number | undefined
+     *     [`${lapisField}To`]: number | undefined
+     * }
+     * ```
+     *
+     * This is the same format that the `gs-number-filter-changed` event will emit.
      */
     @property({ type: Object })
-    value: { min?: number; max?: number } = {};
+    value: Record<string, number | undefined> = {};
 
     /**
      * Required.

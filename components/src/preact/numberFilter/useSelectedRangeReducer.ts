@@ -1,11 +1,9 @@
 import { useEffect, useReducer, useState } from 'preact/hooks';
-import z from 'zod';
 
-export const numberRangeSchema = z.object({
-    min: z.number().optional(),
-    max: z.number().optional(),
-});
-export type NumberRange = z.infer<typeof numberRangeSchema>;
+export type NumberRange = {
+    min: number | undefined;
+    max: number | undefined;
+};
 
 export function useSelectedRangeReducer(initialValue: NumberRange) {
     const [range, dispatchRange] = useReducer(rangeReducer, initialValue);

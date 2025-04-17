@@ -1,9 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
 import { type StepFunction } from '@storybook/types';
+import { useEffect, useRef, useState } from 'preact/hooks';
 
 import { gsNumberFilterChangedEventName } from './NumberFilterChangedEvent';
 import { NumberFilter, type NumberFilterProps } from './number-filter';
+import { expectInvalidAttributesErrorMessage, playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
 
 const meta: Meta<NumberFilterProps> = {
     title: 'Input/Number filter',
@@ -39,7 +41,7 @@ const Template: StoryObj<NumberFilterProps> = {
     render: (args) => <NumberFilter {...args} />,
     args: {
         lapisField: 'age',
-        value: { min: 10, max: 90 },
+        value: { ageFrom: 10, ageTo: 90 },
         width: '100%',
     },
 };
@@ -130,6 +132,103 @@ export const SetMaxValue: StoryObj<NumberFilterProps> = {
     },
 };
 
+export const WithInvalidProps: StoryObj<NumberFilterProps> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        lapisField: '',
+    },
+    play: async ({ canvasElement, step }) => {
+        await step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
+        });
+    },
+};
+
+export const WithInvalidValue: StoryObj<NumberFilterProps> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        value: {
+            unknownField: 17,
+        },
+    },
+    play: playThatExpectsErrorMessage(
+        'Error - Invalid value',
+        `Got invalid 'value': [ { "code": "unrecognized_keys", "keys": [ "unknownField" ]`,
+    ),
+};
+
+export const ChangingTheValueProgrammatically: StoryObj<NumberFilterProps> = {
+    ...Template,
+    render: (args) => {
+        const StatefulWrapper = () => {
+            const [value, setValue] = useState<Record<string, number | undefined>>({
+                ageFrom: 10,
+                ageTo: 90,
+            });
+            const ref = useRef<HTMLDivElement>(null);
+
+            useEffect(() => {
+                ref.current?.addEventListener(gsNumberFilterChangedEventName, (event) => {
+                    setValue(event.detail);
+                });
+            }, []);
+            return (
+                <div ref={ref}>
+                    <NumberFilter {...args} value={value} />
+                    <button className='btn' onClick={() => setValue((prev) => ({ ...prev, ageFrom: 30 }))}>
+                        Set min to 30
+                    </button>
+                    <button className='btn' onClick={() => setValue((prev) => ({ ...prev, ageTo: 40 }))}>
+                        Set max to 40
+                    </button>
+                </div>
+            );
+        };
+
+        return <StatefulWrapper />;
+    },
+    play: async ({ canvasElement, step, canvas }) => {
+        const { changedListenerMock, expectEventWithDetail, minInput, maxInput, clearMaxButton } = await setup(
+            canvasElement,
+            step,
+        );
+
+        await waitFor(async () => {
+            await expect(minInput()).toHaveValue('10');
+            await expect(maxInput()).toHaveValue('90');
+        });
+
+        await userEvent.click(canvas.getByRole('button', { name: 'Set min to 30' }));
+        await waitFor(async () => {
+            await expect(minInput()).toHaveValue('30');
+            await expect(maxInput()).toHaveValue('90');
+        });
+        await expect(changedListenerMock).not.toHaveBeenCalled();
+
+        await userEvent.click(canvas.getByRole('button', { name: 'Set max to 40' }));
+        await waitFor(async () => {
+            await expect(minInput()).toHaveValue('30');
+            await expect(maxInput()).toHaveValue('40');
+        });
+        await expect(changedListenerMock).not.toHaveBeenCalled();
+
+        await userEvent.click(clearMaxButton());
+        await waitFor(async () => {
+            await expect(minInput()).toHaveValue('30');
+            await expect(maxInput()).toHaveValue('');
+        });
+        await expectEventWithDetail({ ageFrom: 30, ageTo: undefined });
+
+        await userEvent.click(canvas.getByRole('button', { name: 'Set max to 40' }));
+        await waitFor(async () => {
+            await expect(minInput()).toHaveValue('30');
+            await expect(maxInput()).toHaveValue('40');
+        });
+    },
+};
+
 async function setup(canvasElement: HTMLElement, step: StepFunction) {
     const canvas = within(canvasElement);
 
@@ -161,5 +260,5 @@ async function setup(canvasElement: HTMLElement, step: StepFunction) {
         });
     });
 
-    return { expectEventWithDetail, minInput, maxInput, clearMinButton, clearMaxButton };
+    return { changedListenerMock, expectEventWithDetail, minInput, maxInput, clearMinButton, clearMaxButton };
 }

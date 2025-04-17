@@ -60,7 +60,7 @@ export const Default: StoryObj<NumberFilterProps> = {
     },
     args: {
         lapisField: 'age',
-        value: { min: 10, max: 90 },
+        value: { ageFrom: 10, ageTo: 90 },
         width: '100%',
     },
 };

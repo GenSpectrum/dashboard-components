@@ -1,16 +1,17 @@
 import { type FunctionComponent } from 'preact';
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { NumberFilterChangedEvent } from './NumberFilterChangedEvent';
-import { numberRangeSchema, SetRangeActionType, useSelectedRangeReducer } from './useSelectedRangeReducer';
+import { type NumberRange, SetRangeActionType, useSelectedRangeReducer } from './useSelectedRangeReducer';
 import { ErrorBoundary } from '../components/error-boundary';
+import { UserFacingError } from '../components/error-display';
 import { MinMaxRangeSlider } from '../components/min-max-range-slider';
 import { ResizeContainer } from '../components/resize-container';
 import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
 const numberFilterPropsSchema = z.object({
-    value: numberRangeSchema,
+    value: z.record(z.number().optional()),
     lapisField: z.string().min(1),
     width: z.string(),
 });
@@ -37,7 +38,9 @@ const rangeMax = 100;
 const NumberFilterInner: FunctionComponent<NumberFilterInnerProps> = ({ value, lapisField }) => {
     const divRef = useRef<HTMLDivElement>(null);
 
-    const [currentRange, dispatchRange] = useSelectedRangeReducer(value);
+    const cleanedValue = useCleanedValue(value, lapisField);
+
+    const [currentRange, dispatchRange] = useSelectedRangeReducer(cleanedValue);
     const [shouldDispatchEvent, setShouldDispatchEvent] = useState(false);
 
     useEffect(() => {
@@ -140,3 +143,28 @@ const NumberFilterInner: FunctionComponent<NumberFilterInnerProps> = ({ value, l
         </div>
     );
 };
+
+function useCleanedValue(value: Record<string, number | undefined>, lapisField: string): NumberRange {
+    return useMemo(() => {
+        const fromField = `${lapisField}From`;
+        const toField = `${lapisField}To`;
+
+        const valueSchema = z
+            .object({
+                [fromField]: z.number().optional(),
+                [toField]: z.number().optional(),
+            })
+            .strict();
+
+        const parseResult = valueSchema.safeParse(value);
+
+        if (parseResult.success) {
+            return {
+                min: parseResult.data[fromField],
+                max: parseResult.data[toField],
+            };
+        }
+
+        throw new UserFacingError('Invalid value', `Got invalid 'value': ${parseResult.error.message}`);
+    }, [lapisField, value]);
+}
