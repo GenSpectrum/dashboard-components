@@ -6,6 +6,7 @@ export interface MinMaxPercentSliderProps {
     max: number;
     setMin: (min: number) => void;
     setMax: (max: number) => void;
+    onDrop?: () => void;
     rangeMin?: number;
     rangeMax?: number;
     step?: number;
@@ -16,6 +17,7 @@ export const MinMaxRangeSlider: FunctionComponent<MinMaxPercentSliderProps> = ({
     max,
     setMin,
     setMax,
+    onDrop,
     rangeMin = 0,
     rangeMax = 100,
     step = 0.1,
@@ -73,6 +75,8 @@ export const MinMaxRangeSlider: FunctionComponent<MinMaxPercentSliderProps> = ({
                 type='range'
                 value={min}
                 onInput={onMinChange}
+                onMouseUp={() => onDrop?.()}
+                onTouchEnd={() => onDrop?.()}
                 min={`${rangeMin}`}
                 max={`${rangeMax}`}
                 step={step}
@@ -86,6 +90,8 @@ export const MinMaxRangeSlider: FunctionComponent<MinMaxPercentSliderProps> = ({
                 max={`${rangeMax}`}
                 step={step}
                 onInput={onMaxChange}
+                onMouseUp={() => onDrop?.()}
+                onTouchEnd={() => onDrop?.()}
                 style={{ background, zIndex: zIndexTo }}
             />
         </div>

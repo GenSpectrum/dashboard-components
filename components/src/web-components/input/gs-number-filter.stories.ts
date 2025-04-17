@@ -6,6 +6,7 @@ import { html } from 'lit';
 
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL } from '../../constants';
+import { gsNumberFilterChangedEventName } from '../../preact/numberFilter/NumberFilterChangedEvent';
 import { type NumberFilterProps } from '../../preact/numberFilter/number-filter';
 
 const codeExample = String.raw`
@@ -18,7 +19,7 @@ const meta: Meta<NumberFilterProps> = {
     component: 'gs-number-filter',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-number-filter-changed'],
+            handles: [gsNumberFilterChangedEventName],
         },
         componentDocs: {
             opensShadowDom: true,
