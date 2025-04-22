@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.1...dashboard-components-v0.19.2) (2025-04-22)
+
+
+### Features
+
+* **components:** gs-text-input: make it possible to paste values and accept them on blur ([#852](https://github.com/GenSpectrum/dashboard-components/issues/852)) ([8532778](https://github.com/GenSpectrum/dashboard-components/commit/853277810310750c1c57d4dcc70489362af3213a)), closes [#812](https://github.com/GenSpectrum/dashboard-components/issues/812)
+
 ## [0.19.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.0...dashboard-components-v0.19.1) (2025-04-15)
 
 
