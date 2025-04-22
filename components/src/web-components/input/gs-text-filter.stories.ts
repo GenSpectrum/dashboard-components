@@ -1,4 +1,4 @@
-import { expect, fireEvent, fn, userEvent, waitFor } from '@storybook/test';
+import { expect, fn, userEvent, waitFor } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 
@@ -152,22 +152,15 @@ export const FiresEvents: StoryObj<Required<TextFilterProps>> = {
         });
 
         await step('Remove initial value', async () => {
-            await fireEvent.click(canvas.getByRole('button', { name: 'clear selection' }));
+            await userEvent.click(canvas.getByRole('button', { name: 'clear selection' }));
 
-            await expect(listenerMock).toHaveBeenCalledWith(
+            await expect(listenerMock).toHaveBeenLastCalledWith(
                 expect.objectContaining({
                     detail: {
                         host: undefined,
                     },
                 }),
             );
-        });
-
-        await step('Empty input', async () => {
-            inputField().blur();
-            await expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
-                host: undefined,
-            });
         });
     },
     args: {
