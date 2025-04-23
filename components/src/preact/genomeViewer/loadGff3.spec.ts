@@ -55,7 +55,7 @@ const invalidInput = `
 describe('loadGenomeLength', () => {
     test('should throw an error when passed invalid input', () => {
         expect(() => loadGenomeLength(invalidInput)).toThrow(
-            'No length found in sequence-region: `##sequence-region NC_026431.1 1`',
+            'No length found in sequence-region: "##sequence-region NC_026431.1 1"',
         );
     });
 });
