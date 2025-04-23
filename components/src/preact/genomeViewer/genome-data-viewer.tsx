@@ -13,7 +13,6 @@ const genomeDataViewerPropsSchema = z.object({
     gff3Source: z.string().min(1, 'gff3Source cannot be empty'),
     genomeLength: z.number().gt(0, 'genomeLength must be greater than 0').optional(),
     width: z.string(),
-    height: z.string().optional(),
 });
 
 interface ExtendedGenomeDataViewerProps extends GenomeDataViewerProps {
@@ -23,8 +22,8 @@ interface ExtendedGenomeDataViewerProps extends GenomeDataViewerProps {
 export type GenomeDataViewerProps = z.infer<typeof genomeDataViewerPropsSchema>;
 
 export const GenomeDataViewer: FunctionComponent<GenomeDataViewerProps> = (componentProps) => {
-    const { width, height } = componentProps;
-    const size = { height, width };
+    const { width } = componentProps;
+    const size = { height: '100%', width };
     const containerRef = useRef<HTMLDivElement>(null);
     const [trueWidth, setTrueWidth] = useState(0);
 

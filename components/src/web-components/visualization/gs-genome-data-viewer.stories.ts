@@ -12,9 +12,8 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 const codeExample = String.raw`
 <gs-genome-data-viewer
     gff3Source='https://raw.githubusercontent.com/nextstrain/nextclade_data/8f2e791d3a59013ee88e1d1d7e83b486d39c4ecb/data/nextstrain/wnv/all-lineages/genome_annotation.gff3'
-    genomeLength=11029
+    genomeLength='11029'
     width='100%'
-    height='100%'
 ></gs-genome-data-viewer>`;
 
 const meta: Meta<Required<GenomeDataViewerProps>> = {
@@ -24,7 +23,6 @@ const meta: Meta<Required<GenomeDataViewerProps>> = {
         gff3Source: { control: 'text' },
         genomeLength: { control: 'number' },
         width: { control: 'text' },
-        height: { control: 'text' },
     },
     parameters: withComponentDocs({
         componentDocs: {
@@ -45,7 +43,6 @@ const Template: StoryObj<Required<GenomeDataViewerProps>> = {
                 .genomeLength=${args.genomeLength}
                 .gff3Source=${args.gff3Source}
                 .width=${args.width}
-                .height=${args.height}
             ></gs-genome-data-viewer>
         </gs-app>
     `,
@@ -77,7 +74,6 @@ export const Default: StoryObj<Required<GenomeDataViewerProps>> = {
         genomeLength: 11029,
         gff3Source: 'https://gff3Url',
         width: '100%',
-        height: '100%',
     },
     parameters: {
         fetchMock: {
@@ -102,8 +98,8 @@ export const Default: StoryObj<Required<GenomeDataViewerProps>> = {
         const canvas = await withinShadowRoot(canvasElement, 'gs-genome-data-viewer');
 
         await step('CDS visible', async () => {
-            const all = await canvas.findAllByText('NS1');
-            await waitFor(async () => expect(all[0]).toBeVisible());
+            const ns1NameMatches = await canvas.findAllByText('NS1');
+            await waitFor(async () => expect(ns1NameMatches[0]).toBeVisible());
             const xAxisTick = await canvas.findAllByText('1000');
             await waitFor(async () => expect(xAxisTick[0]).toBeVisible());
             await waitFor(async () => expect(xAxisTick.length).toBe(2));

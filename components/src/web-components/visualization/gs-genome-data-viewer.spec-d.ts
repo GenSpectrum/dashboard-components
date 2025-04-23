@@ -14,8 +14,5 @@ describe('gs-app types', () => {
         expectTypeOf(GenomeDataViewerComponent.prototype)
             .toHaveProperty('width')
             .toEqualTypeOf<GenomeDataViewerProps['width']>();
-        expectTypeOf(GenomeDataViewerComponent.prototype)
-            .toHaveProperty('height')
-            .toEqualTypeOf<GenomeDataViewerProps['height']>();
     });
 });

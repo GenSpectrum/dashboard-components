@@ -2,18 +2,18 @@ import { UserFacingError } from '../components/error-display';
 import { ColorsRGB, type GraphColor } from '../shared/charts/colors';
 
 export type CDSFeature = {
-    positions: position[];
+    positions: Position[];
     label: string;
     color: GraphColor;
 };
 
-type position = {
+type Position = {
     start: number;
     end: number;
 };
 
 type CDSMap = {
-    [id: string]: { positions: position[]; label: string };
+    [id: string]: { positions: Position[]; label: string };
 };
 
 export async function loadGff3(gff3Source: string, genomeLength: number | undefined) {
@@ -158,9 +158,12 @@ export function loadGenomeLength(content: string) {
         }
         const fields = line.split(' ');
         if (fields[0] === '##sequence-region') {
-            const start = fields[fields.length - 2];
-            const end = fields[fields.length - 1];
-            const length = parseInt(end, 10) - parseInt(start, 10);
+            if (fields.length < 3) {
+                throw new UserFacingError('Invalid gff3 source', `No length found in sequence-region: "${line}"`);
+            }
+            const start = fields.at(-2);
+            const end = fields.at(-1);
+            const length = parseInt(end!, 10) - parseInt(start!, 10) + 1;
             if (isNaN(length)) {
                 throw new UserFacingError('Invalid gff3 source', `No length found in sequence-region: "${line}"`);
             }

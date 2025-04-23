@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { type CDSFeature, parseGFF3 } from './loadGff3';
+import { type CDSFeature, parseGFF3, loadGenomeLength } from './loadGff3';
 
 const SplicedGeneData = `
 ##gff-version 3
@@ -35,5 +35,27 @@ describe('parseGFF3', () => {
                 { color: 'wine', positions: [{ start: 760, end: 790 }], label: 'fakeGene' },
             ],
         ]);
+    });
+});
+
+describe('loadGenomeLength', () => {
+    test('should calculate genome length correctly', () => {
+        const length = loadGenomeLength(SplicedGeneData);
+
+        expect(length).to.equal(982);
+    });
+});
+
+const invalidInput = `
+##gff-version 3
+#!gff-spec-version 1.21
+#!processor NCBI annotwriter
+##sequence-region NC_026431.1 1`;
+
+describe('loadGenomeLength', () => {
+    test('should throw an error when passed invalid input', () => {
+        expect(() => loadGenomeLength(invalidInput)).toThrow(
+            'No length found in sequence-region: `##sequence-region NC_026431.1 1`',
+        );
     });
 });

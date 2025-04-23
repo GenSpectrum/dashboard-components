@@ -8,7 +8,6 @@ const meta: Meta<GenomeDataViewerProps> = {
     component: GenomeDataViewer,
     argTypes: {
         width: { control: { type: 'text' } },
-        height: { control: { type: 'text' } },
     },
 };
 
@@ -54,7 +53,6 @@ export const Default: StoryObj<GenomeDataViewerProps> = {
     args: {
         gff3Source: gff3Url,
         width: '1100px',
-        height: '500px',
     },
     parameters: {
         fetchMock: {
@@ -92,7 +90,6 @@ export const SplicedGeneAndOverlap: StoryObj<GenomeDataViewerProps> = {
         gff3Source: gff3Url,
         genomeLength: 982,
         width: '1100px',
-        height: '500px',
     },
     parameters: {
         fetchMock: {
