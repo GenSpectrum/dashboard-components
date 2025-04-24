@@ -38,3 +38,5 @@ export { LineageFilterChangedEvent } from './preact/lineageFilter/LineageFilterC
 export { TextFilterChangedEvent } from './preact/textFilter/TextFilterChangedEvent';
 
 export type { MutationAnnotations, MutationAnnotation } from './web-components/mutation-annotations-context';
+
+export { gsEventNames } from './utils/gsEventNames';

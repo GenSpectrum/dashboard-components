@@ -3,6 +3,7 @@ import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { type LocationChangedEvent } from '../../preact/locationFilter/LocationChangedEvent';
 import { LocationFilter, type LocationFilterProps } from '../../preact/locationFilter/location-filter';
+import { type gsEventNames } from '../../utils/gsEventNames';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -95,7 +96,7 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-location-changed': LocationChangedEvent;
+        [gsEventNames.locationChanged]: LocationChangedEvent;
     }
 }
 

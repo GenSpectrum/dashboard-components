@@ -5,6 +5,7 @@ import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { DateRangeFilter, type DateRangeFilterProps } from '../../preact/dateRangeFilter/date-range-filter';
 import { type DateRangeOptionChangedEvent } from '../../preact/dateRangeFilter/dateRangeOption';
+import { type gsEventNames } from '../../utils/gsEventNames';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -143,8 +144,8 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-date-range-filter-changed': CustomEvent<Record<string, string>>;
-        'gs-date-range-option-changed': DateRangeOptionChangedEvent;
+        [gsEventNames.dateRangeFilterChanged]: CustomEvent<Record<string, string>>;
+        [gsEventNames.dateRangeOptionChanged]: DateRangeOptionChangedEvent;
     }
 }
 

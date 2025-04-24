@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import { DateRangeFilter, type DateRangeFilterProps } from './date-range-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
+import { gsEventNames } from '../../utils/gsEventNames';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { dateRangeOptionPresets, type DateRangeValue } from './dateRangeOption';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
@@ -27,7 +28,7 @@ const meta: Meta<DateRangeFilterProps> = {
     component: DateRangeFilter,
     parameters: {
         actions: {
-            handles: ['gs-date-range-filter-changed', 'gs-date-range-option-changed', ...previewHandles],
+            handles: [gsEventNames.dateRangeFilterChanged, gsEventNames.dateRangeOptionChanged, ...previewHandles],
         },
         fetchMock: {},
     },
@@ -198,7 +199,7 @@ export const ChangingTheValueProgrammatically: StoryObj<DateRangeFilterProps> = 
             const ref = useRef<HTMLDivElement>(null);
 
             useEffect(() => {
-                ref.current?.addEventListener('gs-date-range-option-changed', (event) => {
+                ref.current?.addEventListener(gsEventNames.dateRangeOptionChanged, (event) => {
                     setValue(event.detail);
                 });
             }, []);
@@ -333,8 +334,8 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
     const filterChangedListenerMock = fn();
     const optionChangedListenerMock = fn();
     await step('Setup event listener mock', () => {
-        canvasElement.addEventListener('gs-date-range-filter-changed', filterChangedListenerMock);
-        canvasElement.addEventListener('gs-date-range-option-changed', optionChangedListenerMock);
+        canvasElement.addEventListener(gsEventNames.dateRangeFilterChanged, filterChangedListenerMock);
+        canvasElement.addEventListener(gsEventNames.dateRangeOptionChanged, optionChangedListenerMock);
     });
 
     return { canvas, filterChangedListenerMock, optionChangedListenerMock };

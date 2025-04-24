@@ -3,6 +3,7 @@ import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
 
 import { ErrorDisplay, UserFacingError } from './error-display';
 import { ResizeContainer } from './resize-container';
+import { gsEventNames } from '../../utils/gsEventNames';
 
 const meta: Meta = {
     title: 'Component/Error',
@@ -58,7 +59,7 @@ export const FiresEvent: StoryObj = {
 
     play: async ({ canvasElement }) => {
         const listenerMock = fn();
-        canvasElement.addEventListener('gs-error', listenerMock);
+        canvasElement.addEventListener(gsEventNames.error, listenerMock);
 
         await waitFor(async () => {
             await expect(listenerMock.mock.calls.at(-1)![0].error.name).toStrictEqual('UserFacingError');

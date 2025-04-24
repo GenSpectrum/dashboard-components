@@ -10,6 +10,7 @@ import './gs-date-range-filter';
 import '../gs-app';
 import { toYYYYMMDD } from '../../preact/dateRangeFilter/dateConversion';
 import { dateRangeOptionPresets } from '../../preact/dateRangeFilter/dateRangeOption';
+import { gsEventNames } from '../../utils/gsEventNames';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
@@ -29,7 +30,7 @@ const meta: Meta<Required<DateRangeFilterProps>> = {
     component: 'gs-date-range-filter',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-date-range-filter-changed', 'gs-date-range-option-changed', ...previewHandles],
+            handles: [gsEventNames.dateRangeFilterChanged, gsEventNames.dateRangeOptionChanged, ...previewHandles],
         },
         fetchMock: {},
         componentDocs: {
@@ -144,8 +145,8 @@ export const FiresEvents: StoryObj<Required<DateRangeFilterProps>> = {
         const filterChangedListenerMock = fn();
         const optionChangedListenerMock = fn();
         await step('Setup event listener mock', () => {
-            canvasElement.addEventListener('gs-date-range-filter-changed', filterChangedListenerMock);
-            canvasElement.addEventListener('gs-date-range-option-changed', optionChangedListenerMock);
+            canvasElement.addEventListener(gsEventNames.dateRangeFilterChanged, filterChangedListenerMock);
+            canvasElement.addEventListener(gsEventNames.dateRangeOptionChanged, optionChangedListenerMock);
         });
 
         await step('Expect last 6 months to be selected', async () => {

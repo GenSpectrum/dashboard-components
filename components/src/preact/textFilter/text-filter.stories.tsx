@@ -5,6 +5,7 @@ import data from './__mockData__/aggregated_hosts.json';
 import { TextFilter, type TextFilterProps } from './text-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
+import { gsEventNames } from '../../utils/gsEventNames';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
@@ -13,7 +14,7 @@ const meta: Meta<TextFilterProps> = {
     component: TextFilter,
     parameters: {
         actions: {
-            handles: ['gs-text-filter-changed', ...previewHandles],
+            handles: [gsEventNames.textFilterChanged, ...previewHandles],
         },
         fetchMock: {
             mocks: [
@@ -93,7 +94,7 @@ export const RemoveInitialValue: StoryObj<TextFilterProps> = {
 
         const changedListenerMock = fn();
         await step('Setup event listener mock', () => {
-            canvasElement.addEventListener('gs-text-filter-changed', changedListenerMock);
+            canvasElement.addEventListener(gsEventNames.textFilterChanged, changedListenerMock);
         });
 
         await waitFor(async () => {
@@ -136,7 +137,7 @@ export const KeepsPartialInputInInputField: StoryObj<TextFilterProps> = {
 
         const changedListenerMock = fn();
         await step('Setup event listener mock', () => {
-            canvasElement.addEventListener('gs-text-filter-changed', changedListenerMock);
+            canvasElement.addEventListener(gsEventNames.textFilterChanged, changedListenerMock);
         });
         const inputField = () => canvas.getByPlaceholderText('Enter a host name', { exact: false });
         async function typeAndBlur(input: string) {

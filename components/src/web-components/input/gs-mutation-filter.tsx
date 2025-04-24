@@ -4,6 +4,7 @@ import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { ReferenceGenomesAwaiter } from '../../preact/components/ReferenceGenomesAwaiter';
 import { MutationFilter, type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
 import type { MutationsFilter } from '../../types';
+import { type gsEventNames } from '../../utils/gsEventNames';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -95,7 +96,7 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-mutation-filter-changed': CustomEvent<MutationsFilter>;
+        [gsEventNames.mutationFilterChanged]: CustomEvent<MutationsFilter>;
     }
 }
 

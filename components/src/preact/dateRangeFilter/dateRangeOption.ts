@@ -1,6 +1,7 @@
 import z from 'zod';
 
 import { toYYYYMMDD } from './dateConversion';
+import { gsEventNames } from '../../utils/gsEventNames';
 
 /**
  * A date range option that can be used in the `gs-date-range-filter` component.
@@ -36,7 +37,7 @@ export type DateRangeValue = z.infer<typeof dateRangeValueSchema>;
 
 export class DateRangeOptionChangedEvent extends CustomEvent<DateRangeValue> {
     constructor(detail: DateRangeValue) {
-        super('gs-date-range-option-changed', {
+        super(gsEventNames.dateRangeOptionChanged, {
             detail,
             bubbles: true,
             composed: true,

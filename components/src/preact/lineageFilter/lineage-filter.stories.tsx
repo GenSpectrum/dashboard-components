@@ -6,6 +6,7 @@ import { LineageFilter, type LineageFilterProps } from './lineage-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import aggregatedData from '../../preact/lineageFilter/__mockData__/aggregated.json';
+import { gsEventNames } from '../../utils/gsEventNames';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
@@ -14,7 +15,7 @@ const meta: Meta = {
     component: LineageFilter,
     parameters: {
         actions: {
-            handles: ['gs-lineage-filter-changed', ...previewHandles],
+            handles: [gsEventNames.lineageFilterChanged, ...previewHandles],
         },
         fetchMock: {
             mocks: [
@@ -155,7 +156,7 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
 
     const lineageChangedListenerMock = fn();
     await step('Setup event listener mock', () => {
-        canvasElement.addEventListener('gs-lineage-filter-changed', lineageChangedListenerMock);
+        canvasElement.addEventListener(gsEventNames.lineageFilterChanged, lineageChangedListenerMock);
     });
 
     await step('location filter is rendered with value', async () => {

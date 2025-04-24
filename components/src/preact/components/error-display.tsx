@@ -5,12 +5,11 @@ import { type ZodError } from 'zod';
 import { InfoHeadline1, InfoParagraph } from './info';
 import { Modal } from './modal';
 import { LapisError, UnknownLapisError } from '../../lapisApi/lapisApi';
-
-export const GS_ERROR_EVENT_TYPE = 'gs-error';
+import { gsEventNames } from '../../utils/gsEventNames';
 
 export class ErrorEvent extends Event {
     constructor(public readonly error: Error) {
-        super(GS_ERROR_EVENT_TYPE, {
+        super(gsEventNames.error, {
             bubbles: true,
             composed: true,
         });

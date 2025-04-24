@@ -9,6 +9,7 @@ import '../gs-app';
 import './gs-lineage-filter';
 import aggregatedData from '../../preact/lineageFilter/__mockData__/aggregated.json';
 import { type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
+import { gsEventNames } from '../../utils/gsEventNames';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
@@ -25,7 +26,7 @@ const meta: Meta<Required<LineageFilterProps>> = {
     component: 'gs-lineage-filter',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-lineage-filter-changed', ...previewHandles],
+            handles: [gsEventNames.lineageFilterChanged, ...previewHandles],
         },
         fetchMock: {
             mocks: [
@@ -182,7 +183,7 @@ export const FiresEvent: StoryObj<Required<LineageFilterProps>> = {
         const inputField = () => canvas.getByPlaceholderText('Enter a lineage');
         const listenerMock = fn();
         await step('Setup event listener mock', () => {
-            canvasElement.addEventListener('gs-lineage-filter-changed', listenerMock);
+            canvasElement.addEventListener(gsEventNames.lineageFilterChanged, listenerMock);
         });
 
         await step('wait until data is loaded', async () => {

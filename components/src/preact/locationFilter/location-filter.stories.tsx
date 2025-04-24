@@ -6,6 +6,7 @@ import data from './__mockData__/aggregated.json';
 import { LocationFilter, type LocationFilterProps } from './location-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
+import { gsEventNames } from '../../utils/gsEventNames';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 
@@ -32,7 +33,7 @@ const meta: Meta<LocationFilterProps> = {
             ],
         },
         actions: {
-            handles: ['gs-location-changed', ...previewHandles],
+            handles: [gsEventNames.locationChanged, ...previewHandles],
         },
     },
     args: {
@@ -152,7 +153,7 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
 
     const locationChangedListenerMock = fn();
     await step('Setup event listener mock', () => {
-        canvasElement.addEventListener('gs-location-changed', locationChangedListenerMock);
+        canvasElement.addEventListener(gsEventNames.locationChanged, locationChangedListenerMock);
     });
 
     await step('location filter is rendered with value', async () => {

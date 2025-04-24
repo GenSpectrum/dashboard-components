@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/preact';
 import { clearAllMocks } from '@storybook/test';
 
 import { withActions } from '@storybook/addon-actions/decorator';
-import { GS_ERROR_EVENT_TYPE } from '../src/preact/components/error-display';
+import { gsEventNames } from '../src/utils/gsEventNames';
 
 import '../src/styles/tailwind.css';
 import './applyDaisyUiToRootInsteadOfHost.css';
@@ -18,7 +18,7 @@ const preview: Preview = {
                 date: /Date$/i,
             },
         },
-        actions: { handles: [GS_ERROR_EVENT_TYPE] },
+        actions: { handles: [gsEventNames.error] },
     },
     decorators: [withActions],
     beforeEach: () => {
