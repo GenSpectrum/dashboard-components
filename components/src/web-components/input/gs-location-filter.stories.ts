@@ -10,6 +10,7 @@ import '../gs-app';
 import './gs-location-filter';
 import data from '../../preact/locationFilter/__mockData__/aggregated.json';
 import { type LocationFilterProps } from '../../preact/locationFilter/location-filter';
+import { gsEventNames } from '../../utils/gsEventNames';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
@@ -26,7 +27,7 @@ const meta: Meta = {
     component: 'gs-location-filter',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-location-changed', ...previewHandles],
+            handles: [gsEventNames.locationChanged, ...previewHandles],
         },
         componentDocs: {
             opensShadowDom: true,
@@ -189,7 +190,7 @@ export const FiresEvent: StoryObj<LocationFilterProps> = {
 
         const listenerMock = fn();
         await step('Setup event listener mock', () => {
-            canvasElement.addEventListener('gs-location-changed', listenerMock);
+            canvasElement.addEventListener(gsEventNames.locationChanged, listenerMock);
         });
 
         await step('wait until data is loaded', async () => {

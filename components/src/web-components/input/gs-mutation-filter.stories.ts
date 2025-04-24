@@ -7,6 +7,7 @@ import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL, REFERENCE_GENOME_ENDPOINT } from '../../constants';
 import '../gs-app';
 import { type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
+import { gsEventNames } from '../../utils/gsEventNames';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 import './gs-mutation-filter';
 
@@ -21,7 +22,7 @@ const meta: Meta<MutationFilterProps> = {
     component: 'gs-mutation-filter',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-mutation-filter-changed', ...previewHandles],
+            handles: [gsEventNames.mutationFilterChanged, ...previewHandles],
         },
         fetchMock: {},
         componentDocs: {
@@ -73,7 +74,7 @@ export const FiresFilterChangedEvent: StoryObj<MutationFilterProps> = {
         const inputField = () => canvas.getByPlaceholderText('Enter a mutation', { exact: false });
         const listenerMock = fn();
         await step('Setup event listener mock', () => {
-            canvasElement.addEventListener('gs-mutation-filter-changed', listenerMock);
+            canvasElement.addEventListener(gsEventNames.mutationFilterChanged, listenerMock);
         });
 
         await step('wait until data is loaded', async () => {

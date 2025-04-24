@@ -4,11 +4,11 @@ import referenceGenome from '../src/lapisApi/__mockData__/referenceGenome.json';
 import customElements from '../custom-elements.json';
 import DocumentationTemplate from './DocumentationTemplate.mdx';
 import { withActions } from '@storybook/addon-actions/decorator';
-import { GS_ERROR_EVENT_TYPE } from '../src/preact/components/error-display';
+import { gsEventNames } from '../src/utils/gsEventNames';
 
 setCustomElementsManifest(customElements);
 
-export const previewHandles = [GS_ERROR_EVENT_TYPE];
+export const previewHandles = [gsEventNames.error];
 
 const preview: Preview = {
     parameters: {

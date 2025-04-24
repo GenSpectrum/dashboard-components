@@ -9,6 +9,7 @@ import '../gs-app';
 import './gs-text-filter';
 import data from '../../preact/textFilter/__mockData__/aggregated_hosts.json';
 import type { TextFilterProps } from '../../preact/textFilter/text-filter';
+import { gsEventNames } from '../../utils/gsEventNames';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
@@ -25,7 +26,7 @@ const meta: Meta<Required<TextFilterProps>> = {
     component: 'gs-text-filter',
     parameters: withComponentDocs({
         actions: {
-            handles: ['gs-text-filter-changed', ...previewHandles],
+            handles: [gsEventNames.textFilterChanged, ...previewHandles],
         },
         fetchMock: {
             mocks: [
@@ -114,7 +115,7 @@ export const FiresEvents: StoryObj<Required<TextFilterProps>> = {
         const inputField = () => canvas.getByPlaceholderText('Enter host name');
         const listenerMock = fn();
         await step('Setup event listener mock', () => {
-            canvasElement.addEventListener('gs-text-filter-changed', listenerMock);
+            canvasElement.addEventListener(gsEventNames.textFilterChanged, listenerMock);
         });
 
         await step('wait until data is loaded', async () => {

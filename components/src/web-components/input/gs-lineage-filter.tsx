@@ -3,6 +3,7 @@ import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { type LineageFilterChangedEvent } from '../../preact/lineageFilter/LineageFilterChangedEvent';
 import { LineageFilter, type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
+import { type gsEventNames } from '../../utils/gsEventNames';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -91,7 +92,7 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-lineage-filter-changed': LineageFilterChangedEvent;
+        [gsEventNames.lineageFilterChanged]: LineageFilterChangedEvent;
     }
 }
 

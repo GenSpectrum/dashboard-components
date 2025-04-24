@@ -3,6 +3,7 @@ import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { type TextFilterChangedEvent } from '../../preact/textFilter/TextFilterChangedEvent';
 import { TextFilter, type TextFilterProps } from '../../preact/textFilter/text-filter';
+import { type gsEventNames } from '../../utils/gsEventNames';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -85,7 +86,7 @@ declare global {
     }
 
     interface HTMLElementEventMap {
-        'gs-text-filter-changed': TextFilterChangedEvent;
+        [gsEventNames.textFilterChanged]: TextFilterChangedEvent;
     }
 }
 

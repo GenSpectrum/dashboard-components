@@ -6,6 +6,7 @@ import { MutationFilter, type MutationFilterProps } from './mutation-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
+import { gsEventNames } from '../../utils/gsEventNames';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
@@ -15,7 +16,7 @@ const meta: Meta<MutationFilterProps> = {
     component: MutationFilter,
     parameters: {
         actions: {
-            handles: ['gs-mutation-filter-changed', ...previewHandles],
+            handles: [gsEventNames.mutationFilterChanged, ...previewHandles],
         },
         fetchMock: {},
     },
@@ -357,7 +358,7 @@ async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRend
 
     const changedListenerMock = fn();
     await step('Setup event listener mock', () => {
-        canvasElement.addEventListener('gs-mutation-filter-changed', changedListenerMock);
+        canvasElement.addEventListener(gsEventNames.mutationFilterChanged, changedListenerMock);
     });
 
     await step('wait until data is loaded', async () => {

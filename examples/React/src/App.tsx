@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {DateRangeOption, dateRangeOptionPresets} from '@genspectrum/dashboard-components/util';
+import {DateRangeOption, dateRangeOptionPresets, gsEventNames} from '@genspectrum/dashboard-components/util';
 import '@genspectrum/dashboard-components/components';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
 
         const locationFilter = document.querySelector('gs-location-filter');
         if (locationFilter) {
-            locationFilter.addEventListener('gs-location-changed', handleLocationChange);
+            locationFilter.addEventListener(gsEventNames.locationChanged, handleLocationChange);
         }
 
         const dateRangeFilter = document.querySelector('gs-date-range-filter');
@@ -33,7 +33,7 @@ function App() {
 
         return () => {
             if (locationFilter) {
-                locationFilter.removeEventListener('gs-location-changed', handleLocationChange);
+                locationFilter.removeEventListener(gsEventNames.locationChanged, handleLocationChange);
             }
             if (dateRangeFilter) {
                 dateRangeFilter.removeEventListener('gs-date-range-filter-changed', handleDateRangeChange);

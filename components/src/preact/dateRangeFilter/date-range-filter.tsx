@@ -10,6 +10,7 @@ import {
     dateRangeOptionSchema,
     dateRangeValueSchema,
 } from './dateRangeOption';
+import { gsEventNames } from '../../utils/gsEventNames';
 import { ClearableSelect } from '../components/clearable-select';
 import { ErrorBoundary } from '../components/error-boundary';
 
@@ -170,7 +171,7 @@ export const DateRangeFilterInner = ({
         };
 
         divRef.current?.dispatchEvent(
-            new CustomEvent('gs-date-range-filter-changed', {
+            new CustomEvent(gsEventNames.dateRangeFilterChanged, {
                 detail,
                 bubbles: true,
                 composed: true,
