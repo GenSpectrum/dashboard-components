@@ -1,3 +1,4 @@
+export { GenomeDataViewerComponent } from './gs-genome-data-viewer';
 export { MutationComparisonComponent } from './gs-mutation-comparison';
 export { MutationsComponent } from './gs-mutations';
 export { PrevalenceOverTimeComponent } from './gs-prevalence-over-time';

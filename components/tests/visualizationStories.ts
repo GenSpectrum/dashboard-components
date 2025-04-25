@@ -206,4 +206,9 @@ export const visualizationStories = [
         title: 'Wastewater Mutations Over Time',
         loadingIsDoneIndicator: 'Lugano',
     },
+    {
+        id: 'visualization-genome-data-viewer--default',
+        title: 'Genome Data Viewer',
+        loadingIsDoneIndicator: 'NS1',
+    },
 ];
