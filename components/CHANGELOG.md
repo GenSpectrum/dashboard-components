@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.19.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.2...dashboard-components-v0.19.3) (2025-04-25)
+
+
+### Features
+
+* **components:** add a genome-data-viewer ([#814](https://github.com/GenSpectrum/dashboard-components/issues/814)) ([37cd299](https://github.com/GenSpectrum/dashboard-components/commit/37cd29980b4d54701d4aea44e8eca29546294e36))
+* **components:** export event names in a constant ([#868](https://github.com/GenSpectrum/dashboard-components/issues/868)) ([f185a00](https://github.com/GenSpectrum/dashboard-components/commit/f185a005ca2aa8e52fdcade51947318a3396f428))
+
 ## [0.19.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.1...dashboard-components-v0.19.2) (2025-04-22)
 
 
