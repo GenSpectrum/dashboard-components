@@ -6,6 +6,7 @@ export interface MinMaxPercentSliderProps {
     max: number;
     setMin: (min: number) => void;
     setMax: (max: number) => void;
+    onDrop?: () => void;
     rangeMin?: number;
     rangeMax?: number;
     step?: number;
@@ -16,6 +17,7 @@ export const MinMaxRangeSlider: FunctionComponent<MinMaxPercentSliderProps> = ({
     max,
     setMin,
     setMax,
+    onDrop,
     rangeMin = 0,
     rangeMax = 100,
     step = 0.1,
@@ -55,14 +57,16 @@ export const MinMaxRangeSlider: FunctionComponent<MinMaxPercentSliderProps> = ({
         }
     };
 
+    const lowerBoundary = getGradientBoundary(min, rangeMin, rangeMax);
+    const upperBoundary = getGradientBoundary(max, rangeMin, rangeMax);
     const background = `
         linear-gradient(
             to right,
             ${sliderColor} 0%,
-            ${sliderColor} ${min}%,
-            ${rangeColor} ${min}%,
-            ${rangeColor} ${max}%,
-            ${sliderColor} ${max}%,
+            ${sliderColor} ${lowerBoundary}%,
+            ${rangeColor} ${lowerBoundary}%,
+            ${rangeColor} ${upperBoundary}%,
+            ${sliderColor} ${upperBoundary}%,
             ${sliderColor} 100%)
     `;
 
@@ -73,6 +77,8 @@ export const MinMaxRangeSlider: FunctionComponent<MinMaxPercentSliderProps> = ({
                 type='range'
                 value={min}
                 onInput={onMinChange}
+                onMouseUp={() => onDrop?.()}
+                onTouchEnd={() => onDrop?.()}
                 min={`${rangeMin}`}
                 max={`${rangeMax}`}
                 step={step}
@@ -86,8 +92,17 @@ export const MinMaxRangeSlider: FunctionComponent<MinMaxPercentSliderProps> = ({
                 max={`${rangeMax}`}
                 step={step}
                 onInput={onMaxChange}
+                onMouseUp={() => onDrop?.()}
+                onTouchEnd={() => onDrop?.()}
                 style={{ background, zIndex: zIndexTo }}
             />
         </div>
     );
 };
+
+/**
+ * This is a linear function that returns 0 for x = lowerBound and 100 for x = upperBound.
+ */
+function getGradientBoundary(x: number, lowerBound: number, upperBound: number) {
+    return ((x - lowerBound) / (upperBound - lowerBound)) * 100;
+}

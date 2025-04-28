@@ -3,3 +3,4 @@ export { LocationFilterComponent } from './gs-location-filter';
 export { TextFilterComponent } from './gs-text-filter';
 export { MutationFilterComponent } from './gs-mutation-filter';
 export { LineageFilterComponent } from './gs-lineage-filter';
+export { NumberRangeFilterComponent } from './gs-number-range-filter';

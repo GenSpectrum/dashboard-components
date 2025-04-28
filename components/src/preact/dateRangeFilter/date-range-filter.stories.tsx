@@ -256,7 +256,10 @@ export const ChangingTheValueProgrammatically: StoryObj<DateRangeFilterProps> = 
 
         await step('Clearing the value from within the component is still possible', async () => {
             await waitFor(async () => {
-                await userEvent.click(canvas.getByRole('button', { name: '×' }));
+                await expect(canvas.getByRole('button', { name: '×' })).toBeVisible();
+            });
+            await userEvent.click(canvas.getByRole('button', { name: '×' }));
+            await waitFor(async () => {
                 await expectOptionSelected(canvasElement, placeholder);
             });
             await waitFor(async () => {
