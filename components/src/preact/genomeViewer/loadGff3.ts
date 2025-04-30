@@ -60,6 +60,10 @@ function getAttributes(attributes: string): Map<string, string> {
     return attrMap;
 }
 
+function removeQuotes(input: string) {
+    return input.replace(/^['"](.*)['"]$/, '$1');
+}
+
 function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMap {
     for (const line of lines) {
         if (line.startsWith('#') || line.trim() === '') {
@@ -73,7 +77,7 @@ function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMa
 
         const [, , type, startStr, endStr, , , , attributes] = fields;
 
-        if (type.toLowerCase() !== genome_type.toLowerCase()) {
+        if (removeQuotes(type.toLowerCase()) !== genome_type.toLowerCase()) {
             continue;
         }
 
@@ -85,16 +89,18 @@ function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMa
         }
 
         const attrPairs = getAttributes(attributes);
-        const label = attrPairs.get('Name') || attrPairs.get('gene') || attrPairs.get('gene_name');
-        if (!label) {
+        const labelAttribute = attrPairs.get('Name') || attrPairs.get('gene') || attrPairs.get('gene_name');
+        if (!labelAttribute) {
             throw new UserFacingError(
                 'Invalid gff3 source',
                 `No label found for feature: "${line}", must contain label in Name, gene, or gene_name attribute`,
             );
         }
-        const id = attrPairs.get('ID') || label;
-        if (attrPairs.get('Parent')) {
-            const parent = attrPairs.get('Parent');
+        const label = removeQuotes(labelAttribute);
+        const id = removeQuotes(attrPairs.get('ID') || labelAttribute);
+        const parentAttribute = attrPairs.get('Parent');
+        if (parentAttribute) {
+            const parent = removeQuotes(parentAttribute);
             if (parent && parent in geneMap) {
                 delete geneMap[parent];
             }
