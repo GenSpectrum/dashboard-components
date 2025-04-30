@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/preact';
-import { expect, userEvent } from '@storybook/test';
+import { expect, userEvent, waitFor } from '@storybook/test';
+import type { Canvas } from '@storybook/types';
 
 import { WastewaterMutationsOverTime, type WastewaterMutationsOverTimeProps } from './wastewater-mutations-over-time';
 import { WISE_DETAILS_ENDPOINT, WISE_LAPIS_URL } from '../../../constants';
@@ -7,6 +8,7 @@ import referenceGenome from '../../../lapisApi/__mockData__/referenceGenome.json
 import { LapisUrlContextProvider } from '../../LapisUrlContext';
 import { ReferenceGenomeContext } from '../../ReferenceGenomeContext';
 import details from './__mockData__/details.json';
+import type { MutationsOverTimeProps } from '../../mutationsOverTime/mutations-over-time';
 
 const meta: Meta<WastewaterMutationsOverTimeProps> = {
     title: 'Wastewater visualization/Wastewater mutations over time',
@@ -108,3 +110,35 @@ export const AminoAcids: StoryObj<WastewaterMutationsOverTimeProps> = {
         });
     },
 };
+
+export const UsesMutationFilter: StoryObj<MutationsOverTimeProps> = {
+    ...Default,
+    play: async ({ canvas, step }) => {
+        await expectMutationOnPage(canvas, 'A966C');
+
+        await step('input filter', async () => {
+            const filterButton = canvas.getByRole('button', { name: 'Filter mutations' });
+            await userEvent.click(filterButton);
+
+            const filterInput = canvas.getByPlaceholderText('Filter');
+            await userEvent.type(filterInput, '26');
+        });
+
+        await step('should show only matching filter', async () => {
+            await expectMutationOnPage(canvas, 'T4026G');
+            await expectMutationOnPage(canvas, 'T5260C');
+
+            await waitFor(async () => {
+                const filteredMutation = canvas.queryByText('A966C');
+                await expect(filteredMutation).not.toBeInTheDocument();
+            });
+        });
+    },
+};
+
+async function expectMutationOnPage(canvas: Canvas, mutation: string) {
+    await waitFor(async () => {
+        const mutationOnFirstPage = canvas.getAllByText(mutation)[0];
+        await expect(mutationOnFirstPage).toBeVisible();
+    });
+}

@@ -3,20 +3,23 @@ import { type Dispatch, type StateUpdater, useMemo, useState } from 'preact/hook
 import z from 'zod';
 
 import { computeWastewaterMutationsOverTimeDataPerLocation } from './computeWastewaterMutationsOverTimeDataPerLocation';
-import { lapisFilterSchema, sequenceTypeSchema } from '../../../types';
+import { lapisFilterSchema, type SequenceType, sequenceTypeSchema } from '../../../types';
 import { Map2dView } from '../../../utils/map2d';
 import { useLapisUrl } from '../../LapisUrlContext';
+import { useMutationAnnotationsProvider } from '../../MutationAnnotationsContext';
 import { type ColorScale } from '../../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../../components/color-scale-selector-dropdown';
 import { ErrorBoundary } from '../../components/error-boundary';
 import { Fullscreen } from '../../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../../components/info';
 import { LoadingDisplay } from '../../components/loading-display';
+import { MutationsOverTimeTextFilter } from '../../components/mutations-over-time-text-filter';
 import { NoDataDisplay } from '../../components/no-data-display';
 import { ResizeContainer } from '../../components/resize-container';
 import { type DisplayedSegment, SegmentSelector } from '../../components/segment-selector';
 import Tabs from '../../components/tabs';
 import { type MutationOverTimeDataMap } from '../../mutationsOverTime/MutationOverTimeData';
+import { mutationOrAnnotationDoNotMatchFilter } from '../../mutationsOverTime/getFilteredMutationsOverTimeData';
 import MutationsOverTimeGrid from '../../mutationsOverTime/mutations-over-time-grid';
 import { pageSizesSchema } from '../../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../../shared/tanstackTable/pagination-context';
@@ -111,13 +114,23 @@ type MutationOverTimeTabsProps = {
 function getFilteredMutationOverTimeData({
     data,
     displayedSegments,
+    mutationFilterValue,
+    annotationProvider,
+    sequenceType,
 }: {
     data: MutationOverTimeDataMap;
     displayedSegments: DisplayedSegment[];
+    mutationFilterValue: string;
+    sequenceType: SequenceType;
+    annotationProvider: ReturnType<typeof useMutationAnnotationsProvider>;
 }): MutationOverTimeDataMap {
     const filteredData = new Map2dView(data);
 
     const mutationsToFilterOut = data.getFirstAxisKeys().filter((entry) => {
+        if (mutationOrAnnotationDoNotMatchFilter(entry, sequenceType, mutationFilterValue, annotationProvider)) {
+            return true;
+        }
+
         return displayedSegments.some((segment) => segment.segment === entry.segment && !segment.checked);
     });
 
@@ -132,6 +145,9 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     mutationOverTimeDataPerLocation,
     originalComponentProps,
 }) => {
+    const [mutationFilterValue, setMutationFilterValue] = useState('');
+    const annotationProvider = useMutationAnnotationsProvider();
+
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
     const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(mutationOverTimeDataPerLocation);
 
@@ -141,14 +157,28 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                 title: location,
                 content: (
                     <MutationsOverTimeGrid
-                        data={getFilteredMutationOverTimeData({ data, displayedSegments })}
+                        data={getFilteredMutationOverTimeData({
+                            data,
+                            displayedSegments,
+                            mutationFilterValue,
+                            annotationProvider,
+                            sequenceType: originalComponentProps.sequenceType,
+                        })}
                         colorScale={colorScale}
                         pageSizes={originalComponentProps.pageSizes}
                         sequenceType={originalComponentProps.sequenceType}
                     />
                 ),
             })),
-        [mutationOverTimeDataPerLocation, displayedSegments, colorScale, originalComponentProps],
+        [
+            mutationOverTimeDataPerLocation,
+            displayedSegments,
+            mutationFilterValue,
+            annotationProvider,
+            colorScale,
+            originalComponentProps.pageSizes,
+            originalComponentProps.sequenceType,
+        ],
     );
 
     const toolbar = (
@@ -159,6 +189,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             data={mutationOverTimeDataPerLocation}
             displayedSegments={displayedSegments}
             setDisplayedSegments={setDisplayedSegments}
+            setFilterValue={setMutationFilterValue}
+            mutationFilterValue={mutationFilterValue}
         />
     );
 
@@ -176,6 +208,8 @@ type ToolbarProps = {
     data: MutationOverTimeDataPerLocation;
     displayedSegments: DisplayedSegment[];
     setDisplayedSegments: (segments: DisplayedSegment[]) => void;
+    mutationFilterValue: string;
+    setFilterValue: (filterValue: string) => void;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -184,9 +218,12 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     originalComponentProps,
     displayedSegments,
     setDisplayedSegments,
+    setFilterValue,
+    mutationFilterValue,
 }) => {
     return (
         <>
+            <MutationsOverTimeTextFilter setFilterValue={setFilterValue} value={mutationFilterValue} />
             <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
             <SegmentSelector
                 displayedSegments={displayedSegments}

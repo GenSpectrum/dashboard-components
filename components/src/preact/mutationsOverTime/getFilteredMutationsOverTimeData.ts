@@ -51,7 +51,9 @@ export function getFilteredMutationOverTimeData({
             return true;
         }
 
-        if (applySearchFilter(entry.mutation, sequenceType, mutationFilterValue, annotationProvider)) {
+        if (
+            mutationOrAnnotationDoNotMatchFilter(entry.mutation, sequenceType, mutationFilterValue, annotationProvider)
+        ) {
             return true;
         }
 
@@ -67,7 +69,7 @@ export function getFilteredMutationOverTimeData({
     return filteredData;
 }
 
-export function applySearchFilter(
+export function mutationOrAnnotationDoNotMatchFilter(
     mutation: Mutation,
     sequenceType: SequenceType,
     filterValue: string,
