@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.3...dashboard-components-v0.19.4) (2025-04-30)
+
+
+### Features
+
+* **components:** remove quotes from CDS name ([#873](https://github.com/GenSpectrum/dashboard-components/issues/873)) ([80517f6](https://github.com/GenSpectrum/dashboard-components/commit/80517f6eea53343cef838112b9883f7bbda404b8))
+
 ## [0.19.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.2...dashboard-components-v0.19.3) (2025-04-25)
 
 
