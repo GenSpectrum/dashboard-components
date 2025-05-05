@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.19.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.4...dashboard-components-v0.19.5) (2025-05-05)
+
+
+### Features
+
+* **components:** add mutation filter to gs-wastewater-mutations-over-time ([#875](https://github.com/GenSpectrum/dashboard-components/issues/875)) ([b05a807](https://github.com/GenSpectrum/dashboard-components/commit/b05a8078676595ae47192bbfd86a8262b207e98c)), closes [#866](https://github.com/GenSpectrum/dashboard-components/issues/866)
+* **components:** export input type of NumberRangeFilter ([#876](https://github.com/GenSpectrum/dashboard-components/issues/876)) ([05c7a3f](https://github.com/GenSpectrum/dashboard-components/commit/05c7a3fc05eaad3ff96c58bfb38b2afe497dbb0f))
+
 ## [0.19.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.3...dashboard-components-v0.19.4) (2025-04-30)
 
 
