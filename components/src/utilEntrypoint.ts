@@ -40,3 +40,5 @@ export { TextFilterChangedEvent } from './preact/textFilter/TextFilterChangedEve
 export type { MutationAnnotations, MutationAnnotation } from './web-components/mutation-annotations-context';
 
 export { gsEventNames } from './utils/gsEventNames';
+
+export { type NumberRange } from './preact/numberRangeFilter/NumberRangeFilterChangedEvent';
