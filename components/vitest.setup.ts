@@ -4,7 +4,13 @@ import { type DefaultBodyType, http, type StrictRequest } from 'msw';
 import { setupServer } from 'msw/node';
 import { afterAll, afterEach, beforeAll, expect } from 'vitest';
 
-import { aggregatedEndpoint, detailsEndpoint, substitutionsOrDeletionsEndpoint } from './src/lapisApi/lapisApi';
+import { type LineageDefinitionResponse } from './src/lapisApi/LineageDefinition';
+import {
+    aggregatedEndpoint,
+    detailsEndpoint,
+    lineageDefinitionEndpoint,
+    substitutionsOrDeletionsEndpoint,
+} from './src/lapisApi/lapisApi';
 import { type LapisBaseRequest, type MutationsRequest, type MutationsResponse } from './src/lapisApi/lapisTypes';
 
 export const DUMMY_LAPIS_URL = 'http://lapis.dummy';
@@ -52,7 +58,7 @@ export const lapisRequestMocks = {
             };
         }[],
     ) => {
-        testServer.use(http.post(aggregatedEndpoint(DUMMY_LAPIS_URL), resolver(expectedRequests)));
+        testServer.use(http.post(aggregatedEndpoint(DUMMY_LAPIS_URL), postResolver(expectedRequests)));
     },
     details: (
         body: LapisBaseRequest,
@@ -61,7 +67,7 @@ export const lapisRequestMocks = {
         },
         statusCode: number = 200,
     ) => {
-        testServer.use(http.post(detailsEndpoint(DUMMY_LAPIS_URL), resolver([{ body, response, statusCode }])));
+        testServer.use(http.post(detailsEndpoint(DUMMY_LAPIS_URL), postResolver([{ body, response, statusCode }])));
     },
     multipleMutations: (
         expectedRequests: {
@@ -71,12 +77,23 @@ export const lapisRequestMocks = {
         sequenceType: 'nucleotide' | 'amino acid',
     ) => {
         testServer.use(
-            http.post(substitutionsOrDeletionsEndpoint(DUMMY_LAPIS_URL, sequenceType), resolver(expectedRequests)),
+            http.post(substitutionsOrDeletionsEndpoint(DUMMY_LAPIS_URL, sequenceType), postResolver(expectedRequests)),
+        );
+    },
+    lineageDefinition: (response: LineageDefinitionResponse, lineageField: string, statusCode: number = 200) => {
+        testServer.use(
+            http.get(
+                lineageDefinitionEndpoint(DUMMY_LAPIS_URL, lineageField),
+                getResolver({
+                    response,
+                    statusCode,
+                }),
+            ),
         );
     },
 };
 
-function resolver(
+function postResolver(
     expectedRequests: {
         body: unknown;
         response: unknown;
@@ -107,6 +124,14 @@ function resolver(
                 status: 400,
             },
         );
+    };
+}
+
+function getResolver({ response, statusCode }: { response: unknown; statusCode?: number }) {
+    return () => {
+        return new Response(JSON.stringify(response), {
+            status: statusCode ?? 200,
+        });
     };
 }
 
