@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.19.4](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.3...dashboard-components-v0.19.4) (2025-04-30)
+
+
+### Features
+
+* **components:** remove quotes from CDS name ([#873](https://github.com/GenSpectrum/dashboard-components/issues/873)) ([80517f6](https://github.com/GenSpectrum/dashboard-components/commit/80517f6eea53343cef838112b9883f7bbda404b8))
+* **components:** add new component `gs-number-range-filter` ([#761](https://github.com/GenSpectrum/dashboard-components/issues/761)) ([ca247dd](https://github.com/GenSpectrum/dashboard-components/commit/ca247dd07c38dcaadcd741d934a45fb681cf5b73))
+
 ## [0.19.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.2...dashboard-components-v0.19.3) (2025-04-25)
 
 
