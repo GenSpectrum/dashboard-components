@@ -41,6 +41,9 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  * ### Table View
  *
  * Displays the prevalence over time as a table with one row per time point.
+ *
+ * @fires {CustomEvent<undefined>} gs-component-finished-loading
+ * Fired when the component has finished loading the required data from LAPIS.
  */
 @customElement('gs-prevalence-over-time')
 export class PrevalenceOverTimeComponent extends PreactLitAdapterWithGridJsStyles {

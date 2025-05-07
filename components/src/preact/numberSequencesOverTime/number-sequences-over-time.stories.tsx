@@ -7,6 +7,7 @@ import twoVariantsEG from '../../preact/numberSequencesOverTime/__mockData__/two
 import twoVariantsJN1 from '../../preact/numberSequencesOverTime/__mockData__/twoVariantsJN1.json';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
+import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
 
 export default {
     title: 'Visualization/NumberSequencesOverTime',
@@ -71,8 +72,9 @@ const Template: StoryObj<NumberSequencesOverTimeProps> = {
     },
 };
 
-export const Table = {
+export const FiresFinishedLoadingEvent: StoryObj<NumberSequencesOverTimeProps> = {
     ...Template,
+    play: playThatExpectsFinishedLoadingEvent(),
 };
 
 export const TwoVariants: StoryObj<NumberSequencesOverTimeProps> = {

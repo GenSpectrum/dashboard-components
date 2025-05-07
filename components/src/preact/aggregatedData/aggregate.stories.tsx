@@ -6,6 +6,7 @@ import { Aggregate, type AggregateProps } from './aggregate';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage, playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
+import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
 
 const meta: Meta<AggregateProps> = {
     title: 'Visualization/Aggregate',
@@ -60,6 +61,11 @@ export const Default: StoryObj<AggregateProps> = {
         pageSize: 10,
         maxNumberOfBars: 20,
     },
+};
+
+export const FiresFinishedLoadingEvent: StoryObj<AggregateProps> = {
+    ...Default,
+    play: playThatExpectsFinishedLoadingEvent(),
 };
 
 export const FailsLoadingData: StoryObj<AggregateProps> = {

@@ -6,6 +6,7 @@ import { LapisUrlContextProvider } from '../LapisUrlContext';
 import denominatorData from './__mockData__/denominator.json';
 import numeratorData from './__mockData__/numerator.json';
 import { Statistics, type StatisticsProps } from './statistics';
+import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
 
 const meta: Meta<StatisticsProps> = {
     title: 'Visualization/Statistics',
@@ -77,4 +78,9 @@ export const Default: StoryObj<StatisticsProps> = {
             await expect(canvas.getByText('50.00%')).toBeInTheDocument();
         });
     },
+};
+
+export const FiresFinishedLoadingEvent: StoryObj<StatisticsProps> = {
+    ...Default,
+    play: playThatExpectsFinishedLoadingEvent(),
 };

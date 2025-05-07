@@ -3,6 +3,7 @@ import z from 'zod';
 
 import { queryGeneralStatistics } from '../../query/queryGeneralStatistics';
 import { lapisFilterSchema } from '../../types';
+import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
@@ -60,9 +61,11 @@ type MetricDataTabsProps = {
 };
 
 const MetricDataTabs: FunctionComponent<MetricDataTabsProps> = ({ data }) => {
+    const ref = useDispatchFinishedLoadingEvent();
+
     const { count, proportion } = data;
     return (
-        <div className='flex flex-col sm:flex-row rounded-md border-2 border-gray-100 min-w-[180px]'>
+        <div ref={ref} className='flex flex-col sm:flex-row rounded-md border-2 border-gray-100 min-w-[180px]'>
             <div className='stat'>
                 <div className='stat-title'>Sequences</div>
                 <div className='stat-value text-2xl sm:text-4xl'>{count.toLocaleString('en-us')}</div>

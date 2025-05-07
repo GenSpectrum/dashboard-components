@@ -19,6 +19,9 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  * Thus, the `lapisFilter` implicitly also defines the range that is shown on the x-axis.
  * If you want to restrict the x-axis to a smaller date range,
  * then you need to set appropriate filter values in the `lapisFilter`.
+ *
+ * @fires {CustomEvent<undefined>} gs-component-finished-loading
+ * Fired when the component has finished loading the required data from LAPIS.
  */
 @customElement('gs-number-sequences-over-time')
 export class NumberSequencesOverTimeComponent extends PreactLitAdapterWithGridJsStyles {

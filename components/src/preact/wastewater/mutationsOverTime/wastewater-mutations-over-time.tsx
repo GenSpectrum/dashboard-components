@@ -5,6 +5,7 @@ import z from 'zod';
 import { computeWastewaterMutationsOverTimeDataPerLocation } from './computeWastewaterMutationsOverTimeDataPerLocation';
 import { lapisFilterSchema, type SequenceType, sequenceTypeSchema } from '../../../types';
 import { Map2dView } from '../../../utils/map2d';
+import { useDispatchFinishedLoadingEvent } from '../../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../../LapisUrlContext';
 import { useMutationAnnotationsProvider } from '../../MutationAnnotationsContext';
 import { type ColorScale } from '../../components/color-scale-selector';
@@ -145,6 +146,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     mutationOverTimeDataPerLocation,
     originalComponentProps,
 }) => {
+    const tabsRef = useDispatchFinishedLoadingEvent();
+
     const [mutationFilterValue, setMutationFilterValue] = useState('');
     const annotationProvider = useMutationAnnotationsProvider();
 
@@ -196,7 +199,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
 
     return (
         <PageSizeContextProvider pageSizes={originalComponentProps.pageSizes}>
-            <Tabs tabs={tabs} toolbar={toolbar} />
+            <Tabs ref={tabsRef} tabs={tabs} toolbar={toolbar} />
         </PageSizeContextProvider>
     );
 };

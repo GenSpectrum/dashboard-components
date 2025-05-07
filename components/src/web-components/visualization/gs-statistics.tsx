@@ -10,6 +10,9 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  *
  * This component displays general statistics (number of sequences, overall proportion)
  * for a given numerator and denominator filter.
+ *
+ * @fires {CustomEvent<undefined>} gs-component-finished-loading
+ * Fired when the component has finished loading the required data from LAPIS.
  */
 @customElement('gs-statistics')
 export class StatisticsComponent extends PreactLitAdapterWithGridJsStyles {

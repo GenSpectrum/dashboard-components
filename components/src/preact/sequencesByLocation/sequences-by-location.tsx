@@ -11,6 +11,7 @@ import {
 } from '../../query/computeMapLocationData';
 import { type AggregateData } from '../../query/queryAggregateData';
 import { querySequencesByLocationData } from '../../query/querySequencesByLocationData';
+import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
@@ -93,6 +94,8 @@ const SequencesByLocationMapTabs: FunctionComponent<SequencesByLocationMapTabsPr
     originalComponentProps,
     data,
 }) => {
+    const tabsRef = useDispatchFinishedLoadingEvent();
+
     const maintainAspectRatio = getMaintainAspectRatio(originalComponentProps.height);
 
     const getTab = (view: SequencesByLocationMapView) => {
@@ -136,6 +139,7 @@ const SequencesByLocationMapTabs: FunctionComponent<SequencesByLocationMapTabsPr
 
     return (
         <Tabs
+            ref={tabsRef}
             tabs={tabs}
             toolbar={<Toolbar originalComponentProps={originalComponentProps} tableData={data.tableData} />}
         />

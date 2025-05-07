@@ -9,6 +9,7 @@ import {
     type RelativeGrowthAdvantageData,
 } from '../../query/queryRelativeGrowthAdvantage';
 import { lapisFilterSchema, views } from '../../types';
+import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
@@ -103,6 +104,8 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
     setYAxisScaleType,
     originalComponentProps,
 }) => {
+    const tabsRef = useDispatchFinishedLoadingEvent();
+
     const maintainAspectRatio = getMaintainAspectRatio(originalComponentProps.height);
 
     const getTab = (view: RelativeGrowthAdvantageView) => {
@@ -138,7 +141,7 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
         />
     );
 
-    return <Tabs tabs={tabs} toolbar={toolbar} />;
+    return <Tabs ref={tabsRef} tabs={tabs} toolbar={toolbar} />;
 };
 
 type RelativeGrowthAdvantageToolbarProps = {

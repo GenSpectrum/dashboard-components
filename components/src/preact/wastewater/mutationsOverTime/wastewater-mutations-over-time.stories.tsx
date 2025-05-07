@@ -9,6 +9,7 @@ import { LapisUrlContextProvider } from '../../LapisUrlContext';
 import { ReferenceGenomeContext } from '../../ReferenceGenomeContext';
 import details from './__mockData__/details.json';
 import type { MutationsOverTimeProps } from '../../mutationsOverTime/mutations-over-time';
+import { playThatExpectsFinishedLoadingEvent } from '../../shared/stories/expectFinishedLoadingEvent';
 
 const meta: Meta<WastewaterMutationsOverTimeProps> = {
     title: 'Wastewater visualization/Wastewater mutations over time',
@@ -67,6 +68,7 @@ export const Default: StoryObj<WastewaterMutationsOverTimeProps> = {
             ],
         },
     },
+    play: playThatExpectsFinishedLoadingEvent(),
 };
 
 export const ChangingRowsPerPageChangesItForEveryTag: StoryObj<WastewaterMutationsOverTimeProps> = {

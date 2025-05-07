@@ -5,6 +5,7 @@ import { useLapisUrl } from '../LapisUrlContext';
 import { AggregateTable } from './aggregate-table';
 import { type AggregateData, queryAggregateData } from '../../query/queryAggregateData';
 import { lapisFilterSchema, views } from '../../types';
+import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
@@ -75,6 +76,8 @@ type AggregatedDataTabsProps = {
 };
 
 const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, originalComponentProps }) => {
+    const tabsRef = useDispatchFinishedLoadingEvent();
+
     const maintainAspectRatio = getMaintainAspectRatio(originalComponentProps.height);
 
     const getTab = (view: AggregateView) => {
@@ -109,7 +112,13 @@ const AggregatedDataTabs: FunctionComponent<AggregatedDataTabsProps> = ({ data, 
 
     const tabs = originalComponentProps.views.map((view) => getTab(view));
 
-    return <Tabs tabs={tabs} toolbar={<Toolbar data={data} originalComponentProps={originalComponentProps} />} />;
+    return (
+        <Tabs
+            ref={tabsRef}
+            tabs={tabs}
+            toolbar={<Toolbar data={data} originalComponentProps={originalComponentProps} />}
+        />
+    );
 };
 
 type ToolbarProps = {

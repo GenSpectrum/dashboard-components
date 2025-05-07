@@ -24,6 +24,9 @@ import { type MutationAnnotations, mutationAnnotationsContext } from '../mutatio
  * This component also assumes that the LAPIS instance has the field `date` which can be used for the time axis.
  *
  * @slot infoText - Additional information text to be shown in the info modal (the "?" button).
+ *
+ * @fires {CustomEvent<undefined>} gs-component-finished-loading
+ * Fired when the component has finished loading the required data from LAPIS.
  */
 @customElement('gs-wastewater-mutations-over-time')
 export class WastewaterMutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles {

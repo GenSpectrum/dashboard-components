@@ -7,6 +7,7 @@ import { RelativeGrowthAdvantage, type RelativeGrowthAdvantageProps } from './re
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
+import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
 
 export default {
     title: 'Visualization/RelativeGrowthAdvantage',
@@ -88,6 +89,11 @@ export const Primary: StoryObj<RelativeGrowthAdvantageProps> = {
             ],
         },
     },
+};
+
+export const FiresFinishedLoadingEvent: StoryObj<RelativeGrowthAdvantageProps> = {
+    ...Primary,
+    play: playThatExpectsFinishedLoadingEvent(),
 };
 
 export const TooFewDataToComputeGrowthAdvantage: StoryObj<RelativeGrowthAdvantageProps> = {

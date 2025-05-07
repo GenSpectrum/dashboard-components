@@ -33,6 +33,9 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * The dots in the plot show the proportions of the focal variant (defined by the `numeratorFilter`) to the baseline variant (defined by the `denominatorFilter`)
  * for every day as observed in the data.
  * The line shows a logistic curve fitted to the data points, including a 95% confidence interval.
+ *
+ * @fires {CustomEvent<undefined>} gs-component-finished-loading
+ * Fired when the component has finished loading the required data from LAPIS.
  */
 @customElement('gs-relative-growth-advantage')
 export class RelativeGrowthAdvantageComponent extends PreactLitAdapter {

@@ -18,6 +18,7 @@ import {
 } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { toTemporalClass } from '../../utils/temporalClass';
+import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../LapisUrlContext';
 import { useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
 import { type ColorScale } from '../components/color-scale-selector';
@@ -126,6 +127,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     originalComponentProps,
     overallMutationData,
 }) => {
+    const tabsRef = useDispatchFinishedLoadingEvent();
+
     const [mutationFilterValue, setMutationFilterValue] = useState('');
     const annotationProvider = useMutationAnnotationsProvider();
 
@@ -207,7 +210,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
 
     return (
         <PageSizeContextProvider pageSizes={originalComponentProps.pageSizes}>
-            <Tabs tabs={tabs} toolbar={toolbar} />
+            <Tabs ref={tabsRef} tabs={tabs} toolbar={toolbar} />
         </PageSizeContextProvider>
     );
 };
