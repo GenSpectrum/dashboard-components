@@ -30,6 +30,9 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  *
  * The chart shows the bars with the highest aggregated `count`.
  * The number of bars can be adjusted with the `maxNumberOfBars` property.
+ *
+ * @fires {CustomEvent<undefined>} gs-component-finished-loading
+ * Fired when the component has finished loading the required data from LAPIS.
  */
 @customElement('gs-aggregate')
 export class AggregateComponent extends PreactLitAdapterWithGridJsStyles {

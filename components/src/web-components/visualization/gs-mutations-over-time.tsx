@@ -38,6 +38,9 @@ import { type MutationAnnotations, mutationAnnotationsContext } from '../mutatio
  * Users can filter the displayed rows by mean proportion via a slider in the toolbar.
  * The mean proportion of each row is calculated by LAPIS over the whole data range that the component displays.
  * The initial mean proportion can be set via `initialMeanProportionInterval`.
+ *
+ * @fires {CustomEvent<undefined>} gs-component-finished-loading
+ * Fired when the component has finished loading the required data from LAPIS.
  */
 @customElement('gs-mutations-over-time')
 export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles {

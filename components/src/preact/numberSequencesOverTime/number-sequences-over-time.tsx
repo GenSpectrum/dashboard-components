@@ -11,6 +11,7 @@ import {
     queryNumberOfSequencesOverTime,
 } from '../../query/queryNumberOfSequencesOverTime';
 import { namedLapisFilterSchema, temporalGranularitySchema, views } from '../../types';
+import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -88,6 +89,8 @@ interface NumberSequencesOverTimeTabsProps {
 }
 
 const NumberSequencesOverTimeTabs = ({ data, originalComponentProps }: NumberSequencesOverTimeTabsProps) => {
+    const tabsRef = useDispatchFinishedLoadingEvent();
+
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
 
     const maintainAspectRatio = getMaintainAspectRatio(originalComponentProps.height);
@@ -134,6 +137,7 @@ const NumberSequencesOverTimeTabs = ({ data, originalComponentProps }: NumberSeq
 
     return (
         <Tabs
+            ref={tabsRef}
             tabs={originalComponentProps.views.map((view) => getTab(view))}
             toolbar={(activeTab) => (
                 <Toolbar

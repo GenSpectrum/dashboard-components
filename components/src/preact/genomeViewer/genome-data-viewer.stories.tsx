@@ -2,6 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/preact';
 
 import { GenomeDataViewer, type GenomeDataViewerProps } from './genome-data-viewer';
 import { playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
+import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
 
 const meta: Meta<GenomeDataViewerProps> = {
     title: 'Visualization/GenomeDataViewer',
@@ -73,6 +74,11 @@ export const Default: StoryObj<GenomeDataViewerProps> = {
             ],
         },
     },
+};
+
+export const FiresFinishedLoadingEvent: StoryObj<GenomeDataViewerProps> = {
+    ...Default,
+    play: playThatExpectsFinishedLoadingEvent(),
 };
 
 export const InvalidProps: StoryObj<GenomeDataViewerProps> = {

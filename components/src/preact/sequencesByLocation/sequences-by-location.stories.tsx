@@ -7,6 +7,7 @@ import { LapisUrlContextProvider } from '../LapisUrlContext';
 import aggregatedWorld from './__mockData__/aggregatedWorld.json';
 import { SequencesByLocation, type SequencesByLocationProps } from './sequences-by-location';
 import { expectInvalidAttributesErrorMessage, playThatExpectsErrorMessage } from '../shared/stories/expectErrorMessage';
+import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
 
 import 'leaflet/dist/leaflet.css';
 import './leafletStyleModifications.css';
@@ -90,6 +91,11 @@ export const Default: StoryObj<SequencesByLocationProps> = {
             ],
         },
     },
+};
+
+export const FiresFinishedLoadingEvent: StoryObj<SequencesByLocationProps> = {
+    ...Default,
+    play: playThatExpectsFinishedLoadingEvent(),
 };
 
 export const NoData: StoryObj<SequencesByLocationProps> = {

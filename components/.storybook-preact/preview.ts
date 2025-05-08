@@ -18,7 +18,7 @@ const preview: Preview = {
                 date: /Date$/i,
             },
         },
-        actions: { handles: [gsEventNames.error] },
+        actions: { handles: [gsEventNames.error, gsEventNames.componentFinishedLoading] },
     },
     decorators: [withActions],
     beforeEach: () => {

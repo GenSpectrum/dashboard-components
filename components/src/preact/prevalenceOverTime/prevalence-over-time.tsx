@@ -9,6 +9,7 @@ import PrevalenceOverTimeLineChart from './prevalence-over-time-line-chart';
 import PrevalenceOverTimeTable from './prevalence-over-time-table';
 import { type PrevalenceOverTimeData, queryPrevalenceOverTime } from '../../query/queryPrevalenceOverTime';
 import { lapisFilterSchema, namedLapisFilterSchema, temporalGranularitySchema, views } from '../../types';
+import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../LapisUrlContext';
 import { ConfidenceIntervalSelector } from '../components/confidence-interval-selector';
 import { CsvDownloadButton } from '../components/csv-download-button';
@@ -101,6 +102,8 @@ type PrevalenceOverTimeTabsProps = PrevalenceOverTimeProps & {
 };
 
 const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = ({ data, ...componentProps }) => {
+    const tabsRef = useDispatchFinishedLoadingEvent();
+
     const { views, granularity, confidenceIntervalMethods, pageSize, yAxisMaxLinear, yAxisMaxLogarithmic } =
         componentProps;
     const [yAxisScaleType, setYAxisScaleType] = useState<ScaleType>('linear');
@@ -182,7 +185,7 @@ const PrevalenceOverTimeTabs: FunctionComponent<PrevalenceOverTimeTabsProps> = (
         />
     );
 
-    return <Tabs tabs={tabs} toolbar={toolbar} />;
+    return <Tabs ref={tabsRef} tabs={tabs} toolbar={toolbar} />;
 };
 
 type ToolbarProps = PrevalenceOverTimeProps & {

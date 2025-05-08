@@ -1,5 +1,6 @@
 export const gsEventNames = {
     error: 'gs-error',
+    componentFinishedLoading: 'gs-component-finished-loading',
     dateRangeFilterChanged: 'gs-date-range-filter-changed',
     dateRangeOptionChanged: 'gs-date-range-option-changed',
     mutationFilterChanged: 'gs-mutation-filter-changed',

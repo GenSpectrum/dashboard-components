@@ -94,6 +94,9 @@ const leafletModificationsCss = unsafeCSS(leafletStyleModifications);
  * - `lapisLocationField`,
  * - `count` (the number of samples in this location matching the `lapisFilter`),
  * - `proportion` (`count` / sum of the `count` of all locations).
+ *
+ * @fires {CustomEvent<undefined>} gs-component-finished-loading
+ * Fired when the component has finished loading the required data from LAPIS.
  */
 @customElement('gs-sequences-by-location')
 export class SequencesByLocationComponent extends PreactLitAdapterWithGridJsStyles {

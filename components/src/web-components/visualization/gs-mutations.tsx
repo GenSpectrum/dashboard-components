@@ -60,6 +60,8 @@ import { type MutationAnnotations, mutationAnnotationsContext } from '../mutatio
  *
  * The insertions view shows the count of all insertions for the dataset.
  *
+ * @fires {CustomEvent<undefined>} gs-component-finished-loading
+ * Fired when the component has finished loading the required data from LAPIS.
  */
 @customElement('gs-mutations')
 export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {

@@ -11,6 +11,7 @@ import numeratorOneDataset from './__mockData__/numeratorFilterOneDataset.json';
 import { PrevalenceOverTime, type PrevalenceOverTimeProps } from './prevalence-over-time';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
+import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
 
 export default {
     title: 'Visualization/PrevalenceOverTime',
@@ -119,6 +120,11 @@ export const TwoVariants: StoryObj<PrevalenceOverTimeProps> = {
             ],
         },
     },
+};
+
+export const FiresFinishedLoadingEvent: StoryObj<PrevalenceOverTimeProps> = {
+    ...TwoVariants,
+    play: playThatExpectsFinishedLoadingEvent(),
 };
 
 export const OneVariant: StoryObj<PrevalenceOverTimeProps> = {

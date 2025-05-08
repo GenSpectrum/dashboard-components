@@ -10,6 +10,8 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * This component shows the Coding Sequence (CDS) of a genome using a gff3 file as input.
  * The CDS shows which parts of the genome are translated into proteins.
  *
+ * @fires {CustomEvent<undefined>} gs-component-finished-loading
+ * Fired when the component has finished loading the required data.
  */
 @customElement('gs-genome-data-viewer')
 export class GenomeDataViewerComponent extends PreactLitAdapter {

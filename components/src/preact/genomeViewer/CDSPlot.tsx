@@ -2,6 +2,7 @@ import { Fragment, type FunctionComponent } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 
 import { type CDSFeature } from './loadGff3';
+import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { MinMaxRangeSlider } from '../components/min-max-range-slider';
 import Tooltip from '../components/tooltip';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
@@ -183,6 +184,8 @@ interface CDSProps {
 }
 
 const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
+    const ref = useDispatchFinishedLoadingEvent();
+
     const { gffData, genomeLength, width } = componentProps;
 
     const [zoomStart, setZoomStart] = useState(0);
@@ -197,7 +200,7 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
     };
 
     return (
-        <div class='p-4'>
+        <div ref={ref} class='p-4'>
             <CDSBars gffData={gffData} zoomStart={zoomStart} zoomEnd={zoomEnd} />
             <XAxis zoomStart={zoomStart} zoomEnd={zoomEnd} fullWidth={width} />
             <div class='relative w-full h-5'>

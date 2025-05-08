@@ -7,6 +7,7 @@ import { MutationComparisonTable } from './mutation-comparison-table';
 import { MutationComparisonVenn } from './mutation-comparison-venn';
 import { filterMutationData, type MutationData, queryMutationData } from './queryMutationData';
 import { namedLapisFilterSchema, sequenceTypeSchema, views } from '../../types';
+import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -80,6 +81,8 @@ type MutationComparisonTabsProps = {
 };
 
 const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = ({ data, originalComponentProps }) => {
+    const tabsRef = useDispatchFinishedLoadingEvent();
+
     const [proportionInterval, setProportionInterval] = useState({ min: 0.5, max: 1 });
     const [displayedMutationTypes, setDisplayedMutationTypes] = useState<DisplayedMutationType[]>([
         { label: 'Substitutions', checked: true, type: 'substitution' },
@@ -127,6 +130,7 @@ const MutationComparisonTabs: FunctionComponent<MutationComparisonTabsProps> = (
 
     return (
         <Tabs
+            ref={tabsRef}
             tabs={tabs}
             toolbar={
                 <Toolbar

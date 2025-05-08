@@ -15,6 +15,7 @@ import {
     type SubstitutionOrDeletionEntry,
     views,
 } from '../../types';
+import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../LapisUrlContext';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -87,6 +88,8 @@ type MutationTabsProps = {
 };
 
 const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, originalComponentProps }) => {
+    const tabsRef = useDispatchFinishedLoadingEvent();
+
     const [proportionInterval, setProportionInterval] = useState({ min: 0.05, max: 1 });
 
     const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(originalComponentProps.sequenceType);
@@ -153,7 +156,7 @@ const MutationsTabs: FunctionComponent<MutationTabsProps> = ({ mutationsData, or
         />
     );
 
-    return <Tabs tabs={tabs} toolbar={toolbar} />;
+    return <Tabs ref={tabsRef} tabs={tabs} toolbar={toolbar} />;
 };
 
 type ToolbarProps = {

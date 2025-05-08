@@ -10,6 +10,7 @@ import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
+import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
 import { expectMutationAnnotation } from '../shared/stories/expectMutationAnnotation';
 
 const meta: Meta<MutationsOverTimeProps> = {
@@ -81,6 +82,11 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
         pageSizes: [10, 20, 30, 40, 50],
     },
+};
+
+export const FiresFinishedLoadingEvent: StoryObj<MutationsOverTimeProps> = {
+    ...Default,
+    play: playThatExpectsFinishedLoadingEvent(),
 };
 
 export const ShowsMutationAnnotations: StoryObj<MutationsOverTimeProps> = {

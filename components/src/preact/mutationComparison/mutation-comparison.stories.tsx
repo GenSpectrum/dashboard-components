@@ -10,6 +10,7 @@ import { type MutationAnnotations } from '../../web-components/mutation-annotati
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
+import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
 import { expectMutationAnnotation } from '../shared/stories/expectMutationAnnotation';
 
 const dateToSomeDataset = '2022-01-01';
@@ -140,6 +141,11 @@ export const TwoVariants: StoryObj<MutationComparisonProps> = {
     play: async ({ canvasElement }) => {
         await expectMutationAnnotation(canvasElement, 'C3037T');
     },
+};
+
+export const FiresFinishedLoadingEvent: StoryObj<MutationComparisonProps> = {
+    ...TwoVariants,
+    play: playThatExpectsFinishedLoadingEvent(),
 };
 
 export const FilterForOnlyDeletions: StoryObj<MutationComparisonProps> = {

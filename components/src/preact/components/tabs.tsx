@@ -1,4 +1,4 @@
-import { type FunctionComponent } from 'preact';
+import { forwardRef } from 'preact/compat';
 import { useState } from 'preact/hooks';
 import { type JSXInternal } from 'preact/src/jsx';
 
@@ -12,7 +12,7 @@ interface ComponentTabsProps {
     toolbar?: JSXInternal.Element | ((activeTab: string) => JSXInternal.Element);
 }
 
-const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
+const Tabs = forwardRef<HTMLDivElement, ComponentTabsProps>(({ tabs, toolbar }, ref) => {
     const [activeTab, setActiveTab] = useState(tabs[0]?.title);
 
     const tabElements = (
@@ -40,7 +40,7 @@ const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
     const toolbarElement = typeof toolbar === 'function' ? toolbar(activeTab) : toolbar;
 
     return (
-        <div className='h-full w-full flex flex-col'>
+        <div ref={ref} className='h-full w-full flex flex-col'>
             <div className='flex flex-row justify-between flex-wrap'>
                 {tabElements}
                 {toolbar && <div className='py-2 flex flex-wrap gap-y-1'>{toolbarElement}</div>}
@@ -54,6 +54,6 @@ const Tabs: FunctionComponent<ComponentTabsProps> = ({ tabs, toolbar }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Tabs;

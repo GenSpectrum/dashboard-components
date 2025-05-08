@@ -17,6 +17,7 @@ import { type MutationAnnotations } from '../../web-components/mutation-annotati
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
+import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
 import { expectMutationAnnotation } from '../shared/stories/expectMutationAnnotation';
 
 const meta: Meta<MutationsProps> = {
@@ -145,6 +146,11 @@ export const Default: StoryObj<MutationsProps> = {
             ],
         },
     },
+};
+
+export const FiresFinishedLoadingEvent: StoryObj<MutationsProps> = {
+    ...Default,
+    play: playThatExpectsFinishedLoadingEvent(),
 };
 
 export const GridTab: StoryObj<MutationsProps> = {

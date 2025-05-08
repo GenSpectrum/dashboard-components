@@ -34,6 +34,9 @@ import { type MutationAnnotations, mutationAnnotationsContext } from '../mutatio
  * selected proportion interval.
  * Thus, changing the proportion interval may change a mutations from being "common" between the datasets
  * to being "for one dataset only".
+ *
+ * @fires {CustomEvent<undefined>} gs-component-finished-loading
+ * Fired when the component has finished loading the required data from LAPIS.
  */
 @customElement('gs-mutation-comparison')
 export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyles {

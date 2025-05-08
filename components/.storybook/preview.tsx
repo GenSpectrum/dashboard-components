@@ -8,7 +8,7 @@ import { gsEventNames } from '../src/utils/gsEventNames';
 
 setCustomElementsManifest(customElements);
 
-export const previewHandles = [gsEventNames.error];
+export const previewHandles = [gsEventNames.error, gsEventNames.componentFinishedLoading];
 
 const preview: Preview = {
     parameters: {
