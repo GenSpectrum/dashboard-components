@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.5...dashboard-components-v0.19.6) (2025-05-08)
+
+
+### Features
+
+* **components:** fire `gs-component-finished-loading` event when visualization components are likely to trigger no layout shifts anymore ([#880](https://github.com/GenSpectrum/dashboard-components/issues/880)) ([ce5d4e0](https://github.com/GenSpectrum/dashboard-components/commit/ce5d4e01435624b2b62018d9377647664c510b02)), closes [#860](https://github.com/GenSpectrum/dashboard-components/issues/860)
+
 ## [0.19.5](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.4...dashboard-components-v0.19.5) (2025-05-05)
 
 
