@@ -54,9 +54,10 @@ We use [Lit](https://lit.dev/) to create web components.
 
 We have split the package into two parts:
 
-- The components, which are web components that can be used in the browser.
+- The web components that can be used in the browser.
     - They can be imported with `import '@genspectrum/dashboard-components/components';`
-- utility functions, which can also be used in a node environment.
+    - Note that this imports all components at once. The `import` statement will make the web components available in the browser.
+- Utility functions, types and constants which can also be used in a node environment.
     - They can be imported with `import '@genspectrum/dashboard-components/util';`
 
 We primarily provide two kinds of components:
@@ -65,7 +66,7 @@ We primarily provide two kinds of components:
     - Those components fetch data from the LAPIS instance and visualize it.
 - **Input components** that let you specify sequence filters for the LAPIS requests.
     - Input changes will fire events that can be listened to by the visualization components.
-      It is the responsibility of the dashbaord maintainer to listen to those events
+      It is the responsibility of the dashboard maintainer to listen to those events
       and to wire the data correctly into the visualization components.
 
 ## Local Development
@@ -105,15 +106,25 @@ npm run storybook
 ```
 
 Then, open http://localhost:6006/ and http://localhost:6007/ in your browser.
-The Storybook on port 6007 uses the Preact build.
-The Storybook on port 6006 uses the Lit build and includes the Preact Storybook.
-Note that some Storybook integrations (such as interaction tests) do not work in the included Storybook.
-We only deploy the Lit part of the Storybook to GitHub pages.
 
+The Storybook on port 6006 uses the Lit build.
+Its purpose is public documentation and live demonstration of the publicly available web components.
+It should focus on stories that are relevant for users of the components.
+This storybook is deployed to GitHub pages.
+
+Every web component should have a separate "Docs" page.
 Storybook offers an integration of the custom-elements.json that can generate doc pages for the web components.
 Refer to the
 [Custom Elements Manifest Docs](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#documenting-your-components)
 for how to document the components using JSDoc.
+
+The Storybook on port 6007 uses the Preact build.
+Its purpose is to test the components in a Preact environment.
+It is not meant to be used outside the development environment
+and contains many stories that are not relevant for the public (e.g. because they serve as a unit test for some edge case).
+It should contain stories and corresponding unit tests for every Preact component that is relevant in a wider context
+(either because it is a top level component that is also exposed as a web component
+or because it is supposed to be reusable in other components).
 
 ### Testing
 
@@ -147,7 +158,12 @@ We follow this testing concept:
 
 #### Mocking
 
-All our tests use mock data. In general, we use `storybook-addon-fetch-mock` for all outgoing requests. This strategy
+All our tests use mock data.
+Make sure that stories don't issue actual HTTP calls to LAPIS or other services.
+This is to make sure that we have stable tests in CI that don't depend on the availability of other services.
+We still use the real LAPIS URL so that a user can change the filters in a story and will still see data.
+
+In general, we use `storybook-addon-fetch-mock` for all outgoing requests. This strategy
 cannot be used for components that use web workers, like gs-mutations-over-time. Therefore, we created custom mock
 workers that return mocked data. The mock workers are enabled in the package.json using
 Node.js [subpath imports](https://nodejs.org/api/packages.html#subpath-imports), following the guide
