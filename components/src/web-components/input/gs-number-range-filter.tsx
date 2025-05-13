@@ -19,7 +19,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * The slider must be restricted to a certain range.
  * Users can however still enter values outside of this range in the text input fields.
  *
- * @fires {CustomEvent<Record<string, string | undefined>>} gs-number-range-filter-changed
+ * @fires {CustomEvent<Record<string, number | undefined>>} gs-number-range-filter-changed
  * Fired when the slider is released,
  * `onBlur` on the input fields after the user has typed a valid range in the input fields,
  * or when one of the input fields is cleared.
@@ -39,7 +39,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * }
  * ```
  *
- * @fires {CustomEvent<Record<string, string | undefined>>} gs-number-range-value-changed
+ * @fires {CustomEvent<Record<string, number | undefined>>} gs-number-range-value-changed
  * Similar to the `gs-number-range-filter-changed` event,
  * but contains an `event.detail` that has a fixed format:
  * ```
