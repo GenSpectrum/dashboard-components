@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.19.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.6...dashboard-components-v0.19.7) (2025-05-14)
+
+
+### Features
+
+* **components:** export number filter events ([#890](https://github.com/GenSpectrum/dashboard-components/issues/890)) ([ad4707b](https://github.com/GenSpectrum/dashboard-components/commit/ad4707b2139069b8e07d3e085c9c1398eaf10088))
+
+
+### Bug Fixes
+
+* **components:** fix type of event for gs-number-range-filter in docs ([#888](https://github.com/GenSpectrum/dashboard-components/issues/888)) ([3f676b2](https://github.com/GenSpectrum/dashboard-components/commit/3f676b2ecb45d1f8ef52c9376f9c580a9c849446))
+
 ## [0.19.6](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.5...dashboard-components-v0.19.6) (2025-05-08)
 
 
