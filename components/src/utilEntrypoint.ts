@@ -41,4 +41,9 @@ export type { MutationAnnotations, MutationAnnotation } from './web-components/m
 
 export { gsEventNames } from './utils/gsEventNames';
 
-export { type NumberRange } from './preact/numberRangeFilter/NumberRangeFilterChangedEvent';
+export {
+    type NumberRange,
+    type LapisNumberFilter,
+    NumberRangeFilterChangedEvent,
+    NumberRangeValueChangedEvent,
+} from './preact/numberRangeFilter/NumberRangeFilterChangedEvent';
