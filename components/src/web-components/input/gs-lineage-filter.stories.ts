@@ -7,7 +7,9 @@ import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../gs-app';
 import './gs-lineage-filter';
+import { lineageDefinitionEndpoint } from '../../lapisApi/lapisApi';
 import aggregatedData from '../../preact/lineageFilter/__mockData__/aggregated.json';
+import lineageDefinition from '../../preact/lineageFilter/__mockData__/lineageDefinition.json';
 import { type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
 import { gsEventNames } from '../../utils/gsEventNames';
 import { withinShadowRoot } from '../withinShadowRoot.story';
@@ -42,6 +44,16 @@ const meta: Meta<Required<LineageFilterProps>> = {
                     response: {
                         status: 200,
                         body: aggregatedData,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'lineageDefinition',
+                        url: lineageDefinitionEndpoint(LAPIS_URL, 'pangoLineage'),
+                    },
+                    response: {
+                        status: 200,
+                        body: lineageDefinition,
                     },
                 },
             ],
@@ -210,7 +222,7 @@ export const FiresEvent: StoryObj<Required<LineageFilterProps>> = {
 
         await step('Enter a valid lineage value', async () => {
             await userEvent.type(inputField(), 'B.1.1.7*');
-            await userEvent.click(canvas.getByRole('option', { name: 'B.1.1.7*' }));
+            await userEvent.click(canvas.getByRole('option', { name: 'B.1.1.7*(677146)' }));
 
             await waitFor(() => {
                 return expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({

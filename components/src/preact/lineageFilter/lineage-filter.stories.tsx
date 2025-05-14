@@ -5,6 +5,8 @@ import type { StepFunction } from '@storybook/types';
 import { LineageFilter, type LineageFilterProps } from './lineage-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
+import lineageDefinition from './__mockData__/lineageDefinition.json';
+import { lineageDefinitionEndpoint } from '../../lapisApi/lapisApi';
 import aggregatedData from '../../preact/lineageFilter/__mockData__/aggregated.json';
 import { gsEventNames } from '../../utils/gsEventNames';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
@@ -31,6 +33,16 @@ const meta: Meta = {
                     response: {
                         status: 200,
                         body: aggregatedData,
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'lineageDefinition',
+                        url: lineageDefinitionEndpoint(LAPIS_URL, 'pangoLineage'),
+                    },
+                    response: {
+                        status: 200,
+                        body: lineageDefinition,
                     },
                 },
             ],
@@ -90,7 +102,7 @@ export const Default: StoryObj<LineageFilterProps> = {
             const input = await inputField(canvas);
             await userEvent.clear(input);
             await userEvent.type(input, 'B.1');
-            await userEvent.click(canvas.getByRole('option', { name: 'B.1' }));
+            await userEvent.click(canvas.getByRole('option', { name: 'B.1(53802)' }));
 
             await waitFor(() => {
                 return expect(lineageChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({

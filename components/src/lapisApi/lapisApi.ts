@@ -11,6 +11,7 @@ import {
     type ProblemDetail,
 } from './lapisTypes';
 import { type SequenceType } from '../types';
+import { lineageDefinitionResponseSchema } from './LineageDefinition';
 
 export class UnknownLapisError extends Error {
     constructor(
@@ -127,6 +128,30 @@ export async function fetchReferenceGenome(lapisUrl: string, signal?: AbortSigna
     return referenceGenomeResponse.parse(await response.json());
 }
 
+export async function fetchLineageDefinition({
+    lapisUrl,
+    lapisField,
+    signal,
+}: {
+    lapisUrl: string;
+    lapisField: string;
+    signal?: AbortSignal;
+}) {
+    const response = await callLapis(
+        lineageDefinitionEndpoint(lapisUrl, lapisField),
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            signal,
+        },
+        `${lapisField} lineage definition`,
+    );
+
+    return lineageDefinitionResponseSchema.parse(await response.json());
+}
+
 async function callLapis(
     input: Parameters<typeof fetch>[0],
     init: Parameters<typeof fetch>[1],
@@ -191,3 +216,5 @@ export const substitutionsOrDeletionsEndpoint = (lapisUrl: string, sequenceType:
         : `${lapisUrl}/sample/nucleotideMutations`;
 };
 export const referenceGenomeEndpoint = (lapisUrl: string) => `${lapisUrl}/sample/referenceGenome`;
+export const lineageDefinitionEndpoint = (lapisUrl: string, lapisField: string) =>
+    `${lapisUrl}/sample/lineageDefinition/${lapisField}`;

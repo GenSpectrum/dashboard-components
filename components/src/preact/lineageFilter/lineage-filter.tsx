@@ -1,9 +1,10 @@
 import { type FunctionComponent } from 'preact';
+import { useMemo } from 'preact/hooks';
 import z from 'zod';
 
 import { useLapisUrl } from '../LapisUrlContext';
 import { LineageFilterChangedEvent } from './LineageFilterChangedEvent';
-import { fetchLineageAutocompleteList } from './fetchLineageAutocompleteList';
+import { fetchLineageAutocompleteList, type LineageItem } from './fetchLineageAutocompleteList';
 import { lapisFilterSchema } from '../../types';
 import { DownshiftCombobox } from '../components/downshift-combobox';
 import { ErrorBoundary } from '../components/error-boundary';
@@ -46,11 +47,11 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
     value,
     lapisFilter,
 }) => {
-    const lapis = useLapisUrl();
+    const lapisUrl = useLapisUrl();
 
     const { data, error, isLoading } = useQuery(
-        () => fetchLineageAutocompleteList({ lapis, field: lapisField, lapisFilter }),
-        [lapisField, lapis, lapisFilter],
+        () => fetchLineageAutocompleteList({ lapisUrl, lapisField, lapisFilter }),
+        [lapisField, lapisUrl, lapisFilter],
     );
 
     if (isLoading) {
@@ -70,24 +71,33 @@ const LineageSelector = ({
     placeholderText,
     data,
 }: LineageSelectorProps & {
-    data: string[];
+    data: LineageItem[];
 }) => {
+    const selectedItem = useMemo(() => {
+        return data.find((item) => item.lineage === value) ?? null;
+    }, [data, value]);
+
     return (
         <DownshiftCombobox
             allItems={data}
-            value={value}
+            value={selectedItem}
             filterItemsByInputValue={filterByInputValue}
-            createEvent={(item) => new LineageFilterChangedEvent({ [lapisField]: item ?? undefined })}
-            itemToString={(item) => item ?? ''}
+            createEvent={(item) => new LineageFilterChangedEvent({ [lapisField]: item?.lineage ?? undefined })}
+            itemToString={(item) => item?.lineage ?? ''}
             placeholderText={placeholderText}
-            formatItemInList={(item: string) => item}
+            formatItemInList={(item: LineageItem) => (
+                <p>
+                    <span>{item.lineage}</span>
+                    <span className='ml-2 text-gray-500'>({item.count})</span>
+                </p>
+            )}
         />
     );
 };
 
-function filterByInputValue(item: string, inputValue: string | null) {
+function filterByInputValue(item: LineageItem, inputValue: string | null) {
     if (inputValue === null || inputValue === '') {
         return true;
     }
-    return item?.toLowerCase().includes(inputValue?.toLowerCase() || '');
+    return item.lineage?.toLowerCase().includes(inputValue?.toLowerCase() || '');
 }
