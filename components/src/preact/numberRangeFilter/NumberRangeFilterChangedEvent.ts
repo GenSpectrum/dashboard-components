@@ -2,7 +2,7 @@ import z from 'zod';
 
 import { gsEventNames } from '../../utils/gsEventNames';
 
-type LapisNumberFilter = Record<string, number | undefined>;
+export type LapisNumberFilter = Record<string, number | undefined>;
 
 export const numberRangeSchema = z.object({
     min: z.number().optional(),
