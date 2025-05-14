@@ -1,3 +1,5 @@
+import pLimit from 'p-limit';
+
 import { mapDateToGranularityRange } from './queryAggregatedDataOverTime';
 import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { FetchSubstitutionsOrDeletionsOperator } from '../operator/FetchSubstitutionsOrDeletionsOperator';
@@ -7,25 +9,20 @@ import { RenameFieldOperator } from '../operator/RenameFieldOperator';
 import { SortOperator } from '../operator/SortOperator';
 import { UserFacingError } from '../preact/components/error-display';
 import { BaseMutationOverTimeDataMap } from '../preact/mutationsOverTime/MutationOverTimeData';
-import { sortSubstitutionsAndDeletions } from '../preact/shared/sort/sortSubstitutionsAndDeletions';
 import {
-    type DeletionEntry,
     type LapisFilter,
     type SequenceType,
-    type SubstitutionEntry,
     type SubstitutionOrDeletionEntry,
     type TemporalGranularity,
 } from '../types';
-import { type Deletion, type Substitution, toSubstitutionOrDeletion } from '../utils/mutations';
+import { type Deletion, type Substitution } from '../utils/mutations';
 import {
-    compareTemporal,
     dateRangeCompare,
     generateAllInRange,
     getMinMaxTemporal,
     parseDateStringToTemporal,
     type Temporal,
     type TemporalClass,
-    toTemporal,
 } from '../utils/temporalClass';
 
 export type MutationOverTimeData = {
@@ -114,29 +111,7 @@ export async function queryMutationsOverTimeData({
         );
     }
 
-    const subQueries = allDates.map(async (date) => {
-        const dateFrom = date.firstDay.toString();
-        const dateTo = date.lastDay.toString();
-
-        const filter = {
-            ...lapisFilter,
-            [`${lapisDateField}From`]: dateFrom,
-            [`${lapisDateField}To`]: dateTo,
-        };
-
-        const data = await fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal);
-        const totalCountQuery = await getTotalNumberOfSequencesInDateRange(filter).evaluate(lapis, signal);
-
-        return {
-            date,
-            mutations: data.content,
-            totalCount: totalCountQuery.content[0].count,
-        };
-    });
-
-    const data = await Promise.all(subQueries);
-
-    const overallMutationsData = (
+    const overallMutationData = (
         await queryOverallMutationData({
             lapisFilter,
             sequenceType,
@@ -146,10 +121,49 @@ export async function queryMutationsOverTimeData({
         })
     ).content;
 
+    const dateFrom = allDates[0].firstDay.dateString;
+    const dateTo = allDates[allDates.length - 1].lastDay.dateString;
+
+    const limit = pLimit(100);
+
+    const subQueries = overallMutationData.map(async (mutation) => {
+        return limit(async () => {
+            const filter = {
+                ...lapisFilter,
+                [`${lapisDateField}From`]: dateFrom,
+                [`${lapisDateField}To`]: dateTo,
+                nucleotideMutations: [mutation.mutation.code],
+            };
+
+            const mutationCountPerDate = await fetchMutationCounts(filter, 'date').evaluate(lapis, signal);
+            const mapOfDates = new Map<TemporalClass, number>(allDates.map((date) => [date, 0]));
+            mutationCountPerDate.content.forEach((countPerDate) => {
+                if (countPerDate.date !== null) {
+                    const temporal = parseDateStringToTemporal(countPerDate.date, granularity);
+                    const mapEntry = mapOfDates.get(temporal);
+                    if (mapEntry !== undefined) {
+                        mapOfDates.set(temporal, mapEntry + countPerDate.count);
+                    } else {
+                        mapOfDates.set(temporal, countPerDate.count);
+                    }
+                }
+            });
+
+            return { mutation, mutationCountPerDate: mapOfDates };
+        });
+    });
+
+    const data = await Promise.all(subQueries);
+
     return {
-        mutationOverTimeData: groupByMutation(data, overallMutationsData),
-        overallMutationData: overallMutationsData,
+        mutationOverTimeData: groupByMutation(data),
+        overallMutationData,
     };
+}
+
+function fetchMutationCounts<LapisDateField extends string>(filter: LapisFilter, lapisDateField: LapisDateField) {
+    const fetchData = new FetchAggregatedOperator<{ [key in LapisDateField]: string | null }>(filter, [lapisDateField]);
+    return fetchData;
 }
 
 async function getDatesInDataset(
@@ -228,59 +242,23 @@ export function serializeTemporal(date: Temporal) {
 }
 
 export function groupByMutation(
-    data: MutationOverTimeData[],
-    overallMutationData: (SubstitutionEntry | DeletionEntry)[],
+    data: {
+        mutation: SubstitutionOrDeletionEntry;
+        mutationCountPerDate: Map<TemporalClass, number>;
+    }[],
 ) {
     const dataArray = new BaseMutationOverTimeDataMap();
 
-    const allDates = data.map((mutationData) => mutationData.date);
-
-    const sortedOverallMutationData = overallMutationData
-        .sort((a, b) => sortSubstitutionsAndDeletions(a.mutation, b.mutation))
-        .map((entry) => {
-            return toSubstitutionOrDeletion(entry.mutation);
-        });
-    const sortedDates = allDates.sort((a, b) => compareTemporal(a, b)).map((date) => toTemporal(date));
-
-    sortedOverallMutationData.forEach((mutationData) => {
-        sortedDates.forEach((date) => {
-            dataArray.set(mutationData, date, null);
-        });
-    });
-
     data.forEach((mutationData) => {
-        if (mutationData.totalCount == 0) {
-            return;
-        }
-
-        const date = toTemporal(mutationData.date);
-
-        mutationData.mutations.forEach((mutationEntry) => {
-            const mutation = toSubstitutionOrDeletion(mutationEntry.mutation);
-
-            if (dataArray.get(mutation, date) !== undefined) {
-                dataArray.set(mutation, date, {
-                    type: 'value',
-                    count: mutationEntry.count,
-                    proportion: mutationEntry.proportion,
-                    totalCount: mutationData.totalCount,
-                });
-            }
+        mutationData.mutationCountPerDate.forEach((value, key) => {
+            dataArray.set(mutationData.mutation.mutation, key, {
+                type: 'value',
+                count: value,
+                proportion: value,
+                totalCount: value,
+            });
         });
-
-        for (const firstAxisKey of dataArray.getFirstAxisKeys()) {
-            if (dataArray.get(firstAxisKey, date) === null) {
-                dataArray.set(firstAxisKey, date, {
-                    type: 'belowThreshold',
-                    totalCount: mutationData.totalCount,
-                });
-            }
-        }
     });
 
     return dataArray;
-}
-
-function getTotalNumberOfSequencesInDateRange(filter: LapisFilter) {
-    return new FetchAggregatedOperator<{ count: number }>(filter);
 }

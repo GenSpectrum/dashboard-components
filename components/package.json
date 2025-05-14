@@ -17,7 +17,7 @@
     },
     "imports": {
         "#mutationOverTime": {
-            "storybook": "./src/preact/mutationsOverTime/mutationOverTimeWorker.mock.ts",
+            "storybook": "./src/preact/mutationsOverTime/mutationOverTimeWorker.ts",
             "default": "./src/preact/mutationsOverTime/mutationOverTimeWorker.ts"
         },
         "#*": [
@@ -93,6 +93,7 @@
         "gridjs": "^6.2.0",
         "leaflet": "^1.9.4",
         "lit": "^3.1.3",
+        "p-limit": "^6.2.0",
         "preact": "^10.20.1",
         "topojson-client": "^3.1.0",
         "zod": "^3.23.0"
