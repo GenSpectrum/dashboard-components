@@ -1,10 +1,22 @@
 import { Meta } from '@storybook/blocks';
 
-<Meta title='Visualization/Data Visualization and Statistical Analysis' />
+<Meta title='Visualization/Introduction' />
 
-# Data Visualization and Statistical Analysis
+# Introduction
 
-## Scales
+The components in this section visualize data from LAPIS.
+They take a LAPIS filter as input, fetch data from LAPIS and visualize the results in charts and tables.
+
+Refer to the Swagger UI / OpenAPI documentation of your LAPIS instance for the details of what valid LAPIS filters are.
+The LAPIS filter should only contain actual "query filters" (i.e. no `limit`, `orderBy` or `fields`).
+The components perform minor modifications to the LAPIS filter before sending it to LAPIS,
+such as adding stratification by adding `fields`
+or decomposing the filters into multiple filters for smaller time intervals.
+Otherwise, the LAPIS filter is passed to LAPIS unchanged.
+
+## Data Visualization and Statistical Analysis
+
+### Scales
 
 On most plots, users can select the y-axis scaling through a dropdown.
 They can choose between linear, logarithmic and logistic scaling.
@@ -16,7 +28,7 @@ In general, for each scale the displayed height of a value is calculated by appl
 - Logarithmic: `ln(value)`
 - Logistic: `ln(value / (1 - value))`
 
-## Confidence Intervals
+### Confidence Intervals
 
 On bar and line plots, users can choose to display confidence intervals.
 For line plots, this is done by shading the area between the upper and lower bounds.
