@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.8](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.7...dashboard-components-v0.19.8) (2025-05-14)
+
+
+### Features
+
+* **components:** show counts on lineage filter ([#886](https://github.com/GenSpectrum/dashboard-components/issues/886)) ([5c23029](https://github.com/GenSpectrum/dashboard-components/commit/5c23029f15e99bf92460a2295ea70a527a5d88af)), closes [#663](https://github.com/GenSpectrum/dashboard-components/issues/663)
+
 ## [0.19.7](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.6...dashboard-components-v0.19.7) (2025-05-14)
 
 
