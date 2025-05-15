@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='Visualization/Introduction' />
+
+# Introduction
+
+The components in this section visualize data from LAPIS.
+They take a LAPIS filter as input, fetch data from LAPIS and visualize the results in charts and tables.
+
+Refer to the Swagger UI / OpenAPI documentation of your LAPIS instance for the details of what valid LAPIS filters are.
+The LAPIS filter should only contain actual "query filters"
+(i.e. the LAPIS filter should not include request parameters such as `fields`, `limit`, `orderBy`).
+The components perform minor modifications to the LAPIS filter before sending it to LAPIS,
+such as adding stratification by adding which `fields` the query should return
+or decomposing the filters into multiple filters for smaller time intervals.
+Otherwise, the LAPIS filter is passed to LAPIS unchanged.
+
+## Preventing Layout Shifts
+
+While the data is loaded, components don't know how much space they will take up.
+If you didn't set a fixed height, the component will initially be very small as long as it displays a loading spinner.
+Once the data is loaded, users will see a layout shift because the component will grow to its final size.
+
+All visualization components fire a `gs-component-finished-loading` event when the data is loaded
+and the component is ready to be displayed.
+After a component fired the event, you can expect that there are no more layout shifts.
+
+To prevent layout shifts, you could initially hide the component and only display it after the event was fired.
+
+## Data Visualization and Statistical Analysis
+
+### Scales
+
+On most plots, users can select the y-axis scaling through a dropdown.
+They can choose between linear, logarithmic and logistic scaling.
+By default, the y-axis is set to a linear scale.
+
+In general, for each scale the displayed height of a value is calculated by applying the corresponding scale function.
+
+- Linear: `value`
+- Logarithmic: `ln(value)`
+- Logistic: `ln(value / (1 - value))`
+
+### Confidence Intervals
+
+On bar and line plots, users can choose to display confidence intervals.
+For line plots, this is done by shading the area between the upper and lower bounds.
+For bar plots, this is done by adding error bars to the top of each bar.
+
+Currently, only one method is available for calculating the confidence intervals:
+the [wilson score interval](https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval) with a confidence level of 95%.
