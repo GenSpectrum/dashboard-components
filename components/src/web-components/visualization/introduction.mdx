@@ -8,9 +8,10 @@ The components in this section visualize data from LAPIS.
 They take a LAPIS filter as input, fetch data from LAPIS and visualize the results in charts and tables.
 
 Refer to the Swagger UI / OpenAPI documentation of your LAPIS instance for the details of what valid LAPIS filters are.
-The LAPIS filter should only contain actual "query filters" (i.e. no `limit`, `orderBy` or `fields`).
+The LAPIS filter should only contain actual "query filters"
+(i.e. the LAPIS filter should not include request parameters such as `fields`, `limit`, `orderBy`).
 The components perform minor modifications to the LAPIS filter before sending it to LAPIS,
-such as adding stratification by adding `fields`
+such as adding stratification by adding which `fields` the query should return
 or decomposing the filters into multiple filters for smaller time intervals.
 Otherwise, the LAPIS filter is passed to LAPIS unchanged.
 
