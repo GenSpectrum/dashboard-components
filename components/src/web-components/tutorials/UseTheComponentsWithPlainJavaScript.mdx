@@ -1,0 +1,140 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='Tutorials/Use the components with plain JavaScript' />
+
+# Use the components in plain JavaScript
+
+In this tutorial, we will show you how to use dashboard components with plain JavaScript,
+which might be useful if you want to use the components in a framework like Svelte or Vue.js.
+For React, we have a separate tutorial.
+We will create a simple dashboard that shows the number of sequences over time and allows you to filter the data by location.
+You can find a similar working example in our [examples directory](https://github.com/GenSpectrum/dashboard-components/tree/4ae6a7a9aab3c4c583704f49845c042bcbb6d311/examples/plainJavascript)
+The data for these components must be provided by a LAPIS instance.
+For this tutorial, we’ll use one of our own [LAPIS](https://lapis.cov-spectrum.org/open/v2/docs/) instances, but you’re free to use any LAPIS instance that supplies the required data.
+
+## Prerequisites
+
+We assume that you already have a working environment with the following:
+
+- Node.js installed
+- A package manager (npm or yarn)
+- A html file where you want to use the components. Here we will use a file called `index.html`.
+
+For this tutorial, we use [Vite](https://vite.dev/guide/#index-html-and-project-root) as a build tool. You can use any other build tool, but this will not be covered in this tutorial.
+
+## Install the dashboard components
+
+First, install the components by running the following command in your terminal:
+
+```bash
+npm install @genspectrum/dashboard-components
+```
+
+Then, load the components in your HTML file by adding the following code to the `head` section of your HTML file:
+
+```html
+<script type="module" src="node_modules/@genspectrum/dashboard-components/dist/components.js"></script>
+```
+
+**Note**: Currently, there is an issue with one of our dependencies. To resolve this, create an additional file called `vite.config.js` and add the following code to it:
+
+```javascript
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+    optimizeDeps: {
+        include: ['leaflet'],
+    },
+});
+```
+
+## Add the dashboard components to your HTML file
+
+You can now add components to your HTML file by adding, for example, the following code to the `body` section of your HTML file:
+
+```html
+<gs-app lapis="https://lapis.genspectrum.org/open/v2">
+    <h2>Filter By Location</h2>
+    <gs-location-filter
+        fields='["region", "country", "division"]'
+        width="100%"
+        placeholderText="Enter a location"
+    ></gs-location-filter>
+    <h2>Number of sequences over time</h2>
+    <gs-number-sequences-over-time
+        lapisFilters='[{ "displayName": "Data", "lapisFilter": {}}]'
+        lapisDateField="date"
+        views='["bar", "line", "table"]'
+        width="100%"
+        granularity="month"
+        smoothingWindow="0"
+        pageSize="10"
+    ></gs-number-sequences-over-time>
+</gs-app>
+```
+
+As you can see, we are using three components:
+
+- `gs-app`: This is the main component that wraps all the other components, providing the context for them. Each of our components must be wrapped in this component.
+  It provides the `lapis` prop, which is the URL of the LAPIS server, the server that provides the data for the components. In this example, we are using the LAPIS server for open SARS-CoV-2 data.
+- `gs-location-filter`: This is an example of our input components, which are used to create LAPIS filters for the visualization components. In this case, it is used to filter the data by location.
+- `gs-number-sequences-over-time`: This is an example of our visualization components, which are used to visualize the data from the LAPIS server. In this case, it shows the number of sequences over time.
+
+You can find more examples and descriptions of each component in our documentation.
+
+Now you can look at your dashboard by running vite in your terminal:
+
+```bash
+npx vite dev
+```
+
+If you only want to use the visualization components, you are finished here. If you want to use the input components, you will need to add some additional code to make them work.
+
+## Add interactivity between the components
+
+Each of our `input` components emits an event when the user selects a new value. You can listen to this event and update the `visualization` components accordingly.
+First, you need to add a script tag to your HTML file and listen to the events. This should only be done after the page has loaded. You can do this by adding the following code below the `gs-app` component:
+
+```html
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('gs-location-filter').addEventListener('gs-location-changed', (event) => {
+            const newLocationFilter = event.detail;
+            console.log('newLocationFilter', newLocationFilter);
+        });
+    });
+</script>
+```
+
+You should now see the location value in the browser console after changing the value in the location filter.
+You can find more information about event listeners in the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
+
+Now, you need to add the code to update the `gs-number-sequences-over-time` component.
+There, you need to update the `lapisFilters`.
+You first get the current filter values of the component, and then you add the new location filter to each of them.
+
+```html
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('gs-location-filter').addEventListener('gs-location-changed', (event) => {
+            const newLocationFilter = event.detail;
+            const numberOfSequencesOverTimeComponent = document.querySelectorAll('gs-number-sequences-over-time');
+            numberOfSequencesOverTimeComponent.forEach((element) => {
+                const oldFilters = JSON.parse(element.getAttribute('lapisFilters'));
+                const newFilters = oldFilters.map((filter) => {
+                    return {
+                        ...filter,
+                        lapisFilter: {
+                            ...filter.lapisFilter,
+                            ...newLocationFilter,
+                        },
+                    };
+                });
+                element.setAttribute('lapisFilters', JSON.stringify(newFilters));
+            });
+        });
+    });
+</script>
+```
+
+Now you can see, after running vite that the `gs-number-sequences-over-time` component updates when you select a new location in the `gs-location-filter` component.

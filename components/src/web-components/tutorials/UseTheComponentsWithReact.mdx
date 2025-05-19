@@ -1,0 +1,166 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='Tutorials/Use the components with React' />
+
+# Use the components with React
+
+In this tutorial, we will show you how to use dashboard components with React.
+We will create a simple dashboard that shows the prevalence of a specific variant over time and allows you to filter the data by location.
+You can find a similar working example in our [examples directory](https://github.com/GenSpectrum/dashboard-components/tree/4ae6a7a9aab3c4c583704f49845c042bcbb6d311/examples/React).
+The data for these components must be provided by a LAPIS instance.
+For this tutorial, we’ll use one of our own [LAPIS](https://lapis.cov-spectrum.org/open/v2/docs/) instances, but you’re free to use any LAPIS instance that supplies the required data.
+
+## Prerequisites and setup
+
+We assume that you already have a working React environment. We have tested this with React 18.2.0
+
+First, install the components by running the following command in your terminal:
+
+```bash
+npm install @genspectrum/dashboard-components
+```
+
+Then, import the components in your React entry point script (the tsx file that is included in your `index.html` file):
+
+```javascript
+import '@genspectrum/dashboard-components/components';
+```
+
+## Add the dashboard components to your React file
+
+You can now use the components in your own React components.
+Here we create a new component called `Dashboard` that will contain all the logic.
+
+```javascript
+function Dashboard() {
+    return (
+        <gs-app lapis='https://lapis.cov-spectrum.org/open/v2/'>
+            <h2>Filter By Location</h2>
+            <gs-location-filter
+                fields='["region", "country", "division", "location"]'
+                width='100%'
+                placeholderText='Enter a location'
+            ></gs-location-filter>
+            <h2>Prevalence over time</h2>
+            <gs-prevalence-over-time
+                numeratorFilters='[{"displayName":"EG","lapisFilter":{"country":"USA","pangoLineage":"EG*","dateFrom":"2023-01-01"}},{"displayName":"JN.1","lapisFilter":{"country":"USA","pangoLineage":"JN.1*","dateFrom":"2023-01-01"}}]'
+                denominatorFilter='{"country":"USA","dateFrom":"2023-01-01"}'
+                lapisDateField='date'
+                granularity='day'
+                smoothingWindow='7'
+                views='["line", "table"]'
+            ></gs-prevalence-over-time>
+        </gs-app>
+    );
+}
+```
+
+As you can see, we are using three components:
+
+- `gs-app`: This is the main component that wraps all the other components, providing the context for them. Each of our components must be wrapped in this component.
+  It provides the `lapis` prop, which is the URL of the LAPIS server, the server that provides the data for the components. In this example, we are using the LAPIS server for open SARS-CoV-2 data.
+- `gs-location-filter`: This is an example of our input components, which are used to create LAPIS filters for the visualization components. In this case, it is used to filter the data by location.
+- `gs-prevalence-over-time`: This is an example of our visualization components, which are used to visualize the data from the LAPIS server. In this case, it shows the prevalence of a specific variant over time.
+
+For now, we have provided fixed values for the `numerator`, and `denominator`.
+If you only want to use the visualization components, you are finished here.
+If you want to use the input components, you will need to add some additional code to make them work.
+
+## Add interactivity between the components
+
+Each of our `input` components emits an event when the user selects a new value.
+You can listen to this event and update the `visualization` components accordingly.
+In this example, we will use the `gs-location-filter` component to filter the data by location.
+
+Before we do that, we need to create a state to store the current location. We will use the `useState` hook for this:
+
+```javascript
+const [location, setLocation] = useState<Record<string, string | undefined>>({
+    region: undefined,
+    country: undefined,
+    division: undefined,
+    location: undefined,
+});
+```
+
+We then add an event listener to the `gs-location-filter` component to update the `location` state when the user selects a new location:
+
+```javascript
+import {gsEventNames, LocationChangedEvent} from '@genspectrum/dashboard-components/util';
+
+// in the Dashboard component
+const locationFilterRef = useRef<HTMLElement>();
+// ...
+useEffect(() => {
+        const locationFilter = locationFilterRef.current;
+        if (!locationFilter) {
+            return;
+        }
+
+        const handleLocationChange = (event: LocationChangedEvent) => setLocation(event.detail);
+
+        locationFilter.addEventListener(gsEventNames.locationChanged, handleLocationChange);
+
+        return () => {
+            locationFilter.removeEventListener(gsEventNames.locationChanged, handleLocationChange);
+        };
+    }, []);
+// ...
+    <gs-location-filter
+        fields='["region", "country", "division", "location"]'
+        placeholderText='Enter a location'
+        ref={locationFilterRef}
+        lapisFilter={JSON.stringify(location)}
+        value={JSON.stringify(location)}
+    ></gs-location-filter>
+```
+
+As you can see, we provide the `location` state as the `value` prop to the `gs-location-filter` component.
+This allows the component to display the current location and update it when the user selects a new location.
+We also provide the `lapisFilter` prop, which is used in the `gs-location-filter` component itself to provide counts for the selected location on the dropdown.
+
+In the end, we create the numerator and denominator filters for the `gs-prevalence-over-time` component from the `dateRange` state.
+
+```javascript
+const denominator = {
+    ...location,
+};
+
+const numerator = {
+    displayName: 'My variant',
+    lapisFilter: {
+        ...denominator,
+        pangoLineage: 'B.1.1.7*',
+    },
+};
+```
+
+You can also create a more complex filters, but this will be enough for this example.
+You also might want users to be able to select the variant they want to see. Here it is fixed to `B.1.1.7`.
+Refer to our documentation of our other input components.
+
+Finally, we use the new variables (`numerator`, `denominator`) in the components:
+
+```javascript
+return (
+    <gs-app lapis='https://lapis.cov-spectrum.org/open/v2/'>
+        <h2>Filter By Location</h2>
+        <gs-location-filter
+            fields='["region", "country", "division", "location"]'
+            placeholderText='Enter a location'
+            ref={locationFilterRef}
+            lapisFilter={JSON.stringify(location)}
+            value={JSON.stringify(location)}
+        ></gs-location-filter>
+        <h2>Prevalence over time</h2>
+        <gs-prevalence-over-time
+            numeratorFilters={JSON.stringify([numerator])}
+            denominatorFilter={JSON.stringify(denominator)}
+            lapisDateField='date'
+            granularity='day'
+            smoothingWindow='7'
+            views='["line", "table"]'
+        ></gs-prevalence-over-time>
+    </gs-app>
+);
+```
