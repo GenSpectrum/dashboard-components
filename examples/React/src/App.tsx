@@ -28,7 +28,7 @@ function App() {
 
         const dateRangeFilter = document.querySelector('gs-date-range-filter');
         if (dateRangeFilter) {
-            dateRangeFilter.addEventListener('gs-date-range-filter-changed', handleDateRangeChange);
+            dateRangeFilter.addEventListener(gsEventNames.dateRangeFilterChanged, handleDateRangeChange);
         }
 
         return () => {
