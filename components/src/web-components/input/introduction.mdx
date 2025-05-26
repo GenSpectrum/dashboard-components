@@ -7,5 +7,60 @@ import { Meta } from '@storybook/blocks';
 The components in this section let the user specify values for LAPIS filters.
 The filters can then be used as input to the visualization components.
 
-Every component fires `CustomEvent`s when the user interacts with it, which can be used to update the LAPIS filters.
-The `detail` of the event is designed such that it can be directly passed to the LAPIS API.
+Every component fires `CustomEvent`s when the user interacts with it.
+`event.detail` contains the payload of the event.
+
+Every component fires an event that can be used to update the LAPIS filters.
+It is supposed to be used in the style of:
+
+```javascript
+component.addEventListener('gs-example-event', (event) => {
+    setNewLapisFilter({
+        ...previousLapisFilter,
+        ...event.detail,
+    });
+});
+```
+
+## Controlled Input Components
+
+HTML input components can be controlled or uncontrolled.
+In a controlled component, the value is controlled by surrounding Javascript code.
+In an uncontrolled component, the value is controlled by the DOM and the surrounding Javascript code only reads the value
+(e.g. by listening to events).
+
+All our input components can be used in both ways.
+Every component fires one or two events.
+If the event details can be used to update the LAPIS filter
+_and_ the value then the component will only fire one event,
+otherwise it will fire one event to update the LAPIS filter and one to update the value of the component.
+Refer to the documentation of the individual components for details on which event you can use for which purpose.
+
+**Example**: A controlled input component in a React app could conceptually look like this:
+
+```javascript
+import { useEffect, useRef, useState } from 'react';
+
+const ExampleInput = () => {
+    const [value, setValue] = useState('foo');
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        if (!inputRef.current) {
+            return;
+        }
+
+        const eventListener = (event) => {
+            setValue(event.detail);
+        };
+
+        inputRef.current.addEventListener('gs-input', eventListener);
+
+        return () => {
+            inputRef.current.removeEventListener('gs-input', eventListener);
+        };
+    }, []);
+
+    return <gs-example-input ref={inputRef} value={value} />;
+};
+```
