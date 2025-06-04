@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='Tutorials/Create your first own dashboard' />
+
+# Create your first own dashboard
+
+In this tutorial, you’ll learn how to integrate our `visualization` components into your HTML page.
+We’ll walk through building a simple dashboard that displays the number of sequences over time, along with some general statistics.
+This example serves as a foundation for your own dashboards—you can easily extend it by adding more components as needed.
+The data for these components must be provided by a LAPIS instance.
+For this tutorial, we’ll use one of our own [LAPIS](https://lapis.cov-spectrum.org/open/v2/docs/) instances, but you’re free to use any LAPIS instance that supplies the required data.
+
+## Create your HTML page
+
+Let's start by creating a simple HTML page. If you already have one, you can skip this step.
+Name the file `index.html` and add the following code. This will be the main file for your dashboard.
+
+```html
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My dashboard</title>
+    </head>
+    <body>
+        We will fill this section later
+    </body>
+</html>
+```
+
+## Include the dashboard components
+
+To use the components, you need to include the dashboard bundle in your HTML file.
+Add the following code to the `head` section:
+
+```html
+<script
+    type="module"
+    src="https://unpkg.com/@genspectrum/dashboard-components@latest/standalone-bundle/dashboard-components.js"
+></script>
+```
+
+This approach uses a standalone bundle, which includes all the code for the components in a single step.
+It is the easiest way to get started, although the bundle size is larger.
+Alternatively, you can use the components as modules, but this requires a build step.
+For more information, see the "Use the Components with Plain JavaScript" tutorial.
+
+## Add the dashboard components to your HTML file
+
+We are now ready to add the components to our HTML file.
+You can do this by adding the following code to the `body` section of your HTML file:
+
+```html
+<gs-app lapis="https://lapis.genspectrum.org/open/v2">
+    <h2>Statistics</h2>
+    <gs-statistics numeratorFilter='{"pangoLineage": "EG*"}' denominatorFilter="{}" width="100%"></gs-statistics>
+    <h2>Number of sequences over time</h2>
+    <gs-number-sequences-over-time
+        lapisFilters='[{ "displayName": "EG", "lapisFilter": { "pangoLineage": "EG*" } }]'
+        lapisDateField="date"
+        views='["bar", "line", "table"]'
+        width="100%"
+        granularity="month"
+        smoothingWindow="0"
+        pageSize="10"
+    ></gs-number-sequences-over-time>
+</gs-app>
+```
+
+Here, we are using three components:
+
+- `gs-app`: This is the main component that wraps all the other components. It is used to provide the context for the other components. Each of our components needs to be wrapped in this component.
+  It provides the `lapis` attribute, which is the URL of the LAPIS server. This is the server that provides the data for the components. In this example, we are using the LAPIS server for open SARS-CoV-2 data.
+- `gs-statistics` and `gs-number-sequences-over-time`: Visualization components that display data from the LAPIS server.
+
+You can find more examples and detailed descriptions of each component in our documentation.
+
+You now have your first dashboard. Open the `index.html` file in your browser to see it in action.
+Feel free to change some parameters to see how they affect the dashboard, or explore our Storybook for more examples.
+
+The parameters are currently fixed in the HTML file.
+If you want users to be able to change them—especially the filters—we also provide input components.
+To use them, add the input components to your HTML and connect them with JavaScript.
+For more information, see the "Use the Components with Plain JavaScript" tutorial.

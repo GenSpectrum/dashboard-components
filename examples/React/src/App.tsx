@@ -1,43 +1,59 @@
-import {useEffect, useState} from 'react';
-import {DateRangeOption, dateRangeOptionPresets, gsEventNames} from '@genspectrum/dashboard-components/util';
+import {useEffect, useRef, useState} from 'react';
+import {
+    DateRangeOption,
+    dateRangeOptionPresets,
+    gsEventNames,
+    LocationChangedEvent
+} from '@genspectrum/dashboard-components/util';
 import '@genspectrum/dashboard-components/components';
 
+
 function App() {
-    const [location, setLocation] = useState({
-        region: 'Europe',
-        country: 'Switzerland',
+    const locationFilterRef = useRef<HTMLElement>();
+    const dateRangeFilterRef = useRef<HTMLElement>();
+
+    const [location, setLocation] = useState<Record<string, string | undefined>>({
+        region: undefined,
+        country: undefined,
+        division: undefined,
     });
-    const [dateRange, setDateRange] = useState({
-        dateFrom: '2021-01-01',
-        dateTo: '2021-12-31',
+    const [dateRange, setDateRange] = useState<{ dateFrom: string | undefined; dateTo: string | undefined }>({
+        dateFrom: undefined,
+        dateTo: undefined,
     });
 
     useEffect(() => {
-        const handleLocationChange = (event: CustomEvent) => setLocation(event.detail);
-        const handleDateRangeChange = (
-            event: CustomEvent<{
-                dateFrom: string;
-                dateTo: string;
-            }>,
-        ) => setDateRange(event.detail);
-
-        const locationFilter = document.querySelector('gs-location-filter');
-        if (locationFilter) {
-            locationFilter.addEventListener(gsEventNames.locationChanged, handleLocationChange);
+        const locationFilter = locationFilterRef.current;
+        if (!locationFilter) {
+            return;
         }
 
-        const dateRangeFilter = document.querySelector('gs-date-range-filter');
-        if (dateRangeFilter) {
-            dateRangeFilter.addEventListener('gs-date-range-filter-changed', handleDateRangeChange);
-        }
+        const handleLocationChange = (event: LocationChangedEvent) => setLocation(event.detail);
+
+        locationFilter.addEventListener(gsEventNames.locationChanged, handleLocationChange);
 
         return () => {
-            if (locationFilter) {
-                locationFilter.removeEventListener(gsEventNames.locationChanged, handleLocationChange);
-            }
-            if (dateRangeFilter) {
-                dateRangeFilter.removeEventListener('gs-date-range-filter-changed', handleDateRangeChange);
-            }
+            locationFilter.removeEventListener(gsEventNames.locationChanged, handleLocationChange);
+        };
+    }, []);
+
+    useEffect(() => {
+        const dateRangeFilter = dateRangeFilterRef.current
+        if (!dateRangeFilter) {
+            return;
+        }
+
+        const handleDateRangeChange = (
+            event: Event,
+        ) => {
+            const customEvent = event as CustomEvent<{ dateFrom: string | undefined; dateTo: string | undefined }>;
+            setDateRange(customEvent.detail);
+        };
+
+        dateRangeFilter.addEventListener(gsEventNames.dateRangeFilterChanged, handleDateRangeChange);
+
+        return () => {
+            dateRangeFilter.removeEventListener('gs-date-range-filter-changed', handleDateRangeChange);
         };
     }, []);
 
@@ -66,17 +82,16 @@ function App() {
     return (
         <gs-app lapis='https://lapis.cov-spectrum.org/open/v2/'>
             <gs-location-filter
-                value={JSON.stringify({
-                    region: 'Europe',
-                    country: 'Switzerland',
-                })}
                 fields='["region", "country", "division", "location"]'
                 placeholderText='Enter a location'
+                ref={locationFilterRef}
+                lapisFilter={JSON.stringify(location)}
+                value={JSON.stringify(location)}
             ></gs-location-filter>
             <gs-date-range-filter
                 dateRangeOptions={JSON.stringify(dataRangeOptions)}
-                value={JSON.stringify(dateRange)}
                 lapisDateField='date'
+                ref={dateRangeFilterRef}
             ></gs-date-range-filter>
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <div>
