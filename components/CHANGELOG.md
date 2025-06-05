@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.9](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.8...dashboard-components-v0.19.9) (2025-06-05)
+
+
+### Bug Fixes
+
+* **components:** gs-mutations name in type declarations ([#899](https://github.com/GenSpectrum/dashboard-components/issues/899)) ([19cc2f9](https://github.com/GenSpectrum/dashboard-components/commit/19cc2f9dfe40f6682245c41357ba5faaa0e65fef))
+
 ## [0.19.8](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.7...dashboard-components-v0.19.8) (2025-05-14)
 
 
