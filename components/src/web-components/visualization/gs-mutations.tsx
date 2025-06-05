@@ -153,7 +153,7 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-mutations-component': MutationsComponent;
+        'gs-mutations': MutationsComponent;
     }
 }
 
@@ -161,7 +161,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-mutations-component': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-mutations': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
         }
     }
 }
