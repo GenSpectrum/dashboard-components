@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.20.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.9...dashboard-components-v0.20.0) (2025-06-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** dateRangeOptionPresets is now a function instead of a constant
+
+### Bug Fixes
+
+* **components:** recompute dateRangeOptionPresets every day ([#903](https://github.com/GenSpectrum/dashboard-components/issues/903)) ([b3b7b29](https://github.com/GenSpectrum/dashboard-components/commit/b3b7b29717858a142a2254d29acb0c97517eec00))
+
 ## [0.19.9](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.8...dashboard-components-v0.19.9) (2025-06-05)
 
 
