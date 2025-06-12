@@ -55,7 +55,7 @@ const meta: Meta<DateRangeFilterProps> = {
         },
     },
     args: {
-        dateRangeOptions: [dateRangeOptionPresets.lastMonth, dateRangeOptionPresets.allTimes, customDateRange],
+        dateRangeOptions: [dateRangeOptionPresets().lastMonth, dateRangeOptionPresets().allTimes, customDateRange],
         earliestDate,
         value: null,
         lapisDateField: 'aDateColumn',
@@ -150,7 +150,7 @@ export const SetsValueOnBlur: StoryObj<DateRangeFilterProps> = {
     ...Primary,
     args: {
         ...Primary.args,
-        value: dateRangeOptionPresets.lastMonth.label,
+        value: dateRangeOptionPresets().lastMonth.label,
     },
     play: async ({ canvasElement, step }) => {
         const { canvas, filterChangedListenerMock, optionChangedListenerMock } = await prepare(canvasElement, step);
@@ -211,7 +211,7 @@ export const ChangingTheValueProgrammatically: StoryObj<DateRangeFilterProps> = 
                     <button className='btn' onClick={() => setValue(customDateRange.label)}>
                         Set to Custom
                     </button>
-                    <button className='btn' onClick={() => setValue(dateRangeOptionPresets.lastMonth.label)}>
+                    <button className='btn' onClick={() => setValue(dateRangeOptionPresets().lastMonth.label)}>
                         Set to Last month
                     </button>
                 </div>
