@@ -59,14 +59,14 @@ const meta: Meta<Required<DateRangeFilterProps>> = {
     },
     args: {
         dateRangeOptions: [
-            dateRangeOptionPresets.lastMonth,
-            dateRangeOptionPresets.last3Months,
-            dateRangeOptionPresets.allTimes,
+            dateRangeOptionPresets().lastMonth,
+            dateRangeOptionPresets().last3Months,
+            dateRangeOptionPresets().allTimes,
             { label: '2021', dateFrom: '2021-01-01', dateTo: '2021-12-31' },
             customDateRange,
         ],
         earliestDate: '1970-01-01',
-        value: dateRangeOptionPresets.lastMonth.label,
+        value: dateRangeOptionPresets().lastMonth.label,
         lapisDateField: 'aDateColumn',
         width: '100%',
         placeholder: 'Date range',
