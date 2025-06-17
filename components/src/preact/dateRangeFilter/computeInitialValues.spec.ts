@@ -2,9 +2,6 @@ import { describe, expect, it } from 'vitest';
 
 import { computeInitialValues } from './computeInitialValues';
 
-const today = new Date();
-const earliestDate = '1900-01-01';
-
 const fromOption = 'fromOption';
 const toOption = 'toOption';
 const fromToOption = 'fromToOption';
@@ -19,62 +16,60 @@ const dateRangeOptions = [
 
 describe('computeInitialValues', () => {
     it('should return undefined for null value', () => {
-        const result = computeInitialValues(null, earliestDate, dateRangeOptions);
+        const result = computeInitialValues(null, dateRangeOptions);
 
         expect(result).toBeUndefined();
     });
 
     it('should compute initial value if value is dateRangeOption label', () => {
-        const result = computeInitialValues(fromToOption, earliestDate, dateRangeOptions);
+        const result = computeInitialValues(fromToOption, dateRangeOptions);
 
         expect(result?.initialSelectedDateRange).toEqual(fromToOption);
         expectDateMatches(result?.initialSelectedDateFrom, new Date(dateFromOptionValue));
         expectDateMatches(result?.initialSelectedDateTo, new Date(dateToOptionValue));
     });
 
-    it('should use today as "dateTo" if it is unset in selected option', () => {
-        const result = computeInitialValues(fromOption, earliestDate, dateRangeOptions);
+    it('should compute initial value if value is dateRangeOption label with missing date to', () => {
+        const result = computeInitialValues(fromOption, dateRangeOptions);
 
         expect(result?.initialSelectedDateRange).toEqual(fromOption);
         expectDateMatches(result?.initialSelectedDateFrom, new Date(dateFromOptionValue));
-        expectDateMatches(result?.initialSelectedDateTo, today);
+        expectDateMatches(result?.initialSelectedDateTo, undefined);
     });
 
-    it('should use earliest date as "dateFrom" if it is unset in selected option', () => {
-        const result = computeInitialValues(toOption, earliestDate, dateRangeOptions);
+    it('should compute initial value if value is dateRangeOption label with missing date from', () => {
+        const result = computeInitialValues(toOption, dateRangeOptions);
 
         expect(result?.initialSelectedDateRange).toEqual(toOption);
-        expectDateMatches(result?.initialSelectedDateFrom, new Date(earliestDate));
+        expectDateMatches(result?.initialSelectedDateFrom, undefined);
         expectDateMatches(result?.initialSelectedDateTo, new Date(dateToOptionValue));
     });
 
     it('should throw when initial value is unknown', () => {
-        expect(() => computeInitialValues('not a known value', earliestDate, dateRangeOptions)).toThrowError(
+        expect(() => computeInitialValues('not a known value', dateRangeOptions)).toThrowError(
             /Invalid value "not a known value", It must be one of/,
         );
     });
 
     it('should throw when initial value is set but no options are provided', () => {
-        expect(() => computeInitialValues('not a known value', earliestDate, [])).toThrowError(
-            /There are no selectable options/,
-        );
+        expect(() => computeInitialValues('not a known value', [])).toThrowError(/There are no selectable options/);
     });
 
-    it('should select from date until today if only dateFrom is given', () => {
+    it('should compute initial date if only dateFrom is given', () => {
         const initialDateFrom = '2020-01-01';
-        const result = computeInitialValues({ dateFrom: initialDateFrom }, earliestDate, dateRangeOptions);
+        const result = computeInitialValues({ dateFrom: initialDateFrom }, dateRangeOptions);
 
         expect(result?.initialSelectedDateRange).toBeUndefined();
         expectDateMatches(result?.initialSelectedDateFrom, new Date(initialDateFrom));
-        expectDateMatches(result?.initialSelectedDateTo, today);
+        expectDateMatches(result?.initialSelectedDateTo, undefined);
     });
 
-    it('should select from earliest date until date if only dateTo is given', () => {
+    it('should compute initial date if only dateTo is given', () => {
         const initialDateTo = '2020-01-01';
-        const result = computeInitialValues({ dateTo: initialDateTo }, earliestDate, dateRangeOptions);
+        const result = computeInitialValues({ dateTo: initialDateTo }, dateRangeOptions);
 
         expect(result?.initialSelectedDateRange).toBeUndefined();
-        expectDateMatches(result?.initialSelectedDateFrom, new Date(earliestDate));
+        expectDateMatches(result?.initialSelectedDateFrom, undefined);
         expectDateMatches(result?.initialSelectedDateTo, new Date(initialDateTo));
     });
 
@@ -86,7 +81,6 @@ describe('computeInitialValues', () => {
                 dateFrom: initialDateFrom,
                 dateTo: initialDateTo,
             },
-            earliestDate,
             dateRangeOptions,
         );
 
@@ -103,7 +97,6 @@ describe('computeInitialValues', () => {
                 dateFrom: initialDateFrom,
                 dateTo: initialDateTo,
             },
-            earliestDate,
             dateRangeOptions,
         );
 
@@ -113,15 +106,11 @@ describe('computeInitialValues', () => {
     });
 
     it('should throw if initial "from" is not a valid date', () => {
-        expect(() => computeInitialValues({ dateFrom: 'not a date' }, earliestDate, [])).toThrowError(
-            'Invalid value.dateFrom',
-        );
+        expect(() => computeInitialValues({ dateFrom: 'not a date' }, [])).toThrowError('Invalid value.dateFrom');
     });
 
     it('should throw if initial "to" is not a valid date', () => {
-        expect(() => computeInitialValues({ dateTo: 'not a date' }, earliestDate, [])).toThrowError(
-            'Invalid value.dateTo',
-        );
+        expect(() => computeInitialValues({ dateTo: 'not a date' }, [])).toThrowError('Invalid value.dateTo');
     });
 
     function expectDateMatches(actual: Date | undefined, expected: Date | undefined) {

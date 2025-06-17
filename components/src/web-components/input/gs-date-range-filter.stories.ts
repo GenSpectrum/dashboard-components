@@ -16,7 +16,6 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 const codeExample = String.raw`
 <gs-date-range-filter
     dateRangeOptions='[{ "label": "Year 2021", "dateFrom": "2021-01-01", "dateTo": "2021-12-31" }]'
-    earliestDate="1970-01-01"
     value="Year 2021"
     width="100%"
     lapisDateField="myDateColumn"
@@ -47,9 +46,6 @@ const meta: Meta<Required<DateRangeFilterProps>> = {
         dateRangeOptions: {
             control: { type: 'object' },
         },
-        earliestDate: {
-            control: { type: 'text' },
-        },
         width: {
             control: { type: 'text' },
         },
@@ -61,11 +57,9 @@ const meta: Meta<Required<DateRangeFilterProps>> = {
         dateRangeOptions: [
             dateRangeOptionPresets().lastMonth,
             dateRangeOptionPresets().last3Months,
-            dateRangeOptionPresets().allTimes,
             { label: '2021', dateFrom: '2021-01-01', dateTo: '2021-12-31' },
             customDateRange,
         ],
-        earliestDate: '1970-01-01',
         value: dateRangeOptionPresets().lastMonth.label,
         lapisDateField: 'aDateColumn',
         width: '100%',
@@ -82,7 +76,6 @@ export const Default: StoryObj<Required<DateRangeFilterProps>> = {
             <div class="max-w-(--breakpoint-lg)">
                 <gs-date-range-filter
                     .dateRangeOptions=${args.dateRangeOptions}
-                    .earliestDate=${args.earliestDate}
                     .value=${args.value}
                     .width=${args.width}
                     .lapisDateField=${args.lapisDateField}
@@ -98,7 +91,6 @@ export const TestRenderAttributesInHtmlInsteadOfUsingPropertyExpression: StoryOb
             <div class="max-w-(--breakpoint-lg)">
                 <gs-date-range-filter
                     .dateRangeOptions=${args.dateRangeOptions}
-                    earliestDate="${args.earliestDate}"
                     value="${args.value ?? 'null'}"
                     width="${args.width}"
                     lapisDateField="${args.lapisDateField}"
@@ -155,7 +147,7 @@ export const FiresEvents: StoryObj<Required<DateRangeFilterProps>> = {
                 await expect(placeholderOption).toHaveTextContent('Last month');
             });
             await waitFor(async () => {
-                await expect(dateToPicker(canvas)).toHaveValue(toYYYYMMDD(new Date()));
+                await expect(dateToPicker(canvas)).toHaveValue(undefined);
             });
         });
 

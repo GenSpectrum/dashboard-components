@@ -64,7 +64,7 @@ export class DateRangeFilterComponent extends PreactLitAdapter {
      * The `label` will be shown to the user, and it will be available as `value`.
      * The dates must be in the format `YYYY-MM-DD`.
      *
-     * If dateFrom or dateTo is not set, the component will default to the `earliestDate` or the current date.
+     * If dateFrom or dateTo is not set, the component will leave the corresponding input field empty.
      *
      * We provide some options in `dateRangeOptionPresets` for convenience.
      */
@@ -72,16 +72,10 @@ export class DateRangeFilterComponent extends PreactLitAdapter {
     dateRangeOptions: { label: string; dateFrom?: string; dateTo?: string }[] = [];
 
     /**
-     * The `dateFrom` value to use in the `allTimes` preset in the format `YYYY-MM-DD`.
-     */
-    @property({ type: String })
-    earliestDate: string = '1900-01-01';
-
-    /**
      * The value to use for this date range selector.
      * - If it is a string, then it must be a valid label from the `dateRangeOptions`.
      * - If it is an object, then it accepts dates in the format `YYYY-MM-DD` for the keys `dateFrom` and `dateTo`.
-     *   Keys that are not set will default to the `earliestDate` or the current date respectively.
+     *   Keys that are not set will leave the corresponding input field empty.
      *
      * The `detail` of the `gs-date-range-option-changed` event can be used for this attribute,
      * if you want to control this component in your JS application.
@@ -128,7 +122,6 @@ export class DateRangeFilterComponent extends PreactLitAdapter {
         return (
             <DateRangeFilter
                 dateRangeOptions={this.dateRangeOptions}
-                earliestDate={this.earliestDate}
                 value={this.value}
                 lapisDateField={this.lapisDateField}
                 width={this.width}
@@ -161,9 +154,6 @@ declare global {
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 type CustomSelectOptionsMatches = Expect<
     Equals<typeof DateRangeFilterComponent.prototype.dateRangeOptions, DateRangeFilterProps['dateRangeOptions']>
->;
-type EarliestDateMatches = Expect<
-    Equals<typeof DateRangeFilterComponent.prototype.earliestDate, DateRangeFilterProps['earliestDate']>
 >;
 type ValueMatches = Expect<Equals<typeof DateRangeFilterComponent.prototype.value, DateRangeFilterProps['value']>>;
 type WidthMatches = Expect<Equals<typeof DateRangeFilterComponent.prototype.width, DateRangeFilterProps['width']>>;

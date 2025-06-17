@@ -1,17 +1,17 @@
 import { type DateRangeOption, type DateRangeValue } from './dateRangeOption';
-import { getDatesForSelectorValue, getSelectableOptions } from './selectableOptions';
+import { getSelectableOptions } from './selectableOptions';
 import { UserFacingError } from '../components/error-display';
 
-export function computeInitialValues(value: DateRangeValue, earliestDate: string, dateRangeOptions: DateRangeOption[]) {
+export function computeInitialValues(value: DateRangeValue, dateRangeOptions: DateRangeOption[]) {
     if (value === null) {
         return undefined;
     }
 
     if (typeof value === 'string') {
         const selectableOptions = getSelectableOptions(dateRangeOptions);
-        const initialSelectedDateRange = selectableOptions.find((option) => option.value === value)?.value;
+        const matchingOption = dateRangeOptions.find((option) => option.label === value);
 
-        if (initialSelectedDateRange === undefined) {
+        if (matchingOption === undefined) {
             if (selectableOptions.length === 0) {
                 throw new UserFacingError('Invalid value', 'There are no selectable options, but value is set.');
             }
@@ -21,34 +21,24 @@ export function computeInitialValues(value: DateRangeValue, earliestDate: string
             );
         }
 
-        const { dateFrom, dateTo } = getDatesForSelectorValue(initialSelectedDateRange, dateRangeOptions, earliestDate);
-
         return {
-            initialSelectedDateRange,
-            initialSelectedDateFrom: dateFrom,
-            initialSelectedDateTo: dateTo,
+            initialSelectedDateRange: matchingOption.label,
+            initialSelectedDateFrom:
+                matchingOption.dateFrom !== undefined ? new Date(matchingOption.dateFrom) : undefined,
+            initialSelectedDateTo: matchingOption.dateTo !== undefined ? new Date(matchingOption.dateTo) : undefined,
         };
     }
 
     const { dateFrom, dateTo } = value;
 
-    const initialSelectedDateFrom = isUndefinedOrEmpty(dateFrom) ? new Date(earliestDate) : new Date(dateFrom);
-    let initialSelectedDateTo = isUndefinedOrEmpty(dateTo) ? new Date() : new Date(dateTo);
+    const initialSelectedDateFrom = parseMaybeDate(dateFrom, 'dateFrom');
+    let initialSelectedDateTo = parseMaybeDate(dateTo, 'dateTo');
 
-    if (isNaN(initialSelectedDateFrom.getTime())) {
-        throw new UserFacingError(
-            'Invalid value.dateFrom',
-            `Invalid value.dateFrom "${dateFrom}", It must be of the format YYYY-MM-DD`,
-        );
-    }
-    if (isNaN(initialSelectedDateTo.getTime())) {
-        throw new UserFacingError(
-            'Invalid value.dateTo',
-            `Invalid value.dateTo "${dateTo}", It must be of the format YYYY-MM-DD`,
-        );
-    }
-
-    if (initialSelectedDateFrom > initialSelectedDateTo) {
+    if (
+        initialSelectedDateFrom !== undefined &&
+        initialSelectedDateTo !== undefined &&
+        initialSelectedDateFrom > initialSelectedDateTo
+    ) {
         initialSelectedDateTo = initialSelectedDateFrom;
     }
 
@@ -59,6 +49,18 @@ export function computeInitialValues(value: DateRangeValue, earliestDate: string
     };
 }
 
-function isUndefinedOrEmpty(value: string | undefined): value is undefined | '' {
-    return value === undefined || value === '';
+function parseMaybeDate(date: string | undefined, name: string): Date | undefined {
+    if (date === undefined || date === '') {
+        return undefined;
+    }
+
+    const parsedDate = new Date(date);
+    if (isNaN(parsedDate.getTime())) {
+        throw new UserFacingError(
+            `Invalid value.${name}`,
+            `Invalid value.${name} "${date}", it must be of the format YYYY-MM-DD`,
+        );
+    }
+
+    return parsedDate;
 }
