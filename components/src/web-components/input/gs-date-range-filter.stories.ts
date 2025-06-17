@@ -147,7 +147,7 @@ export const FiresEvents: StoryObj<Required<DateRangeFilterProps>> = {
                 await expect(placeholderOption).toHaveTextContent('Last month');
             });
             await waitFor(async () => {
-                await expect(dateToPicker(canvas)).toHaveValue(undefined);
+                await expect(dateToPicker(canvas)).toHaveValue('');
             });
         });
 
