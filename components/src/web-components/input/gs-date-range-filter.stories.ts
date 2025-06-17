@@ -8,7 +8,6 @@ import { LAPIS_URL } from '../../constants';
 import { type DateRangeFilterProps } from '../../preact/dateRangeFilter/date-range-filter';
 import './gs-date-range-filter';
 import '../gs-app';
-import { toYYYYMMDD } from '../../preact/dateRangeFilter/dateConversion';
 import { dateRangeOptionPresets } from '../../preact/dateRangeFilter/dateRangeOption';
 import { gsEventNames } from '../../utils/gsEventNames';
 import { withinShadowRoot } from '../withinShadowRoot.story';
