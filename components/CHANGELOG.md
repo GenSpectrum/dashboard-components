@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.21.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.20.0...dashboard-components-v0.21.0) (2025-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** Remove attribute `earliestDate` from `gs-date-range-filter`. Remove date range option `allTimes`, you can instead use `{ label: "All times", dateFrom: earliestDate }` yourself.
+
+### Features
+
+* **components:** gs-date-range-filter: when from or to in a value or date range option is not set, leave the corresponding input field empty ([#906](https://github.com/GenSpectrum/dashboard-components/issues/906)) ([8863d83](https://github.com/GenSpectrum/dashboard-components/commit/8863d83bafc2d00d568424b0071669e34d3e7278))
+
+
+### Bug Fixes
+
+* **components:** gs-statistics: don't display `NaN` when counts are 0 ([#912](https://github.com/GenSpectrum/dashboard-components/issues/912)) ([0ebd95d](https://github.com/GenSpectrum/dashboard-components/commit/0ebd95dc704ea7c07d21897cc8062a92859148ac))
+
 ## [0.20.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.19.9...dashboard-components-v0.20.0) (2025-06-12)
 
 
