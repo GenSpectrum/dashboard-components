@@ -75,7 +75,7 @@ const MetricDataTabs: FunctionComponent<MetricDataTabsProps> = ({ data }) => {
             <div className='stat'>
                 <div className='stat-title'>Overall proportion</div>
                 <div className='stat-value text-2xl sm:text-4xl'>
-                    {isFinite(proportion) ? formatProportion(proportion) : '-.--%'}
+                    {Number.isFinite(proportion) ? formatProportion(proportion) : '-.--%'}
                 </div>
                 <div className='stat-desc text-wrap'>The proportion among all sequenced samples</div>
             </div>
