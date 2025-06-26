@@ -142,7 +142,7 @@ export const ValuesAre0: StoryObj<StatisticsProps> = {
 
         await waitFor(async () => {
             await expect(canvas.getByText('0')).toBeInTheDocument();
-            await expect(canvas.getByText('-.--%')).toBeInTheDocument();
+            await expect(canvas.getByText('-%')).toBeInTheDocument();
         });
     },
 };
