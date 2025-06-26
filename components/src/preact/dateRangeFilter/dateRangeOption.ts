@@ -11,12 +11,10 @@ export const dateRangeOptionSchema = z.object({
     label: z.string(),
     /**
      * The start date of the date range in the format `YYYY-MM-DD`.
-     * If not set, the date range selector will default to the `earliestDate` property.
      */
     dateFrom: z.string().date().optional(),
     /**
      * The end date of the date range in the format `YYYY-MM-DD`.
-     * If not set, the date range selector will default to the current date.
      */
     dateTo: z.string().date().optional(),
 });
@@ -52,7 +50,6 @@ type DateRangeOptionPresets = {
     last3Months: DateRangeOption;
     last6Months: DateRangeOption;
     lastYear: DateRangeOption;
-    allTimes: DateRangeOption;
 };
 
 let dateRangeOptionsPresetsCacheDate: string | null = null;
@@ -114,9 +111,6 @@ export const dateRangeOptionPresets = (): DateRangeOptionPresets => {
             lastYear: {
                 label: 'Last year',
                 dateFrom: toYYYYMMDD(lastYear),
-            },
-            allTimes: {
-                label: 'All times',
             },
         };
     }

@@ -1,7 +1,6 @@
 import { type Meta, type PreactRenderer, type StoryObj } from '@storybook/preact';
 import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
 import type { StepFunction } from '@storybook/types';
-import dayjs from 'dayjs/esm';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
 import { DateRangeFilter, type DateRangeFilterProps } from './date-range-filter';
@@ -13,7 +12,9 @@ import { dateRangeOptionPresets, type DateRangeValue } from './dateRangeOption';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 import { expectOptionSelected } from '../shared/stories/expectOptionSelected';
 
-const earliestDate = '1970-01-01';
+const allTimes = {
+    label: 'All times',
+};
 
 const customDateRange = {
     label: 'CustomDateRange',
@@ -43,11 +44,6 @@ const meta: Meta<DateRangeFilterProps> = {
                 type: 'object',
             },
         },
-        earliestDate: {
-            control: {
-                type: 'text',
-            },
-        },
         width: {
             control: {
                 type: 'text',
@@ -55,8 +51,7 @@ const meta: Meta<DateRangeFilterProps> = {
         },
     },
     args: {
-        dateRangeOptions: [dateRangeOptionPresets().lastMonth, dateRangeOptionPresets().allTimes, customDateRange],
-        earliestDate,
+        dateRangeOptions: [dateRangeOptionPresets().lastMonth, allTimes, customDateRange],
         value: null,
         lapisDateField: 'aDateColumn',
         width: '100%',
@@ -122,7 +117,7 @@ export const SetCorrectInitialDateFrom: StoryObj<DateRangeFilterProps> = {
         await waitFor(async () => {
             await expectOptionSelected(canvasElement, 'Custom');
             await expect(dateFromPicker(canvas)).toHaveValue(initialDateFrom);
-            await expect(dateToPicker(canvas)).toHaveValue(dayjs().format('YYYY-MM-DD'));
+            await expect(dateToPicker(canvas)).toHaveValue('');
         });
     },
 };
@@ -140,7 +135,7 @@ export const SetCorrectInitialDateTo: StoryObj<DateRangeFilterProps> = {
 
         await waitFor(async () => {
             await expectOptionSelected(canvasElement, 'Custom');
-            await expect(dateFromPicker(canvas)).toHaveValue(earliestDate);
+            await expect(dateFromPicker(canvas)).toHaveValue('');
             await expect(dateToPicker(canvas)).toHaveValue(initialDateTo);
         });
     },
@@ -173,7 +168,6 @@ export const SetsValueOnBlur: StoryObj<DateRangeFilterProps> = {
                     expect.objectContaining({
                         detail: {
                             aDateColumnFrom: '2000-01-01',
-                            aDateColumnTo: dayjs().format('YYYY-MM-DD'),
                         },
                     }),
                 );
@@ -182,7 +176,6 @@ export const SetsValueOnBlur: StoryObj<DateRangeFilterProps> = {
                     expect.objectContaining({
                         detail: {
                             dateFrom: '2000-01-01',
-                            dateTo: dayjs().format('YYYY-MM-DD'),
                         },
                     }),
                 );

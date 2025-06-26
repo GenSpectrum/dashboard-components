@@ -14,11 +14,10 @@ import { gsEventNames } from '../../utils/gsEventNames';
 import { ClearableSelect } from '../components/clearable-select';
 import { ErrorBoundary } from '../components/error-boundary';
 
-const customOption = 'Custom';
+const CUSTOM_OPTION = 'Custom';
 
 const dateRangeFilterInnerPropsSchema = z.object({
     dateRangeOptions: z.array(dateRangeOptionSchema),
-    earliestDate: z.string().date(),
     value: dateRangeValueSchema,
     lapisDateField: z.string().min(1),
     placeholder: z.string().optional(),
@@ -52,15 +51,11 @@ export const DateRangeFilter = (props: DateRangeFilterProps) => {
 
 export const DateRangeFilterInner = ({
     dateRangeOptions,
-    earliestDate = '1900-01-01',
     value,
     lapisDateField,
     placeholder,
 }: DateRangeFilterInnerProps) => {
-    const initialValues = useMemo(
-        () => computeInitialValues(value, earliestDate, dateRangeOptions),
-        [value, earliestDate, dateRangeOptions],
-    );
+    const initialValues = useMemo(() => computeInitialValues(value, dateRangeOptions), [value, dateRangeOptions]);
 
     const divRef = useRef<HTMLDivElement>(null);
 
@@ -75,15 +70,15 @@ export const DateRangeFilterInner = ({
                   dateTo: initialValues.initialSelectedDateTo,
               }
             : {
-                  label: customOption,
+                  label: CUSTOM_OPTION,
                   dateFrom: initialValues.initialSelectedDateFrom,
                   dateTo: initialValues.initialSelectedDateTo,
               };
     }, [initialValues]);
 
-    const customComboboxValue = { label: customOption };
+    const customComboboxValue = { label: CUSTOM_OPTION };
     const [options, setOptions] = useState(
-        getInitialState()?.label === customOption ? [...dateRangeOptions, customComboboxValue] : [...dateRangeOptions],
+        getInitialState()?.label === CUSTOM_OPTION ? [...dateRangeOptions, customComboboxValue] : [...dateRangeOptions],
     );
     const [state, setState] = useState<DateRangeFilterState>(getInitialState());
 
@@ -101,34 +96,16 @@ export const DateRangeFilterInner = ({
         updateState(
             option !== null
                 ? {
-                      label: option?.label,
-                      dateFrom: getFromDate(option, earliestDate),
-                      dateTo: getToDate(option),
+                      label: option.label,
+                      dateFrom: toMaybeDate(option.dateFrom),
+                      dateTo: toMaybeDate(option.dateTo),
                   }
                 : null,
         );
-        if (option?.label !== customOption) {
+        if (option?.label !== CUSTOM_OPTION) {
             setOptions([...dateRangeOptions]);
         }
     };
-
-    function getFromDate(option: DateRangeOption | null, earliestDate: string) {
-        if (!option || option.label === customOption) {
-            return undefined;
-        }
-        return new Date(option?.dateFrom ?? earliestDate);
-    }
-
-    function getToDate(option: DateRangeOption | null) {
-        if (!option || option.label === customOption) {
-            return undefined;
-        }
-        if (!option.dateTo) {
-            return new Date();
-        }
-
-        return new Date(option.dateTo);
-    }
 
     const onChangeDateFrom = (date: Date | undefined) => {
         if (date?.toDateString() === state?.dateFrom?.toDateString()) {
@@ -136,7 +113,7 @@ export const DateRangeFilterInner = ({
         }
 
         updateState({
-            label: customOption,
+            label: CUSTOM_OPTION,
             dateFrom: date,
             dateTo: state?.dateTo,
         });
@@ -149,7 +126,7 @@ export const DateRangeFilterInner = ({
         }
 
         updateState({
-            label: customOption,
+            label: CUSTOM_OPTION,
             dateFrom: state?.dateFrom,
             dateTo: date,
         });
@@ -184,7 +161,7 @@ export const DateRangeFilterInner = ({
             if (state === null) {
                 return null;
             }
-            if (state.label === customOption) {
+            if (state.label === CUSTOM_OPTION) {
                 return {
                     dateFrom: state.dateFrom !== undefined ? toYYYYMMDD(state.dateFrom) : undefined,
                     dateTo: state.dateTo !== undefined ? toYYYYMMDD(state.dateTo) : undefined,
@@ -233,3 +210,7 @@ export const DateRangeFilterInner = ({
         </div>
     );
 };
+
+function toMaybeDate(dateString: string | undefined) {
+    return dateString ? new Date(dateString) : undefined;
+}
