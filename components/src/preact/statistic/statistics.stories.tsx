@@ -80,6 +80,73 @@ export const Default: StoryObj<StatisticsProps> = {
     },
 };
 
+export const ValuesAre0: StoryObj<StatisticsProps> = {
+    ...Default,
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'denominatorData',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            fields: [],
+                            country: 'USA',
+                            division: 'Alabama',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: {
+                            data: [
+                                {
+                                    count: 0,
+                                },
+                            ],
+                            info: {
+                                dataVersion: '1712315293',
+                                requestId: '4603a85e-ae5e-495d-aee5-778a3af862c1',
+                            },
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'numeratorData',
+                        url: AGGREGATED_ENDPOINT,
+                        body: {
+                            fields: [],
+                            country: 'USA',
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: {
+                            data: [
+                                {
+                                    count: 0,
+                                },
+                            ],
+                            info: {
+                                dataVersion: '1712315293',
+                                requestId: '4603a85e-ae5e-495d-aee5-778a3af862c1',
+                            },
+                        },
+                    },
+                },
+            ],
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(async () => {
+            await expect(canvas.getByText('0')).toBeInTheDocument();
+            await expect(canvas.getByText('-.--%')).toBeInTheDocument();
+        });
+    },
+};
+
 export const FiresFinishedLoadingEvent: StoryObj<StatisticsProps> = {
     ...Default,
     play: playThatExpectsFinishedLoadingEvent(),
