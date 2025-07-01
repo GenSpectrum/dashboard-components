@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.21.0...dashboard-components-v1.0.0) (2025-07-01)
+
+
+### Features
+
+* **components:** release 1.0.0 ([#917](https://github.com/GenSpectrum/dashboard-components/issues/917)) ([227a6b6](https://github.com/GenSpectrum/dashboard-components/commit/227a6b600b12663483281ac7c36d8bf20ff0e8d9))
+
 ## [0.21.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.20.0...dashboard-components-v0.21.0) (2025-06-26)
 
 
