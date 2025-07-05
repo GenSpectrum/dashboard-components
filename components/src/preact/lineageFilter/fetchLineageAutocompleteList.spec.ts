@@ -47,6 +47,44 @@ describe('fetchLineageAutocompleteList', () => {
         ]);
     });
 
+    test('should work without aliases', async () => {
+        lapisRequestMocks.aggregated(
+            { fields: [lineageField], ...lapisFilter },
+            {
+                data: [
+                    {
+                        [lineageField]: 'A',
+                        count: 1,
+                    },
+                ],
+            },
+        );
+
+        lapisRequestMocks.lineageDefinition(
+            {
+                A: {},
+            },
+            lineageField,
+        );
+
+        const result = await fetchLineageAutocompleteList({
+            lapisUrl: DUMMY_LAPIS_URL,
+            lapisField: lineageField,
+            lapisFilter,
+        });
+
+        expect(result).to.deep.equal([
+            {
+                lineage: 'A',
+                count: 1,
+            },
+            {
+                lineage: 'A*',
+                count: 1,
+            },
+        ]);
+    });
+
     test('should add sublineage values', async () => {
         lapisRequestMocks.aggregated(
             { fields: [lineageField], ...lapisFilter },

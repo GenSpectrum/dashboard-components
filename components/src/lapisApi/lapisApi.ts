@@ -11,7 +11,7 @@ import {
     type ProblemDetail,
 } from './lapisTypes';
 import { type SequenceType } from '../types';
-import { lineageDefinitionResponseSchema } from './LineageDefinition';
+import { lineageDefinitionSchema } from './LineageDefinition';
 
 export class UnknownLapisError extends Error {
     constructor(
@@ -149,7 +149,7 @@ export async function fetchLineageDefinition({
         `${lapisField} lineage definition`,
     );
 
-    return lineageDefinitionResponseSchema.parse(await response.json());
+    return lineageDefinitionSchema.parse(await response.json());
 }
 
 async function callLapis(
