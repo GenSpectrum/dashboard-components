@@ -11,6 +11,11 @@ import type { DisplayedSegment } from '../components/segment-selector';
 export const displayMutationsSchema = z.array(z.string()).min(1);
 export type DisplayMutations = z.infer<typeof displayMutationsSchema>;
 
+export type MutationFilter = {
+    textFilter: string;
+    annotationNameFilter: Set<string>;
+};
+
 export type GetFilteredMutationOverTimeDataArgs = {
     data: MutationOverTimeDataMap;
     overallMutationData: SubstitutionOrDeletionEntry<Substitution, Deletion>[];
@@ -18,7 +23,7 @@ export type GetFilteredMutationOverTimeDataArgs = {
     displayedMutationTypes: DisplayedMutationType[];
     proportionInterval: { min: number; max: number };
     displayMutations?: DisplayMutations;
-    mutationFilterValue: string;
+    mutationFilterValue: MutationFilter;
     sequenceType: SequenceType;
     annotationProvider: ReturnType<typeof useMutationAnnotationsProvider>;
 };
@@ -72,25 +77,54 @@ export function getFilteredMutationOverTimeData({
 export function mutationOrAnnotationDoNotMatchFilter(
     mutation: Mutation,
     sequenceType: SequenceType,
-    filterValue: string,
+    mutationFilter: MutationFilter,
     annotationProvider: ReturnType<typeof useMutationAnnotationsProvider>,
 ) {
-    if (filterValue === '') {
-        return false;
+    return !(
+        mutationOrAnnotationMatchesTextFilter(mutation, sequenceType, mutationFilter.textFilter, annotationProvider) &&
+        mutationMatchesAnnotationFilter(mutation, sequenceType, mutationFilter.annotationNameFilter, annotationProvider)
+    );
+}
+
+function mutationOrAnnotationMatchesTextFilter(
+    mutation: Mutation,
+    sequenceType: SequenceType,
+    textFilter: string,
+    annotationProvider: ReturnType<typeof useMutationAnnotationsProvider>,
+) {
+    if (textFilter === '') {
+        return true;
     }
 
-    if (mutation.code.includes(filterValue)) {
-        return false;
+    if (mutation.code.includes(textFilter)) {
+        return true;
     }
 
     const mutationAnnotations = annotationProvider(mutation, sequenceType);
     if (mutationAnnotations === undefined || mutationAnnotations.length === 0) {
+        return false;
+    }
+    return mutationAnnotations.some(
+        (annotation) =>
+            annotation.description.includes(textFilter) ||
+            annotation.name.includes(textFilter) ||
+            annotation.symbol.includes(textFilter),
+    );
+}
+
+function mutationMatchesAnnotationFilter(
+    mutation: Mutation,
+    sequenceType: SequenceType,
+    annotationNameFilter: Set<string>,
+    annotationProvider: ReturnType<typeof useMutationAnnotationsProvider>,
+) {
+    if (annotationNameFilter.size === 0) {
         return true;
     }
-    return !mutationAnnotations.some(
-        (annotation) =>
-            annotation.description.includes(filterValue) ||
-            annotation.name.includes(filterValue) ||
-            annotation.symbol.includes(filterValue),
-    );
+
+    const mutationAnnotations = annotationProvider(mutation, sequenceType);
+    if (mutationAnnotations === undefined || mutationAnnotations.length === 0) {
+        return false;
+    }
+    return mutationAnnotations.some((annotation) => annotationNameFilter.has(annotation.name));
 }
