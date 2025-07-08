@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.0.0...dashboard-components-v1.0.1) (2025-07-08)
+
+
+### Bug Fixes
+
+* **components:** accept lineage definitions without "aliases" key ([#921](https://github.com/GenSpectrum/dashboard-components/issues/921)) ([6dc0472](https://github.com/GenSpectrum/dashboard-components/commit/6dc0472e34ee1e2a2c0453f7b9c74cf80d2afbd6)), closes [#920](https://github.com/GenSpectrum/dashboard-components/issues/920)
+
 ## [1.0.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v0.21.0...dashboard-components-v1.0.0) (2025-07-01)
 
 
