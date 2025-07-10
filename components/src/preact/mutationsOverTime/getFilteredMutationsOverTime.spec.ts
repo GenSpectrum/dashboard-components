@@ -235,7 +235,7 @@ describe('getFilteredMutationOverTimeData', () => {
         expect(result.getFirstAxisKeys()).to.deep.equal([anotherSubstitution, someDeletion]);
     });
 
-    it('should filter by mutation filter taxt value', () => {
+    it('should filter by mutation filter text value', () => {
         const { data, overallMutationData } = prepareMutationOverTimeData([
             someSubstitutionEntry,
             anotherSubstitutionEntry,
