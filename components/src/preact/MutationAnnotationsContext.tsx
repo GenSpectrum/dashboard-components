@@ -16,7 +16,12 @@ type MutationAnnotationPerSequenceType = {
     position: Map<string, MutationAnnotations>;
 };
 
-const MutationAnnotationsContext = createContext<Record<SequenceType, MutationAnnotationPerSequenceType>>({
+type MutationAnnotationsContextValue = Record<SequenceType, MutationAnnotationPerSequenceType> & {
+    rawAnnotations: MutationAnnotations;
+};
+
+const MutationAnnotationsContext = createContext<MutationAnnotationsContextValue>({
+    rawAnnotations: [],
     nucleotide: {
         mutation: new Map(),
         position: new Map(),
@@ -75,6 +80,7 @@ export function getMutationAnnotationsContext(value: MutationAnnotations) {
     });
 
     return {
+        rawAnnotations: value,
         nucleotide: { mutation: nucleotideMap, position: nucleotidePositions },
         'amino acid': { mutation: aminoAcidMap, position: aminoAcidPositions },
     };
@@ -85,15 +91,17 @@ function addAnnotationToMap(map: Map<string, MutationAnnotations>, code: string,
     map.set(code.toUpperCase(), [...oldAnnotations, annotation]);
 }
 
+export function useRawMutationAnnotations() {
+    return useContext(MutationAnnotationsContext).rawAnnotations;
+}
+
 export function useMutationAnnotationsProvider() {
     const mutationAnnotations = useContext(MutationAnnotationsContext);
 
     return getMutationAnnotationsProvider(mutationAnnotations);
 }
 
-export function getMutationAnnotationsProvider(
-    mutationAnnotations: Record<SequenceType, MutationAnnotationPerSequenceType>,
-) {
+export function getMutationAnnotationsProvider(mutationAnnotations: MutationAnnotationsContextValue) {
     return (mutation: Mutation, sequenceType: SequenceType) => {
         const position =
             mutation.segment === undefined
@@ -110,11 +118,11 @@ export function getMutationAnnotationsProvider(
 
         const uniqueNames = new Set<string>();
 
-        return annotations?.filter((item) => {
-            if (uniqueNames.has(item.name)) {
+        return annotations?.filter((annotation) => {
+            if (uniqueNames.has(annotation.name)) {
                 return false;
             }
-            uniqueNames.add(item.name);
+            uniqueNames.add(annotation.name);
             return true;
         });
     };

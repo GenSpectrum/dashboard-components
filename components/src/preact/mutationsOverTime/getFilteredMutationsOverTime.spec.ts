@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { BaseMutationOverTimeDataMap } from './MutationOverTimeData';
-import { getFilteredMutationOverTimeData } from './getFilteredMutationsOverTimeData';
+import { getFilteredMutationOverTimeData, type MutationFilter } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
 import { type DeletionEntry, type SubstitutionEntry } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
@@ -28,7 +28,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedMutationTypes: [],
             proportionInterval,
             displayMutations: undefined,
-            mutationFilterValue: '',
+            mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
                 return [];
@@ -62,7 +62,7 @@ describe('getFilteredMutationOverTimeData', () => {
                 },
             ],
             proportionInterval,
-            mutationFilterValue: '',
+            mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
                 return [];
@@ -85,7 +85,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
-            mutationFilterValue: '',
+            mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
                 return [];
@@ -108,7 +108,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
-            mutationFilterValue: '',
+            mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
                 return [];
@@ -132,7 +132,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
-            mutationFilterValue: '',
+            mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
                 return [];
@@ -156,7 +156,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
-            mutationFilterValue: '',
+            mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
                 return [];
@@ -178,7 +178,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
-            mutationFilterValue: '',
+            mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
                 return [];
@@ -201,7 +201,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
-            mutationFilterValue: '',
+            mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
                 return [];
@@ -225,7 +225,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedMutationTypes: [],
             proportionInterval,
             displayMutations: [anotherSubstitution.code, someDeletion.code],
-            mutationFilterValue: '',
+            mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
                 return [];
@@ -235,7 +235,7 @@ describe('getFilteredMutationOverTimeData', () => {
         expect(result.getFirstAxisKeys()).to.deep.equal([anotherSubstitution, someDeletion]);
     });
 
-    it('should filter by mutation filter value', () => {
+    it('should filter by mutation filter text value', () => {
         const { data, overallMutationData } = prepareMutationOverTimeData([
             someSubstitutionEntry,
             anotherSubstitutionEntry,
@@ -248,7 +248,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
-            mutationFilterValue: '23T',
+            mutationFilterValue: { textFilter: '23T', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
                 return [];
@@ -265,7 +265,7 @@ describe('getFilteredMutationOverTimeData', () => {
             someDeletionEntry,
         ]);
 
-        const expectFilteredValue = (filterValue: string, annotations: MutationAnnotations) => {
+        const expectFilteredValue = (filterValue: MutationFilter, annotations: MutationAnnotations) => {
             const annotationProvider = getMutationAnnotationsProvider(getMutationAnnotationsContext(annotations));
 
             const result = getFilteredMutationOverTimeData({
@@ -283,7 +283,7 @@ describe('getFilteredMutationOverTimeData', () => {
         };
 
         it('with filter value in symbol', () => {
-            expectFilteredValue('#', [
+            expectFilteredValue({ textFilter: '#', annotationNameFilter: new Set() }, [
                 {
                     name: 'Annotation 1',
                     description: 'Description 1',
@@ -294,7 +294,7 @@ describe('getFilteredMutationOverTimeData', () => {
         });
 
         it('with filter value in name', () => {
-            expectFilteredValue('Annota', [
+            expectFilteredValue({ textFilter: 'Annota', annotationNameFilter: new Set() }, [
                 {
                     name: 'Annotation 1 #',
                     description: 'Description 1',
@@ -305,7 +305,18 @@ describe('getFilteredMutationOverTimeData', () => {
         });
 
         it('with filter value in name', () => {
-            expectFilteredValue('Descr', [
+            expectFilteredValue({ textFilter: 'Descr', annotationNameFilter: new Set() }, [
+                {
+                    name: 'Annotation 1',
+                    description: 'Description 1',
+                    symbol: '#',
+                    nucleotideMutations: ['A123T'],
+                },
+            ]);
+        });
+
+        it('with annotation name filter', () => {
+            expectFilteredValue({ textFilter: '', annotationNameFilter: new Set(['Annotation 1']) }, [
                 {
                     name: 'Annotation 1',
                     description: 'Description 1',

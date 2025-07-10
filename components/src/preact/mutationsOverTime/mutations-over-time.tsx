@@ -5,7 +5,11 @@ import z from 'zod';
 // @ts-expect-error -- uses subpath imports and vite worker import
 import MutationOverTimeWorker from '#mutationOverTime?worker&inline';
 import { BaseMutationOverTimeDataMap, type MutationOverTimeDataMap } from './MutationOverTimeData';
-import { displayMutationsSchema, getFilteredMutationOverTimeData } from './getFilteredMutationsOverTimeData';
+import {
+    displayMutationsSchema,
+    getFilteredMutationOverTimeData,
+    type MutationFilter,
+} from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
 import MutationsOverTimeGrid from './mutations-over-time-grid';
 import { type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
@@ -29,7 +33,7 @@ import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
-import { MutationsOverTimeTextFilter } from '../components/mutations-over-time-text-filter';
+import { MutationsOverTimeMutationsFilter } from '../components/mutations-over-time-mutations-filter';
 import { NoDataDisplay } from '../components/no-data-display';
 import type { ProportionInterval } from '../components/proportion-selector';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
@@ -129,7 +133,10 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
 }) => {
     const tabsRef = useDispatchFinishedLoadingEvent();
 
-    const [mutationFilterValue, setMutationFilterValue] = useState('');
+    const [mutationFilterValue, setMutationFilterValue] = useState<MutationFilter>({
+        textFilter: '',
+        annotationNameFilter: new Set(),
+    });
     const annotationProvider = useMutationAnnotationsProvider();
 
     const [proportionInterval, setProportionInterval] = useState(originalComponentProps.initialMeanProportionInterval);
@@ -227,8 +234,8 @@ type ToolbarProps = {
     colorScale: ColorScale;
     setColorScale: Dispatch<StateUpdater<ColorScale>>;
     originalComponentProps: MutationsOverTimeProps;
-    mutationFilterValue: string;
-    setFilterValue: (filterValue: string) => void;
+    mutationFilterValue: MutationFilter;
+    setFilterValue: Dispatch<StateUpdater<MutationFilter>>;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -248,7 +255,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
 }) => {
     return (
         <>
-            <MutationsOverTimeTextFilter setFilterValue={setFilterValue} value={mutationFilterValue} />
+            <MutationsOverTimeMutationsFilter setFilterValue={setFilterValue} value={mutationFilterValue} />
             {activeTab === 'Grid' && (
                 <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
             )}
