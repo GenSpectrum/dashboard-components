@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.0.1...dashboard-components-v1.1.0) (2025-07-14)
+
+
+### Features
+
+* **components:** gs-mutations-over-time: add checkboxes to quickly filter by annotated mutations ([#927](https://github.com/GenSpectrum/dashboard-components/issues/927)) ([3f0bdc8](https://github.com/GenSpectrum/dashboard-components/commit/3f0bdc8a51128d96c7136c0116044387dffc8b5a))
+
 ## [1.0.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.0.0...dashboard-components-v1.0.1) (2025-07-08)
 
 
