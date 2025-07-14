@@ -109,9 +109,9 @@ declare global {
     }
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type InitialValueMatches = Expect<
     Equals<typeof MutationFilterComponent.prototype.initialValue, MutationFilterProps['initialValue']>
 >;
 type WidthMatches = Expect<Equals<typeof MutationFilterComponent.prototype.width, MutationFilterProps['width']>>;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */

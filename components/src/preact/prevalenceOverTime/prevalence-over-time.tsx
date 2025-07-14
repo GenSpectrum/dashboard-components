@@ -90,7 +90,7 @@ export const PrevalenceOverTimeInner: FunctionComponent<PrevalenceOverTimeProps>
         throw error;
     }
 
-    if (data === null || data.every((variant) => variant.content.length === 0)) {
+    if (data.every((variant) => variant.content.length === 0)) {
         return <NoDataDisplay />;
     }
 

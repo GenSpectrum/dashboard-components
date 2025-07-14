@@ -1,5 +1,5 @@
 import { createTable, type RowData, type TableOptions, type TableOptionsResolved } from '@tanstack/table-core';
-import { type ComponentType, h, type VNode } from 'preact';
+import { type ComponentType, type VNode } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 
 import { usePageSizeContext } from './pagination-context';

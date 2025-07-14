@@ -18,7 +18,6 @@ import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
-import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { ScalingSelector } from '../components/scaling-selector';
 import Tabs from '../components/tabs';
@@ -74,10 +73,6 @@ const NumberSequencesOverTimeInner = (componentProps: NumberSequencesOverTimePro
 
     if (error !== null) {
         throw error;
-    }
-
-    if (data === null) {
-        return <NoDataDisplay />;
     }
 
     return <NumberSequencesOverTimeTabs data={data} originalComponentProps={componentProps} />;

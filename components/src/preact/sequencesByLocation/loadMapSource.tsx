@@ -18,6 +18,7 @@ export type GeoJsonFeatureProperties = {
 
 export async function loadMapSource(mapSource: MapSource) {
     switch (mapSource.type) {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- for future extensibility
         case 'topojson':
             return await loadTopojsonMap(mapSource);
     }
@@ -28,17 +29,19 @@ async function loadTopojsonMap(
 ): Promise<FeatureCollection<GeometryObject, GeoJsonFeatureProperties>> {
     const response = await fetch(mapSource.url);
     const topology = (await response.json()) as Topology;
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- for future extensibility
     if (topology?.type !== 'Topology') {
         throw new UserFacingError(
             'Invalid map source',
             `JSON downloaded from ${mapSource.url} does not look like a topojson Topology definition: missing 'type: "Topology"', got '${JSON.stringify(topology).substring(0, 100)}'`,
         );
     }
-    const object = topology?.objects[mapSource.topologyObjectsKey] as GeometryCollection<GeoJsonFeatureProperties>;
+    const object = topology.objects[mapSource.topologyObjectsKey] as GeometryCollection<GeoJsonFeatureProperties>;
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- to be safe
     if (object?.type !== 'GeometryCollection') {
         throw new UserFacingError(
             'Invalid map source',
-            `JSON downloaded from ${mapSource.url} does not have a GeometryCollection at key objects.${mapSource.topologyObjectsKey}, got '${JSON.stringify(topology)?.substring(0, 100)}'`,
+            `JSON downloaded from ${mapSource.url} does not have a GeometryCollection at key objects.${mapSource.topologyObjectsKey}, got '${JSON.stringify(topology).substring(0, 100)}'`,
         );
     }
     return topojson.feature(topology, object);

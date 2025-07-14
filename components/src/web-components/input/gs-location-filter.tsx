@@ -37,7 +37,7 @@ export class LocationFilterComponent extends PreactLitAdapter {
      * The initial value to use for this location filter.
      */
     @property({ type: Object })
-    value: Record<string, string | undefined> | undefined = undefined;
+    value: Record<string, string | null | undefined> | undefined = undefined;
 
     /**
      * Required.
@@ -109,7 +109,7 @@ declare global {
     }
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type InitialValueMatches = Expect<Equals<typeof LocationFilterComponent.prototype.value, LocationFilterProps['value']>>;
 type FieldsMatches = Expect<Equals<typeof LocationFilterComponent.prototype.fields, LocationFilterProps['fields']>>;
 type LapisFilterMatches = Expect<
@@ -119,4 +119,4 @@ type PlaceholderTextMatches = Expect<
     Equals<typeof LocationFilterComponent.prototype.placeholderText, LocationFilterProps['placeholderText']>
 >;
 type WidthMatches = Expect<Equals<typeof LocationFilterComponent.prototype.width, LocationFilterProps['width']>>;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */

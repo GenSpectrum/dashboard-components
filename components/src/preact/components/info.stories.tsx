@@ -15,7 +15,7 @@ const tooltipText = 'This is a tooltip which shows some information.';
 
 export const InfoStory: StoryObj = {
     render: (args) => (
-        <div class='flex justify-center px-4 py-16'>
+        <div className='flex justify-center px-4 py-16'>
             <Info {...args}>{tooltipText}</Info>
         </div>
     ),

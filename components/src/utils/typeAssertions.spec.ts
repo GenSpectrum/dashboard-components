@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 
 import { type Equals, type Expect } from './typeAssertions';
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 describe('Expect', () => {
     it('should only accept true', () => {
         type ShouldBeTrue = Expect<true>;

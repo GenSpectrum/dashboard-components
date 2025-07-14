@@ -13,20 +13,16 @@ export class NotEnoughDataToComputeFitError extends Error {
     }
 }
 
-export async function queryRelativeGrowthAdvantage<LapisDateField extends string>(
+export async function queryRelativeGrowthAdvantage(
     numerator: LapisFilter,
     denominator: LapisFilter,
     generationTime: number,
     lapis: string,
-    lapisDateField: LapisDateField,
+    lapisDateField: string,
     signal?: AbortSignal,
 ) {
-    const fetchNumerator = new FetchAggregatedOperator<{
-        [key in LapisDateField]: string | null;
-    }>(numerator, [lapisDateField]);
-    const fetchDenominator = new FetchAggregatedOperator<{
-        [key in LapisDateField]: string | null;
-    }>(denominator, [lapisDateField]);
+    const fetchNumerator = new FetchAggregatedOperator<Record<string, string | null>>(numerator, [lapisDateField]);
+    const fetchDenominator = new FetchAggregatedOperator<Record<string, string | null>>(denominator, [lapisDateField]);
     const mapToFixedDateKeyNumerator = new RenameFieldOperator(fetchNumerator, lapisDateField, 'date');
     const mapToFixedDateKeyDenominator = new RenameFieldOperator(fetchDenominator, lapisDateField, 'date');
     const mapNumerator = new MapOperator(mapToFixedDateKeyNumerator, toYearMonthDay);
@@ -36,7 +32,7 @@ export async function queryRelativeGrowthAdvantage<LapisDateField extends string
         mapDenominator.evaluate(lapis, signal),
     ]);
     const { min: minDate, max: maxDate } = getMinMaxTemporal(denominatorData.content.map((d) => d.date));
-    if (!minDate && !maxDate) {
+    if (!minDate) {
         return null;
     }
 

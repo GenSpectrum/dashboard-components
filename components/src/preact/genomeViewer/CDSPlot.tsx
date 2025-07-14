@@ -72,7 +72,7 @@ const XAxis: FunctionComponent<XAxisProps> = (componentProps) => {
                 return (
                     <div
                         key={idx}
-                        class='absolute text-xs text-black px-1 hover:opacity-80 border-l border-r border-gray-400 border-t'
+                        className='absolute text-xs text-black px-1 hover:opacity-80 border-l border-r border-gray-400 border-t'
                         style={{
                             left: `calc(${leftPercent}% - 1px)`,
                             width: `calc(${widthPercent}% - 1px)`,
@@ -200,10 +200,10 @@ const CDSPlot: FunctionComponent<CDSProps> = (componentProps) => {
     };
 
     return (
-        <div ref={ref} class='p-4'>
+        <div ref={ref} className='p-4'>
             <CDSBars gffData={gffData} zoomStart={zoomStart} zoomEnd={zoomEnd} />
             <XAxis zoomStart={zoomStart} zoomEnd={zoomEnd} fullWidth={width} />
-            <div class='relative w-full h-5'>
+            <div className='relative w-full h-5'>
                 <MinMaxRangeSlider
                     min={zoomStart}
                     max={zoomEnd}

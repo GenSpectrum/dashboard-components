@@ -110,7 +110,7 @@ export const MutationComparisonVenn: FunctionComponent<MutationComparisonVennPro
             <div className='flex-1'>
                 <GsChart configuration={config} />
             </div>
-            <p class='flex flex-wrap break-words m-2'>
+            <p className='flex flex-wrap break-words m-2'>
                 <SelectedMutationsDescription
                     selectedDatasetIndex={selectedDatasetIndex}
                     sets={sets}

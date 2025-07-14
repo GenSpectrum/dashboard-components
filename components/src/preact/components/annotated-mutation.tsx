@@ -58,7 +58,6 @@ const AnnotatedMutationWithoutContext: FunctionComponent<AnnotatedMutationWithou
                 <Fragment key={annotation.name}>
                     <InfoHeadline2>{annotation.name}</InfoHeadline2>
                     <InfoParagraph>
-                        {/* eslint-disable-next-line react/no-danger */}
                         <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(annotation.description) }} />
                     </InfoParagraph>
                 </Fragment>

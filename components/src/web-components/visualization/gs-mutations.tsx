@@ -166,7 +166,7 @@ declare global {
     }
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type LapisFilterMatches = Expect<
     Equals<typeof MutationsComponent.prototype.lapisFilter, MutationsProps['lapisFilter']>
 >;
@@ -180,4 +180,4 @@ type ViewsMatches = Expect<Equals<typeof MutationsComponent.prototype.views, Mut
 type WidthMatches = Expect<Equals<typeof MutationsComponent.prototype.width, MutationsProps['width']>>;
 type HeightMatches = Expect<Equals<typeof MutationsComponent.prototype.height, MutationsProps['height']>>;
 type PageSizeMatches = Expect<Equals<typeof MutationsComponent.prototype.pageSize, MutationsProps['pageSize']>>;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */

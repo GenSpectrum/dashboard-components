@@ -18,9 +18,7 @@ const accumulateByPosition = (data: SubstitutionOrDeletionEntry[], sequenceType:
     const referenceBases = new Map<string, string | undefined>();
 
     for (const mutationEntry of data) {
-        const position =
-            (mutationEntry.mutation.segment ? `${mutationEntry.mutation.segment}:` : '') +
-            mutationEntry.mutation.position;
+        const position = `${mutationEntry.mutation.segment ? `${mutationEntry.mutation.segment}:` : ''}${mutationEntry.mutation.position}`;
         referenceBases.set(position, mutationEntry.mutation.valueAtReference);
 
         const initiallyFillPositionsToProportionAtBase = () => {
@@ -69,9 +67,7 @@ const accumulateByPosition = (data: SubstitutionOrDeletionEntry[], sequenceType:
     });
 };
 
-export type BasesData = {
-    [base: string]: BaseCell;
-};
+export type BasesData = Record<string, BaseCell>;
 export type MutationsGridDataRow = BasesData & { position: string };
 
 const byProportion = (row: MutationsGridDataRow, proportionInterval: ProportionInterval) => {

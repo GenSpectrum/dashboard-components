@@ -60,21 +60,21 @@ export const ProportionSelector: FunctionComponent<ProportionSelectorProps> = ({
     const indicateError = internalMinProportion > internalMaxProportion;
 
     return (
-        <div class='flex flex-col w-64 mb-2'>
-            <div class='flex items-center '>
+        <div className='flex flex-col w-64 mb-2'>
+            <div className='flex items-center '>
                 <PercentInput
                     percentage={internalMinProportion * 100}
                     setPercentage={updateMinPercentage}
                     indicateError={indicateError}
                 />
-                <div class='m-2'>-</div>
+                <div className='m-2'>-</div>
                 <PercentInput
                     percentage={internalMaxProportion * 100}
                     setPercentage={updateMaxPercentage}
                     indicateError={indicateError}
                 />
             </div>
-            <div class='my-1'>
+            <div className='my-1'>
                 <MinMaxRangeSlider
                     min={internalMinProportion * 100}
                     max={internalMaxProportion * 100}

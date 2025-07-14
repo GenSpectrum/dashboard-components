@@ -12,9 +12,7 @@ type Position = {
     end: number;
 };
 
-type CDSMap = {
-    [id: string]: { positions: Position[]; label: string };
-};
+type CDSMap = Record<string, { positions: Position[]; label: string }>;
 
 export async function loadGff3(gff3Source: string, genomeLength: number | undefined) {
     try {
@@ -25,9 +23,7 @@ export async function loadGff3(gff3Source: string, genomeLength: number | undefi
 
     const response = await fetch(gff3Source);
     const content = await response.text();
-    if (!genomeLength) {
-        genomeLength = loadGenomeLength(content);
-    }
+    genomeLength ??= loadGenomeLength(content);
     return { features: parseGFF3(content), length: genomeLength };
 }
 
@@ -89,7 +85,7 @@ function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMa
         }
 
         const attrPairs = getAttributes(attributes);
-        const labelAttribute = attrPairs.get('Name') || attrPairs.get('gene') || attrPairs.get('gene_name');
+        const labelAttribute = attrPairs.get('Name') ?? attrPairs.get('gene') ?? attrPairs.get('gene_name');
         if (!labelAttribute) {
             throw new UserFacingError(
                 'Invalid gff3 source',
@@ -97,11 +93,12 @@ function getCDSMap(lines: string[], genome_type: string, geneMap: CDSMap): CDSMa
             );
         }
         const label = removeQuotes(labelAttribute);
-        const id = removeQuotes(attrPairs.get('ID') || labelAttribute);
+        const id = removeQuotes(attrPairs.get('ID') ?? labelAttribute);
         const parentAttribute = attrPairs.get('Parent');
         if (parentAttribute) {
             const parent = removeQuotes(parentAttribute);
             if (parent && parent in geneMap) {
+                // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
                 delete geneMap[parent];
             }
         }

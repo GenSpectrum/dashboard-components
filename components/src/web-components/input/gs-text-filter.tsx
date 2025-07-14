@@ -99,7 +99,7 @@ declare global {
     }
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type InitialValueMatches = Expect<Equals<typeof TextFilterComponent.prototype.value, TextFilterProps['value']>>;
 type LapisFieldMatches = Expect<Equals<typeof TextFilterComponent.prototype.lapisField, TextFilterProps['lapisField']>>;
 type LapisFilterMatches = Expect<
@@ -109,4 +109,4 @@ type PlaceholderTextMatches = Expect<
     Equals<typeof TextFilterComponent.prototype.placeholderText, TextFilterProps['placeholderText']>
 >;
 type WidthMatches = Expect<Equals<typeof TextFilterComponent.prototype.width, TextFilterProps['width']>>;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */

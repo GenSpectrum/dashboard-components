@@ -99,5 +99,5 @@ function filterByInputValue(item: LineageItem, inputValue: string | null) {
     if (inputValue === null || inputValue === '') {
         return true;
     }
-    return item.lineage?.toLowerCase().includes(inputValue?.toLowerCase() || '');
+    return item.lineage.toLowerCase().includes(inputValue.toLowerCase() || '');
 }

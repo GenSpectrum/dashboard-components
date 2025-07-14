@@ -112,7 +112,7 @@ function MutationFilterInner({ initialValue }: MutationFilterInnerProps) {
     const handleInputChange = (newInputValue: string | undefined) => {
         setShowErrorIndicator(false);
         if (newInputValue?.includes(',')) {
-            const values = newInputValue?.split(',').map((value) => {
+            const values = newInputValue.split(',').map((value) => {
                 return { value, parsedValue: parseAndValidateMutation(value.trim(), referenceGenome) };
             });
             const validEntries = values.map((value) => value.parsedValue).filter((value) => value !== null);

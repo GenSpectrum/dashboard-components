@@ -24,7 +24,7 @@ const tooltipContent = 'This is some content.';
 
 export const TooltipStory: StoryObj<TooltipProps> = {
     render: (args) => (
-        <div class='flex justify-center px-4 py-16'>
+        <div className='flex justify-center px-4 py-16'>
             <Tooltip {...args}>
                 <div className='bg-red-200'>Hover me</div>
             </Tooltip>

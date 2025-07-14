@@ -67,10 +67,10 @@ function PageSizeSelector({
                 className={`select select-ghost select-sm ${heightForSmallerLines}`}
                 value={pageSize}
                 onChange={(e) => {
-                    const pageSize = Number(e.currentTarget?.value);
+                    const pageSize = Number(e.currentTarget.value);
                     if (Number.isNaN(pageSize)) {
                         throw new Error(
-                            `Invalid page size selected: The value ${e.currentTarget?.value} could not be parsed as a number.`,
+                            `Invalid page size selected: The value ${e.currentTarget.value} could not be parsed as a number.`,
                         );
                     }
                     setPageSize(pageSize);

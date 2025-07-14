@@ -138,7 +138,7 @@ declare global {
     }
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type FieldsMatches = Expect<Equals<typeof AggregateComponent.prototype.fields, AggregateProps['fields']>>;
 type ViewsMatches = Expect<Equals<typeof AggregateComponent.prototype.views, AggregateProps['views']>>;
 type FilterMatches = Expect<Equals<typeof AggregateComponent.prototype.lapisFilter, AggregateProps['lapisFilter']>>;
@@ -154,4 +154,4 @@ type PageSizeMatches = Expect<Equals<typeof AggregateComponent.prototype.pageSiz
 type MaxNumberOfBarsMatches = Expect<
     Equals<typeof AggregateComponent.prototype.maxNumberOfBars, AggregateProps['maxNumberOfBars']>
 >;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */

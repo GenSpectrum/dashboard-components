@@ -3,9 +3,7 @@ import { type Dataset } from '../../operator/Dataset';
 import { type DeletionClass, type SubstitutionClass } from '../../utils/mutations';
 import { type ProportionInterval } from '../components/proportion-selector';
 
-type Proportions = {
-    [displayName: string]: number;
-};
+type Proportions = Record<string, number>;
 
 type MutationComparisonRow = {
     mutation: SubstitutionClass | DeletionClass;

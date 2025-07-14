@@ -7,7 +7,6 @@ import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinished
 import { useLapisUrl } from '../LapisUrlContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
-import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { formatProportion } from '../shared/table/formatProportion';
 import { useQuery } from '../useQuery';
@@ -47,10 +46,6 @@ export const StatisticsInner: FunctionComponent<StatisticsProps> = (componentPro
 
     if (error !== null) {
         throw error;
-    }
-
-    if (data === null) {
-        return <NoDataDisplay />;
     }
 
     return <MetricDataTabs data={data} />;

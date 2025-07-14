@@ -191,10 +191,10 @@ const exampleSegmentString = (referenceGenome: ReferenceGenome) => {
 
 const exampleSegment = (referenceGenome: ReferenceGenome) => {
     if (referenceGenome.genes.length > 0) {
-        return `${referenceGenome.genes[0].name}`;
+        return referenceGenome.genes[0].name;
     }
     if (referenceGenome.nucleotideSequences.length > 1) {
-        return `${referenceGenome.nucleotideSequences[0].name}`;
+        return referenceGenome.nucleotideSequences[0].name;
     }
     return '';
 };

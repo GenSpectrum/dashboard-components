@@ -129,7 +129,7 @@ export const FailsToFetchReferenceGenome: StoryObj<StoryProps> = {
 };
 
 @customElement('gs-app-display')
-// eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars -- it is used in the story above
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- it is used in the story above
 class AppDisplay extends LitElement {
     @consume({ context: lapisContext })
     lapis: string = '';

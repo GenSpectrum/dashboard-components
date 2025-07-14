@@ -4,7 +4,7 @@ import { NumberRangeFilterComponent } from './gs-number-range-filter';
 import { type NumberRangeFilterProps } from '../../preact/numberRangeFilter/number-range-filter';
 
 describe('gs-number-range-filter types', () => {
-    test('should match', ({}) => {
+    test('should match', () => {
         expectTypeOf(NumberRangeFilterComponent.prototype)
             .toHaveProperty('value')
             .toEqualTypeOf<NumberRangeFilterProps['value']>();

@@ -1,8 +1,8 @@
 const pattern = /(?:([A-Za-z0-9]+):)?(\d+)$/;
 
 export const sortMutationPositions = (a: string, b: string) => {
-    const aMatch = a.match(pattern);
-    const bMatch = b.match(pattern);
+    const aMatch = pattern.exec(a);
+    const bMatch = pattern.exec(b);
 
     if (aMatch && bMatch) {
         if (aMatch[1] !== bMatch[1]) {

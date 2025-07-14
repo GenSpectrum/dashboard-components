@@ -176,7 +176,7 @@ const handleErrors = async (response: Response, requestedData: string) => {
             const lapisErrorResult = lapisError.safeParse(json);
             if (lapisErrorResult.success) {
                 throw new LapisError(
-                    response.statusText + lapisErrorResult.data.error.detail,
+                    response.statusText + (lapisErrorResult.data.error.detail ?? ''),
                     response.status,
                     lapisErrorResult.data.error,
                     requestedData,
@@ -186,7 +186,7 @@ const handleErrors = async (response: Response, requestedData: string) => {
             const problemDetailResult = problemDetail.safeParse(json);
             if (problemDetailResult.success) {
                 throw new LapisError(
-                    response.statusText + problemDetailResult.data.detail,
+                    response.statusText + (problemDetailResult.data.detail ?? ''),
                     response.status,
                     problemDetailResult.data,
                     requestedData,

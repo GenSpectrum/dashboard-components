@@ -33,13 +33,10 @@ function findComponentRoot(element: HTMLElement) {
 }
 
 function findShadowRoot(element: HTMLElement) {
-    let current: Node = element;
-    while (current) {
+    let current: Node | null = element;
+    while (current !== null) {
         if (current instanceof ShadowRoot) {
             return current;
-        }
-        if (current.parentNode === null) {
-            return null;
         }
         current = current.parentNode;
     }

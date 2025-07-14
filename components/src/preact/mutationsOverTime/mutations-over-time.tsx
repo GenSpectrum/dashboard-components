@@ -12,7 +12,6 @@ import {
 } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
 import MutationsOverTimeGrid from './mutations-over-time-grid';
-import { type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
     sequenceTypeSchema,
@@ -91,7 +90,7 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
         };
     }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType]);
 
-    const { data, error, isLoading } = useWebWorker<MutationOverTimeQuery, MutationOverTimeWorkerResponse>(
+    const { data, error, isLoading } = useWebWorker<MutationOverTimeWorkerResponse>(
         messageToWorker,
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         MutationOverTimeWorker,
@@ -105,7 +104,7 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
         throw error;
     }
 
-    if (data === null || data === undefined || data.overallMutationData.length === 0) {
+    if (data === undefined || data.overallMutationData.length === 0) {
         return <NoDataDisplay />;
     }
 
@@ -173,13 +172,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     ]);
 
     const getTab = (view: MutationsOverTimeView) => {
-        if (filteredData === undefined) {
-            return {
-                title: 'Calculating',
-                content: <LoadingDisplay />,
-            };
-        }
         switch (view) {
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- for extensibility
             case 'grid':
                 return {
                     title: 'Grid',

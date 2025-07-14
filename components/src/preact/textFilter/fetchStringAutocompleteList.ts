@@ -21,14 +21,5 @@ export async function fetchStringAutocompleteList({
     return data
         .map((item) => ({ count: item.count, value: item[field] }))
         .filter((item): item is { count: number; value: string } => item.value !== null)
-        .sort((a, b) => {
-            if (a.value === null) {
-                return 1;
-            }
-            if (b.value === null) {
-                return -1;
-            }
-
-            return a.value.localeCompare(b.value);
-        });
+        .sort((a, b) => a.value.localeCompare(b.value));
 }

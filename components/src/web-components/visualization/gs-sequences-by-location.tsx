@@ -226,7 +226,7 @@ declare global {
     }
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type LapisFilterMatches = Expect<
     Equals<typeof SequencesByLocationComponent.prototype.lapisFilter, SequencesByLocationProps['lapisFilter']>
 >;
@@ -261,4 +261,4 @@ type OffsetXMatches = Expect<
 type OffsetYMatches = Expect<
     Equals<typeof SequencesByLocationComponent.prototype.offsetY, SequencesByLocationProps['offsetY']>
 >;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */

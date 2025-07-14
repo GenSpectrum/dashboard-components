@@ -1,7 +1,7 @@
 import { type ErrorWorkerStatus, type LoadingWorkerStatus, type SuccessWorkerStatus } from './useWebWorker';
 import { UserFacingError } from '../components/error-display';
 
-export async function workerFunction<R>(queryFunction: () => R) {
+export async function workerFunction(queryFunction: () => unknown) {
     try {
         postMessage({ status: 'loading' } satisfies LoadingWorkerStatus);
 
@@ -10,7 +10,7 @@ export async function workerFunction<R>(queryFunction: () => R) {
         postMessage({
             status: 'success',
             data: workerResponse,
-        } satisfies SuccessWorkerStatus<R>);
+        } satisfies SuccessWorkerStatus<unknown>);
     } catch (error) {
         postMessage(
             (error instanceof UserFacingError
