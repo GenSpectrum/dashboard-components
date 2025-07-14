@@ -14,13 +14,16 @@ import { ErrorBoundary } from '../../components/error-boundary';
 import { Fullscreen } from '../../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../../components/info';
 import { LoadingDisplay } from '../../components/loading-display';
-import { MutationsOverTimeTextFilter } from '../../components/mutations-over-time-text-filter';
+import { MutationsOverTimeMutationsFilter } from '../../components/mutations-over-time-mutations-filter';
 import { NoDataDisplay } from '../../components/no-data-display';
 import { ResizeContainer } from '../../components/resize-container';
 import { type DisplayedSegment, SegmentSelector } from '../../components/segment-selector';
 import Tabs from '../../components/tabs';
 import { type MutationOverTimeDataMap } from '../../mutationsOverTime/MutationOverTimeData';
-import { mutationOrAnnotationDoNotMatchFilter } from '../../mutationsOverTime/getFilteredMutationsOverTimeData';
+import {
+    type MutationFilter,
+    mutationOrAnnotationDoNotMatchFilter,
+} from '../../mutationsOverTime/getFilteredMutationsOverTimeData';
 import MutationsOverTimeGrid from '../../mutationsOverTime/mutations-over-time-grid';
 import { pageSizesSchema } from '../../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../../shared/tanstackTable/pagination-context';
@@ -121,7 +124,7 @@ function getFilteredMutationOverTimeData({
 }: {
     data: MutationOverTimeDataMap;
     displayedSegments: DisplayedSegment[];
-    mutationFilterValue: string;
+    mutationFilterValue: MutationFilter;
     sequenceType: SequenceType;
     annotationProvider: ReturnType<typeof useMutationAnnotationsProvider>;
 }): MutationOverTimeDataMap {
@@ -148,7 +151,10 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
 }) => {
     const tabsRef = useDispatchFinishedLoadingEvent();
 
-    const [mutationFilterValue, setMutationFilterValue] = useState('');
+    const [mutationFilterValue, setMutationFilterValue] = useState<MutationFilter>({
+        textFilter: '',
+        annotationNameFilter: new Set(),
+    });
     const annotationProvider = useMutationAnnotationsProvider();
 
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
@@ -211,8 +217,8 @@ type ToolbarProps = {
     data: MutationOverTimeDataPerLocation;
     displayedSegments: DisplayedSegment[];
     setDisplayedSegments: (segments: DisplayedSegment[]) => void;
-    mutationFilterValue: string;
-    setFilterValue: (filterValue: string) => void;
+    mutationFilterValue: MutationFilter;
+    setFilterValue: Dispatch<StateUpdater<MutationFilter>>;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -226,7 +232,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
 }) => {
     return (
         <>
-            <MutationsOverTimeTextFilter setFilterValue={setFilterValue} value={mutationFilterValue} />
+            <MutationsOverTimeMutationsFilter setFilterValue={setFilterValue} value={mutationFilterValue} />
             <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
             <SegmentSelector
                 displayedSegments={displayedSegments}
