@@ -200,7 +200,7 @@ declare global {
     }
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type NumeratorMatches = Expect<
     Equals<typeof PrevalenceOverTimeComponent.prototype.numeratorFilters, PrevalenceOverTimeProps['numeratorFilters']>
 >;
@@ -243,4 +243,4 @@ type YAxisMaxLogarithmicMatches = Expect<
         PrevalenceOverTimeProps['yAxisMaxLogarithmic']
     >
 >;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */

@@ -33,7 +33,7 @@ export const ConfidenceIntervalSelector: FunctionComponent<ConfidenceIntervalSel
     return (
         <Select
             items={items}
-            selected={confidenceIntervalMethod === undefined ? 'none' : confidenceIntervalMethod}
+            selected={confidenceIntervalMethod}
             onChange={(event: Event) => {
                 const select = event.target as HTMLSelectElement;
                 const value = select.value as ConfidenceIntervalMethod;

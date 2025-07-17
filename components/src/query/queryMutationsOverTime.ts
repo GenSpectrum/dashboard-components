@@ -202,12 +202,8 @@ function queryAvailableDates(
     return fetchAndPrepareDates(lapisFilter, granularity, lapisDateField).evaluate(lapis, signal);
 }
 
-function fetchAndPrepareDates<LapisDateField extends string>(
-    filter: LapisFilter,
-    granularity: TemporalGranularity,
-    lapisDateField: LapisDateField,
-) {
-    const fetchData = new FetchAggregatedOperator<{ [key in LapisDateField]: string | null }>(filter, [lapisDateField]);
+function fetchAndPrepareDates(filter: LapisFilter, granularity: TemporalGranularity, lapisDateField: string) {
+    const fetchData = new FetchAggregatedOperator<Record<string, string | null>>(filter, [lapisDateField]);
     const dataWithFixedDateKey = new RenameFieldOperator(fetchData, lapisDateField, 'date');
     const mapData = new MapOperator(dataWithFixedDateKey, (data) => mapDateToGranularityRange(data, granularity));
     const groupByData = new GroupByAndSumOperator(mapData, 'dateRange', 'count');

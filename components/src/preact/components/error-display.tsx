@@ -151,7 +151,7 @@ function ZodErrorDetails({ error }: { error: InvalidPropsError }) {
                 </p>
             )}
             <p>This is a summary of the unexpected attribute values:</p>
-            <ul class='m-4 list-outside list-disc '>
+            <ul className='m-4 list-outside list-disc '>
                 {error.zodError.issues.map((issue, index) => {
                     const actual =
                         issue.path[0] in error.componentProps

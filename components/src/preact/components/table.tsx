@@ -29,7 +29,7 @@ export interface TableProps {
 export const Table = ({ data, columns, pageSize }: TableProps) => {
     const pagination = typeof pageSize === 'number' ? { limit: pageSize } : pageSize;
 
-    const wrapper = useRef(null);
+    const wrapper = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (wrapper.current === null) {

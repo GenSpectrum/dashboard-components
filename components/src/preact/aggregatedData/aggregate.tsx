@@ -11,7 +11,6 @@ import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
-import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import Tabs from '../components/tabs';
 import { useQuery } from '../useQuery';
@@ -61,10 +60,6 @@ export const AggregateInner: FunctionComponent<AggregateProps> = (componentProps
 
     if (error !== null) {
         throw error;
-    }
-
-    if (data === null) {
-        return <NoDataDisplay />;
     }
 
     return <AggregatedDataTabs data={data} originalComponentProps={componentProps} />;

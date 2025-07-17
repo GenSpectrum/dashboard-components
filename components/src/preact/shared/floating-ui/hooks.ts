@@ -6,10 +6,10 @@ import type { MutableRefObject } from 'react';
 export function useFloatingUi(
     referenceRef: MutableRefObject<HTMLElement | null>,
     floatingRef: MutableRefObject<HTMLElement | null>,
-    middleware?: Array<Middleware | null | undefined | false>,
+    middleware?: (Middleware | null | undefined | false)[],
     placement?: Placement,
 ) {
-    const cleanupRef = useRef<() => void | null>(null);
+    const cleanupRef = useRef<(() => void) | null>(null);
 
     useEffect(() => {
         if (!referenceRef.current || !floatingRef.current) {

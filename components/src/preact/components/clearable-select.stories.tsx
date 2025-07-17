@@ -14,7 +14,7 @@ export default meta;
 
 export const Default: StoryObj<ClearableSelectProps> = {
     render: (args) => (
-        <div class='flex justify-center px-4 py-16'>
+        <div className='flex justify-center px-4 py-16'>
             <ClearableSelect {...args} />
         </div>
     ),

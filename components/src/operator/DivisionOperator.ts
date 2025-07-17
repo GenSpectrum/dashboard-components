@@ -8,7 +8,8 @@ export type DivisionOperatorResult<
     ResultField extends string,
     NumeratorField extends string,
     DenominatorField extends string,
-> = { [P in KeyField]: ValueObject[KeyField] } & MappedNumber<ResultField> &
+> = Record<KeyField, ValueObject[KeyField]> &
+    MappedNumber<ResultField> &
     MappedNumber<NumeratorField> &
     MappedNumber<DenominatorField>;
 
@@ -50,7 +51,8 @@ export class DivisionOperator<
                 [this.numeratorField]: numeratorValue as number,
                 [this.denominatorField]: row[this.valueField] as number,
                 [this.resultField]: (numeratorValue as number) / (row[this.valueField] as number),
-            } as { [P in KeyField]: ValueObject[KeyField] } & MappedNumber<ResultField> &
+            } as Record<KeyField, ValueObject[KeyField]> &
+                MappedNumber<ResultField> &
                 MappedNumber<NumeratorField> &
                 MappedNumber<DenominatorField>;
         });

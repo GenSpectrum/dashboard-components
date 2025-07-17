@@ -43,7 +43,7 @@ const RelativeGrowthAdvantageChart = ({
     const config = useMemo<ChartConfiguration>(() => {
         const maxY =
             yAxisScaleType !== 'logit'
-                ? getYAxisMax(Math.max(...data.proportion), yAxisMaxConfig?.[yAxisScaleType])
+                ? getYAxisMax(Math.max(...data.proportion), yAxisMaxConfig[yAxisScaleType])
                 : undefined;
 
         return {
@@ -92,11 +92,11 @@ const RelativeGrowthAdvantageDisplay = ({
     relativeAdvantageUpperBound: number;
 }) => {
     return (
-        <div class='mx-auto flex items-end flex-wrap'>
-            <span class='text-[#606060]'>Relative advantage:</span>
+        <div className='mx-auto flex items-end flex-wrap'>
+            <span className='text-[#606060]'>Relative advantage:</span>
             <div>
-                <span class='text-2xl ml-3'> {formatProportion(relativeAdvantage)} </span>
-                <span class='ml-2.5'>
+                <span className='text-2xl ml-3'> {formatProportion(relativeAdvantage)} </span>
+                <span className='ml-2.5'>
                     ({formatProportion(relativeAdvantageLowerBound)} - {formatProportion(relativeAdvantageUpperBound)})
                 </span>
             </div>

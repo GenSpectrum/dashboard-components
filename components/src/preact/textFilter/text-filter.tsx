@@ -8,7 +8,6 @@ import { lapisFilterSchema } from '../../types';
 import { DownshiftCombobox } from '../components/downshift-combobox';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
-import { NoDataDisplay } from '../components/no-data-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
 
@@ -60,10 +59,6 @@ const TextFilterInner: FunctionComponent<TextFilterInnerProps> = ({
         throw error;
     }
 
-    if (data === null) {
-        return <NoDataDisplay />;
-    }
-
     return <TextSelector lapisField={lapisField} value={value} placeholderText={placeholderText} data={data} />;
 };
 
@@ -106,5 +101,5 @@ function filterByInputValue(item: SelectItem, inputValue: string | null) {
     if (inputValue === null || inputValue === '') {
         return true;
     }
-    return item.value?.toLowerCase().includes(inputValue?.toLowerCase() || '');
+    return item.value.toLowerCase().includes(inputValue.toLowerCase());
 }

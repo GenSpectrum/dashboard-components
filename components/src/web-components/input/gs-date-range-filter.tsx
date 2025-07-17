@@ -151,7 +151,7 @@ declare global {
     }
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type CustomSelectOptionsMatches = Expect<
     Equals<typeof DateRangeFilterComponent.prototype.dateRangeOptions, DateRangeFilterProps['dateRangeOptions']>
 >;
@@ -160,4 +160,4 @@ type WidthMatches = Expect<Equals<typeof DateRangeFilterComponent.prototype.widt
 type DateColumnMatches = Expect<
     Equals<typeof DateRangeFilterComponent.prototype.lapisDateField, DateRangeFilterProps['lapisDateField']>
 >;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */

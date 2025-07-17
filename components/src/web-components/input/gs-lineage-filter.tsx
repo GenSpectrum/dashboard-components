@@ -105,7 +105,7 @@ declare global {
     }
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type InitialValueMatches = Expect<Equals<typeof LineageFilterComponent.prototype.value, LineageFilterProps['value']>>;
 type LapisFieldMatches = Expect<
     Equals<typeof LineageFilterComponent.prototype.lapisField, LineageFilterProps['lapisField']>
@@ -117,4 +117,4 @@ type PlaceholderTextMatches = Expect<
     Equals<typeof LineageFilterComponent.prototype.placeholderText, LineageFilterProps['placeholderText']>
 >;
 type WidthMatches = Expect<Equals<typeof LineageFilterComponent.prototype.width, LineageFilterProps['width']>>;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */

@@ -3,7 +3,7 @@ import { type Operator } from './Operator';
 import { fetchDetails } from '../lapisApi/lapisApi';
 import { type LapisFilter } from '../types';
 
-type Details<Fields extends string> = { [field in Fields]: string | number | boolean | null };
+type Details<Fields extends string> = Record<Fields, string | number | boolean | null>;
 
 export class FetchDetailsOperator<Fields extends string> implements Operator<Details<Fields>> {
     constructor(

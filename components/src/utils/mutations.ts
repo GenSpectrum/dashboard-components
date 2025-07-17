@@ -33,8 +33,8 @@ export class SubstitutionClass implements MutationClass, Substitution {
         readonly position: number,
     ) {
         const segmentString = this.segment ? `${this.segment}:` : '';
-        const valueAtReferenceString = this.valueAtReference ? `${this.valueAtReference}` : '';
-        const substitutionValueString = this.substitutionValue ? `${this.substitutionValue}` : '';
+        const valueAtReferenceString = this.valueAtReference ?? '';
+        const substitutionValueString = this.substitutionValue ?? '';
         this.code = `${segmentString}${valueAtReferenceString}${this.position}${substitutionValueString}`;
     }
 
@@ -55,8 +55,8 @@ export class SubstitutionClass implements MutationClass, Substitution {
     }
 
     static parse(mutationStr: string): SubstitutionClass | null {
-        const match = mutationStr.match(substitutionRegex);
-        if (match === null || match.groups === undefined) {
+        const match = substitutionRegex.exec(mutationStr);
+        if (match?.groups === undefined) {
             return null;
         }
         return new SubstitutionClass(
@@ -85,7 +85,7 @@ export class DeletionClass implements MutationClass, Deletion {
         readonly position: number,
     ) {
         const segmentString = this.segment ? `${this.segment}:` : '';
-        const valueAtReferenceString = this.valueAtReference ? `${this.valueAtReference}` : '';
+        const valueAtReferenceString = this.valueAtReference ?? '';
         this.code = `${segmentString}${valueAtReferenceString}${this.position}-`;
     }
 
@@ -105,8 +105,8 @@ export class DeletionClass implements MutationClass, Deletion {
     }
 
     static parse(mutationStr: string): DeletionClass | null {
-        const match = mutationStr.match(deletionRegex);
-        if (match === null || match.groups === undefined) {
+        const match = deletionRegex.exec(mutationStr);
+        if (match?.groups === undefined) {
             return null;
         }
 
@@ -154,8 +154,8 @@ export class InsertionClass implements MutationClass {
     }
 
     static parse(mutationStr: string): InsertionClass | null {
-        const match = mutationStr.match(insertionRegexp);
-        if (match === null || match.groups === undefined) {
+        const match = insertionRegexp.exec(mutationStr);
+        if (match?.groups === undefined) {
             return null;
         }
 
@@ -204,7 +204,7 @@ export function toSubstitutionOrDeletion(mutation: SubstitutionClass | DeletionC
     }
 }
 
-export const bases: { [P in SequenceType]: string[] } = {
+export const bases: Record<SequenceType, string[]> = {
     nucleotide: ['A', 'C', 'G', 'T', '-'],
     'amino acid': [
         'I',

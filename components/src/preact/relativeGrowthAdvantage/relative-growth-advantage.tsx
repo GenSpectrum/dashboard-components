@@ -77,10 +77,6 @@ export const RelativeGrowthAdvantageInner: FunctionComponent<RelativeGrowthAdvan
         throw error;
     }
 
-    if (data === null) {
-        return <NoDataDisplay />;
-    }
-
     return (
         <RelativeGrowthAdvantageTabs
             data={data}
@@ -110,6 +106,7 @@ const RelativeGrowthAdvantageTabs: FunctionComponent<RelativeGrowthAdvantageTabs
 
     const getTab = (view: RelativeGrowthAdvantageView) => {
         switch (view) {
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- for extensibility
             case 'line':
                 return {
                     title: 'Line',

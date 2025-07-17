@@ -28,7 +28,7 @@ export const namedLapisFilterSchema = z.object({
 });
 export type NamedLapisFilter = z.infer<typeof namedLapisFilterSchema>;
 
-export const lapisLocationFilterSchema = z.record(z.union([z.string(), z.undefined()]));
+export const lapisLocationFilterSchema = z.record(z.union([z.string(), z.undefined(), z.null()]));
 export type LapisLocationFilter = z.infer<typeof lapisLocationFilterSchema>;
 
 export const temporalGranularitySchema = z.union([

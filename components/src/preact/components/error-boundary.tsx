@@ -19,7 +19,7 @@ export const ErrorBoundary = <T extends Record<string, unknown>>({
     schema,
     children,
 }: RenderableProps<ErrorBoundaryProps<T>>) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- useErrorBoundary unfortunately return `[any, ...]`
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- useErrorBoundary unfortunately returns `[any, ...]`
     const [internalError, resetError] = useErrorBoundary();
     const componentPropsParseError = useCheckComponentProps(schema, componentProps);
 
@@ -54,10 +54,6 @@ export const ErrorBoundary = <T extends Record<string, unknown>>({
 
 function useCheckComponentProps<T extends Record<string, unknown>>(schema: ZodSchema<T>, componentProps: T) {
     return useMemo(() => {
-        if (schema === undefined || componentProps === undefined) {
-            return undefined;
-        }
-
         const parseResult = schema.safeParse(componentProps);
         if (parseResult.success) {
             return undefined;

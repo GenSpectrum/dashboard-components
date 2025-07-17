@@ -110,8 +110,8 @@ function filterByInputValue(item: SelectItem, inputValue: string | null) {
         return true;
     }
     return (
-        item?.label?.toLowerCase().includes(inputValue.toLowerCase()) ||
-        item?.description.toLowerCase().includes(inputValue.toLowerCase())
+        !!item.label?.toLowerCase().includes(inputValue.toLowerCase()) ||
+        item.description.toLowerCase().includes(inputValue.toLowerCase())
     );
 }
 
@@ -143,8 +143,8 @@ function concatenateLocation(locationFilter: LapisLocationFilter, fields: string
 }
 
 function emptyLocationFilter(fields: string[]) {
-    return fields.reduce((acc, field) => {
+    return fields.reduce<LapisLocationFilter>((acc, field) => {
         acc[field] = undefined;
         return acc;
-    }, {} as LapisLocationFilter);
+    }, {});
 }

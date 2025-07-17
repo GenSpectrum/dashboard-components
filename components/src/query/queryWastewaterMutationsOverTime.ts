@@ -41,7 +41,7 @@ export async function queryWastewaterMutationsOverTime(
             };
         } catch (e) {
             throw new Error(
-                `Failed to parse row of wastewater data: ${JSON.stringify(row)}: ${(e as Error)?.message ?? 'Unknown error'}`,
+                `Failed to parse row of wastewater data: ${JSON.stringify(row)}: ${(e as Error | null)?.message ?? 'Unknown error'}`,
             );
         }
     });

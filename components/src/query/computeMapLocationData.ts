@@ -83,7 +83,7 @@ function matchLocationDataAndGeoJsonFeatures(
 
     const locations: Feature<GeometryObject, EnhancedGeoJsonFeatureProperties>[] = geojsonData.features.map(
         (feature) => {
-            const name = feature?.properties?.name;
+            const name = feature.properties.name;
             if (typeof name !== 'string') {
                 throw new Error(
                     `GeoJSON feature with id '${feature.id}' does not have 'properties.name' of type string, was: '${name}'`,

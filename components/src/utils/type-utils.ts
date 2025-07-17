@@ -7,7 +7,7 @@ export type NumberFields<S> = keyof S & { [P in keyof S]: S[P] extends number ? 
 /**
  * MappedType<K, T> is a type that represents an object with keys of type K and values of type T.
  */
-export type MappedType<K extends string | number | symbol, T> = { [P in K]: T };
+export type MappedType<K extends string | number | symbol, T> = Record<K, T>;
 
 /**
  * MappedNumber<K> is a type that represents an object with keys of type K and values of type number.

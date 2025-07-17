@@ -4,7 +4,7 @@ import { GenomeDataViewerComponent } from './gs-genome-data-viewer';
 import type { GenomeDataViewerProps } from '../../preact/genomeViewer/genome-data-viewer';
 
 describe('gs-app types', () => {
-    test('mutationAnnotations type should match', ({}) => {
+    test('mutationAnnotations type should match', () => {
         expectTypeOf(GenomeDataViewerComponent.prototype)
             .toHaveProperty('gff3Source')
             .toEqualTypeOf<GenomeDataViewerProps['gff3Source']>();

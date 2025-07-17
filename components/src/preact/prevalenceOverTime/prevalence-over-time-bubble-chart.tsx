@@ -54,7 +54,7 @@ const PrevalenceOverTimeBubbleChart = ({
 
         const maxY =
             yAxisScaleType !== 'logit'
-                ? getYAxisMax(maxInData(nonNullDateRangeData), yAxisMaxConfig?.[yAxisScaleType])
+                ? getYAxisMax(maxInData(nonNullDateRangeData), yAxisMaxConfig[yAxisScaleType])
                 : undefined;
 
         return {

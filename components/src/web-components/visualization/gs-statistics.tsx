@@ -83,7 +83,7 @@ declare global {
     }
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type WidthMatches = Expect<Equals<typeof StatisticsComponent.prototype.width, StatisticsProps['width']>>;
 type HeightMatches = Expect<Equals<typeof StatisticsComponent.prototype.height, StatisticsProps['height']>>;
 type DenominatorFilterMatches = Expect<
@@ -92,4 +92,4 @@ type DenominatorFilterMatches = Expect<
 type NumeratorFilterMatches = Expect<
     Equals<typeof StatisticsComponent.prototype.numeratorFilter, StatisticsProps['numeratorFilter']>
 >;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */

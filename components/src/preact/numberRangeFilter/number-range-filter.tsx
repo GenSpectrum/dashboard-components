@@ -90,10 +90,10 @@ const NumberRangeFilterInner: FunctionComponent<NumberRangeFilterInnerProps> = (
                 <div className={`join-item w-full flex input px-2 ${inputError}`}>
                     <input
                         type='text'
-                        inputmode='numeric'
+                        inputMode='numeric'
                         className='w-full grow capitalize'
                         placeholder={`${lapisField} from`}
-                        value={currentRange.inputState.min ?? ''}
+                        value={currentRange.inputState.min}
                         onInput={(e) => {
                             dispatchRange({
                                 type: SetRangeActionType.SET_MIN,
@@ -116,10 +116,10 @@ const NumberRangeFilterInner: FunctionComponent<NumberRangeFilterInnerProps> = (
                 <div className={`join-item w-full flex input px-2 ${inputError}`}>
                     <input
                         type='text'
-                        inputmode='numeric'
+                        inputMode='numeric'
                         className='w-full grow capitalize'
                         placeholder={`${lapisField} to`}
-                        value={currentRange.inputState.max ?? ''}
+                        value={currentRange.inputState.max}
                         onInput={(e) => {
                             dispatchRange({
                                 type: SetRangeActionType.SET_MAX,

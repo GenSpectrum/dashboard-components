@@ -100,7 +100,7 @@ function useDisplayedSegments(mutations: MutationOverTimeDataPerLocation) {
     const displayedSegments = useMemo(() => {
         const unique = [
             ...new Set(
-                mutations.flatMap(({ data }) => data.getFirstAxisKeys().map((mutation) => mutation.segment || '')),
+                mutations.flatMap(({ data }) => data.getFirstAxisKeys().map((mutation) => mutation.segment ?? '')),
             ),
         ];
 

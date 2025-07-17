@@ -62,7 +62,7 @@ export const MutationsGrid: FunctionComponent<MutationsGridProps> = ({
                 },
                 formatter: (cell: BaseCell) => formatProportion(cell.proportion),
                 attributes: (cell: BaseCell, row: Row) => {
-                    // grid-js: the cell and row are null for header cells
+                    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- grid-js: the cell and row are null for header cells
                     if (row === null) {
                         return {};
                     }

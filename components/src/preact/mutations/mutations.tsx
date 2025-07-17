@@ -24,7 +24,6 @@ import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../compon
 import { LoadingDisplay } from '../components/loading-display';
 import { DeletionsLink, InsertionsLink, ProportionExplanation, SubstitutionsLink } from '../components/mutation-info';
 import { type DisplayedMutationType, MutationTypeSelector } from '../components/mutation-type-selector';
-import { NoDataDisplay } from '../components/no-data-display';
 import type { ProportionInterval } from '../components/proportion-selector';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
 import { ResizeContainer } from '../components/resize-container';
@@ -73,10 +72,6 @@ export const MutationsInner: FunctionComponent<MutationsProps> = (componentProps
 
     if (error !== null) {
         throw error;
-    }
-
-    if (data === null) {
-        return <NoDataDisplay />;
     }
 
     return <MutationsTabs mutationsData={data} originalComponentProps={componentProps} />;

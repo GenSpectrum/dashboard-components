@@ -1,7 +1,7 @@
 import type { NumberOfSequencesDatasets } from '../../query/queryNumberOfSequencesOverTime';
 import { generateAllInRange, getMinMaxTemporal, type TemporalClass } from '../../utils/temporalClass';
 
-type TableRow<DateRangeKey extends string> = { [K in DateRangeKey]: string } & { [key: string]: number };
+type TableRow<DateRangeKey extends string> = Record<DateRangeKey, string> & Record<string, number>;
 
 export const getNumberOfSequencesOverTimeTableData = <DateRangeKey extends string>(
     data: NumberOfSequencesDatasets,
@@ -17,9 +17,6 @@ export const getNumberOfSequencesOverTimeTableData = <DateRangeKey extends strin
         .reduce((acc, keys) => new Set([...acc, ...keys]), new Set<TemporalClass | null>());
 
     const minMax = getMinMaxTemporal(allDateRangesThatOccurInData);
-    if (minMax === null) {
-        return [];
-    }
 
     const allDateRanges: (TemporalClass | null)[] = generateAllInRange(minMax.min, minMax.max);
 

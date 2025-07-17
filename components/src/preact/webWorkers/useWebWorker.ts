@@ -23,7 +23,8 @@ export type ErrorWorkerStatus =
       };
 export type WorkerStatus<Response> = LoadingWorkerStatus | SuccessWorkerStatus<Response> | ErrorWorkerStatus;
 
-export function useWebWorker<Request, Response>(messageToWorker: Request, WorkerConstructor: new () => Worker) {
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- We need the return type
+export function useWebWorker<Response>(messageToWorker: unknown, WorkerConstructor: new () => Worker) {
     const [data, setData] = useState<Response | undefined>(undefined);
     const [error, setError] = useState<Error | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(true);

@@ -56,7 +56,7 @@ const PrevalenceOverTimeBarChart = ({
 
         const maxY =
             yAxisScaleType !== 'logit'
-                ? getYAxisMax(maxInData(nullFirstData), yAxisMaxConfig?.[yAxisScaleType])
+                ? getYAxisMax(maxInData(nullFirstData), yAxisMaxConfig[yAxisScaleType])
                 : undefined;
 
         return {

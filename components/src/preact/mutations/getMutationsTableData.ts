@@ -30,7 +30,7 @@ export function getMutationsTableData(
     }, new Map<string, number>());
 
     return tableData.map((datum) => {
-        const baselineMutationCount = baselineMutationCounts.get(datum.mutation.code) || 0;
+        const baselineMutationCount = baselineMutationCounts.get(datum.mutation.code) ?? 0;
         const jaccardSimilarity = calculateJaccardSimilarity(overallVariantCount, baselineMutationCount, datum.count);
 
         return {

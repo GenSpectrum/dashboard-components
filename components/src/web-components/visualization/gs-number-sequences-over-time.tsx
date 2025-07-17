@@ -133,7 +133,7 @@ declare global {
     }
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type LapisFilterMatches = Expect<
     Equals<typeof NumberSequencesOverTimeComponent.prototype.lapisFilters, NumberSequencesOverTimeProps['lapisFilters']>
 >;
@@ -164,4 +164,4 @@ type SmoothingWindowMatches = Expect<
 type PageSizeMatches = Expect<
     Equals<typeof NumberSequencesOverTimeComponent.prototype.pageSize, NumberSequencesOverTimeProps['pageSize']>
 >;
-/* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
+/* eslint-enable @typescript-eslint/no-unused-vars */

@@ -14,13 +14,13 @@ import {
     type TemporalClass,
 } from '../utils/temporalClass';
 
-export function queryAggregatedDataOverTime<LapisDateField extends string>(
+export function queryAggregatedDataOverTime(
     filter: LapisFilter,
     granularity: TemporalGranularity,
     smoothingWindow: number,
-    lapisDateField: LapisDateField,
+    lapisDateField: string,
 ) {
-    const fetchData = new FetchAggregatedOperator<{ [key in LapisDateField]: string | null }>(filter, [lapisDateField]);
+    const fetchData = new FetchAggregatedOperator<Record<string, string | null>>(filter, [lapisDateField]);
     const dataWithFixedDateKey = new RenameFieldOperator(fetchData, lapisDateField, 'date');
     const mapData = new MapOperator(dataWithFixedDateKey, (d) => mapDateToGranularityRange(d, granularity));
     const groupByData = new GroupByAndSumOperator(mapData, 'dateRange', 'count');
