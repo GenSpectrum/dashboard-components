@@ -231,18 +231,14 @@ describe('queryMutationsOverTime', () => {
                         minProportion: 0.001,
                     },
                     response: {
-                        data: [
-                            getSomeTestMutation(0.1, 1),
-                            getSomeTestMutation(0.3, 3),
-                            getSomeOtherTestMutation(0.4, 4),
-                        ],
+                        data: [getSomeTestMutation(0.2, 4), getSomeOtherTestMutation(0.4, 4)],
                     },
                 },
             ],
             'nucleotide',
         );
 
-        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData, overallMutationData } = await queryMutationsOverTimeData({
             lapisFilter,
             sequenceType: 'nucleotide',
             lapis: DUMMY_LAPIS_URL,
@@ -262,6 +258,8 @@ describe('queryMutationsOverTime', () => {
                 { type: 'value', proportion: 0.3, count: 3, totalCount: 13 },
             ],
         ]);
+
+        expect(overallMutationData.length).toBe(2);
 
         const sequences = mutationOverTimeData.getFirstAxisKeys();
         expect(sequences[0].code).toBe('otherSequenceName:G234C');
@@ -435,20 +433,22 @@ describe('queryMutationsOverTime', () => {
                         minProportion: 0.001,
                     },
                     response: {
-                        data: [getSomeTestMutation(0.2, 2), getSomeTestMutation(0.3, 3)],
+                        data: [getSomeTestMutation(0.25, 5)],
                     },
                 },
             ],
             'nucleotide',
         );
 
-        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData, overallMutationData } = await queryMutationsOverTimeData({
             lapisFilter,
             sequenceType: 'nucleotide',
             lapis: DUMMY_LAPIS_URL,
             lapisDateField: dateField,
             granularity: 'day',
         });
+
+        expect(overallMutationData.length).toBe(1);
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
@@ -527,7 +527,7 @@ describe('queryMutationsOverTime', () => {
                         minProportion: 0.001,
                     },
                     response: {
-                        data: [getSomeTestMutation(0.1, 1), getSomeTestMutation(0.2, 2)],
+                        data: [getSomeTestMutation(0.15, 3)],
                     },
                 },
             ],
