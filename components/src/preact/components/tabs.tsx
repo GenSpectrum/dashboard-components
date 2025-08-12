@@ -40,7 +40,7 @@ const Tabs = forwardRef<HTMLDivElement, ComponentTabsProps>(({ tabs, toolbar }, 
     const toolbarElement = typeof toolbar === 'function' ? toolbar(activeTab) : toolbar;
 
     return (
-        <div ref={ref} className='h-full w-full flex flex-col'>
+        <div ref={ref} className='h-full w-full flex flex-col bg-white'>
             <div className='flex flex-row justify-between flex-wrap'>
                 {tabElements}
                 {toolbar && <div className='py-2 flex flex-wrap gap-y-1'>{toolbarElement}</div>}
