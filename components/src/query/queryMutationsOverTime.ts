@@ -54,7 +54,7 @@ export type MutationOverTimeMutationValue =
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 export const MUTATIONS_OVER_TIME_MIN_PROPORTION = 0.001;
 
-export async function queryOverallMutationData({
+async function queryOverallMutationData({
     lapisFilter,
     sequenceType,
     lapis,
@@ -69,9 +69,9 @@ export async function queryOverallMutationData({
     lapisDateField: string;
     signal?: AbortSignal;
 }) {
-    const allDates = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
+    const requestedDateRanges = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
 
-    if (allDates.length === 0) {
+    if (requestedDateRanges.length === 0) {
         return {
             content: [],
         };
@@ -79,8 +79,8 @@ export async function queryOverallMutationData({
 
     const filter = {
         ...lapisFilter,
-        [`${lapisDateField}From`]: allDates[0].firstDay.toString(),
-        [`${lapisDateField}To`]: allDates[allDates.length - 1].lastDay.toString(),
+        [`${lapisDateField}From`]: requestedDateRanges[0].firstDay.toString(),
+        [`${lapisDateField}To`]: requestedDateRanges[requestedDateRanges.length - 1].lastDay.toString(),
     };
 
     return fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal);
@@ -103,18 +103,18 @@ export async function queryMutationsOverTimeData({
     granularity,
     signal,
 }: MutationOverTimeQuery) {
-    const allDates = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
+    const requestedDateRanges = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
 
-    if (allDates.length > MAX_NUMBER_OF_GRID_COLUMNS) {
+    if (requestedDateRanges.length > MAX_NUMBER_OF_GRID_COLUMNS) {
         throw new UserFacingError(
             'Too many dates',
-            `The dataset would contain ${allDates.length} date intervals. ` +
+            `The dataset would contain ${requestedDateRanges.length} date intervals. ` +
                 `Please reduce the number to below ${MAX_NUMBER_OF_GRID_COLUMNS} to display the data. ` +
                 'You can achieve this by either narrowing the date range in the provided LAPIS filter or by selecting a larger granularity.',
         );
     }
 
-    const subQueries = allDates.map(async (date) => {
+    const subQueries = requestedDateRanges.map(async (date) => {
         const dateFrom = date.firstDay.toString();
         const dateTo = date.lastDay.toString();
 
@@ -152,6 +152,12 @@ export async function queryMutationsOverTimeData({
     };
 }
 
+/**
+ * Returns a list of date ranges as TemporalClass.
+ * Respects date range filters given in the lapisFilter as <lapisDateField>From and <lapisDateField>To.
+ * If either side (or both sides) of the range are not given, the min and max are determined from
+ * the available data.
+ */
 async function getDatesInDataset(
     lapisFilter: LapisFilter,
     lapis: string,
@@ -159,6 +165,11 @@ async function getDatesInDataset(
     lapisDateField: string,
     signal: AbortSignal | undefined,
 ) {
+    const { dateFrom, dateTo } = getDateRangeFromFilter(lapisFilter, lapisDateField, granularity);
+    if (dateFrom !== null && dateTo !== null) {
+        return generateAllInRange(dateFrom, dateTo);
+    }
+
     const { content: availableDates } = await queryAvailableDates(
         lapisFilter,
         lapis,
@@ -167,7 +178,6 @@ async function getDatesInDataset(
         signal,
     );
 
-    const { dateFrom, dateTo } = getDateRangeFromFilter(lapisFilter, lapisDateField, granularity);
     const { min, max } = getMinMaxTemporal(availableDates);
 
     return generateAllInRange(dateFrom ?? min, dateTo ?? max);
