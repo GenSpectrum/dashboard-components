@@ -1,4 +1,4 @@
-# GenSpectrum Components
+# GenSpectrum Components foo
 
 ### npm
 
