@@ -56,7 +56,7 @@ export type MutationOverTimeMutationValue =
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 export const MUTATIONS_OVER_TIME_MIN_PROPORTION = 0.001;
 
-export async function queryOverallMutationData({
+async function queryOverallMutationData({
     lapisFilter,
     sequenceType,
     lapis,
@@ -98,9 +98,14 @@ export type MutationOverTimeQuery = {
     signal?: AbortSignal;
 };
 
-export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
-    const { lapisFilter, sequenceType, lapis, lapisDateField, granularity, signal } = query;
-
+export async function queryMutationsOverTimeData({
+    lapisFilter,
+    sequenceType,
+    lapis,
+    lapisDateField,
+    granularity,
+    signal,
+}: MutationOverTimeQuery) {
     const requestedDateRanges = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
 
     if (requestedDateRanges.length > MAX_NUMBER_OF_GRID_COLUMNS) {
@@ -234,7 +239,7 @@ export function serializeTemporal(date: Temporal) {
 export function groupByMutation(
     data: MutationOverTimeData[],
     overallMutationData: (SubstitutionEntry | DeletionEntry)[],
-): BaseMutationOverTimeDataMap {
+) {
     const dataArray = new BaseMutationOverTimeDataMap();
 
     const allDates = data.map((mutationData) => mutationData.date);
