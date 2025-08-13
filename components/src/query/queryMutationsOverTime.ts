@@ -99,7 +99,7 @@ export type MutationOverTimeQuery = {
 };
 
 export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
-    const { lapisFilter, sequenceType, lapis, lapisDateField, granularity, useNewEndpoint, signal } = query;
+    const { lapisFilter, sequenceType, lapis, lapisDateField, granularity, signal } = query;
 
     const requestedDateRanges = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
 
@@ -112,25 +112,7 @@ export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
         );
     }
 
-    const overallMutationData = queryOverallMutationData({
-        lapisFilter,
-        sequenceType,
-        lapis,
-        lapisDateField,
-        granularity,
-    }).then((r) => r.content);
-
-    return useNewEndpoint === true
-        ? queryMutationsOverTimeDataDirectEndpoint(requestedDateRanges, overallMutationData, query)
-        : queryMutationsOverTimeDataMultiQuery(requestedDateRanges, overallMutationData, query);
-}
-
-async function queryMutationsOverTimeDataMultiQuery(
-    allDates: TemporalClass[],
-    overallMutationDataPromise: Promise<SubstitutionOrDeletionEntry[]>,
-    { lapisFilter, sequenceType, lapis, lapisDateField, signal }: MutationOverTimeQuery,
-) {
-    const subQueries = allDates.map(async (date) => {
+    const subQueries = requestedDateRanges.map(async (date) => {
         const dateFrom = date.firstDay.toString();
         const dateTo = date.lastDay.toString();
 
@@ -140,10 +122,8 @@ async function queryMutationsOverTimeDataMultiQuery(
             [`${lapisDateField}To`]: dateTo,
         };
 
-        const [data, totalCountQuery] = await Promise.all([
-            fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal),
-            getTotalNumberOfSequencesInDateRange(filter).evaluate(lapis, signal),
-        ]);
+        const data = await fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal);
+        const totalCountQuery = await getTotalNumberOfSequencesInDateRange(filter).evaluate(lapis, signal);
 
         return {
             date,
@@ -153,80 +133,20 @@ async function queryMutationsOverTimeDataMultiQuery(
     });
 
     const data = await Promise.all(subQueries);
-    const overallMutationData = await overallMutationDataPromise;
+
+    const overallMutationsData = (
+        await queryOverallMutationData({
+            lapisFilter,
+            sequenceType,
+            lapis,
+            lapisDateField,
+            granularity,
+        })
+    ).content;
 
     return {
-        mutationOverTimeData: groupByMutation(data, overallMutationData),
-        overallMutationData,
-    };
-}
-
-async function queryMutationsOverTimeDataDirectEndpoint(
-    allDates: TemporalClass[],
-    overallMutationDataPromise: Promise<SubstitutionOrDeletionEntry[]>,
-    { lapisFilter, sequenceType, lapis, lapisDateField, signal }: MutationOverTimeQuery,
-): Promise<{
-    mutationOverTimeData: BaseMutationOverTimeDataMap;
-    overallMutationData: SubstitutionOrDeletionEntry[];
-}> {
-    const overallMutationData = await overallMutationDataPromise;
-    overallMutationData.sort((a, b) => a.mutation.code.localeCompare(b.mutation.code));
-    const totalCounts = await Promise.all(
-        allDates.map(async (date) => {
-            const filter = {
-                ...lapisFilter,
-                [`${lapisDateField}From`]: date.firstDay.toString(),
-                [`${lapisDateField}To`]: date.lastDay.toString(),
-            };
-
-            const totalCountQuery = await getTotalNumberOfSequencesInDateRange(filter).evaluate(lapis, signal);
-
-            return totalCountQuery.content[0].count;
-        }),
-    );
-
-    const includeMutations = overallMutationData.map((value) => value.mutation.code);
-    const apiResult = await fetchMutationsOverTime(
-        lapis,
-        {
-            filters: lapisFilter,
-            dateRanges: allDates.map((date) => ({
-                dateFrom: date.firstDay.toString(),
-                dateTo: date.lastDay.toString(),
-            })),
-            includeMutations,
-            dateField: lapisDateField,
-        },
-        sequenceType,
-        signal,
-    );
-
-    const mutationOverTimeData: Map2DContents<Substitution | Deletion, Temporal, MutationOverTimeMutationValue> = {
-        keysFirstAxis: new Map(overallMutationData.map((value) => [value.mutation.code, value.mutation])),
-        keysSecondAxis: new Map(allDates.map((date) => [date.dateString, date])),
-        data: new Map(
-            overallMutationData.map((mutation, i) => [
-                mutation.mutation.code,
-                new Map(
-                    allDates.map((date, j): [string, MutationOverTimeMutationValue] => [
-                        date.dateString,
-                        {
-                            type: 'value',
-                            // 'coverage' in the API resp. is the number of seqs. that have a non-ambiguous symbol at position
-                            // 'count' in the API resp. is the number of seqs with the mutation
-                            proportion: apiResult.data.data[i][j].count / apiResult.data.data[i][j].coverage,
-                            count: apiResult.data.data[i][j].count,
-                            totalCount: totalCounts[j],
-                        },
-                    ]),
-                ),
-            ]),
-        ),
-    };
-
-    return {
-        mutationOverTimeData: new BaseMutationOverTimeDataMap(mutationOverTimeData),
-        overallMutationData,
+        mutationOverTimeData: groupByMutation(data, overallMutationsData),
+        overallMutationData: overallMutationsData,
     };
 }
 
