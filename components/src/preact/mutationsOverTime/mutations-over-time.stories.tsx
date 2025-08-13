@@ -36,6 +36,7 @@ const meta: Meta<MutationsOverTimeProps> = {
         displayMutations: { control: 'object' },
         initialMeanProportionInterval: { control: 'object' },
         pageSizes: { control: 'object' },
+        // TODO - add parameter
     },
     parameters: {
         fetchMock: {},
@@ -86,7 +87,7 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
 
 export const FiresFinishedLoadingEvent: StoryObj<MutationsOverTimeProps> = {
     ...Default,
-    play: playThatExpectsFinishedLoadingEvent(),
+    play: playThatExpectsFinishedLoadingEvent(2000),
 };
 
 export const ShowsMutationAnnotations: StoryObj<MutationsOverTimeProps> = {
