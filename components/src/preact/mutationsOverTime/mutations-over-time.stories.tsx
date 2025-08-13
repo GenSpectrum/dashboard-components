@@ -87,7 +87,7 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
 
 export const FiresFinishedLoadingEvent: StoryObj<MutationsOverTimeProps> = {
     ...Default,
-    play: playThatExpectsFinishedLoadingEvent(2000),
+    play: playThatExpectsFinishedLoadingEvent(),
 };
 
 export const ShowsMutationAnnotations: StoryObj<MutationsOverTimeProps> = {
