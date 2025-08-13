@@ -112,24 +112,22 @@ export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
         );
     }
 
-    const overallMutationsData = (
-        await queryOverallMutationData({
-            lapisFilter,
-            sequenceType,
-            lapis,
-            lapisDateField,
-            granularity,
-        })
-    ).content;
+    const overallMutationData = queryOverallMutationData({
+        lapisFilter,
+        sequenceType,
+        lapis,
+        lapisDateField,
+        granularity,
+    }).then((r) => r.content);
 
     return useNewEndpoint === true
-        ? queryMutationsOverTimeDataDirectEndpoint(requestedDateRanges, overallMutationsData, query)
-        : queryMutationsOverTimeDataMultiQuery(requestedDateRanges, overallMutationsData, query);
+        ? queryMutationsOverTimeDataDirectEndpoint(requestedDateRanges, overallMutationData, query)
+        : queryMutationsOverTimeDataMultiQuery(requestedDateRanges, overallMutationData, query);
 }
 
 async function queryMutationsOverTimeDataMultiQuery(
     allDates: TemporalClass[],
-    overallMutationData: SubstitutionOrDeletionEntry[],
+    overallMutationDataPromise: Promise<SubstitutionOrDeletionEntry[]>,
     { lapisFilter, sequenceType, lapis, lapisDateField, signal }: MutationOverTimeQuery,
 ) {
     const subQueries = allDates.map(async (date) => {
@@ -153,6 +151,7 @@ async function queryMutationsOverTimeDataMultiQuery(
     });
 
     const data = await Promise.all(subQueries);
+    const overallMutationData = await overallMutationDataPromise;
 
     return {
         mutationOverTimeData: groupByMutation(data, overallMutationData),
@@ -162,12 +161,13 @@ async function queryMutationsOverTimeDataMultiQuery(
 
 async function queryMutationsOverTimeDataDirectEndpoint(
     allDates: TemporalClass[],
-    overallMutationData: SubstitutionOrDeletionEntry[],
+    overallMutationDataPromise: Promise<SubstitutionOrDeletionEntry[]>,
     { lapisFilter, sequenceType, lapis, lapisDateField, signal }: MutationOverTimeQuery,
 ): Promise<{
     mutationOverTimeData: BaseMutationOverTimeDataMap;
     overallMutationData: SubstitutionOrDeletionEntry[];
 }> {
+    const overallMutationData = await overallMutationDataPromise;
     overallMutationData.sort((a, b) => a.mutation.code.localeCompare(b.mutation.code));
     const totalCounts = await Promise.all(
         allDates.map(async (date) => {

@@ -7,6 +7,6 @@ export function playThatExpectsFinishedLoadingEvent() {
         const componentFinishedLoadingListenerMock = fn();
         canvasElement.addEventListener(gsEventNames.componentFinishedLoading, componentFinishedLoadingListenerMock);
 
-        await waitFor(() => expect(componentFinishedLoadingListenerMock).toHaveBeenCalled(), { timeout: 2000 });
+        await waitFor(() => expect(componentFinishedLoadingListenerMock).toHaveBeenCalled());
     };
 }
