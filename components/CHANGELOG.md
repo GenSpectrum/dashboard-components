@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.1.0...dashboard-components-v1.2.0) (2025-08-13)
+
+
+### Features
+
+* **components:** skip API call if it's not required ([#946](https://github.com/GenSpectrum/dashboard-components/issues/946)) ([5ca7c91](https://github.com/GenSpectrum/dashboard-components/commit/5ca7c910f6a060c4351cfb051adc7e7e794dd684))
+
+
+### Bug Fixes
+
+* **components:** fix an incorrect mock response in a test ([#943](https://github.com/GenSpectrum/dashboard-components/issues/943)) ([354a986](https://github.com/GenSpectrum/dashboard-components/commit/354a9863f187b7f903f81c3baf64882ec0c0e876))
+* **components:** set bg color as white in fullscreen ([#948](https://github.com/GenSpectrum/dashboard-components/issues/948)) ([6c0f6fd](https://github.com/GenSpectrum/dashboard-components/commit/6c0f6fdbab6ffbb81e96680caa6f4e6f58b9750f))
+
 ## [1.1.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.0.1...dashboard-components-v1.1.0) (2025-07-14)
 
 
