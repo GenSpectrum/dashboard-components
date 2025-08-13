@@ -140,8 +140,10 @@ async function queryMutationsOverTimeDataMultiQuery(
             [`${lapisDateField}To`]: dateTo,
         };
 
-        const data = await fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal);
-        const totalCountQuery = await getTotalNumberOfSequencesInDateRange(filter).evaluate(lapis, signal);
+        const [data, totalCountQuery] = await Promise.all([
+            fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal),
+            getTotalNumberOfSequencesInDateRange(filter).evaluate(lapis, signal),
+        ]);
 
         return {
             date,
