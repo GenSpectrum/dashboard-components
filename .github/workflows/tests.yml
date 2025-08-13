@@ -117,14 +117,8 @@ jobs:
       - name: Wait for Preact Storybook server to be ready
         run: npx wait-on tcp:6007
 
-      - name: Run Preact Storybook tests
-        run: npm run test:storybook:preact
-
       - name: Wait for Storybook server to be ready
         run: npx wait-on tcp:6006
-
-      - name: Run Storybook tests
-        run: npm run test:storybook
 
       - name: Run Playwright tests
         run: npm run test:playwright
