@@ -10,6 +10,7 @@ export const noDataWhenNoMutationsAreInFilter: MutationOverTimeMockData = {
         granularity: 'year',
         lapisDateField: 'date',
         lapis: 'https://lapis.cov-spectrum.org/open/v2',
+        useNewEndpoint: false,
     },
     response: {
         overallMutationData: [],
