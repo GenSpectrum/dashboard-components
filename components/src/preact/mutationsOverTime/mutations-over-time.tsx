@@ -12,6 +12,7 @@ import {
 } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
 import MutationsOverTimeGrid from './mutations-over-time-grid';
+import { type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
     sequenceTypeSchema,
@@ -52,6 +53,7 @@ const mutationOverTimeSchema = z.object({
     views: z.array(mutationsOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
+    useNewEndpoint: z.boolean().optional(),
     displayMutations: displayMutationsSchema.optional(),
     initialMeanProportionInterval: z.object({
         min: z.number().min(0).max(1),
@@ -76,19 +78,23 @@ export const MutationsOverTime: FunctionComponent<MutationsOverTimeProps> = (com
     );
 };
 
-export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> = (componentProps) => {
+export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> = ({
+    useNewEndpoint = false,
+    ...componentProps
+}) => {
     const lapis = useLapisUrl();
     const { lapisFilter, sequenceType, granularity, lapisDateField } = componentProps;
 
-    const messageToWorker = useMemo(() => {
+    const messageToWorker: MutationOverTimeQuery = useMemo(() => {
         return {
             lapisFilter,
             sequenceType,
             granularity,
             lapisDateField,
             lapis,
+            useNewEndpoint,
         };
-    }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType]);
+    }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType, useNewEndpoint]);
 
     const { data, error, isLoading } = useWebWorker<MutationOverTimeWorkerResponse>(
         messageToWorker,

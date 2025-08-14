@@ -36,6 +36,7 @@ const meta: Meta<MutationsOverTimeProps> = {
         displayMutations: { control: 'object' },
         initialMeanProportionInterval: { control: 'object' },
         pageSizes: { control: 'object' },
+        useNewEndpoint: { control: 'boolean' },
     },
     parameters: {
         fetchMock: {},
@@ -80,6 +81,7 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
         granularity: 'month',
         lapisDateField: 'date',
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
+        useNewEndpoint: false,
         pageSizes: [10, 20, 30, 40, 50],
     },
 };

@@ -7,6 +7,13 @@ export const orderBy = z.object({
     type: orderByType,
 });
 
+const filterValue = z.union([z.string(), z.number(), z.boolean(), z.null(), z.undefined(), z.array(z.string())]);
+
+const dateRange = z.object({
+    dateFrom: z.string(),
+    dateTo: z.string(),
+});
+
 export const lapisBaseRequest = z
     .object({
         limit: z.number().optional(),
@@ -14,7 +21,7 @@ export const lapisBaseRequest = z
         fields: z.array(z.string()).optional(),
         orderBy: z.array(orderBy).optional(),
     })
-    .catchall(z.union([z.boolean(), z.undefined(), z.string(), z.number(), z.null(), z.array(z.string())]));
+    .catchall(filterValue);
 export type LapisBaseRequest = z.infer<typeof lapisBaseRequest>;
 
 export const mutationsRequest = lapisBaseRequest.extend({ minProportion: z.number().optional() });
@@ -31,6 +38,33 @@ const mutationProportionCount = z.object({
 });
 export const mutationsResponse = makeLapisResponse(z.array(mutationProportionCount));
 export type MutationsResponse = z.infer<typeof mutationsResponse>;
+
+export const mutationsOverTimeRequest = z.object({
+    filters: z.record(filterValue),
+    downloadAsFile: z.boolean().optional(),
+    downloadFileBasename: z.string().optional(),
+    compression: z.enum(['gzip', 'none']).optional(),
+    includeMutations: z.array(z.string()).optional(),
+    dateRanges: z.array(dateRange).optional(),
+    dateField: z.string().optional(),
+});
+export type MutationsOverTimeRequest = z.infer<typeof mutationsOverTimeRequest>;
+
+export const mutationsOverTimeResponse = makeLapisResponse(
+    z.object({
+        mutations: z.array(z.string()),
+        dateRanges: z.array(dateRange),
+        data: z.array(
+            z.array(
+                z.object({
+                    count: z.number(),
+                    coverage: z.number(),
+                }),
+            ),
+        ),
+    }),
+);
+export type MutationsOverTimeResponse = z.infer<typeof mutationsOverTimeResponse>;
 
 const insertionCount = z.object({
     insertion: z.string(),

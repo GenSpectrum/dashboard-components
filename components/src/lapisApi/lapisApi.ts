@@ -9,6 +9,8 @@ import {
     mutationsResponse,
     problemDetail,
     type ProblemDetail,
+    type MutationsOverTimeRequest,
+    mutationsOverTimeResponse,
 } from './lapisTypes';
 import { type SequenceType } from '../types';
 import { lineageDefinitionResponseSchema } from './LineageDefinition';
@@ -110,6 +112,28 @@ export async function fetchSubstitutionsOrDeletions(
     );
 
     return mutationsResponse.parse(await response.json());
+}
+
+export async function fetchMutationsOverTime(
+    lapisUrl: string,
+    body: MutationsOverTimeRequest,
+    sequenceType: SequenceType,
+    signal?: AbortSignal,
+) {
+    const response = await callLapis(
+        mutationsOverTimeEndpoint(lapisUrl, sequenceType),
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+            signal,
+        },
+        `${sequenceType} mutations over time`,
+    );
+
+    return mutationsOverTimeResponse.parse(await response.json());
 }
 
 export async function fetchReferenceGenome(lapisUrl: string, signal?: AbortSignal) {
@@ -214,6 +238,11 @@ export const substitutionsOrDeletionsEndpoint = (lapisUrl: string, sequenceType:
     return sequenceType === 'amino acid'
         ? `${lapisUrl}/sample/aminoAcidMutations`
         : `${lapisUrl}/sample/nucleotideMutations`;
+};
+export const mutationsOverTimeEndpoint = (lapisUrl: string, sequenceType: SequenceType) => {
+    return sequenceType === 'amino acid'
+        ? `${lapisUrl}/component/aminoAcidMutationsOverTime`
+        : `${lapisUrl}/component/nucleotideMutationsOverTime`;
 };
 export const referenceGenomeEndpoint = (lapisUrl: string) => `${lapisUrl}/sample/referenceGenome`;
 export const lineageDefinitionEndpoint = (lapisUrl: string, lapisField: string) =>
