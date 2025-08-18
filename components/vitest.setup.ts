@@ -9,9 +9,16 @@ import {
     aggregatedEndpoint,
     detailsEndpoint,
     lineageDefinitionEndpoint,
+    mutationsOverTimeEndpoint,
     substitutionsOrDeletionsEndpoint,
 } from './src/lapisApi/lapisApi';
-import { type LapisBaseRequest, type MutationsRequest, type MutationsResponse } from './src/lapisApi/lapisTypes';
+import {
+    MutationsOverTimeRequest,
+    MutationsOverTimeResponse,
+    type LapisBaseRequest,
+    type MutationsRequest,
+    type MutationsResponse,
+} from './src/lapisApi/lapisTypes';
 
 export const DUMMY_LAPIS_URL = 'http://lapis.dummy';
 
@@ -78,6 +85,17 @@ export const lapisRequestMocks = {
     ) => {
         testServer.use(
             http.post(substitutionsOrDeletionsEndpoint(DUMMY_LAPIS_URL, sequenceType), postResolver(expectedRequests)),
+        );
+    },
+    mutationsOverTime: (
+        expectedRequests: {
+            body: MutationsOverTimeRequest;
+            response: MutationsOverTimeResponse;
+        }[],
+        sequenceType: 'nucleotide' | 'amino acid',
+    ) => {
+        testServer.use(
+            http.post(mutationsOverTimeEndpoint(DUMMY_LAPIS_URL, sequenceType), postResolver(expectedRequests)),
         );
     },
     lineageDefinition: (response: LineageDefinitionResponse, lineageField: string, statusCode: number = 200) => {
