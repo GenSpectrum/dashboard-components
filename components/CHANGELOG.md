@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.2.0...dashboard-components-v1.3.0) (2025-08-18)
+
+
+### Features
+
+* **components:** use new mutationsOverTime LAPIS endpoint in the mutations-over-time component ([#942](https://github.com/GenSpectrum/dashboard-components/issues/942)) ([b399d20](https://github.com/GenSpectrum/dashboard-components/commit/b399d20b4afb5863844f0a5c788e4392557ffde2))
+
 ## [1.2.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.1.0...dashboard-components-v1.2.0) (2025-08-13)
 
 
