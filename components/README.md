@@ -77,6 +77,15 @@ We primarily provide two kinds of components:
 npm ci
 ```
 
+> [!NOTE]  
+> **For Mac users**: By default, the `package-lock.json` installs linux dependencies for the
+> storybook test runner. To use it, you need to reinstall it:
+>
+> ```
+> npm uninstall @storybook/test-runner
+> npm install @storybook/test-runner --force
+> ```
+
 ### Custom Elements Manifest
 
 This package also ships a [Custom Elements Manifest](https://custom-elements-manifest.open-wc.org/),
