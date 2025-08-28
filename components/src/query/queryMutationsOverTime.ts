@@ -18,7 +18,13 @@ import {
     type TemporalGranularity,
 } from '../types';
 import { type Map2DContents } from '../utils/map2d';
-import { type Deletion, type Substitution, toSubstitutionOrDeletion } from '../utils/mutations';
+import {
+    type Deletion,
+    type Substitution,
+    toSubstitutionOrDeletion,
+    DeletionClass,
+    SubstitutionClass,
+} from '../utils/mutations';
 import {
     compareTemporal,
     dateRangeCompare,
@@ -56,12 +62,45 @@ export type MutationOverTimeMutationValue =
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 export const MUTATIONS_OVER_TIME_MIN_PROPORTION = 0.001;
 
+/**
+ * Create SubstitutionOrDeletionEntry for given code with count and proportion 0.
+ * @param code a mutation code like G44T or A23-
+ */
+function codeToEmptyEntry(code: string): SubstitutionOrDeletionEntry | null {
+    const maybeDeletion = DeletionClass.parse(code);
+    if (maybeDeletion) {
+        return {
+            type: 'deletion',
+            mutation: maybeDeletion,
+            count: 0,
+            proportion: 0,
+        };
+    }
+    const maybeSubstitution = SubstitutionClass.parse(code);
+    if (maybeSubstitution) {
+        return {
+            type: 'substitution',
+            mutation: maybeSubstitution,
+            count: 0,
+            proportion: 0,
+        };
+    }
+    return null;
+}
+
+/**
+ * Return counts and proportions for all mutations that match the lapisFilter.
+ * If `includeMutations` are given, the result will also be filtered for those.
+ * Any mutation that isn't in the result, but is in the `includeMutations` will
+ * be in the result with count and proportion as 0.
+ */
 async function queryOverallMutationData({
     lapisFilter,
     sequenceType,
     lapis,
     granularity,
     lapisDateField,
+    includeMutations,
     signal,
 }: {
     lapisFilter: LapisFilter;
@@ -69,14 +108,23 @@ async function queryOverallMutationData({
     lapis: string;
     granularity: TemporalGranularity;
     lapisDateField: string;
+    includeMutations?: string[];
     signal?: AbortSignal;
 }) {
     const requestedDateRanges = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
 
     if (requestedDateRanges.length === 0) {
-        return {
-            content: [],
-        };
+        if (includeMutations) {
+            return {
+                content: includeMutations
+                    .map(codeToEmptyEntry)
+                    .filter((e): e is SubstitutionOrDeletionEntry => e !== null),
+            };
+        } else {
+            return {
+                content: [],
+            };
+        }
     }
 
     const filter = {
@@ -85,11 +133,27 @@ async function queryOverallMutationData({
         [`${lapisDateField}To`]: requestedDateRanges[requestedDateRanges.length - 1].lastDay.toString(),
     };
 
-    return fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal);
+    let dataPromise = fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal);
+
+    if (includeMutations) {
+        dataPromise = dataPromise.then((data) => {
+            return {
+                content: includeMutations
+                    .map((code) => {
+                        const found = data.content.find((m) => m.mutation.code === code);
+                        return found ?? codeToEmptyEntry(code);
+                    })
+                    .filter((e): e is SubstitutionOrDeletionEntry => e !== null),
+            };
+        });
+    }
+
+    return dataPromise;
 }
 
 export type MutationOverTimeQuery = {
     lapisFilter: LapisFilter;
+    displayMutations?: string[];
     sequenceType: SequenceType;
     lapis: string;
     lapisDateField: string;
@@ -99,7 +163,8 @@ export type MutationOverTimeQuery = {
 };
 
 export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
-    const { lapisFilter, sequenceType, lapis, lapisDateField, granularity, useNewEndpoint, signal } = query;
+    const { lapisFilter, displayMutations, sequenceType, lapis, lapisDateField, granularity, useNewEndpoint, signal } =
+        query;
 
     const requestedDateRanges = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
 
@@ -117,6 +182,7 @@ export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
         sequenceType,
         lapis,
         lapisDateField,
+        includeMutations: displayMutations,
         granularity,
     }).then((r) => r.content);
 

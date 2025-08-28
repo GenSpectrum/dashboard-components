@@ -211,30 +211,6 @@ describe('getFilteredMutationOverTimeData', () => {
         expect(result.getFirstAxisKeys()).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
     });
 
-    it('should filter by displayMutations', () => {
-        const { data, overallMutationData } = prepareMutationOverTimeData([
-            someSubstitutionEntry,
-            anotherSubstitutionEntry,
-            someDeletionEntry,
-        ]);
-
-        const result = getFilteredMutationOverTimeData({
-            data,
-            overallMutationData,
-            displayedSegments: [],
-            displayedMutationTypes: [],
-            proportionInterval,
-            displayMutations: [anotherSubstitution.code, someDeletion.code],
-            mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
-            sequenceType: 'nucleotide',
-            annotationProvider: () => {
-                return [];
-            },
-        });
-
-        expect(result.getFirstAxisKeys()).to.deep.equal([anotherSubstitution, someDeletion]);
-    });
-
     it('should filter by mutation filter text value', () => {
         const { data, overallMutationData } = prepareMutationOverTimeData([
             someSubstitutionEntry,

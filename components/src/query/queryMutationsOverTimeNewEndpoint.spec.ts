@@ -909,6 +909,128 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         expect(dates.length).toBe(0);
     });
 
+    it('should respect the includeMutations parameter', async () => {
+        const lapisFilter = { field1: 'value1', field2: 'value2' };
+        const dateField = 'dateField';
+
+        lapisRequestMocks.multipleAggregated([
+            {
+                body: { ...lapisFilter, fields: [dateField] },
+                response: {
+                    data: [
+                        { count: 1, [dateField]: '2023-01-05' },
+                        { count: 2, [dateField]: '2023-02-15' },
+                    ],
+                },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-01-01',
+                    dateFieldTo: '2023-01-31',
+                    fields: [],
+                },
+                response: { data: [{ count: 11 }] },
+            },
+            {
+                body: {
+                    ...lapisFilter,
+                    dateFieldFrom: '2023-02-01',
+                    dateFieldTo: '2023-02-28',
+                    fields: [],
+                },
+                response: { data: [{ count: 12 }] },
+            },
+        ]);
+
+        lapisRequestMocks.multipleMutations(
+            [
+                {
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-01',
+                        dateFieldTo: '2023-02-28',
+                        minProportion: 0.001,
+                    },
+                    response: {
+                        data: [getSomeTestMutation(0.21, 6), getSomeOtherTestMutation(0.22, 4)],
+                    },
+                },
+            ],
+            'nucleotide',
+        );
+
+        const dateRanges = [
+            {
+                dateFrom: '2023-01-01',
+                dateTo: '2023-01-31',
+            },
+            {
+                dateFrom: '2023-02-01',
+                dateTo: '2023-02-28',
+            },
+        ];
+
+        lapisRequestMocks.mutationsOverTime(
+            [
+                {
+                    body: {
+                        filters: lapisFilter,
+                        dateRanges,
+                        includeMutations: ['A122T', 'otherSequenceName:G234C'],
+                        dateField,
+                    },
+                    response: {
+                        data: {
+                            data: [
+                                [
+                                    { count: 0, coverage: 0 },
+                                    { count: 0, coverage: 0 },
+                                ],
+                                [
+                                    { count: 2, coverage: 10 },
+                                    { count: 3, coverage: 10 },
+                                ],
+                            ],
+                            dateRanges,
+                            mutations: ['A122T', 'otherSequenceName:G234C'],
+                        },
+                    },
+                },
+            ],
+            'nucleotide',
+        );
+
+        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+            lapisFilter,
+            sequenceType: 'nucleotide',
+            lapis: DUMMY_LAPIS_URL,
+            lapisDateField: dateField,
+            granularity: 'month',
+            useNewEndpoint: true,
+            displayMutations: ['otherSequenceName:G234C', 'A122T'],
+        });
+
+        expect(mutationOverTimeData.getAsArray()).to.deep.equal([
+            [
+                { type: 'value', proportion: NaN, count: 0, totalCount: 11 },
+                { type: 'value', proportion: NaN, count: 0, totalCount: 12 },
+            ],
+            [
+                { type: 'value', proportion: 0.2, count: 2, totalCount: 11 },
+                { type: 'value', proportion: 0.3, count: 3, totalCount: 12 },
+            ],
+        ]);
+
+        const sequences = mutationOverTimeData.getFirstAxisKeys();
+        expect(sequences[0].code).toBe('A122T');
+        expect(sequences[1].code).toBe('otherSequenceName:G234C');
+
+        const dates = mutationOverTimeData.getSecondAxisKeys();
+        expect(dates[0].dateString).toBe('2023-01');
+        expect(dates[1].dateString).toBe('2023-02');
+    });
+
     function getSomeTestMutation(proportion: number, count: number) {
         return {
             mutation: 'sequenceName:A123T',
