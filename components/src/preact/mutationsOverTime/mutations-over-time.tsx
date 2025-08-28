@@ -83,7 +83,7 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
     ...componentProps
 }) => {
     const lapis = useLapisUrl();
-    const { lapisFilter, sequenceType, granularity, lapisDateField } = componentProps;
+    const { lapisFilter, sequenceType, granularity, lapisDateField, displayMutations } = componentProps;
 
     const messageToWorker: MutationOverTimeQuery = useMemo(() => {
         return {
@@ -92,9 +92,10 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
             granularity,
             lapisDateField,
             lapis,
+            displayMutations,
             useNewEndpoint,
         };
-    }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType, useNewEndpoint]);
+    }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations, useNewEndpoint]);
 
     const { data, error, isLoading } = useWebWorker<MutationOverTimeWorkerResponse>(
         messageToWorker,
@@ -160,7 +161,6 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             displayedSegments,
             displayedMutationTypes,
             proportionInterval,
-            displayMutations: originalComponentProps.displayMutations,
             mutationFilterValue,
             sequenceType: originalComponentProps.sequenceType,
             annotationProvider,
@@ -171,7 +171,6 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         displayedSegments,
         displayedMutationTypes,
         proportionInterval,
-        originalComponentProps.displayMutations,
         originalComponentProps.sequenceType,
         mutationFilterValue,
         annotationProvider,

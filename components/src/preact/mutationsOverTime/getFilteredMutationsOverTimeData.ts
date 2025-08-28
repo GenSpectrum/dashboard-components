@@ -34,25 +34,17 @@ export function getFilteredMutationOverTimeData({
     displayedSegments,
     displayedMutationTypes,
     proportionInterval,
-    displayMutations,
     mutationFilterValue,
     sequenceType,
     annotationProvider,
 }: GetFilteredMutationOverTimeDataArgs) {
     const filteredData = new Map2dView(data);
 
-    const displayMutationsSet =
-        displayMutations === undefined ? null : new Set(displayMutations.map((it) => it.toUpperCase()));
-
     const mutationsToFilterOut = overallMutationData.filter((entry) => {
         if (entry.proportion < proportionInterval.min || entry.proportion > proportionInterval.max) {
             return true;
         }
         if (displayedSegments.some((segment) => segment.segment === entry.mutation.segment && !segment.checked)) {
-            return true;
-        }
-
-        if (displayMutationsSet !== null && !displayMutationsSet.has(entry.mutation.code.toUpperCase())) {
             return true;
         }
 
