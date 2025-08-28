@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.3.0...dashboard-components-v1.3.1) (2025-08-28)
+
+
+### Bug Fixes
+
+* **components:** fix displayMutations feature on mutationsOverTime ([#964](https://github.com/GenSpectrum/dashboard-components/issues/964)) ([da721a3](https://github.com/GenSpectrum/dashboard-components/commit/da721a38c46aa117de6c84da212fb25fa446bb57))
+
 ## [1.3.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.2.0...dashboard-components-v1.3.0) (2025-08-18)
 
 
