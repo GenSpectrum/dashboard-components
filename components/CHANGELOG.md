@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.3.1...dashboard-components-v1.4.0) (2025-09-02)
+
+
+### Features
+
+* **components:** allow setting displayMutations to empty ([#967](https://github.com/GenSpectrum/dashboard-components/issues/967)) ([76beae7](https://github.com/GenSpectrum/dashboard-components/commit/76beae7b462ea5ff20bdb8958834dadc97549449))
+
 ## [1.3.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.3.0...dashboard-components-v1.3.1) (2025-08-28)
 
 
