@@ -42,6 +42,7 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
         lapisDateField: { control: 'text' },
         displayMutations: { control: 'object' },
         initialMeanProportionInterval: { control: 'object' },
+        initialGapsHidden: { control: 'boolean' },
         useNewEndpoint: { control: 'boolean' },
         pageSizes: { control: 'object' },
     },
@@ -53,6 +54,7 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
         granularity: 'month',
         lapisDateField: 'date',
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
+        initialGapsHidden: false,
         useNewEndpoint: false,
         pageSizes: [10, 20, 30, 40, 50],
     },
@@ -100,6 +102,7 @@ const Template: StoryObj<Required<MutationsOverTimeProps>> = {
                 .lapisDateField=${args.lapisDateField}
                 .displayMutations=${args.displayMutations}
                 .initialMeanProportionInterval=${args.initialMeanProportionInterval}
+                .initialGapsHidden=${args.initialGapsHidden}
                 .pageSizes=${args.pageSizes}
                 .useNewEndpoint=${args.useNewEndpoint}
             ></gs-mutations-over-time>

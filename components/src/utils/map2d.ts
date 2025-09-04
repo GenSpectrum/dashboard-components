@@ -168,6 +168,10 @@ export class Map2dView<Key1 extends object | string, Key2 extends object | strin
         this.keysFirstAxis.delete(this.serializeFirstAxis(key));
     }
 
+    deleteColumn(key: Key2) {
+        this.keysSecondAxis.delete(this.serializeSecondAxis(key));
+    }
+
     get(keyFirstAxis: Key1, keySecondAxis: Key2) {
         const firstAxisKey = this.serializeFirstAxis(keyFirstAxis);
         const secondAxisKey = this.serializeSecondAxis(keySecondAxis);
@@ -205,7 +209,16 @@ export class Map2dView<Key1 extends object | string, Key2 extends object | strin
             return [];
         }
 
-        return this.baseMap.getRow(key);
+        return this.getSecondAxisKeys().map((k2) => this.baseMap.get(key, k2));
+    }
+
+    getColumn(key: Key2) {
+        const serializedKeySecondAxis = this.serializeSecondAxis(key);
+        if (!this.keysSecondAxis.has(serializedKeySecondAxis)) {
+            return [];
+        }
+
+        return this.getFirstAxisKeys().map((k1) => this.baseMap.get(k1, key));
     }
 
     getContents() {
