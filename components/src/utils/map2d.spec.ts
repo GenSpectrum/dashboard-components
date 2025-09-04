@@ -186,6 +186,11 @@ describe('Map2dView', () => {
         view.deleteRow('c');
 
         expect(view.getAsArray()).toEqual([[1, undefined]]);
+
+        const view2 = new Map2dView<string, string, number>(container);
+        view2.deleteColumn('b');
+
+        expect(view2.getAsArray()).toEqual([[undefined], [4]]);
     });
 
     it('should throw an error when trying to set a value', () => {
@@ -201,12 +206,31 @@ describe('Map2dView', () => {
         expect(view.getRow('a')).toEqual([1, undefined]);
     });
 
+    it('should return a column by key', () => {
+        const container = createBaseContainer();
+        const view = new Map2dView<string, string, number>(container);
+
+        expect(view.getColumn('b')).toEqual([1, 3]);
+        expect(view.getColumn('d')).toEqual([undefined, 4]);
+    });
+
     it('should return an empty array when the row does not exist', () => {
         const container = createBaseContainer();
         const view = new Map2dView<string, string, number>(container);
         view.deleteRow('c');
 
         expect(view.getRow('c')).toEqual([]);
+        expect(view.getColumn('b')).toEqual([1]);
+    });
+
+    it('should return an empty array when the column does not exist', () => {
+        const container = createBaseContainer();
+        const view = new Map2dView<string, string, number>(container);
+        view.deleteColumn('b');
+
+        expect(view.getColumn('b')).toEqual([]);
+        expect(view.getRow('a')).toEqual([undefined]);
+        expect(view.getRow('c')).toEqual([4]);
     });
 
     function createBaseContainer() {
@@ -217,6 +241,12 @@ describe('Map2dView', () => {
         container.set('a', 'b', 1);
         container.set('c', 'b', 3);
         container.set('c', 'd', 4);
+
+        // |   | b | d |
+        // |---|---|---|
+        // | a | 1 |   |
+        // | c | 3 | 4 |
+
         return container;
     }
 });

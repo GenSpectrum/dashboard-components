@@ -114,6 +114,14 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
     initialMeanProportionInterval: { min: number; max: number } = { min: 0.05, max: 0.9 };
 
     /**
+     * The initial 'gaps hidden' setting.
+     * If true, date ranges with not data will be hidden initially; if false, not.
+     * Can be switched with a button in the toolbar.
+     */
+    @property({ type: Boolean })
+    initialGapsHidden: boolean = false;
+
+    /**
      * Whether to use the mutationsOverTime endpoint from LAPIS.
      * If true, use the endpoint, if false, compute component data as before.
      * Eventually, the new endpoint will become the default.
@@ -146,6 +154,7 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
                     lapisDateField={this.lapisDateField}
                     displayMutations={this.displayMutations}
                     initialMeanProportionInterval={this.initialMeanProportionInterval}
+                    initialGapsHidden={this.initialGapsHidden}
                     useNewEndpoint={this.useNewEndpoint}
                     pageSizes={this.pageSizes}
                 />

@@ -59,6 +59,7 @@ const mutationOverTimeSchema = z.object({
         min: z.number().min(0).max(1),
         max: z.number().min(0).max(1),
     }),
+    initialGapsHidden: z.boolean().optional(),
     width: z.string(),
     height: z.string().optional(),
     pageSizes: pageSizesSchema,
@@ -154,6 +155,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         { label: 'Deletions', checked: true, type: 'deletion' },
     ]);
 
+    const [gapsHidden, setGapsHidden] = useState<boolean>(originalComponentProps.initialGapsHidden ?? false);
+
     const filteredData = useMemo(() => {
         return getFilteredMutationOverTimeData({
             data: mutationOverTimeData,
@@ -161,6 +164,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             displayedSegments,
             displayedMutationTypes,
             proportionInterval,
+            gapsHidden,
             mutationFilterValue,
             sequenceType: originalComponentProps.sequenceType,
             annotationProvider,
@@ -205,6 +209,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             setDisplayedMutationTypes={setDisplayedMutationTypes}
             proportionInterval={proportionInterval}
             setProportionInterval={setProportionInterval}
+            gapsHidden={gapsHidden}
+            setGapsHidden={setGapsHidden}
             filteredData={filteredData}
             colorScale={colorScale}
             setColorScale={setColorScale}
@@ -229,6 +235,8 @@ type ToolbarProps = {
     setDisplayedMutationTypes: (types: DisplayedMutationType[]) => void;
     proportionInterval: ProportionInterval;
     setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
+    gapsHidden: boolean;
+    setGapsHidden: Dispatch<StateUpdater<boolean>>;
     filteredData: MutationOverTimeDataMap;
     colorScale: ColorScale;
     setColorScale: Dispatch<StateUpdater<ColorScale>>;
@@ -245,6 +253,8 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     setDisplayedMutationTypes,
     proportionInterval,
     setProportionInterval,
+    gapsHidden,
+    setGapsHidden,
     filteredData,
     colorScale,
     setColorScale,
@@ -255,9 +265,6 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     return (
         <>
             <MutationsOverTimeMutationsFilter setFilterValue={setFilterValue} value={mutationFilterValue} />
-            {activeTab === 'Grid' && (
-                <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
-            )}
             <SegmentSelector
                 displayedSegments={displayedSegments}
                 setDisplayedSegments={setDisplayedSegments}
@@ -273,6 +280,13 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
                 labelPrefix='Mean proportion'
             />
+            <button className='btn btn-xs w-24' onClick={(_) => setGapsHidden((s) => !s)}>
+                {gapsHidden ? 'gaps hidden' : 'hide gaps'}
+                {/* TODO - Add tooltip to explain it */}
+            </button>
+            {activeTab === 'Grid' && (
+                <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
+            )}
             <CsvDownloadButton
                 className='btn btn-xs'
                 getData={() => getDownloadData(filteredData)}
