@@ -267,12 +267,33 @@ async function queryMutationsOverTimeDataDirectEndpoint(
         signal,
     );
 
+    const responseMutations = apiResult.data.mutations.map(parseMutationCode);
+    const mutationEntries: SubstitutionOrDeletionEntry[] = responseMutations.map((mutation, i) => {
+        const numbers = {
+            count: overallMutationData[i].count,
+            proportion: overallMutationData[i].proportion,
+        };
+        if (mutation.type === 'deletion') {
+            return {
+                type: 'deletion',
+                mutation,
+                ...numbers,
+            };
+        } else {
+            return {
+                type: 'substitution',
+                mutation,
+                ...numbers,
+            };
+        }
+    });
+
     const mutationOverTimeData: Map2DContents<Substitution | Deletion, Temporal, MutationOverTimeMutationValue> = {
-        keysFirstAxis: new Map(overallMutationData.map((value) => [value.mutation.code, value.mutation])),
+        keysFirstAxis: new Map(responseMutations.map((mutation) => [mutation.code, mutation])),
         keysSecondAxis: new Map(allDates.map((date) => [date.dateString, date])),
         data: new Map(
-            overallMutationData.map((mutation, i) => [
-                mutation.mutation.code,
+            responseMutations.map((mutation, i) => [
+                mutation.code,
                 new Map(
                     allDates.map((date, j): [string, MutationOverTimeMutationValue] => [
                         date.dateString,
@@ -292,8 +313,20 @@ async function queryMutationsOverTimeDataDirectEndpoint(
 
     return {
         mutationOverTimeData: new BaseMutationOverTimeDataMap(mutationOverTimeData),
-        overallMutationData,
+        overallMutationData: mutationEntries,
     };
+}
+
+function parseMutationCode(code: string): SubstitutionClass | DeletionClass {
+    const maybeDeletion = DeletionClass.parse(code);
+    if (maybeDeletion) {
+        return maybeDeletion;
+    }
+    const maybeSubstitution = SubstitutionClass.parse(code);
+    if (maybeSubstitution) {
+        return maybeSubstitution;
+    }
+    throw Error('Given code is not valid');
 }
 
 /**
