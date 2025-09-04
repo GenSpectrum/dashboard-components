@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.4.0...dashboard-components-v1.4.1) (2025-09-04)
+
+
+### Bug Fixes
+
+* **components:** display correct mutation codes when using incomplete mutation codes in the displayMutations ([#973](https://github.com/GenSpectrum/dashboard-components/issues/973)) ([4595db4](https://github.com/GenSpectrum/dashboard-components/commit/4595db4f011b01a78275dc9c26422a2448437c4a))
+
 ## [1.4.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.3.1...dashboard-components-v1.4.0) (2025-09-02)
 
 
