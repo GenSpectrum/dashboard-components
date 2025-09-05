@@ -95,8 +95,8 @@ const meta: Meta<Required<LineageFilterProps>> = {
         showCounts: {
             control: {
                 type: 'boolean',
-            }
-        }
+            },
+        },
     },
 };
 
@@ -125,7 +125,7 @@ const Template: StoryObj<Required<LineageFilterProps>> = {
         placeholderText: 'Enter a lineage',
         value: 'B.1.1.7',
         width: '100%',
-        showCounts: true
+        showCounts: true,
     },
 };
 
