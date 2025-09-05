@@ -16,6 +16,7 @@ const lineageSelectorPropsSchema = z.object({
     lapisField: z.string().min(1),
     placeholderText: z.string().optional(),
     value: z.string(),
+    showCounts: z.boolean().optional(),
 });
 const lineageFilterInnerPropsSchema = lineageSelectorPropsSchema.extend({
     lapisFilter: lapisFilterSchema,
@@ -46,6 +47,7 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
     placeholderText,
     value,
     lapisFilter,
+    showCounts,
 }) => {
     const lapisUrl = useLapisUrl();
 
@@ -62,7 +64,15 @@ const LineageFilterInner: FunctionComponent<LineageFilterInnerProps> = ({
         throw error;
     }
 
-    return <LineageSelector lapisField={lapisField} value={value} placeholderText={placeholderText} data={data} />;
+    return (
+        <LineageSelector
+            lapisField={lapisField}
+            value={value}
+            placeholderText={placeholderText}
+            data={data}
+            showCounts={showCounts}
+        />
+    );
 };
 
 const LineageSelector = ({
@@ -70,6 +80,7 @@ const LineageSelector = ({
     value,
     placeholderText,
     data,
+    showCounts = true,
 }: LineageSelectorProps & {
     data: LineageItem[];
 }) => {
@@ -88,7 +99,7 @@ const LineageSelector = ({
             formatItemInList={(item: LineageItem) => (
                 <p>
                     <span>{item.lineage}</span>
-                    <span className='ml-2 text-gray-500'>({item.count})</span>
+                    {showCounts && <span className='ml-2 text-gray-500'>({item.count})</span>}
                 </p>
             )}
         />

@@ -92,6 +92,11 @@ const meta: Meta<Required<LineageFilterProps>> = {
                 type: 'object',
             },
         },
+        showCounts: {
+            control: {
+                type: 'boolean',
+            },
+        },
     },
 };
 
@@ -105,6 +110,7 @@ const Template: StoryObj<Required<LineageFilterProps>> = {
                     .lapisField=${args.lapisField}
                     .lapisFilter=${args.lapisFilter}
                     .placeholderText=${args.placeholderText}
+                    .showCounts=${args.showCounts}
                     .value=${args.value}
                     .width=${args.width}
                 ></gs-lineage-filter>
@@ -119,6 +125,7 @@ const Template: StoryObj<Required<LineageFilterProps>> = {
         placeholderText: 'Enter a lineage',
         value: 'B.1.1.7',
         width: '100%',
+        showCounts: true,
     },
 };
 
