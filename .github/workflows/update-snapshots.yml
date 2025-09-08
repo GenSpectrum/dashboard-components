@@ -1,7 +1,11 @@
+# GitHub Action to update Playwright snapshots when a PR is labeled "update-snapshots"
 name: Update Playwright Snapshots
+run-name: "Update Playwright Snapshots for PR #${{ github.event.pull_request.number }}"
 
 on:
-  workflow_dispatch:
+  pull_request:
+    types:
+      - labeled
 
 defaults:
   run:
@@ -10,9 +14,13 @@ defaults:
 jobs:
   storybook_tests:
     name: Run storybook tests
+    if: github.event.label.name == 'update-snapshots'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -66,8 +74,20 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
-          git commit -m "Squash me: Update Playwright snapshots"
-          git push
+          if ! git diff --cached --quiet; then
+            git commit -m "test(components): update Playwright snapshots"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Remove 'update-snapshots' label
+        if: success()
+        run: |
+          curl -s -X DELETE \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels/update-snapshots
 
       - name: Upload Test Results
         if: always()
