@@ -73,6 +73,13 @@ export class LineageFilterComponent extends PreactLitAdapter {
     @property({ type: String })
     width: string = '100%';
 
+    /**
+     * Whether to hide counts behind lineage options in the drop down selection.
+     * Defaults to false.
+     */
+    @property({ type: Boolean })
+    hideCounts: boolean | undefined = false;
+
     override render() {
         return (
             <LineageFilter
@@ -81,6 +88,7 @@ export class LineageFilterComponent extends PreactLitAdapter {
                 placeholderText={this.placeholderText}
                 value={this.value}
                 width={this.width}
+                hideCounts={this.hideCounts}
             />
         );
     }

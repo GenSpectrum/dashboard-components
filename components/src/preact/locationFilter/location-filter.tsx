@@ -16,6 +16,7 @@ const locationSelectorPropsSchema = z.object({
     value: lapisLocationFilterSchema.optional(),
     placeholderText: z.string().optional(),
     fields: z.array(z.string()).min(1),
+    hideCounts: z.boolean().optional(),
 });
 const locationFilterInnerPropsSchema = locationSelectorPropsSchema.extend({ lapisFilter: lapisFilterSchema });
 const locationFilterPropsSchema = locationFilterInnerPropsSchema.extend({
@@ -39,7 +40,13 @@ export const LocationFilter: FunctionComponent<LocationFilterProps> = (props) =>
     );
 };
 
-export const LocationFilterInner = ({ value, fields, placeholderText, lapisFilter }: LocationFilterInnerProps) => {
+export const LocationFilterInner = ({
+    value,
+    fields,
+    placeholderText,
+    lapisFilter,
+    hideCounts,
+}: LocationFilterInnerProps) => {
     const lapis = useLapisUrl();
 
     const { data, error, isLoading } = useQuery(
@@ -54,7 +61,15 @@ export const LocationFilterInner = ({ value, fields, placeholderText, lapisFilte
         throw error;
     }
 
-    return <LocationSelector fields={fields} value={value} placeholderText={placeholderText} locationData={data} />;
+    return (
+        <LocationSelector
+            fields={fields}
+            value={value}
+            placeholderText={placeholderText}
+            locationData={data}
+            hideCounts={hideCounts}
+        />
+    );
 };
 
 type SelectItem = {
@@ -69,6 +84,7 @@ const LocationSelector = ({
     value,
     placeholderText,
     locationData,
+    hideCounts = false,
 }: LocationSelectorProps & {
     locationData: LocationEntry[];
 }) => {
@@ -96,7 +112,7 @@ const LocationSelector = ({
                 <>
                     <p>
                         <span>{item.label}</span>
-                        <span className='ml-2 text-gray-500'>({item.count})</span>
+                        {!hideCounts && <span className='ml-2 text-gray-500'>({item.count})</span>}
                     </p>
                     <span className='text-sm text-gray-500'>{item.description}</span>
                 </>

@@ -74,6 +74,11 @@ const meta: Meta = {
                 type: 'object',
             },
         },
+        hideCounts: {
+            control: {
+                type: 'boolean',
+            },
+        },
     },
 
     args: {
@@ -84,6 +89,7 @@ const meta: Meta = {
         placeholderText: 'Enter a lineage',
         value: 'A.1',
         width: '100%',
+        hideCounts: false,
     },
 };
 
@@ -159,6 +165,24 @@ export const WithNoLapisField: StoryObj<LineageFilterProps> = {
     play: async ({ canvasElement, step }) => {
         await step('expect error message', async () => {
             await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
+        });
+    },
+};
+
+export const WithHideCountsTrue: StoryObj<LineageFilterProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        hideCounts: true,
+    },
+    play: async ({ canvasElement, step }) => {
+        const { canvas } = await prepare(canvasElement, step);
+
+        await step('visible without counts', async () => {
+            const input = await inputField(canvas);
+            await userEvent.clear(input);
+            await userEvent.type(input, 'B.1');
+            await expect(canvas.getByRole('option', { name: 'B.1' })).toBeVisible();
         });
     },
 };

@@ -44,6 +44,7 @@ const meta: Meta<LocationFilterProps> = {
         lapisFilter: {
             age: 18,
         },
+        hideCounts: false,
     },
     argTypes: {
         fields: {
@@ -64,6 +65,11 @@ const meta: Meta<LocationFilterProps> = {
         placeholderText: {
             control: {
                 type: 'text',
+            },
+        },
+        hideCounts: {
+            control: {
+                type: 'boolean',
             },
         },
         lapisFilter: {
@@ -142,6 +148,24 @@ export const OnBlurInput: StoryObj<LocationFilterProps> = {
                     location: undefined,
                 });
             });
+        });
+    },
+};
+
+export const WithHideCountsTrue: StoryObj<LocationFilterProps> = {
+    ...Primary,
+    args: {
+        ...Primary.args,
+        hideCounts: true,
+    },
+    play: async ({ canvasElement, step }) => {
+        const { canvas } = await prepare(canvasElement, step);
+
+        await step('visible without counts', async () => {
+            const input = await inputField(canvas);
+            await userEvent.clear(input);
+            await userEvent.type(input, 'Adajan');
+            await expect(canvas.getByRole('option', { name: 'Adajan Asia / India / Gujarat / Adajan' })).toBeVisible();
         });
     },
 };

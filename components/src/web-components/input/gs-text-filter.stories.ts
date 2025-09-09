@@ -63,6 +63,11 @@ const meta: Meta<Required<TextFilterProps>> = {
                 type: 'text',
             },
         },
+        hideCounts: {
+            control: {
+                type: 'boolean',
+            },
+        },
         value: {
             control: {
                 type: 'text',
@@ -92,6 +97,7 @@ export const Default: StoryObj<Required<TextFilterProps>> = {
                     .lapisField=${args.lapisField}
                     .lapisFilter=${args.lapisFilter}
                     .placeholderText=${args.placeholderText}
+                    .hideCounts=${args.hideCounts}
                     .value=${args.value}
                     .width=${args.width}
                 ></gs-text-filter>
@@ -102,6 +108,7 @@ export const Default: StoryObj<Required<TextFilterProps>> = {
         lapisField: 'host',
         lapisFilter: { country: 'Germany' },
         placeholderText: 'Enter host name',
+        hideCounts: false,
         value: 'Homo sapiens',
         width: '100%',
     },

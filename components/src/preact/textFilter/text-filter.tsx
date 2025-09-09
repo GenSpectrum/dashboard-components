@@ -15,6 +15,7 @@ const textSelectorPropsSchema = z.object({
     lapisField: z.string().min(1),
     placeholderText: z.string().optional(),
     value: z.string().optional(),
+    hideCounts: z.boolean().optional(),
 });
 const textFilterInnerPropsSchema = textSelectorPropsSchema.extend({ lapisFilter: lapisFilterSchema });
 const textFilterPropsSchema = textFilterInnerPropsSchema.extend({
@@ -42,6 +43,7 @@ const TextFilterInner: FunctionComponent<TextFilterInnerProps> = ({
     value,
     lapisField,
     placeholderText,
+    hideCounts,
     lapisFilter,
 }) => {
     const lapis = useLapisUrl();
@@ -59,7 +61,15 @@ const TextFilterInner: FunctionComponent<TextFilterInnerProps> = ({
         throw error;
     }
 
-    return <TextSelector lapisField={lapisField} value={value} placeholderText={placeholderText} data={data} />;
+    return (
+        <TextSelector
+            lapisField={lapisField}
+            value={value}
+            placeholderText={placeholderText}
+            hideCounts={hideCounts}
+            data={data}
+        />
+    );
 };
 
 type SelectItem = {
@@ -72,6 +82,7 @@ const TextSelector = ({
     value,
     placeholderText,
     data,
+    hideCounts = false,
 }: TextSelectorProps & {
     data: SelectItem[];
 }) => {
@@ -89,7 +100,7 @@ const TextSelector = ({
                 return (
                     <p>
                         <span>{item.value}</span>
-                        <span className='ml-2 text-gray-500'>({item.count})</span>
+                        {!hideCounts && <span className='ml-2 text-gray-500'>({item.count})</span>}
                     </p>
                 );
             }}
