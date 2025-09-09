@@ -56,6 +56,11 @@ const meta: Meta = {
                 type: 'text',
             },
         },
+        hideCounts: {
+            control: {
+                type: 'boolean',
+            },
+        },
         lapisFilter: {
             age: 18,
         },
@@ -75,6 +80,7 @@ const Template: StoryObj<LocationFilterProps> = {
                     .value=${args.value}
                     .width=${args.width}
                     placeholderText=${ifDefined(args.placeholderText)}
+                    .hideCounts=${args.hideCounts}
                 ></gs-location-filter>
             </div>
         </gs-app>`;
@@ -87,6 +93,7 @@ const Template: StoryObj<LocationFilterProps> = {
         value: undefined,
         width: '100%',
         placeholderText: 'Enter a location',
+        hideCounts: false,
     },
 };
 

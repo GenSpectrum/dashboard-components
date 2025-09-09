@@ -60,6 +60,13 @@ export class TextFilterComponent extends PreactLitAdapter {
     placeholderText: string | undefined = undefined;
 
     /**
+     * Whether to hide counts behind options in the drop down selection.
+     * Defaults to false.
+     */
+    @property({ type: Boolean })
+    hideCounts: boolean | undefined = false;
+
+    /**
      * The width of the component.
      *
      * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-size-of-components--docs for more information.
@@ -73,6 +80,7 @@ export class TextFilterComponent extends PreactLitAdapter {
                 lapisField={this.lapisField}
                 lapisFilter={this.lapisFilter}
                 placeholderText={this.placeholderText}
+                hideCounts={this.hideCounts}
                 value={this.value}
                 width={this.width}
             />

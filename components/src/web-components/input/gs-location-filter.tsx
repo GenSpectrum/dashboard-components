@@ -74,8 +74,15 @@ export class LocationFilterComponent extends PreactLitAdapter {
     /**
      * The placeholder text to display in the input field, if it is empty.
      */
-    @property()
+    @property({ type: String })
     placeholderText: string | undefined = undefined;
+
+    /**
+     * Whether to hide counts behind location options in the drop down selection.
+     * Defaults to false.
+     */
+    @property({ type: Boolean })
+    hideCounts: boolean | undefined = false;
 
     override render() {
         return (
@@ -85,6 +92,7 @@ export class LocationFilterComponent extends PreactLitAdapter {
                 lapisFilter={this.lapisFilter}
                 width={this.width}
                 placeholderText={this.placeholderText}
+                hideCounts={this.hideCounts}
             />
         );
     }

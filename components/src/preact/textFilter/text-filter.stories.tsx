@@ -46,6 +46,11 @@ const meta: Meta<TextFilterProps> = {
                 type: 'text',
             },
         },
+        hideCounts: {
+            control: {
+                type: 'boolean',
+            },
+        },
         value: {
             control: {
                 type: 'text',
@@ -75,6 +80,7 @@ export const Default: StoryObj<TextFilterProps> = {
     args: {
         lapisField: 'host',
         placeholderText: 'Enter a host name',
+        hideCounts: false,
         value: '',
         width: '100%',
         lapisFilter: {
@@ -128,10 +134,6 @@ export const KeepsPartialInputInInputField: StoryObj<TextFilterProps> = {
             </LapisUrlContextProvider>
         </>
     ),
-    args: {
-        ...Default.args,
-        value: '',
-    },
     play: async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
 
@@ -172,6 +174,29 @@ export const KeepsPartialInputInInputField: StoryObj<TextFilterProps> = {
                     }),
                 );
             });
+        });
+    },
+};
+
+export const WithHideCountsTrue: StoryObj<TextFilterProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        hideCounts: true,
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+        const inputField = () => canvas.getByPlaceholderText('Enter a host name', { exact: false });
+
+        await waitFor(async () => {
+            await expect(inputField()).toHaveValue('');
+        });
+
+        await step('visible without counts', async () => {
+            const input = inputField();
+            await userEvent.clear(input);
+            await userEvent.type(input, 'Homo');
+            await expect(canvas.getByRole('option', { name: 'Homo' })).toBeVisible();
         });
     },
 };
