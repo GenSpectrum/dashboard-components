@@ -115,7 +115,7 @@ function MutationFilterInner({ initialValue }: MutationFilterInnerProps) {
             const values = newInputValue.split(',').map((value) => {
                 return { value, parsedValue: parseAndValidateMutation(value.trim(), referenceGenome) };
             });
-            const validEntries = values.map((value) => value.parsedValue).filter((value) => value !== null);
+            const validEntries = values.map((value) => value.parsedValue).filter((value): value is MutationFilterItem => value !== null);
             const invalidInput = values
                 .filter((value) => value.parsedValue === null)
                 .map((value) => value.value.trim())
@@ -270,7 +270,7 @@ function getInitialState(initialValue: MutationsFilter | string[] | undefined, r
 
     return values
         .map((value) => parseAndValidateMutation(value, referenceGenome))
-        .filter((parsedMutation) => parsedMutation !== null);
+        .filter((parsedMutation): parsedMutation is MutationFilterItem => parsedMutation !== null);
 }
 
 function getPlaceholder(referenceGenome: ReferenceGenome) {
