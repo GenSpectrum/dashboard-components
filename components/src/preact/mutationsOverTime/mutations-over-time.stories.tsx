@@ -35,6 +35,7 @@ const meta: Meta<MutationsOverTimeProps> = {
         lapisDateField: { control: 'text' },
         displayMutations: { control: 'object' },
         initialMeanProportionInterval: { control: 'object' },
+        hideGaps: { control: 'boolean' },
         pageSizes: { control: 'object' },
         useNewEndpoint: { control: 'boolean' },
     },
@@ -81,6 +82,7 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
         granularity: 'month',
         lapisDateField: 'date',
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
+        hideGaps: false,
         useNewEndpoint: false,
         pageSizes: [10, 20, 30, 40, 50],
     },
@@ -110,6 +112,32 @@ export const ShowsNoDataWhenNoMutationsAreInFilter: StoryObj<MutationsOverTimePr
         await waitFor(() => expect(canvas.getByText('No data available.', { exact: false })).toBeVisible(), {
             timeout: 10000,
         });
+    },
+};
+
+export const UsesHideGaps: StoryObj<MutationsOverTimeProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        displayMutations: ['A19722G', 'G21641T', 'T21652-'],
+    },
+    play: async ({ canvas, step }) => {
+        await expectDateRangeOnPage(canvas, '2024-04');
+
+        await step('hide gaps', async () => {
+            const hideGapsButton = canvas.getByRole('button', { name: 'Hide gaps' });
+            await userEvent.click(hideGapsButton);
+        });
+
+        const filteredDateRange = canvas.queryByText('2024-04');
+        await expect(filteredDateRange).not.toBeInTheDocument();
+
+        await step('un-hide gaps', async () => {
+            const hideGapsButton = canvas.getByRole('button', { name: 'Gaps hidden' });
+            await userEvent.click(hideGapsButton);
+        });
+
+        await expectDateRangeOnPage(canvas, '2024-04');
     },
 };
 
@@ -172,6 +200,13 @@ async function expectMutationOnPage(canvas: Canvas, mutation: string) {
     await waitFor(async () => {
         const mutationOnFirstPage = canvas.getAllByText(mutation)[0];
         await expect(mutationOnFirstPage).toBeVisible();
+    });
+}
+
+async function expectDateRangeOnPage(canvas: Canvas, dateRange: string) {
+    await waitFor(async () => {
+        const dateRangeOnFirstPage = canvas.getAllByText(dateRange)[0];
+        await expect(dateRangeOnFirstPage).toBeVisible();
     });
 }
 

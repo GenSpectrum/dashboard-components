@@ -8,6 +8,7 @@ import { getMutationOverTimeMock } from './__mockData__/mockConversion';
 import { noDataWhenNoMutationsAreInFilter } from './__mockData__/noDataWhenNoMutationsAreInFilter';
 import { showsMessageWhenTooManyMutations } from './__mockData__/showsMessageWhenTooManyMutations';
 import { withDisplayMutations } from './__mockData__/withDisplayMutations';
+import { withGaps } from './__mockData__/withGaps';
 
 const mockQueries: { query: MutationOverTimeQuery; response: MutationOverTimeWorkerResponse }[] = [
     getMutationOverTimeMock(defaultMockData),
@@ -16,6 +17,7 @@ const mockQueries: { query: MutationOverTimeQuery; response: MutationOverTimeWor
     getMutationOverTimeMock(withDisplayMutations),
     getMutationOverTimeMock(aminoAcidMutationsByDay),
     getMutationOverTimeMock(noDataWhenNoMutationsAreInFilter),
+    getMutationOverTimeMock(withGaps),
 ];
 
 self.onmessage = async function (event: MessageEvent<MutationOverTimeQuery>) {

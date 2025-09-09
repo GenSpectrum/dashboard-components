@@ -27,6 +27,7 @@ describe('getFilteredMutationOverTimeData', () => {
             ],
             displayedMutationTypes: [],
             proportionInterval,
+            hideGaps: false,
             displayMutations: undefined,
             mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
@@ -62,6 +63,7 @@ describe('getFilteredMutationOverTimeData', () => {
                 },
             ],
             proportionInterval,
+            hideGaps: false,
             mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
@@ -85,6 +87,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            hideGaps: false,
             mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
@@ -108,6 +111,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            hideGaps: false,
             mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
@@ -132,6 +136,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            hideGaps: false,
             mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
@@ -156,6 +161,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            hideGaps: false,
             mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
@@ -178,6 +184,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            hideGaps: false,
             mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
@@ -201,6 +208,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            hideGaps: false,
             mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
@@ -224,6 +232,7 @@ describe('getFilteredMutationOverTimeData', () => {
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
+            hideGaps: false,
             mutationFilterValue: { textFilter: '23T', annotationNameFilter: new Set() },
             sequenceType: 'nucleotide',
             annotationProvider: () => {
@@ -250,6 +259,7 @@ describe('getFilteredMutationOverTimeData', () => {
                 displayedSegments: [],
                 displayedMutationTypes: [],
                 proportionInterval,
+                hideGaps: false,
                 mutationFilterValue: filterValue,
                 sequenceType: 'nucleotide',
                 annotationProvider,
@@ -301,6 +311,28 @@ describe('getFilteredMutationOverTimeData', () => {
                 },
             ]);
         });
+    });
+
+    it('should remove date ranges that have no samples', () => {
+        const { data, overallMutationData } = prepareMutationOverTimeData([someSubstitutionEntry, someDeletionEntry]);
+        data.set(someSubstitution, anotherTemporal, emptyMutationOverTimeValue);
+        data.set(someDeletion, anotherTemporal, emptyMutationOverTimeValue);
+
+        const result = getFilteredMutationOverTimeData({
+            data,
+            overallMutationData,
+            displayedSegments: [],
+            displayedMutationTypes: [],
+            proportionInterval,
+            hideGaps: true,
+            mutationFilterValue: { textFilter: '', annotationNameFilter: new Set() },
+            sequenceType: 'nucleotide',
+            annotationProvider: () => {
+                return [];
+            },
+        });
+
+        expect(result.getSecondAxisKeys()).to.deep.equal([someTemporal]);
     });
 
     const belowFilter = 0.1;
@@ -360,6 +392,12 @@ describe('getFilteredMutationOverTimeData', () => {
         count: 1,
         proportion: inFilter,
         totalCount: 10,
+    } satisfies MutationOverTimeMutationValue;
+    const emptyMutationOverTimeValue = {
+        type: 'value',
+        count: 0,
+        proportion: NaN,
+        totalCount: 0,
     } satisfies MutationOverTimeMutationValue;
 
     function prepareMutationOverTimeData(

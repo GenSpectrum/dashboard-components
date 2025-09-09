@@ -22,6 +22,7 @@ export type GetFilteredMutationOverTimeDataArgs = {
     displayedSegments: DisplayedSegment[];
     displayedMutationTypes: DisplayedMutationType[];
     proportionInterval: { min: number; max: number };
+    hideGaps: boolean;
     displayMutations?: DisplayMutations;
     mutationFilterValue: MutationFilter;
     sequenceType: SequenceType;
@@ -34,6 +35,7 @@ export function getFilteredMutationOverTimeData({
     displayedSegments,
     displayedMutationTypes,
     proportionInterval,
+    hideGaps,
     mutationFilterValue,
     sequenceType,
     annotationProvider,
@@ -62,6 +64,14 @@ export function getFilteredMutationOverTimeData({
     mutationsToFilterOut.forEach((entry) => {
         filteredData.deleteRow(entry.mutation);
     });
+
+    if (hideGaps) {
+        const dateRangesToFilterOut = filteredData.getSecondAxisKeys().filter((dateRange) => {
+            const vals = filteredData.getColumn(dateRange);
+            return !vals.some((v) => v?.type === 'value' && v.totalCount > 0);
+        });
+        dateRangesToFilterOut.forEach((dateRange) => filteredData.deleteColumn(dateRange));
+    }
 
     return filteredData;
 }
