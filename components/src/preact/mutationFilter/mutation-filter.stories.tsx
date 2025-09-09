@@ -27,6 +27,11 @@ const meta: Meta<MutationFilterProps> = {
                 type: 'object',
             },
         },
+        enabledMutationTypes: {
+            control: {
+                type: 'object',
+            },
+        },
     },
 };
 
@@ -36,7 +41,11 @@ export const Default: StoryObj<MutationFilterProps> = {
     render: (args) => (
         <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationFilter width={args.width} initialValue={args.initialValue} />
+                <MutationFilter
+                    width={args.width}
+                    initialValue={args.initialValue}
+                    enabledMutationTypes={args.enabledMutationTypes}
+                />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContextProvider>
     ),
@@ -44,6 +53,8 @@ export const Default: StoryObj<MutationFilterProps> = {
         width: '100%',
     },
 };
+
+// TODO - add some tests in here
 
 export const EnterSingleMutationByClick: StoryObj<MutationFilterProps> = {
     ...Default,
