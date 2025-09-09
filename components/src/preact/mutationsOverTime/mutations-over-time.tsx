@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { type Dispatch, type StateUpdater, useMemo, useState } from 'preact/hooks';
+import { type Dispatch, type StateUpdater, useMemo, useState, useEffect } from 'preact/hooks';
 import z from 'zod';
 
 // @ts-expect-error -- uses subpath imports and vite worker import
@@ -59,6 +59,7 @@ const mutationOverTimeSchema = z.object({
         min: z.number().min(0).max(1),
         max: z.number().min(0).max(1),
     }),
+    hideGaps: z.boolean().optional(),
     width: z.string(),
     height: z.string().optional(),
     pageSizes: pageSizesSchema,
@@ -154,6 +155,10 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         { label: 'Deletions', checked: true, type: 'deletion' },
     ]);
 
+    const [hideGaps, setHideGaps] = useState<boolean>(originalComponentProps.hideGaps ?? false);
+
+    useEffect(() => setHideGaps(originalComponentProps.hideGaps ?? false), [originalComponentProps.hideGaps]);
+
     const filteredData = useMemo(() => {
         return getFilteredMutationOverTimeData({
             data: mutationOverTimeData,
@@ -161,6 +166,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             displayedSegments,
             displayedMutationTypes,
             proportionInterval,
+            hideGaps,
             mutationFilterValue,
             sequenceType: originalComponentProps.sequenceType,
             annotationProvider,
@@ -171,6 +177,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         displayedSegments,
         displayedMutationTypes,
         proportionInterval,
+        hideGaps,
         originalComponentProps.sequenceType,
         mutationFilterValue,
         annotationProvider,
@@ -205,6 +212,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             setDisplayedMutationTypes={setDisplayedMutationTypes}
             proportionInterval={proportionInterval}
             setProportionInterval={setProportionInterval}
+            hideGaps={hideGaps}
+            setHideGaps={setHideGaps}
             filteredData={filteredData}
             colorScale={colorScale}
             setColorScale={setColorScale}
@@ -229,6 +238,8 @@ type ToolbarProps = {
     setDisplayedMutationTypes: (types: DisplayedMutationType[]) => void;
     proportionInterval: ProportionInterval;
     setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
+    hideGaps: boolean;
+    setHideGaps: Dispatch<StateUpdater<boolean>>;
     filteredData: MutationOverTimeDataMap;
     colorScale: ColorScale;
     setColorScale: Dispatch<StateUpdater<ColorScale>>;
@@ -245,6 +256,8 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     setDisplayedMutationTypes,
     proportionInterval,
     setProportionInterval,
+    hideGaps,
+    setHideGaps,
     filteredData,
     colorScale,
     setColorScale,
@@ -255,9 +268,6 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     return (
         <>
             <MutationsOverTimeMutationsFilter setFilterValue={setFilterValue} value={mutationFilterValue} />
-            {activeTab === 'Grid' && (
-                <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
-            )}
             <SegmentSelector
                 displayedSegments={displayedSegments}
                 setDisplayedSegments={setDisplayedSegments}
@@ -273,6 +283,20 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
                 labelPrefix='Mean proportion'
             />
+            <button
+                className='btn btn-xs w-24'
+                onClick={() => setHideGaps((s) => !s)}
+                title={
+                    hideGaps
+                        ? 'Date ranges that do not contain data are excluded from the table'
+                        : 'Exclude date ranges without data from the table'
+                }
+            >
+                {hideGaps ? 'Gaps hidden' : 'Hide gaps'}
+            </button>
+            {activeTab === 'Grid' && (
+                <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
+            )}
             <CsvDownloadButton
                 className='btn btn-xs'
                 getData={() => getDownloadData(filteredData)}

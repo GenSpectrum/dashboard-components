@@ -42,6 +42,7 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
         lapisDateField: { control: 'text' },
         displayMutations: { control: 'object' },
         initialMeanProportionInterval: { control: 'object' },
+        hideGaps: { control: 'boolean' },
         useNewEndpoint: { control: 'boolean' },
         pageSizes: { control: 'object' },
     },
@@ -53,6 +54,7 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
         granularity: 'month',
         lapisDateField: 'date',
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
+        hideGaps: false,
         useNewEndpoint: false,
         pageSizes: [10, 20, 30, 40, 50],
     },
@@ -100,6 +102,7 @@ const Template: StoryObj<Required<MutationsOverTimeProps>> = {
                 .lapisDateField=${args.lapisDateField}
                 .displayMutations=${args.displayMutations}
                 .initialMeanProportionInterval=${args.initialMeanProportionInterval}
+                .hideGaps=${args.hideGaps}
                 .pageSizes=${args.pageSizes}
                 .useNewEndpoint=${args.useNewEndpoint}
             ></gs-mutations-over-time>
@@ -112,12 +115,22 @@ export const ByMonth: StoryObj<Required<MutationsOverTimeProps>> = {
     ...Template,
 };
 
-// This test uses mock data: defaultMockData.ts (through mutationOverTimeWorker.mock.ts)
+// This test uses mock data: withDisplayMutations.ts (through mutationOverTimeWorker.mock.ts)
 export const ByMonthWithFilterOnDisplayedMutations: StoryObj<Required<MutationsOverTimeProps>> = {
     ...Template,
     args: {
         ...Template.args,
         displayMutations: ['A19722G', 'G21641T', 'T21653-'],
+    },
+};
+
+// This test uses mock data: withGaps.ts (through mutationOverTimeWorker.mock.ts)
+export const ByMonthWithFilterOnDisplayedMutationsAndGaps: StoryObj<Required<MutationsOverTimeProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        displayMutations: ['A19722G', 'G21641T', 'T21652-'],
+        hideGaps: true,
     },
 };
 

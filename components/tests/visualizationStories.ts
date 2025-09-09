@@ -148,6 +148,11 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Grid',
     },
     {
+        id: 'visualization-mutations-over-time--by-month-with-filter-on-displayed-mutations-and-gaps',
+        title: 'Mutations over time',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
         id: 'visualization-mutations-over-time--by-week',
         title: 'Mutations over time',
         loadingIsDoneIndicator: 'Grid',
