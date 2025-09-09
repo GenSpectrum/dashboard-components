@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.5.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.4.0...dashboard-components-v1.5.0) (2025-09-09)
+
+
+### Features
+
+* **components:** allow disabling counts ([#977](https://github.com/GenSpectrum/dashboard-components/issues/977)) ([c3527fb](https://github.com/GenSpectrum/dashboard-components/commit/c3527fb6e505d969eba006c45c69fd5c7ac25a27))
+* **components:** mutations over time: allow hiding empty columns ([#974](https://github.com/GenSpectrum/dashboard-components/issues/974)) ([cc51535](https://github.com/GenSpectrum/dashboard-components/commit/cc515357ad00fa2327de6a9959bb150354564c67))
+
+
+### Bug Fixes
+
+* **components:** display correct mutation codes when using incomplete mutation codes in the displayMutations ([#973](https://github.com/GenSpectrum/dashboard-components/issues/973)) ([4595db4](https://github.com/GenSpectrum/dashboard-components/commit/4595db4f011b01a78275dc9c26422a2448437c4a))
+
 ## [1.4.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.3.1...dashboard-components-v1.4.0) (2025-09-02)
 
 
