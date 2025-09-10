@@ -38,6 +38,11 @@ const meta: Meta<MutationFilterProps> = {
             },
         },
         width: { control: 'text' },
+        enabledMutationTypes: {
+            control: {
+                type: 'object',
+            },
+        },
     },
     tags: ['autodocs'],
 };
@@ -48,7 +53,11 @@ const Template: StoryObj<MutationFilterProps> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-(--breakpoint-lg)">
-                <gs-mutation-filter .initialValue=${args.initialValue} .width=${args.width}></gs-mutation-filter>
+                <gs-mutation-filter
+                    .initialValue=${args.initialValue}
+                    .width=${args.width}
+                    .enabledMutationTypes=${args.enabledMutationTypes}
+                ></gs-mutation-filter>
             </div>
         </gs-app>`;
     },
@@ -169,4 +178,6 @@ export const MultiSegmentedReferenceGenomes: StoryObj<MutationFilterProps> = {
             await expect(canvas.getByText('ins_seg2:4:AAA')).toBeVisible();
         });
     },
+
+    // TODO - maybe add a test here also
 };
