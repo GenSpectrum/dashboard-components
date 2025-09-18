@@ -1,6 +1,6 @@
 import { useCombobox, useMultipleSelection } from 'downshift/preact';
 import { type FunctionComponent } from 'preact';
-import { useContext, useMemo, useRef, useState } from 'preact/hooks';
+import { useContext, useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
 import { getExampleMutation } from './ExampleMutation';
@@ -15,8 +15,18 @@ import { ErrorBoundary } from '../components/error-boundary';
 import { UserFacingError } from '../components/error-display';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
 
+const mutationTypeSchema = z.enum([
+    'nucleotideMutations',
+    'aminoAcidMutations',
+    'nucleotideInsertions',
+    'aminoAcidInsertions',
+]);
+
+export type MutationType = z.infer<typeof mutationTypeSchema>;
+
 const mutationFilterInnerPropsSchema = z.object({
     initialValue: z.union([mutationsFilterSchema.optional(), z.array(z.string()), z.undefined()]),
+    enabledMutationTypes: z.array(mutationTypeSchema).optional(),
 });
 
 const mutationFilterPropsSchema = mutationFilterInnerPropsSchema.extend({
@@ -53,7 +63,7 @@ export type MutationFilterItem =
     | SelectedAminoAcidInsertion;
 
 export const MutationFilter: FunctionComponent<MutationFilterProps> = (props) => {
-    const { width, initialValue } = props;
+    const { width, initialValue, enabledMutationTypes } = props;
     return (
         <ErrorBoundary
             size={{ height: '40px', width }}
@@ -62,26 +72,35 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = (props) =>
             componentProps={props}
         >
             <div style={{ width }}>
-                <MutationFilterInner initialValue={initialValue} />
+                <MutationFilterInner initialValue={initialValue} enabledMutationTypes={enabledMutationTypes} />
             </div>
         </ErrorBoundary>
     );
 };
 
-function MutationFilterInner({ initialValue }: MutationFilterInnerProps) {
+function MutationFilterInner({
+    initialValue,
+    enabledMutationTypes = ['nucleotideMutations', 'nucleotideInsertions', 'aminoAcidMutations', 'aminoAcidInsertions'],
+}: MutationFilterInnerProps) {
     const referenceGenome = useContext(ReferenceGenomeContext);
     const filterRef = useRef<HTMLDivElement>(null);
     const [inputValue, setInputValue] = useState('');
 
     const initialState = useMemo(() => {
-        return getInitialState(initialValue, referenceGenome);
-    }, [initialValue, referenceGenome]);
+        return getInitialState(initialValue, referenceGenome, enabledMutationTypes);
+    }, [initialValue, referenceGenome, enabledMutationTypes]);
 
     const [selectedItems, setSelectedItems] = useState<MutationFilterItem[]>(initialState);
     const [itemCandidate, setItemCandidate] = useState<MutationFilterItem | null>(null);
     const [showErrorIndicator, setShowErrorIndicator] = useState(false);
 
     const items = itemCandidate ? [itemCandidate] : [];
+
+    useEffect(() => {
+        setSelectedItems((prevSelectedItems) =>
+            prevSelectedItems.filter((mutFilterItem) => enabledMutationTypes.includes(mutFilterItem.type)),
+        );
+    }, [enabledMutationTypes, selectedItems]);
 
     const fireChangeEvent = (selectedFilters: MutationFilterItem[]) => {
         const detail = mapToMutationFilterStrings(selectedFilters);
@@ -115,16 +134,24 @@ function MutationFilterInner({ initialValue }: MutationFilterInnerProps) {
             const values = newInputValue.split(',').map((value) => {
                 return { value, parsedValue: parseAndValidateMutation(value.trim(), referenceGenome) };
             });
-            const validEntries = values.map((value) => value.parsedValue).filter((value) => value !== null);
-            const invalidInput = values
-                .filter((value) => value.parsedValue === null)
-                .map((value) => value.value.trim())
-                .join(',');
+
+            const validEntries: MutationFilterItem[] = [];
+            const rejected: string[] = [];
+
+            for (const v of values) {
+                if (v.parsedValue === null) {
+                    rejected.push(v.value.trim());
+                } else if (enabledMutationTypes.includes(v.parsedValue.type)) {
+                    validEntries.push(v.parsedValue);
+                } else {
+                    rejected.push(v.parsedValue.value.code);
+                }
+            }
 
             const selectedItemCandidates = [...selectedItems, ...validEntries];
 
             handleSelectedItemsChanged(extractUniqueValues(selectedItemCandidates));
-            setInputValue(invalidInput);
+            setInputValue(rejected.join(','));
             setItemCandidate(null);
         } else {
             setInputValue(newInputValue ?? '');
@@ -133,7 +160,8 @@ function MutationFilterInner({ initialValue }: MutationFilterInnerProps) {
                 const alreadyExists = selectedItems.find(
                     (selectedItem) => selectedItem.value.code === candidate?.value.code,
                 );
-                if (!alreadyExists) {
+                const allowedType = candidate !== null && enabledMutationTypes.includes(candidate.type);
+                if (!alreadyExists && allowedType) {
                     setItemCandidate(candidate);
                 }
             }
@@ -216,7 +244,7 @@ function MutationFilterInner({ initialValue }: MutationFilterInnerProps) {
                 })}
                 <div className='flex gap-0.5 grow p-1'>
                     <input
-                        placeholder={getPlaceholder(referenceGenome)}
+                        placeholder={getPlaceholder(referenceGenome, enabledMutationTypes)}
                         className='w-full focus:outline-none min-w-8'
                         {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
                         onBlur={() => {
@@ -261,7 +289,11 @@ function extractUniqueValues(newSelectedItems: MutationFilterItem[]) {
     return Array.from(uniqueMutationsMap.values());
 }
 
-function getInitialState(initialValue: MutationsFilter | string[] | undefined, referenceGenome: ReferenceGenome) {
+function getInitialState(
+    initialValue: MutationsFilter | string[] | undefined,
+    referenceGenome: ReferenceGenome,
+    enabledMutationTypes: MutationType[],
+) {
     if (initialValue === undefined) {
         return [];
     }
@@ -270,18 +302,27 @@ function getInitialState(initialValue: MutationsFilter | string[] | undefined, r
 
     return values
         .map((value) => parseAndValidateMutation(value, referenceGenome))
-        .filter((parsedMutation) => parsedMutation !== null);
+        .filter((parsedMutation): parsedMutation is MutationFilterItem => parsedMutation !== null)
+        .filter((mutation) => enabledMutationTypes.includes(mutation.type));
 }
 
-function getPlaceholder(referenceGenome: ReferenceGenome) {
-    const nucleotideSubstitution = getExampleMutation(referenceGenome, 'nucleotide', 'substitution');
-    const nucleotideInsertion = getExampleMutation(referenceGenome, 'nucleotide', 'insertion');
-    const aminoAcidSubstitution = getExampleMutation(referenceGenome, 'amino acid', 'substitution');
-    const aminoAcidInsertion = getExampleMutation(referenceGenome, 'amino acid', 'insertion');
+function getPlaceholder(referenceGenome: ReferenceGenome, enabledMutationTypes: MutationType[]) {
+    const exampleMutationList = [];
 
-    const exampleMutations = [nucleotideSubstitution, nucleotideInsertion, aminoAcidSubstitution, aminoAcidInsertion]
-        .filter((example) => example !== '')
-        .join(', ');
+    if (enabledMutationTypes.includes('nucleotideMutations')) {
+        exampleMutationList.push(getExampleMutation(referenceGenome, 'nucleotide', 'substitution'));
+    }
+    if (enabledMutationTypes.includes('nucleotideInsertions')) {
+        exampleMutationList.push(getExampleMutation(referenceGenome, 'nucleotide', 'insertion'));
+    }
+    if (enabledMutationTypes.includes('aminoAcidMutations')) {
+        exampleMutationList.push(getExampleMutation(referenceGenome, 'amino acid', 'substitution'));
+    }
+    if (enabledMutationTypes.includes('aminoAcidInsertions')) {
+        exampleMutationList.push(getExampleMutation(referenceGenome, 'amino acid', 'insertion'));
+    }
+
+    const exampleMutations = exampleMutationList.filter((example) => example !== '').join(', ');
 
     return `Enter a mutation (e.g. ${exampleMutations})`;
 }
