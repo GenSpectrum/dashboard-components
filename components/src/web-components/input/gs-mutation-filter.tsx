@@ -2,7 +2,11 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { ReferenceGenomesAwaiter } from '../../preact/components/ReferenceGenomesAwaiter';
-import { MutationFilter, type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
+import {
+    MutationFilter,
+    type MutationType,
+    type MutationFilterProps,
+} from '../../preact/mutationFilter/mutation-filter';
 import type { MutationsFilter } from '../../types';
 import { type gsEventNames } from '../../utils/gsEventNames';
 import type { Equals, Expect } from '../../utils/typeAssertions';
@@ -52,6 +56,8 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * Fired when:
  * - The user has submitted a valid mutation or insertion
  * - The user has removed a mutation or insertion
+ *
+ * TODO - update this docs description to mention the new field
  */
 @customElement('gs-mutation-filter')
 export class MutationFilterComponent extends PreactLitAdapter {
@@ -81,10 +87,28 @@ export class MutationFilterComponent extends PreactLitAdapter {
     @property({ type: String })
     width: string = '100%';
 
+    /**
+     * Which mutation types this input will accept.
+     * Any (or all) of the following can be given in a list:
+     *
+     * - `nucleotideMutations`
+     * - `nucleotideInsertions`
+     * - `aminoAcidMutations`
+     * - `aminoAcidInsertions`
+     *
+     * By default or if none are given, all types are accepted.
+     */
+    @property({ type: Object })
+    enabledMutationTypes: MutationType[] | undefined = undefined;
+
     override render() {
         return (
             <ReferenceGenomesAwaiter>
-                <MutationFilter initialValue={this.initialValue} width={this.width} />
+                <MutationFilter
+                    initialValue={this.initialValue}
+                    width={this.width}
+                    enabledMutationTypes={this.enabledMutationTypes}
+                />
             </ReferenceGenomesAwaiter>
         );
     }
