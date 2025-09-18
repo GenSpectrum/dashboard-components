@@ -27,6 +27,11 @@ const meta: Meta<MutationFilterProps> = {
                 type: 'object',
             },
         },
+        enabledMutationTypes: {
+            control: {
+                type: 'object',
+            },
+        },
     },
 };
 
@@ -36,7 +41,11 @@ export const Default: StoryObj<MutationFilterProps> = {
     render: (args) => (
         <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationFilter width={args.width} initialValue={args.initialValue} />
+                <MutationFilter
+                    width={args.width}
+                    initialValue={args.initialValue}
+                    enabledMutationTypes={args.enabledMutationTypes}
+                />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContextProvider>
     ),
@@ -214,6 +223,67 @@ export const IgnoresDuplicatesOnPasteCommaSeparatedList: StoryObj<MutationFilter
             nucleotideInsertions: [],
             aminoAcidInsertions: [],
         },
+    },
+};
+
+export const FiltersOutDisabledMutationTypes: StoryObj<MutationFilterProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        enabledMutationTypes: ['nucleotideMutations'],
+    },
+    play: async ({ canvasElement, step }) => {
+        const { canvas, changedListenerMock } = await prepare(canvasElement, step);
+
+        await step('Enters an invalid insertion mutation', async () => {
+            await testNoOptionsExist(canvas, 'ins_23:T');
+            await expect(changedListenerMock).not.toHaveBeenCalled();
+
+            await userEvent.type(inputField(canvas), '{backspace>12/}', INPUT_DELAY);
+        });
+
+        await step('Enters an invalid amino acid mutation', async () => {
+            await testNoOptionsExist(canvas, 'S:A1234T');
+            await expect(changedListenerMock).not.toHaveBeenCalled();
+
+            await userEvent.type(inputField(canvas), '{backspace>12/}', INPUT_DELAY);
+        });
+
+        await step('Enter a comma separated list of invalid mutations', async () => {
+            await pasteMutations(canvas, 'insX, ins_123:AA');
+
+            await waitFor(() =>
+                expect(changedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            nucleotideMutations: [],
+                            aminoAcidMutations: [],
+                            nucleotideInsertions: [],
+                            aminoAcidInsertions: [],
+                        },
+                    }),
+                ),
+            );
+
+            await userEvent.type(inputField(canvas), '{backspace>24/}', INPUT_DELAY);
+        });
+
+        await step('Enter a valid mutation', async () => {
+            await submitMutation(canvas, 'A123T');
+
+            await waitFor(() =>
+                expect(changedListenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            nucleotideMutations: ['A123T'],
+                            aminoAcidMutations: [],
+                            nucleotideInsertions: [],
+                            aminoAcidInsertions: [],
+                        },
+                    }),
+                ),
+            );
+        });
     },
 };
 
