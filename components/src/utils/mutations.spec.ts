@@ -8,6 +8,11 @@ describe('SubstitutionClass', () => {
         expect(SubstitutionClass.parse('seg1:A1T')).deep.equal(new SubstitutionClass('seg1', 'A', 'T', 1));
     });
 
+    it('should be parsed with stop codons', () => {
+        expect(SubstitutionClass.parse('S:*1247T')).deep.equal(new SubstitutionClass('S', '*', 'T', 1247));
+        expect(SubstitutionClass.parse('S:T1247*')).deep.equal(new SubstitutionClass('S', 'T', '*', 1247));
+    });
+
     it('should render to string correctly', () => {
         const substitutions = [
             {
@@ -28,6 +33,10 @@ describe('DeletionClass', () => {
     it('should be parsed from string', () => {
         expect(DeletionClass.parse('A1-')).deep.equal(new DeletionClass(undefined, 'A', 1));
         expect(DeletionClass.parse('seg1:A1-')).deep.equal(new DeletionClass('seg1', 'A', 1));
+    });
+
+    it('should be parsed with stop codons', () => {
+        expect(DeletionClass.parse('seg1:*1-')).deep.equal(new DeletionClass('seg1', '*', 1));
     });
 
     it('should render to string correctly', () => {
@@ -60,5 +69,9 @@ describe('InsertionClass', () => {
     it('should be parsed with the other parts not case insensitive', () => {
         expect(InsertionClass.parse('ins_geNe1:1:A')).deep.equal(new InsertionClass('geNe1', 1, 'A'));
         expect(InsertionClass.parse('ins_1:aA')).deep.equal(new InsertionClass(undefined, 1, 'aA'));
+    });
+
+    it('should be parsed with stop codon insertion', () => {
+        expect(InsertionClass.parse('ins_134:*')).deep.equal(new InsertionClass(undefined, 134, '*'));
     });
 });

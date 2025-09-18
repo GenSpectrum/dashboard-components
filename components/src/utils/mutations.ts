@@ -14,7 +14,7 @@ export interface MutationClass extends Mutation {
 }
 
 export const substitutionRegex =
-    /^((?<segment>[A-Z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Z])?(?<position>\d+)(?<substitutionValue>[A-Z.*])?$/i;
+    /^((?<segment>[A-Z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Z*])?(?<position>\d+)(?<substitutionValue>[A-Z.*])?$/i;
 
 export interface Substitution extends Mutation {
     type: 'substitution';
@@ -68,7 +68,7 @@ export class SubstitutionClass implements MutationClass, Substitution {
     }
 }
 
-export const deletionRegex = /^((?<segment>[A-Z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Z])?(?<position>\d+)(-)$/i;
+export const deletionRegex = /^((?<segment>[A-Z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Z*])?(?<position>\d+)(-)$/i;
 
 export interface Deletion extends Mutation {
     type: 'deletion';
@@ -119,7 +119,7 @@ export class DeletionClass implements MutationClass, Deletion {
 }
 
 export const insertionRegexp =
-    /^ins_((?<segment>[A-Z0-9_-]+)(?=:):)?(?<position>\d+):(?<insertedSymbols>(([A-Z?]|(\.\*))+))$/i;
+    /^ins_((?<segment>[A-Z0-9_-]+)(?=:):)?(?<position>\d+):(?<insertedSymbols>(([A-Z?*]|(\.\*))+))$/i;
 
 export interface Insertion extends Mutation {
     type: 'insertion';

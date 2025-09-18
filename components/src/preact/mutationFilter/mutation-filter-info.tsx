@@ -139,8 +139,8 @@ const AminoAcidMutationsInfo = () => {
             <InfoParagraph>
                 An amino acid mutation has the format <b>&lt;gene&gt;:&lt;position&gt;&lt;base&gt;</b> or
                 <b>&lt;gene&gt;:&lt;base_ref&gt;&lt;position&gt;&lt;base&gt;</b>. A <b>&lt;base&gt;</b> can be one of
-                the 20 amino acid codes. It can also be <b>-</b> for deletion and <b>X</b> for unknown. Example:{' '}
-                <ExampleMutation mutationType='substitution' sequenceType='amino acid' />.
+                the 20 amino acid codes. It can also be <b>*</b> for a stop codon, <b>-</b> for deletion and <b>X</b>{' '}
+                for unknown. Example: <ExampleMutation mutationType='substitution' sequenceType='amino acid' />.
             </InfoParagraph>
             <InfoParagraph>
                 Insertions can be searched for in the same manner, they just need to have <b>ins_</b> appended to the
