@@ -13,6 +13,12 @@ describe('SubstitutionClass', () => {
         expect(SubstitutionClass.parse('S:T1247*')).deep.equal(new SubstitutionClass('S', 'T', '*', 1247));
     });
 
+    it('invalid substitution strings should return null', () => {
+        expect(SubstitutionClass.parse('A1-')).to.equal(null);
+        expect(SubstitutionClass.parse('ins_1:A')).to.equal(null);
+        expect(SubstitutionClass.parse('E34Q')).to.equal(null);
+    });
+
     it('should render to string correctly', () => {
         const substitutions = [
             {

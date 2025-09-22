@@ -13,8 +13,39 @@ export interface MutationClass extends Mutation {
     toString(): string;
 }
 
-export const substitutionRegex =
-    /^((?<segment>[A-Z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Z*])?(?<position>\d+)(?<substitutionValue>[A-Z.*])?$/i;
+// Allowed IUPAC characters: https://www.bioinformatics.org/sms/iupac.html
+const nucleotideChars = 'ACGTRYKMSWBDHVN';
+const aminoAcidChars = 'ACDEFGHIKLMNPQRSTVWY';
+
+const combinedChars = Array.from(new Set(nucleotideChars + aminoAcidChars)).join('');
+
+export const SubstitutionRegex = new RegExp(
+    `^((?<segment>[A-Z0-9_-]+)(?=:):)?` +
+        `(?<valueAtReference>[${combinedChars}*])?` +
+        `(?<position>\\d+)` +
+        `(?<substitutionValue>[${combinedChars}.*])?$`,
+    'i',
+);
+export function buildSubstitutionRegex(type: "nucleotide" | "aminoAcid") {
+  const chars = type === "nucleotide" ? nucleotideChars : aminoAcidChars;
+
+  const segmentPart =
+    type === "aminoAcid"
+      ? `(?<segment>[A-Z0-9_-]+):`
+      : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
+
+  return new RegExp(
+    `^${segmentPart}` +
+      `(?<valueAtReference>[${chars}*])?` +
+      `(?<position>\\d+)` +
+      `(?<substitutionValue>[${chars}.*])?$`,
+    "i"
+  );
+}
+
+
+const nucleotideRegex = buildSubstitutionRegex("nucleotide");
+const aminoAcidRegex = buildSubstitutionRegex("aminoAcid");
 
 export interface Substitution extends Mutation {
     type: 'substitution';
@@ -55,7 +86,9 @@ export class SubstitutionClass implements MutationClass, Substitution {
     }
 
     static parse(mutationStr: string): SubstitutionClass | null {
-        const match = substitutionRegex.exec(mutationStr);
+        const matchNucleotide = nucleotideRegex.exec(mutationStr);
+        const matchAminoAcid = aminoAcidRegex.exec(mutationStr);
+        const match = matchNucleotide || matchAminoAcid;
         if (match?.groups === undefined) {
             return null;
         }
