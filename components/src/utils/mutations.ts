@@ -84,7 +84,7 @@ export class SubstitutionClass implements MutationClass, Substitution {
     static parse(mutationStr: string): SubstitutionClass | null {
         const matchNucleotide = nucleotideRegex.exec(mutationStr);
         const matchAminoAcid = aminoAcidRegex.exec(mutationStr);
-        const match = matchNucleotide || matchAminoAcid;
+        const match = matchNucleotide ?? matchAminoAcid;
         if (match?.groups === undefined) {
             return null;
         }
