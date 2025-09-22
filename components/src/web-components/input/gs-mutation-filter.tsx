@@ -2,7 +2,11 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { ReferenceGenomesAwaiter } from '../../preact/components/ReferenceGenomesAwaiter';
-import { MutationFilter, type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
+import {
+    MutationFilter,
+    type MutationType,
+    type MutationFilterProps,
+} from '../../preact/mutationFilter/mutation-filter';
 import type { MutationsFilter } from '../../types';
 import { type gsEventNames } from '../../utils/gsEventNames';
 import type { Equals, Expect } from '../../utils/typeAssertions';
@@ -43,6 +47,11 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  *
  * Examples: `ins_S:614:G`, `ins_614:G`
  *
+ * ### Enabled mutation types
+ *
+ * After parsing, the entered mutation/insertion also has to match the enabled mutation types,
+ * which are configured with the `enabledMutationTypes` attribute.
+ *
  * @fires {CustomEvent<{
  *      nucleotideMutations: string[],
  *      aminoAcidMutations: string[],
@@ -81,10 +90,28 @@ export class MutationFilterComponent extends PreactLitAdapter {
     @property({ type: String })
     width: string = '100%';
 
+    /**
+     * Which mutation types this input will accept.
+     * Any (or all) of the following can be given in a list:
+     *
+     * - `nucleotideMutations`
+     * - `nucleotideInsertions`
+     * - `aminoAcidMutations`
+     * - `aminoAcidInsertions`
+     *
+     * By default or if none are given, all types are accepted.
+     */
+    @property({ type: Object })
+    enabledMutationTypes: MutationType[] | undefined = undefined;
+
     override render() {
         return (
             <ReferenceGenomesAwaiter>
-                <MutationFilter initialValue={this.initialValue} width={this.width} />
+                <MutationFilter
+                    initialValue={this.initialValue}
+                    width={this.width}
+                    enabledMutationTypes={this.enabledMutationTypes}
+                />
             </ReferenceGenomesAwaiter>
         );
     }

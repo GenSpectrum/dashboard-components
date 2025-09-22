@@ -38,6 +38,11 @@ const meta: Meta<MutationFilterProps> = {
             },
         },
         width: { control: 'text' },
+        enabledMutationTypes: {
+            control: {
+                type: 'object',
+            },
+        },
     },
     tags: ['autodocs'],
 };
@@ -48,7 +53,11 @@ const Template: StoryObj<MutationFilterProps> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-(--breakpoint-lg)">
-                <gs-mutation-filter .initialValue=${args.initialValue} .width=${args.width}></gs-mutation-filter>
+                <gs-mutation-filter
+                    .initialValue=${args.initialValue}
+                    .width=${args.width}
+                    .enabledMutationTypes=${args.enabledMutationTypes}
+                ></gs-mutation-filter>
             </div>
         </gs-app>`;
     },
@@ -100,6 +109,25 @@ export const FiresFilterChangedEvent: StoryObj<MutationFilterProps> = {
                     }),
                 ),
             );
+        });
+    },
+};
+
+export const RestrictEnabledMutationTypes: StoryObj<MutationFilterProps> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        enabledMutationTypes: ['nucleotideMutations', 'aminoAcidMutations'],
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
+
+        const inputField = () => canvas.getByPlaceholderText('Enter a mutation', { exact: false });
+
+        await waitFor(async () => {
+            const placeholderText = inputField().getAttribute('placeholder');
+
+            await expect(placeholderText).toEqual('Enter a mutation (e.g. 23T, E:57Q)');
         });
     },
 };
