@@ -26,26 +26,22 @@ export const SubstitutionRegex = new RegExp(
         `(?<substitutionValue>[${combinedChars}.*])?$`,
     'i',
 );
-export function buildSubstitutionRegex(type: "nucleotide" | "aminoAcid") {
-  const chars = type === "nucleotide" ? nucleotideChars : aminoAcidChars;
+export function buildSubstitutionRegex(type: 'nucleotide' | 'aminoAcid') {
+    const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
 
-  const segmentPart =
-    type === "aminoAcid"
-      ? `(?<segment>[A-Z0-9_-]+):`
-      : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
+    const segmentPart = type === 'aminoAcid' ? `(?<segment>[A-Z0-9_-]+):` : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
 
-  return new RegExp(
-    `^${segmentPart}` +
-      `(?<valueAtReference>[${chars}*])?` +
-      `(?<position>\\d+)` +
-      `(?<substitutionValue>[${chars}.*])?$`,
-    "i"
-  );
+    return new RegExp(
+        `^${segmentPart}` +
+            `(?<valueAtReference>[${chars}*])?` +
+            `(?<position>\\d+)` +
+            `(?<substitutionValue>[${chars}.*])?$`,
+        'i',
+    );
 }
 
-
-const nucleotideRegex = buildSubstitutionRegex("nucleotide");
-const aminoAcidRegex = buildSubstitutionRegex("aminoAcid");
+const nucleotideRegex = buildSubstitutionRegex('nucleotide');
+const aminoAcidRegex = buildSubstitutionRegex('aminoAcid');
 
 export interface Substitution extends Mutation {
     type: 'substitution';
