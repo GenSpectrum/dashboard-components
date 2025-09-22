@@ -149,7 +149,7 @@ const CDSBars: FunctionComponent<CDSBarsProps> = (componentProps) => {
                                 if (start >= end) {
                                     return null;
                                 }
-                                if ((zoomEnd - zoomStart) <= 2) {
+                                if (zoomEnd - zoomStart <= 2) {
                                     return null;
                                 }
 
