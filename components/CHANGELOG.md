@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.6.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.5.0...dashboard-components-v1.6.0) (2025-09-22)
+
+
+### Features
+
+* **components:** mutation filter: Make type of mutations configurable ([#980](https://github.com/GenSpectrum/dashboard-components/issues/980)) ([14decd6](https://github.com/GenSpectrum/dashboard-components/commit/14decd68d24a9e202f91829b82bebc091e3f74c3))
+
+
+### Bug Fixes
+
+* **components:** fix parsing of stop codons in mutation codes ([#987](https://github.com/GenSpectrum/dashboard-components/issues/987)) ([0bb5b28](https://github.com/GenSpectrum/dashboard-components/commit/0bb5b28019aeef1ac66abd7e62ed9de411b949f7))
+
 ## [1.5.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.4.0...dashboard-components-v1.5.0) (2025-09-09)
 
 
