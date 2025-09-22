@@ -326,7 +326,7 @@ function parseMutationCode(code: string): SubstitutionClass | DeletionClass {
     if (maybeSubstitution) {
         return maybeSubstitution;
     }
-    throw Error('Given code is not valid');
+    throw Error(`Given code is not valid: ${code}`);
 }
 
 /**
