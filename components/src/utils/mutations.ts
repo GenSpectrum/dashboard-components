@@ -31,8 +31,8 @@ function buildSubstitutionRegex(type: 'nucleotide' | 'aminoAcid') {
     );
 }
 
-const nucleotideRegex = buildSubstitutionRegex('nucleotide');
-const aminoAcidRegex = buildSubstitutionRegex('aminoAcid');
+const nucleotideSubstitutionRegex = buildSubstitutionRegex('nucleotide');
+const aminoAcidSubstitutionRegex = buildSubstitutionRegex('aminoAcid');
 
 export interface Substitution extends Mutation {
     type: 'substitution';
@@ -73,8 +73,8 @@ export class SubstitutionClass implements MutationClass, Substitution {
     }
 
     static parse(mutationStr: string): SubstitutionClass | null {
-        const matchNucleotide = nucleotideRegex.exec(mutationStr);
-        const matchAminoAcid = aminoAcidRegex.exec(mutationStr);
+        const matchNucleotide = nucleotideSubstitutionRegex.exec(mutationStr);
+        const matchAminoAcid = aminoAcidSubstitutionRegex.exec(mutationStr);
         const match = matchNucleotide ?? matchAminoAcid;
         if (match?.groups === undefined) {
             return null;
@@ -88,7 +88,16 @@ export class SubstitutionClass implements MutationClass, Substitution {
     }
 }
 
-export const deletionRegex = /^((?<segment>[A-Z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Z*])?(?<position>\d+)(-)$/i;
+function buildDeletionRegex(type: 'nucleotide' | 'aminoAcid') {
+    const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
+
+    const segmentPart = type === 'aminoAcid' ? `(?<segment>[A-Z0-9_-]+):` : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
+
+    return new RegExp(`^${segmentPart}` + `(?<valueAtReference>[${chars}*])?` + `(?<position>\\d+)` + `(-)?$`, 'i');
+}
+
+const nucleotideDeletionRegex = buildDeletionRegex('nucleotide');
+const aminoAcidDeletionRegex = buildDeletionRegex('aminoAcid');
 
 export interface Deletion extends Mutation {
     type: 'deletion';
@@ -125,7 +134,9 @@ export class DeletionClass implements MutationClass, Deletion {
     }
 
     static parse(mutationStr: string): DeletionClass | null {
-        const match = deletionRegex.exec(mutationStr);
+        const matchNucleotide = nucleotideDeletionRegex.exec(mutationStr);
+        const matchAminoAcid = aminoAcidDeletionRegex.exec(mutationStr);
+        const match = matchNucleotide ?? matchAminoAcid;
         if (match?.groups === undefined) {
             return null;
         }
@@ -138,8 +149,19 @@ export class DeletionClass implements MutationClass, Deletion {
     }
 }
 
-export const insertionRegexp =
-    /^ins_((?<segment>[A-Z0-9_-]+)(?=:):)?(?<position>\d+):(?<insertedSymbols>(([A-Z?*]|(\.\*))+))$/i;
+function buildInsertionRegex(type: 'nucleotide' | 'aminoAcid') {
+    const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
+
+    const segmentPart = type === 'aminoAcid' ? `(?<segment>[A-Z0-9_-]+):` : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
+
+    return new RegExp(
+        `^ins_${segmentPart}` + `(?<position>\\d+)` + `:(?<insertedSymbols>(([${chars}?*]|(\.\*))+))$`,
+        'i',
+    );
+}
+
+const nucleotideInsertionRegex = buildInsertionRegex('nucleotide');
+const aminoAcidInsertionRegex = buildInsertionRegex('aminoAcid');
 
 export interface Insertion extends Mutation {
     type: 'insertion';
@@ -174,7 +196,9 @@ export class InsertionClass implements MutationClass {
     }
 
     static parse(mutationStr: string): InsertionClass | null {
-        const match = insertionRegexp.exec(mutationStr);
+        const matchNucleotide = nucleotideInsertionRegex.exec(mutationStr);
+        const matchAminoAcid = aminoAcidInsertionRegex.exec(mutationStr);
+        const match = matchNucleotide ?? matchAminoAcid;
         if (match?.groups === undefined) {
             return null;
         }
