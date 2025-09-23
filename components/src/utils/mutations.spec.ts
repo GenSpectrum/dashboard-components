@@ -6,6 +6,7 @@ describe('SubstitutionClass', () => {
     it('should be parsed from string', () => {
         expect(SubstitutionClass.parse('A1T')).deep.equal(new SubstitutionClass(undefined, 'A', 'T', 1));
         expect(SubstitutionClass.parse('seg1:A1T')).deep.equal(new SubstitutionClass('seg1', 'A', 'T', 1));
+        expect(SubstitutionClass.parse('1')).deep.equal(new SubstitutionClass(undefined, undefined, undefined, 1));
     });
 
     it('should be parsed with stop codons', () => {
@@ -45,6 +46,12 @@ describe('DeletionClass', () => {
         expect(DeletionClass.parse('seg1:*1-')).deep.equal(new DeletionClass('seg1', '*', 1));
     });
 
+    it('invalid deletion strings should return null', () => {
+        expect(DeletionClass.parse('seg1:A1T')).to.equal(null);
+        expect(DeletionClass.parse('ins_1:A')).to.equal(null);
+        expect(DeletionClass.parse('E34-')).to.equal(null);
+    });
+
     it('should render to string correctly', () => {
         const substitutions = [
             {
@@ -79,5 +86,11 @@ describe('InsertionClass', () => {
 
     it('should be parsed with stop codon insertion', () => {
         expect(InsertionClass.parse('ins_134:*')).deep.equal(new InsertionClass(undefined, 134, '*'));
+    });
+
+    it('invalid insertion strings should return null', () => {
+        expect(InsertionClass.parse('A1-')).to.equal(null);
+        expect(InsertionClass.parse('seg1:A1T')).to.equal(null);
+        expect(InsertionClass.parse('ins_34:Q')).to.equal(null);
     });
 });

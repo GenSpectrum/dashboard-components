@@ -17,13 +17,15 @@ export interface MutationClass extends Mutation {
 const nucleotideChars = 'ACGTRYKMSWBDHVN';
 const aminoAcidChars = 'ACDEFGHIKLMNPQRSTVWY';
 
+function segmentPart(type: 'nucleotide' | 'aminoAcid') {
+    return type === 'aminoAcid' ? `(?<segment>[A-Z0-9_-]+):` : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
+}
+
 function buildSubstitutionRegex(type: 'nucleotide' | 'aminoAcid') {
     const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
 
-    const segmentPart = type === 'aminoAcid' ? `(?<segment>[A-Z0-9_-]+):` : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
-
     return new RegExp(
-        `^${segmentPart}` +
+        `^${segmentPart(type)}` +
             `(?<valueAtReference>[${chars}*])?` +
             `(?<position>\\d+)` +
             `(?<substitutionValue>[${chars}.*])?$`,
@@ -91,9 +93,10 @@ export class SubstitutionClass implements MutationClass, Substitution {
 function buildDeletionRegex(type: 'nucleotide' | 'aminoAcid') {
     const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
 
-    const segmentPart = type === 'aminoAcid' ? `(?<segment>[A-Z0-9_-]+):` : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
-
-    return new RegExp(`^${segmentPart}` + `(?<valueAtReference>[${chars}*])?` + `(?<position>\\d+)` + `(-)?$`, 'i');
+    return new RegExp(
+        `^${segmentPart(type)}` + `(?<valueAtReference>[${chars}*])?` + `(?<position>\\d+)` + `(-)$`,
+        'i',
+    );
 }
 
 const nucleotideDeletionRegex = buildDeletionRegex('nucleotide');
@@ -152,10 +155,10 @@ export class DeletionClass implements MutationClass, Deletion {
 function buildInsertionRegex(type: 'nucleotide' | 'aminoAcid') {
     const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
 
-    const segmentPart = type === 'aminoAcid' ? `(?<segment>[A-Z0-9_-]+):` : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
+    const wildcardToken = `(?:\\.\\*)`;
 
     return new RegExp(
-        `^ins_${segmentPart}` + `(?<position>\\d+)` + `:(?<insertedSymbols>(([${chars}?*]|(\.\*))+))$`,
+        `^ins_${segmentPart(type)}(?<position>\\d+):(?<insertedSymbols>(?:[${chars}?*]|${wildcardToken})+)$`,
         'i',
     );
 }
