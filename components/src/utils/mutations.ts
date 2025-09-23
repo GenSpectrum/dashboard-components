@@ -17,16 +17,7 @@ export interface MutationClass extends Mutation {
 const nucleotideChars = 'ACGTRYKMSWBDHVN';
 const aminoAcidChars = 'ACDEFGHIKLMNPQRSTVWY';
 
-const combinedChars = Array.from(new Set(nucleotideChars + aminoAcidChars)).join('');
-
-export const SubstitutionRegex = new RegExp(
-    `^((?<segment>[A-Z0-9_-]+)(?=:):)?` +
-        `(?<valueAtReference>[${combinedChars}*])?` +
-        `(?<position>\\d+)` +
-        `(?<substitutionValue>[${combinedChars}.*])?$`,
-    'i',
-);
-export function buildSubstitutionRegex(type: 'nucleotide' | 'aminoAcid') {
+function buildSubstitutionRegex(type: 'nucleotide' | 'aminoAcid') {
     const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
 
     const segmentPart = type === 'aminoAcid' ? `(?<segment>[A-Z0-9_-]+):` : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
