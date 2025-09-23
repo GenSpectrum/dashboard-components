@@ -20,9 +20,16 @@ function getMaxTickNumber(fullWidth: number): number {
 }
 
 function getTicks(zoomStart: number, zoomEnd: number, fullWidth: number) {
-    const maxTickNumber = getMaxTickNumber(fullWidth);
+    let maxTickNumber = getMaxTickNumber(fullWidth);
     const length = zoomEnd - zoomStart;
-    const minTickSize = length / maxTickNumber;
+    let minTickSize = length / maxTickNumber;
+    if (minTickSize <= 1) {
+        maxTickNumber = MIN_TICK_NUMBER;
+        minTickSize = length / maxTickNumber;
+    }
+    if (minTickSize <= 1) {
+        return [];
+    }
     let maxTickSize = 10 ** Math.round(Math.log(minTickSize) / Math.log(10));
     const numTicks = Math.round(length / maxTickSize);
     if (numTicks > maxTickNumber) {
@@ -141,6 +148,9 @@ const CDSBars: FunctionComponent<CDSBarsProps> = (componentProps) => {
                                 const end = Math.min(position.end, zoomEnd);
 
                                 if (start >= end) {
+                                    return null;
+                                }
+                                if (zoomEnd - zoomStart <= 2) {
                                     return null;
                                 }
 
