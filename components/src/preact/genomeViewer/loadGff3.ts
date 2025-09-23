@@ -22,6 +22,12 @@ export async function loadGff3(gff3Source: string, genomeLength: number | undefi
     }
 
     const response = await fetch(gff3Source);
+    if (!response.ok) {
+        throw new UserFacingError(
+            'GFF3 download failed',
+            `Server returned ${response.status} ${response.statusText} for ${response.url}`,
+        );
+    }
     const content = await response.text();
     genomeLength ??= loadGenomeLength(content);
     return { features: parseGFF3(content), length: genomeLength };
