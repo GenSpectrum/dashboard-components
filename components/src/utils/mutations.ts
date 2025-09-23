@@ -13,8 +13,28 @@ export interface MutationClass extends Mutation {
     toString(): string;
 }
 
-export const substitutionRegex =
-    /^((?<segment>[A-Z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Z*])?(?<position>\d+)(?<substitutionValue>[A-Z.*])?$/i;
+// Allowed IUPAC characters: https://www.bioinformatics.org/sms/iupac.html
+const nucleotideChars = 'ACGTRYKMSWBDHVN';
+const aminoAcidChars = 'ACDEFGHIKLMNPQRSTVWY';
+
+function segmentPart(type: 'nucleotide' | 'aminoAcid') {
+    return type === 'aminoAcid' ? `(?<segment>[A-Z0-9_-]+):` : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
+}
+
+function buildSubstitutionRegex(type: 'nucleotide' | 'aminoAcid') {
+    const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
+
+    return new RegExp(
+        `^${segmentPart(type)}` +
+            `(?<valueAtReference>[${chars}*])?` +
+            `(?<position>\\d+)` +
+            `(?<substitutionValue>[${chars}.*])?$`,
+        'i',
+    );
+}
+
+const nucleotideSubstitutionRegex = buildSubstitutionRegex('nucleotide');
+const aminoAcidSubstitutionRegex = buildSubstitutionRegex('aminoAcid');
 
 export interface Substitution extends Mutation {
     type: 'substitution';
@@ -55,7 +75,9 @@ export class SubstitutionClass implements MutationClass, Substitution {
     }
 
     static parse(mutationStr: string): SubstitutionClass | null {
-        const match = substitutionRegex.exec(mutationStr);
+        const matchNucleotide = nucleotideSubstitutionRegex.exec(mutationStr);
+        const matchAminoAcid = aminoAcidSubstitutionRegex.exec(mutationStr);
+        const match = matchNucleotide ?? matchAminoAcid;
         if (match?.groups === undefined) {
             return null;
         }
@@ -68,7 +90,17 @@ export class SubstitutionClass implements MutationClass, Substitution {
     }
 }
 
-export const deletionRegex = /^((?<segment>[A-Z0-9_-]+)(?=:):)?(?<valueAtReference>[A-Z*])?(?<position>\d+)(-)$/i;
+function buildDeletionRegex(type: 'nucleotide' | 'aminoAcid') {
+    const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
+
+    return new RegExp(
+        `^${segmentPart(type)}` + `(?<valueAtReference>[${chars}*])?` + `(?<position>\\d+)` + `(-)$`,
+        'i',
+    );
+}
+
+const nucleotideDeletionRegex = buildDeletionRegex('nucleotide');
+const aminoAcidDeletionRegex = buildDeletionRegex('aminoAcid');
 
 export interface Deletion extends Mutation {
     type: 'deletion';
@@ -105,7 +137,9 @@ export class DeletionClass implements MutationClass, Deletion {
     }
 
     static parse(mutationStr: string): DeletionClass | null {
-        const match = deletionRegex.exec(mutationStr);
+        const matchNucleotide = nucleotideDeletionRegex.exec(mutationStr);
+        const matchAminoAcid = aminoAcidDeletionRegex.exec(mutationStr);
+        const match = matchNucleotide ?? matchAminoAcid;
         if (match?.groups === undefined) {
             return null;
         }
@@ -118,8 +152,19 @@ export class DeletionClass implements MutationClass, Deletion {
     }
 }
 
-export const insertionRegexp =
-    /^ins_((?<segment>[A-Z0-9_-]+)(?=:):)?(?<position>\d+):(?<insertedSymbols>(([A-Z?*]|(\.\*))+))$/i;
+function buildInsertionRegex(type: 'nucleotide' | 'aminoAcid') {
+    const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
+
+    const wildcardToken = `(?:\\.\\*)`;
+
+    return new RegExp(
+        `^ins_${segmentPart(type)}(?<position>\\d+):(?<insertedSymbols>(?:[${chars}?*]|${wildcardToken})+)$`,
+        'i',
+    );
+}
+
+const nucleotideInsertionRegex = buildInsertionRegex('nucleotide');
+const aminoAcidInsertionRegex = buildInsertionRegex('aminoAcid');
 
 export interface Insertion extends Mutation {
     type: 'insertion';
@@ -154,7 +199,9 @@ export class InsertionClass implements MutationClass {
     }
 
     static parse(mutationStr: string): InsertionClass | null {
-        const match = insertionRegexp.exec(mutationStr);
+        const matchNucleotide = nucleotideInsertionRegex.exec(mutationStr);
+        const matchAminoAcid = aminoAcidInsertionRegex.exec(mutationStr);
+        const match = matchNucleotide ?? matchAminoAcid;
         if (match?.groups === undefined) {
             return null;
         }

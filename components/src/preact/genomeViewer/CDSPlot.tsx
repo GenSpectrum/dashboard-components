@@ -78,6 +78,7 @@ const XAxis: FunctionComponent<XAxisProps> = (componentProps) => {
                             width: `calc(${widthPercent}% - 1px)`,
                         }}
                     >
+                        {/* TODO(#994): determine if text can be shown based on text width */}
                         {width >= averageWidth ? tick.start : ''}
                     </div>
                 );
