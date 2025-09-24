@@ -1,9 +1,9 @@
-import { type MutationType, type SequenceType } from '../types';
+import { type SubstitutionOrDeletionOrInsertion, type SequenceType } from '../types';
 
 export interface Mutation {
     readonly position: number;
     readonly code: string;
-    readonly type: MutationType;
+    readonly type: SubstitutionOrDeletionOrInsertion;
     readonly segment?: string;
 }
 

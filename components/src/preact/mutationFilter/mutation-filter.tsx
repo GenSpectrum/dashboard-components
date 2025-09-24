@@ -7,22 +7,19 @@ import { getExampleMutation } from './ExampleMutation';
 import { MutationFilterInfo } from './mutation-filter-info';
 import { parseAndValidateMutation } from './parseAndValidateMutation';
 import { type ReferenceGenome } from '../../lapisApi/ReferenceGenome';
-import { type MutationsFilter, mutationsFilterSchema } from '../../types';
+import {
+    type MutationsFilter,
+    mutationsFilterSchema,
+    mutationType,
+    mutationTypeSchema,
+    type MutationType,
+} from '../../types';
 import { gsEventNames } from '../../utils/gsEventNames';
 import { type DeletionClass, type InsertionClass, type SubstitutionClass } from '../../utils/mutations';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { ErrorBoundary } from '../components/error-boundary';
 import { UserFacingError } from '../components/error-display';
 import { singleGraphColorRGBByName } from '../shared/charts/colors';
-
-const mutationTypeSchema = z.enum([
-    'nucleotideMutations',
-    'aminoAcidMutations',
-    'nucleotideInsertions',
-    'aminoAcidInsertions',
-]);
-
-export type MutationType = z.infer<typeof mutationTypeSchema>;
 
 const mutationFilterInnerPropsSchema = z.object({
     initialValue: z.union([mutationsFilterSchema.optional(), z.array(z.string()), z.undefined()]),
@@ -37,22 +34,22 @@ export type MutationFilterInnerProps = z.infer<typeof mutationFilterInnerPropsSc
 export type MutationFilterProps = z.infer<typeof mutationFilterPropsSchema>;
 
 type SelectedNucleotideMutation = {
-    type: 'nucleotideMutations';
+    type: typeof mutationType.nucleotideMutations;
     value: SubstitutionClass | DeletionClass;
 };
 
 type SelectedAminoAcidMutation = {
-    type: 'aminoAcidMutations';
+    type: typeof mutationType.aminoAcidMutations;
     value: SubstitutionClass | DeletionClass;
 };
 
 type SelectedNucleotideInsertion = {
-    type: 'nucleotideInsertions';
+    type: typeof mutationType.nucleotideInsertions;
     value: InsertionClass;
 };
 
 type SelectedAminoAcidInsertion = {
-    type: 'aminoAcidInsertions';
+    type: typeof mutationType.aminoAcidInsertions;
     value: InsertionClass;
 };
 
@@ -80,7 +77,7 @@ export const MutationFilter: FunctionComponent<MutationFilterProps> = (props) =>
 
 function MutationFilterInner({
     initialValue,
-    enabledMutationTypes = ['nucleotideMutations', 'nucleotideInsertions', 'aminoAcidMutations', 'aminoAcidInsertions'],
+    enabledMutationTypes = Object.values(mutationType),
 }: MutationFilterInnerProps) {
     const referenceGenome = useContext(ReferenceGenomeContext);
     const filterRef = useRef<HTMLDivElement>(null);
@@ -309,16 +306,16 @@ function getInitialState(
 function getPlaceholder(referenceGenome: ReferenceGenome, enabledMutationTypes: MutationType[]) {
     const exampleMutationList = [];
 
-    if (enabledMutationTypes.includes('nucleotideMutations')) {
+    if (enabledMutationTypes.includes(mutationType.nucleotideMutations)) {
         exampleMutationList.push(getExampleMutation(referenceGenome, 'nucleotide', 'substitution'));
     }
-    if (enabledMutationTypes.includes('nucleotideInsertions')) {
+    if (enabledMutationTypes.includes(mutationType.nucleotideInsertions)) {
         exampleMutationList.push(getExampleMutation(referenceGenome, 'nucleotide', 'insertion'));
     }
-    if (enabledMutationTypes.includes('aminoAcidMutations')) {
+    if (enabledMutationTypes.includes(mutationType.aminoAcidMutations)) {
         exampleMutationList.push(getExampleMutation(referenceGenome, 'amino acid', 'substitution'));
     }
-    if (enabledMutationTypes.includes('aminoAcidInsertions')) {
+    if (enabledMutationTypes.includes(mutationType.aminoAcidInsertions)) {
         exampleMutationList.push(getExampleMutation(referenceGenome, 'amino acid', 'insertion'));
     }
 
@@ -329,13 +326,13 @@ function getPlaceholder(referenceGenome: ReferenceGenome, enabledMutationTypes: 
 
 const backgroundColorMap = (data: MutationFilterItem, alpha: number = 0.4) => {
     switch (data.type) {
-        case 'nucleotideMutations':
+        case mutationType.nucleotideMutations:
             return singleGraphColorRGBByName('green', alpha);
-        case 'aminoAcidMutations':
+        case mutationType.aminoAcidMutations:
             return singleGraphColorRGBByName('teal', alpha);
-        case 'nucleotideInsertions':
+        case mutationType.nucleotideInsertions:
             return singleGraphColorRGBByName('indigo', alpha);
-        case 'aminoAcidInsertions':
+        case mutationType.aminoAcidInsertions:
             return singleGraphColorRGBByName('purple', alpha);
     }
 };
@@ -370,13 +367,13 @@ function mapToMutationFilterStrings(selectedFilters: MutationFilterItem[]) {
     return selectedFilters.reduce<MutationsFilter>(
         (acc, filter) => {
             switch (filter.type) {
-                case 'nucleotideMutations':
+                case mutationType.nucleotideMutations:
                     return { ...acc, nucleotideMutations: [...acc.nucleotideMutations, filter.value.toString()] };
-                case 'aminoAcidMutations':
+                case mutationType.aminoAcidMutations:
                     return { ...acc, aminoAcidMutations: [...acc.aminoAcidMutations, filter.value.toString()] };
-                case 'nucleotideInsertions':
+                case mutationType.nucleotideInsertions:
                     return { ...acc, nucleotideInsertions: [...acc.nucleotideInsertions, filter.value.toString()] };
-                case 'aminoAcidInsertions':
+                case mutationType.aminoAcidInsertions:
                     return { ...acc, aminoAcidInsertions: [...acc.aminoAcidInsertions, filter.value.toString()] };
             }
         },

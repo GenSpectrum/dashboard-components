@@ -12,6 +12,8 @@ export {
     views,
     type TemporalGranularity,
     type MutationsFilter,
+    mutationType,
+    type MutationType,
 } from './types';
 
 export type { MutationComparisonView, MutationComparisonProps } from './preact/mutationComparison/mutation-comparison';
@@ -47,3 +49,5 @@ export {
     NumberRangeFilterChangedEvent,
     NumberRangeValueChangedEvent,
 } from './preact/numberRangeFilter/NumberRangeFilterChangedEvent';
+
+export { type MeanProportionInterval } from './preact/mutationsOverTime/mutations-over-time';

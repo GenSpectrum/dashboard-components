@@ -1,7 +1,7 @@
 import { type MutationFilterItem } from './mutation-filter';
 import { sequenceTypeFromSegment } from './sequenceTypeFromSegment';
 import type { ReferenceGenome } from '../../lapisApi/ReferenceGenome';
-import type { SequenceType } from '../../types';
+import { type SequenceType, mutationType } from '../../types';
 import { DeletionClass, InsertionClass, type Mutation, SubstitutionClass } from '../../utils/mutations';
 
 export const parseAndValidateMutation = (
@@ -22,11 +22,11 @@ export const parseAndValidateMutation = (
 
 const getSequenceType = (type: MutationFilterItem['type']) => {
     switch (type) {
-        case 'nucleotideInsertions':
-        case 'nucleotideMutations':
+        case mutationType.nucleotideInsertions:
+        case mutationType.nucleotideMutations:
             return 'nucleotide';
-        case 'aminoAcidInsertions':
-        case 'aminoAcidMutations':
+        case mutationType.aminoAcidInsertions:
+        case mutationType.aminoAcidMutations:
             return 'amino acid';
     }
 };
@@ -37,10 +37,10 @@ const parseMutation = (value: string, referenceGenome: ReferenceGenome): Mutatio
         const sequenceType = sequenceTypeFromSegment(possibleInsertion.segment, referenceGenome);
         switch (sequenceType) {
             case 'nucleotide': {
-                return { type: 'nucleotideInsertions', value: possibleInsertion };
+                return { type: mutationType.nucleotideInsertions, value: possibleInsertion };
             }
             case 'amino acid':
-                return { type: 'aminoAcidInsertions', value: possibleInsertion };
+                return { type: mutationType.aminoAcidInsertions, value: possibleInsertion };
             case undefined:
                 return null;
         }
@@ -51,9 +51,9 @@ const parseMutation = (value: string, referenceGenome: ReferenceGenome): Mutatio
         const sequenceType = sequenceTypeFromSegment(possibleDeletion.segment, referenceGenome);
         switch (sequenceType) {
             case 'nucleotide':
-                return { type: 'nucleotideMutations', value: possibleDeletion };
+                return { type: mutationType.nucleotideMutations, value: possibleDeletion };
             case 'amino acid':
-                return { type: 'aminoAcidMutations', value: possibleDeletion };
+                return { type: mutationType.aminoAcidMutations, value: possibleDeletion };
             case undefined:
                 return null;
         }
@@ -64,10 +64,10 @@ const parseMutation = (value: string, referenceGenome: ReferenceGenome): Mutatio
         const sequenceType = sequenceTypeFromSegment(possibleSubstitution.segment, referenceGenome);
         switch (sequenceType) {
             case 'nucleotide': {
-                return { type: 'nucleotideMutations', value: possibleSubstitution };
+                return { type: mutationType.nucleotideMutations, value: possibleSubstitution };
             }
             case 'amino acid': {
-                return { type: 'aminoAcidMutations', value: possibleSubstitution };
+                return { type: mutationType.aminoAcidMutations, value: possibleSubstitution };
             }
 
             case undefined:

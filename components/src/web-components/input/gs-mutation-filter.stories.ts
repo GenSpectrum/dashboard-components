@@ -7,6 +7,7 @@ import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL, REFERENCE_GENOME_ENDPOINT } from '../../constants';
 import '../gs-app';
 import { type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
+import { mutationType } from '../../types';
 import { gsEventNames } from '../../utils/gsEventNames';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 import './gs-mutation-filter';
@@ -117,7 +118,7 @@ export const RestrictEnabledMutationTypes: StoryObj<MutationFilterProps> = {
     ...Template,
     args: {
         ...Template.args,
-        enabledMutationTypes: ['nucleotideMutations', 'aminoAcidMutations'],
+        enabledMutationTypes: [mutationType.nucleotideMutations, mutationType.aminoAcidMutations],
     },
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-mutation-filter');
