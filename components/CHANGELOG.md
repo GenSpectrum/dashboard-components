@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.7.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.6.0...dashboard-components-v1.7.0) (2025-09-24)
+
+
+### Features
+
+* **components:** fix mutation parsing, add tests ([#991](https://github.com/GenSpectrum/dashboard-components/issues/991)) ([0f747d9](https://github.com/GenSpectrum/dashboard-components/commit/0f747d94c8aa659643adca1638e29591d4c8ae54))
+* **components:** handle case where zoom range gets very small ([#992](https://github.com/GenSpectrum/dashboard-components/issues/992)) ([17a3a83](https://github.com/GenSpectrum/dashboard-components/commit/17a3a83fd7de2fa11abccf5a623f9cabadf3e9cc))
+* **components:** improve error message ([#990](https://github.com/GenSpectrum/dashboard-components/issues/990)) ([e68d567](https://github.com/GenSpectrum/dashboard-components/commit/e68d5678c02d28a2cfb59dfffd8a11c56e11ee3a))
+
 ## [1.6.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.5.0...dashboard-components-v1.6.0) (2025-09-22)
 
 
