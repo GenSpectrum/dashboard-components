@@ -6,6 +6,7 @@ import { MutationFilter, type MutationFilterProps } from './mutation-filter';
 import { previewHandles } from '../../../.storybook/preview';
 import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
+import { mutationType } from '../../types';
 import { gsEventNames } from '../../utils/gsEventNames';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
@@ -230,7 +231,7 @@ export const FiltersOutDisabledMutationTypes: StoryObj<MutationFilterProps> = {
     ...Default,
     args: {
         ...Default.args,
-        enabledMutationTypes: ['nucleotideMutations'],
+        enabledMutationTypes: [mutationType.nucleotideMutations],
     },
     play: async ({ canvasElement, step }) => {
         const { canvas, changedListenerMock } = await prepare(canvasElement, step);

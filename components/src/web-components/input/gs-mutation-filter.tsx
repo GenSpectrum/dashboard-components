@@ -2,12 +2,8 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { ReferenceGenomesAwaiter } from '../../preact/components/ReferenceGenomesAwaiter';
-import {
-    MutationFilter,
-    type MutationType,
-    type MutationFilterProps,
-} from '../../preact/mutationFilter/mutation-filter';
-import type { MutationsFilter } from '../../types';
+import { MutationFilter, type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
+import type { MutationType, MutationsFilter } from '../../types';
 import { type gsEventNames } from '../../utils/gsEventNames';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';

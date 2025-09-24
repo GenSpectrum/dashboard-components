@@ -178,3 +178,7 @@ workers that return mocked data. The mock workers are enabled in the package.jso
 Node.js [subpath imports](https://nodejs.org/api/packages.html#subpath-imports), following the guide
 from [storybook](https://storybook.js.org/docs/writing-stories/mocking-data-and-modules/mocking-modules). This ensures
 that when importing the worker in the component, the mock worker is used inside Storybook instead of the real worker.
+
+### Exporting types into the final build
+
+This project uses `vite build`. The release config is `vite.release.config.ts`. In there, the lib export entrypoints are defined. If you want to export a utility type for your component, re-export it inside of `utilEntrypoint.ts`.

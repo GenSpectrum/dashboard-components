@@ -44,7 +44,7 @@ export type SequenceType = z.infer<typeof sequenceTypeSchema>;
 
 export type SubstitutionOrDeletion = 'substitution' | 'deletion';
 
-export type MutationType = SubstitutionOrDeletion | 'insertion';
+export type SubstitutionOrDeletionOrInsertion = SubstitutionOrDeletion | 'insertion';
 
 export type SubstitutionEntry<T extends Substitution = SubstitutionClass> = {
     type: 'substitution';
@@ -79,3 +79,19 @@ export const views = {
     bubble: 'bubble',
     map: 'map',
 } as const;
+
+export const mutationType = {
+    nucleotideMutations: 'nucleotideMutations',
+    nucleotideInsertions: 'nucleotideInsertions',
+    aminoAcidMutations: 'aminoAcidMutations',
+    aminoAcidInsertions: 'aminoAcidInsertions',
+} as const;
+
+export const mutationTypeSchema = z.enum([
+    mutationType.nucleotideMutations,
+    mutationType.nucleotideInsertions,
+    mutationType.aminoAcidMutations,
+    mutationType.aminoAcidInsertions,
+]);
+
+export type MutationType = z.infer<typeof mutationTypeSchema>;

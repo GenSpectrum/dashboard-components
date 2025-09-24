@@ -47,6 +47,12 @@ import { useWebWorker } from '../webWorkers/useWebWorker';
 const mutationsOverTimeViewSchema = z.literal(views.grid);
 export type MutationsOverTimeView = z.infer<typeof mutationsOverTimeViewSchema>;
 
+const meanProportionIntervalSchema = z.object({
+    min: z.number().min(0).max(1),
+    max: z.number().min(0).max(1),
+});
+export type MeanProportionInterval = z.infer<typeof meanProportionIntervalSchema>;
+
 const mutationOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
     sequenceType: sequenceTypeSchema,
@@ -55,10 +61,7 @@ const mutationOverTimeSchema = z.object({
     lapisDateField: z.string().min(1),
     useNewEndpoint: z.boolean().optional(),
     displayMutations: displayMutationsSchema.optional(),
-    initialMeanProportionInterval: z.object({
-        min: z.number().min(0).max(1),
-        max: z.number().min(0).max(1),
-    }),
+    initialMeanProportionInterval: meanProportionIntervalSchema,
     hideGaps: z.boolean().optional(),
     width: z.string(),
     height: z.string().optional(),
