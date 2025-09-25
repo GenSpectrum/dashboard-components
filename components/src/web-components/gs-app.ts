@@ -7,10 +7,16 @@ import z from 'zod';
 
 import { lapisContext } from './lapis-context';
 import { mutationAnnotationsContext } from './mutation-annotations-context';
+import {
+    MutationLinkTemplate,
+    mutationLinkTemplateContext,
+    mutationLinkTemplateSchema,
+} from './mutation-link-template-context';
 import { referenceGenomeContext } from './reference-genome-context';
 import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import { fetchReferenceGenome } from '../lapisApi/lapisApi';
 import { INITIAL_REFERENCE_GENOMES } from '../preact/ReferenceGenomeContext';
+import { MutationLinkTemplateContext } from '../preact/MutationLinkTemplateContext';
 
 const lapisUrlSchema = z.string().url();
 
@@ -58,6 +64,46 @@ export class AppComponent extends LitElement {
         aminoAcidMutations?: string[];
         aminoAcidPositions?: string[];
     }[] = [];
+
+    /**
+     * Supply a link template for nucleotide and amino acid mutations.
+     * The template should include '{{mutation}}' where the mutation code will be inserted, for example:
+     *
+     *     https://my-site.org/query?nucleotideMutation={{mutation}}
+     */
+    @provide({ context: mutationLinkTemplateContext })
+    @property({
+        type: Object,
+        converter: {
+            fromAttribute: (value, _) => {
+                if (value === null) {
+                    return {};
+                }
+                try {
+                    const parsed = JSON.parse(value);
+                    const result = mutationLinkTemplateSchema.strict().safeParse(parsed);
+                    if (!result.success) {
+                        console.error('Invalid mutationLinkTemplate attribute', result.error);
+                        return {};
+                    }
+                    return result.data;
+                } catch {
+                    console.error('Failed to parse mutationLinkTemplate attribute');
+                    return {};
+                }
+            },
+        },
+    })
+    mutationLinkTemplate: MutationLinkTemplate = {
+        nucleotideMutation: undefined,
+        aminoAcidMutation: undefined,
+    };
+
+    /**
+     * @internal
+     */
+    @property({ type: String })
+    validationError = '';
 
     /**
      * @internal

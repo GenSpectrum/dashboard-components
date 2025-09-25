@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title='Concepts/External Mutation Links' />
+
+# External Mutation Links
+
+When inspecting mutations, you might want to be able to quickly look up a mutation somewhere else.
+For this, it's possible to supply a _link template_ which will then lead to mutation labels being clickable using
+that link template.
+
+The mutation link template can be (optionally) supplied to `gs-app` as a JSON object:
+
+```html
+<gs-app
+    lapis="https://your.lapis.url"
+    mutationLinkTemplate='{
+        "nucleotideMutation": "https://cov-spectrum.org/explore/Switzerland/AllSamples/Past6M/variants?nucMutations={{mutation}}",
+        "aminoAcidMutation": "https://cov-spectrum.org/explore/Switzerland/AllSamples/Past6M/variants?aaMutations={{mutation}}",
+    }'
+>
+    {/* children... */}
+</gs-app>
+```
+
+For example (like in the code above) you can directly link to cov-spectrum.
+
+Your link needs to have the placeholder `{{mutation}}` in it, which will then be replaced with the mutation code.
