@@ -13,10 +13,10 @@ The mutation link template can be (optionally) supplied to `gs-app` as a JSON ob
 ```html
 <gs-app
     lapis="https://your.lapis.url"
-    mutationLinkTemplate="{
-        nucleotideMutation: 'https://cov-spectrum.org/explore/Switzerland/AllSamples/Past6M/variants?nucMutations={{mutation}}',
-        aminoAcidMutation: 'https://cov-spectrum.org/explore/Switzerland/AllSamples/Past6M/variants?aaMutations={{mutation}}'
-    }"
+    mutationLinkTemplate='{
+        "nucleotideMutation": "https://cov-spectrum.org/explore/Switzerland/AllSamples/Past6M/variants?nucMutations={{mutation}}",
+        "aminoAcidMutation": "https://cov-spectrum.org/explore/Switzerland/AllSamples/Past6M/variants?aaMutations={{mutation}}",
+    }'
 >
     {/* children... */}
 </gs-app>
