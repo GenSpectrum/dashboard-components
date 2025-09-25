@@ -7,11 +7,11 @@ import z from 'zod';
 
 import { lapisContext } from './lapis-context';
 import { mutationAnnotationsContext } from './mutation-annotations-context';
+import { mutationLinkTemplateContext } from './mutation-link-template-context';
 import { referenceGenomeContext } from './reference-genome-context';
 import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import { fetchReferenceGenome } from '../lapisApi/lapisApi';
 import { INITIAL_REFERENCE_GENOMES } from '../preact/ReferenceGenomeContext';
-import { mutationLinkTemplateContext } from './mutation-link-template-context';
 
 const lapisUrlSchema = z.string().url();
 

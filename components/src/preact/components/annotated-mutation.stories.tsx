@@ -2,10 +2,10 @@ import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, userEvent, waitFor, within } from '@storybook/test';
 
 import { AnnotatedMutation, type AnnotatedMutationProps } from './annotated-mutation';
-import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
+import type { MutationAnnotations } from '../../web-components/mutation-annotations-context';
+import type { MutationLinkTemplate } from '../../web-components/mutation-link-template-context';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { MutationLinkTemplateContext } from '../MutationLinkTemplateContext';
-import { MutationLinkTemplate } from '../../web-components/mutation-link-template-context';
 
 type ContextProps = {
     annotations: MutationAnnotations;
@@ -181,7 +181,7 @@ export const NucleotideMutationWithLink: StoryObj<StoryProps> = {
 
         await waitFor(() => expect(canvas.getByText('A23403G')).toBeVisible());
         const link = canvas.getByText('A23403G').closest('a');
-        expect(link).toHaveAttribute('href', 'http://foo.com/query?nucMut=A23403G');
+        void expect(link).toHaveAttribute('href', 'http://foo.com/query?nucMut=A23403G');
     },
 };
 
@@ -206,6 +206,6 @@ export const AminoAcidMutationWithLink: StoryObj<StoryProps> = {
 
         await waitFor(() => expect(canvas.getByText('S:A501G')).toBeVisible());
         const link = canvas.getByText('S:A501G').closest('a');
-        expect(link).toHaveAttribute('href', 'http://foo.com/query?aaMut=S%3AA501G');
+        void expect(link).toHaveAttribute('href', 'http://foo.com/query?aaMut=S%3AA501G');
     },
 };

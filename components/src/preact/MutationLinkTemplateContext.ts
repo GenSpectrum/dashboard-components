@@ -1,7 +1,8 @@
 import { createContext } from 'preact';
 import { useContext } from 'preact/hooks';
-import { Deletion, Substitution } from '../utils/mutations';
-import { SequenceType } from '../types';
+
+import type { SequenceType } from '../types';
+import type { Deletion, Substitution } from '../utils/mutations';
 
 type MutationLinkTemplate = {
     nucleotideMutation?: string;
@@ -21,15 +22,15 @@ export function useMutationLinkProvider() {
 
         switch (sequenceType) {
             case 'nucleotide': {
-                if (linkTemplate.nucleotideMutation !== null) {
-                    link = linkTemplate.nucleotideMutation?.replace('{{mutation}}', encodeURIComponent(mutation.code));
+                if (linkTemplate.nucleotideMutation !== undefined) {
+                    link = linkTemplate.nucleotideMutation.replace('{{mutation}}', encodeURIComponent(mutation.code));
                 }
                 break;
             }
 
             case 'amino acid': {
-                if (linkTemplate.aminoAcidMutation !== null) {
-                    link = linkTemplate.aminoAcidMutation?.replace('{{mutation}}', encodeURIComponent(mutation.code));
+                if (linkTemplate.aminoAcidMutation !== undefined) {
+                    link = linkTemplate.aminoAcidMutation.replace('{{mutation}}', encodeURIComponent(mutation.code));
                 }
                 break;
             }

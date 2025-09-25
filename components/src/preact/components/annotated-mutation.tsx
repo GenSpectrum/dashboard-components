@@ -56,7 +56,7 @@ const AnnotatedMutationWithoutContext: FunctionComponent<AnnotatedMutationWithou
     linkProvider,
     modalRef,
 }) => {
-    let link = linkProvider(mutation, sequenceType);
+    const link = linkProvider(mutation, sequenceType);
     let innerLabel = <>{mutation.code}</>;
     if (link !== undefined) {
         innerLabel = (

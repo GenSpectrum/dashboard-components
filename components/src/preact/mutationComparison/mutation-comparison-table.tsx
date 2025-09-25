@@ -6,12 +6,12 @@ import { type Dataset } from '../../operator/Dataset';
 import type { SequenceType } from '../../types';
 import { type DeletionClass, type SubstitutionClass } from '../../utils/mutations';
 import { useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
+import { useMutationLinkProvider } from '../MutationLinkTemplateContext';
 import { GridJsAnnotatedMutation } from '../components/annotated-mutation';
 import { type ProportionInterval } from '../components/proportion-selector';
 import { Table } from '../components/table';
 import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
 import { formatProportion } from '../shared/table/formatProportion';
-import { useMutationLinkProvider } from '../MutationLinkTemplateContext';
 
 export interface MutationsTableProps {
     data: Dataset<MutationData>;

@@ -3,11 +3,11 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
+import { MutationLinkTemplateContext } from '../../preact/MutationLinkTemplateContext';
 import { MutationsOverTime } from '../../preact/mutationsOverTime/mutations-over-time';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 import { type MutationAnnotations, mutationAnnotationsContext } from '../mutation-annotations-context';
-import { MutationLinkTemplate, mutationLinkTemplateContext } from '../mutation-link-template-context';
-import { MutationLinkTemplateContext } from '../../preact/MutationLinkTemplateContext';
+import { type MutationLinkTemplate, mutationLinkTemplateContext } from '../mutation-link-template-context';
 
 /**
  * ## Context
