@@ -18,24 +18,20 @@ export function useMutationLinkProvider() {
     const linkTemplate = useContext(MutationLinkTemplateContext);
 
     return (mutation: Substitution | Deletion, sequenceType: SequenceType) => {
-        let link = undefined;
-
         switch (sequenceType) {
             case 'nucleotide': {
                 if (linkTemplate.nucleotideMutation !== undefined) {
-                    link = linkTemplate.nucleotideMutation.replace('{{mutation}}', encodeURIComponent(mutation.code));
+                    return linkTemplate.nucleotideMutation.replace('{{mutation}}', encodeURIComponent(mutation.code));
                 }
-                break;
+                return undefined;
             }
 
             case 'amino acid': {
                 if (linkTemplate.aminoAcidMutation !== undefined) {
-                    link = linkTemplate.aminoAcidMutation.replace('{{mutation}}', encodeURIComponent(mutation.code));
+                    return linkTemplate.aminoAcidMutation.replace('{{mutation}}', encodeURIComponent(mutation.code));
                 }
-                break;
+                return undefined;
             }
         }
-
-        return link;
     };
 }
