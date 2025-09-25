@@ -46,8 +46,8 @@ const Template: StoryObj<StoryProps> = {
     render: (args) => {
         return html` <gs-app
             lapis="${args.lapis}"
-            .mutationAnnotations="${args.mutationAnnotations}"
-            .mutationLinkTemplate="${args.mutationLinkTemplate}"
+            mutationAnnotations="${JSON.stringify(args.mutationAnnotations)}"
+            mutationLinkTemplate="${JSON.stringify(args.mutationLinkTemplate)}"
         >
             <gs-app-display></gs-app-display>
         </gs-app>`;
@@ -68,7 +68,7 @@ const Template: StoryObj<StoryProps> = {
         mutationLinkTemplate: {
             nucleotideMutation: 'http://foo.com/query?nucMut={{mutation}}',
             aminoAcidMutation: 'http://foo.com/query?aaMut={{mutation}}',
-        }
+        },
     },
 };
 
@@ -147,15 +147,11 @@ export const ProvidesMutationLinkTemplateToChildren: StoryObj<StoryProps> = {
         const canvas = within(canvasElement);
 
         await waitFor(async () => {
-            await expect(
-                canvas.getByText('http://foo.com/query?nucMut={{mutation}}', { exact: false }),
-            ).toBeVisible();
-            await expect(
-                canvas.getByText('http://foo.com/query?aaMut={{mutation}}', { exact: false }),
-            ).toBeVisible();
+            await expect(canvas.getByText('http://foo.com/query?nucMut={{mutation}}', { exact: false })).toBeVisible();
+            await expect(canvas.getByText('http://foo.com/query?aaMut={{mutation}}', { exact: false })).toBeVisible();
         });
-    }
-}
+    },
+};
 
 @customElement('gs-app-display')
 // eslint-disable-next-line @typescript-eslint/no-unused-vars -- it is used in the story above
