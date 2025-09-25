@@ -10,6 +10,7 @@ import type { ProportionInterval } from '../components/proportion-selector';
 import { Table } from '../components/table';
 import { sortSubstitutionsAndDeletions } from '../shared/sort/sortSubstitutionsAndDeletions';
 import { formatProportion } from '../shared/table/formatProportion';
+import { useMutationLinkProvider } from '../MutationLinkTemplateContext';
 
 export interface MutationsTableProps {
     data: SubstitutionOrDeletionEntry[];
@@ -29,6 +30,7 @@ const MutationsTable: FunctionComponent<MutationsTableProps> = ({
     sequenceType,
 }) => {
     const annotationsProvider = useMutationAnnotationsProvider();
+    const linkProvider = useMutationLinkProvider();
 
     const headers = [
         {
@@ -43,6 +45,7 @@ const MutationsTable: FunctionComponent<MutationsTableProps> = ({
                     mutation={cell}
                     sequenceType={sequenceType}
                     annotationsProvider={annotationsProvider}
+                    linkProvider={linkProvider}
                 />
             ),
         },

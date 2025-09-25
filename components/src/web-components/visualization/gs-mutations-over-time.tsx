@@ -6,6 +6,8 @@ import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotat
 import { MutationsOverTime } from '../../preact/mutationsOverTime/mutations-over-time';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 import { type MutationAnnotations, mutationAnnotationsContext } from '../mutation-annotations-context';
+import { MutationLinkTemplate, mutationLinkTemplateContext } from '../mutation-link-template-context';
+import { MutationLinkTemplateContext } from '../../preact/MutationLinkTemplateContext';
 
 /**
  * ## Context
@@ -140,23 +142,31 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
     @consume({ context: mutationAnnotationsContext, subscribe: true })
     mutationAnnotations: MutationAnnotations = [];
 
+    /**
+     * @internal
+     */
+    @consume({ context: mutationLinkTemplateContext, subscribe: true })
+    mutationLinkTemplate: MutationLinkTemplate = {};
+
     override render() {
         return (
             <MutationAnnotationsContextProvider value={this.mutationAnnotations}>
-                <MutationsOverTime
-                    lapisFilter={this.lapisFilter}
-                    sequenceType={this.sequenceType}
-                    views={this.views}
-                    width={this.width}
-                    height={this.height}
-                    granularity={this.granularity}
-                    lapisDateField={this.lapisDateField}
-                    displayMutations={this.displayMutations}
-                    initialMeanProportionInterval={this.initialMeanProportionInterval}
-                    hideGaps={this.hideGaps}
-                    useNewEndpoint={this.useNewEndpoint}
-                    pageSizes={this.pageSizes}
-                />
+                <MutationLinkTemplateContext.Provider value={this.mutationLinkTemplate}>
+                    <MutationsOverTime
+                        lapisFilter={this.lapisFilter}
+                        sequenceType={this.sequenceType}
+                        views={this.views}
+                        width={this.width}
+                        height={this.height}
+                        granularity={this.granularity}
+                        lapisDateField={this.lapisDateField}
+                        displayMutations={this.displayMutations}
+                        initialMeanProportionInterval={this.initialMeanProportionInterval}
+                        hideGaps={this.hideGaps}
+                        useNewEndpoint={this.useNewEndpoint}
+                        pageSizes={this.pageSizes}
+                    />
+                </MutationLinkTemplateContext.Provider>
             </MutationAnnotationsContextProvider>
         );
     }

@@ -11,6 +11,7 @@ import { referenceGenomeContext } from './reference-genome-context';
 import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import { fetchReferenceGenome } from '../lapisApi/lapisApi';
 import { INITIAL_REFERENCE_GENOMES } from '../preact/ReferenceGenomeContext';
+import { mutationLinkTemplateContext } from './mutation-link-template-context';
 
 const lapisUrlSchema = z.string().url();
 
@@ -58,6 +59,22 @@ export class AppComponent extends LitElement {
         aminoAcidMutations?: string[];
         aminoAcidPositions?: string[];
     }[] = [];
+
+    /**
+     * Supply a link template for nucleotide and amino acid mutations.
+     * The template should include '{{mutation}}' where the mutation code will be inserted, for example:
+     *
+     *     https://my-site.org/query?nucleotideMutation={{mutation}}
+     */
+    @provide({ context: mutationLinkTemplateContext })
+    @property({ type: Object })
+    mutationLinkTemplate: {
+        nucleotideMutation?: string;
+        aminoAcidMutation?: string;
+    } = {
+        nucleotideMutation: undefined,
+        aminoAcidMutation: undefined,
+    };
 
     /**
      * @internal
