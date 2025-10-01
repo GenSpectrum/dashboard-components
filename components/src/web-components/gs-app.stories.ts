@@ -11,6 +11,7 @@ import { referenceGenomeContext } from './reference-genome-context';
 import { withComponentDocs } from '../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL, REFERENCE_GENOME_ENDPOINT } from '../constants';
 import { type MutationAnnotations, mutationAnnotationsContext } from './mutation-annotations-context';
+import { type MutationLinkTemplate, mutationLinkTemplateContext } from './mutation-link-template-context';
 import type { ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import referenceGenome from '../lapisApi/__mockData__/referenceGenome.json';
 
@@ -35,11 +36,19 @@ const meta: Meta = {
 
 export default meta;
 
-type StoryProps = { lapis: string; mutationAnnotations: MutationAnnotations };
+type StoryProps = {
+    lapis: string;
+    mutationAnnotations: MutationAnnotations;
+    mutationLinkTemplate: MutationLinkTemplate;
+};
 
 const Template: StoryObj<StoryProps> = {
     render: (args) => {
-        return html` <gs-app lapis="${args.lapis}" .mutationAnnotations="${args.mutationAnnotations}">
+        return html` <gs-app
+            lapis="${args.lapis}"
+            .mutationAnnotations="${args.mutationAnnotations}"
+            .mutationLinkTemplate="${args.mutationLinkTemplate}"
+        >
             <gs-app-display></gs-app-display>
         </gs-app>`;
     },
@@ -56,6 +65,10 @@ const Template: StoryObj<StoryProps> = {
                 aminoAcidPositions: ['S:123'],
             },
         ],
+        mutationLinkTemplate: {
+            nucleotideMutation: 'http://foo.com/query?nucMut={{mutation}}',
+            aminoAcidMutation: 'http://foo.com/query?aaMut={{mutation}}',
+        },
     },
 };
 
@@ -128,6 +141,18 @@ export const FailsToFetchReferenceGenome: StoryObj<StoryProps> = {
     },
 };
 
+export const ProvidesMutationLinkTemplateToChildren: StoryObj<StoryProps> = {
+    ...Template,
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(async () => {
+            await expect(canvas.getByText('http://foo.com/query?nucMut={{mutation}}', { exact: false })).toBeVisible();
+            await expect(canvas.getByText('http://foo.com/query?aaMut={{mutation}}', { exact: false })).toBeVisible();
+        });
+    },
+};
+
 @customElement('gs-app-display')
 // eslint-disable-next-line @typescript-eslint/no-unused-vars -- it is used in the story above
 class AppDisplay extends LitElement {
@@ -143,6 +168,9 @@ class AppDisplay extends LitElement {
     @consume({ context: mutationAnnotationsContext, subscribe: true })
     mutationAnnotations: MutationAnnotations = [];
 
+    @consume({ context: mutationLinkTemplateContext, subscribe: true })
+    mutationLinkTemplate: MutationLinkTemplate = {};
+
     override render() {
         return html`
             <h1 class="text-xl font-bold">Dummy component</h1>
@@ -156,6 +184,8 @@ class AppDisplay extends LitElement {
             <pre><code>${JSON.stringify(this.referenceGenome, null, 2)}</code></pre>
             <h2 class="text-lg font-bold">Mutation annotations</h2>
             <pre><code>${JSON.stringify(this.mutationAnnotations, null, 2)}</code></pre>
+            <h2 class="text-lg font-bold">Mutation link template</h2>
+            <pre><code>${JSON.stringify(this.mutationLinkTemplate, null, 2)}</code></pre>
         `;
     }
 
