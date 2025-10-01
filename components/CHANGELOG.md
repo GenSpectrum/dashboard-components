@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.7.0...dashboard-components-v1.8.0) (2025-10-01)
+
+
+### Features
+
+* **components:** add mutation link templates ([#995](https://github.com/GenSpectrum/dashboard-components/issues/995)) ([4ebbcff](https://github.com/GenSpectrum/dashboard-components/commit/4ebbcffed0c1ca29d027b84e2da465b074e5ea87))
+
 ## [1.7.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.6.0...dashboard-components-v1.7.0) (2025-09-24)
 
 
