@@ -3,10 +3,12 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
+import { MutationLinkTemplateContextProvider } from '../../preact/MutationLinkTemplateContext';
 import { Mutations, type MutationsProps } from '../../preact/mutations/mutations';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 import { type MutationAnnotations, mutationAnnotationsContext } from '../mutation-annotations-context';
+import { type MutationLinkTemplate, mutationLinkTemplateContext } from '../mutation-link-template-context';
 
 /**
  * ## Context
@@ -134,18 +136,26 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
     @consume({ context: mutationAnnotationsContext, subscribe: true })
     mutationAnnotations: MutationAnnotations = [];
 
+    /**
+     * @internal
+     */
+    @consume({ context: mutationLinkTemplateContext, subscribe: true })
+    mutationLinkTemplate: MutationLinkTemplate = {};
+
     override render() {
         return (
             <MutationAnnotationsContextProvider value={this.mutationAnnotations}>
-                <Mutations
-                    lapisFilter={this.lapisFilter}
-                    sequenceType={this.sequenceType}
-                    views={this.views}
-                    width={this.width}
-                    height={this.height}
-                    pageSize={this.pageSize}
-                    baselineLapisFilter={this.baselineLapisFilter}
-                />
+                <MutationLinkTemplateContextProvider value={this.mutationLinkTemplate}>
+                    <Mutations
+                        lapisFilter={this.lapisFilter}
+                        sequenceType={this.sequenceType}
+                        views={this.views}
+                        width={this.width}
+                        height={this.height}
+                        pageSize={this.pageSize}
+                        baselineLapisFilter={this.baselineLapisFilter}
+                    />
+                </MutationLinkTemplateContextProvider>
             </MutationAnnotationsContextProvider>
         );
     }

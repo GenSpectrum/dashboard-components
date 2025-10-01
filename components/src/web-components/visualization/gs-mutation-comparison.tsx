@@ -3,10 +3,12 @@ import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
+import { MutationLinkTemplateContextProvider } from '../../preact/MutationLinkTemplateContext';
 import { MutationComparison, type MutationComparisonProps } from '../../preact/mutationComparison/mutation-comparison';
 import { type Equals, type Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 import { type MutationAnnotations, mutationAnnotationsContext } from '../mutation-annotations-context';
+import { type MutationLinkTemplate, mutationLinkTemplateContext } from '../mutation-link-template-context';
 
 /**
  * ## Context
@@ -103,17 +105,25 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
     @consume({ context: mutationAnnotationsContext, subscribe: true })
     mutationAnnotations: MutationAnnotations = [];
 
+    /**
+     * @internal
+     */
+    @consume({ context: mutationLinkTemplateContext, subscribe: true })
+    mutationLinkTemplate: MutationLinkTemplate = {};
+
     override render() {
         return (
             <MutationAnnotationsContextProvider value={this.mutationAnnotations}>
-                <MutationComparison
-                    lapisFilters={this.lapisFilters}
-                    sequenceType={this.sequenceType}
-                    views={this.views}
-                    width={this.width}
-                    height={this.height}
-                    pageSize={this.pageSize}
-                />
+                <MutationLinkTemplateContextProvider value={this.mutationLinkTemplate}>
+                    <MutationComparison
+                        lapisFilters={this.lapisFilters}
+                        sequenceType={this.sequenceType}
+                        views={this.views}
+                        width={this.width}
+                        height={this.height}
+                        pageSize={this.pageSize}
+                    />
+                </MutationLinkTemplateContextProvider>
             </MutationAnnotationsContextProvider>
         );
     }

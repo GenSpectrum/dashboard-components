@@ -2,15 +2,25 @@ import { type Meta, type StoryObj } from '@storybook/preact';
 import { expect, userEvent, waitFor, within } from '@storybook/test';
 
 import { AnnotatedMutation, type AnnotatedMutationProps } from './annotated-mutation';
-import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
+import type { MutationAnnotations } from '../../web-components/mutation-annotations-context';
+import type { MutationLinkTemplate } from '../../web-components/mutation-link-template-context';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
+import { MutationLinkTemplateContextProvider } from '../MutationLinkTemplateContext';
 
-const meta: Meta<AnnotatedMutationProps & { annotations: MutationAnnotations }> = {
+type ContextProps = {
+    annotations: MutationAnnotations;
+    linkTemplate: MutationLinkTemplate;
+};
+
+type StoryProps = AnnotatedMutationProps & ContextProps;
+
+const meta: Meta<StoryProps> = {
     title: 'Component/Annotated Mutation',
     component: AnnotatedMutation,
     parameters: { fetchMock: {} },
     argTypes: {
         annotations: { control: { type: 'object' } },
+        linkTemplate: { control: { type: 'object' } },
         mutation: { control: { type: 'object' } },
         sequenceType: {
             options: ['nucleotide', 'amino acid'],
@@ -21,14 +31,16 @@ const meta: Meta<AnnotatedMutationProps & { annotations: MutationAnnotations }> 
 
 export default meta;
 
-export const MutationWithoutAnnotationEntry: StoryObj<AnnotatedMutationProps & { annotations: MutationAnnotations }> = {
+export const MutationWithoutAnnotationEntry: StoryObj<StoryProps> = {
     render: (args) => {
-        const { annotations, ...annotatedMutationsArgs } = args;
+        const { annotations, linkTemplate, ...annotatedMutationsArgs } = args;
 
         return (
-            <MutationAnnotationsContextProvider value={annotations}>
-                <AnnotatedMutation {...annotatedMutationsArgs} />
-            </MutationAnnotationsContextProvider>
+            <MutationLinkTemplateContextProvider value={linkTemplate}>
+                <MutationAnnotationsContextProvider value={annotations}>
+                    <AnnotatedMutation {...annotatedMutationsArgs} />
+                </MutationAnnotationsContextProvider>
+            </MutationLinkTemplateContextProvider>
         );
     },
     args: {
@@ -48,6 +60,7 @@ export const MutationWithoutAnnotationEntry: StoryObj<AnnotatedMutationProps & {
                 nucleotideMutations: ['123T'],
             },
         ],
+        linkTemplate: {},
     },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
@@ -58,7 +71,7 @@ export const MutationWithoutAnnotationEntry: StoryObj<AnnotatedMutationProps & {
     },
 };
 
-export const MutationWithAnnotationEntry: StoryObj<AnnotatedMutationProps & { annotations: MutationAnnotations }> = {
+export const MutationWithAnnotationEntry: StoryObj<StoryProps> = {
     ...MutationWithoutAnnotationEntry,
     args: {
         ...MutationWithoutAnnotationEntry.args,
@@ -77,15 +90,13 @@ export const MutationWithAnnotationEntry: StoryObj<AnnotatedMutationProps & { an
         await waitFor(() => expect(canvas.getByText('A23403G')).toBeVisible());
         await expect(getAnnotationIndicator(canvas)).toBeVisible();
 
-        await userEvent.click(canvas.getByText('A23403G'));
+        await userEvent.click(canvas.getByText('*'));
         await waitFor(() => expect(getAnnotationName(canvas)).toBeVisible());
         await expect(canvas.getByRole('link', { name: 'with a link.' })).toBeVisible();
     },
 };
 
-export const MutationWithMultipleAnnotationEntries: StoryObj<
-    AnnotatedMutationProps & { annotations: MutationAnnotations }
-> = {
+export const MutationWithMultipleAnnotationEntries: StoryObj<StoryProps> = {
     ...MutationWithoutAnnotationEntry,
     args: {
         ...MutationWithoutAnnotationEntry.args,
@@ -111,17 +122,16 @@ export const MutationWithMultipleAnnotationEntries: StoryObj<
         await expect(getAnnotationIndicator(canvas)).toBeVisible();
         await expect(canvas.queryByText('+')).toBeVisible();
 
-        await userEvent.click(canvas.getByText('A23403G'));
+        await userEvent.click(canvas.getByText('*'));
         await waitFor(() => expect(getAnnotationName(canvas)).toBeVisible());
         await expect(canvas.queryByText('Another test annotation')).toBeVisible();
     },
 };
 
-export const AminoAcidMutationWithAnnotationEntry: StoryObj<
-    AnnotatedMutationProps & { annotations: MutationAnnotations }
-> = {
+export const AminoAcidMutationWithAnnotationEntry: StoryObj<StoryProps> = {
     ...MutationWithoutAnnotationEntry,
     args: {
+        ...MutationWithoutAnnotationEntry.args,
         mutation: {
             type: 'substitution',
             code: 'S:A501G',
@@ -145,7 +155,7 @@ export const AminoAcidMutationWithAnnotationEntry: StoryObj<
         await waitFor(() => expect(canvas.getByText('S:A501G')).toBeVisible());
         await expect(getAnnotationIndicator(canvas)).toBeVisible();
 
-        await userEvent.click(canvas.getByText('S:A501G'));
+        await userEvent.click(canvas.getByText('*'));
         await waitFor(() => expect(getAnnotationName(canvas)).toBeVisible());
     },
 };
@@ -157,3 +167,45 @@ function getAnnotationIndicator(canvas: ReturnType<typeof within>) {
 function getAnnotationName(canvas: ReturnType<typeof within>) {
     return canvas.queryByText('Test annotation');
 }
+
+export const NucleotideMutationWithLink: StoryObj<StoryProps> = {
+    ...MutationWithoutAnnotationEntry,
+    args: {
+        ...MutationWithoutAnnotationEntry.args,
+        linkTemplate: {
+            nucleotideMutation: 'http://foo.com/query?nucMut={{mutation}}',
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(() => expect(canvas.getByText('A23403G')).toBeVisible());
+        const link = canvas.getByText('A23403G').closest('a');
+        void expect(link).toHaveAttribute('href', 'http://foo.com/query?nucMut=A23403G');
+    },
+};
+
+export const AminoAcidMutationWithLink: StoryObj<StoryProps> = {
+    ...MutationWithoutAnnotationEntry,
+    args: {
+        ...MutationWithoutAnnotationEntry.args,
+        mutation: {
+            type: 'substitution',
+            code: 'S:A501G',
+            position: 501,
+            valueAtReference: 'A',
+            substitutionValue: 'G',
+        },
+        sequenceType: 'amino acid',
+        linkTemplate: {
+            aminoAcidMutation: 'http://foo.com/query?aaMut={{mutation}}',
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(() => expect(canvas.getByText('S:A501G')).toBeVisible());
+        const link = canvas.getByText('S:A501G').closest('a');
+        void expect(link).toHaveAttribute('href', 'http://foo.com/query?aaMut=S%3AA501G');
+    },
+};

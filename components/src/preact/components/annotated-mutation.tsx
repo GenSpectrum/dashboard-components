@@ -7,6 +7,7 @@ import type { Deletion, Substitution } from '../../utils/mutations';
 import { useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
 import { InfoHeadline1, InfoHeadline2, InfoParagraph } from './info';
 import { ButtonWithModalDialog, useModalRef } from './modal';
+import { useMutationLinkProvider } from '../MutationLinkTemplateContext';
 
 export type AnnotatedMutationProps = {
     mutation: Substitution | Deletion;
@@ -15,13 +16,22 @@ export type AnnotatedMutationProps = {
 
 export const AnnotatedMutation: FunctionComponent<AnnotatedMutationProps> = (props) => {
     const annotationsProvider = useMutationAnnotationsProvider();
+    const linkProvider = useMutationLinkProvider();
     const modalRef = useModalRef();
 
-    return <AnnotatedMutationWithoutContext {...props} annotationsProvider={annotationsProvider} modalRef={modalRef} />;
+    return (
+        <AnnotatedMutationWithoutContext
+            {...props}
+            annotationsProvider={annotationsProvider}
+            linkProvider={linkProvider}
+            modalRef={modalRef}
+        />
+    );
 };
 
 type GridJsAnnotatedMutationProps = AnnotatedMutationProps & {
     annotationsProvider: ReturnType<typeof useMutationAnnotationsProvider>;
+    linkProvider: ReturnType<typeof useMutationLinkProvider>;
 };
 
 /**
@@ -43,12 +53,26 @@ const AnnotatedMutationWithoutContext: FunctionComponent<AnnotatedMutationWithou
     mutation,
     sequenceType,
     annotationsProvider,
+    linkProvider,
     modalRef,
 }) => {
+    const link = linkProvider(mutation, sequenceType);
+    let innerLabel = <>{mutation.code}</>;
+    if (link !== undefined) {
+        innerLabel = (
+            <a
+                className='hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300 underline'
+                href={link}
+            >
+                {mutation.code}
+            </a>
+        );
+    }
+
     const mutationAnnotations = annotationsProvider(mutation, sequenceType);
 
     if (mutationAnnotations === undefined || mutationAnnotations.length === 0) {
-        return mutation.code;
+        return innerLabel;
     }
 
     const modalContent = (
@@ -66,22 +90,24 @@ const AnnotatedMutationWithoutContext: FunctionComponent<AnnotatedMutationWithou
     );
 
     return (
-        <ButtonWithModalDialog
-            buttonClassName={'select-text cursor-pointer'}
-            modalContent={modalContent}
-            modalRef={modalRef}
-        >
-            {mutation.code}
-            <sup>
-                {mutationAnnotations
-                    .map((annotation) => annotation.symbol)
-                    .map((symbol, index) => (
-                        <Fragment key={symbol}>
-                            <span className='text-red-600'>{symbol}</span>
-                            {index !== mutationAnnotations.length - 1 && ','}
-                        </Fragment>
-                    ))}
-            </sup>
-        </ButtonWithModalDialog>
+        <>
+            {innerLabel}
+            <ButtonWithModalDialog
+                buttonClassName={'select-text cursor-pointer'}
+                modalContent={modalContent}
+                modalRef={modalRef}
+            >
+                <sup className='hover:underline focus-visible:underline decoration-red-600'>
+                    {mutationAnnotations
+                        .map((annotation) => annotation.symbol)
+                        .map((symbol, index) => (
+                            <Fragment key={symbol}>
+                                <span className='text-red-600'>{symbol}</span>
+                                {index !== mutationAnnotations.length - 1 && ','}
+                            </Fragment>
+                        ))}
+                </sup>
+            </ButtonWithModalDialog>
+        </>
     );
 };

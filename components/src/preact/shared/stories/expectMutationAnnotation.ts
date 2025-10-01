@@ -6,7 +6,9 @@ export async function expectMutationAnnotation(canvasElement: HTMLElement, mutat
     await waitFor(async () => {
         const annotatedMutation = canvas.getAllByText(mutation)[0];
         await expect(annotatedMutation).toBeVisible();
-        await userEvent.click(annotatedMutation);
+        const button = within(annotatedMutation).getByRole('button');
+        await expect(button).toBeVisible();
+        await userEvent.click(button);
     });
 
     await waitFor(() => expect(canvas.getByText(`Annotations for ${mutation}`)).toBeVisible());

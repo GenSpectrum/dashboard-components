@@ -3,9 +3,11 @@ import { customElement, property } from 'lit/decorators.js';
 import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
 import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
+import { MutationLinkTemplateContextProvider } from '../../preact/MutationLinkTemplateContext';
 import { WastewaterMutationsOverTime } from '../../preact/wastewater/mutationsOverTime/wastewater-mutations-over-time';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 import { type MutationAnnotations, mutationAnnotationsContext } from '../mutation-annotations-context';
+import { type MutationLinkTemplate, mutationLinkTemplateContext } from '../mutation-link-template-context';
 
 /**
  * ## Context
@@ -79,16 +81,24 @@ export class WastewaterMutationsOverTimeComponent extends PreactLitAdapterWithGr
     @consume({ context: mutationAnnotationsContext, subscribe: true })
     mutationAnnotations: MutationAnnotations = [];
 
+    /**
+     * @internal
+     */
+    @consume({ context: mutationLinkTemplateContext, subscribe: true })
+    mutationLinkTemplate: MutationLinkTemplate = {};
+
     override render() {
         return (
             <MutationAnnotationsContextProvider value={this.mutationAnnotations}>
-                <WastewaterMutationsOverTime
-                    lapisFilter={this.lapisFilter}
-                    sequenceType={this.sequenceType}
-                    width={this.width}
-                    height={this.height}
-                    pageSizes={this.pageSizes}
-                />
+                <MutationLinkTemplateContextProvider value={this.mutationLinkTemplate}>
+                    <WastewaterMutationsOverTime
+                        lapisFilter={this.lapisFilter}
+                        sequenceType={this.sequenceType}
+                        width={this.width}
+                        height={this.height}
+                        pageSizes={this.pageSizes}
+                    />
+                </MutationLinkTemplateContextProvider>
             </MutationAnnotationsContextProvider>
         );
     }

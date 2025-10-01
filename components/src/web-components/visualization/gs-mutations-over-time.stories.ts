@@ -89,9 +89,20 @@ const mutationAnnotations = [
     },
 ];
 
+const mutationLinkTemplate = {
+    nucleotideMutation:
+        'https://cov-spectrum.org/explore/Switzerland/AllSamples/Past6M/variants?nucMutations={{mutation}}',
+    aminoAcidMutation:
+        'https://cov-spectrum.org/explore/Switzerland/AllSamples/Past6M/variants?aaMutations={{mutation}}',
+};
+
 const Template: StoryObj<Required<MutationsOverTimeProps>> = {
     render: (args) => html`
-        <gs-app lapis="${LAPIS_URL}" .mutationAnnotations=${mutationAnnotations}>
+        <gs-app
+            lapis="${LAPIS_URL}"
+            .mutationAnnotations=${mutationAnnotations}
+            .mutationLinkTemplate=${mutationLinkTemplate}
+        >
             <gs-mutations-over-time
                 .lapisFilter=${args.lapisFilter}
                 .sequenceType=${args.sequenceType}

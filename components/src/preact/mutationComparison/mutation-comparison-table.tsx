@@ -6,6 +6,7 @@ import { type Dataset } from '../../operator/Dataset';
 import type { SequenceType } from '../../types';
 import { type DeletionClass, type SubstitutionClass } from '../../utils/mutations';
 import { useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
+import { useMutationLinkProvider } from '../MutationLinkTemplateContext';
 import { GridJsAnnotatedMutation } from '../components/annotated-mutation';
 import { type ProportionInterval } from '../components/proportion-selector';
 import { Table } from '../components/table';
@@ -26,6 +27,7 @@ export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = (
     sequenceType,
 }) => {
     const annotationsProvider = useMutationAnnotationsProvider();
+    const linkProvider = useMutationLinkProvider();
 
     const headers = [
         {
@@ -38,6 +40,7 @@ export const MutationComparisonTable: FunctionComponent<MutationsTableProps> = (
                     mutation={cell}
                     sequenceType={sequenceType}
                     annotationsProvider={annotationsProvider}
+                    linkProvider={linkProvider}
                 />
             ),
         },
