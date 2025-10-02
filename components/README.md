@@ -179,6 +179,26 @@ Node.js [subpath imports](https://nodejs.org/api/packages.html#subpath-imports),
 from [storybook](https://storybook.js.org/docs/writing-stories/mocking-data-and-modules/mocking-modules). This ensures
 that when importing the worker in the component, the mock worker is used inside Storybook instead of the real worker.
 
-### Exporting types into the final build
+### How The Release Build Works
 
-This project uses `vite build`. The release config is `vite.release.config.ts`. In there, the lib export entrypoints are defined. If you want to export a utility type for your component, re-export it inside of `utilEntrypoint.ts`.
+The `"exports"` field in `package.json` defines which files a user of the package can import using the normal module systems.
+`"files"` defines which files are included in the package when it is published to npm.
+Obviously, `"files"` must include everything that is referenced in `"exports"`,
+but we also include `src/` for best practice so that users can see non-built files if they want to.
+
+We use Vite to build the entry point files that are referenced in `"exports"`: [vite.release.config.ts](./vite.release.config.ts).
+Important points to note:
+
+- We need to build the code since we need to convert TypeScript to JavaScript.
+- We also include type declarations.
+- We do not minify the code. That's up to the user of the package.
+- We exclude dependencies. Users should download them via their own package manager. Our libraries should not be in the build output.
+- We also build a ["standalone" version](vite.release-standalone.config.ts) of the components that includes all dependencies.
+  This can be used without a package manager (and it's not supposed to be used if you are using a package manager).
+
+If you add code that's supposed to be used by the users of the package,
+you need to make sure that it is exported from one of the entry points defined in `"exports"`.
+Currently, we have two entry points:
+
+- [components](src/componentsEntrypoint.ts): Supposed to be used in the browser. This file registers all web components when it's imported.
+- [util](src/utilEntrypoint.ts): Can also be used in a non-browser environment. Exports some code and types so that users can reuse some of our logic.
