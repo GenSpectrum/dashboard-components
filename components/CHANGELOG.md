@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.8.0...dashboard-components-v1.8.1) (2025-10-07)
+
+
+### Bug Fixes
+
+* **components:** allow non-segment AA mutations for wastewater ([#1006](https://github.com/GenSpectrum/dashboard-components/issues/1006)) ([e8e847d](https://github.com/GenSpectrum/dashboard-components/commit/e8e847d3d5b457531082c7e0d509be2d8c76fc56))
+
 ## [1.8.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.7.0...dashboard-components-v1.8.0) (2025-10-01)
 
 
