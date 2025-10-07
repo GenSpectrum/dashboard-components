@@ -17,15 +17,19 @@ export interface MutationClass extends Mutation {
 const nucleotideChars = 'ACGTRYKMSWBDHVN';
 const aminoAcidChars = 'ACDEFGHIKLMNPQRSTVWY';
 
-function segmentPart(type: 'nucleotide' | 'aminoAcid') {
-    return type === 'aminoAcid' ? `(?<segment>[A-Z0-9_-]+):` : `((?<segment>[A-Z0-9_-]+)(?=:):)?`;
+function segmentPart(isOptional: boolean) {
+    const segmentPart = `(?<segment>[A-Z0-9_-]+):`;
+    if (isOptional) {
+        return `(${segmentPart})?`;
+    }
+    return segmentPart;
 }
 
-function buildSubstitutionRegex(type: 'nucleotide' | 'aminoAcid') {
+function buildSubstitutionRegex(type: 'nucleotide' | 'aminoAcid', segmentPartIsOptional: boolean) {
     const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
 
     return new RegExp(
-        `^${segmentPart(type)}` +
+        `^${segmentPart(segmentPartIsOptional)}` +
             `(?<valueAtReference>[${chars}*])?` +
             `(?<position>\\d+)` +
             `(?<substitutionValue>[${chars}.*])?$`,
@@ -33,8 +37,9 @@ function buildSubstitutionRegex(type: 'nucleotide' | 'aminoAcid') {
     );
 }
 
-const nucleotideSubstitutionRegex = buildSubstitutionRegex('nucleotide');
-const aminoAcidSubstitutionRegex = buildSubstitutionRegex('aminoAcid');
+const nucleotideSubstitutionRegex = buildSubstitutionRegex('nucleotide', true);
+const aminoAcidSubstitutionRegex = buildSubstitutionRegex('aminoAcid', false);
+const aminoAcidSubstitutionWithoutSegmentRegex = buildSubstitutionRegex('aminoAcid', true);
 
 export interface Substitution extends Mutation {
     type: 'substitution';
@@ -74,10 +79,13 @@ export class SubstitutionClass implements MutationClass, Substitution {
         return this.code;
     }
 
-    static parse(mutationStr: string): SubstitutionClass | null {
+    static parse(mutationStr: string, segmentIsOptional: boolean = false): SubstitutionClass | null {
         const matchNucleotide = nucleotideSubstitutionRegex.exec(mutationStr);
         const matchAminoAcid = aminoAcidSubstitutionRegex.exec(mutationStr);
-        const match = matchNucleotide ?? matchAminoAcid;
+        const matchAminAcidWithoutSegment = segmentIsOptional
+            ? aminoAcidSubstitutionWithoutSegmentRegex.exec(mutationStr)
+            : undefined;
+        const match = matchNucleotide ?? matchAminoAcid ?? matchAminAcidWithoutSegment;
         if (match?.groups === undefined) {
             return null;
         }
@@ -94,7 +102,7 @@ function buildDeletionRegex(type: 'nucleotide' | 'aminoAcid') {
     const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
 
     return new RegExp(
-        `^${segmentPart(type)}` + `(?<valueAtReference>[${chars}*])?` + `(?<position>\\d+)` + `(-)$`,
+        `^${segmentPart(type === 'nucleotide')}` + `(?<valueAtReference>[${chars}*])?` + `(?<position>\\d+)` + `(-)$`,
         'i',
     );
 }
@@ -158,7 +166,7 @@ function buildInsertionRegex(type: 'nucleotide' | 'aminoAcid') {
     const wildcardToken = `(?:\\.\\*)`;
 
     return new RegExp(
-        `^ins_${segmentPart(type)}(?<position>\\d+):(?<insertedSymbols>(?:[${chars}?*]|${wildcardToken})+)$`,
+        `^ins_${segmentPart(type === 'nucleotide')}(?<position>\\d+):(?<insertedSymbols>(?:[${chars}?*]|${wildcardToken})+)$`,
         'i',
     );
 }
