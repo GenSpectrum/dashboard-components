@@ -290,12 +290,12 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
                 { type: 'value', proportion: 0.4, count: 4, totalCount: 11 },
-                { type: 'value', proportion: 0, count: 0, totalCount: 0 },
+                null,
                 { type: 'value', proportion: 0, count: 0, totalCount: 13 },
             ],
             [
                 { type: 'value', proportion: 0.1, count: 1, totalCount: 11 },
-                { type: 'value', proportion: 0, count: 0, totalCount: 0 },
+                null,
                 { type: 'value', proportion: 0.3, count: 3, totalCount: 13 },
             ],
         ]);
@@ -1013,8 +1013,8 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
-                { type: 'value', proportion: NaN, count: 0, totalCount: 11 },
-                { type: 'value', proportion: NaN, count: 0, totalCount: 12 },
+                { type: 'belowThreshold', totalCount: 11 },
+                { type: 'belowThreshold', totalCount: 12 },
             ],
             [
                 { type: 'value', proportion: 0.2, count: 2, totalCount: 11 },
@@ -1135,8 +1135,8 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
-                { type: 'value', proportion: NaN, count: 0, totalCount: 11 },
-                { type: 'value', proportion: NaN, count: 0, totalCount: 12 },
+                { type: 'belowThreshold', totalCount: 11 },
+                { type: 'belowThreshold', totalCount: 12 },
             ],
             [
                 { type: 'value', proportion: 0.2, count: 2, totalCount: 11 },

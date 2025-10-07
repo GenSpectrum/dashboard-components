@@ -21,6 +21,8 @@ import {
     usePreactTable,
 } from '../shared/tanstackTable/tanstackTable';
 
+const NON_BREAKING_SPACE = '\u00A0';
+
 export interface MutationsOverTimeGridProps {
     data: MutationOverTimeDataMap;
     colorScale: ColorScale;
@@ -176,7 +178,7 @@ const ProportionCell: FunctionComponent<{
     tooltipPosition: TooltipPosition;
     colorScale: ColorScale;
 }> = ({ value, mutation, date, tooltipPosition, colorScale }) => {
-    const proportion = value?.type === 'belowThreshold' ? 0 : value?.proportion;
+    const proportion = value?.type === 'belowThreshold' ? undefined : value?.proportion;
 
     return (
         <div className={'py-1 w-full h-full'}>
@@ -194,7 +196,9 @@ const ProportionCell: FunctionComponent<{
                     {value === null ? (
                         <span className='invisible'>No data</span>
                     ) : (
-                        <span className='invisible @[2rem]:visible'>{formatProportion(proportion ?? 0, 0)}</span>
+                        <span className='invisible @[2rem]:visible'>
+                            {proportion !== undefined ? formatProportion(proportion, 0) : NON_BREAKING_SPACE}
+                        </span>
                     )}
                 </div>
             </Tooltip>

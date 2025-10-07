@@ -295,17 +295,34 @@ async function queryMutationsOverTimeDataDirectEndpoint(
             responseMutations.map((mutation, i) => [
                 mutation.code,
                 new Map(
-                    allDates.map((date, j): [string, MutationOverTimeMutationValue] => [
-                        date.dateString,
-                        {
-                            type: 'value',
-                            // 'coverage' in the API resp. is the number of seqs. that have a non-ambiguous symbol at position
-                            // 'count' in the API resp. is the number of seqs with the mutation
-                            proportion: apiResult.data.data[i][j].count / apiResult.data.data[i][j].coverage,
-                            count: apiResult.data.data[i][j].count,
-                            totalCount: totalCounts[j],
-                        },
-                    ]),
+                    allDates.map((date, j): [string, MutationOverTimeMutationValue] => {
+                        if (totalCounts[j] === 0) {
+                            return [date.dateString, null];
+                        }
+                        // 'count' in the API resp. is the number of seqs with the mutation
+                        const count = apiResult.data.data[i][j].count;
+                        // 'coverage' in the API resp. is the number of seqs. that have a non-ambiguous symbol at position
+                        const coverage = apiResult.data.data[i][j].coverage;
+                        const totalCount = totalCounts[j];
+                        if (coverage === 0) {
+                            return [
+                                date.dateString,
+                                {
+                                    type: 'belowThreshold',
+                                    totalCount,
+                                },
+                            ];
+                        }
+                        return [
+                            date.dateString,
+                            {
+                                type: 'value',
+                                proportion: count / coverage,
+                                count,
+                                totalCount,
+                            },
+                        ];
+                    }),
                 ),
             ]),
         ),
