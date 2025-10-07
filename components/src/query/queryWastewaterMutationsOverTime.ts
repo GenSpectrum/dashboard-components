@@ -57,7 +57,7 @@ function transformMutations(input: unknown): { mutation: Substitution; proportio
     }
 
     return Object.entries(mutationFrequency.data).map(([key, value]) => {
-        const mutation = SubstitutionClass.parse(key);
+        const mutation = SubstitutionClass.parse(key, true);
         if (mutation === null) {
             throw new Error(`Failed to parse mutation: "${key}"`);
         }

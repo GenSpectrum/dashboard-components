@@ -8,6 +8,7 @@ import referenceGenome from '../../../lapisApi/__mockData__/referenceGenome.json
 import { LapisUrlContextProvider } from '../../LapisUrlContext';
 import { ReferenceGenomeContext } from '../../ReferenceGenomeContext';
 import details from './__mockData__/details.json';
+import detailsNonSegmented from './__mockData__/detailsAminAcidNonSegmented.json';
 import type { MutationsOverTimeProps } from '../../mutationsOverTime/mutations-over-time';
 import { playThatExpectsFinishedLoadingEvent } from '../../shared/stories/expectFinishedLoadingEvent';
 
@@ -110,6 +111,39 @@ export const AminoAcids: StoryObj<WastewaterMutationsOverTimeProps> = {
             const element = canvas.queryByText(/ORF1a:/);
             await expect(element).not.toBeInTheDocument();
         });
+    },
+};
+
+export const AminoAcidsNonSegmented: StoryObj<WastewaterMutationsOverTimeProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        sequenceType: 'amino acid',
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        name: 'details',
+                        url: WISE_DETAILS_ENDPOINT,
+                        body: {
+                            fields: ['date', 'location', 'nucleotideMutationFrequency', 'aminoAcidMutationFrequency'],
+                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: detailsNonSegmented,
+                    },
+                },
+            ],
+        },
+    },
+    play: async ({ canvas }) => {
+        await expectMutationOnPage(canvas, 'G204P');
+        await expectMutationOnPage(canvas, 'R346T');
+        await expectMutationOnPage(canvas, 'Q493E');
+        await expectMutationOnPage(canvas, 'S4286C');
     },
 };
 
