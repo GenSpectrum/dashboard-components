@@ -81,30 +81,12 @@ export const withGaps: MutationOverTimeMockData = {
                             },
                         ],
                         [
-                            '2024-04',
-                            {
-                                type: 'value',
-                                count: 0,
-                                proportion: NaN,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
                             '2024-05',
                             {
                                 type: 'value',
                                 count: 759,
                                 proportion: 0.08675277174534232,
                                 totalCount: 8799,
-                            },
-                        ],
-                        [
-                            '2024-06',
-                            {
-                                type: 'value',
-                                count: 0,
-                                proportion: NaN,
-                                totalCount: 0,
                             },
                         ],
                         [
@@ -149,30 +131,12 @@ export const withGaps: MutationOverTimeMockData = {
                             },
                         ],
                         [
-                            '2024-04',
-                            {
-                                type: 'value',
-                                count: 0,
-                                proportion: NaN,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
                             '2024-05',
                             {
                                 type: 'value',
                                 count: 666,
                                 proportion: 0.09498003422703936,
                                 totalCount: 8799,
-                            },
-                        ],
-                        [
-                            '2024-06',
-                            {
-                                type: 'value',
-                                count: 0,
-                                proportion: NaN,
-                                totalCount: 0,
                             },
                         ],
                         [
@@ -213,30 +177,12 @@ export const withGaps: MutationOverTimeMockData = {
                             },
                         ],
                         [
-                            '2024-04',
-                            {
-                                type: 'value',
-                                count: 0,
-                                proportion: NaN,
-                                totalCount: 0,
-                            },
-                        ],
-                        [
                             '2024-05',
                             {
                                 type: 'value',
                                 count: 1304,
                                 proportion: 0.151504589287789,
                                 totalCount: 8799,
-                            },
-                        ],
-                        [
-                            '2024-06',
-                            {
-                                type: 'value',
-                                count: 0,
-                                proportion: NaN,
-                                totalCount: 0,
                             },
                         ],
                         [
