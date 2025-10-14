@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.8.1...dashboard-components-v1.8.2) (2025-10-08)
+
+
+### Bug Fixes
+
+* **components:** show light gray cell background for empty cells in mutations-over-time ([#1003](https://github.com/GenSpectrum/dashboard-components/issues/1003)) ([b7b81de](https://github.com/GenSpectrum/dashboard-components/commit/b7b81dedf11b10223f929ae4d18c31d70cf3db30))
+
 ## [1.8.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.8.0...dashboard-components-v1.8.1) (2025-10-07)
 
 
