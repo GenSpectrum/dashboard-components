@@ -229,7 +229,7 @@ export const FiresEvent: StoryObj<Required<LineageFilterProps>> = {
 
         await step('Enter a valid lineage value', async () => {
             await userEvent.type(inputField(), 'B.1.1.7*');
-            await userEvent.click(canvas.getByRole('option', { name: 'B.1.1.7*(677146)' }));
+            await userEvent.click(canvas.getByRole('option', { name: 'B.1.1.7*(677,146)' }));
 
             await waitFor(() => {
                 return expect(listenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
