@@ -64,6 +64,7 @@ export function DownshiftCombobox<Item>({
         getItemProps,
         inputValue,
         closeMenu,
+        reset,
     } = useCombobox({
         onInputValueChange({ inputValue }) {
             setInputIsInvalid(false);
@@ -97,7 +98,7 @@ export function DownshiftCombobox<Item>({
     };
 
     const clearInput = () => {
-        selectItem(null);
+        reset();
     };
 
     const buttonRef = useRef(null);

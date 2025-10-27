@@ -187,6 +187,62 @@ export const WithHideCountsTrue: StoryObj<LineageFilterProps> = {
     },
 };
 
+export const EnterAndClearMultipleTimes: StoryObj<LineageFilterProps> = {
+    ...Default,
+    play: async ({ canvasElement, step }) => {
+        const { canvas, lineageChangedListenerMock } = await prepare(canvasElement, step);
+        const input = await inputField(canvas);
+        const inputContainer = canvas.getByRole('combobox').parentElement;
+        const clearSelectionButton = await canvas.findByLabelText('clear selection');
+
+        await step('clear field initially', async () => {
+            await userEvent.clear(input);
+        });
+
+        await step('enter F in the input field', async () => {
+            await userEvent.type(input, 'F');
+        });
+
+        await step('clear selection using clear button', async () => {
+            await userEvent.click(clearSelectionButton);
+
+            await waitFor(() => {
+                return expect(lineageChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    pangoLineage: undefined,
+                });
+            });
+        });
+
+        await step('verify input field is empty after clearing', async () => {
+            await expect(input).toHaveValue('');
+        });
+
+        await step('verify no red border after clearing', async () => {
+            await expect(inputContainer).not.toHaveClass('input-error');
+        });
+
+        // do it again
+
+        await step('enter F in the input field again', async () => {
+            await userEvent.type(input, 'F');
+        });
+
+        await step('clear selection using clear button again', async () => {
+            await userEvent.click(clearSelectionButton);
+
+            await waitFor(() => {
+                return expect(lineageChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    pangoLineage: undefined,
+                });
+            });
+        });
+
+        await step('verify input field is empty after clearing again', async () => {
+            await expect(input).toHaveValue('');
+        });
+    },
+};
+
 async function prepare(canvasElement: HTMLElement, step: StepFunction<PreactRenderer, unknown>) {
     const canvas = within(canvasElement);
 
