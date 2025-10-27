@@ -24,10 +24,15 @@ import {
     type MutationFilter,
     mutationOrAnnotationDoNotMatchFilter,
 } from '../../mutationsOverTime/getFilteredMutationsOverTimeData';
-import MutationsOverTimeGrid from '../../mutationsOverTime/mutations-over-time-grid';
+import MutationsOverTimeGrid, { type CustomColumn } from '../../mutationsOverTime/mutations-over-time-grid';
 import { pageSizesSchema } from '../../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../../shared/tanstackTable/pagination-context';
 import { useQuery } from '../../useQuery';
+
+const customColumnSchema = z.object({
+    header: z.string(),
+    values: z.record(z.string(), z.union([z.string(), z.number()])),
+});
 
 const wastewaterMutationOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
@@ -35,6 +40,7 @@ const wastewaterMutationOverTimeSchema = z.object({
     width: z.string(),
     height: z.string().optional(),
     pageSizes: pageSizesSchema,
+    customColumns: z.array(customColumnSchema).optional(),
 });
 
 export type WastewaterMutationsOverTimeProps = z.infer<typeof wastewaterMutationOverTimeSchema>;
@@ -176,6 +182,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                         colorScale={colorScale}
                         pageSizes={originalComponentProps.pageSizes}
                         sequenceType={originalComponentProps.sequenceType}
+                        customColumns={originalComponentProps.customColumns}
                     />
                 ),
             })),
@@ -187,6 +194,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             colorScale,
             originalComponentProps.pageSizes,
             originalComponentProps.sequenceType,
+            originalComponentProps.customColumns,
         ],
     );
 
