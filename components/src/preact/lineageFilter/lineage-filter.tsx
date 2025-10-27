@@ -99,7 +99,7 @@ const LineageSelector = ({
             formatItemInList={(item: LineageItem) => (
                 <p>
                     <span>{item.lineage}</span>
-                    {!hideCounts && <span className='ml-2 text-gray-500'>({item.count})</span>}
+                    {!hideCounts && <span className='ml-2 text-gray-500'>({item.count.toLocaleString('en-US')})</span>}
                 </p>
             )}
         />

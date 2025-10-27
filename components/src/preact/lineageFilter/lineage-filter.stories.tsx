@@ -108,7 +108,7 @@ export const Default: StoryObj<LineageFilterProps> = {
             const input = await inputField(canvas);
             await userEvent.clear(input);
             await userEvent.type(input, 'B.1');
-            await userEvent.click(canvas.getByRole('option', { name: 'B.1(53802)' }));
+            await userEvent.click(canvas.getByRole('option', { name: 'B.1(53,802)' }));
 
             await waitFor(() => {
                 return expect(lineageChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({

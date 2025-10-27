@@ -112,7 +112,9 @@ const LocationSelector = ({
                 <>
                     <p>
                         <span>{item.label}</span>
-                        {!hideCounts && <span className='ml-2 text-gray-500'>({item.count})</span>}
+                        {!hideCounts && (
+                            <span className='ml-2 text-gray-500'>({item.count.toLocaleString('en-US')})</span>
+                        )}
                     </p>
                     <span className='text-sm text-gray-500'>{item.description}</span>
                 </>

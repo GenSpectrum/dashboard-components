@@ -100,7 +100,9 @@ const TextSelector = ({
                 return (
                     <p>
                         <span>{item.value}</span>
-                        {!hideCounts && <span className='ml-2 text-gray-500'>({item.count})</span>}
+                        {!hideCounts && (
+                            <span className='ml-2 text-gray-500'>({item.count.toLocaleString('en-US')})</span>
+                        )}
                     </p>
                 );
             }}
