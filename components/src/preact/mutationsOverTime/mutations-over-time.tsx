@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { type Dispatch, type StateUpdater, useMemo, useState, useEffect } from 'preact/hooks';
+import { type Dispatch, type StateUpdater, useMemo, useState, useEffect, useRef } from 'preact/hooks';
 import z from 'zod';
 
 // @ts-expect-error -- uses subpath imports and vite worker import
@@ -142,6 +142,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     overallMutationData,
 }) => {
     const tabsRef = useDispatchFinishedLoadingEvent();
+    const tooltipPortalTargetRef = useRef<HTMLDivElement>(null);
 
     const [mutationFilterValue, setMutationFilterValue] = useState<MutationFilter>({
         textFilter: '',
@@ -198,6 +199,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                             colorScale={colorScale}
                             sequenceType={originalComponentProps.sequenceType}
                             pageSizes={originalComponentProps.pageSizes}
+                            tooltipPortalTarget={tooltipPortalTargetRef.current}
                         />
                     ),
                 };
@@ -227,9 +229,11 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     );
 
     return (
-        <PageSizeContextProvider pageSizes={originalComponentProps.pageSizes}>
-            <Tabs ref={tabsRef} tabs={tabs} toolbar={toolbar} />
-        </PageSizeContextProvider>
+        <div ref={tooltipPortalTargetRef}>
+            <PageSizeContextProvider pageSizes={originalComponentProps.pageSizes}>
+                <Tabs ref={tabsRef} tabs={tabs} toolbar={toolbar} />
+            </PageSizeContextProvider>
+        </div>
     );
 };
 
