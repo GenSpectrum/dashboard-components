@@ -20,29 +20,6 @@ export type TooltipProps = {
 
 export const TOOLTIP_BASE_STYLES = 'z-10 w-max bg-white p-4 border border-gray-200 rounded-md text-center';
 
-function getPositionCss(position?: TooltipPosition) {
-    switch (position) {
-        case 'top':
-            return 'bottom-full translate-x-[-50%] left-1/2 mb-1';
-        case 'top-start':
-            return 'bottom-full mr-1 mb-1';
-        case 'top-end':
-            return 'bottom-full right-0 ml-1 mb-1';
-        case 'bottom':
-            return 'top-full translate-x-[-50%] left-1/2 mt-1';
-        case 'bottom-start':
-            return 'mr-1 mt-1';
-        case 'bottom-end':
-            return 'right-0 ml-1 mt-1';
-        case 'left':
-            return 'right-full translate-y-[-50%] top-1/2 mr-1';
-        case 'right':
-            return 'left-full translate-y-[-50%] top-1/2 ml-1';
-        case undefined:
-            return '';
-    }
-}
-
 /**
  * A simple CSS-based tooltip component that displays content on hover.
  *
@@ -72,3 +49,26 @@ const Tooltip: FunctionComponent<TooltipProps> = ({ children, content, position 
 };
 
 export default Tooltip;
+
+function getPositionCss(position?: TooltipPosition) {
+    switch (position) {
+        case 'top':
+            return 'bottom-full translate-x-[-50%] left-1/2 mb-1';
+        case 'top-start':
+            return 'bottom-full mr-1 mb-1';
+        case 'top-end':
+            return 'bottom-full right-0 ml-1 mb-1';
+        case 'bottom':
+            return 'top-full translate-x-[-50%] left-1/2 mt-1';
+        case 'bottom-start':
+            return 'mr-1 mt-1';
+        case 'bottom-end':
+            return 'right-0 ml-1 mt-1';
+        case 'left':
+            return 'right-full translate-y-[-50%] top-1/2 mr-1';
+        case 'right':
+            return 'left-full translate-y-[-50%] top-1/2 ml-1';
+        case undefined:
+            return '';
+    }
+}

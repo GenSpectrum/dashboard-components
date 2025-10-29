@@ -12,53 +12,6 @@ export type PortalTooltipProps = {
     portalTarget: HTMLElement | null;
 };
 
-function calculateTooltipPosition(
-    triggerRect: DOMRect,
-    tooltipRect: DOMRect,
-    position: TooltipPosition,
-): { top: number; left: number } {
-    const gap = 4;
-    let top = 0;
-    let left = 0;
-
-    switch (position) {
-        case 'top':
-            top = triggerRect.top - tooltipRect.height - gap;
-            left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
-            break;
-        case 'top-start':
-            top = triggerRect.top - tooltipRect.height - gap;
-            left = triggerRect.left;
-            break;
-        case 'top-end':
-            top = triggerRect.top - tooltipRect.height - gap;
-            left = triggerRect.right - tooltipRect.width;
-            break;
-        case 'bottom':
-            top = triggerRect.bottom + gap;
-            left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
-            break;
-        case 'bottom-start':
-            top = triggerRect.bottom + gap;
-            left = triggerRect.left;
-            break;
-        case 'bottom-end':
-            top = triggerRect.bottom + gap;
-            left = triggerRect.right - tooltipRect.width;
-            break;
-        case 'left':
-            top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
-            left = triggerRect.left - tooltipRect.width - gap;
-            break;
-        case 'right':
-            top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
-            left = triggerRect.right + gap;
-            break;
-    }
-
-    return { top, left };
-}
-
 /**
  * A portal-based tooltip component that renders content in a specified DOM element.
  *
@@ -133,3 +86,50 @@ const PortalTooltip: FunctionComponent<PortalTooltipProps> = ({
 };
 
 export default PortalTooltip;
+
+function calculateTooltipPosition(
+    triggerRect: DOMRect,
+    tooltipRect: DOMRect,
+    position: TooltipPosition,
+): { top: number; left: number } {
+    const gap = 4;
+    let top = 0;
+    let left = 0;
+
+    switch (position) {
+        case 'top':
+            top = triggerRect.top - tooltipRect.height - gap;
+            left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
+            break;
+        case 'top-start':
+            top = triggerRect.top - tooltipRect.height - gap;
+            left = triggerRect.left;
+            break;
+        case 'top-end':
+            top = triggerRect.top - tooltipRect.height - gap;
+            left = triggerRect.right - tooltipRect.width;
+            break;
+        case 'bottom':
+            top = triggerRect.bottom + gap;
+            left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
+            break;
+        case 'bottom-start':
+            top = triggerRect.bottom + gap;
+            left = triggerRect.left;
+            break;
+        case 'bottom-end':
+            top = triggerRect.bottom + gap;
+            left = triggerRect.right - tooltipRect.width;
+            break;
+        case 'left':
+            top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
+            left = triggerRect.left - tooltipRect.width - gap;
+            break;
+        case 'right':
+            top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
+            left = triggerRect.right + gap;
+            break;
+    }
+
+    return { top, left };
+}
