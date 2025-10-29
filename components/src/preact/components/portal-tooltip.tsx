@@ -15,7 +15,7 @@ export type PortalTooltipProps = {
 /**
  * A portal-based tooltip component that renders content in a specified DOM element.
  *
- * Unlike the regular `Tooltip` component, this uses React portals to render the tooltip
+ * Unlike the regular `Tooltip` component, this uses Preact portals to render the tooltip
  * at a specific location in the DOM with fixed positioning. This is useful when:
  * - The tooltip needs to escape overflow constraints from parent containers
  * - You need precise control over the tooltip's rendering location
