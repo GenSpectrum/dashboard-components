@@ -1,8 +1,8 @@
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-import { LineageMultiFilterChangedEvent } from '../../preact/lineageFilter/multi-lineage-filter';
-import { MultiLineageFilter, type MultiLineageFilterProps } from '../../preact/lineageFilter/multi-lineage-filter';
+import { LineageMultiFilterChangedEvent } from '../../preact/lineageFilter/lineage-filter-multi';
+import { MultiLineageFilter, type MultiLineageFilterProps } from '../../preact/lineageFilter/lineage-filter-multi';
 import { type gsEventNames } from '../../utils/gsEventNames';
 import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
@@ -31,7 +31,7 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * }
  *  ```
  */
-@customElement('gs-multi-lineage-filter')
+@customElement('gs-lineage-filter-multi')
 export class MultiLineageFilterComponent extends PreactLitAdapter {
     /**
      * The initial value to use for this lineage filter.
@@ -100,7 +100,7 @@ export class MultiLineageFilterComponent extends PreactLitAdapter {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-multi-lineage-filter': MultiLineageFilterComponent;
+        'gs-lineage-filter-multi': MultiLineageFilterComponent;
     }
 
     interface HTMLElementEventMap {
@@ -112,7 +112,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-multi-lineage-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-lineage-filter-multi': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
         }
     }
 }

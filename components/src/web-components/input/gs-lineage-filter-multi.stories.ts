@@ -6,26 +6,26 @@ import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import '../gs-app';
-import './gs-multi-lineage-filter';
+import './gs-lineage-filter-multi';
 import { lineageDefinitionEndpoint } from '../../lapisApi/lapisApi';
 import aggregatedData from '../../preact/lineageFilter/__mockData__/aggregated.json';
 import lineageDefinition from '../../preact/lineageFilter/__mockData__/lineageDefinition.json';
-import { type MultiLineageFilterProps } from '../../preact/lineageFilter/multi-lineage-filter';
+import { type MultiLineageFilterProps } from '../../preact/lineageFilter/lineage-filter-multi';
 import { gsEventNames } from '../../utils/gsEventNames';
 import { withinShadowRoot } from '../withinShadowRoot.story';
 
 const codeExample = String.raw`
-<gs-multi-lineage-filter
+<gs-lineage-filter-multi
     lapisField="pangoLineage"
     lapisFilter='{"country": "Germany"}'
     placeholderText="Select lineages"
     .value='["B.1.1.7", "BA.5"]'
     width="50%">
-</gs-multi-lineage-filter>`;
+</gs-lineage-filter-multi>`;
 
 const meta: Meta<Required<MultiLineageFilterProps>> = {
     title: 'Input/Multi-lineage filter',
-    component: 'gs-multi-lineage-filter',
+    component: 'gs-lineage-filter-multi',
     parameters: withComponentDocs({
         actions: {
             handles: [gsEventNames.lineageFilterChanged, ...previewHandles],
@@ -106,14 +106,14 @@ const Template: StoryObj<Required<MultiLineageFilterProps>> = {
     render: (args) => {
         return html` <gs-app lapis="${LAPIS_URL}">
             <div class="max-w-(--breakpoint-lg)">
-                <gs-multi-lineage-filter
+                <gs-lineage-filter-multi
                     .lapisField=${args.lapisField}
                     .lapisFilter=${args.lapisFilter}
                     .placeholderText=${args.placeholderText}
                     .hideCounts=${args.hideCounts}
                     .value=${args.value}
                     .width=${args.width}
-                ></gs-multi-lineage-filter>
+                ></gs-lineage-filter-multi>
             </div>
         </gs-app>`;
     },
@@ -141,7 +141,7 @@ const aggregatedEndpointMatcher = {
 export const MultiLineageFilter: StoryObj<Required<MultiLineageFilterProps>> = {
     ...Template,
     play: async ({ canvasElement }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-multi-lineage-filter');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter-multi');
         await waitFor(() => {
             return expect(canvas.getByPlaceholderText('Select lineages')).toBeVisible();
         });
@@ -186,7 +186,7 @@ export const FetchingLineagesFails: StoryObj<Required<MultiLineageFilterProps>> 
         },
     },
     play: async ({ canvasElement }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-multi-lineage-filter');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter-multi');
 
         await waitFor(() =>
             expect(canvas.getByText('Oops! Something went wrong.', { exact: false })).toBeInTheDocument(),
@@ -201,7 +201,7 @@ export const FiresEvent: StoryObj<Required<MultiLineageFilterProps>> = {
         value: ['A.1'],
     },
     play: async ({ canvasElement, step }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-multi-lineage-filter');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter-multi');
 
         const inputField = () => canvas.getByPlaceholderText('Select lineages');
         const listenerMock = fn();
@@ -261,7 +261,7 @@ export const WithCommaSeparatedStringValue: StoryObj<Required<MultiLineageFilter
         value: 'B.1.1.7,BA.5,C.1' as any,
     },
     play: async ({ canvasElement }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-multi-lineage-filter');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter-multi');
 
         await waitFor(() => {
             expect(canvas.getByLabelText('remove B.1.1.7')).toBeVisible();
@@ -278,7 +278,7 @@ export const EmptyState: StoryObj<Required<MultiLineageFilterProps>> = {
         value: [],
     },
     play: async ({ canvasElement }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-multi-lineage-filter');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter-multi');
 
         await waitFor(() => {
             expect(canvas.getByPlaceholderText('Select lineages')).toBeVisible();
@@ -295,7 +295,7 @@ export const WithHideCountsTrue: StoryObj<Required<MultiLineageFilterProps>> = {
         hideCounts: true,
     },
     play: async ({ canvasElement }) => {
-        const canvas = await withinShadowRoot(canvasElement, 'gs-multi-lineage-filter');
+        const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter-multi');
 
         await waitFor(() => {
             const chip = canvas.getByLabelText('remove B.1.1.7');

@@ -2,7 +2,7 @@ import { type Meta, type PreactRenderer, type StoryObj } from '@storybook/preact
 import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
 import type { StepFunction } from '@storybook/types';
 
-import { MultiLineageFilter, type MultiLineageFilterProps } from './multi-lineage-filter';
+import { MultiLineageFilter, type MultiLineageFilterProps } from './lineage-filter-multi';
 import { previewHandles } from '../../../.storybook/preview';
 import { AGGREGATED_ENDPOINT, LAPIS_URL } from '../../constants';
 import lineageDefinition from './__mockData__/lineageDefinition.json';
