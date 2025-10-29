@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { type Dispatch, type StateUpdater, useMemo, useState, useEffect, useRef } from 'preact/hooks';
+import { type Dispatch, type StateUpdater, useMemo, useState, useEffect, useLayoutEffect, useRef } from 'preact/hooks';
 import z from 'zod';
 
 // @ts-expect-error -- uses subpath imports and vite worker import
@@ -143,6 +143,11 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
 }) => {
     const tabsRef = useDispatchFinishedLoadingEvent();
     const tooltipPortalTargetRef = useRef<HTMLDivElement>(null);
+    const [tooltipPortalTarget, setTooltipPortalTarget] = useState<HTMLDivElement | null>(null);
+
+    useLayoutEffect(() => {
+        setTooltipPortalTarget(tooltipPortalTargetRef.current);
+    }, []);
 
     const [mutationFilterValue, setMutationFilterValue] = useState<MutationFilter>({
         textFilter: '',
@@ -199,7 +204,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                             colorScale={colorScale}
                             sequenceType={originalComponentProps.sequenceType}
                             pageSizes={originalComponentProps.pageSizes}
-                            tooltipPortalTarget={tooltipPortalTargetRef.current}
+                            tooltipPortalTarget={tooltipPortalTarget}
                         />
                     ),
                 };
