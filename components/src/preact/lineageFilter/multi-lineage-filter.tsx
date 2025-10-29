@@ -5,7 +5,7 @@ import z from 'zod';
 import { useLapisUrl } from '../LapisUrlContext';
 import { fetchLineageAutocompleteList, type LineageItem } from './fetchLineageAutocompleteList';
 import { lapisFilterSchema } from '../../types';
-import { DownshiftMultiCombobox } from '../components/downshift-multi-combobox';
+import { DownshiftMultiCombobox } from '../components/downshift-combobox';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
