@@ -1,6 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { type CSSProperties, createPortal } from 'preact/compat';
-import { useState, useRef, useLayoutEffect, useCallback } from 'preact/hooks';
+import { useState, useRef, useLayoutEffect } from 'preact/hooks';
 import { type JSXInternal } from 'preact/src/jsx';
 
 import { type TooltipPosition, TOOLTIP_BASE_STYLES } from './tooltip';
@@ -50,20 +50,14 @@ const PortalTooltip: FunctionComponent<PortalTooltipProps> = ({
     const triggerRef = useRef<HTMLDivElement>(null);
     const tooltipRef = useRef<HTMLDivElement>(null);
 
-    const updatePosition = useCallback(() => {
-        if (triggerRef.current !== null && tooltipRef.current !== null) {
+    useLayoutEffect(() => {
+        if (isHovered && triggerRef.current !== null && tooltipRef.current !== null) {
             const triggerRect = triggerRef.current.getBoundingClientRect();
             const tooltipRect = tooltipRef.current.getBoundingClientRect();
             const newPosition = calculateTooltipPosition(triggerRect, tooltipRect, position);
             setTooltipPosition(newPosition);
         }
-    }, [position]);
-
-    useLayoutEffect(() => {
-        if (isHovered) {
-            updatePosition();
-        }
-    }, [isHovered, updatePosition]);
+    }, [isHovered, position]);
 
     const tooltipContent = (
         <div
