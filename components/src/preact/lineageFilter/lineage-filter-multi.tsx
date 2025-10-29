@@ -130,14 +130,7 @@ const MultiLineageSelector = ({
                     {!hideCounts && <span className='ml-2 text-gray-500'>({item.count.toLocaleString('en-US')})</span>}
                 </p>
             )}
-            formatSelectedItem={(item: LineageItem) => (
-                <span>
-                    {item.lineage}
-                    {!hideCounts && (
-                        <span className='ml-1 text-gray-600 text-xs'>({item.count.toLocaleString('en-US')})</span>
-                    )}
-                </span>
-            )}
+            formatSelectedItem={(item: LineageItem) => <span>{item.lineage}</span>}
         />
     );
 };
