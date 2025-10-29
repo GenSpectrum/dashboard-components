@@ -87,8 +87,8 @@ function calculateTooltipPosition(
     position: TooltipPosition,
 ): { top: number; left: number } {
     const gap = 4;
-    let top = 0;
-    let left = 0;
+    let top;
+    let left;
 
     switch (position) {
         case 'top':
