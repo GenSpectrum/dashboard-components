@@ -18,7 +18,7 @@ export type TooltipProps = {
     tooltipStyle?: CSSProperties;
 };
 
-export const TOOLTIP_BASE_STYLES = 'z-10 w-max bg-white p-4 border border-gray-200 rounded-md text-center';
+export const TOOLTIP_BASE_STYLES = 'z-10 w-max bg-white p-4 border border-gray-200 rounded-md';
 
 /**
  * A simple CSS-based tooltip component that displays content on hover.
