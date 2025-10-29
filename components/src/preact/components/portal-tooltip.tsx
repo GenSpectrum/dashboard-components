@@ -74,7 +74,7 @@ const PortalTooltip: FunctionComponent<PortalTooltipProps> = ({
             <div ref={triggerRef} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
                 {children}
             </div>
-            {isHovered && portalTarget !== null && createPortal(tooltipContent, portalTarget)}
+            {portalTarget !== null && createPortal(tooltipContent, portalTarget)}
         </>
     );
 };
