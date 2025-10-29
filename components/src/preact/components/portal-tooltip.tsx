@@ -23,7 +23,7 @@ export type PortalTooltipProps = {
  *
  * **Important:** The `portalTarget` element should still be within the same shadow DOM as the
  * component to ensure proper styling and encapsulation. Typically, this is a container element
- * at the root of your component.
+ * at the root of your component. Do not use `document.body`.
  *
  * @example
  * ```tsx
