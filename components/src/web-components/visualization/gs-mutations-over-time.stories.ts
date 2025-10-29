@@ -45,6 +45,7 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
         hideGaps: { control: 'boolean' },
         useNewEndpoint: { control: 'boolean' },
         pageSizes: { control: 'object' },
+        customColumns: { control: 'object' },
     },
     args: {
         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
@@ -116,6 +117,7 @@ const Template: StoryObj<Required<MutationsOverTimeProps>> = {
                 .hideGaps=${args.hideGaps}
                 .pageSizes=${args.pageSizes}
                 .useNewEndpoint=${args.useNewEndpoint}
+                .customColumns=${args.customColumns}
             ></gs-mutations-over-time>
         </gs-app>
     `,
@@ -181,5 +183,24 @@ export const WithFixedHeight: StoryObj<Required<MutationsOverTimeProps>> = {
     args: {
         ...Template,
         height: '700px',
+    },
+};
+
+// This test uses mock data: withDisplayMutations.ts (through mutationOverTimeWorker.mock.ts)
+export const WithCustomColumns: StoryObj<Required<MutationsOverTimeProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        displayMutations: ['A19722G', 'G21641T', 'T21653-'],
+        customColumns: [
+            {
+                header: 'Jaccard Index',
+                values: {
+                    A19722G: 0.75,
+                    G21641T: 0.92,
+                    'T21653-': 0.58,
+                },
+            },
+        ],
     },
 };

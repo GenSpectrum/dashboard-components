@@ -23,27 +23,40 @@ import {
 
 const NON_BREAKING_SPACE = '\u00A0';
 
+export interface CustomColumn {
+    header: string;
+    values: Record<string, string | number>;
+}
+
 export interface MutationsOverTimeGridProps {
     data: MutationOverTimeDataMap;
     colorScale: ColorScale;
     sequenceType: SequenceType;
     pageSizes: PageSizes;
+    customColumns?: CustomColumn[];
 }
 
-type RowType = { mutation: Substitution | Deletion; values: (MutationOverTimeMutationValue | undefined)[] };
+type RowType = {
+    mutation: Substitution | Deletion;
+    values: (MutationOverTimeMutationValue | undefined)[];
+    customValues: (string | number | undefined)[];
+};
 
 const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
     data,
     colorScale,
     sequenceType,
     pageSizes,
+    customColumns = [],
 }) => {
     const tableData = useMemo(() => {
         const allMutations = data.getFirstAxisKeys();
         return data.getAsArray().map((row, index) => {
-            return { mutation: allMutations[index], values: [...row] };
+            const mutation = allMutations[index];
+            const customValues = customColumns.map((col) => col.values[mutation.code]);
+            return { mutation, values: [...row], customValues };
         });
-    }, [data]);
+    }, [data, customColumns]);
 
     const columns = useMemo(() => {
         const columnHelper = createColumnHelper<RowType>();
@@ -60,6 +73,17 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                     </div>
                 );
             },
+        });
+
+        const customColumnHeaders = customColumns.map((customCol, index) => {
+            return columnHelper.accessor((row) => row.customValues[index], {
+                id: `custom-${index}`,
+                header: () => <span>{customCol.header}</span>,
+                cell: ({ getValue }) => {
+                    const value = getValue();
+                    return <div className={'text-center'}>{value ?? ''}</div>;
+                },
+            });
         });
 
         const dateHeaders = dates.map((date, index) => {
@@ -98,8 +122,8 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
             });
         });
 
-        return [mutationHeader, ...dateHeaders];
-    }, [colorScale, data, sequenceType]);
+        return [mutationHeader, ...customColumnHeaders, ...dateHeaders];
+    }, [colorScale, data, sequenceType, customColumns]);
 
     const { pageSize } = usePageSizeContext();
     const table = usePreactTable({
