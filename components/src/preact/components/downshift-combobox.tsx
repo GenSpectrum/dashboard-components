@@ -30,7 +30,7 @@ function ToggleButton({
 }) {
     const props = getToggleButtonProps ? getToggleButtonProps() : { onClick };
     return (
-        <button aria-label="toggle menu" className="px-2" type="button" {...props} ref={buttonRef}>
+        <button aria-label='toggle menu' className='px-2' type='button' {...props} ref={buttonRef}>
             {isOpen ? <>↑</> : <>↓</>}
         </button>
     );
@@ -39,9 +39,9 @@ function ToggleButton({
 function ClearButton({ onClick, isHidden }: { onClick: () => void; isHidden: boolean }) {
     return (
         <button
-            aria-label="clear selection"
+            aria-label='clear selection'
             className={`px-2 ${isHidden ? 'hidden' : ''}`}
-            type="button"
+            type='button'
             onClick={onClick}
             tabIndex={-1}
         >
@@ -94,7 +94,7 @@ function DropdownMenu<Item>({
                     </li>
                 ))
             ) : (
-                <li className="py-2 px-3 shadow-xs">{emptyMessage}</li>
+                <li className='py-2 px-3 shadow-xs'>{emptyMessage}</li>
             )}
         </ul>
     );
@@ -219,7 +219,7 @@ export function DownshiftCombobox<Item>({
                 formatItemInList={formatItemInList}
                 itemToString={itemToString}
                 selectedItem={selectedItem}
-                emptyMessage="No elements to select."
+                emptyMessage='No elements to select.'
             />
         </div>
     );

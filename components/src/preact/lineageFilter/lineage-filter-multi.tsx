@@ -46,12 +46,7 @@ export const MultiLineageFilter: FunctionComponent<MultiLineageFilterProps> = (p
     const size = { width, height: '3rem' };
 
     return (
-        <ErrorBoundary
-            size={size}
-            layout='horizontal'
-            componentProps={props}
-            schema={multiLineageFilterPropsSchema}
-        >
+        <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={multiLineageFilterPropsSchema}>
             <ResizeContainer size={size}>
                 <MultiLineageFilterInner {...innerProps} />
             </ResizeContainer>
@@ -138,7 +133,9 @@ const MultiLineageSelector = ({
             formatSelectedItem={(item: LineageItem) => (
                 <span>
                     {item.lineage}
-                    {!hideCounts && <span className='ml-1 text-gray-600 text-xs'>({item.count.toLocaleString('en-US')})</span>}
+                    {!hideCounts && (
+                        <span className='ml-1 text-gray-600 text-xs'>({item.count.toLocaleString('en-US')})</span>
+                    )}
                 </span>
             )}
         />
