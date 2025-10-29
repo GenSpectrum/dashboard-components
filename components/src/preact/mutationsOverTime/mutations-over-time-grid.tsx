@@ -172,7 +172,7 @@ function styleGridHeader(columnIndex: number, numDateColumns: number) {
 function getTooltipPosition(rowIndex: number, rows: number, columnIndex: number, columns: number): TooltipPosition {
     const tooltipX = rowIndex < rows / 2 || rowIndex < 6 ? 'bottom' : 'top';
     const tooltipY = columnIndex < columns / 2 ? 'start' : 'end';
-    return `${tooltipX}-${tooltipY}` as TooltipPosition;
+    return `${tooltipX}-${tooltipY}`;
 }
 
 const ProportionCell: FunctionComponent<{
