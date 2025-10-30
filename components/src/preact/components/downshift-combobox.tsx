@@ -337,7 +337,7 @@ export function DownshiftMultiCombobox<Item>({
         <div ref={divRef} className={'relative w-full'}>
             <div className='w-full flex flex-col gap-1'>
                 <div
-                    className={`flex gap-1 flex-wrap p-1.5 input min-w-32 w-full ${inputClassName}`}
+                    className={`flex gap-1 flex-wrap p-1.5 input min-w-24 h-fit w-full ${inputClassName}`}
                     onBlur={(event) => {
                         if (event.relatedTarget != buttonRef.current) {
                             closeMenu();
