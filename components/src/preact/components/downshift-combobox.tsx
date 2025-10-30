@@ -286,45 +286,46 @@ export function DownshiftMultiCombobox<Item>({
         environment,
     });
 
-    const { isOpen, getMenuProps, getInputProps, highlightedIndex, getItemProps, closeMenu } = useCombobox({
-        items: availableItems,
-        itemToString(item) {
-            return itemToString(item);
-        },
-        inputValue: itemsFilter,
-        onStateChange({ inputValue: newInputValue, type, selectedItem: newSelectedItem }) {
-            switch (type) {
-                case useCombobox.stateChangeTypes.InputKeyDownEnter:
-                case useCombobox.stateChangeTypes.ItemClick:
-                    if (newSelectedItem) {
-                        dispatchEvent([...selectedItems, newSelectedItem]);
-                        setItemsFilter('');
-                    }
-                    break;
-                case useCombobox.stateChangeTypes.InputChange:
-                    setItemsFilter(newInputValue?.trim() ?? '');
-                    break;
-                default:
-                    break;
-            }
-        },
-        stateReducer(state, actionAndChanges) {
-            const { changes, type } = actionAndChanges;
-            switch (type) {
-                case useCombobox.stateChangeTypes.InputKeyDownEnter:
-                case useCombobox.stateChangeTypes.ItemClick:
-                    return {
-                        ...changes,
-                        isOpen: true,
-                        highlightedIndex: state.highlightedIndex,
-                        inputValue: '',
-                    };
-                default:
-                    return changes;
-            }
-        },
-        environment,
-    });
+    const { isOpen, getToggleButtonProps, getMenuProps, getInputProps, highlightedIndex, getItemProps, closeMenu } =
+        useCombobox({
+            items: availableItems,
+            itemToString(item) {
+                return itemToString(item);
+            },
+            inputValue: itemsFilter,
+            onStateChange({ inputValue: newInputValue, type, selectedItem: newSelectedItem }) {
+                switch (type) {
+                    case useCombobox.stateChangeTypes.InputKeyDownEnter:
+                    case useCombobox.stateChangeTypes.ItemClick:
+                        if (newSelectedItem) {
+                            dispatchEvent([...selectedItems, newSelectedItem]);
+                            setItemsFilter('');
+                        }
+                        break;
+                    case useCombobox.stateChangeTypes.InputChange:
+                        setItemsFilter(newInputValue?.trim() ?? '');
+                        break;
+                    default:
+                        break;
+                }
+            },
+            stateReducer(state, actionAndChanges) {
+                const { changes, type } = actionAndChanges;
+                switch (type) {
+                    case useCombobox.stateChangeTypes.InputKeyDownEnter:
+                    case useCombobox.stateChangeTypes.ItemClick:
+                        return {
+                            ...changes,
+                            isOpen: true,
+                            highlightedIndex: state.highlightedIndex,
+                            inputValue: '',
+                        };
+                    default:
+                        return changes;
+                }
+            },
+            environment,
+        });
 
     const clearAll = () => {
         dispatchEvent([]);
@@ -371,11 +372,7 @@ export function DownshiftMultiCombobox<Item>({
                         <ToggleButton
                             isOpen={isOpen}
                             buttonRef={buttonRef}
-                            onClick={() => {
-                                if (!isOpen) {
-                                    getInputProps().onFocus?.({} as any);
-                                }
-                            }}
+                            getToggleButtonProps={getToggleButtonProps}
                         />
                     </div>
                 </div>
