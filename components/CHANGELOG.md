@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.9.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.8.2...dashboard-components-v1.9.0) (2025-10-30)
+
+
+### Features
+
+* **components:** use digit grouping separators in dropdown filter counts ([#1013](https://github.com/GenSpectrum/dashboard-components/issues/1013)) ([c03206a](https://github.com/GenSpectrum/dashboard-components/commit/c03206acc39bacb9c39315f16af5f323cfe75120))
+
+
+### Bug Fixes
+
+* **components:** fix non-resetting lineage filter ([#1017](https://github.com/GenSpectrum/dashboard-components/issues/1017)) ([3734235](https://github.com/GenSpectrum/dashboard-components/commit/373423559555fa9553aff810c45e7291076f2c88))
+* **components:** mutations-over-time tooltip overflow without scroll ([#1020](https://github.com/GenSpectrum/dashboard-components/issues/1020)) ([dae6798](https://github.com/GenSpectrum/dashboard-components/commit/dae6798a0e79d4059b57aeea0b6043740d8fde9f))
+
 ## [1.8.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.8.1...dashboard-components-v1.8.2) (2025-10-08)
 
 
