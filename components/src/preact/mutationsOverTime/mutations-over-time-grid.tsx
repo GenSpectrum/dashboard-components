@@ -9,7 +9,8 @@ import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type Temporal } from '../../utils/temporalClass';
 import { AnnotatedMutation } from '../components/annotated-mutation';
 import { type ColorScale, getColorWithinScale, getTextColorForScale } from '../components/color-scale-selector';
-import Tooltip, { type TooltipPosition } from '../components/tooltip';
+import PortalTooltip from '../components/portal-tooltip';
+import { type TooltipPosition } from '../components/tooltip';
 import { formatProportion } from '../shared/table/formatProportion';
 import { type PageSizes, Pagination } from '../shared/tanstackTable/pagination';
 import { usePageSizeContext } from '../shared/tanstackTable/pagination-context';
@@ -28,6 +29,7 @@ export interface MutationsOverTimeGridProps {
     colorScale: ColorScale;
     sequenceType: SequenceType;
     pageSizes: PageSizes;
+    tooltipPortalTarget: HTMLElement | null;
 }
 
 type RowType = { mutation: Substitution | Deletion; values: (MutationOverTimeMutationValue | undefined)[] };
@@ -37,6 +39,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
     colorScale,
     sequenceType,
     pageSizes,
+    tooltipPortalTarget,
 }) => {
     const tableData = useMemo(() => {
         const allMutations = data.getFirstAxisKeys();
@@ -91,6 +94,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                                     numberOfColumns,
                                 )}
                                 colorScale={colorScale}
+                                tooltipPortalTarget={tooltipPortalTarget}
                             />
                         </div>
                     );
@@ -99,7 +103,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
         });
 
         return [mutationHeader, ...dateHeaders];
-    }, [colorScale, data, sequenceType]);
+    }, [colorScale, data, sequenceType, tooltipPortalTarget]);
 
     const { pageSize } = usePageSizeContext();
     const table = usePreactTable({
@@ -165,10 +169,10 @@ function styleGridHeader(columnIndex: number, numDateColumns: number) {
     return { className: 'invisible @[6rem]:visible' };
 }
 
-function getTooltipPosition(rowIndex: number, rows: number, columnIndex: number, columns: number) {
+function getTooltipPosition(rowIndex: number, rows: number, columnIndex: number, columns: number): TooltipPosition {
     const tooltipX = rowIndex < rows / 2 || rowIndex < 6 ? 'bottom' : 'top';
     const tooltipY = columnIndex < columns / 2 ? 'start' : 'end';
-    return `${tooltipX}-${tooltipY}` as const;
+    return `${tooltipX}-${tooltipY}`;
 }
 
 const ProportionCell: FunctionComponent<{
@@ -177,14 +181,16 @@ const ProportionCell: FunctionComponent<{
     mutation: Substitution | Deletion;
     tooltipPosition: TooltipPosition;
     colorScale: ColorScale;
-}> = ({ value, mutation, date, tooltipPosition, colorScale }) => {
+    tooltipPortalTarget: HTMLElement | null;
+}> = ({ value, mutation, date, tooltipPosition, colorScale, tooltipPortalTarget }) => {
     const proportion = value?.type === 'belowThreshold' ? undefined : value?.proportion;
 
     return (
         <div className={'py-1 w-full h-full'}>
-            <Tooltip
+            <PortalTooltip
                 content={<MutationsOverTimeGridTooltip mutation={mutation} date={date} value={value} />}
                 position={tooltipPosition}
+                portalTarget={tooltipPortalTarget}
             >
                 <div
                     style={{
@@ -201,7 +207,7 @@ const ProportionCell: FunctionComponent<{
                         </span>
                     )}
                 </div>
-            </Tooltip>
+            </PortalTooltip>
         </div>
     );
 };

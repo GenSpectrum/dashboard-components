@@ -18,6 +18,38 @@ export type TooltipProps = {
     tooltipStyle?: CSSProperties;
 };
 
+export const TOOLTIP_BASE_STYLES = 'z-10 w-max bg-white p-4 border border-gray-200 rounded-md';
+
+/**
+ * A simple CSS-based tooltip component that displays content on hover.
+ *
+ * **Note:** If you need the tooltip to escape overflow constraints or render at a specific
+ * location in the DOM (e.g., to avoid clipping by parent containers with `overflow: hidden`),
+ * use `PortalTooltip` instead.
+ *
+ * @example
+ * ```tsx
+ * <Tooltip content="This is a tooltip" position="top">
+ *   <button>Hover me</button>
+ * </Tooltip>
+ * ```
+ */
+const Tooltip: FunctionComponent<TooltipProps> = ({ children, content, position = 'bottom', tooltipStyle }) => {
+    return (
+        <div className={`relative group`}>
+            <div>{children}</div>
+            <div
+                className={`absolute ${TOOLTIP_BASE_STYLES} invisible group-hover:visible ${getPositionCss(position)}`}
+                style={tooltipStyle}
+            >
+                {content}
+            </div>
+        </div>
+    );
+};
+
+export default Tooltip;
+
 function getPositionCss(position?: TooltipPosition) {
     switch (position) {
         case 'top':
@@ -40,19 +72,3 @@ function getPositionCss(position?: TooltipPosition) {
             return '';
     }
 }
-
-const Tooltip: FunctionComponent<TooltipProps> = ({ children, content, position = 'bottom', tooltipStyle }) => {
-    return (
-        <div className={`relative group`}>
-            <div>{children}</div>
-            <div
-                className={`absolute z-10 w-max bg-white p-4 border border-gray-200 rounded-md invisible group-hover:visible ${getPositionCss(position)}`}
-                style={tooltipStyle}
-            >
-                {content}
-            </div>
-        </div>
-    );
-};
-
-export default Tooltip;

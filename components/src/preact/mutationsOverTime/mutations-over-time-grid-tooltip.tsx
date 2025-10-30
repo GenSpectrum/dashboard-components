@@ -22,7 +22,7 @@ export const MutationsOverTimeGridTooltip: FunctionComponent<MutationsOverTimeGr
     const dateClass = toTemporalClass(date);
 
     return (
-        <div>
+        <div className='text-center'>
             <p>
                 <span className='font-bold'>{dateClass.englishName()}</span>
             </p>
