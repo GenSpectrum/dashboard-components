@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.9.0...dashboard-components-v1.9.1) (2025-11-04)
+
+
+### Bug Fixes
+
+* **components:** add missing lineage prefixes to autocomplete list ([#1024](https://github.com/GenSpectrum/dashboard-components/issues/1024)) ([d1f34bb](https://github.com/GenSpectrum/dashboard-components/commit/d1f34bbc4aaf66af5fac797518243cdf5dc6f910))
+
 ## [1.9.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.8.2...dashboard-components-v1.9.0) (2025-10-30)
 
 
