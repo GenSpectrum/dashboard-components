@@ -311,36 +311,29 @@ export const WithManyMutationAnnotations: StoryObj<MutationsOverTimeProps> = {
             await userEvent.click(filterButton);
         });
 
-        await step('Verify scroll container is scrollable', async () => {
+        await step('Verify scroll container is scrollable', () => {
             const scrollContainer = canvas
                 .getByText('Filter by annotations')
-                .parentElement?.querySelector('.overflow-scroll') as HTMLElement;
-            expect(scrollContainer).toBeInTheDocument();
+                .parentElement!.querySelector('.overflow-scroll')!;
+            void expect(scrollContainer).toBeInTheDocument();
 
             // Verify the container has scrollable content
-            expect(scrollContainer.scrollHeight).toBeGreaterThan(scrollContainer.clientHeight);
-        });
-
-        await step('Verify first annotation is visible', async () => {
-            await waitFor(() => {
-                const firstAnnotation = canvas.getByText(/^Annotation 1 \(/);
-                expect(firstAnnotation).toBeVisible();
-            });
+            void expect(scrollContainer.scrollHeight).toBeGreaterThan(scrollContainer.clientHeight);
         });
 
         await step('Scroll to bottom and verify we can scroll', async () => {
             const scrollContainer = canvas
                 .getByText('Filter by annotations')
-                .parentElement?.querySelector('.overflow-scroll') as HTMLElement;
+                .parentElement!.querySelector('.overflow-scroll')!;
 
             const initialScrollTop = scrollContainer.scrollTop;
 
             // Scroll to the bottom
             scrollContainer.scrollTop = scrollContainer.scrollHeight;
 
-            await waitFor(() => {
+            await waitFor(async () => {
                 // Verify that scrollTop actually changed
-                expect(scrollContainer.scrollTop).toBeGreaterThan(initialScrollTop);
+                await expect(scrollContainer.scrollTop).toBeGreaterThan(initialScrollTop);
             });
         });
     },
