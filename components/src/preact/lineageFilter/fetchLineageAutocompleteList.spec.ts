@@ -321,4 +321,76 @@ describe('fetchLineageAutocompleteList', () => {
             },
         ]);
     });
+
+    test('should include prefix aliases that are missing from lineage tree', async () => {
+        lapisRequestMocks.aggregated(
+            { fields: [lineageField], ...lapisFilter },
+            {
+                data: [
+                    {
+                        [lineageField]: 'BA.3.2.1',
+                        count: 1,
+                    },
+                    {
+                        [lineageField]: 'BA.3.2.2',
+                        count: 2,
+                    },
+                ],
+            },
+        );
+
+        lapisRequestMocks.lineageDefinition(
+            {
+                'B.1.1.529.3.2': {
+                    aliases: ['BA.3.2'],
+                },
+                'BA.3.2.1': {
+                    parents: ['B.1.1.529.3.2'],
+                    aliases: ['B.1.1.529.3.2.1'],
+                },
+                'BA.3.2.2': {
+                    parents: ['B.1.1.529.3.2'],
+                    aliases: ['B.1.1.529.3.2.2'],
+                },
+            },
+            lineageField,
+        );
+
+        const result = await fetchLineageAutocompleteList({
+            lapisUrl: DUMMY_LAPIS_URL,
+            lapisField: lineageField,
+            lapisFilter,
+        });
+
+        expect(result).to.deep.equal([
+            {
+                lineage: 'B.1.1.529.3.2',
+                count: 0,
+            },
+            {
+                lineage: 'B.1.1.529.3.2*',
+                count: 3,
+            },
+            {
+                lineage: 'BA.3.2*',
+                count: 3, // Same as B.1.1.529.3.2* (includes .3.2 and .3.2.1)
+            },
+            {
+                lineage: 'BA.3.2.1',
+                count: 1,
+            },
+            {
+                lineage: 'BA.3.2.1*',
+                count: 1,
+            },
+            {
+                lineage: 'BA.3.2.2',
+                count: 2,
+            },
+            {
+                lineage: 'BA.3.2.2*',
+                count: 2,
+            },
+        ]);
+    });
 });
