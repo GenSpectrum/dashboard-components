@@ -105,34 +105,36 @@ const AnnotationCheckboxes: FunctionComponent<MutationsOverTimeMutationsFilterPr
             <div className='divider mt-0.5 mb-0' />
             <div className='text-sm'>
                 <div className='font-bold mb-1'>Filter by annotations</div>
-                {mutationAnnotations.map((annotation, index) => (
-                    <li className='flex flex-row items-center' key={annotation.name}>
-                        <label>
-                            <input
-                                className={'mr-2'}
-                                type='checkbox'
-                                id={`item-${index}`}
-                                checked={value.annotationNameFilter.has(annotation.name)}
-                                onChange={() => {
-                                    setFilterValue((previousFilter) => {
-                                        const newAnnotationFilter = previousFilter.annotationNameFilter.has(
-                                            annotation.name,
-                                        )
-                                            ? [...previousFilter.annotationNameFilter].filter(
-                                                  (name) => name !== annotation.name,
-                                              )
-                                            : [...previousFilter.annotationNameFilter, annotation.name];
-                                        return {
-                                            ...previousFilter,
-                                            annotationNameFilter: new Set(newAnnotationFilter),
-                                        };
-                                    });
-                                }}
-                            />
-                            {annotation.name} (<span className='text-red-600'>{annotation.symbol}</span>)
-                        </label>
-                    </li>
-                ))}
+                <div className='h-72 overflow-scroll'>
+                    {mutationAnnotations.map((annotation, index) => (
+                        <li className='flex flex-row items-center' key={annotation.name}>
+                            <label>
+                                <input
+                                    className={'mr-2'}
+                                    type='checkbox'
+                                    id={`item-${index}`}
+                                    checked={value.annotationNameFilter.has(annotation.name)}
+                                    onChange={() => {
+                                        setFilterValue((previousFilter) => {
+                                            const newAnnotationFilter = previousFilter.annotationNameFilter.has(
+                                                annotation.name,
+                                            )
+                                                ? [...previousFilter.annotationNameFilter].filter(
+                                                      (name) => name !== annotation.name,
+                                                  )
+                                                : [...previousFilter.annotationNameFilter, annotation.name];
+                                            return {
+                                                ...previousFilter,
+                                                annotationNameFilter: new Set(newAnnotationFilter),
+                                            };
+                                        });
+                                    }}
+                                />
+                                {annotation.name} (<span className='text-red-600'>{annotation.symbol}</span>)
+                            </label>
+                        </li>
+                    ))}
+                </div>
             </div>
         </>
     );
