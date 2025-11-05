@@ -171,7 +171,9 @@ export const SetsValueOnBlur: StoryObj<DateRangeFilterProps> = {
                         },
                     }),
                 );
+            });
 
+            await waitFor(async () => {
                 await expect(optionChangedListenerMock).toHaveBeenCalledWith(
                     expect.objectContaining({
                         detail: {
