@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.9.1...dashboard-components-v1.9.2) (2025-11-05)
+
+
+### Bug Fixes
+
+* **components:** make annotation list scrollable ([#1027](https://github.com/GenSpectrum/dashboard-components/issues/1027)) ([64b1061](https://github.com/GenSpectrum/dashboard-components/commit/64b1061194bdbe551cc0d8f59d39e199ec77aad2))
+
 ## [1.9.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.9.0...dashboard-components-v1.9.1) (2025-11-04)
 
 
