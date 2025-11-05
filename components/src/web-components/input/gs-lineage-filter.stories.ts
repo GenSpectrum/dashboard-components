@@ -28,7 +28,7 @@ const meta: Meta<Required<LineageFilterProps>> = {
     component: 'gs-lineage-filter',
     parameters: withComponentDocs({
         actions: {
-            handles: [gsEventNames.lineageFilterChanged, ...previewHandles],
+            handles: [gsEventNames.lineageFilterChanged, gsEventNames.lineageFilterMultiChanged, ...previewHandles],
         },
         fetchMock: {
             mocks: [
@@ -97,6 +97,11 @@ const meta: Meta<Required<LineageFilterProps>> = {
                 type: 'boolean',
             },
         },
+        multiSelect: {
+            control: {
+                type: 'boolean',
+            },
+        },
     },
 };
 
@@ -113,6 +118,7 @@ const Template: StoryObj<Required<LineageFilterProps>> = {
                     .hideCounts=${args.hideCounts}
                     .value=${args.value}
                     .width=${args.width}
+                    .multiSelect=${args.multiSelect}
                 ></gs-lineage-filter>
             </div>
         </gs-app>`;
@@ -126,6 +132,7 @@ const Template: StoryObj<Required<LineageFilterProps>> = {
         value: 'B.1.1.7',
         width: '100%',
         hideCounts: false,
+        multiSelect: false,
     },
 };
 
@@ -241,5 +248,21 @@ export const FiresEvent: StoryObj<Required<LineageFilterProps>> = {
     args: {
         ...LineageFilter.args,
         value: '',
+    },
+};
+
+export const MultiSelectMode: StoryObj<Required<LineageFilterProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        multiSelect: true,
+        value: ['B.1.1.7', 'BA.5'],
+        placeholderText: 'Select lineages',
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter');
+        await waitFor(() => {
+            return expect(canvas.getByPlaceholderText('Select lineages')).toBeVisible();
+        });
     },
 };

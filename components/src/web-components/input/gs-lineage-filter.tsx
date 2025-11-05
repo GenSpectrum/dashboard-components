@@ -5,9 +5,8 @@ import {
     type LineageFilterChangedEvent,
     type LineageMultiFilterChangedEvent,
 } from '../../preact/lineageFilter/LineageFilterChangedEvent';
-import { LineageFilter, type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
+import { LineageFilter } from '../../preact/lineageFilter/lineage-filter';
 import { type gsEventNames } from '../../utils/gsEventNames';
-import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
