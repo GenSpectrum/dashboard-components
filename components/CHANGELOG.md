@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.9.2...dashboard-components-v1.10.0) (2025-11-05)
+
+
+### Features
+
+* **components:** support multi-select in the lineage filter ([#1021](https://github.com/GenSpectrum/dashboard-components/issues/1021)) ([93b8d00](https://github.com/GenSpectrum/dashboard-components/commit/93b8d006d2a3e947acd1803142afa74575146f93))
+
 ## [1.9.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.9.1...dashboard-components-v1.9.2) (2025-11-05)
 
 
