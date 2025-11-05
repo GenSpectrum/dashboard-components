@@ -305,8 +305,8 @@ export const MultiSelectDefault: StoryObj<LineageFilterProps> = {
 
         await step('multi-select filter is rendered with initial values', async () => {
             await waitFor(async () => {
-                await expect(canvas.getByText('A.1')).toBeInTheDocument();
-                await expect(canvas.getByText('B.1')).toBeInTheDocument();
+                await expect(canvas.getByText('A.1')).toBeVisible();
+                await expect(canvas.getByText('B.1')).toBeVisible();
             });
         });
 
@@ -323,9 +323,9 @@ export const MultiSelectDefault: StoryObj<LineageFilterProps> = {
         });
 
         await step('verify all three lineages are displayed', async () => {
-            await expect(canvas.getByText('A.1')).toBeInTheDocument();
-            await expect(canvas.getByText('B.1')).toBeInTheDocument();
-            await expect(canvas.getByText('C.1')).toBeInTheDocument();
+            await expect(canvas.getByText('A.1')).toBeVisible();
+            await expect(canvas.getByText('B.1')).toBeVisible();
+            await expect(canvas.getByText('C.1')).toBeVisible();
         });
     },
 };
