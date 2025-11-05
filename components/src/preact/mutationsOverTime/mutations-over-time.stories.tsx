@@ -64,14 +64,6 @@ const mutationAnnotations = [
     },
 ] satisfies MutationAnnotations;
 
-const manyMutationAnnotations = Array.from({ length: 300 }, (_, i) => ({
-    name: `Annotation ${i + 1}`,
-    description: `This is test annotation number ${i + 1} for testing many annotations.`,
-    symbol: String.fromCharCode(33 + (i % 94)), // Cycle through printable ASCII characters
-    nucleotideMutations: ['A23G'],
-    aminoAcidMutations: [],
-})) satisfies MutationAnnotations;
-
 export const Default: StoryObj<MutationsOverTimeProps> = {
     render: (args: MutationsOverTimeProps) => (
         <MutationAnnotationsContextProvider value={mutationAnnotations}>
@@ -287,54 +279,6 @@ export const WithNoLapisDateFieldField: StoryObj<MutationsOverTimeProps> = {
     play: async ({ canvasElement, step }) => {
         await step('expect error message', async () => {
             await expectInvalidAttributesErrorMessage(canvasElement, 'String must contain at least 1 character(s)');
-        });
-    },
-};
-
-export const WithManyMutationAnnotations: StoryObj<MutationsOverTimeProps> = {
-    render: (args: MutationsOverTimeProps) => (
-        <MutationAnnotationsContextProvider value={manyMutationAnnotations}>
-            <LapisUrlContextProvider value={LAPIS_URL}>
-                <ReferenceGenomeContext.Provider value={referenceGenome}>
-                    <MutationsOverTime {...args} />
-                </ReferenceGenomeContext.Provider>
-            </LapisUrlContextProvider>
-        </MutationAnnotationsContextProvider>
-    ),
-    args: {
-        ...Default.args,
-    },
-    play: async ({ canvas, step }) => {
-        await step('Open filter dropdown', async () => {
-            await waitFor(() => expect(canvas.getByText('Grid')).toBeVisible(), { timeout: 3000 });
-            const filterButton = canvas.getByRole('button', { name: 'Filter mutations' });
-            await userEvent.click(filterButton);
-        });
-
-        await step('Verify scroll container is scrollable', () => {
-            const scrollContainer = canvas
-                .getByText('Filter by annotations')
-                .parentElement!.querySelector('.overflow-scroll')!;
-            void expect(scrollContainer).toBeInTheDocument();
-
-            // Verify the container has scrollable content
-            void expect(scrollContainer.scrollHeight).toBeGreaterThan(scrollContainer.clientHeight);
-        });
-
-        await step('Scroll to bottom and verify we can scroll', async () => {
-            const scrollContainer = canvas
-                .getByText('Filter by annotations')
-                .parentElement!.querySelector('.overflow-scroll')!;
-
-            const initialScrollTop = scrollContainer.scrollTop;
-
-            // Scroll to the bottom
-            scrollContainer.scrollTop = scrollContainer.scrollHeight;
-
-            await waitFor(async () => {
-                // Verify that scrollTop actually changed
-                await expect(scrollContainer.scrollTop).toBeGreaterThan(initialScrollTop);
-            });
         });
     },
 };

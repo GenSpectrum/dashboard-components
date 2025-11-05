@@ -105,7 +105,7 @@ const AnnotationCheckboxes: FunctionComponent<MutationsOverTimeMutationsFilterPr
             <div className='divider mt-0.5 mb-0' />
             <div className='text-sm'>
                 <div className='font-bold mb-1'>Filter by annotations</div>
-                <div className='h-72 overflow-scroll'>
+                <div className='max-h-72 overflow-scroll'>
                     {mutationAnnotations.map((annotation, index) => (
                         <li className='flex flex-row items-center' key={annotation.name}>
                             <label>

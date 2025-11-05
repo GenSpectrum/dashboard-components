@@ -7,6 +7,7 @@ import {
     MutationsOverTimeMutationsFilter,
     type MutationsOverTimeMutationsFilterProps,
 } from './mutations-over-time-mutations-filter';
+import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { type MutationFilter } from '../mutationsOverTime/getFilteredMutationsOverTimeData';
 
@@ -18,30 +19,38 @@ const meta: Meta = {
 
 export default meta;
 
+const manyMutationAnnotations = Array.from({ length: 300 }, (_, i) => ({
+    name: `Annotation ${i + 1}`,
+    description: `This is test annotation number ${i + 1} for testing many annotations.`,
+    symbol: String.fromCharCode(33 + (i % 94)), // Cycle through printable ASCII characters
+    nucleotideMutations: ['A23G'],
+    aminoAcidMutations: [],
+})) satisfies MutationAnnotations;
+
 const WrapperWithState = ({
     setFilterValue,
     value,
+    annotations = [
+        {
+            name: 'Test Annotation 1',
+            description: 'Test Annotation 1',
+            symbol: '#',
+        },
+        {
+            name: 'Test Annotation 2',
+            description: 'Test Annotation 2',
+            symbol: '+',
+        },
+    ],
 }: {
     setFilterValue: Dispatch<StateUpdater<MutationFilter>>;
     value: MutationFilter;
+    annotations?: MutationAnnotations;
 }) => {
     const [state, setState] = useState(value);
 
     return (
-        <MutationAnnotationsContextProvider
-            value={[
-                {
-                    name: 'Test Annotation 1',
-                    description: 'Test Annotation 1',
-                    symbol: '#',
-                },
-                {
-                    name: 'Test Annotation 2',
-                    description: 'Test Annotation 2',
-                    symbol: '+',
-                },
-            ]}
-        >
+        <MutationAnnotationsContextProvider value={annotations}>
             <MutationsOverTimeMutationsFilter
                 setFilterValue={(value) => {
                     setFilterValue(value);
@@ -104,6 +113,56 @@ export const FilterByAnnotation: StoryObj<MutationsOverTimeMutationsFilterProps>
             await userEvent.click(inputField);
 
             await waitFor(() => expect(button).toHaveTextContent('Test Annotation 1'));
+        });
+    },
+};
+
+export const WithManyMutationAnnotations: StoryObj<MutationsOverTimeMutationsFilterProps> = {
+    render: (args) => {
+        return (
+            <WrapperWithState
+                setFilterValue={args.setFilterValue}
+                value={args.value}
+                annotations={manyMutationAnnotations}
+            />
+        );
+    },
+    args: {
+        setFilterValue: fn(),
+        value: { textFilter: '', annotationNameFilter: new Set() },
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+
+        await step('Open filter dropdown', async () => {
+            const filterButton = canvas.getByRole('button', { name: 'Filter mutations' });
+            await userEvent.click(filterButton);
+        });
+
+        await step('Verify scroll container is scrollable', () => {
+            const scrollContainer = canvas
+                .getByText('Filter by annotations')
+                .parentElement!.querySelector('.overflow-scroll')!;
+            void expect(scrollContainer).toBeInTheDocument();
+
+            // Verify the container has scrollable content
+            void expect(scrollContainer.scrollHeight).toBeGreaterThan(scrollContainer.clientHeight);
+        });
+
+        await step('Scroll to bottom and verify we can scroll', async () => {
+            const scrollContainer = canvas
+                .getByText('Filter by annotations')
+                .parentElement!.querySelector('.overflow-scroll')!;
+
+            const initialScrollTop = scrollContainer.scrollTop;
+
+            // Scroll to the bottom
+            scrollContainer.scrollTop = scrollContainer.scrollHeight;
+
+            await waitFor(async () => {
+                // Verify that scrollTop actually changed
+                await expect(scrollContainer.scrollTop).toBeGreaterThan(initialScrollTop);
+            });
         });
     },
 };
