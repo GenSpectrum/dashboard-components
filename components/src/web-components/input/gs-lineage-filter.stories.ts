@@ -79,7 +79,7 @@ const meta: Meta<Required<LineageFilterProps>> = {
         },
         value: {
             control: {
-                type: 'text',
+                type: 'object',
             },
         },
         width: {

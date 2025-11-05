@@ -61,7 +61,7 @@ const meta: Meta = {
         },
         value: {
             control: {
-                type: 'text',
+                type: 'object',
             },
         },
         width: {
