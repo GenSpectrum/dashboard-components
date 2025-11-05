@@ -17,7 +17,7 @@ const meta: Meta = {
     component: LineageFilter,
     parameters: {
         actions: {
-            handles: [gsEventNames.lineageFilterChanged, ...previewHandles],
+            handles: [gsEventNames.lineageFilterChanged, gsEventNames.lineageFilterMultiChanged, ...previewHandles],
         },
         fetchMock: {
             mocks: [
@@ -61,7 +61,7 @@ const meta: Meta = {
         },
         value: {
             control: {
-                type: 'text',
+                type: 'object',
             },
         },
         width: {
@@ -79,6 +79,11 @@ const meta: Meta = {
                 type: 'boolean',
             },
         },
+        multiSelect: {
+            control: {
+                type: 'boolean',
+            },
+        },
     },
 
     args: {
@@ -90,6 +95,7 @@ const meta: Meta = {
         value: 'A.1',
         width: '100%',
         hideCounts: false,
+        multiSelect: false,
     },
 };
 
@@ -169,6 +175,40 @@ export const WithNoLapisField: StoryObj<LineageFilterProps> = {
     },
 };
 
+export const WithStringValueInMultiSelectMode: StoryObj<LineageFilterProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        multiSelect: true,
+        value: 'A.1',
+    },
+    play: async ({ canvasElement, step }) => {
+        await step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(
+                canvasElement,
+                'When multiSelect is true, value must be an array of strings',
+            );
+        });
+    },
+};
+
+export const WithArrayValueInSingleSelectMode: StoryObj<LineageFilterProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        multiSelect: false,
+        value: ['A.1', 'B.1'],
+    },
+    play: async ({ canvasElement, step }) => {
+        await step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(
+                canvasElement,
+                'When multiSelect is false or undefined, value must be a string',
+            );
+        });
+    },
+};
+
 export const WithHideCountsTrue: StoryObj<LineageFilterProps> = {
     ...Default,
     args: {
@@ -239,6 +279,145 @@ export const EnterAndClearMultipleTimes: StoryObj<LineageFilterProps> = {
 
         await step('verify input field is empty after clearing again', async () => {
             await expect(input).toHaveValue('');
+        });
+    },
+};
+
+export const MultiSelectDefault: StoryObj<LineageFilterProps> = {
+    render: (args) => (
+        <LapisUrlContextProvider value={LAPIS_URL}>
+            <LineageFilter {...args} />
+        </LapisUrlContextProvider>
+    ),
+    args: {
+        ...Default.args,
+        multiSelect: true,
+        value: ['A.1', 'B.1'],
+        placeholderText: 'Select lineages',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+        const lineageChangedListenerMock = fn();
+
+        await step('Setup event listener mock', () => {
+            canvasElement.addEventListener(gsEventNames.lineageFilterMultiChanged, lineageChangedListenerMock);
+        });
+
+        await step('multi-select filter is rendered with initial values', async () => {
+            await waitFor(async () => {
+                await expect(canvas.getByText('A.1')).toBeVisible();
+                await expect(canvas.getByText('B.1')).toBeVisible();
+            });
+        });
+
+        await step('add another lineage', async () => {
+            const input = await canvas.findByPlaceholderText('Select lineages');
+            await userEvent.type(input, 'C.1');
+            await userEvent.click(canvas.getByRole('option', { name: 'C.1(23)' }));
+
+            await waitFor(() => {
+                return expect(lineageChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    pangoLineage: ['A.1', 'B.1', 'C.1'],
+                });
+            });
+        });
+
+        await step('verify all three lineages are displayed', async () => {
+            await expect(canvas.getByText('A.1')).toBeVisible();
+            await expect(canvas.getByText('B.1')).toBeVisible();
+            await expect(canvas.getByText('C.1')).toBeVisible();
+        });
+    },
+};
+
+export const MultiSelectRemoveItem: StoryObj<LineageFilterProps> = {
+    render: (args) => (
+        <LapisUrlContextProvider value={LAPIS_URL}>
+            <LineageFilter {...args} />
+        </LapisUrlContextProvider>
+    ),
+    args: {
+        ...Default.args,
+        multiSelect: true,
+        value: ['A.1', 'B.1', 'C.1'],
+        placeholderText: 'Select lineages',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+        const lineageChangedListenerMock = fn();
+
+        await step('Setup event listener mock', () => {
+            canvasElement.addEventListener(gsEventNames.lineageFilterMultiChanged, lineageChangedListenerMock);
+        });
+
+        await step('multi-select filter is rendered with three values', async () => {
+            await waitFor(async () => {
+                await expect(canvas.getByText('A.1')).toBeVisible();
+                await expect(canvas.getByText('B.1')).toBeVisible();
+                await expect(canvas.getByText('C.1')).toBeVisible();
+            });
+        });
+
+        await step('remove B.1 lineage', async () => {
+            const removeButton = canvas.getByLabelText('remove B.1');
+            await userEvent.click(removeButton);
+
+            await waitFor(() => {
+                return expect(lineageChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    pangoLineage: ['A.1', 'C.1'],
+                });
+            });
+        });
+
+        await step('verify B.1 is removed', async () => {
+            await expect(canvas.queryByText('B.1')).not.toBeVisible();
+            await expect(canvas.getByText('A.1')).toBeVisible();
+            await expect(canvas.getByText('C.1')).toBeVisible();
+        });
+    },
+};
+
+export const MultiSelectClearAll: StoryObj<LineageFilterProps> = {
+    render: (args) => (
+        <LapisUrlContextProvider value={LAPIS_URL}>
+            <LineageFilter {...args} />
+        </LapisUrlContextProvider>
+    ),
+    args: {
+        ...Default.args,
+        multiSelect: true,
+        value: ['A.1', 'B.1'],
+        placeholderText: 'Select lineages',
+    },
+    play: async ({ canvasElement, step }) => {
+        const canvas = within(canvasElement);
+        const lineageChangedListenerMock = fn();
+
+        await step('Setup event listener mock', () => {
+            canvasElement.addEventListener(gsEventNames.lineageFilterMultiChanged, lineageChangedListenerMock);
+        });
+
+        await step('multi-select filter is rendered with values', async () => {
+            await waitFor(async () => {
+                await expect(canvas.getByText('A.1')).toBeVisible();
+                await expect(canvas.getByText('B.1')).toBeVisible();
+            });
+        });
+
+        await step('clear all selections', async () => {
+            const clearButton = canvas.getByLabelText('clear selection');
+            await userEvent.click(clearButton);
+
+            await waitFor(() => {
+                return expect(lineageChangedListenerMock.mock.calls.at(-1)![0].detail).toStrictEqual({
+                    pangoLineage: undefined,
+                });
+            });
+        });
+
+        await step('verify all chips are removed', async () => {
+            await expect(canvas.queryByText('A.1')).not.toBeVisible();
+            await expect(canvas.queryByText('B.1')).not.toBeVisible();
         });
     },
 };

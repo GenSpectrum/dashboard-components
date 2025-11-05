@@ -2,6 +2,8 @@ import { fetchLineageDefinition } from '../../lapisApi/lapisApi';
 import { FetchAggregatedOperator } from '../../operator/FetchAggregatedOperator';
 import type { LapisFilter } from '../../types';
 
+export type LineageItem = { lineage: string; count: number };
+
 /**
  * Generates the autocomplete list for lineage search. It includes lineages with wild cards
  * (i.e. "BA.3.2.1" and "BA.3.2.1*") as well as all prefixes of lineages with an asterisk ("BA.3.2*").
@@ -55,8 +57,6 @@ export async function fetchLineageAutocompleteList({
         return aKey.localeCompare(bKey);
     });
 }
-
-export type LineageItem = { lineage: string; count: number };
 
 async function getCountsByLineage({
     lapisUrl,

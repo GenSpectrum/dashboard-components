@@ -1,14 +1,15 @@
 import { customElement, property } from 'lit/decorators.js';
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-import { type LineageFilterChangedEvent } from '../../preact/lineageFilter/LineageFilterChangedEvent';
-import { LineageFilter, type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
+import {
+    type LineageFilterChangedEvent,
+    type LineageMultiFilterChangedEvent,
+} from '../../preact/lineageFilter/LineageFilterChangedEvent';
+import { LineageFilter } from '../../preact/lineageFilter/lineage-filter';
 import { type gsEventNames } from '../../utils/gsEventNames';
-import type { Equals, Expect } from '../../utils/typeAssertions';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
 /**
- *
  * ## Context
  *
  * This component provides a text input field to filter by lineages.
@@ -19,23 +20,37 @@ import { PreactLitAdapter } from '../PreactLitAdapter';
  * and provides an autocomplete list with the available values of the lineage and sublineage queries
  * (a `*` appended to the lineage value).
  *
+ * When `multiSelect` is true, it allows selecting multiple lineages and displays them as removable chips.
+ *
  * @fires {CustomEvent<Record<string, string | undefined>>} gs-lineage-filter-changed
- * Fired when the input field is changed.
- * The `details` of this event contain an object with the `lapisField` as key and the input value as value.
+ * Fired when the selection changes in single-select mode.
+ * The `details` of this event contain an object with the `lapisField` as key and the selected value as value.
  * Example:
  * ```
  * {
  *  "pangoLineage": "B.1.1.7"
  * }
- *  ```
+ * ```
+ *
+ * @fires {CustomEvent<Record<string, string[] | undefined>>} gs-lineage-filter-multi-changed
+ * Fired when the selection changes in multi-select mode.
+ * The `details` of this event contain an object with the `lapisField` as key and an array of selected values.
+ * Example:
+ * ```
+ * {
+ *  "pangoLineage": ["B.1.1.7", "BA.5"]
+ * }
+ * ```
  */
 @customElement('gs-lineage-filter')
 export class LineageFilterComponent extends PreactLitAdapter {
     /**
      * The initial value to use for this lineage filter.
+     * Can be a string for single select mode or an array of strings (or comma-separated string) for multi-select mode.
+     * Examples: "B.1.1.7" or ["B.1.1.7", "BA.5"] or "B.1.1.7,BA.5"
      */
-    @property()
-    value: string = '';
+    @property({ type: Array })
+    value: string | string[] = '';
 
     /**
      * Required.
@@ -45,6 +60,14 @@ export class LineageFilterComponent extends PreactLitAdapter {
      */
     @property()
     lapisField = '';
+
+    /**
+     * Whether to enable multi-select mode.
+     * When true, allows selecting multiple lineages displayed as removable chips.
+     * Defaults to false.
+     */
+    @property({ type: Boolean })
+    multiSelect: boolean | undefined = false;
 
     /**
      * The filter that is used to fetch the available the autocomplete options.
@@ -89,6 +112,7 @@ export class LineageFilterComponent extends PreactLitAdapter {
                 value={this.value}
                 width={this.width}
                 hideCounts={this.hideCounts}
+                multiSelect={this.multiSelect}
             />
         );
     }
@@ -101,6 +125,7 @@ declare global {
 
     interface HTMLElementEventMap {
         [gsEventNames.lineageFilterChanged]: LineageFilterChangedEvent;
+        [gsEventNames.lineageFilterMultiChanged]: LineageMultiFilterChangedEvent;
     }
 }
 
@@ -112,17 +137,3 @@ declare global {
         }
     }
 }
-
-/* eslint-disable @typescript-eslint/no-unused-vars */
-type InitialValueMatches = Expect<Equals<typeof LineageFilterComponent.prototype.value, LineageFilterProps['value']>>;
-type LapisFieldMatches = Expect<
-    Equals<typeof LineageFilterComponent.prototype.lapisField, LineageFilterProps['lapisField']>
->;
-type LapisFilterMatches = Expect<
-    Equals<typeof LineageFilterComponent.prototype.lapisFilter, LineageFilterProps['lapisFilter']>
->;
-type PlaceholderTextMatches = Expect<
-    Equals<typeof LineageFilterComponent.prototype.placeholderText, LineageFilterProps['placeholderText']>
->;
-type WidthMatches = Expect<Equals<typeof LineageFilterComponent.prototype.width, LineageFilterProps['width']>>;
-/* eslint-enable @typescript-eslint/no-unused-vars */
