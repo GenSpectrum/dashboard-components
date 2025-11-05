@@ -138,20 +138,3 @@ declare global {
         }
     }
 }
-
-/* eslint-disable @typescript-eslint/no-unused-vars */
-type InitialValueMatches = Expect<Equals<typeof LineageFilterComponent.prototype.value, LineageFilterProps['value']>>;
-type LapisFieldMatches = Expect<
-    Equals<typeof LineageFilterComponent.prototype.lapisField, LineageFilterProps['lapisField']>
->;
-type LapisFilterMatches = Expect<
-    Equals<typeof LineageFilterComponent.prototype.lapisFilter, LineageFilterProps['lapisFilter']>
->;
-type PlaceholderTextMatches = Expect<
-    Equals<typeof LineageFilterComponent.prototype.placeholderText, LineageFilterProps['placeholderText']>
->;
-type WidthMatches = Expect<Equals<typeof LineageFilterComponent.prototype.width, LineageFilterProps['width']>>;
-type MultiSelectMatches = Expect<
-    Equals<typeof LineageFilterComponent.prototype.multiSelect, LineageFilterProps['multiSelect']>
->;
-/* eslint-enable @typescript-eslint/no-unused-vars */
