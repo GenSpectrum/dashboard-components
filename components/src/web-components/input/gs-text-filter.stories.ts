@@ -162,13 +162,15 @@ export const FiresEvents: StoryObj<Required<TextFilterProps>> = {
         await step('Remove initial value', async () => {
             await userEvent.click(canvas.getByRole('button', { name: 'clear selection' }));
 
-            await expect(listenerMock).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    detail: {
-                        host: undefined,
-                    },
-                }),
-            );
+            await waitFor(async () => {
+                await expect(listenerMock).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        detail: {
+                            host: undefined,
+                        },
+                    }),
+                );
+            });
         });
     },
     args: {
