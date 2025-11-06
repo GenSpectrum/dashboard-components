@@ -103,6 +103,33 @@ export class LineageFilterComponent extends PreactLitAdapter {
     @property({ type: Boolean })
     hideCounts: boolean | undefined = false;
 
+    override updated(changedProps: Map<string, unknown>) {
+        if (changedProps.has('value') || changedProps.has('multiSelect')) {
+            if (this.multiSelect) {
+                if (typeof this.value === 'string') {
+                    let parsed: unknown;
+                    try {
+                        parsed = JSON.parse(this.value);
+                    } catch {
+                        parsed = this.value.split(',').map((s) => s.trim());
+                    }
+
+                    // type guard
+                    if (Array.isArray(parsed) && parsed.every((v) => typeof v === 'string')) {
+                        this.value = parsed;
+                    } else {
+                        this.value = [];
+                    }
+                }
+            } else {
+                // single select: ensure value is a string
+                if (Array.isArray(this.value)) {
+                    this.value = this.value[0] ?? '';
+                }
+            }
+        }
+    }
+
     override render() {
         return (
             <LineageFilter
