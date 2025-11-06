@@ -155,6 +155,54 @@ export const LineageFilter: StoryObj<Required<LineageFilterProps>> = {
     },
 };
 
+export const LineageFilterStringValue: StoryObj<Required<LineageFilterProps>> = {
+    render: (args) => {
+        return html` <gs-app lapis="${LAPIS_URL}">
+            <div class="max-w-(--breakpoint-lg)">
+                <gs-lineage-filter
+                    lapisField="pangoLineage"
+                    placeholderText="Enter a lineage"
+                    value="B.1.1.7"
+                    .multiSelect=${args.multiSelect}
+                ></gs-lineage-filter>
+            </div>
+        </gs-app>`;
+    },
+    args: {
+        multiSelect: false,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter');
+        await waitFor(() => {
+            return expect(canvas.getByPlaceholderText('Enter a lineage')).toBeVisible();
+        });
+    },
+};
+
+export const LineageFilterArrayValue: StoryObj<Required<LineageFilterProps>> = {
+    render: (args) => {
+        return html` <gs-app lapis="${LAPIS_URL}">
+            <div class="max-w-(--breakpoint-lg)">
+                <gs-lineage-filter
+                    lapisField="pangoLineage"
+                    placeholderText="Enter a lineage"
+                    value='["B.1.1.7", "B.1.1.10"]'
+                    .multiSelect=${args.multiSelect}
+                ></gs-lineage-filter>
+            </div>
+        </gs-app>`;
+    },
+    args: {
+        multiSelect: true,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter');
+        await waitFor(() => {
+            return expect(canvas.getByPlaceholderText('Enter a lineage')).toBeVisible();
+        });
+    },
+};
+
 export const DelayToShowLoadingState: StoryObj<Required<LineageFilterProps>> = {
     ...Template,
     parameters: {
