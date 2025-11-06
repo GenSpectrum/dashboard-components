@@ -49,7 +49,7 @@ export class LineageFilterComponent extends PreactLitAdapter {
      * Can be a string for single select mode or an array of strings (or comma-separated string) for multi-select mode.
      * Examples: "B.1.1.7" or ["B.1.1.7", "BA.5"] or "B.1.1.7,BA.5"
      */
-    @property({ type: Array })
+    @property()
     value: string | string[] = '';
 
     /**
