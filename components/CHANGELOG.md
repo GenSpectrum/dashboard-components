@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.10.0...dashboard-components-v1.10.1) (2025-11-06)
+
+
+### Bug Fixes
+
+* **components:** remove incorrect array type on LineageFilter ([#1031](https://github.com/GenSpectrum/dashboard-components/issues/1031)) ([fa7916d](https://github.com/GenSpectrum/dashboard-components/commit/fa7916dd28ef1725e98f7b8e81e30bdd656653bf))
+
 ## [1.10.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.9.2...dashboard-components-v1.10.0) (2025-11-05)
 
 
