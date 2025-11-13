@@ -52,7 +52,7 @@ type LineageSelectorProps = z.infer<typeof lineageSelectorPropsSchema>;
 
 export const LineageFilter: FunctionComponent<LineageFilterProps> = (props) => {
     const { width, ...innerProps } = props;
-    const size = { width, height: '3rem' };
+    const size = { width, minHeight: '3rem' };
 
     return (
         <ErrorBoundary size={size} layout='horizontal' componentProps={props} schema={lineageFilterPropsSchema}>
