@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.10.1...dashboard-components-v1.10.2) (2025-11-13)
+
+
+### Bug Fixes
+
+* **components:** use converter instead of updated function ([#1033](https://github.com/GenSpectrum/dashboard-components/issues/1033)) ([3c847dc](https://github.com/GenSpectrum/dashboard-components/commit/3c847dce980c4351eaf4e711dfaf674d53de7023))
+
 ## [1.10.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.10.0...dashboard-components-v1.10.1) (2025-11-06)
 
 
