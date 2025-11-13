@@ -51,7 +51,7 @@ export class LineageFilterComponent extends PreactLitAdapter {
      */
     @property({
         converter: (value) => {
-            if (value === null || Array.isArray(value)) {
+            if (value === null) {
                 return value;
             }
             try {
@@ -61,10 +61,6 @@ export class LineageFilterComponent extends PreactLitAdapter {
                 }
                 return value;
             } catch {
-                // If JSON parsing fails, try comma-separated values
-                if (typeof value === 'string' && value.includes(',')) {
-                    return value.split(',').map((s) => s.trim());
-                }
                 return value;
             }
         },
