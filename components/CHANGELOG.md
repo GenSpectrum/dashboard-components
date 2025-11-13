@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.10.2...dashboard-components-v1.10.3) (2025-11-13)
+
+
+### Bug Fixes
+
+* **components:** fix overflow of multi lineage filter ([#1036](https://github.com/GenSpectrum/dashboard-components/issues/1036)) ([a090b3e](https://github.com/GenSpectrum/dashboard-components/commit/a090b3eb7d5a775208813f9db51f976c310bc668))
+
 ## [1.10.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.10.1...dashboard-components-v1.10.2) (2025-11-13)
 
 
