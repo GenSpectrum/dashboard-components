@@ -38,6 +38,7 @@ const meta: Meta<MutationsOverTimeProps> = {
         hideGaps: { control: 'boolean' },
         pageSizes: { control: 'object' },
         useNewEndpoint: { control: 'boolean' },
+        customColumns: { control: 'object' },
     },
     parameters: {
         fetchMock: {},
@@ -192,6 +193,36 @@ export const UsesMutationFilter: StoryObj<MutationsOverTimeProps> = {
 
             const filteredMutation = canvas.queryByText('C44T');
             await expect(filteredMutation).not.toBeInTheDocument();
+        });
+    },
+};
+
+export const WithCustomColumns: StoryObj<MutationsOverTimeProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        displayMutations: ['A19722G', 'G21641T', 'T21653-'],
+        customColumns: [
+            {
+                header: 'Jaccard Index',
+                values: {
+                    A19722G: 0.75,
+                    G21641T: "Foobar",
+                },
+            },
+        ],
+    },
+    play: async ({ canvas }) => {
+        await waitFor(() => expect(canvas.getByText('Jaccard Index')).toBeVisible(), {
+            timeout: 10000,
+        });
+
+        await waitFor(() => expect(canvas.getByText('0.75')).toBeVisible(), {
+            timeout: 10000,
+        });
+
+        await waitFor(() => expect(canvas.getByText('Foobar')).toBeVisible(), {
+            timeout: 10000,
         });
     },
 };

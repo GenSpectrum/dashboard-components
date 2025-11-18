@@ -24,29 +24,48 @@ import {
 
 const NON_BREAKING_SPACE = '\u00A0';
 
+/**
+ * A custom column can be added to the table, where values are provided explicitly.
+ * The keys should be mutation codes, and the values can be anything.
+ */
+export interface CustomColumn {
+    header: string;
+    values: Record<string, string | number>;
+}
+
 export interface MutationsOverTimeGridProps {
     data: MutationOverTimeDataMap;
     colorScale: ColorScale;
     sequenceType: SequenceType;
     pageSizes: PageSizes;
+    customColumns?: CustomColumn[];
     tooltipPortalTarget: HTMLElement | null;
 }
 
-type RowType = { mutation: Substitution | Deletion; values: (MutationOverTimeMutationValue | undefined)[] };
+type RowType = {
+    mutation: Substitution | Deletion;
+    values: (MutationOverTimeMutationValue | undefined)[];
+    customValues: (string | number | undefined)[];
+};
+
+const EMPTY_COLUMNS: CustomColumn[] = [];
 
 const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
     data,
     colorScale,
     sequenceType,
     pageSizes,
+    customColumns = EMPTY_COLUMNS,
     tooltipPortalTarget,
 }) => {
     const tableData = useMemo(() => {
         const allMutations = data.getFirstAxisKeys();
         return data.getAsArray().map((row, index) => {
-            return { mutation: allMutations[index], values: [...row] };
+            const mutation = allMutations[index];
+            const customValues = customColumns.map((col) => col.values[mutation.code]);
+            return { mutation, values: [...row], customValues } as RowType;
         });
-    }, [data]);
+    }, [data, customColumns]);
 
     const columns = useMemo(() => {
         const columnHelper = createColumnHelper<RowType>();
@@ -63,6 +82,17 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                     </div>
                 );
             },
+        });
+
+        const customColumnHeaders = customColumns.map((customCol, index) => {
+            return columnHelper.accessor((row) => row.customValues[index], {
+                id: `custom-${index}`,
+                header: () => <span>{customCol.header}</span>,
+                cell: ({ getValue }) => {
+                    const value = getValue();
+                    return <div className={'text-center'}>{value ?? ''}</div>;
+                },
+            });
         });
 
         const dateHeaders = dates.map((date, index) => {
@@ -102,8 +132,8 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
             });
         });
 
-        return [mutationHeader, ...dateHeaders];
-    }, [colorScale, data, sequenceType, tooltipPortalTarget]);
+        return [mutationHeader, ...customColumnHeaders, ...dateHeaders];
+    }, [colorScale, data, sequenceType, customColumns, tooltipPortalTarget]);
 
     const { pageSize } = usePageSizeContext();
     const table = usePreactTable({
