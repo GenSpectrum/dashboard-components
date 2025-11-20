@@ -175,6 +175,11 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Grid',
     },
     {
+        id: 'visualization-mutations-over-time--with-custom-columns',
+        title: 'Mutations over time',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
         id: 'visualization-statistics--default',
         title: 'Statistics',
         loadingIsDoneIndicator: 'Sequences',
