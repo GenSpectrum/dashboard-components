@@ -1,6 +1,6 @@
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { MutationsOverTimeComponent } from './gs-mutations-over-time';
+import { type MutationsOverTimeComponent } from './gs-mutations-over-time';
 import { type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
 
 describe('gs-mutations-over-time', () => {
