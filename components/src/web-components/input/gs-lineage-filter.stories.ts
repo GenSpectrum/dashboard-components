@@ -17,7 +17,7 @@ import { withinShadowRoot } from '../withinShadowRoot.story';
 const codeExample = String.raw`
 <gs-lineage-filter 
     lapisField="pangoLineage"
-    lapisFilter='{"counrty": "Germany"}'
+    lapisFilter='{"country": "Germany"}'
     placeholderText="Enter lineage"
     value="B.1.1.7"
     width="50%">
@@ -163,6 +163,7 @@ export const LineageFilterStringValue: StoryObj<Required<LineageFilterProps>> = 
                     lapisField="pangoLineage"
                     placeholderText="Enter a lineage"
                     value="B.1.1.7"
+                    .lapisFilter=${args.lapisFilter}
                     .multiSelect=${args.multiSelect}
                 ></gs-lineage-filter>
             </div>
@@ -170,6 +171,9 @@ export const LineageFilterStringValue: StoryObj<Required<LineageFilterProps>> = 
     },
     args: {
         multiSelect: false,
+        lapisFilter: {
+            country: 'Germany',
+        },
     },
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter');
@@ -187,6 +191,7 @@ export const LineageFilterArrayValue: StoryObj<Required<LineageFilterProps>> = {
                     lapisField="pangoLineage"
                     placeholderText="Enter a lineage"
                     value='["B.1.1.7", "B.1.1.10"]'
+                    .lapisFilter=${args.lapisFilter}
                     .multiSelect=${args.multiSelect}
                 ></gs-lineage-filter>
             </div>
@@ -194,6 +199,9 @@ export const LineageFilterArrayValue: StoryObj<Required<LineageFilterProps>> = {
     },
     args: {
         multiSelect: true,
+        lapisFilter: {
+            country: 'Germany',
+        },
     },
     play: async ({ canvasElement }) => {
         const canvas = await withinShadowRoot(canvasElement, 'gs-lineage-filter');
