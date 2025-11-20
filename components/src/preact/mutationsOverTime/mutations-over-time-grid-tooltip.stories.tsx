@@ -45,7 +45,7 @@ export const NoValue: StoryObj<MutationsOverTimeGridTooltipProps> = {
         const canvas = within(canvasElement);
 
         await expect(canvas.getByText('2025', { exact: true })).toBeVisible();
-        await expect(canvas.getByText('(2025-01-01 - 2025-12-31)')).toBeVisible();
+        await expect(canvas.getByText('2025-01-01 - 2025-12-31')).toBeVisible();
         await expect(canvas.getByText('A500-')).toBeVisible();
         await expect(canvas.getByText('No data')).toBeVisible();
     },
@@ -65,9 +65,13 @@ export const WithValue: StoryObj<MutationsOverTimeGridTooltipProps> = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await expect(canvas.getByText('Proportion: 50.00%')).toBeVisible();
-        await expect(canvas.getByText('300 samples are in the timeframe')).toBeVisible();
-        await expect(canvas.getByText('200 have coverage, of those 100 have the mutation')).toBeVisible();
+        await expect(canvas.getByText('50.00%')).toBeVisible();
+        await expect(canvas.getByText('100')).toBeVisible();
+        await expect(canvas.getByText('have the mutation A500- out of')).toBeVisible();
+        await expect(canvas.getByText('200')).toBeVisible();
+        await expect(canvas.getByText('with coverage at position 500.')).toBeVisible();
+        await expect(canvas.getByText('300')).toBeVisible();
+        await expect(canvas.getByText('total in this date range.')).toBeVisible();
     },
 };
 
@@ -83,9 +87,10 @@ export const WithValueBelowThreshold: StoryObj<MutationsOverTimeGridTooltipProps
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await expect(canvas.getByText('Proportion: <0.10%')).toBeVisible();
-        await expect(canvas.getByText('300 samples are in the timeframe')).toBeVisible();
-        await expect(canvas.getByText('none or less than 0.10% have the mutation')).toBeVisible();
+        await expect(canvas.getByText('<0.10%')).toBeVisible();
+        await expect(canvas.getByText('None or less than 0.10% have the mutation.')).toBeVisible();
+        await expect(canvas.getByText('300')).toBeVisible();
+        await expect(canvas.getByText('total in this date range.')).toBeVisible();
     },
 };
 
@@ -101,8 +106,8 @@ export const WithWastewaterValue: StoryObj<MutationsOverTimeGridTooltipProps> = 
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
 
-        await expect(canvas.getByText('Proportion: 50.00%')).toBeVisible();
-        await expect(canvas.queryByText('samples are in the timeframe')).not.toBeInTheDocument();
-        await expect(canvas.queryByText('have coverage')).not.toBeInTheDocument();
+        await expect(canvas.getByText('50.00%')).toBeVisible();
+        await expect(canvas.queryByText('total in this date range.')).not.toBeInTheDocument();
+        await expect(canvas.queryByText('coverage')).not.toBeInTheDocument();
     },
 };

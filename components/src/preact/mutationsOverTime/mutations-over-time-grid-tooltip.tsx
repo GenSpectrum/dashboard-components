@@ -40,9 +40,7 @@ export const MutationsOverTimeGridTooltip: FunctionComponent<MutationsOverTimeGr
                     <span className='text-gray-600'>{timeIntervalDisplay(dateClass)}</span>
                 </div>
             </div>
-            {value === null ? (
-                <p className='mt-2'>No data</p>
-            ) : (
+            {value !== null && (
                 <TooltipValueCountsDescription
                     value={value}
                     mutationCode={mutation.code}
