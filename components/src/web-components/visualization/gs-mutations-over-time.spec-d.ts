@@ -1,6 +1,6 @@
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { type MutationsOverTimeComponent } from './gs-mutations-over-time';
+import { MutationsOverTimeComponent } from './gs-mutations-over-time';
 import { type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
 
 describe('gs-mutations-over-time', () => {
@@ -37,6 +37,9 @@ describe('gs-mutations-over-time', () => {
         >();
         expectTypeOf<typeof MutationsOverTimeComponent.prototype.pageSizes>().toEqualTypeOf<
             MutationsOverTimeProps['pageSizes']
+        >();
+        expectTypeOf<typeof MutationsOverTimeComponent.prototype.customColumns>().toEqualTypeOf<
+            MutationsOverTimeProps['customColumns']
         >();
     });
 });
