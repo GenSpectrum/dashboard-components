@@ -60,10 +60,10 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
 }) => {
     const tableData = useMemo(() => {
         const allMutations = data.getFirstAxisKeys();
-        return data.getAsArray().map((row, index) => {
+        return data.getAsArray().map((row, index): RowType => {
             const mutation = allMutations[index];
             const customValues = customColumns.map((col) => col.values[mutation.code]);
-            return { mutation, values: [...row], customValues } as RowType;
+            return { mutation, values: [...row], customValues };
         });
     }, [data, customColumns]);
 
