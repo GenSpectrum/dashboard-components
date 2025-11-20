@@ -207,7 +207,7 @@ export const WithCustomColumns: StoryObj<MutationsOverTimeProps> = {
                 header: 'Jaccard Index',
                 values: {
                     A19722G: 0.75,
-                    G21641T: "Foobar",
+                    G21641T: 'Foobar',
                 },
             },
         ],
