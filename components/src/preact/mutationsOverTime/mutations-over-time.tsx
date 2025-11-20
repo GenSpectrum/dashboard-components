@@ -11,7 +11,7 @@ import {
     type MutationFilter,
 } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
-import MutationsOverTimeGrid, { type CustomColumn } from './mutations-over-time-grid';
+import MutationsOverTimeGrid from './mutations-over-time-grid';
 import { type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
