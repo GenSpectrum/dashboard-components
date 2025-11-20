@@ -214,16 +214,12 @@ export const WithCustomColumns: StoryObj<MutationsOverTimeProps> = {
     },
     play: async ({ canvas }) => {
         await waitFor(() => expect(canvas.getByText('Jaccard Index')).toBeVisible(), {
-            timeout: 10000,
+            timeout: 5000,
         });
 
-        await waitFor(() => expect(canvas.getByText('0.75')).toBeVisible(), {
-            timeout: 10000,
-        });
+        await waitFor(() => expect(canvas.getByText('0.75')).toBeVisible());
 
-        await waitFor(() => expect(canvas.getByText('Foobar')).toBeVisible(), {
-            timeout: 10000,
-        });
+        await waitFor(() => expect(canvas.getByText('Foobar')).toBeVisible());
     },
 };
 
