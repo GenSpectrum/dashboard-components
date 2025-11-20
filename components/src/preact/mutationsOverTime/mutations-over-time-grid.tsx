@@ -1,5 +1,6 @@
 import { type FunctionComponent } from 'preact';
 import { useMemo } from 'preact/hooks';
+import z from 'zod';
 
 import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
@@ -24,14 +25,11 @@ import {
 
 const NON_BREAKING_SPACE = '\u00A0';
 
-/**
- * A custom column can be added to the table, where values are provided explicitly.
- * The keys should be mutation codes, and the values can be anything.
- */
-export interface CustomColumn {
-    header: string;
-    values: Record<string, string | number>;
-}
+export const customColumnSchema = z.object({
+    header: z.string(),
+    values: z.record(z.string(), z.union([z.string(), z.number()])),
+});
+export type CustomColumn = z.infer<typeof customColumnSchema>;
 
 export interface MutationsOverTimeGridProps {
     data: MutationOverTimeDataMap;

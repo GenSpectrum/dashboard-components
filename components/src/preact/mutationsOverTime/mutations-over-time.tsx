@@ -11,7 +11,7 @@ import {
     type MutationFilter,
 } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
-import MutationsOverTimeGrid from './mutations-over-time-grid';
+import MutationsOverTimeGrid, { customColumnSchema } from './mutations-over-time-grid';
 import { type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
@@ -52,11 +52,6 @@ const meanProportionIntervalSchema = z.object({
     max: z.number().min(0).max(1),
 });
 export type MeanProportionInterval = z.infer<typeof meanProportionIntervalSchema>;
-
-const customColumnSchema = z.object({
-    header: z.string(),
-    values: z.record(z.string(), z.union([z.string(), z.number()])),
-});
 
 const mutationOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,

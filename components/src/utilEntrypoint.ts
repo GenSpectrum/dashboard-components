@@ -51,3 +51,4 @@ export {
 } from './preact/numberRangeFilter/NumberRangeFilterChangedEvent';
 
 export { type MeanProportionInterval } from './preact/mutationsOverTime/mutations-over-time';
+export { type CustomColumn } from './preact/mutationsOverTime/mutations-over-time-grid';
