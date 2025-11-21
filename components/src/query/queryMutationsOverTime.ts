@@ -50,6 +50,12 @@ export type MutationOverTimeMutationValue =
           totalCount: number;
       }
     | {
+          type: 'valueWithCoverage';
+          count: number;
+          coverage: number;
+          totalCount: number;
+      }
+    | {
           type: 'wastewaterValue';
           proportion: number;
       }
@@ -58,6 +64,19 @@ export type MutationOverTimeMutationValue =
           totalCount: number | null;
       }
     | null;
+
+export function getProportion(value: MutationOverTimeMutationValue) {
+    switch (value?.type) {
+        case 'value':
+        case 'wastewaterValue':
+            return value.proportion;
+        case 'valueWithCoverage':
+            return value.count / value.coverage;
+        case 'belowThreshold':
+            return undefined;
+    }
+    return undefined;
+}
 
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 export const MUTATIONS_OVER_TIME_MIN_PROPORTION = 0.001;
@@ -316,9 +335,9 @@ async function queryMutationsOverTimeDataDirectEndpoint(
                         return [
                             date.dateString,
                             {
-                                type: 'value',
-                                proportion: count / coverage,
+                                type: 'valueWithCoverage',
                                 count,
+                                coverage,
                                 totalCount,
                             },
                         ];

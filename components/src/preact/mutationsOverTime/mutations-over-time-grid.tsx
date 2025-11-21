@@ -4,7 +4,7 @@ import z from 'zod';
 
 import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
-import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
+import { getProportion, type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
 import { type SequenceType } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type Temporal } from '../../utils/temporalClass';
@@ -211,7 +211,7 @@ const ProportionCell: FunctionComponent<{
     colorScale: ColorScale;
     tooltipPortalTarget: HTMLElement | null;
 }> = ({ value, mutation, date, tooltipPosition, colorScale, tooltipPortalTarget }) => {
-    const proportion = value?.type === 'belowThreshold' ? undefined : value?.proportion;
+    const proportion = getProportion(value);
 
     return (
         <div className={'py-1 w-full h-full'}>

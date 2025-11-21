@@ -67,6 +67,53 @@ export const WithValue: StoryObj<MutationsOverTimeGridTooltipProps> = {
 
         await expect(canvas.getByText('50.00%')).toBeVisible();
         await expect(canvas.getByText('100')).toBeVisible();
+        await expect(canvas.getByText('have the mutation A500-.')).toBeVisible();
+        await expect(canvas.getByText('200')).toBeVisible();
+        await expect(canvas.getByText('have coverage at position 500.')).toBeVisible();
+        await expect(canvas.getByText('300')).toBeVisible();
+        await expect(canvas.getByText('total in this date range.')).toBeVisible();
+    },
+};
+
+export const WithValueWithZero: StoryObj<MutationsOverTimeGridTooltipProps> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        value: {
+            type: 'value',
+            proportion: 0,
+            count: 0,
+            totalCount: 300,
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await expect(canvas.getByText('0.00%')).toBeVisible();
+        await expect(canvas.getByText('0')).toBeVisible();
+        await expect(canvas.getByText('have the mutation A500-.')).toBeVisible();
+        await expect(canvas.queryByText('with coverage at position 500.')).not.toBeInTheDocument();
+        await expect(canvas.getByText('300')).toBeVisible();
+        await expect(canvas.getByText('total in this date range.')).toBeVisible();
+    },
+};
+
+export const WithValueWithCoverage: StoryObj<MutationsOverTimeGridTooltipProps> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        value: {
+            type: 'valueWithCoverage',
+            count: 100,
+            coverage: 200,
+            totalCount: 300,
+        },
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await expect(canvas.getByText('50.00%')).toBeVisible();
+        await expect(canvas.getByText('100')).toBeVisible();
         await expect(canvas.getByText('have the mutation A500- out of')).toBeVisible();
         await expect(canvas.getByText('200')).toBeVisible();
         await expect(canvas.getByText('with coverage at position 500.')).toBeVisible();

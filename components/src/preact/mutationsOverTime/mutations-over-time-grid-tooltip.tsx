@@ -21,12 +21,26 @@ export const MutationsOverTimeGridTooltip: FunctionComponent<MutationsOverTimeGr
 }: MutationsOverTimeGridTooltipProps) => {
     const dateClass = toTemporalClass(date);
 
-    const proportionText =
-        value === null
-            ? 'No data'
-            : value.type === 'belowThreshold'
-              ? `<${formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)}`
-              : formatProportion(value.proportion);
+    let proportionText = 'No data';
+
+    if (value !== null) {
+        switch (value.type) {
+            case 'belowThreshold': {
+                proportionText = `<${formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)}`;
+                break;
+            }
+            case 'value':
+            case 'wastewaterValue': {
+                proportionText = formatProportion(value.proportion);
+                break;
+            }
+            case 'valueWithCoverage': {
+                // value.coverage will always be non-zero if we're in this case
+                proportionText = formatProportion(value.count / value.coverage);
+                break;
+            }
+        }
+    }
 
     return (
         <div>
@@ -61,34 +75,56 @@ const TooltipValueCountsDescription: FunctionComponent<{
     }
     return (
         <div className='mt-2'>
-            {value.type === 'belowThreshold' ? (
-                <p className='text-gray-600'>
-                    None or less than {formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)} have the mutation.
-                </p>
-            ) : (
-                <>
-                    <p>
-                        {value.count} <span className='text-gray-600'>have the mutation {mutationCode} out of</span>
-                    </p>
-                    <p>
-                        {totalCountWithCoverage(value.count, value.proportion)}{' '}
-                        <span className='text-gray-600'>with coverage at position {mutationPosition}.</span>
-                    </p>
-                </>
-            )}
+            {(() => {
+                switch (value.type) {
+                    case 'belowThreshold':
+                        return (
+                            <p className='text-gray-600'>
+                                None or less than {formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)} have the
+                                mutation.
+                            </p>
+                        );
+
+                    case 'value':
+                        return (
+                            <>
+                                <p>
+                                    {value.count}{' '}
+                                    <span className='text-gray-600'>have the mutation {mutationCode}.</span>
+                                </p>
+                                {value.proportion > 0 && (
+                                    <p>
+                                        {Math.round(value.count / value.proportion)}{' '}
+                                        <span className='text-gray-600'>
+                                            have coverage at position {mutationPosition}.
+                                        </span>
+                                    </p>
+                                )}
+                            </>
+                        );
+
+                    case 'valueWithCoverage':
+                        return (
+                            <>
+                                <p>
+                                    {value.count}{' '}
+                                    <span className='text-gray-600'>have the mutation {mutationCode} out of</span>
+                                </p>
+                                <p>
+                                    {value.coverage}{' '}
+                                    <span className='text-gray-600'>with coverage at position {mutationPosition}.</span>
+                                </p>
+                            </>
+                        );
+                }
+            })()}
+
             <p>
                 {value.totalCount} <span className='text-gray-600'>total in this date range.</span>
             </p>
         </div>
     );
 };
-
-function totalCountWithCoverage(count: number, proportion: number) {
-    if (count === 0) {
-        return 0;
-    }
-    return Math.round(count / proportion);
-}
 
 const timeIntervalDisplay = (date: TemporalClass) => {
     if (date instanceof YearMonthDayClass) {

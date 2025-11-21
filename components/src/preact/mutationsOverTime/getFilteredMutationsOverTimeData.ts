@@ -68,7 +68,7 @@ export function getFilteredMutationOverTimeData({
     if (hideGaps) {
         const dateRangesToFilterOut = filteredData.getSecondAxisKeys().filter((dateRange) => {
             const vals = filteredData.getColumn(dateRange);
-            return !vals.some((v) => v?.type === 'value' && v.totalCount > 0);
+            return !vals.some((v) => (v?.type === 'value' || v?.type === 'valueWithCoverage') && v.totalCount > 0);
         });
         dateRangesToFilterOut.forEach((dateRange) => filteredData.deleteColumn(dateRange));
     }
