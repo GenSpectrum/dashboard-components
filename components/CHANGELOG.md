@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.11.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.10.3...dashboard-components-v1.11.0) (2025-11-21)
+
+
+### Features
+
+* **components:** custom column support for mutations-over-time ([#1019](https://github.com/GenSpectrum/dashboard-components/issues/1019)) ([8da24fc](https://github.com/GenSpectrum/dashboard-components/commit/8da24fc46bdb26356c53627fff44066d9e7f237e))
+* **components:** improved mutations-over-time tooltip ([#1039](https://github.com/GenSpectrum/dashboard-components/issues/1039)) ([ca874bd](https://github.com/GenSpectrum/dashboard-components/commit/ca874bd46b526f87119278531190b2b3f5343a8a))
+
+
+### Bug Fixes
+
+* **components:** fix failing test ([6c4b59e](https://github.com/GenSpectrum/dashboard-components/commit/6c4b59e4a219cef4d0385192319b2d1dba8d3a31))
+
 ## [1.10.3](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.10.2...dashboard-components-v1.10.3) (2025-11-13)
 
 
