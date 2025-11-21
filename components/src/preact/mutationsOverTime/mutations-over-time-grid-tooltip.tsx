@@ -21,60 +21,66 @@ export const MutationsOverTimeGridTooltip: FunctionComponent<MutationsOverTimeGr
 }: MutationsOverTimeGridTooltipProps) => {
     const dateClass = toTemporalClass(date);
 
+    const proportionText =
+        value === null
+            ? 'No data'
+            : value.type === 'belowThreshold'
+              ? `<${formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)}`
+              : formatProportion(value.proportion);
+
     return (
-        <div className='text-center'>
-            <p>
-                <span className='font-bold'>{dateClass.englishName()}</span>
-            </p>
-            <p>({timeIntervalDisplay(dateClass)})</p>
-            <p>{mutation.code}</p>
-            <TooltipValueDescription value={value} />
+        <div>
+            <div className='flex flex-row justify-between gap-4 items-baseline'>
+                <div className='flex flex-col text-left'>
+                    <span className='font-bold'>{mutation.code}</span>
+                    <span>{proportionText}</span>
+                </div>
+                <div className='flex flex-col text-right'>
+                    <span className='font-bold'>{dateClass.englishName()}</span>
+                    <span className='text-gray-600'>{timeIntervalDisplay(dateClass)}</span>
+                </div>
+            </div>
+            {value !== null && (
+                <TooltipValueCountsDescription
+                    value={value}
+                    mutationCode={mutation.code}
+                    mutationPosition={mutation.position}
+                />
+            )}
         </div>
-    );
-};
-
-const TooltipValueDescription: FunctionComponent<{ value: MutationOverTimeMutationValue }> = ({ value }) => {
-    if (value === null) {
-        return <p>No data</p>;
-    }
-
-    const proportion =
-        value.type === 'belowThreshold'
-            ? `<${formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)}`
-            : formatProportion(value.proportion);
-
-    return (
-        <>
-            <p>Proportion: {proportion}</p>
-            <TooltipValueCountsDescription value={value} />
-        </>
     );
 };
 
 const TooltipValueCountsDescription: FunctionComponent<{
     value: NonNullable<MutationOverTimeMutationValue>;
-}> = ({ value }) => {
-    switch (value.type) {
-        case 'wastewaterValue':
-            return;
-        case 'belowThreshold':
-            return (
+    mutationCode: string;
+    mutationPosition: number;
+}> = ({ value, mutationCode, mutationPosition }) => {
+    if (value.type === 'wastewaterValue') {
+        return;
+    }
+    return (
+        <div className='mt-2'>
+            {value.type === 'belowThreshold' ? (
+                <p className='text-gray-600'>
+                    None or less than {formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)} have the mutation.
+                </p>
+            ) : (
                 <>
-                    <p>{value.totalCount} samples are in the timeframe</p>
-                    <p>none or less than {formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)} have the mutation</p>
-                </>
-            );
-        case 'value':
-            return (
-                <>
-                    <p>{value.totalCount} samples are in the timeframe</p>
                     <p>
-                        {totalCountWithCoverage(value.count, value.proportion)} have coverage, of those {value.count}{' '}
-                        have the mutation
+                        {value.count} <span className='text-gray-600'>have the mutation {mutationCode} out of</span>
+                    </p>
+                    <p>
+                        {totalCountWithCoverage(value.count, value.proportion)}{' '}
+                        <span className='text-gray-600'>with coverage at position {mutationPosition}.</span>
                     </p>
                 </>
-            );
-    }
+            )}
+            <p>
+                {value.totalCount} <span className='text-gray-600'>total in this date range.</span>
+            </p>
+        </div>
+    );
 };
 
 function totalCountWithCoverage(count: number, proportion: number) {
