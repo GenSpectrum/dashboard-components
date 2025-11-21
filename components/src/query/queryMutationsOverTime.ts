@@ -50,6 +50,12 @@ export type MutationOverTimeMutationValue =
           totalCount: number;
       }
     | {
+          type: 'value2';
+          count: number;
+          coverage: number;
+          totalCount: number;
+      }
+    | {
           type: 'wastewaterValue';
           proportion: number;
       }
