@@ -38,5 +38,8 @@ describe('gs-mutations-over-time', () => {
         expectTypeOf<typeof MutationsOverTimeComponent.prototype.pageSizes>().toEqualTypeOf<
             MutationsOverTimeProps['pageSizes']
         >();
+        expectTypeOf<typeof MutationsOverTimeComponent.prototype.customColumns>().toEqualTypeOf<
+            MutationsOverTimeProps['customColumns']
+        >();
     });
 });

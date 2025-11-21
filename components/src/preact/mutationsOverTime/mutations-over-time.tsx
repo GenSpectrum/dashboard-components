@@ -11,7 +11,7 @@ import {
     type MutationFilter,
 } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
-import MutationsOverTimeGrid from './mutations-over-time-grid';
+import MutationsOverTimeGrid, { customColumnSchema } from './mutations-over-time-grid';
 import { type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
@@ -66,6 +66,7 @@ const mutationOverTimeSchema = z.object({
     width: z.string(),
     height: z.string().optional(),
     pageSizes: pageSizesSchema,
+    customColumns: z.array(customColumnSchema).optional(),
 });
 export type MutationsOverTimeProps = z.infer<typeof mutationOverTimeSchema>;
 
@@ -204,6 +205,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                             colorScale={colorScale}
                             sequenceType={originalComponentProps.sequenceType}
                             pageSizes={originalComponentProps.pageSizes}
+                            customColumns={originalComponentProps.customColumns}
                             tooltipPortalTarget={tooltipPortalTarget}
                         />
                     ),

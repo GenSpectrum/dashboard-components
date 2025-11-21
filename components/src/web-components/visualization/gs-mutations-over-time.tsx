@@ -137,6 +137,13 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
     pageSizes: number[] | number = [10, 20, 30, 40, 50];
 
     /**
+     * Custom columns to add to the grid.
+     * Each column has a header and a map of mutation codes to values.
+     */
+    @property({ type: Array })
+    customColumns?: { header: string; values: Record<string, string | number> }[] = undefined;
+
+    /**
      * @internal
      */
     @consume({ context: mutationAnnotationsContext, subscribe: true })
@@ -165,6 +172,7 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
                         hideGaps={this.hideGaps}
                         useNewEndpoint={this.useNewEndpoint}
                         pageSizes={this.pageSizes}
+                        customColumns={this.customColumns}
                     />
                 </MutationLinkTemplateContextProvider>
             </MutationAnnotationsContextProvider>
