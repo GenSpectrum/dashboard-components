@@ -21,7 +21,7 @@ jobs:
           include-component-in-tag: true
           target-branch: main
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         if: ${{ steps.release.outputs.components--release_created }}
 
       - uses: actions/setup-node@v6
