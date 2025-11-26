@@ -12,7 +12,7 @@ import {
 } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
 import MutationsOverTimeGrid, { customColumnSchema } from './mutations-over-time-grid';
-import { type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
+import { getProportion, type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
     sequenceTypeSchema,
@@ -356,7 +356,7 @@ function getDownloadData(filteredData: MutationOverTimeDataMap) {
         return dates.reduce(
             (accumulated, date) => {
                 const value = filteredData.get(mutation, date);
-                const proportion = value?.type === 'value' || value?.type === 'wastewaterValue' ? value.proportion : '';
+                const proportion = getProportion(value ?? null) ?? '';
                 return {
                     ...accumulated,
                     [date.dateString]: proportion,
