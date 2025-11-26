@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.11.0...dashboard-components-v1.11.1) (2025-11-26)
+
+
+### Bug Fixes
+
+* **components:** coverage now calculated correctly ([#1044](https://github.com/GenSpectrum/dashboard-components/issues/1044)) ([2c5934a](https://github.com/GenSpectrum/dashboard-components/commit/2c5934a5e8be2c460dc2e0f083c63a3fde665390))
+
 ## [1.11.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.10.3...dashboard-components-v1.11.0) (2025-11-21)
 
 
