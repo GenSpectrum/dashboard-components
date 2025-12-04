@@ -62,6 +62,7 @@ export const mutationsOverTimeResponse = makeLapisResponse(
                 }),
             ),
         ),
+        totalCountsByDateRange: z.array(z.number()),
     }),
 );
 export type MutationsOverTimeResponse = z.infer<typeof mutationsOverTimeResponse>;

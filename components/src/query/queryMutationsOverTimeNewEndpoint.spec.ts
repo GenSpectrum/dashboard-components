@@ -8,45 +8,15 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         const lapisFilter = { field1: 'value1', field2: 'value2' };
         const dateField = 'dateField';
 
-        lapisRequestMocks.multipleAggregated([
-            // this request is expected to get 'all dates in dataset' - since the user hasn't provided a date range
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField] },
             {
-                body: { ...lapisFilter, fields: [dateField] },
-                response: {
-                    data: [
-                        { count: 1, [dateField]: '2023-01-01' },
-                        { count: 2, [dateField]: '2023-01-03' },
-                    ],
-                },
+                data: [
+                    { count: 1, [dateField]: '2023-01-01' },
+                    { count: 2, [dateField]: '2023-01-03' },
+                ],
             },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-01',
-                    dateFieldTo: '2023-01-01',
-                    fields: [],
-                },
-                response: { data: [{ count: 11 }] },
-            },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-02',
-                    dateFieldTo: '2023-01-02',
-                    fields: [],
-                },
-                response: { data: [{ count: 12 }] },
-            },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-03',
-                    dateFieldTo: '2023-01-03',
-                    fields: [],
-                },
-                response: { data: [{ count: 13 }] },
-            },
-        ]);
+        );
         lapisRequestMocks.multipleMutations(
             [
                 {
@@ -102,6 +72,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                             ],
                             dateRanges,
                             mutations: ['otherSequenceName:G234C', 'sequenceName:A123T'],
+                            totalCountsByDateRange: [11, 12, 13],
                         },
                     },
                 },
@@ -175,44 +146,15 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         const lapisFilter = { field1: 'value1', field2: 'value2' };
         const dateField = 'dateField';
 
-        lapisRequestMocks.multipleAggregated([
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField] },
             {
-                body: { ...lapisFilter, fields: [dateField] },
-                response: {
-                    data: [
-                        { count: 1, [dateField]: '2023-01-01' },
-                        { count: 2, [dateField]: '2023-01-03' },
-                    ],
-                },
+                data: [
+                    { count: 1, [dateField]: '2023-01-01' },
+                    { count: 2, [dateField]: '2023-01-03' },
+                ],
             },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-01',
-                    dateFieldTo: '2023-01-01',
-                    fields: [],
-                },
-                response: { data: [{ count: 11 }] },
-            },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-02',
-                    dateFieldTo: '2023-01-02',
-                    fields: [],
-                },
-                response: { data: [{ count: 0 }] },
-            },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-03',
-                    dateFieldTo: '2023-01-03',
-                    fields: [],
-                },
-                response: { data: [{ count: 13 }] },
-            },
-        ]);
+        );
 
         lapisRequestMocks.multipleMutations(
             [
@@ -271,6 +213,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                             ],
                             dateRanges,
                             mutations: ['otherSequenceName:G234C', 'sequenceName:A123T'],
+                            totalCountsByDateRange: [11, 0, 13],
                         },
                     },
                 },
@@ -314,44 +257,15 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         const lapisFilter = { field1: 'value1', field2: 'value2' };
         const dateField = 'dateField';
 
-        lapisRequestMocks.multipleAggregated([
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField] },
             {
-                body: { ...lapisFilter, fields: [dateField] },
-                response: {
-                    data: [
-                        { count: 1, [dateField]: '2023-01-01' },
-                        { count: 2, [dateField]: '2023-01-03' },
-                    ],
-                },
+                data: [
+                    { count: 1, [dateField]: '2023-01-01' },
+                    { count: 2, [dateField]: '2023-01-03' },
+                ],
             },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-01',
-                    dateFieldTo: '2023-01-01',
-                    fields: [],
-                },
-                response: { data: [{ count: 11 }] },
-            },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-02',
-                    dateFieldTo: '2023-01-02',
-                    fields: [],
-                },
-                response: { data: [{ count: 12 }] },
-            },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-03',
-                    dateFieldTo: '2023-01-03',
-                    fields: [],
-                },
-                response: { data: [{ count: 13 }] },
-            },
-        ]);
+        );
 
         lapisRequestMocks.multipleMutations(
             [
@@ -399,6 +313,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                             data: [],
                             dateRanges,
                             mutations: [],
+                            totalCountsByDateRange: [],
                         },
                     },
                 },
@@ -428,35 +343,15 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         const dateField = 'dateField';
         const lapisFilter = { field1: 'value1', field2: 'value2', [`${dateField}From`]: '2023-01-02' };
 
-        lapisRequestMocks.multipleAggregated([
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField] },
             {
-                body: { ...lapisFilter, fields: [dateField] },
-                response: {
-                    data: [
-                        { count: 1, [dateField]: '2023-01-01' },
-                        { count: 2, [dateField]: '2023-01-03' },
-                    ],
-                },
+                data: [
+                    { count: 1, [dateField]: '2023-01-01' },
+                    { count: 2, [dateField]: '2023-01-03' },
+                ],
             },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-02',
-                    dateFieldTo: '2023-01-02',
-                    fields: [],
-                },
-                response: { data: [{ count: 11 }] },
-            },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-03',
-                    dateFieldTo: '2023-01-03',
-                    fields: [],
-                },
-                response: { data: [{ count: 12 }] },
-            },
-        ]);
+        );
 
         lapisRequestMocks.multipleMutations(
             [
@@ -505,6 +400,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                             ],
                             dateRanges,
                             mutations: ['sequenceName:A123T'],
+                            totalCountsByDateRange: [11, 12],
                         },
                     },
                 },
@@ -540,35 +436,15 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         const dateField = 'dateField';
         const lapisFilter = { field1: 'value1', field2: 'value2', [`${dateField}To`]: '2023-01-02' };
 
-        lapisRequestMocks.multipleAggregated([
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField] },
             {
-                body: { ...lapisFilter, fields: [dateField] },
-                response: {
-                    data: [
-                        { count: 1, [dateField]: '2023-01-01' },
-                        { count: 2, [dateField]: '2023-01-03' },
-                    ],
-                },
+                data: [
+                    { count: 1, [dateField]: '2023-01-01' },
+                    { count: 2, [dateField]: '2023-01-03' },
+                ],
             },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-01',
-                    dateFieldTo: '2023-01-01',
-                    fields: [],
-                },
-                response: { data: [{ count: 11 }] },
-            },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-02',
-                    dateFieldTo: '2023-01-02',
-                    fields: [],
-                },
-                response: { data: [{ count: 12 }] },
-            },
-        ]);
+        );
 
         lapisRequestMocks.multipleMutations(
             [
@@ -617,6 +493,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                             ],
                             dateRanges,
                             mutations: ['sequenceName:A123T'],
+                            totalCountsByDateRange: [11, 12],
                         },
                     },
                 },
@@ -652,26 +529,15 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         const dateField = 'dateField';
         const lapisFilter = { field1: 'value1', field2: 'value2', [dateField]: '2023-01-02' };
 
-        lapisRequestMocks.multipleAggregated([
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField] },
             {
-                body: { ...lapisFilter, fields: [dateField] },
-                response: {
-                    data: [
-                        { count: 1, [dateField]: '2023-01-01' },
-                        { count: 2, [dateField]: '2023-01-03' },
-                    ],
-                },
+                data: [
+                    { count: 1, [dateField]: '2023-01-01' },
+                    { count: 2, [dateField]: '2023-01-03' },
+                ],
             },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-02',
-                    dateFieldTo: '2023-01-02',
-                    fields: [],
-                },
-                response: { data: [{ count: 11 }] },
-            },
-        ]);
+        );
 
         lapisRequestMocks.multipleMutations(
             [
@@ -709,6 +575,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                             data: [[{ count: 2, coverage: 10 }]],
                             dateRanges,
                             mutations: ['sequenceName:A123T'],
+                            totalCountsByDateRange: [11],
                         },
                     },
                 },
@@ -740,35 +607,15 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         const lapisFilter = { field1: 'value1', field2: 'value2' };
         const dateField = 'dateField';
 
-        lapisRequestMocks.multipleAggregated([
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField] },
             {
-                body: { ...lapisFilter, fields: [dateField] },
-                response: {
-                    data: [
-                        { count: 1, [dateField]: '2023-01-05' },
-                        { count: 2, [dateField]: '2023-02-15' },
-                    ],
-                },
+                data: [
+                    { count: 1, [dateField]: '2023-01-05' },
+                    { count: 2, [dateField]: '2023-02-15' },
+                ],
             },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-01',
-                    dateFieldTo: '2023-01-31',
-                    fields: [],
-                },
-                response: { data: [{ count: 11 }] },
-            },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-02-01',
-                    dateFieldTo: '2023-02-28',
-                    fields: [],
-                },
-                response: { data: [{ count: 12 }] },
-            },
-        ]);
+        );
 
         lapisRequestMocks.multipleMutations(
             [
@@ -821,6 +668,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                             ],
                             dateRanges,
                             mutations: ['otherSequenceName:G234C', 'sequenceName:A123T'],
+                            totalCountsByDateRange: [11, 12],
                         },
                     },
                 },
@@ -861,14 +709,12 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         const lapisFilter = { field1: 'value1', field2: 'value2' };
         const dateField = 'dateField';
 
-        lapisRequestMocks.multipleAggregated([
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField] },
             {
-                body: { ...lapisFilter, fields: [dateField] },
-                response: {
-                    data: [],
-                },
+                data: [],
             },
-        ]);
+        );
 
         lapisRequestMocks.mutationsOverTime(
             [
@@ -884,6 +730,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                             data: [],
                             dateRanges: [],
                             mutations: [],
+                            totalCountsByDateRange: [],
                         },
                     },
                 },
@@ -913,35 +760,15 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         const lapisFilter = { field1: 'value1', field2: 'value2' };
         const dateField = 'dateField';
 
-        lapisRequestMocks.multipleAggregated([
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField] },
             {
-                body: { ...lapisFilter, fields: [dateField] },
-                response: {
-                    data: [
-                        { count: 1, [dateField]: '2023-01-05' },
-                        { count: 2, [dateField]: '2023-02-15' },
-                    ],
-                },
+                data: [
+                    { count: 1, [dateField]: '2023-01-05' },
+                    { count: 2, [dateField]: '2023-02-15' },
+                ],
             },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-01',
-                    dateFieldTo: '2023-01-31',
-                    fields: [],
-                },
-                response: { data: [{ count: 11 }] },
-            },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-02-01',
-                    dateFieldTo: '2023-02-28',
-                    fields: [],
-                },
-                response: { data: [{ count: 12 }] },
-            },
-        ]);
+        );
 
         lapisRequestMocks.multipleMutations(
             [
@@ -994,6 +821,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                             ],
                             dateRanges,
                             mutations: ['A122T', 'otherSequenceName:G234C'],
+                            totalCountsByDateRange: [11, 12],
                         },
                     },
                 },
@@ -1035,35 +863,15 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         const lapisFilter = { field1: 'value1', field2: 'value2' };
         const dateField = 'dateField';
 
-        lapisRequestMocks.multipleAggregated([
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField] },
             {
-                body: { ...lapisFilter, fields: [dateField] },
-                response: {
-                    data: [
-                        { count: 1, [dateField]: '2023-01-05' },
-                        { count: 2, [dateField]: '2023-02-15' },
-                    ],
-                },
+                data: [
+                    { count: 1, [dateField]: '2023-01-05' },
+                    { count: 2, [dateField]: '2023-02-15' },
+                ],
             },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-01-01',
-                    dateFieldTo: '2023-01-31',
-                    fields: [],
-                },
-                response: { data: [{ count: 11 }] },
-            },
-            {
-                body: {
-                    ...lapisFilter,
-                    dateFieldFrom: '2023-02-01',
-                    dateFieldTo: '2023-02-28',
-                    fields: [],
-                },
-                response: { data: [{ count: 12 }] },
-            },
-        ]);
+        );
 
         lapisRequestMocks.multipleMutations(
             [
@@ -1116,6 +924,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                             ],
                             dateRanges,
                             mutations: ['A122T', 'otherSequenceName:G234C'],
+                            totalCountsByDateRange: [11, 12],
                         },
                     },
                 },
