@@ -256,19 +256,6 @@ async function queryMutationsOverTimeDataDirectEndpoint(
 }> {
     const overallMutationData = await overallMutationDataPromise;
     overallMutationData.sort((a, b) => sortSubstitutionsAndDeletions(a.mutation, b.mutation));
-    const totalCounts = await Promise.all(
-        allDates.map(async (date) => {
-            const filter = {
-                ...lapisFilter,
-                [`${lapisDateField}From`]: date.firstDay.toString(),
-                [`${lapisDateField}To`]: date.lastDay.toString(),
-            };
-
-            const totalCountQuery = await getTotalNumberOfSequencesInDateRange(filter).evaluate(lapis, signal);
-
-            return totalCountQuery.content[0].count;
-        }),
-    );
 
     const includeMutations = overallMutationData.map((value) => value.mutation.code);
     const apiResult = await fetchMutationsOverTime(
@@ -286,6 +273,7 @@ async function queryMutationsOverTimeDataDirectEndpoint(
         signal,
     );
 
+    const totalCounts = apiResult.data.totalCountsByDateRange;
     const responseMutations = apiResult.data.mutations.map(parseMutationCode);
     const mutationEntries: SubstitutionOrDeletionEntry[] = responseMutations.map((mutation, i) => {
         const numbers = {
