@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.12.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.11.1...dashboard-components-v1.12.0) (2025-12-15)
+
+
+### Features
+
+* **components:** reduce API call count by using info from mut-over-time response (requires LAPIS 0.5.16) ([#1050](https://github.com/GenSpectrum/dashboard-components/issues/1050)) ([a3c7c01](https://github.com/GenSpectrum/dashboard-components/commit/a3c7c019d1e6291502f94224832ef306a3025b25))
+
+
+### Bug Fixes
+
+* **components:** fix mutation comparison type declarations ([#1052](https://github.com/GenSpectrum/dashboard-components/issues/1052)) ([3e50b47](https://github.com/GenSpectrum/dashboard-components/commit/3e50b47fc7dc4e0bb28db0237031e0fbd5e78166))
+
 ## [1.11.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.11.0...dashboard-components-v1.11.1) (2025-11-26)
 
 
