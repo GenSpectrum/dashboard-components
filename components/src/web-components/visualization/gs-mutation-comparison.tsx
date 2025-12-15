@@ -131,7 +131,7 @@ export class MutationComparisonComponent extends PreactLitAdapterWithGridJsStyle
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-mutation-comparison-component': MutationComparisonComponent;
+        'gs-mutation-comparison': MutationComparisonComponent;
     }
 }
 
@@ -139,7 +139,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         interface IntrinsicElements {
-            'gs-mutation-comparison-component': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-mutation-comparison': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
         }
     }
 }
