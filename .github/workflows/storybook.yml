@@ -1,7 +1,7 @@
 on:
   push:
-    branches:
-      - "main"
+#    branches:
+#      - "main"
 
 permissions:
   contents: read
@@ -12,9 +12,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - id: build-publish
-      uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
-      with:
-        path: components/storybook-static
-        install_command: cd components && npm ci&& cd ..
-        build_command: cd components && npm run generate-manifest && npm run build-storybook && cd ..
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+      - id: build-publish
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        with:
+          path: components/storybook-static
+          install_command: cd components && npm ci&& cd ..
+          build_command: cd components && npm run generate-manifest && npm run build-storybook && cd ..
