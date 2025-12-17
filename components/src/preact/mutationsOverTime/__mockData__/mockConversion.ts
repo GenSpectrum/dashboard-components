@@ -1,4 +1,4 @@
-import type { MutationOverTimeMutationValue, MutationOverTimeQuery } from '../../../query/queryMutationsOverTime';
+import type { ProportionValue, MutationOverTimeQuery } from '../../../query/queryMutationsOverTime';
 import type { SubstitutionOrDeletionEntry } from '../../../types';
 import type { Deletion, Substitution } from '../../../utils/mutations';
 import type { Temporal } from '../../../utils/temporalClass';
@@ -10,7 +10,7 @@ export type MutationOverTimeMockData = {
         mutationOverTimeSerializedAsArray: {
             keysFirstAxis: [string, Substitution | Deletion][];
             keysSecondAxis: [string, Temporal][];
-            data: [string, [string, MutationOverTimeMutationValue][]][];
+            data: [string, [string, ProportionValue][]][];
         };
     };
 };
@@ -34,17 +34,17 @@ function get2dMapFromArray({
 }: {
     keysFirstAxis: [string, Substitution | Deletion][];
     keysSecondAxis: [string, Temporal][];
-    data: [string, [string, MutationOverTimeMutationValue][]][];
+    data: [string, [string, ProportionValue][]][];
 }) {
     const keysFirstAxisMap = new Map<string, Substitution | Deletion>(keysFirstAxis);
     const keysSecondAxisMap = new Map<string, Temporal>(keysSecondAxis);
 
     const dataMapArrays = data.map(([keyFirstAxis, dataMapArray]) => {
-        const dataMap = new Map<string, MutationOverTimeMutationValue>(dataMapArray);
-        return [keyFirstAxis, dataMap] as [string, Map<string, MutationOverTimeMutationValue>];
+        const dataMap = new Map<string, ProportionValue>(dataMapArray);
+        return [keyFirstAxis, dataMap] as [string, Map<string, ProportionValue>];
     });
 
-    const dataMap = new Map<string, Map<string, MutationOverTimeMutationValue>>(dataMapArrays);
+    const dataMap = new Map<string, Map<string, ProportionValue>>(dataMapArrays);
 
     return {
         keysFirstAxis: keysFirstAxisMap,

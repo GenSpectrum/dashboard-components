@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { BaseMutationOverTimeDataMap } from './MutationOverTimeData';
 import { getFilteredMutationOverTimeData, type MutationFilter } from './getFilteredMutationsOverTimeData';
-import { type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
+import { type ProportionValue } from '../../query/queryMutationsOverTime';
 import { type DeletionEntry, type SubstitutionEntry } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type TemporalClass } from '../../utils/temporalClass';
@@ -392,13 +392,13 @@ describe('getFilteredMutationOverTimeData', () => {
         count: 1,
         proportion: inFilter,
         totalCount: 10,
-    } satisfies MutationOverTimeMutationValue;
+    } satisfies ProportionValue;
     const emptyMutationOverTimeValue = {
         type: 'value',
         count: 0,
         proportion: NaN,
         totalCount: 0,
-    } satisfies MutationOverTimeMutationValue;
+    } satisfies ProportionValue;
 
     function prepareMutationOverTimeData(
         mutationEntries: (SubstitutionEntry<Substitution> | DeletionEntry<Deletion>)[],

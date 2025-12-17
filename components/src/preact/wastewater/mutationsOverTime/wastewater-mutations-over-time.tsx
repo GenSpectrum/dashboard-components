@@ -24,10 +24,15 @@ import {
     type MutationFilter,
     mutationOrAnnotationDoNotMatchFilter,
 } from '../../mutationsOverTime/getFilteredMutationsOverTimeData';
-import MutationsOverTimeGrid from '../../mutationsOverTime/mutations-over-time-grid';
+import FeaturesOverTimeGrid, { FeatureRenderer } from '../../components/features-over-time-grid';
 import { pageSizesSchema } from '../../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../../shared/tanstackTable/pagination-context';
 import { useQuery } from '../../useQuery';
+import { Deletion, Substitution } from '../../../utils/mutations';
+import { AnnotatedMutation } from '../../components/annotated-mutation';
+import { MutationsOverTimeGridTooltip } from '../../mutationsOverTime/mutations-over-time-grid-tooltip';
+import { Temporal } from '../../../utils/temporalClass';
+import { ProportionValue } from '../../../query/queryMutationsOverTime';
 
 const wastewaterMutationOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
@@ -161,12 +166,25 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
     const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(mutationOverTimeDataPerLocation);
 
+    const mutationRenderer: FeatureRenderer<Substitution | Deletion> = {
+        asString: (value: Substitution | Deletion) => value.code,
+        renderRowLabel: (value: Substitution | Deletion) => (
+            <div className={'text-center'}>
+                <AnnotatedMutation mutation={value} sequenceType={originalComponentProps.sequenceType} />
+            </div>
+        ),
+        renderTooltip: (value: Substitution | Deletion, temporal: Temporal, proportionValue: ProportionValue) => (
+            <MutationsOverTimeGridTooltip mutation={value} date={temporal} value={proportionValue} />
+        ),
+    };
+
     const tabs = useMemo(
         () =>
             mutationOverTimeDataPerLocation.map(({ location, data }) => ({
                 title: location,
                 content: (
-                    <MutationsOverTimeGrid
+                    <FeaturesOverTimeGrid
+                        rowLabelHeader='Mutation'
                         data={getFilteredMutationOverTimeData({
                             data,
                             displayedSegments,
@@ -176,7 +194,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                         })}
                         colorScale={colorScale}
                         pageSizes={originalComponentProps.pageSizes}
-                        sequenceType={originalComponentProps.sequenceType}
+                        featureRenderer={mutationRenderer}
                         tooltipPortalTarget={tooltipPortalTargetRef.current}
                     />
                 ),

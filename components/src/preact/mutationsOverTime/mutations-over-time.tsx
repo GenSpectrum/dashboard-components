@@ -11,8 +11,8 @@ import {
     type MutationFilter,
 } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
-import MutationsOverTimeGrid, { customColumnSchema } from './mutations-over-time-grid';
-import { getProportion, type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
+import FeaturesOverTimeGrid, { FeatureRenderer, customColumnSchema } from '../components/features-over-time-grid';
+import { ProportionValue, getProportion, type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
     sequenceTypeSchema,
@@ -21,7 +21,7 @@ import {
     views,
 } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
-import { toTemporalClass } from '../../utils/temporalClass';
+import { Temporal, toTemporalClass } from '../../utils/temporalClass';
 import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../LapisUrlContext';
 import { useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
@@ -43,6 +43,8 @@ import Tabs from '../components/tabs';
 import { pageSizesSchema } from '../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../shared/tanstackTable/pagination-context';
 import { useWebWorker } from '../webWorkers/useWebWorker';
+import { AnnotatedMutation } from '../components/annotated-mutation';
+import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
 
 const mutationsOverTimeViewSchema = z.literal(views.grid);
 export type MutationsOverTimeView = z.infer<typeof mutationsOverTimeViewSchema>;
@@ -193,6 +195,18 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         annotationProvider,
     ]);
 
+    const mutationRenderer: FeatureRenderer<Substitution | Deletion> = {
+        asString: (value: Substitution | Deletion) => value.code,
+        renderRowLabel: (value: Substitution | Deletion) => (
+            <div className={'text-center'}>
+                <AnnotatedMutation mutation={value} sequenceType={originalComponentProps.sequenceType} />
+            </div>
+        ),
+        renderTooltip: (value: Substitution | Deletion, temporal: Temporal, proportionValue: ProportionValue) => (
+            <MutationsOverTimeGridTooltip mutation={value} date={temporal} value={proportionValue} />
+        ),
+    };
+
     const getTab = (view: MutationsOverTimeView) => {
         switch (view) {
             // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- for extensibility
@@ -200,12 +214,13 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                 return {
                     title: 'Grid',
                     content: (
-                        <MutationsOverTimeGrid
+                        <FeaturesOverTimeGrid
+                            rowLabelHeader='Mutation'
                             data={filteredData}
                             colorScale={colorScale}
-                            sequenceType={originalComponentProps.sequenceType}
                             pageSizes={originalComponentProps.pageSizes}
                             customColumns={originalComponentProps.customColumns}
+                            featureRenderer={mutationRenderer}
                             tooltipPortalTarget={tooltipPortalTarget}
                         />
                     ),

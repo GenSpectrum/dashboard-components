@@ -1,9 +1,6 @@
 import type { FunctionComponent } from 'preact';
 
-import {
-    type MutationOverTimeMutationValue,
-    MUTATIONS_OVER_TIME_MIN_PROPORTION,
-} from '../../query/queryMutationsOverTime';
+import { type ProportionValue, MUTATIONS_OVER_TIME_MIN_PROPORTION } from '../../query/queryMutationsOverTime';
 import type { Deletion, Substitution } from '../../utils/mutations';
 import { type Temporal, type TemporalClass, toTemporalClass, YearMonthDayClass } from '../../utils/temporalClass';
 import { formatProportion } from '../shared/table/formatProportion';
@@ -11,7 +8,7 @@ import { formatProportion } from '../shared/table/formatProportion';
 export type MutationsOverTimeGridTooltipProps = {
     mutation: Substitution | Deletion;
     date: Temporal;
-    value: MutationOverTimeMutationValue;
+    value: ProportionValue;
 };
 
 export const MutationsOverTimeGridTooltip: FunctionComponent<MutationsOverTimeGridTooltipProps> = ({
@@ -66,7 +63,7 @@ export const MutationsOverTimeGridTooltip: FunctionComponent<MutationsOverTimeGr
 };
 
 const TooltipValueCountsDescription: FunctionComponent<{
-    value: NonNullable<MutationOverTimeMutationValue>;
+    value: NonNullable<ProportionValue>;
     mutationCode: string;
     mutationPosition: number;
 }> = ({ value, mutationCode, mutationPosition }) => {
