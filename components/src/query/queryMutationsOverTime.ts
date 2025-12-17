@@ -1,11 +1,5 @@
-import { mapDateToGranularityRange } from './queryAggregatedDataOverTime';
 import { fetchMutationsOverTime } from '../lapisApi/lapisApi';
-import { FetchAggregatedOperator } from '../operator/FetchAggregatedOperator';
 import { FetchSubstitutionsOrDeletionsOperator } from '../operator/FetchSubstitutionsOrDeletionsOperator';
-import { GroupByAndSumOperator } from '../operator/GroupByAndSumOperator';
-import { MapOperator } from '../operator/MapOperator';
-import { RenameFieldOperator } from '../operator/RenameFieldOperator';
-import { SortOperator } from '../operator/SortOperator';
 import { UserFacingError } from '../preact/components/error-display';
 import { BaseMutationOverTimeDataMap } from '../preact/mutationsOverTime/MutationOverTimeData';
 import { sortSubstitutionsAndDeletions } from '../preact/shared/sort/sortSubstitutionsAndDeletions';
@@ -25,16 +19,8 @@ import {
     DeletionClass,
     SubstitutionClass,
 } from '../utils/mutations';
-import {
-    compareTemporal,
-    dateRangeCompare,
-    generateAllInRange,
-    getMinMaxTemporal,
-    parseDateStringToTemporal,
-    type Temporal,
-    type TemporalClass,
-    toTemporal,
-} from '../utils/temporalClass';
+import { compareTemporal, type Temporal, type TemporalClass, toTemporal } from '../utils/temporalClass';
+import { queryDatesInDataset } from './queryDatesInDataset';
 
 export type MutationOverTimeData = {
     date: TemporalClass;
@@ -130,7 +116,7 @@ async function queryOverallMutationData({
     includeMutations?: string[];
     signal?: AbortSignal;
 }) {
-    const requestedDateRanges = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
+    const requestedDateRanges = await queryDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
 
     if (requestedDateRanges.length === 0) {
         if (includeMutations) {
@@ -184,7 +170,7 @@ export type MutationOverTimeQuery = {
 export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
     const { lapisFilter, displayMutations, sequenceType, lapis, lapisDateField, granularity, signal } = query;
 
-    const requestedDateRanges = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
+    const requestedDateRanges = await queryDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
 
     if (requestedDateRanges.length > MAX_NUMBER_OF_GRID_COLUMNS) {
         throw new UserFacingError(
@@ -314,75 +300,6 @@ function parseMutationCode(code: string): SubstitutionClass | DeletionClass {
     throw Error(`Given code is not valid: ${code}`);
 }
 
-/**
- * Returns a list of date ranges as TemporalClass.
- * Respects date range filters given in the lapisFilter as <lapisDateField>From and <lapisDateField>To.
- * If either side (or both sides) of the range are not given, the min and max are determined from
- * the available data.
- */
-async function getDatesInDataset(
-    lapisFilter: LapisFilter,
-    lapis: string,
-    granularity: TemporalGranularity,
-    lapisDateField: string,
-    signal: AbortSignal | undefined,
-) {
-    const { dateFrom, dateTo } = getDateRangeFromFilter(lapisFilter, lapisDateField, granularity);
-    if (dateFrom !== null && dateTo !== null) {
-        return generateAllInRange(dateFrom, dateTo);
-    }
-
-    const { content: availableDates } = await queryAvailableDates(
-        lapisFilter,
-        lapis,
-        granularity,
-        lapisDateField,
-        signal,
-    );
-
-    const { min, max } = getMinMaxTemporal(availableDates);
-
-    return generateAllInRange(dateFrom ?? min, dateTo ?? max);
-}
-
-function getDateRangeFromFilter(lapisFilter: LapisFilter, lapisDateField: string, granularity: TemporalGranularity) {
-    const valueFromFilter = lapisFilter[lapisDateField] as string | null;
-
-    if (valueFromFilter) {
-        return {
-            dateFrom: parseDateStringToTemporal(valueFromFilter, granularity),
-            dateTo: parseDateStringToTemporal(valueFromFilter, granularity),
-        };
-    }
-
-    const minFromFilter = lapisFilter[`${lapisDateField}From`] as string | null;
-    const maxFromFilter = lapisFilter[`${lapisDateField}To`] as string | null;
-
-    return {
-        dateFrom: minFromFilter ? parseDateStringToTemporal(minFromFilter, granularity) : null,
-        dateTo: maxFromFilter ? parseDateStringToTemporal(maxFromFilter, granularity) : null,
-    };
-}
-
-function queryAvailableDates(
-    lapisFilter: LapisFilter,
-    lapis: string,
-    granularity: TemporalGranularity,
-    lapisDateField: string,
-    signal?: AbortSignal,
-) {
-    return fetchAndPrepareDates(lapisFilter, granularity, lapisDateField).evaluate(lapis, signal);
-}
-
-function fetchAndPrepareDates(filter: LapisFilter, granularity: TemporalGranularity, lapisDateField: string) {
-    const fetchData = new FetchAggregatedOperator<Record<string, string | null>>(filter, [lapisDateField]);
-    const dataWithFixedDateKey = new RenameFieldOperator(fetchData, lapisDateField, 'date');
-    const mapData = new MapOperator(dataWithFixedDateKey, (data) => mapDateToGranularityRange(data, granularity));
-    const groupByData = new GroupByAndSumOperator(mapData, 'dateRange', 'count');
-    const sortData = new SortOperator(groupByData, dateRangeCompare);
-    return new MapOperator(sortData, (data) => data.dateRange);
-}
-
 function fetchAndPrepareSubstitutionsOrDeletions(filter: LapisFilter, sequenceType: SequenceType) {
     return new FetchSubstitutionsOrDeletionsOperator(filter, sequenceType, MUTATIONS_OVER_TIME_MIN_PROPORTION);
 }
@@ -447,8 +364,4 @@ export function groupByMutation(
     });
 
     return dataArray;
-}
-
-function getTotalNumberOfSequencesInDateRange(filter: LapisFilter) {
-    return new FetchAggregatedOperator<{ count: number }>(filter);
 }
