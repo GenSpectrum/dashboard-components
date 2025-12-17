@@ -9,6 +9,7 @@ import mockDefaultNucleotideMutations from './__mockData__/defaultMockData/nucle
 import mockDefaultMutationsOverTime from './__mockData__/defaultMockData/mutationsOverTime.json';
 import mock1800sNucleotideMutations from './__mockData__/request1800s/nucleotideMutations.json';
 import mock1800sMutationsOverTime from './__mockData__/request1800s/mutationsOverTime.json';
+import mockWithDisplayMutationsMutationsOverTime from './__mockData__/withDisplayMutations/mutationsOverTime.json';
 import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
@@ -44,7 +45,7 @@ const meta: Meta<MutationsOverTimeProps> = {
         customColumns: { control: 'object' },
     },
     parameters: {
-        fetchMock: {
+        fetchMockX: {
             mocks: [
                 {
                     matcher: {
@@ -179,7 +180,6 @@ export const ShowsNoDataWhenNoMutationsAreInFilter: StoryObj<MutationsOverTimePr
                             includeMutations: [],
                             dateField: 'date',
                         },
-                        matchPartialBody: true, // includeMutations left out
                         response: {
                             status: 200,
                             body: mock1800sMutationsOverTime,
@@ -200,7 +200,51 @@ export const UsesHideGaps: StoryObj<MutationsOverTimeProps> = {
     ...Default,
     args: {
         ...Default.args,
-        displayMutations: ['A19722G', 'G21641T', 'T21652-'],
+        displayMutations: ['A13121T', 'G24872T', 'T21653-'],
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/sample/nucleotideMutations`,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-01',
+                            dateTo: '2024-07-31',
+                            minProportion: 0.001,
+                        },
+                        response: {
+                            status: 200,
+                            body: mockDefaultNucleotideMutations,
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
+                        body: {
+                            filters: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
+                            dateRanges: [
+                                { dateFrom: '2024-01-01', dateTo: '2024-01-31' },
+                                { dateFrom: '2024-02-01', dateTo: '2024-02-29' },
+                                { dateFrom: '2024-03-01', dateTo: '2024-03-31' },
+                                { dateFrom: '2024-04-01', dateTo: '2024-04-30' },
+                                { dateFrom: '2024-05-01', dateTo: '2024-05-31' },
+                                { dateFrom: '2024-06-01', dateTo: '2024-06-30' },
+                                { dateFrom: '2024-07-01', dateTo: '2024-07-31' },
+                            ],
+                            includeMutations: ['A13121T', 'T21653-', 'G24872T'],
+                            dateField: 'date',
+                        },
+                        response: {
+                            status: 200,
+                            body: mockWithDisplayMutationsMutationsOverTime,
+                        },
+                    },
+                },
+            ],
+        },
     },
     play: async ({ canvas, step }) => {
         await expectDateRangeOnPage(canvas, '2024-04');
