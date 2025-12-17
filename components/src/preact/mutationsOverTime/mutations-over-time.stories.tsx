@@ -45,7 +45,7 @@ const meta: Meta<MutationsOverTimeProps> = {
         customColumns: { control: 'object' },
     },
     parameters: {
-        fetchMockX: {
+        fetchMock: {
             mocks: [
                 {
                     matcher: {
@@ -325,16 +325,60 @@ export const WithCustomColumns: StoryObj<MutationsOverTimeProps> = {
     ...Default,
     args: {
         ...Default.args,
-        displayMutations: ['A19722G', 'G21641T', 'T21653-'],
+        displayMutations: ['A13121T', 'G24872T', 'T21653-'],
         customColumns: [
             {
                 header: 'Jaccard Index',
                 values: {
-                    A19722G: 0.75,
-                    'T21653-': 'Foobar',
+                    A13121T: 0.75,
+                    G24872T: 'Foobar',
                 },
             },
         ],
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/sample/nucleotideMutations`,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-01',
+                            dateTo: '2024-07-31',
+                            minProportion: 0.001,
+                        },
+                        response: {
+                            status: 200,
+                            body: mockDefaultNucleotideMutations,
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
+                        body: {
+                            filters: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
+                            dateRanges: [
+                                { dateFrom: '2024-01-01', dateTo: '2024-01-31' },
+                                { dateFrom: '2024-02-01', dateTo: '2024-02-29' },
+                                { dateFrom: '2024-03-01', dateTo: '2024-03-31' },
+                                { dateFrom: '2024-04-01', dateTo: '2024-04-30' },
+                                { dateFrom: '2024-05-01', dateTo: '2024-05-31' },
+                                { dateFrom: '2024-06-01', dateTo: '2024-06-30' },
+                                { dateFrom: '2024-07-01', dateTo: '2024-07-31' },
+                            ],
+                            includeMutations: ['A13121T', 'T21653-', 'G24872T'],
+                            dateField: 'date',
+                        },
+                        response: {
+                            status: 200,
+                            body: mockWithDisplayMutationsMutationsOverTime,
+                        },
+                    },
+                },
+            ],
+        },
     },
     play: async ({ canvas }) => {
         await waitFor(() => expect(canvas.getByText('Jaccard Index')).toBeVisible(), {
@@ -378,10 +422,6 @@ export const ShowsNoDataMessageWhenThereAreNoDatesInFilter: StoryObj<MutationsOv
 
 export const ShowsNoDataMessageForStrictFilters: StoryObj<MutationsOverTimeProps> = {
     ...Default,
-    args: {
-        ...Default.args,
-        lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
-    },
     play: async ({ canvas }) => {
         await waitFor(() => expect(canvas.getByText('Grid')).toBeVisible(), { timeout: 10000 });
 
