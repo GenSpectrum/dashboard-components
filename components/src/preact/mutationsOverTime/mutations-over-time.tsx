@@ -12,7 +12,11 @@ import {
 } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
 import MutationsOverTimeGrid, { customColumnSchema } from './mutations-over-time-grid';
-import { getProportion, type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
+import {
+    getProportion,
+    queryMutationsOverTimeData,
+    type MutationOverTimeQuery,
+} from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
     sequenceTypeSchema,
@@ -43,6 +47,7 @@ import Tabs from '../components/tabs';
 import { pageSizesSchema } from '../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../shared/tanstackTable/pagination-context';
 import { useWebWorker } from '../webWorkers/useWebWorker';
+import { useQuery } from '../useQuery';
 
 const mutationsOverTimeViewSchema = z.literal(views.grid);
 export type MutationsOverTimeView = z.infer<typeof mutationsOverTimeViewSchema>;
@@ -102,17 +107,13 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
         };
     }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations, useNewEndpoint]);
 
-    const { data, error, isLoading } = useWebWorker<MutationOverTimeWorkerResponse>(
-        messageToWorker,
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        MutationOverTimeWorker,
-    );
+    const { data, error, isLoading } = useQuery(() => queryMutationsOverTimeData(messageToWorker), [messageToWorker]);
 
     if (isLoading) {
         return <LoadingDisplay />;
     }
 
-    if (error !== undefined) {
+    if (error !== null) {
         throw error;
     }
 
@@ -120,8 +121,7 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
         return <NoDataDisplay />;
     }
 
-    const { overallMutationData, mutationOverTimeSerialized } = data;
-    const mutationOverTimeData = new BaseMutationOverTimeDataMap(mutationOverTimeSerialized);
+    const { overallMutationData, mutationOverTimeData } = data;
     return (
         <MutationsOverTimeTabs
             overallMutationData={overallMutationData}

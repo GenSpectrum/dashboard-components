@@ -177,13 +177,12 @@ export type MutationOverTimeQuery = {
     lapis: string;
     lapisDateField: string;
     granularity: TemporalGranularity;
-    useNewEndpoint?: boolean;
+    useNewEndpoint?: boolean; // TODO - can be removed, not needed anymore
     signal?: AbortSignal;
 };
 
 export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
-    const { lapisFilter, displayMutations, sequenceType, lapis, lapisDateField, granularity, useNewEndpoint, signal } =
-        query;
+    const { lapisFilter, displayMutations, sequenceType, lapis, lapisDateField, granularity, signal } = query;
 
     const requestedDateRanges = await getDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
 
@@ -205,45 +204,7 @@ export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
         granularity,
     }).then((r) => r.content);
 
-    return useNewEndpoint === true
-        ? queryMutationsOverTimeDataDirectEndpoint(requestedDateRanges, overallMutationData, query)
-        : queryMutationsOverTimeDataMultiQuery(requestedDateRanges, overallMutationData, query);
-}
-
-async function queryMutationsOverTimeDataMultiQuery(
-    allDates: TemporalClass[],
-    overallMutationDataPromise: Promise<SubstitutionOrDeletionEntry[]>,
-    { lapisFilter, sequenceType, lapis, lapisDateField, signal }: MutationOverTimeQuery,
-) {
-    const subQueries = allDates.map(async (date) => {
-        const dateFrom = date.firstDay.toString();
-        const dateTo = date.lastDay.toString();
-
-        const filter = {
-            ...lapisFilter,
-            [`${lapisDateField}From`]: dateFrom,
-            [`${lapisDateField}To`]: dateTo,
-        };
-
-        const [data, totalCountQuery] = await Promise.all([
-            fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal),
-            getTotalNumberOfSequencesInDateRange(filter).evaluate(lapis, signal),
-        ]);
-
-        return {
-            date,
-            mutations: data.content,
-            totalCount: totalCountQuery.content[0].count,
-        };
-    });
-
-    const data = await Promise.all(subQueries);
-    const overallMutationData = await overallMutationDataPromise;
-
-    return {
-        mutationOverTimeData: groupByMutation(data, overallMutationData),
-        overallMutationData,
-    };
+    return queryMutationsOverTimeDataDirectEndpoint(requestedDateRanges, overallMutationData, query);
 }
 
 async function queryMutationsOverTimeDataDirectEndpoint(
