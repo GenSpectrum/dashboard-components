@@ -37,7 +37,6 @@ const meta: Meta<MutationsOverTimeProps> = {
         initialMeanProportionInterval: { control: 'object' },
         hideGaps: { control: 'boolean' },
         pageSizes: { control: 'object' },
-        useNewEndpoint: { control: 'boolean' },
         customColumns: { control: 'object' },
     },
     parameters: {
@@ -84,7 +83,6 @@ export const Default: StoryObj<MutationsOverTimeProps> = {
         lapisDateField: 'date',
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
         hideGaps: false,
-        useNewEndpoint: false,
         pageSizes: [10, 20, 30, 40, 50],
     },
 };

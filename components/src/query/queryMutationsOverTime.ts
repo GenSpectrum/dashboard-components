@@ -163,7 +163,6 @@ export type MutationOverTimeQuery = {
     lapis: string;
     lapisDateField: string;
     granularity: TemporalGranularity;
-    useNewEndpoint?: boolean; // TODO - can be removed, not needed anymore
     signal?: AbortSignal;
 };
 

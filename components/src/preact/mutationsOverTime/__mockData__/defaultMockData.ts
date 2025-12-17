@@ -11,7 +11,6 @@ export const defaultMockData: MutationOverTimeMockData = {
         granularity: 'month',
         lapisDateField: 'date',
         lapis: 'https://lapis.cov-spectrum.org/open/v2',
-        useNewEndpoint: false,
     },
     response: {
         overallMutationData: [

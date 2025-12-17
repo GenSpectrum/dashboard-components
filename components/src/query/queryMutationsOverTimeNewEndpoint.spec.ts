@@ -86,7 +86,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             lapis: DUMMY_LAPIS_URL,
             lapisDateField: dateField,
             granularity: 'day',
-            useNewEndpoint: true,
         });
 
         const expectedData = [
@@ -227,7 +226,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             lapis: DUMMY_LAPIS_URL,
             lapisDateField: dateField,
             granularity: 'day',
-            useNewEndpoint: true,
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
@@ -327,7 +325,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             lapis: DUMMY_LAPIS_URL,
             lapisDateField: dateField,
             granularity: 'day',
-            useNewEndpoint: true,
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([]);
@@ -414,7 +411,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             lapis: DUMMY_LAPIS_URL,
             lapisDateField: dateField,
             granularity: 'day',
-            useNewEndpoint: true,
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
@@ -507,7 +503,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             lapis: DUMMY_LAPIS_URL,
             lapisDateField: dateField,
             granularity: 'day',
-            useNewEndpoint: true,
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
@@ -589,7 +584,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             lapis: DUMMY_LAPIS_URL,
             lapisDateField: dateField,
             granularity: 'day',
-            useNewEndpoint: true,
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
@@ -682,7 +676,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             lapis: DUMMY_LAPIS_URL,
             lapisDateField: dateField,
             granularity: 'month',
-            useNewEndpoint: true,
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
@@ -744,7 +737,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             lapis: DUMMY_LAPIS_URL,
             lapisDateField: dateField,
             granularity: 'month',
-            useNewEndpoint: true,
         });
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([]);
@@ -835,7 +827,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             lapis: DUMMY_LAPIS_URL,
             lapisDateField: dateField,
             granularity: 'month',
-            useNewEndpoint: true,
             displayMutations: ['otherSequenceName:G234C', 'A122T'],
         });
 
@@ -938,7 +929,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             lapis: DUMMY_LAPIS_URL,
             lapisDateField: dateField,
             granularity: 'month',
-            useNewEndpoint: true,
             displayMutations: ['otherSequenceName:G234C', '122'],
         });
 

@@ -12,7 +12,6 @@ export const withGaps: MutationOverTimeMockData = {
         lapisDateField: 'date',
         lapis: 'https://lapis.cov-spectrum.org/open/v2',
         displayMutations: ['A19722G', 'G21641T', 'T21652-'],
-        useNewEndpoint: false,
     },
     response: {
         overallMutationData: [

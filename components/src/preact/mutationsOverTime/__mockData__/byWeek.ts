@@ -11,7 +11,6 @@ export const byWeek: MutationOverTimeMockData = {
         granularity: 'week',
         lapisDateField: 'date',
         lapis: 'https://lapis.cov-spectrum.org/open/v2',
-        useNewEndpoint: false,
     },
     response: {
         overallMutationData: [

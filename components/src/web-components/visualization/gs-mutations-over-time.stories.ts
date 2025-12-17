@@ -43,7 +43,6 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
         displayMutations: { control: 'object' },
         initialMeanProportionInterval: { control: 'object' },
         hideGaps: { control: 'boolean' },
-        useNewEndpoint: { control: 'boolean' },
         pageSizes: { control: 'object' },
         customColumns: { control: 'object' },
     },
@@ -56,7 +55,6 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
         lapisDateField: 'date',
         initialMeanProportionInterval: { min: 0.05, max: 0.9 },
         hideGaps: false,
-        useNewEndpoint: false,
         pageSizes: [10, 20, 30, 40, 50],
     },
     parameters: withComponentDocs({
@@ -116,7 +114,6 @@ const Template: StoryObj<Required<MutationsOverTimeProps>> = {
                 .initialMeanProportionInterval=${args.initialMeanProportionInterval}
                 .hideGaps=${args.hideGaps}
                 .pageSizes=${args.pageSizes}
-                .useNewEndpoint=${args.useNewEndpoint}
                 .customColumns=${args.customColumns}
             ></gs-mutations-over-time>
         </gs-app>

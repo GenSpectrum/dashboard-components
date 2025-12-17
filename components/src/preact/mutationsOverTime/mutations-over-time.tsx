@@ -64,7 +64,6 @@ const mutationOverTimeSchema = z.object({
     views: z.array(mutationsOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
-    useNewEndpoint: z.boolean().optional(),
     displayMutations: displayMutationsSchema.optional(),
     initialMeanProportionInterval: meanProportionIntervalSchema,
     hideGaps: z.boolean().optional(),
@@ -88,10 +87,7 @@ export const MutationsOverTime: FunctionComponent<MutationsOverTimeProps> = (com
     );
 };
 
-export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> = ({
-    useNewEndpoint = false,
-    ...componentProps
-}) => {
+export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> = ({ ...componentProps }) => {
     const lapis = useLapisUrl();
     const { lapisFilter, sequenceType, granularity, lapisDateField, displayMutations } = componentProps;
 
@@ -103,9 +99,8 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
             lapisDateField,
             lapis,
             displayMutations,
-            useNewEndpoint,
         };
-    }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations, useNewEndpoint]);
+    }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations]);
 
     const { data, error, isLoading } = useQuery(() => queryMutationsOverTimeData(messageToWorker), [messageToWorker]);
 
