@@ -5,6 +5,10 @@ import { type Canvas } from '@storybook/types';
 import { MutationsOverTime, type MutationsOverTimeProps } from './mutations-over-time';
 import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
+import mockDefaultNucleotideMutations from './__mockData__/defaultMockData/nucleotideMutations.json';
+import mockDefaultMutationsOverTime from './__mockData__/defaultMockData/mutationsOverTime.json';
+import mock1800sNucleotideMutations from './__mockData__/request1800s/nucleotideMutations.json';
+import mock1800sMutationsOverTime from './__mockData__/request1800s/mutationsOverTime.json';
 import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
@@ -40,7 +44,52 @@ const meta: Meta<MutationsOverTimeProps> = {
         customColumns: { control: 'object' },
     },
     parameters: {
-        fetchMock: {},
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/sample/nucleotideMutations`,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-01',
+                            dateTo: '2024-07-31',
+                            minProportion: 0.001,
+                        },
+                        response: {
+                            status: 200,
+                            body: mockDefaultNucleotideMutations,
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
+                        body: {
+                            filters: {
+                                pangoLineage: 'JN.1*',
+                                dateFrom: '2024-01-15',
+                                dateTo: '2024-07-10',
+                            },
+                            dateRanges: [
+                                { dateFrom: '2024-01-01', dateTo: '2024-01-31' },
+                                { dateFrom: '2024-02-01', dateTo: '2024-02-29' },
+                                { dateFrom: '2024-03-01', dateTo: '2024-03-31' },
+                                { dateFrom: '2024-04-01', dateTo: '2024-04-30' },
+                                { dateFrom: '2024-05-01', dateTo: '2024-05-31' },
+                                { dateFrom: '2024-06-01', dateTo: '2024-06-30' },
+                                { dateFrom: '2024-07-01', dateTo: '2024-07-31' },
+                            ],
+                            dateField: 'date',
+                        },
+                        matchPartialBody: true, // includeMutations left out
+                        response: {
+                            status: 200,
+                            body: mockDefaultMutationsOverTime,
+                        },
+                    },
+                },
+            ],
+        },
     },
 };
 
@@ -106,6 +155,39 @@ export const ShowsNoDataWhenNoMutationsAreInFilter: StoryObj<MutationsOverTimePr
         lapisFilter: { dateFrom: '1800-01-01', dateTo: '1800-01-02' },
         height: '700px',
         granularity: 'year',
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/sample/nucleotideMutations`,
+                        body: { dateFrom: '1800-01-01', dateTo: '1800-12-31', minProportion: 0.001 },
+                        response: {
+                            status: 200,
+                            body: mock1800sNucleotideMutations,
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'mockDefaultMutationsOverTime',
+                        url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
+                        body: {
+                            filters: { dateFrom: '1800-01-01', dateTo: '1800-01-02' },
+                            dateRanges: [{ dateFrom: '1800-01-01', dateTo: '1800-12-31' }],
+                            includeMutations: [],
+                            dateField: 'date',
+                        },
+                        matchPartialBody: true, // includeMutations left out
+                        response: {
+                            status: 200,
+                            body: mock1800sMutationsOverTime,
+                        },
+                    },
+                },
+            ],
+        },
     },
     play: async ({ canvas }) => {
         await waitFor(() => expect(canvas.getByText('No data available.', { exact: false })).toBeVisible(), {
@@ -205,7 +287,7 @@ export const WithCustomColumns: StoryObj<MutationsOverTimeProps> = {
                 header: 'Jaccard Index',
                 values: {
                     A19722G: 0.75,
-                    G21641T: 'Foobar',
+                    'T21653-': 'Foobar',
                 },
             },
         ],
