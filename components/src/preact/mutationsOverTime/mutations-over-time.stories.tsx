@@ -413,6 +413,29 @@ export const ShowsNoDataMessageWhenThereAreNoDatesInFilter: StoryObj<MutationsOv
         height: '700px',
         granularity: 'year',
     },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/sample/nucleotideMutations`,
+                        body: {
+                            filters: { dateFrom: '2345-01-01', dateTo: '2020-01-02' },
+                            dateRanges: [],
+                            includeMutations: [],
+                            dateField: 'date',
+                        },
+                        response: {
+                            status: 200,
+                            body: {
+                                data: { mutations: [], dateRanges: [], data: [], totalCountsByDateRange: [] },
+                            },
+                        },
+                    },
+                },
+            ],
+        },
+    },
     play: async ({ canvas }) => {
         await waitFor(() => expect(canvas.getByText('No data available.', { exact: false })).toBeVisible(), {
             timeout: 10000,
