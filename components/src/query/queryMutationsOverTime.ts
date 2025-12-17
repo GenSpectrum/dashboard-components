@@ -1,3 +1,4 @@
+import { queryDatesInDataset } from './queryDatesInDataset';
 import { fetchMutationsOverTime } from '../lapisApi/lapisApi';
 import { FetchSubstitutionsOrDeletionsOperator } from '../operator/FetchSubstitutionsOrDeletionsOperator';
 import { UserFacingError } from '../preact/components/error-display';
@@ -20,7 +21,6 @@ import {
     SubstitutionClass,
 } from '../utils/mutations';
 import { compareTemporal, type Temporal, type TemporalClass, toTemporal } from '../utils/temporalClass';
-import { queryDatesInDataset } from './queryDatesInDataset';
 
 export type MutationOverTimeData = {
     date: TemporalClass;
@@ -166,9 +166,15 @@ export type MutationOverTimeQuery = {
     signal?: AbortSignal;
 };
 
-export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
-    const { lapisFilter, displayMutations, sequenceType, lapis, lapisDateField, granularity, signal } = query;
-
+export async function queryMutationsOverTimeData(
+    lapisFilter: LapisFilter,
+    sequenceType: SequenceType,
+    lapis: string,
+    lapisDateField: string,
+    granularity: TemporalGranularity,
+    displayMutations?: string[],
+    signal?: AbortSignal,
+) {
     const requestedDateRanges = await queryDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
 
     if (requestedDateRanges.length > MAX_NUMBER_OF_GRID_COLUMNS) {
@@ -180,7 +186,7 @@ export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
         );
     }
 
-    const overallMutationData = queryOverallMutationData({
+    const overallMutationData = await queryOverallMutationData({
         lapisFilter,
         sequenceType,
         lapis,
@@ -189,18 +195,6 @@ export async function queryMutationsOverTimeData(query: MutationOverTimeQuery) {
         granularity,
     }).then((r) => r.content);
 
-    return queryMutationsOverTimeDataDirectEndpoint(requestedDateRanges, overallMutationData, query);
-}
-
-async function queryMutationsOverTimeDataDirectEndpoint(
-    allDates: TemporalClass[],
-    overallMutationDataPromise: Promise<SubstitutionOrDeletionEntry[]>,
-    { lapisFilter, sequenceType, lapis, lapisDateField, signal }: MutationOverTimeQuery,
-): Promise<{
-    mutationOverTimeData: BaseMutationOverTimeDataMap;
-    overallMutationData: SubstitutionOrDeletionEntry[];
-}> {
-    const overallMutationData = await overallMutationDataPromise;
     overallMutationData.sort((a, b) => sortSubstitutionsAndDeletions(a.mutation, b.mutation));
 
     const includeMutations = overallMutationData.map((value) => value.mutation.code);
@@ -208,7 +202,7 @@ async function queryMutationsOverTimeDataDirectEndpoint(
         lapis,
         {
             filters: lapisFilter,
-            dateRanges: allDates.map((date) => ({
+            dateRanges: requestedDateRanges.map((date) => ({
                 dateFrom: date.firstDay.toString(),
                 dateTo: date.lastDay.toString(),
             })),
@@ -243,12 +237,12 @@ async function queryMutationsOverTimeDataDirectEndpoint(
 
     const mutationOverTimeData: Map2DContents<Substitution | Deletion, Temporal, MutationOverTimeMutationValue> = {
         keysFirstAxis: new Map(responseMutations.map((mutation) => [mutation.code, mutation])),
-        keysSecondAxis: new Map(allDates.map((date) => [date.dateString, date])),
+        keysSecondAxis: new Map(requestedDateRanges.map((date) => [date.dateString, date])),
         data: new Map(
             responseMutations.map((mutation, i) => [
                 mutation.code,
                 new Map(
-                    allDates.map((date, j): [string, MutationOverTimeMutationValue] => {
+                    requestedDateRanges.map((date, j): [string, MutationOverTimeMutationValue] => {
                         if (totalCounts[j] === 0) {
                             return [date.dateString, null];
                         }

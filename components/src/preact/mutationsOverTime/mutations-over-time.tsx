@@ -2,21 +2,14 @@ import { type FunctionComponent } from 'preact';
 import { type Dispatch, type StateUpdater, useMemo, useState, useEffect, useLayoutEffect, useRef } from 'preact/hooks';
 import z from 'zod';
 
-// @ts-expect-error -- uses subpath imports and vite worker import
-import MutationOverTimeWorker from '#mutationOverTime?worker&inline';
-import { BaseMutationOverTimeDataMap, type MutationOverTimeDataMap } from './MutationOverTimeData';
+import { type BaseMutationOverTimeDataMap, type MutationOverTimeDataMap } from './MutationOverTimeData';
 import {
     displayMutationsSchema,
     getFilteredMutationOverTimeData,
     type MutationFilter,
 } from './getFilteredMutationsOverTimeData';
-import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
 import MutationsOverTimeGrid, { customColumnSchema } from './mutations-over-time-grid';
-import {
-    getProportion,
-    queryMutationsOverTimeData,
-    type MutationOverTimeQuery,
-} from '../../query/queryMutationsOverTime';
+import { getProportion, queryMutationsOverTimeData } from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
     sequenceTypeSchema,
@@ -46,7 +39,6 @@ import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '..
 import Tabs from '../components/tabs';
 import { pageSizesSchema } from '../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../shared/tanstackTable/pagination-context';
-import { useWebWorker } from '../webWorkers/useWebWorker';
 import { useQuery } from '../useQuery';
 
 const mutationsOverTimeViewSchema = z.literal(views.grid);
@@ -91,18 +83,11 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
     const lapis = useLapisUrl();
     const { lapisFilter, sequenceType, granularity, lapisDateField, displayMutations } = componentProps;
 
-    const messageToWorker: MutationOverTimeQuery = useMemo(() => {
-        return {
-            lapisFilter,
-            sequenceType,
-            granularity,
-            lapisDateField,
-            lapis,
-            displayMutations,
-        };
-    }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations]);
-
-    const { data, error, isLoading } = useQuery(() => queryMutationsOverTimeData(messageToWorker), [messageToWorker]);
+    const { data, error, isLoading } = useQuery(
+        () =>
+            queryMutationsOverTimeData(lapisFilter, sequenceType, lapis, lapisDateField, granularity, displayMutations),
+        [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations],
+    );
 
     if (isLoading) {
         return <LoadingDisplay />;
@@ -112,7 +97,7 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
         throw error;
     }
 
-    if (data === undefined || data.overallMutationData.length === 0) {
+    if (data.overallMutationData.length === 0) {
         return <NoDataDisplay />;
     }
 

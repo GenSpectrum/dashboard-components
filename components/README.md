@@ -172,13 +172,6 @@ Make sure that stories don't issue actual HTTP calls to LAPIS or other services.
 This is to make sure that we have stable tests in CI that don't depend on the availability of other services.
 We still use the real LAPIS URL so that a user can change the filters in a story and will still see data.
 
-In general, we use `storybook-addon-fetch-mock` for all outgoing requests. This strategy
-cannot be used for components that use web workers, like gs-mutations-over-time. Therefore, we created custom mock
-workers that return mocked data. The mock workers are enabled in the package.json using
-Node.js [subpath imports](https://nodejs.org/api/packages.html#subpath-imports), following the guide
-from [storybook](https://storybook.js.org/docs/writing-stories/mocking-data-and-modules/mocking-modules). This ensures
-that when importing the worker in the component, the mock worker is used inside Storybook instead of the real worker.
-
 ### How The Release Build Works
 
 The `"exports"` field in `package.json` defines which files a user of the package can import using the normal module systems.

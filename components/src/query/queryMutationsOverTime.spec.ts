@@ -80,13 +80,13 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             'nucleotide',
         );
 
-        const { mutationOverTimeData, overallMutationData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData, overallMutationData } = await queryMutationsOverTimeData(
             lapisFilter,
-            sequenceType: 'nucleotide',
-            lapis: DUMMY_LAPIS_URL,
-            lapisDateField: dateField,
-            granularity: 'day',
-        });
+            'nucleotide',
+            DUMMY_LAPIS_URL,
+            dateField,
+            'day',
+        );
 
         const expectedData = [
             [
@@ -220,13 +220,13 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             'nucleotide',
         );
 
-        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData } = await queryMutationsOverTimeData(
             lapisFilter,
-            sequenceType: 'nucleotide',
-            lapis: DUMMY_LAPIS_URL,
-            lapisDateField: dateField,
-            granularity: 'day',
-        });
+            'nucleotide',
+            DUMMY_LAPIS_URL,
+            dateField,
+            'day',
+        );
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
@@ -319,13 +319,13 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             'nucleotide',
         );
 
-        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData } = await queryMutationsOverTimeData(
             lapisFilter,
-            sequenceType: 'nucleotide',
-            lapis: DUMMY_LAPIS_URL,
-            lapisDateField: dateField,
-            granularity: 'day',
-        });
+            'nucleotide',
+            DUMMY_LAPIS_URL,
+            dateField,
+            'day',
+        );
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([]);
         expect(mutationOverTimeData.getFirstAxisKeys()).to.deep.equal([]);
@@ -405,13 +405,13 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             'nucleotide',
         );
 
-        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData } = await queryMutationsOverTimeData(
             lapisFilter,
-            sequenceType: 'nucleotide',
-            lapis: DUMMY_LAPIS_URL,
-            lapisDateField: dateField,
-            granularity: 'day',
-        });
+            'nucleotide',
+            DUMMY_LAPIS_URL,
+            dateField,
+            'day',
+        );
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
@@ -497,13 +497,13 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             'nucleotide',
         );
 
-        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData } = await queryMutationsOverTimeData(
             lapisFilter,
-            sequenceType: 'nucleotide',
-            lapis: DUMMY_LAPIS_URL,
-            lapisDateField: dateField,
-            granularity: 'day',
-        });
+            'nucleotide',
+            DUMMY_LAPIS_URL,
+            dateField,
+            'day',
+        );
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
@@ -578,13 +578,13 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             'nucleotide',
         );
 
-        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData } = await queryMutationsOverTimeData(
             lapisFilter,
-            sequenceType: 'nucleotide',
-            lapis: DUMMY_LAPIS_URL,
-            lapisDateField: dateField,
-            granularity: 'day',
-        });
+            'nucleotide',
+            DUMMY_LAPIS_URL,
+            dateField,
+            'day',
+        );
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [{ type: 'valueWithCoverage', count: 2, coverage: 10, totalCount: 11 }],
@@ -670,13 +670,13 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             'nucleotide',
         );
 
-        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData } = await queryMutationsOverTimeData(
             lapisFilter,
-            sequenceType: 'nucleotide',
-            lapis: DUMMY_LAPIS_URL,
-            lapisDateField: dateField,
-            granularity: 'month',
-        });
+            'nucleotide',
+            DUMMY_LAPIS_URL,
+            dateField,
+            'month',
+        );
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
@@ -731,13 +731,13 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             'nucleotide',
         );
 
-        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData } = await queryMutationsOverTimeData(
             lapisFilter,
-            sequenceType: 'nucleotide',
-            lapis: DUMMY_LAPIS_URL,
-            lapisDateField: dateField,
-            granularity: 'month',
-        });
+            'nucleotide',
+            DUMMY_LAPIS_URL,
+            dateField,
+            'month',
+        );
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([]);
 
@@ -821,14 +821,14 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             'nucleotide',
         );
 
-        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData } = await queryMutationsOverTimeData(
             lapisFilter,
-            sequenceType: 'nucleotide',
-            lapis: DUMMY_LAPIS_URL,
-            lapisDateField: dateField,
-            granularity: 'month',
-            displayMutations: ['otherSequenceName:G234C', 'A122T'],
-        });
+            'nucleotide',
+            DUMMY_LAPIS_URL,
+            dateField,
+            'month',
+            ['otherSequenceName:G234C', 'A122T'],
+        );
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
@@ -923,14 +923,14 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             'nucleotide',
         );
 
-        const { mutationOverTimeData } = await queryMutationsOverTimeData({
+        const { mutationOverTimeData } = await queryMutationsOverTimeData(
             lapisFilter,
-            sequenceType: 'nucleotide',
-            lapis: DUMMY_LAPIS_URL,
-            lapisDateField: dateField,
-            granularity: 'month',
-            displayMutations: ['otherSequenceName:G234C', '122'],
-        });
+            'nucleotide',
+            DUMMY_LAPIS_URL,
+            dateField,
+            'month',
+            ['otherSequenceName:G234C', '122'],
+        );
 
         expect(mutationOverTimeData.getAsArray()).to.deep.equal([
             [
