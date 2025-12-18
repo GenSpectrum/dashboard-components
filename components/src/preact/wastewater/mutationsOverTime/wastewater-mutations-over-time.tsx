@@ -3,14 +3,19 @@ import { type Dispatch, type StateUpdater, useMemo, useState, useRef } from 'pre
 import z from 'zod';
 
 import { computeWastewaterMutationsOverTimeDataPerLocation } from './computeWastewaterMutationsOverTimeDataPerLocation';
+import { type ProportionValue } from '../../../query/queryMutationsOverTime';
 import { lapisFilterSchema, type SequenceType, sequenceTypeSchema } from '../../../types';
 import { Map2dView } from '../../../utils/map2d';
+import { type Deletion, type Substitution } from '../../../utils/mutations';
+import { type Temporal } from '../../../utils/temporalClass';
 import { useDispatchFinishedLoadingEvent } from '../../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../../LapisUrlContext';
 import { useMutationAnnotationsProvider } from '../../MutationAnnotationsContext';
+import { AnnotatedMutation } from '../../components/annotated-mutation';
 import { type ColorScale } from '../../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../../components/color-scale-selector-dropdown';
 import { ErrorBoundary } from '../../components/error-boundary';
+import FeaturesOverTimeGrid from '../../components/features-over-time-grid';
 import { Fullscreen } from '../../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../../components/info';
 import { LoadingDisplay } from '../../components/loading-display';
@@ -24,15 +29,10 @@ import {
     type MutationFilter,
     mutationOrAnnotationDoNotMatchFilter,
 } from '../../mutationsOverTime/getFilteredMutationsOverTimeData';
-import FeaturesOverTimeGrid, { FeatureRenderer } from '../../components/features-over-time-grid';
+import { MutationsOverTimeGridTooltip } from '../../mutationsOverTime/mutations-over-time-grid-tooltip';
 import { pageSizesSchema } from '../../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../../shared/tanstackTable/pagination-context';
 import { useQuery } from '../../useQuery';
-import { Deletion, Substitution } from '../../../utils/mutations';
-import { AnnotatedMutation } from '../../components/annotated-mutation';
-import { MutationsOverTimeGridTooltip } from '../../mutationsOverTime/mutations-over-time-grid-tooltip';
-import { Temporal } from '../../../utils/temporalClass';
-import { ProportionValue } from '../../../query/queryMutationsOverTime';
 
 const wastewaterMutationOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
@@ -166,18 +166,6 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
     const [displayedSegments, setDisplayedSegments] = useDisplayedSegments(mutationOverTimeDataPerLocation);
 
-    const mutationRenderer: FeatureRenderer<Substitution | Deletion> = {
-        asString: (value: Substitution | Deletion) => value.code,
-        renderRowLabel: (value: Substitution | Deletion) => (
-            <div className={'text-center'}>
-                <AnnotatedMutation mutation={value} sequenceType={originalComponentProps.sequenceType} />
-            </div>
-        ),
-        renderTooltip: (value: Substitution | Deletion, temporal: Temporal, proportionValue: ProportionValue) => (
-            <MutationsOverTimeGridTooltip mutation={value} date={temporal} value={proportionValue} />
-        ),
-    };
-
     const tabs = useMemo(
         () =>
             mutationOverTimeDataPerLocation.map(({ location, data }) => ({
@@ -194,7 +182,17 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                         })}
                         colorScale={colorScale}
                         pageSizes={originalComponentProps.pageSizes}
-                        featureRenderer={mutationRenderer}
+                        featureRenderer={{
+                            asString: (value: Substitution | Deletion) => value.code,
+                            renderRowLabel: (value: Substitution | Deletion) => (
+                                <div className={'text-center'}>
+                                    <AnnotatedMutation mutation={value} sequenceType={originalComponentProps.sequenceType} />
+                                </div>
+                            ),
+                            renderTooltip: (value: Substitution | Deletion, temporal: Temporal, proportionValue: ProportionValue) => (
+                                <MutationsOverTimeGridTooltip mutation={value} date={temporal} value={proportionValue} />
+                            ),
+                        }}
                         tooltipPortalTarget={tooltipPortalTargetRef.current}
                     />
                 ),

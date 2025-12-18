@@ -1,13 +1,13 @@
-import { type FunctionComponent, JSX } from 'preact';
+import { type FunctionComponent, type JSX } from 'preact';
 import { useMemo } from 'preact/hooks';
 import z from 'zod';
 
-import { TemporalDataMap } from '../mutationsOverTime/MutationOverTimeData';
-import { getProportion, type ProportionValue } from '../../query/queryMutationsOverTime';
-import { type Temporal } from '../../utils/temporalClass';
 import { type ColorScale, getColorWithinScale, getTextColorForScale } from './color-scale-selector';
 import PortalTooltip from './portal-tooltip';
 import { type TooltipPosition } from './tooltip';
+import { getProportion, type ProportionValue } from '../../query/queryMutationsOverTime';
+import { type Temporal } from '../../utils/temporalClass';
+import { type TemporalDataMap } from '../mutationsOverTime/MutationOverTimeData';
 import { formatProportion } from '../shared/table/formatProportion';
 import { type PageSizes, Pagination } from '../shared/tanstackTable/pagination';
 import { usePageSizeContext } from '../shared/tanstackTable/pagination-context';
@@ -67,7 +67,7 @@ function FeaturesOverTimeGrid<F>({
             const customValues = customColumns.map((col) => col.values[featureRenderer.asString(firstAxisKey)]);
             return { feature: firstAxisKey, values: [...row], customValues };
         });
-    }, [data, customColumns]);
+    }, [data, customColumns, featureRenderer]);
 
     const columns = useMemo(() => {
         const columnHelper = createColumnHelper<RowType<F>>();
@@ -129,7 +129,7 @@ function FeaturesOverTimeGrid<F>({
         });
 
         return [featureHeader, ...customColumnHeaders, ...dateHeaders];
-    }, [colorScale, data, customColumns, tooltipPortalTarget]);
+    }, [colorScale, data, customColumns, tooltipPortalTarget, featureRenderer, rowLabelHeader]);
 
     const { pageSize } = usePageSizeContext();
     const table = usePreactTable({

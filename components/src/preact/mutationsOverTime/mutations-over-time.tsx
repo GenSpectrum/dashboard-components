@@ -11,8 +11,8 @@ import {
     type MutationFilter,
 } from './getFilteredMutationsOverTimeData';
 import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
-import FeaturesOverTimeGrid, { FeatureRenderer, customColumnSchema } from '../components/features-over-time-grid';
-import { ProportionValue, getProportion, type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
+import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
+import { type ProportionValue, getProportion, type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
     sequenceTypeSchema,
@@ -21,14 +21,16 @@ import {
     views,
 } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
-import { Temporal, toTemporalClass } from '../../utils/temporalClass';
+import { type Temporal, toTemporalClass } from '../../utils/temporalClass';
 import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../LapisUrlContext';
 import { useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
+import { AnnotatedMutation } from '../components/annotated-mutation';
 import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
+import FeaturesOverTimeGrid, { type FeatureRenderer, customColumnSchema } from '../components/features-over-time-grid';
 import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
@@ -43,8 +45,6 @@ import Tabs from '../components/tabs';
 import { pageSizesSchema } from '../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../shared/tanstackTable/pagination-context';
 import { useWebWorker } from '../webWorkers/useWebWorker';
-import { AnnotatedMutation } from '../components/annotated-mutation';
-import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
 
 const mutationsOverTimeViewSchema = z.literal(views.grid);
 export type MutationsOverTimeView = z.infer<typeof mutationsOverTimeViewSchema>;
