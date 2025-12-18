@@ -1,5 +1,5 @@
 import {
-    type MutationOverTimeMutationValue,
+    type ProportionValue,
     type MutationOverTimeQuery,
     queryMutationsOverTimeData,
 } from '../../query/queryMutationsOverTime';
@@ -11,7 +11,7 @@ import { workerFunction } from '../webWorkers/workerFunction';
 
 export type MutationOverTimeWorkerResponse = {
     overallMutationData: SubstitutionOrDeletionEntry<Substitution, Deletion>[];
-    mutationOverTimeSerialized: Map2DContents<Substitution | Deletion, Temporal, MutationOverTimeMutationValue>;
+    mutationOverTimeSerialized: Map2DContents<Substitution | Deletion, Temporal, ProportionValue>;
 };
 
 export async function getMutationOverTimeWorkerFunction(event: MessageEvent<MutationOverTimeQuery>) {

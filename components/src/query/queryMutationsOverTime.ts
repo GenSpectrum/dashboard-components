@@ -42,7 +42,7 @@ export type MutationOverTimeData = {
     totalCount: number;
 };
 
-export type MutationOverTimeMutationValue =
+export type ProportionValue =
     | {
           type: 'value';
           proportion: number;
@@ -65,7 +65,7 @@ export type MutationOverTimeMutationValue =
       }
     | null;
 
-export function getProportion(value: MutationOverTimeMutationValue) {
+export function getProportion(value: ProportionValue) {
     switch (value?.type) {
         case 'value':
         case 'wastewaterValue':
@@ -295,14 +295,14 @@ async function queryMutationsOverTimeDataDirectEndpoint(
         }
     });
 
-    const mutationOverTimeData: Map2DContents<Substitution | Deletion, Temporal, MutationOverTimeMutationValue> = {
+    const mutationOverTimeData: Map2DContents<Substitution | Deletion, Temporal, ProportionValue> = {
         keysFirstAxis: new Map(responseMutations.map((mutation) => [mutation.code, mutation])),
         keysSecondAxis: new Map(allDates.map((date) => [date.dateString, date])),
         data: new Map(
             responseMutations.map((mutation, i) => [
                 mutation.code,
                 new Map(
-                    allDates.map((date, j): [string, MutationOverTimeMutationValue] => {
+                    allDates.map((date, j): [string, ProportionValue] => {
                         if (totalCounts[j] === 0) {
                             return [date.dateString, null];
                         }
