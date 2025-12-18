@@ -1,0 +1,16 @@
+{
+    "data": {
+        "mutations": [],
+        "dateRanges": [{ "dateFrom": "1800-01-01", "dateTo": "1800-12-31" }],
+        "data": [],
+        "totalCountsByDateRange": []
+    },
+    "info": {
+        "dataVersion": null,
+        "requestId": "dff5f887-1b84-4789-93be-3bca6c8adb1c",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2025-12-17T16:48:49.532134692",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "12a364c66262f2f56289873faddf0552b550742e",
+        "siloVersion": "0.8.0"
+    }
+}

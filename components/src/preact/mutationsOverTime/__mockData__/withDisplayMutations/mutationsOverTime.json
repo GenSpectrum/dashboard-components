@@ -1,0 +1,52 @@
+{
+    "data": {
+        "mutations": ["A13121T", "T21653-", "G24872T"],
+        "dateRanges": [
+            { "dateFrom": "2024-01-01", "dateTo": "2024-01-31" },
+            { "dateFrom": "2024-02-01", "dateTo": "2024-02-29" },
+            { "dateFrom": "2024-03-01", "dateTo": "2024-03-31" },
+            { "dateFrom": "2024-04-01", "dateTo": "2024-04-30" },
+            { "dateFrom": "2024-05-01", "dateTo": "2024-05-31" },
+            { "dateFrom": "2024-06-01", "dateTo": "2024-06-30" },
+            { "dateFrom": "2024-07-01", "dateTo": "2024-07-31" }
+        ],
+        "data": [
+            [
+                { "count": 1, "coverage": 14030 },
+                { "count": 1, "coverage": 17545 },
+                { "count": 1, "coverage": 8418 },
+                { "count": 0, "coverage": 0 },
+                { "count": 43, "coverage": 9236 },
+                { "count": 922, "coverage": 16466 },
+                { "count": 1119, "coverage": 7468 }
+            ],
+            [
+                { "count": 13, "coverage": 13946 },
+                { "count": 15, "coverage": 17353 },
+                { "count": 41, "coverage": 8318 },
+                { "count": 0, "coverage": 0 },
+                { "count": 1369, "coverage": 9052 },
+                { "count": 5080, "coverage": 16078 },
+                { "count": 3245, "coverage": 7342 }
+            ],
+            [
+                { "count": 42, "coverage": 13765 },
+                { "count": 203, "coverage": 17274 },
+                { "count": 563, "coverage": 8256 },
+                { "count": 0, "coverage": 0 },
+                { "count": 4631, "coverage": 9024 },
+                { "count": 11162, "coverage": 16188 },
+                { "count": 5451, "coverage": 7393 }
+            ]
+        ],
+        "totalCountsByDateRange": [14063, 17577, 8431, 0, 9250, 16513, 7508]
+    },
+    "info": {
+        "dataVersion": "1765731908",
+        "requestId": "220cae2b-f73c-42fd-a3ac-1c49e0f239ec",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2025-12-17T16:59:33.639804323",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "12a364c66262f2f56289873faddf0552b550742e",
+        "siloVersion": "0.8.0"
+    }
+}

@@ -123,14 +123,6 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
     hideGaps: boolean = false;
 
     /**
-     * Whether to use the mutationsOverTime endpoint from LAPIS.
-     * If true, use the endpoint, if false, compute component data as before.
-     * Eventually, the new endpoint will become the default.
-     */
-    @property({ type: Boolean })
-    useNewEndpoint?: boolean = false;
-
-    /**
      * The number of rows per page, which can be selected by the user.
      */
     @property({ type: Array })
@@ -170,7 +162,6 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
                         displayMutations={this.displayMutations}
                         initialMeanProportionInterval={this.initialMeanProportionInterval}
                         hideGaps={this.hideGaps}
-                        useNewEndpoint={this.useNewEndpoint}
                         pageSizes={this.pageSizes}
                         customColumns={this.customColumns}
                     />
