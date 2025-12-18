@@ -5,11 +5,13 @@ import './gs-mutations-over-time';
 import '../gs-app';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL } from '../../constants';
+import mockAminoAcidMutationsByDayAminoAcidMutations from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutationsByDay/aminoAcidMutations.json';
+import mockAminoAcidMutationsByDayAminoAcidMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutationsByDay/aminoAcidMutationsOverTime.json';
+import mockByWeekMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/byWeek/mutationsOverTime.json';
+import mockByWeekNucleotideMutations from '../../preact/mutationsOverTime/__mockData__/byWeek/nucleotideMutations.json';
 import mockDefaultMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/defaultMockData/mutationsOverTime.json';
 import mockDefaultNucleotideMutations from '../../preact/mutationsOverTime/__mockData__/defaultMockData/nucleotideMutations.json';
 import mockWithDisplayMutationsMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/withDisplayMutations/mutationsOverTime.json';
-import mockByWeekNucleotideMutations from '../../preact/mutationsOverTime/__mockData__/byWeek/nucleotideMutations.json';
-import mockByWeekMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/byWeek/mutationsOverTime.json';
 import { type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
 
 const codeExample = String.raw`
@@ -340,6 +342,54 @@ export const AminoAcidMutationsByDay: StoryObj<Required<MutationsOverTimeProps>>
         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-20', dateTo: '2024-01-26' },
         granularity: 'day',
         sequenceType: 'amino acid',
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/sample/aminoAcidMutations`,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-20',
+                            dateTo: '2024-01-26',
+                            minProportion: 0.001,
+                        },
+                        response: {
+                            status: 200,
+                            body: mockAminoAcidMutationsByDayAminoAcidMutations,
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/component/aminoAcidMutationsOverTime`,
+                        body: {
+                            filters: {
+                                pangoLineage: 'JN.1*',
+                                dateFrom: '2024-01-20',
+                                dateTo: '2024-01-26',
+                            },
+                            dateRanges: [
+                                { dateFrom: '2024-01-20', dateTo: '2024-01-20' },
+                                { dateFrom: '2024-01-21', dateTo: '2024-01-21' },
+                                { dateFrom: '2024-01-22', dateTo: '2024-01-22' },
+                                { dateFrom: '2024-01-23', dateTo: '2024-01-23' },
+                                { dateFrom: '2024-01-24', dateTo: '2024-01-24' },
+                                { dateFrom: '2024-01-25', dateTo: '2024-01-25' },
+                                { dateFrom: '2024-01-26', dateTo: '2024-01-26' },
+                            ],
+                            dateField: 'date',
+                        },
+                        matchPartialBody: true,
+                        response: {
+                            status: 200,
+                            body: mockAminoAcidMutationsByDayAminoAcidMutationsOverTime,
+                        },
+                    },
+                },
+            ],
+        },
     },
 };
 
