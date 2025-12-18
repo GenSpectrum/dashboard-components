@@ -186,11 +186,22 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                             asString: (value: Substitution | Deletion) => value.code,
                             renderRowLabel: (value: Substitution | Deletion) => (
                                 <div className={'text-center'}>
-                                    <AnnotatedMutation mutation={value} sequenceType={originalComponentProps.sequenceType} />
+                                    <AnnotatedMutation
+                                        mutation={value}
+                                        sequenceType={originalComponentProps.sequenceType}
+                                    />
                                 </div>
                             ),
-                            renderTooltip: (value: Substitution | Deletion, temporal: Temporal, proportionValue: ProportionValue) => (
-                                <MutationsOverTimeGridTooltip mutation={value} date={temporal} value={proportionValue} />
+                            renderTooltip: (
+                                value: Substitution | Deletion,
+                                temporal: Temporal,
+                                proportionValue: ProportionValue,
+                            ) => (
+                                <MutationsOverTimeGridTooltip
+                                    mutation={value}
+                                    date={temporal}
+                                    value={proportionValue}
+                                />
                             ),
                         }}
                         tooltipPortalTarget={tooltipPortalTargetRef.current}
