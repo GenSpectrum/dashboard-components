@@ -74,7 +74,7 @@ function FeaturesOverTimeGrid<F>({
         const dates = data.getSecondAxisKeys();
 
         const featureHeader = columnHelper.accessor((row) => row.feature, {
-            id: 'mutation', // TODO - I want to change this, but not sure where it is used
+            id: 'feature',
             header: () => <span>{rowLabelHeader}</span>,
             cell: ({ getValue }) => featureRenderer.renderRowLabel(getValue()),
         });
