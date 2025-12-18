@@ -8,6 +8,8 @@ import { LAPIS_URL } from '../../constants';
 import mockDefaultMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/defaultMockData/mutationsOverTime.json';
 import mockDefaultNucleotideMutations from '../../preact/mutationsOverTime/__mockData__/defaultMockData/nucleotideMutations.json';
 import mockWithDisplayMutationsMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/withDisplayMutations/mutationsOverTime.json';
+import mockByWeekNucleotideMutations from '../../preact/mutationsOverTime/__mockData__/byWeek/nucleotideMutations.json';
+import mockByWeekMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/byWeek/mutationsOverTime.json';
 import { type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
 
 const codeExample = String.raw`
@@ -168,12 +170,10 @@ const Template: StoryObj<Required<MutationsOverTimeProps>> = {
     `,
 };
 
-// This test uses mock data: defaultMockData.ts (through mutationOverTimeWorker.mock.ts)
 export const ByMonth: StoryObj<Required<MutationsOverTimeProps>> = {
     ...Template,
 };
 
-// This test uses mock data: withDisplayMutations.ts (through mutationOverTimeWorker.mock.ts)
 export const ByMonthWithFilterOnDisplayedMutations: StoryObj<Required<MutationsOverTimeProps>> = {
     ...Template,
     args: {
@@ -226,7 +226,6 @@ export const ByMonthWithFilterOnDisplayedMutations: StoryObj<Required<MutationsO
     },
 };
 
-// This test uses mock data: withGaps.ts (through mutationOverTimeWorker.mock.ts)
 export const ByMonthWithFilterOnDisplayedMutationsAndGaps: StoryObj<Required<MutationsOverTimeProps>> = {
     ...Template,
     args: {
@@ -280,32 +279,70 @@ export const ByMonthWithFilterOnDisplayedMutationsAndGaps: StoryObj<Required<Mut
     },
 };
 
-// NOTE: ByWeek story is commented out because no weekly granularity mock data exists yet.
-// Can be re-enabled when proper weekly mock data is available.
-// // This test uses mock data: byWeek.ts (through mutationOverTimeWorker.mock.ts)
-// export const ByWeek: StoryObj<Required<MutationsOverTimeProps>> = {
-//     ...Template,
-//     args: {
-//         ...Template.args,
-//         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-02-11' },
-//         granularity: 'week',
-//     },
-// };
+export const ByWeek: StoryObj<Required<MutationsOverTimeProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-02-11' },
+        granularity: 'week',
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/sample/nucleotideMutations`,
+                        body: {
+                            pangoLineage: 'JN.1*',
+                            dateFrom: '2024-01-15',
+                            dateTo: '2024-02-11',
+                            minProportion: 0.001,
+                        },
+                        response: {
+                            status: 200,
+                            body: mockByWeekNucleotideMutations,
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
+                        body: {
+                            filters: {
+                                pangoLineage: 'JN.1*',
+                                dateFrom: '2024-01-15',
+                                dateTo: '2024-02-11',
+                            },
+                            dateRanges: [
+                                { dateFrom: '2024-01-15', dateTo: '2024-01-21' },
+                                { dateFrom: '2024-01-22', dateTo: '2024-01-28' },
+                                { dateFrom: '2024-01-29', dateTo: '2024-02-04' },
+                                { dateFrom: '2024-02-05', dateTo: '2024-02-11' },
+                            ],
+                            dateField: 'date',
+                        },
+                        matchPartialBody: true,
+                        response: {
+                            status: 200,
+                            body: mockByWeekMutationsOverTime,
+                        },
+                    },
+                },
+            ],
+        },
+    },
+};
 
-// NOTE: AminoAcidMutationsByDay story is commented out because no amino acid mock data exists yet.
-// Can be re-enabled when proper amino acid mock data is available.
-// // This test uses mock data: aminoAcidMutationsByDay.ts (through mutationOverTimeWorker.mock.ts)
-// export const AminoAcidMutationsByDay: StoryObj<Required<MutationsOverTimeProps>> = {
-//     ...Template,
-//     args: {
-//         ...Template.args,
-//         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-20', dateTo: '2024-01-26' },
-//         granularity: 'day',
-//         sequenceType: 'amino acid',
-//     },
-// };
+export const AminoAcidMutationsByDay: StoryObj<Required<MutationsOverTimeProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-20', dateTo: '2024-01-26' },
+        granularity: 'day',
+        sequenceType: 'amino acid',
+    },
+};
 
-// This test uses mock data: defaultMockData.ts (through mutationOverTimeWorker.mock.ts)
 export const HideProportionOnSmallScreen: StoryObj<Required<MutationsOverTimeProps>> = {
     ...ByMonth,
     args: {
@@ -314,7 +351,6 @@ export const HideProportionOnSmallScreen: StoryObj<Required<MutationsOverTimePro
     },
 };
 
-// This test uses mock data: defaultMockData.ts (through mutationOverTimeWorker.mock.ts)
 export const WithFixedHeight: StoryObj<Required<MutationsOverTimeProps>> = {
     ...Template,
     args: {
@@ -323,7 +359,6 @@ export const WithFixedHeight: StoryObj<Required<MutationsOverTimeProps>> = {
     },
 };
 
-// This test uses mock data: withDisplayMutations.ts (through mutationOverTimeWorker.mock.ts)
 export const WithCustomColumns: StoryObj<Required<MutationsOverTimeProps>> = {
     ...Template,
     args: {
