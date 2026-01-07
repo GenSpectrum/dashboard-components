@@ -5,7 +5,7 @@ on:
 
 jobs:
   commitlint:
-    name: Lint commit messages
+    name: Lint PR title format
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -24,5 +24,6 @@ jobs:
       - name: Install npm packages
         run: npm ci
 
-      - name: Validate PR commits with commitlint
-        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --verbose
+      - name: Lint PR title
+        run: |
+            echo "${{ github.event.pull_request.title }}" | npx commitlint --verbose
