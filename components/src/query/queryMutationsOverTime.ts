@@ -156,16 +156,6 @@ async function queryOverallMutationData({
     return dataPromise;
 }
 
-export type MutationOverTimeQuery = {
-    lapisFilter: LapisFilter;
-    displayMutations?: string[];
-    sequenceType: SequenceType;
-    lapis: string;
-    lapisDateField: string;
-    granularity: TemporalGranularity;
-    signal?: AbortSignal;
-};
-
 export async function queryMutationsOverTimeData(
     lapisFilter: LapisFilter,
     sequenceType: SequenceType,
