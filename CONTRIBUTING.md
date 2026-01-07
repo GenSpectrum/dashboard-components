@@ -16,6 +16,8 @@ commit messages should follow the Conventional Commits specification.
   If you don't mean for a `feat` or `fix` commit to show up in the components change list,
   then you must not edit files in `components/` in the same commit.
 
+We squash-merge PRs, so only the PR title needs to follow this format.
+
 ### Testing The Generated Changelog
 
 To test the generated changelog, run
