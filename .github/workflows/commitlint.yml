@@ -25,5 +25,7 @@ jobs:
         run: npm ci
 
       - name: Lint PR title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
         run: |
-            echo "${{ github.event.pull_request.title }}" | npx commitlint --verbose
+            echo "$PR_TITLE" | npx commitlint --verbose
