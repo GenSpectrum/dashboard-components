@@ -2,17 +2,14 @@ import { type FunctionComponent } from 'preact';
 import { type Dispatch, type StateUpdater, useMemo, useState, useEffect, useLayoutEffect, useRef } from 'preact/hooks';
 import z from 'zod';
 
-// @ts-expect-error -- uses subpath imports and vite worker import
-import MutationOverTimeWorker from '#mutationOverTime?worker&inline';
-import { BaseMutationOverTimeDataMap, type MutationOverTimeDataMap } from './MutationOverTimeData';
+import { type BaseMutationOverTimeDataMap, type MutationOverTimeDataMap } from './MutationOverTimeData';
 import {
     displayMutationsSchema,
     getFilteredMutationOverTimeData,
     type MutationFilter,
 } from './getFilteredMutationsOverTimeData';
-import { type MutationOverTimeWorkerResponse } from './mutationOverTimeWorker';
 import MutationsOverTimeGrid, { customColumnSchema } from './mutations-over-time-grid';
-import { getProportion, type MutationOverTimeQuery } from '../../query/queryMutationsOverTime';
+import { getProportion, queryMutationsOverTimeData } from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
     sequenceTypeSchema,
@@ -42,7 +39,7 @@ import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '..
 import Tabs from '../components/tabs';
 import { pageSizesSchema } from '../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../shared/tanstackTable/pagination-context';
-import { useWebWorker } from '../webWorkers/useWebWorker';
+import { useQuery } from '../useQuery';
 
 const mutationsOverTimeViewSchema = z.literal(views.grid);
 export type MutationsOverTimeView = z.infer<typeof mutationsOverTimeViewSchema>;
@@ -59,7 +56,6 @@ const mutationOverTimeSchema = z.object({
     views: z.array(mutationsOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
-    useNewEndpoint: z.boolean().optional(),
     displayMutations: displayMutationsSchema.optional(),
     initialMeanProportionInterval: meanProportionIntervalSchema,
     hideGaps: z.boolean().optional(),
@@ -83,45 +79,29 @@ export const MutationsOverTime: FunctionComponent<MutationsOverTimeProps> = (com
     );
 };
 
-export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> = ({
-    useNewEndpoint = false,
-    ...componentProps
-}) => {
+export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> = ({ ...componentProps }) => {
     const lapis = useLapisUrl();
     const { lapisFilter, sequenceType, granularity, lapisDateField, displayMutations } = componentProps;
 
-    const messageToWorker: MutationOverTimeQuery = useMemo(() => {
-        return {
-            lapisFilter,
-            sequenceType,
-            granularity,
-            lapisDateField,
-            lapis,
-            displayMutations,
-            useNewEndpoint,
-        };
-    }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations, useNewEndpoint]);
-
-    const { data, error, isLoading } = useWebWorker<MutationOverTimeWorkerResponse>(
-        messageToWorker,
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        MutationOverTimeWorker,
+    const { data, error, isLoading } = useQuery(
+        () =>
+            queryMutationsOverTimeData(lapisFilter, sequenceType, lapis, lapisDateField, granularity, displayMutations),
+        [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations],
     );
 
     if (isLoading) {
         return <LoadingDisplay />;
     }
 
-    if (error !== undefined) {
+    if (error !== null) {
         throw error;
     }
 
-    if (data === undefined || data.overallMutationData.length === 0) {
+    if (data.overallMutationData.length === 0) {
         return <NoDataDisplay />;
     }
 
-    const { overallMutationData, mutationOverTimeSerialized } = data;
-    const mutationOverTimeData = new BaseMutationOverTimeDataMap(mutationOverTimeSerialized);
+    const { overallMutationData, mutationOverTimeData } = data;
     return (
         <MutationsOverTimeTabs
             overallMutationData={overallMutationData}

@@ -501,6 +501,10 @@ export function addUnit(temporal: TemporalClass, amount: number): TemporalClass 
     throw new Error(`Invalid argument: ${temporal}`);
 }
 
+/**
+ * Given a date like 2025-10-15 and a granularity ("day", "week", ...), returns a date range
+ * like "2025-10-15" (day) or "2025-W42" (week) etc.
+ */
 export function parseDateStringToTemporal(date: string, granularity: TemporalGranularity) {
     const cache = TemporalCache.getInstance();
     const day = cache.getYearMonthDay(date);
