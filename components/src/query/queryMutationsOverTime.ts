@@ -5,28 +5,14 @@ import { UserFacingError } from '../preact/components/error-display';
 import { BaseMutationOverTimeDataMap } from '../preact/mutationsOverTime/MutationOverTimeData';
 import { sortSubstitutionsAndDeletions } from '../preact/shared/sort/sortSubstitutionsAndDeletions';
 import {
-    type DeletionEntry,
     type LapisFilter,
     type SequenceType,
-    type SubstitutionEntry,
     type SubstitutionOrDeletionEntry,
     type TemporalGranularity,
 } from '../types';
 import { type Map2DContents } from '../utils/map2d';
-import {
-    type Deletion,
-    type Substitution,
-    toSubstitutionOrDeletion,
-    DeletionClass,
-    SubstitutionClass,
-} from '../utils/mutations';
-import { compareTemporal, type Temporal, type TemporalClass, toTemporal } from '../utils/temporalClass';
-
-export type MutationOverTimeData = {
-    date: TemporalClass;
-    mutations: SubstitutionOrDeletionEntry[];
-    totalCount: number;
-};
+import { type Deletion, type Substitution, DeletionClass, SubstitutionClass } from '../utils/mutations';
+import { type Temporal } from '../utils/temporalClass';
 
 export type MutationOverTimeMutationValue =
     | {
