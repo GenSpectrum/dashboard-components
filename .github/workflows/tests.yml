@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: lts/*
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
@@ -51,7 +51,7 @@ jobs:
         with:
           node-version: lts/*
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
@@ -74,7 +74,7 @@ jobs:
         with:
           node-version: lts/*
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('components/**/package-lock.json') }}
@@ -89,7 +89,7 @@ jobs:
         run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').packages['node_modules/playwright'].version)")" >> $GITHUB_ENV
 
       - name: Cache Playwright Browsers
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
