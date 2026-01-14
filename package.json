@@ -11,8 +11,6 @@
     "release-please": "^17.1.2"
   },
   "scripts": {
-    "commitlint:last-commit": "commitlint --from=HEAD~1 --verbose",
-    "commitlint:merge-base": "commitlint --from=$(git merge-base HEAD main) --verbose",
     "release-please-dry-run": "release-please release-pr --dry-run --config-file=components/release-please-config.json --manifest-file=components/.release-please-manifest.json --repo-url='https://github.com/GenSpectrum/dashboard-components' --path components",
     "release-please-changelog-preview": ".github/scripts/preview-changelog.sh"
   }
