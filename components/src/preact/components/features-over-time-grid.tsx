@@ -1,17 +1,13 @@
-import { type FunctionComponent } from 'preact';
+import { type FunctionComponent, type JSX } from 'preact';
 import { useMemo } from 'preact/hooks';
 import z from 'zod';
 
-import { type MutationOverTimeDataMap } from './MutationOverTimeData';
-import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
-import { getProportion, type MutationOverTimeMutationValue } from '../../query/queryMutationsOverTime';
-import { type SequenceType } from '../../types';
-import { type Deletion, type Substitution } from '../../utils/mutations';
+import { type ColorScale, getColorWithinScale, getTextColorForScale } from './color-scale-selector';
+import PortalTooltip from './portal-tooltip';
+import { type TooltipPosition } from './tooltip';
+import { getProportion, type ProportionValue } from '../../query/queryMutationsOverTime';
 import { type Temporal } from '../../utils/temporalClass';
-import { AnnotatedMutation } from '../components/annotated-mutation';
-import { type ColorScale, getColorWithinScale, getTextColorForScale } from '../components/color-scale-selector';
-import PortalTooltip from '../components/portal-tooltip';
-import { type TooltipPosition } from '../components/tooltip';
+import { type TemporalDataMap } from '../mutationsOverTime/MutationOverTimeData';
 import { formatProportion } from '../shared/table/formatProportion';
 import { type PageSizes, Pagination } from '../shared/tanstackTable/pagination';
 import { usePageSizeContext } from '../shared/tanstackTable/pagination-context';
@@ -31,55 +27,56 @@ export const customColumnSchema = z.object({
 });
 export type CustomColumn = z.infer<typeof customColumnSchema>;
 
-export interface MutationsOverTimeGridProps {
-    data: MutationOverTimeDataMap;
+export interface FeatureRenderer<D> {
+    asString(value: D): string;
+    renderRowLabel(value: D): JSX.Element;
+    renderTooltip(value: D, temporal: Temporal, proportionValue: ProportionValue | undefined): JSX.Element;
+}
+
+export interface FeaturesOverTimeGridProps<F> {
+    rowLabelHeader: string;
+    data: TemporalDataMap<F>;
     colorScale: ColorScale;
-    sequenceType: SequenceType;
     pageSizes: PageSizes;
     customColumns?: CustomColumn[];
+    featureRenderer: FeatureRenderer<F>;
     tooltipPortalTarget: HTMLElement | null;
 }
 
-type RowType = {
-    mutation: Substitution | Deletion;
-    values: (MutationOverTimeMutationValue | undefined)[];
+type RowType<F> = {
+    feature: F;
+    values: (ProportionValue | undefined)[];
     customValues: (string | number | undefined)[];
 };
 
 const EMPTY_COLUMNS: CustomColumn[] = [];
 
-const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
+function FeaturesOverTimeGrid<F>({
+    rowLabelHeader,
     data,
     colorScale,
-    sequenceType,
     pageSizes,
     customColumns = EMPTY_COLUMNS,
+    featureRenderer,
     tooltipPortalTarget,
-}) => {
+}: FeaturesOverTimeGridProps<F>) {
     const tableData = useMemo(() => {
-        const allMutations = data.getFirstAxisKeys();
-        return data.getAsArray().map((row, index): RowType => {
-            const mutation = allMutations[index];
-            const customValues = customColumns.map((col) => col.values[mutation.code]);
-            return { mutation, values: [...row], customValues };
+        const firstAxisKeys = data.getFirstAxisKeys();
+        return data.getAsArray().map((row, index): RowType<F> => {
+            const firstAxisKey = firstAxisKeys[index];
+            const customValues = customColumns.map((col) => col.values[featureRenderer.asString(firstAxisKey)]);
+            return { feature: firstAxisKey, values: [...row], customValues };
         });
-    }, [data, customColumns]);
+    }, [data, customColumns, featureRenderer]);
 
     const columns = useMemo(() => {
-        const columnHelper = createColumnHelper<RowType>();
+        const columnHelper = createColumnHelper<RowType<F>>();
         const dates = data.getSecondAxisKeys();
 
-        const mutationHeader = columnHelper.accessor((row) => row.mutation, {
-            id: 'mutation',
-            header: () => <span>Mutation</span>,
-            cell: ({ getValue }) => {
-                const value = getValue();
-                return (
-                    <div className={'text-center'}>
-                        <AnnotatedMutation mutation={value} sequenceType={sequenceType} />
-                    </div>
-                );
-            },
+        const featureHeader = columnHelper.accessor((row) => row.feature, {
+            id: 'feature',
+            header: () => <span>{rowLabelHeader}</span>,
+            cell: ({ getValue }) => featureRenderer.renderRowLabel(getValue()),
         });
 
         const customColumnHeaders = customColumns.map((customCol, index) => {
@@ -108,12 +105,13 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
                     const numberOfRows = table.getRowModel().rows.length;
                     const numberOfColumns = table.getAllColumns().length;
 
+                    const tooltip = featureRenderer.renderTooltip(row.original.feature, date, value);
+
                     return (
                         <div className={'text-center'}>
                             <ProportionCell
                                 value={value ?? null}
-                                date={date}
-                                mutation={row.original.mutation}
+                                tooltip={tooltip}
                                 tooltipPosition={getTooltipPosition(
                                     rowIndex -
                                         table.getState().pagination.pageIndex * table.getState().pagination.pageSize,
@@ -130,8 +128,8 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
             });
         });
 
-        return [mutationHeader, ...customColumnHeaders, ...dateHeaders];
-    }, [colorScale, data, sequenceType, customColumns, tooltipPortalTarget]);
+        return [featureHeader, ...customColumnHeaders, ...dateHeaders];
+    }, [colorScale, data, customColumns, tooltipPortalTarget, featureRenderer, rowLabelHeader]);
 
     const { pageSize } = usePageSizeContext();
     const table = usePreactTable({
@@ -183,7 +181,7 @@ const MutationsOverTimeGrid: FunctionComponent<MutationsOverTimeGridProps> = ({
             </div>
         </div>
     );
-};
+}
 
 function styleGridHeader(columnIndex: number, numDateColumns: number) {
     if (columnIndex === 0) {
@@ -204,22 +202,17 @@ function getTooltipPosition(rowIndex: number, rows: number, columnIndex: number,
 }
 
 const ProportionCell: FunctionComponent<{
-    value: MutationOverTimeMutationValue;
-    date: Temporal;
-    mutation: Substitution | Deletion;
+    value: ProportionValue;
+    tooltip: JSX.Element;
     tooltipPosition: TooltipPosition;
     colorScale: ColorScale;
     tooltipPortalTarget: HTMLElement | null;
-}> = ({ value, mutation, date, tooltipPosition, colorScale, tooltipPortalTarget }) => {
+}> = ({ value, tooltip, tooltipPosition, colorScale, tooltipPortalTarget }) => {
     const proportion = getProportion(value);
 
     return (
         <div className={'py-1 w-full h-full'}>
-            <PortalTooltip
-                content={<MutationsOverTimeGridTooltip mutation={mutation} date={date} value={value} />}
-                position={tooltipPosition}
-                portalTarget={tooltipPortalTarget}
-            >
+            <PortalTooltip content={tooltip} position={tooltipPosition} portalTarget={tooltipPortalTarget}>
                 <div
                     style={{
                         backgroundColor: getColorWithinScale(proportion, colorScale),
@@ -240,4 +233,4 @@ const ProportionCell: FunctionComponent<{
     );
 };
 
-export default MutationsOverTimeGrid;
+export default FeaturesOverTimeGrid;

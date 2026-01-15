@@ -14,7 +14,7 @@ import { type Map2DContents } from '../utils/map2d';
 import { type Deletion, type Substitution, DeletionClass, SubstitutionClass } from '../utils/mutations';
 import { type Temporal } from '../utils/temporalClass';
 
-export type MutationOverTimeMutationValue =
+export type ProportionValue =
     | {
           type: 'value';
           proportion: number;
@@ -37,7 +37,7 @@ export type MutationOverTimeMutationValue =
       }
     | null;
 
-export function getProportion(value: MutationOverTimeMutationValue) {
+export function getProportion(value: ProportionValue) {
     switch (value?.type) {
         case 'value':
         case 'wastewaterValue':
@@ -211,14 +211,14 @@ export async function queryMutationsOverTimeData(
         }
     });
 
-    const mutationOverTimeData: Map2DContents<Substitution | Deletion, Temporal, MutationOverTimeMutationValue> = {
+    const mutationOverTimeData: Map2DContents<Substitution | Deletion, Temporal, ProportionValue> = {
         keysFirstAxis: new Map(responseMutations.map((mutation) => [mutation.code, mutation])),
         keysSecondAxis: new Map(requestedDateRanges.map((date) => [date.dateString, date])),
         data: new Map(
             responseMutations.map((mutation, i) => [
                 mutation.code,
                 new Map(
-                    requestedDateRanges.map((date, j): [string, MutationOverTimeMutationValue] => {
+                    requestedDateRanges.map((date, j): [string, ProportionValue] => {
                         if (totalCounts[j] === 0) {
                             return [date.dateString, null];
                         }
