@@ -67,6 +67,40 @@ export const mutationsOverTimeResponse = makeLapisResponse(
 );
 export type MutationsOverTimeResponse = z.infer<typeof mutationsOverTimeResponse>;
 
+const queryDefinition = z.object({
+    displayLabel: z.string().optional(),
+    countQuery: z.string(),
+    coverageQuery: z.string(),
+});
+
+export const queriesOverTimeRequest = z.object({
+    filters: z.record(filterValue),
+    queries: z.array(queryDefinition),
+    dateRanges: z.array(dateRange),
+    dateField: z.string(),
+    downloadAsFile: z.boolean().optional(),
+    downloadFileBasename: z.string().optional(),
+    compression: z.enum(['gzip', 'none']).optional(),
+});
+export type QueriesOverTimeRequest = z.infer<typeof queriesOverTimeRequest>;
+
+export const queriesOverTimeResponse = makeLapisResponse(
+    z.object({
+        queries: z.array(z.string()),
+        dateRanges: z.array(dateRange),
+        data: z.array(
+            z.array(
+                z.object({
+                    count: z.number(),
+                    coverage: z.number(),
+                }),
+            ),
+        ),
+        totalCountsByDateRange: z.array(z.number()),
+    }),
+);
+export type QueriesOverTimeResponse = z.infer<typeof queriesOverTimeResponse>;
+
 const insertionCount = z.object({
     insertion: z.string(),
     count: z.number(),
