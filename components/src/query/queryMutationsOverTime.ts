@@ -58,7 +58,8 @@ export const MUTATIONS_OVER_TIME_MIN_PROPORTION = 0.001;
  * @param code a mutation code like G44T or A23-
  */
 function codeToEmptyEntry(code: string): SubstitutionOrDeletionEntry | null {
-    const maybeDeletion = DeletionClass.parse(code);
+    // Allow ambiguous symbols (like 'X') for user-supplied mutations in includeMutations
+    const maybeDeletion = DeletionClass.parse(code, true);
     if (maybeDeletion) {
         return {
             type: 'deletion',
@@ -67,7 +68,7 @@ function codeToEmptyEntry(code: string): SubstitutionOrDeletionEntry | null {
             proportion: 0,
         };
     }
-    const maybeSubstitution = SubstitutionClass.parse(code);
+    const maybeSubstitution = SubstitutionClass.parse(code, false, true);
     if (maybeSubstitution) {
         return {
             type: 'substitution',
@@ -258,11 +259,12 @@ export async function queryMutationsOverTimeData(
 }
 
 function parseMutationCode(code: string): SubstitutionClass | DeletionClass {
-    const maybeDeletion = DeletionClass.parse(code);
+    // Allow ambiguous symbols (like 'X') since the API can return them
+    const maybeDeletion = DeletionClass.parse(code, true);
     if (maybeDeletion) {
         return maybeDeletion;
     }
-    const maybeSubstitution = SubstitutionClass.parse(code);
+    const maybeSubstitution = SubstitutionClass.parse(code, false, true);
     if (maybeSubstitution) {
         return maybeSubstitution;
     }

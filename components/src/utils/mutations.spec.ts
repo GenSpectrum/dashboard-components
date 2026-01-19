@@ -94,3 +94,83 @@ describe('InsertionClass', () => {
         expect(InsertionClass.parse('ins_34:Q')).to.equal(null);
     });
 });
+
+describe('SubstitutionClass with ambiguous symbols', () => {
+    it('should reject X when parseAmbiguousSymbols=false (default)', () => {
+        expect(SubstitutionClass.parse('gene1:X234T')).to.equal(null);
+        expect(SubstitutionClass.parse('gene1:X234T', false, false)).to.equal(null);
+        expect(SubstitutionClass.parse('gene1:A234X')).to.equal(null);
+        expect(SubstitutionClass.parse('gene1:A234X', false, false)).to.equal(null);
+    });
+
+    it('should accept X in valueAtReference when parseAmbiguousSymbols=true', () => {
+        const result = SubstitutionClass.parse('gene1:X234T', false, true);
+        expect(result).deep.equal(new SubstitutionClass('gene1', 'X', 'T', 234));
+        expect(result?.position).to.equal(234);
+        expect(result?.valueAtReference).to.equal('X');
+        expect(result?.substitutionValue).to.equal('T');
+    });
+
+    it('should accept X in substitutionValue when parseAmbiguousSymbols=true', () => {
+        const result = SubstitutionClass.parse('gene1:A234X', false, true);
+        expect(result).deep.equal(new SubstitutionClass('gene1', 'A', 'X', 234));
+        expect(result?.substitutionValue).to.equal('X');
+    });
+
+    it('should accept X in both positions when parseAmbiguousSymbols=true', () => {
+        const result = SubstitutionClass.parse('gene1:X234X', false, true);
+        expect(result).deep.equal(new SubstitutionClass('gene1', 'X', 'X', 234));
+        expect(result?.valueAtReference).to.equal('X');
+        expect(result?.substitutionValue).to.equal('X');
+    });
+
+    it('should accept X without segment prefix when parseAmbiguousSymbols=true and segmentIsOptional=true', () => {
+        const result = SubstitutionClass.parse('X234T', true, true);
+        expect(result).deep.equal(new SubstitutionClass(undefined, 'X', 'T', 234));
+    });
+});
+
+describe('DeletionClass with ambiguous symbols', () => {
+    it('should reject X when parseAmbiguousSymbols=false (default)', () => {
+        expect(DeletionClass.parse('gene1:X234-')).to.equal(null);
+        expect(DeletionClass.parse('gene1:X234-', false)).to.equal(null);
+    });
+
+    it('should accept X in valueAtReference when parseAmbiguousSymbols=true', () => {
+        const result = DeletionClass.parse('gene1:X234-', true);
+        expect(result).deep.equal(new DeletionClass('gene1', 'X', 234));
+        expect(result?.position).to.equal(234);
+        expect(result?.valueAtReference).to.equal('X');
+    });
+
+    it('should accept X without segment prefix when parseAmbiguousSymbols=true', () => {
+        const result = DeletionClass.parse('X234-', true);
+        expect(result).deep.equal(new DeletionClass(undefined, 'X', 234));
+    });
+});
+
+describe('InsertionClass with ambiguous symbols', () => {
+    it('should reject X when parseAmbiguousSymbols=false (default)', () => {
+        expect(InsertionClass.parse('ins_gene1:234:X')).to.equal(null);
+        expect(InsertionClass.parse('ins_gene1:234:X', false)).to.equal(null);
+        expect(InsertionClass.parse('ins_gene1:234:AXC')).to.equal(null);
+    });
+
+    it('should accept X in insertedSymbols when parseAmbiguousSymbols=true', () => {
+        const result = InsertionClass.parse('ins_gene1:234:X', true);
+        expect(result).deep.equal(new InsertionClass('gene1', 234, 'X'));
+        expect(result?.insertedSymbols).to.equal('X');
+    });
+
+    it('should accept X mixed with other symbols when parseAmbiguousSymbols=true', () => {
+        const result = InsertionClass.parse('ins_gene1:234:AXC', true);
+        expect(result).deep.equal(new InsertionClass('gene1', 234, 'AXC'));
+        expect(result?.insertedSymbols).to.equal('AXC');
+    });
+
+    it('should accept multiple X symbols when parseAmbiguousSymbols=true', () => {
+        const result = InsertionClass.parse('ins_gene1:234:XXX', true);
+        expect(result).deep.equal(new InsertionClass('gene1', 234, 'XXX'));
+        expect(result?.insertedSymbols).to.equal('XXX');
+    });
+});

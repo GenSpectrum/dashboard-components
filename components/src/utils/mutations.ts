@@ -16,6 +16,9 @@ export interface MutationClass extends Mutation {
 // Allowed IUPAC characters: https://www.bioinformatics.org/sms/iupac.html
 const nucleotideChars = 'ACGTRYKMSWBDHVN';
 const aminoAcidChars = 'ACDEFGHIKLMNPQRSTVWY';
+// Ambiguous IUPAC symbols (excluded from standard parsing but can be enabled via parseAmbiguousSymbols flag)
+const ambiguousNucleotideChars = 'X'; // Unknown nucleotide
+const ambiguousAminoAcidChars = 'X'; // Unknown amino acid
 
 function segmentPart(isOptional: boolean) {
     const segmentPart = `(?<segment>[A-Z0-9_-]+):`;
@@ -25,8 +28,14 @@ function segmentPart(isOptional: boolean) {
     return segmentPart;
 }
 
-function buildSubstitutionRegex(type: 'nucleotide' | 'aminoAcid', segmentPartIsOptional: boolean) {
-    const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
+function buildSubstitutionRegex(
+    type: 'nucleotide' | 'aminoAcid',
+    segmentPartIsOptional: boolean,
+    parseAmbiguousSymbols: boolean = false,
+) {
+    const baseChars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
+    const ambiguousChars = type === 'nucleotide' ? ambiguousNucleotideChars : ambiguousAminoAcidChars;
+    const chars = parseAmbiguousSymbols ? baseChars + ambiguousChars : baseChars;
 
     return new RegExp(
         `^${segmentPart(segmentPartIsOptional)}` +
@@ -40,6 +49,10 @@ function buildSubstitutionRegex(type: 'nucleotide' | 'aminoAcid', segmentPartIsO
 const nucleotideSubstitutionRegex = buildSubstitutionRegex('nucleotide', true);
 const aminoAcidSubstitutionRegex = buildSubstitutionRegex('aminoAcid', false);
 const aminoAcidSubstitutionWithoutSegmentRegex = buildSubstitutionRegex('aminoAcid', true);
+// Regexes that allow ambiguous symbols
+const nucleotideSubstitutionRegexWithAmbiguous = buildSubstitutionRegex('nucleotide', true, true);
+const aminoAcidSubstitutionRegexWithAmbiguous = buildSubstitutionRegex('aminoAcid', false, true);
+const aminoAcidSubstitutionWithoutSegmentRegexWithAmbiguous = buildSubstitutionRegex('aminoAcid', true, true);
 
 export interface Substitution extends Mutation {
     type: 'substitution';
@@ -79,11 +92,28 @@ export class SubstitutionClass implements MutationClass, Substitution {
         return this.code;
     }
 
-    static parse(mutationStr: string, segmentIsOptional: boolean = false): SubstitutionClass | null {
-        const matchNucleotide = nucleotideSubstitutionRegex.exec(mutationStr);
-        const matchAminoAcid = aminoAcidSubstitutionRegex.exec(mutationStr);
+    /**
+     * Parse a mutation code string into a SubstitutionClass object
+     * @param mutationStr - The mutation code to parse (e.g., "gene1:A234T")
+     * @param segmentIsOptional - Whether segment prefix is optional
+     * @param parseAmbiguousSymbols - Whether to allow ambiguous IUPAC symbols like 'X' (unknown)
+     * @returns SubstitutionClass object or null if parsing fails
+     */
+    static parse(
+        mutationStr: string,
+        segmentIsOptional: boolean = false,
+        parseAmbiguousSymbols: boolean = false,
+    ): SubstitutionClass | null {
+        const matchNucleotide = parseAmbiguousSymbols
+            ? nucleotideSubstitutionRegexWithAmbiguous.exec(mutationStr)
+            : nucleotideSubstitutionRegex.exec(mutationStr);
+        const matchAminoAcid = parseAmbiguousSymbols
+            ? aminoAcidSubstitutionRegexWithAmbiguous.exec(mutationStr)
+            : aminoAcidSubstitutionRegex.exec(mutationStr);
         const matchAminAcidWithoutSegment = segmentIsOptional
-            ? aminoAcidSubstitutionWithoutSegmentRegex.exec(mutationStr)
+            ? parseAmbiguousSymbols
+                ? aminoAcidSubstitutionWithoutSegmentRegexWithAmbiguous.exec(mutationStr)
+                : aminoAcidSubstitutionWithoutSegmentRegex.exec(mutationStr)
             : undefined;
         const match = matchNucleotide ?? matchAminoAcid ?? matchAminAcidWithoutSegment;
         if (match?.groups === undefined) {
@@ -98,8 +128,10 @@ export class SubstitutionClass implements MutationClass, Substitution {
     }
 }
 
-function buildDeletionRegex(type: 'nucleotide' | 'aminoAcid') {
-    const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
+function buildDeletionRegex(type: 'nucleotide' | 'aminoAcid', parseAmbiguousSymbols: boolean = false) {
+    const baseChars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
+    const ambiguousChars = type === 'nucleotide' ? ambiguousNucleotideChars : ambiguousAminoAcidChars;
+    const chars = parseAmbiguousSymbols ? baseChars + ambiguousChars : baseChars;
 
     return new RegExp(
         `^${segmentPart(type === 'nucleotide')}` + `(?<valueAtReference>[${chars}*])?` + `(?<position>\\d+)` + `(-)$`,
@@ -109,6 +141,9 @@ function buildDeletionRegex(type: 'nucleotide' | 'aminoAcid') {
 
 const nucleotideDeletionRegex = buildDeletionRegex('nucleotide');
 const aminoAcidDeletionRegex = buildDeletionRegex('aminoAcid');
+// Regexes that allow ambiguous symbols
+const nucleotideDeletionRegexWithAmbiguous = buildDeletionRegex('nucleotide', true);
+const aminoAcidDeletionRegexWithAmbiguous = buildDeletionRegex('aminoAcid', true);
 
 export interface Deletion extends Mutation {
     type: 'deletion';
@@ -144,9 +179,19 @@ export class DeletionClass implements MutationClass, Deletion {
         return this.code;
     }
 
-    static parse(mutationStr: string): DeletionClass | null {
-        const matchNucleotide = nucleotideDeletionRegex.exec(mutationStr);
-        const matchAminoAcid = aminoAcidDeletionRegex.exec(mutationStr);
+    /**
+     * Parse a mutation code string into a DeletionClass object
+     * @param mutationStr - The mutation code to parse (e.g., "gene1:A234-")
+     * @param parseAmbiguousSymbols - Whether to allow ambiguous IUPAC symbols like 'X' (unknown)
+     * @returns DeletionClass object or null if parsing fails
+     */
+    static parse(mutationStr: string, parseAmbiguousSymbols: boolean = false): DeletionClass | null {
+        const matchNucleotide = parseAmbiguousSymbols
+            ? nucleotideDeletionRegexWithAmbiguous.exec(mutationStr)
+            : nucleotideDeletionRegex.exec(mutationStr);
+        const matchAminoAcid = parseAmbiguousSymbols
+            ? aminoAcidDeletionRegexWithAmbiguous.exec(mutationStr)
+            : aminoAcidDeletionRegex.exec(mutationStr);
         const match = matchNucleotide ?? matchAminoAcid;
         if (match?.groups === undefined) {
             return null;
@@ -160,8 +205,10 @@ export class DeletionClass implements MutationClass, Deletion {
     }
 }
 
-function buildInsertionRegex(type: 'nucleotide' | 'aminoAcid') {
-    const chars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
+function buildInsertionRegex(type: 'nucleotide' | 'aminoAcid', parseAmbiguousSymbols: boolean = false) {
+    const baseChars = type === 'nucleotide' ? nucleotideChars : aminoAcidChars;
+    const ambiguousChars = type === 'nucleotide' ? ambiguousNucleotideChars : ambiguousAminoAcidChars;
+    const chars = parseAmbiguousSymbols ? baseChars + ambiguousChars : baseChars;
 
     const wildcardToken = `(?:\\.\\*)`;
 
@@ -173,6 +220,9 @@ function buildInsertionRegex(type: 'nucleotide' | 'aminoAcid') {
 
 const nucleotideInsertionRegex = buildInsertionRegex('nucleotide');
 const aminoAcidInsertionRegex = buildInsertionRegex('aminoAcid');
+// Regexes that allow ambiguous symbols
+const nucleotideInsertionRegexWithAmbiguous = buildInsertionRegex('nucleotide', true);
+const aminoAcidInsertionRegexWithAmbiguous = buildInsertionRegex('aminoAcid', true);
 
 export interface Insertion extends Mutation {
     type: 'insertion';
@@ -206,9 +256,19 @@ export class InsertionClass implements MutationClass {
         return this.code;
     }
 
-    static parse(mutationStr: string): InsertionClass | null {
-        const matchNucleotide = nucleotideInsertionRegex.exec(mutationStr);
-        const matchAminoAcid = aminoAcidInsertionRegex.exec(mutationStr);
+    /**
+     * Parse a mutation code string into an InsertionClass object
+     * @param mutationStr - The mutation code to parse (e.g., "ins_gene1:234:ABC")
+     * @param parseAmbiguousSymbols - Whether to allow ambiguous IUPAC symbols like 'X' (unknown)
+     * @returns InsertionClass object or null if parsing fails
+     */
+    static parse(mutationStr: string, parseAmbiguousSymbols: boolean = false): InsertionClass | null {
+        const matchNucleotide = parseAmbiguousSymbols
+            ? nucleotideInsertionRegexWithAmbiguous.exec(mutationStr)
+            : nucleotideInsertionRegex.exec(mutationStr);
+        const matchAminoAcid = parseAmbiguousSymbols
+            ? aminoAcidInsertionRegexWithAmbiguous.exec(mutationStr)
+            : aminoAcidInsertionRegex.exec(mutationStr);
         const match = matchNucleotide ?? matchAminoAcid;
         if (match?.groups === undefined) {
             return null;

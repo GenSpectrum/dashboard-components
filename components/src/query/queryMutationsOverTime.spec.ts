@@ -952,6 +952,110 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
         expect(dates[1].dateString).toBe('2023-02');
     });
 
+    it('should accept ambiguous symbols like X in includeMutations', async () => {
+        const lapisFilter = { field1: 'value1', field2: 'value2' };
+        const dateField = 'dateField';
+
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField] },
+            {
+                data: [
+                    { count: 1, [dateField]: '2023-01-05' },
+                    { count: 2, [dateField]: '2023-02-15' },
+                ],
+            },
+        );
+
+        lapisRequestMocks.multipleMutations(
+            [
+                {
+                    body: {
+                        ...lapisFilter,
+                        dateFieldFrom: '2023-01-01',
+                        dateFieldTo: '2023-02-28',
+                        minProportion: 0.001,
+                    },
+                    response: {
+                        data: [getSomeTestMutation(0.21, 6)],
+                    },
+                },
+            ],
+            'nucleotide',
+        );
+
+        const dateRanges = [
+            {
+                dateFrom: '2023-01-01',
+                dateTo: '2023-01-31',
+            },
+            {
+                dateFrom: '2023-02-01',
+                dateTo: '2023-02-28',
+            },
+        ];
+
+        lapisRequestMocks.mutationsOverTime(
+            [
+                {
+                    body: {
+                        filters: lapisFilter,
+                        dateRanges,
+                        includeMutations: ['sequenceName:X234T'],
+                        dateField,
+                    },
+                    response: {
+                        data: {
+                            data: [
+                                [
+                                    { count: 5, coverage: 10 },
+                                    { count: 7, coverage: 12 },
+                                ],
+                            ],
+                            dateRanges,
+                            mutations: ['sequenceName:X234T'], // API can return X mutations
+                            totalCountsByDateRange: [11, 12],
+                        },
+                    },
+                },
+            ],
+            'nucleotide',
+        );
+
+        const { mutationOverTimeData } = await queryMutationsOverTimeData(
+            lapisFilter,
+            'nucleotide',
+            DUMMY_LAPIS_URL,
+            dateField,
+            'month',
+            ['sequenceName:X234T'], // User supplies X mutation in includeMutations
+        );
+
+        // Verify X mutation appears in results and was parsed correctly
+        const sequences = mutationOverTimeData.getFirstAxisKeys();
+        expect(sequences.some((key) => key.code === 'sequenceName:X234T')).toBe(true);
+
+        const xMutationKey = sequences.find((key) => key.code === 'sequenceName:X234T');
+        expect(xMutationKey).toBeDefined();
+        expect(xMutationKey?.code).toBe('sequenceName:X234T');
+
+        // Verify the data was parsed correctly from API response
+        const dates = mutationOverTimeData.getSecondAxisKeys();
+        expect(dates[0].dateString).toBe('2023-01');
+        expect(dates[1].dateString).toBe('2023-02');
+
+        // Verify actual count values from API
+        expect(mutationOverTimeData.getAsArray()[0][0]).toMatchObject({
+            type: 'valueWithCoverage',
+            count: 5,
+            coverage: 10,
+        });
+        expect(mutationOverTimeData.getAsArray()[0][1]).toMatchObject({
+            type: 'valueWithCoverage',
+            count: 7,
+            coverage: 12,
+        });
+    });
+
     function getSomeTestMutation(proportion: number, count: number) {
         return {
             mutation: 'sequenceName:A123T',
