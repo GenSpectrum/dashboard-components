@@ -73,6 +73,8 @@ const queryDefinition = z.object({
     coverageQuery: z.string(),
 });
 
+export type QueryDefinition = z.infer<typeof queryDefinition>;
+
 export const queriesOverTimeRequest = z.object({
     filters: z.record(filterValue),
     queries: z.array(queryDefinition),
