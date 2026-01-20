@@ -78,7 +78,6 @@ export async function queryQueriesOverTimeData(
                 query,
                 new Map(
                     requestedDateRanges.map((date, j): [string, ProportionValue] => {
-                        // Handle dates with no data (totalCount = 0)
                         if (totalCounts[j] === 0) {
                             return [date.dateString, null];
                         }
@@ -87,7 +86,6 @@ export async function queryQueriesOverTimeData(
                         const coverage = apiResult.data.data[i][j].coverage;
                         const totalCount = totalCounts[j];
 
-                        // Handle zero coverage (below threshold)
                         if (coverage === 0) {
                             return [
                                 date.dateString,
@@ -98,7 +96,6 @@ export async function queryQueriesOverTimeData(
                             ];
                         }
 
-                        // Standard value with coverage
                         return [
                             date.dateString,
                             {
@@ -114,10 +111,8 @@ export async function queryQueriesOverTimeData(
         ),
     };
 
-    // TODO: Consider adding overall query statistics (aggregate across all dates)
+    // TODO - add overall proportions (https://github.com/GenSpectrum/LAPIS/issues/1349)
     // Similar to overallMutationData in queryMutationsOverTime
-    // This would require a separate aggregation query or additional API endpoint
-    // See: https://github.com/GenSpectrum/LAPIS/issues/1349
 
     return {
         queryOverTimeData,
