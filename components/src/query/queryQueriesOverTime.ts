@@ -117,6 +117,7 @@ export async function queryQueriesOverTimeData(
     // TODO: Consider adding overall query statistics (aggregate across all dates)
     // Similar to overallMutationData in queryMutationsOverTime
     // This would require a separate aggregation query or additional API endpoint
+    // See: https://github.com/GenSpectrum/LAPIS/issues/1349
 
     return {
         queryOverTimeData,
