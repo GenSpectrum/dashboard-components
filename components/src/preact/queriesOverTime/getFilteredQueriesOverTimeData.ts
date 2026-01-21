@@ -30,13 +30,9 @@ export function getFilteredQueryOverTimeData({
     hideGaps,
     queryFilterValue,
 }: GetFilteredQueryOverTimeDataArgs) {
-    // Create a Map2d instance from the contents
     const dataMap = new QueryOverTimeDataMap(data);
     const filteredData = new Map2dView(dataMap);
 
-    // Calculate overall proportions for filtering
-    // Since overallQueryData is not yet available from the API (marked as TODO),
-    // we calculate it here from the data
     const queries = filteredData.getFirstAxisKeys();
     const dates = filteredData.getSecondAxisKeys();
 

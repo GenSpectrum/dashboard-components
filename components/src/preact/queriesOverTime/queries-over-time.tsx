@@ -42,7 +42,7 @@ const queriesOverTimeSchema = z.object({
     queries: z
         .array(
             z.object({
-                displayLabel: z.string().optional(),
+                displayLabel: z.string(),
                 countQuery: z.string(),
                 coverageQuery: z.string(),
             }),

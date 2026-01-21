@@ -76,7 +76,7 @@ const meta: Meta<Required<QueriesOverTimeProps>> = {
         width: '100%',
         granularity: 'month',
         lapisDateField: 'date',
-        initialMeanProportionInterval: { min: 0.05, max: 1 },
+        initialMeanProportionInterval: { min: 0, max: 1 },
         hideGaps: false,
         pageSizes: [10, 20, 30, 40, 50],
     },

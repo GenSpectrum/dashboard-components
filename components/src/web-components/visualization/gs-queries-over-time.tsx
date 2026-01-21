@@ -42,13 +42,13 @@ export class QueriesOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
      * Required.
      *
      * Array of queries to display. Each query has:
-     * - displayLabel: string (optional) - The name to show in the grid. If not provided, the query strings will be used.
+     * - displayLabel: string - The name to show in the grid row label
      * - countQuery: string - Query string to count matches
      * - coverageQuery: string - Query string to determine coverage/denominator
      */
     @property({ type: Array })
     queries: {
-        displayLabel?: string;
+        displayLabel: string;
         countQuery: string;
         coverageQuery: string;
     }[] = [];
@@ -95,7 +95,7 @@ export class QueriesOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
      * The values must be between 0 and 1, inclusive.
      */
     @property({ type: Object })
-    initialMeanProportionInterval: { min: number; max: number } = { min: 0.05, max: 1 };
+    initialMeanProportionInterval: { min: number; max: number } = { min: 0, max: 1 };
 
     /**
      * If true, date ranges with no data will be hidden initially; if false, not.
