@@ -111,9 +111,6 @@ export async function queryQueriesOverTimeData(
         ),
     };
 
-    // TODO - add overall proportions (https://github.com/GenSpectrum/LAPIS/issues/1349)
-    // Similar to overallMutationData in queryMutationsOverTime
-
     return {
         queryOverTimeData,
     };
