@@ -31,7 +31,12 @@ export class QueriesOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
      * LAPIS filter to apply to all queries. This is used to determine the date range and total counts.
      */
     @property({ type: Object })
-    lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> = {};
+    lapisFilter: Record<string, string | string[] | number | null | boolean | undefined> & {
+        nucleotideMutations?: string[];
+        aminoAcidMutations?: string[];
+        nucleotideInsertions?: string[];
+        aminoAcidInsertions?: string[];
+    } = {};
 
     /**
      * Required.
@@ -97,7 +102,7 @@ export class QueriesOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
      * Can be switched with a button in the toolbar.
      */
     @property({ type: Boolean })
-    hideGaps: boolean = false;
+    hideGaps: boolean | undefined = false;
 
     /**
      * The number of rows per page, which can be selected by the user.

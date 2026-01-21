@@ -120,7 +120,7 @@ export class MutationsOverTimeComponent extends PreactLitAdapterWithGridJsStyles
      * Can be switched with a button in the toolbar.
      */
     @property({ type: Boolean })
-    hideGaps: boolean = false;
+    hideGaps: boolean | undefined = false;
 
     /**
      * The number of rows per page, which can be selected by the user.
