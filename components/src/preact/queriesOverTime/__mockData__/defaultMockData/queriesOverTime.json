@@ -1,0 +1,32 @@
+{
+    "data": {
+        "queries": ["BA.1 Lineage", "BA.2 Lineage", "XBB Lineage"],
+        "dateRanges": [
+            { "dateFrom": "2024-01-01", "dateTo": "2024-01-31" },
+            { "dateFrom": "2024-02-01", "dateTo": "2024-02-29" },
+            { "dateFrom": "2024-03-01", "dateTo": "2024-03-31" },
+            { "dateFrom": "2024-04-01", "dateTo": "2024-04-30" }
+        ],
+        "data": [
+            [
+                { "count": 450, "coverage": 1000 },
+                { "count": 380, "coverage": 950 },
+                { "count": 280, "coverage": 900 },
+                { "count": 120, "coverage": 850 }
+            ],
+            [
+                { "count": 320, "coverage": 1000 },
+                { "count": 420, "coverage": 950 },
+                { "count": 380, "coverage": 900 },
+                { "count": 290, "coverage": 850 }
+            ],
+            [
+                { "count": 80, "coverage": 1000 },
+                { "count": 150, "coverage": 950 },
+                { "count": 340, "coverage": 900 },
+                { "count": 480, "coverage": 850 }
+            ]
+        ],
+        "totalCountsByDateRange": [1000, 950, 900, 850]
+    }
+}

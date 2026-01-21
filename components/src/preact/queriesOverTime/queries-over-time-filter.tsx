@@ -13,7 +13,7 @@ export const QueriesOverTimeFilter: FunctionComponent<QueriesOverTimeFilterProps
         <input
             type='text'
             placeholder='Filter queries...'
-            className='input input-xs input-bordered'
+            className='input input-xs input-bordered w-40'
             value={value.textFilter}
             onInput={(e) =>
                 setFilterValue({
