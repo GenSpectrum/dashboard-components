@@ -72,8 +72,7 @@ const TooltipValueCountsDescription: FunctionComponent<{
                     case 'belowThreshold':
                         return (
                             <p className='text-gray-600'>
-                                None or less than {formatProportion(QUERIES_OVER_TIME_MIN_PROPORTION)} match the
-                                query.
+                                None or less than {formatProportion(QUERIES_OVER_TIME_MIN_PROPORTION)} match the query.
                             </p>
                         );
 
@@ -96,10 +95,12 @@ const TooltipValueCountsDescription: FunctionComponent<{
                         return (
                             <>
                                 <p>
-                                    {value.count} <span className='text-gray-600'>match the query {queryLabel} out of</span>
+                                    {value.count}{' '}
+                                    <span className='text-gray-600'>match the query {queryLabel} out of</span>
                                 </p>
                                 <p>
-                                    {value.coverage} <span className='text-gray-600'>with coverage for this query.</span>
+                                    {value.coverage}{' '}
+                                    <span className='text-gray-600'>with coverage for this query.</span>
                                 </p>
                             </>
                         );

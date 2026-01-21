@@ -61,7 +61,10 @@ export function getFilteredQueryOverTimeData({
         }
 
         // Filter by text (case-insensitive search in displayLabel)
-        if (queryFilterValue.textFilter !== '' && !query.toLowerCase().includes(queryFilterValue.textFilter.toLowerCase())) {
+        if (
+            queryFilterValue.textFilter !== '' &&
+            !query.toLowerCase().includes(queryFilterValue.textFilter.toLowerCase())
+        ) {
             return true;
         }
 

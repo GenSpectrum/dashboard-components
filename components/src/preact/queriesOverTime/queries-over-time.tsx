@@ -39,13 +39,15 @@ export type MeanProportionInterval = z.infer<typeof meanProportionIntervalSchema
 
 const queriesOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
-    queries: z.array(
-        z.object({
-            displayLabel: z.string().optional(),
-            countQuery: z.string(),
-            coverageQuery: z.string(),
-        }),
-    ).min(1),
+    queries: z
+        .array(
+            z.object({
+                displayLabel: z.string().optional(),
+                countQuery: z.string(),
+                coverageQuery: z.string(),
+            }),
+        )
+        .min(1),
     views: z.array(queriesOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
@@ -95,12 +97,7 @@ export const QueriesOverTimeInner: FunctionComponent<QueriesOverTimeProps> = ({ 
         return <NoDataDisplay />;
     }
 
-    return (
-        <QueriesOverTimeTabs
-            queryOverTimeData={queryOverTimeData}
-            originalComponentProps={componentProps}
-        />
-    );
+    return <QueriesOverTimeTabs queryOverTimeData={queryOverTimeData} originalComponentProps={componentProps} />;
 };
 
 type QueriesOverTimeTabsProps = {
@@ -277,8 +274,8 @@ const QueriesOverTimeInfo: FunctionComponent<QueriesOverTimeInfoProps> = ({ orig
             </InfoParagraph>
             <InfoParagraph>
                 The grid cells have a tooltip that will show more detailed information. It shows the count of samples
-                that match the count query and the count of samples that match the coverage query in this timeframe.
-                It also shows the total count of samples in this timeframe.
+                that match the count query and the count of samples that match the coverage query in this timeframe. It
+                also shows the total count of samples in this timeframe.
             </InfoParagraph>
             <InfoComponentCode componentName='queries-over-time' params={originalComponentProps} lapisUrl={lapis} />
         </Info>
