@@ -1,11 +1,11 @@
 import { queryDatesInDataset } from './queryDatesInDataset';
 import { fetchQueriesOverTime } from '../lapisApi/lapisApi';
+import { type QueryDefinition } from '../lapisApi/lapisTypes';
 import { UserFacingError } from '../preact/components/error-display';
 import { type LapisFilter, type TemporalGranularity } from '../types';
+import { type ProportionValue } from './queryMutationsOverTime';
 import { type Map2DContents } from '../utils/map2d';
 import { type Temporal } from '../utils/temporalClass';
-import { type ProportionValue } from './queryMutationsOverTime';
-import { QueryDefinition } from '../lapisApi/lapisTypes';
 
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 

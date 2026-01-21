@@ -1,3 +1,4 @@
+import { lineageDefinitionResponseSchema } from './LineageDefinition';
 import { referenceGenomeResponse } from './ReferenceGenome';
 import {
     aggregatedResponse,
@@ -15,7 +16,6 @@ import {
     queriesOverTimeResponse,
 } from './lapisTypes';
 import { type SequenceType } from '../types';
-import { lineageDefinitionResponseSchema } from './LineageDefinition';
 
 export class UnknownLapisError extends Error {
     constructor(
