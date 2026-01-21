@@ -24,6 +24,7 @@ export type {
     NumberSequencesOverTimeProps,
 } from './preact/numberSequencesOverTime/number-sequences-over-time';
 export type { PrevalenceOverTimeView, PrevalenceOverTimeProps } from './preact/prevalenceOverTime/prevalence-over-time';
+export type { QueriesOverTimeView, QueriesOverTimeProps } from './preact/queriesOverTime/queries-over-time';
 export type {
     RelativeGrowthAdvantageView,
     RelativeGrowthAdvantageProps,
