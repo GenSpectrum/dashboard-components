@@ -2,11 +2,11 @@ import DOMPurify from 'dompurify';
 import { useRef } from 'gridjs';
 import { Fragment, type FunctionComponent, type RefObject } from 'preact';
 
+import { InfoHeadline1, InfoHeadline2, InfoParagraph } from './info';
+import { ButtonWithModalDialog, useModalRef } from './modal';
 import type { SequenceType } from '../../types';
 import type { Deletion, Substitution } from '../../utils/mutations';
 import { useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
-import { InfoHeadline1, InfoHeadline2, InfoParagraph } from './info';
-import { ButtonWithModalDialog, useModalRef } from './modal';
 import { useMutationLinkProvider } from '../MutationLinkTemplateContext';
 
 export type AnnotatedMutationProps = {

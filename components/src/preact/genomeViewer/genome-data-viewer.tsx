@@ -2,12 +2,12 @@ import type { FunctionComponent } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
+import CDSPlot from './CDSPlot';
+import { loadGff3 } from './loadGff3';
 import { ErrorBoundary } from '../components/error-boundary';
 import { LoadingDisplay } from '../components/loading-display';
 import { ResizeContainer } from '../components/resize-container';
 import { useQuery } from '../useQuery';
-import CDSPlot from './CDSPlot';
-import { loadGff3 } from './loadGff3';
 
 const genomeDataViewerPropsSchema = z.object({
     gff3Source: z.string().min(1, 'gff3Source cannot be empty'),

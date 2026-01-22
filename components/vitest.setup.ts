@@ -10,11 +10,14 @@ import {
     detailsEndpoint,
     lineageDefinitionEndpoint,
     mutationsOverTimeEndpoint,
+    queriesOverTimeEndpoint,
     substitutionsOrDeletionsEndpoint,
 } from './src/lapisApi/lapisApi';
 import {
     MutationsOverTimeRequest,
     MutationsOverTimeResponse,
+    QueriesOverTimeRequest,
+    QueriesOverTimeResponse,
     type LapisBaseRequest,
     type MutationsRequest,
     type MutationsResponse,
@@ -97,6 +100,14 @@ export const lapisRequestMocks = {
         testServer.use(
             http.post(mutationsOverTimeEndpoint(DUMMY_LAPIS_URL, sequenceType), postResolver(expectedRequests)),
         );
+    },
+    queriesOverTime: (
+        expectedRequests: {
+            body: QueriesOverTimeRequest;
+            response: QueriesOverTimeResponse;
+        }[],
+    ) => {
+        testServer.use(http.post(queriesOverTimeEndpoint(DUMMY_LAPIS_URL), postResolver(expectedRequests)));
     },
     lineageDefinition: (response: LineageDefinitionResponse, lineageField: string, statusCode: number = 200) => {
         testServer.use(

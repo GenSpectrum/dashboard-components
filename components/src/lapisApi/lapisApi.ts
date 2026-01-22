@@ -1,3 +1,4 @@
+import { lineageDefinitionResponseSchema } from './LineageDefinition';
 import { referenceGenomeResponse } from './ReferenceGenome';
 import {
     aggregatedResponse,
@@ -11,9 +12,10 @@ import {
     type ProblemDetail,
     type MutationsOverTimeRequest,
     mutationsOverTimeResponse,
+    type QueriesOverTimeRequest,
+    queriesOverTimeResponse,
 } from './lapisTypes';
 import { type SequenceType } from '../types';
-import { lineageDefinitionResponseSchema } from './LineageDefinition';
 
 export class UnknownLapisError extends Error {
     constructor(
@@ -136,6 +138,23 @@ export async function fetchMutationsOverTime(
     return mutationsOverTimeResponse.parse(await response.json());
 }
 
+export async function fetchQueriesOverTime(lapisUrl: string, body: QueriesOverTimeRequest, signal?: AbortSignal) {
+    const response = await callLapis(
+        queriesOverTimeEndpoint(lapisUrl),
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+            signal,
+        },
+        'queries over time',
+    );
+
+    return queriesOverTimeResponse.parse(await response.json());
+}
+
 export async function fetchReferenceGenome(lapisUrl: string, signal?: AbortSignal) {
     const response = await callLapis(
         referenceGenomeEndpoint(lapisUrl),
@@ -244,6 +263,7 @@ export const mutationsOverTimeEndpoint = (lapisUrl: string, sequenceType: Sequen
         ? `${lapisUrl}/component/aminoAcidMutationsOverTime`
         : `${lapisUrl}/component/nucleotideMutationsOverTime`;
 };
+export const queriesOverTimeEndpoint = (lapisUrl: string) => `${lapisUrl}/component/queriesOverTime`;
 export const referenceGenomeEndpoint = (lapisUrl: string) => `${lapisUrl}/sample/referenceGenome`;
 export const lineageDefinitionEndpoint = (lapisUrl: string, lapisField: string) =>
     `${lapisUrl}/sample/lineageDefinition/${lapisField}`;
