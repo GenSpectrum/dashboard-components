@@ -23,7 +23,6 @@ cd components
 ### Build
 ```bash
 npm run build                    # Full build (dist + standalone bundle)
-npm run build-and-pack           # Build and create .tgz package
 ```
 
 ### Lint
@@ -51,7 +50,6 @@ npm run storybook                # Start Storybook (web-components, port 6006)
 npm run storybook-preact         # Start Preact Storybook (port 6007)
 npm run test:storybook           # Test Storybook stories
 npm run test:storybook:preact    # Test Preact Storybook stories
-npm run build-storybook          # Build Storybook static
 ```
 
 ## Code Style Guidelines
@@ -104,6 +102,4 @@ Use inline type imports: `import { type Foo } from 'bar'`
 ### Error Handling
 - Use `UserFacingError` for errors shown to users
 - Wrap components in `ErrorBoundary` for error boundaries
-- Validate URLs and external inputs with Zod schemas
-- Log errors via `console.error` (but `console.log` is banned by ESLint)
-- For async operations in Lit components, use `@lit/task` Task rather than manual async/await
+- Validate props of web components as soon as they enter a Preact component and results from APi calls with Zod schemas
