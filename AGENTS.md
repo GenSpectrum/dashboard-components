@@ -102,4 +102,4 @@ Use inline type imports: `import { type Foo } from 'bar'`
 ### Error Handling
 - Use `UserFacingError` for errors shown to users
 - Wrap components in `ErrorBoundary` for error boundaries
-- Validate props of web components as soon as they enter a Preact component and results from APi calls with Zod schemas
+- Validate props of web components as soon as they enter a Preact component and results from API calls with Zod schemas
