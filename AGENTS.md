@@ -10,7 +10,7 @@ This file contains guidelines for agentic coding agents working on this reposito
 - Styling: TailwindCSS 4 + DaisyUI
 - Maps: chartjs, Leaflet
 - Utilities: Dayjs, Zod
-- Package Manager: Yarn
+- Package Manager: npm
 
 ## Build / Lint / Test Commands
 
@@ -33,7 +33,6 @@ npm run lint:eslint              # ESLint only
 npm run lint:lit-analyzer        # Lit analyzer only
 npm run check-types              # TypeScript type checking (no emit)
 npm run check-format             # Prettier check
-npm run check-dependencies       # Depcheck
 npm run format                   # Format code with Prettier
 ```
 
@@ -51,6 +50,7 @@ npx vitest path/to/test.spec.ts --typecheck --watch
 npm run storybook                # Start Storybook (web-components, port 6006)
 npm run storybook-preact         # Start Preact Storybook (port 6007)
 npm run test:storybook           # Test Storybook stories
+npm run test:storybook:preact    # Test Preact Storybook stories
 npm run build-storybook          # Build Storybook static
 ```
 
@@ -106,4 +106,4 @@ Use inline type imports: `import { type Foo } from 'bar'`
 - Wrap components in `ErrorBoundary` for error boundaries
 - Validate URLs and external inputs with Zod schemas
 - Log errors via `console.error` (but `console.log` is banned by ESLint)
-- For async operations, use `@lit/task` Task rather than manual async/await
+- For async operations in Lit components, use `@lit/task` Task rather than manual async/await
