@@ -1,6 +1,6 @@
 {
     "data": {
-        "queries": ["BA.1 Lineage", "BA.2 Lineage", "XBB Lineage"],
+        "queries": ["S:F456L (single mutation)", "R346T + F456L (combination)", "C22916T or T22917G (nucleotide OR)"],
         "dateRanges": [
             { "dateFrom": "2024-01-01", "dateTo": "2024-01-31" },
             { "dateFrom": "2024-02-01", "dateTo": "2024-02-29" },
