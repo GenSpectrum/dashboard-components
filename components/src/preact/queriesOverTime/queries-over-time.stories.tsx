@@ -3,16 +3,16 @@ import { expect, userEvent, waitFor } from '@storybook/test';
 import { type Canvas } from '@storybook/types';
 
 import { QueriesOverTime, type QueriesOverTimeProps } from './queries-over-time';
+import mockDefaultQueriesOverTime from './__mockData__/defaultMockData/queriesOverTime.json';
+import mock1800sQueriesOverTime from './__mockData__/request1800s.json';
+import mockWithGapsQueriesOverTime from './__mockData__/withGaps.json';
+import mockManyQueriesOverTime from './__mockData__/manyQueries.json';
 import { LAPIS_URL } from '../../constants';
 import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
-import mockDefaultQueriesOverTime from './__mockData__/defaultMockData/queriesOverTime.json';
-import mock1800sQueriesOverTime from './__mockData__/request1800s.json';
-import mockWithGapsQueriesOverTime from './__mockData__/withGaps.json';
-import mockManyQueriesOverTime from './__mockData__/manyQueries.json';
 
 const meta: Meta<QueriesOverTimeProps> = {
     title: 'Visualization/Queries over time',

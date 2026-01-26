@@ -6,6 +6,7 @@ import '../gs-app';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL } from '../../constants';
 import mockDefaultQueriesOverTime from '../../preact/queriesOverTime/__mockData__/defaultMockData/queriesOverTime.json';
+import mockWithGapsQueriesOverTime from '../../preact/queriesOverTime/__mockData__/withGaps.json';
 import { type QueriesOverTimeProps } from '../../preact/queriesOverTime/queries-over-time';
 
 const codeExample = String.raw`
@@ -13,14 +14,14 @@ const codeExample = String.raw`
     lapisFilter='{ "pangoLineage": "JN.1*", "dateFrom": "2024-01-15", "dateTo": "2024-04-30" }'
     queries='[
         {
-            "displayLabel": "BA.1 Lineage",
-            "countQuery": "pangoLineage:BA.1*",
-            "coverageQuery": ""
+            "displayLabel": "S:F456L (single mutation)",
+            "countQuery": "S:456L",
+            "coverageQuery": "!S:456N"
         },
         {
-            "displayLabel": "BA.2 Lineage",
-            "countQuery": "pangoLineage:BA.2*",
-            "coverageQuery": ""
+            "displayLabel": "R346T + F456L (combination)",
+            "countQuery": "S:346T & S:456L",
+            "coverageQuery": "!S:346N & !S:456N"
         }
     ]'
     views='["grid"]'
@@ -57,19 +58,19 @@ const meta: Meta<Required<QueriesOverTimeProps>> = {
         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-04-30' },
         queries: [
             {
-                displayLabel: 'BA.1 Lineage',
-                countQuery: 'pangoLineage:BA.1*',
-                coverageQuery: '',
+                displayLabel: 'S:F456L (single mutation)',
+                countQuery: 'S:456L',
+                coverageQuery: '!S:456N',
             },
             {
-                displayLabel: 'BA.2 Lineage',
-                countQuery: 'pangoLineage:BA.2*',
-                coverageQuery: '',
+                displayLabel: 'R346T + F456L (combination)',
+                countQuery: 'S:346T & S:456L',
+                coverageQuery: '!S:346N & !S:456N',
             },
             {
-                displayLabel: 'XBB Lineage',
-                countQuery: 'pangoLineage:XBB*',
-                coverageQuery: '',
+                displayLabel: 'C22916T or T22917G (nucleotide OR)',
+                countQuery: 'C22916T | T22917G',
+                coverageQuery: '!22916N & !22917N',
             },
         ],
         views: ['grid'],
@@ -99,19 +100,19 @@ const meta: Meta<Required<QueriesOverTimeProps>> = {
                             },
                             queries: [
                                 {
-                                    displayLabel: 'BA.1 Lineage',
-                                    countQuery: 'pangoLineage:BA.1*',
-                                    coverageQuery: '',
+                                    displayLabel: 'S:F456L (single mutation)',
+                                    countQuery: 'S:456L',
+                                    coverageQuery: '!S:456N',
                                 },
                                 {
-                                    displayLabel: 'BA.2 Lineage',
-                                    countQuery: 'pangoLineage:BA.2*',
-                                    coverageQuery: '',
+                                    displayLabel: 'R346T + F456L (combination)',
+                                    countQuery: 'S:346T & S:456L',
+                                    coverageQuery: '!S:346N & !S:456N',
                                 },
                                 {
-                                    displayLabel: 'XBB Lineage',
-                                    countQuery: 'pangoLineage:XBB*',
-                                    coverageQuery: '',
+                                    displayLabel: 'C22916T or T22917G (nucleotide OR)',
+                                    countQuery: 'C22916T | T22917G',
+                                    coverageQuery: '!22916N & !22917N',
                                 },
                             ],
                             dateRanges: [
@@ -166,5 +167,122 @@ export const WithFixedHeight: StoryObj<Required<QueriesOverTimeProps>> = {
     args: {
         ...Template.args,
         height: '700px',
+    },
+};
+
+export const ByWeek: StoryObj<Required<QueriesOverTimeProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-02-11' },
+        granularity: 'week',
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/component/queriesOverTime`,
+                        body: {
+                            filters: {
+                                pangoLineage: 'JN.1*',
+                                dateFrom: '2024-01-15',
+                                dateTo: '2024-02-11',
+                            },
+                            dateRanges: [
+                                { dateFrom: '2024-01-15', dateTo: '2024-01-21' },
+                                { dateFrom: '2024-01-22', dateTo: '2024-01-28' },
+                                { dateFrom: '2024-01-29', dateTo: '2024-02-04' },
+                                { dateFrom: '2024-02-05', dateTo: '2024-02-11' },
+                            ],
+                        },
+                        matchPartialBody: true,
+                        response: {
+                            status: 200,
+                            body: mockDefaultQueriesOverTime,
+                        },
+                    },
+                },
+            ],
+        },
+    },
+};
+
+export const WithCustomColumns: StoryObj<Required<QueriesOverTimeProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        customColumns: [
+            {
+                header: 'Jaccard Index',
+                values: {
+                    'S:F456L (single mutation)': 0.75,
+                    'R346T + F456L (combination)': 0.92,
+                    'C22916T or T22917G (nucleotide OR)': 0.58,
+                },
+            },
+        ],
+    },
+};
+
+export const HideGaps: StoryObj<Required<QueriesOverTimeProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
+        queries: [
+            {
+                displayLabel: 'S:F456L',
+                countQuery: 'S:456L',
+                coverageQuery: '!S:456N',
+            },
+            {
+                displayLabel: 'S:R346T',
+                countQuery: 'S:346T',
+                coverageQuery: '!S:346N',
+            },
+            {
+                displayLabel: 'S:Q493E',
+                countQuery: 'S:493E',
+                coverageQuery: '!S:493N',
+            },
+        ],
+        hideGaps: true,
+    },
+    parameters: {
+        fetchMock: {
+            mocks: [
+                {
+                    matcher: {
+                        url: `${LAPIS_URL}/component/queriesOverTime`,
+                        body: {
+                            filters: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
+                            dateRanges: [
+                                { dateFrom: '2024-01-01', dateTo: '2024-01-31' },
+                                { dateFrom: '2024-02-01', dateTo: '2024-02-29' },
+                                { dateFrom: '2024-03-01', dateTo: '2024-03-31' },
+                                { dateFrom: '2024-04-01', dateTo: '2024-04-30' },
+                                { dateFrom: '2024-05-01', dateTo: '2024-05-31' },
+                                { dateFrom: '2024-06-01', dateTo: '2024-06-30' },
+                                { dateFrom: '2024-07-01', dateTo: '2024-07-31' },
+                            ],
+                        },
+                        matchPartialBody: true,
+                        response: {
+                            status: 200,
+                            body: mockWithGapsQueriesOverTime,
+                        },
+                    },
+                },
+            ],
+        },
+    },
+};
+
+export const SmallWidth: StoryObj<Required<QueriesOverTimeProps>> = {
+    ...Template,
+    args: {
+        ...Template.args,
+        width: '300px',
     },
 };
