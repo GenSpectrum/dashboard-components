@@ -180,6 +180,37 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Grid',
     },
     {
+        id: 'visualization-queries-over-time--default',
+        title: 'Queries over time',
+        loadingIsDoneIndicator: 'Grid',
+        testDownloadWithFilename: 'queries_over_time.csv',
+    },
+    {
+        id: 'visualization-queries-over-time--with-fixed-height',
+        title: 'Queries over time',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
+        id: 'visualization-queries-over-time--by-week',
+        title: 'Queries over time',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
+        id: 'visualization-queries-over-time--with-custom-columns',
+        title: 'Queries over time',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
+        id: 'visualization-queries-over-time--hide-gaps',
+        title: 'Queries over time',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
+        id: 'visualization-queries-over-time--small-width',
+        title: 'Queries over time',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
         id: 'visualization-statistics--default',
         title: 'Statistics',
         loadingIsDoneIndicator: 'Sequences',
