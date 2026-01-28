@@ -43,7 +43,7 @@ export function getFilteredQueryOverTimeData({
 
         dates.forEach((date) => {
             const value = filteredData.get(query, date);
-            if (value !== null && value !== undefined && value.type === 'valueWithCoverage') {
+            if (value?.type === 'valueWithCoverage') {
                 totalCount += value.count;
                 totalCoverage += value.coverage;
             }
