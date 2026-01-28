@@ -1,0 +1,52 @@
+{
+    "data": {
+        "queries": ["S:F456L", "S:R346T", "S:Q493E"],
+        "dateRanges": [
+            { "dateFrom": "2024-01-01", "dateTo": "2024-01-31" },
+            { "dateFrom": "2024-02-01", "dateTo": "2024-02-29" },
+            { "dateFrom": "2024-03-01", "dateTo": "2024-03-31" },
+            { "dateFrom": "2024-04-01", "dateTo": "2024-04-30" },
+            { "dateFrom": "2024-05-01", "dateTo": "2024-05-31" },
+            { "dateFrom": "2024-06-01", "dateTo": "2024-06-30" },
+            { "dateFrom": "2024-07-01", "dateTo": "2024-07-31" }
+        ],
+        "data": [
+            [
+                { "count": 100, "coverage": 1000 },
+                { "count": 150, "coverage": 1050 },
+                { "count": 200, "coverage": 1100 },
+                { "count": 0, "coverage": 0 },
+                { "count": 250, "coverage": 1200 },
+                { "count": 300, "coverage": 1250 },
+                { "count": 350, "coverage": 1300 }
+            ],
+            [
+                { "count": 200, "coverage": 1000 },
+                { "count": 250, "coverage": 1050 },
+                { "count": 300, "coverage": 1100 },
+                { "count": 0, "coverage": 0 },
+                { "count": 350, "coverage": 1200 },
+                { "count": 400, "coverage": 1250 },
+                { "count": 450, "coverage": 1300 }
+            ],
+            [
+                { "count": 50, "coverage": 1000 },
+                { "count": 75, "coverage": 1050 },
+                { "count": 100, "coverage": 1100 },
+                { "count": 0, "coverage": 0 },
+                { "count": 125, "coverage": 1200 },
+                { "count": 150, "coverage": 1250 },
+                { "count": 175, "coverage": 1300 }
+            ]
+        ],
+        "totalCountsByDateRange": [1000, 1050, 1100, 0, 1200, 1250, 1300]
+    },
+    "info": {
+        "dataVersion": "test",
+        "requestId": "test-request-gaps",
+        "requestInfo": "Mock data with gaps for testing hide gaps functionality",
+        "reportTo": "https://github.com/GenSpectrum/LAPIS/issues",
+        "lapisVersion": "test",
+        "siloVersion": "test"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "data": {
+        "queries": [],
+        "dateRanges": [{ "dateFrom": "1800-01-01", "dateTo": "1800-12-31" }],
+        "data": [],
+        "totalCountsByDateRange": []
+    },
+    "info": {
+        "dataVersion": null,
+        "requestId": "test-request-1800s",
+        "requestInfo": "Mock data for 1800s empty dataset test",
+        "reportTo": "https://github.com/GenSpectrum/LAPIS/issues",
+        "lapisVersion": "test",
+        "siloVersion": "test"
+    }
+}

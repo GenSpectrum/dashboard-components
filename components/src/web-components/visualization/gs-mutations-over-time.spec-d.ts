@@ -32,6 +32,9 @@ describe('gs-mutations-over-time', () => {
         expectTypeOf<typeof MutationsOverTimeComponent.prototype.initialMeanProportionInterval>().toEqualTypeOf<
             MutationsOverTimeProps['initialMeanProportionInterval']
         >();
+        expectTypeOf<typeof MutationsOverTimeComponent.prototype.hideGaps>().toEqualTypeOf<
+            MutationsOverTimeProps['hideGaps']
+        >();
         expectTypeOf<typeof MutationsOverTimeComponent.prototype.pageSizes>().toEqualTypeOf<
             MutationsOverTimeProps['pageSizes']
         >();

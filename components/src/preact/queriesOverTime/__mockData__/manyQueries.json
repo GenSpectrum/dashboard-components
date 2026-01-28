@@ -1,0 +1,128 @@
+{
+    "data": {
+        "queries": [
+            "S:F456L",
+            "S:R346T",
+            "S:Q493E",
+            "S:F486P",
+            "S:N460K",
+            "S:L455F",
+            "S:L455S",
+            "S:T572I",
+            "S:R190S",
+            "S:R190T",
+            "S:K478T",
+            "S:T22N",
+            "S:S31P",
+            "ORF1b:S997L",
+            "C875A"
+        ],
+        "dateRanges": [
+            { "dateFrom": "2024-01-01", "dateTo": "2024-01-31" },
+            { "dateFrom": "2024-02-01", "dateTo": "2024-02-29" },
+            { "dateFrom": "2024-03-01", "dateTo": "2024-03-31" },
+            { "dateFrom": "2024-04-01", "dateTo": "2024-04-30" }
+        ],
+        "data": [
+            [
+                { "count": 450, "coverage": 1000 },
+                { "count": 380, "coverage": 950 },
+                { "count": 280, "coverage": 900 },
+                { "count": 120, "coverage": 850 }
+            ],
+            [
+                { "count": 320, "coverage": 1000 },
+                { "count": 420, "coverage": 950 },
+                { "count": 380, "coverage": 900 },
+                { "count": 290, "coverage": 850 }
+            ],
+            [
+                { "count": 80, "coverage": 1000 },
+                { "count": 150, "coverage": 950 },
+                { "count": 340, "coverage": 900 },
+                { "count": 480, "coverage": 850 }
+            ],
+            [
+                { "count": 200, "coverage": 1000 },
+                { "count": 250, "coverage": 950 },
+                { "count": 300, "coverage": 900 },
+                { "count": 350, "coverage": 850 }
+            ],
+            [
+                { "count": 150, "coverage": 1000 },
+                { "count": 200, "coverage": 950 },
+                { "count": 250, "coverage": 900 },
+                { "count": 300, "coverage": 850 }
+            ],
+            [
+                { "count": 100, "coverage": 1000 },
+                { "count": 150, "coverage": 950 },
+                { "count": 200, "coverage": 900 },
+                { "count": 250, "coverage": 850 }
+            ],
+            [
+                { "count": 180, "coverage": 1000 },
+                { "count": 220, "coverage": 950 },
+                { "count": 260, "coverage": 900 },
+                { "count": 300, "coverage": 850 }
+            ],
+            [
+                { "count": 220, "coverage": 1000 },
+                { "count": 280, "coverage": 950 },
+                { "count": 340, "coverage": 900 },
+                { "count": 400, "coverage": 850 }
+            ],
+            [
+                { "count": 90, "coverage": 1000 },
+                { "count": 120, "coverage": 950 },
+                { "count": 150, "coverage": 900 },
+                { "count": 180, "coverage": 850 }
+            ],
+            [
+                { "count": 300, "coverage": 1000 },
+                { "count": 350, "coverage": 950 },
+                { "count": 400, "coverage": 900 },
+                { "count": 450, "coverage": 850 }
+            ],
+            [
+                { "count": 50, "coverage": 1000 },
+                { "count": 75, "coverage": 950 },
+                { "count": 100, "coverage": 900 },
+                { "count": 125, "coverage": 850 }
+            ],
+            [
+                { "count": 270, "coverage": 1000 },
+                { "count": 310, "coverage": 950 },
+                { "count": 350, "coverage": 900 },
+                { "count": 390, "coverage": 850 }
+            ],
+            [
+                { "count": 160, "coverage": 1000 },
+                { "count": 200, "coverage": 950 },
+                { "count": 240, "coverage": 900 },
+                { "count": 280, "coverage": 850 }
+            ],
+            [
+                { "count": 400, "coverage": 1000 },
+                { "count": 420, "coverage": 950 },
+                { "count": 440, "coverage": 900 },
+                { "count": 460, "coverage": 850 }
+            ],
+            [
+                { "count": 330, "coverage": 1000 },
+                { "count": 360, "coverage": 950 },
+                { "count": 390, "coverage": 900 },
+                { "count": 420, "coverage": 850 }
+            ]
+        ],
+        "totalCountsByDateRange": [1000, 950, 900, 850]
+    },
+    "info": {
+        "dataVersion": "test",
+        "requestId": "test-request-many-queries",
+        "requestInfo": "Mock data with many queries for testing pagination",
+        "reportTo": "https://github.com/GenSpectrum/LAPIS/issues",
+        "lapisVersion": "test",
+        "siloVersion": "test"
+    }
+}
