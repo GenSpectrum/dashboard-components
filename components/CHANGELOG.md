@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.13.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.12.0...dashboard-components-v1.13.0) (2026-01-28)
+
+
+### Features
+
+* **components:** add queryQueriesOverTime querying function ([#1067](https://github.com/GenSpectrum/dashboard-components/issues/1067)) ([e0d16f3](https://github.com/GenSpectrum/dashboard-components/commit/e0d16f31ad9a96290f26d7075e8f2f01a2cf5a8b))
+
+
+### Bug Fixes
+
+* **components:** add missing 'X' amino acid mutation character ([#1072](https://github.com/GenSpectrum/dashboard-components/issues/1072)) ([f59ffc9](https://github.com/GenSpectrum/dashboard-components/commit/f59ffc9503cd6d772047d45d3c98a6c736474c7e))
+
 ## [1.12.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.11.1...dashboard-components-v1.12.0) (2025-12-15)
 
 
