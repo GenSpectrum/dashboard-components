@@ -15,7 +15,7 @@ export interface MutationClass extends Mutation {
 
 // Allowed IUPAC characters: https://www.bioinformatics.org/sms/iupac.html
 const nucleotideChars = 'ACGTRYKMSWBDHVN';
-const aminoAcidChars = 'ACDEFGHIKLMNPQRSTVWY';
+const aminoAcidChars = 'ACDEFGHIKLMNPQRSTVWYX';
 
 function segmentPart(isOptional: boolean) {
     const segmentPart = `(?<segment>[A-Z0-9_-]+):`;

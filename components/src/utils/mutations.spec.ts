@@ -34,6 +34,12 @@ describe('SubstitutionClass', () => {
             expect(substitution.toString()).to.equal(expected);
         }
     });
+
+    it('should parse X correclty', () => {
+        expect(SubstitutionClass.parse('NP:X114D')).deep.equal(new SubstitutionClass('NP', 'X', 'D', 114));
+        expect(SubstitutionClass.parse('NP:D114X')).deep.equal(new SubstitutionClass('NP', 'D', 'X', 114));
+        expect(SubstitutionClass.parse('NP:X114X')).deep.equal(new SubstitutionClass('NP', 'X', 'X', 114));
+    });
 });
 
 describe('DeletionClass', () => {
