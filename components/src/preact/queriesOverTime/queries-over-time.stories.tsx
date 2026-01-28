@@ -159,9 +159,7 @@ export const ShowsNoDataWhenNoQueriesMatch: StoryObj<QueriesOverTimeProps> = {
         },
     },
     play: async ({ canvas }) => {
-        await waitFor(() => expect(canvas.getByText('No data available.', { exact: false })).toBeVisible(), {
-            timeout: 10000,
-        });
+        await waitFor(() => expect(canvas.getByText('No data available.', { exact: false })).toBeVisible());
     },
 };
 
