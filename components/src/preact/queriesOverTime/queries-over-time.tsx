@@ -136,17 +136,20 @@ const QueriesOverTimeTabs: FunctionComponent<QueriesOverTimeTabsProps> = ({
         });
     }, [queryOverTimeData, proportionInterval, hideGaps, queryFilterValue]);
 
-    const queryRenderer: FeatureRenderer<string> = {
-        asString: (value: string) => value,
-        renderRowLabel: (value: string) => (
-            <div className={'text-center'}>
-                <span>{value}</span>
-            </div>
-        ),
-        renderTooltip: (value: string, temporal: Temporal, proportionValue: ProportionValue) => (
-            <QueriesOverTimeGridTooltip query={value} date={temporal} value={proportionValue} />
-        ),
-    };
+    const queryRenderer = useMemo<FeatureRenderer<string>>(
+        () => ({
+            asString: (value: string) => value,
+            renderRowLabel: (value: string) => (
+                <div className='text-center'>
+                    <span>{value}</span>
+                </div>
+            ),
+            renderTooltip: (value: string, temporal: Temporal, proportionValue: ProportionValue) => (
+                <QueriesOverTimeGridTooltip query={value} date={temporal} value={proportionValue} />
+            ),
+        }),
+        [],
+    );
 
     const getTab = (view: QueriesOverTimeView) => {
         switch (view) {
