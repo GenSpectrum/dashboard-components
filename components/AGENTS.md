@@ -30,6 +30,7 @@ npm run build                    # Full build (dist + standalone bundle)
 ```bash
 npm run lint                     # Run lit-analyzer + eslint
 npm run lint:eslint              # ESLint only
+npm run lint:eslint -- --fix     # ESLint only and autofix problems where possible
 npm run lint:lit-analyzer        # Lit analyzer only
 npm run check-types              # TypeScript type checking (no emit)
 npm run check-format             # Prettier check
