@@ -22,11 +22,13 @@ npm ci                           # Install dependencies
 ```
 
 ### Build
+
 ```bash
 npm run build                    # Full build (dist + standalone bundle)
 ```
 
 ### Lint
+
 ```bash
 npm run lint                     # Run lit-analyzer + eslint
 npm run lint:eslint              # ESLint only
@@ -54,6 +56,7 @@ npm run generate-manifest:watch
 ```
 
 ### Test
+
 ```bash
 # Unit tests
 npm run test
@@ -66,7 +69,6 @@ npm run test:storybook:preact   # Preact Storybook
 npm run test:playwright
 npm run test:playwright:update-snapshots  # Update snapshots
 ```
-
 
 ## Architecture
 
@@ -125,6 +127,7 @@ interface Operator<T> {
 ```
 
 **Key operators:**
+
 - `FetchAggregatedOperator`, `FetchDetailsOperator`, `FetchInsertionsOperator`, `FetchSubstitutionsOrDeletionsOperator` - Fetch from LAPIS
 - `MapOperator` - Transform each item (like Array.map)
 - `DivisionOperator` - Join two datasets and divide values (for prevalence)
@@ -171,6 +174,7 @@ The `gs-app` component provides global context (LAPIS URL, reference genome, mut
 ### Two Build Outputs
 
 **vite.release.config.ts** - Library build:
+
 - Entry points: `components` (browser) and `util` (Node.js compatible)
 - ES modules only
 - Dependencies are external (not bundled)
@@ -178,6 +182,7 @@ The `gs-app` component provides global context (LAPIS URL, reference genome, mut
 - No minification (left to consumers)
 
 **vite.release-standalone.config.ts** - Standalone build:
+
 - Bundles ALL dependencies into single file
 - For use without package manager (CDN, unpkg)
 - Output: `/standalone-bundle/dashboard-components.js`
