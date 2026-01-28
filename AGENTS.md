@@ -9,7 +9,7 @@ that visualize data from [LAPIS](https://github.com/GenSpectrum/LAPIS) instances
 The main package is published to npm as `@genspectrum/dashboard-components`.
 
 All component code lives in the `/components/` directory.
-Refer to [componets/AGENTS.md](./components/AGENTS.md) for specific guidelines related to the components package.
+Refer to [components/AGENTS.md](./components/AGENTS.md) for specific guidelines related to the components package.
 The root package.json is minimal and only used for tooling (commitlint, release-please).
 
 `./examples/` contains example projects demonstrating usage of the components package.
