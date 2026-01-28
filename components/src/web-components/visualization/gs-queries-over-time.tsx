@@ -45,6 +45,8 @@ export class QueriesOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
      * - displayLabel: string - The name to show in the grid row label
      * - countQuery: string - Query string to count matches
      * - coverageQuery: string - Query string to determine coverage/denominator
+     * 
+     * Both queries (count and coverage) are 'advanced queries' as they are defined in LAPIS.
      */
     @property({ type: Array })
     queries: {
