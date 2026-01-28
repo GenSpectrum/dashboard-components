@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.13.0...dashboard-components-v1.14.0) (2026-01-28)
+
+
+### Features
+
+* **components:** queries over time component ([#1069](https://github.com/GenSpectrum/dashboard-components/issues/1069)) ([136a311](https://github.com/GenSpectrum/dashboard-components/commit/136a311b88acbecb611ca076919e31791ba7704b))
+
 ## [1.13.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.12.0...dashboard-components-v1.13.0) (2026-01-28)
 
 
