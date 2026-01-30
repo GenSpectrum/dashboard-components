@@ -11,6 +11,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      id-token: write  # Required for OIDC to NPM - https://docs.npmjs.com/trusted-publishers#supported-cicd-providers
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
@@ -46,6 +47,4 @@ jobs:
       - name: Publish
         if: ${{ steps.release.outputs.components--release_created }}
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         working-directory: components
