@@ -39,7 +39,7 @@ const PrevalenceOverTimeBubbleChart = ({
                 };
             });
 
-        if (nonNullDateRangeData.length === 0) {
+        if (nonNullDateRangeData.length === 0 || nonNullDateRangeData[0].content.length === 0) {
             return NO_DATA;
         }
 
