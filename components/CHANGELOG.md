@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.14.0...dashboard-components-v1.14.1) (2026-02-02)
+
+
+### Bug Fixes
+
+* **components:** prevalence over time bubble chart: type error when there is no non-null data ([#1078](https://github.com/GenSpectrum/dashboard-components/issues/1078)) ([141e96b](https://github.com/GenSpectrum/dashboard-components/commit/141e96b6fc5508b769e42fbb4a499e7d8c736a1e)), closes [#1075](https://github.com/GenSpectrum/dashboard-components/issues/1075)
+
 ## [1.14.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.13.0...dashboard-components-v1.14.0) (2026-01-28)
 
 
