@@ -5,10 +5,10 @@
   "description": "A collection of GenSpectrum dashboards and components",
   "type": "module",
   "devDependencies": {
-    "@commitlint/cli": "^20.2.0",
-    "@commitlint/config-conventional": "^20.0.0",
+    "@commitlint/cli": "^20.4.1",
+    "@commitlint/config-conventional": "^20.4.1",
     "@commitlint/types": "^20.2.0",
-    "release-please": "^17.1.2"
+    "release-please": "^17.2.0"
   },
   "scripts": {
     "release-please-dry-run": "release-please release-pr --dry-run --config-file=components/release-please-config.json --manifest-file=components/.release-please-manifest.json --repo-url='https://github.com/GenSpectrum/dashboard-components' --path components",
