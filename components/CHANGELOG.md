@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.14.1...dashboard-components-v1.14.2) (2026-02-04)
+
+
+### Bug Fixes
+
+* **components:** use null values instead of undefined for wastewater-over-time plots ([#1081](https://github.com/GenSpectrum/dashboard-components/issues/1081)) ([def5f5e](https://github.com/GenSpectrum/dashboard-components/commit/def5f5eeebd1b2f9e640bae6c0a7afaeacbe9762))
+
 ## [1.14.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.14.0...dashboard-components-v1.14.1) (2026-02-02)
 
 
