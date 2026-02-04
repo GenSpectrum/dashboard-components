@@ -30,7 +30,7 @@ export type CustomColumn = z.infer<typeof customColumnSchema>;
 export interface FeatureRenderer<D> {
     asString(value: D): string;
     renderRowLabel(value: D): JSX.Element;
-    renderTooltip(value: D, temporal: Temporal, proportionValue: ProportionValue | undefined): JSX.Element;
+    renderTooltip(value: D, temporal: Temporal, proportionValue: ProportionValue): JSX.Element;
 }
 
 export interface FeaturesOverTimeGridProps<F> {
@@ -99,11 +99,19 @@ function FeaturesOverTimeGrid<F>({
                     </div>
                 ),
                 cell: ({ getValue, row, column, table }) => {
-                    const value = getValue();
+                    const valueRaw = getValue();
+                    const value = valueRaw ?? null;
                     const rowIndex = row.index;
                     const columnIndex = column.getIndex();
                     const numberOfRows = table.getRowModel().rows.length;
                     const numberOfColumns = table.getAllColumns().length;
+
+                    if (valueRaw === undefined) {
+                        // eslint-disable-next-line no-console -- We want to warn that something might be wrong.
+                        console.error(
+                            `Found undefined value for ${row.original.feature} - ${date.dateString}. This shouldn't happen.`,
+                        );
+                    }
 
                     const tooltip = featureRenderer.renderTooltip(row.original.feature, date, value);
 

@@ -156,4 +156,59 @@ describe('groupMutationDataByLocation', () => {
 
         expect(location1Data.getFirstAxisKeys()).to.deep.equal([mutation1, mutation2, mutation3]);
     });
+
+    test('should backfill missing mutation-date combinations with explicit null', () => {
+        const input: WastewaterData = [
+            {
+                location: location1,
+                date: temporalCache.getYearMonthDay('2025-01-01'),
+                nucleotideMutationFrequency: [
+                    { mutation: mutation1, proportion: 0.1 },
+                    // mutation2 missing for this date
+                ],
+                aminoAcidMutationFrequency: [],
+            },
+            {
+                location: location1,
+                date: temporalCache.getYearMonthDay('2025-01-02'),
+                nucleotideMutationFrequency: [
+                    // mutation1 missing for this date
+                    { mutation: mutation2, proportion: 0.2 },
+                ],
+                aminoAcidMutationFrequency: [],
+            },
+        ];
+
+        const result = groupMutationDataByLocation(input, 'nucleotide');
+
+        expect(result).to.have.length(1);
+        const location1Data = result[0].data;
+
+        // Both mutations should appear in all dates
+        expect(location1Data.getFirstAxisKeys()).to.deep.equal([mutation1, mutation2]);
+        expect(location1Data.getSecondAxisKeys()).to.deep.equal([
+            temporalCache.getYearMonthDay('2025-01-01'),
+            temporalCache.getYearMonthDay('2025-01-02'),
+        ]);
+
+        // Verify backfilled nulls (not undefined)
+        expect(location1Data.get(mutation1, temporalCache.getYearMonthDay('2025-01-02'))).to.equal(null);
+        expect(location1Data.get(mutation2, temporalCache.getYearMonthDay('2025-01-01'))).to.equal(null);
+
+        // Verify actual values still present
+        expect(location1Data.get(mutation1, temporalCache.getYearMonthDay('2025-01-01'))).to.deep.equal({
+            type: 'wastewaterValue',
+            proportion: 0.1,
+        });
+        expect(location1Data.get(mutation2, temporalCache.getYearMonthDay('2025-01-02'))).to.deep.equal({
+            type: 'wastewaterValue',
+            proportion: 0.2,
+        });
+
+        // Verify the complete grid with getAsArray
+        expect(location1Data.getAsArray()).to.deep.equal([
+            [{ type: 'wastewaterValue', proportion: 0.1 }, null],
+            [null, { type: 'wastewaterValue', proportion: 0.2 }],
+        ]);
+    });
 });
