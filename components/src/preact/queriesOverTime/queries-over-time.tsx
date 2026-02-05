@@ -141,6 +141,13 @@ const QueriesOverTimeTabs: FunctionComponent<QueriesOverTimeTabsProps> = ({
     const queryRenderer = useMemo<FeatureRenderer<string>>(
         () => ({
             asString: (value: string) => value,
+            // TODO - in the tooltip below, we need to use the value to look up the complete query object
+            // in the 'queries' const, and then pass in the complete query object to the tooltip.
+            // the tooltip needs to be changed to accept the whole query object.
+            // ... but is a lookup even valid? We didn't enforce uniqueness of the labels I'm afraid.
+            // ...
+            /// actually, we already rely on the uniqueness of the labels. Maybe we should change it so
+            // we have an ID and a label? We need the unique thing because in Map2D we use it as a unique key
             renderRowLabel: (value: string) => (
                 <PortalTooltip
                     content={<QueriesOverTimeRowLabelTooltip query={value} />}
