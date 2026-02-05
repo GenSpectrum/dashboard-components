@@ -5,6 +5,7 @@ import z from 'zod';
 import { getFilteredQueryOverTimeData, type QueryFilter } from './getFilteredQueriesOverTimeData';
 import { QueriesOverTimeFilter } from './queries-over-time-filter';
 import { QueriesOverTimeGridTooltip } from './queries-over-time-grid-tooltip';
+import { QueriesOverTimeRowLabelTooltip } from './queries-over-time-row-label-tooltip';
 import { type ProportionValue, getProportion } from '../../query/queryMutationsOverTime';
 import { queryQueriesOverTimeData } from '../../query/queryQueriesOverTime';
 import { lapisFilterSchema, temporalGranularitySchema, views } from '../../types';
@@ -13,6 +14,7 @@ import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinished
 import { useLapisUrl } from '../LapisUrlContext';
 import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
+import PortalTooltip from '../components/portal-tooltip';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import FeaturesOverTimeGrid, { type FeatureRenderer, customColumnSchema } from '../components/features-over-time-grid';
@@ -140,15 +142,21 @@ const QueriesOverTimeTabs: FunctionComponent<QueriesOverTimeTabsProps> = ({
         () => ({
             asString: (value: string) => value,
             renderRowLabel: (value: string) => (
-                <div className='text-center'>
-                    <span>{value}</span>
-                </div>
+                <PortalTooltip
+                    content={<QueriesOverTimeRowLabelTooltip query={value} />}
+                    position='right'
+                    portalTarget={tooltipPortalTarget}
+                >
+                    <div className='text-center'>
+                        <span>{value}</span>
+                    </div>
+                </PortalTooltip>
             ),
             renderTooltip: (value: string, temporal: Temporal, proportionValue: ProportionValue) => (
                 <QueriesOverTimeGridTooltip query={value} date={temporal} value={proportionValue} />
             ),
         }),
-        [],
+        [tooltipPortalTarget],
     );
 
     const getTab = (view: QueriesOverTimeView) => {
