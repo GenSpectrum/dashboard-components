@@ -5,6 +5,7 @@ import z from 'zod';
 import { getFilteredQueryOverTimeData, type QueryFilter } from './getFilteredQueriesOverTimeData';
 import { QueriesOverTimeFilter } from './queries-over-time-filter';
 import { QueriesOverTimeGridTooltip } from './queries-over-time-grid-tooltip';
+import { QueriesOverTimeRowLabelTooltip } from './queries-over-time-row-label-tooltip';
 import { type ProportionValue, getProportion } from '../../query/queryMutationsOverTime';
 import { queryQueriesOverTimeData } from '../../query/queryQueriesOverTime';
 import { lapisFilterSchema, temporalGranularitySchema, views } from '../../types';
@@ -13,6 +14,7 @@ import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinished
 import { useLapisUrl } from '../LapisUrlContext';
 import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
+import PortalTooltip from '../components/portal-tooltip';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import FeaturesOverTimeGrid, { type FeatureRenderer, customColumnSchema } from '../components/features-over-time-grid';
@@ -139,16 +141,29 @@ const QueriesOverTimeTabs: FunctionComponent<QueriesOverTimeTabsProps> = ({
     const queryRenderer = useMemo<FeatureRenderer<string>>(
         () => ({
             asString: (value: string) => value,
+            // TODO - in the tooltip below, we need to use the value to look up the complete query object
+            // in the 'queries' const, and then pass in the complete query object to the tooltip.
+            // the tooltip needs to be changed to accept the whole query object.
+            // ... but is a lookup even valid? We didn't enforce uniqueness of the labels I'm afraid.
+            // ...
+            /// actually, we already rely on the uniqueness of the labels. Maybe we should change it so
+            // we have an ID and a label? We need the unique thing because in Map2D we use it as a unique key
             renderRowLabel: (value: string) => (
-                <div className='text-center'>
-                    <span>{value}</span>
-                </div>
+                <PortalTooltip
+                    content={<QueriesOverTimeRowLabelTooltip query={value} />}
+                    position='right'
+                    portalTarget={tooltipPortalTarget}
+                >
+                    <div className='text-center'>
+                        <span>{value}</span>
+                    </div>
+                </PortalTooltip>
             ),
             renderTooltip: (value: string, temporal: Temporal, proportionValue: ProportionValue) => (
                 <QueriesOverTimeGridTooltip query={value} date={temporal} value={proportionValue} />
             ),
         }),
-        [],
+        [tooltipPortalTarget],
     );
 
     const getTab = (view: QueriesOverTimeView) => {
