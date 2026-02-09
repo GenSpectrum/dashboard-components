@@ -466,6 +466,30 @@ export const WithNoLapisDateFieldField: StoryObj<QueriesOverTimeProps> = {
     },
 };
 
+export const WithDuplicateDisplayLabels: StoryObj<QueriesOverTimeProps> = {
+    ...Default,
+    args: {
+        ...Default.args,
+        queries: [
+            {
+                displayLabel: 'S:F456L (single mutation)',
+                countQuery: 'S:456L',
+                coverageQuery: '!S:456N',
+            },
+            {
+                displayLabel: 'S:F456L (single mutation)',
+                countQuery: 'S:346T & S:456L',
+                coverageQuery: '!S:346N & !S:456N',
+            },
+        ],
+    },
+    play: async ({ canvasElement, step }) => {
+        await step('expect error message', async () => {
+            await expectInvalidAttributesErrorMessage(canvasElement, 'Display labels must be unique');
+        });
+    },
+};
+
 async function expectQueryOnPage(canvas: Canvas, query: string) {
     await waitFor(async () => {
         const queryOnPage = canvas.getAllByText(query)[0];

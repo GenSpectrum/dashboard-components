@@ -57,7 +57,7 @@ const queriesOverTimeSchema = z.object({
                 const duplicateDisplayLabels = findDuplicateStrings(queries.map((v) => v.displayLabel));
                 return duplicateDisplayLabels.length === 0;
             },
-            { message: 'Query names must be unique' },
+            { message: 'Display labels must be unique' },
         ),
     views: z.array(queriesOverTimeViewSchema),
     granularity: temporalGranularitySchema,
