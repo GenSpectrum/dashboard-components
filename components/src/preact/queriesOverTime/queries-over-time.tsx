@@ -138,32 +138,41 @@ const QueriesOverTimeTabs: FunctionComponent<QueriesOverTimeTabsProps> = ({
         });
     }, [queryOverTimeData, proportionInterval, hideGaps, queryFilterValue]);
 
+    const queryLookupMap = useMemo(() => {
+        const map = new Map<string, { displayLabel: string; countQuery: string; coverageQuery: string }>();
+        originalComponentProps.queries.forEach((query) => {
+            map.set(query.displayLabel, query);
+        });
+        return map;
+    }, [originalComponentProps.queries]);
+
     const queryRenderer = useMemo<FeatureRenderer<string>>(
         () => ({
             asString: (value: string) => value,
-            // TODO - in the tooltip below, we need to use the value to look up the complete query object
-            // in the 'queries' const, and then pass in the complete query object to the tooltip.
-            // the tooltip needs to be changed to accept the whole query object.
-            // ... but is a lookup even valid? We didn't enforce uniqueness of the labels I'm afraid.
-            // ...
-            /// actually, we already rely on the uniqueness of the labels. Maybe we should change it so
-            // we have an ID and a label? We need the unique thing because in Map2D we use it as a unique key
-            renderRowLabel: (value: string) => (
-                <PortalTooltip
-                    content={<QueriesOverTimeRowLabelTooltip query={value} />}
-                    position='right'
-                    portalTarget={tooltipPortalTarget}
-                >
-                    <div className='text-center'>
-                        <span>{value}</span>
-                    </div>
-                </PortalTooltip>
-            ),
+            renderRowLabel: (value: string) => {
+                const queryObject = queryLookupMap.get(value);
+
+                return (
+                    <PortalTooltip
+                        content={
+                            <QueriesOverTimeRowLabelTooltip
+                                query={queryObject ?? { displayLabel: value, countQuery: '', coverageQuery: '' }}
+                            />
+                        }
+                        position='right'
+                        portalTarget={tooltipPortalTarget}
+                    >
+                        <div className='text-center'>
+                            <span>{value}</span>
+                        </div>
+                    </PortalTooltip>
+                );
+            },
             renderTooltip: (value: string, temporal: Temporal, proportionValue: ProportionValue) => (
                 <QueriesOverTimeGridTooltip query={value} date={temporal} value={proportionValue} />
             ),
         }),
-        [tooltipPortalTarget],
+        [tooltipPortalTarget, queryLookupMap],
     );
 
     const getTab = (view: QueriesOverTimeView) => {
