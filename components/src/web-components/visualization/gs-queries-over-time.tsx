@@ -42,7 +42,7 @@ export class QueriesOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
      * Required.
      *
      * Array of queries to display. Each query has:
-     * - displayLabel: string - The name to show in the grid row label
+     * - displayLabel: string - The name to show in the grid row label. Must be unique.
      * - description: string (optional) - Optional description shown in tooltip
      * - countQuery: string - Query string to count matches
      * - coverageQuery: string - Query string to determine coverage/denominator

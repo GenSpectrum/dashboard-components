@@ -49,7 +49,16 @@ export type CountCoverageQuery = z.infer<typeof countCoverageQuerySchema>;
 
 const queriesOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
-    queries: z.array(countCoverageQuerySchema).min(1),
+    queries: z
+        .array(countCoverageQuerySchema)
+        .min(1)
+        .refine(
+            (queries) => {
+                const duplicateDisplayLabels = findDuplicateStrings(queries.map((v) => v.displayLabel));
+                return duplicateDisplayLabels.length === 0;
+            },
+            { message: 'Query names must be unique' },
+        ),
     views: z.array(queriesOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
@@ -335,4 +344,14 @@ function getDownloadData(filteredData: ReturnType<typeof getFilteredQueryOverTim
             { query },
         );
     });
+}
+
+function findDuplicateStrings(items: string[]): string[] {
+    const counts = new Map<string, number>();
+
+    for (const item of items) {
+        counts.set(item, (counts.get(item) ?? 0) + 1);
+    }
+
+    return [...counts.entries()].filter(([, count]) => count > 1).map(([key]) => key);
 }
