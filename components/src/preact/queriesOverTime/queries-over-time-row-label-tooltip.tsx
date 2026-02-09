@@ -1,14 +1,9 @@
 import type { FunctionComponent } from 'preact';
 
-export type QueryWithDescription = {
-    displayLabel: string;
-    description?: string;
-    countQuery: string;
-    coverageQuery: string;
-};
+import type { CountCoverageQuery } from './queries-over-time';
 
 export type QueriesOverTimeRowLabelTooltipProps = {
-    query: QueryWithDescription;
+    query: CountCoverageQuery;
 };
 
 export const QueriesOverTimeRowLabelTooltip: FunctionComponent<QueriesOverTimeRowLabelTooltipProps> = ({

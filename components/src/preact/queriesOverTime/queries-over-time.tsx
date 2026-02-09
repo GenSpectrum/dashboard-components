@@ -39,18 +39,17 @@ const meanProportionIntervalSchema = z.object({
 });
 export type MeanProportionInterval = z.infer<typeof meanProportionIntervalSchema>;
 
+const countCoverageQuerySchema = z.object({
+    displayLabel: z.string(),
+    description: z.string().optional(),
+    countQuery: z.string(),
+    coverageQuery: z.string(),
+});
+export type CountCoverageQuery = z.infer<typeof countCoverageQuerySchema>;
+
 const queriesOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
-    queries: z
-        .array(
-            z.object({
-                displayLabel: z.string(),
-                description: z.string().optional(),
-                countQuery: z.string(),
-                coverageQuery: z.string(),
-            }),
-        )
-        .min(1),
+    queries: z.array(countCoverageQuerySchema).min(1),
     views: z.array(queriesOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
