@@ -15,11 +15,13 @@ const codeExample = String.raw`
     queries='[
         {
             "displayLabel": "S:F456L (single mutation)",
+            "description": "This mutation is associated with increased transmissibility.",
             "countQuery": "S:456L",
             "coverageQuery": "!S:456N"
         },
         {
             "displayLabel": "R346T + F456L (combination)",
+            "description": "Common mutation combination found in the JN.1 lineage.",
             "countQuery": "S:346T & S:456L",
             "coverageQuery": "!S:346N & !S:456N"
         }
@@ -59,11 +61,13 @@ const meta: Meta<Required<QueriesOverTimeProps>> = {
         queries: [
             {
                 displayLabel: 'S:F456L (single mutation)',
+                description: 'This mutation is associated with increased transmissibility.',
                 countQuery: 'S:456L',
                 coverageQuery: '!S:456N',
             },
             {
                 displayLabel: 'R346T + F456L (combination)',
+                description: 'Common mutation combination found in the JN.1 lineage.',
                 countQuery: 'S:346T & S:456L',
                 coverageQuery: '!S:346N & !S:456N',
             },

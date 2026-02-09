@@ -14,7 +14,6 @@ import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinished
 import { useLapisUrl } from '../LapisUrlContext';
 import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
-import PortalTooltip from '../components/portal-tooltip';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import FeaturesOverTimeGrid, { type FeatureRenderer, customColumnSchema } from '../components/features-over-time-grid';
@@ -22,6 +21,7 @@ import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
+import PortalTooltip from '../components/portal-tooltip';
 import type { ProportionInterval } from '../components/proportion-selector';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
 import { ResizeContainer } from '../components/resize-container';
@@ -45,6 +45,7 @@ const queriesOverTimeSchema = z.object({
         .array(
             z.object({
                 displayLabel: z.string(),
+                description: z.string().optional(),
                 countQuery: z.string(),
                 coverageQuery: z.string(),
             }),
@@ -139,7 +140,10 @@ const QueriesOverTimeTabs: FunctionComponent<QueriesOverTimeTabsProps> = ({
     }, [queryOverTimeData, proportionInterval, hideGaps, queryFilterValue]);
 
     const queryLookupMap = useMemo(() => {
-        const map = new Map<string, { displayLabel: string; countQuery: string; coverageQuery: string }>();
+        const map = new Map<
+            string,
+            { displayLabel: string; description?: string; countQuery: string; coverageQuery: string }
+        >();
         originalComponentProps.queries.forEach((query) => {
             map.set(query.displayLabel, query);
         });
@@ -156,7 +160,14 @@ const QueriesOverTimeTabs: FunctionComponent<QueriesOverTimeTabsProps> = ({
                     <PortalTooltip
                         content={
                             <QueriesOverTimeRowLabelTooltip
-                                query={queryObject ?? { displayLabel: value, countQuery: '', coverageQuery: '' }}
+                                query={
+                                    queryObject ?? {
+                                        displayLabel: value,
+                                        description: undefined,
+                                        countQuery: '',
+                                        coverageQuery: '',
+                                    }
+                                }
                             />
                         }
                         position='right'

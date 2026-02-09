@@ -1,9 +1,14 @@
 import type { FunctionComponent } from 'preact';
 
-import { type QueryDefinition } from '../../lapisApi/lapisTypes';
+export type QueryWithDescription = {
+    displayLabel: string;
+    description?: string;
+    countQuery: string;
+    coverageQuery: string;
+};
 
 export type QueriesOverTimeRowLabelTooltipProps = {
-    query: QueryDefinition;
+    query: QueryWithDescription;
 };
 
 export const QueriesOverTimeRowLabelTooltip: FunctionComponent<QueriesOverTimeRowLabelTooltipProps> = ({
@@ -12,6 +17,7 @@ export const QueriesOverTimeRowLabelTooltip: FunctionComponent<QueriesOverTimeRo
     return (
         <div className='flex flex-col gap-2'>
             <div className='font-bold'>{query.displayLabel}</div>
+            {query.description && <div className='text-sm text-gray-700'>{query.description}</div>}
             <div className='flex flex-col gap-1'>
                 <div className='text-sm'>
                     <span className='text-gray-600'>Count query:</span>
