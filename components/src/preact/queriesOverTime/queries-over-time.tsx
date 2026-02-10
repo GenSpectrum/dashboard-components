@@ -147,16 +147,10 @@ const QueriesOverTimeTabs: FunctionComponent<QueriesOverTimeTabsProps> = ({
         });
     }, [queryOverTimeData, proportionInterval, hideGaps, queryFilterValue]);
 
-    const queryLookupMap = useMemo(() => {
-        const map = new Map<
-            string,
-            { displayLabel: string; description?: string; countQuery: string; coverageQuery: string }
-        >();
-        originalComponentProps.queries.forEach((query) => {
-            map.set(query.displayLabel, query);
-        });
-        return map;
-    }, [originalComponentProps.queries]);
+    const queryLookupMap = useMemo(
+        () => new Map(originalComponentProps.queries.map((query) => [query.displayLabel, query])),
+        [originalComponentProps.queries],
+    );
 
     const queryRenderer = useMemo<FeatureRenderer<string>>(
         () => ({
