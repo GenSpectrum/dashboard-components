@@ -6,9 +6,7 @@ export type QueriesOverTimeRowLabelTooltipProps = {
     query: CountCoverageQuery;
 };
 
-export const QueriesOverTimeRowLabelTooltip: FunctionComponent<QueriesOverTimeRowLabelTooltipProps> = ({
-    query,
-}: QueriesOverTimeRowLabelTooltipProps) => {
+export const QueriesOverTimeRowLabelTooltip: FunctionComponent<QueriesOverTimeRowLabelTooltipProps> = ({ query }) => {
     return (
         <div className='flex flex-col gap-2'>
             <div className='font-bold'>{query.displayLabel}</div>
