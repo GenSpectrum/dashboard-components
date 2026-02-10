@@ -52,13 +52,15 @@ const queriesOverTimeSchema = z.object({
     queries: z
         .array(countCoverageQuerySchema)
         .min(1)
-        .refine(
-            (queries) => {
-                const duplicateDisplayLabels = findDuplicateStrings(queries.map((v) => v.displayLabel));
-                return duplicateDisplayLabels.length === 0;
-            },
-            { message: 'Display labels must be unique' },
-        ),
+        .superRefine((queries, ctx) => {
+            const duplicateDisplayLabels = findDuplicateStrings(queries.map((v) => v.displayLabel));
+            if (duplicateDisplayLabels.length > 0) {
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    message: `Display labels must be unique. Duplicates: ${duplicateDisplayLabels.join(', ')}`,
+                });
+            }
+        }),
     views: z.array(queriesOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
