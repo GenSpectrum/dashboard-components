@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.14.2...dashboard-components-v1.15.0) (2026-02-11)
+
+
+### Features
+
+* **components:** queries over time label tooltip ([#1083](https://github.com/GenSpectrum/dashboard-components/issues/1083)) ([15a682c](https://github.com/GenSpectrum/dashboard-components/commit/15a682c6b46876c705d1c4eebd2072bc4a5f97b7))
+
 ## [1.14.2](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.14.1...dashboard-components-v1.14.2) (2026-02-04)
 
 
