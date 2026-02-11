@@ -68,7 +68,7 @@ export const mutationsOverTimeResponse = makeLapisResponse(
 export type MutationsOverTimeResponse = z.infer<typeof mutationsOverTimeResponse>;
 
 const queryDefinition = z.object({
-    displayLabel: z.string(),
+    displayLabel: z.string().optional(),
     countQuery: z.string(),
     coverageQuery: z.string(),
 });

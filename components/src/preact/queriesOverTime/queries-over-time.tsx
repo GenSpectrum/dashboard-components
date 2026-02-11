@@ -5,6 +5,7 @@ import z from 'zod';
 import { getFilteredQueryOverTimeData, type QueryFilter } from './getFilteredQueriesOverTimeData';
 import { QueriesOverTimeFilter } from './queries-over-time-filter';
 import { QueriesOverTimeGridTooltip } from './queries-over-time-grid-tooltip';
+import { QueriesOverTimeRowLabelTooltip } from './queries-over-time-row-label-tooltip';
 import { type ProportionValue, getProportion } from '../../query/queryMutationsOverTime';
 import { queryQueriesOverTimeData } from '../../query/queryQueriesOverTime';
 import { lapisFilterSchema, temporalGranularitySchema, views } from '../../types';
@@ -20,6 +21,7 @@ import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
+import PortalTooltip from '../components/portal-tooltip';
 import type { ProportionInterval } from '../components/proportion-selector';
 import { ProportionSelectorDropdown } from '../components/proportion-selector-dropdown';
 import { ResizeContainer } from '../components/resize-container';
@@ -37,17 +39,28 @@ const meanProportionIntervalSchema = z.object({
 });
 export type MeanProportionInterval = z.infer<typeof meanProportionIntervalSchema>;
 
+const countCoverageQuerySchema = z.object({
+    displayLabel: z.string(),
+    description: z.string().optional(),
+    countQuery: z.string(),
+    coverageQuery: z.string(),
+});
+export type CountCoverageQuery = z.infer<typeof countCoverageQuerySchema>;
+
 const queriesOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
     queries: z
-        .array(
-            z.object({
-                displayLabel: z.string(),
-                countQuery: z.string(),
-                coverageQuery: z.string(),
-            }),
-        )
-        .min(1),
+        .array(countCoverageQuerySchema)
+        .min(1)
+        .superRefine((queries, ctx) => {
+            const duplicateDisplayLabels = findDuplicateStrings(queries.map((v) => v.displayLabel));
+            if (duplicateDisplayLabels.length > 0) {
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    message: `Display labels must be unique. Duplicates: ${duplicateDisplayLabels.join(', ')}`,
+                });
+            }
+        }),
     views: z.array(queriesOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
@@ -136,19 +149,45 @@ const QueriesOverTimeTabs: FunctionComponent<QueriesOverTimeTabsProps> = ({
         });
     }, [queryOverTimeData, proportionInterval, hideGaps, queryFilterValue]);
 
+    const queryLookupMap = useMemo(
+        () => new Map(originalComponentProps.queries.map((query) => [query.displayLabel, query])),
+        [originalComponentProps.queries],
+    );
+
     const queryRenderer = useMemo<FeatureRenderer<string>>(
         () => ({
             asString: (value: string) => value,
-            renderRowLabel: (value: string) => (
-                <div className='text-center'>
-                    <span>{value}</span>
-                </div>
-            ),
+            renderRowLabel: (value: string) => {
+                const queryObject = queryLookupMap.get(value);
+
+                return (
+                    <PortalTooltip
+                        content={
+                            <QueriesOverTimeRowLabelTooltip
+                                query={
+                                    queryObject ?? {
+                                        displayLabel: value,
+                                        description: undefined,
+                                        countQuery: '',
+                                        coverageQuery: '',
+                                    }
+                                }
+                            />
+                        }
+                        position='right'
+                        portalTarget={tooltipPortalTarget}
+                    >
+                        <div className='text-center'>
+                            <span>{value}</span>
+                        </div>
+                    </PortalTooltip>
+                );
+            },
             renderTooltip: (value: string, temporal: Temporal, proportionValue: ProportionValue) => (
                 <QueriesOverTimeGridTooltip query={value} date={temporal} value={proportionValue} />
             ),
         }),
-        [],
+        [tooltipPortalTarget, queryLookupMap],
     );
 
     const getTab = (view: QueriesOverTimeView) => {
@@ -301,4 +340,14 @@ function getDownloadData(filteredData: ReturnType<typeof getFilteredQueryOverTim
             { query },
         );
     });
+}
+
+function findDuplicateStrings(items: string[]): string[] {
+    const counts = new Map<string, number>();
+
+    for (const item of items) {
+        counts.set(item, (counts.get(item) ?? 0) + 1);
+    }
+
+    return [...counts.entries()].filter(([, count]) => count > 1).map(([key]) => key);
 }
