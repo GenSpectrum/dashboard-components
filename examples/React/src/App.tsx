@@ -9,8 +9,8 @@ import '@genspectrum/dashboard-components/components';
 
 
 function App() {
-    const locationFilterRef = useRef<HTMLElement>();
-    const dateRangeFilterRef = useRef<HTMLElement>();
+    const locationFilterRef = useRef<HTMLElement>(null);
+    const dateRangeFilterRef = useRef<HTMLElement>(null);
 
     const [location, setLocation] = useState<Record<string, string | undefined>>({
         region: undefined,
@@ -71,9 +71,8 @@ function App() {
     };
 
     const dataRangeOptions = [
-        dateRangeOptionPresets.allTimes,
-        dateRangeOptionPresets.last6Months,
-        dateRangeOptionPresets.lastMonth,
+        dateRangeOptionPresets().last6Months,
+        dateRangeOptionPresets().lastMonth,
         {label: '2020', dateFrom: '2020-01-01', dateTo: '2020-12-31'},
         {label: '2021', dateFrom: '2021-01-01', dateTo: '2021-12-31'},
         {label: '2022', dateFrom: '2022-01-01', dateTo: '2022-12-31'},
