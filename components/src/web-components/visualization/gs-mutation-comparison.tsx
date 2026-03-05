@@ -134,11 +134,11 @@ declare global {
     }
 }
 
-declare module 'react' {
+declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-mutation-comparison': Partial<MutationComparisonProps>;
+            'gs-mutation-comparison': MutationComparisonComponent;
         }
     }
 }

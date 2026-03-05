@@ -144,11 +144,11 @@ declare global {
     }
 }
 
-declare module 'react' {
+declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-relative-growth-advantage': Partial<RelativeGrowthAdvantageProps>;
+            'gs-relative-growth-advantage': RelativeGrowthAdvantageComponent;
         }
     }
 }

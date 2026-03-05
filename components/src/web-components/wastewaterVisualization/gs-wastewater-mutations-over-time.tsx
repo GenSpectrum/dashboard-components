@@ -109,11 +109,11 @@ declare global {
     }
 }
 
-declare module 'react' {
+declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-wastewater-mutations-over-time': Partial<WastewaterMutationsOverTimeProps>;
+            'gs-wastewater-mutations-over-time': WastewaterMutationsOverTimeComponent;
         }
     }
 }

@@ -73,11 +73,11 @@ declare global {
     }
 }
 
-declare module 'react' {
+declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-statistics': Partial<StatisticsProps>;
+            'gs-statistics': StatisticsComponent;
         }
     }
 }

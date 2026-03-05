@@ -123,11 +123,11 @@ declare global {
     }
 }
 
-declare module 'react' {
+declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-number-sequences-over-time': Partial<NumberSequencesOverTimeProps>;
+            'gs-number-sequences-over-time': NumberSequencesOverTimeComponent;
         }
     }
 }

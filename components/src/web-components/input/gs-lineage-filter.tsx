@@ -4,7 +4,7 @@ import {
     type LineageFilterChangedEvent,
     type LineageMultiFilterChangedEvent,
 } from '../../preact/lineageFilter/LineageFilterChangedEvent';
-import { LineageFilter, type LineageFilterProps } from '../../preact/lineageFilter/lineage-filter';
+import { LineageFilter } from '../../preact/lineageFilter/lineage-filter';
 import { type gsEventNames } from '../../utils/gsEventNames';
 import { PreactLitAdapter } from '../PreactLitAdapter';
 
@@ -143,11 +143,11 @@ declare global {
     }
 }
 
-declare module 'react' {
+declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-lineage-filter': Partial<LineageFilterProps>;
+            'gs-lineage-filter': LineageFilterComponent;
         }
     }
 }
