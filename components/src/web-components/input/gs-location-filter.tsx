@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { type LocationChangedEvent } from '../../preact/locationFilter/LocationChangedEvent';
 import { LocationFilter, type LocationFilterProps } from '../../preact/locationFilter/location-filter';
@@ -110,9 +109,9 @@ declare global {
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-location-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-location-filter': LocationFilterComponent;
         }
     }
 }

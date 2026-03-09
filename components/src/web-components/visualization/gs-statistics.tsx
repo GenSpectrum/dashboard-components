@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { Statistics, type StatisticsProps } from '../../preact/statistic/statistics';
 import type { Equals, Expect } from '../../utils/typeAssertions';
@@ -76,9 +75,9 @@ declare global {
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-statistics': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-statistics': StatisticsComponent;
         }
     }
 }

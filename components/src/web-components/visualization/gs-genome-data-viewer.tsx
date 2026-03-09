@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { GenomeDataViewer } from '../../preact/genomeViewer/genome-data-viewer';
 import { PreactLitAdapter } from '../PreactLitAdapter';
@@ -53,9 +52,9 @@ declare global {
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-genome-data-viewer': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-genome-data-viewer': GenomeDataViewerComponent;
         }
     }
 }

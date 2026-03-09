@@ -1,6 +1,5 @@
 import { consume } from '@lit/context';
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
 import { MutationLinkTemplateContextProvider } from '../../preact/MutationLinkTemplateContext';
@@ -88,11 +87,11 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
     @property({ type: Object })
     baselineLapisFilter:
         (Record<string, string | string[] | number | null | boolean | undefined> & {
-              nucleotideMutations?: string[];
-              aminoAcidMutations?: string[];
-              nucleotideInsertions?: string[];
-              aminoAcidInsertions?: string[];
-          })
+            nucleotideMutations?: string[];
+            aminoAcidMutations?: string[];
+            nucleotideInsertions?: string[];
+            aminoAcidInsertions?: string[];
+        })
         | undefined = undefined;
 
     /**
@@ -169,9 +168,9 @@ declare global {
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-mutations': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-mutations': MutationsComponent;
         }
     }
 }
