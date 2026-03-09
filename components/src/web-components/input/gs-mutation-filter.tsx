@@ -66,7 +66,7 @@ export class MutationFilterComponent extends PreactLitAdapter {
      * All values provided must be valid mutations or insertions.
      * Invalid values will be ignored.
      */
-    @property({type: Object})
+    @property({ type: Object })
     initialValue:
         {
             nucleotideMutations: string[];
