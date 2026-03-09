@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: lts/*
       - id: build-publish
-        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.4
         with:
           path: components/storybook-static
           install_command: cd components && npm ci&& cd ..
