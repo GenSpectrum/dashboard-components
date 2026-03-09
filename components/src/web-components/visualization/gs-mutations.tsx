@@ -84,7 +84,7 @@ export class MutationsComponent extends PreactLitAdapterWithGridJsStyles {
      * If not provided, the Jaccard similarity is not computed.
      * For details, see the [Jaccard Similarity](#jaccard-similarity) section in the component description.
      */
-    @property({type: Object})
+    @property({ type: Object })
     baselineLapisFilter:
         (Record<string, string | string[] | number | null | boolean | undefined> & {
             nucleotideMutations?: string[];
