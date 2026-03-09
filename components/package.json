@@ -15,13 +15,6 @@
     "publishConfig": {
         "access": "public"
     },
-    "imports": {
-        "#*": [
-            "./*",
-            "./*.ts",
-            "./*.tsx"
-        ]
-    },
     "exports": {
         "./components": {
             "types": "./dist/components.d.ts",
