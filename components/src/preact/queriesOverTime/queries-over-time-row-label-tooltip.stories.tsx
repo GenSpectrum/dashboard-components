@@ -23,20 +23,20 @@ export const Default: StoryObj<QueriesOverTimeRowLabelTooltipProps> = {
     render: (args) => <QueriesOverTimeRowLabelTooltip {...args} />,
     args: {
         query: {
-            displayLabel: 'S:F456L (single mutation)',
-            description: 'This mutation is associated with increased transmissibility.',
-            countQuery: 'S:456L',
+            displayLabel: 'Foo variant',
+            description: 'These mutations are associated with increased transmissibility.',
+            countQuery: 'S:451L & S:452L & S:453L & S:454L & S:455L & S:456L & S:457L & S:458L & S:459L & S:460L',
             coverageQuery: '!S:456N',
         },
     },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
-        await expect(canvas.getByText('S:F456L (single mutation)', { exact: true })).toBeVisible();
-        await expect(canvas.getByText('This mutation is associated with increased transmissibility.')).toBeVisible();
+        await expect(canvas.getByText('Foo variant', { exact: true })).toBeVisible();
+        await expect(canvas.getByText('These mutations are associated with increased transmissibility.')).toBeVisible();
         await expect(canvas.getByText('Count query:')).toBeVisible();
-        await expect(canvas.getByText('S:456L')).toBeVisible();
-        await expect(canvas.getByText('Coverage query:')).toBeVisible();
-        await expect(canvas.getByText('!S:456N')).toBeVisible();
+        await expect(
+            canvas.getByText('S:451L & S:452L & S:453L & S:454L & S:455L & S:456L & S:457L & S:458L & S:459L & S:460L'),
+        ).toBeVisible();
     },
 };
 
