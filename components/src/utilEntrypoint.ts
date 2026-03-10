@@ -54,4 +54,4 @@ export {
 export { type MeanProportionInterval } from './preact/mutationsOverTime/mutations-over-time';
 export { type CustomColumn } from './preact/components/features-over-time-grid';
 
-export { type QueryDefinition } from './lapisApi/lapisTypes';
+export { type CountCoverageQuery } from './preact/queriesOverTime/queries-over-time';
