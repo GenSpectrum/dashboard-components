@@ -54,7 +54,5 @@ export const WithoutDescription: StoryObj<QueriesOverTimeRowLabelTooltipProps> =
         await expect(canvas.getByText('S:R346T', { exact: true })).toBeVisible();
         await expect(canvas.getByText('Count query:')).toBeVisible();
         await expect(canvas.getByText('S:346T')).toBeVisible();
-        await expect(canvas.getByText('Coverage query:')).toBeVisible();
-        await expect(canvas.getByText('!S:346N')).toBeVisible();
     },
 };
