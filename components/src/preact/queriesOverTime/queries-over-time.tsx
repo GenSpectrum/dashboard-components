@@ -177,7 +177,7 @@ const QueriesOverTimeTabs: FunctionComponent<QueriesOverTimeTabsProps> = ({
                         position='right'
                         portalTarget={tooltipPortalTarget}
                     >
-                        <div className='text-center truncate mr-2'>
+                        <div className='text-center whitespace-nowrap mr-2'>
                             <span>{value}</span>
                         </div>
                     </PortalTooltip>
