@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.15.0...dashboard-components-v1.15.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* **components:** small UI tweaks for queries-over-time ([#1096](https://github.com/GenSpectrum/dashboard-components/issues/1096)) ([c5c5840](https://github.com/GenSpectrum/dashboard-components/commit/c5c5840d5331c7f217bb43b194f548c9ceb8bb37))
+
 ## [1.15.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.14.2...dashboard-components-v1.15.0) (2026-02-11)
 
 
