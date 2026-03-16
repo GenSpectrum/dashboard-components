@@ -5,8 +5,8 @@
   "description": "A collection of GenSpectrum dashboards and components",
   "type": "module",
   "devDependencies": {
-    "@commitlint/cli": "^20.4.2",
-    "@commitlint/config-conventional": "^20.4.2",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
     "@commitlint/types": "^20.2.0",
     "release-please": "^17.3.0"
   },
