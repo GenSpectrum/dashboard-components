@@ -1,7 +1,6 @@
 import flatpickrStyle from 'flatpickr/dist/flatpickr.css?inline';
 import { unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { DateRangeFilter, type DateRangeFilterProps } from '../../preact/dateRangeFilter/date-range-filter';
 import { type DateRangeOptionChangedEvent } from '../../preact/dateRangeFilter/dateRangeOption';
@@ -144,9 +143,9 @@ declare global {
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-date-range-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-date-range-filter': DateRangeFilterComponent;
         }
     }
 }

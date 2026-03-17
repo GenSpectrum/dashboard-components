@@ -1,6 +1,5 @@
 import { consume } from '@lit/context';
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { MutationAnnotationsContextProvider } from '../../preact/MutationAnnotationsContext';
 import { MutationLinkTemplateContextProvider } from '../../preact/MutationLinkTemplateContext';
@@ -179,9 +178,9 @@ declare global {
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-mutations-over-time': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-mutations-over-time': MutationsOverTimeComponent;
         }
     }
 }

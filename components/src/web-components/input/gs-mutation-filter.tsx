@@ -1,5 +1,4 @@
 import { customElement, property } from 'lit/decorators.js';
-import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import { ReferenceGenomesAwaiter } from '../../preact/components/ReferenceGenomesAwaiter';
 import { MutationFilter, type MutationFilterProps } from '../../preact/mutationFilter/mutation-filter';
@@ -67,7 +66,7 @@ export class MutationFilterComponent extends PreactLitAdapter {
      * All values provided must be valid mutations or insertions.
      * Invalid values will be ignored.
      */
-    @property({type: Object})
+    @property({ type: Object })
     initialValue:
         {
             nucleotideMutations: string[];
@@ -125,9 +124,9 @@ declare global {
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    namespace React.JSX {
         interface IntrinsicElements {
-            'gs-mutation-filter': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+            'gs-mutation-filter': MutationFilterComponent;
         }
     }
 }

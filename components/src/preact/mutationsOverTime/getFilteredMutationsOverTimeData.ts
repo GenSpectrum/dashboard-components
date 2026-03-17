@@ -8,7 +8,9 @@ import { type useMutationAnnotationsProvider } from '../MutationAnnotationsConte
 import type { DisplayedMutationType } from '../components/mutation-type-selector';
 import type { DisplayedSegment } from '../components/segment-selector';
 
-export const displayMutationsSchema = z.array(z.string());
+export const displayMutationsSchema = z.array(z.string(), {
+    errorMap: () => ({ message: `invalid display mutations` }),
+});
 export type DisplayMutations = z.infer<typeof displayMutationsSchema>;
 
 export type MutationFilter = {
