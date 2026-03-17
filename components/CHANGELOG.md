@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.16.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.15.0...dashboard-components-v1.16.0) (2026-03-17)
+
+
+### Features
+
+* **components:** bump react from 18.3.1 to 19.0.0 in /components ([#673](https://github.com/GenSpectrum/dashboard-components/issues/673)) ([53d4d00](https://github.com/GenSpectrum/dashboard-components/commit/53d4d00d11706edfd4917cb7cd47948ada3d6c5f))
+
+
+### Bug Fixes
+
+* **components:** small UI tweaks for queries-over-time ([#1096](https://github.com/GenSpectrum/dashboard-components/issues/1096)) ([c5c5840](https://github.com/GenSpectrum/dashboard-components/commit/c5c5840d5331c7f217bb43b194f548c9ceb8bb37))
+
 ## [1.15.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.14.2...dashboard-components-v1.15.0) (2026-02-11)
 
 
