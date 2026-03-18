@@ -1,6 +1,6 @@
 import { createColumnHelper, getCoreRowModel, getPaginationRowModel } from '@tanstack/table-core';
 import { type FunctionComponent, type JSX } from 'preact';
-import { useMemo } from 'preact/hooks';
+import { type Dispatch, type StateUpdater, useMemo } from 'preact/hooks';
 import z from 'zod';
 
 import { type ColorScale, getColorWithinScale, getTextColorForScale } from './color-scale-selector';
@@ -30,9 +30,17 @@ export interface FeatureRenderer<D> {
 
 export interface FeaturesOverTimeGridProps<F> {
     rowLabelHeader: string;
-    data: TemporalDataMap<F>;
+    data: TemporalDataMap<F> | null | undefined;
+    isLoading?: boolean;
     colorScale: ColorScale;
     pageSizes: PageSizes;
+    /** Controlled page index (0-based). When provided, pagination is server-driven. */
+    pageIndex?: number;
+    pageSize?: number;
+    /** Total number of rows across all pages (used for pagination display). */
+    totalRows?: number;
+    onPageChange?: Dispatch<StateUpdater<number>>;
+    onPageSizeChange?: Dispatch<StateUpdater<number>>;
     customColumns?: CustomColumn[];
     featureRenderer: FeatureRenderer<F>;
     tooltipPortalTarget: HTMLElement | null;
@@ -49,13 +57,22 @@ const EMPTY_COLUMNS: CustomColumn[] = [];
 function FeaturesOverTimeGrid<F>({
     rowLabelHeader,
     data,
+    isLoading = false,
     colorScale,
     pageSizes,
+    pageIndex: controlledPageIndex,
+    pageSize: controlledPageSize,
+    totalRows,
+    onPageChange,
+    onPageSizeChange,
     customColumns = EMPTY_COLUMNS,
     featureRenderer,
     tooltipPortalTarget,
 }: FeaturesOverTimeGridProps<F>) {
+    const isControlled = controlledPageIndex !== undefined;
+
     const tableData = useMemo(() => {
+        if (!data) {return [];}
         const firstAxisKeys = data.getFirstAxisKeys();
         return data.getAsArray().map((row, index): RowType<F> => {
             const firstAxisKey = firstAxisKeys[index];
@@ -66,7 +83,7 @@ function FeaturesOverTimeGrid<F>({
 
     const columns = useMemo(() => {
         const columnHelper = createColumnHelper<RowType<F>>();
-        const dates = data.getSecondAxisKeys();
+        const dates = data?.getSecondAxisKeys() ?? [];
 
         const featureHeader = columnHelper.accessor((row) => row.feature, {
             id: 'feature',
@@ -134,19 +151,54 @@ function FeaturesOverTimeGrid<F>({
         return [featureHeader, ...customColumnHeaders, ...dateHeaders];
     }, [colorScale, data, customColumns, tooltipPortalTarget, featureRenderer, rowLabelHeader]);
 
-    const { pageSize } = usePageSizeContext();
+    const { pageSize: contextPageSize, setPageSize: setContextPageSize } = usePageSizeContext();
+
+    // In controlled mode, use the lifted page state; otherwise fall back to internal TanStack state
+    const effectivePageSize = isControlled ? (controlledPageSize ?? contextPageSize) : contextPageSize;
+
     const table = usePreactTable({
         data: tableData,
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
-        initialState: {
-            pagination: {
-                pageIndex: 0,
-                pageSize,
-            },
-        },
+        // In controlled mode, pageCount is driven by totalRows; TanStack won't auto-compute it
+        ...(isControlled && totalRows !== undefined
+            ? { pageCount: Math.ceil(totalRows / effectivePageSize) }
+            : {}),
+        state: isControlled
+            ? {
+                  pagination: {
+                      pageIndex: controlledPageIndex,
+                      pageSize: effectivePageSize,
+                  },
+              }
+            : undefined,
+        onPaginationChange: isControlled
+            ? (updater) => {
+                  const current = { pageIndex: controlledPageIndex, pageSize: effectivePageSize };
+                  const next = typeof updater === 'function' ? updater(current) : updater;
+                  if (next.pageIndex !== current.pageIndex) {
+                      onPageChange?.(next.pageIndex);
+                  }
+                  if (next.pageSize !== current.pageSize) {
+                      onPageSizeChange?.(next.pageSize);
+                      setContextPageSize(next.pageSize);
+                  }
+              }
+            : undefined,
+        manualPagination: isControlled,
+        initialState: isControlled
+            ? undefined
+            : {
+                  pagination: {
+                      pageIndex: 0,
+                      pageSize: effectivePageSize,
+                  },
+              },
     });
+
+    // Number of rows to display in pagination indicator
+    const displayedTotalRows = isControlled ? (totalRows ?? tableData.length) : tableData.length;
 
     return (
         <div className='w-full'>
@@ -165,22 +217,34 @@ function FeaturesOverTimeGrid<F>({
                     ))}
                 </thead>
                 <tbody>
-                    {table.getRowModel().rows.map((row) => (
-                        <tr key={row.id}>
-                            {row.getVisibleCells().map((cell) => (
-                                <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                            ))}
+                    {isLoading ? (
+                        <tr>
+                            <td colSpan={table.getFlatHeaders().length}>
+                                <div className={'text-center py-4'}>Loading...</div>
+                            </td>
                         </tr>
-                    ))}
-                    {table.getRowModel().rows.length === 0 && (
-                        <td colSpan={table.getFlatHeaders().length}>
-                            <div className={'text-center'}>No data available for your filters.</div>
-                        </td>
+                    ) : (
+                        <>
+                            {table.getRowModel().rows.map((row) => (
+                                <tr key={row.id}>
+                                    {row.getVisibleCells().map((cell) => (
+                                        <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                                    ))}
+                                </tr>
+                            ))}
+                            {table.getRowModel().rows.length === 0 && (
+                                <tr>
+                                    <td colSpan={table.getFlatHeaders().length}>
+                                        <div className={'text-center'}>No data available for your filters.</div>
+                                    </td>
+                                </tr>
+                            )}
+                        </>
                     )}
                 </tbody>
             </table>
             <div className={'mt-2'}>
-                <Pagination table={table} pageSizes={pageSizes} />
+                <Pagination table={table} pageSizes={pageSizes} totalRows={displayedTotalRows} />
             </div>
         </div>
     );

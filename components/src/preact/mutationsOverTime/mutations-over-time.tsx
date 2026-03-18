@@ -2,18 +2,23 @@ import { type FunctionComponent } from 'preact';
 import { type Dispatch, type StateUpdater, useMemo, useState, useEffect, useLayoutEffect, useRef } from 'preact/hooks';
 import z from 'zod';
 
-import { type BaseMutationOverTimeDataMap, type MutationOverTimeDataMap } from './MutationOverTimeData';
 import {
     displayMutationsSchema,
     getFilteredMutationOverTimeData,
     type MutationFilter,
 } from './getFilteredMutationsOverTimeData';
 import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
-import { type ProportionValue, getProportion, queryMutationsOverTimeData } from '../../query/queryMutationsOverTime';
+import {
+    type MutationsOverTimeMetadata,
+    type ProportionValue,
+    getProportion,
+    queryMutationsOverTimeData,
+    queryMutationsOverTimeMetadata,
+    queryMutationsOverTimePage,
+} from '../../query/queryMutationsOverTime';
 import {
     lapisFilterSchema,
     sequenceTypeSchema,
-    type SubstitutionOrDeletionEntry,
     temporalGranularitySchema,
     views,
 } from '../../types';
@@ -83,47 +88,75 @@ export const MutationsOverTime: FunctionComponent<MutationsOverTimeProps> = (com
 
 export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> = ({ ...componentProps }) => {
     const lapis = useLapisUrl();
-    const { lapisFilter, sequenceType, granularity, lapisDateField, displayMutations } = componentProps;
+    const { lapisFilter, sequenceType, granularity, lapisDateField, displayMutations, pageSizes } = componentProps;
 
-    const { data, error, isLoading } = useQuery(
+    const initialPageSize = typeof pageSizes === 'number' ? pageSizes : (pageSizes.at(0) ?? 10);
+
+    // Lifted page state — needed so that page changes trigger Phase 2 re-fetches
+    const [pageIndex, setPageIndex] = useState(0);
+    const [pageSize, setPageSize] = useState(initialPageSize);
+
+    // Phase 1: fetch date buckets + full sorted mutation list (cheap, independent of page)
+    const {
+        data: metadata,
+        error: metadataError,
+        isLoading: metadataLoading,
+    } = useQuery(
         () =>
-            queryMutationsOverTimeData(lapisFilter, sequenceType, lapis, lapisDateField, granularity, displayMutations),
+            queryMutationsOverTimeMetadata(lapisFilter, sequenceType, lapis, lapisDateField, granularity, displayMutations),
         [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations],
     );
 
-    if (isLoading) {
+    // Reset to page 0 when the metadata (i.e. filter) changes
+    useEffect(() => {
+        setPageIndex(0);
+    }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations]);
+
+    if (metadataLoading) {
         return <LoadingDisplay />;
     }
 
-    if (error !== null) {
-        throw error;
+    if (metadataError) {
+        throw metadataError;
     }
 
-    if (data.overallMutationData.length === 0) {
+    if (metadata.overallMutationData.length === 0) {
         return <NoDataDisplay />;
     }
 
-    const { overallMutationData, mutationOverTimeData } = data;
     return (
         <MutationsOverTimeTabs
-            overallMutationData={overallMutationData}
-            mutationOverTimeData={mutationOverTimeData}
+            metadata={metadata}
             originalComponentProps={componentProps}
+            pageIndex={pageIndex}
+            setPageIndex={setPageIndex}
+            pageSize={pageSize}
+            setPageSize={setPageSize}
         />
     );
 };
 
 type MutationOverTimeTabsProps = {
-    mutationOverTimeData: BaseMutationOverTimeDataMap;
+    metadata: MutationsOverTimeMetadata;
     originalComponentProps: MutationsOverTimeProps;
-    overallMutationData: SubstitutionOrDeletionEntry<Substitution, Deletion>[];
+    pageIndex: number;
+    setPageIndex: Dispatch<StateUpdater<number>>;
+    pageSize: number;
+    setPageSize: Dispatch<StateUpdater<number>>;
 };
 
 const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
-    mutationOverTimeData,
+    metadata,
     originalComponentProps,
-    overallMutationData,
+    pageIndex,
+    setPageIndex,
+    pageSize,
+    setPageSize,
 }) => {
+    const lapis = useLapisUrl();
+    const { lapisFilter, sequenceType, lapisDateField } = originalComponentProps;
+    const { overallMutationData, requestedDateRanges } = metadata;
+
     const tabsRef = useDispatchFinishedLoadingEvent();
     const tooltipPortalTargetRef = useRef<HTMLDivElement>(null);
     const [tooltipPortalTarget, setTooltipPortalTarget] = useState<HTMLDivElement | null>(null);
@@ -151,9 +184,85 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
 
     useEffect(() => setHideGaps(originalComponentProps.hideGaps ?? false), [originalComponentProps.hideGaps]);
 
+    // Filter the mutation list from Phase 1 directly (without needing time-series data).
+    // This is the same logic as getFilteredMutationOverTimeData but applied to overallMutationData only.
+    const filteredMutationEntries = useMemo(() => {
+        return overallMutationData.filter((entry) => {
+            if (entry.proportion < proportionInterval.min || entry.proportion > proportionInterval.max) {
+                return false;
+            }
+            if (displayedSegments.some((s) => s.segment === entry.mutation.segment && !s.checked)) {
+                return false;
+            }
+            if (displayedMutationTypes.some((t) => t.type === entry.mutation.type && !t.checked)) {
+                return false;
+            }
+            const { textFilter, annotationNameFilter } = mutationFilterValue;
+            if (textFilter !== '' && !entry.mutation.code.includes(textFilter)) {
+                const annotations = annotationProvider(entry.mutation, originalComponentProps.sequenceType);
+                if (
+                    !annotations?.some(
+                        (a) =>
+                            a.description.includes(textFilter) ||
+                            a.name.includes(textFilter) ||
+                            a.symbol.includes(textFilter),
+                    )
+                ) {
+                    return false;
+                }
+            }
+            if (annotationNameFilter.size > 0) {
+                const annotations = annotationProvider(entry.mutation, originalComponentProps.sequenceType);
+                if (!annotations?.some((a) => annotationNameFilter.has(a.name))) {
+                    return false;
+                }
+            }
+            return true;
+        });
+    }, [
+        overallMutationData,
+        displayedSegments,
+        displayedMutationTypes,
+        proportionInterval,
+        originalComponentProps.sequenceType,
+        mutationFilterValue,
+        annotationProvider,
+    ]);
+
+    // The sorted, filtered list of all mutation codes (used for paging and total count)
+    const filteredMutationCodes = filteredMutationEntries.map((e) => e.mutation.code);
+    const totalFilteredRows = filteredMutationCodes.length;
+
+    // Slice to the current page
+    const pageMutationCodes = filteredMutationCodes.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
+
+    // Phase 2: fetch time-series data for just the current page's mutations
+    const {
+        data: pageData,
+        error: pageError,
+        isLoading: pageLoading,
+    } = useQuery(
+        () =>
+            queryMutationsOverTimePage(
+                lapisFilter,
+                lapis,
+                lapisDateField,
+                sequenceType,
+                requestedDateRanges,
+                pageMutationCodes,
+            ),
+        [lapisFilter, lapis, lapisDateField, sequenceType, requestedDateRanges, pageMutationCodes],
+    );
+
+    if (pageError) {
+        throw pageError;
+    }
+
+    // Apply hideGaps filter to the fetched page data
     const filteredData = useMemo(() => {
+        if (!pageData) {return null;}
         return getFilteredMutationOverTimeData({
-            data: mutationOverTimeData,
+            data: pageData,
             overallMutationData,
             displayedSegments,
             displayedMutationTypes,
@@ -164,7 +273,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             annotationProvider,
         });
     }, [
-        mutationOverTimeData,
+        pageData,
         overallMutationData,
         displayedSegments,
         displayedMutationTypes,
@@ -196,9 +305,15 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                     content: (
                         <FeaturesOverTimeGrid
                             rowLabelHeader='Mutation'
-                            data={filteredData}
+                            data={filteredData ?? pageData}
+                            isLoading={pageLoading}
                             colorScale={colorScale}
                             pageSizes={originalComponentProps.pageSizes}
+                            pageIndex={pageIndex}
+                            pageSize={pageSize}
+                            totalRows={totalFilteredRows}
+                            onPageChange={setPageIndex}
+                            onPageSizeChange={setPageSize}
                             customColumns={originalComponentProps.customColumns}
                             featureRenderer={mutationRenderer}
                             tooltipPortalTarget={tooltipPortalTarget}
@@ -221,12 +336,12 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             setProportionInterval={setProportionInterval}
             hideGaps={hideGaps}
             setHideGaps={setHideGaps}
-            filteredData={filteredData}
             colorScale={colorScale}
             setColorScale={setColorScale}
             originalComponentProps={originalComponentProps}
             setFilterValue={setMutationFilterValue}
             mutationFilterValue={mutationFilterValue}
+            filteredMutationCodes={filteredMutationCodes}
         />
     );
 
@@ -249,12 +364,13 @@ type ToolbarProps = {
     setProportionInterval: Dispatch<StateUpdater<ProportionInterval>>;
     hideGaps: boolean;
     setHideGaps: Dispatch<StateUpdater<boolean>>;
-    filteredData: MutationOverTimeDataMap;
     colorScale: ColorScale;
     setColorScale: Dispatch<StateUpdater<ColorScale>>;
     originalComponentProps: MutationsOverTimeProps;
     mutationFilterValue: MutationFilter;
     setFilterValue: Dispatch<StateUpdater<MutationFilter>>;
+    /** Filtered mutation codes (all pages) — used for download-all */
+    filteredMutationCodes: string[];
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -267,13 +383,46 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     setProportionInterval,
     hideGaps,
     setHideGaps,
-    filteredData,
     colorScale,
     setColorScale,
     originalComponentProps,
     setFilterValue,
     mutationFilterValue,
+    filteredMutationCodes,
 }) => {
+    const lapis = useLapisUrl();
+    const { lapisFilter, sequenceType, lapisDateField } = originalComponentProps;
+
+    // Download-all: fetch the full time-series for ALL filtered mutations (not just current page)
+    const getDownloadDataAsync = async (): Promise<Record<string, string | number>[]> => {
+        const allData = await queryMutationsOverTimeData(
+            lapisFilter,
+            sequenceType,
+            lapis,
+            lapisDateField,
+            originalComponentProps.granularity,
+        );
+        // Filter down to only the mutations that pass the current client-side filters
+        const filteredCodeSet = new Set(filteredMutationCodes);
+        const dates = allData.mutationOverTimeData.getSecondAxisKeys().map((date) => toTemporalClass(date));
+        return allData.mutationOverTimeData
+            .getFirstAxisKeys()
+            .filter((m) => filteredCodeSet.has(m.code))
+            .map((mutation) => {
+                return dates.reduce<Record<string, string | number>>(
+                    (accumulated, date) => {
+                        const value = allData.mutationOverTimeData.get(mutation, date);
+                        const proportion = getProportion(value ?? null) ?? '';
+                        return {
+                            ...accumulated,
+                            [date.dateString]: proportion,
+                        };
+                    },
+                    { mutation: mutation.code },
+                );
+            });
+    };
+
     return (
         <>
             <MutationsOverTimeMutationsFilter setFilterValue={setFilterValue} value={mutationFilterValue} />
@@ -308,7 +457,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
             )}
             <CsvDownloadButton
                 className='btn btn-xs'
-                getData={() => getDownloadData(filteredData)}
+                getData={getDownloadDataAsync}
                 filename='mutations_over_time.csv'
             />
             <MutationsOverTimeInfo originalComponentProps={originalComponentProps} />
@@ -344,20 +493,4 @@ const MutationsOverTimeInfo: FunctionComponent<MutationsOverTimeInfoProps> = ({ 
     );
 };
 
-function getDownloadData(filteredData: MutationOverTimeDataMap) {
-    const dates = filteredData.getSecondAxisKeys().map((date) => toTemporalClass(date));
 
-    return filteredData.getFirstAxisKeys().map((mutation) => {
-        return dates.reduce(
-            (accumulated, date) => {
-                const value = filteredData.get(mutation, date);
-                const proportion = getProportion(value ?? null) ?? '';
-                return {
-                    ...accumulated,
-                    [date.dateString]: proportion,
-                };
-            },
-            { mutation: mutation.code },
-        );
-    });
-}

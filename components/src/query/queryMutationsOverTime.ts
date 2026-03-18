@@ -142,7 +142,11 @@ async function queryOverallMutationData({
     return dataPromise;
 }
 
-export async function queryMutationsOverTimeData(
+/**
+ * Phase 1: Fetch date buckets and the full sorted list of mutations above the threshold.
+ * This is cheap and does not depend on the current page.
+ */
+export async function queryMutationsOverTimeMetadata(
     lapisFilter: LapisFilter,
     sequenceType: SequenceType,
     lapis: string,
@@ -173,7 +177,32 @@ export async function queryMutationsOverTimeData(
 
     overallMutationData.sort((a, b) => sortSubstitutionsAndDeletions(a.mutation, b.mutation));
 
-    const includeMutations = overallMutationData.map((value) => value.mutation.code);
+    return { overallMutationData, requestedDateRanges };
+}
+
+export type MutationsOverTimeMetadata = Awaited<ReturnType<typeof queryMutationsOverTimeMetadata>>;
+
+/**
+ * Phase 2: Fetch the time-series matrix for a specific slice of mutations (e.g. one page).
+ * Pass `requestedDateRanges` from Phase 1, plus a slice of mutation codes to fetch.
+ */
+export async function queryMutationsOverTimePage(
+    lapisFilter: LapisFilter,
+    lapis: string,
+    lapisDateField: string,
+    sequenceType: SequenceType,
+    requestedDateRanges: MutationsOverTimeMetadata['requestedDateRanges'],
+    includeMutationCodes: string[],
+    signal?: AbortSignal,
+) {
+    if (includeMutationCodes.length === 0 || requestedDateRanges.length === 0) {
+        return new BaseMutationOverTimeDataMap({
+            keysFirstAxis: new Map(),
+            keysSecondAxis: new Map(requestedDateRanges.map((date) => [date.dateString, date])),
+            data: new Map(),
+        });
+    }
+
     const apiResult = await fetchMutationsOverTime(
         lapis,
         {
@@ -182,34 +211,22 @@ export async function queryMutationsOverTimeData(
                 dateFrom: date.firstDay.toString(),
                 dateTo: date.lastDay.toString(),
             })),
-            includeMutations,
+            includeMutations: includeMutationCodes,
             dateField: lapisDateField,
         },
         sequenceType,
         signal,
     );
 
+    return buildMutationOverTimeDataMap(apiResult, requestedDateRanges);
+}
+
+function buildMutationOverTimeDataMap(
+    apiResult: Awaited<ReturnType<typeof fetchMutationsOverTime>>,
+    requestedDateRanges: MutationsOverTimeMetadata['requestedDateRanges'],
+) {
     const totalCounts = apiResult.data.totalCountsByDateRange;
     const responseMutations = apiResult.data.mutations.map(parseMutationCode);
-    const mutationEntries: SubstitutionOrDeletionEntry[] = responseMutations.map((mutation, i) => {
-        const numbers = {
-            count: overallMutationData[i].count,
-            proportion: overallMutationData[i].proportion,
-        };
-        if (mutation.type === 'deletion') {
-            return {
-                type: 'deletion',
-                mutation,
-                ...numbers,
-            };
-        } else {
-            return {
-                type: 'substitution',
-                mutation,
-                ...numbers,
-            };
-        }
-    });
 
     const mutationOverTimeData: Map2DContents<Substitution | Deletion, Temporal, ProportionValue> = {
         keysFirstAxis: new Map(responseMutations.map((mutation) => [mutation.code, mutation])),
@@ -251,10 +268,43 @@ export async function queryMutationsOverTimeData(
         ),
     };
 
-    return {
-        mutationOverTimeData: new BaseMutationOverTimeDataMap(mutationOverTimeData),
-        overallMutationData: mutationEntries,
-    };
+    return new BaseMutationOverTimeDataMap(mutationOverTimeData);
+}
+
+/**
+ * Convenience function combining Phase 1 + Phase 2 for all mutations (used in tests and download).
+ */
+export async function queryMutationsOverTimeData(
+    lapisFilter: LapisFilter,
+    sequenceType: SequenceType,
+    lapis: string,
+    lapisDateField: string,
+    granularity: TemporalGranularity,
+    displayMutations?: string[],
+    signal?: AbortSignal,
+) {
+    const { overallMutationData, requestedDateRanges } = await queryMutationsOverTimeMetadata(
+        lapisFilter,
+        sequenceType,
+        lapis,
+        lapisDateField,
+        granularity,
+        displayMutations,
+        signal,
+    );
+
+    const includeMutations = overallMutationData.map((value) => value.mutation.code);
+    const mutationOverTimeData = await queryMutationsOverTimePage(
+        lapisFilter,
+        lapis,
+        lapisDateField,
+        sequenceType,
+        requestedDateRanges,
+        includeMutations,
+        signal,
+    );
+
+    return { mutationOverTimeData, overallMutationData };
 }
 
 function parseMutationCode(code: string): SubstitutionClass | DeletionClass {
