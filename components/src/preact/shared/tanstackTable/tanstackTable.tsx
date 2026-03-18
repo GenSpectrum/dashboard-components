@@ -4,8 +4,6 @@ import { useEffect, useState } from 'preact/hooks';
 
 import { usePageSizeContext } from './pagination-context';
 
-export * from '@tanstack/table-core';
-
 export type Renderable<TProps> = VNode<TProps> | ComponentType<TProps> | undefined | null | string | number | boolean;
 
 /*

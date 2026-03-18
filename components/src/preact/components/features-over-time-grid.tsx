@@ -1,3 +1,4 @@
+import { createColumnHelper, getCoreRowModel, getPaginationRowModel } from '@tanstack/table-core';
 import { type FunctionComponent, type JSX } from 'preact';
 import { useMemo } from 'preact/hooks';
 import z from 'zod';
@@ -11,13 +12,7 @@ import { type TemporalDataMap } from '../mutationsOverTime/MutationOverTimeData'
 import { formatProportion } from '../shared/table/formatProportion';
 import { type PageSizes, Pagination } from '../shared/tanstackTable/pagination';
 import { usePageSizeContext } from '../shared/tanstackTable/pagination-context';
-import {
-    createColumnHelper,
-    flexRender,
-    getCoreRowModel,
-    getPaginationRowModel,
-    usePreactTable,
-} from '../shared/tanstackTable/tanstackTable';
+import { flexRender, usePreactTable } from '../shared/tanstackTable/tanstackTable';
 
 const NON_BREAKING_SPACE = '\u00A0';
 
