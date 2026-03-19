@@ -1,4 +1,5 @@
 import { createColumnHelper, getCoreRowModel, getPaginationRowModel } from '@tanstack/table-core';
+import type { Table } from '@tanstack/table-core';
 import { type FunctionComponent, type JSX } from 'preact';
 import { type Dispatch, type StateUpdater, useMemo } from 'preact/hooks';
 import z from 'zod';
@@ -30,17 +31,9 @@ export interface FeatureRenderer<D> {
 
 export interface FeaturesOverTimeGridProps<F> {
     rowLabelHeader: string;
-    data: TemporalDataMap<F> | null | undefined;
-    isLoading?: boolean;
+    data: TemporalDataMap<F>;
     colorScale: ColorScale;
     pageSizes: PageSizes;
-    /** Controlled page index (0-based). When provided, pagination is server-driven. */
-    pageIndex?: number;
-    pageSize?: number;
-    /** Total number of rows across all pages (used for pagination display). */
-    totalRows?: number;
-    onPageChange?: Dispatch<StateUpdater<number>>;
-    onPageSizeChange?: Dispatch<StateUpdater<number>>;
     customColumns?: CustomColumn[];
     featureRenderer: FeatureRenderer<F>;
     tooltipPortalTarget: HTMLElement | null;
@@ -57,31 +50,117 @@ const EMPTY_COLUMNS: CustomColumn[] = [];
 function FeaturesOverTimeGrid<F>({
     rowLabelHeader,
     data,
+    colorScale,
+    pageSizes,
+    customColumns = EMPTY_COLUMNS,
+    featureRenderer,
+    tooltipPortalTarget,
+}: FeaturesOverTimeGridProps<F>) {
+    const tableData = useGridTableData(data, customColumns, featureRenderer);
+    const columns = useGridColumns(
+        data,
+        rowLabelHeader,
+        customColumns,
+        colorScale,
+        tooltipPortalTarget,
+        featureRenderer,
+    );
+    const { pageSize } = usePageSizeContext();
+
+    const table = usePreactTable({
+        data: tableData,
+        columns,
+        getCoreRowModel: getCoreRowModel(),
+        getPaginationRowModel: getPaginationRowModel(),
+        initialState: {
+            pagination: { pageIndex: 0, pageSize },
+        },
+    });
+
+    return <FeaturesOverTimeGridDisplay table={table} pageSizes={pageSizes} />;
+}
+
+export interface FeaturesOverTimeGridServerPaginatedProps<F> {
+    rowLabelHeader: string;
+    data: TemporalDataMap<F> | null | undefined;
+    isLoading?: boolean;
+    colorScale: ColorScale;
+    pageSizes: PageSizes;
+    /** Controlled page index (0-based). */
+    pageIndex: number;
+    pageSize: number;
+    /** Total number of rows across all pages. */
+    totalRows: number;
+    onPageChange: Dispatch<StateUpdater<number>>;
+    onPageSizeChange: Dispatch<StateUpdater<number>>;
+    customColumns?: CustomColumn[];
+    featureRenderer: FeatureRenderer<F>;
+    tooltipPortalTarget: HTMLElement | null;
+}
+
+export function FeaturesOverTimeGridServerPaginated<F>({
+    rowLabelHeader,
+    data,
     isLoading = false,
     colorScale,
     pageSizes,
-    pageIndex: controlledPageIndex,
-    pageSize: controlledPageSize,
+    pageIndex,
+    pageSize,
     totalRows,
     onPageChange,
     onPageSizeChange,
     customColumns = EMPTY_COLUMNS,
     featureRenderer,
     tooltipPortalTarget,
-}: FeaturesOverTimeGridProps<F>) {
-    const isControlled = controlledPageIndex !== undefined;
+}: FeaturesOverTimeGridServerPaginatedProps<F>) {
+    const tableData = useGridTableData(data, customColumns, featureRenderer);
+    const columns = useGridColumns(
+        data,
+        rowLabelHeader,
+        customColumns,
+        colorScale,
+        tooltipPortalTarget,
+        featureRenderer,
+    );
+    const { setPageSize: setContextPageSize } = usePageSizeContext();
 
-    const tableData = useMemo(() => {
-        if (!data) {return [];}
-        const firstAxisKeys = data.getFirstAxisKeys();
-        return data.getAsArray().map((row, index): RowType<F> => {
-            const firstAxisKey = firstAxisKeys[index];
-            const customValues = customColumns.map((col) => col.values[featureRenderer.asString(firstAxisKey)]);
-            return { feature: firstAxisKey, values: [...row], customValues };
-        });
-    }, [data, customColumns, featureRenderer]);
+    const table = usePreactTable({
+        data: tableData,
+        columns,
+        getCoreRowModel: getCoreRowModel(),
+        // getPaginationRowModel not needed with manualPagination: true
+        manualPagination: true,
+        pageCount: Math.ceil(totalRows / pageSize),
+        state: {
+            pagination: { pageIndex, pageSize },
+        },
+        onPaginationChange: (updater) => {
+            const current = { pageIndex, pageSize };
+            const next = typeof updater === 'function' ? updater(current) : updater;
+            if (next.pageIndex !== current.pageIndex) {
+                onPageChange(next.pageIndex);
+            }
+            if (next.pageSize !== current.pageSize) {
+                onPageSizeChange(next.pageSize);
+                setContextPageSize(next.pageSize);
+            }
+        },
+    });
 
-    const columns = useMemo(() => {
+    return (
+        <FeaturesOverTimeGridDisplay table={table} pageSizes={pageSizes} isLoading={isLoading} totalRows={totalRows} />
+    );
+}
+
+function useGridColumns<F>(
+    data: TemporalDataMap<F> | null | undefined,
+    rowLabelHeader: string,
+    customColumns: CustomColumn[],
+    colorScale: ColorScale,
+    tooltipPortalTarget: HTMLElement | null,
+    featureRenderer: FeatureRenderer<F>,
+) {
+    return useMemo(() => {
         const columnHelper = createColumnHelper<RowType<F>>();
         const dates = data?.getSecondAxisKeys() ?? [];
 
@@ -150,55 +229,41 @@ function FeaturesOverTimeGrid<F>({
 
         return [featureHeader, ...customColumnHeaders, ...dateHeaders];
     }, [colorScale, data, customColumns, tooltipPortalTarget, featureRenderer, rowLabelHeader]);
+}
 
-    const { pageSize: contextPageSize, setPageSize: setContextPageSize } = usePageSizeContext();
+function useGridTableData<F>(
+    data: TemporalDataMap<F> | null | undefined,
+    customColumns: CustomColumn[],
+    featureRenderer: FeatureRenderer<F>,
+) {
+    return useMemo(() => {
+        if (!data) {
+            return [];
+        }
+        const firstAxisKeys = data.getFirstAxisKeys();
+        return data.getAsArray().map((row, index): RowType<F> => {
+            const firstAxisKey = firstAxisKeys[index];
+            const customValues = customColumns.map((col) => col.values[featureRenderer.asString(firstAxisKey)]);
+            return { feature: firstAxisKey, values: [...row], customValues };
+        });
+    }, [data, customColumns, featureRenderer]);
+}
 
-    // In controlled mode, use the lifted page state; otherwise fall back to internal TanStack state
-    const effectivePageSize = isControlled ? (controlledPageSize ?? contextPageSize) : contextPageSize;
+interface FeaturesOverTimeGridDisplayProps<F> {
+    table: Table<RowType<F>>;
+    pageSizes: PageSizes;
+    isLoading?: boolean;
+    /** Override for the pagination row count (server-driven pagination). */
+    totalRows?: number;
+}
 
-    const table = usePreactTable({
-        data: tableData,
-        columns,
-        getCoreRowModel: getCoreRowModel(),
-        getPaginationRowModel: getPaginationRowModel(),
-        // In controlled mode, pageCount is driven by totalRows; TanStack won't auto-compute it
-        ...(isControlled && totalRows !== undefined
-            ? { pageCount: Math.ceil(totalRows / effectivePageSize) }
-            : {}),
-        state: isControlled
-            ? {
-                  pagination: {
-                      pageIndex: controlledPageIndex,
-                      pageSize: effectivePageSize,
-                  },
-              }
-            : undefined,
-        onPaginationChange: isControlled
-            ? (updater) => {
-                  const current = { pageIndex: controlledPageIndex, pageSize: effectivePageSize };
-                  const next = typeof updater === 'function' ? updater(current) : updater;
-                  if (next.pageIndex !== current.pageIndex) {
-                      onPageChange?.(next.pageIndex);
-                  }
-                  if (next.pageSize !== current.pageSize) {
-                      onPageSizeChange?.(next.pageSize);
-                      setContextPageSize(next.pageSize);
-                  }
-              }
-            : undefined,
-        manualPagination: isControlled,
-        initialState: isControlled
-            ? undefined
-            : {
-                  pagination: {
-                      pageIndex: 0,
-                      pageSize: effectivePageSize,
-                  },
-              },
-    });
-
-    // Number of rows to display in pagination indicator
-    const displayedTotalRows = isControlled ? (totalRows ?? tableData.length) : tableData.length;
+function FeaturesOverTimeGridDisplay<F>({
+    table,
+    pageSizes,
+    isLoading = false,
+    totalRows,
+}: FeaturesOverTimeGridDisplayProps<F>) {
+    const displayedTotalRows = totalRows ?? table.getCoreRowModel().rows.length;
 
     return (
         <div className='w-full'>
@@ -228,7 +293,9 @@ function FeaturesOverTimeGrid<F>({
                             {table.getRowModel().rows.map((row) => (
                                 <tr key={row.id}>
                                     {row.getVisibleCells().map((cell) => (
-                                        <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                                        <td key={cell.id}>
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                        </td>
                                     ))}
                                 </tr>
                             ))}

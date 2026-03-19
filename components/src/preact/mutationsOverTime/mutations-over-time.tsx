@@ -32,7 +32,7 @@ import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
-import FeaturesOverTimeGrid, { type FeatureRenderer, customColumnSchema } from '../components/features-over-time-grid';
+import { FeaturesOverTimeGridServerPaginated, type FeatureRenderer, customColumnSchema } from '../components/features-over-time-grid';
 import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
@@ -303,7 +303,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                 return {
                     title: 'Grid',
                     content: (
-                        <FeaturesOverTimeGrid
+                        <FeaturesOverTimeGridServerPaginated
                             rowLabelHeader='Mutation'
                             data={filteredData ?? pageData}
                             isLoading={pageLoading}
