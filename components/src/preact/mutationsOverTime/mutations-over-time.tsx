@@ -2,11 +2,7 @@ import { type FunctionComponent } from 'preact';
 import { type Dispatch, type StateUpdater, useMemo, useState, useEffect, useLayoutEffect, useRef } from 'preact/hooks';
 import z from 'zod';
 
-import {
-    displayMutationsSchema,
-    getFilteredMutationOverTimeData,
-    type MutationFilter,
-} from './getFilteredMutationsOverTimeData';
+import { displayMutationsSchema, type MutationFilter } from './getFilteredMutationsOverTimeData';
 import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
 import {
     type MutationsOverTimeMetadata,
@@ -16,12 +12,8 @@ import {
     queryMutationsOverTimeMetadata,
     queryMutationsOverTimePage,
 } from '../../query/queryMutationsOverTime';
-import {
-    lapisFilterSchema,
-    sequenceTypeSchema,
-    temporalGranularitySchema,
-    views,
-} from '../../types';
+import { lapisFilterSchema, sequenceTypeSchema, temporalGranularitySchema, views } from '../../types';
+import { Map2dView } from '../../utils/map2d';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type Temporal, toTemporalClass } from '../../utils/temporalClass';
 import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
@@ -32,7 +24,11 @@ import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
-import { FeaturesOverTimeGridServerPaginated, type FeatureRenderer, customColumnSchema } from '../components/features-over-time-grid';
+import {
+    FeaturesOverTimeGridServerPaginated,
+    type FeatureRenderer,
+    customColumnSchema,
+} from '../components/features-over-time-grid';
 import { Fullscreen } from '../components/fullscreen';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
@@ -103,7 +99,14 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
         isLoading: metadataLoading,
     } = useQuery(
         () =>
-            queryMutationsOverTimeMetadata(lapisFilter, sequenceType, lapis, lapisDateField, granularity, displayMutations),
+            queryMutationsOverTimeMetadata(
+                lapisFilter,
+                sequenceType,
+                lapis,
+                lapisDateField,
+                granularity,
+                displayMutations,
+            ),
         [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations],
     );
 
@@ -184,8 +187,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
 
     useEffect(() => setHideGaps(originalComponentProps.hideGaps ?? false), [originalComponentProps.hideGaps]);
 
-    // Filter the mutation list from Phase 1 directly (without needing time-series data).
-    // This is the same logic as getFilteredMutationOverTimeData but applied to overallMutationData only.
+    // Step 1: Filter the full mutation list from Phase 1 by proportion, type, segment and text.
+    // hideGaps cannot be applied here — it requires time-series data from Phase 2.
     const filteredMutationEntries = useMemo(() => {
         return overallMutationData.filter((entry) => {
             if (entry.proportion < proportionInterval.min || entry.proportion > proportionInterval.max) {
@@ -236,7 +239,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     // Slice to the current page
     const pageMutationCodes = filteredMutationCodes.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
 
-    // Phase 2: fetch time-series data for just the current page's mutations
+    // Step 2: fetch time-series data for just the current page's mutations
     const {
         data: pageData,
         error: pageError,
@@ -258,31 +261,19 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         throw pageError;
     }
 
-    // Apply hideGaps filter to the fetched page data
     const filteredData = useMemo(() => {
-        if (!pageData) {return null;}
-        return getFilteredMutationOverTimeData({
-            data: pageData,
-            overallMutationData,
-            displayedSegments,
-            displayedMutationTypes,
-            proportionInterval,
-            hideGaps,
-            mutationFilterValue,
-            sequenceType: originalComponentProps.sequenceType,
-            annotationProvider,
-        });
-    }, [
-        pageData,
-        overallMutationData,
-        displayedSegments,
-        displayedMutationTypes,
-        proportionInterval,
-        hideGaps,
-        originalComponentProps.sequenceType,
-        mutationFilterValue,
-        annotationProvider,
-    ]);
+        if (!pageData || !hideGaps) {
+            return pageData ?? null;
+        }
+        const view = new Map2dView(pageData);
+        view.getSecondAxisKeys()
+            .filter((dateRange) => {
+                const vals = view.getColumn(dateRange);
+                return !vals.some((v) => (v?.type === 'value' || v?.type === 'valueWithCoverage') && v.totalCount > 0);
+            })
+            .forEach((dateRange) => view.deleteColumn(dateRange));
+        return view;
+    }, [pageData, hideGaps]);
 
     const mutationRenderer: FeatureRenderer<Substitution | Deletion> = useMemo(
         () => ({
