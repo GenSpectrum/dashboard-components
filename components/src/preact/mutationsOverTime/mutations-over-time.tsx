@@ -284,17 +284,20 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
         annotationProvider,
     ]);
 
-    const mutationRenderer: FeatureRenderer<Substitution | Deletion> = {
-        asString: (value: Substitution | Deletion) => value.code,
-        renderRowLabel: (value: Substitution | Deletion) => (
-            <div className={'text-center'}>
-                <AnnotatedMutation mutation={value} sequenceType={originalComponentProps.sequenceType} />
-            </div>
-        ),
-        renderTooltip: (value: Substitution | Deletion, temporal: Temporal, proportionValue: ProportionValue) => (
-            <MutationsOverTimeGridTooltip mutation={value} date={temporal} value={proportionValue} />
-        ),
-    };
+    const mutationRenderer: FeatureRenderer<Substitution | Deletion> = useMemo(
+        () => ({
+            asString: (value: Substitution | Deletion) => value.code,
+            renderRowLabel: (value: Substitution | Deletion) => (
+                <div className={'text-center'}>
+                    <AnnotatedMutation mutation={value} sequenceType={originalComponentProps.sequenceType} />
+                </div>
+            ),
+            renderTooltip: (value: Substitution | Deletion, temporal: Temporal, proportionValue: ProportionValue) => (
+                <MutationsOverTimeGridTooltip mutation={value} date={temporal} value={proportionValue} />
+            ),
+        }),
+        [originalComponentProps.sequenceType],
+    );
 
     const getTab = (view: MutationsOverTimeView) => {
         switch (view) {
@@ -492,5 +495,3 @@ const MutationsOverTimeInfo: FunctionComponent<MutationsOverTimeInfoProps> = ({ 
         </Info>
     );
 };
-
-
