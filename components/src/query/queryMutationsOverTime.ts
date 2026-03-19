@@ -12,7 +12,7 @@ import {
 } from '../types';
 import { type Map2DContents } from '../utils/map2d';
 import { type Deletion, type Substitution, DeletionClass, SubstitutionClass } from '../utils/mutations';
-import { type Temporal } from '../utils/temporalClass';
+import { TemporalClass, type Temporal } from '../utils/temporalClass';
 
 export type ProportionValue =
     | {
@@ -53,95 +53,6 @@ export function getProportion(value: ProportionValue) {
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 export const MUTATIONS_OVER_TIME_MIN_PROPORTION = 0.001;
 
-/**
- * Create SubstitutionOrDeletionEntry for given code with count and proportion 0.
- * @param code a mutation code like G44T or A23-
- */
-function codeToEmptyEntry(code: string): SubstitutionOrDeletionEntry | null {
-    const maybeDeletion = DeletionClass.parse(code);
-    if (maybeDeletion) {
-        return {
-            type: 'deletion',
-            mutation: maybeDeletion,
-            count: 0,
-            proportion: 0,
-        };
-    }
-    const maybeSubstitution = SubstitutionClass.parse(code);
-    if (maybeSubstitution) {
-        return {
-            type: 'substitution',
-            mutation: maybeSubstitution,
-            count: 0,
-            proportion: 0,
-        };
-    }
-    return null;
-}
-
-/**
- * Return counts and proportions for all mutations that match the lapisFilter.
- * If `includeMutations` are given, the result will also be filtered for those.
- * Any mutation that isn't in the result, but is in the `includeMutations` will
- * be in the result with count and proportion as 0.
- */
-async function queryOverallMutationData({
-    lapisFilter,
-    sequenceType,
-    lapis,
-    granularity,
-    lapisDateField,
-    includeMutations,
-    signal,
-}: {
-    lapisFilter: LapisFilter;
-    sequenceType: SequenceType;
-    lapis: string;
-    granularity: TemporalGranularity;
-    lapisDateField: string;
-    includeMutations?: string[];
-    signal?: AbortSignal;
-}) {
-    const requestedDateRanges = await queryDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
-
-    if (requestedDateRanges.length === 0) {
-        if (includeMutations) {
-            return {
-                content: includeMutations
-                    .map(codeToEmptyEntry)
-                    .filter((e): e is SubstitutionOrDeletionEntry => e !== null),
-            };
-        } else {
-            return {
-                content: [],
-            };
-        }
-    }
-
-    const filter = {
-        ...lapisFilter,
-        [`${lapisDateField}From`]: requestedDateRanges[0].firstDay.toString(),
-        [`${lapisDateField}To`]: requestedDateRanges[requestedDateRanges.length - 1].lastDay.toString(),
-    };
-
-    let dataPromise = fetchAndPrepareSubstitutionsOrDeletions(filter, sequenceType).evaluate(lapis, signal);
-
-    if (includeMutations) {
-        dataPromise = dataPromise.then((data) => {
-            return {
-                content: includeMutations
-                    .map((code) => {
-                        const found = data.content.find((m) => m.mutation.code === code);
-                        return found ?? codeToEmptyEntry(code);
-                    })
-                    .filter((e): e is SubstitutionOrDeletionEntry => e !== null),
-            };
-        });
-    }
-
-    return dataPromise;
-}
-
 export async function queryMutationsOverTimeData(
     lapisFilter: LapisFilter,
     sequenceType: SequenceType,
@@ -162,18 +73,21 @@ export async function queryMutationsOverTimeData(
         );
     }
 
-    const overallMutationData = await queryOverallMutationData({
-        lapisFilter,
-        sequenceType,
-        lapis,
-        lapisDateField,
-        includeMutations: displayMutations,
-        granularity,
-    }).then((r) => r.content);
-
-    overallMutationData.sort((a, b) => sortSubstitutionsAndDeletions(a.mutation, b.mutation));
-
-    const includeMutations = overallMutationData.map((value) => value.mutation.code);
+    const mutationsToQuery =
+        displayMutations ??
+        (await queryAllMutationCodes({
+            lapisFilter,
+            requestedDateRanges,
+            sequenceType,
+            lapis,
+            lapisDateField,
+            signal,
+        }));
+    const sortedMutationCodes = mutationsToQuery
+        .map(parseMutationCode)
+        .sort((a, b) => sortSubstitutionsAndDeletions(a, b))
+        .map((m) => m.code);
+        
     const apiResult = await fetchMutationsOverTime(
         lapis,
         {
@@ -182,7 +96,7 @@ export async function queryMutationsOverTimeData(
                 dateFrom: date.firstDay.toString(),
                 dateTo: date.lastDay.toString(),
             })),
-            includeMutations,
+            includeMutations: sortedMutationCodes,
             dateField: lapisDateField,
         },
         sequenceType,
@@ -192,21 +106,22 @@ export async function queryMutationsOverTimeData(
     const totalCounts = apiResult.data.totalCountsByDateRange;
     const responseMutations = apiResult.data.mutations.map(parseMutationCode);
     const mutationEntries: SubstitutionOrDeletionEntry[] = responseMutations.map((mutation, i) => {
-        const numbers = {
-            count: overallMutationData[i].count,
-            proportion: overallMutationData[i].proportion,
-        };
+        const count = apiResult.data.data[i].map(({ count }) => count).reduce((acc, c) => acc + c, 0);
+        const coverage = apiResult.data.data[i].map(({ coverage }) => coverage).reduce((acc, c) => acc + c, 0);
+        const proportion = count / coverage;
         if (mutation.type === 'deletion') {
             return {
                 type: 'deletion',
                 mutation,
-                ...numbers,
+                count,
+                proportion,
             };
         } else {
             return {
                 type: 'substitution',
                 mutation,
-                ...numbers,
+                count,
+                proportion,
             };
         }
     });
@@ -257,6 +172,36 @@ export async function queryMutationsOverTimeData(
     };
 }
 
+async function queryAllMutationCodes({
+    lapisFilter,
+    requestedDateRanges,
+    sequenceType,
+    lapis,
+    lapisDateField,
+    signal,
+}: {
+    lapisFilter: LapisFilter;
+    requestedDateRanges: TemporalClass[];
+    sequenceType: SequenceType;
+    lapis: string;
+    lapisDateField: string;
+    signal?: AbortSignal;
+}) {
+    if (requestedDateRanges.length === 0) {
+        return [];
+    }
+
+    const filter = {
+        ...lapisFilter,
+        [`${lapisDateField}From`]: requestedDateRanges[0].firstDay.toString(),
+        [`${lapisDateField}To`]: requestedDateRanges[requestedDateRanges.length - 1].lastDay.toString(),
+    };
+
+    return new FetchSubstitutionsOrDeletionsOperator(filter, sequenceType, MUTATIONS_OVER_TIME_MIN_PROPORTION)
+        .evaluate(lapis, signal)
+        .then((r) => r.content.map((v) => v.mutation.code));
+}
+
 function parseMutationCode(code: string): SubstitutionClass | DeletionClass {
     const maybeDeletion = DeletionClass.parse(code);
     if (maybeDeletion) {
@@ -267,10 +212,6 @@ function parseMutationCode(code: string): SubstitutionClass | DeletionClass {
         return maybeSubstitution;
     }
     throw Error(`Given code is not valid: ${code}`);
-}
-
-function fetchAndPrepareSubstitutionsOrDeletions(filter: LapisFilter, sequenceType: SequenceType) {
-    return new FetchSubstitutionsOrDeletionsOperator(filter, sequenceType, MUTATIONS_OVER_TIME_MIN_PROPORTION);
 }
 
 export function serializeSubstitutionOrDeletion(mutation: Substitution | Deletion) {
