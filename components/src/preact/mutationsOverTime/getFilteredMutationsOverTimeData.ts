@@ -1,8 +1,6 @@
 import z from 'zod';
 
-import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { type SequenceType, type SubstitutionOrDeletionEntry } from '../../types';
-import { Map2dView } from '../../utils/map2d';
 import type { Deletion, Mutation, Substitution } from '../../utils/mutations';
 import { type useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
 import type { DisplayedMutationType } from '../components/mutation-type-selector';
@@ -11,7 +9,6 @@ import type { DisplayedSegment } from '../components/segment-selector';
 export const displayMutationsSchema = z.array(z.string(), {
     errorMap: () => ({ message: `invalid display mutations` }),
 });
-export type DisplayMutations = z.infer<typeof displayMutationsSchema>;
 
 export type MutationFilter = {
     textFilter: string;
@@ -19,63 +16,41 @@ export type MutationFilter = {
 };
 
 export type GetFilteredMutationOverTimeDataArgs = {
-    data: MutationOverTimeDataMap;
     overallMutationData: SubstitutionOrDeletionEntry<Substitution, Deletion>[];
     displayedSegments: DisplayedSegment[];
     displayedMutationTypes: DisplayedMutationType[];
     proportionInterval: { min: number; max: number };
-    hideGaps: boolean;
-    displayMutations?: DisplayMutations;
     mutationFilterValue: MutationFilter;
     sequenceType: SequenceType;
     annotationProvider: ReturnType<typeof useMutationAnnotationsProvider>;
 };
 
 export function getFilteredMutationOverTimeData({
-    data,
     overallMutationData,
     displayedSegments,
     displayedMutationTypes,
     proportionInterval,
-    hideGaps,
     mutationFilterValue,
     sequenceType,
     annotationProvider,
-}: GetFilteredMutationOverTimeDataArgs) {
-    const filteredData = new Map2dView(data);
-
-    const mutationsToFilterOut = overallMutationData.filter((entry) => {
+}: GetFilteredMutationOverTimeDataArgs): SubstitutionOrDeletionEntry<Substitution, Deletion>[] {
+    return overallMutationData.filter((entry) => {
         if (entry.proportion < proportionInterval.min || entry.proportion > proportionInterval.max) {
-            return true;
+            return false;
         }
         if (displayedSegments.some((segment) => segment.segment === entry.mutation.segment && !segment.checked)) {
-            return true;
+            return false;
         }
 
         if (
             mutationOrAnnotationDoNotMatchFilter(entry.mutation, sequenceType, mutationFilterValue, annotationProvider)
         ) {
-            return true;
+            return false;
         }
-
-        return displayedMutationTypes.some(
+        return !displayedMutationTypes.some(
             (mutationType) => mutationType.type === entry.mutation.type && !mutationType.checked,
         );
     });
-
-    mutationsToFilterOut.forEach((entry) => {
-        filteredData.deleteRow(entry.mutation);
-    });
-
-    if (hideGaps) {
-        const dateRangesToFilterOut = filteredData.getSecondAxisKeys().filter((dateRange) => {
-            const vals = filteredData.getColumn(dateRange);
-            return !vals.some((v) => (v?.type === 'value' || v?.type === 'valueWithCoverage') && v.totalCount > 0);
-        });
-        dateRangesToFilterOut.forEach((dateRange) => filteredData.deleteColumn(dateRange));
-    }
-
-    return filteredData;
 }
 
 export function mutationOrAnnotationDoNotMatchFilter(

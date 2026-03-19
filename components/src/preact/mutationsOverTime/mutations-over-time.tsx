@@ -2,7 +2,7 @@ import { type FunctionComponent } from 'preact';
 import { type Dispatch, type StateUpdater, useMemo, useState, useEffect, useLayoutEffect, useRef } from 'preact/hooks';
 import z from 'zod';
 
-import { displayMutationsSchema, type MutationFilter } from './getFilteredMutationsOverTimeData';
+import { displayMutationsSchema, getFilteredMutationOverTimeData, type MutationFilter } from './getFilteredMutationsOverTimeData';
 import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
 import {
     type MutationsOverTimeMetadata,
@@ -189,48 +189,27 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
 
     // Step 1: Filter the full mutation list from Phase 1 by proportion, type, segment and text.
     // hideGaps cannot be applied here — it requires time-series data from Phase 2.
-    const filteredMutationEntries = useMemo(() => {
-        return overallMutationData.filter((entry) => {
-            if (entry.proportion < proportionInterval.min || entry.proportion > proportionInterval.max) {
-                return false;
-            }
-            if (displayedSegments.some((s) => s.segment === entry.mutation.segment && !s.checked)) {
-                return false;
-            }
-            if (displayedMutationTypes.some((t) => t.type === entry.mutation.type && !t.checked)) {
-                return false;
-            }
-            const { textFilter, annotationNameFilter } = mutationFilterValue;
-            if (textFilter !== '' && !entry.mutation.code.includes(textFilter)) {
-                const annotations = annotationProvider(entry.mutation, originalComponentProps.sequenceType);
-                if (
-                    !annotations?.some(
-                        (a) =>
-                            a.description.includes(textFilter) ||
-                            a.name.includes(textFilter) ||
-                            a.symbol.includes(textFilter),
-                    )
-                ) {
-                    return false;
-                }
-            }
-            if (annotationNameFilter.size > 0) {
-                const annotations = annotationProvider(entry.mutation, originalComponentProps.sequenceType);
-                if (!annotations?.some((a) => annotationNameFilter.has(a.name))) {
-                    return false;
-                }
-            }
-            return true;
-        });
-    }, [
-        overallMutationData,
-        displayedSegments,
-        displayedMutationTypes,
-        proportionInterval,
-        originalComponentProps.sequenceType,
-        mutationFilterValue,
-        annotationProvider,
-    ]);
+    const filteredMutationEntries = useMemo(
+        () =>
+            getFilteredMutationOverTimeData({
+                overallMutationData,
+                displayedSegments,
+                displayedMutationTypes,
+                proportionInterval,
+                mutationFilterValue,
+                sequenceType: originalComponentProps.sequenceType,
+                annotationProvider,
+            }),
+        [
+            overallMutationData,
+            displayedSegments,
+            displayedMutationTypes,
+            proportionInterval,
+            originalComponentProps.sequenceType,
+            mutationFilterValue,
+            annotationProvider,
+        ],
+    );
 
     // The sorted, filtered list of all mutation codes (used for paging and total count)
     const filteredMutationCodes = filteredMutationEntries.map((e) => e.mutation.code);
