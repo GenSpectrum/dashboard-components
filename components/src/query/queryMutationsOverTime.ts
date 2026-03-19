@@ -12,7 +12,7 @@ import {
 } from '../types';
 import { type Map2DContents } from '../utils/map2d';
 import { type Deletion, type Substitution, DeletionClass, SubstitutionClass } from '../utils/mutations';
-import { TemporalClass, type Temporal } from '../utils/temporalClass';
+import { type TemporalClass, type Temporal } from '../utils/temporalClass';
 
 export type ProportionValue =
     | {
@@ -87,7 +87,7 @@ export async function queryMutationsOverTimeData(
         .map(parseMutationCode)
         .sort((a, b) => sortSubstitutionsAndDeletions(a, b))
         .map((m) => m.code);
-        
+
     const apiResult = await fetchMutationsOverTime(
         lapis,
         {
