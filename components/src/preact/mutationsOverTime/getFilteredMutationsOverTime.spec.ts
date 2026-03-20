@@ -1,25 +1,15 @@
 import { describe, expect, it } from 'vitest';
 
-import { BaseMutationOverTimeDataMap } from './MutationOverTimeData';
 import { getFilteredMutationOverTimeData, type MutationFilter } from './getFilteredMutationsOverTimeData';
-import { type ProportionValue } from '../../query/queryMutationsOverTime';
 import { type DeletionEntry, type SubstitutionEntry } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
-import { type TemporalClass } from '../../utils/temporalClass';
-import { yearMonthDay } from '../../utils/temporalTestHelpers';
 import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
 import { getMutationAnnotationsContext, getMutationAnnotationsProvider } from '../MutationAnnotationsContext';
 
 describe('getFilteredMutationOverTimeData', () => {
     it('should filter by displayed segments', () => {
-        const { overallMutationData } = prepareMutationOverTimeData([
-            someSubstitutionEntry,
-            anotherSubstitutionEntry,
-            someDeletionEntry,
-        ]);
-
         const result = getFilteredMutationOverTimeData({
-            overallMutationData,
+            overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],
             displayedSegments: [
                 { segment: 'someSegment', checked: false, label: 'Some Segment' },
                 { segment: 'someOtherSegment', checked: true, label: 'Some Other Segment' },
@@ -35,14 +25,8 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should filter by mutation types', () => {
-        const { overallMutationData } = prepareMutationOverTimeData([
-            someSubstitutionEntry,
-            anotherSubstitutionEntry,
-            someDeletionEntry,
-        ]);
-
         const result = getFilteredMutationOverTimeData({
-            overallMutationData,
+            overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],
             displayedSegments: [],
             displayedMutationTypes: [
                 { type: 'substitution', checked: false, label: 'Substitution' },
@@ -58,14 +42,12 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should remove mutations where overall proportion is below filter', () => {
-        const { overallMutationData } = prepareMutationOverTimeData([
-            { ...someSubstitutionEntry, proportion: belowFilter },
-            { ...anotherSubstitutionEntry, proportion: inFilter },
-            { ...someDeletionEntry, proportion: inFilter },
-        ]);
-
         const result = getFilteredMutationOverTimeData({
-            overallMutationData,
+            overallMutationData: [
+                { ...someSubstitutionEntry, proportion: belowFilter },
+                { ...anotherSubstitutionEntry, proportion: inFilter },
+                { ...someDeletionEntry, proportion: inFilter },
+            ],
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
@@ -78,14 +60,12 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should remove mutations where overall proportion is above filter', () => {
-        const { overallMutationData } = prepareMutationOverTimeData([
-            { ...someSubstitutionEntry, proportion: aboveFilter },
-            { ...anotherSubstitutionEntry, proportion: inFilter },
-            { ...someDeletionEntry, proportion: inFilter },
-        ]);
-
         const result = getFilteredMutationOverTimeData({
-            overallMutationData,
+            overallMutationData: [
+                { ...someSubstitutionEntry, proportion: aboveFilter },
+                { ...anotherSubstitutionEntry, proportion: inFilter },
+                { ...someDeletionEntry, proportion: inFilter },
+            ],
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
@@ -98,13 +78,12 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should not remove mutations where overall proportion is at lower bound of filter', () => {
-        const { overallMutationData } = prepareMutationOverTimeData([
-            { ...someSubstitutionEntry, proportion: atFilterMin },
-            { ...anotherSubstitutionEntry, proportion: inFilter },
-            { ...someDeletionEntry, proportion: inFilter },
-        ]);
         const result = getFilteredMutationOverTimeData({
-            overallMutationData,
+            overallMutationData: [
+                { ...someSubstitutionEntry, proportion: atFilterMin },
+                { ...anotherSubstitutionEntry, proportion: inFilter },
+                { ...someDeletionEntry, proportion: inFilter },
+            ],
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
@@ -117,14 +96,12 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should not remove mutations where overall proportion is at upper bound of filter', () => {
-        const { overallMutationData } = prepareMutationOverTimeData([
-            { ...someSubstitutionEntry, proportion: atFilterMax },
-            { ...anotherSubstitutionEntry, proportion: inFilter },
-            { ...someDeletionEntry, proportion: inFilter },
-        ]);
-
         const result = getFilteredMutationOverTimeData({
-            overallMutationData,
+            overallMutationData: [
+                { ...someSubstitutionEntry, proportion: atFilterMax },
+                { ...anotherSubstitutionEntry, proportion: inFilter },
+                { ...someDeletionEntry, proportion: inFilter },
+            ],
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
@@ -137,14 +114,8 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should filter by mutation filter text value', () => {
-        const { overallMutationData } = prepareMutationOverTimeData([
-            someSubstitutionEntry,
-            anotherSubstitutionEntry,
-            someDeletionEntry,
-        ]);
-
         const result = getFilteredMutationOverTimeData({
-            overallMutationData,
+            overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
@@ -157,17 +128,11 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     describe('should filter by annotation', () => {
-        const { overallMutationData } = prepareMutationOverTimeData([
-            someSubstitutionEntry,
-            anotherSubstitutionEntry,
-            someDeletionEntry,
-        ]);
-
         const expectFilteredValue = (filterValue: MutationFilter, annotations: MutationAnnotations) => {
             const annotationProvider = getMutationAnnotationsProvider(getMutationAnnotationsContext(annotations));
 
             const result = getFilteredMutationOverTimeData({
-                overallMutationData,
+                overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],
                 displayedSegments: [],
                 displayedMutationTypes: [],
                 proportionInterval,
@@ -207,14 +172,8 @@ describe('getFilteredMutationOverTimeData', () => {
     it('should not filter by individual time-series proportions below the overall filter', () => {
         // Filtering is based solely on overallMutationData proportions, not per-cell values.
         // An entry whose overall proportion is within range is always kept.
-        const { overallMutationData } = prepareMutationOverTimeData([
-            someSubstitutionEntry,
-            anotherSubstitutionEntry,
-            someDeletionEntry,
-        ]);
-
         const result = getFilteredMutationOverTimeData({
-            overallMutationData,
+            overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],
             displayedSegments: [],
             displayedMutationTypes: [],
             proportionInterval,
@@ -276,33 +235,4 @@ describe('getFilteredMutationOverTimeData', () => {
         count: 789,
         proportion: inFilter,
     };
-    const someTemporal = yearMonthDay('2021-01-01');
-    const anotherTemporal = yearMonthDay('2021-02-02');
-    const someMutationOverTimeValue = {
-        type: 'value',
-        count: 1,
-        proportion: inFilter,
-        totalCount: 10,
-    } satisfies ProportionValue;
-    const emptyMutationOverTimeValue = {
-        type: 'value',
-        count: 0,
-        proportion: NaN,
-        totalCount: 0,
-    } satisfies ProportionValue;
-
-    function prepareMutationOverTimeData(
-        mutationEntries: (SubstitutionEntry<Substitution> | DeletionEntry<Deletion>)[],
-        temporals: TemporalClass[] = [someTemporal, anotherTemporal],
-    ) {
-        const data = new BaseMutationOverTimeDataMap();
-
-        temporals.forEach((temporal) => {
-            mutationEntries.forEach((entry) => {
-                data.set(entry.mutation, temporal, someMutationOverTimeValue);
-            });
-        });
-
-        return { data, overallMutationData: mutationEntries };
-    }
 });
