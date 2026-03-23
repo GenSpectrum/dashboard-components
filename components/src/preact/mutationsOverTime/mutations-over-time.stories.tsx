@@ -200,26 +200,12 @@ export const UsesHideGaps: StoryObj<MutationsOverTimeProps> = {
     ...Default,
     args: {
         ...Default.args,
+        initialMeanProportionInterval: { min: 0, max: 1 },
         displayMutations: ['A13121T', 'G24872T', 'T21653-'],
     },
     parameters: {
         fetchMock: {
             mocks: [
-                {
-                    matcher: {
-                        url: `${LAPIS_URL}/sample/nucleotideMutations`,
-                        body: {
-                            pangoLineage: 'JN.1*',
-                            dateFrom: '2024-01-01',
-                            dateTo: '2024-07-31',
-                            minProportion: 0.001,
-                        },
-                        response: {
-                            status: 200,
-                            body: mockDefaultNucleotideMutations,
-                        },
-                    },
-                },
                 {
                     matcher: {
                         url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
@@ -325,6 +311,7 @@ export const WithCustomColumns: StoryObj<MutationsOverTimeProps> = {
     ...Default,
     args: {
         ...Default.args,
+        initialMeanProportionInterval: { min: 0, max: 1 },
         displayMutations: ['A13121T', 'G24872T', 'T21653-'],
         customColumns: [
             {
@@ -339,21 +326,6 @@ export const WithCustomColumns: StoryObj<MutationsOverTimeProps> = {
     parameters: {
         fetchMock: {
             mocks: [
-                {
-                    matcher: {
-                        url: `${LAPIS_URL}/sample/nucleotideMutations`,
-                        body: {
-                            pangoLineage: 'JN.1*',
-                            dateFrom: '2024-01-01',
-                            dateTo: '2024-07-31',
-                            minProportion: 0.001,
-                        },
-                        response: {
-                            status: 200,
-                            body: mockDefaultNucleotideMutations,
-                        },
-                    },
-                },
                 {
                     matcher: {
                         url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,

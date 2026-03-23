@@ -116,6 +116,9 @@ export async function fetchSubstitutionsOrDeletions(
     return mutationsResponse.parse(await response.json());
 }
 
+/**
+ * The 2D 'data' array is: 1st axis mutation, 2nd axis date ranges.
+ */
 export async function fetchMutationsOverTime(
     lapisUrl: string,
     body: MutationsOverTimeRequest,

@@ -60,7 +60,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                         data: {
                             data: [
                                 [
-                                    { count: 4, coverage: 10 },
+                                    { count: 9, coverage: 10 },
                                     { count: 0, coverage: 10 },
                                     { count: 0, coverage: 10 },
                                 ],
@@ -90,7 +90,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
 
         const expectedData = [
             [
-                { type: 'valueWithCoverage', count: 4, coverage: 10, totalCount: 11 },
+                { type: 'valueWithCoverage', count: 9, coverage: 10, totalCount: 11 },
                 { type: 'valueWithCoverage', count: 0, coverage: 10, totalCount: 12 },
                 { type: 'valueWithCoverage', count: 0, coverage: 10, totalCount: 13 },
             ],
@@ -122,8 +122,8 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                     code: 'otherSequenceName:G234C',
                     type: 'substitution',
                 },
-                count: 4,
-                proportion: 0.22,
+                count: 9,
+                proportion: 0.3,
             },
             {
                 type: 'substitution',
@@ -136,7 +136,7 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                     type: 'substitution',
                 },
                 count: 6,
-                proportion: 0.21,
+                proportion: 0.2,
             },
         ]);
     });
@@ -762,23 +762,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
             },
         );
 
-        lapisRequestMocks.multipleMutations(
-            [
-                {
-                    body: {
-                        ...lapisFilter,
-                        dateFieldFrom: '2023-01-01',
-                        dateFieldTo: '2023-02-28',
-                        minProportion: 0.001,
-                    },
-                    response: {
-                        data: [getSomeTestMutation(0.21, 6), getSomeOtherTestMutation(0.22, 4)],
-                    },
-                },
-            ],
-            'nucleotide',
-        );
-
         const dateRanges = [
             {
                 dateFrom: '2023-01-01',
@@ -862,23 +845,6 @@ describe('queryMutationsOverTimeNewEndpoint', () => {
                     { count: 2, [dateField]: '2023-02-15' },
                 ],
             },
-        );
-
-        lapisRequestMocks.multipleMutations(
-            [
-                {
-                    body: {
-                        ...lapisFilter,
-                        dateFieldFrom: '2023-01-01',
-                        dateFieldTo: '2023-02-28',
-                        minProportion: 0.001,
-                    },
-                    response: {
-                        data: [getSomeTestMutation(0.21, 6), getSomeOtherTestMutation(0.22, 4)],
-                    },
-                },
-            ],
-            'nucleotide',
         );
 
         const dateRanges = [
