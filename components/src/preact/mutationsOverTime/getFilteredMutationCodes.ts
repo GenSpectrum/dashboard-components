@@ -25,7 +25,10 @@ export type GetFilteredMutationOverTimeDataArgs = {
     annotationProvider: ReturnType<typeof useMutationAnnotationsProvider>;
 };
 
-export function getFilteredMutationOverTimeData({
+/**
+ * Extracts a list of mutation codes that should be displayed based on the provided filters and overall mutation data.
+ */
+export function getFilteredMutationCodes({
     overallMutationData,
     displayedSegments,
     displayedMutationTypes,

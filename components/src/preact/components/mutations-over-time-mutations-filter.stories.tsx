@@ -9,7 +9,7 @@ import {
 } from './mutations-over-time-mutations-filter';
 import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
-import { type MutationFilter } from '../mutationsOverTime/getFilteredMutationsOverTimeData';
+import { type MutationFilter } from '../mutationsOverTime/getFilteredMutationCodes';
 
 const meta: Meta = {
     title: 'Component/Mutations over time mutations filter',

@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
 
-import { getFilteredMutationOverTimeData, type MutationFilter } from './getFilteredMutationsOverTimeData';
+import { getFilteredMutationCodes, type MutationFilter } from './getFilteredMutationCodes';
 import { type DeletionEntry, type SubstitutionEntry } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
 import { getMutationAnnotationsContext, getMutationAnnotationsProvider } from '../MutationAnnotationsContext';
 
-describe('getFilteredMutationOverTimeData', () => {
+describe('getFilteredMutationCodes', () => {
     it('should filter by displayed segments', () => {
-        const result = getFilteredMutationOverTimeData({
+        const result = getFilteredMutationCodes({
             overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],
             displayedSegments: [
                 { segment: 'someSegment', checked: false, label: 'Some Segment' },
@@ -25,7 +25,7 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should filter by mutation types', () => {
-        const result = getFilteredMutationOverTimeData({
+        const result = getFilteredMutationCodes({
             overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],
             displayedSegments: [],
             displayedMutationTypes: [
@@ -42,7 +42,7 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should remove mutations where overall proportion is below filter', () => {
-        const result = getFilteredMutationOverTimeData({
+        const result = getFilteredMutationCodes({
             overallMutationData: [
                 { ...someSubstitutionEntry, proportion: belowFilter },
                 { ...anotherSubstitutionEntry, proportion: inFilter },
@@ -60,7 +60,7 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should remove mutations where overall proportion is above filter', () => {
-        const result = getFilteredMutationOverTimeData({
+        const result = getFilteredMutationCodes({
             overallMutationData: [
                 { ...someSubstitutionEntry, proportion: aboveFilter },
                 { ...anotherSubstitutionEntry, proportion: inFilter },
@@ -78,7 +78,7 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should not remove mutations where overall proportion is at lower bound of filter', () => {
-        const result = getFilteredMutationOverTimeData({
+        const result = getFilteredMutationCodes({
             overallMutationData: [
                 { ...someSubstitutionEntry, proportion: atFilterMin },
                 { ...anotherSubstitutionEntry, proportion: inFilter },
@@ -96,7 +96,7 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should not remove mutations where overall proportion is at upper bound of filter', () => {
-        const result = getFilteredMutationOverTimeData({
+        const result = getFilteredMutationCodes({
             overallMutationData: [
                 { ...someSubstitutionEntry, proportion: atFilterMax },
                 { ...anotherSubstitutionEntry, proportion: inFilter },
@@ -114,7 +114,7 @@ describe('getFilteredMutationOverTimeData', () => {
     });
 
     it('should filter by mutation filter text value', () => {
-        const result = getFilteredMutationOverTimeData({
+        const result = getFilteredMutationCodes({
             overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],
             displayedSegments: [],
             displayedMutationTypes: [],
@@ -131,7 +131,7 @@ describe('getFilteredMutationOverTimeData', () => {
         const expectFilteredValue = (filterValue: MutationFilter, annotations: MutationAnnotations) => {
             const annotationProvider = getMutationAnnotationsProvider(getMutationAnnotationsContext(annotations));
 
-            const result = getFilteredMutationOverTimeData({
+            const result = getFilteredMutationCodes({
                 overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],
                 displayedSegments: [],
                 displayedMutationTypes: [],
@@ -172,7 +172,7 @@ describe('getFilteredMutationOverTimeData', () => {
     it('should not filter by individual time-series proportions below the overall filter', () => {
         // Filtering is based solely on overallMutationData proportions, not per-cell values.
         // An entry whose overall proportion is within range is always kept.
-        const result = getFilteredMutationOverTimeData({
+        const result = getFilteredMutationCodes({
             overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],
             displayedSegments: [],
             displayedMutationTypes: [],

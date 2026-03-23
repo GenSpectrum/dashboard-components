@@ -2,7 +2,7 @@ import { type FunctionComponent } from 'preact';
 import { type Dispatch, type StateUpdater, useMemo, useState, useEffect, useLayoutEffect, useRef } from 'preact/hooks';
 import z from 'zod';
 
-import { displayMutationsSchema, getFilteredMutationOverTimeData, type MutationFilter } from './getFilteredMutationsOverTimeData';
+import { displayMutationsSchema, getFilteredMutationCodes, type MutationFilter } from './getFilteredMutationCodes';
 import { MutationsOverTimeGridTooltip } from './mutations-over-time-grid-tooltip';
 import {
     type MutationsOverTimeMetadata,
@@ -191,7 +191,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     // hideGaps cannot be applied here — it requires time-series data from Phase 2.
     const filteredMutationCodes = useMemo(
         () =>
-            getFilteredMutationOverTimeData({
+            getFilteredMutationCodes({
                 overallMutationData,
                 displayedSegments,
                 displayedMutationTypes,
