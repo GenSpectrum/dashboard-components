@@ -8,8 +8,8 @@ import {
     getProportion,
     type MutationsOverTimeMetadata,
     type ProportionValue,
-    queryMutationsOverTimeData,
     queryMutationsOverTimeMetadata,
+    queryMutationsOverTimePage,
 } from '../../query/queryMutationsOverTime';
 import { lapisFilterSchema, sequenceTypeSchema, temporalGranularitySchema, views } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
@@ -17,6 +17,7 @@ import { type Temporal, toTemporalClass } from '../../utils/temporalClass';
 import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../LapisUrlContext';
 import { useMutationAnnotationsProvider } from '../MutationAnnotationsContext';
+import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { AnnotatedMutation } from '../components/annotated-mutation';
 import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
@@ -41,7 +42,7 @@ import Tabs from '../components/tabs';
 import { pageSizesSchema } from '../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../shared/tanstackTable/pagination-context';
 import { useQuery } from '../useQuery';
-import { useMutationsOverTimePageData } from './useMutationsOverTimePageData';
+import { handleHideGaps, useMutationsOverTimePageData } from './useMutationsOverTimePageData';
 
 const mutationsOverTimeViewSchema = z.literal(views.grid);
 export type MutationsOverTimeView = z.infer<typeof mutationsOverTimeViewSchema>;
@@ -273,6 +274,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             setFilterValue={setMutationFilterValue}
             mutationFilterValue={mutationFilterValue}
             filteredMutationCodes={filteredMutationCodes}
+            metadata={metadata}
         />
     );
 
@@ -300,8 +302,8 @@ type ToolbarProps = {
     originalComponentProps: MutationsOverTimeProps;
     mutationFilterValue: MutationFilter;
     setFilterValue: Dispatch<StateUpdater<MutationFilter>>;
-    /** Filtered mutation codes (all pages) — used for download-all */
     filteredMutationCodes: string[];
+    metadata: MutationsOverTimeMetadata;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -320,38 +322,22 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     setFilterValue,
     mutationFilterValue,
     filteredMutationCodes,
+    metadata,
 }) => {
     const lapis = useLapisUrl();
     const { lapisFilter, sequenceType, lapisDateField } = originalComponentProps;
 
     // Download-all: fetch the full time-series for ALL filtered mutations (not just current page)
     const getDownloadDataAsync = async (): Promise<Record<string, string | number>[]> => {
-        const allData = await queryMutationsOverTimeData(
+        const pageData = await queryMutationsOverTimePage(
             lapisFilter,
-            sequenceType,
             lapis,
             lapisDateField,
-            originalComponentProps.granularity,
+            sequenceType,
+            metadata.requestedDateRanges,
+            filteredMutationCodes,
         );
-        // Filter down to only the mutations that pass the current client-side filters
-        const filteredCodeSet = new Set(filteredMutationCodes);
-        const dates = allData.mutationOverTimeData.getSecondAxisKeys().map((date) => toTemporalClass(date));
-        return allData.mutationOverTimeData
-            .getFirstAxisKeys()
-            .filter((m) => filteredCodeSet.has(m.code))
-            .map((mutation) => {
-                return dates.reduce<Record<string, string | number>>(
-                    (accumulated, date) => {
-                        const value = allData.mutationOverTimeData.get(mutation, date);
-                        const proportion = getProportion(value ?? null) ?? '';
-                        return {
-                            ...accumulated,
-                            [date.dateString]: proportion,
-                        };
-                    },
-                    { mutation: mutation.code },
-                );
-            });
+        return getDownloadData(handleHideGaps(pageData, hideGaps));
     };
 
     return (
@@ -423,3 +409,21 @@ const MutationsOverTimeInfo: FunctionComponent<MutationsOverTimeInfoProps> = ({ 
         </Info>
     );
 };
+
+function getDownloadData(filteredData: MutationOverTimeDataMap) {
+    const dates = filteredData.getSecondAxisKeys().map((date) => toTemporalClass(date));
+
+    return filteredData.getFirstAxisKeys().map((mutation) => {
+        return dates.reduce(
+            (accumulated, date) => {
+                const value = filteredData.get(mutation, date);
+                const proportion = getProportion(value ?? null) ?? '';
+                return {
+                    ...accumulated,
+                    [date.dateString]: proportion,
+                };
+            },
+            { mutation: mutation.code },
+        );
+    });
+}
