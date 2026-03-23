@@ -13,16 +13,19 @@ export type PageSizes = z.infer<typeof pageSizesSchema>;
 export function Pagination({
     table,
     pageSizes,
+    totalRows,
 }: PaginationProps & {
     pageSizes: PageSizes;
+    /** Override the total row count (for server-driven pagination). */
+    totalRows?: number;
 }) {
     return (
         <div className='@container'>
             <div className='flex items-center gap-x-6 gap-y-2 flex-wrap @xl:justify-end justify-center'>
                 <PageSizeSelector table={table} pageSizes={pageSizes} />
-                <PageIndicator table={table} />
+                <PageIndicator table={table} totalRows={totalRows} />
                 <div className='@xl:block hidden'>
-                    <GotoPageSelector table={table} />
+                    <GotoPageSelector table={table} totalRows={totalRows} />
                 </div>
                 <SelectPageButtons table={table} />
             </div>
@@ -30,14 +33,15 @@ export function Pagination({
     );
 }
 
-function PageIndicator({ table }: PaginationProps) {
-    if (table.getRowModel().rows.length <= 1) {
+function PageIndicator({ table, totalRows }: PaginationProps & { totalRows?: number }) {
+    const numRows = totalRows ?? table.getCoreRowModel().rows.length;
+
+    if (table.getRowModel().rows.length <= 1 && numRows <= 1) {
         return null;
     }
 
     const minRow = table.getState().pagination.pageIndex * table.getState().pagination.pageSize + 1;
     const maxRow = minRow + table.getRowModel().rows.length - 1;
-    const numRows = table.getCoreRowModel().rows.length;
 
     return (
         <span className='text-sm'>
@@ -88,8 +92,8 @@ function PageSizeSelector({
     );
 }
 
-function GotoPageSelector({ table }: PaginationProps) {
-    if (table.getRowModel().rows.length === 0) {
+function GotoPageSelector({ table, totalRows }: PaginationProps & { totalRows?: number }) {
+    if (table.getRowModel().rows.length === 0 && (totalRows ?? 0) === 0) {
         return null;
     }
 

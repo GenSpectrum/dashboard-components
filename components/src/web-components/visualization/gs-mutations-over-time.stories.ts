@@ -9,7 +9,7 @@ import mockAminoAcidMutationsByDayAminoAcidMutations from '../../preact/mutation
 import mockAminoAcidMutationsByDayAminoAcidMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutationsByDay/aminoAcidMutationsOverTime.json';
 import mockByWeekMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/byWeek/mutationsOverTime.json';
 import mockByWeekNucleotideMutations from '../../preact/mutationsOverTime/__mockData__/byWeek/nucleotideMutations.json';
-import mockDefaultMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/defaultMockData/mutationsOverTime.json';
+import mockDefaultMutationsOverTimePage1 from '../../preact/mutationsOverTime/__mockData__/defaultMockData/mutationsOverTimePage1.json';
 import mockDefaultNucleotideMutations from '../../preact/mutationsOverTime/__mockData__/defaultMockData/nucleotideMutations.json';
 import mockWithDisplayMutationsMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/withDisplayMutations/mutationsOverTime.json';
 import { type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
@@ -105,12 +105,23 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
                                 { dateFrom: '2024-06-01', dateTo: '2024-06-30' },
                                 { dateFrom: '2024-07-01', dateTo: '2024-07-31' },
                             ],
+                            includeMutations: [
+                                'A13121T',
+                                'A19722G',
+                                'C44T',
+                                'C774T',
+                                'C7113T',
+                                'C12616T',
+                                'C21654-',
+                                'C23039G',
+                                'C23277T',
+                                'G15372T',
+                            ],
                             dateField: 'date',
                         },
-                        matchPartialBody: true,
                         response: {
                             status: 200,
-                            body: mockDefaultMutationsOverTime,
+                            body: mockDefaultMutationsOverTimePage1,
                         },
                     },
                 },

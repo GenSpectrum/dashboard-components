@@ -28,7 +28,7 @@ import { type MutationOverTimeDataMap } from '../../mutationsOverTime/MutationOv
 import {
     type MutationFilter,
     mutationOrAnnotationDoNotMatchFilter,
-} from '../../mutationsOverTime/getFilteredMutationsOverTimeData';
+} from '../../mutationsOverTime/getFilteredMutationCodes';
 import { MutationsOverTimeGridTooltip } from '../../mutationsOverTime/mutations-over-time-grid-tooltip';
 import { pageSizesSchema } from '../../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../../shared/tanstackTable/pagination-context';

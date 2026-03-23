@@ -1,5 +1,7 @@
+import { createColumnHelper, getCoreRowModel, getPaginationRowModel } from '@tanstack/table-core';
+import type { Table } from '@tanstack/table-core';
 import { type FunctionComponent, type JSX } from 'preact';
-import { useMemo } from 'preact/hooks';
+import { type Dispatch, type StateUpdater, useMemo } from 'preact/hooks';
 import z from 'zod';
 
 import { type ColorScale, getColorWithinScale, getTextColorForScale } from './color-scale-selector';
@@ -11,13 +13,7 @@ import { type TemporalDataMap } from '../mutationsOverTime/MutationOverTimeData'
 import { formatProportion } from '../shared/table/formatProportion';
 import { type PageSizes, Pagination } from '../shared/tanstackTable/pagination';
 import { usePageSizeContext } from '../shared/tanstackTable/pagination-context';
-import {
-    createColumnHelper,
-    flexRender,
-    getCoreRowModel,
-    getPaginationRowModel,
-    usePreactTable,
-} from '../shared/tanstackTable/tanstackTable';
+import { flexRender, usePreactTable } from '../shared/tanstackTable/tanstackTable';
 
 const NON_BREAKING_SPACE = '\u00A0';
 
@@ -60,18 +56,113 @@ function FeaturesOverTimeGrid<F>({
     featureRenderer,
     tooltipPortalTarget,
 }: FeaturesOverTimeGridProps<F>) {
-    const tableData = useMemo(() => {
-        const firstAxisKeys = data.getFirstAxisKeys();
-        return data.getAsArray().map((row, index): RowType<F> => {
-            const firstAxisKey = firstAxisKeys[index];
-            const customValues = customColumns.map((col) => col.values[featureRenderer.asString(firstAxisKey)]);
-            return { feature: firstAxisKey, values: [...row], customValues };
-        });
-    }, [data, customColumns, featureRenderer]);
+    const tableData = useGridTableData(data, customColumns, featureRenderer);
+    const columns = useGridColumns(
+        data,
+        rowLabelHeader,
+        customColumns,
+        colorScale,
+        tooltipPortalTarget,
+        featureRenderer,
+    );
+    const { pageSize } = usePageSizeContext();
 
-    const columns = useMemo(() => {
+    const table = usePreactTable({
+        data: tableData,
+        columns,
+        getCoreRowModel: getCoreRowModel(),
+        getPaginationRowModel: getPaginationRowModel(),
+        initialState: {
+            pagination: { pageIndex: 0, pageSize },
+        },
+    });
+
+    return <FeaturesOverTimeGridDisplay table={table} pageSizes={pageSizes} />;
+}
+
+export interface FeaturesOverTimeGridServerPaginatedProps<F> {
+    rowLabelHeader: string;
+    data: TemporalDataMap<F> | null ;
+    isLoading: boolean;
+    colorScale: ColorScale;
+    pageSizes: PageSizes;
+    /** Controlled page index (0-based). */
+    pageIndex: number;
+    pageSize: number;
+    /** Total number of rows across all pages. */
+    totalRows: number;
+    onPageChange: Dispatch<StateUpdater<number>>;
+    onPageSizeChange: Dispatch<StateUpdater<number>>;
+    customColumns?: CustomColumn[];
+    featureRenderer: FeatureRenderer<F>;
+    tooltipPortalTarget: HTMLElement | null;
+}
+
+export function FeaturesOverTimeGridServerPaginated<F>({
+    rowLabelHeader,
+    data,
+    isLoading,
+    colorScale,
+    pageSizes,
+    pageIndex,
+    pageSize,
+    totalRows,
+    onPageChange,
+    onPageSizeChange,
+    customColumns = EMPTY_COLUMNS,
+    featureRenderer,
+    tooltipPortalTarget,
+}: FeaturesOverTimeGridServerPaginatedProps<F>) {
+    const tableData = useGridTableData(data, customColumns, featureRenderer);
+    const columns = useGridColumns(
+        data,
+        rowLabelHeader,
+        customColumns,
+        colorScale,
+        tooltipPortalTarget,
+        featureRenderer,
+    );
+    const { setPageSize: setContextPageSize } = usePageSizeContext();
+
+    const table = usePreactTable({
+        data: tableData,
+        columns,
+        getCoreRowModel: getCoreRowModel(),
+        // getPaginationRowModel not needed with manualPagination: true
+        manualPagination: true,
+        pageCount: Math.ceil(totalRows / pageSize),
+        state: {
+            pagination: { pageIndex, pageSize },
+        },
+        onPaginationChange: (updater) => {
+            const current = { pageIndex, pageSize };
+            const next = typeof updater === 'function' ? updater(current) : updater;
+            if (next.pageIndex !== current.pageIndex) {
+                onPageChange(next.pageIndex);
+            }
+            if (next.pageSize !== current.pageSize) {
+                onPageSizeChange(next.pageSize);
+                setContextPageSize(next.pageSize);
+            }
+        },
+    });
+
+    return (
+        <FeaturesOverTimeGridDisplay table={table} pageSizes={pageSizes} isLoading={isLoading} totalRows={totalRows} />
+    );
+}
+
+function useGridColumns<F>(
+    data: TemporalDataMap<F> | null | undefined,
+    rowLabelHeader: string,
+    customColumns: CustomColumn[],
+    colorScale: ColorScale,
+    tooltipPortalTarget: HTMLElement | null,
+    featureRenderer: FeatureRenderer<F>,
+) {
+    return useMemo(() => {
         const columnHelper = createColumnHelper<RowType<F>>();
-        const dates = data.getSecondAxisKeys();
+        const dates = data?.getSecondAxisKeys() ?? [];
 
         const featureHeader = columnHelper.accessor((row) => row.feature, {
             id: 'feature',
@@ -138,20 +229,41 @@ function FeaturesOverTimeGrid<F>({
 
         return [featureHeader, ...customColumnHeaders, ...dateHeaders];
     }, [colorScale, data, customColumns, tooltipPortalTarget, featureRenderer, rowLabelHeader]);
+}
 
-    const { pageSize } = usePageSizeContext();
-    const table = usePreactTable({
-        data: tableData,
-        columns,
-        getCoreRowModel: getCoreRowModel(),
-        getPaginationRowModel: getPaginationRowModel(),
-        initialState: {
-            pagination: {
-                pageIndex: 0,
-                pageSize,
-            },
-        },
-    });
+function useGridTableData<F>(
+    data: TemporalDataMap<F> | null | undefined,
+    customColumns: CustomColumn[],
+    featureRenderer: FeatureRenderer<F>,
+) {
+    return useMemo(() => {
+        if (!data) {
+            return [];
+        }
+        const firstAxisKeys = data.getFirstAxisKeys();
+        return data.getAsArray().map((row, index): RowType<F> => {
+            const firstAxisKey = firstAxisKeys[index];
+            const customValues = customColumns.map((col) => col.values[featureRenderer.asString(firstAxisKey)]);
+            return { feature: firstAxisKey, values: [...row], customValues };
+        });
+    }, [data, customColumns, featureRenderer]);
+}
+
+interface FeaturesOverTimeGridDisplayProps<F> {
+    table: Table<RowType<F>>;
+    pageSizes: PageSizes;
+    isLoading?: boolean;
+    /** Override for the pagination row count (server-driven pagination). */
+    totalRows?: number;
+}
+
+function FeaturesOverTimeGridDisplay<F>({
+    table,
+    pageSizes,
+    isLoading = false,
+    totalRows,
+}: FeaturesOverTimeGridDisplayProps<F>) {
+    const displayedTotalRows = totalRows ?? table.getCoreRowModel().rows.length;
 
     return (
         <div className='w-full'>
@@ -170,22 +282,36 @@ function FeaturesOverTimeGrid<F>({
                     ))}
                 </thead>
                 <tbody>
-                    {table.getRowModel().rows.map((row) => (
-                        <tr key={row.id}>
-                            {row.getVisibleCells().map((cell) => (
-                                <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                            ))}
+                    {isLoading ? (
+                        <tr>
+                            <td colSpan={table.getFlatHeaders().length}>
+                                <div className={'text-center py-4'}>Loading...</div>
+                            </td>
                         </tr>
-                    ))}
-                    {table.getRowModel().rows.length === 0 && (
-                        <td colSpan={table.getFlatHeaders().length}>
-                            <div className={'text-center'}>No data available for your filters.</div>
-                        </td>
+                    ) : (
+                        <>
+                            {table.getRowModel().rows.map((row) => (
+                                <tr key={row.id}>
+                                    {row.getVisibleCells().map((cell) => (
+                                        <td key={cell.id}>
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                            {table.getRowModel().rows.length === 0 && (
+                                <tr>
+                                    <td colSpan={table.getFlatHeaders().length}>
+                                        <div className={'text-center'}>No data available for your filters.</div>
+                                    </td>
+                                </tr>
+                            )}
+                        </>
                     )}
                 </tbody>
             </table>
             <div className={'mt-2'}>
-                <Pagination table={table} pageSizes={pageSizes} />
+                <Pagination table={table} pageSizes={pageSizes} totalRows={displayedTotalRows} />
             </div>
         </div>
     );
