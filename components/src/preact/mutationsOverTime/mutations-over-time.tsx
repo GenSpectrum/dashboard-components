@@ -88,31 +88,23 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
 
     const initialPageSize = typeof pageSizes === 'number' ? pageSizes : (pageSizes.at(0) ?? 10);
 
-    // Lifted page state — needed so that page changes trigger Phase 2 re-fetches
     const [pageIndex, setPageIndex] = useState(0);
     const [pageSize, setPageSize] = useState(initialPageSize);
 
-    // Phase 1: fetch date buckets + full sorted mutation list (cheap, independent of page)
     const {
         data: metadata,
         error: metadataError,
         isLoading: metadataLoading,
-    } = useQuery(
-        () =>
-            queryMutationsOverTimeMetadata(
-                lapisFilter,
-                sequenceType,
-                lapis,
-                lapisDateField,
-                granularity,
-                displayMutations,
-            ),
-        [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations],
-    );
-
-    // Reset to page 0 when the metadata (i.e. filter) changes
-    useEffect(() => {
+    } = useQuery(() => {
         setPageIndex(0);
+        return queryMutationsOverTimeMetadata(
+            lapisFilter,
+            sequenceType,
+            lapis,
+            lapisDateField,
+            granularity,
+            displayMutations,
+        );
     }, [granularity, lapis, lapisDateField, lapisFilter, sequenceType, displayMutations]);
 
     if (metadataLoading) {
