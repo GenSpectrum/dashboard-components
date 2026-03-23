@@ -1,15 +1,15 @@
-import { useMemo } from 'preact/hooks';
+import { useMemo, useRef } from 'preact/hooks';
 
+import type { TemporalDataMap } from './MutationOverTimeData';
 import { type MutationsOverTimeMetadata, queryMutationsOverTimePage } from '../../query/queryMutationsOverTime';
 import { type LapisFilter } from '../../types';
 import { Map2dView } from '../../utils/map2d';
-import { useQuery } from '../useQuery';
-import type { TemporalDataMap } from './MutationOverTimeData';
 import { type Deletion, type Substitution } from '../../utils/mutations';
+import { useQuery } from '../useQuery';
 
-type MutationsOverTimePageQuery =
-    | { isLoading: true; data: null }
-    | { isLoading: false; data: TemporalDataMap<Substitution | Deletion> };
+type PageData = TemporalDataMap<Substitution | Deletion>;
+
+type MutationsOverTimePageQuery = { isLoading: true; data: null } | { isLoading: false; data: PageData };
 
 export function useMutationsOverTimePageData(
     filteredMutationCodes: string[],
@@ -24,18 +24,30 @@ export function useMutationsOverTimePageData(
 ): MutationsOverTimePageQuery {
     const pageMutationCodes = filteredMutationCodes.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
 
-    const { data, error, isLoading } = useQuery(
-        () =>
-            queryMutationsOverTimePage(
-                lapisFilter,
-                lapis,
-                lapisDateField,
-                sequenceType,
-                requestedDateRanges,
-                pageMutationCodes,
-            ),
-        [lapisFilter, lapis, lapisDateField, sequenceType, requestedDateRanges, pageMutationCodes],
-    );
+    const cache = useRef<Map<string, PageData>>(new Map());
+
+    const {
+        data: pageData,
+        error,
+        isLoading,
+    } = useQuery(async () => {
+        const cacheKey = JSON.stringify(pageMutationCodes);
+        const cachedData = cache.current.get(cacheKey);
+        if (cachedData !== undefined) {
+            return cachedData;
+        }
+
+        const newData = await queryMutationsOverTimePage(
+            lapisFilter,
+            lapis,
+            lapisDateField,
+            sequenceType,
+            requestedDateRanges,
+            pageMutationCodes,
+        );
+        cache.current.set(cacheKey, newData);
+        return newData;
+    }, [lapisFilter, lapis, lapisDateField, sequenceType, requestedDateRanges, pageMutationCodes]);
 
     if (error) {
         throw error;
@@ -47,10 +59,10 @@ export function useMutationsOverTimePageData(
         }
 
         if (!hideGaps) {
-            return { isLoading: false, data };
+            return { isLoading: false, data: pageData };
         }
 
-        const view = new Map2dView(data);
+        const view = new Map2dView(pageData);
         view.getSecondAxisKeys()
             .filter((dateRange) => {
                 const vals = view.getColumn(dateRange);
@@ -59,5 +71,5 @@ export function useMutationsOverTimePageData(
             .forEach((dateRange) => view.deleteColumn(dateRange));
 
         return { isLoading: false, data: view };
-    }, [data, hideGaps, isLoading]);
+    }, [pageData, hideGaps, isLoading]);
 }
