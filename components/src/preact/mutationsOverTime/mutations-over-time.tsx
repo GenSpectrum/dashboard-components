@@ -189,7 +189,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
 
     // Step 1: Filter the full mutation list from Phase 1 by proportion, type, segment and text.
     // hideGaps cannot be applied here — it requires time-series data from Phase 2.
-    const filteredMutationEntries = useMemo(
+    const filteredMutationCodes = useMemo(
         () =>
             getFilteredMutationOverTimeData({
                 overallMutationData,
@@ -212,7 +212,6 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     );
 
     // The sorted, filtered list of all mutation codes (used for paging and total count)
-    const filteredMutationCodes = filteredMutationEntries.map((e) => e.mutation.code);
     const totalFilteredRows = filteredMutationCodes.length;
 
     // Slice to the current page

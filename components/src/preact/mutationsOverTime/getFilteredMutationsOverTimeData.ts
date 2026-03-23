@@ -33,24 +33,31 @@ export function getFilteredMutationOverTimeData({
     mutationFilterValue,
     sequenceType,
     annotationProvider,
-}: GetFilteredMutationOverTimeDataArgs): SubstitutionOrDeletionEntry<Substitution, Deletion>[] {
-    return overallMutationData.filter((entry) => {
-        if (entry.proportion < proportionInterval.min || entry.proportion > proportionInterval.max) {
-            return false;
-        }
-        if (displayedSegments.some((segment) => segment.segment === entry.mutation.segment && !segment.checked)) {
-            return false;
-        }
+}: GetFilteredMutationOverTimeDataArgs): string[] {
+    return overallMutationData
+        .filter((entry) => {
+            if (entry.proportion < proportionInterval.min || entry.proportion > proportionInterval.max) {
+                return false;
+            }
+            if (displayedSegments.some((segment) => segment.segment === entry.mutation.segment && !segment.checked)) {
+                return false;
+            }
 
-        if (
-            mutationOrAnnotationDoNotMatchFilter(entry.mutation, sequenceType, mutationFilterValue, annotationProvider)
-        ) {
-            return false;
-        }
-        return !displayedMutationTypes.some(
-            (mutationType) => mutationType.type === entry.mutation.type && !mutationType.checked,
-        );
-    });
+            if (
+                mutationOrAnnotationDoNotMatchFilter(
+                    entry.mutation,
+                    sequenceType,
+                    mutationFilterValue,
+                    annotationProvider,
+                )
+            ) {
+                return false;
+            }
+            return !displayedMutationTypes.some(
+                (mutationType) => mutationType.type === entry.mutation.type && !mutationType.checked,
+            );
+        })
+        .map((e) => e.mutation.code);
 }
 
 export function mutationOrAnnotationDoNotMatchFilter(

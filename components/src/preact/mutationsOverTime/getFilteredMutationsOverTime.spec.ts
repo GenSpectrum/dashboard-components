@@ -21,7 +21,7 @@ describe('getFilteredMutationOverTimeData', () => {
             annotationProvider: () => [],
         });
 
-        expect(result.map((e) => e.mutation)).to.deep.equal([anotherSubstitution]);
+        expect(result).to.deep.equal([anotherSubstitution.code]);
     });
 
     it('should filter by mutation types', () => {
@@ -38,7 +38,7 @@ describe('getFilteredMutationOverTimeData', () => {
             annotationProvider: () => [],
         });
 
-        expect(result.map((e) => e.mutation)).to.deep.equal([someDeletion]);
+        expect(result).to.deep.equal([someDeletion.code]);
     });
 
     it('should remove mutations where overall proportion is below filter', () => {
@@ -56,7 +56,7 @@ describe('getFilteredMutationOverTimeData', () => {
             annotationProvider: () => [],
         });
 
-        expect(result.map((e) => e.mutation)).to.deep.equal([anotherSubstitution, someDeletion]);
+        expect(result).to.deep.equal([anotherSubstitution.code, someDeletion.code]);
     });
 
     it('should remove mutations where overall proportion is above filter', () => {
@@ -74,7 +74,7 @@ describe('getFilteredMutationOverTimeData', () => {
             annotationProvider: () => [],
         });
 
-        expect(result.map((e) => e.mutation)).to.deep.equal([anotherSubstitution, someDeletion]);
+        expect(result).to.deep.equal([anotherSubstitution.code, someDeletion.code]);
     });
 
     it('should not remove mutations where overall proportion is at lower bound of filter', () => {
@@ -92,7 +92,7 @@ describe('getFilteredMutationOverTimeData', () => {
             annotationProvider: () => [],
         });
 
-        expect(result.map((e) => e.mutation)).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
+        expect(result).to.deep.equal([someSubstitution.code, anotherSubstitution.code, someDeletion.code]);
     });
 
     it('should not remove mutations where overall proportion is at upper bound of filter', () => {
@@ -110,7 +110,7 @@ describe('getFilteredMutationOverTimeData', () => {
             annotationProvider: () => [],
         });
 
-        expect(result.map((e) => e.mutation)).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
+        expect(result).to.deep.equal([someSubstitution.code, anotherSubstitution.code, someDeletion.code]);
     });
 
     it('should filter by mutation filter text value', () => {
@@ -124,7 +124,7 @@ describe('getFilteredMutationOverTimeData', () => {
             annotationProvider: () => [],
         });
 
-        expect(result.map((e) => e.mutation)).to.deep.equal([someSubstitution]);
+        expect(result).to.deep.equal([someSubstitution.code]);
     });
 
     describe('should filter by annotation', () => {
@@ -141,7 +141,7 @@ describe('getFilteredMutationOverTimeData', () => {
                 annotationProvider,
             });
 
-            expect(result.map((e) => e.mutation)).to.deep.equal([someSubstitution]);
+            expect(result).to.deep.equal([someSubstitution.code]);
         };
 
         it('with filter value in symbol', () => {
@@ -182,7 +182,7 @@ describe('getFilteredMutationOverTimeData', () => {
             annotationProvider: () => [],
         });
 
-        expect(result.map((e) => e.mutation)).to.deep.equal([someSubstitution, anotherSubstitution, someDeletion]);
+        expect(result).to.deep.equal([someSubstitution.code, anotherSubstitution.code, someDeletion.code]);
     });
 
     const belowFilter = 0.1;
