@@ -82,8 +82,8 @@ function FeaturesOverTimeGrid<F>({
 
 export interface FeaturesOverTimeGridServerPaginatedProps<F> {
     rowLabelHeader: string;
-    data: TemporalDataMap<F> | null | undefined;
-    isLoading?: boolean;
+    data: TemporalDataMap<F> | null ;
+    isLoading: boolean;
     colorScale: ColorScale;
     pageSizes: PageSizes;
     /** Controlled page index (0-based). */
@@ -101,7 +101,7 @@ export interface FeaturesOverTimeGridServerPaginatedProps<F> {
 export function FeaturesOverTimeGridServerPaginated<F>({
     rowLabelHeader,
     data,
-    isLoading = false,
+    isLoading,
     colorScale,
     pageSizes,
     pageIndex,
