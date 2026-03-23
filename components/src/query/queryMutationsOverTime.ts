@@ -271,42 +271,6 @@ function buildMutationOverTimeDataMap(
     return new BaseMutationOverTimeDataMap(mutationOverTimeData);
 }
 
-/**
- * Convenience function combining Phase 1 + Phase 2 for all mutations (used in tests and download).
- */
-export async function queryMutationsOverTimeData(
-    lapisFilter: LapisFilter,
-    sequenceType: SequenceType,
-    lapis: string,
-    lapisDateField: string,
-    granularity: TemporalGranularity,
-    displayMutations?: string[],
-    signal?: AbortSignal,
-) {
-    const { overallMutationData, requestedDateRanges } = await queryMutationsOverTimeMetadata(
-        lapisFilter,
-        sequenceType,
-        lapis,
-        lapisDateField,
-        granularity,
-        displayMutations,
-        signal,
-    );
-
-    const includeMutations = overallMutationData.map((value) => value.mutation.code);
-    const mutationOverTimeData = await queryMutationsOverTimePage(
-        lapisFilter,
-        lapis,
-        lapisDateField,
-        sequenceType,
-        requestedDateRanges,
-        includeMutations,
-        signal,
-    );
-
-    return { mutationOverTimeData, overallMutationData };
-}
-
 function parseMutationCode(code: string): SubstitutionClass | DeletionClass {
     const maybeDeletion = DeletionClass.parse(code);
     if (maybeDeletion) {
