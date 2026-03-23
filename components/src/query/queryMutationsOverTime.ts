@@ -108,7 +108,7 @@ export async function queryMutationsOverTimeData(
     const mutationEntries: SubstitutionOrDeletionEntry[] = responseMutations.map((mutation, i) => {
         const count = apiResult.data.data[i].map(({ count }) => count).reduce((acc, c) => acc + c, 0);
         const coverage = apiResult.data.data[i].map(({ coverage }) => coverage).reduce((acc, c) => acc + c, 0);
-        const proportion = count / coverage;
+        const proportion = coverage === 0 ? 0 : count / coverage;
         if (mutation.type === 'deletion') {
             return {
                 type: 'deletion',
