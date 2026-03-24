@@ -287,11 +287,21 @@ describe('queryMutationsOverTimePage', () => {
     const threeDays = [yearMonthDay('2023-01-01'), yearMonthDay('2023-01-02'), yearMonthDay('2023-01-03')];
     const twoDays = [yearMonthDay('2023-01-01'), yearMonthDay('2023-01-02')];
 
-    const threeDayDateRanges = threeDays.map((d) => ({ dateFrom: d.firstDay.toString(), dateTo: d.lastDay.toString() }));
+    const threeDayDateRanges = threeDays.map((d) => ({
+        dateFrom: d.firstDay.toString(),
+        dateTo: d.lastDay.toString(),
+    }));
     const twoDayDateRanges = twoDays.map((d) => ({ dateFrom: d.firstDay.toString(), dateTo: d.lastDay.toString() }));
 
     function callQueryMutationsOverTimePage(requestedDateRanges: typeof threeDays, includeMutations: string[]) {
-        return queryMutationsOverTimePage(lapisFilter, DUMMY_LAPIS_URL, dateField, 'nucleotide', requestedDateRanges, includeMutations);
+        return queryMutationsOverTimePage(
+            lapisFilter,
+            DUMMY_LAPIS_URL,
+            dateField,
+            'nucleotide',
+            requestedDateRanges,
+            includeMutations,
+        );
     }
 
     it('should build the data map with valueWithCoverage entries', async () => {
@@ -328,7 +338,10 @@ describe('queryMutationsOverTimePage', () => {
             'nucleotide',
         );
 
-        const result = await callQueryMutationsOverTimePage(threeDays, ['otherSequenceName:G234C', 'sequenceName:A123T']);
+        const result = await callQueryMutationsOverTimePage(threeDays, [
+            'otherSequenceName:G234C',
+            'sequenceName:A123T',
+        ]);
 
         expect(result.getAsArray()).to.deep.equal([
             [
@@ -387,7 +400,10 @@ describe('queryMutationsOverTimePage', () => {
             'nucleotide',
         );
 
-        const result = await callQueryMutationsOverTimePage(threeDays, ['otherSequenceName:G234C', 'sequenceName:A123T']);
+        const result = await callQueryMutationsOverTimePage(threeDays, [
+            'otherSequenceName:G234C',
+            'sequenceName:A123T',
+        ]);
 
         expect(result.getAsArray()).to.deep.equal([
             [
