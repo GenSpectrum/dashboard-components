@@ -8,7 +8,10 @@ import { type MutationAnnotations } from '../../web-components/mutation-annotati
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { MutationAnnotationsContextProvider } from '../MutationAnnotationsContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
-import mockDefaultMutationsOverTime from './__mockData__/defaultMockData/mutationsOverTime.json';
+import mockDefaultMutationsOverTimeWithFilter from './__mockData__/defaultMockData/mockDefaultMutationsOverTimeWithFilter.json';
+import mockDefaultMutationsOverTimePage1 from './__mockData__/defaultMockData/mutationsOverTimePage1.json';
+import mockDefaultMutationsOverTimePage2 from './__mockData__/defaultMockData/mutationsOverTimePage2.json';
+import mockDefaultMutationsOverTimePageSize20 from './__mockData__/defaultMockData/mutationsOverTimePageSize20.json';
 import mockDefaultNucleotideMutations from './__mockData__/defaultMockData/nucleotideMutations.json';
 import mock1800sMutationsOverTime from './__mockData__/request1800s/mutationsOverTime.json';
 import mock1800sNucleotideMutations from './__mockData__/request1800s/nucleotideMutations.json';
@@ -64,13 +67,10 @@ const meta: Meta<MutationsOverTimeProps> = {
                 },
                 {
                     matcher: {
+                        name: 'page1',
                         url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
                         body: {
-                            filters: {
-                                pangoLineage: 'JN.1*',
-                                dateFrom: '2024-01-15',
-                                dateTo: '2024-07-10',
-                            },
+                            filters: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
                             dateRanges: [
                                 { dateFrom: '2024-01-01', dateTo: '2024-01-31' },
                                 { dateFrom: '2024-02-01', dateTo: '2024-02-29' },
@@ -80,12 +80,125 @@ const meta: Meta<MutationsOverTimeProps> = {
                                 { dateFrom: '2024-06-01', dateTo: '2024-06-30' },
                                 { dateFrom: '2024-07-01', dateTo: '2024-07-31' },
                             ],
+                            includeMutations: [
+                                'C44T',
+                                'C774T',
+                                'C7113T',
+                                'C12616T',
+                                'A13121T',
+                                'G15372T',
+                                'G17334T',
+                                'T18453C',
+                                'A19722G',
+                                'T21653-',
+                            ],
                             dateField: 'date',
                         },
-                        matchPartialBody: true, // includeMutations left out
                         response: {
                             status: 200,
-                            body: mockDefaultMutationsOverTime,
+                            body: mockDefaultMutationsOverTimePage1,
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'page2',
+                        url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
+                        body: {
+                            filters: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
+                            dateRanges: [
+                                { dateFrom: '2024-01-01', dateTo: '2024-01-31' },
+                                { dateFrom: '2024-02-01', dateTo: '2024-02-29' },
+                                { dateFrom: '2024-03-01', dateTo: '2024-03-31' },
+                                { dateFrom: '2024-04-01', dateTo: '2024-04-30' },
+                                { dateFrom: '2024-05-01', dateTo: '2024-05-31' },
+                                { dateFrom: '2024-06-01', dateTo: '2024-06-30' },
+                                { dateFrom: '2024-07-01', dateTo: '2024-07-31' },
+                            ],
+                            includeMutations: [
+                                'C21654-',
+                                'T21655-',
+                                'G22111T',
+                                'G22599C',
+                                'T22928C',
+                                'T23011-',
+                                'C23039G',
+                                'C23277T',
+                                'G24872T',
+                            ],
+                            dateField: 'date',
+                        },
+                        response: {
+                            status: 200,
+                            body: mockDefaultMutationsOverTimePage2,
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'page1-pageSize20',
+                        url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
+                        body: {
+                            filters: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
+                            dateRanges: [
+                                { dateFrom: '2024-01-01', dateTo: '2024-01-31' },
+                                { dateFrom: '2024-02-01', dateTo: '2024-02-29' },
+                                { dateFrom: '2024-03-01', dateTo: '2024-03-31' },
+                                { dateFrom: '2024-04-01', dateTo: '2024-04-30' },
+                                { dateFrom: '2024-05-01', dateTo: '2024-05-31' },
+                                { dateFrom: '2024-06-01', dateTo: '2024-06-30' },
+                                { dateFrom: '2024-07-01', dateTo: '2024-07-31' },
+                            ],
+                            includeMutations: [
+                                'C44T',
+                                'C774T',
+                                'C7113T',
+                                'C12616T',
+                                'A13121T',
+                                'G15372T',
+                                'G17334T',
+                                'T18453C',
+                                'A19722G',
+                                'T21653-',
+                                'C21654-',
+                                'T21655-',
+                                'G22111T',
+                                'G22599C',
+                                'T22928C',
+                                'T23011-',
+                                'C23039G',
+                                'C23277T',
+                                'G24872T',
+                            ],
+                            dateField: 'date',
+                        },
+                        response: {
+                            status: 200,
+                            body: mockDefaultMutationsOverTimePageSize20,
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'withFilter',
+                        url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
+                        body: {
+                            filters: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
+                            dateRanges: [
+                                { dateFrom: '2024-01-01', dateTo: '2024-01-31' },
+                                { dateFrom: '2024-02-01', dateTo: '2024-02-29' },
+                                { dateFrom: '2024-03-01', dateTo: '2024-03-31' },
+                                { dateFrom: '2024-04-01', dateTo: '2024-04-30' },
+                                { dateFrom: '2024-05-01', dateTo: '2024-05-31' },
+                                { dateFrom: '2024-06-01', dateTo: '2024-06-30' },
+                                { dateFrom: '2024-07-01', dateTo: '2024-07-31' },
+                            ],
+                            includeMutations: ['T21653-', 'T21655-'],
+                            dateField: 'date',
+                        },
+                        response: {
+                            status: 200,
+                            body: mockDefaultMutationsOverTimeWithFilter,
                         },
                     },
                 },
@@ -270,7 +383,7 @@ export const UsesPagination: StoryObj<MutationsOverTimeProps> = {
     ...Default,
     play: async ({ canvas, step }) => {
         const mutationOnFirstPage = 'C44T';
-        const mutationOnSecondPage = 'T21653-';
+        const mutationOnSecondPage = 'C21654-';
         await expectMutationOnPage(canvas, mutationOnFirstPage);
 
         await step('Navigate to next page', async () => {
@@ -448,16 +561,11 @@ export const ShowsNoDataMessageForStrictFilters: StoryObj<MutationsOverTimeProps
     play: async ({ canvas }) => {
         await waitFor(() => expect(canvas.getByText('Grid')).toBeVisible(), { timeout: 10000 });
 
-        const button = canvas.getByRole('button', { name: 'Mean proportion 5.0% - 90.0%' });
-        await userEvent.click(button);
+        const filterButton = canvas.getByRole('button', { name: 'Filter mutations' });
+        await userEvent.click(filterButton);
 
-        const minInput = canvas.getAllByLabelText('%')[0];
-        await userEvent.clear(minInput);
-        await userEvent.type(minInput, '40');
-
-        const maxInput = canvas.getAllByLabelText('%')[1];
-        await userEvent.clear(maxInput);
-        await userEvent.type(maxInput, '41');
+        const filterInput = canvas.getByPlaceholderText('Filter');
+        await userEvent.type(filterInput, 'too strict');
 
         await waitFor(
             () => expect(canvas.getByText('No data available for your filters.', { exact: false })).toBeVisible(),

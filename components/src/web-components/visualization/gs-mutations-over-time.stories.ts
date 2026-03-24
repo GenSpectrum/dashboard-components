@@ -6,8 +6,8 @@ import '../gs-app';
 import { withComponentDocs } from '../../../.storybook/ComponentDocsBlock';
 import { LAPIS_URL } from '../../constants';
 import mockAminoAcidMutationsByDayAminoAcidMutations from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutationsByDay/aminoAcidMutations.json';
-import mockAminoAcidMutationsByDayAminoAcidMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutationsByDay/aminoAcidMutationsOverTime.json';
-import mockByWeekMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/byWeek/mutationsOverTime.json';
+import mockAminoAcidMutationsByDayAminoAcidMutationsOverTimePage1 from '../../preact/mutationsOverTime/__mockData__/aminoAcidMutationsByDay/aminoAcidMutationsOverTimePage1.json';
+import mockByWeekMutationsOverTimePage1 from '../../preact/mutationsOverTime/__mockData__/byWeek/mutationsOverTimePage1.json';
 import mockByWeekNucleotideMutations from '../../preact/mutationsOverTime/__mockData__/byWeek/nucleotideMutations.json';
 import mockDefaultMutationsOverTimePage1 from '../../preact/mutationsOverTime/__mockData__/defaultMockData/mutationsOverTimePage1.json';
 import mockDefaultNucleotideMutations from '../../preact/mutationsOverTime/__mockData__/defaultMockData/nucleotideMutations.json';
@@ -317,23 +317,30 @@ export const ByWeek: StoryObj<Required<MutationsOverTimeProps>> = {
                     matcher: {
                         url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
                         body: {
-                            filters: {
-                                pangoLineage: 'JN.1*',
-                                dateFrom: '2024-01-15',
-                                dateTo: '2024-02-11',
-                            },
+                            filters: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-02-11' },
                             dateRanges: [
                                 { dateFrom: '2024-01-15', dateTo: '2024-01-21' },
                                 { dateFrom: '2024-01-22', dateTo: '2024-01-28' },
                                 { dateFrom: '2024-01-29', dateTo: '2024-02-04' },
                                 { dateFrom: '2024-02-05', dateTo: '2024-02-11' },
                             ],
+                            includeMutations: [
+                                'C44T',
+                                'C774T',
+                                'C1762A',
+                                'C11747T',
+                                'G17562T',
+                                'T18453C',
+                                'G21641T',
+                                'C23277T',
+                                'C29870A',
+                            ],
                             dateField: 'date',
                         },
                         matchPartialBody: true,
                         response: {
                             status: 200,
-                            body: mockByWeekMutationsOverTime,
+                            body: mockByWeekMutationsOverTimePage1,
                         },
                     },
                 },
@@ -372,11 +379,7 @@ export const AminoAcidMutationsByDay: StoryObj<Required<MutationsOverTimeProps>>
                     matcher: {
                         url: `${LAPIS_URL}/component/aminoAcidMutationsOverTime`,
                         body: {
-                            filters: {
-                                pangoLineage: 'JN.1*',
-                                dateFrom: '2024-01-20',
-                                dateTo: '2024-01-26',
-                            },
+                            filters: { pangoLineage: 'JN.1*', dateFrom: '2024-01-20', dateTo: '2024-01-26' },
                             dateRanges: [
                                 { dateFrom: '2024-01-20', dateTo: '2024-01-20' },
                                 { dateFrom: '2024-01-21', dateTo: '2024-01-21' },
@@ -386,12 +389,13 @@ export const AminoAcidMutationsByDay: StoryObj<Required<MutationsOverTimeProps>>
                                 { dateFrom: '2024-01-25', dateTo: '2024-01-25' },
                                 { dateFrom: '2024-01-26', dateTo: '2024-01-26' },
                             ],
+                            includeMutations: ['ORF1a:T170I', 'ORF1a:F499L', 'S:T572I'],
                             dateField: 'date',
                         },
                         matchPartialBody: true,
                         response: {
                             status: 200,
-                            body: mockAminoAcidMutationsByDayAminoAcidMutationsOverTime,
+                            body: mockAminoAcidMutationsByDayAminoAcidMutationsOverTimePage1,
                         },
                     },
                 },

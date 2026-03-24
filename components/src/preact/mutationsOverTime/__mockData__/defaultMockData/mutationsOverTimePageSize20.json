@@ -1,0 +1,216 @@
+{
+    "data": {
+        "mutations": [
+            "C44T",
+            "C774T",
+            "C7113T",
+            "C12616T",
+            "A13121T",
+            "G15372T",
+            "G17334T",
+            "T18453C",
+            "A19722G",
+            "T21653-",
+            "C21654-",
+            "T21655-",
+            "G22111T",
+            "G22599C",
+            "T22928C",
+            "T23011-",
+            "C23039G",
+            "C23277T",
+            "G24872T"
+        ],
+        "dateRanges": [
+            { "dateFrom": "2024-01-01", "dateTo": "2024-01-31" },
+            { "dateFrom": "2024-02-01", "dateTo": "2024-02-29" },
+            { "dateFrom": "2024-03-01", "dateTo": "2024-03-31" },
+            { "dateFrom": "2024-04-01", "dateTo": "2024-04-30" },
+            { "dateFrom": "2024-05-01", "dateTo": "2024-05-31" },
+            { "dateFrom": "2024-06-01", "dateTo": "2024-06-30" },
+            { "dateFrom": "2024-07-01", "dateTo": "2024-07-31" }
+        ],
+        "data": [
+            [
+                { "count": 1447, "coverage": 2444 },
+                { "count": 1917, "coverage": 3372 },
+                { "count": 1028, "coverage": 1810 },
+                { "count": 1005, "coverage": 1373 },
+                { "count": 1863, "coverage": 2315 },
+                { "count": 4282, "coverage": 4958 },
+                { "count": 1775, "coverage": 2237 }
+            ],
+            [
+                { "count": 3596, "coverage": 13661 },
+                { "count": 4644, "coverage": 17266 },
+                { "count": 1957, "coverage": 8250 },
+                { "count": 860, "coverage": 6549 },
+                { "count": 379, "coverage": 9171 },
+                { "count": 178, "coverage": 16412 },
+                { "count": 41, "coverage": 7462 }
+            ],
+            [
+                { "count": 41, "coverage": 13981 },
+                { "count": 202, "coverage": 17441 },
+                { "count": 568, "coverage": 8356 },
+                { "count": 1740, "coverage": 6589 },
+                { "count": 4746, "coverage": 9111 },
+                { "count": 11247, "coverage": 16298 },
+                { "count": 5484, "coverage": 7443 }
+            ],
+            [
+                { "count": 25, "coverage": 13988 },
+                { "count": 26, "coverage": 17508 },
+                { "count": 3, "coverage": 8376 },
+                { "count": 3, "coverage": 6645 },
+                { "count": 58, "coverage": 9199 },
+                { "count": 950, "coverage": 16346 },
+                { "count": 1144, "coverage": 7459 }
+            ],
+            [
+                { "count": 1, "coverage": 14032 },
+                { "count": 1, "coverage": 17551 },
+                { "count": 1, "coverage": 8418 },
+                { "count": 0, "coverage": 6672 },
+                { "count": 44, "coverage": 9238 },
+                { "count": 922, "coverage": 16465 },
+                { "count": 1119, "coverage": 7468 }
+            ],
+            [
+                { "count": 8, "coverage": 13900 },
+                { "count": 11, "coverage": 17458 },
+                { "count": 44, "coverage": 8358 },
+                { "count": 200, "coverage": 6577 },
+                { "count": 769, "coverage": 9065 },
+                { "count": 3065, "coverage": 16446 },
+                { "count": 1930, "coverage": 7464 }
+            ],
+            [
+                { "count": 65, "coverage": 14003 },
+                { "count": 200, "coverage": 17511 },
+                { "count": 565, "coverage": 8397 },
+                { "count": 1702, "coverage": 6603 },
+                { "count": 4598, "coverage": 9035 },
+                { "count": 11288, "coverage": 16416 },
+                { "count": 5451, "coverage": 7457 }
+            ],
+            [
+                { "count": 2949, "coverage": 13937 },
+                { "count": 3625, "coverage": 17486 },
+                { "count": 1511, "coverage": 8380 },
+                { "count": 585, "coverage": 6635 },
+                { "count": 239, "coverage": 9210 },
+                { "count": 76, "coverage": 16400 },
+                { "count": 19, "coverage": 7481 }
+            ],
+            [
+                { "count": 1, "coverage": 14014 },
+                { "count": 7, "coverage": 17517 },
+                { "count": 36, "coverage": 8404 },
+                { "count": 196, "coverage": 6641 },
+                { "count": 789, "coverage": 9202 },
+                { "count": 3041, "coverage": 16418 },
+                { "count": 1925, "coverage": 7470 }
+            ],
+            [
+                { "count": 13, "coverage": 13948 },
+                { "count": 15, "coverage": 17359 },
+                { "count": 41, "coverage": 8319 },
+                { "count": 237, "coverage": 6564 },
+                { "count": 1370, "coverage": 9054 },
+                { "count": 5079, "coverage": 16077 },
+                { "count": 3245, "coverage": 7342 }
+            ],
+            [
+                { "count": 12, "coverage": 13942 },
+                { "count": 14, "coverage": 17357 },
+                { "count": 41, "coverage": 8317 },
+                { "count": 234, "coverage": 6565 },
+                { "count": 1368, "coverage": 9053 },
+                { "count": 5079, "coverage": 16078 },
+                { "count": 3245, "coverage": 7312 }
+            ],
+            [
+                { "count": 12, "coverage": 13941 },
+                { "count": 14, "coverage": 17360 },
+                { "count": 41, "coverage": 8327 },
+                { "count": 235, "coverage": 6596 },
+                { "count": 1376, "coverage": 9143 },
+                { "count": 5089, "coverage": 16368 },
+                { "count": 3256, "coverage": 7477 }
+            ],
+            [
+                { "count": 233, "coverage": 13964 },
+                { "count": 283, "coverage": 17438 },
+                { "count": 203, "coverage": 8317 },
+                { "count": 300, "coverage": 6600 },
+                { "count": 706, "coverage": 9120 },
+                { "count": 1920, "coverage": 16355 },
+                { "count": 1003, "coverage": 7453 }
+            ],
+            [
+                { "count": 410, "coverage": 13781 },
+                { "count": 1049, "coverage": 17284 },
+                { "count": 1440, "coverage": 8281 },
+                { "count": 2548, "coverage": 6510 },
+                { "count": 5236, "coverage": 9027 },
+                { "count": 9013, "coverage": 16267 },
+                { "count": 3814, "coverage": 7396 }
+            ],
+            [
+                { "count": 98, "coverage": 13705 },
+                { "count": 385, "coverage": 16878 },
+                { "count": 948, "coverage": 8052 },
+                { "count": 2803, "coverage": 6478 },
+                { "count": 6969, "coverage": 8920 },
+                { "count": 15034, "coverage": 16124 },
+                { "count": 7056, "coverage": 7294 }
+            ],
+            [
+                { "count": 12413, "coverage": 13785 },
+                { "count": 15423, "coverage": 17010 },
+                { "count": 7059, "coverage": 8159 },
+                { "count": 5463, "coverage": 6524 },
+                { "count": 7900, "coverage": 9038 },
+                { "count": 14926, "coverage": 16295 },
+                { "count": 6758, "coverage": 7330 }
+            ],
+            [
+                { "count": 2, "coverage": 13859 },
+                { "count": 7, "coverage": 17116 },
+                { "count": 40, "coverage": 8220 },
+                { "count": 361, "coverage": 6565 },
+                { "count": 1709, "coverage": 9116 },
+                { "count": 6158, "coverage": 16313 },
+                { "count": 3340, "coverage": 7373 }
+            ],
+            [
+                { "count": 1061, "coverage": 14046 },
+                { "count": 2717, "coverage": 17559 },
+                { "count": 2232, "coverage": 8409 },
+                { "count": 1865, "coverage": 6653 },
+                { "count": 1369, "coverage": 9240 },
+                { "count": 1048, "coverage": 16493 },
+                { "count": 365, "coverage": 7503 }
+            ],
+            [
+                { "count": 42, "coverage": 13767 },
+                { "count": 203, "coverage": 17280 },
+                { "count": 563, "coverage": 8256 },
+                { "count": 1666, "coverage": 6528 },
+                { "count": 4632, "coverage": 9026 },
+                { "count": 11162, "coverage": 16187 },
+                { "count": 5451, "coverage": 7393 }
+            ]
+        ],
+        "totalCountsByDateRange": [14065, 17583, 8432, 6680, 9252, 16512, 7508]
+    },
+    "info": {
+        "dataVersion": "1774200829",
+        "requestId": "a42fb76f-423d-4436-b8e6-a7bfcf1cc6d8",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2026-03-24T09:11:40.921431027",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "0.7.0",
+        "siloVersion": "0.10.0"
+    }
+}
