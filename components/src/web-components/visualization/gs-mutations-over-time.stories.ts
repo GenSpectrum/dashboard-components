@@ -91,11 +91,7 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
                     matcher: {
                         url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
                         body: {
-                            filters: {
-                                pangoLineage: 'JN.1*',
-                                dateFrom: '2024-01-15',
-                                dateTo: '2024-07-10',
-                            },
+                            filters: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
                             dateRanges: [
                                 { dateFrom: '2024-01-01', dateTo: '2024-01-31' },
                                 { dateFrom: '2024-02-01', dateTo: '2024-02-29' },
@@ -106,16 +102,16 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
                                 { dateFrom: '2024-07-01', dateTo: '2024-07-31' },
                             ],
                             includeMutations: [
-                                'A13121T',
-                                'A19722G',
                                 'C44T',
                                 'C774T',
                                 'C7113T',
                                 'C12616T',
-                                'C21654-',
-                                'C23039G',
-                                'C23277T',
+                                'A13121T',
                                 'G15372T',
+                                'G17334T',
+                                'T18453C',
+                                'A19722G',
+                                'T21653-',
                             ],
                             dateField: 'date',
                         },
