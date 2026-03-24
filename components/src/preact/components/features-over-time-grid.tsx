@@ -84,11 +84,8 @@ export interface FeaturesOverTimeGridServerPaginatedProps<F> {
     rowLabelHeader: string;
     data: TemporalDataMap<F> | null;
     isLoading: boolean;
-    /**
-     * Date columns to show in the header. Supplied from Phase 1 metadata so the
-     * full header is rendered even while page data is still loading.
-     */
-    dates: Temporal[];
+    /** Date columns to show in the header while loading */
+    requestedDateRanges: Temporal[];
     colorScale: ColorScale;
     pageSizes: PageSizes;
     /** Controlled page index (0-based). */
@@ -107,7 +104,7 @@ export function FeaturesOverTimeGridServerPaginated<F>({
     rowLabelHeader,
     data,
     isLoading,
-    dates,
+    requestedDateRanges,
     colorScale,
     pageSizes,
     pageIndex,
@@ -121,7 +118,7 @@ export function FeaturesOverTimeGridServerPaginated<F>({
 }: FeaturesOverTimeGridServerPaginatedProps<F>) {
     const tableData = useGridTableData(data, customColumns, featureRenderer);
     const columns = useGridColumns(
-        dates,
+        data?.getSecondAxisKeys() ?? requestedDateRanges,
         rowLabelHeader,
         customColumns,
         colorScale,
