@@ -58,7 +58,7 @@ function FeaturesOverTimeGrid<F>({
 }: FeaturesOverTimeGridProps<F>) {
     const tableData = useGridTableData(data, customColumns, featureRenderer);
     const columns = useGridColumns(
-        data,
+        data.getSecondAxisKeys(),
         rowLabelHeader,
         customColumns,
         colorScale,
@@ -82,8 +82,13 @@ function FeaturesOverTimeGrid<F>({
 
 export interface FeaturesOverTimeGridServerPaginatedProps<F> {
     rowLabelHeader: string;
-    data: TemporalDataMap<F> | null ;
+    data: TemporalDataMap<F> | null;
     isLoading: boolean;
+    /**
+     * Date columns to show in the header. Supplied from Phase 1 metadata so the
+     * full header is rendered even while page data is still loading.
+     */
+    dates: Temporal[];
     colorScale: ColorScale;
     pageSizes: PageSizes;
     /** Controlled page index (0-based). */
@@ -102,6 +107,7 @@ export function FeaturesOverTimeGridServerPaginated<F>({
     rowLabelHeader,
     data,
     isLoading,
+    dates,
     colorScale,
     pageSizes,
     pageIndex,
@@ -115,7 +121,7 @@ export function FeaturesOverTimeGridServerPaginated<F>({
 }: FeaturesOverTimeGridServerPaginatedProps<F>) {
     const tableData = useGridTableData(data, customColumns, featureRenderer);
     const columns = useGridColumns(
-        data,
+        dates,
         rowLabelHeader,
         customColumns,
         colorScale,
@@ -153,7 +159,7 @@ export function FeaturesOverTimeGridServerPaginated<F>({
 }
 
 function useGridColumns<F>(
-    data: TemporalDataMap<F> | null | undefined,
+    dates: Temporal[],
     rowLabelHeader: string,
     customColumns: CustomColumn[],
     colorScale: ColorScale,
@@ -162,7 +168,6 @@ function useGridColumns<F>(
 ) {
     return useMemo(() => {
         const columnHelper = createColumnHelper<RowType<F>>();
-        const dates = data?.getSecondAxisKeys() ?? [];
 
         const featureHeader = columnHelper.accessor((row) => row.feature, {
             id: 'feature',
@@ -228,7 +233,7 @@ function useGridColumns<F>(
         });
 
         return [featureHeader, ...customColumnHeaders, ...dateHeaders];
-    }, [colorScale, data, customColumns, tooltipPortalTarget, featureRenderer, rowLabelHeader]);
+    }, [colorScale, dates, customColumns, tooltipPortalTarget, featureRenderer, rowLabelHeader]);
 }
 
 function useGridTableData<F>(

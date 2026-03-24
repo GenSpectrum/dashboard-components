@@ -239,6 +239,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                             rowLabelHeader='Mutation'
                             data={pageData}
                             isLoading={isPageLoading}
+                            dates={requestedDateRanges}
                             colorScale={colorScale}
                             pageSizes={originalComponentProps.pageSizes}
                             pageIndex={pageIndex}
