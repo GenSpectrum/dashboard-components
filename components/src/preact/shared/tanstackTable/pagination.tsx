@@ -17,7 +17,7 @@ export function Pagination({
 }: PaginationProps & {
     pageSizes: PageSizes;
     /** Override the total row count (for server-driven pagination). */
-    totalRows?: number;
+    totalRows: number;
 }) {
     return (
         <div className='@container'>
@@ -33,10 +33,8 @@ export function Pagination({
     );
 }
 
-function PageIndicator({ table, totalRows }: PaginationProps & { totalRows?: number }) {
-    const numRows = totalRows ?? table.getCoreRowModel().rows.length;
-
-    if (table.getRowModel().rows.length <= 1 && numRows <= 1) {
+function PageIndicator({ table, totalRows }: PaginationProps & { totalRows: number }) {
+    if (table.getRowModel().rows.length <= 1 && totalRows <= 1) {
         return null;
     }
 
@@ -45,7 +43,7 @@ function PageIndicator({ table, totalRows }: PaginationProps & { totalRows?: num
 
     return (
         <span className='text-sm'>
-            {minRow} - {maxRow} of {numRows}
+            {minRow} - {maxRow} of {totalRows}
         </span>
     );
 }
@@ -92,8 +90,8 @@ function PageSizeSelector({
     );
 }
 
-function GotoPageSelector({ table, totalRows }: PaginationProps & { totalRows?: number }) {
-    if (table.getRowModel().rows.length === 0 && (totalRows ?? 0) === 0) {
+function GotoPageSelector({ table, totalRows }: PaginationProps & { totalRows: number }) {
+    if (table.getRowModel().rows.length === 0 && totalRows === 0) {
         return null;
     }
 

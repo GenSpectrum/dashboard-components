@@ -328,7 +328,6 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     const lapis = useLapisUrl();
     const { lapisFilter, sequenceType, lapisDateField } = originalComponentProps;
 
-    // Download-all: fetch the full time-series for ALL filtered mutations (not just current page)
     const getDownloadDataAsync = async (): Promise<Record<string, string | number>[]> => {
         const pageData = await queryMutationsOverTimePage(
             lapisFilter,

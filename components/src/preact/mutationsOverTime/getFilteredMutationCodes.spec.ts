@@ -170,8 +170,6 @@ describe('getFilteredMutationCodes', () => {
     });
 
     it('should not filter by individual time-series proportions below the overall filter', () => {
-        // Filtering is based solely on overallMutationData proportions, not per-cell values.
-        // An entry whose overall proportion is within range is always kept.
         const result = getFilteredMutationCodes({
             overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],
             displayedSegments: [],
