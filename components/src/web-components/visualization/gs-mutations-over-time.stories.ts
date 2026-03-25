@@ -10,6 +10,7 @@ import mockAminoAcidMutationsByDayAminoAcidMutationsOverTimePage1 from '../../pr
 import mockByWeekMutationsOverTimePage1 from '../../preact/mutationsOverTime/__mockData__/byWeek/mutationsOverTimePage1.json';
 import mockByWeekNucleotideMutations from '../../preact/mutationsOverTime/__mockData__/byWeek/nucleotideMutations.json';
 import mockDefaultMutationsOverTimePage1 from '../../preact/mutationsOverTime/__mockData__/defaultMockData/mutationsOverTimePage1.json';
+import mockDefaultMutationsOverTimePageSize20 from '../../preact/mutationsOverTime/__mockData__/defaultMockData/mutationsOverTimePageSize20.json';
 import mockDefaultNucleotideMutations from '../../preact/mutationsOverTime/__mockData__/defaultMockData/nucleotideMutations.json';
 import mockWithDisplayMutationsMutationsOverTime from '../../preact/mutationsOverTime/__mockData__/withDisplayMutations/mutationsOverTime.json';
 import { type MutationsOverTimeProps } from '../../preact/mutationsOverTime/mutations-over-time';
@@ -118,6 +119,50 @@ const meta: Meta<Required<MutationsOverTimeProps>> = {
                         response: {
                             status: 200,
                             body: mockDefaultMutationsOverTimePage1,
+                        },
+                    },
+                },
+                {
+                    matcher: {
+                        name: 'downloadData',
+                        url: `${LAPIS_URL}/component/nucleotideMutationsOverTime`,
+                        body: {
+                            filters: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-07-10' },
+                            dateRanges: [
+                                { dateFrom: '2024-01-01', dateTo: '2024-01-31' },
+                                { dateFrom: '2024-02-01', dateTo: '2024-02-29' },
+                                { dateFrom: '2024-03-01', dateTo: '2024-03-31' },
+                                { dateFrom: '2024-04-01', dateTo: '2024-04-30' },
+                                { dateFrom: '2024-05-01', dateTo: '2024-05-31' },
+                                { dateFrom: '2024-06-01', dateTo: '2024-06-30' },
+                                { dateFrom: '2024-07-01', dateTo: '2024-07-31' },
+                            ],
+                            includeMutations: [
+                                'C44T',
+                                'C774T',
+                                'C7113T',
+                                'C12616T',
+                                'A13121T',
+                                'G15372T',
+                                'G17334T',
+                                'T18453C',
+                                'A19722G',
+                                'T21653-',
+                                'C21654-',
+                                'T21655-',
+                                'G22111T',
+                                'G22599C',
+                                'T22928C',
+                                'T23011-',
+                                'C23039G',
+                                'C23277T',
+                                'G24872T',
+                            ],
+                            dateField: 'date',
+                        },
+                        response: {
+                            status: 200,
+                            body: mockDefaultMutationsOverTimePageSize20,
                         },
                     },
                 },
