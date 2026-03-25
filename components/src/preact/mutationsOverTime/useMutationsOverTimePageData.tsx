@@ -28,7 +28,14 @@ export function useMutationsOverTimePageData(
         error,
         isLoading,
     } = useQuery(async () => {
-        const cacheKey = JSON.stringify(pageMutationCodes);
+        const cacheKey = JSON.stringify({
+            lapisFilter,
+            lapis,
+            lapisDateField,
+            sequenceType,
+            requestedDateRanges,
+            pageMutationCodes,
+        });
         const cachedData = cache.current.get(cacheKey);
         if (cachedData !== undefined) {
             return cachedData;
