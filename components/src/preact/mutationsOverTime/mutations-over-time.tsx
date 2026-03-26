@@ -40,10 +40,9 @@ import { ResizeContainer } from '../components/resize-container';
 import { type DisplayedSegment, SegmentSelector, useDisplayedSegments } from '../components/segment-selector';
 import Tabs from '../components/tabs';
 import { pageSizesSchema } from '../shared/tanstackTable/pagination';
-import { PageSizeContextProvider } from '../shared/tanstackTable/pagination-context';
+import { PageSizeContextProvider, usePageSizeContext } from '../shared/tanstackTable/pagination-context';
 import { useQuery } from '../useQuery';
 import { handleHideGaps, useMutationsOverTimePageData } from './useMutationsOverTimePageData';
-import { useControlledState } from '../../utils/useControlledState';
 
 const mutationsOverTimeViewSchema = z.literal(views.grid);
 export type MutationsOverTimeView = z.infer<typeof mutationsOverTimeViewSchema>;
@@ -87,10 +86,7 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
     const lapis = useLapisUrl();
     const { lapisFilter, sequenceType, granularity, lapisDateField, displayMutations, pageSizes } = componentProps;
 
-    const initialPageSize = typeof pageSizes === 'number' ? pageSizes : (pageSizes.at(0) ?? 10);
-
     const [pageIndex, setPageIndex] = useState(0);
-    const [pageSize, setPageSize] = useControlledState(initialPageSize);
 
     const {
         data: metadata,
@@ -121,14 +117,14 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
     }
 
     return (
-        <MutationsOverTimeTabs
-            metadata={metadata}
-            originalComponentProps={componentProps}
-            pageIndex={pageIndex}
-            setPageIndex={setPageIndex}
-            pageSize={pageSize}
-            setPageSize={setPageSize}
-        />
+        <PageSizeContextProvider pageSizes={pageSizes}>
+            <MutationsOverTimeTabs
+                metadata={metadata}
+                originalComponentProps={componentProps}
+                pageIndex={pageIndex}
+                setPageIndex={setPageIndex}
+            />
+        </PageSizeContextProvider>
     );
 };
 
@@ -137,8 +133,6 @@ type MutationOverTimeTabsProps = {
     originalComponentProps: MutationsOverTimeProps;
     pageIndex: number;
     setPageIndex: Dispatch<StateUpdater<number>>;
-    pageSize: number;
-    setPageSize: Dispatch<StateUpdater<number>>;
 };
 
 const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
@@ -146,12 +140,11 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     originalComponentProps,
     pageIndex,
     setPageIndex,
-    pageSize,
-    setPageSize,
 }) => {
     const lapis = useLapisUrl();
     const { lapisFilter, sequenceType, lapisDateField } = originalComponentProps;
     const { overallMutationData, requestedDateRanges } = metadata;
+    const { pageSize } = usePageSizeContext();
 
     const tabsRef = useDispatchFinishedLoadingEvent();
     const tooltipPortalTargetRef = useRef<HTMLDivElement>(null);
@@ -248,10 +241,8 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
                             colorScale={colorScale}
                             pageSizes={originalComponentProps.pageSizes}
                             pageIndex={pageIndex}
-                            pageSize={pageSize}
                             totalRows={totalFilteredRows}
                             onPageChange={setPageIndex}
-                            onPageSizeChange={setPageSize}
                             customColumns={originalComponentProps.customColumns}
                             featureRenderer={mutationRenderer}
                             tooltipPortalTarget={tooltipPortalTarget}
@@ -286,9 +277,7 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
 
     return (
         <div ref={tooltipPortalTargetRef}>
-            <PageSizeContextProvider pageSizes={originalComponentProps.pageSizes}>
-                <Tabs ref={tabsRef} tabs={tabs} toolbar={toolbar} />
-            </PageSizeContextProvider>
+            <Tabs ref={tabsRef} tabs={tabs} toolbar={toolbar} />
         </div>
     );
 };

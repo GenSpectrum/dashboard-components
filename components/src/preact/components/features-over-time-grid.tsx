@@ -90,11 +90,9 @@ export interface FeaturesOverTimeGridServerPaginatedProps<F> {
     pageSizes: PageSizes;
     /** Controlled page index (0-based). */
     pageIndex: number;
-    pageSize: number;
     /** Total number of rows across all pages. */
     totalRows: number;
     onPageChange: Dispatch<StateUpdater<number>>;
-    onPageSizeChange: Dispatch<StateUpdater<number>>;
     customColumns?: CustomColumn[];
     featureRenderer: FeatureRenderer<F>;
     tooltipPortalTarget: HTMLElement | null;
@@ -108,10 +106,8 @@ export function FeaturesOverTimeGridServerPaginated<F>({
     colorScale,
     pageSizes,
     pageIndex,
-    pageSize,
     totalRows,
     onPageChange,
-    onPageSizeChange,
     customColumns = EMPTY_COLUMNS,
     featureRenderer,
     tooltipPortalTarget,
@@ -125,7 +121,7 @@ export function FeaturesOverTimeGridServerPaginated<F>({
         tooltipPortalTarget,
         featureRenderer,
     );
-    const { setPageSize: setContextPageSize } = usePageSizeContext();
+    const { pageSize, setPageSize } = usePageSizeContext();
 
     const table = usePreactTable({
         data: tableData,
@@ -144,8 +140,7 @@ export function FeaturesOverTimeGridServerPaginated<F>({
                 onPageChange(next.pageIndex);
             }
             if (next.pageSize !== current.pageSize) {
-                onPageSizeChange(next.pageSize);
-                setContextPageSize(next.pageSize);
+                setPageSize(next.pageSize);
             }
         },
     });
