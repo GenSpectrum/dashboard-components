@@ -1,5 +1,5 @@
 import { type ComponentProps, createContext, type FunctionalComponent } from 'preact';
-import { useContext, useMemo } from 'preact/hooks';
+import { useCallback, useContext, useMemo } from 'preact/hooks';
 
 import { type SequenceType } from '../types';
 import {
@@ -98,32 +98,33 @@ export function useRawMutationAnnotations() {
 export function useMutationAnnotationsProvider() {
     const mutationAnnotations = useContext(MutationAnnotationsContext);
 
-    return getMutationAnnotationsProvider(mutationAnnotations);
-}
+    return useCallback(
+        (mutation: Mutation, sequenceType: SequenceType) => {
+            const position =
+                mutation.segment === undefined
+                    ? `${mutation.position}`
+                    : `${mutation.segment.toUpperCase()}:${mutation.position}`;
 
-export function getMutationAnnotationsProvider(mutationAnnotations: MutationAnnotationsContextValue) {
-    return (mutation: Mutation, sequenceType: SequenceType) => {
-        const position =
-            mutation.segment === undefined
-                ? `${mutation.position}`
-                : `${mutation.segment.toUpperCase()}:${mutation.position}`;
+            const possiblePositionAnnotations = mutationAnnotations[sequenceType].position.get(position);
+            const possibleExactAnnotations = mutationAnnotations[sequenceType].mutation.get(
+                mutation.code.toUpperCase(),
+            );
 
-        const possiblePositionAnnotations = mutationAnnotations[sequenceType].position.get(position);
-        const possibleExactAnnotations = mutationAnnotations[sequenceType].mutation.get(mutation.code.toUpperCase());
+            const annotations =
+                possiblePositionAnnotations && possibleExactAnnotations
+                    ? [...possiblePositionAnnotations, ...possibleExactAnnotations]
+                    : (possiblePositionAnnotations ?? possibleExactAnnotations);
 
-        const annotations =
-            possiblePositionAnnotations && possibleExactAnnotations
-                ? [...possiblePositionAnnotations, ...possibleExactAnnotations]
-                : (possiblePositionAnnotations ?? possibleExactAnnotations);
+            const uniqueNames = new Set<string>();
 
-        const uniqueNames = new Set<string>();
-
-        return annotations?.filter((annotation) => {
-            if (uniqueNames.has(annotation.name)) {
-                return false;
-            }
-            uniqueNames.add(annotation.name);
-            return true;
-        });
-    };
+            return annotations?.filter((annotation) => {
+                if (uniqueNames.has(annotation.name)) {
+                    return false;
+                }
+                uniqueNames.add(annotation.name);
+                return true;
+            });
+        },
+        [mutationAnnotations],
+    );
 }

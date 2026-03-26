@@ -43,6 +43,7 @@ import { pageSizesSchema } from '../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../shared/tanstackTable/pagination-context';
 import { useQuery } from '../useQuery';
 import { handleHideGaps, useMutationsOverTimePageData } from './useMutationsOverTimePageData';
+import { useControlledState } from '../../utils/useControlledState';
 
 const mutationsOverTimeViewSchema = z.literal(views.grid);
 export type MutationsOverTimeView = z.infer<typeof mutationsOverTimeViewSchema>;
@@ -89,7 +90,7 @@ export const MutationsOverTimeInner: FunctionComponent<MutationsOverTimeProps> =
     const initialPageSize = typeof pageSizes === 'number' ? pageSizes : (pageSizes.at(0) ?? 10);
 
     const [pageIndex, setPageIndex] = useState(0);
-    const [pageSize, setPageSize] = useState(initialPageSize);
+    const [pageSize, setPageSize] = useControlledState(initialPageSize);
 
     const {
         data: metadata,
@@ -199,6 +200,10 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
             annotationProvider,
         ],
     );
+
+    useEffect(() => {
+        setPageIndex(0);
+    }, [filteredMutationCodes, setPageIndex]);
 
     const totalFilteredRows = filteredMutationCodes.length;
     const { isLoading: isPageLoading, data: pageData } = useMutationsOverTimePageData(
