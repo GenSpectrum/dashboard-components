@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'preact/hooks';
+import { useEffect, useMemo, useRef } from 'preact/hooks';
 
 import { type MutationOverTimeDataMap } from './MutationOverTimeData';
 import { type MutationsOverTimeMetadata, queryMutationsOverTimePage } from '../../query/queryMutationsOverTime';
@@ -22,6 +22,9 @@ export function useMutationsOverTimePageData(
     const pageMutationCodes = filteredMutationCodes.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
 
     const cache = useRef<Map<string, MutationOverTimeDataMap>>(new Map());
+    useEffect(() => {
+        cache.current = new Map(); // make sure the cache doesn't grow indefinitely
+    }, [lapisFilter, lapis, lapisDateField, sequenceType, requestedDateRanges]);
 
     const {
         data: pageData,
