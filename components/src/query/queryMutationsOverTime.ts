@@ -11,8 +11,8 @@ import {
     type TemporalGranularity,
 } from '../types';
 import { type Map2DContents } from '../utils/map2d';
-import { type Deletion, type Substitution, DeletionClass, SubstitutionClass } from '../utils/mutations';
-import { type Temporal } from '../utils/temporalClass';
+import { type Deletion, DeletionClass, type Substitution, SubstitutionClass } from '../utils/mutations';
+import { type Temporal, type TemporalClass } from '../utils/temporalClass';
 
 export type ProportionValue =
     | {
@@ -89,21 +89,19 @@ async function queryOverallMutationData({
     lapisFilter,
     sequenceType,
     lapis,
-    granularity,
     lapisDateField,
     includeMutations,
+    requestedDateRanges,
     signal,
 }: {
     lapisFilter: LapisFilter;
     sequenceType: SequenceType;
     lapis: string;
-    granularity: TemporalGranularity;
     lapisDateField: string;
     includeMutations?: string[];
+    requestedDateRanges: TemporalClass[];
     signal?: AbortSignal;
 }) {
-    const requestedDateRanges = await queryDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
-
     if (requestedDateRanges.length === 0) {
         if (includeMutations) {
             return {
@@ -172,7 +170,8 @@ export async function queryMutationsOverTimeMetadata(
         lapis,
         lapisDateField,
         includeMutations: displayMutations,
-        granularity,
+        requestedDateRanges,
+        signal,
     }).then((r) => r.content);
 
     overallMutationData.sort((a, b) => sortSubstitutionsAndDeletions(a.mutation, b.mutation));
