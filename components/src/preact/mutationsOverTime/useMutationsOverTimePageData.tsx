@@ -19,7 +19,10 @@ export function useMutationsOverTimePageData(
     requestedDateRanges: MutationsOverTimeMetadata['requestedDateRanges'],
     hideGaps: boolean,
 ): MutationsOverTimePageQuery {
-    const pageMutationCodes = filteredMutationCodes.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
+    const pageMutationCodes = useMemo(
+        () => filteredMutationCodes.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize),
+        [filteredMutationCodes, pageIndex, pageSize],
+    );
 
     const cache = useRef<Map<string, MutationOverTimeDataMap>>(new Map());
     useEffect(() => {
