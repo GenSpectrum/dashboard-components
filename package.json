@@ -8,7 +8,7 @@
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "@commitlint/types": "^20.2.0",
-    "release-please": "^17.3.0"
+    "release-please": "^17.5.2"
   },
   "scripts": {
     "release-please-dry-run": "release-please release-pr --dry-run --config-file=components/release-please-config.json --manifest-file=components/.release-please-manifest.json --repo-url='https://github.com/GenSpectrum/dashboard-components' --path components",
