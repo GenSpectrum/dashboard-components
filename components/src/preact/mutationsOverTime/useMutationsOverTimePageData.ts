@@ -6,7 +6,9 @@ import { type LapisFilter } from '../../types';
 import { Map2dView } from '../../utils/map2d';
 import { useQuery } from '../useQuery';
 
-type MutationsOverTimePageQuery = { isLoading: true; data: null } | { isLoading: false; data: MutationOverTimeDataMap };
+type MutationsOverTimePageQuery =
+    | { isLoading: true; data: null; pageMutationCodes: string[] }
+    | { isLoading: false; data: MutationOverTimeDataMap; pageMutationCodes: string[] };
 
 /**
  * Fetches the data for a single page of the mutations-over-time grid.
@@ -82,11 +84,11 @@ export function useMutationsOverTimePageData(
 
     return useMemo(() => {
         if (isLoading) {
-            return { isLoading: true, data: null };
+            return { isLoading: true, data: null, pageMutationCodes };
         }
 
-        return { isLoading: false, data: handleHideGaps(pageData, hideGaps) };
-    }, [pageData, hideGaps, isLoading]);
+        return { isLoading: false, data: handleHideGaps(pageData, hideGaps), pageMutationCodes };
+    }, [pageData, hideGaps, isLoading, pageMutationCodes]);
 }
 
 /**
