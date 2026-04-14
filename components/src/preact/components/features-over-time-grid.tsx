@@ -293,24 +293,26 @@ function FeaturesOverTimeGridDisplay<F>({
                 <tbody>
                     {isLoading ? (
                         loadingRowLabels !== undefined && loadingRowLabels.length > 0 ? (
-                            loadingRowLabels.map((label) => (
+                            loadingRowLabels.map((label, rowIndex) => (
                                 <tr key={label}>
                                     <td className='text-center'>{label}</td>
-                                    {table.getFlatHeaders().slice(1).map((header) => (
-                                        <td key={header.id}>
-                                            <div className='py-1 w-full h-full'>
-                                                <div className='w-full h-full text-xs text-base-content/20 text-center'>
-                                                    —
-                                                </div>
-                                            </div>
+                                    {rowIndex === 0 && (
+                                        <td
+                                            rowSpan={loadingRowLabels.length}
+                                            colSpan={table.getFlatHeaders().length - 1}
+                                            className='text-center'
+                                        >
+                                            <span className='loading loading-spinner loading-sm' />
                                         </td>
-                                    ))}
+                                    )}
                                 </tr>
                             ))
                         ) : (
                             <tr>
                                 <td colSpan={table.getFlatHeaders().length}>
-                                    <div className={'text-center py-4'}>Loading...</div>
+                                    <div className={'text-center py-4'}>
+                                        <span className='loading loading-spinner loading-sm' />
+                                    </div>
                                 </td>
                             </tr>
                         )
