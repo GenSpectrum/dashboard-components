@@ -34,12 +34,12 @@ export function Pagination({
 }
 
 function PageIndicator({ table, totalRows }: PaginationProps & { totalRows: number }) {
-    if (table.getRowModel().rows.length <= 1 && totalRows <= 1) {
+    if (table.getPaginationRowModel().rows.length <= 1 && totalRows <= 1) {
         return null;
     }
 
     const minRow = table.getState().pagination.pageIndex * table.getState().pagination.pageSize + 1;
-    const maxRow = minRow + table.getRowModel().rows.length - 1;
+    const maxRow = minRow + table.getPaginationRowModel().rows.length - 1;
 
     return (
         <span className='text-sm'>

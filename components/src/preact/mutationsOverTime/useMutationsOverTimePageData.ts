@@ -8,6 +8,23 @@ import { useQuery } from '../useQuery';
 
 type MutationsOverTimePageQuery = { isLoading: true; data: null } | { isLoading: false; data: MutationOverTimeDataMap };
 
+/**
+ * Fetches the data for a single page of the mutations-over-time grid.
+ *
+ * Rather than loading all mutation data at once, this hook fetches only the rows (mutation codes)
+ * that are visible on the current page. The set of visible mutations is determined by
+ * `filteredMutationCodes` (all mutations that pass the current client-side filters), sliced to
+ * the current page according to `pageIndex` and `pageSize`.
+ *
+ * Results are cached in a `useRef`-backed Map keyed by the full query context (filter, date
+ * ranges, sequence type, and the specific mutation codes on the page), so revisiting a page does
+ * not trigger a new network request. The cache is cleared automatically whenever the underlying
+ * query inputs change (i.e. `lapisFilter`, `lapis`, `lapisDateField`, `sequenceType`, or
+ * `requestedDateRanges`), ensuring stale data is never served after the dataset changes.
+ *
+ * When `hideGaps` is true, date-range columns that contain no data are removed from the returned
+ * view before it is passed to the grid.
+ */
 export function useMutationsOverTimePageData(
     filteredMutationCodes: string[],
     pageIndex: number,
@@ -72,6 +89,10 @@ export function useMutationsOverTimePageData(
     }, [pageData, hideGaps, isLoading]);
 }
 
+/**
+ * Returns a new view on `data` where columns (date ranges) that do not contain any data are
+ * filtered out. When `hideGaps` is false the original data is returned unchanged.
+ */
 export function handleHideGaps(data: MutationOverTimeDataMap, hideGaps: boolean) {
     if (!hideGaps) {
         return data;
