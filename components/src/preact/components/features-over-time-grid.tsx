@@ -85,7 +85,7 @@ export interface FeaturesOverTimeGridServerPaginatedProps<F> {
     data: TemporalDataMap<F> | null;
     isLoading: boolean;
     /** Labels to show in the row label column while the page data is loading. */
-    loadingRowLabels?: string[];
+    loadingRowLabels: string[];
     /** Date columns to show in the header while loading */
     requestedDateRanges: Temporal[];
     colorScale: ColorScale;
@@ -152,8 +152,7 @@ export function FeaturesOverTimeGridServerPaginated<F>({
         <FeaturesOverTimeGridDisplay
             table={table}
             pageSizes={pageSizes}
-            isLoading={isLoading}
-            loadingRowLabels={loadingRowLabels}
+            loadingState={{ isLoading, loadingRowLabels }}
             totalRows={totalRows}
         />
     );
@@ -255,21 +254,24 @@ function useGridTableData<F>(
     }, [data, customColumns, featureRenderer]);
 }
 
-interface FeaturesOverTimeGridDisplayProps<F> {
+type FeaturesOverTimeGridDisplayProps<F> = {
     table: Table<RowType<F>>;
     pageSizes: PageSizes;
-    isLoading?: boolean;
-    /** Labels to render in the row label column while loading. One skeleton row is shown per label. */
-    loadingRowLabels?: string[];
     /** Override for the pagination row count (server-driven pagination). */
     totalRows?: number;
-}
+    loadingState?:
+        | {
+              isLoading: boolean;
+              /** Labels to render in the row label column while loading. One skeleton row is shown per label. */
+              loadingRowLabels: string[];
+          }
+        | { isLoading: false; loadingRowLabels?: never };
+};
 
 function FeaturesOverTimeGridDisplay<F>({
     table,
     pageSizes,
-    isLoading = false,
-    loadingRowLabels,
+    loadingState,
     totalRows,
 }: FeaturesOverTimeGridDisplayProps<F>) {
     const displayedTotalRows = totalRows ?? table.getCoreRowModel().rows.length;
@@ -291,31 +293,21 @@ function FeaturesOverTimeGridDisplay<F>({
                     ))}
                 </thead>
                 <tbody>
-                    {isLoading ? (
-                        loadingRowLabels !== undefined && loadingRowLabels.length > 0 ? (
-                            loadingRowLabels.map((label, rowIndex) => (
-                                <tr key={label}>
-                                    <td className='text-center'>{label}</td>
-                                    {rowIndex === 0 && (
-                                        <td
-                                            rowSpan={loadingRowLabels.length}
-                                            colSpan={table.getFlatHeaders().length - 1}
-                                            className='text-center'
-                                        >
-                                            <span className='loading loading-spinner loading-sm' />
-                                        </td>
-                                    )}
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan={table.getFlatHeaders().length}>
-                                    <div className={'text-center py-4'}>
+                    {loadingState?.isLoading ? (
+                        loadingState.loadingRowLabels.map((label, rowIndex) => (
+                            <tr key={label}>
+                                <td className='text-center'>{label}</td>
+                                {rowIndex === 0 && (
+                                    <td
+                                        rowSpan={loadingState.loadingRowLabels.length}
+                                        colSpan={table.getFlatHeaders().length - 1}
+                                        className='text-center'
+                                    >
                                         <span className='loading loading-spinner loading-sm' />
-                                    </div>
-                                </td>
+                                    </td>
+                                )}
                             </tr>
-                        )
+                        ))
                     ) : (
                         <>
                             {table.getRowModel().rows.map((row) => (
