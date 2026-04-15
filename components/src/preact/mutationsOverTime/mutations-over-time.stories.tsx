@@ -384,7 +384,7 @@ export const UsesPagination: StoryObj<MutationsOverTimeProps> = {
     play: async ({ canvas, step }) => {
         const mutationOnFirstPage = 'C44T';
         const mutationOnSecondPage = 'C21654-';
-        await expectMutationOnPage(canvas, mutationOnFirstPage);
+        await expectMutationOnPage(canvas, 'C774T');
 
         await step('Navigate to next page', async () => {
             canvas.getByRole('button', { name: 'Next page' }).click();
@@ -398,7 +398,7 @@ export const UsesPagination: StoryObj<MutationsOverTimeProps> = {
             await userEvent.type(gotoPageInput, '1');
             await userEvent.tab();
 
-            await expectMutationOnPage(canvas, mutationOnFirstPage);
+            await expectMutationOnPage(canvas, 'C774T');
         });
 
         await step('Change number of rows per page', async () => {
