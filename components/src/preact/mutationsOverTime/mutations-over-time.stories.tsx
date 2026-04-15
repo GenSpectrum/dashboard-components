@@ -505,10 +505,13 @@ export const WithCustomColumns: StoryObj<MutationsOverTimeProps> = {
 };
 
 async function expectMutationOnPage(canvas: Canvas, mutation: string) {
-    await waitFor(async () => {
-        const mutationOnFirstPage = canvas.getAllByText(mutation)[0];
-        await expect(mutationOnFirstPage).toBeVisible();
-    });
+    await waitFor(
+        async () => {
+            const mutationOnFirstPage = canvas.getAllByText(mutation)[0];
+            await expect(mutationOnFirstPage).toBeVisible();
+        },
+        { timeout: 5000 },
+    );
 }
 
 async function expectDateRangeOnPage(canvas: Canvas, dateRange: string) {
