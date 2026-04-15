@@ -384,6 +384,7 @@ export const UsesPagination: StoryObj<MutationsOverTimeProps> = {
     play: async ({ canvas, step }) => {
         const mutationOnFirstPage = 'C44T';
         const mutationOnSecondPage = 'C21654-';
+        await expect(canvas.getByText('Mutation')).toBeVisible();
         await expectMutationOnPage(canvas, 'C774T');
 
         await step('Navigate to next page', async () => {
