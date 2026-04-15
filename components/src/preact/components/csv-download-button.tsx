@@ -1,4 +1,5 @@
 import { type FunctionComponent } from 'preact';
+import { useState } from 'preact/hooks';
 
 type ToStringable = {
     toString: () => string;
@@ -9,7 +10,7 @@ export type DataValue = string | number | boolean | null | undefined | ToStringa
 export interface CsvDownloadButtonProps {
     label?: string;
     filename?: string;
-    getData: () => Record<string, DataValue>[];
+    getData: () => Record<string, DataValue>[] | Promise<Record<string, DataValue>[]>;
     className?: string;
 }
 
@@ -19,19 +20,26 @@ export const CsvDownloadButton: FunctionComponent<CsvDownloadButtonProps> = ({
     getData,
     className,
 }) => {
-    const download = () => {
-        const content = getDownloadContent();
-        const blob = new Blob([content], { type: 'text/csv' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        a.click();
-        URL.revokeObjectURL(url);
+    const [isDownloading, setIsDownloading] = useState(false);
+
+    const download = async () => {
+        setIsDownloading(true);
+        try {
+            const content = await getDownloadContent();
+            const blob = new Blob([content], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        } finally {
+            setIsDownloading(false);
+        }
     };
 
-    const getDownloadContent = () => {
-        const data = getData();
+    const getDownloadContent = async () => {
+        const data = await getData();
         const keys = getDataKeys(data);
         const header = keys.join(',');
         const rows = data.map((row) => keys.map((key) => row[key]).join(',')).join('\n');
@@ -50,8 +58,8 @@ export const CsvDownloadButton: FunctionComponent<CsvDownloadButtonProps> = ({
     };
 
     return (
-        <button className={className} onClick={download}>
-            {label}
+        <button className={className} onClick={() => void download()} disabled={isDownloading}>
+            {isDownloading ? 'Downloading...' : label}
         </button>
     );
 };

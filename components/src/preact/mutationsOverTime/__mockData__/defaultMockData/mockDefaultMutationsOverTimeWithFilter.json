@@ -1,0 +1,43 @@
+{
+    "data": {
+        "mutations": ["T21653-", "T21655-"],
+        "dateRanges": [
+            { "dateFrom": "2024-01-01", "dateTo": "2024-01-31" },
+            { "dateFrom": "2024-02-01", "dateTo": "2024-02-29" },
+            { "dateFrom": "2024-03-01", "dateTo": "2024-03-31" },
+            { "dateFrom": "2024-04-01", "dateTo": "2024-04-30" },
+            { "dateFrom": "2024-05-01", "dateTo": "2024-05-31" },
+            { "dateFrom": "2024-06-01", "dateTo": "2024-06-30" },
+            { "dateFrom": "2024-07-01", "dateTo": "2024-07-31" }
+        ],
+        "data": [
+            [
+                { "count": 13, "coverage": 13948 },
+                { "count": 15, "coverage": 17359 },
+                { "count": 41, "coverage": 8319 },
+                { "count": 237, "coverage": 6564 },
+                { "count": 1370, "coverage": 9054 },
+                { "count": 5079, "coverage": 16077 },
+                { "count": 3245, "coverage": 7342 }
+            ],
+            [
+                { "count": 12, "coverage": 13941 },
+                { "count": 14, "coverage": 17360 },
+                { "count": 41, "coverage": 8327 },
+                { "count": 235, "coverage": 6596 },
+                { "count": 1376, "coverage": 9143 },
+                { "count": 5089, "coverage": 16368 },
+                { "count": 3256, "coverage": 7477 }
+            ]
+        ],
+        "totalCountsByDateRange": [14065, 17583, 8432, 6680, 9252, 16512, 7508]
+    },
+    "info": {
+        "dataVersion": "1774200829",
+        "requestId": "dcc96846-d1d8-4ae2-afbe-60fcda8e64f0",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2026-03-24T09:25:28.706437897",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "0.7.0",
+        "siloVersion": "0.10.0"
+    }
+}

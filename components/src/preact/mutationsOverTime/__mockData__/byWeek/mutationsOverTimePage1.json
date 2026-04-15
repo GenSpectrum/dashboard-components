@@ -1,0 +1,76 @@
+{
+    "data": {
+        "mutations": ["C44T", "C774T", "C1762A", "C11747T", "G17562T", "T18453C", "G21641T", "C23277T", "C29870A"],
+        "dateRanges": [
+            { "dateFrom": "2024-01-15", "dateTo": "2024-01-21" },
+            { "dateFrom": "2024-01-22", "dateTo": "2024-01-28" },
+            { "dateFrom": "2024-01-29", "dateTo": "2024-02-04" },
+            { "dateFrom": "2024-02-05", "dateTo": "2024-02-11" }
+        ],
+        "data": [
+            [
+                { "count": 548, "coverage": 923 },
+                { "count": 605, "coverage": 1040 },
+                { "count": 571, "coverage": 916 },
+                { "count": 481, "coverage": 858 }
+            ],
+            [
+                { "count": 1404, "coverage": 5260 },
+                { "count": 1358, "coverage": 5415 },
+                { "count": 1473, "coverage": 5404 },
+                { "count": 1370, "coverage": 5120 }
+            ],
+            [
+                { "count": 348, "coverage": 5345 },
+                { "count": 360, "coverage": 5592 },
+                { "count": 273, "coverage": 5470 },
+                { "count": 214, "coverage": 5158 }
+            ],
+            [
+                { "count": 322, "coverage": 5006 },
+                { "count": 323, "coverage": 5215 },
+                { "count": 259, "coverage": 5214 },
+                { "count": 191, "coverage": 4831 }
+            ],
+            [
+                { "count": 381, "coverage": 5383 },
+                { "count": 402, "coverage": 5618 },
+                { "count": 353, "coverage": 5500 },
+                { "count": 303, "coverage": 5194 }
+            ],
+            [
+                { "count": 1175, "coverage": 5348 },
+                { "count": 1104, "coverage": 5557 },
+                { "count": 1156, "coverage": 5474 },
+                { "count": 1100, "coverage": 5176 }
+            ],
+            [
+                { "count": 300, "coverage": 4800 },
+                { "count": 512, "coverage": 4860 },
+                { "count": 311, "coverage": 4833 },
+                { "count": 124, "coverage": 4390 }
+            ],
+            [
+                { "count": 337, "coverage": 5391 },
+                { "count": 431, "coverage": 5615 },
+                { "count": 565, "coverage": 5497 },
+                { "count": 662, "coverage": 5193 }
+            ],
+            [
+                { "count": 17, "coverage": 251 },
+                { "count": 7, "coverage": 260 },
+                { "count": 17, "coverage": 237 },
+                { "count": 13, "coverage": 185 }
+            ]
+        ],
+        "totalCountsByDateRange": [5395, 5624, 5506, 5200]
+    },
+    "info": {
+        "dataVersion": "1774200829",
+        "requestId": "84c09426-1724-49bb-8e8e-fcc0d98d2c89",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2026-03-24T08:56:49.830150373",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "0.7.0",
+        "siloVersion": "0.10.0"
+    }
+}

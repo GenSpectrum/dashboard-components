@@ -3,7 +3,7 @@ import { type Dispatch, type StateUpdater, useCallback, useEffect, useState } fr
 
 import { Dropdown } from './dropdown';
 import { useRawMutationAnnotations } from '../MutationAnnotationsContext';
-import { type MutationFilter } from '../mutationsOverTime/getFilteredMutationsOverTimeData';
+import { type MutationFilter } from '../mutationsOverTime/getFilteredMutationCodes';
 import { DeleteIcon } from '../shared/icons/DeleteIcon';
 
 export type MutationsOverTimeMutationsFilterProps = {

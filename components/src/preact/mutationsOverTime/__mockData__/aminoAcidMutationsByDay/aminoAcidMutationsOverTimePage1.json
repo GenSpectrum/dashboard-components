@@ -1,0 +1,52 @@
+{
+    "data": {
+        "mutations": ["ORF1a:T170I", "ORF1a:F499L", "S:T572I"],
+        "dateRanges": [
+            { "dateFrom": "2024-01-20", "dateTo": "2024-01-20" },
+            { "dateFrom": "2024-01-21", "dateTo": "2024-01-21" },
+            { "dateFrom": "2024-01-22", "dateTo": "2024-01-22" },
+            { "dateFrom": "2024-01-23", "dateTo": "2024-01-23" },
+            { "dateFrom": "2024-01-24", "dateTo": "2024-01-24" },
+            { "dateFrom": "2024-01-25", "dateTo": "2024-01-25" },
+            { "dateFrom": "2024-01-26", "dateTo": "2024-01-26" }
+        ],
+        "data": [
+            [
+                { "count": 121, "coverage": 455 },
+                { "count": 155, "coverage": 535 },
+                { "count": 314, "coverage": 1100 },
+                { "count": 245, "coverage": 1032 },
+                { "count": 225, "coverage": 968 },
+                { "count": 197, "coverage": 839 },
+                { "count": 171, "coverage": 635 }
+            ],
+            [
+                { "count": 20, "coverage": 459 },
+                { "count": 33, "coverage": 536 },
+                { "count": 79, "coverage": 1149 },
+                { "count": 71, "coverage": 1061 },
+                { "count": 66, "coverage": 995 },
+                { "count": 49, "coverage": 857 },
+                { "count": 42, "coverage": 668 }
+            ],
+            [
+                { "count": 26, "coverage": 456 },
+                { "count": 37, "coverage": 541 },
+                { "count": 83, "coverage": 1141 },
+                { "count": 81, "coverage": 1051 },
+                { "count": 70, "coverage": 986 },
+                { "count": 64, "coverage": 848 },
+                { "count": 48, "coverage": 664 }
+            ]
+        ],
+        "totalCountsByDateRange": [466, 548, 1155, 1067, 1007, 865, 671]
+    },
+    "info": {
+        "dataVersion": "1774200829",
+        "requestId": "74b55554-9ee9-4776-ba5f-48b93782ed51",
+        "requestInfo": "sars_cov-2_nextstrain_open on lapis.cov-spectrum.org at 2026-03-24T08:59:15.215671655",
+        "reportTo": "Please report to https://github.com/GenSpectrum/LAPIS/issues in case you encounter any unexpected issues. Please include the request ID and the requestInfo in your report.",
+        "lapisVersion": "0.7.0",
+        "siloVersion": "0.10.0"
+    }
+}

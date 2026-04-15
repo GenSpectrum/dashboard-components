@@ -4,8 +4,6 @@ import { useEffect, useState } from 'preact/hooks';
 
 import { usePageSizeContext } from './pagination-context';
 
-export * from '@tanstack/table-core';
-
 export type Renderable<TProps> = VNode<TProps> | ComponentType<TProps> | undefined | null | string | number | boolean;
 
 /*
@@ -45,12 +43,17 @@ export function usePreactTable<TData extends RowData>(options: TableOptions<TDat
         },
     }));
 
+    // When pagination is controlled externally (manualPagination: true with a state override),
+    // the caller manages pageSize themselves — skip the context sync to avoid conflicts.
+    const isControlled = options.manualPagination === true && options.state?.pagination !== undefined;
     const { pageSize } = usePageSizeContext();
     useEffect(
         () => {
-            tableRef.current.setPageSize(pageSize);
+            if (!isControlled) {
+                tableRef.current.setPageSize(pageSize);
+            }
         },
-        [pageSize], // eslint-disable-line react-hooks/exhaustive-deps -- only run this when the pageSize changes
+        [pageSize, isControlled], // eslint-disable-line react-hooks/exhaustive-deps -- only run this when the pageSize changes
     );
 
     return tableRef.current;

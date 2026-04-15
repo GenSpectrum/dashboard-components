@@ -98,7 +98,7 @@ export function useRawMutationAnnotations() {
 export function useMutationAnnotationsProvider() {
     const mutationAnnotations = useContext(MutationAnnotationsContext);
 
-    return getMutationAnnotationsProvider(mutationAnnotations);
+    return useMemo(() => getMutationAnnotationsProvider(mutationAnnotations), [mutationAnnotations]);
 }
 
 export function getMutationAnnotationsProvider(mutationAnnotations: MutationAnnotationsContextValue) {
