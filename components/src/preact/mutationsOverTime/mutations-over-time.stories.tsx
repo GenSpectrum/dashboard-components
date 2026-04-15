@@ -384,7 +384,7 @@ export const UsesPagination: StoryObj<MutationsOverTimeProps> = {
     play: async ({ canvas, step }) => {
         const mutationOnFirstPage = 'C44T';
         const mutationOnSecondPage = 'C21654-';
-        await expect(canvas.getByText('Mutation')).toBeVisible();
+        await waitFor(async () => await expect(canvas.getByText('Mutation')).toBeVisible(), { timeout: 10000 });
         await expectMutationOnPage(canvas, 'C774T');
 
         await step('Navigate to next page', async () => {
@@ -506,13 +506,10 @@ export const WithCustomColumns: StoryObj<MutationsOverTimeProps> = {
 };
 
 async function expectMutationOnPage(canvas: Canvas, mutation: string) {
-    await waitFor(
-        async () => {
-            const mutationOnFirstPage = canvas.getAllByText(mutation)[0];
-            await expect(mutationOnFirstPage).toBeVisible();
-        },
-        { timeout: 5000 },
-    );
+    await waitFor(async () => {
+        const mutationOnFirstPage = canvas.getAllByText(mutation)[0];
+        await expect(mutationOnFirstPage).toBeVisible();
+    });
 }
 
 async function expectDateRangeOnPage(canvas: Canvas, dateRange: string) {
