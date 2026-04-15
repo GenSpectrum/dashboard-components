@@ -199,7 +199,11 @@ const MutationsOverTimeTabs: FunctionComponent<MutationOverTimeTabsProps> = ({
     }, [filteredMutationCodes, setPageIndex]);
 
     const totalFilteredRows = filteredMutationCodes.length;
-    const { isLoading: isPageLoading, data: pageData, pageMutationCodes } = useMutationsOverTimePageData(
+    const {
+        isLoading: isPageLoading,
+        data: pageData,
+        pageMutationCodes,
+    } = useMutationsOverTimePageData(
         filteredMutationCodes,
         pageIndex,
         pageSize,
