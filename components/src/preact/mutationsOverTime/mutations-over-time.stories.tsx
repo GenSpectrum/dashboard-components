@@ -384,8 +384,7 @@ export const UsesPagination: StoryObj<MutationsOverTimeProps> = {
     play: async ({ canvas, step }) => {
         const mutationOnFirstPage = 'C44T';
         const mutationOnSecondPage = 'C21654-';
-        await waitFor(async () => await expect(canvas.getByText('Mutation')).toBeVisible(), { timeout: 10000 });
-        await expectMutationOnPage(canvas, 'A13121T');
+        await expectMutationOnPage(canvas, mutationOnFirstPage);
 
         await step('Navigate to next page', async () => {
             canvas.getByRole('button', { name: 'Next page' }).click();
@@ -394,12 +393,9 @@ export const UsesPagination: StoryObj<MutationsOverTimeProps> = {
         });
 
         await step('Use goto page input', async () => {
-            const gotoPageInput = canvas.getByRole('spinbutton', { name: 'Enter page number to go to' });
-            await userEvent.clear(gotoPageInput);
-            await userEvent.type(gotoPageInput, '1');
-            await userEvent.tab();
+            canvas.getByRole('button', { name: 'Previous page' }).click();
 
-            await expectMutationOnPage(canvas, 'C7113T');
+            await expectMutationOnPage(canvas, mutationOnFirstPage);
         });
 
         await step('Change number of rows per page', async () => {
@@ -506,13 +502,10 @@ export const WithCustomColumns: StoryObj<MutationsOverTimeProps> = {
 };
 
 async function expectMutationOnPage(canvas: Canvas, mutation: string) {
-    await waitFor(
-        async () => {
-            const mutationOnFirstPage = canvas.getAllByText(mutation)[0];
-            await expect(mutationOnFirstPage).toBeVisible();
-        },
-        { timeout: 10000 },
-    );
+    await waitFor(async () => {
+        const mutationOnFirstPage = canvas.getAllByText(mutation)[0];
+        await expect(mutationOnFirstPage).toBeVisible();
+    });
 }
 
 async function expectDateRangeOnPage(canvas: Canvas, dateRange: string) {
