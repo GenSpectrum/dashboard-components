@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.17.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.16.0...dashboard-components-v1.17.0) (2026-04-23)
+
+
+### Features
+
+* **components:** gs-mutations-over-time: lazily load pages ([#1101](https://github.com/GenSpectrum/dashboard-components/issues/1101)) ([8128488](https://github.com/GenSpectrum/dashboard-components/commit/81284888192fd6c7d670068c9062a0610bc0bfd8))
+* **components:** mutations over time: prevent layout shift when loading a page lazily ([#1105](https://github.com/GenSpectrum/dashboard-components/issues/1105)) ([b0efb07](https://github.com/GenSpectrum/dashboard-components/commit/b0efb07e1983ced404b4014a13a0bc4ae939545a))
+
 ## [1.16.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.15.0...dashboard-components-v1.16.0) (2026-03-17)
 
 
