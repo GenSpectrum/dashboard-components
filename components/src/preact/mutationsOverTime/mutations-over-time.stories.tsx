@@ -392,11 +392,8 @@ export const UsesPagination: StoryObj<MutationsOverTimeProps> = {
             await expectMutationOnPage(canvas, mutationOnSecondPage);
         });
 
-        await step('Use goto page input', async () => {
-            const gotoPageInput = canvas.getByRole('spinbutton', { name: 'Enter page number to go to' });
-            await userEvent.clear(gotoPageInput);
-            await userEvent.type(gotoPageInput, '1');
-            await userEvent.tab();
+        await step('Go to previous page', async () => {
+            canvas.getByRole('button', { name: 'Previous page' }).click();
 
             await expectMutationOnPage(canvas, mutationOnFirstPage);
         });

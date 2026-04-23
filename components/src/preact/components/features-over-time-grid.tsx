@@ -84,6 +84,8 @@ export interface FeaturesOverTimeGridServerPaginatedProps<F> {
     rowLabelHeader: string;
     data: TemporalDataMap<F> | null;
     isLoading: boolean;
+    /** Labels to show in the row label column while the page data is loading. */
+    loadingRowLabels: string[];
     /** Date columns to show in the header while loading */
     requestedDateRanges: Temporal[];
     colorScale: ColorScale;
@@ -102,6 +104,7 @@ export function FeaturesOverTimeGridServerPaginated<F>({
     rowLabelHeader,
     data,
     isLoading,
+    loadingRowLabels,
     requestedDateRanges,
     colorScale,
     pageSizes,
@@ -146,7 +149,12 @@ export function FeaturesOverTimeGridServerPaginated<F>({
     });
 
     return (
-        <FeaturesOverTimeGridDisplay table={table} pageSizes={pageSizes} isLoading={isLoading} totalRows={totalRows} />
+        <FeaturesOverTimeGridDisplay
+            table={table}
+            pageSizes={pageSizes}
+            loadingState={{ isLoading, loadingRowLabels }}
+            totalRows={totalRows}
+        />
     );
 }
 
@@ -246,18 +254,24 @@ function useGridTableData<F>(
     }, [data, customColumns, featureRenderer]);
 }
 
-interface FeaturesOverTimeGridDisplayProps<F> {
+type FeaturesOverTimeGridDisplayProps<F> = {
     table: Table<RowType<F>>;
     pageSizes: PageSizes;
-    isLoading?: boolean;
     /** Override for the pagination row count (server-driven pagination). */
     totalRows?: number;
-}
+    loadingState?:
+        | {
+              isLoading: boolean;
+              /** Labels to render in the row label column while loading. One skeleton row is shown per label. */
+              loadingRowLabels: string[];
+          }
+        | { isLoading: false; loadingRowLabels?: never };
+};
 
 function FeaturesOverTimeGridDisplay<F>({
     table,
     pageSizes,
-    isLoading = false,
+    loadingState,
     totalRows,
 }: FeaturesOverTimeGridDisplayProps<F>) {
     const displayedTotalRows = totalRows ?? table.getCoreRowModel().rows.length;
@@ -279,12 +293,21 @@ function FeaturesOverTimeGridDisplay<F>({
                     ))}
                 </thead>
                 <tbody>
-                    {isLoading ? (
-                        <tr>
-                            <td colSpan={table.getFlatHeaders().length}>
-                                <div className={'text-center py-4'}>Loading...</div>
-                            </td>
-                        </tr>
+                    {loadingState?.isLoading ? (
+                        loadingState.loadingRowLabels.map((label, rowIndex) => (
+                            <tr key={label}>
+                                <td className='text-center'>{label}</td>
+                                {rowIndex === 0 && (
+                                    <td
+                                        rowSpan={loadingState.loadingRowLabels.length}
+                                        colSpan={table.getFlatHeaders().length - 1}
+                                        className='text-center'
+                                    >
+                                        <span className='loading loading-spinner loading-sm' />
+                                    </td>
+                                )}
+                            </tr>
+                        ))
                     ) : (
                         <>
                             {table.getRowModel().rows.map((row) => (
