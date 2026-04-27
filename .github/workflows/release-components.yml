@@ -13,7 +13,7 @@ jobs:
       pull-requests: write
       id-token: write  # Required for OIDC to NPM - https://docs.npmjs.com/trusted-publishers#supported-cicd-providers
     steps:
-      - uses: googleapis/release-please-action@v4
+      - uses: googleapis/release-please-action@v5
         id: release
         with:
           path: components
