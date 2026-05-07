@@ -5,8 +5,10 @@ import type { LapisFilter } from '../../types';
 export type LineageItem = { lineage: string; count: number };
 
 /**
- * Generates the autocomplete list for lineage search. It includes lineages with wild cards
- * (i.e. "BA.3.2.1" and "BA.3.2.1*") as well as all prefixes of lineages with an asterisk ("BA.3.2*").
+ * Generates the autocomplete list for lineage search. It includes:
+ * - Each lineage from the definition, with and without a wildcard ("BA.3.2.1" and "BA.3.2.1*")
+ * - Each alias as a direct option with and without a wildcard ("BA.3.2" and "BA.3.2*"),
+ *   deduplicated case-insensitively to avoid showing noise from lowercase variants
  */
 export async function fetchLineageAutocompleteList({
     lapisUrl,
@@ -29,8 +31,6 @@ export async function fetchLineageAutocompleteList({
         getLineageTreeAndAliases({ lapisUrl, lapisField, signal }),
     ]);
 
-    const prefixToLineage = findMissingPrefixMappings(lineageTree, aliasMapping);
-
     // Combine actual lineages with their wildcard versions
     const actualLineageItems = Array.from(lineageTree.keys()).flatMap((lineage) => [
         {
@@ -43,14 +43,27 @@ export async function fetchLineageAutocompleteList({
         },
     ]);
 
-    // Add prefix alias items with wildcard and their counts
-    const prefixAliasItems = Array.from(prefixToLineage.entries()).map(([prefix, actualLineage]) => ({
-        lineage: `${prefix}*`,
-        count: getCountsIncludingSublineages(actualLineage, lineageTree, countsByLineage),
-    }));
+    // Add alias items (exact and wildcard) for aliases that are meaningfully different from their
+    // canonical lineage. Deduplicated case-insensitively to avoid noise from case variants.
+    const seenAliasesUpper = new Set<string>(Array.from(lineageTree.keys()).map((k) => k.toUpperCase()));
+    const aliasItems = Array.from(aliasMapping.entries()).flatMap(([canonicalLineage, aliases]) =>
+        aliases.flatMap((alias): LineageItem[] => {
+            const aliasUpper = alias.toUpperCase();
+            if (seenAliasesUpper.has(aliasUpper)) {
+                return [];
+            }
+            seenAliasesUpper.add(aliasUpper);
+
+            const wildcardCount = getCountsIncludingSublineages(canonicalLineage, lineageTree, countsByLineage);
+            return [
+                { lineage: alias, count: countsByLineage.get(alias) ?? 0 },
+                { lineage: `${alias}*`, count: wildcardCount },
+            ];
+        }),
+    );
 
     // Combine and sort all items (asterisk before period for same prefix)
-    return [...actualLineageItems, ...prefixAliasItems].sort((a, b) => {
+    return [...actualLineageItems, ...aliasItems].sort((a, b) => {
         // Replace * with a character that sorts before . in ASCII
         const aKey = a.lineage.replace(/\*/g, ' ');
         const bKey = b.lineage.replace(/\*/g, ' ');
@@ -137,43 +150,3 @@ function getAllDescendants(lineage: string, lineageTree: Map<string, { children:
     return new Set([...children, ...childrenOfChildren.flatMap((child) => Array.from(child))]);
 }
 
-/**
- * This function finds prefixes (i.e. "BA.3.2" for "BA.3.2.1") that are not in the lineageTree,
- * but do appear as an alias. It returns a reverse mapping for those prefixes, back to a lineage
- * that can be found in the lineageTree (i.e. "BA.3.2" -> "B.1.1.529.3.2").
- */
-function findMissingPrefixMappings(
-    lineageTree: Map<string, { children: string[] }>,
-    aliasMapping: Map<string, string[]>,
-): Map<string, string> {
-    const lineages = Array.from(lineageTree.keys());
-    const lineagesSet = new Set(lineages);
-
-    // Generate all prefixes for each lineage (e.g., "A.B.1" -> ["A", "A.B", "A.B.1"])
-    const allPrefixes = lineages.flatMap((lineage) => {
-        const parts = lineage.split('.');
-        return parts.map((_, i) => parts.slice(0, i + 1).join('.'));
-    });
-
-    // Find prefixes that are NOT in the actual lineages list
-    const missingPrefixes = new Set(allPrefixes.filter((prefix) => !lineagesSet.has(prefix)));
-
-    // Create reverse alias mapping: alias -> original lineage
-    const reverseAliasMapping = new Map<string, string>();
-    aliasMapping.forEach((aliases, lineage) => {
-        aliases.forEach((alias) => {
-            reverseAliasMapping.set(alias, lineage);
-        });
-    });
-
-    // Map missing prefixes to their actual lineage names via reverse alias lookup
-    const prefixToLineage = new Map<string, string>();
-    missingPrefixes.forEach((prefix) => {
-        const actualLineage = reverseAliasMapping.get(prefix);
-        if (actualLineage) {
-            prefixToLineage.set(prefix, actualLineage);
-        }
-    });
-
-    return prefixToLineage;
-}

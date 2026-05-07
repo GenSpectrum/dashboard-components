@@ -371,9 +371,31 @@ describe('fetchLineageAutocompleteList', () => {
                 lineage: 'B.1.1.529.3.2*',
                 count: 3,
             },
+            // Long-form aliases of BA.3.2.1 and BA.3.2.2
+            {
+                lineage: 'B.1.1.529.3.2.1',
+                count: 0,
+            },
+            {
+                lineage: 'B.1.1.529.3.2.1*',
+                count: 1,
+            },
+            {
+                lineage: 'B.1.1.529.3.2.2',
+                count: 0,
+            },
+            {
+                lineage: 'B.1.1.529.3.2.2*',
+                count: 2,
+            },
+            // BA.3.2 is the alias of B.1.1.529.3.2, shown as both exact and wildcard
+            {
+                lineage: 'BA.3.2',
+                count: 0,
+            },
             {
                 lineage: 'BA.3.2*',
-                count: 3, // Same as B.1.1.529.3.2* (includes .3.2 and .3.2.1)
+                count: 3,
             },
             {
                 lineage: 'BA.3.2.1',
@@ -390,6 +412,56 @@ describe('fetchLineageAutocompleteList', () => {
             {
                 lineage: 'BA.3.2.2*',
                 count: 2,
+            },
+        ]);
+    });
+
+    test('should include alias as direct option when it is not a prefix of any other lineage', async () => {
+        lapisRequestMocks.aggregated(
+            { fields: [lineageField], ...lapisFilter },
+            {
+                data: [
+                    {
+                        [lineageField]: 'B.1.1.529.3.2',
+                        count: 5,
+                    },
+                ],
+            },
+        );
+
+        lapisRequestMocks.lineageDefinition(
+            {
+                'B.1.1.529.3.2': {
+                    aliases: ['b.1.1.529.3.2', 'BA.3.2', 'bA.3.2', 'Ba.3.2', 'ba.3.2'],
+                },
+            },
+            lineageField,
+        );
+
+        const result = await fetchLineageAutocompleteList({
+            lapisUrl: DUMMY_LAPIS_URL,
+            lapisField: lineageField,
+            lapisFilter,
+        });
+
+        expect(result).to.deep.equal([
+            {
+                lineage: 'B.1.1.529.3.2',
+                count: 5,
+            },
+            {
+                lineage: 'B.1.1.529.3.2*',
+                count: 5,
+            },
+            // BA.3.2 is shown as a direct alias option (case-insensitively deduplicated,
+            // so the lowercase variants like ba.3.2, Ba.3.2 etc. are not shown separately)
+            {
+                lineage: 'BA.3.2',
+                count: 0,
+            },
+            {
+                lineage: 'BA.3.2*',
+                count: 5,
             },
         ]);
     });
