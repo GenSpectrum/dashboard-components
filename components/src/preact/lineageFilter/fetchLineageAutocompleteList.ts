@@ -149,4 +149,3 @@ function getAllDescendants(lineage: string, lineageTree: Map<string, { children:
 
     return new Set([...children, ...childrenOfChildren.flatMap((child) => Array.from(child))]);
 }
-
