@@ -374,7 +374,7 @@ describe('fetchLineageAutocompleteList', () => {
             // Long-form aliases of BA.3.2.1 and BA.3.2.2
             {
                 lineage: 'B.1.1.529.3.2.1',
-                count: 0,
+                count: 1,
             },
             {
                 lineage: 'B.1.1.529.3.2.1*',
@@ -382,7 +382,7 @@ describe('fetchLineageAutocompleteList', () => {
             },
             {
                 lineage: 'B.1.1.529.3.2.2',
-                count: 0,
+                count: 2,
             },
             {
                 lineage: 'B.1.1.529.3.2.2*',
@@ -457,7 +457,7 @@ describe('fetchLineageAutocompleteList', () => {
             // so the lowercase variants like ba.3.2, Ba.3.2 etc. are not shown separately)
             {
                 lineage: 'BA.3.2',
-                count: 0,
+                count: 5,
             },
             {
                 lineage: 'BA.3.2*',

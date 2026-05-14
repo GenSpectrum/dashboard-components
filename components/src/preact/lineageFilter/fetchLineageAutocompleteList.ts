@@ -56,7 +56,7 @@ export async function fetchLineageAutocompleteList({
 
             const wildcardCount = getCountsIncludingSublineages(canonicalLineage, lineageTree, countsByLineage);
             return [
-                { lineage: alias, count: countsByLineage.get(alias) ?? 0 },
+                { lineage: alias, count: countsByLineage.get(canonicalLineage) ?? 0 },
                 { lineage: `${alias}*`, count: wildcardCount },
             ];
         }),
