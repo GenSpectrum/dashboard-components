@@ -4,7 +4,7 @@ import { getFilteredMutationCodes, type MutationFilter } from './getFilteredMuta
 import { type DeletionEntry, type SubstitutionEntry } from '../../types';
 import { type Deletion, type Substitution } from '../../utils/mutations';
 import { type MutationAnnotations } from '../../web-components/mutation-annotations-context';
-import { getMutationAnnotationsContext, getMutationAnnotationsProvider } from '../MutationAnnotationsContext';
+import { buildAnnotationIndex, getMutationAnnotationsProvider } from '../MutationAnnotationsContext';
 
 describe('getFilteredMutationCodes', () => {
     it('should filter by displayed segments', () => {
@@ -129,7 +129,7 @@ describe('getFilteredMutationCodes', () => {
 
     describe('should filter by annotation', () => {
         const expectFilteredValue = (filterValue: MutationFilter, annotations: MutationAnnotations) => {
-            const annotationProvider = getMutationAnnotationsProvider(getMutationAnnotationsContext(annotations));
+            const annotationProvider = getMutationAnnotationsProvider(buildAnnotationIndex(annotations));
 
             const result = getFilteredMutationCodes({
                 overallMutationData: [someSubstitutionEntry, anotherSubstitutionEntry, someDeletionEntry],

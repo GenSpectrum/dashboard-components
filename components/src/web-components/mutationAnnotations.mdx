@@ -39,3 +39,32 @@ The annotation can be applied to specific mutations:
 - `nucleotideMutations: [C44T]` matches only the nucleotide mutation `C44T`,
 - `aminoAcidPositions: [S:123]` matches all amino acid mutations that occur on the gene `S` at position `123`
 - If the pathogen has only one segment, one can omit the segment, writing `123` for any mutation at position `123`.
+
+## Per-mutation name and description
+
+Instead of a plain string, each entry in `nucleotideMutations`, `aminoAcidMutations`, `nucleotidePositions`, and `aminoAcidPositions` can be an object with optional `name` and `description` fields.
+These override the group-level `name` and `description` in the popup for that specific mutation, while the group-level values remain as fallback for entries that don't specify their own.
+
+This is useful when grouping mutations under a shared symbol (e.g. all mutations of one drug target) while still showing per-mutation details in the popup:
+
+```html
+<gs-app
+    lapis="https://your.lapis.url"
+    mutationAnnotations="[
+        {
+            name: '3CLpro inhibitor resistance',
+            description: 'Mutations affecting 3CLpro drug binding.',
+            symbol: 'c',
+            nucleotideMutations: [
+                { mutation: 'ORF1a:T2343C', name: '3CLpro:T31C', description: 'Disrupts nirmatrelvir binding.' },
+                { mutation: 'ORF1a:G2558A', name: '3CLpro:E166K' },
+                'ORF1a:C2566T'
+            ]
+        },
+    ]"
+>
+    {/* children... */}
+</gs-app>
+```
+
+In this example, hovering `ORF1a:T2343C` shows `3CLpro:T31C` as the title and the specific description, hovering `ORF1a:G2558A` shows `3CLpro:E166K` but falls back to the group description, and hovering `ORF1a:C2566T` falls back to both the group name and description.

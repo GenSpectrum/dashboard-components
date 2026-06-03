@@ -94,10 +94,10 @@ function mutationOrAnnotationMatchesTextFilter(
         return false;
     }
     return mutationAnnotations.some(
-        (annotation) =>
-            annotation.description.includes(textFilter) ||
-            annotation.name.includes(textFilter) ||
-            annotation.symbol.includes(textFilter),
+        (resolved) =>
+            resolved.annotation.description.includes(textFilter) ||
+            resolved.annotation.name.includes(textFilter) ||
+            resolved.annotation.symbol.includes(textFilter),
     );
 }
 
@@ -115,5 +115,5 @@ function mutationMatchesAnnotationFilter(
     if (mutationAnnotations === undefined || mutationAnnotations.length === 0) {
         return false;
     }
-    return mutationAnnotations.some((annotation) => annotationNameFilter.has(annotation.name));
+    return mutationAnnotations.some((resolved) => annotationNameFilter.has(resolved.annotation.name));
 }

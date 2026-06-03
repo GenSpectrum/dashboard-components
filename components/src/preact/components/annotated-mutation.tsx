@@ -78,11 +78,11 @@ const AnnotatedMutationWithoutContext: FunctionComponent<AnnotatedMutationWithou
     const modalContent = (
         <div className='block'>
             <InfoHeadline1>Annotations for {mutation.code}</InfoHeadline1>
-            {mutationAnnotations.map((annotation) => (
-                <Fragment key={annotation.name}>
-                    <InfoHeadline2>{annotation.name}</InfoHeadline2>
+            {mutationAnnotations.map((resolved) => (
+                <Fragment key={resolved.annotation.name}>
+                    <InfoHeadline2>{resolved.name}</InfoHeadline2>
                     <InfoParagraph>
-                        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(annotation.description) }} />
+                        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(resolved.description) }} />
                     </InfoParagraph>
                 </Fragment>
             ))}
@@ -99,7 +99,7 @@ const AnnotatedMutationWithoutContext: FunctionComponent<AnnotatedMutationWithou
             >
                 <sup className='hover:underline focus-visible:underline decoration-red-600'>
                     {mutationAnnotations
-                        .map((annotation) => annotation.symbol)
+                        .map((resolved) => resolved.annotation.symbol)
                         .map((symbol, index) => (
                             <Fragment key={symbol}>
                                 <span className='text-red-600'>{symbol}</span>
