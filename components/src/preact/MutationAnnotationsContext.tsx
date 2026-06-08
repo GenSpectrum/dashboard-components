@@ -82,28 +82,28 @@ export function buildAnnotationIndex(value: MutationAnnotations): MutationAnnota
     const aminoAcidPositionMap = new Map<string, ResolvedMutationAnnotation[]>();
 
     value.forEach((annotation) => {
-        new Set(annotation.nucleotideMutations).forEach((entry) => {
+        annotation.nucleotideMutations?.forEach((entry) => {
             addToMap(
                 nucleotideMutationMap,
                 typeof entry === 'string' ? entry : entry.mutation,
                 resolve(annotation, entry),
             );
         });
-        new Set(annotation.aminoAcidMutations).forEach((entry) => {
+        annotation.aminoAcidMutations?.forEach((entry) => {
             addToMap(
                 aminoAcidMutationMap,
                 typeof entry === 'string' ? entry : entry.mutation,
                 resolve(annotation, entry),
             );
         });
-        new Set(annotation.nucleotidePositions).forEach((entry) => {
+        annotation.nucleotidePositions?.forEach((entry) => {
             addToMap(
                 nucleotidePositionMap,
                 typeof entry === 'string' ? entry : entry.position,
                 resolve(annotation, entry),
             );
         });
-        new Set(annotation.aminoAcidPositions).forEach((entry) => {
+        annotation.aminoAcidPositions?.forEach((entry) => {
             addToMap(
                 aminoAcidPositionMap,
                 typeof entry === 'string' ? entry : entry.position,
