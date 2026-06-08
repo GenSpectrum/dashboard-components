@@ -140,11 +140,15 @@ describe('useMutationAnnotation', () => {
                     name: 'Group name',
                     description: 'Group description',
                     symbol: 'X',
-                    nucleotideMutations: [{ mutation: 'A123T', name: 'Override name', description: 'Override description' }],
+                    nucleotideMutations: [
+                        { mutation: 'A123T', name: 'Override name', description: 'Override description' },
+                    ],
                 },
             ];
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A123T')!, 'nucleotide');
-            expect(result).toEqual([{ annotation: mockAnnotations[0], name: 'Override name', description: 'Override description' }]);
+            expect(result).toEqual([
+                { annotation: mockAnnotations[0], name: 'Override name', description: 'Override description' },
+            ]);
         });
 
         it('should fall back to group name when only description is overridden', () => {
@@ -157,7 +161,9 @@ describe('useMutationAnnotation', () => {
                 },
             ];
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A123T')!, 'nucleotide');
-            expect(result).toEqual([{ annotation: mockAnnotations[0], name: 'Group name', description: 'Override description' }]);
+            expect(result).toEqual([
+                { annotation: mockAnnotations[0], name: 'Group name', description: 'Override description' },
+            ]);
         });
 
         it('should fall back to group description when only name is overridden', () => {
@@ -170,7 +176,9 @@ describe('useMutationAnnotation', () => {
                 },
             ];
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A123T')!, 'nucleotide');
-            expect(result).toEqual([{ annotation: mockAnnotations[0], name: 'Override name', description: 'Group description' }]);
+            expect(result).toEqual([
+                { annotation: mockAnnotations[0], name: 'Override name', description: 'Group description' },
+            ]);
         });
 
         it('should use position-level override for position entries', () => {
@@ -183,7 +191,9 @@ describe('useMutationAnnotation', () => {
                 },
             ];
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A123T')!, 'nucleotide');
-            expect(result).toEqual([{ annotation: mockAnnotations[0], name: 'Position override name', description: 'Group description' }]);
+            expect(result).toEqual([
+                { annotation: mockAnnotations[0], name: 'Position override name', description: 'Group description' },
+            ]);
         });
     });
 });
