@@ -45,6 +45,10 @@ export class AppComponent extends LitElement {
     /**
      * Supply lists of mutations that are especially relevant for the current organism.
      *
+     * Each entry in `nucleotideMutations`, `aminoAcidMutations`, `nucleotidePositions`, and `aminoAcidPositions`
+     * can be either a plain string or an object with an optional `name` and `description` that override the
+     * group-level values in the annotation popup for that specific mutation or position.
+     *
      * Visit https://genspectrum.github.io/dashboard-components/?path=/docs/concepts-mutation-annotations--docs for more information.
      */
     @provide({ context: mutationAnnotationsContext })
@@ -53,10 +57,10 @@ export class AppComponent extends LitElement {
         name: string;
         description: string;
         symbol: string;
-        nucleotideMutations?: string[];
-        nucleotidePositions?: string[];
-        aminoAcidMutations?: string[];
-        aminoAcidPositions?: string[];
+        nucleotideMutations?: (string | { mutation: string; name?: string; description?: string })[];
+        nucleotidePositions?: (string | { position: string; name?: string; description?: string })[];
+        aminoAcidMutations?: (string | { mutation: string; name?: string; description?: string })[];
+        aminoAcidPositions?: (string | { position: string; name?: string; description?: string })[];
     }[] = [];
 
     /**

@@ -128,6 +128,37 @@ export const MutationWithMultipleAnnotationEntries: StoryObj<StoryProps> = {
     },
 };
 
+export const MutationWithPerMutationInfoOverride: StoryObj<StoryProps> = {
+    ...MutationWithoutAnnotationEntry,
+    args: {
+        ...MutationWithoutAnnotationEntry.args,
+        annotations: [
+            {
+                name: 'Group annotation',
+                description: 'Group-level description',
+                symbol: 'c',
+                nucleotideMutations: [
+                    {
+                        mutation: 'A23403G',
+                        name: '3CLpro:T31C',
+                        description: 'Per-mutation description for 3CLpro:T31C',
+                    },
+                ],
+            },
+        ],
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+
+        await waitFor(() => expect(canvas.getByText('A23403G')).toBeVisible());
+        await expect(getAnnotationIndicator(canvas)).toBeVisible();
+
+        await userEvent.click(canvas.getByText('c'));
+        await waitFor(() => expect(canvas.queryByText('3CLpro:T31C')).toBeVisible());
+        await expect(canvas.queryByText('Per-mutation description for 3CLpro:T31C')).toBeVisible();
+    },
+};
+
 export const AminoAcidMutationWithAnnotationEntry: StoryObj<StoryProps> = {
     ...MutationWithoutAnnotationEntry,
     args: {

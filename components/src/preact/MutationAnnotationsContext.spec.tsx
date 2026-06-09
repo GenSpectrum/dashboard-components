@@ -2,9 +2,17 @@ import { renderHook } from '@testing-library/preact';
 import { type FunctionalComponent } from 'preact';
 import { describe, expect, it } from 'vitest';
 
-import { MutationAnnotationsContextProvider, useMutationAnnotationsProvider } from './MutationAnnotationsContext';
+import {
+    MutationAnnotationsContextProvider,
+    type ResolvedMutationAnnotation,
+    useMutationAnnotationsProvider,
+} from './MutationAnnotationsContext';
 import { SubstitutionClass } from '../utils/mutations';
-import { type MutationAnnotations } from '../web-components/mutation-annotations-context';
+import { type MutationAnnotation, type MutationAnnotations } from '../web-components/mutation-annotations-context';
+
+function resolved(annotation: MutationAnnotation): ResolvedMutationAnnotation {
+    return { annotation, name: annotation.name, description: annotation.description };
+}
 
 describe('useMutationAnnotation', () => {
     function renderAnnotationsHook(mockAnnotations: MutationAnnotations) {
@@ -35,13 +43,13 @@ describe('useMutationAnnotation', () => {
         it('should return the correct annotation for a given mutation', () => {
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A123')!, 'nucleotide');
 
-            expect(result).toEqual([mockAnnotations[0]]);
+            expect(result).toEqual([resolved(mockAnnotations[0])]);
         });
 
         it('should return the correct annotations if multiple contain a mutation', () => {
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A456')!, 'nucleotide');
 
-            expect(result).toEqual([mockAnnotations[0], mockAnnotations[1]]);
+            expect(result).toEqual([resolved(mockAnnotations[0]), resolved(mockAnnotations[1])]);
         });
     });
 
@@ -58,7 +66,7 @@ describe('useMutationAnnotation', () => {
         it('should return the correct mutation annotation for a given mutations', () => {
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('B456')!, 'amino acid');
 
-            expect(result).toEqual([mockAnnotations[0]]);
+            expect(result).toEqual([resolved(mockAnnotations[0])]);
         });
     });
 
@@ -81,17 +89,17 @@ describe('useMutationAnnotation', () => {
 
         it('should return the correct mutation annotation covered by position only', () => {
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A543T')!, 'nucleotide');
-            expect(result).toEqual([mockAnnotations[0]]);
+            expect(result).toEqual([resolved(mockAnnotations[0])]);
         });
 
         it('should return the correct mutation annotation covered both by position and mutation', () => {
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A321T')!, 'nucleotide');
-            expect(result).toEqual([mockAnnotations[0]]);
+            expect(result).toEqual([resolved(mockAnnotations[0])]);
         });
 
         it('should return both annotations if one matches the mutations and the other the position', () => {
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A432T')!, 'nucleotide');
-            expect(result).toEqual([mockAnnotations[1], mockAnnotations[0]]);
+            expect(result).toEqual([resolved(mockAnnotations[0]), resolved(mockAnnotations[1])]);
         });
     });
 
@@ -108,12 +116,12 @@ describe('useMutationAnnotation', () => {
 
         it('should return the correct mutation annotation covered both by position and mutation', () => {
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('Gene:B432G')!, 'amino acid');
-            expect(result).toEqual([mockAnnotations[0]]);
+            expect(result).toEqual([resolved(mockAnnotations[0])]);
         });
 
         it('should return the correct mutation annotation covered both by position only', () => {
             const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('Gene:B543G')!, 'amino acid');
-            expect(result).toEqual([mockAnnotations[0]]);
+            expect(result).toEqual([resolved(mockAnnotations[0])]);
         });
 
         it('should return no mutation annotation for an amino acid position of wrong gene', () => {
@@ -122,6 +130,70 @@ describe('useMutationAnnotation', () => {
                 'amino acid',
             );
             expect(result).toBeUndefined();
+        });
+    });
+
+    describe('per-mutation name and description overrides', () => {
+        it('should use overridden name and description when both are provided on a mutation entry', () => {
+            const mockAnnotations: MutationAnnotations = [
+                {
+                    name: 'Group name',
+                    description: 'Group description',
+                    symbol: 'X',
+                    nucleotideMutations: [
+                        { mutation: 'A123T', name: 'Override name', description: 'Override description' },
+                    ],
+                },
+            ];
+            const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A123T')!, 'nucleotide');
+            expect(result).toEqual([
+                { annotation: mockAnnotations[0], name: 'Override name', description: 'Override description' },
+            ]);
+        });
+
+        it('should fall back to group name when only description is overridden', () => {
+            const mockAnnotations: MutationAnnotations = [
+                {
+                    name: 'Group name',
+                    description: 'Group description',
+                    symbol: 'X',
+                    nucleotideMutations: [{ mutation: 'A123T', description: 'Override description' }],
+                },
+            ];
+            const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A123T')!, 'nucleotide');
+            expect(result).toEqual([
+                { annotation: mockAnnotations[0], name: 'Group name', description: 'Override description' },
+            ]);
+        });
+
+        it('should fall back to group description when only name is overridden', () => {
+            const mockAnnotations: MutationAnnotations = [
+                {
+                    name: 'Group name',
+                    description: 'Group description',
+                    symbol: 'X',
+                    nucleotideMutations: [{ mutation: 'A123T', name: 'Override name' }],
+                },
+            ];
+            const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A123T')!, 'nucleotide');
+            expect(result).toEqual([
+                { annotation: mockAnnotations[0], name: 'Override name', description: 'Group description' },
+            ]);
+        });
+
+        it('should use position-level override for position entries', () => {
+            const mockAnnotations: MutationAnnotations = [
+                {
+                    name: 'Group name',
+                    description: 'Group description',
+                    symbol: 'X',
+                    nucleotidePositions: [{ position: '123', name: 'Position override name' }],
+                },
+            ];
+            const result = renderAnnotationsHook(mockAnnotations)(SubstitutionClass.parse('A123T')!, 'nucleotide');
+            expect(result).toEqual([
+                { annotation: mockAnnotations[0], name: 'Position override name', description: 'Group description' },
+            ]);
         });
     });
 });
