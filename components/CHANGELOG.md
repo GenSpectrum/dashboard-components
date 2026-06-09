@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.17.0...dashboard-components-v2.0.0) (2026-06-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **components:** The four mutation/position list fields on MutationAnnotation now accept (string | { mutation: string; name?: string; description?: string })[] and (string | { position: string; name?: string; description?: string })[] respectively, instead of string[]. Existing plain-string arrays remain valid.
+
+### Features
+
+* **components:** add per-mutation name/description overrides to MutationAnnotation ([#1121](https://github.com/GenSpectrum/dashboard-components/issues/1121)) ([bccd701](https://github.com/GenSpectrum/dashboard-components/commit/bccd7013864d784d6b38ac65f7742bc4f93e42cc))
+
 ## [1.17.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.16.0...dashboard-components-v1.17.0) (2026-04-23)
 
 
