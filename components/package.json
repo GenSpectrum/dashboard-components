@@ -1,6 +1,6 @@
 {
     "name": "@genspectrum/dashboard-components",
-    "version": "2.0.0",
+    "version": "1.18.0",
     "description": "GenSpectrum web components for building dashboards",
     "type": "module",
     "license": "AGPL-3.0-only",
