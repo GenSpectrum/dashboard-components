@@ -242,6 +242,7 @@ export function DownshiftMultiCombobox<Item>({
     const clearAll = () => {
         dispatchEvent([]);
         setItemsFilter('');
+        selectItem(null);
     };
 
     const buttonRef = useRef(null);
