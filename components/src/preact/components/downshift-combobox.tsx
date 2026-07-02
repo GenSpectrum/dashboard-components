@@ -190,50 +190,59 @@ export function DownshiftMultiCombobox<Item>({
         environment,
     });
 
-    const { isOpen, getToggleButtonProps, getMenuProps, getInputProps, highlightedIndex, getItemProps, closeMenu } =
-        useCombobox({
-            items: availableItems,
-            itemToString(item) {
-                return itemToString(item);
-            },
-            inputValue: itemsFilter,
-            onStateChange({ inputValue: newInputValue, type, selectedItem: newSelectedItem }) {
-                switch (type) {
-                    case useCombobox.stateChangeTypes.InputKeyDownEnter:
-                    case useCombobox.stateChangeTypes.ItemClick:
-                        if (newSelectedItem) {
-                            dispatchEvent([...selectedItems, newSelectedItem]);
-                            setItemsFilter('');
-                        }
-                        break;
-                    case useCombobox.stateChangeTypes.InputChange:
-                        setItemsFilter(newInputValue?.trim() ?? '');
-                        break;
-                    default:
-                        break;
-                }
-            },
-            stateReducer(state, actionAndChanges) {
-                const { changes, type } = actionAndChanges;
-                switch (type) {
-                    case useCombobox.stateChangeTypes.InputKeyDownEnter:
-                    case useCombobox.stateChangeTypes.ItemClick:
-                        return {
-                            ...changes,
-                            isOpen: true,
-                            highlightedIndex: state.highlightedIndex,
-                            inputValue: '',
-                        };
-                    default:
-                        return changes;
-                }
-            },
-            environment,
-        });
+    const {
+        isOpen,
+        getToggleButtonProps,
+        getMenuProps,
+        getInputProps,
+        highlightedIndex,
+        getItemProps,
+        closeMenu,
+        selectItem,
+    } = useCombobox({
+        items: availableItems,
+        itemToString(item) {
+            return itemToString(item);
+        },
+        inputValue: itemsFilter,
+        onStateChange({ inputValue: newInputValue, type, selectedItem: newSelectedItem }) {
+            switch (type) {
+                case useCombobox.stateChangeTypes.InputKeyDownEnter:
+                case useCombobox.stateChangeTypes.ItemClick:
+                    if (newSelectedItem) {
+                        dispatchEvent([...selectedItems, newSelectedItem]);
+                        setItemsFilter('');
+                    }
+                    break;
+                case useCombobox.stateChangeTypes.InputChange:
+                    setItemsFilter(newInputValue?.trim() ?? '');
+                    break;
+                default:
+                    break;
+            }
+        },
+        stateReducer(state, actionAndChanges) {
+            const { changes, type } = actionAndChanges;
+            switch (type) {
+                case useCombobox.stateChangeTypes.InputKeyDownEnter:
+                case useCombobox.stateChangeTypes.ItemClick:
+                    return {
+                        ...changes,
+                        isOpen: true,
+                        highlightedIndex: state.highlightedIndex,
+                        inputValue: '',
+                    };
+                default:
+                    return changes;
+            }
+        },
+        environment,
+    });
 
     const clearAll = () => {
         dispatchEvent([]);
         setItemsFilter('');
+        selectItem(null);
     };
 
     const buttonRef = useRef(null);
@@ -259,7 +268,10 @@ export function DownshiftMultiCombobox<Item>({
                                 aria-label={`remove ${itemToString(selectedItem)}`}
                                 className='cursor-pointer hover:text-red-600'
                                 type='button'
-                                onClick={() => removeSelectedItem(selectedItem)}
+                                onClick={() => {
+                                    removeSelectedItem(selectedItem);
+                                    selectItem(null);
+                                }}
                                 tabIndex={-1}
                             >
                                 ×
