@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.18.0...dashboard-components-v1.18.1) (2026-07-02)
+
+
+### Bug Fixes
+
+* **components:** reselecting a removed lineage chip now works ([#1126](https://github.com/GenSpectrum/dashboard-components/issues/1126)) ([5ad3a24](https://github.com/GenSpectrum/dashboard-components/commit/5ad3a2427bb227ff3878ada801c199fe01c0b1aa))
+
 ## [1.18.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.17.0...dashboard-components-v1.18.0) (2026-06-09)
 
 
