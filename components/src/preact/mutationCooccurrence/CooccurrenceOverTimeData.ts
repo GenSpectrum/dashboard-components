@@ -6,7 +6,8 @@ import type { Temporal } from '../../utils/temporalClass';
 /**
  * A specific combination of alleles observed across the queried positions.
  * Keys are LAPIS position field names (e.g. `[501]`, `S[501]`, `ORF1a[501]`).
- * A `null` value means the position was not covered / the allele was absent in the sequence.
+ * String values are the non-reference allele at that position (nucleotide: `A`/`T`/`G`/`C`/`-`;
+ * amino acid: single-letter code or `*` for stop codon). `null` means the reference allele.
  */
 export type CooccurrencePattern = {
     alleles: Record<string, string | null>;
