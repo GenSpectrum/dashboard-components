@@ -7,6 +7,6 @@ export { AggregateComponent } from './gs-aggregate';
 export { NumberSequencesOverTimeComponent } from './gs-number-sequences-over-time';
 export { MutationsOverTimeComponent } from './gs-mutations-over-time';
 export { QueriesOverTimeComponent } from './gs-queries-over-time';
-export { MutationCooccurrenceComponent } from './gs-mutation-cooccurrence';
+export { MutationCooccurrenceOverTimeComponent } from './gs-mutation-cooccurrence-over-time';
 export { SequencesByLocationComponent } from './gs-sequences-by-location';
 export { StatisticsComponent } from './gs-statistics';

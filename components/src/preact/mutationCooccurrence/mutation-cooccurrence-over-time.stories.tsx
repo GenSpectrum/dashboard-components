@@ -5,13 +5,16 @@ import referenceGenome from '../../lapisApi/__mockData__/referenceGenome.json';
 import { LapisUrlContextProvider } from '../LapisUrlContext';
 import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import mockCooccurrence from './__mockData__/cooccurrence.json';
-import { MutationCooccurrence, type MutationCooccurrenceProps } from './mutation-cooccurrence';
+import {
+    MutationCooccurrenceOverTime,
+    type MutationCooccurrenceOverTimeProps,
+} from './mutation-cooccurrence-over-time';
 import { expectInvalidAttributesErrorMessage } from '../shared/stories/expectErrorMessage';
 import { playThatExpectsFinishedLoadingEvent } from '../shared/stories/expectFinishedLoadingEvent';
 
-const meta: Meta<MutationCooccurrenceProps> = {
-    title: 'Visualization/Mutation Cooccurrence',
-    component: MutationCooccurrence,
+const meta: Meta<MutationCooccurrenceOverTimeProps> = {
+    title: 'Visualization/Mutation Cooccurrence Over Time',
+    component: MutationCooccurrenceOverTime,
     argTypes: {
         lapisFilter: { control: 'object' },
         positions: { control: 'object' },
@@ -74,11 +77,11 @@ const meta: Meta<MutationCooccurrenceProps> = {
 
 export default meta;
 
-export const Default: StoryObj<MutationCooccurrenceProps> = {
-    render: (args: MutationCooccurrenceProps) => (
+export const Default: StoryObj<MutationCooccurrenceOverTimeProps> = {
+    render: (args: MutationCooccurrenceOverTimeProps) => (
         <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationCooccurrence {...args} />
+                <MutationCooccurrenceOverTime {...args} />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContextProvider>
     ),
@@ -96,11 +99,11 @@ export const Default: StoryObj<MutationCooccurrenceProps> = {
     play: playThatExpectsFinishedLoadingEvent(),
 };
 
-export const InvalidAttributes: StoryObj<MutationCooccurrenceProps> = {
-    render: (args: MutationCooccurrenceProps) => (
+export const InvalidAttributes: StoryObj<MutationCooccurrenceOverTimeProps> = {
+    render: (args: MutationCooccurrenceOverTimeProps) => (
         <LapisUrlContextProvider value={LAPIS_URL}>
             <ReferenceGenomeContext.Provider value={referenceGenome}>
-                <MutationCooccurrence {...args} />
+                <MutationCooccurrenceOverTime {...args} />
             </ReferenceGenomeContext.Provider>
         </LapisUrlContextProvider>
     ),

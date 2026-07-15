@@ -1,6 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import { MutationCooccurrence } from '../../preact/mutationCooccurrence/mutation-cooccurrence';
+import { MutationCooccurrenceOverTime } from '../../preact/mutationCooccurrence/mutation-cooccurrence-over-time';
 import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsStyles';
 
 /**
@@ -29,8 +29,8 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  * @fires {CustomEvent<undefined>} gs-component-finished-loading
  * Fired when the component has finished loading the required data from LAPIS.
  */
-@customElement('gs-mutation-cooccurrence')
-export class MutationCooccurrenceComponent extends PreactLitAdapterWithGridJsStyles {
+@customElement('gs-mutation-cooccurrence-over-time')
+export class MutationCooccurrenceOverTimeComponent extends PreactLitAdapterWithGridJsStyles {
     /**
      * Required.
      *
@@ -112,7 +112,7 @@ export class MutationCooccurrenceComponent extends PreactLitAdapterWithGridJsSty
 
     override render() {
         return (
-            <MutationCooccurrence
+            <MutationCooccurrenceOverTime
                 lapisFilter={this.lapisFilter}
                 positions={this.positions}
                 views={this.views}
@@ -130,7 +130,7 @@ export class MutationCooccurrenceComponent extends PreactLitAdapterWithGridJsSty
 
 declare global {
     interface HTMLElementTagNameMap {
-        'gs-mutation-cooccurrence': MutationCooccurrenceComponent;
+        'gs-mutation-cooccurrence-over-time': MutationCooccurrenceOverTimeComponent;
     }
 }
 
@@ -138,7 +138,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace React.JSX {
         interface IntrinsicElements {
-            'gs-mutation-cooccurrence': MutationCooccurrenceComponent;
+            'gs-mutation-cooccurrence-over-time': MutationCooccurrenceOverTimeComponent;
         }
     }
 }

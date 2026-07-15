@@ -28,13 +28,13 @@ import { pageSizesSchema } from '../shared/tanstackTable/pagination';
 import { PageSizeContextProvider } from '../shared/tanstackTable/pagination-context';
 import { useQuery } from '../useQuery';
 
-const mutationCooccurrenceViewSchema = z.literal(views.grid);
-export type MutationCooccurrenceView = z.infer<typeof mutationCooccurrenceViewSchema>;
+const mutationCooccurrenceOverTimeViewSchema = z.literal(views.grid);
+export type MutationCooccurrenceOverTimeView = z.infer<typeof mutationCooccurrenceOverTimeViewSchema>;
 
-const mutationCooccurrenceSchema = z.object({
+const mutationCooccurrenceOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
     positions: z.array(z.string()).min(1),
-    views: z.array(mutationCooccurrenceViewSchema),
+    views: z.array(mutationCooccurrenceOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),
     initialMeanProportionInterval: z.object({
@@ -46,22 +46,22 @@ const mutationCooccurrenceSchema = z.object({
     height: z.string().optional(),
     pageSizes: pageSizesSchema,
 });
-export type MutationCooccurrenceProps = z.infer<typeof mutationCooccurrenceSchema>;
+export type MutationCooccurrenceOverTimeProps = z.infer<typeof mutationCooccurrenceOverTimeSchema>;
 
-export const MutationCooccurrence: FunctionComponent<MutationCooccurrenceProps> = (componentProps) => {
+export const MutationCooccurrenceOverTime: FunctionComponent<MutationCooccurrenceOverTimeProps> = (componentProps) => {
     const { width, height } = componentProps;
     const size = { height, width };
 
     return (
-        <ErrorBoundary size={size} schema={mutationCooccurrenceSchema} componentProps={componentProps}>
+        <ErrorBoundary size={size} schema={mutationCooccurrenceOverTimeSchema} componentProps={componentProps}>
             <ResizeContainer size={size}>
-                <MutationCooccurrenceInner {...componentProps} />
+                <MutationCooccurrenceOverTimeInner {...componentProps} />
             </ResizeContainer>
         </ErrorBoundary>
     );
 };
 
-const MutationCooccurrenceInner: FunctionComponent<MutationCooccurrenceProps> = (componentProps) => {
+const MutationCooccurrenceOverTimeInner: FunctionComponent<MutationCooccurrenceOverTimeProps> = (componentProps) => {
     const lapis = useLapisUrl();
     const { lapisFilter, positions, granularity, lapisDateField } = componentProps;
 
@@ -82,15 +82,15 @@ const MutationCooccurrenceInner: FunctionComponent<MutationCooccurrenceProps> = 
         return <NoDataDisplay />;
     }
 
-    return <MutationCooccurrenceTabs data={data} originalComponentProps={componentProps} />;
+    return <MutationCooccurrenceOverTimeTabs data={data} originalComponentProps={componentProps} />;
 };
 
-type MutationCooccurrenceTabsProps = {
+type MutationCooccurrenceOverTimeTabsProps = {
     data: CooccurrenceOverTimeDataMap;
-    originalComponentProps: MutationCooccurrenceProps;
+    originalComponentProps: MutationCooccurrenceOverTimeProps;
 };
 
-const MutationCooccurrenceTabs: FunctionComponent<MutationCooccurrenceTabsProps> = ({
+const MutationCooccurrenceOverTimeTabs: FunctionComponent<MutationCooccurrenceOverTimeTabsProps> = ({
     data,
     originalComponentProps,
 }) => {
@@ -115,7 +115,7 @@ const MutationCooccurrenceTabs: FunctionComponent<MutationCooccurrenceTabsProps>
         return <MutationCooccurrenceGridTooltip pattern={pattern} date={temporal} value={value} />;
     }
 
-    const getTab = (view: MutationCooccurrenceView) => {
+    const getTab = (view: MutationCooccurrenceOverTimeView) => {
         switch (view) {
             // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- for extensibility
             case 'grid':
@@ -169,7 +169,7 @@ type ToolbarProps = {
     filteredData: Map2dView<CooccurrencePattern, Temporal, ProportionValue>;
     colorScale: ColorScale;
     setColorScale: (colorScale: ColorScale) => void;
-    originalComponentProps: MutationCooccurrenceProps;
+    originalComponentProps: MutationCooccurrenceOverTimeProps;
 };
 
 const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -225,7 +225,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                     &quot;Hide gaps&quot; to exclude time periods with no data.
                 </InfoParagraph>
                 <InfoComponentCode
-                    componentName='mutation-cooccurrence'
+                    componentName='mutation-cooccurrence-over-time'
                     params={originalComponentProps}
                     lapisUrl={lapis}
                 />
