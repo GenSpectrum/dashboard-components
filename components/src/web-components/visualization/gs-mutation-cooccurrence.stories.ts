@@ -61,6 +61,7 @@ const meta: Meta<Required<MutationCooccurrenceProps>> = {
             mocks: [
                 {
                     matcher: {
+                        name: 'cooccurrenceData',
                         url: AGGREGATED_ENDPOINT,
                         body: {
                             pangoLineage: 'JN.1*',
@@ -69,14 +70,15 @@ const meta: Meta<Required<MutationCooccurrenceProps>> = {
                             fields: ['date', '[123]', '[124]', '[126]'],
                         },
                         matchPartialBody: true,
-                        response: {
-                            status: 200,
-                            body: mockCooccurrence,
-                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: mockCooccurrence,
                     },
                 },
                 {
                     matcher: {
+                        name: 'dateRanges',
                         url: AGGREGATED_ENDPOINT,
                         body: {
                             pangoLineage: 'JN.1*',
@@ -85,10 +87,10 @@ const meta: Meta<Required<MutationCooccurrenceProps>> = {
                             fields: ['date'],
                         },
                         matchPartialBody: true,
-                        response: {
-                            status: 200,
-                            body: mockCooccurrence,
-                        },
+                    },
+                    response: {
+                        status: 200,
+                        body: mockCooccurrence,
                     },
                 },
             ],
