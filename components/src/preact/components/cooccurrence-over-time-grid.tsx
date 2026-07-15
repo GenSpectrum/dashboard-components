@@ -90,7 +90,8 @@ function useCooccurrenceColumns(
         const positionColumns = positions.map((pos, posIndex) =>
             columnHelper.accessor((row) => row.pattern.alleles[pos], {
                 id: `pos-${posIndex}`,
-                header: () => <span className='text-nowrap font-mono'>{pos}</span>,
+                size: 56,
+                header: () => <span className='text-nowrap font-mono'>{formatPosition(pos)}</span>,
                 cell: ({ getValue }) => <div className='text-center font-mono text-xs'>{getValue() ?? '?'}</div>,
             }),
         );
@@ -135,4 +136,8 @@ function useCooccurrenceColumns(
 
         return [...positionColumns, ...dateColumns];
     }, [colorScale, dates, positions, tooltipPortalTarget, renderTooltip]);
+}
+
+function formatPosition(pos: string): string {
+    return pos.replace(/\[(\d+)\]/g, '$1');
 }
