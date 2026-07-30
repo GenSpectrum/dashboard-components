@@ -67,7 +67,7 @@ const meta: Meta<Required<MutationCooccurrenceOverTimeProps>> = {
                             pangoLineage: 'JN.1*',
                             dateFrom: '2024-01-15',
                             dateTo: '2024-01-31',
-                            fields: ['date', '[123]', '[124]', '[126]'],
+                            fields: ['[123]', '[124]', '[126]'],
                         },
                         matchPartialBody: true,
                     },

@@ -7,7 +7,7 @@ import {
     serializeCooccurrencePattern,
 } from '../preact/mutationCooccurrence/CooccurrenceOverTimeData';
 import { type LapisFilter, type TemporalGranularity } from '../types';
-import { parseDateStringToTemporal, type Temporal } from '../utils/temporalClass';
+import { toTemporalClass } from '../utils/temporalClass';
 
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 
@@ -38,53 +38,51 @@ export async function queryMutationCooccurrence(
         return new CooccurrenceOverTimeDataMap();
     }
 
-    const result = await fetchAggregated(
-        lapis,
-        {
-            ...lapisFilter,
-            fields: [lapisDateField, ...positions],
-        },
-        signal,
+    const results = await Promise.all(
+        requestedDateRanges.map((dateRange) => {
+            const tc = toTemporalClass(dateRange);
+            return fetchAggregated(
+                lapis,
+                {
+                    ...lapisFilter,
+                    [`${lapisDateField}From`]: tc.firstDay.toString(),
+                    [`${lapisDateField}To`]: tc.lastDay.toString(),
+                    fields: [...positions],
+                },
+                signal,
+            );
+        }),
     );
 
-    const dateRangeByKey = new Map<string, Temporal>(requestedDateRanges.map((dr) => [dr.dateString, dr]));
-
-    // Accumulate counts per (serializedPattern, dateKey) before computing proportions
     const countsByPatternAndDate = new Map<string, Map<string, number>>();
     const patternByKey = new Map<string, CooccurrencePattern>();
     const totalByDate = new Map<string, number>();
 
-    for (const item of result.data) {
-        const rawDate = item[lapisDateField];
-        if (rawDate === null || typeof rawDate !== 'string') {
-            continue;
-        }
-
-        const temporal = parseDateStringToTemporal(rawDate, granularity);
-        const dateRange = dateRangeByKey.get(temporal.dateString);
-        if (dateRange === undefined) {
-            continue;
-        }
-
-        const alleles: Record<string, string | null> = {};
-        for (const pos of positions) {
-            const val = item[pos];
-            alleles[pos] = typeof val === 'string' ? val : null;
-        }
-        const pattern: CooccurrencePattern = { alleles };
-        const patternKey = serializeCooccurrencePattern(pattern);
-        const count = item.count;
-
-        patternByKey.set(patternKey, pattern);
-
+    for (let i = 0; i < requestedDateRanges.length; i++) {
+        const dateRange = requestedDateRanges[i];
         const dateKey = dateRange.dateString;
-        if (!countsByPatternAndDate.has(patternKey)) {
-            countsByPatternAndDate.set(patternKey, new Map());
-        }
-        const dateMap = countsByPatternAndDate.get(patternKey)!;
-        dateMap.set(dateKey, (dateMap.get(dateKey) ?? 0) + count);
 
-        totalByDate.set(dateKey, (totalByDate.get(dateKey) ?? 0) + count);
+        for (const item of results[i].data) {
+            const alleles: Record<string, string | null> = {};
+            for (const pos of positions) {
+                const val = item[pos];
+                alleles[pos] = typeof val === 'string' ? val : null;
+            }
+            const pattern: CooccurrencePattern = { alleles };
+            const patternKey = serializeCooccurrencePattern(pattern);
+            const count = item.count;
+
+            patternByKey.set(patternKey, pattern);
+
+            if (!countsByPatternAndDate.has(patternKey)) {
+                countsByPatternAndDate.set(patternKey, new Map());
+            }
+            countsByPatternAndDate
+                .get(patternKey)!
+                .set(dateKey, (countsByPatternAndDate.get(patternKey)!.get(dateKey) ?? 0) + count);
+
+            totalByDate.set(dateKey, (totalByDate.get(dateKey) ?? 0) + count);
+        }
     }
 
     const resultMap = new CooccurrenceOverTimeDataMap();
