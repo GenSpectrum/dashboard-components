@@ -137,3 +137,40 @@ export const HideGaps: StoryObj<Required<MutationCooccurrenceOverTimeProps>> = {
         hideGaps: true,
     },
 };
+
+export const Playground: StoryObj<Required<MutationCooccurrenceOverTimeProps> & { lapisUrl: string }> = {
+    argTypes: {
+        lapisUrl: { control: 'text' },
+    },
+    args: {
+        lapisUrl: 'https://lapis.wasap.genspectrum.org/covid',
+        lapisFilter: { dateFrom: '2024-01-01', dateTo: '2024-06-30' },
+        positions: ['S[501]', 'S[484]', 'S[417]'],
+        views: ['grid'],
+        width: '100%',
+        granularity: 'month',
+        lapisDateField: 'date',
+        initialMeanProportionInterval: { min: 0, max: 1 },
+        hideGaps: false,
+        pageSizes: [10, 20, 50],
+    },
+    parameters: {
+        fetchMock: { mocks: [] },
+    },
+    render: (args) => html`
+        <gs-app lapis="${(args as unknown as { lapisUrl: string }).lapisUrl}">
+            <gs-mutation-cooccurrence-over-time
+                .lapisFilter=${args.lapisFilter}
+                .positions=${args.positions}
+                .views=${args.views}
+                .width=${args.width}
+                .height=${args.height}
+                .granularity=${args.granularity}
+                .lapisDateField=${args.lapisDateField}
+                .initialMeanProportionInterval=${args.initialMeanProportionInterval}
+                .hideGaps=${args.hideGaps}
+                .pageSizes=${args.pageSizes}
+            ></gs-mutation-cooccurrence-over-time>
+        </gs-app>
+    `,
+};
