@@ -43,9 +43,8 @@ export const ProportionCell: FunctionComponent<{
     );
 };
 
-type FeaturesOverTimeGridDisplayProps = {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    table: Table<any>;
+type FeaturesOverTimeGridDisplayProps<T> = {
+    table: Table<T>;
     pageSizes: PageSizes;
     totalRows?: number;
     loadingState?:
@@ -56,12 +55,12 @@ type FeaturesOverTimeGridDisplayProps = {
         | { isLoading: false; loadingRowLabels?: never };
 };
 
-export function FeaturesOverTimeGridDisplay({
+export function FeaturesOverTimeGridDisplay<T>({
     table,
     pageSizes,
     loadingState,
     totalRows,
-}: FeaturesOverTimeGridDisplayProps) {
+}: FeaturesOverTimeGridDisplayProps<T>) {
     const displayedTotalRows = totalRows ?? table.getCoreRowModel().rows.length;
 
     return (
