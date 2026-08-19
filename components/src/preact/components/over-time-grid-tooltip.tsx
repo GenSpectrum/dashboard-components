@@ -1,10 +1,8 @@
 import type { FunctionComponent, ReactNode } from 'preact/compat';
 
-import { type ProportionValue } from '../../query/queryMutationsOverTime';
+import { MUTATIONS_OVER_TIME_MIN_PROPORTION, type ProportionValue } from '../../query/queryMutationsOverTime';
 import { type Temporal, type TemporalClass, toTemporalClass, YearMonthDayClass } from '../../utils/temporalClass';
 import { formatProportion } from '../shared/table/formatProportion';
-
-const MIN_PROPORTION = 0.001;
 
 type OverTimeGridTooltipProps = {
     label: ReactNode;
@@ -18,7 +16,7 @@ export const OverTimeGridTooltip: FunctionComponent<OverTimeGridTooltipProps> = 
     label,
     date,
     value,
-    minProportion = MIN_PROPORTION,
+    minProportion = MUTATIONS_OVER_TIME_MIN_PROPORTION,
     children,
 }) => {
     const dateClass = toTemporalClass(date);

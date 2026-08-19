@@ -1,11 +1,9 @@
 import type { FunctionComponent } from 'preact';
 
-import { type ProportionValue } from '../../query/queryMutationsOverTime';
+import { MUTATIONS_OVER_TIME_MIN_PROPORTION, type ProportionValue } from '../../query/queryMutationsOverTime';
 import { type Temporal } from '../../utils/temporalClass';
 import { OverTimeGridTooltip } from '../components/over-time-grid-tooltip';
 import { formatProportion } from '../shared/table/formatProportion';
-
-const MIN_PROPORTION = 0.001;
 
 export type QueriesOverTimeGridTooltipProps = {
     query: string; // displayLabel
@@ -39,7 +37,7 @@ const TooltipValueCountsDescription: FunctionComponent<{
                     case 'belowThreshold':
                         return (
                             <p className='text-gray-600'>
-                                None or less than {formatProportion(MIN_PROPORTION)} match the query.
+                                None or less than {formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)} match the query.
                             </p>
                         );
 

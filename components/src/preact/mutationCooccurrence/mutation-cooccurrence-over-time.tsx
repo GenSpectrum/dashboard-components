@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { useLayoutEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
 import type { CooccurrencePattern, CooccurrenceOverTimeDataMap } from './CooccurrenceOverTimeData';
@@ -105,6 +105,7 @@ const MutationCooccurrenceOverTimeTabs: FunctionComponent<MutationCooccurrenceOv
     const [proportionInterval, setProportionInterval] = useState(originalComponentProps.initialMeanProportionInterval);
     const [colorScale, setColorScale] = useState<ColorScale>({ min: 0, max: 1, color: 'indigo' });
     const [hideGaps, setHideGaps] = useState<boolean>(originalComponentProps.hideGaps ?? false);
+    useEffect(() => setHideGaps(originalComponentProps.hideGaps ?? false), [originalComponentProps.hideGaps]);
 
     const filteredData = useMemo(
         () => getFilteredCooccurrenceData(data, proportionInterval, hideGaps),

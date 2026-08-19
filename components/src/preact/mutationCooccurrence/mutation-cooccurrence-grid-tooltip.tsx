@@ -1,12 +1,10 @@
 import type { FunctionComponent } from 'preact';
 
 import type { CooccurrencePattern } from './CooccurrenceOverTimeData';
-import { type ProportionValue } from '../../query/queryMutationsOverTime';
+import { MUTATIONS_OVER_TIME_MIN_PROPORTION, type ProportionValue } from '../../query/queryMutationsOverTime';
 import { type Temporal } from '../../utils/temporalClass';
 import { OverTimeGridTooltip } from '../components/over-time-grid-tooltip';
 import { formatProportion } from '../shared/table/formatProportion';
-
-const MIN_PROPORTION = 0.001;
 
 export type MutationCooccurrenceGridTooltipProps = {
     pattern: CooccurrencePattern;
@@ -41,7 +39,7 @@ const TooltipValueCountsDescription: FunctionComponent<{
         <div className='mt-2'>
             {value.type === 'belowThreshold' && (
                 <p className='text-gray-600'>
-                    None or less than {formatProportion(MIN_PROPORTION)} match this pattern.
+                    None or less than {formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)} match this pattern.
                 </p>
             )}
             {value.type === 'value' && (
