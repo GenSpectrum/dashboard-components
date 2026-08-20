@@ -2,7 +2,6 @@ import { createColumnHelper, getCoreRowModel, getPaginationRowModel } from '@tan
 import { type JSX } from 'preact';
 import { useMemo } from 'preact/hooks';
 
-import { getAlleleColor } from './alleleColors';
 import { type ColorScale } from './color-scale-selector';
 import {
     FeaturesOverTimeGridDisplay,
@@ -102,15 +101,9 @@ function useCooccurrenceColumns(
                         </span>
                     </div>
                 ),
-                cell: ({ getValue }) => {
-                    const allele = getValue();
-                    const color = allele !== null && allele !== undefined ? getAlleleColor(pos, allele) : undefined;
-                    return (
-                        <div className='text-center font-mono text-xs font-bold' style={color ? { color } : undefined}>
-                            {formatAllele(allele)}
-                        </div>
-                    );
-                },
+                cell: ({ getValue }) => (
+                    <div className='text-center font-mono text-xs font-bold'>{formatAllele(getValue())}</div>
+                ),
             }),
         );
 
