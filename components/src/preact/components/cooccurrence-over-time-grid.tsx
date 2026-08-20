@@ -2,6 +2,7 @@ import { createColumnHelper, getCoreRowModel, getPaginationRowModel } from '@tan
 import { type JSX } from 'preact';
 import { useMemo } from 'preact/hooks';
 
+import { getAlleleColor } from './alleleColors';
 import { type ColorScale } from './color-scale-selector';
 import {
     FeaturesOverTimeGridDisplay,
@@ -90,9 +91,29 @@ function useCooccurrenceColumns(
         const positionColumns = positions.map((pos, posIndex) =>
             columnHelper.accessor((row) => row.pattern.alleles[pos], {
                 id: `pos-${posIndex}`,
-                size: 56,
-                header: () => <span className='text-nowrap font-mono'>{formatPosition(pos)}</span>,
-                cell: ({ getValue }) => <div className='text-center font-mono text-xs'>{formatAllele(getValue())}</div>,
+                size: 20,
+                header: () => (
+                    <div className='flex justify-center overflow-visible'>
+                        <span
+                            className='text-nowrap font-mono text-xs'
+                            style={{ display: 'block', transform: 'rotate(-60deg)', transformOrigin: 'center center' }}
+                        >
+                            {formatPosition(pos)}
+                        </span>
+                    </div>
+                ),
+                cell: ({ getValue }) => {
+                    const allele = getValue();
+                    const color = allele !== null && allele !== undefined ? getAlleleColor(pos, allele) : undefined;
+                    return (
+                        <div
+                            className='text-center font-mono text-xs'
+                            style={color ? { backgroundColor: color.background, color: color.color } : undefined}
+                        >
+                            {formatAllele(allele)}
+                        </div>
+                    );
+                },
             }),
         );
 
