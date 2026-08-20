@@ -21,8 +21,12 @@ export class CooccurrenceOverTimeDataMap extends Map2dBase<CooccurrencePattern, 
 }
 
 export function formatAllele(allele: string | null | undefined): string {
-    if (allele === null || allele === undefined) return '?';
-    if (allele === 'N') return '-';
+    if (allele === null || allele === undefined) {
+        return '?';
+    }
+    if (allele === 'N') {
+        return '-';
+    }
     return allele;
 }
 
