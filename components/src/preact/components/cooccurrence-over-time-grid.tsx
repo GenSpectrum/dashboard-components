@@ -92,7 +92,7 @@ function useCooccurrenceColumns(
                 id: `pos-${posIndex}`,
                 size: 56,
                 header: () => <span className='text-nowrap font-mono'>{formatPosition(pos)}</span>,
-                cell: ({ getValue }) => <div className='text-center font-mono text-xs'>{getValue() ?? '?'}</div>,
+                cell: ({ getValue }) => <div className='text-center font-mono text-xs'>{formatAllele(getValue())}</div>,
             }),
         );
 
@@ -140,4 +140,10 @@ function useCooccurrenceColumns(
 
 function formatPosition(pos: string): string {
     return pos.replace(/\[(\d+)\]/g, '$1');
+}
+
+function formatAllele(allele: string | null | undefined): string {
+    if (allele === null || allele === undefined) return '?';
+    if (allele === 'N') return '-';
+    return allele;
 }
