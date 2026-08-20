@@ -144,7 +144,7 @@ export async function queryMutationCooccurrence(
                 .reduce((sum, g) => sum + g.count, 0);
 
             if (coverage === 0) {
-                resultMap.set(pattern, dateRange, { type: 'belowThreshold', totalCount: total });
+                resultMap.set(pattern, dateRange, null);
             } else {
                 resultMap.set(pattern, dateRange, {
                     type: 'valueWithCoverage',
