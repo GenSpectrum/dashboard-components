@@ -113,7 +113,14 @@ const MutationCooccurrenceOverTimeTabs: FunctionComponent<MutationCooccurrenceOv
     );
 
     function renderTooltip(pattern: CooccurrencePattern, temporal: Temporal, value: ProportionValue) {
-        return <MutationCooccurrenceGridTooltip pattern={pattern} date={temporal} value={value} />;
+        return (
+            <MutationCooccurrenceGridTooltip
+                pattern={pattern}
+                positions={originalComponentProps.positions}
+                date={temporal}
+                value={value}
+            />
+        );
     }
 
     const getTab = (view: MutationCooccurrenceOverTimeView) => {

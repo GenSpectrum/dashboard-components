@@ -1,6 +1,7 @@
 import type { FunctionComponent } from 'preact';
 
 import type { CooccurrencePattern } from './CooccurrenceOverTimeData';
+import { getAlleleColor } from '../components/alleleColors';
 import { MUTATIONS_OVER_TIME_MIN_PROPORTION, type ProportionValue } from '../../query/queryMutationsOverTime';
 import { type Temporal } from '../../utils/temporalClass';
 import { OverTimeGridTooltip } from '../components/over-time-grid-tooltip';
@@ -8,25 +9,34 @@ import { formatProportion } from '../shared/table/formatProportion';
 
 export type MutationCooccurrenceGridTooltipProps = {
     pattern: CooccurrencePattern;
+    positions: string[];
     date: Temporal;
     value: ProportionValue;
 };
 
 export const MutationCooccurrenceGridTooltip: FunctionComponent<MutationCooccurrenceGridTooltipProps> = ({
     pattern,
+    positions,
     date,
     value,
 }) => {
-    const patternLabel = Object.entries(pattern.alleles)
-        .map(([pos, allele]) => `${pos}:${allele ?? '?'}`)
-        .join(', ');
+    const label = (
+        <span className='font-bold font-mono text-sm tracking-wider'>
+            {positions.map((pos) => {
+                const allele = pattern.alleles[pos];
+                const display = allele === null || allele === undefined ? '?' : allele === 'N' ? '-' : allele;
+                const color = allele !== null && allele !== undefined ? getAlleleColor(pos, allele) : undefined;
+                return (
+                    <span key={pos} style={color ? { color } : undefined}>
+                        {display}
+                    </span>
+                );
+            })}
+        </span>
+    );
 
     return (
-        <OverTimeGridTooltip
-            label={<span className='font-bold font-mono text-xs'>{patternLabel}</span>}
-            date={date}
-            value={value}
-        >
+        <OverTimeGridTooltip label={label} date={date} value={value}>
             {value !== null && value.type !== 'wastewaterValue' && <TooltipValueCountsDescription value={value} />}
         </OverTimeGridTooltip>
     );
