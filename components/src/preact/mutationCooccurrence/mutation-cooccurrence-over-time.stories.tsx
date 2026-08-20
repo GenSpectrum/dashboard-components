@@ -44,7 +44,7 @@ const meta: Meta<MutationCooccurrenceOverTimeProps> = {
                             pangoLineage: 'JN.1*',
                             dateFrom: '2024-01-15',
                             dateTo: '2024-01-31',
-                            fields: ['[123]', '[124]', '[126]'],
+                            fields: ['[123]', '[124]', '[125]', '[126]'],
                         },
                         matchPartialBody: true,
                     },
@@ -87,7 +87,7 @@ export const Default: StoryObj<MutationCooccurrenceOverTimeProps> = {
     ),
     args: {
         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-01-31' },
-        positions: ['[123]', '[124]', '[126]'],
+        positions: ['[123]', '[124]', '[125]', '[126]'],
         views: ['grid'],
         granularity: 'week',
         lapisDateField: 'date',

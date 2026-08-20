@@ -1,6 +1,10 @@
 import type { StorybookConfig } from '@storybook/web-components-vite';
 
 const config: StorybookConfig = {
+    viteFinal: async (viteConfig) => ({
+        ...viteConfig,
+        server: { ...viteConfig.server, allowedHosts: true },
+    }),
     stories: [
         '../src/web-components/introduction.mdx', // make sure this is the first story
         '../src/**/*.mdx',

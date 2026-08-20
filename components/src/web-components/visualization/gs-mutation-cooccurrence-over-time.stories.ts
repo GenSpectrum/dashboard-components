@@ -11,7 +11,7 @@ import { type MutationCooccurrenceOverTimeProps } from '../../preact/mutationCoo
 const codeExample = String.raw`
 <gs-mutation-cooccurrence-over-time
     lapisFilter='{ "pangoLineage": "JN.1*", "dateFrom": "2024-01-15", "dateTo": "2024-01-31" }'
-    positions='["[123]", "[124]", "[126]"]'
+    positions='["[123]", "[124]", "[125]", "[126]"]'
     views='["grid"]'
     width='100%'
     granularity="week"
@@ -42,7 +42,7 @@ const meta: Meta<Required<MutationCooccurrenceOverTimeProps>> = {
     },
     args: {
         lapisFilter: { pangoLineage: 'JN.1*', dateFrom: '2024-01-15', dateTo: '2024-01-31' },
-        positions: ['[123]', '[124]', '[126]'],
+        positions: ['[123]', '[124]', '[125]', '[126]'],
         views: ['grid'],
         width: '100%',
         granularity: 'week',
@@ -67,7 +67,7 @@ const meta: Meta<Required<MutationCooccurrenceOverTimeProps>> = {
                             pangoLineage: 'JN.1*',
                             dateFrom: '2024-01-15',
                             dateTo: '2024-01-31',
-                            fields: ['[123]', '[124]', '[126]'],
+                            fields: ['[123]', '[124]', '[125]', '[126]'],
                         },
                         matchPartialBody: true,
                     },
