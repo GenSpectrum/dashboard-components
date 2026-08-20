@@ -106,10 +106,7 @@ function useCooccurrenceColumns(
                     const allele = getValue();
                     const color = allele !== null && allele !== undefined ? getAlleleColor(pos, allele) : undefined;
                     return (
-                        <div
-                            className='text-center font-mono text-xs'
-                            style={color ? { backgroundColor: color.background, color: color.color } : undefined}
-                        >
+                        <div className='text-center font-mono text-xs font-bold' style={color ? { color } : undefined}>
                             {formatAllele(allele)}
                         </div>
                     );
