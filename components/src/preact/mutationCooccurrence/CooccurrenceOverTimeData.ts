@@ -20,6 +20,12 @@ export class CooccurrenceOverTimeDataMap extends Map2dBase<CooccurrencePattern, 
     }
 }
 
+export function formatAllele(allele: string | null | undefined): string {
+    if (allele === null || allele === undefined) return '?';
+    if (allele === 'N') return '-';
+    return allele;
+}
+
 export function serializeCooccurrencePattern(pattern: CooccurrencePattern): string {
     return Object.entries(pattern.alleles)
         .sort(([a], [b]) => a.localeCompare(b))

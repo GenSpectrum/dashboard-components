@@ -12,7 +12,7 @@ import {
 import { type ProportionValue } from '../../query/queryMutationsOverTime';
 import { type Map2d } from '../../utils/map2d';
 import { type Temporal } from '../../utils/temporalClass';
-import { type CooccurrencePattern } from '../mutationCooccurrence/CooccurrenceOverTimeData';
+import { formatAllele, type CooccurrencePattern } from '../mutationCooccurrence/CooccurrenceOverTimeData';
 import { type PageSizes } from '../shared/tanstackTable/pagination';
 import { usePageSizeContext } from '../shared/tanstackTable/pagination-context';
 import { usePreactTable } from '../shared/tanstackTable/tanstackTable';
@@ -151,10 +151,4 @@ function useCooccurrenceColumns(
 
 function formatPosition(pos: string): string {
     return pos.replace(/\[(\d+)\]/g, '$1');
-}
-
-function formatAllele(allele: string | null | undefined): string {
-    if (allele === null || allele === undefined) return '?';
-    if (allele === 'N') return '-';
-    return allele;
 }
