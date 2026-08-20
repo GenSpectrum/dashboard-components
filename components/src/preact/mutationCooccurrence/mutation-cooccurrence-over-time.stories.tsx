@@ -44,24 +44,7 @@ const meta: Meta<MutationCooccurrenceOverTimeProps> = {
                             pangoLineage: 'JN.1*',
                             dateFrom: '2024-01-15',
                             dateTo: '2024-01-31',
-                            fields: ['[123]', '[124]', '[125]', '[126]'],
-                        },
-                        matchPartialBody: true,
-                    },
-                    response: {
-                        status: 200,
-                        body: mockCooccurrence,
-                    },
-                },
-                {
-                    matcher: {
-                        name: 'dateRanges',
-                        url: AGGREGATED_ENDPOINT,
-                        body: {
-                            pangoLineage: 'JN.1*',
-                            dateFrom: '2024-01-15',
-                            dateTo: '2024-01-31',
-                            fields: ['date'],
+                            fields: ['date', '[123]', '[124]', '[125]', '[126]'],
                         },
                         matchPartialBody: true,
                     },
@@ -109,8 +92,7 @@ export const InvalidAttributes: StoryObj<MutationCooccurrenceOverTimeProps> = {
     ),
     args: {
         ...Default.args,
-        // @ts-expect-error -- intentionally invalid
-        positions: 'not-an-array',
+        positions: [],
     },
     play: async ({ canvasElement }) => {
         await expectInvalidAttributesErrorMessage(canvasElement, 'Array must contain at least 1 element(s)');
