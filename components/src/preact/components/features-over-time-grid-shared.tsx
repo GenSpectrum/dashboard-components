@@ -11,6 +11,11 @@ import { flexRender } from '../shared/tanstackTable/tanstackTable';
 
 const NON_BREAKING_SPACE = ' ';
 
+/**
+ * A single data cell in an over-time grid: a color-scaled block showing a proportion, with a
+ * tooltip that appears on hover. The proportion text is hidden on narrow columns, since it
+ * wouldn't fit without breaking the grid layout.
+ */
 export const ProportionCell: FunctionComponent<{
     value: ProportionValue;
     tooltip: JSX.Element;
@@ -55,6 +60,12 @@ type FeaturesOverTimeGridDisplayProps<T> = {
         | { isLoading: false; loadingRowLabels?: never };
 };
 
+/**
+ * Renders a tanstack-table `Table` as an over-time grid: header row, data rows (or skeleton
+ * loading rows with a spinner while `loadingState.isLoading` is true), and pagination footer.
+ * Shared by all over-time grids (mutations, queries, mutation co-occurrence) so they present
+ * identically regardless of what their columns represent.
+ */
 export function FeaturesOverTimeGridDisplay<T>({
     table,
     pageSizes,
@@ -124,6 +135,10 @@ export function FeaturesOverTimeGridDisplay<T>({
     );
 }
 
+/**
+ * Show date column headers only for the first and last column, when there is little space.
+ * Shows all dates if enough space is there.
+ */
 export function styleGridHeader(columnIndex: number, numDateColumns: number) {
     if (columnIndex === 0) {
         return { className: 'overflow-visible text-nowrap' };
@@ -136,6 +151,11 @@ export function styleGridHeader(columnIndex: number, numDateColumns: number) {
     return { className: 'invisible @[6rem]:visible' };
 }
 
+/**
+ * Picks which side of a cell the tooltip should open on, so it stays within the visible grid
+ * instead of overflowing off the top/bottom or left/right edge (meaning the tooltip tends to
+ * open towards the 'center' of the component).
+ */
 export function getTooltipPosition(
     rowIndex: number,
     rows: number,
