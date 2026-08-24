@@ -7,8 +7,8 @@ import { PreactLitAdapterWithGridJsStyles } from '../PreactLitAdapterWithGridJsS
  * ## Context
  *
  * This component displays the frequency of mutation co-occurrence patterns over time.
- * Each row represents a unique combination of alleles observed at the specified positions.
- * The left columns show the allele at each position, and the right columns show the
+ * Each row represents a unique combination of values observed at the specified positions.
+ * The left columns show the value at each position, and the right columns show the
  * proportion of sequences with that pattern in each time period.
  *
  * ## Positions syntax

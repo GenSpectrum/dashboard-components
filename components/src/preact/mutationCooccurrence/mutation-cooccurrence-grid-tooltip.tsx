@@ -1,6 +1,6 @@
 import type { FunctionComponent } from 'preact';
 
-import { formatAllele, type CooccurrencePattern } from './CooccurrenceOverTimeData';
+import { formatSymbol, type CooccurrencePattern } from './CooccurrenceOverTimeData';
 import { MUTATIONS_OVER_TIME_MIN_PROPORTION, type ProportionValue } from '../../query/queryMutationsOverTime';
 import { type Temporal } from '../../utils/temporalClass';
 import { OverTimeGridTooltip } from '../components/over-time-grid-tooltip';
@@ -22,8 +22,8 @@ export const MutationCooccurrenceGridTooltip: FunctionComponent<MutationCooccurr
     const label = (
         <span className='font-bold font-mono text-sm tracking-wider'>
             {positions.map((pos) => {
-                const allele = pattern.alleles[pos];
-                const display = formatAllele(allele);
+                const symbol = pattern.symbols[pos];
+                const display = formatSymbol(symbol);
                 return <span key={pos}>{display}</span>;
             })}
         </span>

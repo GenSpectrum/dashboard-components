@@ -4,14 +4,13 @@ import { Map2dBase, type Map2DContents } from '../../utils/map2d';
 import type { Temporal } from '../../utils/temporalClass';
 
 /**
- * A specific combination of alleles observed across the queried positions.
+ * A specific combination of values (nucleotides or amino acids) observed across the queried positions.
  * Keys are LAPIS position field names (e.g. `[501]`, `S[501]`, `ORF1a[501]`).
- * String values are the allele at that position. `'N'` means no coverage at that position.
- * `null` means the position is collapsed (covered, but not specified — used in partial patterns
- * that group all sequences sharing the same set of uncovered positions).
+ * String values are the symbol at that position. `null` means the position is not covered
+ * (LAPIS returned `'N'` or no value for it).
  */
 export type CooccurrencePattern = {
-    alleles: Record<string, string | null>;
+    symbols: Record<string, string | null>;
 };
 
 export class CooccurrenceOverTimeDataMap extends Map2dBase<CooccurrencePattern, Temporal, ProportionValue> {
@@ -20,19 +19,16 @@ export class CooccurrenceOverTimeDataMap extends Map2dBase<CooccurrencePattern, 
     }
 }
 
-export function formatAllele(allele: string | null | undefined): string {
-    if (allele === null || allele === undefined) {
-        return '?';
-    }
-    if (allele === 'N') {
+export function formatSymbol(symbol: string | null | undefined): string {
+    if (symbol === null || symbol === undefined) {
         return '-';
     }
-    return allele;
+    return symbol;
 }
 
 export function serializeCooccurrencePattern(pattern: CooccurrencePattern): string {
-    return Object.entries(pattern.alleles)
+    return Object.entries(pattern.symbols)
         .sort(([a], [b]) => a.localeCompare(b))
-        .map(([pos, allele]) => `${pos}:${allele ?? ''}`)
+        .map(([pos, symbol]) => `${pos}:${symbol ?? ''}`)
         .join('|');
 }

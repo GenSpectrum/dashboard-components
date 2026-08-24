@@ -224,8 +224,8 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 <InfoHeadline1>Mutation co-occurrence over time</InfoHeadline1>
                 <InfoParagraph>
                     This component displays the frequency of mutation co-occurrence patterns over time. Each row
-                    represents a unique combination of alleles at the specified positions. The left columns show the
-                    allele at each position, and the right columns show the proportion of sequences with that pattern in
+                    represents a unique combination of values at the specified positions. The left columns show the
+                    value at each position, and the right columns show the proportion of sequences with that pattern in
                     each time period.
                 </InfoParagraph>
                 <InfoParagraph>
@@ -289,7 +289,7 @@ function getDownloadData(filteredData: Map2dView<CooccurrencePattern, Temporal, 
     return filteredData.getFirstAxisKeys().map((pattern) => {
         const row: Record<string, string | number> = {};
         for (const pos of positions) {
-            row[pos] = pattern.alleles[pos] ?? '?';
+            row[pos] = pattern.symbols[pos] ?? '?';
         }
         for (const date of dates) {
             const value = filteredData.get(pattern, date);

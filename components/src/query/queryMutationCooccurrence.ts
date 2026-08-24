@@ -1,5 +1,6 @@
 import { queryDatesInDataset } from './queryDatesInDataset';
 import { fetchAggregated } from '../lapisApi/lapisApi';
+import { type AggregatedItem } from '../lapisApi/lapisTypes';
 import { UserFacingError } from '../preact/components/error-display';
 import {
     CooccurrenceOverTimeDataMap,
@@ -11,7 +12,7 @@ import { parseDateStringToTemporal, type Temporal } from '../utils/temporalClass
 
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 
-type Group = { alleles: Record<string, string | null>; count: number };
+type Group = { symbols: Record<string, string | null>; count: number };
 
 export async function queryMutationCooccurrence(
     lapisFilter: LapisFilter,
@@ -68,21 +69,17 @@ export async function queryMutationCooccurrence(
             continue;
         }
 
-        const alleles: Record<string, string | null> = {};
-        for (const pos of positions) {
-            const val = item[pos];
-            alleles[pos] = typeof val === 'string' ? val : null;
-        }
+        const symbols = extractSymbols(item, positions);
         const count = item.count;
         const dateKey = dateRange.dateString;
 
         const groups = groupsByDate.get(dateKey) ?? [];
-        groups.push({ alleles, count });
+        groups.push({ symbols, count });
         groupsByDate.set(dateKey, groups);
 
         totalByDate.set(dateKey, (totalByDate.get(dateKey) ?? 0) + count);
 
-        const pattern: CooccurrencePattern = { alleles };
+        const pattern: CooccurrencePattern = { symbols };
         const patternKey = serializeCooccurrencePattern(pattern);
         patternByKey.set(patternKey, pattern);
 
@@ -96,35 +93,18 @@ export async function queryMutationCooccurrence(
 
     const resultMap = new CooccurrenceOverTimeDataMap();
 
-    const sortedPatternKeys = [...countsByPatternAndDate.keys()]
-        .filter((key) => {
-            const alleles = patternByKey.get(key)!.alleles;
-            return Object.values(alleles).some((v) => v !== null && v !== 'N');
-        })
-        .sort((a, b) => {
-            const coverageBits = (key: string) =>
-                positions.reduce((acc, pos, i) => {
-                    const alleles = patternByKey.get(key)!.alleles;
-                    const bit = typeof alleles[pos] === 'string' && alleles[pos] !== 'N' ? 1 : 0;
-                    return acc | (bit << (positions.length - 1 - i));
-                }, 0);
-            const bitsA = coverageBits(a);
-            const bitsB = coverageBits(b);
-            if (bitsA !== bitsB) {
-                return bitsB - bitsA;
-            }
-            const totalA = [...(countsByPatternAndDate.get(a)?.values() ?? [])].reduce((s, c) => s + c, 0);
-            const totalB = [...(countsByPatternAndDate.get(b)?.values() ?? [])].reduce((s, c) => s + c, 0);
-            return totalB - totalA;
-        });
+    const sortedPatternKeys = sortPatternKeysByCoverageAndCount(
+        [...countsByPatternAndDate.keys()].filter((key) => isCovered(patternByKey.get(key)!)),
+        patternByKey,
+        countsByPatternAndDate,
+        positions,
+    );
 
     for (const patternKey of sortedPatternKeys) {
         const dateMap = countsByPatternAndDate.get(patternKey)!;
         const pattern = patternByKey.get(patternKey)!;
 
-        const coveredPositions = positions.filter(
-            (pos) => typeof pattern.alleles[pos] === 'string' && pattern.alleles[pos] !== 'N',
-        );
+        const coveredPositions = positions.filter((pos) => pattern.symbols[pos] !== null);
 
         for (const dateRange of requestedDateRanges) {
             const dateKey = dateRange.dateString;
@@ -136,12 +116,7 @@ export async function queryMutationCooccurrence(
                 continue;
             }
 
-            const groups = groupsByDate.get(dateKey) ?? [];
-            const coverage = groups
-                .filter((g) =>
-                    coveredPositions.every((pos) => typeof g.alleles[pos] === 'string' && g.alleles[pos] !== 'N'),
-                )
-                .reduce((sum, g) => sum + g.count, 0);
+            const coverage = computeCoverage(groupsByDate.get(dateKey) ?? [], coveredPositions);
 
             if (coverage === 0) {
                 resultMap.set(pattern, dateRange, null);
@@ -157,4 +132,57 @@ export async function queryMutationCooccurrence(
     }
 
     return resultMap;
+}
+
+/** Reads the symbol at each queried position from a raw LAPIS response row, treating `'N'` as uncovered. */
+function extractSymbols(item: AggregatedItem, positions: string[]): Record<string, string | null> {
+    const symbols: Record<string, string | null> = {};
+    for (const pos of positions) {
+        const val = item[pos];
+        symbols[pos] = typeof val === 'string' && val !== 'N' ? val : null;
+    }
+    return symbols;
+}
+
+/** A pattern is only displayed if at least one of its queried positions is covered. */
+function isCovered(pattern: CooccurrencePattern): boolean {
+    return Object.values(pattern.symbols).some((symbol) => symbol !== null);
+}
+
+/**
+ * Sorts pattern keys so that patterns covering more positions come first (patterns covering fewer
+ * positions are less specific and group together sequences that would otherwise appear separately),
+ * and ties are broken by total observation count, descending.
+ */
+function sortPatternKeysByCoverageAndCount(
+    patternKeys: string[],
+    patternByKey: Map<string, CooccurrencePattern>,
+    countsByPatternAndDate: Map<string, Map<string, number>>,
+    positions: string[],
+): string[] {
+    const coverageBits = (key: string) => {
+        const symbols = patternByKey.get(key)!.symbols;
+        return positions.reduce((acc, pos, i) => {
+            const bit = symbols[pos] !== null ? 1 : 0;
+            return acc | (bit << (positions.length - 1 - i));
+        }, 0);
+    };
+    const totalCount = (key: string) =>
+        [...(countsByPatternAndDate.get(key)?.values() ?? [])].reduce((sum, count) => sum + count, 0);
+
+    return [...patternKeys].sort((a, b) => {
+        const bitsA = coverageBits(a);
+        const bitsB = coverageBits(b);
+        if (bitsA !== bitsB) {
+            return bitsB - bitsA;
+        }
+        return totalCount(b) - totalCount(a);
+    });
+}
+
+/** Sums the counts of groups that are covered at every one of the given positions. */
+function computeCoverage(groups: Group[], coveredPositions: string[]): number {
+    return groups
+        .filter((group) => coveredPositions.every((pos) => group.symbols[pos] !== null))
+        .reduce((sum, group) => sum + group.count, 0);
 }

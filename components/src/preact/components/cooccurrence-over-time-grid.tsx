@@ -12,7 +12,7 @@ import {
 import { type ProportionValue } from '../../query/queryMutationsOverTime';
 import { type Map2d } from '../../utils/map2d';
 import { type Temporal } from '../../utils/temporalClass';
-import { formatAllele, type CooccurrencePattern } from '../mutationCooccurrence/CooccurrenceOverTimeData';
+import { formatSymbol, type CooccurrencePattern } from '../mutationCooccurrence/CooccurrenceOverTimeData';
 import { type PageSizes } from '../shared/tanstackTable/pagination';
 import { usePageSizeContext } from '../shared/tanstackTable/pagination-context';
 import { usePreactTable } from '../shared/tanstackTable/tanstackTable';
@@ -88,7 +88,7 @@ function useCooccurrenceColumns(
         const totalColumns = positions.length + numDateColumns;
 
         const positionColumns = positions.map((pos, posIndex) =>
-            columnHelper.accessor((row) => row.pattern.alleles[pos], {
+            columnHelper.accessor((row) => row.pattern.symbols[pos], {
                 id: `pos-${posIndex}`,
                 size: 20,
                 header: () => (
@@ -102,7 +102,7 @@ function useCooccurrenceColumns(
                     </div>
                 ),
                 cell: ({ getValue }) => (
-                    <div className='text-center font-mono text-xs font-bold'>{formatAllele(getValue())}</div>
+                    <div className='text-center font-mono text-xs font-bold'>{formatSymbol(getValue())}</div>
                 ),
             }),
         );
@@ -149,6 +149,16 @@ function useCooccurrenceColumns(
     }, [colorScale, dates, positions, tooltipPortalTarget, renderTooltip]);
 }
 
+/**
+ * Formats a LAPIS position field name for display.
+ * `[501]` (nucleotide position) becomes `501`.
+ * `ORF1a[501]` (gene-scoped amino acid position) becomes `ORF1a: 501`.
+ */
 function formatPosition(pos: string): string {
-    return pos.replace(/\[(\d+)\]/g, '$1');
+    const match = /^([^[]*)\[(\d+)\]$/.exec(pos);
+    if (match === null) {
+        return pos;
+    }
+    const [, gene, position] = match;
+    return gene === '' ? position : `${gene}: ${position}`;
 }
