@@ -5,7 +5,7 @@ import z from 'zod';
 import type { CooccurrencePattern, CooccurrenceOverTimeDataMap } from './CooccurrenceOverTimeData';
 import { MutationCooccurrenceGridTooltip } from './mutation-cooccurrence-grid-tooltip';
 import { queryMutationCooccurrence } from '../../query/queryMutationCooccurrence';
-import { getProportion, type ProportionValue } from '../../query/queryMutationsOverTime';
+import { getProportion, hideGapsInPlace, type ProportionValue } from '../../query/queryMutationsOverTime';
 import { lapisFilterSchema, temporalGranularitySchema, views } from '../../types';
 import { Map2dView } from '../../utils/map2d';
 import { type Temporal } from '../../utils/temporalClass';
@@ -277,21 +277,7 @@ function getFilteredCooccurrenceData(
     }
 
     if (hideGaps) {
-        const datesToRemove = view.getSecondAxisKeys().filter((date) => {
-            const vals = view.getColumn(date);
-            return !vals.some((v) => {
-                if (v?.type === 'value') {
-                    return v.totalCount > 0;
-                }
-                if (v?.type === 'valueWithCoverage') {
-                    return v.totalCount > 0;
-                }
-                return false;
-            });
-        });
-        for (const date of datesToRemove) {
-            view.deleteColumn(date);
-        }
+        hideGapsInPlace(view);
     }
 
     return view;
