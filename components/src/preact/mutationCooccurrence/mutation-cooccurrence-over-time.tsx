@@ -33,7 +33,13 @@ export type MutationCooccurrenceOverTimeView = z.infer<typeof mutationCooccurren
 
 const mutationCooccurrenceOverTimeSchema = z.object({
     lapisFilter: lapisFilterSchema,
-    positions: z.array(z.string()).min(1),
+    positions: z
+        .array(
+            z
+                .string()
+                .regex(/^[A-Za-z0-9_]*\[\d+\]$/, 'Each position must be a LAPIS field name like "[501]" or "S[501]"'),
+        )
+        .min(1),
     views: z.array(mutationCooccurrenceOverTimeViewSchema),
     granularity: temporalGranularitySchema,
     lapisDateField: z.string().min(1),

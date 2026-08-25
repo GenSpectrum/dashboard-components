@@ -92,9 +92,9 @@ export const InvalidAttributes: StoryObj<MutationCooccurrenceOverTimeProps> = {
     ),
     args: {
         ...Default.args,
-        positions: [],
+        positions: ['country'],
     },
     play: async ({ canvasElement }) => {
-        await expectInvalidAttributesErrorMessage(canvasElement, 'Array must contain at least 1 element(s)');
+        await expectInvalidAttributesErrorMessage(canvasElement, 'Each position must be a LAPIS field name');
     },
 };
