@@ -95,6 +95,6 @@ export const InvalidAttributes: StoryObj<MutationCooccurrenceOverTimeProps> = {
         positions: ['country'],
     },
     play: async ({ canvasElement }) => {
-        await expectInvalidAttributesErrorMessage(canvasElement, 'Each position must be a LAPIS field name');
+        await expectInvalidAttributesErrorMessage(canvasElement, 'Each position must be a sequence position');
     },
 };

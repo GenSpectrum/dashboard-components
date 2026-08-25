@@ -37,7 +37,10 @@ const mutationCooccurrenceOverTimeSchema = z.object({
         .array(
             z
                 .string()
-                .regex(/^[A-Za-z0-9_]*\[\d+\]$/, 'Each position must be a LAPIS field name like "[501]" or "S[501]"'),
+                .regex(
+                    /^[A-Za-z0-9_]*\[\d+\]$/,
+                    'Each position must be a sequence position like "[501]" (nucleotide) or "S[501]" (amino acid)',
+                ),
         )
         .min(1),
     views: z.array(mutationCooccurrenceOverTimeViewSchema),
