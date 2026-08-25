@@ -56,6 +56,29 @@ describe('queryMutationCooccurrence', () => {
         });
     });
 
+    it('treats X as uncovered for amino acid positions and N as a real allele (asparagine)', async () => {
+        const aaPositions = ['S[1]', 'S[2]'];
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField, ...aaPositions] },
+            {
+                data: [
+                    { count: 90, [dateField]: '2024-01-15', 'S[1]': 'A', 'S[2]': 'T' },
+                    { count: 5, [dateField]: '2024-01-15', 'S[1]': 'N', 'S[2]': 'T' },
+                    { count: 3, [dateField]: '2024-01-15', 'S[1]': 'A', 'S[2]': 'X' },
+                ],
+            },
+        );
+
+        const result = await queryMutationCooccurrence(lapisFilter, aaPositions, DUMMY_LAPIS_URL, dateField, 'day');
+
+        const patterns = result.getFirstAxisKeys();
+        expect(patterns).to.deep.equal([
+            { symbols: { 'S[1]': 'A', 'S[2]': 'T' } },
+            { symbols: { 'S[1]': 'N', 'S[2]': 'T' } },
+            { symbols: { 'S[1]': 'A', 'S[2]': null } },
+        ]);
+    });
+
     it('throws a UserFacingError when the date range would produce too many columns', async () => {
         await expect(
             queryMutationCooccurrence(

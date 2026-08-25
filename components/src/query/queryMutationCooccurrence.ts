@@ -134,12 +134,17 @@ export async function queryMutationCooccurrence(
     return resultMap;
 }
 
-/** Reads the symbol at each queried position from a raw LAPIS response row, treating `'N'` as uncovered. */
+/**
+ * Reads the symbol at each queried position from a raw LAPIS response row.
+ * Nucleotide positions (e.g. `[123]`) treat `'N'` as uncovered; amino acid positions
+ * (e.g. `S[501]`) treat `'X'` as uncovered. Both map to `null` in the result.
+ */
 function extractSymbols(item: AggregatedItem, positions: string[]): Record<string, string | null> {
     const symbols: Record<string, string | null> = {};
     for (const pos of positions) {
         const val = item[pos];
-        symbols[pos] = typeof val === 'string' && val !== 'N' ? val : null;
+        const uncoveredSymbol = /^[A-Za-z]/.test(pos) ? 'X' : 'N';
+        symbols[pos] = typeof val === 'string' && val !== uncoveredSymbol ? val : null;
     }
     return symbols;
 }
