@@ -151,7 +151,7 @@ export const MutationWithPerMutationInfoOverride: StoryObj<StoryProps> = {
         const canvas = within(canvasElement);
 
         await waitFor(() => expect(canvas.getByText('A23403G')).toBeVisible());
-        await expect(getAnnotationIndicator(canvas)).toBeVisible();
+        await expect(canvas.queryByText('c')).toBeVisible();
 
         await userEvent.click(canvas.getByText('c'));
         await waitFor(() => expect(canvas.queryByText('3CLpro:T31C')).toBeVisible());
