@@ -21,7 +21,7 @@ export class CooccurrenceOverTimeDataMap extends Map2dBase<CooccurrencePattern, 
 
 export function formatSymbol(symbol: string | null | undefined): string {
     if (symbol === null || symbol === undefined) {
-        return '-';
+        return '?';
     }
     return symbol;
 }

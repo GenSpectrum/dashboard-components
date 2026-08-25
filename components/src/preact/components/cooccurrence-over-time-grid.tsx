@@ -101,9 +101,16 @@ function useCooccurrenceColumns(
                         </span>
                     </div>
                 ),
-                cell: ({ getValue }) => (
-                    <div className='text-center font-mono text-xs font-bold'>{formatSymbol(getValue())}</div>
-                ),
+                cell: ({ getValue }) => {
+                    const symbol = getValue();
+                    return (
+                        <div
+                            className={`text-center font-mono text-xs font-bold ${symbol === null ? 'text-gray-400' : ''}`}
+                        >
+                            {formatSymbol(symbol)}
+                        </div>
+                    );
+                },
             }),
         );
 
