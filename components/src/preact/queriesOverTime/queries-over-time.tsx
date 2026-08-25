@@ -18,6 +18,7 @@ import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import FeaturesOverTimeGrid, { type FeatureRenderer, customColumnSchema } from '../components/features-over-time-grid';
 import { Fullscreen } from '../components/fullscreen';
+import { HideGapsButton } from '../components/hide-gaps-button';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
 import { NoDataDisplay } from '../components/no-data-display';
@@ -274,17 +275,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
                 setMaxProportion={(max) => setProportionInterval((prev) => ({ ...prev, max }))}
                 labelPrefix='Mean proportion'
             />
-            <button
-                className='btn btn-xs w-24'
-                onClick={() => setHideGaps((s) => !s)}
-                title={
-                    hideGaps
-                        ? 'Date ranges that do not contain data are excluded from the table'
-                        : 'Exclude date ranges without data from the table'
-                }
-            >
-                {hideGaps ? 'Gaps hidden' : 'Hide gaps'}
-            </button>
+            <HideGapsButton hideGaps={hideGaps} setHideGaps={setHideGaps} />
             {activeTab === 'Grid' && (
                 <ColorScaleSelectorDropdown colorScale={colorScale} setColorScale={setColorScale} />
             )}
