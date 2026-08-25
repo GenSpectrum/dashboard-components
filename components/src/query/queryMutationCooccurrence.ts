@@ -105,7 +105,6 @@ export async function queryMutationCooccurrence(
     const sortedPatternKeys = sortPatternKeysByCoverageAndCount(
         [...countsByPatternAndDate.keys()].filter((key) => isCovered(patternByKey.get(key)!)),
         patternByKey,
-        countsByPatternAndDate,
         positions,
     );
 
@@ -163,19 +162,16 @@ function isCovered(pattern: CooccurrencePattern): boolean {
     return Object.values(pattern.symbols).some((symbol) => symbol !== null);
 }
 
-/** Sorts patterns by number of covered positions descending, then by total count descending. */
+/** Sorts patterns by number of covered positions descending, then alphabetically by pattern key. */
 function sortPatternKeysByCoverageAndCount(
     patternKeys: string[],
     patternByKey: Map<string, CooccurrencePattern>,
-    countsByPatternAndDate: Map<string, Map<string, number>>,
     positions: string[],
 ): string[] {
     const coverageCount = (key: string) => {
         const symbols = patternByKey.get(key)!.symbols;
         return positions.filter((pos) => symbols[pos] !== null).length;
     };
-    const totalCount = (key: string) =>
-        [...(countsByPatternAndDate.get(key)?.values() ?? [])].reduce((sum, count) => sum + count, 0);
 
     return [...patternKeys].sort((a, b) => {
         const countA = coverageCount(a);
@@ -183,7 +179,7 @@ function sortPatternKeysByCoverageAndCount(
         if (countA !== countB) {
             return countB - countA;
         }
-        return totalCount(b) - totalCount(a);
+        return a.localeCompare(b);
     });
 }
 
