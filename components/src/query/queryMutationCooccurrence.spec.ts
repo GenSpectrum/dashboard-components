@@ -79,6 +79,13 @@ describe('queryMutationCooccurrence', () => {
         ]);
     });
 
+    it('throws a UserFacingError when too many positions are given', async () => {
+        const tooManyPositions = Array.from({ length: 11 }, (_, i) => `[${i + 1}]`);
+        await expect(
+            queryMutationCooccurrence(lapisFilter, tooManyPositions, DUMMY_LAPIS_URL, dateField, 'day'),
+        ).rejects.toThrow('positions');
+    });
+
     it('throws a UserFacingError when the date range would produce too many columns', async () => {
         await expect(
             queryMutationCooccurrence(

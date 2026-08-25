@@ -11,6 +11,7 @@ import { type LapisFilter, type TemporalGranularity } from '../types';
 import { parseDateStringToTemporal, type Temporal } from '../utils/temporalClass';
 
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
+const MAX_NUMBER_OF_POSITIONS = 10;
 
 type Group = { symbols: Record<string, string | null>; count: number };
 
@@ -24,6 +25,14 @@ export async function queryMutationCooccurrence(
 ): Promise<CooccurrenceOverTimeDataMap> {
     if (positions.length === 0) {
         return new CooccurrenceOverTimeDataMap();
+    }
+
+    if (positions.length > MAX_NUMBER_OF_POSITIONS) {
+        throw new UserFacingError(
+            'Too many positions',
+            `The number of positions is ${positions.length}, which exceeds the maximum of ${MAX_NUMBER_OF_POSITIONS}. ` +
+                `Please reduce the number of positions to ${MAX_NUMBER_OF_POSITIONS} or fewer.`,
+        );
     }
 
     const requestedDateRanges = await queryDatesInDataset(lapisFilter, lapis, granularity, lapisDateField, signal);
@@ -154,32 +163,25 @@ function isCovered(pattern: CooccurrencePattern): boolean {
     return Object.values(pattern.symbols).some((symbol) => symbol !== null);
 }
 
-/**
- * Sorts pattern keys so that patterns covering more positions come first (patterns covering fewer
- * positions are less specific and group together sequences that would otherwise appear separately),
- * and ties are broken by total observation count, descending.
- */
+/** Sorts patterns by number of covered positions descending, then by total count descending. */
 function sortPatternKeysByCoverageAndCount(
     patternKeys: string[],
     patternByKey: Map<string, CooccurrencePattern>,
     countsByPatternAndDate: Map<string, Map<string, number>>,
     positions: string[],
 ): string[] {
-    const coverageBits = (key: string) => {
+    const coverageCount = (key: string) => {
         const symbols = patternByKey.get(key)!.symbols;
-        return positions.reduce((acc, pos, i) => {
-            const bit = symbols[pos] !== null ? 1 : 0;
-            return acc | (bit << (positions.length - 1 - i));
-        }, 0);
+        return positions.filter((pos) => symbols[pos] !== null).length;
     };
     const totalCount = (key: string) =>
         [...(countsByPatternAndDate.get(key)?.values() ?? [])].reduce((sum, count) => sum + count, 0);
 
     return [...patternKeys].sort((a, b) => {
-        const bitsA = coverageBits(a);
-        const bitsB = coverageBits(b);
-        if (bitsA !== bitsB) {
-            return bitsB - bitsA;
+        const countA = coverageCount(a);
+        const countB = coverageCount(b);
+        if (countA !== countB) {
+            return countB - countA;
         }
         return totalCount(b) - totalCount(a);
     });
