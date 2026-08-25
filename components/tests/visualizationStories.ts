@@ -180,6 +180,12 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Grid',
     },
     {
+        id: 'visualization-mutation-cooccurrence-over-time--default',
+        title: 'Mutation Cooccurrence Over Time',
+        loadingIsDoneIndicator: 'Grid',
+        testDownloadWithFilename: 'mutation_cooccurrence.csv',
+    },
+    {
         id: 'visualization-queries-over-time--default',
         title: 'Queries over time',
         loadingIsDoneIndicator: 'Grid',
