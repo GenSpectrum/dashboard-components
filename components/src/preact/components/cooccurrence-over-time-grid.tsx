@@ -91,16 +91,25 @@ function useCooccurrenceColumns(
             columnHelper.accessor((row) => row.pattern.symbols[pos], {
                 id: `pos-${posIndex}`,
                 size: 20,
-                header: () => (
-                    <div className='flex justify-center overflow-visible'>
-                        <span
-                            className='text-nowrap font-mono text-xs'
-                            style={{ display: 'block', transform: 'rotate(-60deg)', transformOrigin: 'center center' }}
-                        >
-                            {formatPosition(pos)}
-                        </span>
-                    </div>
-                ),
+                header: () => {
+                    const label = formatPosition(pos);
+                    const fontSize = label.length <= 5 ? '0.75rem' : label.length <= 8 ? '0.625rem' : '0.5rem';
+                    return (
+                        <div className='flex justify-center overflow-visible'>
+                            <span
+                                className='text-nowrap font-mono'
+                                style={{
+                                    display: 'block',
+                                    transform: 'rotate(-60deg)',
+                                    transformOrigin: 'center center',
+                                    fontSize,
+                                }}
+                            >
+                                {label}
+                            </span>
+                        </div>
+                    );
+                },
                 cell: ({ getValue }) => {
                     const symbol = getValue();
                     return (
@@ -167,5 +176,5 @@ export function formatPosition(pos: string): string {
         return pos;
     }
     const [, gene, position] = match;
-    return gene === '' ? position : `${gene}: ${position}`;
+    return gene === '' ? position : `${gene}:${position}`;
 }

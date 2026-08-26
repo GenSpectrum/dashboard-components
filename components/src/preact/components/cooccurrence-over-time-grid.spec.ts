@@ -8,8 +8,8 @@ describe('formatPosition', () => {
     });
 
     it('formats an amino acid position with gene and colon separator', () => {
-        expect(formatPosition('ORF1a[501]')).toBe('ORF1a: 501');
-        expect(formatPosition('S[501]')).toBe('S: 501');
+        expect(formatPosition('ORF1a[501]')).toBe('ORF1a:501');
+        expect(formatPosition('S[501]')).toBe('S:501');
     });
 
     it('returns the input unchanged when it does not match the position syntax', () => {
