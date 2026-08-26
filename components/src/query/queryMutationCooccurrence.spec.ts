@@ -147,7 +147,7 @@ describe('queryMutationCooccurrence', () => {
         const result = await queryMutationCooccurrence(multiDateFilter, positions, DUMMY_LAPIS_URL, dateField, 'day');
         const patterns = result.getFirstAxisKeys();
 
-        expect(result.get(patterns[0], day2)).to.be.null;
+        expect(result.get(patterns[0], day2)).toBeNull();
     });
 
     it('sets a cell to null when coverage is zero for that date', async () => {
@@ -169,7 +169,7 @@ describe('queryMutationCooccurrence', () => {
         const patterns = result.getFirstAxisKeys();
         const atPattern = patterns.find((p) => p.symbols['[1]'] === 'A' && p.symbols['[2]'] === 'T')!;
 
-        expect(result.get(atPattern, day2)).to.be.null;
+        expect(result.get(atPattern, day2)).toBeNull();
     });
 
     it('throws a UserFacingError when too many positions are given', async () => {
