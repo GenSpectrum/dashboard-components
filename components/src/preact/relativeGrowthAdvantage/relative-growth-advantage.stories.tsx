@@ -170,6 +170,17 @@ export const TooFewDataToComputeGrowthAdvantage: StoryObj<RelativeGrowthAdvantag
                         },
                     },
                 },
+                {
+                    matcher: {
+                        name: 'chen2021Fitness',
+                        url: 'https://cov-spectrum.org/api/v2/computed/model/chen2021Fitness',
+                        method: 'POST',
+                    },
+                    response: {
+                        status: 422,
+                        body: { message: 'Not enough data' },
+                    },
+                },
             ],
         },
     },
