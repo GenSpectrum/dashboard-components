@@ -161,7 +161,7 @@ function useCooccurrenceColumns(
  * `[501]` (nucleotide position) becomes `501`.
  * `ORF1a[501]` (gene-scoped amino acid position) becomes `ORF1a: 501`.
  */
-function formatPosition(pos: string): string {
+export function formatPosition(pos: string): string {
     const match = /^([^[]*)\[(\d+)\]$/.exec(pos);
     if (match === null) {
         return pos;

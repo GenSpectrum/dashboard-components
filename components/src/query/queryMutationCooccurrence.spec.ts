@@ -79,6 +79,99 @@ describe('queryMutationCooccurrence', () => {
         ]);
     });
 
+    it('aggregates counts per date, keeping them separate across dates', async () => {
+        const multiDateFilter = { dateFrom: '2024-01-15', dateTo: '2024-01-16' };
+        const day1 = yearMonthDay('2024-01-15');
+        const day2 = yearMonthDay('2024-01-16');
+
+        lapisRequestMocks.aggregated(
+            { ...multiDateFilter, fields: [dateField, ...positions] },
+            {
+                data: [
+                    { count: 90, [dateField]: '2024-01-15', '[1]': 'A', '[2]': 'T' },
+                    { count: 50, [dateField]: '2024-01-16', '[1]': 'A', '[2]': 'T' },
+                ],
+            },
+        );
+
+        const result = await queryMutationCooccurrence(multiDateFilter, positions, DUMMY_LAPIS_URL, dateField, 'day');
+        const patterns = result.getFirstAxisKeys();
+
+        expect(result.get(patterns[0], day1)).to.deep.equal({
+            type: 'valueWithCoverage',
+            count: 90,
+            coverage: 90,
+            totalCount: 90,
+        });
+        expect(result.get(patterns[0], day2)).to.deep.equal({
+            type: 'valueWithCoverage',
+            count: 50,
+            coverage: 50,
+            totalCount: 50,
+        });
+    });
+
+    it('sorts fully-covered patterns first, then alphabetically by pattern key as tiebreaker', async () => {
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField, ...positions] },
+            {
+                data: [
+                    { count: 100, [dateField]: '2024-01-15', '[1]': 'A', '[2]': 'T' },
+                    { count: 200, [dateField]: '2024-01-15', '[1]': 'A', '[2]': 'C' },
+                    { count: 50, [dateField]: '2024-01-15', '[1]': 'A', '[2]': 'N' },
+                ],
+            },
+        );
+
+        const result = await queryMutationCooccurrence(lapisFilter, positions, DUMMY_LAPIS_URL, dateField, 'day');
+        const patterns = result.getFirstAxisKeys();
+
+        expect(patterns).to.deep.equal([
+            { symbols: { '[1]': 'A', '[2]': 'C' } },
+            { symbols: { '[1]': 'A', '[2]': 'T' } },
+            { symbols: { '[1]': 'A', '[2]': null } },
+        ]);
+    });
+
+    it('sets a cell to null when total sequences for that date is zero', async () => {
+        const multiDateFilter = { dateFrom: '2024-01-15', dateTo: '2024-01-16' };
+        const day2 = yearMonthDay('2024-01-16');
+
+        lapisRequestMocks.aggregated(
+            { ...multiDateFilter, fields: [dateField, ...positions] },
+            {
+                data: [{ count: 90, [dateField]: '2024-01-15', '[1]': 'A', '[2]': 'T' }],
+            },
+        );
+
+        const result = await queryMutationCooccurrence(multiDateFilter, positions, DUMMY_LAPIS_URL, dateField, 'day');
+        const patterns = result.getFirstAxisKeys();
+
+        expect(result.get(patterns[0], day2)).to.be.null;
+    });
+
+    it('sets a cell to null when coverage is zero for that date', async () => {
+        const multiDateFilter = { dateFrom: '2024-01-15', dateTo: '2024-01-16' };
+        const day2 = yearMonthDay('2024-01-16');
+
+        lapisRequestMocks.aggregated(
+            { ...multiDateFilter, fields: [dateField, ...positions] },
+            {
+                data: [
+                    { count: 90, [dateField]: '2024-01-15', '[1]': 'A', '[2]': 'T' },
+                    // on day 2, [1] is always N so the A-T pattern has zero coverage
+                    { count: 10, [dateField]: '2024-01-16', '[1]': 'N', '[2]': 'T' },
+                ],
+            },
+        );
+
+        const result = await queryMutationCooccurrence(multiDateFilter, positions, DUMMY_LAPIS_URL, dateField, 'day');
+        const patterns = result.getFirstAxisKeys();
+        const atPattern = patterns.find((p) => p.symbols['[1]'] === 'A' && p.symbols['[2]'] === 'T')!;
+
+        expect(result.get(atPattern, day2)).to.be.null;
+    });
+
     it('throws a UserFacingError when too many positions are given', async () => {
         const tooManyPositions = Array.from({ length: 11 }, (_, i) => `[${i + 1}]`);
         await expect(

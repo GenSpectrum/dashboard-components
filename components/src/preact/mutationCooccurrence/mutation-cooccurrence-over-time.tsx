@@ -243,7 +243,7 @@ const Toolbar: FunctionComponent<ToolbarProps> = ({
     );
 };
 
-function getFilteredCooccurrenceData(
+export function getFilteredCooccurrenceData(
     data: CooccurrenceOverTimeDataMap,
     proportionInterval: { min: number; max: number },
     hideGaps: boolean,
