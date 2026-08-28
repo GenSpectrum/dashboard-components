@@ -79,11 +79,10 @@ const MutationCooccurrenceOverTimeInner: FunctionComponent<MutationCooccurrenceO
     const lapis = useLapisUrl();
     const { lapisFilter, positions, granularity, lapisDateField } = componentProps;
     const referenceGenome = useContext(ReferenceGenomeContext);
-    const geneNames = useMemo(() => referenceGenome.genes.map((g) => g.name), [referenceGenome]);
 
     const { data, error, isLoading } = useQuery(
-        () => queryMutationCooccurrence(lapisFilter, positions, lapis, lapisDateField, granularity, geneNames),
-        [granularity, geneNames, lapis, lapisDateField, lapisFilter, positions],
+        () => queryMutationCooccurrence(lapisFilter, positions, lapis, lapisDateField, granularity, referenceGenome),
+        [granularity, referenceGenome, lapis, lapisDateField, lapisFilter, positions],
     );
 
     if (isLoading) {

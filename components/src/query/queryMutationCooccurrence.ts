@@ -1,12 +1,14 @@
 import { queryDatesInDataset } from './queryDatesInDataset';
 import { fetchAggregated } from '../lapisApi/lapisApi';
 import { type AggregatedItem } from '../lapisApi/lapisTypes';
+import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
 import { UserFacingError } from '../preact/components/error-display';
 import {
     CooccurrenceOverTimeDataMap,
     type CooccurrencePattern,
     serializeCooccurrencePattern,
 } from '../preact/mutationCooccurrence/CooccurrenceOverTimeData';
+import { sequenceTypeFromSegment } from '../preact/mutationFilter/sequenceTypeFromSegment';
 import { type LapisFilter, type TemporalGranularity } from '../types';
 import { parseDateStringToTemporal, type Temporal } from '../utils/temporalClass';
 
@@ -21,7 +23,7 @@ export async function queryMutationCooccurrence(
     lapis: string,
     lapisDateField: string,
     granularity: TemporalGranularity,
-    geneNames: string[],
+    referenceGenome: ReferenceGenome,
     signal?: AbortSignal,
 ): Promise<CooccurrenceOverTimeDataMap> {
     if (positions.length === 0) {
@@ -60,7 +62,6 @@ export async function queryMutationCooccurrence(
         signal,
     );
 
-    const geneNameSet = new Set(geneNames.map((n) => n.toLowerCase()));
     const dateRangeByKey = new Map<string, Temporal>(requestedDateRanges.map((dr) => [dr.dateString, dr]));
 
     const countsByPatternAndDate = new Map<string, Map<string, number>>();
@@ -80,7 +81,7 @@ export async function queryMutationCooccurrence(
             continue;
         }
 
-        const symbols = extractSymbols(item, positions, geneNameSet);
+        const symbols = extractSymbols(item, positions, referenceGenome);
         const count = item.count;
         const dateKey = dateRange.dateString;
 
@@ -146,15 +147,15 @@ export async function queryMutationCooccurrence(
 
 /**
  * Reads the symbol at each queried position from a raw LAPIS response row.
- * Amino acid positions (prefix before `[` is a known gene name) treat `'X'` as uncovered;
- * nucleotide positions treat `'N'` as uncovered. Both map to `null` in the result.
- * Keys and gene names are compared case-insensitively because LAPIS resolves sequence names
- * case-insensitively and returns the canonical casing in response keys.
+ * Uses `sequenceTypeFromSegment` with the full reference genome to determine whether a
+ * position is amino acid (`'X'` = uncovered) or nucleotide (`'N'` = uncovered), matching
+ * LAPIS behaviour exactly — including the case where a segment name and gene name collide
+ * (nucleotide takes precedence). Response keys are matched case-insensitively.
  */
 function extractSymbols(
     item: AggregatedItem,
     positions: string[],
-    geneNames: Set<string>,
+    referenceGenome: ReferenceGenome,
 ): Record<string, string | null> {
     const normalizedItem: Record<string, unknown> = {};
     for (const [key, value] of Object.entries(item)) {
@@ -164,8 +165,9 @@ function extractSymbols(
     const symbols: Record<string, string | null> = {};
     for (const pos of positions) {
         const val = normalizedItem[pos.toLowerCase()];
-        const genePrefix = pos.slice(0, pos.indexOf('[')).toLowerCase();
-        const uncoveredSymbol = geneNames.has(genePrefix) ? 'X' : 'N';
+        const bracketIndex = pos.indexOf('[');
+        const prefix = bracketIndex > 0 ? pos.slice(0, bracketIndex) : undefined;
+        const uncoveredSymbol = sequenceTypeFromSegment(prefix, referenceGenome) === 'amino acid' ? 'X' : 'N';
         symbols[pos] = typeof val === 'string' && val !== uncoveredSymbol ? val : null;
     }
     return symbols;
