@@ -18,6 +18,7 @@ import { CooccurrenceOverTimeGrid } from '../components/cooccurrence-over-time-g
 import { CsvDownloadButton } from '../components/csv-download-button';
 import { ErrorBoundary } from '../components/error-boundary';
 import { Fullscreen } from '../components/fullscreen';
+import { ReferenceGenomesAwaiter } from '../components/ReferenceGenomesAwaiter';
 import { HideGapsButton } from '../components/hide-gaps-button';
 import Info, { InfoComponentCode, InfoHeadline1, InfoParagraph } from '../components/info';
 import { LoadingDisplay } from '../components/loading-display';
@@ -66,7 +67,9 @@ export const MutationCooccurrenceOverTime: FunctionComponent<MutationCooccurrenc
     return (
         <ErrorBoundary size={size} schema={mutationCooccurrenceOverTimeSchema} componentProps={componentProps}>
             <ResizeContainer size={size}>
-                <MutationCooccurrenceOverTimeInner {...componentProps} />
+                <ReferenceGenomesAwaiter>
+                    <MutationCooccurrenceOverTimeInner {...componentProps} />
+                </ReferenceGenomesAwaiter>
             </ResizeContainer>
         </ErrorBoundary>
     );
