@@ -17,6 +17,10 @@ export {
 } from './types';
 
 export type { MutationComparisonView, MutationComparisonProps } from './preact/mutationComparison/mutation-comparison';
+export type {
+    MutationCooccurrenceOverTimeView,
+    MutationCooccurrenceOverTimeProps,
+} from './preact/mutationCooccurrence/mutation-cooccurrence-over-time';
 export type { MutationsView, MutationsProps } from './preact/mutations/mutations';
 export type { AggregateView, AggregateProps } from './preact/aggregatedData/aggregate';
 export type {

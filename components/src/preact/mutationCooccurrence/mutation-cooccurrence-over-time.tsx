@@ -1,5 +1,5 @@
 import { type FunctionComponent } from 'preact';
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'preact/hooks';
 import z from 'zod';
 
 import type { CooccurrencePattern, CooccurrenceOverTimeDataMap } from './CooccurrenceOverTimeData';
@@ -11,6 +11,7 @@ import { Map2dView } from '../../utils/map2d';
 import { type Temporal } from '../../utils/temporalClass';
 import { useDispatchFinishedLoadingEvent } from '../../utils/useDispatchFinishedLoadingEvent';
 import { useLapisUrl } from '../LapisUrlContext';
+import { ReferenceGenomeContext } from '../ReferenceGenomeContext';
 import { type ColorScale } from '../components/color-scale-selector';
 import { ColorScaleSelectorDropdown } from '../components/color-scale-selector-dropdown';
 import { CooccurrenceOverTimeGrid } from '../components/cooccurrence-over-time-grid';
@@ -74,10 +75,12 @@ export const MutationCooccurrenceOverTime: FunctionComponent<MutationCooccurrenc
 const MutationCooccurrenceOverTimeInner: FunctionComponent<MutationCooccurrenceOverTimeProps> = (componentProps) => {
     const lapis = useLapisUrl();
     const { lapisFilter, positions, granularity, lapisDateField } = componentProps;
+    const referenceGenome = useContext(ReferenceGenomeContext);
+    const geneNames = useMemo(() => referenceGenome.genes.map((g) => g.name), [referenceGenome]);
 
     const { data, error, isLoading } = useQuery(
-        () => queryMutationCooccurrence(lapisFilter, positions, lapis, lapisDateField, granularity),
-        [granularity, lapis, lapisDateField, lapisFilter, positions],
+        () => queryMutationCooccurrence(lapisFilter, positions, lapis, lapisDateField, granularity, geneNames),
+        [granularity, geneNames, lapis, lapisDateField, lapisFilter, positions],
     );
 
     if (isLoading) {

@@ -21,6 +21,7 @@ export async function queryMutationCooccurrence(
     lapis: string,
     lapisDateField: string,
     granularity: TemporalGranularity,
+    geneNames: string[],
     signal?: AbortSignal,
 ): Promise<CooccurrenceOverTimeDataMap> {
     if (positions.length === 0) {
@@ -41,7 +42,7 @@ export async function queryMutationCooccurrence(
         throw new UserFacingError(
             'Too many dates',
             `The dataset would contain ${requestedDateRanges.length} date intervals. ` +
-                `Please reduce the number to below ${MAX_NUMBER_OF_GRID_COLUMNS} to display the data. ` +
+                `Please reduce the number to at most ${MAX_NUMBER_OF_GRID_COLUMNS} to display the data. ` +
                 'You can achieve this by either narrowing the date range in the provided LAPIS filter or by selecting a larger granularity.',
         );
     }
@@ -59,6 +60,7 @@ export async function queryMutationCooccurrence(
         signal,
     );
 
+    const geneNameSet = new Set(geneNames);
     const dateRangeByKey = new Map<string, Temporal>(requestedDateRanges.map((dr) => [dr.dateString, dr]));
 
     const countsByPatternAndDate = new Map<string, Map<string, number>>();
@@ -78,7 +80,7 @@ export async function queryMutationCooccurrence(
             continue;
         }
 
-        const symbols = extractSymbols(item, positions);
+        const symbols = extractSymbols(item, positions, geneNameSet);
         const count = item.count;
         const dateKey = dateRange.dateString;
 
@@ -144,14 +146,19 @@ export async function queryMutationCooccurrence(
 
 /**
  * Reads the symbol at each queried position from a raw LAPIS response row.
- * Nucleotide positions (e.g. `[123]`) treat `'N'` as uncovered; amino acid positions
- * (e.g. `S[501]`) treat `'X'` as uncovered. Both map to `null` in the result.
+ * Amino acid positions (prefix before `[` is a known gene name) treat `'X'` as uncovered;
+ * nucleotide positions treat `'N'` as uncovered. Both map to `null` in the result.
  */
-function extractSymbols(item: AggregatedItem, positions: string[]): Record<string, string | null> {
+function extractSymbols(
+    item: AggregatedItem,
+    positions: string[],
+    geneNames: Set<string>,
+): Record<string, string | null> {
     const symbols: Record<string, string | null> = {};
     for (const pos of positions) {
         const val = item[pos];
-        const uncoveredSymbol = /^[A-Za-z]/.test(pos) ? 'X' : 'N';
+        const genePrefix = pos.slice(0, pos.indexOf('['));
+        const uncoveredSymbol = geneNames.has(genePrefix) ? 'X' : 'N';
         symbols[pos] = typeof val === 'string' && val !== uncoveredSymbol ? val : null;
     }
     return symbols;

@@ -16,7 +16,7 @@ const singleDay = yearMonthDay('2024-01-15');
 
 describe('queryMutationCooccurrence', () => {
     it('returns an empty map when no positions are given', async () => {
-        const result = await queryMutationCooccurrence(lapisFilter, [], DUMMY_LAPIS_URL, dateField, 'day');
+        const result = await queryMutationCooccurrence(lapisFilter, [], DUMMY_LAPIS_URL, dateField, 'day', []);
 
         expect(result.getFirstAxisKeys()).to.deep.equal([]);
     });
@@ -34,7 +34,7 @@ describe('queryMutationCooccurrence', () => {
             },
         );
 
-        const result = await queryMutationCooccurrence(lapisFilter, positions, DUMMY_LAPIS_URL, dateField, 'day');
+        const result = await queryMutationCooccurrence(lapisFilter, positions, DUMMY_LAPIS_URL, dateField, 'day', []);
 
         const patterns = result.getFirstAxisKeys();
         expect(patterns).to.deep.equal([
@@ -69,7 +69,9 @@ describe('queryMutationCooccurrence', () => {
             },
         );
 
-        const result = await queryMutationCooccurrence(lapisFilter, aaPositions, DUMMY_LAPIS_URL, dateField, 'day');
+        const result = await queryMutationCooccurrence(lapisFilter, aaPositions, DUMMY_LAPIS_URL, dateField, 'day', [
+            'S',
+        ]);
 
         const patterns = result.getFirstAxisKeys();
         expect(patterns).to.deep.equal([
@@ -94,7 +96,14 @@ describe('queryMutationCooccurrence', () => {
             },
         );
 
-        const result = await queryMutationCooccurrence(multiDateFilter, positions, DUMMY_LAPIS_URL, dateField, 'day');
+        const result = await queryMutationCooccurrence(
+            multiDateFilter,
+            positions,
+            DUMMY_LAPIS_URL,
+            dateField,
+            'day',
+            [],
+        );
         const patterns = result.getFirstAxisKeys();
 
         expect(result.get(patterns[0], day1)).to.deep.equal({
@@ -123,7 +132,7 @@ describe('queryMutationCooccurrence', () => {
             },
         );
 
-        const result = await queryMutationCooccurrence(lapisFilter, positions, DUMMY_LAPIS_URL, dateField, 'day');
+        const result = await queryMutationCooccurrence(lapisFilter, positions, DUMMY_LAPIS_URL, dateField, 'day', []);
         const patterns = result.getFirstAxisKeys();
 
         expect(patterns).to.deep.equal([
@@ -144,7 +153,14 @@ describe('queryMutationCooccurrence', () => {
             },
         );
 
-        const result = await queryMutationCooccurrence(multiDateFilter, positions, DUMMY_LAPIS_URL, dateField, 'day');
+        const result = await queryMutationCooccurrence(
+            multiDateFilter,
+            positions,
+            DUMMY_LAPIS_URL,
+            dateField,
+            'day',
+            [],
+        );
         const patterns = result.getFirstAxisKeys();
 
         expect(result.get(patterns[0], day2)).toBeNull();
@@ -165,17 +181,49 @@ describe('queryMutationCooccurrence', () => {
             },
         );
 
-        const result = await queryMutationCooccurrence(multiDateFilter, positions, DUMMY_LAPIS_URL, dateField, 'day');
+        const result = await queryMutationCooccurrence(
+            multiDateFilter,
+            positions,
+            DUMMY_LAPIS_URL,
+            dateField,
+            'day',
+            [],
+        );
         const patterns = result.getFirstAxisKeys();
         const atPattern = patterns.find((p) => p.symbols['[1]'] === 'A' && p.symbols['[2]'] === 'T')!;
 
         expect(result.get(atPattern, day2)).toBeNull();
     });
 
+    it('treats N as uncovered for named nucleotide segment positions', async () => {
+        const segPositions = ['main[1]', 'main[2]'];
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField, ...segPositions] },
+            {
+                data: [
+                    { count: 10, [dateField]: '2024-01-15', 'main[1]': 'A', 'main[2]': 'T' },
+                    { count: 5, [dateField]: '2024-01-15', 'main[1]': 'N', 'main[2]': 'T' },
+                ],
+            },
+        );
+
+        // 'main' is a nucleotide segment name, not a gene — must NOT be in geneNames
+        const result = await queryMutationCooccurrence(lapisFilter, segPositions, DUMMY_LAPIS_URL, dateField, 'day', [
+            'S',
+            'ORF1a',
+        ]);
+
+        const patterns = result.getFirstAxisKeys();
+        expect(patterns).to.deep.equal([
+            { symbols: { 'main[1]': 'A', 'main[2]': 'T' } },
+            { symbols: { 'main[1]': null, 'main[2]': 'T' } },
+        ]);
+    });
+
     it('throws a UserFacingError when too many positions are given', async () => {
         const tooManyPositions = Array.from({ length: 11 }, (_, i) => `[${i + 1}]`);
         await expect(
-            queryMutationCooccurrence(lapisFilter, tooManyPositions, DUMMY_LAPIS_URL, dateField, 'day'),
+            queryMutationCooccurrence(lapisFilter, tooManyPositions, DUMMY_LAPIS_URL, dateField, 'day', []),
         ).rejects.toThrow('positions');
     });
 
@@ -187,6 +235,7 @@ describe('queryMutationCooccurrence', () => {
                 DUMMY_LAPIS_URL,
                 dateField,
                 'day',
+                [],
             ),
         ).rejects.toThrow('date intervals');
     });
