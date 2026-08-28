@@ -1,7 +1,7 @@
 import { queryDatesInDataset } from './queryDatesInDataset';
 import { fetchAggregated } from '../lapisApi/lapisApi';
-import { type AggregatedItem } from '../lapisApi/lapisTypes';
 import { type ReferenceGenome } from '../lapisApi/ReferenceGenome';
+import { type AggregatedItem } from '../lapisApi/lapisTypes';
 import { UserFacingError } from '../preact/components/error-display';
 import {
     CooccurrenceOverTimeDataMap,
