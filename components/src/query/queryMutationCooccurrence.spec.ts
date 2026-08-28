@@ -195,6 +195,36 @@ describe('queryMutationCooccurrence', () => {
         expect(result.get(atPattern, day2)).toBeNull();
     });
 
+    it('handles lowercase position input by matching LAPIS canonical casing in response keys', async () => {
+        const lowercasePositions = ['s[1]', 's[2]'];
+        lapisRequestMocks.aggregated(
+            { ...lapisFilter, fields: [dateField, ...lowercasePositions] },
+            {
+                data: [
+                    // LAPIS returns canonical casing S[1] even though s[1] was requested
+                    { count: 10, [dateField]: '2024-01-15', 'S[1]': 'A', 'S[2]': 'T' },
+                    { count: 3, [dateField]: '2024-01-15', 'S[1]': 'A', 'S[2]': 'X' },
+                ],
+            },
+        );
+
+        // gene name 'S' is canonical; user provided lowercase 's' as position prefix
+        const result = await queryMutationCooccurrence(
+            lapisFilter,
+            lowercasePositions,
+            DUMMY_LAPIS_URL,
+            dateField,
+            'day',
+            ['S'],
+        );
+
+        const patterns = result.getFirstAxisKeys();
+        expect(patterns).to.deep.equal([
+            { symbols: { 's[1]': 'A', 's[2]': 'T' } },
+            { symbols: { 's[1]': 'A', 's[2]': null } }, // X treated as uncovered (amino acid)
+        ]);
+    });
+
     it('treats N as uncovered for named nucleotide segment positions', async () => {
         const segPositions = ['main[1]', 'main[2]'];
         lapisRequestMocks.aggregated(
