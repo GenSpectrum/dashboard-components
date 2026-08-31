@@ -7,7 +7,7 @@ import type { Temporal } from '../../utils/temporalClass';
  * A specific combination of values (nucleotides or amino acids) observed across the queried positions.
  * Keys are LAPIS position field names (e.g. `[501]`, `S[501]`, `ORF1a[501]`).
  * String values are the symbol at that position. `null` means the position is not covered
- * (LAPIS returned `'N'` or no value for it).
+ * (LAPIS returned `'N'`/`'X'` or no value for it).
  */
 export type CooccurrencePattern = {
     symbols: Record<string, string | null>;
