@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.19.0](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.18.1...dashboard-components-v1.19.0) (2026-09-01)
+
+
+### Features
+
+* **components:** add gs-mutation-cooccurrence-over-time component ([#1130](https://github.com/GenSpectrum/dashboard-components/issues/1130)) ([5d8e991](https://github.com/GenSpectrum/dashboard-components/commit/5d8e991696bcdba8d43cfa3af5c092e18d26e385))
+
+
+### Bug Fixes
+
+* **components:** fix annotation symbol check in MutationWithPerMutationInfoOverride story ([#1132](https://github.com/GenSpectrum/dashboard-components/issues/1132)) ([be308ee](https://github.com/GenSpectrum/dashboard-components/commit/be308eee4f18ed782864c5c9eeff0d6df263a81c))
+
 ## [1.18.1](https://github.com/GenSpectrum/dashboard-components/compare/dashboard-components-v1.18.0...dashboard-components-v1.18.1) (2026-07-02)
 
 
