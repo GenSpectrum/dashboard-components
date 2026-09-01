@@ -180,6 +180,22 @@ export const visualizationStories = [
         loadingIsDoneIndicator: 'Grid',
     },
     {
+        id: 'visualization-mutation-cooccurrence-over-time--default',
+        title: 'Mutation Cooccurrence Over Time',
+        loadingIsDoneIndicator: 'Grid',
+        testDownloadWithFilename: 'mutation_cooccurrence.csv',
+    },
+    {
+        id: 'visualization-mutation-cooccurrence-over-time--with-fixed-height',
+        title: 'Mutation Cooccurrence Over Time',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
+        id: 'visualization-mutation-cooccurrence-over-time--hide-gaps',
+        title: 'Mutation Cooccurrence Over Time',
+        loadingIsDoneIndicator: 'Grid',
+    },
+    {
         id: 'visualization-queries-over-time--default',
         title: 'Queries over time',
         loadingIsDoneIndicator: 'Grid',

@@ -10,7 +10,7 @@ import {
     type SubstitutionOrDeletionEntry,
     type TemporalGranularity,
 } from '../types';
-import { type Map2DContents } from '../utils/map2d';
+import { type Map2DContents, type Map2dView } from '../utils/map2d';
 import { type Deletion, DeletionClass, type Substitution, SubstitutionClass } from '../utils/mutations';
 import { type Temporal, type TemporalClass } from '../utils/temporalClass';
 
@@ -52,6 +52,19 @@ export function getProportion(value: ProportionValue) {
 
 const MAX_NUMBER_OF_GRID_COLUMNS = 200;
 export const MUTATIONS_OVER_TIME_MIN_PROPORTION = 0.001;
+
+/**
+ * Deletes columns (second axis keys, typically dates) from `view` that have no value with
+ * `totalCount > 0`, i.e. time periods with no data at all.
+ */
+export function hideGapsInPlace<Key1 extends object | string>(view: Map2dView<Key1, Temporal, ProportionValue>) {
+    view.getSecondAxisKeys()
+        .filter((date) => {
+            const vals = view.getColumn(date);
+            return !vals.some((v) => (v?.type === 'value' || v?.type === 'valueWithCoverage') && v.totalCount > 0);
+        })
+        .forEach((date) => view.deleteColumn(date));
+}
 
 /**
  * Create SubstitutionOrDeletionEntry for given code with count and proportion 0.

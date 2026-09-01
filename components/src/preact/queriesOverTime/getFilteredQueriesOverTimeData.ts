@@ -1,4 +1,4 @@
-import { type ProportionValue } from '../../query/queryMutationsOverTime';
+import { hideGapsInPlace, type ProportionValue } from '../../query/queryMutationsOverTime';
 import { serializeQuery, serializeTemporal } from '../../query/queryQueriesOverTime';
 import { Map2dBase, Map2dView, type Map2DContents } from '../../utils/map2d';
 import { type Temporal } from '../../utils/temporalClass';
@@ -74,11 +74,7 @@ export function getFilteredQueryOverTimeData({
 
     // Hide gaps (columns with no data)
     if (hideGaps) {
-        const dateRangesToFilterOut = filteredData.getSecondAxisKeys().filter((dateRange) => {
-            const vals = filteredData.getColumn(dateRange);
-            return !vals.some((v) => (v?.type === 'value' || v?.type === 'valueWithCoverage') && v.totalCount > 0);
-        });
-        dateRangesToFilterOut.forEach((dateRange) => filteredData.deleteColumn(dateRange));
+        hideGapsInPlace(filteredData);
     }
 
     return filteredData;

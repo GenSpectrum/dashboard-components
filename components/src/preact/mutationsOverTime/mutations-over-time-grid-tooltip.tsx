@@ -2,7 +2,8 @@ import type { FunctionComponent } from 'preact';
 
 import { type ProportionValue, MUTATIONS_OVER_TIME_MIN_PROPORTION } from '../../query/queryMutationsOverTime';
 import type { Deletion, Substitution } from '../../utils/mutations';
-import { type Temporal, type TemporalClass, toTemporalClass, YearMonthDayClass } from '../../utils/temporalClass';
+import { type Temporal } from '../../utils/temporalClass';
+import { OverTimeGridTooltip } from '../components/over-time-grid-tooltip';
 import { formatProportion } from '../shared/table/formatProportion';
 
 export type MutationsOverTimeGridTooltipProps = {
@@ -16,41 +17,13 @@ export const MutationsOverTimeGridTooltip: FunctionComponent<MutationsOverTimeGr
     date,
     value,
 }: MutationsOverTimeGridTooltipProps) => {
-    const dateClass = toTemporalClass(date);
-
-    let proportionText = 'No data';
-
-    if (value !== null) {
-        switch (value.type) {
-            case 'belowThreshold': {
-                proportionText = `<${formatProportion(MUTATIONS_OVER_TIME_MIN_PROPORTION)}`;
-                break;
-            }
-            case 'value':
-            case 'wastewaterValue': {
-                proportionText = formatProportion(value.proportion);
-                break;
-            }
-            case 'valueWithCoverage': {
-                // value.coverage will always be non-zero if we're in this case
-                proportionText = formatProportion(value.count / value.coverage);
-                break;
-            }
-        }
-    }
-
     return (
-        <div>
-            <div className='flex flex-row justify-between gap-4 items-baseline'>
-                <div className='flex flex-col text-left'>
-                    <span className='font-bold'>{mutation.code}</span>
-                    <span>{proportionText}</span>
-                </div>
-                <div className='flex flex-col text-right'>
-                    <span className='font-bold'>{dateClass.englishName()}</span>
-                    <span className='text-gray-600'>{timeIntervalDisplay(dateClass)}</span>
-                </div>
-            </div>
+        <OverTimeGridTooltip
+            label={<span className='font-bold'>{mutation.code}</span>}
+            date={date}
+            value={value}
+            minProportion={MUTATIONS_OVER_TIME_MIN_PROPORTION}
+        >
             {value !== null && (
                 <TooltipValueCountsDescription
                     value={value}
@@ -58,7 +31,7 @@ export const MutationsOverTimeGridTooltip: FunctionComponent<MutationsOverTimeGr
                     mutationPosition={mutation.position}
                 />
             )}
-        </div>
+        </OverTimeGridTooltip>
     );
 };
 
@@ -121,12 +94,4 @@ const TooltipValueCountsDescription: FunctionComponent<{
             </p>
         </div>
     );
-};
-
-const timeIntervalDisplay = (date: TemporalClass) => {
-    if (date instanceof YearMonthDayClass) {
-        return date.toString();
-    }
-
-    return `${date.firstDay.toString()} - ${date.lastDay.toString()}`;
 };
